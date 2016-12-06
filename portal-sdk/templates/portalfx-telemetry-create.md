@@ -69,15 +69,15 @@ This function returns the list of Portal Azure service deployment lifecycles, al
   * Possible execution statuses
     * Succeeded
       * The create was successfully completed.
-      * If ARMExecutionStatus is "Succeeded" or if ARMExecutionStatus is blank and PortalExecutionStatus is "Succeeded"
+      * If ARMExecutionStatus is *"Succeeded"* or if ARMExecutionStatus is blank and PortalExecutionStatus is *"Succeeded"*
     * Canceled
       * The create was canceled before completion
-      * If ARMExecutionStatus is "Canceled" or if ARMExecutionStatus is blank and PortalExecutionStatus is "Canceled"
+      * If ARMExecutionStatus is *"Canceled"* or if ARMExecutionStatus is blank and PortalExecutionStatus is *"Canceled"*
     * Failed
       * The create failed to complete.
-      * If ARMExecutionStatus is "Failed" or if ARMExecutionStatus is blank and PortalExecutionStatus is "Failed"
-    * BillingError
-      * The create failed to completed because of the error, "We could not find a credit card on file for your azure subscription. Please make sure your azure subscription has a credit card."
+      * If ARMExecutionStatus is *"Failed"* or if ARMExecutionStatus is blank and PortalExecutionStatus is *"Failed"*
+    * CommerceError
+      * The create was rejected because of a billing or commerce related error such as, *"We could not find a credit card on file for your azure subscription. Please make sure your azure subscription has a credit card."
     * Unknown
       * The status of the create is unable to be determined.
       * If ARMExecutionStatus is blank and PortalExecutionStatus is blank
@@ -85,7 +85,10 @@ This function returns the list of Portal Azure service deployment lifecycles, al
       * The create blade was closed before a create was initialized.
 * Excluded
   * Boolean which represents if this Create Flow is to be excluded from create funnel KPI calculations.
-  * A Create Flow is marked Excluded = true if ExecutionStatus is "Canceled", "CommerceError", or "Unknown".
+  * A Create Flow is marked `Excluded == true` 
+    * if ExecutionStatus is *"Canceled"*, *"CommerceError"*, or *"Unknown"*.
+    * if `OldCreateApi == true`
+    * if Hubs Extension Custom Template create
 * CorrelationId
   * The unique ARM identifier of this deployment.
 * ArmDeploymentName
@@ -107,51 +110,47 @@ This function returns the list of Portal Azure service deployment lifecycles, al
 * CreateBladeOpened
   * Boolean representing if the create blade was opened.
   * Logged as a CreateFlowLaunched event at the time that the create blade is opened and logged by the Portal.
-* CreateBladeOpened_ActionModifier
+* CreateBladeOpenedStatus
   * Context for CreateBladeOpened.
-* CreateBladeOpened_TimeStamp
+* CreateBladeOpenedTime
   * Time when the create blade was opened.
-* PortalCreateStarted
+* PortalCreateButtonClicked
   * Boolean representing if a Portal create was started for this create flow.
   * Logged by a ProvisioningStarted event when the create is initiated.
-* PortalCreateStarted_ActionModifier
+* PortalCreateButtonClickedStatus
   * Context for PortalCreateStarted.
-* PortalCreateStarted_TimeStamp
+* PortalCreateButtonClickedTime
   * Time when the Portal create was started and logged by the Portal.
-* ArmDeploymentStarted
+* PortalDeploymentAcceptedByArm
   * Boolean representing if a deployment request was accepted by ARM.
   * Logged when the deployment request is acknowledged by ARM and a CreateDeploymentStart event was logged by the Portal.
-* ArmDeploymentStarted_ActionModifier
+* PortalDeploymentAcceptedByArmStatus
   * Context for the ArmDeploymentStarted.
-* ArmDeploymentStarted_TimeStamp
+* PortalDeploymentAcceptedByArmTime
   * The time when the ARM deployment request response was logged by the Portal.
-* ArmDeploymentEnded
+* PortalDeploymentCompletedByArm
   * Boolean representing if a deployment was completed by ARM.
   * Logged when ARM has completed status for the deployment and a CreateDeploymentEnd event was logged by the Portal.
-* ArmDeploymentEnded_ActionModifier
+* PortalDeploymentCompletedByArmStatus
   * Context for ArmDeploymentEnded.
-* ArmDeploymentEnded_TimeStamp
+* PortalDeploymentCompletedByArmTime
   * The time when the CreateDeploymetEnd event was logged.
 * PortalCreateEnded
   * Boolean representing if a Portal create was completed for this create flow.
   * Logged when all operations relating to the create have completed and a ProvisioningEnded event was logged by the Portal.
-* PortalCreateEnded_ActionModifier
+* PortalCreateEndedStatus
   * Context for PortalCreateEnded.
-* ProvisioningEnded_TimeStamp
+* PortalCreateEndedTime
   * Time when the Portal create was completed and logged by the Portal.
-* ArmPreciseStartTime
-  * Start time of the deployment through ARM
-* ArmPreciseEndTime
-  * End time of the deployment through ARM.
-* ArmPreciseDuration
-  * Duration of the deployment through ARM.
-* PortalCreateStartTime
-  * Start time of the Portal create.
-* PortalCreateEndTime
-  * End time of the Portal create.
 * PortalCreateDuration
   * Duration of the Portal create.
   * PortalCreateDuration = PortalCreateEndTime - PortalCreateStartTime
+* ArmPreciseStartedTime
+  * Start time of the deployment through ARM
+* ArmPreciseEndedTime
+  * End time of the deployment through ARM.
+* ArmPreciseDuration
+  * Duration of the deployment through ARM.
 * Data
   * The entire collection of logged create events' telemetry data in JSON format.
 * BuildNumber
@@ -162,12 +161,12 @@ This function returns the list of Portal Azure service deployment lifecycles, al
   * The session in which the deployment was initiated.
 * UserId
   * The user identification which initiated the deployment.
+* ObjectId
+  * The AAD object Id
 * SubscriptionId
   * The subscription Id
 * TenantId
   * The tenant Id
-* Template
-  * The type of the create template used.
 * OldCreateApi
   * Boolean representing if the deployment was initiated using the latest supported Provisioning API.
 * CustomDeployment
