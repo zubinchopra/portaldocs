@@ -426,7 +426,11 @@ This functions calculates the overall create funnel KPIs for the Portal.
 This is a low level internal Kusto constraint which limits the amount of records we are able work with across multiple clusters/databases at a time. This limit is more noticeable now because we are connecting large amounts of data directly with ARM (data is stored on a different cluster).  
 
 We have worked with Kusto on how to work around this for teams/users who wish to query large data sets (like 30 days) and they have a solution for us which you can use on your query:
-                    set notruncation;
+
+```sql
+set notruncation;
+```
+
 Add this to your query and it will let you query larger data sets. 
 
 We are hoping that we can work with Kusto to have a configuration in our function set for this, but for now this is the only option available.
