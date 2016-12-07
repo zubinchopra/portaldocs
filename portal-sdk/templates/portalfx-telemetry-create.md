@@ -11,6 +11,8 @@ CreateFlow table in Kusto database **AzPtlCosmos** called **CreateFlows**
 
 Accessible through using the function: **GetCreateFlows(startDate: datetime, endDate: datetime)**
 
+For questions or issues, check out the [FAQ](#FAQ)
+
 ## Create Flow Functions
 
 [GetCreateFlows](#GetCreateFlows)
@@ -416,3 +418,22 @@ This functions calculates the overall create funnel KPIs for the Portal.
   * The total number of creates which were aborted due to a commerce error.
 * Unknown
   * The total number of creates which do not have a known result.
+  
+# <a name="FAQ"></a>FAQ
+
+### I want to query for a large time frame (+14d) but I'm getting the error, `‘accumulated string too large’`
+
+This is a low level internal Kusto constraint which limits the amount of records we are able work with across multiple clusters/databases at a time. This limit is more noticeable now because we are connecting large amounts of data directly with ARM (data is stored on a different cluster).  
+
+We have worked with Kusto on how to work around this for teams/users who wish to query large data sets (like 30 days) and they have a solution for us which you can use on your query:
+                    set notruncation;
+Add this to your query and it will let you query larger data sets. 
+
+We are hoping that we can work with Kusto to have a configuration in our function set for this, but for now this is the only option available.
+
+
+### I'm getting the error, `Request execution has timed-out on the service side and was aborted.`
+
+The curernt Kusto timeout limit for a query is 4:30. If this is happening when you are simply calling one of the CreateFlow functions then thecluster could be under stress or one of the dependent services is down at the moment. 
+
+Try again after waiting some time or at non-peak hours which are between 9am-10am & 3pm-5pm.
