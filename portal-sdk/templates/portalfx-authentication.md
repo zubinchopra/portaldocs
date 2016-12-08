@@ -160,7 +160,7 @@ Then, exchange the Fx token for your own:
  
 ```cs
 // Get the token passed to the controller
-var portalAuthorizationHeader = PortalRequestContext.Current.GetCorrelationData<AuthorizationCorrelationProvider>();
+var portalAuthorizationHeader = HttpContext.Current.GetRequestContext().RequestCorrelationContext.GetCorrelationData<AuthorizationCorrelationProvider>();
 if (portalAuthorizationHeader == null) {
     // This should never happen, the auth module should have returned 401 if there wasn’t a valid header present
     throw new HttpException(401, "Unauthorized");
