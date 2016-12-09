@@ -120,7 +120,9 @@ var self = module.exports = {
 
             return util.format(extRegEx[fileExtension].template, sectionContent);
         } else {
-            throw new Error("could not find section: " + sectionPattern + " in " + config.file);
+            console.warn("could not find section: " + sectionPattern + " in " + config.file);
+            return "code sample coming soon to SamplesExtension in " + config.file;
+            //throw new Error("could not find section: " + sectionPattern + " in " + config.file);
         }
     },
     /**
