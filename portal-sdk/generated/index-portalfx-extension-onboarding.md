@@ -1,5 +1,7 @@
 * [Onboarding](#onboarding)
-    * [Portal extension](#onboarding-portal-extension)
+    * [Azure Onboarding](#onboarding-azure-onboarding)
+    * [Ibiza Onboarding](#onboarding-ibiza-onboarding)
+    * [Ibiza Extension Resources](#onboarding-ibiza-extension-resources)
 
 
  <h1 name="portalfx-extension-onboarding"></h1>
@@ -7,13 +9,13 @@
 <a name="onboarding"></a>
 # Onboarding
  <h1 name="portalfx-onboarding"></h1>
- Welcome to the Azure portal! We're excited to have you to join the family.
+ Welcome to the Ibiza/Azure portal! We're excited to have you to join the family.
 
 Most services consist of 3 components:
 
 * Marketing content on [azure.com](https://azure.microsoft.com) or other website
 * Management APIs exposed via Azure Resource Manager (ARM) or Microsoft Graph
-* Management UI in the Azure portal and/or other tools/websites, like Visual Studio
+* Management UI in the Ibiza/Azure portal and/or other tools/websites, like Visual Studio
 
 The Azure onboarding process is streamlined to optimize the delivery of high quality experiences based on hundreds of
 hours of usability testing that meet Microsoft Common Engineering Criteria (CEC) and compliance requirements. **Do not
@@ -21,18 +23,12 @@ start designing UI or management APIs until after you've started the onboarding 
 latest patterns and practices. This will better optimize your time and avoid throw-away work by avoiding usability
 issues caused by anti-patterns and inconsistencies that block usability, performance, etc.
 
-1. **Onboarding kickoff** (Stakeholders: [Leon Welicki, Adam Abdelhamed](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding))
+<a name="onboarding-azure-onboarding"></a>
+## Azure Onboarding
 
-    Setup a meeting to discuss the following:
-    - Is your service targeting public Azure, on-prem, or both?
-    - Service name
-    - VP, PM, and engineering owners
-    - Timelines (preview, GA)
-    - Summary of the service and target scenarios
+1. **Business model review** (Stakeholders: [Brian Hillger’s team, Stacey Ellingson](mailto:ibiza-bmr@microsoft.com?subject=Azure%20Business%20model%20review)
 
-2. **Business model review** (Stakeholders: [Brian Hillger’s team, Stacey Ellingson](mailto:ibiza-bmr@microsoft.com?subject=Azure%20Business%20model%20review)
-
-3. **Management APIs in ARM/Graph**
+2. **Management APIs in ARM/Graph**
 
     All services using Azure Billing must be exposed via Azure Resource Manager (ARM), the replacement for RDFE (Red Dog
     Front End). Other services can use either ARM or Microsoft Graph. Typically, services that integrate deeply with
@@ -47,12 +43,12 @@ issues caused by anti-patterns and inconsistencies that block usability, perform
     - [Onboarding FAQ (intenral only)](http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx)
     - External teams should [email the ARM team](mailto:aux-arm-leads@microsoft.com?subject=[Onboarding%20Request]%20to%20register%20&lt;RP%20Name&gt;)
 
-4. **CSS (Support)** (Stakeholders: [Wes Penner, CEGRM](mailto:ibiza-css@microsoft.com?subject=CSS%20intake%20questions))
+3. **CSS (Support)** (Stakeholders: [Wes Penner, CEGRM](mailto:ibiza-css@microsoft.com?subject=CSS%20intake%20questions))
 
     [Start **CSS** onboarding](http://spot/intake) at least 3mos before public preview to ensure your customers can use
     Azure support.
 
-5. **Azure.com** (Stakeholders: [Elena Salaks, Guy Burstein](mailto:ibiza-azure@microsoft.com))
+4. **Azure.com** (Stakeholders: [Elena Salaks, Guy Burstein](mailto:ibiza-azure@microsoft.com))
 
     All new services should be listed in [azure.com](https://azure.microsoft.com). This isn't a requirement for onboarding
     the portal, but service categorization is the same between the azure.com Products menu, portal Services menu, and the
@@ -66,7 +62,7 @@ issues caused by anti-patterns and inconsistencies that block usability, perform
 
     For more information about azure.com onboarding, see [http://acomdocs.azurewebsites.net](http://acomdocs.azurewebsites.net).
 
-6. **Common Engineering Criteria (CEC)** (Stakeholder: [Duke Kamstra](mailto:ibiza-cec@microsoft.com))
+5. **Common Engineering Criteria (CEC)** (Stakeholder: [Duke Kamstra](mailto:ibiza-cec@microsoft.com))
 
     The Microsoft Common Engineering Criteria (CEC) program was designed to establish a set of engineering requirements
     across all products. Meeting these requirements is critical to the success of Azure. Every extension is required to
@@ -79,13 +75,13 @@ issues caused by anti-patterns and inconsistencies that block usability, perform
    4. Complete metadata in ServiceTree to enable the automation for various KPIs
    5. Complete the requirements for each release stage: https://cecfundamentals
 
-7. **Internationalization** (Stakeholder: [Lynne Dong](mailto:ibiza-interntnl@microsoft.com))
+6. **Internationalization** (Stakeholder: [Lynne Dong](mailto:ibiza-interntnl@microsoft.com))
 
     Nearly 70% of Azure users are from outside of the United States. It’s important to make Azure a globalized product,
     and there are a few requirements under the "Internationalization" criteria you need acour service is required to
     support the same set of languages as the Portal for GA. Learn more about [internationalization requirements](http://aka.ms/azureintlrequirements).
 
-8. **Azure Compliance** (Stakeholders: [Azure Compliance team](azcompl))
+7. **Azure Compliance** (Stakeholders: [Azure Compliance team](azcompl))
 
     Compliance criteria and practices are defined in [Quality Essentials](https://microsoft.sharepoint.com/teams/QualityEssentials/SitePages/GettingStarted.aspx)
     throughout our development cycle. These ensure services meet the Trusted Cloud commitments outlined in the [Microsoft Azure Trust Center](http://azure.microsoft.com/en-us/support/trust-center/)
@@ -123,12 +119,21 @@ issues caused by anti-patterns and inconsistencies that block usability, perform
    | Privacy | User settings data handling, encryption, and authentication |
    | SDL | Threat modeling |
 
-9. **Build your portal extension!** (see below)
+<a name="onboarding-ibiza-onboarding"></a>
+## Ibiza Onboarding
+
+1. **Onboarding kickoff** (Stakeholders: [Leon Welicki, Adam Abdelhamed](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding))
+
+    Setup a meeting to discuss the following:
+    - Is your service targeting public Azure, on-prem, or both?
+    - Service name
+    - VP, PM, and engineering owners
+    - Timelines (preview, GA)
+    - Summary of the service and target scenarios
 
 
-
-<a name="onboarding-portal-extension"></a>
-## Portal extension
+<a name="onboarding-ibiza-extension-resources"></a>
+## Ibiza Extension Resources
 
 Ready to write your first Azure portal extension? Here are a few resources to get you started:
  
@@ -145,11 +150,11 @@ Ready to write your first Azure portal extension? Here are a few resources to g
    [Getting Started](/portal-sdk/generated/index-portalfx-extension-development.md#getting-started)
    section will guide you through how it works, build the extension, as well as the debugging tips during your code development.
 
-3. **[View the samples](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKBlade)**
+1. **[View the samples](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKBlade)**
 
    The Fx team runs a battery of tests using samples that are available as part of the downloaded SDK as well as available from the DOGFOOD (DF) environment. Browse through the samples to explore live examples of APIs.
 
-4. **<a href="mailto:ibiza-onboading-kickoff?subject=Extension feasibility review">Setup a UX feasibility review</a>**
+1. **<a href="mailto:ibiza-onboading-kickoff?subject=Extension feasibility review">Setup a UX feasibility review</a>**
 
    Before starting to build your extension, please setup time to review your design and ensure your desired outcome is
    feasible.
@@ -159,11 +164,11 @@ Ready to write your first Azure portal extension? Here are a few resources to g
    Join the community in https://stackoverflow.microsoft.com and let us know if you have any questions. (Don't forget to
    tag questions with "ibiza" or related tag.)
 
-7. **[Side-load your extension for local testing](/portal-sdk/generated/index-portalfx-extension-development.md#debugging-testing-in-production)**
+1. **[Side-load your extension for local testing](/portal-sdk/generated/index-portalfx-extension-development.md#debugging-testing-in-production)**
 
    Side-loading allows you to test and debug your extension locally against any environment. This is the preferred method of testing.
 
-9. **Marketplace integration**
+1. **Marketplace integration**
 
    At a high level, each icon you see in the Azure Portal Marketplace is referred to as a Gallery item. Gallery items
    take the form of a file with the .azpkg extension. You can think of this file as a zip which contains all assets for
@@ -236,7 +241,7 @@ Ready to write your first Azure portal extension? Here are a few resources to g
      See also:
      - [RP schema documentation](http://aka.ms/rpschema)
 
-0. **Register your extension**
+1. **Register your extension**
 
    Once your service name is finalized, request to have your extension registered in all environments. Once deployed to
    DOGFOOD (aka DF), contact the Fx team to request that it be enabled (if applicable). Your extension will be enabled
@@ -291,7 +296,7 @@ are tracked for every extension:
 5. Create success
 6. Resource move (ARM subscription-based services only)
 
-<a name="onboarding-portal-extension-performance-stakeholder-sean-watson-mailto-ibiza-perf-microsoft-com"></a>
+<a name="onboarding-ibiza-extension-resources-performance-stakeholder-sean-watson-mailto-ibiza-perf-microsoft-com"></a>
 ### Performance (Stakeholder: <a href="mailto:ibiza-perf@microsoft.com">Sean Watson</a>)
 
 **All blades must meet the required blade reveal time of <4 seconds for the 80th percentile** before being enabled in
@@ -314,7 +319,7 @@ See also:
 - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-performance)
 
 
-<a name="onboarding-portal-extension-reliability-stakeholder-sean-watson-mailto-ibiza-reliability-microsoft-com"></a>
+<a name="onboarding-ibiza-extension-resources-reliability-stakeholder-sean-watson-mailto-ibiza-reliability-microsoft-com"></a>
 ### Reliability (Stakeholder: <a href="mailto:ibiza-reliability@microsoft.com">Sean Watson</a>)
 
 Every extension, blade, and part must meet the **reliability SLA**. Extension, resource blade, and Create blade
@@ -328,7 +333,7 @@ See also:
 - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-performance)
 
 
-<a name="onboarding-portal-extension-usability-stakeholder-angela-moulden-ibiza-usability-microsoft-com"></a>
+<a name="onboarding-ibiza-extension-resources-usability-stakeholder-angela-moulden-ibiza-usability-microsoft-com"></a>
 ### Usability (Stakeholder: <a href="ibiza-usability@microsoft.com">Angela Moulden</a>)
 
 Each service must define the critical, P0 scenarios for their business. These scenarios must be usability tested to
@@ -336,7 +341,7 @@ ensure 80% success rate and an 80% experience score (based on a short survey). U
 with at least 10 participants.
 
 
-<a name="onboarding-portal-extension-accessibility-stakeholder-paymon-parsadmehr-ibiza-accessibility-microsoft-com"></a>
+<a name="onboarding-ibiza-extension-resources-accessibility-stakeholder-paymon-parsadmehr-ibiza-accessibility-microsoft-com"></a>
 ### Accessibility (Stakeholder: <a href="ibiza-accessibility@microsoft.com">Paymon Parsadmehr</a>)
 
 Similar to the usability bar, every service must meet the Microsoft standards for accessibility for their critical, P0
@@ -349,7 +354,7 @@ _**NOTE:** Accessibility is a **non-blocking** requirement today, but it will be
 - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-accessibility)
 
 
-<a name="onboarding-portal-extension-create-success-stakeholder-paymon-parsadmehr-mailto-ibiza-create-microsoft-com"></a>
+<a name="onboarding-ibiza-extension-resources-create-success-stakeholder-paymon-parsadmehr-mailto-ibiza-create-microsoft-com"></a>
 ### Create success (Stakeholder: <a href="mailto:ibiza-create@microsoft.com">Paymon Parsadmehr</a>)
 
 Every Create blade must meet the create success rate. For Create SLA check the Power BI Dashboard. If success drops 5% on a rolling 24h period with 50+ Creates, a
@@ -370,7 +375,7 @@ See also:
 - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-create)
 
 
-<a name="onboarding-portal-extension-resource-move-stakeholder-edison-park-mailto-ibiza-resourcemove-microsoft-com"></a>
+<a name="onboarding-ibiza-extension-resources-resource-move-stakeholder-edison-park-mailto-ibiza-resourcemove-microsoft-com"></a>
 ### Resource move (Stakeholder: <a href="mailto:ibiza-resourceMove@microsoft.com">Edison Park</a>)
 
 ARM-based services must allow customers to move resources between subscriptions and resource groups.

@@ -35,6 +35,7 @@
     * [Underlying Function Resources](#a-name-getcombinedcreatefunnel-a-getcombinedcreatefunnel-startdate-datetime-enddate-datetime-underlying-function-resources)
     * [Parameters](#a-name-getcombinedcreatefunnel-a-getcombinedcreatefunnel-startdate-datetime-enddate-datetime-parameters)
     * [Output Columns](#a-name-getcombinedcreatefunnel-a-getcombinedcreatefunnel-startdate-datetime-enddate-datetime-output-columns)
+* [<a name="FAQ"></a>FAQ](#a-name-faq-a-faq)
 * [Create Troubleshooting](#create-troubleshooting)
     * [Types of Create Failures](#create-troubleshooting-types-of-create-failures)
     * [Debugging Alerts](#create-troubleshooting-debugging-alerts)
@@ -707,6 +708,8 @@ CreateFlow table in Kusto database **AzPtlCosmos** called **CreateFlows**
 
 Accessible through using the function: **GetCreateFlows(startDate: datetime, endDate: datetime)**
 
+For questions or issues, check out the [FAQ](#FAQ)
+
 <a name="create-flow-functions"></a>
 ## Create Flow Functions
 
@@ -772,15 +775,15 @@ This function returns the list of Portal Azure service deployment lifecycles, al
   * Possible execution statuses
     * Succeeded
       * The create was successfully completed.
-      * If ARMExecutionStatus is "Succeeded" or if ARMExecutionStatus is blank and PortalExecutionStatus is "Succeeded"
+      * If ARMExecutionStatus is *"Succeeded"* or if ARMExecutionStatus is blank and PortalExecutionStatus is *"Succeeded"*
     * Canceled
       * The create was canceled before completion
-      * If ARMExecutionStatus is "Canceled" or if ARMExecutionStatus is blank and PortalExecutionStatus is "Canceled"
+      * If ARMExecutionStatus is *"Canceled"* or if ARMExecutionStatus is blank and PortalExecutionStatus is *"Canceled"*
     * Failed
       * The create failed to complete.
-      * If ARMExecutionStatus is "Failed" or if ARMExecutionStatus is blank and PortalExecutionStatus is "Failed"
-    * BillingError
-      * The create failed to completed because of the error, "We could not find a credit card on file for your azure subscription. Please make sure your azure subscription has a credit card."
+      * If ARMExecutionStatus is *"Failed"* or if ARMExecutionStatus is blank and PortalExecutionStatus is *"Failed"*
+    * CommerceError
+      * The create was rejected because of a billing or commerce related error such as, *"We could not find a credit card on file for your azure subscription. Please make sure your azure subscription has a credit card."
     * Unknown
       * The status of the create is unable to be determined.
       * If ARMExecutionStatus is blank and PortalExecutionStatus is blank
@@ -788,7 +791,10 @@ This function returns the list of Portal Azure service deployment lifecycles, al
       * The create blade was closed before a create was initialized.
 * Excluded
   * Boolean which represents if this Create Flow is to be excluded from create funnel KPI calculations.
-  * A Create Flow is marked Excluded = true if ExecutionStatus is "Canceled", "CommerceError", or "Unknown".
+  * A Create Flow is marked `Excluded == true` 
+    * if ExecutionStatus is *"Canceled"*, *"CommerceError"*, or *"Unknown"*.
+    * if `OldCreateApi == true`
+    * if Hubs Extension Custom Template create
 * CorrelationId
   * The unique ARM identifier of this deployment.
 * ArmDeploymentName
@@ -810,51 +816,47 @@ This function returns the list of Portal Azure service deployment lifecycles, al
 * CreateBladeOpened
   * Boolean representing if the create blade was opened.
   * Logged as a CreateFlowLaunched event at the time that the create blade is opened and logged by the Portal.
-* CreateBladeOpened_ActionModifier
+* CreateBladeOpenedStatus
   * Context for CreateBladeOpened.
-* CreateBladeOpened_TimeStamp
+* CreateBladeOpenedTime
   * Time when the create blade was opened.
-* PortalCreateStarted
+* PortalCreateButtonClicked
   * Boolean representing if a Portal create was started for this create flow.
   * Logged by a ProvisioningStarted event when the create is initiated.
-* PortalCreateStarted_ActionModifier
+* PortalCreateButtonClickedStatus
   * Context for PortalCreateStarted.
-* PortalCreateStarted_TimeStamp
+* PortalCreateButtonClickedTime
   * Time when the Portal create was started and logged by the Portal.
-* ArmDeploymentStarted
+* PortalDeploymentAcceptedByArm
   * Boolean representing if a deployment request was accepted by ARM.
   * Logged when the deployment request is acknowledged by ARM and a CreateDeploymentStart event was logged by the Portal.
-* ArmDeploymentStarted_ActionModifier
+* PortalDeploymentAcceptedByArmStatus
   * Context for the ArmDeploymentStarted.
-* ArmDeploymentStarted_TimeStamp
+* PortalDeploymentAcceptedByArmTime
   * The time when the ARM deployment request response was logged by the Portal.
-* ArmDeploymentEnded
+* PortalDeploymentCompletedByArm
   * Boolean representing if a deployment was completed by ARM.
   * Logged when ARM has completed status for the deployment and a CreateDeploymentEnd event was logged by the Portal.
-* ArmDeploymentEnded_ActionModifier
+* PortalDeploymentCompletedByArmStatus
   * Context for ArmDeploymentEnded.
-* ArmDeploymentEnded_TimeStamp
+* PortalDeploymentCompletedByArmTime
   * The time when the CreateDeploymetEnd event was logged.
 * PortalCreateEnded
   * Boolean representing if a Portal create was completed for this create flow.
   * Logged when all operations relating to the create have completed and a ProvisioningEnded event was logged by the Portal.
-* PortalCreateEnded_ActionModifier
+* PortalCreateEndedStatus
   * Context for PortalCreateEnded.
-* ProvisioningEnded_TimeStamp
+* PortalCreateEndedTime
   * Time when the Portal create was completed and logged by the Portal.
-* ArmPreciseStartTime
-  * Start time of the deployment through ARM
-* ArmPreciseEndTime
-  * End time of the deployment through ARM.
-* ArmPreciseDuration
-  * Duration of the deployment through ARM.
-* PortalCreateStartTime
-  * Start time of the Portal create.
-* PortalCreateEndTime
-  * End time of the Portal create.
 * PortalCreateDuration
   * Duration of the Portal create.
   * PortalCreateDuration = PortalCreateEndTime - PortalCreateStartTime
+* ArmPreciseStartedTime
+  * Start time of the deployment through ARM
+* ArmPreciseEndedTime
+  * End time of the deployment through ARM.
+* ArmPreciseDuration
+  * Duration of the deployment through ARM.
 * Data
   * The entire collection of logged create events' telemetry data in JSON format.
 * BuildNumber
@@ -865,12 +867,12 @@ This function returns the list of Portal Azure service deployment lifecycles, al
   * The session in which the deployment was initiated.
 * UserId
   * The user identification which initiated the deployment.
+* ObjectId
+  * The AAD object Id
 * SubscriptionId
   * The subscription Id
 * TenantId
   * The tenant Id
-* Template
-  * The type of the create template used.
 * OldCreateApi
   * Boolean representing if the deployment was initiated using the latest supported Provisioning API.
 * CustomDeployment
@@ -1144,6 +1146,32 @@ This functions calculates the overall create funnel KPIs for the Portal.
   * The total number of creates which were aborted due to a commerce error.
 * Unknown
   * The total number of creates which do not have a known result.
+  
+<a name="a-name-faq-a-faq"></a>
+# <a name="FAQ"></a>FAQ
+
+<a name="a-name-faq-a-faq-i-want-to-query-for-a-large-time-frame-14d-but-i-m-getting-the-error-accumulated-string-too-large"></a>
+### I want to query for a large time frame (+14d) but I&#39;m getting the error, <code>‘accumulated string too large’</code>
+
+This is a low level internal Kusto constraint which limits the amount of records we are able work with across multiple clusters/databases at a time. This limit is more noticeable now because we are connecting large amounts of data directly with ARM (data is stored on a different cluster).  
+
+We have worked with Kusto on how to work around this for teams/users who wish to query large data sets (like 30 days) and they have a solution for us which you can use on your query:
+
+```sql
+set notruncation;
+```
+
+Add this to your query and it will let you query larger data sets. 
+
+We are hoping that we can work with Kusto to have a configuration in our function set for this, but for now this is the only option available.
+
+
+<a name="a-name-faq-a-faq-i-m-getting-the-error-request-execution-has-timed-out-on-the-service-side-and-was-aborted"></a>
+### I&#39;m getting the error, <code>Request execution has timed-out on the service side and was aborted.</code>
+
+The curernt Kusto timeout limit for a query is 4:30. If this is happening when you are simply calling one of the CreateFlow functions then thecluster could be under stress or one of the dependent services is down at the moment. 
+
+Try again after waiting some time or at non-peak hours which are between 9am-10am & 3pm-5pm.
 
 
 <a name="create-troubleshooting"></a>

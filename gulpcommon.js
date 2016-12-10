@@ -180,7 +180,7 @@ var self = module.exports = {
             console.log("checking links in " + inputFile);
             var urls = urlExt.extractUrls(result, urlExt.SOURCE_TYPE_MARKDOWN);
             var count = 0;
-            urls.forEach((url) => {
+            urls.forEach(function(url) {
                 switch (url[0]) {
                     case "#": 
                         if (!result.includes("name=\"" + url.substr(1) + "\"")) {
@@ -209,7 +209,7 @@ var self = module.exports = {
                 }
             });
             console.log("\t" + count + " broken links found");
-        }).then(() => {
+        }).then(function() {
             var dl = deadlink();
 	    var promises = dl.resolve(links);
             console.log("\tchecking " + links.length + " urls");

@@ -36,9 +36,17 @@
     * [Visualizing Data](#controls-visualizing-data)
     * [Donut chart](#controls-donut-chart)
     * [Build your own controls](#controls-build-your-own-controls)
+    * [IMPORTANT NOTE:](#controls-important-note)
+    * [Sections:](#controls-sections)
+    * [Custom control overview](#controls-custom-control-overview)
+    * [Building a custom control](#controls-building-a-custom-control)
+    * [Consuming a custom control](#controls-consuming-a-custom-control)
+    * [Making a custom control that participate in validation](#controls-making-a-custom-control-that-participate-in-validation)
+    * [Advanced topics](#controls-advanced-topics)
+    * [Known issues](#controls-known-issues)
 * [Authentication](#authentication)
     * [Calling ARM](#authentication-calling-arm)
-    * [Calling alternate resources](#authentication-calling-alternate-resources)
+    * [Calling other services](#authentication-calling-other-services)
 * [Working with data](#working-with-data)
     * [Master details browse scenario](#working-with-data-master-details-browse-scenario)
     * [Querying for data](#working-with-data-querying-for-data)
@@ -2858,15 +2866,6 @@ export class SampleMenuBlade extends FxMenuBlade.ViewModel {
                                     // Intentionally blank. The launched blade is responsible for the create operation.
                                 }
                             });
-                        },
-                    },
-                    // Menu item that demonstrates opting out of full width.
-                    {
-                        id: "fullwidthoptout",
-                        displayText: ClientResources.SampleMenuBlade.optOut,
-                        icon: null,
-                        supplyBladeReference: () => {
-                            return new BladeReferences.BladeWidthSmallBladeReference({bladeTitle: ClientResources.SampleMenuBlade.optOut});
                         },
                     },
                 ],
@@ -6059,26 +6058,7 @@ Second, you must provide plugin options.
 
 The following sample shows a simple method of enabling the plugins:
 
-```typescript
-
-// Define the grid plugins and options.
-this.grid = new Grid.ViewModel<WorkItem, WorkItem>(
-    container,
-    null,
-    Grid.Extensions.Scrollable | Grid.Extensions.Filterable | Grid.Extensions.SortableColumn,
-    {
-        scrollable: <Grid.ScrollableOptions<WorkItem>>{
-            dataNavigator: this._navigator
-        },
-        filterable: <Grid.FilterableOptions>{
-            // Server filter causes the grid to use the data navigator for filtering.
-            serverFilter: ko.observable(true)
-        },
-        sortableColumn: <Grid.SortableColumnOptions<WorkItem>>{
-        }
-    });
-
-```
+code sample coming soon to SamplesExtension in D:\ws\Ship-Sync-AuxDocs-Github\doc\portal-sdk\Samples\SamplesExtension\Extension\Client\Controls\Grid\ViewModels\ScrollableGridWithFilteringAndSorting.ts
 
 Plugin compatibility:
 
@@ -6596,16 +6576,16 @@ Other visualization controls:
 ## Build your own controls
 
   	 <h1 name="portalfx-controls-custom-controls"></h1>
- ## Custom controls
+ # Custom controls
 
-<a name="controls-build-your-own-controls-important-note"></a>
-### IMPORTANT NOTE:
+<a name="controls-important-note"></a>
+## IMPORTANT NOTE:
 - This feature is not yet enabled in production environment i.e. you cannot go to production as of now with custom control on your blade. This will enabled soon however, so you can start implmentation work now.
 - As this is a preview feature both 'feature.customcontrols=true' and 'clientOptimizations=bundle' need to be specified in the portal's query string to enable custom controls.
 - Custom controls is not enabled on sovereign\govt clouds. Custom controls feature will not work on these clouds.
 
-<a name="controls-build-your-own-controls-sections"></a>
-### Sections:
+<a name="controls-sections"></a>
+## Sections:
 - [Custom control overview](#custom-control-overview)
 - [Building a custom control](#custom-control-building)
    - [Build your control](#custom-control-build-it)
@@ -6618,8 +6598,8 @@ Other visualization controls:
 - [Fixed issues not yet fixed](#custom-control-not-yet-fixed)
 
 <a name="custom-control-overview"></a>
-<a name="controls-build-your-own-controls-custom-control-overview"></a>
-### Custom control overview
+<a name="controls-custom-control-overview"></a>
+## Custom control overview
 
 Today if you want to build an ibiza extenison you are provided with Rich framework built in controls. Sometimes you may have a scenario for richer user experience where you need a custom cotrol.
 In this case today, we give you 2 options: 
@@ -6636,8 +6616,8 @@ Basically custom controls feature:
 
 
 <a name="custom-control-building"></a>
-<a name="controls-build-your-own-controls-building-a-custom-control"></a>
-### Building a custom control
+<a name="controls-building-a-custom-control"></a>
+## Building a custom control
 
 Building a custom control is can be divided into 3 easy steps:
 1. Build your control
@@ -6648,17 +6628,17 @@ Building a custom control is can be divided into 3 easy steps:
     Once you have packaged your control, you will consume that control into your extension for having rich customer experience. How to consume your custom control is mentioend [here]()
 
 <a name="custom-control-build-it"></a>
-<a name="controls-build-your-own-controls-building-a-custom-control-building-your-control"></a>
-#### Building your control
+<a name="controls-building-a-custom-control-building-your-control"></a>
+### Building your control
 Develop your control however you like. Once you have a control working on a standalone HTML page or something then the next step is to itegrate it into the portal.
 
 <a name="custom-control-package-control"></a>
-<a name="controls-build-your-own-controls-building-a-custom-control-package-the-control-in-the-ibiza-framework"></a>
-#### Package the control in the ibiza framework
+<a name="controls-building-a-custom-control-package-the-control-in-the-ibiza-framework"></a>
+### Package the control in the ibiza framework
 Once you have a working control there are just a few steps needed to package it in the framework:
 
-<a name="controls-build-your-own-controls-building-a-custom-control-package-the-control-in-the-ibiza-framework-implement-custom-controls-contract-in-your-controls"></a>
-##### Implement Custom Controls contract in your controls
+<a name="controls-building-a-custom-control-package-the-control-in-the-ibiza-framework-implement-custom-controls-contract-in-your-controls"></a>
+#### Implement Custom Controls contract in your controls
 Create a <Your Control name>.ts file, which should import and implement `Fx/Composition/CustomControl` contracts which are shown below. Your module along with custom control contract will have your control template and control specific functionality. 
 
 ```ts
@@ -6686,8 +6666,8 @@ Create a <Your Control name>.ts file, which should import and implement `Fx/Comp
     }
 ```
 
-<a name="controls-build-your-own-controls-building-a-custom-control-package-the-control-in-the-ibiza-framework-define-options-contract-for-custom-controls"></a>
-##### Define options contract for Custom Controls
+<a name="controls-building-a-custom-control-package-the-control-in-the-ibiza-framework-define-options-contract-for-custom-controls"></a>
+#### Define options contract for Custom Controls
 Once you have defined Custom Control contracts, you will need to create the options for your controls. This is basically the set of options your control will need from Shell when rendered in your extenions. 
 You will create the <Your Control Name>Contracts.d.ts file which will have the options required for your controls. Below shows the example where we pass name as an option:
 ```ts    
@@ -6706,8 +6686,8 @@ You will create the <Your Control Name>Contracts.d.ts file which will have the o
     }
 ```
 
-<a name="controls-build-your-own-controls-building-a-custom-control-package-the-control-in-the-ibiza-framework-define-control-pdl"></a>
-##### Define control PDL
+<a name="controls-building-a-custom-control-package-the-control-in-the-ibiza-framework-define-control-pdl"></a>
+#### Define control PDL
 Once you have defined the options and contract for your controls, next you define is PDL with below fields:
  - `Name` the name of your control
  - `ModuleId` pointer to your control implementation
@@ -6733,13 +6713,13 @@ Once you have defined the options and contract for your controls, next you defin
 ```
   
 <a name="custom-control-consuming"></a>
-<a name="controls-build-your-own-controls-consuming-a-custom-control"></a>
-### Consuming a custom control
+<a name="controls-consuming-a-custom-control"></a>
+## Consuming a custom control
 
 Once you have built your custom control, you can consume the control in yur experience in 3 steps:
 
-<a name="controls-build-your-own-controls-consuming-a-custom-control-define-your-template-blade"></a>
-##### Define your template blade
+<a name="controls-consuming-a-custom-control-define-your-template-blade"></a>
+#### Define your template blade
 You need to identify the blade that carries custom controls by setting custom control property to true as shown below:
 
 ```xml
@@ -6753,8 +6733,8 @@ You need to identify the blade that carries custom controls by setting custom co
 </Definition>
 ```
 
-<a name="controls-build-your-own-controls-consuming-a-custom-control-refer-your-custom-control-in-template"></a>
-##### Refer your custom control in template
+<a name="controls-consuming-a-custom-control-refer-your-custom-control-in-template"></a>
+#### Refer your custom control in template
 
 You can refer your custom control just like normal pcControl reference.
 
@@ -6763,8 +6743,8 @@ You can refer your custom control just like normal pcControl reference.
 <div data-bind='pcControl: fileExplorerVM'></div>
 ```
 
-<a name="controls-build-your-own-controls-consuming-a-custom-control-in-blade-viewmodel-use-control-reference-to-create-control-view-model"></a>
-##### In blade ViewModel use control reference to create control view model
+<a name="controls-consuming-a-custom-control-in-blade-viewmodel-use-control-reference-to-create-control-view-model"></a>
+#### In blade ViewModel use control reference to create control view model
 
 ```ts
     this.breadCrumb = ControlReferences.BreadCrumb.createViewModel(container, {
@@ -6776,8 +6756,8 @@ You can refer your custom control just like normal pcControl reference.
 ```
 
 <a name="custom-control-validation"></a>
-<a name="controls-build-your-own-controls-making-a-custom-control-that-participate-in-validation"></a>
-### Making a custom control that participate in validation
+<a name="controls-making-a-custom-control-that-participate-in-validation"></a>
+## Making a custom control that participate in validation
 Your scenario may require you to develop a control that you wish to use in forms section of the blade along with other Ibiza form controls. Ibiza has the internal validation patterns for rest of the controls and if you wish that your control should behave 
 similarly you will need to do 2 small changes in your control implmentation:
 
@@ -6798,18 +6778,19 @@ declare module "<YourExtensionName>/NumericSpinner" {
 ```
 
 <a name="custom-control-advanced"></a>
-<a name="controls-build-your-own-controls-advanced-topics"></a>
-### Advanced topics
+<a name="controls-advanced-topics"></a>
+## Advanced topics
 
 <a name="custom-control-non-amd-scripts"></a>
-<a name="controls-build-your-own-controls-advanced-topics-requiring-non-amd-scripts-from-your-custom-control-widget"></a>
-#### Requiring non-AMD scripts from your custom control widget
+<a name="controls-advanced-topics-requiring-non-amd-scripts-from-your-custom-control-widget"></a>
+### Requiring non-AMD scripts from your custom control widget
 If you're using 3rd party libraries to develop your control you may find the library was not developed to be loaded by RequireJS. You can still use require's config settings to load the file 
 as a dependency of your widget.
 
 <a name="custom-control-known-issues"></a>
-<a name="controls-build-your-own-controls-known-issues"></a>
-### Known issues
+<a name="controls-known-issues"></a>
+## Known issues
+
 Currently certain controls do not work with the custom controls infrastructure. You will not be able to use custom controls if your blade contains any of the following. You can use 
 the bugs to track the progress of any fixes:
 
@@ -6826,23 +6807,19 @@ If you have other comments or find additional issues you can log a bug [here](ht
 or contact shresh\adamab.
 
 
-
 <a name="authentication"></a>
 # Authentication
  <h1 name="portalfx-authentication"></h1>
- ### Overview 
+ The portal uses an internal provider for authentication and authorization. 
 
-The portal uses an internal provider for authentication and authorization. 
+The built-in cloud auth provider uses Azure Active Directory (AAD), which also supports Microsoft Account (MSA, formerly 
+Windows Live ID) users. Please refer to _Accessing claims from your server_, if your extension needs to differentiate between
+AAD and MSA users.
 
-The built-in cloud auth provider uses Azure Active Directory (AAD), which also supports Microsoft Account (MSA, formerly Windows Live ID) users. Please refer to _Accessing claims from your server_, if your extension needs to differentiate between AAD and MSA users.
+During sign-in, the portal obtains a token containing claims that identify the signed-in user and retrieves directories and 
+subscriptions s/he has access to, if any.
 
-During sign-in, the portal obtains a token containing claims that identify the signed-in user and retrieves directories and subscriptions s/he has access to, if any.
-
- **NOTE:** Users can sign in without a subscription. Extensions must gracefully handle this case and return 0 assets when queried._
-
-
-<a name="authentication-sign-in-flow"></a>
-#### Sign in flow
+_**NOTE:** Users can sign in without a subscription. Extensions must gracefully handle this case and return 0 assets when queried._
 
 The following is a high-level representation of the sign-in flow provided by the portal:
 
@@ -6868,38 +6845,44 @@ From the extension client to call any server API , use the built-in `ajax()` fun
 **NOTE:** If you have a scenario that isn't supported by `ajax()`, you can use the `getAuthorizationToken()` function to obtain a token and manually attach it to your own request._
 
 <a name="authentication-calling-arm-from-server"></a>
-### From Server
+### From server
 
 To call ARM from your extension server, use the `WebApiClient` class. Like the client `ajax()` function, this class attaches a token targeted at ARM to the request on your behalf.
 
 ```cs
-    Uri arm = new Uri("https://management.azure.com/...");  // arm endpoint
-    using (var client = new Microsoft.Portal.Framework.ClientProxy.WebApiClient())
-    {
-        // ConfigureAwait(false) is recommended to not forcibly resume on the same thread it started on
-        // var data = await client.GetAsync<...>(arm).ConfigureAwait(false);
-    }
+Uri arm = new Uri("https://management.azure.com/...");  // arm endpoint
+using (var client = new Microsoft.Portal.Framework.ClientProxy.WebApiClient())
+{
+    // ConfigureAwait(false) is recommended to not forcibly resume on the same thread it started on
+    // var data = await client.GetAsync<...>(arm).ConfigureAwait(false);
+}
 ```
 
-<a name="authentication-calling-alternate-resources"></a>
-## Calling alternate resources
+<a name="authentication-calling-other-services"></a>
+## Calling other services
 
-**Only First Party Extensions (i.e. Internal/ Microsoft extensions that comply with Azure Privacy terms and conditions) are allowed to call alternate resources.  Third party extensions get an encrypted token that cannot be decrypted by services other than ARM so they cannot call alternate resources.**
+In order to call other services, your extension must obtain a custom token with the user's context. There are 2 ways to accomplish this:
 
-If you are working on Internal / Microsoft extension but you are not sure that your extension scenarios comply with Azure terms and conditions then please reach out to [Ibiza LCA](mailto:ibiza-lca@microsoft.com).   
+1. Make AJAX requests for a specific service from the client
+2. Exchange Fx tokens for your own from your server
 
-Calling alternate resources involves AAD Onboarding that can take 5-6 weeks so we recommend extension developers to think about this scenarios early in the design phase. 
+_**NOTE:** Only first-party (internal/Microsoft) extensions that comply with Azure privacy terms and conditions are allowed access to 
+tokens due to the embedded personally-identifiable information (PII). All other extensions get an encrypted token that can only be used 
+to communicate with ARM. If you are working on internal/Microsoft extension, but are not sure that your extension scenarios comply with 
+Azure terms and conditions, please reach out to the [Azure portal legal team](mailto:ibiza-lca@microsoft.com)._
 
-<a name="authentication-calling-alternate-resources-from-client"></a>
-#### From client
-Only ibiza has the authority to mint tokens so in order to call external resourses extension developers need to request Ibiza to create the AAD and register the resources with Ibiza.
+<a name="authentication-calling-other-services-calling-other-services-from-the-client"></a>
+#### Calling other services from the client
+In order to call other services from the client, a new AAD app must be created and managed by the Fx team since tokens will be obtained by the Fx. 
 
-Here is an example that walks you through on how to enable Contoso_Extension, a sample extension, that can query Graph APIs from extension client :
+1. Create a [security/auth partner request](http://aka.ms/new-ibiza-security-auth-request) including the exact config you need (see 
+   below)
+2. The Fx team will submit a request to the AAD onboarding team and will CC you on the request (NOTE: AAD onbaording can take 5-6 weeks)
+3. Reach out to the [AAD onboarding team](aadonboarding@microsoft.com) on the thread to check status
+4. Once the app is created, the Fx team will update portal config 
+5. Request tokens for the desired service (aka "resource") when using Fx APIs
 
-1. To query graph API's, an extension owner would submit [RDTask](http://aka.ms/portalfx/newextension) to onboard AAD Application with the portal.AAD Onboarding can take 5-6 weeks so we recommend extension developers to think about this scenarios early in the design phase.
-2. Once ibiza team has created the app in https://aadonboardingsiteppe.cloudapp.net/ you can reach out to  aadonboarding@microsoft.com to expedite the process.
-3. Submit [RDTask](http://aka.ms/portalfx/newextension) to register the AAD Applciation created in Step 1 into the portal's extension config. This step can be done in parallel to Step 2.
-   In this case the resourceAccess config for your extension in portal would look something like the following:
+The following sample shows how an extension can be configured to get tokens for ARM and AAD Graph:
 
 ```json
 {
@@ -6910,22 +6893,22 @@ Here is an example that walks you through on how to enable Contoso_Extension, a 
     "resourceAccess": [{
         "name": "",
         "resource": "https://management.core.windows.net/"
-        }, {
+    }, {
         "name": "graph",
         "resource": "https://graph.windows.net"
-        }]
+    }]
 }
 ```
 
-4. Once the config changes are deployed in the requested (i.e. Dogfood/ PPE/ PROD) envirnonment then the extension will be able to request tokens for the graph resource using any of its data APIs
+Once the config changes are deployed, use one of the following methods to 
 
 ```ts
-MsPortalFx.Base.Security.getAuthorizationToken({ resourceName: "graph" });
-
+// specify the target service (resource name) in ajax() calls
 MsPortalFx.Base.Net.ajax({
     setAuthorizationHeader: { resourceName: "graph" }
 });
 
+// specify the target service when using the file download control
 new MsPortalFx.ViewModels.Controls.FileDownload.ViewModel(
     container,
     {
@@ -6938,101 +6921,104 @@ new MsPortalFx.ViewModels.Controls.FileDownload.ViewModel(
         })),
     });
 
+// specify the target service when using the file download command
 new MsPortalFx.ViewModels.FileDownloadCommand({
     authorizationOptions: {
         resourceName: "graph"
     }
 });
+
+// get a token to add to requests manually
+MsPortalFx.Base.Security.getAuthorizationToken({ resourceName: "graph" });
 ```
 
-<a name="authentication-calling-alternate-resources-from-controller-or-server-side"></a>
-#### From Controller or Server-Side
+<a name="authentication-calling-other-services-calling-other-services-from-the-server"></a>
+#### Calling other services from the server
+To call other services from the server, you'll need your own AAD app and exchange the Fx token for your own to call other services.
 
-In this scenario, extensions request a token targeted to the extension. Then the extension exchanges the token by calling AAD to communicate with alternate resources.
+1. [Create an AAD app](https://aadonboardingsiteppe.cloudapp.net) and contact the [AAD onboarding team](aadonboarding@microsoft.com) as 
+   needed (NOTE: AAD onboarding can take 5-6 weeks)
+2. Create a [security/auth partner request](http://aka.ms/new-ibiza-security-auth-request) including the exact config you need (see 
+   below)
+3. The Fx team will update portal config
+4. Request tokens for your extension when calling your server
+5. Call AAD to exchange the Fx token for your own
+6. Make your calls as you normally would
 
-The workflow in this case will be a little different from the one we descrobed on the client side:
+The following sample shows how an extension can be configured to get tokens for ARM and the extension ("self"):
 
-
-1. To query graph API's, an extension author needs to create AAD application on [https://aadonboardingsiteppe.cloudapp.net/](https://aadonboardingsiteppe.cloudapp.net/). AAD Onboarding can take 5-6 weeks so we recommend extension developers to think about this scenarios early in the design phase.
-2. Once you have created the app you can reach out to  [aadonboarding@microsoft.com](aadonboarding@microsoft.com) to expedite the process.
-3. Once you have the App Id submit [RDTask](http://aka.ms/portalfx/newextension) to register the AAD Applciation created in Step 1 into the portal's extension config. This step can be done in parallel to Step 2.
-   In this case the resourceAccess config for your extension in portal would look something like the following:
 ```json
-   {
-        "name": "Contoso_Extension",
-        "name": "Contoso_Extension",
-        "uri": "//stamp2.extension.contoso.com/Home",
-        "uriFormat": "//{0}.extension.contoso.com/Home",
-        "resourceAccess": [{
-            "name": "",
-            "resource": "https://management.core.windows.net/"
-        }, {
-            "name": "self",
-            "resource": "1a123abc-1234-1a2b-ab01-01ab01a1a1ab"
-        }]
-    }
+{
+    "name": "Contoso_Extension",
+    "name": "Contoso_Extension",
+    "uri": "//stamp2.extension.contoso.com/Home",
+    "uriFormat": "//{0}.extension.contoso.com/Home",
+    "resourceAccess": [{
+        "name": "",
+        "resource": "https://management.core.windows.net/"
+    }, {
+        "name": "self",
+        "resource": "1a123abc-1234-1a2b-ab01-01ab01a1a1ab"
+    }]
+}
 ```
 
-Sample code for exchanging toke:
+Specify the `self` resource name when calling your server:
 
-Add an extra parameter to ajax calls (setAuthorizationHeader = { resourceName: "self" }
-
-Which means give me a token to myself and I�ll exchange that token later
-
-```cs�
-    MsPortalFx.Base.Net2.ajax({
-        uri: "MyController/MyAction",
-        setAuthorizationHeader: { resourceName: "self" }
-    }).then((myData) => {
-        // do work with data
-    });
+```cs 
+MsPortalFx.Base.Net2.ajax({
+    uri: "MyController/MyAction",
+    setAuthorizationHeader: { resourceName: "self" }
+}).then((myData) => {
+    // do work with data
+});
 ```
 
-Controller code.
-�
+Then, exchange the Fx token for your own:
+ 
 ```cs
-    // Get the token passed to the controller
-    var portalAuthorizationHeader = PortalRequestContext.Current.GetCorrelationData<AuthorizationCorrelationProvider>();
-    if (portalAuthorizationHeader == null) {
-    ��� // This should never happen, the auth module should have returned 401 if there wasn�t a valid header present
-    ��� throw new HttpException(401, "Unauthorized");
-    }
-�
-    // Exchange it for the token that should pass to downstream services
-    var exchangedAuthorizationHeader = GetExchangedToken(portalAuthorizationHeader, intuneClientId, intuneClientCert, "https://graph.windows.net/");
-�
-    // Call downstream service with exchanged header
-    var headers = new NameValueCollection();
-    headers.Add("Authorization", exchangedAuthorizationHeader);
-    webApiClient.GetAsync(uri, "MyOperation", headers);
-�
-    // Helper method to exchange tokens
-    string GetExchangedToken(string portalAuthorizationHeader, string clientId, X509Certificate2 clientCertificate, string resource) {
+// Get the token passed to the controller
+var portalAuthorizationHeader = HttpContext.Current.GetRequestContext().RequestCorrelationContext.GetCorrelationData<AuthorizationCorrelationProvider>();
+if (portalAuthorizationHeader == null) {
+    // This should never happen, the auth module should have returned 401 if there wasn’t a valid header present
+    throw new HttpException(401, "Unauthorized");
+}
 
-        // proof that the intune extension is making the token request
-    ��� var clientAssertion = new ClientAssertionCertificate(clientId, clientCertificate);
-    �
-    ��� // proof that the request originated from the portal and is on behalf of a valid user
-    ��� var accessToken = GetAccessTokenFromAuthorizationHeader(portalAuthorizationHeader);
-    ��� var userAssertion = new UserAssertion(accessToken, "urn:ietf:params:oauth:grant-type:jwt-bearer"); 
-    �
-    ��� // the actual token exchange
-    ��� var exchangedToken = authContext.AcquireToken(resource, clientAssertion, userAssertion); 
-    �
-    ��� return exchangedToken.GetAuthorizationHeader();
-    }
-�
-    string GetAccessTokenFromAuthorizationHeader(string authorizationHeader) {
-    ��� // The header will be in the form "Bearer ey��MZ"
-    ��� // The access token in the last part of the header
-    ��� var separator = new char[] { ' ' };
-    ��� var accessToken = authorizationHeader.Split(separator, StringSplitOptions.RemoveEmptyEntries).LastOrDefault();
-    �
-    ��� return accessToken;
-    }
+// Exchange it for the token that should pass to downstream services
+var exchangedAuthorizationHeader = GetExchangedToken(portalAuthorizationHeader, intuneClientId, intuneClientCert, "https://graph.windows.net/");
+
+// Call downstream service with exchanged header
+var headers = new NameValueCollection();
+headers.Add("Authorization", exchangedAuthorizationHeader);
+webApiClient.GetAsync(uri, "MyOperation", headers);
+
+// Helper method to exchange tokens
+string GetExchangedToken(string portalAuthorizationHeader, string clientId, X509Certificate2 clientCertificate, string resource) {
+
+    // proof that the intune extension is making the token request
+    var clientAssertion = new ClientAssertionCertificate(clientId, clientCertificate);
+
+    // proof that the request originated from the portal and is on behalf of a valid user
+    var accessToken = GetAccessTokenFromAuthorizationHeader(portalAuthorizationHeader);
+    var userAssertion = new UserAssertion(accessToken, "urn:ietf:params:oauth:grant-type:jwt-bearer"); 
+
+    // the actual token exchange
+    var exchangedToken = authContext.AcquireToken(resource, clientAssertion, userAssertion); 
+
+    return exchangedToken.GetAuthorizationHeader();
+}
+
+string GetAccessTokenFromAuthorizationHeader(string authorizationHeader) {
+    // The header will be in the form "Bearer ey……MZ"
+    // The access token in the last part of the header
+    var separator = new char[] { ' ' };
+    var accessToken = authorizationHeader.Split(separator, StringSplitOptions.RemoveEmptyEntries).LastOrDefault();
+
+    return accessToken;
+}
 ```
 
-<a name="authentication-calling-alternate-resources-accessing-claims"></a>
+<a name="authentication-calling-other-services-accessing-claims"></a>
 ### Accessing claims
 
 Tokens received from AAD contain a set of claims (key/value pairs) with information about user, including
@@ -7042,7 +7028,7 @@ personally-identifiable information (PII). Note that PII will only be available 
 Microsoft can be sued for abuse/misuse of PII as outlined by the privacy policy. Any exceptions need to be approved by
 [Ibiza LCA](mailto:ibiza-lca@microsoft.com).
 
-<a name="authentication-calling-alternate-resources-accessing-claims-accessing-claims-from-the-client"></a>
+<a name="authentication-calling-other-services-accessing-claims-accessing-claims-from-the-client"></a>
 #### Accessing claims from the client
 Extensions that do have access to claims can use the `getUserInfo()` API to retrieve common claims from the client. Note
 that secondary claims, like name and email, may not always be available and cannot be guarranteed. Token claims may
@@ -7062,7 +7048,7 @@ interface UserInfo {
 }
 ```
 
-<a name="authentication-calling-alternate-resources-accessing-claims-accessing-claims-from-your-server"></a>
+<a name="authentication-calling-other-services-accessing-claims-accessing-claims-from-your-server"></a>
 #### Accessing claims from your server
 While not recommended, the token used to communicate with your server also contains claims that can be read from the
 server using the [ASP.NET claims API](http://msdn.microsoft.com/en-us/library/ee517271.aspx). To simplify development,
@@ -7157,22 +7143,22 @@ If you require additional claims, use the [ASP.NET claims API](http://msdn.micro
 Due to token size constraints, additional information cannot be added to the token. Instead, any additional information required by an extension must be obtained from [AAD Graph API](http://msdn.microsoft.com/en-us/library/windowsazure/hh974482.aspx).
 
 
-<a name="authentication-calling-alternate-resources-faqs"></a>
+<a name="authentication-calling-other-services-faqs"></a>
 ### FAQs
 
-<a name="authentication-calling-alternate-resources-faqs-q-how-do-i-get-the-list-of-subscriptions-or-just-those-selected-by-a-user"></a>
+<a name="authentication-calling-other-services-faqs-q-how-do-i-get-the-list-of-subscriptions-or-just-those-selected-by-a-user"></a>
 #### Q: How do I get the list of subscriptions? Or just those selected by a user?
 
 A: Call the `MsPortalFx.Azure.getAllSubscriptions()` or `MsPortalFx.Azure.getSelectedSubscriptions()` APIs (see the [subscriptions page](#portalfx-subscriptions) for more information).
 
-<a name="authentication-calling-alternate-resources-faqs-q-when-do-authenticated-sessions-expire"></a>
+<a name="authentication-calling-other-services-faqs-q-when-do-authenticated-sessions-expire"></a>
 #### Q: When do authenticated sessions expire?
 
 A: The portal does not automatically log users out after a period of inactivity; it only logs a user out when the user's AAD-issued authentication token expires (because all subsequent operations would fail).
 This generally happens after a few hours of usage (8 to 24 hours based on the type of account) or if the token was not refreshed/renewed for a period of time (typically 1 hour).
 (Note that if the browser is in a situation where it cannot connect to the network for more than an hour, the user will likely get logged out.)
 
-<a name="authentication-calling-alternate-resources-q-how-to-enable-local-portal-authentication"></a>
+<a name="authentication-calling-other-services-q-how-to-enable-local-portal-authentication"></a>
 ### Q: How to enable local portal authentication?
 
 By default, authentication is not configured in the local portal to simplify development. Use the following to enable authentication:
