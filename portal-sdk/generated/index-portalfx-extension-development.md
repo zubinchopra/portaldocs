@@ -2868,6 +2868,24 @@ export class SampleMenuBlade extends FxMenuBlade.ViewModel {
                             });
                         },
                     },
+                    // Menu item that demonstrates opting out of full width.
+                    {
+                        id: "fullwidthoptout",
+                        displayText: ClientResources.SampleMenuBlade.optOut,
+                        icon: null,
+                        supplyBladeReference: () => {
+                            return new BladeReferences.BladeWidthSmallBladeReference({bladeTitle: ClientResources.SampleMenuBlade.optOut});
+                        },
+                    },
+                    // Menu item that demonstrates a blade that can have activated width.
+                    {
+                    id: "activationSample",
+                        displayText: ClientResources.ActivationStyleBlade.title,
+                        icon: null,
+                        supplyBladeReference: () => {
+                            return new BladeReferences.BladeWithActivationStyleReference();
+                        },
+                    }
                 ],
             },
             {
@@ -6058,7 +6076,26 @@ Second, you must provide plugin options.
 
 The following sample shows a simple method of enabling the plugins:
 
-code sample coming soon to SamplesExtension in D:\ws\Ship-Sync-AuxDocs-Github\doc\portal-sdk\Samples\SamplesExtension\Extension\Client\Controls\Grid\ViewModels\ScrollableGridWithFilteringAndSorting.ts
+```typescript
+
+// Define the grid plugins and options.
+this.grid = new Grid.ViewModel<WorkItem, WorkItem>(
+    container,
+    null,
+    Grid.Extensions.Scrollable | Grid.Extensions.Filterable | Grid.Extensions.SortableColumn,
+    {
+        scrollable: <Grid.ScrollableOptions<WorkItem>>{
+            dataNavigator: this._navigator
+        },
+        filterable: <Grid.FilterableOptions>{
+            // Server filter causes the grid to use the data navigator for filtering.
+            serverFilter: ko.observable(true)
+        },
+        sortableColumn: <Grid.SortableColumnOptions<WorkItem>>{
+        }
+    });
+
+```
 
 Plugin compatibility:
 
