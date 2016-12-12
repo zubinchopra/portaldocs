@@ -233,9 +233,7 @@ If your extension has server-side code, you will need to do some pre-requisite w
 1.	In most cases Controllers are legacy and it is easy to get away by:
     1.	If the functionality is already available from another service
     1.	By Hosting serverside code within existing RP
-    1.	Request functionality to be added to the Shell if it is generic enough to be reusable by other extensions 
-        1.	This should be a last resort
-        1.	The bar to accept new server-side code will be very high
+        
 
 <a name="extension-hosting-service-sdk-version"></a>
 ### SDK Version
