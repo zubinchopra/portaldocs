@@ -163,17 +163,23 @@ You may get a debugging not enabled warning.  Feel free to enable or disable deb
 ![Debugging not enabled](../media/portalfx-overview/first-run-debugging-dialog.png)
 
 It will now open a new window to the url which your extension service is running on `https://localhost:44300/`.
-You will now need to side-load your extension from this url by going to the url:
+
+Your extension will now be side loaded into the production portal. The portal will prompt you to allow your side loaded extension. Click __allow__.
+
+![Untrusted Extensions](../media/portalfx-overview/untrusted-extensions.png)
+
+**Note**: If the browser did not automatically open a new window to the portal with the side loaded querystring already composed.  Check the following two items:
+ 
+ - Your web.config appSetting with key ending in `.IsDevelopmentMode` is set to true.
+ - Check your browser has not blocked popups.
+ 
+If you are still having trouble after performing both of the above you can  manually side-load your extension by going to the url:
 
 ```
-https://portal.azure.com/?feature.canmodifyextensions=true#?testExtensions={"YourExtensionName":"https://localhost:44300/"}   
+ https://portal.azure.com/?feature.canmodifyextensions=true#?testExtensions={"YourExtensionName":"https://localhost:44300/"}   
 ```
 
 Just replace `"YourExtensionName"` with the name you chose for your new Azure Portal Extension project name and `"https://localhost:44300/"` with the url of your extension service (but this is the default url).
-
-Your extension will now be side loaded into the production portal. The portal will prompt you to allow your side loaded extension.  Click __allow__.
-
-![Untrusted Extensions](../media/portalfx-overview/untrusted-extensions.png)
 
 Congratulations!  You've just created your first extension.
 
@@ -257,6 +263,7 @@ Next Steps: To debug issues loading an extension in the portal, go through the [
 ### Questions?
 
 Ask questions on: [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).
+
  <h1 name="portalfx-sample-extensions"></h1>
  <properties title="" pageTitle="PortalFx Getting Started" description="" authors="justbe" />
 
@@ -2877,24 +2884,6 @@ export class SampleMenuBlade extends FxMenuBlade.ViewModel {
                             });
                         },
                     },
-                    // Menu item that demonstrates opting out of full width.
-                    {
-                        id: "fullwidthoptout",
-                        displayText: ClientResources.SampleMenuBlade.optOut,
-                        icon: null,
-                        supplyBladeReference: () => {
-                            return new BladeReferences.BladeWidthSmallBladeReference({bladeTitle: ClientResources.SampleMenuBlade.optOut});
-                        },
-                    },
-                    // Menu item that demonstrates a blade that can have activated width.
-                    {
-                    id: "activationSample",
-                        displayText: ClientResources.ActivationStyleBlade.title,
-                        icon: null,
-                        supplyBladeReference: () => {
-                            return new BladeReferences.BladeWithActivationStyleReference();
-                        },
-                    }
                 ],
             },
             {
@@ -6085,26 +6074,7 @@ Second, you must provide plugin options.
 
 The following sample shows a simple method of enabling the plugins:
 
-```typescript
-
-// Define the grid plugins and options.
-this.grid = new Grid.ViewModel<WorkItem, WorkItem>(
-    container,
-    null,
-    Grid.Extensions.Scrollable | Grid.Extensions.Filterable | Grid.Extensions.SortableColumn,
-    {
-        scrollable: <Grid.ScrollableOptions<WorkItem>>{
-            dataNavigator: this._navigator
-        },
-        filterable: <Grid.FilterableOptions>{
-            // Server filter causes the grid to use the data navigator for filtering.
-            serverFilter: ko.observable(true)
-        },
-        sortableColumn: <Grid.SortableColumnOptions<WorkItem>>{
-        }
-    });
-
-```
+code sample coming soon to SamplesExtension in D:\ws\Ship-Sync-AuxDocs-Github\doc\portal-sdk\Samples\SamplesExtension\Extension\Client\Controls\Grid\ViewModels\ScrollableGridWithFilteringAndSorting.ts
 
 Plugin compatibility:
 

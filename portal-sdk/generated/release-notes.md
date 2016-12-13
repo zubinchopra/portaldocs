@@ -1,4 +1,4 @@
-# Release Notes from 8/9/2016
+# Release Notes from 8/12/2016
 
 ## 5.0.302.573
 1 Breaking Changes, 9 Features added and 21 Bugs Fixed
@@ -283,7 +283,3 @@
 ## 5.0.302.455
 0 Breaking Changes, 1 Features added and 0 Bugs Fixed
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=6998610'>6998610</a></td><td>Feature</td><td>[ResourceMenu] rename 'billing tags' to 'tags'</td></tr></table>
-
-## 5.0.302.454
-0 Breaking Changes, 0 Features added and 3 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=6833954'>6833954</a></td><td>Bug Fix</td><td>[Error Tracker]:ImageHelper  have Sanitization Error (clip-path) for 12000+ error logged per day</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=6833861'>6833861</a></td><td>Bug Fix</td><td>[Error Tracker]:ImageHelper  have Sanitization Error (stroke-miterlimit) for 24000+ error logged per day</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=5347111'>5347111</a></td><td>Bug Fix</td><td>[Error Tracker]:Controls.Grid have Sanitization Error (background-position-x, background-position-y) for 20,000+ warning  logged per day</td></tr></table>
