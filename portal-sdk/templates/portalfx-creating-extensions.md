@@ -25,9 +25,24 @@ You may get a debugging not enabled warning.  Feel free to enable or disable deb
 
 ![Debugging not enabled](../media/portalfx-overview/first-run-debugging-dialog.png)
 
-Your extension will now be side loaded into the production portal.  The portal will prompt you to allow your side loaded extension.  Click __allow__.
+It will now open a new window to the url which your extension service is running on `https://localhost:44300/`.
+
+Your extension will now be side loaded into the production portal. The portal will prompt you to allow your side loaded extension. Click __allow__.
 
 ![Untrusted Extensions](../media/portalfx-overview/untrusted-extensions.png)
+
+**Note**: If the browser did not automatically open a new window to the portal with the side loaded querystring already composed.  Check the following two items:
+ 
+ - Your web.config appSetting with key ending in `.IsDevelopmentMode` is set to true.
+ - Check your browser has not blocked popups.
+ 
+If you are still having trouble after performing both of the above you can  manually side-load your extension by going to the url:
+
+```
+ https://portal.azure.com/?feature.canmodifyextensions=true#?testExtensions={"YourExtensionName":"https://localhost:44300/"}   
+```
+
+Just replace `"YourExtensionName"` with the name you chose for your new Azure Portal Extension project name and `"https://localhost:44300/"` with the url of your extension service (but this is the default url).
 
 Congratulations!  You've just created your first extension.
 
