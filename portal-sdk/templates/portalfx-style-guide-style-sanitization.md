@@ -1,20 +1,23 @@
 ## Style Guide: Style Sanitization
 
-To ensure a consistent and sandboxed experience in the portal, CSS is analyzed at runtime to filter out disallowed properties or values. A typical example of a disallowed style is "`position: fixed;`", which would allow developers to move content outside of their parts.
+CSS is analyzed at runtime to filter out disallowed properties or values.
 
-All CSS properties should be allowed with a few exceptions documented at the end of this article. As the analysis is whitelist based, you may encounter CSS properties being erroneously filtered out. Shall this occur, report the issue on [Stack Overflow](https://stackoverflow.microsoft.com/).
+Apart from the few exceptions documented below, most CSS properties should be allowed. You may encounter CSS properties being erroneously filtered out. Shall this occur, report the issue on [Stack Overflow](https://stackoverflow.microsoft.com/).
 
-The following properties only allow the specified values:
+Properties that allow specific values:
 
-1. position: [ static | relative | absolute ]
-1. text-transform: [ none | uppercase | lowercase ]
+* `position`: [ `static` | `relative` | `absolute` ]
+    * [ `fixed` ] is disallowed
+* `text-transform`: [ `none` | `uppercase` | `lowercase` ]
 
-The following properties are sanitized out:
+Properties that are sanitized out:
 
-1. font
-1. font-family
-1. list-style
-
-Certain properties have inconsistent behavior across browsers, or full support requires vendor prefixes. To enable them in a supported way, use the Framework style class instead.
-
-* user-select: use class 'msportalfx-unselectable'
+* `font`
+    * Use `font-*` properties instead of the shorthand
+* `font-family`
+    * Use `msportalfx-font-*` instead
+* `list-style`
+    * Use `list-style-*` properties instead of the shorthand
+* `user-select`
+    * Use class `msportalfx-unselectable` to normalize support across browsers
+* `z-index`
