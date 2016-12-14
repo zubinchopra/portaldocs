@@ -114,6 +114,7 @@ The Fx team supports the following feature flags:
 | `feature.consoletelemetry=true` | Logs most telemetry events to the browser console |
 | `feature.customportal=false` | Overrides the ms.portal redirect when signing in to portal.azure.com |
 | `feature.disableextensions=true` | Disables all extensions (NOTE: Extensions must be enabled explicitly with this flag, including Hubs) |
+| `feature.feedback=false` | Disables the feedback pane |
 | `feature.fullwidth=true` | Forces all menu blades to be opened maximized |
 | `feature.internalonly=true|false` | Shows/hides the "Preview" banner in the top-left |
 | `feature.inmemorysettings=true` | Uses in-memory user settings |
