@@ -1,4 +1,8 @@
-# Release Notes from 8/12/2016
+# Release Notes from 8/16/2016
+
+## 5.0.302.574
+0 Breaking Changes, 5 Features added and 1 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7988666'>7988666</a></td><td>Feature</td><td>Enable Microsoft_Intune_Enrollment extension Public Preview - Remove "disabled" flag - Needed by 12/13</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7988607'>7988607</a></td><td>Feature</td><td>Enable Microsoft_Intune_Devices extension Public Preview - Remove "disabled" flag - Needed by 12/13</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7988595'>7988595</a></td><td>Feature</td><td>Enable Microsoft_Intune_Apps extension Public Preview - Remove "disabled" flag - Needed by 12/13</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7980356'>7980356</a></td><td>Feature</td><td>Enable Microsoft_Intune_DeviceSettings extension Public Preview - Remove "disabled" flag by 12/13</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7969827'>7969827</a></td><td>Feature</td><td>Add Microsoft_Azure_MLWebservices extension to the portal for GA on 12th December</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7672600'>7672600</a></td><td>Bug Fix</td><td>unpin button is shown on blade parts</td></tr></table>
 
 ## 5.0.302.573
 1 Breaking Changes, 9 Features added and 21 Bugs Fixed
