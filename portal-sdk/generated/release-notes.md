@@ -1,4 +1,16 @@
-# Release Notes from 8/16/2016
+# Release Notes from 8/21/2016
+
+## 5.0.302.579
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7883703'>7883703</a></td><td>Bug Fix</td><td>[ErrorTracker] MsPortalFx.Base.Diagnostics.ErrorReporter: description: Object doesn't support property or method 'focus'</td></tr></table>
+
+## 5.0.302.578
+0 Breaking Changes, 1 Features added and 0 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8049643'>8049643</a></td><td>Feature</td><td>Enable Service Bus and Event Hub extensions in national clouds</td></tr></table>
+
+## 5.0.302.577
+0 Breaking Changes, 4 Features added and 5 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8050787'>8050787</a></td><td>Feature</td><td>Enable HDInsight extension in BF and MC</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8049752'>8049752</a></td><td>Feature</td><td>Enable MySQL extension in Mooncake</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8049643'>8049643</a></td><td>Feature</td><td>Enable Service Bus and Event Hub extensions in national clouds</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8035112'>8035112</a></td><td>Bug Fix</td><td>[Template deployment] Remove validation on extension names</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8033163'>8033163</a></td><td>Feature</td><td>Enable StorSimple extension in FairFax</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8023811'>8023811</a></td><td>Bug Fix</td><td>delay favorites till after splash screen becasue it slows down startup</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7995222'>7995222</a></td><td>Bug Fix</td><td>Fix /Error/Index spike</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7948242'>7948242</a></td><td>Bug Fix</td><td>[Grid2] Browse resource columns are squished to the right</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7704538'>7704538</a></td><td>Bug Fix</td><td>[Ibiza] Grid column header text overlaps when the column headers are made to be very small and the text is long</td></tr></table>
 
 ## 5.0.302.574
 0 Breaking Changes, 5 Features added and 1 Bugs Fixed
