@@ -1,4 +1,8 @@
-# Release Notes from 8/21/2016
+# Release Notes from 8/22/2016
+
+## 5.0.302.581
+0 Breaking Changes, 0 Features added and 0 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7335016'>7335016</a></td><td>Secret Expiration</td><td>PROD Cert Expiration Alert for AUX: aux/OneCloud.PROD/client.portal.azure.com.pfx  expiring on 3/18/2017</td></tr></table>
 
 ## 5.0.302.579
 0 Breaking Changes, 0 Features added and 1 Bugs Fixed
