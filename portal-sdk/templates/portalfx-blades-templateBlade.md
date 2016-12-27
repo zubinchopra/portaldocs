@@ -157,6 +157,7 @@ Template blades can have **commands** at the top. In order to add the commands, 
 
 ```javascript
 import Def = ExtensionDefinition.ViewModels.Resource.MyTemplateBladeViewModel;
+import Toolbars = MsPortalFx.ViewModels.Toolbars;
 
 export class MyTemplateBladeViewModel extends MsPortalFx.ViewModels.Blade {
 
