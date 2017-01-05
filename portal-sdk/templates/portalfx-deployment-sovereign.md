@@ -16,10 +16,12 @@ To get started in a sovereign cloud, talk to the Azure Global Ecosystems team or
 | Mooncake       | portal.azure.cn          | *.ext.azure.cn          | [Mooncake wiki](http://mooncake/)    |
 | Fairfax        | portal.azure.us          | *.ext.azure.us          | [Fairfax wiki](http://fairfax/)     |
 
+*Note that information on the domains and URLs for each cloud (e.g. what the URL for ARM/AAD is) is contained on each cloud's wiki under a page called "Endpoints".*
+
 
 ### Common gotchas
 
-### AllowedParentFrame
+#### AllowedParentFrame
 When you deploy your extension to a different cloud, you must explicitly allow the portal in that cloud to load your extension.
 This is controlled in your config. Look for a setting called `Microsoft.Portal.Framework.FrameworkConfiguration.AllowedParentFrame`. It should be a JSON array of domains that can load your extension (i.e. list of portal domains for a given cloud).
 

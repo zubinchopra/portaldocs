@@ -32,13 +32,13 @@ to production. When a new version of the portal is deployed to production, the c
 automatically released to the [download center](/downloads). The download center contains the change log for the given
 release, including bug fixes, new features, and a log of breaking changes.
 
-## Before deploying extension
+## Before deploying your extension
 
 1. For extensions onboarding Ibiza: Enable/disable extensions
 1. Extension "stamps"
 1. Understand extension runtime compatibility
 
-### 1. For extensions onboarding Ibiza: Enable/disable extensions
+### (1) For extensions onboarding Ibiza: Enable/disable extensions
 
 New extensions are disabled by default. This will hide the extension from users (it won't show up in the portal at all)
 until it's ready for general use.
@@ -55,7 +55,7 @@ to enable both the extension and the Gallery item:
 
 To permanently enable an extension (e.g. if it's ready for general use), please contact the portal team.
 
-### 2. Extension "stamps"
+### (2) Extension "stamps"
 
 Every extension can deploy one or more "stamps" based on their testing requirements. In Azure parlance, a "stamp" is an
 instance of a service in a region. The "main" stamp is used for production and is the only one the portal will be
@@ -81,7 +81,7 @@ of your extension as registered in the portal. For instance,
 `https://perf.devtest.ext.azure.com`). Note that you must specify the flag `feature.canmodifystamps=true` in order to
 override the stamp.
 
-### 3. Understand extension runtime compatibility
+### (3) Understand extension runtime compatibility
 
 Extensions do not need to be recompiled and redeployed with every release of the SDK.
 
@@ -117,6 +117,7 @@ latency.)
 ## Legacy/DIY deployments
 
 If you choose to deploy extension UI through legacy / DIY deployments, make sure you understand that
+
 1.	You will be responsible for deploying to all regions
 1.	You will be responsible for deploying service to every new data center
 1.	You will be responsible for MDS setup, upgrade, Security pack upgrade and other infrastructure tasks
@@ -139,6 +140,7 @@ We see much higher latencies and reliability issues when servers are not geo-loc
 (For more tips, see the [performance page](/documentation/articles/portalfx-performance).)
 
 In order to deploy to all regions:
+
 1.	Use [Extension Hosting Service](/documentation/articles/portalfx-extension-hosting-service) to deploy UI
 1.	Deploy Controllers to all regions
 

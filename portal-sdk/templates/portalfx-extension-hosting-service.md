@@ -1,4 +1,3 @@
-# Introduction
 ## Extension Hosting Service
 
 Teams deploying UI for extensions with the classic cloud service model typically have to invest significant time upfront to onboard to MDS, setup compliant deployments across all geo's, configure cdn, storage and implement caching optimizations in their extension, the Extension Host is designed to mitigate this cost.  Simply put, the Extension Hosting Service is designed to allow you to focus on building your extension not on deployment infrastructure.   
@@ -17,7 +16,7 @@ It does this by providing:
     1. No hosting COGS
     1. Reduced development cost – focus on building the domain specifics of your extension rather than spending time on figuring out deployment
 
-### Server Side Code
+#### Server Side Code
 
 If your extension has server-side code, you will need to do some pre-requisite work before on-boarding Extension Hosting service:
 1.	Change the relative controller URLs to absolute URLS. The Controllers will deploy a new server-only service that will be behind Traffic Manager.
@@ -26,12 +25,12 @@ If your extension has server-side code, you will need to do some pre-requisite w
     1.	By Hosting serverside code within existing RP
         
 
-### SDK Version
+#### SDK Version
 Use Portal SDK 5.0.302.454 or above
 
 For the extension to be hostable by the hosting service some artifacts need to be generated at build time. Those artifacts will only be generated if using a recent SDK version.
 
-# How it works
+## How it works
 The hosting service consists of two components: 
 
 * Content unbundler:
@@ -42,8 +41,8 @@ The tool can also generate a zip file of the content that has the name as the ve
 The runtime component of the hosting service is hosted inside an Azure Cloud Service. When an extension onboards, a publicly accessible endpoint is provided by the extension developer which will contain the contents that the hosting service should serve. For the hosting service to pick them up, it will look for a file called config.json that has a specific schema described below. The hosting service will download the config file, look into it to figure out which zip files it needs to download. There can be multiple versions of the extension referenced in config.json. The hosting service will download them and unpack them on the local disk. After it has successfully downloaded and expanded all versions of the extension referenced in config.json, it will write config.json to disk.
 For performance reasons, once a version is downloaded, it will not be downloaded again. 
 
-# Getting Started
-## Onboarding
+## Getting Started
+### Onboarding
 Extensions that intend to use extension hosting service should publish the extracted deployment artifacts (zip file) that are generated during the build along with config.json to a public endpoint. 
 
 Make sure that all the zip files and config.json are at the same level.
@@ -53,16 +52,16 @@ Once you have these files available on a public endpoint, file a request to regi
 <https://aka.ms/extension-hosting-service/onboarding>
 
 
-## Extract deployment artifacts as part of build
+### Extract deployment artifacts as part of build
 
-### Content Unbundler
-Install Microsoft.Portal.Tools.ContentUnbundler to your extensions webproject.csproj.  If you installed via Visual Studio, NuGet package manager or NuGet.exe it will automatically add the following target.  If using CoreXT global packages.config you will have to add the target to your .csproj manually 
+#### Content Unbundler
+Install `Microsoft.Portal.Tools.ContentUnbundler` to your extension's `webproject.csproj`.  If you installed via Visual Studio, NuGet package manager or NuGet.exe it will automatically add the following target.  If using CoreXT global packages.config you will have to add the target to your .csproj manually 
 
 ```xml
 <Import Project="$(PkgMicrosoft_Portal_Tools_ContentUnbundler)\build\Microsoft.Portal.Tools.ContentUnbundler.targets" />
 ```
 
-### Build configuration
+#### Build configuration
 Override any of the default configuration items for your build environment
 
 * _ContentUnbundlerSourceDirectory_: Defaults to $(OutputPath). This needs to be set to the directory of the build output of your web project that contains your web.config and /bin dir  
@@ -89,7 +88,7 @@ Outside of CoreXT, the default settings in the targets file should work for most
   </PropertyGroup>
 ```
 
-### IsDevelopmentMode 
+#### IsDevelopmentMode 
 Set IsDevelopmentMode to False for versioned builds 
 
 The extension host requires deployments of your extension to be versioned. To ensure that the ContentUnbundler output is versioned set the  *.IsDevelopmentMode AppSetting in your web.config to false.
@@ -100,17 +99,17 @@ The extension host requires deployments of your extension to be versioned. To en
 
 If you wish to achieve this only on release builds a [web.Release.config transform](http://go.microsoft.com/fwlink/?LinkId=125889) can be used.
 
-### Environment specific configuration files
+#### Environment specific configuration files
 
 Environment configuration files server 2 purposes:
 
-* Make the extension available in target environment
-* Override settings for target environment
+1. Make the extension available in target environment
+1. Override settings for target environment
 
 The environment specific configuration files need to follow these conventions
 
 * The files need to be placed under **\Content\Config\**
-* The file should be set as en EmbeddedContent, otherwise the file will not be included in the output that gets generated by the content unbundler.
+* The file should be set as an EmbeddedContent, otherwise the file will not be included in the output that gets generated by the content unbundler.
 * The files need to be named with the following convention: &lt;host&gt;.&lt;domain&gt;.json (e.g. portal.azure.com.json, ms.portal.azure.com.json)
 * The more generic the domain name, the more environments it covers. For example, it's enough to have a portal.azure.com.json. It will work with all portal production environments i.e *.portal.azure.com.
 * The file content is a json object with key/value pairs for settings to be overriden. If there are no settings that needs to be overridden, the file should contain an empty json object.
@@ -144,7 +143,7 @@ A configuration file should be provided for all the environments where the exten
 * Blackforest: Host name is **portal.microsoftazure.de**. Configration file name should be portal.microsoftazure.de.json
 * Fairfax: Host name is **portal.azure.us**. Configuration file name should be portal.azure.us.json
 
-### Speeding up dev/test cycles (Optional)
+#### Speeding up dev/test cycles (Optional)
 The default F5 experience for extension development remains unchanged however with the addition of the ContentUnbundler target some teams perfer to optimize to only run it on official builds or when they set a flag to force it to run.  The following example demonstrates how the Azure Scheduler extension is doing this within CoreXT.
 
 ```xml
@@ -155,14 +154,14 @@ The default F5 experience for extension development remains unchanged however wi
         Condition="'$(IsOfficialBuild)' == 'true' Or '$(ForceUnbundler)' == 'true'" />
 ```
 
-# Running and Testing the extension
-## Deploying an extension's version.zip
+## Running and Testing the extension
+### Deploying an extension's version.zip
 
 Deploying your extension using the hosting service is as simple as pushing a couple of files to a publicly accessible endpoint, the simplest being a storage account.
 
 The zip file that is generated by the build needs to be pushed to a storage account along with a configuration file that the hosting service will use to determine what versions it needs to pull down and serve.
 
-## Config.json
+### Config.json
 The configuration file is just a json file that specifies which version is your active version, and what other versions you want the hosting server to serve for your extension.
 The file should be called config.json and should have the below structure:
 
@@ -177,28 +176,28 @@ The file should be called config.json and should have the below structure:
         }
     }
 ```
-# Config.json Properties:
+### Config.json Properties:
 
 Property names in the Config.json are case sensitive.
 
-## $version: 
+#### $version: 
 This is the version of the current config.json schema. This should always have the value of 2.
-## active: 
+#### active: 
 This is the current active version of the extension.
-## versions: 
+#### versions: 
 A dictionary of friendly name/version number value pairs. 
 
-## Friendly Names
+#### Friendly Names
 Each version referenced in config.json should have a friendly name. The friendly name should be alphanumeric. The friendly name allows you to load that specific version in the portal for testing purposes by using the extension feature flag.
 In the example above, version 1.0.0.0 is the active version. To load version 1.0.3.0, it can be passed to the portal as below
 https://portal.azure.com?feature.canmodifystamps=true&Microsoft_Azure_Scheduler=FriendlyName3
 
 
-# Steps needed to deploy using the hosting service
+## Steps needed to deploy using the hosting service
 1. Create a storage account  
     **Note** The deployment script provided only supports **ARM storage accounts**. However, the hosting service is agnostic of how the storage account was created and supports both Classic and ARM storage accounts.
 1. Register the storage account with the hosting service
-1. Deploy version.zip to storage account using the powershell
+1. Deploy version.zip to storage account using powershell
     * Deployment process is being updated
     * New deployment script to be provided soon
 
@@ -224,7 +223,7 @@ To test an extension loaded from the Hosting Service before it is live in Produc
     },
 ```
 
-* If the extension is already registered but being migrated to the hosting service, update the resitration in the portal
+* If the extension is already registered but being migrated to the hosting service, update the registration in the portal
 
 ```json
     {
@@ -237,54 +236,19 @@ To test an extension loaded from the Hosting Service before it is live in Produc
 
 * If the extension is already hosted on the Hosting Service, there are no changes required to be able to side-load it.
 
-##### Side-loading the extension
+#### Side-loading the extension
 Any version of the extension deployed to the hosting service can then be loaded by using the following URL:
 https://portal.azure.com?feature.canmodifyextensions=true&my_extension_name=FriendlyName2
 
 where FriendlyName2 can be replaced by any friendly name of the extension that is not yet active
 
 
-#### Making an extension version active
+### Making an extension version active
 1. Using the same script as the one used for deploying, any version can be made active
     * Making a version active does not require a build or deployment
     * New deployment script to be provided soon
 1. Viewing the active versions
     * The versions available in the Hosting Service can be seen by going to the following URL: http://hosting.portal.azure.net/api/diagnostics
-
-# Monitoring and Logging
-## Logging
- The portal provides a way for extensions to log to MDS using a feature that can be enabled in the extension.
-
- More information about the portal logging feature can be found here [https://auxdocs.azurewebsites.net/en-us/documentation/articles/portalfx-telemetry-logging](https://auxdocs.azurewebsites.net/en-us/documentation/articles/portalfx-telemetry-logging)
-
- The logs generated by the extension when this feature is enabled can be found in a couple of tables in the portal's MDS account
-
-Trace Events
-
->https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/Azportal/databases/AzurePortal?query=ExtEvents%7Cwhere+PreciseTimeStamp%3Eago(10m)
-
->ExtEvents | where PreciseTimeStamp >ago(10m)
-
-Telemetry Events
-
-
->https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/Azportal/databases/AzurePortal?query=ExtTelemetry%7Cwhere+PreciseTimeStamp%3Eago(10m)
-
->ExtTelemetry | where PreciseTimeStamp >ago(10m)
-
-## Monitoring
- There are two categories of issues that needs to be monitored for each extension and that partners can act on.
-
- * Portal loading and running the extension
-
-    The portal already has alerts setup to notify extensions of when it fails to load the extension for any reason. More work is being done to monitor other issues like blade load failures and part load failures.
-
- * Hosting Service downloading and service the extension
-
-    The hosting service will ping the endpoint where it expects to find the extension bits every minute. It will then download any new configurations and verions it finds. If it fails to download or process the downloaded files it log these as errors in its own MDS tables.
-    We are working on setting up alerts and monitors for such issues. Currently we get notified if any errors or warnings are generated by the hosting service. 
-    You can access the logs of the hosting service using the below link
-    https://jarvis-west.dc.ad.msft.net/53731DA4
 
 ## FAQ
 
