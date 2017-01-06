@@ -2257,6 +2257,7 @@ Template blades can have **commands** at the top. In order to add the commands, 
 
 ```javascript
 import Def = ExtensionDefinition.ViewModels.Resource.MyTemplateBladeViewModel;
+import Toolbars = MsPortalFx.ViewModels.Toolbars;
 
 export class MyTemplateBladeViewModel extends MsPortalFx.ViewModels.Blade {
 
@@ -2377,6 +2378,7 @@ constructor(container: FxCompositionBlade.Container, initialState: any, dataCont
     window.setTimeout(() => { operation.resolve(); }, 3000);
 }
 ```
+
   <h1 name="portalfx-blades-templateBlade-reference"></h1>
  <properties title="" pageTitle="Blades" description="" authors="adamabdelhamed" />
 
