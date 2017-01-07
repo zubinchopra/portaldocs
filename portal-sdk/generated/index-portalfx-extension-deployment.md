@@ -1,30 +1,18 @@
 * [Overview](#overview)
-* [Before deploying extension](#before-deploying-extension)
+* [Before deploying your extension](#before-deploying-your-extension)
 * [Deploying extension UI](#deploying-extension-ui)
 * [Deploying extension controllers](#deploying-extension-controllers)
 * [Legacy/DIY deployments](#legacy-diy-deployments)
 * [Resiliency and failover](#resiliency-and-failover)
-* [Extension Hosting Service](#extension-hosting-service)
 * [How it works](#how-it-works)
 * [Getting Started](#getting-started)
-    * [Onboarding](#getting-started-onboarding)
-    * [Extract deployment artifacts as part of build](#getting-started-extract-deployment-artifacts-as-part-of-build)
 * [Running and Testing the extension](#running-and-testing-the-extension)
-    * [Deploying an extension's version.zip](#running-and-testing-the-extension-deploying-an-extension-s-version-zip)
-    * [Config.json](#running-and-testing-the-extension-config-json)
-* [Config.json Properties:](#config-json-properties)
-    * [$version:](#config-json-properties-version)
-    * [active:](#config-json-properties-active)
-    * [versions:](#config-json-properties-versions)
-    * [Friendly Names](#config-json-properties-friendly-names)
 * [Steps needed to deploy using the hosting service](#steps-needed-to-deploy-using-the-hosting-service)
-    * [Testing an extension version](#steps-needed-to-deploy-using-the-hosting-service-testing-an-extension-version)
-* [Monitoring and Logging](#monitoring-and-logging)
-    * [Logging](#monitoring-and-logging-logging)
-    * [Monitoring](#monitoring-and-logging-monitoring)
-    * [FAQ](#monitoring-and-logging-faq)
-    * [National/sovereign clouds](#monitoring-and-logging-national-sovereign-clouds)
-    * [Per-cloud information](#monitoring-and-logging-per-cloud-information)
+* [Testing an extension version](#testing-an-extension-version)
+* [FAQ](#faq)
+* [Monitoring](#monitoring)
+* [National/sovereign clouds](#national-sovereign-clouds)
+* [Per-cloud information](#per-cloud-information)
 
 
  <h1 name="portalfx-extension-deployment"></h1>
@@ -67,17 +55,15 @@ to production. When a new version of the portal is deployed to production, the c
 automatically released to the [download center](/downloads). The download center contains the change log for the given
 release, including bug fixes, new features, and a log of breaking changes.
 
-<a name="before-deploying-extension"></a>
-## Before deploying extension
+<a name="before-deploying-your-extension"></a>
+## Before deploying your extension
 
 1. For extensions onboarding Ibiza: Enable/disable extensions
 1. Extension "stamps"
 1. Understand extension runtime compatibility
 
-<a name="before-deploying-extension-1-for-extensions-onboarding-ibiza-enable-disable-extensions"></a>
-### >
-<li>For extensions onboarding Ibiza: Enable/disable extensions</li>
-<
+<a name="before-deploying-your-extension-1-for-extensions-onboarding-ibiza-enable-disable-extensions"></a>
+### (1) For extensions onboarding Ibiza: Enable/disable extensions
 
 New extensions are disabled by default. This will hide the extension from users (it won't show up in the portal at all)
 until it's ready for general use.
@@ -94,10 +80,8 @@ to enable both the extension and the Gallery item:
 
 To permanently enable an extension (e.g. if it's ready for general use), please contact the portal team.
 
-<a name="before-deploying-extension-2-extension-stamps"></a>
-### >
-<li>Extension &quot;stamps&quot;</li>
-<
+<a name="before-deploying-your-extension-2-extension-stamps"></a>
+### (2) Extension &quot;stamps&quot;
 
 Every extension can deploy one or more "stamps" based on their testing requirements. In Azure parlance, a "stamp" is an
 instance of a service in a region. The "main" stamp is used for production and is the only one the portal will be
@@ -123,10 +107,8 @@ of your extension as registered in the portal. For instance,
 `https://perf.devtest.ext.azure.com`). Note that you must specify the flag `feature.canmodifystamps=true` in order to
 override the stamp.
 
-<a name="before-deploying-extension-3-understand-extension-runtime-compatibility"></a>
-### >
-<li>Understand extension runtime compatibility</li>
-<
+<a name="before-deploying-your-extension-3-understand-extension-runtime-compatibility"></a>
+### (3) Understand extension runtime compatibility
 
 Extensions do not need to be recompiled and redeployed with every release of the SDK.
 
@@ -165,6 +147,7 @@ latency.)
 ## Legacy/DIY deployments
 
 If you choose to deploy extension UI through legacy / DIY deployments, make sure you understand that
+
 1.	You will be responsible for deploying to all regions
 1.	You will be responsible for deploying service to every new data center
 1.	You will be responsible for MDS setup, upgrade, Security pack upgrade and other infrastructure tasks
@@ -188,6 +171,7 @@ We see much higher latencies and reliability issues when servers are not geo-loc
 (For more tips, see the [performance page](#portalfx-performance).)
 
 In order to deploy to all regions:
+
 1.	Use [Extension Hosting Service](#portalfx-extension-hosting-service) to deploy UI
 1.	Deploy Controllers to all regions
 
@@ -205,9 +189,7 @@ In the first case, you can probably get away with fewer servers, but in the seco
 [deployment-architecture]: ../media/portalfx-deployment/deployment.png
 
  <h1 name="portalfx-extension-hosting-service"></h1>
- # Introduction
-<a name="extension-hosting-service"></a>
-## Extension Hosting Service
+ ## Extension Hosting Service
 
 Teams deploying UI for extensions with the classic cloud service model typically have to invest significant time upfront to onboard to MDS, setup compliant deployments across all geo's, configure cdn, storage and implement caching optimizations in their extension, the Extension Host is designed to mitigate this cost.  Simply put, the Extension Hosting Service is designed to allow you to focus on building your extension not on deployment infrastructure.   
 
@@ -225,8 +207,8 @@ It does this by providing:
     1. No hosting COGS
     1. Reduced development cost – focus on building the domain specifics of your extension rather than spending time on figuring out deployment
 
-<a name="extension-hosting-service-server-side-code"></a>
-### Server Side Code
+<a name="resiliency-and-failover-server-side-code"></a>
+#### Server Side Code
 
 If your extension has server-side code, you will need to do some pre-requisite work before on-boarding Extension Hosting service:
 1.	Change the relative controller URLs to absolute URLS. The Controllers will deploy a new server-only service that will be behind Traffic Manager.
@@ -235,14 +217,14 @@ If your extension has server-side code, you will need to do some pre-requisite w
     1.	By Hosting serverside code within existing RP
         
 
-<a name="extension-hosting-service-sdk-version"></a>
-### SDK Version
+<a name="resiliency-and-failover-sdk-version"></a>
+#### SDK Version
 Use Portal SDK 5.0.302.454 or above
 
 For the extension to be hostable by the hosting service some artifacts need to be generated at build time. Those artifacts will only be generated if using a recent SDK version.
 
 <a name="how-it-works"></a>
-# How it works
+## How it works
 The hosting service consists of two components: 
 
 * Content unbundler:
@@ -254,9 +236,9 @@ The runtime component of the hosting service is hosted inside an Azure Cloud Ser
 For performance reasons, once a version is downloaded, it will not be downloaded again. 
 
 <a name="getting-started"></a>
-# Getting Started
+## Getting Started
 <a name="getting-started-onboarding"></a>
-## Onboarding
+### Onboarding
 Extensions that intend to use extension hosting service should publish the extracted deployment artifacts (zip file) that are generated during the build along with config.json to a public endpoint. 
 
 Make sure that all the zip files and config.json are at the same level.
@@ -267,18 +249,18 @@ Once you have these files available on a public endpoint, file a request to regi
 
 
 <a name="getting-started-extract-deployment-artifacts-as-part-of-build"></a>
-## Extract deployment artifacts as part of build
+### Extract deployment artifacts as part of build
 
 <a name="getting-started-extract-deployment-artifacts-as-part-of-build-content-unbundler"></a>
-### Content Unbundler
-Install Microsoft.Portal.Tools.ContentUnbundler to your extensions webproject.csproj.  If you installed via Visual Studio, NuGet package manager or NuGet.exe it will automatically add the following target.  If using CoreXT global packages.config you will have to add the target to your .csproj manually 
+#### Content Unbundler
+Install `Microsoft.Portal.Tools.ContentUnbundler` to your extension's `webproject.csproj`.  If you installed via Visual Studio, NuGet package manager or NuGet.exe it will automatically add the following target.  If using CoreXT global packages.config you will have to add the target to your .csproj manually 
 
 ```xml
 <Import Project="$(PkgMicrosoft_Portal_Tools_ContentUnbundler)\build\Microsoft.Portal.Tools.ContentUnbundler.targets" />
 ```
 
 <a name="getting-started-extract-deployment-artifacts-as-part-of-build-build-configuration"></a>
-### Build configuration
+#### Build configuration
 Override any of the default configuration items for your build environment
 
 * _ContentUnbundlerSourceDirectory_: Defaults to $(OutputPath). This needs to be set to the directory of the build output of your web project that contains your web.config and /bin dir  
@@ -306,7 +288,7 @@ Outside of CoreXT, the default settings in the targets file should work for most
 ```
 
 <a name="getting-started-extract-deployment-artifacts-as-part-of-build-isdevelopmentmode"></a>
-### IsDevelopmentMode
+#### IsDevelopmentMode
 Set IsDevelopmentMode to False for versioned builds 
 
 The extension host requires deployments of your extension to be versioned. To ensure that the ContentUnbundler output is versioned set the  *.IsDevelopmentMode AppSetting in your web.config to false.
@@ -318,17 +300,17 @@ The extension host requires deployments of your extension to be versioned. To en
 If you wish to achieve this only on release builds a [web.Release.config transform](http://go.microsoft.com/fwlink/?LinkId=125889) can be used.
 
 <a name="getting-started-extract-deployment-artifacts-as-part-of-build-environment-specific-configuration-files"></a>
-### Environment specific configuration files
+#### Environment specific configuration files
 
 Environment configuration files server 2 purposes:
 
-* Make the extension available in target environment
-* Override settings for target environment
+1. Make the extension available in target environment
+1. Override settings for target environment
 
 The environment specific configuration files need to follow these conventions
 
 * The files need to be placed under **\Content\Config\**
-* The file should be set as en EmbeddedContent, otherwise the file will not be included in the output that gets generated by the content unbundler.
+* The file should be set as an EmbeddedContent, otherwise the file will not be included in the output that gets generated by the content unbundler.
 * The files need to be named with the following convention: &lt;host&gt;.&lt;domain&gt;.json (e.g. portal.azure.com.json, ms.portal.azure.com.json)
 * The more generic the domain name, the more environments it covers. For example, it's enough to have a portal.azure.com.json. It will work with all portal production environments i.e *.portal.azure.com.
 * The file content is a json object with key/value pairs for settings to be overriden. If there are no settings that needs to be overridden, the file should contain an empty json object.
@@ -363,7 +345,7 @@ A configuration file should be provided for all the environments where the exten
 * Fairfax: Host name is **portal.azure.us**. Configuration file name should be portal.azure.us.json
 
 <a name="getting-started-extract-deployment-artifacts-as-part-of-build-speeding-up-dev-test-cycles-optional"></a>
-### Speeding up dev/test cycles (Optional)
+#### Speeding up dev/test cycles (Optional)
 The default F5 experience for extension development remains unchanged however with the addition of the ContentUnbundler target some teams perfer to optimize to only run it on official builds or when they set a flag to force it to run.  The following example demonstrates how the Azure Scheduler extension is doing this within CoreXT.
 
 ```xml
@@ -375,16 +357,16 @@ The default F5 experience for extension development remains unchanged however wi
 ```
 
 <a name="running-and-testing-the-extension"></a>
-# Running and Testing the extension
+## Running and Testing the extension
 <a name="running-and-testing-the-extension-deploying-an-extension-s-version-zip"></a>
-## Deploying an extension&#39;s version.zip
+### Deploying an extension&#39;s version.zip
 
 Deploying your extension using the hosting service is as simple as pushing a couple of files to a publicly accessible endpoint, the simplest being a storage account.
 
 The zip file that is generated by the build needs to be pushed to a storage account along with a configuration file that the hosting service will use to determine what versions it needs to pull down and serve.
 
 <a name="running-and-testing-the-extension-config-json"></a>
-## Config.json
+### Config.json
 The configuration file is just a json file that specifies which version is your active version, and what other versions you want the hosting server to serve for your extension.
 The file should be called config.json and should have the below structure:
 
@@ -399,38 +381,38 @@ The file should be called config.json and should have the below structure:
         }
     }
 ```
-<a name="config-json-properties"></a>
-# Config.json Properties:
+<a name="running-and-testing-the-extension-config-json-properties"></a>
+### Config.json Properties:
 
 Property names in the Config.json are case sensitive.
 
-<a name="config-json-properties-version"></a>
-## $version:
+<a name="running-and-testing-the-extension-config-json-properties-version"></a>
+#### $version:
 This is the version of the current config.json schema. This should always have the value of 2.
-<a name="config-json-properties-active"></a>
-## active:
+<a name="running-and-testing-the-extension-config-json-properties-active"></a>
+#### active:
 This is the current active version of the extension.
-<a name="config-json-properties-versions"></a>
-## versions:
+<a name="running-and-testing-the-extension-config-json-properties-versions"></a>
+#### versions:
 A dictionary of friendly name/version number value pairs. 
 
-<a name="config-json-properties-friendly-names"></a>
-## Friendly Names
+<a name="running-and-testing-the-extension-config-json-properties-friendly-names"></a>
+#### Friendly Names
 Each version referenced in config.json should have a friendly name. The friendly name should be alphanumeric. The friendly name allows you to load that specific version in the portal for testing purposes by using the extension feature flag.
 In the example above, version 1.0.0.0 is the active version. To load version 1.0.3.0, it can be passed to the portal as below
 https://portal.azure.com?feature.canmodifystamps=true&Microsoft_Azure_Scheduler=FriendlyName3
 
 
 <a name="steps-needed-to-deploy-using-the-hosting-service"></a>
-# Steps needed to deploy using the hosting service
+## Steps needed to deploy using the hosting service
 1. Create a storage account  
     **Note** The deployment script provided only supports **ARM storage accounts**. However, the hosting service is agnostic of how the storage account was created and supports both Classic and ARM storage accounts.
 1. Register the storage account with the hosting service
-1. Deploy version.zip to storage account using the powershell
+1. Deploy version.zip to storage account using powershell
     * Deployment process is being updated
     * New deployment script to be provided soon
 
-<a name="steps-needed-to-deploy-using-the-hosting-service-testing-an-extension-version"></a>
+<a name="testing-an-extension-version"></a>
 ## Testing an extension version
 
 The extension in the Hosting Service will have a URL following this format
@@ -438,7 +420,7 @@ https://myextension.hosting.portal.azure.net/myextension
 
 This URL can be used to side-load the extension and test it before making it active.
 
-<a name="steps-needed-to-deploy-using-the-hosting-service-testing-an-extension-version-before-being-active-in-production"></a>
+<a name="testing-an-extension-version-before-being-active-in-production"></a>
 ### Before being active in Production
 To test an extension loaded from the Hosting Service before it is live in Production, The following step is required:
 
@@ -454,7 +436,7 @@ To test an extension loaded from the Hosting Service before it is live in Produc
     },
 ```
 
-* If the extension is already registered but being migrated to the hosting service, update the resitration in the portal
+* If the extension is already registered but being migrated to the hosting service, update the registration in the portal
 
 ```json
     {
@@ -467,64 +449,26 @@ To test an extension loaded from the Hosting Service before it is live in Produc
 
 * If the extension is already hosted on the Hosting Service, there are no changes required to be able to side-load it.
 
-<a name="steps-needed-to-deploy-using-the-hosting-service-testing-an-extension-version-before-being-active-in-production-side-loading-the-extension"></a>
-##### Side-loading the extension
+<a name="testing-an-extension-version-before-being-active-in-production-side-loading-the-extension"></a>
+#### Side-loading the extension
 Any version of the extension deployed to the hosting service can then be loaded by using the following URL:
 https://portal.azure.com?feature.canmodifyextensions=true&my_extension_name=FriendlyName2
 
 where FriendlyName2 can be replaced by any friendly name of the extension that is not yet active
 
 
-<a name="steps-needed-to-deploy-using-the-hosting-service-testing-an-extension-version-before-being-active-in-production-making-an-extension-version-active"></a>
-#### Making an extension version active
+<a name="testing-an-extension-version-making-an-extension-version-active"></a>
+### Making an extension version active
 1. Using the same script as the one used for deploying, any version can be made active
     * Making a version active does not require a build or deployment
     * New deployment script to be provided soon
 1. Viewing the active versions
     * The versions available in the Hosting Service can be seen by going to the following URL: http://hosting.portal.azure.net/api/diagnostics
 
-<a name="monitoring-and-logging"></a>
-# Monitoring and Logging
-<a name="monitoring-and-logging-logging"></a>
-## Logging
- The portal provides a way for extensions to log to MDS using a feature that can be enabled in the extension.
-
- More information about the portal logging feature can be found here [https://auxdocs.azurewebsites.net/en-us/documentation/articles/portalfx-telemetry-logging](https://auxdocs.azurewebsites.net/en-us/documentation/articles/portalfx-telemetry-logging)
-
- The logs generated by the extension when this feature is enabled can be found in a couple of tables in the portal's MDS account
-
-Trace Events
-
->https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/Azportal/databases/AzurePortal?query=ExtEvents%7Cwhere+PreciseTimeStamp%3Eago(10m)
-
->ExtEvents | where PreciseTimeStamp >ago(10m)
-
-Telemetry Events
-
-
->https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/Azportal/databases/AzurePortal?query=ExtTelemetry%7Cwhere+PreciseTimeStamp%3Eago(10m)
-
->ExtTelemetry | where PreciseTimeStamp >ago(10m)
-
-<a name="monitoring-and-logging-monitoring"></a>
-## Monitoring
- There are two categories of issues that needs to be monitored for each extension and that partners can act on.
-
- * Portal loading and running the extension
-
-    The portal already has alerts setup to notify extensions of when it fails to load the extension for any reason. More work is being done to monitor other issues like blade load failures and part load failures.
-
- * Hosting Service downloading and service the extension
-
-    The hosting service will ping the endpoint where it expects to find the extension bits every minute. It will then download any new configurations and verions it finds. If it fails to download or process the downloaded files it log these as errors in its own MDS tables.
-    We are working on setting up alerts and monitors for such issues. Currently we get notified if any errors or warnings are generated by the hosting service. 
-    You can access the logs of the hosting service using the below link
-    https://jarvis-west.dc.ad.msft.net/53731DA4
-
-<a name="monitoring-and-logging-faq"></a>
+<a name="faq"></a>
 ## FAQ
 
-<a name="monitoring-and-logging-faq-when-i-build-my-project-the-output-zip-is-called-hostingsvc-zip-rater-then-some-version-zip"></a>
+<a name="faq-when-i-build-my-project-the-output-zip-is-called-hostingsvc-zip-rater-then-some-version-zip"></a>
 ### When I build my project the output zip is called HostingSvc.zip rater then <some version>.zip
 
 The primary cause of this issue is that your web.config appSetting for IsDevelopmentMode is true.  It needs to be set to `false`, most do this using a web.Release.config transform. For example
@@ -544,19 +488,55 @@ The primary cause of this issue is that your web.config appSetting for IsDevelop
 ```
 
 You can find more details on transforms [here](http://www.asp.net/mvc/overview/deployment/visual-studio-web-deployment/web-config-transformations)
+ <h1 name="portalfx-extension-logging"></h1>
+ ## Logging
+ The portal provides a way for extensions to log to MDS using a feature that can be enabled in the extension.
+
+ More information about the portal logging feature can be found here [https://auxdocs.azurewebsites.net/en-us/documentation/articles/portalfx-telemetry-logging](https://auxdocs.azurewebsites.net/en-us/documentation/articles/portalfx-telemetry-logging)
+
+ The logs generated by the extension when this feature is enabled can be found in a couple of tables in the portal's MDS account
+
+Trace Events
+
+>https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/Azportal/databases/AzurePortal?query=ExtEvents%7Cwhere+PreciseTimeStamp%3Eago(10m)
+
+>ExtEvents | where PreciseTimeStamp >ago(10m)
+
+Telemetry Events
+
+
+>https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/Azportal/databases/AzurePortal?query=ExtTelemetry%7Cwhere+PreciseTimeStamp%3Eago(10m)
+
+>ExtTelemetry | where PreciseTimeStamp >ago(10m)
+
+<a name="monitoring"></a>
+## Monitoring
+ There are two categories of issues that needs to be monitored for each extension and that partners can act on.
+
+ * Portal loading and running the extension
+
+    The portal already has alerts setup to notify extensions of when it fails to load the extension for any reason. More work is being done to monitor other issues like blade load failures and part load failures.
+
+ * Hosting Service downloading and service the extension
+
+    The hosting service will ping the endpoint where it expects to find the extension bits every minute. It will then download any new configurations and verions it finds. If it fails to download or process the downloaded files it log these as errors in its own MDS tables.
+    We are working on setting up alerts and monitors for such issues. Currently we get notified if any errors or warnings are generated by the hosting service. 
+    You can access the logs of the hosting service using the below link
+    https://jarvis-west.dc.ad.msft.net/53731DA4
+
  <h1 name="portalfx-deployment-sovereign"></h1>
  <properties pageTitle="Deployments" description="Deployments" services="portalfx" documentationCenter="portalfx" authors="flanakin,spaoliello" />
 
-<a name="monitoring-and-logging-national-sovereign-clouds"></a>
+<a name="national-sovereign-clouds"></a>
 ## National/sovereign clouds
-<a name="monitoring-and-logging-national-sovereign-clouds-overview"></a>
+<a name="national-sovereign-clouds-overview"></a>
 ### Overview
 
 Sovereign clouds (aka "national clouds") are instances of Azure restricted to a particular group of users. This group may consist of one geopolitical boundary (e.g. country) or legal boundary (e.g. public sector).
 
 To get started in a sovereign cloud, talk to the Azure Global Ecosystems team or use the link to their wikis below.
 
-<a name="monitoring-and-logging-per-cloud-information"></a>
+<a name="per-cloud-information"></a>
 ## Per-cloud information
 
 | Cloud          | Portal domain            | Extension domain        | More information |
@@ -566,12 +546,14 @@ To get started in a sovereign cloud, talk to the Azure Global Ecosystems team or
 | Mooncake       | portal.azure.cn          | *.ext.azure.cn          | [Mooncake wiki](http://mooncake/)    |
 | Fairfax        | portal.azure.us          | *.ext.azure.us          | [Fairfax wiki](http://fairfax/)     |
 
+*Note that information on the domains and URLs for each cloud (e.g. what the URL for ARM/AAD is) is contained on each cloud's wiki under a page called "Endpoints".*
 
-<a name="monitoring-and-logging-per-cloud-information-common-gotchas"></a>
+
+<a name="per-cloud-information-common-gotchas"></a>
 ### Common gotchas
 
-<a name="monitoring-and-logging-per-cloud-information-allowedparentframe"></a>
-### AllowedParentFrame
+<a name="per-cloud-information-common-gotchas-allowedparentframe"></a>
+#### AllowedParentFrame
 When you deploy your extension to a different cloud, you must explicitly allow the portal in that cloud to load your extension.
 This is controlled in your config. Look for a setting called `Microsoft.Portal.Framework.FrameworkConfiguration.AllowedParentFrame`. It should be a JSON array of domains that can load your extension (i.e. list of portal domains for a given cloud).
 
