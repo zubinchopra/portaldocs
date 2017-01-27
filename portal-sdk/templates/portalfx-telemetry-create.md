@@ -11,6 +11,8 @@ CreateFlow table in Kusto database **AzPtlCosmos** called **CreateFlows**
 
 Accessible through using the function: **GetCreateFlows(startDate: datetime, endDate: datetime)**
 
+[Note] The AzPtlCosmos database **does not** contain test traffic or unnofficial creates which don't go through the Marketplace or +New.
+
 For questions or issues, check out the [FAQ](#FAQ)
 
 ## Create Flow Functions
