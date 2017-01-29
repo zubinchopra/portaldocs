@@ -64,47 +64,6 @@ export class SampleFramePart {
 In the above sample, mockAsyncOperationToGetDataToSendToFrame denotes async
 operations that are typically performed during initialize.
 
-
-If you're using PDL, you can build a frame part as follows: -
-
-1. Add the **part definition** to your PDL file
-
-```xml
-<FramePart
-    Name="PdlSampleFramePart"
-    ViewModel="{ViewModel Name=SampleFramePart, Module=../PDL/Parts/FramePart/ViewModels/SampleFramePart}">
-    <PartGalleryInfo
-        Title="{Resource sampleFramePartTitle, Module=ClientResources}"
-        Category="{Resource partGalleryCategorySample, Module=ClientResources}"
-        Thumbnail="MsPortalFx.Base.Images.ArrowUp()" />
-</FramePart>
-```
-
-2. Create a **ViewModel** TypeScript class. The code snippet below shows the view-model for the template blade defined above. In this case, it is showing the docs.microsoft.azure.com into an AppBlade in Ibiza portal.
-
-```javascript
-export class SampleFramePart extends FramePart.ViewModel implements Def.Contract {
-    constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState: any, dataContext: DataContext) {
-        super(container, {
-            src: MsPortalFx.Base.Resources.getContentUri("/Content/SamplesExtension/framepartpage.html"),
-        });
-    }
-
-    public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
-        return Q.all([
-            this.waitForFrameReady(),
-            mockAsyncOperationToGetDataToSendToFrame().then(info => {
-                this.postMessage("frametitle", info.title);
-            }),
-        ]);
-    }
-}
-```
-
-The source location for the contents of the IFrame is passed to the container
-using the **src** property in the **Options** (second parameter in the code
-snippet above).
-
 #### Sending messages to/from the iframe.
 
 You can send messages from your extension view model to the FramePart using the
@@ -140,11 +99,61 @@ viewModel.off("appdata", callback);
 
 #### Special messages that the IFrame can send
 
-**revealcontent**: When the contents of the iframe are in a state presentable to
+##### revealcontent
+When the contents of the iframe are in a state presentable to
 the user (i.e. the opaque loading indicator can be removed), though not
 necessarily fully ready, the message with kind: "revealcontent" can be sent to
 display the iframe to the user with a shield over it to prevent interactions.
 
-**initializationcomplete**: When the part is fully ready, the iframe should
+##### initializationcomplete
+When the part is fully ready, the iframe should
 send a message with kind: "initializationcomplete" so that the user can start
 interacting with it.
+
+#### (Deprecated) Legacy API using PDL
+
+Below references are only for existing frame parts. Any new code should use the
+new APIs demonstrated above.
+
+1. Add the **part definition** to your PDL file
+
+```xml
+<!-- Deprecated approach for building a FramePart -->
+<FramePart
+    Name="PdlSampleFramePart"
+    ViewModel="{ViewModel Name=SampleFramePart, Module=../PDL/Parts/FramePart/ViewModels/SampleFramePart}">
+    <PartGalleryInfo
+        Title="{Resource sampleFramePartTitle, Module=ClientResources}"
+        Category="{Resource partGalleryCategorySample, Module=ClientResources}"
+        Thumbnail="MsPortalFx.Base.Images.ArrowUp()" />
+</FramePart>
+```
+
+2. Create a **ViewModel** TypeScript class. The code snippet below shows the view-model for the template blade defined above. In this case, it is showing the docs.microsoft.azure.com into an AppBlade in Ibiza portal.
+
+```javascript
+// Deprecated approach for building a FramePart
+export class SampleFramePart extends FramePart.ViewModel implements Def.Contract {
+    constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState: any, dataContext: DataContext) {
+        super(container, {
+            src: MsPortalFx.Base.Resources.getContentUri("/Content/SamplesExtension/framepartpage.html"),
+        });
+    }
+
+    public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
+        return Q.all([
+            this.waitForFrameReady(),
+            mockAsyncOperationToGetDataToSendToFrame().then(info => {
+                this.postMessage("frametitle", info.title);
+            }),
+        ]);
+    }
+}
+```
+
+The source location for the contents of the IFrame is passed to the container
+using the **src** property in the **Options** (second parameter in the code
+snippet above).
+
+In the above sample, mockAsyncOperationToGetDataToSendToFrame denotes async
+operations that are typically performed during initialize.
