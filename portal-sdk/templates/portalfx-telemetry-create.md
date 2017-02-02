@@ -205,15 +205,17 @@ This functions calculates the create funnel KPI's for each extension's create bl
 * Started
   * The number of creates that were started.
   * Calculated by taking the count of the number of Create Flows for each blade from [GetCreateFlows()](#GetCreateFlows) which had:
-    * `PortalCreateStarted == true`
-    * or `ArmDeploymentStarted == true`
-  * *Note - We check both of these for redundancy proof becuase we know that as long as one of these properties are true then we know a create was started.*
+    * `ExecutionStatus != "Abandonded"`
+  * This gives us the total number of creates which were not abandoned and were therefore started.
 * Excluded
-  * The number of creates from [GetCreateFlows()](#GetCreateFlows) that were marked as Excluded.
+  * The number of *started* creates from [GetCreateFlows()](#GetCreateFlows) that were marked as Excluded.
+  * Calculated by creates which had:
+    * `ExecutionStatus != "Abandonded" and Excluded == true`
   * *See [GetCreateFlows()](#GetCreateFlows) documentation for Excluded details.*
 * Completed
-  * The number of creates that were completed.
-  * Completed = Started - Excluded
+  * The number of creates that *started* and were not *excluded*, therefore resulting in a completed state we care about.
+  * Calculated by creates which had:
+    * `ExecutionStatus != "Abandonded" and Excluded == false`
 * StartRate
   * The rate of create blades that are opened which leads to a create being started.
   * StartRate = Started / CreateBladeOpened
