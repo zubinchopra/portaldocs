@@ -6077,7 +6077,7 @@ Second, you must provide plugin options.
 
 The following sample shows a simple method of enabling the plugins:
 
-code sample coming soon to SamplesExtension in D:\git\AzureUX-PortalFx-Production\doc\portal-sdk\Samples\SamplesExtension\Extension\Client\Controls\Grid\ViewModels\ScrollableGridWithFilteringAndSorting.ts
+code sample coming soon to SamplesExtension in D:\ws\Ship-Sync-AuxDocs-Github\doc\portal-sdk\Samples\SamplesExtension\Extension\Client\Controls\Grid\ViewModels\ScrollableGridWithFilteringAndSorting.ts
 
 Plugin compatibility:
 

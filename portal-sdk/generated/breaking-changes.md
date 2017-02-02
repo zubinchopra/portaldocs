@@ -1,7 +1,10 @@
-# Breaking Changes from 9/13/2016 
+# Breaking Changes from 10/2/2016 
 * Additional Q&A about breaking changes can be found [here](./breaking-changes.md) 
 * To ask a question about breaking changes [use this](https://aka.ms/ask/ibiza-breaking-change)  
 
+
+## 5.0.302.600
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7701071'>7701071</a></td><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7701071'>Resource Move: '->Move' command popup option [move to another subscription, move to another resource group] on individual resources</a><p></div><div>&nbsp; &nbsp; Move command on resource blade will open a popup with two &nbsp; &nbsp; &nbsp; options:</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Move to another resource group</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Move to another subscription</div><div>&nbsp; &nbsp; Clicking on either of the options will launch the move resource blade in that respective context.&nbsp;</div><div></p></td></tr></table>
 
 ## 5.0.302.573
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7426345'>7426345</a></td><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7426345'>[Auth] Add onbaording AAD service principal for ibiza managed extension to client's tenant.</a><p>Added new package dependency
