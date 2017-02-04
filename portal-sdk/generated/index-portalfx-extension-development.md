@@ -12375,7 +12375,7 @@ To avoid this being a phishing risk, we enforce that your extension must be host
 
 * Navigate to [https://portal.azure.com?feature.canmodifyextensions=true&clientOptimizations=false](https://portal.azure.com?feature.canmodifyextensions=true&clientOptimizations=false)
 
-  * For other useful switches, please refer to the [debugging guide](#portalfx-debugging)
+  * For other useful switches, please refer to the [debugging guide](/portal-sdk/templates/portalfx-debugging.md#diagnostic-switches)
 
 The registered extension will be saved to user settings, and available in future sessions. When using the portal in this mode, you will see a banner letting you know the state of the configured extensions has been changed:
 
