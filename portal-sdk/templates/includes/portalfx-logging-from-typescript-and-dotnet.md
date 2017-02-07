@@ -46,17 +46,21 @@ in:
 `\Client\Diagnostics\Logging\ViewModels\LoggingViewModels.ts`
 
 ```ts
-MsPortalFx.Base.Diagnostics.Log.writeEntry(
-    MsPortalFx.Base.Diagnostics.LogEntryLevel.Error,
-    "Area of your application",
-    "The message you would like to log",
-    "Extra parameter 1",
-    "Extra parameter 2");
+// At the top of the AMD module
+const log = MsPortalFx.Base.Diagnostics.createLog(require);
+
+// Enum used to describe numeric error codes through enum values.
+const enum ErrorCode {
+    SampleCode = 1,
+}
+
+// At the point where the error needs to be logged.
+log.error("This is an example of client side logging!", ErrorCode.SampleCode);
 ```
 
-The code above will submit a new log entry as an error, include the area of
-the site, the log message, and (n) parameters. You can also retreive logged
-entries using the `MsPortalFx.Base.Diagnostics.LoggetEntries` method.
+The code above will submit a new log entry as an error, include the AMD module
+ID as the area, the numeric code, the log message, and (n) parameters passed in
+as additional parameters.
 
 #### Logging on the Server
 
