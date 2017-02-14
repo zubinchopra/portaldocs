@@ -45,7 +45,7 @@ using (var client = new Microsoft.Portal.Framework.ClientProxy.WebApiClient())
 
 ## Calling other services
 
-In order to call other services, your extension must obtain a custom token with the user's context. There are 2 ways to accomplish this:
+In order to call other services, your extension must obtain a custom token with the user's context that has an audience URI for your particular APIs. There are 2 ways to accomplish this:
 
 1. Make AJAX requests for a specific service from the client
 2. Exchange Fx tokens for your own from your server
@@ -56,12 +56,12 @@ to communicate with ARM. If you are working on internal/Microsoft extension, but
 Azure terms and conditions, please reach out to the [Azure portal legal team](mailto:ibiza-lca@microsoft.com)._
 
 #### Calling other services from the client
-In order to call other services from the client, a new AAD app must be created and managed by the Fx team since tokens will be obtained by the Fx. 
+In order to call other services from the client, the Fx team will create a new AAD app for you and will manage that application on your behalf since tokens will be obtained by the Fx. 
 
 1. Create a [security/auth partner request](http://aka.ms/new-ibiza-security-auth-request) including the exact config you need (see 
-   below)
-2. The Fx team will submit a request to the AAD onboarding team and will CC you on the request (NOTE: AAD onbaording can take 5-6 weeks)
-3. Reach out to the [AAD onboarding team](aadonboarding@microsoft.com) on the thread to check status
+   below) to start the process of obtaining an AAD application for your extension.
+2. The Fx team will submit a request to the AAD onboarding team on your behalf and will CC you on the request (NOTE: AAD onbaording can take 5-6 weeks)
+3. The [AAD onboarding team](mailto:aadonboarding@microsoft.com) can provide status on the request.  It is helpful to obtain your App Id from the Fx team when working with the AAD team.
 4. Once the app is created, the Fx team will update portal config 
 5. Request tokens for the desired service (aka "resource") when using Fx APIs
 
@@ -118,7 +118,7 @@ MsPortalFx.Base.Security.getAuthorizationToken({ resourceName: "graph" });
 #### Calling other services from the server
 To call other services from the server, you'll need your own AAD app and exchange the Fx token for your own to call other services.
 
-1. [Create an AAD app](https://aadonboardingsiteppe.cloudapp.net) and contact the [AAD onboarding team](aadonboarding@microsoft.com) as 
+1. [Create an AAD app](https://aadonboardingsiteppe.cloudapp.net) and contact the [AAD onboarding team](mailto:aadonboarding@microsoft.com) as 
    needed (NOTE: AAD onboarding can take 5-6 weeks)
 2. Create a [security/auth partner request](http://aka.ms/new-ibiza-security-auth-request) including the exact config you need (see 
    below)
