@@ -49,16 +49,29 @@ To define your asset type, simply add the following snippet to PDL:
 </AssetType>
 ```
 
-The name can be anything, since it's scoped to your extension. You'll be typing this a lot, so keep it succinct, yet clear -- it will be used to identify asset types in telemetry.
+The name can be anything that follows standard variable naming guidelines. Just remember: **Once you set the asset type name, you can never change it!** Asset type names are used as pointers in multiple places (e.g. favorites, recent) and changing the asset type will cause the references to your asset type and resources to fail. **Do not change asset type names!** You'll be typing this a lot, so keep it succinct, yet clear -- it will be used to identify asset types in telemetry.
 
-In order to provide a modern voice and tone within the portal, asset types have 4 different display names. The portal will use the most appropriate display name given the context. If your asset type display name includes an acronym or product name that is always capitalized, use the same values for upper and lower display name properties (e.g. `PluralDisplayName` and `LowerPluralDisplayName` may both use `SQL databases`). Do not share strings between singular and plural display name properties.
+<a name="assettype-names"></a>
+In order to provide a modern voice and tone within the portal, asset types have 5 different display names. The portal will use the most appropriate display name given the context. Please keep these rules in mind:
+
+1. **Always specify `ServiceDisplayName`, if applicable.** If your service has an official, registered/trade-marked product name (e.g. App Service), specify the `ServiceDisplayName` property to ensure the service name is used when possible.
+2. **Plural/singular display names *must* be nouns.** These names are used in sentences, which will not flow correctly if you use the service name when you should have a noun (e.g. "No Data Lake Store to display"). Instead, set `ServiceDisplayName` to get the appropriate handling as well as natural, grammatically correct sentences throughout the portal.
+3. **Display names *must* be sentence-cased.** This applies to all text, including blade, tile, and section headers. The [Microsoft Style Guide](http://aka.ms/style) dictates that all text should be sentence-cased unless it is a product or service name. Note that nouns are not service names, even if they use the same words (e.g. the "Logic Apps" service should have a `LowerPluralDisplayName` of "logic apps"). Conversly, a service name can be used to prefix a noun (e.g. "Traffic Manager profiles").
+4. **Do not lower-case acronyms.** If your asset type display name includes an acronym or starts with a product name that is always capitalized, use the same values for upper and lower display name properties (e.g. `PluralDisplayName` and `LowerPluralDisplayName` may both use `SQL databases`).
+5. **Plural and singular names should *never* be the same.** Do not share strings between singular and plural display names. There is no scenario where these should be the same.
+6. **Do not specify extraneous keywords in the name.** If you want customers to find your service or resource type when they search for another word (e.g. firewall), add that to the comma-delimited list of `Keywords`. These will be used when filtering in the More Services menu as well as global search.
+
+The aforementioned display names are used in the following places:
 
 * The Browse menu shows the `ServiceDisplayName` in the list of browseable asset types.  If `ServiceDisplayName` is not available, `PluralDisplayName` will be shown instead
 * The All Resources blade uses the `SingularDisplayName` in the Type column, when visible
 * Browse v2 uses the `LowerPluralDisplayName` when there are no resources (e.g. "No web apps to display")
 * Browse v2 uses the `LowerPluralDisplayName` as the text filter placeholder
+* Global search uses the `SingularDisplayName` to indicate what type resources are
+* The Azure mobile app uses the `PluralDisplayName` in the resource type filter (support for `ServiceDisplayName` coming post-Build)
+* The Azure mobile app uses the `SingularDisplayName` everywhere the resource type is displayed (i.e. resource list/detail, alert list/ detail)
 
-Filtering functionality within the Browse menu searches over `Keywords`.  `Keywords` is a comma-separated set of words or phrases which
+Filtering functionality within the Browse menu searches over `Keywords`. `Keywords` is a comma-separated set of words or phrases which
 allow users to search for your asset by identifiers other than than the set display names. 
 
 Remember, your part and blade should both have a single `id` input parameter, which is the asset id:
