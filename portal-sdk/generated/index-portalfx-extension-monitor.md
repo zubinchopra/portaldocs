@@ -1915,16 +1915,11 @@ You will need to contact the portal team in order to find a way to get past this
 ## Extension HomePage Caching
 
  <h1 name="portalfx-extension-homepage-caching"></h1>
- <properties
-    title=""
-    pageTitle="Performance - Extension HomePage Caching"
-    description=""
-    authors="madjos" />
-
+ 
 <a name="performance-extension-homepage-caching-server-side-caching-of-extension-home-pages"></a>
 ### Server side caching of extension home pages
 
-With the latest version of the SDK (5.0.302.85 or later) extension home pages can be cached (to different levels).
+With the (5.0.302.85 or later) version of the SDK  extension home pages can be cached (to different levels).
 This should help get slightly better load time especially from browsers that have high latency.
 Below are two example URLs from the portal running in production:
 
@@ -2083,6 +2078,7 @@ To verify that the browser serves your extension entirely from cache on subseque
 Again, if you do make some of these changes, you still need to coordinate with the portal team to make sure that we make corresponding changes on our side too.
 Basically that will tell us to stop sending your extension the sessionId part of the query string in the URL (otherwise caching does not help at all).
 Sorry about this part, we had to do it in order to stay entirely backward compatible/safe.
+
 
 <a name="performance-persistent-caching-of-scripts-across-extension-updates"></a>
 ## Persistent Caching of scripts across extension updates

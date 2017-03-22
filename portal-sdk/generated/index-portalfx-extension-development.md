@@ -1,14 +1,17 @@
 * [Getting Started](#getting-started)
     * [How the portal works](#getting-started-how-the-portal-works)
     * [How extensions work](#getting-started-how-extensions-work)
-    * [Getting started with the Portal SDK](#getting-started-getting-started-with-the-portal-sdk)
     * [Samples extension](#getting-started-samples-extension)
 * [Common scenarios](#common-scenarios)
     * [Building browse experiences](#common-scenarios-building-browse-experiences)
     * [Building create experiences](#common-scenarios-building-create-experiences)
+    * [Building custom create forms](#common-scenarios-building-custom-create-forms)
 * [Basic Concepts](#basic-concepts)
     * [UI Concepts](#basic-concepts-ui-concepts)
+    * [TypeScript decorator support for extension metadata (formerly known as No-PDL or No PDL)](#basic-concepts-typescript-decorator-support-for-extension-metadata-formerly-known-as-no-pdl-or-no-pdl)
+    * [Parts (a.k.a. tiles)](#basic-concepts-parts-a-k-a-tiles)
     * [Blades](#basic-concepts-blades)
+    * [Introduction to Blade Kinds](#basic-concepts-introduction-to-blade-kinds)
 * [Blade opening and closing](#blade-opening-and-closing)
     * [Strongly typed blade reference classes](#blade-opening-and-closing-strongly-typed-blade-reference-classes)
     * [Opening blades (Recommended pattern)](#blade-opening-and-closing-opening-blades-recommended-pattern)
@@ -35,15 +38,6 @@
     * [Helpers and Indicators](#controls-helpers-and-indicators)
     * [Visualizing Data](#controls-visualizing-data)
     * [Donut chart](#controls-donut-chart)
-    * [Build your own controls](#controls-build-your-own-controls)
-    * [IMPORTANT NOTE:](#controls-important-note)
-    * [Sections:](#controls-sections)
-    * [Custom control overview](#controls-custom-control-overview)
-    * [Building a custom control](#controls-building-a-custom-control)
-    * [Consuming a custom control](#controls-consuming-a-custom-control)
-    * [Making a custom control that participate in validation](#controls-making-a-custom-control-that-participate-in-validation)
-    * [Advanced topics](#controls-advanced-topics)
-    * [Known issues](#controls-known-issues)
 * [Authentication](#authentication)
     * [Calling ARM](#authentication-calling-arm)
     * [Calling other services](#authentication-calling-other-services)
@@ -73,7 +67,7 @@
     * [Notifications](#resource-management-notifications)
     * [Subscriptions](#resource-management-subscriptions)
     * [Resource Tags](#resource-management-resource-tags)
-    * [Resource moves](#resource-management-resource-moves)
+    * [Pricing Tier](#resource-management-pricing-tier)
 * [Debugging](#debugging)
     * [Debugging extension load failures](#debugging-debugging-extension-load-failures)
     * [Testing in production](#debugging-testing-in-production)
@@ -133,12 +127,9 @@ The new Azure portal at [http://portal.azure.com](http://portal.azure.com) is si
 [architecture]: ../media/portalfx-deployment/deployment.png
 
  <h1 name="portalfx-creating-extensions"></h1>
- <properties title="" pageTitle="Creating an Extension" description="" authors="nickharris" />
+ ## Getting started with the Portal SDK
 
-<a name="getting-started-getting-started-with-the-portal-sdk"></a>
-## Getting started with the Portal SDK
-
-<a name="getting-started-getting-started-with-the-portal-sdk-prerequisites"></a>
+<a name="getting-started-how-extensions-work-prerequisites"></a>
 ### Prerequisites
 
 - Microsoft Windows 8, Windows Server 2012 R2, or latest
@@ -146,7 +137,7 @@ The new Azure portal at [http://portal.azure.com](http://portal.azure.com) is si
 - Latest version of the <a href="http://www.typescriptlang.org/#Download" target="_blank">TypeScript plugin for Visual Studio</a>
 - Latest version of the <a href="../generated/downloads.md" target="_blank">Azure Portal SDK</a>
 
-<a name="getting-started-getting-started-with-the-portal-sdk-creating-an-extension"></a>
+<a name="getting-started-how-extensions-work-creating-an-extension"></a>
 ### Creating an Extension
 The Azure Portal SDK includes everything you need to build extensions for the portal.  Included are variety of tools and samples that help developers build extensions on top of the framework.
 
@@ -190,7 +181,7 @@ You will find that the project template has implemented many of the key componen
 - Browse (How people browse resources they have created)
 - Resource Menu (How people use and manage resources they have created)
 
-<a name="getting-started-getting-started-with-the-portal-sdk-marketplace-gallery-integration-and-create-experience"></a>
+<a name="getting-started-how-extensions-work-marketplace-gallery-integration-and-create-experience"></a>
 ### Marketplace Gallery Integration and Create Experience
 
 In your running portal, go to the marketplace by clicking __+New__ and then __See all__.
@@ -223,7 +214,7 @@ Fill out the create form and click create to actually create a resource.
 
 For more information on creating gallery packages and create forms see the [gallery documentation](/gallery-sdk/generated/index-gallery.md#Marketplace-Gallery-Integration-and-Create-Experience).
 
-<a name="getting-started-getting-started-with-the-portal-sdk-browse"></a>
+<a name="getting-started-how-extensions-work-browse"></a>
 ### Browse
 
 In the running portal you can navigate to __Browse -> My Resources__ to see your extension's browse experience.  
@@ -240,7 +231,7 @@ The code for the browse implementation is located in __Client/Browse__.  You can
 
 For more information on the browse experience see the [Browse documentation](#browse).
 
-<a name="getting-started-getting-started-with-the-portal-sdk-resource-menu"></a>
+<a name="getting-started-how-extensions-work-resource-menu"></a>
 ### Resource Menu
 
 Click on your resource from within the browse list to open the resource menu.  Many of the standard Azure experiences such as __tags__, __locks__, and __acess control__ have been automatically injected into your menu.
@@ -253,14 +244,14 @@ The code for the resource menu is located in __Browse/ViewModels/AssetTypeViewMo
 
 For more information on the resource menu see the [Resource menu documentation](/gallery-sdk/generated/index-gallery.md#resource-management-resource-menu).
 
-<a name="getting-started-getting-started-with-the-portal-sdk-next-steps"></a>
+<a name="getting-started-how-extensions-work-next-steps"></a>
 ### Next Steps
 
 Read more about [testing in production](#portalfx-testinprod).
 
 Next Steps: To debug issues loading an extension in the portal, go through the [Debugging extension failures](#portalfx-debugging-extension-load-failures) guide.
 
-<a name="getting-started-getting-started-with-the-portal-sdk-questions"></a>
+<a name="getting-started-how-extensions-work-questions"></a>
 ### Questions?
 
 Ask questions on: [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).
@@ -803,17 +794,16 @@ If you don't have a list of resources and simply need to add a custom blade to B
 
 
  <h1 name="portalfx-create"></h1>
- ﻿<properties title="" pageTitle="Building create experiences" description="" authors="nickharris" />
+ ﻿<properties title="" pageTitle="Building create experiences" description="" authors="nickharris, paparsad, alshaker" />
 
 <a name="common-scenarios-building-create-experiences"></a>
 ## Building create experiences
 
-The Azure portal offers 3 ways to build a Create form:
+The Azure portal offers 3 ways to build a create form:
 
 1. *[Deploy to Azure](#portalfx-create-deploytoazure)*
 
-    There are simple forms auto-generated from an ARM template with very basic controls and validation. Deploy to Azure is the quickest way to build a Create form and even integrate with the Marketplace,
-    but is very limited in available validation and controls.
+    There are simple forms auto-generated from an ARM template with very basic controls and validation. Deploy to Azure is the quickest way to build a Create form and even integrate with the Marketplace, but is very limited in available validation and controls.
 
     Use [Deploy to Azure](#portalfx-create-deploytoazure) for [community templates](https://azure.microsoft.com/documentation/templates) and simple forms.
 
@@ -823,75 +813,161 @@ The Azure portal offers 3 ways to build a Create form:
 
     Use [Solution templates](https://github.com/Azure/azure-marketplace/wiki) for IaaS-focused ARM templates.
 
-3. *Custom form*
+3. *Custom create forms*
 
-    These are fully customized form built using TypeScript in an Azure portal extension. Most teams build custom Create forms for full flexibility in the UI and validation. This requires developing an extension.
+    These are fully customized forms built using TypeScript in an Azure portal extension. Most teams build custom create forms for full flexibility in the UI and validation. This requires developing an extension.
 
-<a name="common-scenarios-building-create-experiences-create-a-template-blade"></a>
-### Create a template blade
+<a name="common-scenarios-building-custom-create-forms"></a>
+## Building custom create forms
 
-<a name="common-scenarios-building-create-experiences-create-a-template-blade-create-marketplace-package-aka-gallery-package"></a>
-#### Create Marketplace package (aka Gallery package)
+<a name="common-scenarios-building-custom-create-forms-create-marketplace-package-aka-gallery-package"></a>
+### Create Marketplace package (aka Gallery package)
+The Marketplace provides a categorized collection of packages which can be created in the portal. Publishing your package to the Marketplace is simple:
 
-The Marketplace provides a categorized collection of packages which can be created in the portal. Publishing your
-package to the Marketplace is simple:
+1. Create a package and publish it to the DF Marketplace yourself, if applicable. Learn more about [publishing packages to the Marketplace](/documentation/sections/gallery).
+1. Side-load your extension to test it locally.
+1. Set a "hide key" before testing in production.
+1. Send the package to the Marketplace team to publish it for production.
+1. Notify the Marketplace team when you're ready to go live.
 
-1. Create a package
-1. Side-load your extension to test it locally
-1. Publish it to the DF Marketplace yourself, if applicable
-1. Set a "hide key" before testing in production
-1. Send the package to the Marketplace team to publish it for production
-1. Notify the Marketplace team when you're ready to go live
-
-Note that the +New menu is curated and can change at any time, based on C+E leadership business goals. Ensure
-documentation, demos, and tests use [Create from Browse](#portalfx-browse) or
-[deep-links](#portalfx-links) as the entry point.
+Note that the **+New** menu is curated and can change at any time based on C+E leadership business goals. Ensure documentation, demos, and tests use [Create from Browse](#portalfx-browse) or [deep-links](#portalfx-links) as the entry point.
 
 ![The +New menu][plus-new]
 
-Learn more about [publishing packages to the Marketplace](/documentation/sections/gallery).
-
 ![The Marketplace][marketplace]
 
+<a name="common-scenarios-building-custom-create-forms-design-for-a-single-blade"></a>
+### Design for a single blade
+All create experiences should be designed for a single blade. Start by building a template blade. Always prefer dropdowns over pickers (form fields that allow selecting items from a list in a child blade) and avoid using [selectors](#controls-selectors-and-pickers) (form fields that open child blades).
 
-<a name="common-scenarios-building-create-experiences-create-a-template-blade-handling-provider-callbacks"></a>
-#### Handling provider callbacks
+Email [ibizafxpm](mailto:ibizafxpm@microsoft.com?subject=Full-screen Create) if you have any questions about the current state of full-screen create experiences.
 
+<a name="common-scenarios-building-custom-create-forms-add-a-provider-component"></a>
+### Add a provider component
+The [parameter collection framework](#portalfx-parameter-collection-overview) is platform that enables you to build UX to collect data from the user. If you're not familiar with collectors and providers, now is a good time to read more about it.
 
-<a name="common-scenarios-building-create-experiences-create-a-template-blade-handling-provisioner-callbacks"></a>
-#### Handling provisioner callbacks
+In most cases, your blade will be launched from the Marketplace or a toolbar command (like Create from Browse). They will act as the collectors. Consequently, your blade will be expected to act as a provider. Here's what a provider looks like:
 
-The parameter collection framework is the piece that ties all the above components together. At the core, this framework
-consists of two types of entities: Providers and Collectors. As their names suggest, providers implement an interface
-that allows them to provide data to collectors in a well understood format. Similarly, collectors implement an interface
-that allows them to collect this data from the providers.
+```ts
+// Instantiate a parameter provider view model.
+this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModel, DataModel>(container, {
+    // This is where we receive the initial data defined in the UI definition file uploaded
+    // with the gallery package. We'll use the data to seed the edit scope. This is the time
+    // do do any necessary data transformations or account for incomplete inputs.
+    mapIncomingDataForEditScope: (incoming) => {
+        var dataModel: DataModel = {
+            someProperty: ko.observable(incoming.someProperty || "")
+        };
+        return dataModel;
+    },
+    // This is where we transform the edit scope data to outputs. We're just returning the
+    // data as it is, so no work needed here.
+    mapOutgoingDataForCollector: (outgoing) => {
+        return outgoing;
+    }
+});
+```
 
-Learn more about [parameter collectors](#portalfx-parameter-collection-overview).
+<a name="common-scenarios-building-custom-create-forms-add-a-provisioner-component"></a>
+### Add a provisioner component
+A provisioner is another component in the [parameter collection framework](#portalfx-parameter-collection-overview). If you're creating your resource by deploying a single template to ARM, you need to use an ARM provisioner. Otherwise, you need to use a regular provisioner to implement your custom deployment process.
 
+1. ARM provisioning:
+(Refer to the full EngineV3 sample to see the full create blade)
 
-<a name="common-scenarios-building-create-experiences-create-a-template-blade-build-form"></a>
-#### Build form
+```ts
+// Instantiate a ARM provisioner view model.
+this.armProvisioner = new AzureResourceManager.Provisioner<DataModel>(container, initialState, {
+    // This is where we supply the ARM provisioner with the template deployment options
+    // required by the deployment operation.
+    supplyTemplateDeploymentOptions: (data, mode) => {
+        // Fill out the template deployment options.
+        var templateDeploymentOptions: AzureResourceManager.TemplateDeploymentOptions = {
+            subscriptionId: subscriptionId,
+            resourceGroupName: resourceGroupName,
+            resourceGroupLocation: resourceGroupLocation,
+            parameters: {
+                someProperty: data.someProperty()
+            },
+            deploymentName: galleryCreateOptions.deploymentName,
+            resourceProviders: [resourceProvider],
+            resourceId: resourceIdFormattedString,
+            // For the deployment template, you can either pass a link to the template (the URI of the
+            // template uploaded to the gallery service), or the actual JSON of the template (inline).
+            // Since gallery package for this sample is on your local box (under Local Development),
+            // we can't send ARM a link to template. We'll use inline JSON instead. This method returns
+            // the exact same template as the one in the package. Once your gallery package is uploaded
+            // to the gallery service, you can reference it as shown on the second line.
+            templateJson: this._getTemplateJson(),
+            // Or -> templateLinkUri: galleryCreateOptions.deploymentTemplateFileUris["TemplateName"],
+        };
+        return Q(templateDeploymentOptions);
+    },
 
-Use built-in form fields, like TextField and DropDown, to build your form the way you want. Use the built-in EditScope
-integration to manage changes and warn customers if they leave the form. Learn more about
-[building forms](#portalfx-forms).
+    // Optional -> supplyStartboardInfo: (data: DataModel) => ParameterCollection.StartboardInfo;
+    // You can implement this callback if you want to supply different provisioning startboard
+    // info. If not implemented, the provisioner will use the info defined in the UI definition
+    // file in the gallery package. This is what we're doing here (preferable).
 
-<a name="common-scenarios-building-create-experiences-create-a-template-blade-design-for-a-single-blade"></a>
-#### Design for a single blade
-All Create experiences should be designed for a single blade. Always prefer dropdowns over pickers (form fields that
-allow selecting items from a list in a child blade) and avoid using [selectors](#controls-selectors-and-pickers)
-(form fields that open child blades).
+    // Supplying an action bar and a parameter provider allows for automatic provisioning.
+    actionBar: this.actionBar,
+    parameterProvider: this.parameterProvider,
 
-Email [ibizafxpm](mailto:ibizafxpm@microsoft.com?subject=Full-screen Create) if you have any questions about the current
-state of full-screen Create experiences.
+    // Add create features such as opting in for ARM preflight validation. You can OR multiple
+    // features together.
+    createFeatures: CreateFeatures.EnableArmValidation
+});
+```
 
-<a name="common-scenarios-building-create-experiences-create-a-template-blade-standard-arm-fields"></a>
-#### Standard ARM fields
-All ARM subscription resources require a subscription, resource group, location and pricing dropdown. The portal offers built-in controls
-for each of these. Refer to the EngineV3 Create sample
-(`SamplesExtension\Extension\Client\Create\EngineV3\ViewModels\CreateEngineBladeViewModel.ts`) for a working example.
+2. Custom provisioning:
+(Refer to the full RobotV3 sample to see the full create blade)
+```ts
+// Instantiate a provisioner view model.
+this.provisioner = new ParameterCollection.Provisioner<DataModel>(container, {
+    // This is where we supply the provisioner with the provisioning operation.
+    supplyProvisioningPromise: (data) => {
+        return this._dataContext.createMyResource(data).then(() => {
+            // Raise a notification, if needed.
+            // MsPortalFx.UI.NotificationManager.create(...).raise(...);
 
-<a name="common-scenarios-building-create-experiences-create-a-template-blade-standard-arm-fields-subscriptions-dropdown"></a>
+            // Resolve the final promise with the container model for the startboard part.
+            // This is an object that contains the inputs to that part.
+            return {
+                // In this case, the startboard has one input called "id" (which is also
+                // the "startboardPartKeyId" on the startboardInfo object), and takes the
+                // name of the robot as the value.
+                id: data.someProperty()
+            };
+        });
+    },
+
+    // Implement this callback if you want to supply different provisioning startboard info.
+    supplyStartboardInfo: (data) => {
+        return robotStartboardInfo;
+    },
+
+    // Supplying an action bar and a parameter provider allows for automatic provisioning.
+    actionBar: this.actionBar,
+    parameterProvider: this.parameterProvider
+});
+```
+
+<a name="common-scenarios-building-custom-create-forms-build-your-form"></a>
+### Build your form
+Use built-in form fields, like TextField and DropDown, to build your form the way you want. Use the built-in EditScope integration to manage changes and warn customers if they leave the form.
+
+```ts
+// The parameter provider takes care of instantiating and initializing an edit scope for you,
+// so all we need to do is point our form's edit scope to the parameter provider's edit scope.
+this.editScope = this.parameterProvider.editScope;
+```
+Learn more about [building forms](#portalfx-forms).
+
+<a name="common-scenarios-building-custom-create-forms-standard-arm-fields"></a>
+### Standard ARM fields
+All ARM subscription resources require a subscription, resource group, location and pricing dropdown. The portal offers built-in controls for each of these. Refer to the EngineV3 Create sample (`SamplesExtension\Extension\Client\Create\EngineV3\ViewModels\CreateEngineBladeViewModel.ts`) for a working example.
+
+<a name="common-scenarios-building-custom-create-forms-standard-arm-fields-subscriptions-dropdown"></a>
 ##### Subscriptions dropdown
 ```ts
 * `MsPortalFx.Azure.Subscriptions.DropDown`
@@ -918,7 +994,7 @@ var subscriptionsDropDownOptions: SubscriptionsDropDown.Options = {
 };
 this.subscriptionsDropDown = new SubscriptionsDropDown(container, subscriptionsDropDownOptions);
 ```
-<a name="common-scenarios-building-create-experiences-create-a-template-blade-standard-arm-fields-resource-groups-dropdown"></a>
+<a name="common-scenarios-building-custom-create-forms-standard-arm-fields-resource-groups-dropdown"></a>
 ##### Resource groups dropdown
 ```ts
 * `MsPortalFx.Azure.ResourceGroups.DropDown`
@@ -953,7 +1029,7 @@ var resourceGroupsDropDownOptions: ResourceGroups.DropDown.Options = {
 };
 this.resourceGroupDropDown = new ResourceGroups.DropDown(container, resourceGroupsDropDownOptions);
 ```
-<a name="common-scenarios-building-create-experiences-create-a-template-blade-standard-arm-fields-locations-dropdown"></a>
+<a name="common-scenarios-building-custom-create-forms-standard-arm-fields-locations-dropdown"></a>
 ##### Locations dropdown
 ```ts
 * `MsPortalFx.Azure.Locations.DropDown`
@@ -986,7 +1062,7 @@ this.resourceGroupDropDown = new ResourceGroups.DropDown(container, resourceGrou
 };
 this.locationsDropDown = new LocationsDropDown(container, locationsDropDownOptions);
 ```
-<a name="common-scenarios-building-create-experiences-create-a-template-blade-standard-arm-fields-pricing-dropdown"></a>
+<a name="common-scenarios-building-custom-create-forms-standard-arm-fields-pricing-dropdown"></a>
 ##### Pricing dropdown
 ```ts
 *`MsPortalFx.Azure.Pricing.DropDown`
@@ -1010,8 +1086,37 @@ this.specDropDown = new Specs.DropDown(container, {
 });
 
 ```
+<a name="common-scenarios-building-custom-create-forms-standard-arm-fields-additional-custom-validation-to-the-arm-fields"></a>
+#### Additional/custom validation to the ARM fields
+Sometimes you need to add extra validation on any of the previous ARM fields. For instance, you might want to check with you RP/backend to make sure that the selected location is available in certain cirqumstances. To do that, just add a custom validator like you would do with any regular form field. Exmaple:
 
-<a name="common-scenarios-building-create-experiences-create-a-template-blade-wizards"></a>
+```ts
+// The locations drop down.
+var locationCustomValidation = new MsPortalFx.ViewModels.CustomValidation(
+    validationMessage,
+    (value) => {
+        return this._dataContext.validateLocation(value).then((isValid) => {
+            // Resolve with undefined if 'value' is a valid selection and with an error message otherwise.
+            return MsPortalFx.ViewModels.getValidationResult(!isValid && validationMessage || undefined);
+        }, (error) => {
+            // Make sure your custom validation never throws. Catch the error, log the unexpected failure
+            // so you can investigate later, and fail open.
+            logError(...);
+            return MsPortalFx.ViewModels.getValidationResult();
+        });
+    });
+var locationsDropDownOptions: LocationsDropDown.Options = {
+    ...,
+    validations: ko.observableArray<MsPortalFx.ViewModels.Validation>([
+        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectLocation),
+        locationCustomValidation // Add your custom validation here.
+    ])
+    ...
+};
+this.locationsDropDown = new LocationsDropDown(container, locationsDropDownOptions);
+```
+
+<a name="common-scenarios-building-custom-create-forms-standard-arm-fields-wizards"></a>
 #### Wizards
 The Azure portal has a **legacy pattern** for wizard blades, however customer feedback and usability has proven the design
 isn't ideal and shouldn't be used. Additionally, the wizard wasn't designed for
@@ -1023,7 +1128,7 @@ not be supported.
 Email [ibizafxpm](mailto:ibizafxpm@microsoft.com?subject=Create wizards + full screen) if you have any questions about
 the current state of wizards and full-screen Create support.
 
-<a name="common-scenarios-building-create-experiences-validation"></a>
+<a name="common-scenarios-building-custom-create-forms-validation"></a>
 ### Validation
 Create is our first chance to engage with and win customers and every hiccup puts us at risk of losing customers; specifically
 new customers. As a business, we need to lead that engagement on a positive note by creating resources quickly and easily.
@@ -1035,7 +1140,7 @@ In an effort to resolve Create success regressions as early as possible, sev 2 [
 incidents will be created and assigned to extension teams whenever the success rate
 drops 5% or more for 50+ deployments over a rolling 24-hour period.
 
-<a name="common-scenarios-building-create-experiences-validation-arm-template-deployment-validation"></a>
+<a name="common-scenarios-building-custom-create-forms-validation-arm-template-deployment-validation"></a>
 #### ARM template deployment validation
 If your form uses the ARM provisioner, you need to opt in to deployment validation manually by adding
 `CreateFeatures.EnableArmValidation` to the `HubsProvisioner<T>` options. Wizards are not currently supported; we are
@@ -1055,7 +1160,7 @@ Refer to the Engine V3 sample for a running example
 - Client\Create\EngineV3\ViewModels\CreateEngineBladeViewModel.ts
 - [http://aka.ms/portalfx/samples#create/microsoft.engine](http://aka.ms/portalfx/samples#create/microsoft.engine)
 
-<a name="common-scenarios-building-create-experiences-automation-options"></a>
+<a name="common-scenarios-building-custom-create-forms-automation-options"></a>
 ### Automation options
 If your form uses the ARM provisioner, you will get an "Automation options" link in the action bar by default. This link
 gets the same template that is sent to ARM and gives it to the user. This allows customers to automate the creation of
@@ -1065,15 +1170,13 @@ on a separate solution for wizards.
 Email [ibizafxpm](mailto:ibizafxpm@microsoft.com?subject=Create wizards + automation options)
 if you have any questions about wizard support.
 
-
-<a name="common-scenarios-building-create-experiences-testing"></a>
+<a name="common-scenarios-building-custom-create-forms-testing"></a>
 ### Testing
-
 Due to the importance of Create and how critical validation is, all Create forms should have automated testing to help
 avoid regressions and ensure the highest possible quality for your customers. Refer to [testing guidance](#portalfx-test)
 for more information on building tests for your form.
 
-<a name="common-scenarios-building-create-experiences-feedback"></a>
+<a name="common-scenarios-building-custom-create-forms-feedback"></a>
 ### Feedback
 
 When customers leave the Create blade before submitting the form, the portal asks for feedback. The feedback is stored
@@ -1081,21 +1184,21 @@ in the standard [telemetry](#portalfx-telemetry) tables. Query for
 `source == "FeedbackPane" and action == "CreateFeedback"` to get Create abandonment feedback.
 
 
-<a name="common-scenarios-building-create-experiences-telemetry"></a>
+<a name="common-scenarios-building-custom-create-forms-telemetry"></a>
 ### Telemetry
 
 Refer to [Create telemetry](/portal-sdk/generated/index-portalfx-extension-monitor.md#portalfx-telemetry-create) for additional information on usage dashboards and queries.
 
-<a name="common-scenarios-building-create-experiences-troubleshooting"></a>
+<a name="common-scenarios-building-custom-create-forms-troubleshooting"></a>
 ### Troubleshooting
 
 Refer to the [troublshooting guide](#portalfx-create-troubleshooting) for additional debugging information.
 
 
-<a name="common-scenarios-building-create-experiences-additional-topics"></a>
+<a name="common-scenarios-building-custom-create-forms-additional-topics"></a>
 ### Additional topics
 
-<a name="common-scenarios-building-create-experiences-additional-topics-initiating-create-from-other-places"></a>
+<a name="common-scenarios-building-custom-create-forms-additional-topics-initiating-create-from-other-places"></a>
 #### Initiating Create from other places
 Some scenarios may require launching your Create experience from outside the +New menu or Marketplace. The following
 are supported patterns:
@@ -1207,8 +1310,248 @@ Before your package is allowed into the marketplace, you'll need to onboard with
 [hub]: ../media/portalfx-ui-concepts/hub.png
 [dashboard]: ../media/portalfx-ui-concepts/dashboard.png
 [gallery]: ../media/portalfx-ui-concepts/gallery.png
+ <h1 name="portalfx-no-pdl-programming"></h1>
+ 
+<a name="basic-concepts-typescript-decorator-support-for-extension-metadata-formerly-known-as-no-pdl-or-no-pdl"></a>
+## TypeScript decorator support for extension metadata (formerly known as No-PDL or No PDL)
+
+The Azure portal SDK requires developers to provide metadata for UI elements like blades and parts. The portal uses this metadata to build an inventory for your extension that is used internally.
+
+Earlier versions of the SDK mandated that this metadata be provided via a proprietery language called **Portal Definition Language (PDL)**.  This resulted in extra files in your codebase, split the logic for a single UI entity into two different places, and added a new language for developers to learn.
+
+The latest version of the SDK lets you provide this metadata using [TypeScript decorators](https://www.typescriptlang.org/docs/handbook/decorators.html).  With this approach the metadata and code for a blade or part all lives in a single file.  Because it's native TypeScript you'll also find that there is enhanced type checking support that becomes available. PDL is still supported for back compat reasons, but the decorators are the recommended pattern going forward.
+
+The next few sections provide an overview on how to use these decorators.  Additionally, there is an [Introduction video](https://ibizareflectorprod.blob.core.windows.net/public/video.html) that walks through these concepts.
+
+<a name="basic-concepts-typescript-decorator-support-for-extension-metadata-formerly-known-as-no-pdl-or-no-pdl-current-typescript-decorator-support"></a>
+### Current TypeScript decorator support
+
+The following SDK features can be built today with TypeScript decorators.  If you have access, you can explore the interfaces with jsdoc comments [directly in our source code](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx?path=%2Fsrc%2FSDK%2FFramework.Client%2FTypeScript%2FFx%2FComposition&version=GBdev&_a=contents).  We will eventually export the jsdocs for the SDK to a public location.  That effort is in progress.
+
+1. Template blades - A blade where you provide a template and a view model
+1. Menu blades - A blade that exposes menu items where each item represents a blade
+1. FrameBlades - A blade that provides you with an iframe where you fully own the blade content
+1. Parts (tiles)
+1. Frame parts
+
+These SDK features cannot **(yet)** be built with decorators:
+
+1. Unlocked blades - Blades with tiles on them - These will likely never get decorator support since that is not a pattern that is recommended for any experience.
+1. The asset model - Defines the asset types (usually ARM resources) in your extension
+1. Extension definition - A very small amount of PDL that provides general metadata about your extension
+
+<a name="basic-concepts-typescript-decorator-support-for-extension-metadata-formerly-known-as-no-pdl-or-no-pdl-building-a-hello-world-template-blade-using-decorators"></a>
+### Building a hello world template blade using decorators
+
+This section pulls from a sample that [you can see in the dogfood environment](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/TemplateBladesBlade/simpleTemplateBlade).
+
+Here is an example of a very simple template blade, represented by a single TpeScript file in your extension project.
+
+```typescript
+
+/// <reference path="../../../TypeReferences.d.ts" />
+import BladesArea = require("../BladesArea");
+import ClientResources = require("ClientResources");
+import TemplateBlade = require("Fx/Composition/TemplateBlade");
+
+export = Main;
+
+module Main {
+"use strict";
+
+//docs#DecoratorReference
+@TemplateBlade.Decorator({
+    htmlTemplate: "" +
+        "<div class='msportalfx-padding'>" +
+        "  <div>This is a Template Blade.</div>" +
+        "</div>"
+})
+//docs#DecoratorReference
+export class SimpleTemplateBlade {
+    public title = ClientResources.simpleTemplateBlade;
+    public subtitle: string;
+
+//docs#Context
+    public context: TemplateBlade.Context<void, BladesArea.DataContext>;
+//docs#Context
+
+    public onInitialize() {
+        return Q();  // This sample loads no data.
+    }
+}
+}
+
+```
+
+This is the decorator code.  There are several options that can be specified as properties on the object passed into the decorator.  This sample shows the simplest scenario where you only need to provide an HTML template.  In this case, the template is provided inline, something the SDK supports for convinience.  You also have the ability to provide a relative path to an html file that contains the template (e.g. If your blade is in a file called `MyBlade.ts` then you can add a file right next to it called `MyBlade.html` and then pass `./MyBladeName.html` into the htmlTemplate property of the decorator).
+
+```typescript
+
+@TemplateBlade.Decorator({
+    htmlTemplate: "" +
+        "<div class='msportalfx-padding'>" +
+        "  <div>This is a Template Blade.</div>" +
+        "</div>"
+})
+
+```
+
+Additionally, the No-PDL programming model introduces (and requires) a context property to be present in your blade class. The context property is populated by the framework on your behalf and contains APIs you can call to interact with the shell.  You can learn more about the context property [here](###The context property).
+
+```typescript
+
+public context: TemplateBlade.Context<void, BladesArea.DataContext>;
+
+```
+
+<a name="basic-concepts-typescript-decorator-support-for-extension-metadata-formerly-known-as-no-pdl-or-no-pdl-building-a-menu-blade-using-decorators"></a>
+### Building a menu blade using decorators
+
+Below is an example of a menu blade build using decorators.  It uses the `@MenuBlade` decorator.  This decorator puts two constraints on your type.
+
+1.  It makes the public `viewModel` property required.  The property is of type `MenuBlade.ViewModel2` and provides you with APIs to setup the menu.
+2.  It makes the public 'context' property required.  The property is of type `MenuBlade.Context`.
+
+```ts
+/// <reference path="../../../TypeReferences.d.ts" />
+
+import BladesArea = require("../BladesArea");
+import ClientResources = require("ClientResources");
+import BladeReferences = require("../../../_generated/BladeReferences");
+import MenuBlade = require("Fx/Composition/MenuBlade");
+
+export = Main;
+
+module Main {
+    "use strict";
+
+    @MenuBlade.Decorator()
+    export class TemplateBladesBlade {
+        public title = ClientResources.templateBladesBladeTitle;
+        public subtitle = ClientResources.samples;
+
+        public context: MenuBlade.Context<void, BladesArea.DataContext>;
+
+        public viewModel: MenuBlade.ViewModel2;
+
+        public onInitialize() {
+            const { container } = this.context;
+
+            this.viewModel = MenuBlade.ViewModel2.create(container, {
+                groups: [
+                    {
+                        id: "default",
+                        displayText: "",
+                        items: [
+                            {
+                                id: "simpleTemplateBlade",
+                                displayText: ClientResources.simpleTemplateBlade,
+                                icon: null,
+                                supplyBladeReference: () => {
+                                    return new BladeReferences.SimpleTemplateBladeReference();
+                                }
+                            },
+                            {
+                                id: "templateBladeWithShield",
+                                displayText: ClientResources.templateBladeWithShield,
+                                icon: null,
+                                supplyBladeReference: () => {
+                                    return new BladeReferences.TemplateBladeWithShieldReference();
+                                }
+                            },
+                            {
+                                id: "templateBladeWithCommandBar",
+                                displayText: ClientResources.templateBladeWithCommandBar,
+                                icon: null,
+                                supplyBladeReference: () => {
+                                    return new BladeReferences.TemplateBladeWithCommandBarReference();
+                                }
+                            },
+                            {
+                                id: "templateBladeReceivingDataFromChildBlade",
+                                displayText: ClientResources.templateBladeReceivingDataFromChildBlade,
+                                icon: null,
+                                supplyBladeReference: () => {
+                                    return new BladeReferences.TemplateBladeReceivingDataFromChildBladeReference();
+                                }
+                            },
+                            {
+                                id: "templateBladeWithSettings",
+                                displayText: ClientResources.templateBladeWithSettings,
+                                icon: null,
+                                supplyBladeReference: () => {
+                                    return new BladeReferences.TemplateBladeWithSettingsReference();
+                                }
+                            },
+                            {
+                                id: "templateBladeInMenuBlade",
+                                displayText: ClientResources.templateBladeInMenuBlade,
+                                icon: null,
+                                supplyBladeReference: () => {
+                                    return new BladeReferences.TemplateBladeInMenuBladeReference();
+                                }
+                            },
+                        ]
+                    }
+                ],
+                defaultId: "simpleTemplateBlade"
+            });
+
+            return Q();  // This sample loads no data.
+        }
+    }
+}
+```
+
+<a name="basic-concepts-typescript-decorator-support-for-extension-metadata-formerly-known-as-no-pdl-or-no-pdl-the-context-property"></a>
+### The context property
+
+The context property contains APIs you can call to interact with the shell. It will be populated for you by the framework before your `onInitialize()` function is called.  **It will not be populated in your constructor.  In fact, we advise against having a constructor and instead doing all initialization work in the onInitialize function.** This is a fairly common [Dependency injection technique](https://en.wikipedia.org/wiki/Dependency_injection).
+
+Declaring the type of this property can be a little tricky, and the declaration can change if more No-PDL decorators are added to your file.  This is because certain APIs on the context object get enhanced when new decorators are used.  Let's start with a basic example and build from there.
+
+```typescript
+
+public context: TemplateBlade.Context<void, BladesArea.DataContext>;
+
+```
+
+This is the simplest declaration of the context property.  The framework provided `TemplateBlade.Context` type takes in two generic parameters. The first parameter represents the type of object that represents the parameters to the blade.  This simple blade takes no parameters, hence the value of `void` for the first generic parameter.  The second generic parameter represents the type of your model data, which – today – must be the DataContext object for your Blade/Part. This makes the context property aware of your data context in a strongly typed way.
+
+Note that in this example there is an API on the context called `context.container.closeCurrentBlade()`.  This function takes no parameters.
+
+Now let's say you're changing this blade so that it returns data to its parent (i.e. the blade or part that opened it). First, you would add the returns data decorator. **Note that not all blades need this behavior, and it does come with the consequence that the child blade is not deep-linkable if it requires a parent blade. Use only as appropriate.**
+
+        @TemplateBlade.ReturnsData.Decorator()
+
+That will cause a compiler error because that decorator changes the context in a way that must be declared.  The `closeCurrentBlade()` function that previously took no arguments now needs to accept the data to return to the parent blade. 
+
+To fix the error, add `& TemplateBlade.ReturnsData.Context<{ value: string }>` to the declaration like this.
+
+        public context: TemplateBlade.Context<void, BladesArea.DataContext> & TemplateBlade.ReturnsData.Context<{ value: string }>;
+
+This uses TypeScript [intersection types](https://www.typescriptlang.org/docs/handbook/advanced-types.html) to overload the closeCurrentBlade function to look like this `closeCurrentBlade(data: { value: string })` so that when you use it the compiler will enforce that data is provided to it like this:
+
+    context.container.closeCurrentBlade({
+        value: "Data to return to parent blade"
+    });
+
+Intersection types combine the members of all types that get and'd (&'d) together.
+
+When you build your project, the compiler will also produce an auto generated blade reference file that gives the same level of type safety to the parent blade.  Here is code that the parent blade would have.  Note that the callback that fires when `SimpleTemplateBlade` closes has the type information about the data being returned.
+
+    context.container.openBlade(new BladeReferences.SimpleTemplateBlade((reason: BladeClosedReason, data: {value: string}) => {
+            if (reason === BladeClosedReason.ChildClosedSelf) {
+                const newValue = data && data.value ? data.value : noValue;
+                this.previouslyReturnedValue(newValue);
+            }
+        }));
+
+Each time you add an additional decorator you will need to incorporate it into the context declaration as we did here. 
  <h1 name="portalfx-parts"></h1>
- ## Parts (a.k.a. tiles) 
+ 
+<a name="basic-concepts-parts-a-k-a-tiles"></a>
+## Parts (a.k.a. tiles)
 
 Parts (a.k.a. tiles) are a framework feature that let you integrate your UI on dashboards.  Parts used to be more prevalent on blades, but this is an older pattern.  If you are building a part for use on a blade then please reconsider.  
 
@@ -1224,7 +1567,7 @@ The following sections covers the following topics.
 - How to leverage per user part settings
 - More advanced parts topics
 
-<a name="basic-concepts-ui-concepts-when-to-and-when-not-to-build-parts"></a>
+<a name="basic-concepts-parts-a-k-a-tiles-when-to-and-when-not-to-build-parts"></a>
 ### When to, and when not to build parts
 
 The Ibiza team has changed its guidance on how to expose parts based on user feedback.  The team has also built new features to support the user feedback.   
@@ -1238,7 +1581,7 @@ There are still many cases where you want to expose rich monitoring, or at a gla
 
 If you are building parts then __it's highly recommended that you build them for use on dashboards, rather than on blades__.
 
-<a name="basic-concepts-ui-concepts-how-to-use-one-of-the-built-in-parts-to-expose-your-data-in-pre-built-views"></a>
+<a name="basic-concepts-parts-a-k-a-tiles-how-to-use-one-of-the-built-in-parts-to-expose-your-data-in-pre-built-views"></a>
 ### How to use one of the built in parts to expose your data in pre-built views
 
 Ibiza provides several built in parts (a.k.a. intrinsic parts) that let you create a part that has a pre-defined view and interaction pattern, but lets you plug in our own data.
@@ -1289,7 +1632,7 @@ export class ButtonPartViewModel extends MsPortalFx.ViewModels.ButtonPart {
 More info: [More about built in parts](#portalfx-parts-intrinsic)
 Related: [Integrate your part with the tile gallery](##How to integrate your part into the part gallery (a.k.a. tile gallery))
 
-<a name="basic-concepts-ui-concepts-how-to-create-a-custom-part-where-you-define-the-look-and-feel-as-well-as-the-data-loading"></a>
+<a name="basic-concepts-parts-a-k-a-tiles-how-to-create-a-custom-part-where-you-define-the-look-and-feel-as-well-as-the-data-loading"></a>
 ### How to create a custom part where you define the look and feel as well as the data loading
 
 Unlike the built in parts discussed in the previous section, custom parts let you define the html template that will be bound to your view model. Your templates can (and in many cases should) refer to the [controls](#Controls) that are provided by the framework.
@@ -1383,7 +1726,7 @@ export class ExampleCustomPartViewModel {
 
 Related: [Integrate your part with the tile gallery](#how-to-integrate-your-part-into-the-part-gallery)
 
-<a name="basic-concepts-ui-concepts-how-to-integrate-your-part-into-the-part-gallery"></a>
+<a name="basic-concepts-parts-a-k-a-tiles-how-to-integrate-your-part-into-the-part-gallery"></a>
 ### How to integrate your part into the part gallery
 
 The primary way that users add tiles to their dashboards is via the part gallery (a.k.a. tile gallery).  The tile gallery appears when:
@@ -1407,7 +1750,7 @@ Title, Category, and Thumbnail are pretty self explanatory.  The AutoConfigSelec
 
 // Configure the HotSpot's Selectable so it will be implicitly activated when the user drops this Part on a Dashboard.
 const bladeSelection: FxViewModels.DynamicBladeSelection = {
-    detailBlade: ExtensionDefinition.BladeNames.generalGalleryPartConfigurationBlade,
+    detailBlade: ExtensionDefinition.BladeNames.pdlGeneralGalleryPartConfigurationBlade,
     detailBladeInputs: {}
 };
 const hotSpotSelectable = new FxViewModels.Selectable({
@@ -1448,7 +1791,7 @@ container.registerSelectable(
 
 If your tile is associated with an Ibiza asset (like an ARM resource) then it should be associated with an asset type and have a single input definition whose IsAssetId property is 'True'.  If this is not the case then the part will appear in the General category of the part gallery.
  
-<a name="basic-concepts-ui-concepts-how-to-define-the-sizing-behavior-of-your-parts"></a>
+<a name="basic-concepts-parts-a-k-a-tiles-how-to-define-the-sizing-behavior-of-your-parts"></a>
 ### How to define the sizing behavior of your parts
 
 This section is based on [this live sample](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/partsizes).
@@ -1528,7 +1871,7 @@ this.resizeToButton1.click = () => {
 
 ```
 
-<a name="basic-concepts-ui-concepts-how-to-leverage-per-user-part-settings"></a>
+<a name="basic-concepts-parts-a-k-a-tiles-how-to-leverage-per-user-part-settings"></a>
 ### How to leverage per user part settings
 
 Part implementation can read and write settings that get saved whenever the user saves their dashboard.  Private dashboards live in the Ibiza user settings service.  Shared dashboards are stored in ARM as Azure resources inside of the MS.Portal resource provider.
@@ -1554,8 +1897,8 @@ Here is the TypeScript portion of the code that reads and writes samples.
 
 import ClientResources = require("ClientResources");
 import PartsArea = require("../../PartsArea");
-import ExtensionDefinition = require("../../../_generated/ExtensionDefinition");
-import Def = ExtensionDefinition.ViewModels.Parts.GeneralGalleryPart;
+import ExtensionDefinition = require("../../../../_generated/ExtensionDefinition");
+import Def = ExtensionDefinition.ViewModels.V1$Parts.GeneralGalleryPart;
 
 export = Main;
 
@@ -1622,7 +1965,7 @@ export class GeneralGalleryPart implements Def.Contract {
         //parts#PartGalleryConfigOnDropDoc
         // Configure the HotSpot's Selectable so it will be implicitly activated when the user drops this Part on a Dashboard.
         const bladeSelection: FxViewModels.DynamicBladeSelection = {
-            detailBlade: ExtensionDefinition.BladeNames.generalGalleryPartConfigurationBlade,
+            detailBlade: ExtensionDefinition.BladeNames.pdlGeneralGalleryPartConfigurationBlade,
             detailBladeInputs: {}
         };
         const hotSpotSelectable = new FxViewModels.Selectable({
@@ -1726,7 +2069,7 @@ function timeRangeToString(timeRange: FxConfiguration.TimeRange): string {
 
 ```
 
-<a name="basic-concepts-ui-concepts-no-data-message"></a>
+<a name="basic-concepts-parts-a-k-a-tiles-no-data-message"></a>
 ### No data message
 
 Sometimes you may need to display a part for which no data is available. For example, before a user has enabled deployments, you might want to show a teaser 'deployment history' part containing sample data. To support this, part `container` objects now have a new property: `noDataMessage`.
@@ -1739,7 +2082,7 @@ container.noDataMessage("Enable deployments to see your history");
 
 At this point the part will become grayed out, non-interactive, and will have the message overlaid onto it. Set the `noDataMessage` value back to `null` if you later need to remove the message. This feature should *only* be used when a part is currently not applicable because no data is available (to help the user realize the feature exists). If instead you are simply trying to disable a part while data loads, please continue to return a promise from `onInputsSet` or use the `container.operations` queue directly.
 
-<a name="basic-concepts-ui-concepts-advanced-parts-topics"></a>
+<a name="basic-concepts-parts-a-k-a-tiles-advanced-parts-topics"></a>
 ### Advanced Parts Topics
 
 - [Part versioning](#portalfx-parts-versioning)
@@ -1752,7 +2095,7 @@ At this point the part will become grayed out, non-interactive, and will have th
   <h1 name="portalfx-parts-versioning"></h1>
  <properties title="Part Versioning" pageTitle="Part Versioning" description="Part Versioning" authors="adamabdelhamed" />
 
-<a name="basic-concepts-ui-concepts-versioning"></a>
+<a name="basic-concepts-parts-a-k-a-tiles-versioning"></a>
 ### Versioning
 
 When users customize or pin a part the following state is stored and used the next time the part is loaded from a customized context.
@@ -1767,7 +2110,7 @@ Your part may also be called with older inputs by code running in other extensio
 
 To handle this you need to support backwards compatibility in your code.
 
-<a name="basic-concepts-ui-concepts-walkthrough"></a>
+<a name="basic-concepts-parts-a-k-a-tiles-walkthrough"></a>
 ### Walkthrough
 
 For part inputs we've added the **CanUseOldInputVersion** attribute that you should set to true to indicate that your part can handle older versions of inputs.  We recommend you use that in conjunction with a new part property/input called 'version'.  
@@ -1851,7 +2194,7 @@ public onInputsSet(inputs: Def.InputsContract, settings: Def.SettingsContract): 
   <h1 name="portalfx-parts-how-to-retire"></h1>
  <properties title="How to permanently retire a part" pageTitle="How to permanently retire a part" description="How to permanently retire a part" authors="adamabdelhamed" />
 
-<a name="basic-concepts-ui-concepts-permanently-retire-a-part"></a>
+<a name="basic-concepts-parts-a-k-a-tiles-permanently-retire-a-part"></a>
 ### Permanently Retire a part
 
 You may have built and shipped a part, but later decide to discontinue its functionality.  Since we provide a customizable system we need to handle cases where a user has pinned this part and incorporated it into the layout of the startboard.  Customers have clearly told us they do not like it when parts disappear from their startboard automatically.  The following process allows you to permanently retire your part while providing a good user experience around customizations.
@@ -1862,7 +2205,7 @@ This ensures that users won't see parts failing unexpectedly on their dashboards
   <h1 name="portalfx-parts-how-to-remove-from-blade"></h1>
  <properties title="How to remove a part from a blade's default layout" pageTitle="How to remove a part from a blade's default layout" description="How to remove a part from a blade's default layout" authors="adamabdelhamed" />
 
-<a name="basic-concepts-ui-concepts-removig-a-part-from-a-blade-s-default-layout"></a>
+<a name="basic-concepts-parts-a-k-a-tiles-removig-a-part-from-a-blade-s-default-layout"></a>
 ### Removig a part from a blade&#39;s default layout
 Your unlocked blade's default layout should be reflective of tiles you think provide the most out of the box value to users while meeting your performance goals.  That layout may change over time, and you may decide that a part that included in a blade's default layout at one point in time should not be included going forward.  
 
@@ -1887,10 +2230,10 @@ We use the `<Preserve/>` tag to properly configure the `<RedirectPart/>` to pres
   <h1 name="portalfx-parts-revealContent"></h1>
  <properties title="" pageTitle="Improving Part responsiveness" description="revealContent" authors="bradolenick" />
 
-<a name="basic-concepts-ui-concepts-improving-part-responsiveness"></a>
+<a name="basic-concepts-parts-a-k-a-tiles-improving-part-responsiveness"></a>
 ### Improving Part responsiveness
 
-<a name="basic-concepts-ui-concepts-improving-part-responsiveness-overview"></a>
+<a name="basic-concepts-parts-a-k-a-tiles-improving-part-responsiveness-overview"></a>
 #### Overview
 
 As a Part loads, by default, the user is presented with a *blocking* loading indicator:
@@ -1985,7 +2328,7 @@ In all cases above, the promise returned from `onInputsSet` still determines the
 Also, if the promise returned from `onInputsSet` is rejected (due to the rejection of either the fast- or slow-loading data promise), the Part will transition to show the default error UX (a "sad cloud").
 This treatment of the promise returned from `onInputsSet` behaves consistently, whether or not the Part makes use of `container.revealContent()`.  In this way, `container.revealContent()` is a *simple, additive* change you should use to optimize your Part's behavior.
 
-<a name="basic-concepts-ui-concepts-improving-part-responsiveness-anti-patterns"></a>
+<a name="basic-concepts-parts-a-k-a-tiles-improving-part-responsiveness-anti-patterns"></a>
 #### Anti-patterns
 
 It is important that loading indicators are consistently applied across the Parts/Blades of all extensions.  To achieve this:
@@ -2009,7 +2352,7 @@ public onInputsSet(inputs: MyPartInputs): Promise {
   <h1 name="portalfx-parts-errors"></h1>
  <properties title="" pageTitle="Handling part errors" description="" authors="adamabdelhamed" />
 
-<a name="basic-concepts-ui-concepts-handling-part-errors"></a>
+<a name="basic-concepts-parts-a-k-a-tiles-handling-part-errors"></a>
 ### Handling part errors
 
 Occasionally while loading parts, your application may encounter some sort of unrecoverable error. In that case, the part may placed into a failure state:
@@ -2028,7 +2371,7 @@ constructor(container: MsPortalFx.ViewModels.PartContainer, initialState: any, d
 
 If the error later becomes fixed (for example, if you are polling for data, and a subsequent poll returns valid results), then you can call `container.recover()` to return the part to its normal display state.
 
-<a name="basic-concepts-ui-concepts-best-practice-for-handling-part-errors"></a>
+<a name="basic-concepts-parts-a-k-a-tiles-best-practice-for-handling-part-errors"></a>
 ### Best practice for handling part errors
 
 The sad cloud UX is intended for use cases where you don’t have any meaningful error to show to the user. Basically, it’s an unexpected error and the only thing they can do is try again.
@@ -2043,7 +2386,7 @@ If there’s an error that the user can actually do something about then you sho
   <h1 name="portalfx-parts-assets-dont-exist"></h1>
  <properties title="How to handle assets that no longer exist" pageTitle="How to handle assets that no longer exist" description="How to handle assets that no longer exist" authors="adamabdelhamed" />
 
-<a name="basic-concepts-ui-concepts-handling-assets-that-no-longer-exist"></a>
+<a name="basic-concepts-parts-a-k-a-tiles-handling-assets-that-no-longer-exist"></a>
 ### Handling assets that no longer exist
 
 Many parts represent assets such as ARM resources that can be deleted from the UI, PowerShell, or calling REST APIs directly.  A stateless UI system would handle this reality by loading only assets that exist at the time the UI starts up.  Since Ibiza holds the state for all user customizations this 'Not Found' case needs to be handled in a few specific places.
@@ -2053,7 +2396,7 @@ Many parts represent assets such as ARM resources that can be deleted from the U
 * A part that has been pinned to the startboard depends on information provided by an asset that no longer exists
   * Example: The CPU chart for a VM part
 
-<a name="basic-concepts-ui-concepts-handling-assets-that-no-longer-exist-automatic-http-404-handling"></a>
+<a name="basic-concepts-parts-a-k-a-tiles-handling-assets-that-no-longer-exist-automatic-http-404-handling"></a>
 #### Automatic HTTP 404 handling
 
 In an attempt to cover the most common scenarios Ibiza's built in data layer automatically detects HTTP 404 responses from AJAX calls.  When a part depends on data where a 404 has been detected Ibiza automatically makes the part non-interactive and displays a message of 'Not Found'.
@@ -2062,7 +2405,7 @@ The effect is that in most not found scenarios most users will see a more accura
 
 This distinction also lets our telemetry system tell the difference between a part that fails to render because of bugs and a part that fails to render because the user's asset has been deleted. **Instances of 'Not Found' do not count against a part's reliability KPI**.
 
-<a name="basic-concepts-ui-concepts-handling-assets-that-no-longer-exist-how-to-opt-out-of-automatic-http-404-handling"></a>
+<a name="basic-concepts-parts-a-k-a-tiles-handling-assets-that-no-longer-exist-how-to-opt-out-of-automatic-http-404-handling"></a>
 #### How to opt out of automatic HTTP 404 handling
 
 We strongly encourage teams to use the default behavior of having Ibiza handle 404 responses automatically, but there may be some valid exceptions where the standard behavior may not be the best thing to do.  In those very rare cases you can opt out of automatic 404 handling by setting the showNotFoundErrors flag to false when creating your data views.
@@ -2516,7 +2859,7 @@ To use a command bar you need to add a **CommandBar** element to your blade PDL 
 
 ```xml
 
-<TemplateBlade Name="TemplateBladeWithCommandBar"
+<TemplateBlade Name="PdlTemplateBladeWithCommandBar"
            ViewModel="{ViewModel Name=TemplateBladeWithCommandBarViewModel, Module=./Template/ViewModels/TemplateBladeViewModels}"
            Template="{Html Source='..\\..\\Blades\\Template\\Templates\\SharedTemplateBladeTemplate.html'}">
   <CommandBar />
@@ -2689,7 +3032,7 @@ The code below shows how to define the settings in PDL using the `TemplateBlade.
 
 ```xml
 
-<TemplateBlade Name="TemplateBladeWithSettings"
+<TemplateBlade Name="PdlTemplateBladeWithSettings"
                ViewModel="{ViewModel Name=TemplateBladeWithSettingsViewModel, Module=./Template/ViewModels/TemplateBladeViewModels}"
                Template="{Html Source='Templates\\TemplateBladeWithSettings.html'}">
   <TemplateBlade.Settings>
@@ -2718,7 +3061,7 @@ The settings are retrieved through the blade container.
 const configuration = container.activateConfiguration<Settings>();
 this.configureHotSpot = new HotSpotViewModel(container, {
     supplyBladeReference: () => {
-        const bladeRef = new TemplateBladeWithSettingsConfigurationReference<BladeConfiguration, BladeConfiguration>({
+        const bladeRef = new PdlTemplateBladeWithSettingsConfigurationReference<BladeConfiguration, BladeConfiguration>({
             // The Configuration values are sent to the Provider Blade to be edited by the user.
             supplyInitialData: () => {
                 return configuration.getValues();
@@ -2887,6 +3230,24 @@ export class SampleMenuBlade extends FxMenuBlade.ViewModel {
                             });
                         },
                     },
+                    // Menu item that demonstrates opting out of full width.
+                    {
+                        id: "fullwidthoptout",
+                        displayText: ClientResources.SampleMenuBlade.optOut,
+                        icon: null,
+                        supplyBladeReference: () => {
+                            return new BladeReferences.BladeWidthSmallBladeReference({bladeTitle: ClientResources.SampleMenuBlade.optOut});
+                        },
+                    },
+                    // Menu item that demonstrates a blade that can have activated width.
+                    {
+                    id: "activationSample",
+                        displayText: ClientResources.ActivationStyleBlade.title,
+                        icon: null,
+                        supplyBladeReference: () => {
+                            return new BladeReferences.BladeWithActivationStyleReference();
+                        },
+                    }
                 ],
             },
             {
@@ -2932,10 +3293,9 @@ A few things to notice in the code above:
 You can see MenuBlade in action in our SampleExtension [here](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SampleMenuBlade/bladeWithSummary)
  
   <h1 name="portalfx-blades-bladeKinds"></h1>
- <properties title="" pageTitle="BladeKinds" description="" authors="adamabdelhamed,ashergarland" />
-
-<a name="basic-concepts-blades-introduction-to-blade-kinds"></a>
-### Introduction to Blade Kinds
+ 
+<a name="basic-concepts-introduction-to-blade-kinds"></a>
+## Introduction to Blade Kinds
 Blade Kinds are common implementations of Blade experience which offer consistent UI and are easily implemented. Blade Kinds provide a simplified programming model with a closed UI. 
 
 All you need to provide is the ViewModel. Advantages you receive beyond is simplicity; when the Blade Kinds are updated, you can use the updates and the layout without having to change your implementation.
@@ -2953,14 +3313,10 @@ To learn more about each of the Blade Kinds, start with the following topics:
 - [Notice Blade](#portalfx-blades-bladeKinds-notice)
 - [Setting List Blade](#portalfx-blades-bladeKinds-settingList)
 
-  <h1 name="portalfx-blades-bladeKinds-quickStart"></h1>
- <properties title="" pageTitle="QuickStartBlade" description="" authors="adamabdelhamed,ashergarland" />
-
-<a name="basic-concepts-blades-quickstart-blade"></a>
-### QuickStart Blade
+ ### QuickStart Blade
 The QuickStart blade that provides a Blade which gives users a convenient way to learn how to use your service. Every services should have a QuickStart Blade.
 
-![Demo][demo]
+![Demo](../media/portalfx-bladeKinds/QuickStartBlade.PNG)
 
 Defining a QuickStart Blade requires only a view model to define the blade and a view model to define the part.
 
@@ -2969,10 +3325,10 @@ The PDL to define a QuickStart Blade:
 `\Client\Blades\BladeKind\BladeKinds.pdl`
 
 ```xml
-  <azurefx:QuickStartBlade Name="QuickStartBlade"
-                           ViewModel="{ViewModel Name=QuickStartBladeViewModel, Module=./BladeKind/ViewModels/BladeKindsViewModels}"
-                           PartViewModel="{ViewModel Name=InfoListPartViewModel, Module=./BladeKind/ViewModels/InfoListPartViewModel}"
-                           Parameter="info"/>
+<azurefx:QuickStartBlade Name="QuickStartBlade"
+                        ViewModel="{ViewModel Name=QuickStartBladeViewModel, Module=./BladeKind/ViewModels/BladeKindsViewModels}"
+                        PartViewModel="{ViewModel Name=InfoListPartViewModel, Module=./BladeKind/ViewModels/InfoListPartViewModel}"
+                        Parameter="info"/>
 ```
 The TypeScript view model to define the Blade view model:
 
@@ -3107,16 +3463,13 @@ export class InfoListPartViewModel extends MsPortalFx.ViewModels.Parts.InfoList.
 }
 ```
 
-[demo]: ../media/portalfx-bladeKinds/QuickStartBlade.PNG
-
-  <h1 name="portalfx-blades-bladeKinds-properties"></h1>
- <properties title="" pageTitle="PropertiesBlade" description="" authors="ashergarland" />
-
-<a name="basic-concepts-blades-properties-blade"></a>
+ 
+<a name="basic-concepts-introduction-to-blade-kinds-properties-blade"></a>
 ### Properties Blade
+
 The Properties blade that provides a Blade which gives users a convenient way access the properties of your service. 
 
-![Demo][demo]
+![Demo](../media/portalfx-bladeKinds/PropertiesBlade.PNG)
 
 Defining a Properties Blade requires only a view model to define the blade and a view model to define the part.
 
@@ -3262,16 +3615,10 @@ export class PropertiesPartViewModel extends MsPortalFx.ViewModels.Parts.Propert
 
 ```
 
-[demo]: ../media/portalfx-bladeKinds/PropertiesBlade.PNG
-
-  <h1 name="portalfx-blades-bladeKinds-notice"></h1>
- <properties title="" pageTitle="NoticeBlade" description="" authors="adamabdelhamed,ashergarland" />
-
-<a name="basic-concepts-blades-notice-blade"></a>
-### Notice Blade
+ ### Notice Blade
 The Notice blade that provides a Blade which gives you a convenient way to display a announcements to your users, such as coming soon features. 
 
-![Demo][demo]
+![Demo](../media/portalfx-bladeKinds/NoticeBlade.PNG)
 
 Defining a notice Blade requires only a view model to define the blade and a view model to define the part.
 
@@ -3359,17 +3706,13 @@ export class NoticePartViewModel extends MsPortalFx.ViewModels.Controls.Notice.V
 }
 ```
 
-[demo]: ../media/portalfx-bladeKinds/NoticeBlade.PNG
-
-  <h1 name="portalfx-blades-bladeKinds-settingList"></h1>
- <properties title="" pageTitle="SettingListBlade" description="" authors="sewatson" />
-
-<a name="basic-concepts-blades-setting-list-blade"></a>
+ 
+<a name="basic-concepts-introduction-to-blade-kinds-setting-list-blade"></a>
 ### Setting List Blade
 
 The Setting List Blade that provides a Blade which gives you a convenient way to display give your users access to a list of your service's settings.
 
-![Demo][demo]
+![Demo](../media/portalfx-bladeKinds/SettingListBlade.PNG)
 
 Defining a Settings Blade requires only a view model to define the blade and a view model to define the part.
 
@@ -3462,7 +3805,7 @@ export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.Settin
 }
 ```
 
-<a name="basic-concepts-blades-setting-list-blade-framework-settings"></a>
+<a name="basic-concepts-introduction-to-blade-kinds-setting-list-blade-framework-settings"></a>
 #### Framework settings
 
 One of the goals of the Azure portal is standardizing key interaction patterns across different types of resources so customers can learn them once and apply them everywhere. There a few setting items which are consistent across most resources, to make that process easier the framework will automatically add certain settings but also allow optting in for any which we don't automatically add. All the Framework added settings can always be opted out, by specifying the opt in option as "false". Currently their are only two settings, RBAC and Audit logs (Events), which are added automatically. They are only added if a valid resource id has been specified within the "resourceId()" property on the settingsList viewmodel. The best way to set this is from within the onInputsSet call.
@@ -3480,10 +3823,10 @@ export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.Settin
 }
 ```
 
-<a name="basic-concepts-blades-setting-list-blade-tags-rbac"></a>
+<a name="basic-concepts-introduction-to-blade-kinds-setting-list-blade-tags-rbac"></a>
 #### Tags/RBAC
 
-[Tags] [tagsPage] and RBAC (Users) are the most common settings although we don't automatically add Tags, its extremely easy to opt in. We are looking to automatically add Tags in the future, for now if your resource supports tagging please opt in. To opt in set the following in the options parameter of the super call to the SettingsList viewmodel.
+[Tags] [/documentation/articles/portalfx-tags/] and RBAC (Users) are the most common settings although we don't automatically add Tags, its extremely easy to opt in. We are looking to automatically add Tags in the future, for now if your resource supports tagging please opt in. To opt in set the following in the options parameter of the super call to the SettingsList viewmodel.
 
 ```ts
 export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.SettingList.ViewModelV2 {
@@ -3498,7 +3841,7 @@ export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.Settin
 }
 ```
 
-<a name="basic-concepts-blades-setting-list-blade-support-settings"></a>
+<a name="basic-concepts-introduction-to-blade-kinds-setting-list-blade-support-settings"></a>
 #### Support settings
 
 Troubleshooting and support are one of these key experiences. We'd like to provide customers with a consistent gesture so for every resource they can assess its health, check the audit logs, get troubleshooting information, or open a support ticket. Every resource should on-board with Support and opt in to the support settings, see the [on-boarding process] [supportOnboarding]. For any questions regarding the process please reach out to the support adoption alias <AzSFAdoption@microsoft.com>
@@ -3530,11 +3873,7 @@ Then to test it use the following extension side feature flags, depending on whi
 
 Next steps:
 
-* [Onboard to support] [supportOnboarding].
-
-[demo]: ../media/portalfx-bladeKinds/SettingListBlade.PNG
-[tagsPage]: /documentation/articles/portalfx-tags/ "Tags"
-[supportOnboarding]: https://microsoft.sharepoint.com/teams/WAG/EngSys/Supportability/_layouts/15/WopiFrame.aspx?sourcedoc={7210704b-64db-489b-9143-093e020e75b4}&action=edit&wd=target%28%2F%2FCustomerEnablement.one%7Cf42af409-12ab-4ae0-ba49-af361116063b%2FAt%20How-to%20for%20PGs%7C92cd2c56-c400-4a6d-a455-63ef92290ae9%2F%29 "Support on-boarding"
+* [Onboard to support](https://microsoft.sharepoint.com/teams/WAG/EngSys/Supportability/_layouts/15/WopiFrame.aspx?sourcedoc={7210704b-64db-489b-9143-093e020e75b4}&action=edit&wd=target%28%2F%2FCustomerEnablement.one%7Cf42af409-12ab-4ae0-ba49-af361116063b%2FAt%20How-to%20for%20PGs%7C92cd2c56-c400-4a6d-a455-63ef92290ae9%2F%29)
 
 
 
@@ -3542,7 +3881,7 @@ Next steps:
   <h1 name="portalfx-blades-appblades"></h1>
  <properties title="" pageTitle="Blades" description="" authors="adamabdelhamed" />
 
-<a name="basic-concepts-blades-introduction-to-appblades"></a>
+<a name="basic-concepts-introduction-to-blade-kinds-introduction-to-appblades"></a>
 ### Introduction to AppBlades
 
 AppBlade provides you with an IFrame where you can render your content, resulting in maximum flexibility at the expense of additional developer responsibilities.
@@ -3560,7 +3899,7 @@ When using AppBlade you are responsible for:
 * **Consistent Look & feel**: you are responsible for coming up with a visual design that is consistent with the rest of Ibiza
 * **Controls**: since you can't use Ibiza Fx controls you need to build your own controls or use available alternatives 
 
-<a name="basic-concepts-blades-introduction-to-appblades-creating-your-first-appblade"></a>
+<a name="basic-concepts-introduction-to-blade-kinds-introduction-to-appblades-creating-your-first-appblade"></a>
 #### Creating your first AppBlade
 
 1. Add the **blade definition** to your PDL file
@@ -3589,7 +3928,7 @@ When using AppBlade you are responsible for:
 
 The source location for the contents of the IFrame is passed to the container using the **source** property in the **FxBlade.Options** (second parameter in the code snippet above).
 
-<a name="basic-concepts-blades-introduction-to-appblades-using-the-ibiza-command-bar-in-your-appblade"></a>
+<a name="basic-concepts-introduction-to-blade-kinds-introduction-to-appblades-using-the-ibiza-command-bar-in-your-appblade"></a>
 #### Using the Ibiza command bar in your AppBlade
 
 You can use the Ibiza command bar in your AppBlade and leverage the framework support while getting some consistency in the experience. In this case, you need to add a **CommandBar** to your PDL and configure it in your **ViewModel**. This is **optional**.
@@ -3618,7 +3957,7 @@ private _openLinkButton(): Toolbars.OpenLinkButton {
 ```
 
 
-<a name="basic-concepts-blades-introduction-to-appblades-exchanging-messages-between-your-iframe-and-the-ibiza-fx"></a>
+<a name="basic-concepts-introduction-to-blade-kinds-introduction-to-appblades-exchanging-messages-between-your-iframe-and-the-ibiza-fx"></a>
 #### Exchanging messages between your IFrame and the Ibiza Fx
 
 The AppBlade ViewModel is hosted in the same hidden IFrame where your extension is loaded. The contents of the AppBlade are hosted in another IFrame that is visible in the screen.
@@ -3627,10 +3966,10 @@ Both IFrames (your UI and your Ibiza extension) can communicate via **postMessag
 
 The following sections demonstrate how to exchange messages between both IFrames
 
-<a name="basic-concepts-blades-introduction-to-appblades-sending-and-receiving-messages-from-ibiza"></a>
+<a name="basic-concepts-introduction-to-blade-kinds-introduction-to-appblades-sending-and-receiving-messages-from-ibiza"></a>
 #### Sending and Receiving messages from Ibiza
 
-<a name="basic-concepts-blades-introduction-to-appblades-sending-and-receiving-messages-from-ibiza-listen-to-a-message"></a>
+<a name="basic-concepts-introduction-to-blade-kinds-introduction-to-appblades-sending-and-receiving-messages-from-ibiza-listen-to-a-message"></a>
 ##### Listen to a message
 
 You can listen to messages using the **on** method in the **AppBlade** view-model.
@@ -3652,7 +3991,7 @@ this.on("getAuthToken", () => {
 
 ```
 
-<a name="basic-concepts-blades-introduction-to-appblades-post-a-message"></a>
+<a name="basic-concepts-introduction-to-blade-kinds-introduction-to-appblades-post-a-message"></a>
 #### Post a message
 
 You can post messages to you IFrame using the **postMessage** method in the **AppBlade** view-model.
@@ -3666,7 +4005,7 @@ this.postMessage(new FxAppBlade.Message("favoriteAnimal", "porcupine"));
 
 ```
 
-<a name="basic-concepts-blades-introduction-to-appblades-post-theming-information"></a>
+<a name="basic-concepts-introduction-to-blade-kinds-introduction-to-appblades-post-theming-information"></a>
 #### Post theming information
 
 When using a template blade, you are responsible for implementing theming in your IFrame. The code snippet below demonstrates how to pass the current selected theme by the user to your IFrame using **postMessage** (which is the same technique used in the section above).
@@ -3683,10 +4022,10 @@ MsPortalFx.Services.getSettings().then(settings => {
 
 ```
 
-<a name="basic-concepts-blades-introduction-to-appblades-sending-and-receiving-messages-from-your-iframe"></a>
+<a name="basic-concepts-introduction-to-blade-kinds-introduction-to-appblades-sending-and-receiving-messages-from-your-iframe"></a>
 #### Sending and Receiving messages from your IFrame
 
-<a name="basic-concepts-blades-introduction-to-appblades-sending-and-receiving-messages-from-your-iframe-listen-to-a-message"></a>
+<a name="basic-concepts-introduction-to-blade-kinds-introduction-to-appblades-sending-and-receiving-messages-from-your-iframe-listen-to-a-message"></a>
 ##### Listen to a message
 
 You can listen to incoming messages by adding an event listener to your window, as shown in the snippet below:
@@ -3748,7 +4087,7 @@ function receiveMessage(event) {
 
 ```
 
-<a name="basic-concepts-blades-introduction-to-appblades-sending-and-receiving-messages-from-your-iframe-post-a-message"></a>
+<a name="basic-concepts-introduction-to-blade-kinds-introduction-to-appblades-sending-and-receiving-messages-from-your-iframe-post-a-message"></a>
 ##### Post a message
 
 You can post messages back to the portal using **postMessage**. There is a required message that your IFrame needs to send back to the portal to indicate that it is ready to receive messages.
@@ -3776,7 +4115,7 @@ if (window.parent !== window) {
   <h1 name="portalfx-blades-legacy"></h1>
  <properties title="" pageTitle="Blades" description="" authors="adamabdelhamed" />
 
-<a name="basic-concepts-blades-introduction-to-blades"></a>
+<a name="basic-concepts-introduction-to-blade-kinds-introduction-to-blades"></a>
 ### Introduction to Blades
 
 A blade is the vertical container that acts as the starting point for any journey. You can define multiple blades, each containing their own collection of statically defined lenses and parts.
@@ -3813,12 +4152,12 @@ Blades use view models to drive dynamic content include titles, icons, and statu
 
 [Portal FX](/documentation/sections/portalfx) > [UI](/documentation/sections/portalfx#ui) > [Blades](#portalfx-blades) > Blade UI
 
-<a name="basic-concepts-blades-controlling-blade-ui"></a>
+<a name="basic-concepts-introduction-to-blade-kinds-controlling-blade-ui"></a>
 ### Controlling blade UI
 
 Blades support a variety of APIs which make it easy to customize their behavior and experience.
 
-<a name="basic-concepts-blades-controlling-blade-ui-title-icon"></a>
+<a name="basic-concepts-introduction-to-blade-kinds-controlling-blade-ui-title-icon"></a>
 #### Title &amp; Icon
 
 The title, subtitle, and icon of a blade can be customized with a View Model. This allows making real time changes to the title and icon based on the status of the asset. The View Model for a blade is a simple interface:
@@ -3853,7 +4192,7 @@ In this case, the information in the view model will be hard coded. Finally, you
   Blade Content State
 -->
 
-<a name="basic-concepts-blades-controlling-blade-ui-blade-content-state"></a>
+<a name="basic-concepts-introduction-to-blade-kinds-controlling-blade-ui-blade-content-state"></a>
 #### Blade Content State
 
 Blades have the ability to display a status at the top of the UI:
@@ -3880,7 +4219,7 @@ this.contentStateDisplayText("Success!");
   Locking
 -->
 
-<a name="basic-concepts-blades-controlling-blade-ui-locking"></a>
+<a name="basic-concepts-introduction-to-blade-kinds-controlling-blade-ui-locking"></a>
 #### Locking
 
 Locking a blade will prevent users from pinning its parts to the start board, moving parts around, or resizing parts. It's particularly useful when building a list control, an input form, or a create experience.  If you need a locked blade you should use `<TemplateBlade />` as opposed to the classic `<Blade Locked="True" />`.  TemplateBlade has been designed to significantly simplify the locked blade programming model, specifically allows you to use: 
@@ -3926,7 +4265,7 @@ For complete examples of TemplateBlades see SamplesExtension `Client\Blades\Temp
   Width
 -->
 
-<a name="basic-concepts-blades-controlling-blade-ui-width"></a>
+<a name="basic-concepts-introduction-to-blade-kinds-controlling-blade-ui-width"></a>
 #### Width
 
 When creating blades, you can choose from multiple widths. The default is 'Medium':
@@ -3956,7 +4295,7 @@ This is defined statically on the blade, and cannot be changed by the user. Smal
   Initial Display State
 -->
 
-<a name="basic-concepts-blades-controlling-blade-ui-initial-display-state"></a>
+<a name="basic-concepts-introduction-to-blade-kinds-controlling-blade-ui-initial-display-state"></a>
 #### Initial Display State
 
 When the user opens a blade, you can choose to have it open in the normal state, or in a maximized state:
@@ -3980,10 +4319,7 @@ Users may always choose to restore the blade to its normal supported width. This
 
 * Opening blades
   <h1 name="portalfx-blades-opening"></h1>
- <properties title="" pageTitle="Opening blades" description="" authors="adamabdelhamed" />
-
-[Portal FX](/documentation/sections/portalfx) > [UI](/documentation/sections/portalfx#ui) > [Blades](#portalfx-blades) > Opening Blades
-
+ 
 <a name="blade-opening-and-closing"></a>
 # Blade opening and closing
 
@@ -4842,10 +5178,7 @@ To prevent a blade from being pinned, set `Pinnable="False"` in the blade defini
 
 * Closing blades
  <h1 name="portalfx-blades-closing"></h1>
- <properties title="" pageTitle="Closing blades" description="" authors="adamabdelhamed" />
-
-[Portal FX](/documentation/sections/portalfx) > [UI](/documentation/sections/portalfx#ui) > [Blades](#portalfx-blades) > Closing Blades
-
+ 
 <a name="closing-blades-programatically"></a>
 # Closing blades programatically
 
@@ -4855,25 +5188,25 @@ Check out the [blade opening sample](http://aka.ms/portalfx/samples#blade/Sample
  
 The following metnods are now available on your template blade container.
 
-```javascript
+```typescript
 
-    import { Container as BladeContainer } from "Fx/Composition/Blade";
-    …
-    // closes the current blade now, optionally passing data back to the parent
-    closeCurrentBlade(data?: any): Promise<boolean>; 
-    // closes the current child blade now, if one is present
-    closeChildBlade(): Promise<boolean>; 
-    // closes the current child context blade now, if one is present
-    closeContextBlade(): Promise<boolean>; 
+import { Container as BladeContainer } from "Fx/Composition/Blade";
+   
+// closes the current blade now, optionally passing data back to the parent
+closeCurrentBlade(data?: any): Promise<boolean>; 
+// closes the current child blade now, if one is present
+closeChildBlade(): Promise<boolean>; 
+// closes the current child context blade now, if one is present
+closeContextBlade(): Promise<boolean>; 
 ```
 
 The following methods are now available on your part container contract.
 
-```javascript
-    // closes the current child blade now, if one is present
-    closeChildBlade(): Promise<boolean>; 
-    // closes the current child context blade now, if one is present
-    closeContextBlade(): Promise<boolean>; 
+```typescript
+// closes the current child blade now, if one is present
+closeChildBlade(): Promise<boolean>; 
+// closes the current child context blade now, if one is present
+closeContextBlade(): Promise<boolean>; 
 ```
 
 Each of these methods returns a promise that generally returns true.  If there is a blade on the screen that has unsaved edits to a form, the framework will prompt the user, giving them the option to keep the unsaved blade open.  If the user chooses to continue working on their unsaved edits then the blade closing promise will return false.
@@ -4883,13 +5216,13 @@ Each of these methods returns a promise that generally returns true.  If there 
 
 When opening a child blade, you can register the optional onClosed callback to be notified when the blade you've opened closes.  The child blade can send you untyped data that you can use in your callback.  Here is an example:
  
-```javascript
+```typescript
 import { BladeClosedReason } from "Fx/Composition";
 ...
 container.openBlade(new SomeBladeReference({ … }, (reason: BladeClosedReason, data?: any) => {
         // Code that runs when the blade closes - Data will only be there if the child blade returned it
         // reason lets you differentiate between things like the user closing the blade via the close button vs. a parent blade programatically closing it
-    });
+});
 ```
 
 
@@ -4900,8 +5233,7 @@ container.openBlade(new SomeBladeReference({ … }, (reason: BladeClosedReason, 
 
 
  <h1 name="portalfx-forms"></h1>
- <properties title="" pageTitle="Working with Forms" description="" authors="sewatson" />
-
+ 
 <a name="developing-forms"></a>
 # Developing Forms
 
@@ -5795,15 +6127,45 @@ To learn more about any of our controls, click on any of the links below.
 
 <a name="controls-drop-downs"></a>
 ## Drop downs
-- [Drop Down](http://aka.ms/portalfx/samples#blade/SamplesExtension/DropDownInstructions/selectedItem/DropDownInstructions/selectedValue/DropDownInstructions)
+- Drop Down
+	 <h1 name="portalfx-controls-dropdown"></h1>
+ ## DropDown
+We've had several version of the dropdown control but have asked partners to standardize on the AMD dropdown control.
+You can use it by importing the AMD module:
+
+```
+import * as DropDown from "Fx/Controls/DropDown";
+```
+
+creating the view model:
+
+```
+var dropDown = new DropDown.ViewModel(ltm, {...});
+```
+
+and then inserting it into a section or your HTML template via the pcControl binding. You can see it running
+in samples extension [here](http://aka.ms/portalfx/samples#blade/SamplesExtension/DropDownInstructions/selectedItem/DropDownInstructions/selectedValue/DropDown).
+
+<a name="controls-drop-downs-migrating-from-older-dropdown-controls"></a>
+### Migrating from older dropdown controls
+The biggest reason to replace usage of the older dropdown controls with the AMD dropdown is that all the features
+of the other dropdowns are now present in the AMD dropdown. You can now turn on filtering or add grouping to a 
+multiselect dropdown where previously adding a featuring might mean porting your code to a differen control (or 
+wasn't possible depending on combination of features you were looking for). The AMD dropdown supports:
+
+- Grouping
+- Rich Templating
+- Filtering 
+- Custom Filtering, this also gives you a hook to replace items on keystroke.
+- Multiselect
+- Objects as the value
 
 <a name="controls-editors"></a>
 ## Editors
 
 - Code editor
         <h1 name="portalfx-controls-editor"></h1>
- <properties title="" pageTitle="Editor" description="" authors="sewatson" />
-
+ 
 <a name="controls-editors-editor"></a>
 ### Editor
 
@@ -5816,15 +6178,15 @@ Editor control in the FX SDK is a wrapper for the "Monaco" editor which supports
 
 To use the editor, compose a part that hosts the editor control, then use it from your extension.
 
-You can control the behavior and features of the editor via initialization `options`. 
+You can control the behavior and features of the editor via initialization `options`.
 
 **Step 1**: Define the Html template for your part:
 
-`\Client\Controls\Editor\Templates\EditorInstructions.html`
+`\Client\V1\Controls\Editor\Templates\EditorInstructions.html`
 
 **Step 2**: Create a viewmodel to bind your control to. SampleEditorViewModel implements the viewmodel for the editor.
 
-`\Client\Controls\Editor\ViewModels\EditorViewModels.ts.`
+`\Client\V1\Controls\Editor\ViewModels\EditorViewModels.ts.`
 
 ```typescript
 
@@ -5912,7 +6274,7 @@ export class EditorInstructionsPartViewModel
 
 **Step 3**: Now you can consume your part from an extension by referencing it in the PDL:
 
-`\Client\Controls\Editor\EditorInstructions.pdl`
+`\Client\V1\Controls\Editor\Editor.pdl`
 
 ```xml
 
@@ -5932,6 +6294,132 @@ export class EditorInstructionsPartViewModel
 ```
 
 [editor-code]: ../media/portalfx-controls/editor-code.png
+
+<a name="controls-editors-editor-editor-with-custom-language"></a>
+#### Editor with Custom Language
+
+Custom language can be used by declaring inherited Editor control viewmodel with rules and suggestions.
+
+**Step 1**: Define the Html template for your part:
+
+`\Client\V1\Controls\Editor\Templates\CustomLanguageEditor.html`
+
+**Step 2**: Create a viewmodel to bind your control to. SampleEditorViewModel implements the viewmodel for the editor.
+
+`\Client\V1\Controls\Editor\ViewModels\CustomLanguageEditorViewModels.ts.`
+
+/**
+ * ViewModel class for the custom language editor sample part.
+ */
+export class CustomLanguageEditorPartViewModel {
+
+    /**
+     * View model for the editor.
+     */
+    public editor: Editor.ViewModel;
+
+    /**
+     * Creates a new instance of the EditorInstructionsPartViewModel class.
+     *
+     * @param container The view model for the part container.
+     * @param initialState The initial state for the part.
+     * @param dataContext The data context.
+     */
+    constructor(
+        container: MsPortalFx.ViewModels.PartContainerContract,
+        initialState: any,
+        dataContext: ControlsArea.DataContext) {
+
+        // Initialize the editor view model.  If we were getting the data from teh data context, we would pass it in here.
+        this.editor = new CustomLanguageEditorViewModel(container);
+
+        // create the initial markers
+        this.updateMarkers(this.editor.content());
+
+        // whenever the code in the editor changes process it and set the markers
+        this.editor.content.subscribe(container, this.updateMarkers.bind(this));
+
+        // perform auto save every 500ms to update markers as the user edits the text
+        this.editor.autoSaveTimeout(500);
+    }
+
+    /**
+     * try to match the given pattern in the provided line, if matched construct a marker for that line
+     */
+    private processTerm(line: string, lineIndex: number, termPattern: string, severity: MsPortalFx.ViewModels.Controls.Documents.Editor.MarkerSeverity): MsPortalFx.ViewModels.Controls.Documents.Editor.EditorMarker {
+
+        // try to match the pattern
+        var termIndex = line.indexOf(termPattern);
+        if (termIndex === -1) {
+            return null;
+        }
+
+        // we found the pattern in the line so we create a marker which uses the defined severity and the rest of the text
+        // from the pattern location in the line to the end as the message
+        return <MsPortalFx.ViewModels.Controls.Documents.Editor.EditorMarker> {
+            message: line.substring(termIndex + termPattern.length),
+            severity: severity,
+            range: <MsPortalFx.ViewModels.Controls.Documents.Editor.EditorRange> {
+                startLineNumber: lineIndex + 1,
+                startColumn: termIndex + 1,
+                endLineNumber: lineIndex + 1,
+                endColumn: termIndex + termPattern.length + 1
+            }
+        };
+    }
+
+    /**
+     * updates the markers according to the text content
+     */
+    private updateMarkers(value: string): void {
+
+        // split the text into lines and process each to add an annotation to it
+        var markers = value
+            .split("\n")
+            .map((line: string, index: number): MsPortalFx.ViewModels.Controls.Documents.Editor.EditorMarker => {
+
+                var term = this.processTerm(line, index, "[error]", MsPortalFx.ViewModels.Controls.Documents.Editor.MarkerSeverity.Error);
+                if (term !== null) {
+                    return term;
+                }
+
+                term = this.processTerm(line, index, "[notice]", MsPortalFx.ViewModels.Controls.Documents.Editor.MarkerSeverity.Warning);
+                if (term !== null) {
+                    return term;
+                }
+
+                term = this.processTerm(line, index, "[info]", MsPortalFx.ViewModels.Controls.Documents.Editor.MarkerSeverity.Info);
+                if (term !== null) {
+                    return term;
+                }
+
+                return null;
+            })
+            .filter(marker => marker !== null);
+
+        // update the markers
+        this.editor.markers(markers);
+    }
+}
+
+**Step 3**: Now you can consume your part from an extension by referencing it in the PDL:
+
+`\Client\V1\Controls\Editor\Editor.pdl`
+
+```xml
+<CustomPart Name="b_EditorInstructions_part1"
+                  ViewModel="{ViewModel Name=EditorInstructionsPartViewModel, Module=./Editor/ViewModels/EditorViewModels}"
+                  InitialSize="FullWidthFitHeight"
+                  Template="{Html Source='Templates\\EditorInstructions.html'}" />
+<PartReference Name="EditorApiReferencePart"
+                InitialSize="FullWidthFitHeight"
+                PartType="ModuleReferencePart">
+    <PartReference.PropertyBindings>
+        <Binding Property="moduleName"
+                Source="{Constant MsPortalFx.ViewModels.Controls.Documents.Editor}" />
+    </PartReference.PropertyBindings>
+</PartReference>
+```
 
 - [Diff editor](http://aka.ms/portalfx/samples#blade/SamplesExtension/DiffEditorInstructions/selectedItem/DiffEditorInstructions/selectedValue/DiffEditorInstructions)
 - Console
@@ -6077,7 +6565,26 @@ Second, you must provide plugin options.
 
 The following sample shows a simple method of enabling the plugins:
 
-code sample coming soon to SamplesExtension in D:\ws\Ship-Sync-AuxDocs-Github\doc\portal-sdk\Samples\SamplesExtension\Extension\Client\Controls\Grid\ViewModels\ScrollableGridWithFilteringAndSorting.ts
+```typescript
+
+// Define the grid plugins and options.
+this.grid = new Grid.ViewModel<WorkItem, WorkItem>(
+    container,
+    null,
+    Grid.Extensions.Scrollable | Grid.Extensions.Filterable | Grid.Extensions.SortableColumn,
+    {
+        scrollable: <Grid.ScrollableOptions<WorkItem>>{
+            dataNavigator: this._navigator
+        },
+        filterable: <Grid.FilterableOptions>{
+            // Server filter causes the grid to use the data navigator for filtering.
+            serverFilter: ko.observable(true)
+        },
+        sortableColumn: <Grid.SortableColumnOptions<WorkItem>>{
+        }
+    });
+
+```
 
 Plugin compatibility:
 
@@ -6591,239 +7098,6 @@ Other visualization controls:
 - [Video](http://aka.ms/portalfx/samples#blade/SamplesExtension/VideoInstructions/selectedItem/VideoInstructions/selectedValue/VideoInstructions)
 - [Terminal Emulator](http://aka.ms/portalfx/samples#blade/SamplesExtension/TerminalEmulatorInstructionsBlade/selectedItem/TerminalEmulatorInstructionsBlade/selectedValue/TerminalEmulatorInstructionsBlade)
 
-<a name="controls-build-your-own-controls"></a>
-## Build your own controls
-
-  	 <h1 name="portalfx-controls-custom-controls"></h1>
- # Custom controls
-
-<a name="controls-important-note"></a>
-## IMPORTANT NOTE:
-- This feature is not yet enabled in production environment i.e. you cannot go to production as of now with custom control on your blade. This will enabled soon however, so you can start implmentation work now.
-- As this is a preview feature both 'feature.customcontrols=true' and 'clientOptimizations=bundle' need to be specified in the portal's query string to enable custom controls.
-- Custom controls is not enabled on sovereign\govt clouds. Custom controls feature will not work on these clouds.
-
-<a name="controls-sections"></a>
-## Sections:
-- [Custom control overview](#custom-control-overview)
-- [Building a custom control](#custom-control-building)
-   - [Build your control](#custom-control-build-it)
-   - [Package the control in the ibiza framework](#custom-control-package-control)
-- [Consuming a custom control](#custom-control-consuming)
-- [Making a custom control that participate in validation](#custom-control-validation)
-- [Advanced topics](#custom-control-advanced)
-  - [Requiring non-AMD scripts from your custom control widget](#custom-control-non-amd-scripts)
-- [Known issues](#custom-control-known-issues)
-- [Fixed issues not yet fixed](#custom-control-not-yet-fixed)
-
-<a name="custom-control-overview"></a>
-<a name="controls-custom-control-overview"></a>
-## Custom control overview
-
-Today if you want to build an ibiza extenison you are provided with Rich framework built in controls. Sometimes you may have a scenario for richer user experience where you need a custom cotrol.
-In this case today, we give you 2 options: 
-- You get complete Iframe at blade level to build controls,but with limitation that you cannot use any ibiza control within that blade
-- You can contribute a framwork control into our repo, but here you will have to maaintain and develop this control using our review process.
-
-To overcome this hurdles we came up with solution **Custom Control**
-Basically custom controls feature:
-- Enable partners to use custom controls along with ibiza framework controls.
-- Enable partners to fulfill their custom controls need without taking a dependency on Ibiza team
-- Enable partners to use Ibiza to write targeted forms controls
-- Enable partners use controls written using other frameworks in their extension
-- Enable partners to share controls across extensions
-
-
-<a name="custom-control-building"></a>
-<a name="controls-building-a-custom-control"></a>
-## Building a custom control
-
-Building a custom control is can be divided into 3 easy steps:
-1. Build your control
-    Today there are lot of open source libraries that enable you to build custom controls with great features. Build your custom control using such open source libraries.
-2. Package it in ibiza framework
-    You will need to package your package your control for Shell to understand and render it into your experience. The steps are mentioned (here)[].
-3. Consume your control in your extension
-    Once you have packaged your control, you will consume that control into your extension for having rich customer experience. How to consume your custom control is mentioend [here]()
-
-<a name="custom-control-build-it"></a>
-<a name="controls-building-a-custom-control-building-your-control"></a>
-### Building your control
-Develop your control however you like. Once you have a control working on a standalone HTML page or something then the next step is to itegrate it into the portal.
-
-<a name="custom-control-package-control"></a>
-<a name="controls-building-a-custom-control-package-the-control-in-the-ibiza-framework"></a>
-### Package the control in the ibiza framework
-Once you have a working control there are just a few steps needed to package it in the framework:
-
-<a name="controls-building-a-custom-control-package-the-control-in-the-ibiza-framework-implement-custom-controls-contract-in-your-controls"></a>
-#### Implement Custom Controls contract in your controls
-Create a <Your Control name>.ts file, which should import and implement `Fx/Composition/CustomControl` contracts which are shown below. Your module along with custom control contract will have your control template and control specific functionality. 
-
-```ts
-  /**
-     * Defines the contract for extension authored custom control.
-     */
-    export interface Contract<TOptions> {
-        /**
-         * Context properties that will be setup by shell for extension authored custom control.
-         * Context object will be set before onInitialize method is called.
-         */
-        context: Context<TOptions>;
-
-        /**
-         * Initialize method will be called by the shell after setting up the context properties on the custom control.
-         * Extension author should resolve the promise once the data is fetched and control is ready to render.
-         * In the event that control can be revealed with partial data, call revealContent on the container object present in the context.
-         */
-        onInitialize(): Q.Promise<any>;
-
-        /**
-         * Optionally pass in a dispose method which will be invoked when the control is disposed.
-         */
-        dispose?(): void;
-    }
-```
-
-<a name="controls-building-a-custom-control-package-the-control-in-the-ibiza-framework-define-options-contract-for-custom-controls"></a>
-#### Define options contract for Custom Controls
-Once you have defined Custom Control contracts, you will need to create the options for your controls. This is basically the set of options your control will need from Shell when rendered in your extenions. 
-You will create the <Your Control Name>Contracts.d.ts file which will have the options required for your controls. Below shows the example where we pass name as an option:
-```ts    
-    declare module <YourExtensionName>.BreadCrumb {
-    
-        export interface BreadCrumb {
-            /**
-            * Name of the BreadCrumb item. 
-            */
-            name: string;
-        }
-        export interface Options {
-            breadCrumbs?: KnockoutObservableArray<BreadCrumb>;
-            onBreadCrumbClick?: (breadCrumb: BreadCrumb) => void;
-        }
-    }
-```
-
-<a name="controls-building-a-custom-control-package-the-control-in-the-ibiza-framework-define-control-pdl"></a>
-#### Define control PDL
-Once you have defined the options and contract for your controls, next you define is PDL with below fields:
- - `Name` the name of your control
- - `ModuleId` pointer to your control implementation
- - `OptionsContract` pointer to the options contract definition
- - `Export` set this to true if you wish to share your control across extensions. You can basically provide the options contract file and the PDE of your control to differernt extensions and they can render the control without re-writing it.
-  - `IsFormField`(Optional) - set this to true if your control needs to behave like ibiza form field. The details are provided [here]().
- - `StyleSheet` (Optional) - point this to your control style sheet.
-
-```xml
-<Definition xmlns="http://schemas.microsoft.com/aux/2013/pdl"
-              Area="Preview">
- 
-     <!--Set Export="true" only if extension author wants to share the control and allow another partner extension to consume this control.-->
-     <Control
-         Name="BreadCrumb"
-         ModuleId="Preview/CustomControls/BreadCrumb/BreadCrumb"
-         OptionsContract="<YourExtensionName>.BreadCrumb.Options"
-         Export="true">
- 
-         <StyleSheet Source="{Css Source='./BreadCrumb.css'}" />
-     </Control>
-</Definition>
-```
-  
-<a name="custom-control-consuming"></a>
-<a name="controls-consuming-a-custom-control"></a>
-## Consuming a custom control
-
-Once you have built your custom control, you can consume the control in yur experience in 3 steps:
-
-<a name="controls-consuming-a-custom-control-define-your-template-blade"></a>
-#### Define your template blade
-You need to identify the blade that carries custom controls by setting custom control property to true as shown below:
-
-```xml
-<Definition xmlns="http://schemas.microsoft.com/aux/2013/pdl"
-            Area="Preview">
-
-<TemplateBlade Name="FileExplorerSampleInstructions"
-                ViewModel="{ViewModel Name=FileExplorerSampleBladeViewModel, Module=../Preview/CustomControlUsage/FileExplorerSample/ViewModels/FileExplorerSampleViewModels}"
-                Template="{Html Source='Templates\\FileExplorerSampleInstructions.html'}"
-                HasCustomControls="true" />
-</Definition>
-```
-
-<a name="controls-consuming-a-custom-control-refer-your-custom-control-in-template"></a>
-#### Refer your custom control in template
-
-You can refer your custom control just like normal pcControl reference.
-
-```xml
-<div data-bind='pcControl: breadCrumb'></div>
-<div data-bind='pcControl: fileExplorerVM'></div>
-```
-
-<a name="controls-consuming-a-custom-control-in-blade-viewmodel-use-control-reference-to-create-control-view-model"></a>
-#### In blade ViewModel use control reference to create control view model
-
-```ts
-    this.breadCrumb = ControlReferences.BreadCrumb.createViewModel(container, {
-            breadCrumbs: ko.observableArray(SampleData.getBreadCrumbs(SampleData.srcFolder)),
-            onBreadCrumbClick: (breadCrumb) => {
-                updateFileExplorerItems(breadCrumb.name);
-            }
-    });
-```
-
-<a name="custom-control-validation"></a>
-<a name="controls-making-a-custom-control-that-participate-in-validation"></a>
-## Making a custom control that participate in validation
-Your scenario may require you to develop a control that you wish to use in forms section of the blade along with other Ibiza form controls. Ibiza has the internal validation patterns for rest of the controls and if you wish that your control should behave 
-similarly you will need to do 2 small changes in your control implmentation:
-
-1. In Your PDL define the control as form field i.e.
-`IsFormField="true"`
-
-2. Your options contract module should inherit module `Fx/Controls/CustomControl/FormField` to make sure Shell identifies it as form field on your blade:
-```
-declare module "<YourExtensionName>/NumericSpinner" {
-    import * as FormField from "Fx/Controls/CustomControl/FormField";
-
-    /**
-     * Specifies the options for NumericSpinner 
-     */
-    export interface Options extends FormField.Options<number> {
-    }
-}
-```
-
-<a name="custom-control-advanced"></a>
-<a name="controls-advanced-topics"></a>
-## Advanced topics
-
-<a name="custom-control-non-amd-scripts"></a>
-<a name="controls-advanced-topics-requiring-non-amd-scripts-from-your-custom-control-widget"></a>
-### Requiring non-AMD scripts from your custom control widget
-If you're using 3rd party libraries to develop your control you may find the library was not developed to be loaded by RequireJS. You can still use require's config settings to load the file 
-as a dependency of your widget.
-
-<a name="custom-control-known-issues"></a>
-<a name="controls-known-issues"></a>
-## Known issues
-
-Currently certain controls do not work with the custom controls infrastructure. You will not be able to use custom controls if your blade contains any of the following. You can use 
-the bugs to track the progress of any fixes:
-
-- [OAuth button](http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7301218)
-- [File upload control](http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7300948)
-- [File download control](http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7301179)
-- [Progress bar](http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7301223)
-- [Show a better error experience when custom controls are used in an unlocked blade](http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7915036)
-- Issues around ProxiedObservablesV2
-  - Use feature flag 'feature.pov2=false' to turn off ProxiedObservablesV2 feature if you hit PO errors
-
-
-If you have other comments or find additional issues you can log a bug [here](http://vstfrd:8080/Azure/RD/AAPT%20-%20Ibiza%20-%20Partner%20Requests/_workItems/create/RDTask?%5BSystem.Title%5D=%5BCustom+Controls%5D+%3CYour+Ask%3E&%5BSystem.Description%5D=%3Cdiv%3E%3Cdiv%3ETeam+Name%3C%2Fdiv%3E%3Cdiv%3EExtension+Contact%3C%2Fdiv%3E%3Cdiv%3E%3Cspan+style%3D%22font-weight%3Abold%3B%22%3E%26lt%3BPUT+YOUR+PRIMARY+CONTACT+HERE%26gt%3B%3C%2Fspan%3E%3C%2Fdiv%3E%3Cdiv%3E%3Cb%3E%3Cbr%3E%3C%2Fb%3E%3C%2Fdiv%3E%3Cdiv%3EIbiza+Contact%3Cdiv%3E%3Cspan+style%3D%22font-weight%3Abold%3B%22%3E%3C%2Fspan%3E%3C%2Fdiv%3E%3C%2Fdiv%3E%3C%2Fdiv%3E%3Cdiv%3E%26lt%3BDescribe+Scenario%26gt%3B%3C%2Fdiv%3E&%5BSystem.Tags%5D=ClickStop2&%5BMicrosoft.VSTS.Common.ActivatedBy%5D=Shrey+Shirwaikar+%3CREDMOND%5Cshresh%3E&%5BMicrosoft.VSTS.Common.Priority%5D=&%5BMicrosoft.VSTS.Common.Triage%5D=Not+Triaged&%5BMicrosoft.VSTS.Scheduling.CompletedWork%5D=&%5BMicrosoft.VSTS.Scheduling.BaselineWork%5D=3&%5BMicrosoft.RD.KeywordSearch%5D=cs2&%5BMicrosoft.Azure.IssueType%5D=Dev+Work&%5BMicrosoft.Azure.WorkStatus%5D=In+Review&%5BMicrosoft.VSTS.Common.BacklogPriority%5D=130&%5BMicrosoft.VSTS.Common.StackRank%5D=2&%5BMicrosoft.Azure.ApprovedDate%5D=Thu+Jul+28+2016+22%3A00%3A50+GMT-0700+(Pacific+Daylight+Time)) 
-or contact shresh\adamab.
 
 
 <a name="authentication"></a>
@@ -6880,7 +7154,7 @@ using (var client = new Microsoft.Portal.Framework.ClientProxy.WebApiClient())
 <a name="authentication-calling-other-services"></a>
 ## Calling other services
 
-In order to call other services, your extension must obtain a custom token with the user's context. There are 2 ways to accomplish this:
+In order to call other services, your extension must obtain a custom token with the user's context that has an audience URI for your particular APIs. There are 2 ways to accomplish this:
 
 1. Make AJAX requests for a specific service from the client
 2. Exchange Fx tokens for your own from your server
@@ -6892,12 +7166,12 @@ Azure terms and conditions, please reach out to the [Azure portal legal team](ma
 
 <a name="authentication-calling-other-services-calling-other-services-from-the-client"></a>
 #### Calling other services from the client
-In order to call other services from the client, a new AAD app must be created and managed by the Fx team since tokens will be obtained by the Fx. 
+In order to call other services from the client, the Fx team will create a new AAD app for you and will manage that application on your behalf since tokens will be obtained by the Fx. 
 
 1. Create a [security/auth partner request](http://aka.ms/new-ibiza-security-auth-request) including the exact config you need (see 
-   below)
-2. The Fx team will submit a request to the AAD onboarding team and will CC you on the request (NOTE: AAD onbaording can take 5-6 weeks)
-3. Reach out to the [AAD onboarding team](aadonboarding@microsoft.com) on the thread to check status
+   below) to start the process of obtaining an AAD application for your extension.
+2. The Fx team will submit a request to the AAD onboarding team on your behalf and will CC you on the request (NOTE: AAD onbaording can take 5-6 weeks)
+3. The [AAD onboarding team](mailto:aadonboarding@microsoft.com) can provide status on the request.  It is helpful to obtain your App Id from the Fx team when working with the AAD team.
 4. Once the app is created, the Fx team will update portal config 
 5. Request tokens for the desired service (aka "resource") when using Fx APIs
 
@@ -6955,7 +7229,7 @@ MsPortalFx.Base.Security.getAuthorizationToken({ resourceName: "graph" });
 #### Calling other services from the server
 To call other services from the server, you'll need your own AAD app and exchange the Fx token for your own to call other services.
 
-1. [Create an AAD app](https://aadonboardingsiteppe.cloudapp.net) and contact the [AAD onboarding team](aadonboarding@microsoft.com) as 
+1. [Create an AAD app](https://aadonboardingsiteppe.cloudapp.net) and contact the [AAD onboarding team](mailto:aadonboarding@microsoft.com) as 
    needed (NOTE: AAD onboarding can take 5-6 weeks)
 2. Create a [security/auth partner request](http://aka.ms/new-ibiza-security-auth-request) including the exact config you need (see 
    below)
@@ -7264,8 +7538,8 @@ extension is loaded. Find the `initializeDataContexts` method and then use the `
 
 ```typescript
 
-this.viewModelFactories.MasterDetail().setDataContextFactory<typeof MasterDetail>(
-    "./MasterDetail/MasterDetailArea",
+this.viewModelFactories.V1$MasterDetail().setDataContextFactory<typeof MasterDetailV1>(
+    "./V1/MasterDetail/MasterDetailArea",
     (contextModule) => new contextModule.DataContext());
 
 ```
@@ -7360,7 +7634,7 @@ include an Area attribute whose value corresponds to the name of your Area:
 ```xml
 
 <Definition xmlns="http://schemas.microsoft.com/aux/2013/pdl"
-Area="MasterDetail">
+Area="V1/MasterDetail">
 
 ```
 
@@ -7542,8 +7816,8 @@ Typically, the DataContext associated with a particular Area is instantiated fro
 
 ```typescript
 
-this.viewModelFactories.MasterDetail().setDataContextFactory<typeof MasterDetail>(
-    "./MasterDetail/MasterDetailArea",
+this.viewModelFactories.V1$MasterDetail().setDataContextFactory<typeof MasterDetailV1>(
+    "./V1/MasterDetail/MasterDetailArea",
     (contextModule) => new contextModule.DataContext());
 
 ```
@@ -9361,16 +9635,29 @@ To define your asset type, simply add the following snippet to PDL:
 </AssetType>
 ```
 
-The name can be anything, since it's scoped to your extension. You'll be typing this a lot, so keep it succinct, yet clear -- it will be used to identify asset types in telemetry.
+The name can be anything that follows standard variable naming guidelines. Just remember: **Once you set the asset type name, you can never change it!** Asset type names are used as pointers in multiple places (e.g. favorites, recent) and changing the asset type will cause the references to your asset type and resources to fail. **Do not change asset type names!** You'll be typing this a lot, so keep it succinct, yet clear -- it will be used to identify asset types in telemetry.
 
-In order to provide a modern voice and tone within the portal, asset types have 4 different display names. The portal will use the most appropriate display name given the context. If your asset type display name includes an acronym or product name that is always capitalized, use the same values for upper and lower display name properties (e.g. `PluralDisplayName` and `LowerPluralDisplayName` may both use `SQL databases`). Do not share strings between singular and plural display name properties.
+<a name="assettype-names"></a>
+In order to provide a modern voice and tone within the portal, asset types have 5 different display names. The portal will use the most appropriate display name given the context. Please keep these rules in mind:
+
+1. **Always specify `ServiceDisplayName`, if applicable.** If your service has an official, registered/trade-marked product name (e.g. App Service), specify the `ServiceDisplayName` property to ensure the service name is used when possible.
+2. **Plural/singular display names *must* be nouns.** These names are used in sentences, which will not flow correctly if you use the service name when you should have a noun (e.g. "No Data Lake Store to display"). Instead, set `ServiceDisplayName` to get the appropriate handling as well as natural, grammatically correct sentences throughout the portal.
+3. **Display names *must* be sentence-cased.** This applies to all text, including blade, tile, and section headers. The [Microsoft Style Guide](http://aka.ms/style) dictates that all text should be sentence-cased unless it is a product or service name. Note that nouns are not service names, even if they use the same words (e.g. the "Logic Apps" service should have a `LowerPluralDisplayName` of "logic apps"). Conversly, a service name can be used to prefix a noun (e.g. "Traffic Manager profiles").
+4. **Do not lower-case acronyms.** If your asset type display name includes an acronym or starts with a product name that is always capitalized, use the same values for upper and lower display name properties (e.g. `PluralDisplayName` and `LowerPluralDisplayName` may both use `SQL databases`).
+5. **Plural and singular names should *never* be the same.** Do not share strings between singular and plural display names. There is no scenario where these should be the same.
+6. **Do not specify extraneous keywords in the name.** If you want customers to find your service or resource type when they search for another word (e.g. firewall), add that to the comma-delimited list of `Keywords`. These will be used when filtering in the More Services menu as well as global search.
+
+The aforementioned display names are used in the following places:
 
 * The Browse menu shows the `ServiceDisplayName` in the list of browseable asset types.  If `ServiceDisplayName` is not available, `PluralDisplayName` will be shown instead
 * The All Resources blade uses the `SingularDisplayName` in the Type column, when visible
 * Browse v2 uses the `LowerPluralDisplayName` when there are no resources (e.g. "No web apps to display")
 * Browse v2 uses the `LowerPluralDisplayName` as the text filter placeholder
+* Global search uses the `SingularDisplayName` to indicate what type resources are
+* The Azure mobile app uses the `PluralDisplayName` in the resource type filter (support for `ServiceDisplayName` coming post-Build)
+* The Azure mobile app uses the `SingularDisplayName` everywhere the resource type is displayed (i.e. resource list/detail, alert list/ detail)
 
-Filtering functionality within the Browse menu searches over `Keywords`.  `Keywords` is a comma-separated set of words or phrases which
+Filtering functionality within the Browse menu searches over `Keywords`. `Keywords` is a comma-separated set of words or phrases which
 allow users to search for your asset by identifiers other than than the set display names. 
 
 Remember, your part and blade should both have a single `id` input parameter, which is the asset id:
@@ -11405,6 +11692,32 @@ MsPortalFx.Hubs.Notifications.ClientNotification.publish({
 });
 ```
 
+<a name="resource-management-notifications-defining-your-notifications-locked-resource-notifications"></a>
+#### Locked Resource Notifications
+
+If when a resource is deleted, the server returns a locked notification, you can redirect to the resource lock blade.
+
+The json returned from arm for a locked resource would look something like this
+```json
+{  
+   "error":{  
+      "code":"ScopeLocked",
+      "message":"The scope '/subscriptions/1/resourceGroups/Group' cannot perform delete operation because following scope(s) are locked '/subscriptions/1/resourceGroup/1'. Please remove the lock and try again."
+   }
+}
+```
+To link your notificaton to the locks blade, in your notification callback, you can publish with the following json
+```ts
+MsPortalFx.Hubs.Notifications.ClientNotification.publish({
+    … other properties …
+    linkedBlade: MsPortalFx.ViewModels.getBladeSelection(
+        "HubsExtension",
+        "LocksBlade",
+        { resourceId: … your resource id … }
+    )
+})
+```
+
 <a name="resource-management-notifications-defining-your-notifications-suppressing-server-events"></a>
 #### Suppressing server events
 
@@ -11469,6 +11782,26 @@ If you need to open a different blade (e.g. based on asset metadata or from anot
 <a name="resource-management-subscriptions"></a>
 ## Subscriptions
 
+<a name="resource-management-subscriptions-getting-the-list-of-subscriptions"></a>
+### Getting the list of subscriptions
+Most extensions should only need the list of user selected subscriptions. To get the list of selected subscriptions, call the `getSelectedSubscriptions()` function:
+
+```ts
+MsPortalFx.Azure.getSelectedSubscriptions().then((subs: Subscription[]) => {
+    ...
+});
+```
+
+To get all subscriptions, call the `getAllSubscriptions()` function:
+
+```ts
+MsPortalFx.Azure.getAllSubscriptions().then((subs: Subscription[]) => {
+    ...
+});
+```
+
+<a name="resource-management-subscriptions-getting-subscription-details"></a>
+### Getting subscription details
 Extensions need subscription details to enable the following scenarios:
 
 * Determining if a resource is in a disabled subscription
@@ -11476,8 +11809,6 @@ Extensions need subscription details to enable the following scenarios:
 * Making a decision based on the quota id
 * Showing resources for all filtered subscriptions
 
-<a name="resource-management-subscriptions-getting-subscription-details"></a>
-### Getting subscription details
 Most extensions should only need the details of a single subscription for these first 3 scenarios. To get subscription details, call the `getSubscriptionInfo()` function:
 
 ```ts
@@ -11498,9 +11829,10 @@ Extensions that have subscription resources should use [Browse v2](#portalfx-bro
 ### Subscription filtering on blades and parts
 If you show content across subscriptions, use the following guidelines:
 
+1. On template blades, use a `ResourceFilter` control (see below)
 1. Locked blades should add the `ResourceFilterPart` to the top of their blade (see below)
-2. Unlocked blades should add a subtitle that represents the selected subscriptions and a `Filter` command that includes the subscription filter in a context pane (same as locked blades)
-3. Parts should add a subtitle that represents the selected subscriptions and expose a `Filter` command similar to unlocked blades
+1. Unlocked blades should add a subtitle that represents the selected subscriptions and a `Filter` command that includes the subscription filter in a context pane (same as locked blades)
+1. Parts should add a subtitle that represents the selected subscriptions and expose a `Filter` command similar to unlocked blades
 
 The selected subscription label should be formatted using these rules:
 
@@ -11509,6 +11841,18 @@ The selected subscription label should be formatted using these rules:
 * All subscriptions: "All subscriptions"
 
 > [WACOM.NOTE] We will provide an API to do the label calculation for you. Stay tuned...
+
+If you have a template blade that shows resources across subscriptions, you can add the `ResourceFilter` control to your blade using a `pcControl` binding and use the observables on the viewmodel on your blade:
+```ts
+  this.resourceFilter = new MsPortalFx.Azure.ResourceFilter.ViewModel(this._container, {
+        actionHandler: this.gridViewModel,
+        showTextFilter: ko_observable(true),
+        showSubscriptionFilter: ko_observable(true),
+        showSubscriptionSummary: ko_observable(false),
+        showTenantLevelSubscriptionSummary: ko_observable(false),
+        textFilterPlaceholder: ko_observable<string>("Search here")
+  });
+```
 
 If you have a locked blade that shows resources across subscriptions, you can add the `ResourceFilterPart` from Hubs and bind its outputs to your part's inputs:
 
@@ -11566,10 +11910,7 @@ For more information, read the full [Tags documentation](http://azure.microsoft.
 
 [tags]: ../media/portalfx-tags/tags.png
  <h1 name="portalfx-resourcemove"></h1>
- <properties title="" pageTitle="Resource moves" description="" authors="flanakin" />
-
-<a name="resource-management-resource-moves"></a>
-## Resource moves
+ ## Resource moves
 
 Resources can be moved between resource groups or subscriptions in the Properties blade and Essentials (resource summary part). Every resource that can be moved, directly or indirectly, by the ARM `/moveResources` API must have both Properties and Essentials entry points for consistency.
 
@@ -11602,9 +11943,26 @@ var resourceSummaryOptions = <MsPortalFx.ViewModels.Parts.ResourceSummary.Option
 }
 ```
 
+Along with essentials and properties blade, resource blade must also have move command.
+If you are not using Move resource PDL command on your resource blade, please use MoveResourceButton on the command/toolbar bar on your resource blade. 
+As we are eventually deprecating PDL support, moving forward, this is the strongly recommended way of adding the move command.
+
+Here's code to add move resource button to the toolbar:
+```ts
+    import MoveResorceButton = require("Fx/Controls/Toolbar/MoveResourceToolbarButton");
+
+    const moveResourceButton = new MoveResorceButton.ViewModel(container, 
+    { 
+        resourceId: "subscriptions/{subId}/resourcegroups/{resourceGroupId}/providers/{providerId}/{resourcetype}/{resourceName}"
+    });
+    const toolBar = new Toolbars.Toolbar(container);
+    toolBar.setItems([moveResourceButton]);
+```
  <h1 name="portalfx-extension-pricing-tier"></h1>
- ## Pricing Tier
-<a name="resource-management-resource-moves-consuming-the-spec-picker-blade"></a>
+ 
+<a name="resource-management-pricing-tier"></a>
+## Pricing Tier
+<a name="resource-management-pricing-tier-consuming-the-spec-picker-blade"></a>
 ### Consuming the Spec Picker Blade
 The spec picker has a three controls (dropdown, infobox, and selector) for getting the data from the spec picker blades. The best way is to use the Spec Picker dropdown in your create blades.
 
@@ -11649,7 +12007,7 @@ this.specDropDown = new Specs.DropDown(container, {
 
 ```
 
-<a name="resource-management-resource-moves-spec-picker-blade"></a>
+<a name="resource-management-pricing-tier-spec-picker-blade"></a>
 ### Spec Picker Blade
 To create a pricing tier blade you'll need to first create the blade in pdl using the `SpecPickerV3` template,
 ```xml
@@ -11805,7 +12163,7 @@ this._specDataView.fetch({}).then(
 
 The data in here will have the information that will be shown on the specs and as well as the `ResourceMap` information used to look up pricing from billing.
 
-<a name="resource-management-resource-moves-sample-spec-data"></a>
+<a name="resource-management-pricing-tier-sample-spec-data"></a>
 ### Sample Spec Data
 Sample Spec
 ```typescript

@@ -4,6 +4,7 @@
     * [Testing Commands](#choosing-the-right-test-framework-testing-commands)
     * [Taking Screenshots while Testings](#choosing-the-right-test-framework-taking-screenshots-while-testings)
     * [Loading a Subset of Extensions](#choosing-the-right-test-framework-loading-a-subset-of-extensions)
+    * [Disabling a specific extension](#choosing-the-right-test-framework-disabling-a-specific-extension)
     * [Testing Best Practices](#choosing-the-right-test-framework-testing-best-practices)
 * [msportalfx-test](#msportalfx-test)
     * [Overview](#msportalfx-test-overview)
@@ -931,11 +932,13 @@ namespace SamplesExtensionTests
 ```
 
  <h1 name="portalfx-loading-a-subset-of-extensions"></h1>
- <properties title="" pageTitle="Loading a subset extensions" description="" authors="madjos,nickharris" />
+ <properties title="" pageTitle="Loading a subset extensions" description="" authors="madjos,nickharris,alvarorahul" />
 
 <a name="choosing-the-right-test-framework-loading-a-subset-of-extensions"></a>
 ## Loading a Subset of Extensions
-There are some instances during test where you may want to only load your extension or a subset of extensions within the portal. You can do this using the feature.DisableExtensions feature flag. 
+There are some instances during test where you may want to only load your
+extension or a subset of extensions within the portal. You can do this using the
+feature.DisableExtensions feature flag. 
 
 Usage: 
 
@@ -946,7 +949,25 @@ Usage:
 - This will make every extension disabled by default.
 - This will enable hubs (which almost everyone needs).
 - This will enable the particular extension you want to test. 
-- You can add multiple like the HubsExtension=true and MyOtherExtension=true if you want to test other extensions.
+- You can add multiple like the HubsExtension=true and MyOtherExtension=true if
+you want to test other extensions.
+
+<a name="choosing-the-right-test-framework-disabling-a-specific-extension"></a>
+## Disabling a specific extension
+
+If you want to disable a single extension, you can use the canmodifyextensions
+feature flag like below.
+
+```
+?feature.canmodifyextensions=true&ExtensionNameToDisable=false
+```
+
+An example of this is when you want to turn off an old extension and turn on a
+new one. You can do this as follows: -
+
+```
+?feature.canmodifyextensions=true&MyOldExtension=false&MyNewExtension=true
+```
 
 
  <h1 name="portalfx-testing-best-practices"></h1>
@@ -1312,8 +1333,23 @@ If you run into a compilation error with node.d.ts, verify that the tsc version 
     
     tsc --version
 
-If the version is incorrect, then you may need to adjust your path variables or directly call the latest version of tsc (eg c:.  
+If the version is incorrect, then you may need to adjust your path variables or directly call the latest version of tsc.
 
+If your test fails with the Chrome automation extension crashing, please try adding the no-sandbox flag to your config.json:
+	```json
+
+		{
+		"capabilities": {
+			"browserName": "chrome",
+            "chromeOptions": { 
+                "args": [ 
+                    "no-sandbox"
+            ]}
+		},
+		"portalUrl": "https://portal.azure.com"
+		}
+	```	
+    
 <a name="msportalfx-test-getting-started-updating"></a>
 <a name="msportalfx-test-getting-started-updating"></a>
 ### Updating

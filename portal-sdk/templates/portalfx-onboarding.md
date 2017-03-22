@@ -1,10 +1,15 @@
-Welcome to the Ibiza/Azure portal! We're excited to have you to join the family.
+Welcome to the Azure portal! We're excited to have you to join the family.
 
-Most services consist of 3 components:
+Most services that onboard Azure have to onboard the following 3 components:
 
 * Marketing content on [azure.com](https://azure.microsoft.com) or other website
 * Management APIs exposed via Azure Resource Manager (ARM) or Microsoft Graph
-* Management UI in the Ibiza/Azure portal and/or other tools/websites, like Visual Studio
+* Management UI in the Azure portal and/or other tools/websites, like Visual Studio
+
+Our team i.e. Azure Portal UI (Ibiza, Portal Framework) can only help you with onboarding Management UI in the Azure portal. 
+
+The next section of documentation has some pointers to point you to right people if you looking for contacts for pre-requisite steps to onboarding Management UI. 
+However, this list may not be upto date so if you find the information is out of date, please send a pull request to update the documentation.
 
 The Azure onboarding process is streamlined to optimize the delivery of high quality experiences based on hundreds of
 hours of usability testing that meet Microsoft Common Engineering Criteria (CEC) and compliance requirements. **Do not
@@ -12,9 +17,7 @@ start designing UI or management APIs until after you've started the onboarding 
 latest patterns and practices. This will better optimize your time and avoid throw-away work by avoiding usability
 issues caused by anti-patterns and inconsistencies that block usability, performance, etc.
 
-## Azure Onboarding
-
-1. **Business model review** (Stakeholders: [Brian Hillger’s team, Stacey Ellingson](mailto:ibiza-bmr@microsoft.com?subject=Azure%20Business%20model%20review)
+1. **Business model review** (Stakeholders: [Brian Hillger’s team, Stacey Ellingson](mailto:ibiza-bmr@microsoft.com?subject=Azure%20Business%20model%20review))
 
 2. **Management APIs in ARM/Graph**
 
@@ -63,13 +66,7 @@ issues caused by anti-patterns and inconsistencies that block usability, perform
    4. Complete metadata in ServiceTree to enable the automation for various KPIs
    5. Complete the requirements for each release stage: https://cecfundamentals
 
-6. **Internationalization** (Stakeholder: [Lynne Dong](mailto:ibiza-interntnl@microsoft.com))
-
-    Nearly 70% of Azure users are from outside of the United States. It’s important to make Azure a globalized product,
-    and there are a few requirements under the "Internationalization" criteria you need acour service is required to
-    support the same set of languages as the Portal for GA. Learn more about [internationalization requirements](http://aka.ms/azureintlrequirements).
-
-7. **Azure Compliance** (Stakeholders: [Azure Compliance team](azcompl))
+6. **Azure Compliance** (Stakeholders: [Azure Compliance team](azcompl))
 
     Compliance criteria and practices are defined in [Quality Essentials](https://microsoft.sharepoint.com/teams/QualityEssentials/SitePages/GettingStarted.aspx)
     throughout our development cycle. These ensure services meet the Trusted Cloud commitments outlined in the [Microsoft Azure Trust Center](http://azure.microsoft.com/en-us/support/trust-center/)
@@ -107,9 +104,15 @@ issues caused by anti-patterns and inconsistencies that block usability, perform
    | Privacy | User settings data handling, encryption, and authentication |
    | SDL | Threat modeling |
 
-## Ibiza Onboarding 
+7. **Localization** (Stakeholder: [Lynne Dong](mailto:ibiza-interntnl@microsoft.com))
 
-1. **Onboarding kickoff** (Stakeholders: [Leon Welicki, Adam Abdelhamed](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding))
+    Nearly 70% of Azure users are from outside of the United States. Therefore, it is important to make Azure a globalized product.
+    There are a few requirements under the "Internationalization" criteria that your service is required to support.  This is the same
+    set of languages that are supported by Azure Portal for GA. Learn more about [internationalization requirements](http://aka.ms/azureintlrequirements).
+
+8. **Onboarding kickoff** 
+
+    If you are planning to build a first party application i.e. you are a part of Microsoft, please email (Stakeholders: [Leon Welicki, Adam Abdelhamed, Amit Modi](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding))
 
     Setup a meeting to discuss the following:
     - Is your service targeting public Azure, on-prem, or both?
@@ -117,9 +120,19 @@ issues caused by anti-patterns and inconsistencies that block usability, perform
     - VP, PM, and engineering owners
     - Timelines (preview, GA)
     - Summary of the service and target scenarios
+    
+    If you are planning to build a third party application i.e. you are an external partner, please email (Stakeholders: [Leon Welicki, Adam Abdelhamed](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding))
+    - Is your service targeting public Azure, on-prem, or both?
+    - Service name
+    - Summary of the service and target scenarios
+    
 
+9. **Start building you extension for Azure Portal** 
+    
+    Now you are ready to build your 1st extension.
 
-## Ibiza Extension Resources
+    
+## Portal extension
 
 Ready to write your first Azure portal extension? Here are a few resources to get you started:
  
@@ -136,11 +149,11 @@ Ready to write your first Azure portal extension? Here are a few resources to g
    [Getting Started](/portal-sdk/generated/index-portalfx-extension-development.md#getting-started)
    section will guide you through how it works, build the extension, as well as the debugging tips during your code development.
 
-1. **[View the samples](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKBlade)**
+3. **[View the samples](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKBlade)**
 
    The Fx team runs a battery of tests using samples that are available as part of the downloaded SDK as well as available from the DOGFOOD (DF) environment. Browse through the samples to explore live examples of APIs.
 
-1. **<a href="mailto:ibiza-onboading-kickoff?subject=Extension feasibility review">Setup a UX feasibility review</a>**
+4. **<a href="mailto:ibiza-onboading-kickoff?subject=Extension feasibility review">Setup a UX feasibility review</a>**
 
    Before starting to build your extension, please setup time to review your design and ensure your desired outcome is
    feasible.
@@ -150,11 +163,11 @@ Ready to write your first Azure portal extension? Here are a few resources to g
    Join the community in https://stackoverflow.microsoft.com and let us know if you have any questions. (Don't forget to
    tag questions with "ibiza" or related tag.)
 
-1. **[Side-load your extension for local testing](/portal-sdk/generated/index-portalfx-extension-development.md#debugging-testing-in-production)**
+7. **[Side-load your extension for local testing](/portal-sdk/generated/index-portalfx-extension-development.md#debugging-testing-in-production)**
 
    Side-loading allows you to test and debug your extension locally against any environment. This is the preferred method of testing.
 
-1. **Marketplace integration**
+9. **Marketplace integration**
 
    At a high level, each icon you see in the Azure Portal Marketplace is referred to as a Gallery item. Gallery items
    take the form of a file with the .azpkg extension. You can think of this file as a zip which contains all assets for
@@ -227,7 +240,7 @@ Ready to write your first Azure portal extension? Here are a few resources to g
      See also:
      - [RP schema documentation](http://aka.ms/rpschema)
 
-1. **Register your extension**
+0. **Register your extension**
 
    Once your service name is finalized, request to have your extension registered in all environments. Once deployed to
    DOGFOOD (aka DF), contact the Fx team to request that it be enabled (if applicable). Your extension will be enabled

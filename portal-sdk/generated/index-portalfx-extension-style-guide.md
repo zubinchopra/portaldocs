@@ -58,24 +58,27 @@ The styles included in the CSS file may now be used inside HTML templates:
  <h1 name="portalfx-style-guide-style-sanitization"></h1>
  ## Style Guide: Style Sanitization
 
-To ensure a consistent and sandboxed experience in the portal, CSS is analyzed at runtime to filter out disallowed properties or values. A typical example of a disallowed style is "`position: fixed;`", which would allow developers to move content outside of their parts.
+CSS is analyzed at runtime to filter out disallowed properties or values.
 
-All CSS properties should be allowed with a few exceptions documented at the end of this article. As the analysis is whitelist based, you may encounter CSS properties being erroneously filtered out. Shall this occur, report the issue on [Stack Overflow](https://stackoverflow.microsoft.com/).
+Apart from the few exceptions documented below, most CSS properties should be allowed. You may encounter CSS properties being erroneously filtered out. Shall this occur, report the issue on [Stack Overflow](https://stackoverflow.microsoft.com/).
 
-The following properties only allow the specified values:
+Properties that allow specific values:
 
-1. position: [ static | relative | absolute ]
-1. text-transform: [ none | uppercase | lowercase ]
+* `position`: [ `static` | `relative` | `absolute` ]
+    * [ `fixed` ] is disallowed
+* `text-transform`: [ `none` | `uppercase` | `lowercase` ]
 
-The following properties are sanitized out:
+Properties that are sanitized out:
 
-1. font
-1. font-family
-1. list-style
-
-Certain properties have inconsistent behavior across browsers, or full support requires vendor prefixes. To enable them in a supported way, use the Framework style class instead.
-
-* user-select: use class 'msportalfx-unselectable'
+* `font`
+    * Use `font-*` properties instead of the shorthand
+* `font-family`
+    * Use `msportalfx-font-*` instead
+* `list-style`
+    * Use `list-style-*` properties instead of the shorthand
+* `user-select`
+    * Use class `msportalfx-unselectable` to normalize support across browsers
+* `z-index`
 
  <h1 name="portalfx-style-guide-themed-color-classes"></h1>
  ## Style Guide: Themed Color Classes
@@ -119,25 +122,59 @@ In addition to using the `msportalfx-code` class, text blocks may be set to use 
 <a name="utility-classes"></a>
 ### Utility Classes
 
-**msportalfx-removeTableBorders** \- Removes all borders from a TABLE element.
+```
+msportalfx-removepartpadding
+```
+>Remove default padding on a part template.
 
-**msportalfx-boxsizing-borderbox** \- Changes layout to include padding and borders in its width and height.
+```
+msportalfx-removepartpaddingside
+```
+> Remove padding on the side only of a part template.
 
-**msportalfx-removeDefaultListStyle** \- Remove bullets from a `ul` or `ol` element.
+```
+msportalfx-partdivider
+```
+> Sets up a horizontal side to side divider within the part.
 
-**msportalfx-lineheight-reset** \- Reset the line height back to the default of the current font size.
+```
+msportalfx-clearfix
+```
+> Applied to a container that contains floated elements, ensures the container gets a size and that DOM element following the container flows the document normally with no overlap.
 
-**msportalfx-removepartpadding** \- Remove default padding on a part template.
+<a name="deprecated-classes"></a>
+### Deprecated Classes
+The following classes helped when Ibiza development was more restricted. Though still functional, those classes may be removed in the future.
 
-**msportalfx-removepartpaddingside** \- Remove padding on the side only of a part template.
+```
+msportalfx-removeTableBorders
+```
+> Removes all borders from a TABLE element.
 
-**msportalfx-partdivider** \- Sets up a horizontal side to side divider within the part.
+```
+msportalfx-boxsizing-borderbox
+```
+> Changes layout to include padding and borders in its width and height.
 
-**msportalfx-clearfix** \- Applied to a container that contains floated elements, ensures the container gets a size and that DOM element following the container flows the document normally with no overlap.
+```
+msportalfx-removeDefaultListStyle
+```
+> Remove bullets from a `ul` or `ol` element.
 
-**msportalfx-gridcolumn-asseticon** \- Applied as the css class name for a grid column which is showing an asset SVG icon.
+```
+msportalfx-lineheight-reset
+```
+> Reset the line height back to the default of the current font size.
 
-**msportalfx-gridcolumn-statusicon** \- Applied as the css class name for a grid column which is showing a status SVG icon.
+```
+msportalfx-gridcolumn-asseticon
+```
+> Applied as the css class name for a grid column which is showing an asset SVG icon.
+
+```
+msportalfx-gridcolumn-statusicon
+```
+> Applied as the css class name for a grid column which is showing a status SVG icon.
 
  <h1 name="portalfx-style-guide-color-palette"></h1>
  ## Style Guide: Color Palette

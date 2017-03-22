@@ -31,7 +31,8 @@ To learn more about any of our controls, click on any of the links below.
 - [Time Picker](http://aka.ms/portalfx/samples#blade/SamplesExtension/TimePickerInstructions/selectedItem/TimePickerInstructions/selectedValue/TimePickerInstructions)
 
 ## Drop downs
-- [Drop Down](http://aka.ms/portalfx/samples#blade/SamplesExtension/DropDownInstructions/selectedItem/DropDownInstructions/selectedValue/DropDownInstructions)
+- Drop Down
+	{"gitdown": "include-file", "file": "../templates/portalfx-controls-dropdown.md"}
 
 ## Editors
 
@@ -109,6 +110,3 @@ To learn more about any of our controls, click on any of the links below.
 - [Video](http://aka.ms/portalfx/samples#blade/SamplesExtension/VideoInstructions/selectedItem/VideoInstructions/selectedValue/VideoInstructions)
 - [Terminal Emulator](http://aka.ms/portalfx/samples#blade/SamplesExtension/TerminalEmulatorInstructionsBlade/selectedItem/TerminalEmulatorInstructionsBlade/selectedValue/TerminalEmulatorInstructionsBlade)
 
-## Build your own controls
-
-  	{"gitdown": "include-file", "file": "../templates/portalfx-controls-custom-controls.md"}
