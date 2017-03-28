@@ -1,4 +1,12 @@
-# Release Notes since 11/22/2016
+# Release Notes since 11/28/2016
+
+## 5.0.302.680
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7978177'>7978177</a></td><td>Bug Fix</td><td>[Bug] UI Templates feature throws error and doesnt work</td></tr></table>
+
+## 5.0.302.679
+0 Breaking Changes, 1 Features added and 2 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8449782'>8449782</a></td><td>Feature</td><td> [extension hosting service] Storage account / public end-point details (Microsoft_Azure_RSMT)</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8306138'>8306138</a></td><td>Bug Fix</td><td>[Sanitiser][Partner Request] - Intune Verticals - Unable to disable spell-checking on the TextBox Control</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7395028'>7395028</a></td><td>Bug Fix</td><td>notifyAssetDeleted: when deleting and then recreating a resource with the same name the blade shows as deleted </td></tr></table>
 
 ## 5.0.302.678
 1 Breaking Changes, 77 Features added and 195 Bugs Fixed
