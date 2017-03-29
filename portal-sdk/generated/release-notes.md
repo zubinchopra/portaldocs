@@ -1,5 +1,9 @@
 # Release Notes since 11/29/2016
 
+## 5.0.302.707
+0 Breaking Changes, 2 Features added and 0 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8820689'>8820689</a></td><td>Feature</td><td>[ExtensionConfiguration] <Enabling Extension in BlackForest> for extension <Microsoft_Azure_RecoveryServices></td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7549708'>7549708</a></td><td>Feature</td><td>Build SVG compression into the SVGs added within extension PDL</td></tr></table>
+
 ## 5.0.302.706
 0 Breaking Changes, 2 Features added and 1 Bugs Fixed
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8852575'>8852575</a></td><td>Bug Fix</td><td>Update MoveResourceToolbarButton to accept PDL and no-PDL Blade 'Container' types</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8841662'>8841662</a></td><td>Feature</td><td>Enable Citrix_XenApp_Essentials in PROD</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8798060'>8798060</a></td><td>Feature</td><td>Add DocumentDB extension to the portal</td></tr></table>
