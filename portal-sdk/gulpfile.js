@@ -49,6 +49,7 @@ gulp.task('portal', function () {
         "index-portalfx-extension-monitor.md",
         "index-portalfx-extension-test.md",
         "index-portalfx-extension-QnA.md",
+        "index-portalfx-extension-partner-request-process.md",
         "index-portalfx-extension-style-guide.md",
         "index-videos.md"];
 
