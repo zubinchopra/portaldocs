@@ -1,3 +1,4 @@
+
 # Partner Request Process
 
 To have a better customer experience, you may want to have richer experience in Ibiza portal. Sometimes to get this richer experience, you may have limited acheiving it using our famework. In such scenario, you may want us (Ibiza Team) to do some work in framework for achieving this goal.
