@@ -1,3 +1,4 @@
+
 ## EditScopeless Forms
 
 ### Difference between editscope backed forms and editscope-less forms
@@ -146,7 +147,6 @@ msportalfx-padding class is useful to add 10 x 10 padding to the blade.
 
 Managing the styling of blade gives extension developer throguh these css classes gives extension developers flexibility to use Blade as a canvas.
 Unlike previous version of SDK, No-PDL blades do not add any padding / docking content behavior by default. Thus making it easy for extension developers to manage the styling.
-
 
 ### Replacing Action Bar with Button
 
