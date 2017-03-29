@@ -27,6 +27,8 @@
     * [Integrating Forms with Commands](#developing-forms-integrating-forms-with-commands)
     * [FAQ](#developing-forms-faq)
     * [EditScope FAQ](#developing-forms-editscope-faq)
+    * [EditScopeless Forms](#developing-forms-editscopeless-forms)
+    * [Using Fx/Controls in EditScope backed forms](#developing-forms-using-fx-controls-in-editscope-backed-forms)
 * [Controls](#controls)
     * [Date and Time](#controls-date-and-time)
     * [Drop downs](#controls-drop-downs)
@@ -6088,6 +6090,309 @@ Often, extensions encounter this "Entity-typed object/array is not known to this
 ### Common error: &quot;Encountered a property &#39;foo&#39; on an editable object that is not present on the original object...&quot;
 
 As discussed [above](#only-observable-changes), the extension should mutate the EditScope/Form model by making observable changes and by calling EditScope APIs. For any object residing in the EditScope, merely adding/removing keys cannot be detected by EditScope (or by the FX at large) and, consequently, edits cannot be tracked. When an extension *attempts* to add/remove keys from an EditScope object, this puts the EditScope edit-tracking in an inconsistent state. When the EditScope detects such an inconsistency, it issues the error above to encourage the extension developer to use (exclusively) observable changes and EditScope APIs to mutate/change the EditScope/Form model.  
+
+
+ <h1 name="portalfx-editscopeless-forms"></h1>
+ <<<<<<< HEAD
+=======
+
+>>>>>>> c157129a967b1030712d78d938baa4ee61d7fb87
+<a name="developing-forms-editscopeless-forms"></a>
+## EditScopeless Forms
+
+<a name="developing-forms-editscopeless-forms-difference-between-editscope-backed-forms-and-editscope-less-forms"></a>
+### Difference between editscope backed forms and editscope-less forms
+
+<a name="developing-forms-editscopeless-forms-initial-value-and-dirty-state"></a>
+### Initial Value and Dirty State
+
+New Controls APIs support creating forms without initializing editscope. This make initialization of the Controls light-weight i.e. extension developers do need to worry about coupling the right editscope accessor.
+Since the editscope is not tied to each control anymore.There is no state assosciated with the contols. 
+
+From the extension developer's point of view this means two things:
+
+1. There is no concept of itniial value for these controls. If you want to initialize the value of a control then you just need to set the value.
+
+```ts
+textboxViewModel.vale("Some Initial Value");
+```  
+
+2. Extension developers have the freedom to control dirty state of control. 
+
+```ts
+textboxViewModel.dirty(true);
+```  
+ 
+
+<a name="developing-forms-editscopeless-forms-controls-namespace"></a>
+### Controls Namespace
+
+All the new controls are located in the "Fx/Controls" namespace.
+
+```ts
+import * as Section from "Fx/Controls/Section";
+import * as TextBox from "Fx/Controls/TextBox";
+``` 
+
+List of all the new controls that are available in "Fx/Controls":
+
+1. Button
+1. CheckBox
+1. CustomHtml
+1. DatePicker
+1. DateTimePicker
+1. DateTimeTangePicker
+1. DayPicker
+1. DropDown
+1. DuraitonPicker
+1. FileUpload
+1. MultiLineTextBox
+1. NumericTextBox
+1. OptionsGroup
+1. PasswordBox
+1. RadioButton
+1. RangeSlider
+1. Section
+1. Slider
+1. TabControl
+1. TextBox
+1. TimePicker
+1. TriStateCheckBox
+
+<a name="developing-forms-editscopeless-forms-initializing-controls"></a>
+### Initializing Controls
+
+The controls are initialized through a factory method `create()`. This function returns an interface. 
+
+For example,
+
+In this example, we invoke `create()` method to create a TextBox with specific label, sublabel and a list of validations.
+
+```ts
+import * as TextBox from "Fx/Controls/TextBox";
+
+const firstNameViewModel = TextBox.create(container, {
+            label: "First Name",
+            subLabel: "Try: John",
+            validations: [
+                new Validations.Required(ClientResources.emptyFirstName),
+                new Validations.RegExMatch("^[a-zA-Z]+", `${ClientResources.startsWithLetterValidationMessage} <a href="https://www.bing.com/search?q=Personal+names+around+the+world" target="_blank">${ClientResources.clickForMoreInfo}</a>`)
+            ]
+        });
+```
+
+<a name="developing-forms-editscopeless-forms-using-the-loading-indicator-for-dropdown"></a>
+### Using the loading indicator for dropdown
+
+Ibiza SDK now supports showing loading indicator when the data is asynchronously loaded by an AJAX call that takes time to populate the dropdown.
+
+Here is an example of a dropdown that implements loading indicator
+
+```ts
+
+// Controls Namespace
+import * as DropDown from "Fx/Controls/DropDown";
+
+// Initialize control with no data. Set loading indicator to true
+const dropDownViewModel = DropDown.create<string>(container, {
+            label: ClientResources.spouse,
+            validations: [ new Validations.Required(ClientResources.emptySpouse) ],
+            loading: true  // ...and dynamically switch to 'false' once the dropdown items are loaded.
+        });
+
+// fetch data asynchronously and remove loading indicator on data load
+const dropdownDataPromise = Q(model.people.fetch("", container)).then((people) => {
+            const dropDownItems = people.data.mapInto(container, (childLifetime: MsPortalFx.Base.LifetimeManager, person: SamplesExtension.DataModels.Person) => {
+                return {
+                    text: person.name(),
+                    value: person.name()
+                };
+            }, dropDownViewModel.items);
+            dropDownViewModel.loading(false);
+        });
+```
+
+<a name="developing-forms-editscopeless-forms-customizing-alert-on-form-close"></a>
+### Customizing Alert on Form Close
+
+SDK Provides two ways to configure the behavior of Alert i.e. the pop-up that shows up when user tries to close a form with unsaved edits. 
+
+For example, 
+
+In this scenario we have suppressed the alert by setting the value to `FxViewModels.AlertLevel.None`
+
+```ts
+form.configureAlertOnClose(FxViewModels.AlertLevel.None);
+```
+
+The other overload of this function can be used for more complex scenarios say when an extension developer chooses to compute the value of Alert's behavior and message function overload.
+
+For example, in this scenario extension developer is dynamically setting the behavior of alert and message based on the a checkbox and textBox.
+
+```ts
+
+this._container.form.configureAlertOnClose(ko.computed(container, () => {
+                        return {
+                            showAlert: configureCheckBox.value(),
+                            message: configureMessageTextBox.value()
+                        }
+                    }));
+
+```
+
+<a name="developing-forms-editscopeless-forms-customizing-alert-on-form-close-other-css-classes-that-can-be-useful"></a>
+#### Other CSS classes that can be useful
+
+1. msportalfx-docking-header
+1. msportalfx-docking-body
+1. msportalfx-docking-footer
+1. msportalfx-padding
+
+As the name suggests msportalfx-docking-* classes are helpful when you need to dock stuff at the header, body or footer of the blade. 
+msportalfx-padding class is useful to add 10 x 10 padding to the blade.
+
+Managing the styling of blade gives extension developer throguh these css classes gives extension developers flexibility to use Blade as a canvas.
+Unlike previous version of SDK, No-PDL blades do not add any padding / docking content behavior by default. Thus making it easy for extension developers to manage the styling.
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> c157129a967b1030712d78d938baa4ee61d7fb87
+<a name="developing-forms-editscopeless-forms-replacing-action-bar-with-button"></a>
+### Replacing Action Bar with Button
+
+<a name="developing-forms-editscopeless-forms-replacing-action-bar-with-button-implement-custom-styling"></a>
+#### Implement custom styling
+
+Extension developers can sue out-of-the-box CSS classes to dock a button at the botton of blade and make it look like Action Bar.
+
+This sample shows how to replace the action bar by docking a button and errorInfo box at the bottom of blade using `msportalfx-docking-footer` css class.
+`msportalfx-padding` is used to add 10 x 10 padding to the docked footer
+
+```html
+
+<div class='msportalfx-docking-footer msportalfx-padding'>
+    <div data-bind='pcControl: errorBox, visible: showErrorBox'></div>
+    <div data-bind='pcControl: okButton' class='ext-ok-button'></div><a>Link</a>
+</div>
+
+```
+
+<a name="developing-forms-editscopeless-forms-replacing-action-bar-with-button-implementing-blade-close-behavior"></a>
+#### Implementing blade close behavior
+
+```ts
+
+const okButtonClick = () => {
+    container.closeCurrentBlade({
+                            firstName: firstNameViewModel.value(),
+                            lastName: lastNameViewModel.value(),
+                            spouse: dropDownViewModel.value(),
+                            password: passwordViewModel.value(),
+                        });
+};
+```
+
+
+ <h1 name="portalfx-fxcontrols-editscope-forms"></h1>
+ 
+<a name="developing-forms-using-fx-controls-in-editscope-backed-forms"></a>
+## Using Fx/Controls in EditScope backed forms
+
+The new controls are compatible with EditScope backed controls. 
+This document provides a step by step process for  adding a Fx/Controls/TextBox to EditScope based control.
+
+For the step-by-step process we will use EngineV3 sample that is shipped as part of samples extension.
+If you are not familiar with the sample , please refer to the [link](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SampleMenuBlade/createengine).
+
+<a name="developing-forms-using-fx-controls-in-editscope-backed-forms-goal"></a>
+### Goal
+Replace the ** Name ** TextBox control with editscopeless control
+
+<a name="developing-forms-using-fx-controls-in-editscope-backed-forms-adding-textbox-controls"></a>
+### Adding TextBox Controls
+
+If you want to try this sample, you can try the following changes in `CreateEngineBladeViewModel` Samples Extension.
+
+1. Import modules
+
+All new controls are located in `Fx/Controls` namespace.
+
+```ts 
+import * as TextBox from "Fx/Controls/TextBox";
+import * as Validations from "Fx/Controls/Validations"
+```
+
+2. Modify textBox type
+
+Change the control type for Engine Name so that it is using the latest (editscopeless) TextBox
+
+```ts
+/**
+* The view model for the form element for the engine name.
+**/
+public engineName: TextBox.Contract;
+```
+
+
+3. Modify Control Initilization
+
+The `engineName` is initialized inside the `_initializeFormFields` function. In order to leverage the new controls we will change the Control to use latest controls.
+Controls inside the `Fx/Controls` namespace use factory pattern for initialization.
+
+
+```ts
+this.engineName = TextBox.create(container, {
+    label: ClientResources.engineNameColumn,
+    subLabel: ClientResources.sampleSubLabel,
+    placeHolderText: ClientResources.enterEngineName,
+    validations: ko.observableArray([
+        new Validations.Required(ClientResources.emptyFirstName),
+        new Validations.RegExMatchValidation("^[a-zA-Z]+", ClientResources.startsWithLetterValidationMessage),
+        // The 'Reserved Resource Name Validator' makes sure the engine name is not a trademark or reserved word.
+        new Validations.ReservedResourceNameValidator(resourceType)
+    ])
+});
+```
+
+4. Modify the logic to see initial data in EditScope
+
+In this particular sample, ocne the data is recieved we invoke `_mapIncomingDataForEditScope` to initialize the data in editScope.
+Since the new controls are not tied to editscope, we will need to set the value explicitly for the control.
+
+In order to initialize the value of textbox, add the following line of code after you have initialized `dataModel`.
+
+```ts
+this.engineName.value(data.name || "");
+```
+
+5. Modifying the action bar valid computation
+
+We need to modify computation logic for valid state of action bar.
+
+In order to modify the `valid` computaiton, we need to get rid of existing log used to validate action bar.
+And, add the logic to compute validation using the editScope along with validation for new textbox
+
+```ts
+ko.computed<boolean>(container, () => {
+            this.actionBar.valid(this.valid() && this.engineName.valid());
+});
+```
+
+
+6. Modify ARM provisioner to use value from new control
+
+The `_supplyTemplateDeploymentOptions` is responsble for providing ARM provisioner with the template deployment options.
+Since the form is not backed by editscope we need to change the way value of Engine name is passed to the template.
+
+
+```ts
+var engineName = this.engineName.value(); 
+```
+
+
+At this point you have all the changes required for EditScope backed form to work with editscope-less controls.
+
 
 
  <h1 name="portalfx-controls"></h1>

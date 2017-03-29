@@ -1,14 +1,24 @@
+* [Partner Request Process](#partner-request-process)
+    * [What is the Process?](#partner-request-process-what-is-the-process)
+    * [How to file a request?](#partner-request-process-how-to-file-a-request)
+    * [How we will triage your request?](#partner-request-process-how-we-will-triage-your-request)
 
+
+ <h1 name="portalfx-extension-partner-request-process"></h1>
+ 
+<a name="partner-request-process"></a>
 # Partner Request Process
 
 To have a better customer experience, you may want to have richer experience in Ibiza portal. Sometimes to get this richer experience, you may have limited acheiving it using our famework. In such scenario, you may want us (Ibiza Team) to do some work in framework for achieving this goal.
 
 You can help us identify the enhancements aka features needed in frameworkusing this process. This process is for you folks to tell us exactly what you need and when you need it.
 
+<a name="partner-request-process-what-is-the-process"></a>
 ## What is the Process?
 
 Basically this is simple Uservoice forum where you can post ideas to help us improve. We will pick the popular ideas that can be worked on when we plan our quarters.
 
+<a name="partner-request-process-how-to-file-a-request"></a>
 ## How to file a request?
 
 To file a new request:
@@ -25,6 +35,7 @@ To file a new request:
 
      `Tip: More detailed ask, will lead to better understanding and more votes.`
    
+<a name="partner-request-process-how-we-will-triage-your-request"></a>
 ## How we will triage your request?
 
 1.  We triage once per week.

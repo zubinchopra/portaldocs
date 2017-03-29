@@ -12,6 +12,8 @@
 {"gitdown": "include-file", "file": "../templates/portalfx-parts.md"}
 {"gitdown": "include-file", "file": "../templates/portalfx-blades.md"}
 {"gitdown": "include-file", "file": "../templates/portalfx-forms.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-editscopeless-forms.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-fxcontrols-editscope-forms.md"}
 {"gitdown": "include-file", "file": "../templates/portalfx-controls.md"}
 
 # Authentication
