@@ -5,7 +5,7 @@
 There are number of framework level provided alerts:
 
 1. Old SDKs
-1. Extension alive?
+1. Extension alive
 1. Create regression
 1. Availability
 1. Performance
@@ -148,5 +148,5 @@ Or visit [the tool][alerting-tool] to view a read only version of your config, a
 
 
 [alerting-onboarding]: https://aka.ms/portalfx/alerting-onboarding
-[alerting-tool]: http://example.com/
+[alerting-tool]: https://microsoft.sharepoint.com/teams/azureteams/docs/PortalFx/Alert/AlertCustomizationTool.zip
 [alerting-kusto-partner]: https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/azportal.kusto.windows.net/databases/Partner?q=H4sIAAAAAAAEAEvOKS0uSS3SUHesKsgvKknMUdfUS0ksSUxKLE7VUApILCrJSy1S0tRzSU1LLM0pcS7KBKrOTNTQBABHZQn9OQAAAA%3d%3d
