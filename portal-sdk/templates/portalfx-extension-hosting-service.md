@@ -328,20 +328,6 @@ Telemetry Events
     You can access the logs of the hosting service using the below link
     https://jarvis-west.dc.ad.msft.net/53731DA4
 
-### Steps to create subscriptions in the National Clouds
-
-1. Create user accounts in each national cloud. Use the links/aliases below to do that.
-* Fairfax (Create & submit RDTask): http://aka.ms/ffdevopsusercreation
-* Blackforest: https://microsoft.sharepoint.com/teams/blackforestwaps/SitePages/BF%20Azure%20Non-prod%20DevOps%20Subscription%20Model.aspx
-* Mooncake: Send an email to Dean Zhou (dzhou) and Xiaodong Wang (xiaowa)
-
-2. Once you have the accounts, register them in [AIRS](https://azuremsregistration.cloudapp.net/Default.aspx) using the appropriate account type
-
-3. Once the accounts are approved by Madhur Joshi <mjoshi@microsoft.com> and the AIRS team, you can create the subscriptions using the accounts portal in each environment.
-* Fairfax: https://accounts.windowsazure.us/signup
-* Blackforest: https://account.windowsazure.de/signup 
-* Mooncake: https://account.windowsazure.cn/signup 
-
 ### FAQ
 
 #### When I build my project the output zip is called HostingSvc.zip rater then <some version>.zip
