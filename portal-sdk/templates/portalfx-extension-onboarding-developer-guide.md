@@ -4,17 +4,6 @@ Please read this documentaiton, if you are looking for information on following 
 2. Moving from legacy DIY deployment to Extension hosting service
 3. Enable flighting in MPAC 
 4. Performance Improvements : Manifest CachingHere are the steps to create subscriptions in the national clouds. If you are running prod instances 
-
-•	Create user accounts in each national cloud. Use the links/aliases below to do that.
-Fairfax  (Create & submit RDTask): http://aka.ms/ffdevopsusercreation
-                Blackforest: https://microsoft.sharepoint.com/teams/blackforestwaps/SitePages/BF%20Azure%20Non-prod%20DevOps%20Subscription%20Model.aspx
-Mooncake: Send an email to Dean Zhou (dzhou) and Xiaodong Wang (xiaowa)
-•	Once you have the accounts, register them in AIRS using the appropriate account type
-•	Once the accounts are approved by Madhur and the AIRS team, you can create the subscriptions using the accounts portal in each environment
-Fairfax: https://accounts.windowsazure.us/signup
-Blackforest: https://account.windowsazure.de/signup 
-Mooncake: https://account.windowsazure.cn/signup 
-
 5. Performance Improvements : You have removed PCV1 and PCV2 Code from you extension
 6. Updating the feedback email
 
@@ -122,7 +111,7 @@ Create **National Cloud** CNAMEs using each cloud's process (search for "DNS" on
     - Example TFS request item of another hosting service extension: [Example](http://vstfrd:8080/Azure/Mooncake/_workitems#_a=edit&id=8798258&fullScreen=false)
 
 
-Since hosting service provides mechanism for extensions to deploy using safe deployment practice, portal will load the version of your extension based on the region from where the customer is accessing the portal. For more details please refer to hosting service documentation.
+Since hosting service provides mechanism for extensions to deploy using safe deployment practice, portal will load the version of your extension based on the region from where the customer is accessing the portal. For more details please refer to the [Hosting Service documentation](https://github.com/Azure/portaldocs/blob/dev/portal-sdk/templates/portalfx-extension-hosting-service.md).
 
 If you are using Legacy DIY deploment registeration format then the portal will always serve the stamp that is registered in uri. In our examples mentioned above, the portal will always serve main stamp of the extension.
 
