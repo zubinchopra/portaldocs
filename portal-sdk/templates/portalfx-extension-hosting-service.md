@@ -328,7 +328,7 @@ Telemetry Events
     You can access the logs of the hosting service using the below link
     https://jarvis-west.dc.ad.msft.net/53731DA4
 
-### Steps to create subscriptionsin the National Clouds
+### Steps to create subscriptions in the National Clouds
 
 1. Create user accounts in each national cloud. Use the links/aliases below to do that.
 * Fairfax (Create & submit RDTask): http://aka.ms/ffdevopsusercreation
