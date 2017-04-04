@@ -3,7 +3,18 @@ Please read this documentaiton, if you are looking for information on following 
 1. Onboarding / Registering a new extension in the portal
 2. Moving from legacy DIY deployment to Extension hosting service
 3. Enable flighting in MPAC 
-4. Performance Improvements : Manifest Caching
+4. Performance Improvements : Manifest CachingHere are the steps to create subscriptions in the national clouds. If you are running prod instances 
+
+•	Create user accounts in each national cloud. Use the links/aliases below to do that.
+Fairfax  (Create & submit RDTask): http://aka.ms/ffdevopsusercreation
+                Blackforest: https://microsoft.sharepoint.com/teams/blackforestwaps/SitePages/BF%20Azure%20Non-prod%20DevOps%20Subscription%20Model.aspx
+Mooncake: Send an email to Dean Zhou (dzhou) and Xiaodong Wang (xiaowa)
+•	Once you have the accounts, register them in AIRS using the appropriate account type
+•	Once the accounts are approved by Madhur and the AIRS team, you can create the subscriptions using the accounts portal in each environment
+Fairfax: https://accounts.windowsazure.us/signup
+Blackforest: https://account.windowsazure.de/signup 
+Mooncake: https://account.windowsazure.cn/signup 
+
 5. Performance Improvements : You have removed PCV1 and PCV2 Code from you extension
 6. Updating the feedback email
 
@@ -208,7 +219,7 @@ https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit
 
 #### 3. Enable 100% traffic in MPAC and PROD: 
 
-Here is a sample pull requestthat shows enabling 100% traffic without flighting for MicrosoftAzureClassicStorageExtension and 100% traffic with flighting for Microsoft_Azure_Storage:
+Here is a sample pull request that shows enabling 100% traffic without flighting for MicrosoftAzureClassicStorageExtension and 100% traffic with flighting for Microsoft_Azure_Storage:
 https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/b81b415411f54ad83f93d43d37bcad097949a4e3?refName=refs%2Fheads%2Fdev&discussionId=-1&_a=summary&fullScreen=false
 
 
