@@ -265,6 +265,8 @@ Before creating a pull request, create workitem so that you can assosciate the w
 Create a workitem for assosciating your changes to the commit:  https://aka.ms/portalfx/config/update
 By assosciating the workitem with commit, you will get a notification when the configuration changes are deployed to each environment.
 
+Make sure you have access to make changes to the portal framework repository by joining the [Azure Portal Partner Contributors](https://ramweb/RequestAccess.aspx?ProjectID=19668) group on ramweb.
+
 Portal repository has 4 main branches i.e. dev, dogfood, mpac and production. ** All the pull requests should be sent for Dev branch.** 
 
 - git clone https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFx
