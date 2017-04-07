@@ -1469,7 +1469,7 @@ Once you have the first two use the following to create the AAD application and 
 
 You will use the details of the created service principal in the next steps.  
 
-For more detail on [AAD Applications and Service Principals] see (https://azure.microsoft.com/en-us/documentation/articles/resource-group-authenticate-service-principal/#authenticate-with-password---powershell).  
+For more detail on [AAD Applications and Service Principals] see (https://azure.microsoft.com/en-us/documentation/articles/resource-group-authenticate-service-principal).  
 
 1. Open **test\config.json** and enter appropriate values for:
     ```

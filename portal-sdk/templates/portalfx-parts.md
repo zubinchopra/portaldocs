@@ -44,7 +44,7 @@ The matching view model lets you plug data into the part.  For this simple part,
 {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/Intrinsic/ViewModels/ButtonPartViewModel.ts", "section": "parts#BasicPartExampleViewModel"}
 
 More info: [More about built in parts](portalfx-parts-intrinsic.md)
-Related: [Integrate your part with the tile gallery](parts-a-k-a-tiles-how-to-integrate-your-part-into-the-part-gallery)
+Related: [Integrate your part with the tile gallery](#parts-a-k-a-tiles-how-to-integrate-your-part-into-the-part-gallery)
 
 ### How to create a custom part where you define the look and feel as well as the data loading
 

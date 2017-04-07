@@ -39,15 +39,15 @@ These emails have clickable Kusto links within the reported numbers. Clicking on
 
 ![Connection Scope](../media/portalfx-telemetry/connectionScope.png)
 
-
+http://foo.bar
 ### Supported Cosmos streams
 
 While we have moved to Kusto, we still have streams that continue to exist. This could be required if you want to enable some E2E automation, write super-complex queries that Kusto is unable to handle or need data older than 120 days. 
 
 |Name              | Schema                                                                                                           | Cosmos Link                                                                                                                                                                                                           |
 |------------------|------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|Client Telemetry  | [DataSet=53004](https://nova.msdial.com/vis/DataCatalog/DataSetViewer?dataSet=53004&dataType=Schema)             | [Daily ClientTelemetry](https://cosmos11.osdinfra.net/cosmos/AzureAnalytics.Partner.AAPT/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Daily/ClientTelemetry/)                          |
-|ClientTelemetryForKustoExport | [DataSet=93405](https://nova.msdial.com/vis/DataCatalog/DataSetViewer?dataSet=93405&dataType=Schema) | [Hourly ClientTelemetry](https://cosmos11.osdinfra.net/cosmos/azureanalytics.partner.azureportal/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Hourly/ClientTelemetryForKustoExport/)   |
+|Client Telemetry  | [DataSet=53004](https://datacatalog.analytics.msftcloudes.com/#/entity/53004/schema)             | [Daily ClientTelemetry](https://cosmos11.osdinfra.net/cosmos/AzureAnalytics.Partner.AAPT/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Daily/ClientTelemetry/)                          |
+|ClientTelemetryForKustoExport | [DataSet=93405](https://datacatalog.analytics.msftcloudes.com/#/entity/93405/schema) | [Hourly ClientTelemetry](https://cosmos11.osdinfra.net/cosmos/azureanalytics.partner.azureportal/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Hourly/ClientTelemetryForKustoExport/)   |
 
 We plan to merge ClientTelemetryForKustoExport into ClientTelemetry stream very shortly. ClientTelemetryForKustoExport is the stream that currently feeds the Kusto database - AzPtlCosmos
 

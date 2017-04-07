@@ -223,30 +223,46 @@ var self = module.exports = {
         var links = [];
         var docs = [];
         var brokenLinks = [];
-        return Q.ninvoke(fs, 'readFile', inputFile,'utf8').then(function (result){
-            console.log("checking links in " + inputFile);
+        return Q.ninvoke(fs, 'readFile', inputFile,'utf8').then(function (result) {
+            //console.log("checking links in " + inputFile);
             var urls = urlExt.extractUrls(result, urlExt.SOURCE_TYPE_MARKDOWN);
             
             var urlsToSkip = [
+                            "aadonboardingsiteppe.cloudapp.net",
                             "aka.ms/portalfx/samples",
                             "aka.ms/portalfx/create",
+                            "cosmos11.osdinfra.net",
+                            "datacatalog.analytics.msftcloudes.com",
                             "df.onecloud.azure-test.net",
+                            "examplecdn.vo.msecnd.net",
                             "github.com/Azure/azure-marketplace/wiki",
                             "github.com/Azure/msportalfx-test",
                             "idwebelements",
                             "igroup",
                             "kusto.azurewebsites.net",
+                            "localhost",
                             "mailto:",
                             "management.azure.com",
                             "microsoft.sharepoint.com",
                             "msazure.pkgs.visualstudio.com",
                             "msblox.pkgs.visualstudio.com",
                             "msdn.microsoft.com",
+                            "msinterface",
+                            "myextension.cloudapp.net",
+                            "myextension.hosting.portal.azure.net",
+                            "onestb.cloudapp.net",
+                            "perf.demo.ext.azure.com",
                             "portal.azure.com", 
                             "production.diagnostics.monitoring.core.windows.net",
+                            "sharepoint",
+                            "stackoverflow.microsoft.com",
                             "technet.microsoft.com",
                             "wanuget",
-                            "www.visualstudio.com/en-us/docs"
+                            "www.visualstudio.com/en-us/docs",
+                            "vstfrd",
+                            "@", // catch emails
+                            "&#x6d;", // html encoding for mailto: some reason there are multiple encodings
+                            "&#109;" // html encoding for mailto: some reason there are multiple encodings
                         ];
             
             var count = 0;
@@ -255,7 +271,7 @@ var self = module.exports = {
                 var trimmedUrl = url.replace("/(?i:^HTTPS://|HTTP://)/","");
                         
                 if (urlsToSkip.some(function(s) { return trimmedUrl.toUpperCase().indexOf(s.toUpperCase()) >= 0;})) {
-                    console.log(chalk.yellow("Skipping check for url: " + url));
+                    //console.log(chalk.yellow("Skipping check for url: " + url));
                     return;
                 }
                 
@@ -277,12 +293,12 @@ var self = module.exports = {
                         }
                         break;
                     case "h":
-                        if (urlsToSkip.some(function(s) { return trimmedUrl.toUpperCase().indexOf(s.toUpperCase()) >= 0;})) {
-                            console.log(chalk.yellow("Skipping check for url: " + url + " in " + inputFile));
-                        }
-                        else {
+                        // if (urlsToSkip.some(function(s) { return trimmedUrl.toUpperCase().indexOf(s.toUpperCase()) >= 0;})) {
+                            // console.log(chalk.yellow("Skipping check for url: " + url + " in " + inputFile));
+                        // }
+                        // else {
                             links.push(url);
-                        }
+                        // }
                         break;
                     case ".":
                     default:
@@ -302,27 +318,22 @@ var self = module.exports = {
                 var promises = dl.resolve(links);
                 
                 return Q.all(promises).then(function(resolutions) {
-                    
                     resolutions.forEach(function (resolution) {
-                        if (resolution.error) {
-                            brokenLinks.push({ "url":resolution.url, "inputFile":"unknown" });
+                        if (resolution.error || resolution.Error) {
+                            brokenLinks.push({ "url":resolution.url, "inputFile":inputFile });
                         }
                     });
                     
-                })
+                }, function(errors) {
+                    console.log(chalk.bgYellow("resolution " + JSON.stringify(errors)));
+                });
             }
             catch (err) {
                 console.log(chalk.red("Error in checking links: " + err));
                 return Q.all(promises);
             }
         }).then(function() {
-            if (brokenLinks.length > 0)
-            {
-                //console.log(chalk.red(brokenLinks.length + " broken links/fragments found.  Please fix them!"));
-                brokenLinks.forEach(function(l) {
-                    console.log(chalk.bgRed("Broken link/fragment found in " + l.inputFile + " for url: " + l.url));
-                });
-            }
+            return brokenLinks;
         });
     }
 }

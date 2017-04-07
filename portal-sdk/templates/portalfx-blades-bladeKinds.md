@@ -12,12 +12,12 @@ Defining a Blade using a Blade Kind in PDL is a simplified version of the typica
 
 To learn more about each of the Blade Kinds, start with the following topics:
 
-- [QuickStart Blade](portalfx-blades-bladeKinds-quickStart.md)
-- [Properties Blade](portalfx-blades-bladeKinds-properties.md)
-- [Notice Blade](portalfx-blades-bladeKinds-notice.md)
-- [Setting List Blade](portalfx-blades-bladeKinds-settingList.md)
+- [QuickStart Blade](#introduction-to-blade-kinds-quickstart-blade)
+- [Properties Blade](#introduction-to-blade-kinds-properties-blade)
+- [Notice Blade](#introduction-to-blade-kinds-notice-blade)
+- [Setting List Blade](#introduction-to-blade-kinds-setting-list-blade)
 
- ### QuickStart Blade
+### QuickStart Blade
 The QuickStart blade that provides a Blade which gives users a convenient way to learn how to use your service. Every services should have a QuickStart Blade.
 
 ![Demo](../media/portalfx-bladeKinds/QuickStartBlade.PNG)
@@ -318,7 +318,7 @@ export class PropertiesPartViewModel extends MsPortalFx.ViewModels.Parts.Propert
 
 ```
 
- ### Notice Blade
+### Notice Blade
 The Notice blade that provides a Blade which gives you a convenient way to display a announcements to your users, such as coming soon features. 
 
 ![Demo](../media/portalfx-bladeKinds/NoticeBlade.PNG)

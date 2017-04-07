@@ -11,6 +11,7 @@ var path = require('path');
 var util = require('util');
 var ncp = require('ncp');
 var dir = require('node-dir');
+var chalk = require('chalk');
 
 //directories have to work within both AzureUx-PortalFx and portalfx-docs-pr repos.
 const sdkDir = __dirname;
@@ -73,16 +74,39 @@ gulp.task('portal', function () {
     }).then(function () {
         try {
             var checkLinkPromises = [Q()];
-                if (process.argv.indexOf("--verify") > 0) {
-                    Q.ninvoke(dir, "paths", generatedDir, true).then(function(generatedFiles){
-                        checkLinkPromises  = generatedFiles.map(function (fileName) {
-                        console.log("generated file is " + fileName);
+            var promise = [Q()];
+            if (process.argv.indexOf("--verify") > 0) {
+                return Q.ninvoke(dir, "paths", generatedDir, true)
+                .then(function(generatedFiles) {
+                    checkLinkPromises = generatedFiles.map(function (fileName) {
                         return gulpCommon.checkLinks(path.resolve(generatedDir, fileName));
                     });
+                    return Q.allSettled(checkLinkPromises);
+                }).then(function (brokenLinks) {
+                    console.log("Broken links: " + JSON.stringify(brokenLinks));
+                    //console.log(chalk.red(brokenLinks.length + " broken links/fragments found.  Please fix them!"));
+                    brokenLinks.forEach(function(l) {
+                        if (l.state === "fulfilled" && l.value && l.value.length > 0) {
+                            l.value.forEach(function(v) {
+                                console.log(chalk.bgRed("Broken link/fragment found in " + v.inputFile + " for url: " + v.url));
+                                // TODO Fix input file not being added correctly
+                            });
+                        }
+                        else if (l.state === "rejected") {
+                            // TODO plumb in the url and file name on reject
+                            //console.log(chalk.bgRed("Broken link/fragment found in " + v.inputFile + " for url: " + v.url));
+                        }
+                    });
                 });
+                
             }
-
-           return Q.all(checkLinkPromises);
+            
+            return Q.defer().resolve();
+           // return Q.all(promise).then(function(brokenLinks) {
+                
+                // if (brokenLinks.length > 0)
+                
+           // });
         }
         catch (err) {
            console.log("An error occured: " + err);

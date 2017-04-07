@@ -15,6 +15,6 @@
 - [Extension HomePage Caching](portalfx-extension-homepage-caching.md)
 - [Persistent Caching of scripts across extension updates](portalfx-extension-persistent-caching-of-scripts.md)
 - [Run portalcop to identify and resolve common performance issues](portalfx-performance-portalcop.md)
-- [Optimize number CORS preflight requests to ARM using invokeApi](portalfx-data-query.md)
+- [Optimize number CORS preflight requests to ARM using invokeApi](portalfx-data-loadingdata.md)
 - [Data best practices](portalfx-performance.md)
-- [Viewmodel best practices](portalfx-view-model-best-practices.md)
+- [Viewmodel best practices](portalfx-performance-checklist.md)
