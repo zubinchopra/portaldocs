@@ -1,5 +1,3 @@
-<properties title="" pageTitle="Getting started with Azure CDN" description="" authors="inzarif" />
-
 <tags
     ms.service="portalfx"
     ms.workload="portalfx"
