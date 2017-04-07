@@ -142,7 +142,7 @@ Learn how to use the Simple Chart part.
 Learn how to use the Single value gauge part.
 </a>
 
-Next steps: [Developing custom parts](portalfx-parts-custom.md)
+Next steps: [Developing custom parts](portalfx-parts.md#parts-a-k-a-tiles-how-to-create-a-custom-part-where-you-define-the-look-and-feel-as-well-as-the-data-loading)
 
 [asset]: ../media/portalfx-controls/asset.png
 [button]: ../media/portalfx-controls/button.png

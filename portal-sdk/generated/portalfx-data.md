@@ -858,7 +858,7 @@ In many cases, you may want to shape your data to fit the view you are binding t
 
 The recommended approach to these cases is to use the `map` and `filter` methods found in the <a href="https://github.com/stevesanderson/knockout-projections" target="_blank">Knockout projections</a> library, included in the SDK.
 
-See [Shaping and filtering your data](./aaaportalfx-data-projections.md) for more details.
+See [Shaping and filtering your data](./portalfx-data-projections.md) for more details.
 
 <!--
     Base.Net.Ajax
@@ -1306,7 +1306,7 @@ In this scenario, since the data being refreshed is that data rendered *in a spe
 
 There are a number of methods available on QueryCache/EntityCache that make it straightforward and efficient to keep client-side cached data consistent with server data. Which of these is appropriate varies by scenario, and these are discussed individually below.  
 
-To understand the design behind this collection of methods and how to select the appropriate method to use, it's important to understand a bit about the DataCache/DataView design (in detail [here](???)). Specifically, QueryCache/EntityCache is designed as a collection of *cache entries*. In some cases, where there are multiple active Blades and Parts, a given QueryCache/EntityCache might contain *many cache entries*. So, below, you'll see '`refreshAll`' - which issues N AJAX calls to refresh all N entries of a QueryCache/EntityCache - as well as alternative, per-cache-entry methods that allow for *more granular, often more efficient* refreshing of QueryCache/EntityCache data.
+To understand the design behind this collection of methods and how to select the appropriate method to use, it's important to understand a bit about the DataCache/DataView design (in detail [here](portalfx-data-configuringdatacache.md)). Specifically, QueryCache/EntityCache is designed as a collection of *cache entries*. In some cases, where there are multiple active Blades and Parts, a given QueryCache/EntityCache might contain *many cache entries*. So, below, you'll see '`refreshAll`' - which issues N AJAX calls to refresh all N entries of a QueryCache/EntityCache - as well as alternative, per-cache-entry methods that allow for *more granular, often more efficient* refreshing of QueryCache/EntityCache data.
 
 <a name="working-with-data-explicitly-proactively-reflecting-server-data-changes-on-the-client-refreshing-or-updating-a-querycache-entitycache-refreshall"></a>
 #### &#39;<code>refreshAll</code>&#39;

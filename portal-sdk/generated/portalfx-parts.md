@@ -97,7 +97,7 @@ export class ButtonPartViewModel extends MsPortalFx.ViewModels.ButtonPart {
 ```
 
 More info: [More about built in parts](portalfx-parts-intrinsic.md)
-Related: [Integrate your part with the tile gallery](parts-a-k-a-tiles-how-to-integrate-your-part-into-the-part-gallery)
+Related: [Integrate your part with the tile gallery](#parts-a-k-a-tiles-how-to-integrate-your-part-into-the-part-gallery)
 
 <a name="parts-a-k-a-tiles-how-to-create-a-custom-part-where-you-define-the-look-and-feel-as-well-as-the-data-loading"></a>
 ### How to create a custom part where you define the look and feel as well as the data loading

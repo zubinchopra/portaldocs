@@ -6,7 +6,7 @@ TemplateBlade is the **recommended** way of authoring blades in Ibiza (which are
 
 Authoring template blades require you to provide a blade definition in PDL, an HTML template, and a ViewModel. In this article we will go through the details of the PDL definition and the capabilities in the ViewModel
 
-You can learn the basics of authoring your first template blade in [this article](portalfx-blade-templateBlade.md)
+You can learn the basics of authoring your first template blade in [this article](portalfx-blades-templateBlade.md)
 
 <a name="templateblade-reference-pdl"></a>
 #### PDL
@@ -121,7 +121,7 @@ To define those parameters you need to both declare them in your blade PDL defin
 
 The parameters are passed to your ViewModel via **onInputSet** (which is described above).
 
-To learn more about blade parameters, [read this article](portalfx-blade-parameters.md)
+To learn more about blade parameters, [read this article](portalfx-blades-parameters.md)
 
 <a name="oninputset-using-commandbar"></a>
 #### Using CommandBar

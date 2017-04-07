@@ -61,14 +61,14 @@ You can, if preferred, run queries locally but ensure you are using the Fx provi
 
 There are a few items that the FX team advises all extensions to follow.
 
-- [Configure CDN][portalfx-cdn]
-- [Extension HomePage Caching](portalfx-extension-homepage-caching)
-- [Persistent Caching of scripts across extension updates](portalfx-extension-persistent-caching-of-scripts)
+- [Configure CDN](portalfx-cdn.md)
+- [Extension HomePage Caching](portalfx-extension-homepage-caching.md)
+- [Persistent Caching of scripts across extension updates](portalfx-extension-persistent-caching-of-scripts.md)
 - Geo-distribution, ensure you are serving your extension as close as possible to users.
-The FX provides an [Extension Hosting Service](portalfx-extension-hosting-service) which handles Geo-distribution.
+The FX provides an [Extension Hosting Service](portalfx-extension-hosting-service.md) which handles Geo-distribution.
 To assess your extensions performance by data center see the [Extension performance/reliability report][Ext-Perf/Rel-Report]
 - Turning on [IIS compression](https://technet.microsoft.com/en-us/library/cc730629(v=ws.10).aspx)
-- [Run portalcop to identify and resolve common performance issues](portalfx-performance-portalcop)
+- [Run portalcop to identify and resolve common performance issues](portalfx-performance-portalcop.md)
 
 <a name="checklist-code-optimisations-to-improve-extension-reliability"></a>
 ### Code optimisations to improve extension reliability
@@ -518,7 +518,7 @@ There are 3 types of alerts we will be firing:
 1. Blade reliability hourly 
 1. Part reliability hourly 
 
-[TelemetryOnboarding]: <portalfx-telemetry-getting-started>
+[TelemetryOnboarding]: <portalfx-telemetry-getting-started.md>
 [Ext-Perf/Rel-Report]: <http://aka.ms/portalfx/dashboard/extensionperf>
 [portalfx-cdn]: <portalfx-cdn>
 [kusto-extension-reliability-summary]: <https://azportal.kusto.windows.net:443/AzurePortal?query=H4sIAAAAAAAEAHNPLXGtKEnNK87Mz3NLzMwpLUotDi7NzU0sqtRITM%2fXMEzR1OTlqlEoz0gtSlVIhSn1S8xNVUjOzytJzMwrVlDyzUwuyi%2fOTyuJd6wCmhDvnJ9bUFqSqsTLxcsFAAXqLsliAAAA>

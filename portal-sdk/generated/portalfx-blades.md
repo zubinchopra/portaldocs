@@ -12,7 +12,9 @@
     * [Showing Unauthorized UI in your blade](#blades-showing-unauthorized-ui-in-your-blade)
     * [Showing Notice UI dynamically in your blade](#blades-showing-notice-ui-dynamically-in-your-blade)
 * [Introduction to Blade Kinds](#introduction-to-blade-kinds)
+    * [QuickStart Blade](#introduction-to-blade-kinds-quickstart-blade)
     * [Properties Blade](#introduction-to-blade-kinds-properties-blade)
+    * [Notice Blade](#introduction-to-blade-kinds-notice-blade)
     * [Setting List Blade](#introduction-to-blade-kinds-setting-list-blade)
     * [Introduction to AppBlades](#introduction-to-blade-kinds-introduction-to-appblades)
     * [Introduction to Blades](#introduction-to-blade-kinds-introduction-to-blades)
@@ -344,7 +346,7 @@ TemplateBlade is the **recommended** way of authoring blades in Ibiza (which are
 
 Authoring template blades require you to provide a blade definition in PDL, an HTML template, and a ViewModel. In this article we will go through the details of the PDL definition and the capabilities in the ViewModel
 
-You can learn the basics of authoring your first template blade in [this article](portalfx-blade-templateBlade.md)
+You can learn the basics of authoring your first template blade in [this article](portalfx-blades-templateBlade.md)
 
 <a name="blades-templateblade-reference-pdl"></a>
 #### PDL
@@ -459,7 +461,7 @@ To define those parameters you need to both declare them in your blade PDL defin
 
 The parameters are passed to your ViewModel via **onInputSet** (which is described above).
 
-To learn more about blade parameters, [read this article](portalfx-blade-parameters.md)
+To learn more about blade parameters, [read this article](portalfx-blades-parameters.md)
 
 <a name="blades-oninputset-using-commandbar"></a>
 #### Using CommandBar
@@ -915,12 +917,13 @@ Defining a Blade using a Blade Kind in PDL is a simplified version of the typica
 
 To learn more about each of the Blade Kinds, start with the following topics:
 
-- [QuickStart Blade](portalfx-blades-bladeKinds-quickStart.md)
-- [Properties Blade](portalfx-blades-bladeKinds-properties.md)
-- [Notice Blade](portalfx-blades-bladeKinds-notice.md)
-- [Setting List Blade](portalfx-blades-bladeKinds-settingList.md)
+- [QuickStart Blade](#introduction-to-blade-kinds-quickstart-blade)
+- [Properties Blade](#introduction-to-blade-kinds-properties-blade)
+- [Notice Blade](#introduction-to-blade-kinds-notice-blade)
+- [Setting List Blade](#introduction-to-blade-kinds-setting-list-blade)
 
- ### QuickStart Blade
+<a name="introduction-to-blade-kinds-quickstart-blade"></a>
+### QuickStart Blade
 The QuickStart blade that provides a Blade which gives users a convenient way to learn how to use your service. Every services should have a QuickStart Blade.
 
 ![Demo](../media/portalfx-bladeKinds/QuickStartBlade.PNG)
@@ -1222,7 +1225,8 @@ export class PropertiesPartViewModel extends MsPortalFx.ViewModels.Parts.Propert
 
 ```
 
- ### Notice Blade
+<a name="introduction-to-blade-kinds-notice-blade"></a>
+### Notice Blade
 The Notice blade that provides a Blade which gives you a convenient way to display a announcements to your users, such as coming soon features. 
 
 ![Demo](../media/portalfx-bladeKinds/NoticeBlade.PNG)
@@ -2249,7 +2253,7 @@ There are two separate `<BladeAction>` elements defined for this part.  The `Col
 <a name="blade-opening-and-closing-click-callbacks-declarative-ways-to-open-blades-not-recommended-for-new-scenarios-launching-blades-from-another-extension-not-recommended-for-new-scenarios"></a>
 #### Launching blades from another extension (Not recommended for new scenarios)
 
-When using `<BladeAction>`, you're generally going to be launching blades from your own extension.  In some cases, you may [import a part from another extension](portalfx-parts-sharing.md).  Using this technique, the source of the shared part will control launching of the blade.  However - in some cases you may want to launch a blade from another extension using a part from the current extension.  This is where `BladeReference` is useful.
+When using `<BladeAction>`, you're generally going to be launching blades from your own extension.  In some cases, you may [import a part from another extension](portalfx-extension-sharing-pde.md).  Using this technique, the source of the shared part will control launching of the blade.  However - in some cases you may want to launch a blade from another extension using a part from the current extension.  This is where `BladeReference` is useful.
 
 <a name="blade-opening-and-closing-the-pde-file"></a>
 ## The PDE File
@@ -2367,7 +2371,7 @@ This method can also be used to launch a blade from another extension, using the
 <a name="blade-opening-and-closing-importing-the-pde-file-hotspots-not-recommended-for-new-scenarios"></a>
 #### Hotspots (Not recommended for new scenarios)
 
-When building [custom parts](portalfx-parts-custom.md), you may want to launch a blade from a div, button, or `<a>` tag. To launch a blade, start with a `pcHotSpot` binding in your HTML template:
+When building [custom parts](portalfx-parts.md#parts-a-k-a-tiles-how-to-create-a-custom-part-where-you-define-the-look-and-feel-as-well-as-the-data-loading), you may want to launch a blade from a div, button, or `<a>` tag. To launch a blade, start with a `pcHotSpot` binding in your HTML template:
 
 `\SamplesExtension\Extension\Client\ParameterCollection\CollectorAsHotSpot\Templates\CompositePart.html`
 
@@ -2714,7 +2718,7 @@ In the snippet above, `OutputBindingsChildBlade` will be opened with a `currentN
 
 By default, all blades and parts are 'pinnable'.  Pinning a blade creates a part on the currently active dashboard.
 
-Every blade in the portal has a default representation. The default part for a blade uses a [button part](portalfx-parts-intrinsic-button.md).  The title, subtitle, and icon provided in the blade view model provide the data needed to create the default view.
+Every blade in the portal has a default representation. The default part for a blade uses a [button part](portalfx-parts-intrinsic.md).  The title, subtitle, and icon provided in the blade view model provide the data needed to create the default view.
 
 <a name="blade-opening-and-closing-importing-the-pde-file-pinning-blades-creating-a-custom-pinned-part"></a>
 #### Creating a custom pinned part

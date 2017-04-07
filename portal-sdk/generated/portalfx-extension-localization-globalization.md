@@ -241,7 +241,7 @@ It may be helpful at development time to use pseudo-localization to ensure that 
 <a name="understanding-localization-date-formatter-marketplace"></a>
 #### Marketplace
 
-Packages submitted to the Azure Marketplace must be localized as well.  For more information, read [localization in the gallery](gallery-items.md).
+Packages submitted to the Azure Marketplace must be localized as well.  For more information, read [localization in the gallery](../../gallery-sdk/generated/index-gallery.md##gallery-item-specificiations-localization).
 
 <a name="understanding-localization-important-references"></a>
 ### Important references
