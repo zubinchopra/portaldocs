@@ -1,4 +1,4 @@
-# Breaking Changes since 12/7/2016 
+# Breaking Changes since 12/10/2016 
 * Additional Q&A about breaking changes can be found [here](./breaking-changes.md) 
 * To ask a question about breaking changes [use this](https://aka.ms/ask/ibiza-breaking-change)  
 
@@ -8,23 +8,3 @@
 
 ## 5.0.302.600
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7701071'>7701071</a></td><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7701071'>Resource Move: '->Move' command popup option [move to another subscription, move to another resource group] on individual resources</a><p>[BREAKING]</p></td></tr></table>
-
-## 5.0.302.573
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7426345'>7426345</a></td><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7426345'>[Auth] Add onbaording AAD service principal for ibiza managed extension to client's tenant.</a><p>Added new package dependency
-- Microsoft.Azure.ActiveDirectory.GraphClient version 2.1.1
-
-Updates to these packages should be made as follows:
-- Microsoft.Data.Edm from 5.6.2 to 5.6.3
-- Microsoft.Data.OData from 5.6.2 to 5.6.3
-- Microsoft.Data.Services.Client from 5.6.2 to 5.6.3
-- System.Spatial from 5.6.2 to 5.6.3</p></td></tr></table>
-
-## 5.0.302.568
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7426345'>7426345</a></td><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7426345'>[Auth] Add onbaording AAD service principal for ibiza managed extension to client's tenant.</a><p>Added new package dependency
-- Microsoft.Azure.ActiveDirectory.GraphClient version 2.1.1
-
-Updates to these packages should be made as follows:
-- Microsoft.Data.Edm from 5.6.2 to 5.6.3
-- Microsoft.Data.OData from 5.6.2 to 5.6.3
-- Microsoft.Data.Services.Client from 5.6.2 to 5.6.3
-- System.Spatial from 5.6.2 to 5.6.3</p></td></tr></table>
