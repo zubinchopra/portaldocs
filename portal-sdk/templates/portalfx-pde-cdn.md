@@ -1,13 +1,3 @@
-<tags
-    ms.service="portalfx"
-    ms.workload="portalfx"
-    ms.tgt_pltfrm="portalfx"
-    ms.devlang="portalfx"
-    ms.topic="azure-cdn-integration-doc"
-    ms.date="04/05/2017"
-    ms.author="inzarif"/>
-
-
 # Getting started with Azure CDN
 
 The Azure Content Delivery Network (CDN) is designed to send audio, video, images, and other files faster and more reliably to customers using servers that are closest to the users. This dramatically increases speed and availability, resulting in significant user experience improvements.
@@ -24,8 +14,8 @@ Through the simple integration explained in this document, your customers can en
 
 ## 1. Importing CDN Extension NuGet Package
 
-To be able to use the CDN integration blade, you will need to reference Microsoft.Portal.Extensions.Cdn nuget package in your **corext.config** or **packages.config** file.
-
+To be able to use the CDN integration blade, you will need to reference Microsoft.Portal.Extensions.Cdn nuget package.
+For CoreXT based environemtns, you can add a reference to the package in your **corext.config** or **packages.config** file as shown below. If you are not using CoreXT, please reference the package as appropriate in your environment.
 ```xml
 <package id="Microsoft.Portal.Extensions.Cdn" version="1.0.13.177" />
 ```
