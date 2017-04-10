@@ -78,23 +78,27 @@ gulp.task('portal', function () {
             if (process.argv.indexOf("--verify") > 0) {
                 return Q.ninvoke(dir, "paths", generatedDir, true)
                 .then(function(generatedFiles) {
+                    console.log("Verifying urls are valid... (This may take a a couple of minutes)");
                     checkLinkPromises = generatedFiles.map(function (fileName) {
                         return gulpCommon.checkLinks(path.resolve(generatedDir, fileName));
                     });
                     return Q.allSettled(checkLinkPromises);
                 }).then(function (brokenLinks) {
-                    console.log("Broken links: " + JSON.stringify(brokenLinks));
                     //console.log(chalk.red(brokenLinks.length + " broken links/fragments found.  Please fix them!"));
                     brokenLinks.forEach(function(l) {
                         if (l.state === "fulfilled" && l.value && l.value.length > 0) {
                             l.value.forEach(function(v) {
+                                if (!v.url)
+                                {
+                                    console.log(chalk.bgRed("Broken link/fragment found: " + JSON.stringify(v)));
+                                }
                                 console.log(chalk.bgRed("Broken link/fragment found in " + v.inputFile + " for url: " + v.url));
                                 // TODO Fix input file not being added correctly
                             });
                         }
                         else if (l.state === "rejected") {
                             // TODO plumb in the url and file name on reject
-                            //console.log(chalk.bgRed("Broken link/fragment found in " + v.inputFile + " for url: " + v.url));
+                            console.log(chalk.bgCyan("Rejected Broken link/fragment found: " + JSON.stringify(l)));
                         }
                     });
                 });

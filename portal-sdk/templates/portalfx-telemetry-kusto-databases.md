@@ -39,7 +39,6 @@ These emails have clickable Kusto links within the reported numbers. Clicking on
 
 ![Connection Scope](../media/portalfx-telemetry/connectionScope.png)
 
-http://foo.bar
 ### Supported Cosmos streams
 
 While we have moved to Kusto, we still have streams that continue to exist. This could be required if you want to enable some E2E automation, write super-complex queries that Kusto is unable to handle or need data older than 120 days. 

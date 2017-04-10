@@ -67,9 +67,9 @@ issues caused by anti-patterns and inconsistencies that block usability, perform
    2. Request your service be "Active"
    3. If not in C+E, go to Dependencies to define a depndency on the CEC Scorecard service (C+E services are automatically added)
    4. Complete metadata in ServiceTree to enable the automation for various KPIs
-   5. Complete the requirements for each release stage: https://cecfundamentals
+   5. Complete the requirements for each release stage: [https://cecfundamentals](https://cecfundamentals)
 
-6. **Azure Compliance** (Stakeholders: [Azure Compliance team](azcompl))
+6. **Azure Compliance** (Stakeholders: [Azure Compliance team](mailto:azcompl@microsoft.com))
 
     Compliance criteria and practices are defined in [Quality Essentials](https://microsoft.sharepoint.com/teams/QualityEssentials/SitePages/GettingStarted.aspx)
     throughout our development cycle. These ensure services meet the Trusted Cloud commitments outlined in the [Microsoft Azure Trust Center](http://azure.microsoft.com/en-us/support/trust-center/)
@@ -183,7 +183,7 @@ Ready to write your first Azure portal extension? Here are a few resources to g
 
    `AzureGallery.exe upload -p ..\path\to\package.azpkg -h [optional hide key]`
 
-   In order to use the gallery loader you will need to set some values in the AzureGallery.exe.config file for details see [AzureGallery.exe docs](gallery-items.md). For dev/test scenarios see [Test In Prod](gallery-development.md)
+   In order to use the gallery loader you will need to set some values in the AzureGallery.exe.config file for details see [AzureGallery.exe docs](../../gallery-sdk/generated/index-gallery.md#gallery-item-specificiations). For dev/test scenarios see [Test In Prod](../../gallery-sdk/generated/index-gallery.md##gallery-package-development-and-debugging-testing-in-production)
 
 1. **Recommended patterns**
 

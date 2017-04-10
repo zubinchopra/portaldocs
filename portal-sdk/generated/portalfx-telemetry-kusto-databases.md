@@ -51,7 +51,6 @@ These emails have clickable Kusto links within the reported numbers. Clicking on
 
 ![Connection Scope](../media/portalfx-telemetry/connectionScope.png)
 
-http://foo.bar
 <a name="kusto-telemetry-supported-cosmos-streams"></a>
 ### Supported Cosmos streams
 

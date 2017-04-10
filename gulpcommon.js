@@ -231,6 +231,7 @@ var self = module.exports = {
                             "aadonboardingsiteppe.cloudapp.net",
                             "aka.ms/portalfx/samples",
                             "aka.ms/portalfx/create",
+                            "cecfundamentals",
                             "cosmos11.osdinfra.net",
                             "datacatalog.analytics.msftcloudes.com",
                             "df.onecloud.azure-test.net",
@@ -250,17 +251,19 @@ var self = module.exports = {
                             "msinterface",
                             "myextension.cloudapp.net",
                             "myextension.hosting.portal.azure.net",
+                            "onenote",
                             "onestb.cloudapp.net",
                             "perf.demo.ext.azure.com",
                             "portal.azure.com", 
                             "production.diagnostics.monitoring.core.windows.net",
+                            "qe",
                             "sharepoint",
+                            "spot",
                             "stackoverflow.microsoft.com",
                             "technet.microsoft.com",
                             "wanuget",
                             "www.visualstudio.com/en-us/docs",
                             "vstfrd",
-                            "@", // catch emails
                             "&#x6d;", // html encoding for mailto: some reason there are multiple encodings
                             "&#109;" // html encoding for mailto: some reason there are multiple encodings
                         ];
@@ -268,9 +271,11 @@ var self = module.exports = {
             var count = 0;
             urls.forEach(function(url) {
                 // Trim the http:// or https://
-                var trimmedUrl = url.replace("/(?i:^HTTPS://|HTTP://)/","");
-                        
-                if (urlsToSkip.some(function(s) { return trimmedUrl.toUpperCase().indexOf(s.toUpperCase()) >= 0;})) {
+                var regex = new RegExp("(^HTTPS://|HTTP://)", "i");
+                var trimmedUrl = url.replace(regex,"");
+                
+                if (urlsToSkip.some(function(s) { return trimmedUrl.toUpperCase().indexOf(s.toUpperCase()) == 0 || trimmedUrl.toUpperCase().indexOf("@") >= 0; /** catch emails **/ }))
+                {
                     //console.log(chalk.yellow("Skipping check for url: " + url));
                     return;
                 }
@@ -320,12 +325,20 @@ var self = module.exports = {
                 return Q.all(promises).then(function(resolutions) {
                     resolutions.forEach(function (resolution) {
                         if (resolution.error || resolution.Error) {
-                            brokenLinks.push({ "url":resolution.url, "inputFile":inputFile });
+                            brokenLinks.push({ "url":resolution.url, "inputFile":inputFile, "data":resolution });
                         }
                     });
                     
                 }, function(errors) {
-                    console.log(chalk.bgYellow("resolution " + JSON.stringify(errors)));
+                    if (errors.hostname) {
+                        brokenLinks.push({ "url":errors.hostname, "inputFile":inputFile, "data":errors });
+                    }
+                    else if (errors.address) {
+                        brokenLinks.push({ "url":errors.address, "inputFile":inputFile, "data":errors });
+                    }
+                    else {
+                        brokenLinks.push({ "inputFile":inputFile, "data":errors });
+                    }
                 });
             }
             catch (err) {
