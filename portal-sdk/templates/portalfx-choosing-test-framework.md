@@ -21,6 +21,8 @@ Comparison of test-frameworks:
 - Maturity (Number of Selector APIs) : C# > typescript
 - [Built on Selenium webdriver open standard](http://www.seleniumhq.org/projects/webdriver/) : Both Supported by Ibiza
 - Documentation for Typescript test framework is more up to date than C# test framework
+- Browser Support: Both support Chrome.  C# also has limited support for Firefox and IE.
+- ARM API support:  MsPortalFx-Test has limited support for directly calling ARM to create/delete resources.  
 - Test Execution Speed: typescript is 20% faster
 - Distributed independently from SDK: Both
 - Open Source contribution Model: Actively working on moving Typescript based test-fx to open source contribution model. We are investigating dev work to move C# based test-fx to open source contribution Model.

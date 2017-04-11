@@ -1,11 +1,11 @@
-* [Test](#test)
+* [Portal Test Frameworks](#portal-test-frameworks)
 
 
-<a name="test"></a>
-# Test
+<a name="portal-test-frameworks"></a>
+# Portal Test Frameworks
 * [Choosing the right test Framework](portalfx-choosing-test-framework.md#choosing-the-right-test-framework)
 
-* [Portal Test Framework](portalfx-test.md#portal-test-framework)
+* [C# Portal Test Framework](portalfx-test.md#c-portal-test-framework)
 
 * [MsPortalFx-Test](msportalfx-test.md#msportalfx-test)
     * [Getting Started](msportalfx-test.md#getting-started)
