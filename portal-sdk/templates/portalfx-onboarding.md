@@ -64,9 +64,9 @@ issues caused by anti-patterns and inconsistencies that block usability, perform
    2. Request your service be "Active"
    3. If not in C+E, go to Dependencies to define a depndency on the CEC Scorecard service (C+E services are automatically added)
    4. Complete metadata in ServiceTree to enable the automation for various KPIs
-   5. Complete the requirements for each release stage: https://cecfundamentals
+   5. Complete the requirements for each release stage: [https://cecfundamentals](https://cecfundamentals)
 
-6. **Azure Compliance** (Stakeholders: [Azure Compliance team](azcompl))
+6. **Azure Compliance** (Stakeholders: [Azure Compliance team](mailto:azcompl@microsoft.com))
 
     Compliance criteria and practices are defined in [Quality Essentials](https://microsoft.sharepoint.com/teams/QualityEssentials/SitePages/GettingStarted.aspx)
     throughout our development cycle. These ensure services meet the Trusted Cloud commitments outlined in the [Microsoft Azure Trust Center](http://azure.microsoft.com/en-us/support/trust-center/)
@@ -179,7 +179,7 @@ Ready to write your first Azure portal extension? Here are a few resources to g
 
    `AzureGallery.exe upload -p ..\path\to\package.azpkg -h [optional hide key]`
 
-   In order to use the gallery loader you will need to set some values in the AzureGallery.exe.config file for details see [AzureGallery.exe docs](/documentation/articles/gallery-items#gallery-package-management). For dev/test scenarios see [Test In Prod](/documentation/articles/gallery-development)
+   In order to use the gallery loader you will need to set some values in the AzureGallery.exe.config file for details see [AzureGallery.exe docs](../../gallery-sdk/generated/index-gallery.md#gallery-item-specificiations). For dev/test scenarios see [Test In Prod](../../gallery-sdk/generated/index-gallery.md##gallery-package-development-and-debugging-testing-in-production)
 
 1. **Recommended patterns**
 
@@ -227,8 +227,8 @@ Ready to write your first Azure portal extension? Here are a few resources to g
       - Show all resource properties in the column chooser
 
       See also:
-      - [Browse documentation](/documentation/articles/portalfx-browse)
-      - [Asset documentation](/documentation/articles/portalfx-assets)
+      - [Browse documentation](portalfx-browse.md)
+      - [Asset documentation](portalfx-assets.md)
       - [#ibiza-browse on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse)
       - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-browse)
 
@@ -276,7 +276,7 @@ Ready to write your first Azure portal extension? Here are a few resources to g
    configuration change is pushed to PROD. External teams can
    <a href="mailto:ibizafxpm@microsoft.com?subject=[Onboarding Request] Add &lt;Name&gt; extension to the portal&body=Extension name:  Company_[BrandOrSuite_]ProductOrComponent (e.g. Contoso_SomeSku_SomeProduct or Contoso_SomeProduct)%0A%0AURLs  (must adhere to pattern)%0APROD-- main.&lt;extension&gt;.ext.contoso.com%0A%0AContact info%0ABusiness Contacts:_________%0ADev leads: _________%0APROD on-call email: _________%0A">submit their request via email</a>.
 
-1. **[Exit criteria + quality metrics](/documentation/articles/portalfx-onboarding-exitcriteria)**
+1. **[Exit criteria + quality metrics](portalfx-onboarding-exitcriteria.md)**
 
    Every extension must meet required exit criteria / quality metrics before it will be enabled.
 
