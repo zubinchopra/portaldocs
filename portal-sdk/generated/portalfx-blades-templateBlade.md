@@ -1,8 +1,10 @@
 
+<a name="introduction-to-templateblade"></a>
 ### Introduction to TemplateBlade
 
 TemplateBlade is the recommended way of authoring blades (which are equivalent to windows or pages in other systems) in Ibiza. You can think of a TemplateBlade as an HTML page. In this case, as an author, you provide an HTML template (and optionally a CSS file) and a view-model. 
 
+<a name="introduction-to-templateblade-creating-your-first-templateblade"></a>
 #### Creating your first TemplateBlade
 
 1. Add the **blade definition** to your PDL file
@@ -48,6 +50,7 @@ export class MyTemplateBladeViewModel extends MsPortalFx.ViewModels.Blade {
 <a data-bind="text: text, attr: { href: url }" target="_blank"></a>
 ```
 
+<a name="introduction-to-templateblade-using-an-ibiza-control-in-a-template-blade"></a>
 #### Using an Ibiza control in a template Blade
 
 The example above uses plain HTML in the template. Ibiza provides an extensive **controls library** that you can use in the HTML template of your blade. In this section we will use the InfoBox control instead of a regular HTML link.
@@ -87,6 +90,7 @@ export class MyTemplateBladeViewModel extends MsPortalFx.ViewModels.Blade {
 }
 ```
 
+<a name="introduction-to-templateblade-passing-parameters-to-a-templateblade"></a>
 #### Passing parameters to a TemplateBlade
 
 Blades can receive input **parameters**. Those parameters are defined as part of the signature for the blade (optional). In this section we will add an "id" input parameter to our template blade.
@@ -136,6 +140,7 @@ export class MyTemplateBladeViewModel extends MsPortalFx.ViewModels.Blade {
 }
 ```
 
+<a name="introduction-to-templateblade-adding-commands-to-a-templateblade"></a>
 #### Adding commands to a TemplateBlade
 Template blades can have **commands** at the top. In order to add the commands, you need to add a toolbar to your TemplateBlade and then define its contents in the TemplateBlade's view-model.
 
@@ -190,6 +195,7 @@ export class MyTemplateBladeViewModel extends MsPortalFx.ViewModels.Blade {
 }
 ```
 
+<a name="introduction-to-templateblade-adding-buttons-at-the-bottom-of-template-blade"></a>
 #### Adding buttons at the bottom of template blade
 
 Blades can have buttons that are docked to their bottom area. In this section we will show how to add them to our blade.
@@ -243,6 +249,7 @@ Blades can have buttons that are docked to their bottom area. In this section we
     }
 ```
 
+<a name="introduction-to-templateblade-making-your-blade-full-screen"></a>
 #### Making your blade full screen
 
 If you want your blade to open using the full screen, just add InitialState="Maximized" to the PDL definition of your blade, as shown below:
@@ -256,6 +263,7 @@ If you want your blade to open using the full screen, just add InitialState="Max
 </TemplateBlade>
 ```
 
+<a name="introduction-to-templateblade-showing-a-ui-shield-while-loading-data"></a>
 #### Showing a UI shield while loading data
 
 Sometimes you may want to prevent interaction with your blade while initializing it. In those cases, you can add a shield. The shield can be fully transparent or opaque. In all cases, a loading indicator UX is displayed in the blade. The code below shows how to set an opaque filter in your blade.
