@@ -93,11 +93,9 @@ gulp.task('portal', function () {
                                     console.log(chalk.bgRed("Broken link/fragment found: " + JSON.stringify(v)));
                                 }
                                 console.log(chalk.bgRed("Broken link/fragment found in " + v.inputFile + " for url: " + v.url));
-                                // TODO Fix input file not being added correctly
                             });
                         }
                         else if (l.state === "rejected") {
-                            // TODO plumb in the url and file name on reject
                             console.log(chalk.bgCyan("Rejected Broken link/fragment found: " + JSON.stringify(l)));
                         }
                     });
@@ -106,11 +104,6 @@ gulp.task('portal', function () {
             }
             
             return Q.defer().resolve();
-           // return Q.all(promise).then(function(brokenLinks) {
-                
-                // if (brokenLinks.length > 0)
-                
-           // });
         }
         catch (err) {
            console.log("An error occured: " + err);

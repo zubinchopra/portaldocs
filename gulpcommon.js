@@ -308,12 +308,7 @@ var self = module.exports = {
                         }
                         break;
                     case "h":
-                        // if (urlsToSkip.some(function(s) { return trimmedUrl.toUpperCase().indexOf(s.toUpperCase()) >= 0;})) {
-                            // console.log(chalk.yellow("Skipping check for url: " + url + " in " + inputFile));
-                        // }
-                        // else {
                             links.push(url);
-                        // }
                         break;
                     case ".":
                     default:
