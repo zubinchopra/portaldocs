@@ -15,6 +15,7 @@
 {"gitdown": "include-headings", "file": "../templates/portalfx-blades.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-forms.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-controls.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-controls-monitor-chart.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-editscopeless-forms.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-fxcontrols-editscope-forms.md"}
 
