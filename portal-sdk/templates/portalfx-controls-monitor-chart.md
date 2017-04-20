@@ -241,9 +241,9 @@ From here, users can explore other metrics, pin charts to dashboard, create an a
 
 <!-- References -->
 [1]: https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/monitorchart
-[2]: ../media/portalfx-controls-monitor-chart/monitor-chart-control-single-input.PNG
-[3]: ../media/portalfx-controls-monitor-chart/monitor-chart-control-multiple-inputs.PNG
-[4]: ../media/portalfx-controls-monitor-chart/monitor-chart-control-overview-blade.PNG
-[5]: ../media/portalfx-controls-monitor-chart/monitor-chart-control-azure-monitor.PNG
+[2]: ../media/portalfx-controls-monitor-chart/monitor-chart-control-single-input.png
+[3]: ../media/portalfx-controls-monitor-chart/monitor-chart-control-multiple-inputs.png
+[4]: ../media/portalfx-controls-monitor-chart/monitor-chart-control-overview-blade.png
+[5]: ../media/portalfx-controls-monitor-chart/monitor-chart-control-azure-monitor.png
 [6]: https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FFramework.Client%2FTypeScript%2FFx%2FInternal%2FControls%2FMonitorChart.ts&version=GBproduction&_a=contents
 [7]: https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FExtensions%2FHubsExtension%2FTypeScript%2FHubsExtension%2FForExport%2FMonitorChartPartExportedTypes.d.ts&version=GBproduction&_a=contents
