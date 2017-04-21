@@ -72,7 +72,10 @@ If you are not using a template blade, you can reference the `MonitorChartPart` 
       <PartReference Name="MonitorChart" Extension="HubsExtension" PartType="MonitorChartPart" InitialSize="HeroWide">
         <PartReference.PropertyBindings>
           <Binding Property="options">
-            <BladeProperty Property="monitorChartPartInputs" />
+            <BladeProperty Property="partParameters.options" />
+          </Binding>
+          <Binding Property="disableEdit">
+            <BladeProperty Property="partParameters.disableEdit" />
           </Binding>
         </PartReference.PropertyBindings>
       </PartReference>
@@ -84,27 +87,31 @@ If you are not using a template blade, you can reference the `MonitorChartPart` 
 **Example Blade view model:**
 ```typescript
 export class MonitorChartBladeViewModel extends FxViewModels.Blade {
-    public monitorChartPartInputs = ko.observable<MonitorChartPartParameters>();
+    public partParameters = ko.observable<MonitorChartPartParameters>();
 
     constructor(container: FxViewModels.ContainerContract) {
         super();
        
-        this.monitorChartPartInputs({
-            chartDefinitions: [{
-                metrics: [{
-                    name: "ActionLatency",
-                    resourceMetadata: {
-                        resourceId: "/subscriptions/0531c8c8-df32-4254-a717-b6e983273e5f/resourceGroups/ibizafeedback/providers/Microsoft.Logic/workflows/Ibiza-CleanUnusedTags"
-                    },
-                    aggregationType: 1
-                }]
-            }],
-            timespan: {
-                relative: {
-                    durationMs: 1000000000
+        this.partParameters({
+            options: {
+                charts: [{
+                    metrics: [{
+                        name: "ActionLatency",
+                        resourceMetadata: {
+                            resourceId: "/subscriptions/0531c8c8-df32-4254-a717-b6e983273e5f/resourceGroups/ibizafeedback/providers/Microsoft.Logic/workflows/Ibiza-CleanUnusedTags"
+                        },
+                        aggregationType: 1
+                    }]
+                }],
+                timespan: {
+                    relative: {
+                        durationMs: 1000000000
+                    }
                 }
-            }
+            },
+            disableEdit: false
         });
+
     }
 }
 ```
