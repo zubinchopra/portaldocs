@@ -22,6 +22,7 @@ var chalk = require('chalk');
 var urlExt = require('url-extractor');
 var findup = require('findup');
 var gitPath = findup.sync(process.cwd(), '.git\\HEAD');
+var MarkdownContents = require('markdown-contents');
 
 var self = module.exports = {
     /**
@@ -68,7 +69,76 @@ var self = module.exports = {
             weight: 10,
             compile: self.includeSection
         });
+        
+        gd.registerHelper('include-headings', {
+            weight: 30,
+            compile: self.includeHeadings
+        });
         return gd.writeFile(path.resolve(outDir, path.basename(inputFile)));
+    },
+    includeHeadings: function (config, context) {
+        if (!config.file) {
+            throw new Error('config.file must be provided');
+        }
+        try {
+            config.maxLevel = config.maxLevel || 2;
+            
+            var fullFilePath = path.resolve(context.gitdown.getConfig().baseDirectory, config.file);
+            var relativeFilePath = fullFilePath.replace(context.gitdown.getConfig().baseDirectory, "");
+            
+            if (!fs.existsSync(fullFilePath)) {
+                throw new Error('Input file does not exist: ' + config.file);
+            }
+            
+            var content = fs.readFileSync(fullFilePath, {
+                encoding: 'utf8'
+            });
+
+            var tree = MarkdownContents(content).tree();
+
+            // Set the max level
+            tree = self.maxLevel(tree, config.maxLevel);
+
+            var output = MarkdownContents.treeToMarkdown(tree);
+
+            output = self.appendFilepathsToLinks(output, relativeFilePath);
+        } catch (err) {
+            console.log ("An error occured while trying to include headings: " + err);
+        }
+
+        return output;
+    },
+    /**
+     * Appends the given filepath to links in the given markdown file that don't already have links setup.
+     * Used for fixing up links to point to external files when using the custom "include-headings" gitdown helper
+     * @private
+     */
+    appendFilepathsToLinks: function (markdown, filePath) {
+        if (filePath.startsWith('\\')) {
+            filePath = filePath.substring(1, filePath.length);
+        }
+        var regex = new RegExp(']\\(#', 'g');
+        markdown = markdown.replace(regex, '](' + filePath + '#');
+        return markdown;
+    },
+    /**
+     * Removes tree descendants with level greater than maxLevel.
+     * Copied from gitdown's contents.js helper file since their implementation is private
+     *
+     * @private
+     */
+   maxLevel: function (tree) {
+      var maxLevel = arguments.length <= 1 || arguments[1] === undefined ? 1 : arguments[1];
+
+      tree.forEach((article, index) => {
+        if (article.level > maxLevel) {
+          delete tree[index];
+        } else {
+          article.descendants = self.maxLevel(article.descendants, maxLevel);
+        }
+      });
+
+      return tree;
     },
     /**
      * Extending gitdown to provide code snippet injection. 
@@ -134,23 +204,9 @@ var self = module.exports = {
             throw new Error('config.file must be provided.');
         }
 
-        const extName = path.extname(config.file).toLowerCase();
         const originalContent = gitdownIncludeHelper.compile(config, context);
         
-        //if file extension is .md then inject the headers for nav. else use original    
-        if(extName === ".md") {
-            //fix all relative paths to navigate within the document to anchor e.g
-            //  [something](/documentation/articles/foo.md)  is converted to [something](#foo)
-            //  <a href="/documentation/articles/foo.md">something</a> is converted to <a href="#foo">something</a>
-            var relativeRegEx = /(["|\(])(\/documentation\/articles\/)([^?#)"]+)([^")]*)/gmi;
-            var contentCleanedLinks = originalContent.replace(relativeRegEx, '$1#$3');
-
-            // inject a h1 anchor for each document as it is injected using the include-file gitdown extension.
-            return '<!-- gitdown: off --> <h1 name="' + path.basename(config.file, '.md') + '"></h1><!-- gitdown: on -->\n ' + contentCleanedLinks;
-        } else {
-            console.log(extName);
-            return originalContent;
-        }
+        return originalContent;
     },
     /**
      * Creates a symlink to SamplesExtension to both flatten the required path depth in 
@@ -176,22 +232,71 @@ var self = module.exports = {
      */
     checkLinks: function(inputFile) {
         var links = [];
-        return Q.ninvoke(fs, 'readFile', inputFile,'utf8').then(function (result){
-            console.log("checking links in " + inputFile);
+        var docs = [];
+        var brokenLinks = [];
+        return Q.ninvoke(fs, 'readFile', inputFile,'utf8').then(function (result) {
+            //console.log("checking links in " + inputFile);
             var urls = urlExt.extractUrls(result, urlExt.SOURCE_TYPE_MARKDOWN);
+            
+            var urlsToSkip = [
+                            "aadonboardingsiteppe.cloudapp.net",
+                            "aka.ms",
+                            "cecfundamentals",
+                            "cosmos11.osdinfra.net",
+                            "datacatalog.analytics.msftcloudes.com",
+                            "df.onecloud.azure-test.net",
+                            "examplecdn.vo.msecnd.net",
+                            "github.com/Azure/azure-marketplace/wiki",
+                            "github.com/Azure/msportalfx-test",
+                            "idwebelements",
+                            "igroup",
+                            "kusto.azurewebsites.net",
+                            "localhost",
+                            "mailto:",
+                            "management.azure.com",
+                            "microsoft.sharepoint.com",
+                            "msazure.pkgs.visualstudio.com",
+                            "msblox.pkgs.visualstudio.com",
+                            "msdn.microsoft.com",
+                            "msinterface",
+                            "myextension.cloudapp.net",
+                            "myextension.hosting.portal.azure.net",
+                            "onenote",
+                            "onestb.cloudapp.net",
+                            "perf.demo.ext.azure.com",
+                            "portal.azure.com", 
+                            "production.diagnostics.monitoring.core.windows.net",
+                            "qe",
+                            "ramweb",
+                            "sharepoint",
+                            "spot",
+                            "ssladmin",
+                            "stackoverflow.microsoft.com",
+                            "technet.microsoft.com",
+                            "wanuget",
+                            "www.visualstudio.com/en-us/docs",
+                            "vstfrd",
+                            "&#x6d;", // html encoding for mailto: some reason there are multiple encodings
+                            "&#109;" // html encoding for mailto: some reason there are multiple encodings
+                        ];
+            
             var count = 0;
             urls.forEach(function(url) {
+                // Trim the http:// or https://
+                var regex = new RegExp("(^HTTPS://|HTTP://)", "i");
+                var trimmedUrl = url.replace(regex,"");
+                
+                if (urlsToSkip.some(function(s) { return trimmedUrl.toUpperCase().indexOf(s.toUpperCase()) == 0 || trimmedUrl.toUpperCase().indexOf("@") >= 0; /** catch emails **/ }))
+                {
+                    //console.log(chalk.yellow("Skipping check for url: " + url));
+                    return;
+                }
+                
                 switch (url[0]) {
                     case "#": 
                         if (!result.includes("name=\"" + url.substr(1) + "\"")) {
-                           console.log(chalk.red("\tHyperlink " + url  + " does not refer to a valid link in the document."));
-                           count++;
-                        }
-                        break;
-                    case ".":
-                        var file = path.resolve(path.dirname(inputFile), url);
-                        if (!fs.existsSync(file)) {
-                           console.log(chalk.red("\tLink : " + url + " does not resolve to valid path. Resolved path " + file + "does not exist. "));
+                           //console.log(chalk.red("\tHyperlink " + url  + " does not refer to a valid link in the document.  Input file: " + inputFile));
+                           brokenLinks.push({ "url":url, "inputFile":inputFile });
                            count++;
                         }
                         break;
@@ -199,21 +304,56 @@ var self = module.exports = {
                         var sanitizedPath = url.substr(0, url.indexOf("#") > 0 ? url.indexOf("#") : url.length).replace(/\//gm, "\\");
                         var file = __dirname + sanitizedPath + (!path.extname(sanitizedPath) ? '.md' : '');
                         if (!fs.existsSync(file)) {
-                           console.log(chalk.red("\tLink : " + url + " does not resolve to valid path. Resolved path " + file + "does not exist. "));
+                           //console.log(chalk.red("\tLink : " + url + " does not resolve to valid path. Resolved path " + file + "does not exist. Input file: " + inputFile));
+                           brokenLinks.push({ "url":url, "inputFile":inputFile });
                            count++;
                         }
                         break;
                     case "h":
-                        links.push(url);
+                            links.push(url);
+                        break;
+                    case ".":
+                    default:
+                        var sanitizedPath = url.substr(0, url.indexOf("#") > 0 ? url.indexOf("#") : url.length).replace(/\//gm, "\\");
+                        var file = path.resolve(path.dirname(inputFile), sanitizedPath);
+                        if (!fs.existsSync(file)) {
+                           //console.log(chalk.red("\tLink : " + url + " does not resolve to valid path. Resolved path " + file + "does not exist. Input file: " + inputFile));
+                           brokenLinks.push({ "url":url, "inputFile":inputFile });
+                           count++;
+                        }
                         break;
                 }
             });
-            console.log("\t" + count + " broken links found");
         }).then(function() {
-            var dl = deadlink();
-	    var promises = dl.resolve(links);
-            console.log("\tchecking " + links.length + " urls");
-            return Q.all(promises).then(console.log("\t\tall good"));
+            try {
+                var dl = deadlink();
+                var promises = dl.resolve(links);
+                
+                return Q.all(promises).then(function(resolutions) {
+                    resolutions.forEach(function (resolution) {
+                        if (resolution.error || resolution.Error) {
+                            brokenLinks.push({ "url":resolution.url, "inputFile":inputFile, "data":resolution });
+                        }
+                    });
+                    
+                }, function(errors) {
+                    if (errors.hostname) {
+                        brokenLinks.push({ "url":errors.hostname, "inputFile":inputFile, "data":errors });
+                    }
+                    else if (errors.address) {
+                        brokenLinks.push({ "url":errors.address, "inputFile":inputFile, "data":errors });
+                    }
+                    else {
+                        brokenLinks.push({ "inputFile":inputFile, "data":errors });
+                    }
+                });
+            }
+            catch (err) {
+                console.log(chalk.red("Error in checking links: " + err));
+                return Q.all(promises);
+            }
+        }).then(function() {
+            return brokenLinks;
         });
     }
 }

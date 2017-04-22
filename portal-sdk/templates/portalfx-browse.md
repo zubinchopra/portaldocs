@@ -1,4 +1,4 @@
-<properties title="" pageTitle="Browse" description="" authors="flanakin" />
+{"gitdown": "contents"}
 
 ## Building browse experiences
 

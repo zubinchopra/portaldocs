@@ -5,3 +5,4 @@
 {"gitdown": "include-file", "file": "../templates/portalfx-pde-azureinsights.md"}
 {"gitdown": "include-file", "file": "../templates/portalfx-pde-monitoring.md"}
 {"gitdown": "include-file", "file": "../templates/portalfx-pde-keyvault.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-pde-cdn.md"}

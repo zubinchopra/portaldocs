@@ -111,7 +111,7 @@ Create **National Cloud** CNAMEs using each cloud's process (search for "DNS" on
     - Example TFS request item of another hosting service extension: [Example](http://vstfrd:8080/Azure/Mooncake/_workitems#_a=edit&id=8798258&fullScreen=false)
 
 
-Since hosting service provides mechanism for extensions to deploy using safe deployment practice, portal will load the version of your extension based on the region from where the customer is accessing the portal. For more details please refer to hosting service documentation.
+Since hosting service provides mechanism for extensions to deploy using safe deployment practice, portal will load the version of your extension based on the region from where the customer is accessing the portal. For more details please refer to the [Hosting Service documentation](portalfx-extension-hosting-service.md).
 
 If you are using Legacy DIY deploment registeration format then the portal will always serve the stamp that is registered in uri. In our examples mentioned above, the portal will always serve main stamp of the extension.
 
@@ -208,7 +208,7 @@ https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit
 
 #### 3. Enable 100% traffic in MPAC and PROD: 
 
-Here is a sample pull requestthat shows enabling 100% traffic without flighting for MicrosoftAzureClassicStorageExtension and 100% traffic with flighting for Microsoft_Azure_Storage:
+Here is a sample pull request that shows enabling 100% traffic without flighting for MicrosoftAzureClassicStorageExtension and 100% traffic with flighting for Microsoft_Azure_Storage:
 https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/b81b415411f54ad83f93d43d37bcad097949a4e3?refName=refs%2Fheads%2Fdev&discussionId=-1&_a=summary&fullScreen=false
 
 
@@ -264,6 +264,8 @@ Here is a sample pull request: https://msazure.visualstudio.com/One/Azure%20Port
 Before creating a pull request, create workitem so that you can assosciate the workitem with the commit.
 Create a workitem for assosciating your changes to the commit:  https://aka.ms/portalfx/config/update
 By assosciating the workitem with commit, you will get a notification when the configuration changes are deployed to each environment.
+
+Make sure you have access to make changes to the portal framework repository by joining the [Azure Portal Partner Contributors](https://ramweb/RequestAccess.aspx?ProjectID=19668) group on ramweb.
 
 Portal repository has 4 main branches i.e. dev, dogfood, mpac and production. ** All the pull requests should be sent for Dev branch.** 
 

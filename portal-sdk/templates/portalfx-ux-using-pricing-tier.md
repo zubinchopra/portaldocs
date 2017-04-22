@@ -1,4 +1,3 @@
-<properties title="Using the pricing tier" pageTitle="Using the pricing tier" description="" authors="mattshel" />
 
 <tags
     ms.service="portalfx"
@@ -25,7 +24,7 @@ To make it easy for users to update resources sizes and SKUs, include the pricin
 
 ![Pricing tier settings][tiersettings]
 
-[Building pricing cards in a resource blade](portalfx-ux-pricing-tier)
+[Building pricing cards in a resource blade](portalfx-ux-pricing-tier.md)
 
 [tierblade]: ../media/portalfx-ux-using-pricing-tier/pricing_tier_blade.png
 [tierinfoblade]: ../media/portalfx-ux-using-pricing-tier/pt_infobanner.png

@@ -4,8 +4,7 @@
     * [How we will triage your request?](#partner-request-process-how-we-will-triage-your-request)
 
 
- <h1 name="portalfx-extension-partner-request-process"></h1>
- 
+
 <a name="partner-request-process"></a>
 # Partner Request Process
 

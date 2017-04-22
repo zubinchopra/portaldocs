@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 
+=======
+{"gitdown": "contents"}
+>>>>>>> 6aa1e260bbe9276ddd69af39dd671090d0b489ac
 ## Pricing Tier
 ### Consuming the Spec Picker Blade
 The spec picker has a three controls (dropdown, infobox, and selector) for getting the data from the spec picker blades. The best way is to use the Spec Picker dropdown in your create blades.

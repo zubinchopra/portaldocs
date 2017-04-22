@@ -1,3 +1,5 @@
+{"gitdown": "contents"}
+
 ## Kusto Telemetry
 
 ### Supported Databases
@@ -20,7 +22,7 @@ Other useful Kusto tables are the ones where errors and warnings are getting log
 |Database          | Table Name        | Details                                                                                                                                                                                                                                 |
 |------------------|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |AzurePortal       | ClientEvents      | This table contains errors and warnings thrown from Framework and Hubs IFrame.                                                                                                                                                          |
-|AzurePortal       | ExtEvents         | This table contains errors and warnings thrown from an extension's IFrame. Your extension will log to this table only if you have previously [onboarded to ExtTelemetry/ExtEvents tables](/documentation/articles/portalfx-telemetry).  |
+|AzurePortal       | ExtEvents         | This table contains errors and warnings thrown from an extension's IFrame. Your extension will log to this table only if you have previously [onboarded to ExtTelemetry/ExtEvents tables](portalfx-telemetry.md).  |
 
 ### Supported Functions
 
@@ -36,7 +38,6 @@ On a weekly basis, we send out a Weekly Ibiza Status mail where we cover the KPI
 These emails have clickable Kusto links within the reported numbers. Clicking on these will take you to the Kusto query behind getting these numbers. We use functions to hide the complexity behind the queries that we use. To view the details about the queries, look under **Functions\Public**. Once you find the right function, if you right-click and do “Make a command script”, you will be able to see the details of that function. You can do this recursively for any functions underneath. 
 
 ![Connection Scope](../media/portalfx-telemetry/connectionScope.png)
-
 
 ### Supported Cosmos streams
 
@@ -54,7 +55,7 @@ We plan to merge ClientTelemetryForKustoExport into ClientTelemetry stream very 
 #### Action 
 This represents an event in the portal.
 
-{"gitdown": "include-file", "file": "./includes/portalfx-telemetry-actions.md"}
+{"gitdown": "include-file", "file": "portalfx-telemetry-actions.md"}
 
 #### ActionModifier
 This is used in tandem with the Action field. This represents a status of a particular Action. So for BladeReady for eg., you will see ActionModifier values of start, complete & cancel

@@ -1,3 +1,5 @@
+{"gitdown": "contents"}
+
 ## Extension Hosting Service
 
 Teams deploying UI for extensions with the classic cloud service model typically have to invest significant time upfront to onboard to MDS, setup compliant deployments across all geo's, configure cdn, storage and implement caching optimizations in their extension, the Extension Host is designed to mitigate this cost.  Simply put, the Extension Hosting Service is designed to allow you to focus on building your extension not on deployment infrastructure.   
@@ -236,8 +238,9 @@ https://portal.azure.com?feature.canmodifystamps=true&Microsoft_Azure_Scheduler=
 
 
 # Steps needed to deploy using the hosting service
-1. Create a storage account  
-    **Note** The deployment script provided only supports **ARM storage accounts**. However, the hosting service is agnostic of how the storage account was created and supports both Classic and ARM storage accounts.
+1. Create a storage account 
+    * Create subscriptions and storage accounts in the national clouds if you plan to depoy to national clouds.
+    * **Note** The deployment script provided only supports **ARM storage accounts**. However, the hosting service is agnostic of how the storage account was created and supports both Classic and ARM storage accounts.
 1. Register the storage account with the hosting service
 1. Deploy version.zip to storage account using the powershell
     * Deployment process is being updated
