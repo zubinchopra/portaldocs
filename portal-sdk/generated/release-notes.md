@@ -1,4 +1,20 @@
-# Release Notes since 12/20/2016
+# Release Notes since 12/21/2016
+
+## 5.0.302.723
+0 Breaking Changes, 1 Features added and 2 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8648134'>8648134</a></td><td>Feature</td><td>[ExtensionConfiguration] Add config entries for extension Microsoft_Azure_PIMCommon</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8520804'>8520804</a></td><td>Bug Fix</td><td>Create Virtual Canary regions in national clouds</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7261984'>7261984</a></td><td>Bug Fix</td><td>[Safe Deployment] Deploy Ibiza Portal to "Canary" region - required by EOY</td></tr></table>
+
+## 5.0.302.722
+0 Breaking Changes, 1 Features added and 4 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9032762'>9032762</a></td><td>Bug Fix</td><td>[Intune App] Add app properties array to LobAppContentFile entity to enable App Update</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8962164'>8962164</a></td><td>Bug Fix</td><td>[Partner Request] - Update extension configuration for Microsoft_Azure_SurfaceAreaManager in PROD Portal</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8673404'>8673404</a></td><td>Feature</td><td>[ExtensionConfiguration] Onboarding for extension <Microsoft_Azure_Health></td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8618920'>8618920</a></td><td>Bug Fix</td><td>[Partner Request] - Essentials control show allow for automatic expansion of View All option</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8369366'>8369366</a></td><td>Bug Fix</td><td>[Partner Request] - Azure Analysis Service - AAD app to access graph.windows.net</td></tr></table>
+
+## 5.0.302.721
+0 Breaking Changes, 1 Features added and 0 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8879697'>8879697</a></td><td>Feature</td><td>Add retry for setup subscription script</td></tr></table>
+
+## 5.0.302.720
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8949400'>8949400</a></td><td>Bug Fix</td><td>[Partner Request] - Update extension configuration for Microsoft_Intune_Edu in PROD</td></tr></table>
 
 ## 5.0.302.719
 0 Breaking Changes, 1 Features added and 1 Bugs Fixed
@@ -147,15 +163,3 @@
 ## 5.0.302.581
 0 Breaking Changes, 0 Features added and 0 Bugs Fixed
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7335016'>7335016</a></td><td>Secret Expiration</td><td>PROD Cert Expiration Alert for AUX: aux/OneCloud.PROD/client.portal.azure.com.pfx  expiring on 3/18/2017</td></tr></table>
-
-## 5.0.302.579
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7883703'>7883703</a></td><td>Bug Fix</td><td>[ErrorTracker] MsPortalFx.Base.Diagnostics.ErrorReporter: description: Object doesn't support property or method 'focus'</td></tr></table>
-
-## 5.0.302.578
-0 Breaking Changes, 1 Features added and 0 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8049643'>8049643</a></td><td>Feature</td><td>Enable Service Bus and Event Hub extensions in national clouds</td></tr></table>
-
-## 5.0.302.577
-0 Breaking Changes, 4 Features added and 5 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8050787'>8050787</a></td><td>Feature</td><td>Enable HDInsight extension in BF and MC</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8049752'>8049752</a></td><td>Feature</td><td>Enable MySQL extension in Mooncake</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8049643'>8049643</a></td><td>Feature</td><td>Enable Service Bus and Event Hub extensions in national clouds</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8035112'>8035112</a></td><td>Bug Fix</td><td>[Template deployment] Remove validation on extension names</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8033163'>8033163</a></td><td>Feature</td><td>Enable StorSimple extension in FairFax</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8023811'>8023811</a></td><td>Bug Fix</td><td>delay favorites till after splash screen becasue it slows down startup</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7995222'>7995222</a></td><td>Bug Fix</td><td>Fix /Error/Index spike</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7948242'>7948242</a></td><td>Bug Fix</td><td>[Grid2] Browse resource columns are squished to the right</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7704538'>7704538</a></td><td>Bug Fix</td><td>[Ibiza] Grid column header text overlaps when the column headers are made to be very small and the text is long</td></tr></table>
