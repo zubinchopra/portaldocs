@@ -162,12 +162,8 @@ We see much higher latencies and reliability issues when servers are not geo-loc
 (For more tips, see the [performance page](portalfx-performance.md).)
 
 In order to deploy to all regions:
-<<<<<<< HEAD
 
-1.	Use [Extension Hosting Service](/documentation/articles/portalfx-extension-hosting-service) to deploy UI
-=======
 1.	Use [Extension Hosting Service](portalfx-extension-hosting-service.md) to deploy UI
->>>>>>> 6aa1e260bbe9276ddd69af39dd671090d0b489ac
 1.	Deploy Controllers to all regions
 
 In general, it is best to set up servers in every region.

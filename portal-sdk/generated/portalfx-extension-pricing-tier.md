@@ -1,12 +1,9 @@
-<<<<<<< HEAD
-
-=======
 * [Pricing Tier](#pricing-tier)
     * [Consuming the Spec Picker Blade](#pricing-tier-consuming-the-spec-picker-blade)
     * [Spec Picker Blade](#pricing-tier-spec-picker-blade)
     * [Sample Spec Data](#pricing-tier-sample-spec-data)
 
->>>>>>> 6aa1e260bbe9276ddd69af39dd671090d0b489ac
+
 <a name="pricing-tier"></a>
 ## Pricing Tier
 <a name="pricing-tier-consuming-the-spec-picker-blade"></a>
@@ -279,17 +276,17 @@ Sample Features
 Sample Resource Map
 ```typescript
 
-"default": [
+"default": [ // List of spec cards
     {
-        "id": "Standard_D15_v2",
-        "firstParty": [
+        "id": "Standard_D15_v2", // Roundtrip spec card ID of your choice to track request/response
+        "firstParty": [ // list of first party 
             {
                 "id": "STANDARD_D15_V2",
-                "resourceId": "4naypwzhqsu7yaeruxj3fpqa5ah5p9ax4nayrti71j3x5pdwtc7y4imyqeyy6a",
-                "quantity": 744
+                "resourceId": "4naypwzhqsu7yaeruxj3fpqa5ah5p9ax4nayrti71j3x5pdwtc7y4imyqeyy6a", // resource target key for this spec (you can use GUID now) work with PM if you don’t know this
+                "quantity": 744 // quantity based on the unit of measure in the Catalog
             }
         ],
-        "thirdParty": [
+        "thirdParty": [ // list of third party resources, this is used for Marketplace, usually not used for Microsoft resource
             {
                 "id": "samplecloudconnect:sample:samplebackup",
                 "publisherId": "sample",
