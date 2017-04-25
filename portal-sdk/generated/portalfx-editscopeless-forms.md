@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> c157129a967b1030712d78d938baa4ee61d7fb87
 <a name="editscopeless-forms"></a>
 ## EditScopeless Forms
 
@@ -159,10 +156,6 @@ msportalfx-padding class is useful to add 10 x 10 padding to the blade.
 Managing the styling of blade gives extension developer throguh these css classes gives extension developers flexibility to use Blade as a canvas.
 Unlike previous version of SDK, No-PDL blades do not add any padding / docking content behavior by default. Thus making it easy for extension developers to manage the styling.
 
-<<<<<<< HEAD
-
-=======
->>>>>>> c157129a967b1030712d78d938baa4ee61d7fb87
 <a name="editscopeless-forms-replacing-action-bar-with-button"></a>
 ### Replacing Action Bar with Button
 

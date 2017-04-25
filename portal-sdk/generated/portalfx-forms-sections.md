@@ -22,7 +22,7 @@ This is the code to create the section:
 var mySectionOptions: Section.Options = {
     children: ko.observableArray<any>([
         this.myTextBox,
-				this.myChecklessTextBox,
+        this.myChecklessTextBox,
         this.myPasswordBox,
         this.myGroupDropDown,
         myDependentSection,
