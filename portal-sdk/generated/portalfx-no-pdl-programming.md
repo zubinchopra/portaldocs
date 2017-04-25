@@ -43,9 +43,9 @@ Here is an example of a very simple template blade, represented by a single TpeS
 ```typescript
 
 /// <reference path="../../../TypeReferences.d.ts" />
-import BladesArea = require("../BladesArea");
-import ClientResources = require("ClientResources");
-import TemplateBlade = require("Fx/Composition/TemplateBlade");
+import * as BladesArea from "../BladesArea";
+import * as ClientResources from "ClientResources";
+import * as TemplateBlade from "Fx/Composition/TemplateBlade";
 
 export = Main;
 

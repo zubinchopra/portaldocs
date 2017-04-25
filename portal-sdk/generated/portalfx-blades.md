@@ -827,14 +827,14 @@ export class SampleMenuBlade extends FxMenuBlade.ViewModel {
                                     };
                                 },
                                 supplyProviderConfig: () => {
-                                    return MsPortalFx.Base.Utilities.Internal.Serialization.toSerializableObject({
+                                    return {
                                         provisioningConfig: {
                                             provisioningEnabled: true,
                                             galleryCreateOptions: CreateEngine.galleryCreateOptions,
                                             startboardProvisioningInfo: CreateEngine.startboardProvisioningInfo,
                                         },
                                         createEngineOptions: CreateEngine.createEngineOptions,
-                                    });
+                                    };
                                 },
                                 receiveResult: result => {
                                     // Intentionally blank. The launched blade is responsible for the create operation.

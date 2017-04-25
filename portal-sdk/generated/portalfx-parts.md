@@ -113,6 +113,7 @@ To create a custom part you first declare the part in the global __`<Definition>
             ViewModel="{ViewModel Name=ExampleCustomPartViewModel, Module=./Custom/ViewModels/ExampleCustomPartViewModel}"
             Template="{Html Source='Templates\\ExampleCustomPart.html'}"
             InitialSize="Large">
+  <StyleSheet Source="{Css Source='Styles\\ExampleStyles.css'}" />
 </CustomPart>
 
 ```

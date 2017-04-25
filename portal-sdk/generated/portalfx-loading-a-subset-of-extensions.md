@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<properties title="" pageTitle="Loading a subset extensions" description="" authors="madjos,nickharris,alvarorahul" />
-=======
->>>>>>> 6aa1e260bbe9276ddd69af39dd671090d0b489ac
 
 <a name="loading-a-subset-of-extensions"></a>
 ## Loading a Subset of Extensions
