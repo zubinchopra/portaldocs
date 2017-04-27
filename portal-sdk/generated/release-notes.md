@@ -1,4 +1,4 @@
-# Release Notes since 12/21/2016
+# Release Notes since 12/27/2016
 
 ## 5.0.302.723
 0 Breaking Changes, 1 Features added and 2 Bugs Fixed
@@ -159,7 +159,3 @@
 ## 5.0.302.582
 0 Breaking Changes, 1 Features added and 0 Bugs Fixed
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8091431'>8091431</a></td><td>Feature</td><td>Add/ Update Microsoft_Azure_RecoveryServices extension to the portal in FairFax, MoonCake, BF, other national clouds available. Please update the Home Page URL as well.</td></tr></table>
-
-## 5.0.302.581
-0 Breaking Changes, 0 Features added and 0 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7335016'>7335016</a></td><td>Secret Expiration</td><td>PROD Cert Expiration Alert for AUX: aux/OneCloud.PROD/client.portal.azure.com.pfx  expiring on 3/18/2017</td></tr></table>
