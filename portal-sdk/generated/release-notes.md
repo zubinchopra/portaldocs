@@ -1,5 +1,21 @@
 # Release Notes since 12/27/2016
 
+## 5.0.302.731
+0 Breaking Changes, 1 Features added and 2 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9087581'>9087581</a></td><td>Bug Fix</td><td>no-PDL tool doesn't recognize Area TypeScript files that use the "export =" pattern</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9087570'>9087570</a></td><td>Bug Fix</td><td>No-PDL tool doesn't support module imports using non-relative module paths</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9066379'>9066379</a></td><td>Feature</td><td>[ExtensionConfiguration] <Correct 1st party AppId and activate extension> for extension <Microsoft_AAD_ProtectionCenter></td></tr></table>
+
+## 5.0.302.730
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8242544'>8242544</a></td><td>Bug Fix</td><td>ResourceTypes.isResource returns true for tenant resources which causes tenant resources to have unsupported items in settings blade</td></tr></table>
+
+## 5.0.302.727
+0 Breaking Changes, 2 Features added and 3 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9131878'>9131878</a></td><td>Feature</td><td>Remove preview tag from Microsoft_AAD_IAM extension in PROD, FF, DF by end of April, to allow IAM team to declare GA afterwards</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9125538'>9125538</a></td><td>Bug Fix</td><td>"More Services" arrow is gone in Firefox</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9125305'>9125305</a></td><td>Bug Fix</td><td>[SVG] Command bar icon could have styles overriding inherit palette</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9108428'>9108428</a></td><td>Bug Fix</td><td>[Create from browse]: Multiple links support for the empty browse exp</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9014297'>9014297</a></td><td>Feature</td><td>[CI] Update Chrome and Chrome Driver in CI and test framework </td></tr></table>
+
+## 5.0.302.726
+0 Breaking Changes, 1 Features added and 1 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9113207'>9113207</a></td><td>Bug Fix</td><td>Preserve portal last used locale when the portal is refreshed</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9075300'>9075300</a></td><td>Feature</td><td>[Intune App] Refactor IpaParser class to replace JavaScript inline functions with Typescript methods</td></tr></table>
+
 ## 5.0.302.723
 0 Breaking Changes, 1 Features added and 2 Bugs Fixed
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8648134'>8648134</a></td><td>Feature</td><td>[ExtensionConfiguration] Add config entries for extension Microsoft_Azure_PIMCommon</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8520804'>8520804</a></td><td>Bug Fix</td><td>Create Virtual Canary regions in national clouds</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7261984'>7261984</a></td><td>Bug Fix</td><td>[Safe Deployment] Deploy Ibiza Portal to "Canary" region - required by EOY</td></tr></table>
