@@ -1,4 +1,12 @@
-# Release Notes since 1/2/2017
+# Release Notes since 1/3/2017
+
+## 5.0.302.735
+0 Breaking Changes, 3 Features added and 0 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9011051'>9011051</a></td><td>Feature</td><td>Roll Mooncake certificates to use new Certificate Authority</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8903598'>8903598</a></td><td>Feature</td><td>Switch to new eSTS endpoint for Fairfax - Blocked on eSTS team </td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8438783'>8438783</a></td><td>Feature</td><td>Enable policies feature flag by default in RC and MPAC and Preview and PROD</td></tr></table>
+
+## 5.0.302.733
+0 Breaking Changes, 1 Features added and 0 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9094353'>9094353</a></td><td>Feature</td><td>[ExtensionConfiguration] <Enable Extension in FairFax> for extension <Microsoft_AAD_ProtectionCenter></td></tr></table>
 
 ## 5.0.302.731
 0 Breaking Changes, 1 Features added and 2 Bugs Fixed
