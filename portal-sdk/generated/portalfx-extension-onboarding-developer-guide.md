@@ -230,7 +230,7 @@ If your extension is migrating from DIY deploment to hosting service, we recomme
 <
 
 Here is a sample pull request for modifying the uriFormat:
-https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/history?_a=history&itemPath=%2F&itemVersion=GBdev&user=Wissam%20Zeidan&alias=wissamz%40microsoft.com        
+https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/c22b81463cab1d0c6b2c1abc803bc25fb2836aad?refName=refs%2Fheads%2Fdev
 
 <a name="understanding-scenarios-for-config-change-3-moving-from-diy-deployment-to-extension-hosting-service-2-flight-changes-in-mpac"></a>
 #### >

@@ -75,7 +75,7 @@ Only ibiza has the authority to mint tokens so in order to call external resours
 Here is an example that walks you through on how to enable Contoso_Extension, a sample extension, that can query Graph APIs from extension client :
 
 1. To query graph API's, an extension owner would submit [RDTask](http://aka.ms/portalfx/newextension) to onboard AAD Application with the portal.AAD Onboarding can take 5-6 weeks so we recommend extension developers to think about this scenarios early in the design phase.
-2. Once ibiza team has created the app in https://aadonboardingsiteppe.cloudapp.net/ you can reach out to  aadonboarding@microsoft.com to expedite the process.
+2. Once ibiza team has created the app in https://aadonboardingsite.cloudapp.net/ you can reach out to  aadonboarding@microsoft.com to expedite the process.
 3. Submit [RDTask](http://aka.ms/portalfx/newextension) to register the AAD Applciation created in Step 1 into the portal's extension config. This step can be done in parallel to Step 2.
    In this case the resourceAccess config for your extension in portal would look something like the following:
 
@@ -128,10 +128,10 @@ new MsPortalFx.ViewModels.FileDownloadCommand({
 
 In this scenario, extensions request a token targeted to the extension. Then the extension exchanges the token by calling AAD to communicate with alternate resources.
 
-The workflow in this case will be a little different from the one we descrobed on the client side:
+The workflow in this case will be a little different from the one we described on the client side:
 
 
-1. To query graph API's, an extension author needs to create AAD application on [https://aadonboardingsiteppe.cloudapp.net/](https://aadonboardingsiteppe.cloudapp.net/). AAD Onboarding can take 5-6 weeks so we recommend extension developers to think about this scenarios early in the design phase.
+1. To query graph API's, an extension author needs to create AAD application on [https://aadonboardingsite.cloudapp.net/](https://aadonboardingsite.cloudapp.net/). AAD Onboarding can take 5-6 weeks so we recommend extension developers to think about this scenarios early in the design phase.
 2. Once you have created the app you can reach out to  [aadonboarding@microsoft.com](aadonboarding@microsoft.com) to expedite the process.
 3. Once you have the App Id submit [RDTask](http://aka.ms/portalfx/newextension) to register the AAD Applciation created in Step 1 into the portal's extension config. This step can be done in parallel to Step 2.
    In this case the resourceAccess config for your extension in portal would look something like the following:

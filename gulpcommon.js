@@ -17,7 +17,7 @@ var gitdown = require('gitdown');
 var path = require('path');
 var Q = require('q');
 var util = require('util');
-var deadlink = require('deadlink');
+var checkPages = require('check-pages');
 var chalk = require('chalk');
 var urlExt = require('url-extractor');
 var findup = require('findup');
@@ -227,6 +227,7 @@ var self = module.exports = {
     },
     /**
      * Validates the links within a given file includes those that start with #, ., / and http
+     * Links that are behind authentication (401 or 403 response codes) can not be properly verified and will not be reported as failures.
      */
     checkLinks: function(inputFile) {
         var links = [];
@@ -236,47 +237,29 @@ var self = module.exports = {
             //console.log("checking links in " + inputFile);
             var urls = urlExt.extractUrls(result, urlExt.SOURCE_TYPE_MARKDOWN);
             
+            // Make sure to comment why the url is being skipped
+            // Do not include http:// or https:// as they get trimmed when matching
             var urlsToSkip = [
-                            "aadonboardingsiteppe.cloudapp.net",
-                            "aka.ms",
-                            "cecfundamentals",
-                            "cosmos11.osdinfra.net",
-                            "datacatalog.analytics.msftcloudes.com",
-                            "df.onecloud.azure-test.net",
-                            "examplecdn.vo.msecnd.net",
-                            "github.com/Azure/azure-marketplace/wiki",
-                            "github.com/Azure/msportalfx-test",
-                            "idwebelements",
-                            "igroup",
-                            "kusto.azurewebsites.net",
-                            "localhost",
-                            "mailto:",
-                            "management.azure.com",
-                            "microsoft.sharepoint.com",
-                            "msazure.pkgs.visualstudio.com",
-                            "msblox.pkgs.visualstudio.com",
-                            "msdn.microsoft.com",
-                            "msinterface",
-                            "myextension.cloudapp.net",
-                            "myextension.hosting.portal.azure.net",
-                            "onenote",
-                            "onestb.cloudapp.net",
-                            "perf.demo.ext.azure.com",
-                            "portal.azure.com", 
-                            "production.diagnostics.monitoring.core.windows.net",
-                            "qe",
-                            "ramweb",
-                            "sharepoint",
-                            "spot",
-                            "ssladmin",
-                            "stackoverflow.microsoft.com",
-                            "technet.microsoft.com",
-                            "wanuget",
-                            "www.visualstudio.com/en-us/docs",
-                            "vstfrd",
-                            "&#x6d;", // html encoding for mailto: some reason there are multiple encodings
-                            "&#109;" // html encoding for mailto: some reason there are multiple encodings
-                        ];
+                "aka.ms/msportalfx-test", // Github returns a 404 if you aren't authorized instead of a 403
+                "examplecdn.vo.msecnd.net", // fake url
+                "github.com/Azure/azure-marketplace/wiki", // Github returns a 404 if you aren't authorized instead of a 403/401
+                "github.com/Azure/msportalfx-test", // Github returns a 404 if you aren't authorized instead of a 403/401
+                "localhost",  // fake url/
+                "mailto:", // email link
+                "management.azure.com/api/invoke",  // returns a bad request since 
+                "msdn.microsoft.com/en-us/library/system.reflection.assemblyversionattribute(v=vs.110", // Bug in url extractor where its not capturing the entire url
+                "msdn.microsoft.com/en-us/library/system.reflection.assemblyinformationalversionattribute(v=vs.110", // Bug in url extractor where its not capturing the entire url
+                "myextension.cloudapp.net",  // fake url
+                "myextension.hosting.portal.azure.net",  // fake url
+                "onenote", // onenote link
+                "onestb.cloudapp.net",  // fake url
+                "perf.demo.ext.azure.com",  // fake url
+                "ramweb",  // returns a certificate not trusted error
+                "technet.microsoft.com/en-us/library/cc730629(v=ws.10", // Bug in url extractor where its not capturing the entire url
+                "www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot;&gt;", // Bug in url extractor where it captured extra characters after the url
+                "&#x6d;", // html encoding for mailto: some reason there are multiple encodings
+                "&#109;" // html encoding for mailto: some reason there are multiple encodings
+            ];
             
             var count = 0;
             urls.forEach(function(url) {
@@ -314,9 +297,9 @@ var self = module.exports = {
                     default:
                         var sanitizedPath = url.substr(0, url.indexOf("#") > 0 ? url.indexOf("#") : url.length).replace(/\//gm, "\\");
                         var file = path.resolve(path.dirname(inputFile), sanitizedPath);
-                        if (!fs.existsSync(file)) {
+                        if (!(fs.existsSync(file) && fs.statSync(file).isFile())) {
                            //console.log(chalk.red("\tLink : " + url + " does not resolve to valid path. Resolved path " + file + "does not exist. Input file: " + inputFile));
-                           brokenLinks.push({ "url":url, "inputFile":inputFile });
+                           brokenLinks.push({ "url":url, "inputFile":inputFile, "reason":"Does not exist or is not a file." });
                            count++;
                         }
                         break;
@@ -324,31 +307,46 @@ var self = module.exports = {
             });
         }).then(function() {
             try {
-                var dl = deadlink();
-                var promises = dl.resolve(links);
+                // the check-pages tool doesn't like mp4's so skip them
+                var filteredLinks = links.filter(function(l) { return !l.endsWith(".mp4") })
                 
-                return Q.all(promises).then(function(resolutions) {
-                    resolutions.forEach(function (resolution) {
-                        if (resolution.error || resolution.Error) {
-                            brokenLinks.push({ "url":resolution.url, "inputFile":inputFile, "data":resolution });
-                        }
-                    });
+                if (filteredLinks.length > 0) {
+                    //console.log("Links for " + inputFile);
+                    //console.log(chalk.yellow(filteredLinks));
+                    var checkPagesOptions = {
+                        pageUrls: filteredLinks,
+                        checkLinks: false,
+                        noEmptyFragments: true,
+                        noLocalLinks: true,
+                        queryHashes: true
+                        };
                     
-                }, function(errors) {
-                    if (errors.hostname) {
-                        brokenLinks.push({ "url":errors.hostname, "inputFile":inputFile, "data":errors });
+                    var captureConsole = { 
+                        log: function(message) {
+                            // Do nothing if the link was succesful
+                        },
+                        error: function(message) {
+                            // 401 and 403 usually mean they require login/authentication, so ignore those failures
+                            if (!(message.startsWith("Bad page (401)") || message.startsWith("Bad page (403)"))) {
+                                var messageUrl = message.substring(message.indexOf(": ") + 2, message.length);
+                                var messageReason = message.substring(0, message.indexOf(": "));
+                                brokenLinks.push({ "url": messageUrl, "inputFile":inputFile, "reason": messageReason, "data":message })
+                            }
+                        }
                     }
-                    else if (errors.address) {
-                        brokenLinks.push({ "url":errors.address, "inputFile":inputFile, "data":errors });
-                    }
-                    else {
-                        brokenLinks.push({ "inputFile":inputFile, "data":errors });
-                    }
-                });
+                    
+                    return Q.nfcall(checkPages, captureConsole, checkPagesOptions).then(function (count) {
+                    if (count > 0) {
+                        // Do nothing.
+                    }}, 
+                    function (err) { 
+                        // Do nothing.
+                    });
+                }
             }
             catch (err) {
-                console.log(chalk.red("Error in checking links: " + err));
-                return Q.all(promises);
+                console.log(chalk.red("An error occured while checking links: " + err));
+                return Q.defer().resolve();
             }
         }).then(function() {
             return brokenLinks;

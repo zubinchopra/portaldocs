@@ -40,6 +40,8 @@
     * [Helpers and Indicators](portalfx-controls.md#helpers-and-indicators)
     * [Visualizing Data](portalfx-controls.md#visualizing-data)
 
+* [Monitor Chart](portalfx-controls-monitor-chart.md#monitor-chart)
+
 * [EditScopeless Forms](portalfx-editscopeless-forms.md#editscopeless-forms)
 
 * [Using Fx/Controls in EditScope backed forms](portalfx-fxcontrols-editscope-forms.md#using-fx-controls-in-editscope-backed-forms)

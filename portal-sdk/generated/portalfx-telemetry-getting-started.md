@@ -18,7 +18,7 @@ Data Source: [https://AzPortal.kusto.windows.net](https://AzPortal.kusto.windows
 <a name="getting-started-permissions"></a>
 ### Permissions
 
-Partner teams wanting access need to join the [Azure Portal Data](http://idwebelements/GroupManagement.aspx?Group=auxdatapartners&Operation=join) group
+All Azure employees should have access, if you don't have access ensure you have joined your team's standard access group and it's listed here [http://aka.ms/standardaccess](http://aka.ms/standardaccess). If it is not listed then please reach out to [Ibiza Telemetry](mailto:ibiza-telemetry@microsoft.com).
 
 
 <a name="getting-started-kusto-documentation-links"></a>

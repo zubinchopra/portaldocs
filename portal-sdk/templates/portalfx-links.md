@@ -12,7 +12,7 @@ To link to resources, all you need is the resource id. Currently, only subscript
 
 For instance...
 
-> [https://portal.azure.com/microsoft.com#resource/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/foo/providers/microsoft.web/sites/bar]()
+> [https://portal.azure.com/microsoft.com#resource/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/foo/providers/microsoft.web/sites/bar](https://portal.azure.com/microsoft.com#resource/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/foo/providers/microsoft.web/sites/bar)
 
 
 ## Blades
@@ -23,11 +23,11 @@ To link to blades, include the extension and blade name:
 
 For instance...
 
-> [https://portal.azure.com/microsoft.com#blade/HubsExtension/HelpAndSupportBlade]()
+> [https://portal.azure.com/microsoft.com#blade/HubsExtension/HelpAndSupportBlade](https://portal.azure.com/microsoft.com#blade/HubsExtension/HelpAndSupportBlade)
 
 Blade inputs are serialized in consecutive name/value pairs:
 
-> [https://portal.azure.com/microsoft.com#blade/HubsExtension/BrowseAllBladeWithType/type/HubsExtension_Tag]()
+> [https://portal.azure.com/microsoft.com#blade/HubsExtension/BrowseAllBladeWithType/type/HubsExtension_Tag](https://portal.azure.com/microsoft.com#blade/HubsExtension/BrowseAllBladeWithType/type/HubsExtension_Tag)
 
 <!--
 TODO: micflan: Finish implementing Browse links
@@ -40,7 +40,7 @@ To link to Browse v2 blades, include the resource type:
 
 For instance...
 
-> [https://portal.azure.com/microsoft.com#browse/microsoft.search/searchServices]()
+> [https://portal.azure.com/microsoft.com#browse/microsoft.search/searchServices](https://portal.azure.com/microsoft.com#browse/microsoft.search/searchServices)
 
 Additionally, you can also link to the following Browse blades:
 
@@ -59,7 +59,7 @@ To link to Create blade, include the package id:
 
 For instance...
 
-> [https://portal.azure.com/microsoft.com#create/NewRelic.NewRelicAccount]()
+> [https://portal.azure.com/microsoft.com#create/NewRelic.NewRelicAccount](https://portal.azure.com/microsoft.com#create/NewRelic.NewRelicAccount)
 
 
 ## Marketplace item details blades
@@ -70,7 +70,7 @@ To link to the Marketplace item details blade for your package, add "/preview" t
 
 For instance...
 
-> [https://portal.azure.com/microsoft.com#create/NewRelic.NewRelicAccount/preview]()
+> [https://portal.azure.com/microsoft.com#create/NewRelic.NewRelicAccount/preview](https://portal.azure.com/microsoft.com#create/NewRelic.NewRelicAccount/preview)
 
 
 ## Assets
@@ -81,7 +81,7 @@ To link to assets, include the extension name, asset type, and asset id.
 
 For instance...
 
-> [https://portal.azure.com/microsoft.com#asset/Microsoft_Azure_Billing/BillingSubscriptionBrowseService/00000000-0000-0000-0000-000000000000]()
+> [https://portal.azure.com/microsoft.com#asset/Microsoft_Azure_Billing/BillingSubscriptionBrowseService/00000000-0000-0000-0000-000000000000](https://portal.azure.com/microsoft.com#asset/Microsoft_Azure_Billing/BillingSubscriptionBrowseService/00000000-0000-0000-0000-000000000000)
 
 
 
