@@ -1,4 +1,12 @@
-# Release Notes since 1/3/2017
+# Release Notes since 1/4/2017
+
+## 5.0.302.737
+0 Breaking Changes, 0 Features added and 3 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9174034'>9174034</a></td><td>Bug Fix</td><td>MaybeLater button is off centered in WelcomeSequence</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9166290'>9166290</a></td><td>Bug Fix</td><td>ContextPane blade from template should apply a bladestyle matching the original style applied</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9033784'>9033784</a></td><td>Bug Fix</td><td>[ContextualHelp] Build contextual help pane</td></tr></table>
+
+## 5.0.302.736
+0 Breaking Changes, 0 Features added and 0 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8816052'>8816052</a></td><td>Feature</td><td>Monitor chart part in hubs</td></tr></table>
 
 ## 5.0.302.735
 0 Breaking Changes, 3 Features added and 0 Bugs Fixed
