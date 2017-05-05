@@ -1,4 +1,12 @@
-# Release Notes since 1/4/2017
+# Release Notes since 1/5/2017
+
+## 5.0.302.739
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9093639'>9093639</a></td><td>Bug Fix</td><td>opening two deep links to the portal in parallel has unpredictable results</td></tr></table>
+
+## 5.0.302.738
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9215327'>9215327</a></td><td>Bug Fix</td><td>Extension configuration for national clouds are using wrong certificates</td></tr></table>
 
 ## 5.0.302.737
 0 Breaking Changes, 0 Features added and 3 Bugs Fixed
