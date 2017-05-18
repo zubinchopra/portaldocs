@@ -53,18 +53,16 @@ issues caused by anti-patterns and inconsistencies that block usability, perform
 
     For more information about azure.com onboarding, see [http://acomdocs.azurewebsites.net](http://acomdocs.azurewebsites.net).
 
-5. **Common Engineering Criteria (CEC)** (Stakeholder: [Duke Kamstra](mailto:ibiza-cec@microsoft.com))
+5. **Azure Fundamentals**
 
-    The Microsoft Common Engineering Criteria (CEC) program was designed to establish a set of engineering requirements
-    across all products. Meeting these requirements is critical to the success of Azure. Every extension is required to
-    be listed in the [CEC Scorecard](https://azuremetrics.cloudapp.net/scorecards/cec). Onboard your service to the CEC
-    Scorecard using the CEC Fundamental Portal (CFP):
-
-   1. Add your service to ServiceTree: https://servicetree.msftcloudes.com
-   2. Request your service be "Active"
-   3. If not in C+E, go to Dependencies to define a depndency on the CEC Scorecard service (C+E services are automatically added)
-   4. Complete metadata in ServiceTree to enable the automation for various KPIs
-   5. Complete the requirements for each release stage: [https://cecfundamentals](https://cecfundamentals)
+    The Azure Fundamentals are a set of Tenets each Azure service is expected to adhere to. The Azure Fundamentals program 
+    is described in this document [Azure Fundamentals]( https://microsoft.sharepoint.com/teams/WAG/EngSys/Shared%20Documents/Argon/Azure%20Fundamentals%20Proposal/Azure%20Fundamentals%20Proposal.docx?d=wf5b821bc31c44042adb55ebf4d8b408d). The document also identifies the Stakeholders and contacts for each of the Tenets.
+    
+    Execute the following process so the specific work required for the tenets appears in Service360
+    1. Add your service to ServiceTree: https://servicetree.msftcloudes.com
+    2. Make your service be "Active" in ServiceTree
+    3. Complete metadata in ServiceTree to enable the automation for various Service360 Action Items
+    4. Complete the Action Items identified in Service360 (http://aka.ms/s360)
 
 6. **Azure Compliance** (Stakeholders: [Azure Compliance team](mailto:azcompl@microsoft.com))
 
