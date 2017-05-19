@@ -83,7 +83,7 @@ issues caused by anti-patterns and inconsistencies that block usability, perform
     - Software integrity
 
     Some of the procedures such as Accessibility, GB Certificate, Privacy, and Security are also measured in the
-    [CEC Scorecard](http://cecfundamentals/Scorecard/Scorecard) and exit criteria for management review and tracking.
+    [Service Health Review Scorecard](https://aka.ms/shr) and exit criteria for management review and tracking.
     These requirements apply to both the portal fx and extensions. Since Fx provides the common infrastructure and UI
     controls that govern the data handling and UX, hence some of the compliance work for extensions would be identical
     across in Ibiza, and rationally be mitigated by the Framework. For example, Accessibility support on keyboard
