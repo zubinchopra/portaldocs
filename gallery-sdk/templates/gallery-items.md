@@ -146,7 +146,7 @@ This file contains publisher, name, version and content of a template.
 
 #### Images
 Images support localization. The following folder structure will be used for localizing images.
-You can find the list of languages that Azure Portal supports <a href="/documentation/articles/portalfx-localization#list-of-accepted-languages" target="_blank">here</a>.
+You can find the list of languages that Azure Portal supports <a href="/portal-sdk/generated/portalfx-localization.md#list-of-accepted-languages" target="_blank">here</a>.
 
 ```txt
 /GalleryPackage
@@ -164,7 +164,7 @@ You can find the list of languages that Azure Portal supports <a href="/document
 
 ### Strings
 The strings folder contains json files for each localized language. The resource files are simple key value pair json documents. The files are named localization.resjson.
-You can find the list of languages that Azure Portal supports <a href="/documentation/articles/portalfx-localization#list-of-accepted-languages" target="_blank">here</a>.
+You can find the list of languages that Azure Portal supports <a href="/portal-sdk/generated/portalfx-localization.md#list-of-accepted-languages" target="_blank">here</a>.
 
 The format of the resource file is as follows:
 
