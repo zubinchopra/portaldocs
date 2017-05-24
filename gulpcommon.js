@@ -23,6 +23,7 @@ var urlExt = require('url-extractor');
 var findup = require('findup');
 var gitPath = findup.sync(process.cwd(), '.git\\HEAD');
 var MarkdownContents = require('markdown-contents');
+var eol = require('eol');
 
 var self = module.exports = {
     /**
@@ -74,7 +75,14 @@ var self = module.exports = {
             weight: 30,
             compile: self.includeHeadings
         });
-        return gd.writeFile(path.resolve(outDir, path.basename(inputFile)));
+        
+        var outputFile = path.resolve(outDir, path.basename(inputFile));
+
+        // Write the file ourselves intead of using gitdown.WriteFile so we can fix line endings to be CRLF.
+        return gd.get().then((outputString) => {
+            var outputStringFixedLineEndings = eol.crlf(outputString);
+            return fs.writeFileSync(outputFile, outputStringFixedLineEndings);
+        });
     },
     includeHeadings: function (config, context) {
         if (!config.file) {
