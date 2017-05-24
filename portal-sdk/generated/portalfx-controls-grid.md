@@ -100,11 +100,14 @@ There are many other column options that specify the formatting of the value or 
 var columns: MsPortalFx.ViewModels.Controls.Lists.Grid.Column[] = [
     {
         itemKey: "name",
-        name: ko.observable<string>(ClientResources.controlSampleName)
+        name: ko.observable<string>(ClientResources.controlSampleName),
     },
     {
         itemKey: "ssnId",
-        name: ko.observable<string>(ClientResources.controlSampleSsn)
+        name: ko.observable<string>(ClientResources.controlSampleSsn),
+        getCellAriaLabel: (item: SamplesExtension.DataModels.Person) => {
+            return ClientResources.gridCellAriaLabel.format(item.name(), item.ssnId());
+        }
     },
     {
         itemKey: "bills",
