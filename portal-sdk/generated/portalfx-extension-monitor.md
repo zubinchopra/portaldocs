@@ -21,9 +21,10 @@
 
 <a name="create-troubleshooting"></a>
 # Create Troubleshooting
-* [Overview](portalfx-create-troubleshooting.md#overview)
-* [Types of Create Failures](portalfx-create-troubleshooting.md#types-of-create-failures)
-* [Debugging Alerts](portalfx-create-troubleshooting.md#debugging-alerts)
+* [Create Troubleshooting](portalfx-create-troubleshooting.md#create-troubleshooting)
+    * [Overview](portalfx-create-troubleshooting.md#overview)
+    * [Types of Create Failures](portalfx-create-troubleshooting.md#types-of-create-failures)
+    * [Debugging Alerts](portalfx-create-troubleshooting.md#debugging-alerts)
 
 
 <a name="performance"></a>

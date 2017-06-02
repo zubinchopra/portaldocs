@@ -1,7 +1,7 @@
 * [Telemetry](#telemetry)
-    * [Create Troubleshooting](#telemetry-create-troubleshooting)
     * [Performance](#telemetry-performance)
     * [Reliability](#telemetry-reliability)
+    * [Create](#telemetry-create)
 
 
 <a name="telemetry"></a>
@@ -18,18 +18,6 @@
 * [How to view Live Telemetry](portalfx-telemetry-live-telemetry.md#how-to-view-live-telemetry)
 
 * [Extension Errors Dashboard](portalfx-telemetry-extension-errors.md#extension-errors-dashboard)
-
-* [Create Telemetry](portalfx-telemetry-create.md#create-telemetry)
-    * [Create Flow Telemetry Dashboards](portalfx-telemetry-create.md#create-flow-telemetry-dashboards)
-    * [Create Flow table](portalfx-telemetry-create.md#create-flow-table)
-    * [Create Flow Functions](portalfx-telemetry-create.md#create-flow-functions)
-
-
-<a name="telemetry-create-troubleshooting"></a>
-## Create Troubleshooting
-* [Overview](portalfx-create-troubleshooting.md#overview)
-* [Types of Create Failures](portalfx-create-troubleshooting.md#types-of-create-failures)
-* [Debugging Alerts](portalfx-create-troubleshooting.md#debugging-alerts)
 
 
 <a name="telemetry-performance"></a>
@@ -57,3 +45,15 @@
 * [Checklist](portalfx-reliability.md#checklist)
 * [Alerts](portalfx-reliability.md#alerts)
 
+
+<a name="telemetry-create"></a>
+## Create
+* [Create Telemetry](portalfx-telemetry-create.md#create-telemetry)
+    * [Create Flow Telemetry Dashboards](portalfx-telemetry-create.md#create-flow-telemetry-dashboards)
+    * [Create Flow table](portalfx-telemetry-create.md#create-flow-table)
+    * [Create Flow Functions](portalfx-telemetry-create.md#create-flow-functions)
+
+* [Create Troubleshooting](portalfx-create-troubleshooting.md#create-troubleshooting)
+    * [Overview](portalfx-create-troubleshooting.md#overview)
+    * [Types of Create Failures](portalfx-create-troubleshooting.md#types-of-create-failures)
+    * [Debugging Alerts](portalfx-create-troubleshooting.md#debugging-alerts)

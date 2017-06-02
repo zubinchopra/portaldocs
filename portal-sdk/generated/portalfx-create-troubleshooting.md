@@ -1,16 +1,20 @@
-* [Overview](#overview)
-* [Types of Create Failures](#types-of-create-failures)
-* [Debugging Alerts](#debugging-alerts)
-    * [Alert Regression Error Count](#debugging-alerts-alert-regression-error-count)
-    * [Alert regression details](#debugging-alerts-alert-regression-details)
-    * [All Creates](#debugging-alerts-all-creates)
-    * [All Creates With Additional Details](#debugging-alerts-all-creates-with-additional-details)
-    * [Alert query](#debugging-alerts-alert-query)
-    * [Alert bar](#debugging-alerts-alert-bar)
-    * [Alert summaries base](#debugging-alerts-alert-summaries-base)
+* [Create Troubleshooting](#create-troubleshooting)
+    * [Overview](#create-troubleshooting-overview)
+    * [Types of Create Failures](#create-troubleshooting-types-of-create-failures)
+    * [Debugging Alerts](#create-troubleshooting-debugging-alerts)
+        * [Alert Regression Error Count](#create-troubleshooting-debugging-alerts-alert-regression-error-count)
+        * [Alert regression details](#create-troubleshooting-debugging-alerts-alert-regression-details)
+        * [All Creates](#create-troubleshooting-debugging-alerts-all-creates)
+        * [All Creates With Additional Details](#create-troubleshooting-debugging-alerts-all-creates-with-additional-details)
+        * [Alert query](#create-troubleshooting-debugging-alerts-alert-query)
+        * [Alert bar](#create-troubleshooting-debugging-alerts-alert-bar)
+        * [Alert summaries base](#create-troubleshooting-debugging-alerts-alert-summaries-base)
 
 
-<a name="overview"></a>
+<a name="create-troubleshooting"></a>
+# Create Troubleshooting
+
+<a name="create-troubleshooting-overview"></a>
 ## Overview
 
 Creates are when a user tries to provision a resource using the portal.  The goal of the Create Flow Regressions alert is to  generate awareness when our create reliability seems to be degrading.  This can happen for a number of reasons, this alert does not attempt to distinguish the reasons why.
@@ -21,7 +25,7 @@ The numbers are the percentage of regression.  For example, if latest value is 1
 
 This bar is set on a blade by blade basis and can be adjusted as needed.
 
-<a name="types-of-create-failures"></a>
+<a name="create-troubleshooting-types-of-create-failures"></a>
 ## Types of Create Failures
 
 There are three types of create failures:
@@ -31,12 +35,12 @@ There are three types of create failures:
 2. The create request was not accepted by ARM for any reason
 3. This is a custom create where the *ProvisioningEnded* is either missing or reports an error
 
-<a name="debugging-alerts"></a>
+<a name="create-troubleshooting-debugging-alerts"></a>
 ## Debugging Alerts
 
 Follow the below documentation to understand and debug your create regressions that caused the alert.
 
-<a name="debugging-alerts-alert-regression-error-count"></a>
+<a name="create-troubleshooting-debugging-alerts-alert-regression-error-count"></a>
 ### Alert Regression Error Count
  
 If you want to see what errors are making up your regression percentage *(over the last 24 hours ending at the datetime provided)* and how many times these errors are occurring then the following query will give you the break down you are looking for (using websites as an example): 
@@ -59,7 +63,7 @@ Output Result Columns: 
 * **ErrorCode** – the error code that specifies the type of error that occurred 
 * **Hits** – the number of times this error occurred 
 
-<a name="debugging-alerts-alert-regression-details"></a>
+<a name="create-troubleshooting-debugging-alerts-alert-regression-details"></a>
 ### Alert regression details
 
 When things go wrong you will need to drill down. Once you have used GetCreateRegressionErrorCount to understand the main errors that are causing your regressions numbers *(over the last 24 hours ending at the datetime provided)* to spike, you will now need to understand what caused them.  The following query shows all of the failed creates with their error messages for a specific extension and blade (using websites as an example): 
@@ -127,7 +131,7 @@ So, we were either unable to provide you with the correct error code or message,
 3. The details field should contains a hierarchy of error codes and error message. The inner mode error code or message should be the underlying cause of the deployment failure. 
 
 
-<a name="debugging-alerts-all-creates"></a>
+<a name="create-troubleshooting-debugging-alerts-all-creates"></a>
 ### All Creates
 
 When looking for patterns it is sometimes better to see the good with the bad.  The following query returns a single row for each create:
@@ -147,7 +151,7 @@ The results include:
 * telemetryId - unique ID for the deployment
 * CustomDeployment - if not an ARM deployment this is true
         
-<a name="debugging-alerts-all-creates-with-additional-details"></a>
+<a name="create-troubleshooting-debugging-alerts-all-creates-with-additional-details"></a>
 ### All Creates With Additional Details
 
 To query with more details the following query:
@@ -176,7 +180,7 @@ Output Result Columns:
 * **ErrorCode** – the overall error code that specifies the type of error that occurred
 * **Hits** – the number of times this error
 
-<a name="debugging-alerts-alert-query"></a>
+<a name="create-troubleshooting-debugging-alerts-alert-query"></a>
 ### Alert query
 The alert itself is driven from the following query:
 
@@ -192,7 +196,7 @@ This has strangely named columns that are required by MDM, but essentially it tr
 
 The alert is generated any time the regression is more than 5% from the bar.
 
-<a name="debugging-alerts-alert-bar"></a>
+<a name="create-troubleshooting-debugging-alerts-alert-bar"></a>
 ### Alert bar
 The bar is a value we've captured based on current performance.  This should be raised over time as the create becomes more reliable.  PMs from the portal team will help you remember that this is needed.
 
@@ -207,7 +211,7 @@ To see the current bar settings use the following query:
 * NormalizedCount - not used
 * Reason - notes about why the bar was set
     
-<a name="debugging-alerts-alert-summaries-base"></a>
+<a name="create-troubleshooting-debugging-alerts-alert-summaries-base"></a>
 ### Alert summaries base
     
 The alert is very specific as per the rules of MDM and does not provide any context.  To see the state of creates more clearly try the following query:
