@@ -1,4 +1,4 @@
-## Extension Errors Dashboard
+## How to analyze client errors
 
 **Extension Errors dashboard** gives you the ability to look into the errors and warnings thrown by your extension.
 

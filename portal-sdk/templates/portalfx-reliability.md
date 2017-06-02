@@ -1,6 +1,6 @@
 {"gitdown": "contents"}
 
-## Overview
+# Overview
 
 Reliability of the Portal is one of the top pain points from a customers perspective.
 As an extension author you have a duty to uphold your experience to the reliability bar at a minimum.
@@ -11,17 +11,17 @@ As an extension author you have a duty to uphold your experience to the reliabil
 | Blade         | See Power BI        | BladeLoaded vs BladeLoadErrored     | (( # of BladeLoaded started - # of BladeLoadErrored's) / # of BladeLoaded started) * 100 |
 | Part          | See Power BI        | PartLoaded                          | (( # of PartLoaded started - # of PartLoaded canceled) / # of PartLoaded started) * 100 |
 
-### Extension reliability
+## Extension reliability
 
 This is core to your customers experience, if the FX is unable to load your extension it will be unable to surface any of your experience.
 Consequently your customers will be unable to manage/monitor their resources through the Portal.
 
-### Blade reliability
+## Blade reliability
 
 Second to Extension reliability, Blade reliability is next level of critical reliability.
 Your Blade reliability can be equated to a page loading in a website, it failing to load is a critical issue.
 
-### Part reliability
+## Part reliability
 
 Parts are used throughout the portal, from a blade and dashboard perspective, if a part fails to load this results in the user potentially:
 
@@ -75,9 +75,9 @@ this.viewModelFactories.Blades().setDataContextFactory<typeof Blades>(
 );
 ```
 
-### Reliability Frequently Asked Questions (FAQ)
+# Reliability Frequently Asked Questions (FAQ)
 
-#### My Extension is below the reliability bar, what should I do
+## My Extension is below the reliability bar, what should I do
 
 Run the following [query][kusto-extension-reliability-summary]
 
@@ -105,7 +105,7 @@ The query will return a summary of all the events which your extension failed to
 Once you have ran the query you will be shown a list of errorStates and errors, for more greater details you can use the any_sessionId 
 to investigate further.
 
-##### Error States
+### Error States
 
 <table>
     <tr>
@@ -274,7 +274,7 @@ to investigate further.
     </tr>
 </table>
 
-#### My Blade is below the reliability bar, what should I do
+## My Blade is below the reliability bar, what should I do
 
 Firstly, run the following [query][kusto-blade-reliabiltiy-summary], ensure you update the extension/time range.
 
@@ -369,7 +369,7 @@ Once you have that, correlate the error reasons with the below list to see the g
     </tr>
 </table>
 
-### My Part is below the reliability bar, what should I do
+## My Part is below the reliability bar, what should I do
 
 Firstly, run the following [query][kusto-part-reliabiltiy-summary], ensure you update the extension/time range.
 
@@ -482,17 +482,6 @@ Once you have that, correlate the error reasons with the below list to see the g
         </td>
     </tr>
 </table>
-
-
-## Alerts
-
-This is in progress, if you have interest in adopting reliability alerts please contact sewatson
-
-There are 3 types of alerts we will be firing:
-
-1. Extension reliability - this requires on-boarding please contact sewatson if you are interested
-1. Blade reliability hourly 
-1. Part reliability hourly 
 
 [TelemetryOnboarding]: <portalfx-telemetry-getting-started.md>
 [Ext-Perf/Rel-Report]: <http://aka.ms/portalfx/dashboard/extensionperf>
