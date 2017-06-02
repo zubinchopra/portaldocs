@@ -2,36 +2,10 @@
     * [Create Flow Telemetry Dashboards](#create-telemetry-create-flow-telemetry-dashboards)
     * [Create Flow table](#create-telemetry-create-flow-table)
     * [Create Flow Functions](#create-telemetry-create-flow-functions)
-* [<a name="GetCreateFlows"></a>GetCreateFlows(startDate: datetime, endDate: datetime)](#a-name-getcreateflows-a-getcreateflows-startdate-datetime-enddate-datetime)
-    * [Summary](#a-name-getcreateflows-a-getcreateflows-startdate-datetime-enddate-datetime-summary)
-    * [Common Use Cases](#a-name-getcreateflows-a-getcreateflows-startdate-datetime-enddate-datetime-common-use-cases)
-    * [Underlying Function Resources](#a-name-getcreateflows-a-getcreateflows-startdate-datetime-enddate-datetime-underlying-function-resources)
-    * [Parameters](#a-name-getcreateflows-a-getcreateflows-startdate-datetime-enddate-datetime-parameters)
-    * [Output Columns](#a-name-getcreateflows-a-getcreateflows-startdate-datetime-enddate-datetime-output-columns)
-* [<a name="GetCreateFunnel"></a>GetCreateFunnel(startDate: datetime, endDate: datetime)](#a-name-getcreatefunnel-a-getcreatefunnel-startdate-datetime-enddate-datetime)
-    * [Summary](#a-name-getcreatefunnel-a-getcreatefunnel-startdate-datetime-enddate-datetime-summary)
-    * [Common Use Cases](#a-name-getcreatefunnel-a-getcreatefunnel-startdate-datetime-enddate-datetime-common-use-cases)
-    * [Underlying Function Resources](#a-name-getcreatefunnel-a-getcreatefunnel-startdate-datetime-enddate-datetime-underlying-function-resources)
-    * [Parameters](#a-name-getcreatefunnel-a-getcreatefunnel-startdate-datetime-enddate-datetime-parameters)
-    * [Output Columns](#a-name-getcreatefunnel-a-getcreatefunnel-startdate-datetime-enddate-datetime-output-columns)
-* [<a name="GetCreateFunnelByDay"></a>GetCreateFunnelByDay(startDate: datetime, endDate: datetime)](#a-name-getcreatefunnelbyday-a-getcreatefunnelbyday-startdate-datetime-enddate-datetime)
-    * [Summary](#a-name-getcreatefunnelbyday-a-getcreatefunnelbyday-startdate-datetime-enddate-datetime-summary)
-    * [Common Use Cases](#a-name-getcreatefunnelbyday-a-getcreatefunnelbyday-startdate-datetime-enddate-datetime-common-use-cases)
-    * [Underlying Function Resources](#a-name-getcreatefunnelbyday-a-getcreatefunnelbyday-startdate-datetime-enddate-datetime-underlying-function-resources)
-    * [Parameters](#a-name-getcreatefunnelbyday-a-getcreatefunnelbyday-startdate-datetime-enddate-datetime-parameters)
-    * [Output Columns](#a-name-getcreatefunnelbyday-a-getcreatefunnelbyday-startdate-datetime-enddate-datetime-output-columns)
-* [<a name="GetCreateFunnelByGalleryPackageId"></a>GetCreateFunnelByGalleryPackageId(startDate: datetime, endDate: datetime)](#a-name-getcreatefunnelbygallerypackageid-a-getcreatefunnelbygallerypackageid-startdate-datetime-enddate-datetime)
-    * [Summary](#a-name-getcreatefunnelbygallerypackageid-a-getcreatefunnelbygallerypackageid-startdate-datetime-enddate-datetime-summary)
-    * [Common Use Cases](#a-name-getcreatefunnelbygallerypackageid-a-getcreatefunnelbygallerypackageid-startdate-datetime-enddate-datetime-common-use-cases)
-    * [Underlying Function Resources](#a-name-getcreatefunnelbygallerypackageid-a-getcreatefunnelbygallerypackageid-startdate-datetime-enddate-datetime-underlying-function-resources)
-    * [Parameters](#a-name-getcreatefunnelbygallerypackageid-a-getcreatefunnelbygallerypackageid-startdate-datetime-enddate-datetime-parameters)
-    * [Output Columns](#a-name-getcreatefunnelbygallerypackageid-a-getcreatefunnelbygallerypackageid-startdate-datetime-enddate-datetime-output-columns)
-* [<a name="GetCombinedCreateFunnel"></a>GetCombinedCreateFunnel(startDate: datetime, endDate: datetime)](#a-name-getcombinedcreatefunnel-a-getcombinedcreatefunnel-startdate-datetime-enddate-datetime)
-    * [Summary](#a-name-getcombinedcreatefunnel-a-getcombinedcreatefunnel-startdate-datetime-enddate-datetime-summary)
-    * [Common Use Cases](#a-name-getcombinedcreatefunnel-a-getcombinedcreatefunnel-startdate-datetime-enddate-datetime-common-use-cases)
-    * [Underlying Function Resources](#a-name-getcombinedcreatefunnel-a-getcombinedcreatefunnel-startdate-datetime-enddate-datetime-underlying-function-resources)
-    * [Parameters](#a-name-getcombinedcreatefunnel-a-getcombinedcreatefunnel-startdate-datetime-enddate-datetime-parameters)
-    * [Output Columns](#a-name-getcombinedcreatefunnel-a-getcombinedcreatefunnel-startdate-datetime-enddate-datetime-output-columns)
+        * [GetCreateFlows](#create-telemetry-create-flow-functions-getcreateflows)
+        * [GetCreateFunnel](#create-telemetry-create-flow-functions-getcreatefunnel)
+        * [GetCreateFunnelByDay](#create-telemetry-create-flow-functions-getcreatefunnelbyday)
+        * [GetCombinedCreateFunnel](#create-telemetry-create-flow-functions-getcombinedcreatefunnel)
 
 
 <a name="create-telemetry"></a>
@@ -40,7 +14,7 @@
 <a name="create-telemetry-create-flow-telemetry-dashboards"></a>
 ## Create Flow Telemetry Dashboards
 
-* PowerBi Dashboard: https://msit.powerbi.com/groups/me/dashboards/73368590-6a29-4a85-b534-69791580be4a
+* PowerBi Dashboard: [https://msit.powerbi.com/groups/me/dashboards/73368590-6a29-4a85-b534-69791580be4a](https://msit.powerbi.com/groups/me/dashboards/73368590-6a29-4a85-b534-69791580be4a)
 * [Documentation](portalfx-telemetry-createFlowDashboard.md)
   
 <a name="create-telemetry-create-flow-table"></a>
@@ -53,27 +27,19 @@ Accessible through using the function: **GetCreateFlows(startDate: datetime, end
 <a name="create-telemetry-create-flow-functions"></a>
 ## Create Flow Functions
 
-[GetCreateFlows](#GetCreateFlows)
+<a name="create-telemetry-create-flow-functions-getcreateflows"></a>
+### GetCreateFlows
 
-[GetCreateFunnel](#GetCreateFunnel)
+<a name="create-telemetry-create-flow-functions-getcreateflows-summary"></a>
+#### Summary
+`GetCreateFlows(startDate: datetime, endDate: datetime)`
 
-[GetCreateFunnelByDay](#GetCreateFunnelByDay)
-
-[GetCreateFunnelByGalleryPackageId](#GetCreateFunnelByGalleryPackageId)
-
-[GetCombinedCreateFunnel](#GetCombinedCreateFunnel)
-
-<a name="a-name-getcreateflows-a-getcreateflows-startdate-datetime-enddate-datetime"></a>
-# <a name="GetCreateFlows"></a>GetCreateFlows(startDate: datetime, endDate: datetime)
-
-<a name="a-name-getcreateflows-a-getcreateflows-startdate-datetime-enddate-datetime-summary"></a>
-## Summary
 This function returns the list of Portal Azure service deployment lifecycles, also known as 'create flows', for a given time range.
 * Each create flow represents the lifecycle of a create with the beginning being marked by the moment the create blade is opened and ending the moment that the create has been concluded and logged by the Portal.
 * Data for each create is curated and joined between Portal data logs and available ARM deployment data logs.
 
-<a name="a-name-getcreateflows-a-getcreateflows-startdate-datetime-enddate-datetime-common-use-cases"></a>
-## Common Use Cases
+<a name="create-telemetry-create-flow-functions-getcreateflows-common-use-cases"></a>
+#### Common Use Cases
 * Identifying the number of creates completed for a given Extension or for a particular Azure marketplace gallery package.
 * Calculating the percentage of successful creates initiated by an Extension's create blade.
 * Debugging failed deployments by retrieving error message information logged for failed creates.
@@ -81,8 +47,8 @@ This function returns the list of Portal Azure service deployment lifecycles, al
 * Identifying creates initiated by a given user id.
 * Calculating the average create duration by data center.
 
-<a name="a-name-getcreateflows-a-getcreateflows-startdate-datetime-enddate-datetime-underlying-function-resources"></a>
-## Underlying Function Resources
+<a name="create-telemetry-create-flow-functions-getcreateflows-underlying-function-resources"></a>
+#### Underlying Function Resources
 * `cluster("Azportal").database("AzPtlCosmos").CreateFlows`
   * The source of the Azure create lifecycle deployment information.
 * `cluster("Armprod").database("ARMProd").Deployments`
@@ -92,13 +58,13 @@ This function returns the list of Portal Azure service deployment lifecycles, al
 * `cluster("Armprod").database("ARMProd").EventServiceEntries`
   * The source of the ARM deployment failed logs error information.
 
-<a name="a-name-getcreateflows-a-getcreateflows-startdate-datetime-enddate-datetime-parameters"></a>
-## Parameters
+<a name="create-telemetry-create-flow-functions-getcreateflows-parameters"></a>
+#### Parameters
 * startDate: The date to mark the inclusive start of the time range.
 * endDate: The date to mark the exclusive end of the time range.
 
-<a name="a-name-getcreateflows-a-getcreateflows-startdate-datetime-enddate-datetime-output-columns"></a>
-## Output Columns
+<a name="create-telemetry-create-flow-functions-getcreateflows-output-columns"></a>
+#### Output Columns
 * PreciseTimeStamp
   * Time of which the create blade was opened
   * When the create flow launched event is logged by the server
@@ -219,47 +185,49 @@ This function returns the list of Portal Azure service deployment lifecycles, al
 * CustomDeployment
   * Boolean representing if the deployment was initiated using the Portal ARM Provisioning Manager.
 
-<a name="a-name-getcreatefunnel-a-getcreatefunnel-startdate-datetime-enddate-datetime"></a>
-# <a name="GetCreateFunnel"></a>GetCreateFunnel(startDate: datetime, endDate: datetime)
+<a name="create-telemetry-create-flow-functions-getcreatefunnel"></a>
+### GetCreateFunnel
 
-<a name="a-name-getcreatefunnel-a-getcreatefunnel-startdate-datetime-enddate-datetime-summary"></a>
-## Summary
+<a name="create-telemetry-create-flow-functions-getcreatefunnel-summary"></a>
+#### Summary
+`GetCreateFunnel(startDate: datetime, endDate: datetime)`
+
 This functions calculates the create funnel KPI's for each extension's create blade for a given time range.
 
-<a name="a-name-getcreatefunnel-a-getcreatefunnel-startdate-datetime-enddate-datetime-common-use-cases"></a>
-## Common Use Cases
+<a name="create-telemetry-create-flow-functions-getcreatefunnel-common-use-cases"></a>
+#### Common Use Cases
 * Retrieving the percentage of successful create initated by an Extension's create blade for a week.
 * Retrieving the number of the failed creates.
 * Retrieving the drop off rate of customers attempting a create (how often creates are abandoned).
 
-<a name="a-name-getcreatefunnel-a-getcreatefunnel-startdate-datetime-enddate-datetime-underlying-function-resources"></a>
-## Underlying Function Resources
-* [GetCreateFlows()](#GetCreateFlows)
+<a name="create-telemetry-create-flow-functions-getcreatefunnel-underlying-function-resources"></a>
+#### Underlying Function Resources
+* [GetCreateFlows()](#getcreateflows)
 
-<a name="a-name-getcreatefunnel-a-getcreatefunnel-startdate-datetime-enddate-datetime-parameters"></a>
-## Parameters
+<a name="create-telemetry-create-flow-functions-getcreatefunnel-parameters"></a>
+#### Parameters
 * startDate: The date to mark the inclusive start of the time range.
 * endDate: The date to mark the exclusive end of the time range.
 
-<a name="a-name-getcreatefunnel-a-getcreatefunnel-startdate-datetime-enddate-datetime-output-columns"></a>
-## Output Columns
+<a name="create-telemetry-create-flow-functions-getcreatefunnel-output-columns"></a>
+#### Output Columns
 * Extension
   * The Extension which initiated the creates.
 * Blade
   * The create blade which inititated the creates.
 * CreateBladeOpened
   * The number of times the create blade was opened.
-  * Calculated by taking the count of the number of Create Flows for each blade from [GetCreateFlows()](#GetCreateFlows) which had:
+  * Calculated by taking the count of the number of Create Flows for each blade from [GetCreateFlows()](#getcreateflows) which had:
     * `CreateBladeOpened == true`.
 * Started
   * The number of creates that were started.
-  * Calculated by taking the count of the number of Create Flows for each blade from [GetCreateFlows()](#GetCreateFlows) which had:
+  * Calculated by taking the count of the number of Create Flows for each blade from [GetCreateFlows()](#getcreateflows) which had:
     * `PortalCreateStarted == true`
     * or `ArmDeploymentStarted == true`
   * *Note - We check both of these for redundancy proof becuase we know that as long as one of these properties are true then we know a create was started.*
 * Excluded
-  * The number of creates from [GetCreateFlows()](#GetCreateFlows) that were marked as Excluded.
-  * *See [GetCreateFlows()](#GetCreateFlows) documentation for Excluded details.*
+  * The number of creates from [GetCreateFlows()](#getcreateflows) that were marked as Excluded.
+  * *See [GetCreateFlows()](#getcreateflows) documentation for Excluded details.*
 * Completed
   * The number of creates that were completed.
   * Completed = Started - Excluded
@@ -287,29 +255,31 @@ This functions calculates the create funnel KPI's for each extension's create bl
 * CustomDeployment
   * Represents if the create blade deployments were initiated without using the official ARM provisioning API provided by the portal SDK
 
-<a name="a-name-getcreatefunnelbyday-a-getcreatefunnelbyday-startdate-datetime-enddate-datetime"></a>
-# <a name="GetCreateFunnelByDay"></a>GetCreateFunnelByDay(startDate: datetime, endDate: datetime)
+<a name="create-telemetry-create-flow-functions-getcreatefunnelbyday"></a>
+### GetCreateFunnelByDay
 
-<a name="a-name-getcreatefunnelbyday-a-getcreatefunnelbyday-startdate-datetime-enddate-datetime-summary"></a>
-## Summary
+<a name="create-telemetry-create-flow-functions-getcreatefunnelbyday-summary"></a>
+#### Summary
+`GetCreateFunnelByDay(startDate: datetime, endDate: datetime)`
+
 This functions calculates the create funnel KPI's for each extension's create blade for each day over a given time range.
 
-<a name="a-name-getcreatefunnelbyday-a-getcreatefunnelbyday-startdate-datetime-enddate-datetime-common-use-cases"></a>
-## Common Use Cases
+<a name="create-telemetry-create-flow-functions-getcreatefunnelbyday-common-use-cases"></a>
+#### Common Use Cases
 * Identifying the change in the number of successful create initiated by an Extension's create blade over the course of multiple weeks.
 * Identifying which days have higher number of failed deployments.
 
-<a name="a-name-getcreatefunnelbyday-a-getcreatefunnelbyday-startdate-datetime-enddate-datetime-underlying-function-resources"></a>
-## Underlying Function Resources
-* [GetCreateFlows()](#GetCreateFunnelByDay)
+<a name="create-telemetry-create-flow-functions-getcreatefunnelbyday-underlying-function-resources"></a>
+#### Underlying Function Resources
+* [GetCreateFlows()](#getcreateflows)
 
-<a name="a-name-getcreatefunnelbyday-a-getcreatefunnelbyday-startdate-datetime-enddate-datetime-parameters"></a>
-## Parameters
+<a name="create-telemetry-create-flow-functions-getcreatefunnelbyday-parameters"></a>
+#### Parameters
 * startDate: The date to mark the inclusive start of the time range.
 * endDate: The date to mark the exclusive end of the time range.
 
-<a name="a-name-getcreatefunnelbyday-a-getcreatefunnelbyday-startdate-datetime-enddate-datetime-output-columns"></a>
-## Output Columns
+<a name="create-telemetry-create-flow-functions-getcreatefunnelbyday-output-columns"></a>
+#### Output Columns
 * Date
   * The date at midnight of the day which the create flow was started.
 * Extension
@@ -320,17 +290,17 @@ This functions calculates the create funnel KPI's for each extension's create bl
   * The gallery package id that was created.
 * CreateBladeOpened
   * The number of times the create blade was opened.
-  * Calculated by taking the count of the number of Create Flows  for each blade from [GetCreateFlows()](#GetCreateFlows) which had:
+  * Calculated by taking the count of the number of Create Flows  for each blade from [GetCreateFlows()](#getcreateflows) which had:
     * `CreateBladeOpened == true`.
 * Started
   * The number of creates that were started.
-  * Calculated by taking the count of the number of Create Flows  for each blade from [GetCreateFlows()](#GetCreateFlows) which had:
+  * Calculated by taking the count of the number of Create Flows  for each blade from [GetCreateFlows()](#getcreateflows) which had:
     * `PortalCreateStarted == true`
     * or `ArmDeploymentStarted == true`
   * *Note - We check both of these for redundancy proof becuase we know that as long as one of these properties are true then we know a create was started.*
 * Excluded
-  * The number of creates from [GetCreateFlows()](#GetCreateFlows) that were marked as Excluded.
-  * *See [GetCreateFlows()](#GetCreateFlows) documentation for Excluded details.*
+  * The number of creates from [GetCreateFlows()](#getcreateflows) that were marked as Excluded.
+  * *See [GetCreateFlows()](#getcreateflows) documentation for Excluded details.*
 * Completed
   * The number of creates that were completed.
   * Completed = Started - Excluded
@@ -358,29 +328,31 @@ This functions calculates the create funnel KPI's for each extension's create bl
 * CustomDeployment
   * Represents if the create blade deployments were initiated without using the official ARM provisioning API provided by the portal SDK
 
-<a name="a-name-getcreatefunnelbygallerypackageid-a-getcreatefunnelbygallerypackageid-startdate-datetime-enddate-datetime"></a>
-# <a name="GetCreateFunnelByGalleryPackageId"></a>GetCreateFunnelByGalleryPackageId(startDate: datetime, endDate: datetime)
+<a name="create-telemetry-create-flow-functions-getcreatefunnelbyday-getcreatefunnelbygallerypackageid"></a>
+#### GetCreateFunnelByGalleryPackageId
 
-<a name="a-name-getcreatefunnelbygallerypackageid-a-getcreatefunnelbygallerypackageid-startdate-datetime-enddate-datetime-summary"></a>
-## Summary
+<a name="create-telemetry-create-flow-functions-getcreatefunnelbyday-summary"></a>
+#### Summary
+`GetCreateFunnelByGalleryPackageId(startDate: datetime, endDate: datetime)`
+
 This functions calculates the create funnel KPI's by gallery package id, extension, and create blade over a given time range.
 
-<a name="a-name-getcreatefunnelbygallerypackageid-a-getcreatefunnelbygallerypackageid-startdate-datetime-enddate-datetime-common-use-cases"></a>
-## Common Use Cases
+<a name="create-telemetry-create-flow-functions-getcreatefunnelbyday-common-use-cases"></a>
+#### Common Use Cases
 * Identifying the number of successfully creates for a resource.
 * Identifying which resources have higher number of failed deployments.
 
-<a name="a-name-getcreatefunnelbygallerypackageid-a-getcreatefunnelbygallerypackageid-startdate-datetime-enddate-datetime-underlying-function-resources"></a>
-## Underlying Function Resources
-* [GetCreateFlows()](#GetCreateFlows)
+<a name="create-telemetry-create-flow-functions-getcreatefunnelbyday-underlying-function-resources"></a>
+#### Underlying Function Resources
+* [GetCreateFlows()](#getcreateflows)
 
-<a name="a-name-getcreatefunnelbygallerypackageid-a-getcreatefunnelbygallerypackageid-startdate-datetime-enddate-datetime-parameters"></a>
-## Parameters
+<a name="create-telemetry-create-flow-functions-getcreatefunnelbyday-parameters"></a>
+#### Parameters
 * startDate: The date to mark the inclusive start of the time range.
 * endDate: The date to mark the exclusive end of the time range.
 
-<a name="a-name-getcreatefunnelbygallerypackageid-a-getcreatefunnelbygallerypackageid-startdate-datetime-enddate-datetime-output-columns"></a>
-## Output Columns
+<a name="create-telemetry-create-flow-functions-getcreatefunnelbyday-output-columns"></a>
+#### Output Columns
 * Extension
   * The Extension which initiated the creates.
 * Blade
@@ -389,17 +361,17 @@ This functions calculates the create funnel KPI's by gallery package id, extensi
   * The gallery package id that was created.
 * CreateBladeOpened
   * The number of times the create blade was opened.
-  * Calculated by taking the count of the number of Create Flows for each blade from [GetCreateFlows()](#GetCreateFlows) which had:
+  * Calculated by taking the count of the number of Create Flows for each blade from [GetCreateFlows()](#getcreateflows) which had:
     * `CreateBladeOpened == true`.
 * Started
   * The number of creates that were started.
-  * Calculated by taking the count of the number of Create Flows for each blade  from [GetCreateFlows()](#GetCreateFlows) which had:
+  * Calculated by taking the count of the number of Create Flows for each blade  from [GetCreateFlows()](#getcreateflows) which had:
     * `PortalCreateStarted == true`
     * or `ArmDeploymentStarted == true`
   * *Note - We check both of these for redundancy proof becuase we know that as long as one of these properties are true then we know a create was started.*
 * Excluded
-  * The number of creates from [GetCreateFlows()](#GetCreateFlows) that were marked as Excluded.
-  * *See [GetCreateFlows()](#GetCreateFlows) documentation for Excluded details.*
+  * The number of creates from [GetCreateFlows()](#getcreateflows) that were marked as Excluded.
+  * *See [GetCreateFlows()](#getcreateflows) documentation for Excluded details.*
 * Completed
   * The number of creates that were completed.
   * Completed = Started - Excluded
@@ -427,44 +399,46 @@ This functions calculates the create funnel KPI's by gallery package id, extensi
 * CustomDeployment
   * Represents if the create blade deployments were initiated without using the official ARM provisioning API provided by the portal SDK
 
-<a name="a-name-getcombinedcreatefunnel-a-getcombinedcreatefunnel-startdate-datetime-enddate-datetime"></a>
-# <a name="GetCombinedCreateFunnel"></a>GetCombinedCreateFunnel(startDate: datetime, endDate: datetime)
+<a name="create-telemetry-create-flow-functions-getcombinedcreatefunnel"></a>
+### GetCombinedCreateFunnel
 
-<a name="a-name-getcombinedcreatefunnel-a-getcombinedcreatefunnel-startdate-datetime-enddate-datetime-summary"></a>
-## Summary
+<a name="create-telemetry-create-flow-functions-getcombinedcreatefunnel-summary"></a>
+#### Summary
+`GetCombinedCreateFunnel(startDate: datetime, endDate: datetime)`
+
 This functions calculates the overall create funnel KPIs for the Portal.
 
-<a name="a-name-getcombinedcreatefunnel-a-getcombinedcreatefunnel-startdate-datetime-enddate-datetime-common-use-cases"></a>
-## Common Use Cases
+<a name="create-telemetry-create-flow-functions-getcombinedcreatefunnel-common-use-cases"></a>
+#### Common Use Cases
 * Identifying the overall success rates of creates in the Portal.
 * Identifying the total number of failed creates in the Portal.
 * Identifying the total number of create aborted due to commerce errors in the Portal.
 * Identifying the overall rate of create flows that lead to a create being started.
 
-<a name="a-name-getcombinedcreatefunnel-a-getcombinedcreatefunnel-startdate-datetime-enddate-datetime-underlying-function-resources"></a>
-## Underlying Function Resources
-* [GetCreateFlows()](#GetCreateFlows)
+<a name="create-telemetry-create-flow-functions-getcombinedcreatefunnel-underlying-function-resources"></a>
+#### Underlying Function Resources
+* [GetCreateFlows()](#getcreateflows)
 
-<a name="a-name-getcombinedcreatefunnel-a-getcombinedcreatefunnel-startdate-datetime-enddate-datetime-parameters"></a>
-## Parameters
+<a name="create-telemetry-create-flow-functions-getcombinedcreatefunnel-parameters"></a>
+#### Parameters
 * startDate: The date to mark the inclusive start of the time range.
 * endDate: The date to mark the exclusive end of the time range.
 
-<a name="a-name-getcombinedcreatefunnel-a-getcombinedcreatefunnel-startdate-datetime-enddate-datetime-output-columns"></a>
-## Output Columns
+<a name="create-telemetry-create-flow-functions-getcombinedcreatefunnel-output-columns"></a>
+#### Output Columns
 * CreateBladeOpened
   * The total number of times create blade were opened.
-  * Calculated by taking the total count of the number of Create Flows from [GetCreateFlows()](#GetCreateFlows) which had:
+  * Calculated by taking the total count of the number of Create Flows from [GetCreateFlows()](#getcreateflows) which had:
     * `CreateBladeOpened == true`.
 * Started
   * The total number of creates that were started.
-  * Calculated by taking the total count of the number of Create Flows from [GetCreateFlows()](#GetCreateFlows) which had:
+  * Calculated by taking the total count of the number of Create Flows from [GetCreateFlows()](#getcreateflows) which had:
     * `PortalCreateStarted == true`
     * or `ArmDeploymentStarted == true`
   * *Note - We check both of these for redundancy proof becuase we know that as long as one of these properties are true then we know a create was started.*
 * Excluded
-  * The total number of creates from [GetCreateFlows()](#GetCreateFlows) that were marked as Excluded.
-  * *See [GetCreateFlows()](#GetCreateFlows) documentation for Excluded details.*
+  * The total number of creates from [GetCreateFlows()](#getcreateflows) that were marked as Excluded.
+  * *See [GetCreateFlows()](#getcreateflows) documentation for Excluded details.*
 * Completed
   * The total number of creates that were completed.
   * Completed = Started - Excluded

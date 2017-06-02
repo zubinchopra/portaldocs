@@ -10,7 +10,7 @@
     * [Versioning](#parts-a-k-a-tiles-versioning)
     * [Walkthrough](#parts-a-k-a-tiles-walkthrough)
     * [Permanently Retire a part](#parts-a-k-a-tiles-permanently-retire-a-part)
-    * [Removig a part from a blade's default layout](#parts-a-k-a-tiles-removig-a-part-from-a-blade-s-default-layout)
+    * [Removing a part from a blade's default layout](#parts-a-k-a-tiles-removing-a-part-from-a-blade-s-default-layout)
     * [Improving Part responsiveness](#parts-a-k-a-tiles-improving-part-responsiveness)
     * [Handling part errors](#parts-a-k-a-tiles-handling-part-errors)
     * [Best practice for handling part errors](#parts-a-k-a-tiles-best-practice-for-handling-part-errors)
@@ -667,8 +667,8 @@ To retire a part you should simply delete the majority of the code, but leave th
 
 This ensures that users won't see parts failing unexpectedly on their dashboards, while also informing them that this part is no longer supported.
  
-<a name="parts-a-k-a-tiles-removig-a-part-from-a-blade-s-default-layout"></a>
-### Removig a part from a blade&#39;s default layout
+<a name="parts-a-k-a-tiles-removing-a-part-from-a-blade-s-default-layout"></a>
+### Removing a part from a blade&#39;s default layout
 Your unlocked blade's default layout should be reflective of tiles you think provide the most out of the box value to users while meeting your performance goals.  That layout may change over time, and you may decide that a part that included in a blade's default layout at one point in time should not be included going forward.  
 
 If you find yourself in that position this is what you should do.
@@ -689,6 +689,7 @@ We use the `<Preserve/>` tag to properly configure the `<RedirectPart/>` to pres
                         Extension="ONLY APPLICABLE IF THE PART IS DEFINED IN A DIFFERENT EXTENSION"/>
 </RedirectPart>
 ```
+
  
 <a name="parts-a-k-a-tiles-improving-part-responsiveness"></a>
 ### Improving Part responsiveness
