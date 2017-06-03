@@ -23,7 +23,7 @@ The "extension" terminology can be confusing to portal "extension" authors.
 So, in this document the grid extensions will be referred to as plugins.
 
 - [SelectableRow](#grid-selection-and-activation) - Plugin to have selectable rows.
-- [ResizableColumn]()                        - Plugin to have resizable columns.
+- ResizableColumn (Docs coming soon)              - Plugin to have resizable columns.
 - [SortableColumn](#grid-sorting)                 - Plugin to have sortable columns.
 - [Filterable](#grid-filtering)                   - Plugin to have filterable rows.
 - [ContextMenuShortcut](#grid-context-menus)      - Plugin to have a shortcut to the item context menu displayed in the row.
@@ -33,8 +33,8 @@ So, in this document the grid extensions will be referred to as plugins.
 - [Hierarchical](#grid-hierarchical)              - Plugin to display hierarchical items.
 - [EditableRow](#grid-editing)                    - Plugin to have editable rows.
 - [ReorderRow](#grid-reordering)                  - Plugin to have reorder rows.
-- [RightClickableRow]()                      - Plugin to have right-clickable row.
-- [Hoverable]()                              - Plugin to enable hover index communication with other parts.
+- RightClickableRow (Docs coming soon)            - Plugin to have right-clickable row.
+- Hoverable (Docs coming soon)                    - Plugin to enable hover index communication with other parts.
 
 Plugins are enabled in three ways.
 - with bit flags passed to the ViewModel constructor.

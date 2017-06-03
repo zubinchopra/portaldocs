@@ -1,4 +1,4 @@
-* [MsPortalFx-Test](#msportalfx-test)
+* [msportalfx-test](#msportalfx-test)
     * [Overview](#msportalfx-test-overview)
     * [Getting Started](#msportalfx-test-getting-started)
         * [Installation](#msportalfx-test-getting-started-installation)
@@ -36,7 +36,7 @@
         * [Styling / layout regression detection](#msportalfx-test-scenarios-styling-layout-regression-detection)
         * [Locators](#msportalfx-test-scenarios-locators)
         * [Consuming Updates](#msportalfx-test-scenarios-consuming-updates)
-        * [Mocking ARM](#msportalfx-test-scenarios-mocking-arm)
+        * [Mocking](#msportalfx-test-scenarios-mocking)
         * [Code Coverage](#msportalfx-test-scenarios-code-coverage)
         * [Contributing](#msportalfx-test-scenarios-contributing)
         * [To run the tests](#msportalfx-test-scenarios-to-run-the-tests)
@@ -44,15 +44,116 @@
 
 
 <a name="msportalfx-test"></a>
-# MsPortalFx-Test
+<a name="msportalfx-test"></a>
+# msportalfx-test
 
-Generated on 2016-09-28
+Generated on 2017-05-11
+
+* [msportalfx-test](#msportalfx-test)
+    * [Overview](#msportalfx-test-overview)
+        * [Goals](#msportalfx-test-overview-goals)
+        * [General Architecture](#msportalfx-test-overview-general-architecture)
+    * [Getting Started](#msportalfx-test-getting-started)
+        * [Installation](#msportalfx-test-getting-started-installation)
+        * [Write a test](#msportalfx-test-getting-started-write-a-test)
+        * [Add the configuration](#msportalfx-test-getting-started-add-the-configuration)
+        * [Compile and run](#msportalfx-test-getting-started-compile-and-run)
+        * [Updating](#msportalfx-test-getting-started-updating)
+        * [More Examples](#msportalfx-test-getting-started-more-examples)
+        * [Running tests in Visual Studio](#msportalfx-test-getting-started-running-tests-in-visual-studio)
+    * [Side loading a local extension during the test session](#msportalfx-test-side-loading-a-local-extension-during-the-test-session)
+    * [Running](#msportalfx-test-running)
+        * [In Dev](#msportalfx-test-running-in-dev)
+            * [From VS](#msportalfx-test-running-in-dev-from-vs)
+            * [From cmdline](#msportalfx-test-running-in-dev-from-cmdline)
+        * [CI](#msportalfx-test-running-ci)
+            * [Cloudtest](#msportalfx-test-running-ci-cloudtest)
+                * [Environment Setup](#msportalfx-test-running-ci-cloudtest-environment-setup)
+                * [Running Tests](#msportalfx-test-running-ci-cloudtest-running-tests)
+            * [Windows Azure Engineering System (WAES)](#msportalfx-test-running-ci-windows-azure-engineering-system-waes)
+            * [Jenkins](#msportalfx-test-running-ci-jenkins)
+            * [How to setup test run parallelization](#msportalfx-test-running-ci-how-to-setup-test-run-parallelization)
+    * [Debugging](#msportalfx-test-debugging)
+        * [debug tests 101](#msportalfx-test-debugging-debug-tests-101)
+        * [debugging tests in VS Code](#msportalfx-test-debugging-debugging-tests-in-vs-code)
+        * [Checking the result of the currently running test in code](#msportalfx-test-debugging-checking-the-result-of-the-currently-running-test-in-code)
+        * [How to take a screenshot of the browser](#msportalfx-test-debugging-how-to-take-a-screenshot-of-the-browser)
+        * [How to capture browser console output](#msportalfx-test-debugging-how-to-capture-browser-console-output)
+        * [Callstack](#msportalfx-test-debugging-callstack)
+        * [Test output artifacts](#msportalfx-test-debugging-test-output-artifacts)
+    * [Localization](#msportalfx-test-localization)
+    * [User Management](#msportalfx-test-user-management)
+    * [Configuration](#msportalfx-test-configuration)
+        * [Configuration options](#msportalfx-test-configuration-configuration-options)
+            * [Behavior](#msportalfx-test-configuration-configuration-options-behavior)
+            * [PortalContext](#msportalfx-test-configuration-configuration-options-portalcontext)
+            * [Running tests against the Dogfood environment](#msportalfx-test-configuration-configuration-options-running-tests-against-the-dogfood-environment)
+    * [Scenarios](#msportalfx-test-scenarios)
+        * [Create](#msportalfx-test-scenarios-create)
+            * [Opening the create blade from a deployed gallery package](#msportalfx-test-scenarios-create-opening-the-create-blade-from-a-deployed-gallery-package)
+            * [Opening the create blade from a local gallery package](#msportalfx-test-scenarios-create-opening-the-create-blade-from-a-local-gallery-package)
+            * [Validation State](#msportalfx-test-scenarios-create-validation-state)
+            * [Get the validation state of fields on your create form](#msportalfx-test-scenarios-create-get-the-validation-state-of-fields-on-your-create-form)
+            * [Wait on a fields validation state](#msportalfx-test-scenarios-create-wait-on-a-fields-validation-state)
+        * [Browse](#msportalfx-test-scenarios-browse)
+            * [How to test the context menu in browse shows your extensions commands?](#msportalfx-test-scenarios-browse-how-to-test-the-context-menu-in-browse-shows-your-extensions-commands)
+            * [How to test the grid in browse shows the expected default columns for your extension resource](#msportalfx-test-scenarios-browse-how-to-test-the-grid-in-browse-shows-the-expected-default-columns-for-your-extension-resource)
+        * [How to test the grid in browse shows additional extension resource columns that are selected](#msportalfx-test-scenarios-how-to-test-the-grid-in-browse-shows-additional-extension-resource-columns-that-are-selected)
+        * [Blades](#msportalfx-test-scenarios-blades)
+            * [Blade navigation](#msportalfx-test-scenarios-blades-blade-navigation)
+            * [Locating an open blade](#msportalfx-test-scenarios-blades-locating-an-open-blade)
+            * [Common portal blades](#msportalfx-test-scenarios-blades-common-portal-blades)
+                * [Opening the extensions Create blade](#msportalfx-test-scenarios-blades-common-portal-blades-opening-the-extensions-create-blade)
+                * [Opening the Browse blade for your resource](#msportalfx-test-scenarios-blades-common-portal-blades-opening-the-browse-blade-for-your-resource)
+                * [Opening a Resource Summary blade](#msportalfx-test-scenarios-blades-common-portal-blades-opening-a-resource-summary-blade)
+                * [Spec Picker Blade](#msportalfx-test-scenarios-blades-common-portal-blades-spec-picker-blade)
+                * [Settings Blade](#msportalfx-test-scenarios-blades-common-portal-blades-settings-blade)
+                * [Properties Blade](#msportalfx-test-scenarios-blades-common-portal-blades-properties-blade)
+                * [QuickStart Blade](#msportalfx-test-scenarios-blades-common-portal-blades-quickstart-blade)
+                * [Users Blade](#msportalfx-test-scenarios-blades-common-portal-blades-users-blade)
+                * [Move Resource Blade](#msportalfx-test-scenarios-blades-common-portal-blades-move-resource-blade)
+            * [Blade Dialogs](#msportalfx-test-scenarios-blades-blade-dialogs)
+        * [Parts](#msportalfx-test-scenarios-parts)
+            * [How to get the reference to a part on a blade](#msportalfx-test-scenarios-parts-how-to-get-the-reference-to-a-part-on-a-blade)
+            * [CollectionPart](#msportalfx-test-scenarios-parts-collectionpart)
+            * [Grid](#msportalfx-test-scenarios-parts-grid)
+                * [Finding a row within a grid](#msportalfx-test-scenarios-parts-grid-finding-a-row-within-a-grid)
+            * [CreateComboBoxField](#msportalfx-test-scenarios-parts-createcomboboxfield)
+            * [Editor](#msportalfx-test-scenarios-parts-editor)
+                * [Can read and write content](#msportalfx-test-scenarios-parts-editor-can-read-and-write-content)
+            * [essentials](#msportalfx-test-scenarios-parts-essentials)
+                * [Essentials tests](#msportalfx-test-scenarios-parts-essentials-essentials-tests)
+        * [Command](#msportalfx-test-scenarios-command)
+        * [Action Bar](#msportalfx-test-scenarios-action-bar)
+        * [Delete](#msportalfx-test-scenarios-delete)
+        * [Styling / layout regression detection](#msportalfx-test-scenarios-styling-layout-regression-detection)
+            * [...](#msportalfx-test-scenarios-styling-layout-regression-detection-)
+        * [Locators](#msportalfx-test-scenarios-locators)
+        * [Consuming Updates](#msportalfx-test-scenarios-consuming-updates)
+        * [Mocking](#msportalfx-test-scenarios-mocking)
+            * [How to show mock data into the Portal](#msportalfx-test-scenarios-mocking-how-to-show-mock-data-into-the-portal)
+                * [Mocking ARM](#msportalfx-test-scenarios-mocking-how-to-show-mock-data-into-the-portal-mocking-arm)
+        * [Code Coverage](#msportalfx-test-scenarios-code-coverage)
+            * [Interop, how to run .NET code from your tests](#msportalfx-test-scenarios-code-coverage-interop-how-to-run-net-code-from-your-tests)
+        * [Contributing](#msportalfx-test-scenarios-contributing)
+            * [To enlist](#msportalfx-test-scenarios-contributing-to-enlist)
+            * [To build the source](#msportalfx-test-scenarios-contributing-to-build-the-source)
+            * [To setup the tests](#msportalfx-test-scenarios-contributing-to-setup-the-tests)
+        * [To run the tests](#msportalfx-test-scenarios-to-run-the-tests)
+            * [Authoring documents](#msportalfx-test-scenarios-to-run-the-tests-authoring-documents)
+            * [Generating the docs](#msportalfx-test-scenarios-to-run-the-tests-generating-the-docs)
+            * [To submit your contribution](#msportalfx-test-scenarios-to-run-the-tests-to-submit-your-contribution)
+            * [Questions?](#msportalfx-test-scenarios-to-run-the-tests-questions)
+        * [API Reference](#msportalfx-test-scenarios-api-reference)
+
 
 <a name="msportalfx-test-overview"></a>
-### Overview
+<a name="msportalfx-test-overview"></a>
+## Overview
 
 MsPortalFx-Test is an end-to-end test framework that runs tests against the Microsoft Azure Portal interacting with it as a user would. 
 
+<a name="msportalfx-test-overview-goals"></a>
 <a name="msportalfx-test-overview-goals"></a>
 #### Goals
 
@@ -65,6 +166,7 @@ MsPortalFx-Test is an end-to-end test framework that runs tests against the Micr
 - Robust
 - Great Docs
 
+<a name="msportalfx-test-overview-general-architecture"></a>
 <a name="msportalfx-test-overview-general-architecture"></a>
 #### General Architecture
 3 layers of abstraction (note the names may change but the general idea should be the same).  There may also be some future refactoring to easily differentiate between the layers.
@@ -91,8 +193,10 @@ MsPortalFx-Test is an end-to-end test framework that runs tests against the Micr
 
 
 <a name="msportalfx-test-getting-started"></a>
+<a name="msportalfx-test-getting-started"></a>
 ## Getting Started
 
+<a name="msportalfx-test-getting-started-installation"></a>
 <a name="msportalfx-test-getting-started-installation"></a>
 ### Installation
 
@@ -110,19 +214,20 @@ MsPortalFx-Test is an end-to-end test framework that runs tests against the Micr
 
 1. Switch to the new directory and install the msportalfx-test module via npm:
 
-		cd e2etests    	
+		cd e2etests
 		npm install msportalfx-test --no-optional
 
-1. The msportalfx-test module comes with useful TypeScript definitions and its dependencies. To make them available to your tests, create a directory named *typings* in your e2etests directory and a *msportalfx-test* directory within typings. Then copy the **msportalfx-test.d.ts** file from *\node_modules\msportalfx-test\typescript* to e2etests\typings\msportalfx-test.  Then copy all other definition files in the *\node_modules\msportalfx-test\typescript* folder to their own correspondingly named folder under the *typings* folder.
+1. The msportalfx-test module comes with useful TypeScript definitions and its dependencies. To make them available to your tests, we recommend that you use the [typings](https://www.npmjs.com/package/typings) Typescript Definition Manager.
 
-1. The msportalfx-test TypeScript definitions relies on a couple other third party definitions.To grab them first install the [tsd Node module](https://www.npmjs.com/package/tsd) globally:
+1. First install the [typings](https://www.npmjs.com/package/typings) Typescript Definition Manager globally:
 
-		npm install tsd -g
+		npm install typings -g
 
-	And then install the third party TypeScript definitions:
+	Next copy the provided **typings.json** file from the **node_modules/msportalfx-test/typescript** folder to your test root directory and use *typings* to install the provided definitions:
 
-		tsd install selenium-webdriver
-		tsd install q		
+		*copy typings.json to your test root directory*
+        *navigate to your test root directory*
+		typings install
 
 1. MsPortalFx-Test needs a WebDriver server in order to be able to drive the browser. Currently only [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver) is supported, so downloaded it and place it in your machine's PATH or just install it from the [chromedriver Node module](https://www.npmjs.com/package/chromedriver).  You may also need a C++ compiler (Visual Studio includes one):
 
@@ -130,24 +235,18 @@ MsPortalFx-Test is an end-to-end test framework that runs tests against the Micr
 
 
 <a name="msportalfx-test-getting-started-write-a-test"></a>
+<a name="msportalfx-test-getting-started-write-a-test"></a>
 ### Write a test
-You'll need an existing cloud service for the test you'll write below, so if you don't have one please go to the Azure Portal and [create a new cloud service](https://portal.azure.com/#create/Microsoft.CloudService). Write down the dns name of your cloud service to use it in your test.
+You'll need an existing cloud service for the test you'll write below, so if you don't have one please go to the Azure Portal and [create a new cloud service](https://ms.portal.azure.com/#create/Microsoft.CloudService). Write down the dns name of your cloud service to use it in your test.
 
-We'll use the [Mocha](https://mochajs.org/) testing framework to layout the following test, but you could use any framework that supports Node.js modules and promises. Let's install Mocha and it's associated TypeScript definitions:
+We'll use the [Mocha](https://mochajs.org/) testing framework to layout the following test, but you could use any framework that supports Node.js modules and promises. Let's install Mocha (its typescript definitions are already installed from the typings install earlier):
 
 	npm install mocha
-	tsd install mocha
-
-We will also use Node's assert module, so let's grab the corresponding TypeScript definition:
-
-	tsd install node
 
 Now, create a **portaltests.ts** file in your e2etests directory and paste the following:
 
 ```ts
-/// <reference path="./typings/node/node.d.ts" />
-/// <reference path="./typings/mocha/mocha.d.ts" />
-/// <reference path="./typings/msportalfx-test/msportalfx-test.d.ts" />
+/// <reference path="./typings/index.d.ts" />
 
 import assert = require('assert');
 import testFx = require('MsPortalFx-Test');
@@ -208,6 +307,7 @@ In this test we start by importing the **MsPortalFx-Test** module. Then the cred
 After that we can use the Portal object to drive a test scenario that opens the Cloud Services Browse blade, filters the list of cloud services, checks that the grid has only one row after the filter, selects the only row and waits for the correct blade to open. Finally, the call to quit() closes the browser.
 
 <a name="msportalfx-test-getting-started-add-the-configuration"></a>
+<a name="msportalfx-test-getting-started-add-the-configuration"></a>
 ### Add the configuration
 
 Create a file named **config.json** next to portaltests.ts. Paste this in the file:
@@ -226,12 +326,13 @@ Create a file named **config.json** next to portaltests.ts. Paste this in the fi
 This configuration tells MsPortalFx-Test that Google Chrome should be used for the test session and [https://portal.azure.com](https://portal.azure.com) should be the Portal under test. 
 
 <a name="msportalfx-test-getting-started-compile-and-run"></a>
+<a name="msportalfx-test-getting-started-compile-and-run"></a>
 ### Compile and run
 Compile your TypeScript test file:
 
 	tsc portaltests.ts --module commonjs
 
-...and then run Mocha against the generated JavaScript file (note using an elevated command prompt/Visual Studio may cause Chromedriver to fail to find the browser.  Use a non-elevated command prompt/Visual Studio for best results):
+...and then run Mocha against the generated JavaScript file (note using an elevated command prompt may cause Chrome to crash.  Use a non-elevated command prompt for best results):
 
 	node_modules\.bin\mocha portaltests.js
 
@@ -248,27 +349,13 @@ The following output will be sent to your console as the test progresses:
 	
 	  1 passing (38s)
 
-If you run into a compilation error with node.d.ts, verify that the tsc version you are using is 1.8.7 or later.  You can check the version by running:
+If you run into a compilation error with node.d.ts, verify that the tsc version you are using is 1.8.x (we do not currently support Typescript 2+).  You can check the version by running:
     
     tsc --version
 
-If the version is incorrect, then you may need to adjust your path variables or directly call the latest version of tsc.
+If the version is incorrect, then you may need to adjust your path variables or directly call the correct version of tsc.exe  
 
-If your test fails with the Chrome automation extension crashing, please try adding the no-sandbox flag to your config.json:
-	```json
-
-		{
-		"capabilities": {
-			"browserName": "chrome",
-            "chromeOptions": { 
-                "args": [ 
-                    "no-sandbox"
-            ]}
-		},
-		"portalUrl": "https://portal.azure.com"
-		}
-	```	
-    
+<a name="msportalfx-test-getting-started-updating"></a>
 <a name="msportalfx-test-getting-started-updating"></a>
 ### Updating
 
@@ -276,6 +363,7 @@ If your test fails with the Chrome automation extension crashing, please try add
  
         Make sure to copy typescript definition files in your *typings\* folder from the updated version in *\node_modules\msportalfx-test\typescript*.  
       
+<a name="msportalfx-test-getting-started-more-examples"></a>
 <a name="msportalfx-test-getting-started-more-examples"></a>
 ### More Examples
 More examples can be found
@@ -286,11 +374,12 @@ More examples can be found
 If you don't have access, please follow the enlistment instructions below.
  
 <a name="msportalfx-test-getting-started-running-tests-in-visual-studio"></a>
+<a name="msportalfx-test-getting-started-running-tests-in-visual-studio"></a>
 ### Running tests in Visual Studio
  
 1. Install [Node Tools for Visual Studio](https://www.visualstudio.com/en-us/features/node-js-vs.aspx) (Note that we recommend using the Node.js “LTS” versions rather than the “Stable” versions since sometimes NTVS doesn’t work with newer Node.js versions.)
 
-1. Once that’s done, you should be able to open Visual Studio (make sure to run as non-elevated) and then create new project: *New -> Project -> Installed, Templates, TypeScript, Node.js -> From Existing Node.js code*.
+1. Once that’s done, you should be able to open Visual Studio and then create new project: *New -> Project -> Installed, Templates, TypeScript, Node.js -> From Existing Node.js code*.
 
 ![NewTypeScriptNodeJsExistingProject][NewTypeScriptNodeJsExistingProject]
 
@@ -303,8 +392,8 @@ If you don't have access, please follow the enlistment instructions below.
 [FileSetTestFrameworkPropertyMocha]: ../media/msportalfx-test/FileSetTestFrameworkPropertyMocha.png
 [NewTypeScriptNodeJsExistingProject]: ../media/msportalfx-test/NewTypeScriptNodeJsExistingProject.png
 
-1. If you encounter an error that says the browser window could not be found when running tests, make sure you are not running VS in an elevated mode.
 
+<a name="msportalfx-test-side-loading-a-local-extension-during-the-test-session"></a>
 <a name="msportalfx-test-side-loading-a-local-extension-during-the-test-session"></a>
 ## Side loading a local extension during the test session
 
@@ -330,9 +419,7 @@ We'll write a test that verifies that the Browse experience for our extension ha
 1. In the created file, import the MsPortalFx-Test module and layout the Mocha test:
 
 	```ts
-	/// <reference path="./typings/node/node.d.ts" />
-	/// <reference path="./typings/mocha/mocha.d.ts" />
-	/// <reference path="./typings/msportalfx-test/msportalfx-test.d.ts" />
+	/// <reference path="./typings/index.d.ts" />
 	
 	import assert = require('assert');
 	import testFx = require('MsPortalFx-Test');
@@ -402,9 +489,7 @@ We'll write a test that verifies that the Browse experience for our extension ha
 1. Here for the complete test:
 
 ```ts
-/// <reference path="./typings/node/node.d.ts" />
-/// <reference path="./typings/mocha/mocha.d.ts" />
-/// <reference path="./typings/msportalfx-test/msportalfx-test.d.ts" />
+/// <reference path="./typings/index.d.ts" />
 
 import assert = require('assert');
 import testFx = require('MsPortalFx-Test');
@@ -480,25 +565,32 @@ The following output will be sent to your console as the test progresses:
 	  1 passing (23s)
 
 <a name="msportalfx-test-running"></a>
+<a name="msportalfx-test-running"></a>
 ## Running
 
+<a name="msportalfx-test-running-in-dev"></a>
 <a name="msportalfx-test-running-in-dev"></a>
 ### In Dev
 
 <a name="msportalfx-test-running-in-dev-from-vs"></a>
+<a name="msportalfx-test-running-in-dev-from-vs"></a>
 #### From VS
 
+<a name="msportalfx-test-running-in-dev-from-cmdline"></a>
 <a name="msportalfx-test-running-in-dev-from-cmdline"></a>
 #### From cmdline
 
 <a name="msportalfx-test-running-ci"></a>
+<a name="msportalfx-test-running-ci"></a>
 ### CI
 
+<a name="msportalfx-test-running-ci-cloudtest"></a>
 <a name="msportalfx-test-running-ci-cloudtest"></a>
 #### Cloudtest
 
 Running mocha nodejs tests in cloudtest requires a bit of engineering work to set up the test VM. Unfortunetly, the nodejs test adaptor cannot be used with vs.console.exe since it requires a full installation of Visual Studio which is absent on the VMs. Luckily, we can run a script to set up our environment and then the Exe Execution type for our TestJob against the powershell/cmd executable.
 
+<a name="msportalfx-test-running-ci-cloudtest-environment-setup"></a>
 <a name="msportalfx-test-running-ci-cloudtest-environment-setup"></a>
 ##### Environment Setup
 Nodejs (and npm) is already installed on the cloudtest VMs. Chrome is not installed by default, so we can include the chrome executable in our build drop for quick installation.
@@ -513,6 +605,7 @@ call chrome_installer.exe /silent /install
 exit 0
 ```
 
+<a name="msportalfx-test-running-ci-cloudtest-running-tests"></a>
 <a name="msportalfx-test-running-ci-cloudtest-running-tests"></a>
 ##### Running Tests
 Use the Exe execution type in your TestJob to specify the powershell (or cmd) exe. Then, point to a script which will run your tests:
@@ -547,26 +640,33 @@ ct -t "amd64\CloudTest\TestMap.xml" -tenant Default -BuildId "GUID" -props worke
 ```
 
 <a name="msportalfx-test-running-ci-windows-azure-engineering-system-waes"></a>
+<a name="msportalfx-test-running-ci-windows-azure-engineering-system-waes"></a>
 #### Windows Azure Engineering System (WAES)
 
-See [WAES](http://aka.ms/WAES) 
+See [WAES](http://aka.ms/WAES)
 
+<a name="msportalfx-test-running-ci-jenkins"></a>
 <a name="msportalfx-test-running-ci-jenkins"></a>
 #### Jenkins
 
 <a name="msportalfx-test-running-ci-how-to-setup-test-run-parallelization"></a>
+<a name="msportalfx-test-running-ci-how-to-setup-test-run-parallelization"></a>
 #### How to setup test run parallelization
 
+<a name="msportalfx-test-debugging"></a>
 <a name="msportalfx-test-debugging"></a>
 ## Debugging
 
 <a name="msportalfx-test-debugging-debug-tests-101"></a>
+<a name="msportalfx-test-debugging-debug-tests-101"></a>
 ### debug tests 101
 
+<a name="msportalfx-test-debugging-debugging-tests-in-vs-code"></a>
 <a name="msportalfx-test-debugging-debugging-tests-in-vs-code"></a>
 ### debugging tests in VS Code
 If you run mocha with the --debug-brk flag, you can press F5 and the project will attach to a debugger. 
 
+<a name="msportalfx-test-debugging-checking-the-result-of-the-currently-running-test-in-code"></a>
 <a name="msportalfx-test-debugging-checking-the-result-of-the-currently-running-test-in-code"></a>
 ### Checking the result of the currently running test in code
 
@@ -584,6 +684,7 @@ Sometimes it is useful to get the result of the currently running test, for exam
 
 One thing to watch out for in typescript is how lambda functions, "() => {}", behave.  Lambda functions (also called "fat arrow" sometimes) in Typescript capture the "this" variable from the surrounding context.  This can cause problems when trying to access Mocha's current test state.  See [arrow functions](https://basarat.gitbooks.io/typescript/content/docs/arrow-functions.html) for details.
 
+<a name="msportalfx-test-debugging-how-to-take-a-screenshot-of-the-browser"></a>
 <a name="msportalfx-test-debugging-how-to-take-a-screenshot-of-the-browser"></a>
 ### How to take a screenshot of the browser
 
@@ -611,6 +712,7 @@ import testFx = require('MsPortalFx-Test');
 ```
 
 <a name="msportalfx-test-debugging-how-to-capture-browser-console-output"></a>
+<a name="msportalfx-test-debugging-how-to-capture-browser-console-output"></a>
 ### How to capture browser console output
 
 When trying to identify reasons for failure of a test its useful to capture the console logs of the browser that was used to execute your test. You can capture the logs at a given level e.g error, warning, etc or at all levels using the LogLevel parameter. The following example demonstrates how to call getBrowserLogs and how to work with the result. getBrowserLogs will return a Promise of string[] which when resolved will contain the array of logs that you can view during debug or write to the test console for later analysis.    
@@ -628,28 +730,36 @@ import testFx = require('MsPortalFx-Test');
 ```
 
 <a name="msportalfx-test-debugging-callstack"></a>
+<a name="msportalfx-test-debugging-callstack"></a>
 ### Callstack
 
+<a name="msportalfx-test-debugging-test-output-artifacts"></a>
 <a name="msportalfx-test-debugging-test-output-artifacts"></a>
 ### Test output artifacts
 
 <a name="msportalfx-test-localization"></a>
+<a name="msportalfx-test-localization"></a>
 ## Localization
 
+<a name="msportalfx-test-user-management"></a>
 <a name="msportalfx-test-user-management"></a>
 ## User Management
 
 <a name="msportalfx-test-configuration"></a>
+<a name="msportalfx-test-configuration"></a>
 ## Configuration
 
+<a name="msportalfx-test-configuration-configuration-options"></a>
 <a name="msportalfx-test-configuration-configuration-options"></a>
 ### Configuration options
 This document will describe the behavior and list common configuration settings used by the MsPortalFx-Test framework.
 
 <a name="msportalfx-test-configuration-configuration-options-behavior"></a>
+<a name="msportalfx-test-configuration-configuration-options-behavior"></a>
 #### Behavior
 The test framework will search for a config.json in the current working directory (usually the directory the test is invoked from).  If no config.json is found then it will check the parent folder for a config.json (and so on...).
 
+<a name="msportalfx-test-configuration-configuration-options-portalcontext"></a>
 <a name="msportalfx-test-configuration-configuration-options-portalcontext"></a>
 #### PortalContext
 This file contains a list of configuration values used by the test framework for context when running tests against the portal.
@@ -716,6 +826,10 @@ interface PortalContext {
      */
     features?: Feature[];
     /**
+     * The list of patch files to load within the Portal.
+     */
+    patches?: string[];
+    /**
      * The set of extensions to side load while navigating within the Portal.
      */
     testExtensions?: TestExtension[];
@@ -734,6 +848,7 @@ export = PortalContext;
 ```
 
 <a name="msportalfx-test-configuration-configuration-options-running-tests-against-the-dogfood-environment"></a>
+<a name="msportalfx-test-configuration-configuration-options-running-tests-against-the-dogfood-environment"></a>
 #### Running tests against the Dogfood environment
 In order to run tests against the Dogfood test environment, you will need to update the follow configuration settings in the config.json:
 
@@ -745,11 +860,14 @@ In order to run tests against the Dogfood test environment, you will need to upd
 ```
 
 <a name="msportalfx-test-scenarios"></a>
+<a name="msportalfx-test-scenarios"></a>
 ## Scenarios
 
 <a name="msportalfx-test-scenarios-create"></a>
+<a name="msportalfx-test-scenarios-create"></a>
 ### Create
 
+<a name="msportalfx-test-scenarios-create-opening-the-create-blade-from-a-deployed-gallery-package"></a>
 <a name="msportalfx-test-scenarios-create-opening-the-create-blade-from-a-deployed-gallery-package"></a>
 #### Opening the create blade from a deployed gallery package
 
@@ -767,11 +885,12 @@ FromLocalPackage
         .then(() => createEngineBlade.fillRequiredFields(resourceName, "600cc", "type1", subscriptionName, resourceName, locationDescription))
         .then(() => createEngineBlade.actionBar.pinToDashboardCheckbox.click())
         .then(() => createEngineBlade.actionBar.createButton.click())
-        .then(() => testFx.portal.wait(until.isPresent(testFx.portal.blade({ title: resourceName })), 50000));
+        .then(() => testFx.portal.wait(until.isPresent(testFx.portal.blade({ title: resourceName })), 120000, "The resource blade was not opened, could be deployment timeout."));
         
 ...
 ```
 
+<a name="msportalfx-test-scenarios-create-opening-the-create-blade-from-a-local-gallery-package"></a>
 <a name="msportalfx-test-scenarios-create-opening-the-create-blade-from-a-local-gallery-package"></a>
 #### Opening the create blade from a local gallery package
 
@@ -789,14 +908,16 @@ import TestFx = require('MsPortalFx-Test');
         .then(() => createEngineBlade.fillRequiredFields(resourceName, "600cc", "type1", subscriptionName, resourceName, locationDescription))
         .then(() => createEngineBlade.actionBar.pinToDashboardCheckbox.click())
         .then(() => createEngineBlade.actionBar.createButton.click())
-        .then(() => testFx.portal.wait(until.isPresent(testFx.portal.blade({ title: resourceName })), 50000));
+        .then(() => testFx.portal.wait(until.isPresent(testFx.portal.blade({ title: resourceName })), 120000, "The resource blade was not opened, could be deployment timeout."));
         
 ...
 ```
 
 <a name="msportalfx-test-scenarios-create-validation-state"></a>
+<a name="msportalfx-test-scenarios-create-validation-state"></a>
 #### Validation State
 
+<a name="msportalfx-test-scenarios-create-get-the-validation-state-of-fields-on-your-create-form"></a>
 <a name="msportalfx-test-scenarios-create-get-the-validation-state-of-fields-on-your-create-form"></a>
 #### Get the validation state of fields on your create form
 
@@ -819,6 +940,7 @@ import TestFx = require('MsPortalFx-Test');
 ```
 
 <a name="msportalfx-test-scenarios-create-wait-on-a-fields-validation-state"></a>
+<a name="msportalfx-test-scenarios-create-wait-on-a-fields-validation-state"></a>
 #### Wait on a fields validation state
 
 The function `waitOnValidationState(someState, optionalTimeout)` returns a promise that resolves when the current state of the control is equivalent to someState supplied.  This is particularly useful for scenarions where you may be performing serverside validation and the control remains in a pending state for the duration of the network IO.
@@ -836,8 +958,10 @@ import TestFx = require('MsPortalFx-Test');
 ```
 
 <a name="msportalfx-test-scenarios-browse"></a>
+<a name="msportalfx-test-scenarios-browse"></a>
 ### Browse
 
+<a name="msportalfx-test-scenarios-browse-how-to-test-the-context-menu-in-browse-shows-your-extensions-commands"></a>
 <a name="msportalfx-test-scenarios-browse-how-to-test-the-context-menu-in-browse-shows-your-extensions-commands"></a>
 #### How to test the context menu in browse shows your extensions commands?
 
@@ -867,6 +991,7 @@ it("Can Use Context Click On Browse Grid Rows", () => {
 });
 ```
 
+<a name="msportalfx-test-scenarios-browse-how-to-test-the-grid-in-browse-shows-the-expected-default-columns-for-your-extension-resource"></a>
 <a name="msportalfx-test-scenarios-browse-how-to-test-the-grid-in-browse-shows-the-expected-default-columns-for-your-extension-resource"></a>
 #### How to test the grid in browse shows the expected default columns for your extension resource
 
@@ -900,6 +1025,7 @@ it("Browse contains default columns with expected column header", () => {
 }
 ```
 
+<a name="msportalfx-test-scenarios-how-to-test-the-grid-in-browse-shows-additional-extension-resource-columns-that-are-selected"></a>
 <a name="msportalfx-test-scenarios-how-to-test-the-grid-in-browse-shows-additional-extension-resource-columns-that-are-selected"></a>
 ### How to test the grid in browse shows additional extension resource columns that are selected
 
@@ -948,8 +1074,10 @@ it("Can select additional columns for the resourcetype and columns have expected
 
 
 <a name="msportalfx-test-scenarios-blades"></a>
+<a name="msportalfx-test-scenarios-blades"></a>
 ### Blades
 
+<a name="msportalfx-test-scenarios-blades-blade-navigation"></a>
 <a name="msportalfx-test-scenarios-blades-blade-navigation"></a>
 #### Blade navigation
 
@@ -1004,10 +1132,16 @@ To navigate to blades within msportalfx-test can use one of several approaches
     
         const subscriptionsBlade = testFx.portal.blade({ title: testSupport.subscription });
         
+        testFx.portal.portalContext.features.push({ name: "feature.resourcemenu", value: "true" });
         return testFx.portal.goHome().then(() => {
             return testFx.portal.search(testSupport.subscription);
         }).then((results) => {
-            return results[0];
+            return testFx.portal.wait<SearchResult>(() => {
+                var result = results[0];
+                return result.title.getText().then((title) => {
+                    return title === testSupport.subscription ? result : null;
+                });
+            });
         }).then((result) => {
             return result.click();
         }).then(() => {
@@ -1015,6 +1149,7 @@ To navigate to blades within msportalfx-test can use one of several approaches
         }); 
     ```
 
+<a name="msportalfx-test-scenarios-blades-locating-an-open-blade"></a>
 <a name="msportalfx-test-scenarios-blades-locating-an-open-blade"></a>
 #### Locating an open blade
 
@@ -1034,13 +1169,16 @@ There are several approaches that can be used for locating an already opened bla
     ```
 
 <a name="msportalfx-test-scenarios-blades-common-portal-blades"></a>
+<a name="msportalfx-test-scenarios-blades-common-portal-blades"></a>
 #### Common portal blades
 
+<a name="msportalfx-test-scenarios-blades-common-portal-blades-opening-the-extensions-create-blade"></a>
 <a name="msportalfx-test-scenarios-blades-common-portal-blades-opening-the-extensions-create-blade"></a>
 ##### Opening the extensions Create blade
 
 See [Opening an extensions gallery package create blade](#msportalfx-test-scenarios-create-opening-the-create-blade-from-a-deployed-gallery-package)
 
+<a name="msportalfx-test-scenarios-blades-common-portal-blades-opening-the-browse-blade-for-your-resource"></a>
 <a name="msportalfx-test-scenarios-blades-common-portal-blades-opening-the-browse-blade-for-your-resource"></a>
 ##### Opening the Browse blade for your resource
 
@@ -1054,6 +1192,7 @@ import testFx = require('MsPortalFx-Test');
             .then((blade) => blade.filterItems(resourceName))
 ...
 ```
+<a name="msportalfx-test-scenarios-blades-common-portal-blades-opening-a-resource-summary-blade"></a>
 <a name="msportalfx-test-scenarios-blades-common-portal-blades-opening-a-resource-summary-blade"></a>
 ##### Opening a Resource Summary blade
 
@@ -1069,6 +1208,7 @@ import testFx = require('MsPortalFx-Test');
 ...
 ```
 
+<a name="msportalfx-test-scenarios-blades-common-portal-blades-spec-picker-blade"></a>
 <a name="msportalfx-test-scenarios-blades-common-portal-blades-spec-picker-blade"></a>
 ##### Spec Picker Blade
 
@@ -1099,6 +1239,7 @@ import SpecPickerBlade = testFx.Parts.SpecPickerBlade;
 
 There are also several API's available to make testing common functionality within browse such as context menu commands and column picking fucntionality for more details see [Browse Scenarios](#msportalfx-test-scenarios-browse).
 
+<a name="msportalfx-test-scenarios-blades-common-portal-blades-settings-blade"></a>
 <a name="msportalfx-test-scenarios-blades-common-portal-blades-settings-blade"></a>
 ##### Settings Blade
 
@@ -1134,6 +1275,7 @@ class SummaryBlade extends Blade {
 ```
 
 <a name="msportalfx-test-scenarios-blades-common-portal-blades-properties-blade"></a>
+<a name="msportalfx-test-scenarios-blades-common-portal-blades-properties-blade"></a>
 ##### Properties Blade
 
 Navigation to the `PropertiesBlade` is done via the resource summary blade. The following demonstrates how to navigate to the properties blade
@@ -1161,6 +1303,7 @@ import testFx = require('MsPortalFx-Test');
 ...
 ```
 
+<a name="msportalfx-test-scenarios-blades-common-portal-blades-quickstart-blade"></a>
 <a name="msportalfx-test-scenarios-blades-common-portal-blades-quickstart-blade"></a>
 ##### QuickStart Blade
 
@@ -1224,6 +1367,7 @@ class SummaryBlade extends Blade {
 ```
 
 <a name="msportalfx-test-scenarios-blades-common-portal-blades-users-blade"></a>
+<a name="msportalfx-test-scenarios-blades-common-portal-blades-users-blade"></a>
 ##### Users Blade
 
 Using a deep link you can navigate directly into the user access blade for a resource with `Portal.navigateToUriFragment`.
@@ -1249,7 +1393,7 @@ import testFx = require('MsPortalFx-Test');
 
         return testSupport.armClient.createResource(createOptions)
             //form deep link to the quickstart blade
-            .then((resourceId) => testFx.portal.navigateToUriFragment(`blade/Microsoft_Azure_AD/UserAssignmentsBlade/scope/${resourceId}`))
+            .then((resourceId) => testFx.portal.navigateToUriFragment(`blade/Microsoft_Azure_AD/UserAssignmentsBlade/scope/${resourceId}`, timeouts.defaultLongTimeout))
             .then(() => testFx.portal.wait(ExpectedConditions.isPresent(testFx.portal.element(testFx.Blades.UsersBlade))));
 ```
 
@@ -1285,27 +1429,28 @@ class SummaryBlade extends Blade {
 ```
 
 <a name="msportalfx-test-scenarios-blades-common-portal-blades-move-resource-blade"></a>
+<a name="msportalfx-test-scenarios-blades-common-portal-blades-move-resource-blade"></a>
 ##### Move Resource Blade
 
 The `MoveResourcesBlade` represents the portals blade used to move resources from a resource group to a new resource group `portal.startMoveResource` provides a simple abstraction that will iniate the move of an existing resource to a new resource group.  The following example demonstrates how to initiate the move and then wait on successful notification of completion.
   
 ```ts
-
 import testFx = require('MsPortalFx-Test');
 ...
-      
+    
             return testFx.portal.startMoveResource(
                 {
                     resourceId: resourceId,
                     targetResourceGroup: newResourceGroup,
                     createNewGroup: true,
                     subscriptionName: subscriptionName,
-                    timeout: 50000
+                    timeout: 120000
                 });
             }).then(() => {
             return testFx.portal.element(NotificationsMenu).waitForNewNotification(portalFxResources.movingResourcesComplete, null, 5 * 60 * 1000);
 ```
 
+<a name="msportalfx-test-scenarios-blades-blade-dialogs"></a>
 <a name="msportalfx-test-scenarios-blades-blade-dialogs"></a>
 #### Blade Dialogs
 
@@ -1340,8 +1485,10 @@ import testFx = require('MsPortalFx-Test');
 ```
 
 <a name="msportalfx-test-scenarios-parts"></a>
+<a name="msportalfx-test-scenarios-parts"></a>
 ### Parts
 
+<a name="msportalfx-test-scenarios-parts-how-to-get-the-reference-to-a-part-on-a-blade"></a>
 <a name="msportalfx-test-scenarios-parts-how-to-get-the-reference-to-a-part-on-a-blade"></a>
 #### How to get the reference to a part on a blade
 
@@ -1358,6 +1505,7 @@ import testFx = require('MsPortalFx-Test');
 	let thePart = blade.element(By.Classname("myPartClass")).AsType(testFx.Parts.Part);
 ```
 
+<a name="msportalfx-test-scenarios-parts-collectionpart"></a>
 <a name="msportalfx-test-scenarios-parts-collectionpart"></a>
 #### CollectionPart
 
@@ -1390,8 +1538,10 @@ The following example demonstrates how to:
 Note if you have multiple collection parts you may want to use `blade.part(...)` to search by text.
 
 <a name="msportalfx-test-scenarios-parts-grid"></a>
+<a name="msportalfx-test-scenarios-parts-grid"></a>
 #### Grid
 
+<a name="msportalfx-test-scenarios-parts-grid-finding-a-row-within-a-grid"></a>
 <a name="msportalfx-test-scenarios-parts-grid-finding-a-row-within-a-grid"></a>
 ##### Finding a row within a grid
 
@@ -1409,6 +1559,7 @@ The following demonstrates how to use `Grid.findRow` to:
 ```
 
 <a name="msportalfx-test-scenarios-parts-createcomboboxfield"></a>
+<a name="msportalfx-test-scenarios-parts-createcomboboxfield"></a>
 #### CreateComboBoxField
 
 use this for modeling the resouce group `CreateComboBoxField` on create blades.
@@ -1418,7 +1569,7 @@ use this for modeling the resouce group `CreateComboBoxField` on create blades.
 
 ```ts
 
-        return testFx.portal.goHome(40000).then(() => {           
+        return testFx.portal.goHome(40000).then(() => {
             //1. get a reference to the create blade
             return testFx.portal.openGalleryCreateBlade(
                 galleryPackageName,              //the gallery package name e.g "Microsoft.CloudService"
@@ -1431,19 +1582,29 @@ use this for modeling the resouce group `CreateComboBoxField` on create blades.
             //3. set the value of the Create New text field for the resource group
             return resourceGroup.setCreateValue("NewResourceGroup")
                 .then(() =>
-                    resourceGroup.getCreateValue().then((value) => { assert.equal("NewResourceGroup", value, "Set resource group name") })
+                    resourceGroup.getCreateValue()
+                ).then((value) =>
+                    assert.equal("NewResourceGroup", value, "Set resource group name")
+                ).then(() =>
+                    resourceGroup.selectOption("NewResourceGroup_4")
+                ).then(() =>
+                    resourceGroup.getDropdownValue()
+                ).then((value) =>
+                    assert.equal("NewResourceGroup_4", value, "Set resource group dropdown")
                 );
         });
         
 ```
 
 <a name="msportalfx-test-scenarios-parts-editor"></a>
+<a name="msportalfx-test-scenarios-parts-editor"></a>
 #### Editor
 
 <a name="msportalfx-test-scenarios-parts-editor-can-read-and-write-content"></a>
+<a name="msportalfx-test-scenarios-parts-editor-can-read-and-write-content"></a>
 ##### Can read and write content
 
-THe following example demonstrates how to:
+The following example demonstrates how to:
 
 - use `read(...)` to read the content
 - use `empty(...)` to empty the content
@@ -1478,15 +1639,153 @@ THe following example demonstrates how to:
         
 ```
 
+<a name="msportalfx-test-scenarios-parts-essentials"></a>
+<a name="msportalfx-test-scenarios-parts-essentials"></a>
+#### essentials
+
+<a name="msportalfx-test-scenarios-parts-essentials-essentials-tests"></a>
+<a name="msportalfx-test-scenarios-parts-essentials-essentials-tests"></a>
+##### Essentials tests
+
+The following example demonstrates how to:
+
+- use `countItems(...)` to count the number of all items. (MultiLine Item is counted as one)
+- use `isDisabled(...)` to get a value that determines whether the essentials is disabled
+- use `hasViewAll(...)` to get a value that determines whether the essentials has ViewAll button or not
+- use `getViewAllButton(...)` to get a PortalElement of the essentials' viewAll button
+- use `getItemByLabelText(...)` to get an EssentialsItem that is found by its label text
+- use `getPropertyElementByValue(...)` to get a PortalELement of matching property value
+- use `getExpandedState(...)` to get a value that determines the essentials' expanded state
+- use `setExpandedState(...)` to set the essentials' expanded state
+- use `getExpander(...)` to get the Expander element
+- use `getProperties(...)` to get an array of properties
+- use `getLabelText(...)` to get the item label text
+- use `hasMoveResource(...)` to get whether the item has move resource blade or not
+- use `getLabelId(...)` to get the item label id
+- use `getSide(...)` to get the item's side
+
+```ts
+
+        let essentialsBlade: EssentialsBlade;
+        let essentials: Essentials;
+
+        return BladeOpener.openSamplesExtensionBlade(
+            essentialsBladeTitle,
+            essentialsUriFragment,
+            EssentialsBlade,
+            waitTime)
+            .then((blade) => blade.waitUntilLoaded(waitTime).then(() => blade))
+            .then((blade: EssentialsBlade) => {
+                essentialsBlade = blade;
+                essentials = blade.essentials;
+                return Q.all<any>([
+                    essentials.countItems(),
+                    essentials.getExpandedState(),
+                    essentials.hasViewAll()
+                ]);
+            })
+            .then((values: any[]) => {
+                // Essentials item count, expanded state and viewAll button state check
+                assert.equal(values[0], 10, "Essentials has 10 items at the beginning");
+                assert.ok(values[1], "Essentials should be expanded by default");
+                assert.ok(values[2], "Essentials has the ViewAll button at the beginning");
+                essentials.getViewAllButton().click();
+            })
+            .then(() => essentials.countItems())
+            .then((count: number) => {
+                // Essentials item count after click ViewAll button
+                assert.equal(count, 12, "Essentials has 12 items after adding dynamic properties");
+                // Item label and properties check
+                return Q.all([
+                    itemAssertionHelper(essentials, {
+                        label: "Resource group",
+                        hasMoveResource: true,
+                        side: "left",
+                        properties: [
+                            { type: EssentialsItemPropertyType.Function, value: "snowtraxpsx600" }
+                        ]
+                    }),
+                    itemAssertionHelper(essentials, {
+                        label: "Multi-line Item",
+                        hasMoveResource: false,
+                        side: "right",
+                        properties: [
+                            { type: EssentialsItemPropertyType.Text, value: "sample string value" },
+                            { type: EssentialsItemPropertyType.Link, value: "Bing.com" }
+                        ]
+                    }),
+                    itemAssertionHelper(essentials, {
+                        label: "Status",
+                        hasMoveResource: false,
+                        side: "left",
+                        properties: [
+                            { type: EssentialsItemPropertyType.Text, value: "--" }
+                        ]
+                    })
+                ]);
+            })
+            .then(() => essentials.getPropertyElementByValue("status will be changed")
+                .then((propElement: testFx.PortalElement) =>  propElement.click()))
+                // Item label and properties check after clicking "status will be changed"
+                .then(() => itemAssertionHelper(essentials, {
+                    label: "Status",
+                    hasMoveResource: false,
+                    side: "left",
+                    properties: [
+                        { type: EssentialsItemPropertyType.Text, value: "1 times clicked!" }
+                    ]
+                }))
+            .then(() => essentials.getPropertyElementByValue("snowtraxpsx600")
+                .then((propElement: testFx.PortalElement) =>  propElement.click()))
+                // Item label and properties check after clicking "snowtraxpsx600"
+                .then(() => itemAssertionHelper(essentials, {
+                    label: "Status",
+                    hasMoveResource: false,
+                    side: "left",
+                    properties: [
+                        { type: EssentialsItemPropertyType.Text, value: "Resource group window is opened" }
+                    ]
+                }))
+            .then(() => essentials.getExpander().click())
+            .then(() => Q.all<any>([
+                essentials.getExpandedState(),
+                essentials.items.isDisplayed()
+            ]))
+            .then((values: any) => {
+                // check expander state and items' visibilities after closing expander
+                assert.ok(!values[0], "expander should be closed");
+                values[1].forEach((state: boolean) => {
+                    assert.ok(!state, "items should be invisible");
+                });
+                return essentials.getExpander().click()
+                    .then(() => Q.all<any>([
+                    essentials.getExpandedState(),
+                    essentials.items.isDisplayed()
+                ]));
+            })
+            .then((values: any) => {
+                // check expander state and items' visibilities after opening expander
+                assert.ok(values[0], "expander should be opened");
+                values[1].forEach((state: boolean) => {
+                    assert.ok(state, "items should be visible");
+                });
+            });
+        
+```
+
+<a name="msportalfx-test-scenarios-command"></a>
 <a name="msportalfx-test-scenarios-command"></a>
 ### Command
 
 <a name="msportalfx-test-scenarios-action-bar"></a>
+<a name="msportalfx-test-scenarios-action-bar"></a>
 ### Action Bar
 
 <a name="msportalfx-test-scenarios-delete"></a>
+<a name="msportalfx-test-scenarios-delete"></a>
 ### Delete
 
+<a name="msportalfx-test-scenarios-styling-layout-regression-detection"></a>
 <a name="msportalfx-test-scenarios-styling-layout-regression-detection"></a>
 ### Styling / layout regression detection
 
@@ -1540,30 +1839,174 @@ For reference, here's the signature of the `portal.detectStylingRegression` func
     ```
 
 <a name="msportalfx-test-scenarios-styling-layout-regression-detection-"></a>
+<a name="msportalfx-test-scenarios-styling-layout-regression-detection-"></a>
 #### ...
 
 <a name="msportalfx-test-scenarios-locators"></a>
+<a name="msportalfx-test-scenarios-locators"></a>
 ### Locators
- 
+
+<a name="msportalfx-test-scenarios-consuming-updates"></a>
 <a name="msportalfx-test-scenarios-consuming-updates"></a>
 ### Consuming Updates
-<a name="msportalfx-test-scenarios-mocking-arm"></a>
-### Mocking ARM
+
+<a name="msportalfx-test-scenarios-mocking"></a>
+<a name="msportalfx-test-scenarios-mocking"></a>
+### Mocking
+
+<a name="msportalfx-test-scenarios-mocking-how-to-show-mock-data-into-the-portal"></a>
+<a name="msportalfx-test-scenarios-mocking-how-to-show-mock-data-into-the-portal"></a>
+#### How to show mock data into the Portal
+
+The [MsPortalFx-Mock](https://www.npmjs.com/package/msportalfx-mock) package provides a framework for showing mock data in the portal. It come with builtin support for mocking ARM data.
+
+<a name="msportalfx-test-scenarios-mocking-how-to-show-mock-data-into-the-portal-mocking-arm"></a>
+<a name="msportalfx-test-scenarios-mocking-how-to-show-mock-data-into-the-portal-mocking-arm"></a>
+##### Mocking ARM
+
+Mock data including providers, subscriptions, resource groups and resources can be defined in JSON object and used to initialize the ArmManager.
+
+```ts
+
+import { ArmProxy } from "MsPortalFx-Mock/lib/src/ArmProxy/ArmProxy";
+import { ArmManager } from "MsPortalFx-Mock/lib/src/ArmProxy/ArmManager";
+
+...
+
+const mockData: ArmManager.MockData = {
+    providers: [
+        {
+            namespace: "Providers.Test",
+            resourceTypes: [
+                {
+                    resourceType: "type1",
+                    locations: ["WestUS"],
+                    apiVersions: ["2014-04-01"]
+                },
+                {
+                    resourceType: "type2",
+                    locations: ["East US", "East US 2", "North Central US"],
+                    apiVersions: ["2014-04-01"]
+                }
+            ]
+        }
+    ],
+    subscriptions: [
+        {
+            subscriptionId: "sub1",
+            displayName: "Test sub 1",
+            state: "Active",
+            subscriptionPolicies: {
+                locationPlacementId: "Public_2014-09-01",
+                quotaId: "FreeTrial_2014-09-01"
+            },
+            resourceGroups: [
+                {
+                    name: "sub1rg1",
+                    location: "WestUS",
+                    tags: {
+                        "env": "prod",
+                        "ver": "4.6"
+                    },
+                    properties: {
+                        lockState: "Unlocked",
+                        provisioningState: "Succeeded",
+                    },
+                    resources: [
+                        {
+                            name: "sub1rg1r1",
+                            location: "WestUS",
+                            tags: {
+                                "env": "prod"
+                            },
+                            type: "providers.test/type1",
+                            kind: null,
+                            nestedResources: [
+                                {
+                                    name: "nr1",
+                                    tags: {},
+                                    type: "nested"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "sub1rg2",
+                    location: "WestUS",
+                    tags: {
+                        "env": "prod",
+                        "ver": "4.6"
+                    },
+                    properties: {
+                        lockState: "Unlocked",
+                        provisioningState: "Succeeded",
+                    },
+                    resources: [
+                        {
+                            name: "sub1rg2r1",
+                            location: "WestUS",
+                            tags: {
+                                "env": "prod"
+                            },
+                            type: "providers.test/type2",
+                            kind: null
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+};
+
+...
+
+    let armManager = new ArmManager.Manager();
+    armManager.initializeMockData(mockData);
+    
+```
+
+The ArmProxy needs to initialized at the beginning of your tests with the ArmManager. The ArmProxy supports two modes for showing data 1) mock ONLY and 2) mock + actual.
+
+You will need to initialize the portalContext->patches to the local server address setup by the proxy.
+
+```ts
+
+        return ArmProxy.create(nconf.get("armEndpoint"), 5000, armManager, null, true).then(proxy => {
+            armProxy = proxy;
+            testFx.portal.portalContext.patches = [proxy.patchAddress];
+        });
+        
+```
+
+The proxy can be disposed at the end of your tests.
+```ts
+
+        return testFx.portal.quit().then(() => ArmProxy.dispose(armProxy));
+        
+```
+
+
+<a name="msportalfx-test-scenarios-code-coverage"></a>
 <a name="msportalfx-test-scenarios-code-coverage"></a>
 ### Code Coverage
+<a name="msportalfx-test-scenarios-code-coverage-interop-how-to-run-net-code-from-your-tests"></a>
 <a name="msportalfx-test-scenarios-code-coverage-interop-how-to-run-net-code-from-your-tests"></a>
 #### Interop, how to run .NET code from your tests
 edge.js
 
 
 <a name="msportalfx-test-scenarios-contributing"></a>
+<a name="msportalfx-test-scenarios-contributing"></a>
 ### Contributing
 
+<a name="msportalfx-test-scenarios-contributing-to-enlist"></a>
 <a name="msportalfx-test-scenarios-contributing-to-enlist"></a>
 #### To enlist
 
 git clone https://github.com/azure/msportalfx-test.git
 
+<a name="msportalfx-test-scenarios-contributing-to-build-the-source"></a>
 <a name="msportalfx-test-scenarios-contributing-to-build-the-source"></a>
 #### To build the source
 
@@ -1571,6 +2014,7 @@ Use Visual Studio or Visual Studio Code to build
 
 1. Run ./scripts/Setup.cmd
 
+<a name="msportalfx-test-scenarios-contributing-to-setup-the-tests"></a>
 <a name="msportalfx-test-scenarios-contributing-to-setup-the-tests"></a>
 #### To setup the tests
 
@@ -1598,7 +2042,7 @@ Once you have the first two use the following to create the AAD application and 
 
 You will use the details of the created service principal in the next steps.  
 
-For more detail on [AAD Applications and Service Principals] see (https://azure.microsoft.com/en-us/documentation/articles/resource-group-authenticate-service-principal).  
+For more detail on [AAD Applications and Service Principals] see (https://azure.microsoft.com/en-us/documentation/articles/resource-group-authenticate-service-principal/#authenticate-with-password---powershell).  
 
 1. Open **test\config.json** and enter appropriate values for:
     ```
@@ -1617,6 +2061,7 @@ For more detail on [AAD Applications and Service Principals] see (https://azure.
 1. Many of the tests currently rely on the CloudService extension. We are working to remove this dependency.
 
 <a name="msportalfx-test-scenarios-to-run-the-tests"></a>
+<a name="msportalfx-test-scenarios-to-run-the-tests"></a>
 ### To run the tests
 
 Open a command prompt in this directory and run:
@@ -1627,23 +2072,29 @@ Open a command prompt in this directory and run:
 ```
 
 <a name="msportalfx-test-scenarios-to-run-the-tests-authoring-documents"></a>
+<a name="msportalfx-test-scenarios-to-run-the-tests-authoring-documents"></a>
 #### Authoring documents
 - When adding a document create a new *.md file in /docs e.g /docs/foo.md
 - Author the document using [markdown syntax](https://daringfireball.net/projects/markdown/syntax)
 - Inject content from your documents into the master template in /docs/TEMPLATE.md using [gitdown syntax](https://github.com/gajus/gitdown) E.g
 
+
     ```
     {"gitdown": "include", "file": "./foo.md"}
     ```
 
+
 - To ensure all code samples remain up to date we extended gitdown syntax to support code injection. To reference source code in your document directly from a *.ts file use the include-section extension E.g
+
 
     ```
     {"gitdown": "include-section", "file": "../test/BrowseResourceBladeTests.ts", "section": "tutorial-browse-context-menu#step2"}
     ```
 
+
     this will find all content in ../test/BrowseResourceBladeTests.ts that is wrapped in comments //tutorial-browse-context-menu#step2 and will inject them directly into the document. see /docs/tutorial-browse-context-menu.md for a working example
 
+<a name="msportalfx-test-scenarios-to-run-the-tests-generating-the-docs"></a>
 <a name="msportalfx-test-scenarios-to-run-the-tests-generating-the-docs"></a>
 #### Generating the docs
 You can generate the documentation in one of two ways
@@ -1663,17 +2114,22 @@ You can generate the documentation in one of two ways
 the output of the composed TEMPLATE.md will be written to ./README.md and the generated API reference from your jsdocs will be written to /docs/apiref.md
 
 <a name="msportalfx-test-scenarios-to-run-the-tests-to-submit-your-contribution"></a>
+<a name="msportalfx-test-scenarios-to-run-the-tests-to-submit-your-contribution"></a>
 #### To submit your contribution
 Submit a pull request to the repo [http://aka.ms/msportalfx-test](http://aka.ms/msportalfx-test)
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-<a name="msportalfx-test-scenarios-to-run-the-tests-questions-reach-out-to-us-on-stackoverflow-https-stackoverflow-microsoft-com-questions-tagged-ibiza-test"></a>
-#### Questions? Reach out to us on <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-test">Stackoverflow</a>
+<a name="msportalfx-test-scenarios-to-run-the-tests-questions"></a>
+<a name="msportalfx-test-scenarios-to-run-the-tests-questions"></a>
+#### Questions?
 
+Send an email to ibizadiscuss@microsoft.com
+
+<a name="msportalfx-test-scenarios-api-reference"></a>
 <a name="msportalfx-test-scenarios-api-reference"></a>
 ### API Reference
 
 [View thet API Reference](http://aka.ms/msportalfx-test/api)
 
-Generated on 2016-09-28
+Generated on 2017-05-11

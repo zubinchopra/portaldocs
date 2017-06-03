@@ -199,7 +199,7 @@ If your extension is migrating from DIY deploment to hosting service, we recomme
 #### 1. Change the uri format to use hosting service (PROD):
 
 Here is a sample pull request for modifying the uriFormat:
-https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/history?_a=history&itemPath=%2F&itemVersion=GBdev&user=Wissam%20Zeidan&alias=wissamz%40microsoft.com        
+https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/c22b81463cab1d0c6b2c1abc803bc25fb2836aad?refName=refs%2Fheads%2Fdev
 
 #### 2. Flight changes in MPAC: 
 
