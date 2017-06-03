@@ -356,6 +356,6 @@ Next steps: [Deploying your extension](portalfx-deployment.md)
 
 - In addition, any request you make to your extension, including ajax calls, should also return the version on the server in the response.
 
-	![Response Headers from extension show version](../media/portalfx-debugging/)response-headers-show-version.png]
+	![Response Headers from extension show version](../media/portalfx-debugging/response-headers-show-version.png)
 
  Its important to note that there can be a difference in the fx.environment.version on the client and the version in the x-ms-version returned from the server e.g the user starts a session and the extension is updated/deployed while the user's session is still active.

@@ -7,7 +7,8 @@
 
 * [C# Portal Test Framework](portalfx-test.md#c-portal-test-framework)
 
-* [MsPortalFx-Test](msportalfx-test.md#msportalfx-test)
+* [msportalfx-test](msportalfx-test.md#msportalfx-test)
+    * [Overview](msportalfx-test.md#overview)
     * [Getting Started](msportalfx-test.md#getting-started)
     * [Side loading a local extension during the test session](msportalfx-test.md#side-loading-a-local-extension-during-the-test-session)
     * [Running](msportalfx-test.md#running)

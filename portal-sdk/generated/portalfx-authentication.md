@@ -1,4 +1,4 @@
-* [Overview](#overview)
+﻿* [Overview](#overview)
 * [Calling ARM](#calling-arm)
     * [From client](#calling-arm-from-client)
     * [From server](#calling-arm-from-server)
@@ -82,7 +82,10 @@ In order to call other services from the client, the Fx team will create a new A
 4. Once the app is created, the Fx team will update portal config 
 5. Request tokens for the desired service (aka "resource") when using Fx APIs
 
-The following sample shows how an extension can be configured to get tokens for ARM and AAD Graph:
+1. To query graph API's, an extension owner would submit [RDTask](http://aka.ms/portalfx/newextension) to onboard AAD Application with the portal.AAD Onboarding can take 5-6 weeks so we recommend extension developers to think about this scenarios early in the design phase.
+2. Once ibiza team has created the app in https://aadonboardingsite.cloudapp.net/ you can reach out to  aadonboarding@microsoft.com to expedite the process.
+3. Submit [RDTask](http://aka.ms/portalfx/newextension) to register the AAD Applciation created in Step 1 into the portal's extension config. This step can be done in parallel to Step 2.
+   In this case the resourceAccess config for your extension in portal would look something like the following:
 
 ```json
 {
@@ -136,16 +139,12 @@ MsPortalFx.Base.Security.getAuthorizationToken({ resourceName: "graph" });
 #### Calling other services from the server
 To call other services from the server, you'll need your own AAD app and exchange the Fx token for your own to call other services.
 
-1. [Create an AAD app](https://aadonboardingsiteppe.cloudapp.net) and contact the [AAD onboarding team](mailto:aadonboarding@microsoft.com) as 
-   needed (NOTE: AAD onboarding can take 5-6 weeks)
-2. Create a [security/auth partner request](http://aka.ms/new-ibiza-security-auth-request) including the exact config you need (see 
-   below)
-3. The Fx team will update portal config
-4. Request tokens for your extension when calling your server
-5. Call AAD to exchange the Fx token for your own
-6. Make your calls as you normally would
+The workflow in this case will be a little different from the one we described on the client side:
 
-The following sample shows how an extension can be configured to get tokens for ARM and the extension ("self"):
+1. To query graph API's, an extension author needs to create AAD application on [https://aadonboardingsite.cloudapp.net/](https://aadonboardingsite.cloudapp.net/). AAD Onboarding can take 5-6 weeks so we recommend extension developers to think about this scenarios early in the design phase.
+2. Once you have created the app you can reach out to  [aadonboarding@microsoft.com](aadonboarding@microsoft.com) to expedite the process.
+3. Once you have the App Id submit [RDTask](http://aka.ms/portalfx/newextension) to register the AAD Applciation created in Step 1 into the portal's extension config. This step can be done in parallel to Step 2.
+   In this case the resourceAccess config for your extension in portal would look something like the following:
 
 ```json
 {

@@ -60,7 +60,6 @@ gulp.task('portal', function () {
                     fs.mkdirSync(newGeneratedDir);
                 }
 
-                // return gulpCommon.processFile(f, newGeneratedDir, { headingNesting: { enabled: false } }, true);
                 return gulpCommon.processFile(f, newGeneratedDir, {}, true);
             });
 
@@ -92,7 +91,7 @@ gulp.task('portal', function () {
                                 {
                                     console.log(chalk.bgRed("Broken link/fragment found: " + JSON.stringify(v)));
                                 }
-                                console.log(chalk.bgRed("Broken link/fragment found in " + v.inputFile + " for url: " + v.url));
+                                console.log(chalk.bgRed("Broken link/fragment found in " + v.inputFile + " for url: " + v.url + " reason: " + v.reason));
                             });
                         }
                         else if (l.state === "rejected") {
