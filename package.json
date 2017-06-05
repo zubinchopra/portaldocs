@@ -17,7 +17,7 @@
     "check-pages": "^0.10.0"
   },
   "scripts": {
-    "docs": "gulp docs",
+    "docs": "gulp docs --verify",
     "dynamicdocs": "gulp dynamicdocs",
     "gallery": "gulp gallery",
     "rp": "gulp rp",
