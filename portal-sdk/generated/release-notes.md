@@ -1,4 +1,8 @@
-# Release Notes since 2/2/2017
+# Release Notes since 2/5/2017
+
+## 5.0.302.776
+0 Breaking Changes, 2 Features added and 11 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9407082'>9407082</a></td><td>Bug Fix</td><td>Enable user settings migrations in PROD for 50% of users</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9396272'>9396272</a></td><td>Bug Fix</td><td>AlertsListBlade is broken in MPAC (supplyBladeReference doesn’t support observable parameters, but extensions doing it anyway)</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9384474'>9384474</a></td><td>Bug Fix</td><td>Add logging for DocDb settings queries that take too long to complete</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9384381'>9384381</a></td><td>Bug Fix</td><td>resource menu redirects should get applied even if extension isn't loaded</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9344152'>9344152</a></td><td>Bug Fix</td><td>[PROD] Group by dropdown should be hidden when +Add is clicked on a browse blade</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9233913'>9233913</a></td><td>Feature</td><td>[ExtensionConfiguration]  Modify Primary URI endpoint for extension ClearDBExtension to Prod hosting</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9227458'>9227458</a></td><td>Bug Fix</td><td>Wrap MonitorChartPart data model in a namespace to prevent potential name conflict + Include MonitorChartPart.d.ts in HubsNuget package</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9213957'>9213957</a></td><td>Bug Fix</td><td>[Partner Request] - Update extension configuration for <Application Insights> in <Environment DF> Portal</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8901530'>8901530</a></td><td>Bug Fix</td><td>Add aria attributes to DateTimeRangePicker</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8901522'>8901522</a></td><td>Bug Fix</td><td>Add aria attributes to DateTimePicker</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8901515'>8901515</a></td><td>Bug Fix</td><td>Add aria attributes to DateTimeComboBox</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8307739'>8307739</a></td><td>Feature</td><td>Add Korea regions to Azure Portal</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8108197'>8108197</a></td><td>Bug Fix</td><td>Replication for user settings not working in new regions</td></tr></table>
 
 ## 5.0.302.751
 10 Breaking Changes, 39 Features added and 223 Bugs Fixed
@@ -165,23 +169,3 @@ Error: Could not get cost undefined
 ## 5.0.302.609
 0 Breaking Changes, 2 Features added and 0 Bugs Fixed
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8371236'>8371236</a></td><td>Feature</td><td>Add Scheduler extension in FF</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8273884'>8273884</a></td><td>Feature</td><td>turn on feature flag on quotas blade in production</td></tr></table>
-
-## 5.0.302.608
-0 Breaking Changes, 0 Features added and 4 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8244124'>8244124</a></td><td>Bug Fix</td><td>[InfoBalloon] Unable to click info balloon on disabled spec cards</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8220736'>8220736</a></td><td>Bug Fix</td><td>[ErrorTracker] At MsPortalFx/Base/Base.ProxiedObservablesV2 - Client - Exception | Will be ignored | simultaneous change in Microsoft_Azure_Compute-fx-?.container.notFoundMessage</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8161796'>8161796</a></td><td>Bug Fix</td><td>[ErrorTracker] At MsPortalFx/Base/Base.ProxiedObservablesV2 - Client - Exception | OutOfMemory |simultaneous change in Microsoft_Azure_Insights-fx-?.content.xAxis.max</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7753197'>7753197</a></td><td>Bug Fix</td><td>[Safari] Infoballoon doesn't display when hovered over in a disabled grid row</td></tr></table>
-
-## 5.0.302.607
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8047512'>8047512</a></td><td>Bug Fix</td><td>[ErrorTracker]  formTarget_1.showForm is not a function at Widgets.CommandBarBase.ts</td></tr></table>
-
-## 5.0.302.605
-0 Breaking Changes, 0 Features added and 2 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8306525'>8306525</a></td><td>Bug Fix</td><td>[Resource move] Namespace updates for MoveResourceToolbarButton</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8270826'>8270826</a></td><td>Bug Fix</td><td>Edge 15 throttles off screen iframes</td></tr></table>
-
-## 5.0.302.604
-0 Breaking Changes, 0 Features added and 2 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8318857'>8318857</a></td><td>Bug Fix</td><td>Actions/notActions can be null </td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7978177'>7978177</a></td><td>Bug Fix</td><td>[Bug] UI Templates feature throws error and doesnt work</td></tr></table>
-
-## 5.0.302.603
-0 Breaking Changes, 0 Features added and 2 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8287787'>8287787</a></td><td>Bug Fix</td><td>Update to new UMS certificate</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=6876575'>6876575</a></td><td>Bug Fix</td><td>[AppInsights enabling] first pinning of a part from pin++ may be yielding the wrong size on first pinning</td></tr></table>
