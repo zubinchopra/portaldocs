@@ -27,6 +27,8 @@
 |AzPtlCosmos       | ClientTelemetry   | This is all the Client Telemetry data that is collected from the portal. This is the main table that should be good for most scenarios.              |
 |AzPtlCosmos       | ExtTelemetry      | This holds client events data for extensions using the Extension Telemetry feature.                                                                  |
 
+> **Important:** Data in both ClientTelemetry and ExtTelemetry tables will only include rows where the action is present in their respective allow list. If you need to query for actions that are not present in these tables, Kusto supports [cross-databases queries](https://kusto.azurewebsites.net/docs/queryLanguage/query_language_syntax.html?q=cross) allowing you to query the ClientTelemetry or ExtTelemetry directly from the AzurePortal database. 
+
 Other useful Kusto tables are the ones where errors and warnings are getting logged. These tables are currently available only under AzurePortal database:
 
 |Database          | Table Name        | Details                                                                                                                                                                                                                                 |

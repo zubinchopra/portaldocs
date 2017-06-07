@@ -429,8 +429,7 @@ constructor(container: MsPortalFx.ViewModels.PartContainerContract,
 - [Tree View](http://aka.ms/portalfx/samples#blade/SamplesExtension/TreeViewInstructions/selectedItem/TreeViewInstructions/selectedValue/TreeViewInstructions)
 - [String List](http://aka.ms/portalfx/samples#blade/SamplesExtension/StringListInstructions/selectedItem/StringListInstructions/selectedValue/StringListInstructions)
 - [Query Builder](http://aka.ms/portalfx/samples#blade/SamplesExtension/QueryBuilderInstructions/selectedItem/QueryBuilderInstructions/selectedValue/QueryBuilderInstructions)
-- Grid
-    [Grid](portalfx-controls-grid.md)
+- [Grid](portalfx-controls-grid.md)
 
 <a name="controls-helpers-and-indicators"></a>
 ## Helpers and Indicators

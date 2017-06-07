@@ -73,8 +73,7 @@ To learn more about any of our controls, click on any of the links below.
 - [Tree View](http://aka.ms/portalfx/samples#blade/SamplesExtension/TreeViewInstructions/selectedItem/TreeViewInstructions/selectedValue/TreeViewInstructions)
 - [String List](http://aka.ms/portalfx/samples#blade/SamplesExtension/StringListInstructions/selectedItem/StringListInstructions/selectedValue/StringListInstructions)
 - [Query Builder](http://aka.ms/portalfx/samples#blade/SamplesExtension/QueryBuilderInstructions/selectedItem/QueryBuilderInstructions/selectedValue/QueryBuilderInstructions)
-- Grid
-    [Grid](portalfx-controls-grid.md)
+- [Grid](portalfx-controls-grid.md)
 
 ## Helpers and Indicators
 
