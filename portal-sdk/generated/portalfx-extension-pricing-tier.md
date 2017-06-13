@@ -12,7 +12,7 @@ The spec picker has a three controls (dropdown, infobox, and selector) for getti
 ```typescript
 
 // The spec picker initial data observable.
-var initialDataObservable = ko.observable<SpecPicker.InitialData>({
+const initialDataObservable = ko.observable<SpecPicker.InitialData>({
     selectedSpecId: "A0",
     entityId: "",
     recommendedSpecIds: ["small_basic", "large_standard"],

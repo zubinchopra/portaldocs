@@ -180,7 +180,7 @@ This functions calculates the create funnel KPI's for each extension's create bl
 * Retrieving the drop off rate of customers attempting a create (how often creates are abandoned).
 
 #### Underlying Function Resources
-* [GetCreateFlows()](#getcreateflows)
+* [GetCreateFlows()](#create-telemetry-create-flow-functions-getcreateflows)
 
 #### Parameters
 * startDate: The date to mark the inclusive start of the time range.
@@ -193,17 +193,17 @@ This functions calculates the create funnel KPI's for each extension's create bl
   * The create blade which inititated the creates.
 * CreateBladeOpened
   * The number of times the create blade was opened.
-  * Calculated by taking the count of the number of Create Flows for each blade from [GetCreateFlows()](#getcreateflows) which had:
+  * Calculated by taking the count of the number of Create Flows for each blade from [GetCreateFlows()](#create-telemetry-create-flow-functions-getcreateflows) which had:
     * `CreateBladeOpened == true`.
 * Started
   * The number of creates that were started.
-  * Calculated by taking the count of the number of Create Flows for each blade from [GetCreateFlows()](#getcreateflows) which had:
+  * Calculated by taking the count of the number of Create Flows for each blade from [GetCreateFlows()](#create-telemetry-create-flow-functions-getcreateflows) which had:
     * `PortalCreateStarted == true`
     * or `ArmDeploymentStarted == true`
   * *Note - We check both of these for redundancy proof becuase we know that as long as one of these properties are true then we know a create was started.*
 * Excluded
-  * The number of creates from [GetCreateFlows()](#getcreateflows) that were marked as Excluded.
-  * *See [GetCreateFlows()](#getcreateflows) documentation for Excluded details.*
+  * The number of creates from [GetCreateFlows()](#create-telemetry-create-flow-functions-getcreateflows) that were marked as Excluded.
+  * *See [GetCreateFlows()](#create-telemetry-create-flow-functions-getcreateflows) documentation for Excluded details.*
 * Completed
   * The number of creates that were completed.
   * Completed = Started - Excluded
@@ -243,7 +243,7 @@ This functions calculates the create funnel KPI's for each extension's create bl
 * Identifying which days have higher number of failed deployments.
 
 #### Underlying Function Resources
-* [GetCreateFlows()](#getcreateflows)
+* [GetCreateFlows()](#create-telemetry-create-flow-functions-getcreateflows)
 
 #### Parameters
 * startDate: The date to mark the inclusive start of the time range.
@@ -260,17 +260,17 @@ This functions calculates the create funnel KPI's for each extension's create bl
   * The gallery package id that was created.
 * CreateBladeOpened
   * The number of times the create blade was opened.
-  * Calculated by taking the count of the number of Create Flows  for each blade from [GetCreateFlows()](#getcreateflows) which had:
+  * Calculated by taking the count of the number of Create Flows  for each blade from [GetCreateFlows()](#create-telemetry-create-flow-functions-getcreateflows) which had:
     * `CreateBladeOpened == true`.
 * Started
   * The number of creates that were started.
-  * Calculated by taking the count of the number of Create Flows  for each blade from [GetCreateFlows()](#getcreateflows) which had:
+  * Calculated by taking the count of the number of Create Flows  for each blade from [GetCreateFlows()](#create-telemetry-create-flow-functions-getcreateflows) which had:
     * `PortalCreateStarted == true`
     * or `ArmDeploymentStarted == true`
   * *Note - We check both of these for redundancy proof becuase we know that as long as one of these properties are true then we know a create was started.*
 * Excluded
-  * The number of creates from [GetCreateFlows()](#getcreateflows) that were marked as Excluded.
-  * *See [GetCreateFlows()](#getcreateflows) documentation for Excluded details.*
+  * The number of creates from [GetCreateFlows()](#create-telemetry-create-flow-functions-getcreateflows) that were marked as Excluded.
+  * *See [GetCreateFlows()](#create-telemetry-create-flow-functions-getcreateflows) documentation for Excluded details.*
 * Completed
   * The number of creates that were completed.
   * Completed = Started - Excluded
@@ -310,7 +310,7 @@ This functions calculates the create funnel KPI's by gallery package id, extensi
 * Identifying which resources have higher number of failed deployments.
 
 #### Underlying Function Resources
-* [GetCreateFlows()](#getcreateflows)
+* [GetCreateFlows()](#create-telemetry-create-flow-functions-getcreateflows)
 
 #### Parameters
 * startDate: The date to mark the inclusive start of the time range.
@@ -325,17 +325,17 @@ This functions calculates the create funnel KPI's by gallery package id, extensi
   * The gallery package id that was created.
 * CreateBladeOpened
   * The number of times the create blade was opened.
-  * Calculated by taking the count of the number of Create Flows for each blade from [GetCreateFlows()](#getcreateflows) which had:
+  * Calculated by taking the count of the number of Create Flows for each blade from [GetCreateFlows()](#create-telemetry-create-flow-functions-getcreateflows) which had:
     * `CreateBladeOpened == true`.
 * Started
   * The number of creates that were started.
-  * Calculated by taking the count of the number of Create Flows for each blade  from [GetCreateFlows()](#getcreateflows) which had:
+  * Calculated by taking the count of the number of Create Flows for each blade  from [GetCreateFlows()](#create-telemetry-create-flow-functions-getcreateflows) which had:
     * `PortalCreateStarted == true`
     * or `ArmDeploymentStarted == true`
   * *Note - We check both of these for redundancy proof becuase we know that as long as one of these properties are true then we know a create was started.*
 * Excluded
-  * The number of creates from [GetCreateFlows()](#getcreateflows) that were marked as Excluded.
-  * *See [GetCreateFlows()](#getcreateflows) documentation for Excluded details.*
+  * The number of creates from [GetCreateFlows()](#create-telemetry-create-flow-functions-getcreateflows) that were marked as Excluded.
+  * *See [GetCreateFlows()](#create-telemetry-create-flow-functions-getcreateflows) documentation for Excluded details.*
 * Completed
   * The number of creates that were completed.
   * Completed = Started - Excluded
@@ -377,7 +377,7 @@ This functions calculates the overall create funnel KPIs for the Portal.
 * Identifying the overall rate of create flows that lead to a create being started.
 
 #### Underlying Function Resources
-* [GetCreateFlows()](#getcreateflows)
+* [GetCreateFlows()](#create-telemetry-create-flow-functions-getcreateflows)
 
 #### Parameters
 * startDate: The date to mark the inclusive start of the time range.
@@ -386,17 +386,17 @@ This functions calculates the overall create funnel KPIs for the Portal.
 #### Output Columns
 * CreateBladeOpened
   * The total number of times create blade were opened.
-  * Calculated by taking the total count of the number of Create Flows from [GetCreateFlows()](#getcreateflows) which had:
+  * Calculated by taking the total count of the number of Create Flows from [GetCreateFlows()](#create-telemetry-create-flow-functions-getcreateflows) which had:
     * `CreateBladeOpened == true`.
 * Started
   * The total number of creates that were started.
-  * Calculated by taking the total count of the number of Create Flows from [GetCreateFlows()](#getcreateflows) which had:
+  * Calculated by taking the total count of the number of Create Flows from [GetCreateFlows()](#create-telemetry-create-flow-functions-getcreateflows) which had:
     * `PortalCreateStarted == true`
     * or `ArmDeploymentStarted == true`
   * *Note - We check both of these for redundancy proof becuase we know that as long as one of these properties are true then we know a create was started.*
 * Excluded
-  * The total number of creates from [GetCreateFlows()](#getcreateflows) that were marked as Excluded.
-  * *See [GetCreateFlows()](#getcreateflows) documentation for Excluded details.*
+  * The total number of creates from [GetCreateFlows()](#create-telemetry-create-flow-functions-getcreateflows) that were marked as Excluded.
+  * *See [GetCreateFlows()](#create-telemetry-create-flow-functions-getcreateflows) documentation for Excluded details.*
 * Completed
   * The total number of creates that were completed.
   * Completed = Started - Excluded
