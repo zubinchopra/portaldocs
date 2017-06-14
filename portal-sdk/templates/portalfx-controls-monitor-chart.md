@@ -1,6 +1,4 @@
 ## Monitor Chart
-> **Important:** The Monitor Chart control is currently in preview and is under active development. Unless your Extension's scenario has already been discussed with the Portal team, this control should only be used for prototyping.
-
 The Monitor Chart control allows you to plot the metrics for your resource in Azure. It is part of the Ibiza framework, and it inherently knows how to fetch data for your resource.
 
 The Monitor Chart control is available in SDK version **5.0.302.731** and above.
@@ -20,7 +18,7 @@ The Monitoring team will add your resource type to a config which allows the Mon
 
 ### Using the control
 ```typescript
-import * as MonitorChart from "Fx/Internal/Controls/MonitorChart";
+import * as MonitorChart from "Fx/Controls/MonitorChart";
 
 ...
 
@@ -49,7 +47,7 @@ const monitorChartViewModel = MonitorChart.create(bladeOrPartContainer, moni
 
 > You can plot more than one chart while referencing the control. Also, you can plot multiple metrics for each chart.
 
-> To see a complete list of the options you can pass to the control, look at the `Fx/Internal/Controls/MonitorChart` module in Fx.d.ts, or you can [view the interfaces directly in the PortalFx repo][6].
+> To see a complete list of the options you can pass to the control, look at the `Fx/Controls/MonitorChart` module in Fx.d.ts, or you can [view the interfaces directly in the PortalFx repo][6].
 
 
 <a name="legacyBladeUsage"></a>
@@ -284,5 +282,5 @@ From here, users can explore other metrics, pin charts to dashboard, create an a
 [3]: ../media/portalfx-controls-monitor-chart/monitor-chart-control-multiple-inputs.png
 [4]: ../media/portalfx-controls-monitor-chart/monitor-chart-control-overview-blade.png
 [5]: ../media/portalfx-controls-monitor-chart/monitor-chart-control-azure-monitor.png
-[6]: https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FFramework.Client%2FTypeScript%2FFx%2FInternal%2FControls%2FMonitorChart.ts&version=GBproduction&_a=contents
+[6]: https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FFramework.Client%2FTypeScript%2FFx%2FControls%2FMonitorChart.ts&version=GBproduction&_a=contents
 [7]: https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FExtensions%2FHubsExtension%2FTypeScript%2FHubsExtension%2FForExport%2FMonitorChartPartExportedTypes.d.ts&version=GBproduction&_a=contents
