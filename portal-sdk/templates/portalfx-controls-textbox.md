@@ -73,25 +73,7 @@ textBoxVM.events.enterPressed = (value: string): void => {
 };
 ```
 
-There are **2** options that you can upgrade the old `TextBox.ViewModel.events.enterPressed` to:
-
-a. Use a `Section` control wrapping `Textbox`, and use `Section.submit` to handle the Enter keypress event. This is recommended for scenario that hitting Enter key triggers event involving other controls, e.g. hit Enter key to submit a whole form.
-
-New code:
-```
-const submitFunc = () => {
-    // Functions goes here...
-    let enterPresseded: boolean = true;
-    return Q({ success: enterPresseded });
-};
-const textBoxVM = TextBox.create(lifetimeManager, {...});
-const sectionVM = new MsPortalFx.ViewModels.Forms.Section.ViewModel(lifetimeManager, {
-    submit: ko.observable(submitFunc),
-    children: ko.observableArray([textBoxVM, ...//Other controls's ViewModels...])
-});
-```
-
-b. Move it to `TextBox.ViewModel.onEnterPressed`
+Move it to `TextBox.ViewModel.onEnterPressed`
 
 New code:
 ```
