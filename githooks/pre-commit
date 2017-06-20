@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# If you found this file in the .git folder, it will be overwritten next time you run setup.
+
+# ECHO TODO Make this installed automatically for everyone
+
+if [[ `git diff --name-only --cached` ]]; then
+  # changes found
+  POWERSHELLEXE=$WINDIR/System32/WindowsPowerShell/v1.0/powershell.exe
+
+  [ -f $POWERSHELLEXE ] || (POWERSHELLEXE=powershell.exe)
+
+  gitroot=`git rev-parse --git-dir`
+
+  # Docs must be in a submodule in order for doc generation to work
+  if [[ $gitroot == *"modules"* ]]; then 
+    hookPath=$gitroot/hooks/pre-commit.ps1
+  
+    echo PRE-COMMIT HOOK:  Generating docs and verifying links... If you need to skip step then please run 'git commit --no-verify'
+    exec $POWERSHELLEXE -ExecutionPolicy Unrestricted -file $hookPath $*
+  else 
+    echo "Not in a submodule, skipping verification"
+  fi
+
+else
+  # no changes
+  echo "No changes found"
+fi
