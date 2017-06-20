@@ -13,8 +13,8 @@ To get started in a sovereign cloud, talk to the Azure Global Ecosystems team or
 |----------------|--------------------------|-------------------------|------------------|
 | (Public Azure) | portal.azure.com         | *.ext.azure.com         |       (N/A)      |
 | Blackforest    | portal.microsoftazure.de | *.ext.microsoftazure.de | [Blackforest wiki](http://aka.ms/blackforest) |
-| Mooncake       | portal.azure.cn          | *.ext.azure.cn          | [Mooncake wiki](http://mooncake/)    |
-| Fairfax        | portal.azure.us          | *.ext.azure.us          | [Fairfax wiki](http://fairfax/)     |
+| Mooncake       | portal.azure.cn          | *.ext.azure.cn          | [Mooncake wiki](http://aka.ms/mooncake/)    |
+| Fairfax        | portal.azure.us          | *.ext.azure.us          | [Fairfax wiki](http://aka.ms/fairfax/)     |
 
 
 ### Common gotchas
