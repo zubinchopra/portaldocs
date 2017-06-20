@@ -43,7 +43,12 @@ settings class. Don't forget to mark the class as MEF exportable if you intend t
 For example:
 
 ```cs
-namespace Microsoft.MyExtension.Configuration{    [Export]    public class MyConfiguration : DictionaryConfiguration<MySettings>    {    }
+namespace Microsoft.MyExtension.Configuration
+{
+    [Export]
+    public class MyConfiguration : DictionaryConfiguration<MySettings>
+    {
+    }
 }
 ```
 

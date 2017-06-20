@@ -1,4 +1,12 @@
-# Release Notes since 2/16/2017
+# Release Notes since 2/19/2017
+
+## 5.0.302.780
+0 Breaking Changes, 1 Features added and 1 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9256668'>9256668</a></td><td>Secret Expiration</td><td>PROD Cert Expiration Alert for AUX: aux/OneCloud.PROD/extensions/rsmt.ext.portal.azure.com.pfx  expiring on 11/4/2017</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8879428'>8879428</a></td><td>Bug Fix</td><td>[Partner Request] - Update extension configuration for Media Services in DF Portal</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8801339'>8801339</a></td><td>Feature</td><td>Perform work required to get MonitorChart into public namespace</td></tr></table>
+
+## 5.0.302.778
+0 Breaking Changes, 1 Features added and 1 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9512581'>9512581</a></td><td>Bug Fix</td><td>Disable settings background migration</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9433936'>9433936</a></td><td>Feature</td><td>[ExtensionConfiguration] Enabling extension hosting service in Public for extension Microsoft_Azure_Support</td></tr></table>
 
 ## 5.0.302.777
 0 Breaking Changes, 1 Features added and 2 Bugs Fixed
