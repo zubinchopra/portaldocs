@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# If you found this file in the .git folder, it will be overwritten next time you run setup.
-
-# ECHO TODO Make this installed automatically for everyone
-
 if [[ `git diff --name-only --cached` ]]; then
   # changes found
   POWERSHELLEXE=$WINDIR/System32/WindowsPowerShell/v1.0/powershell.exe
