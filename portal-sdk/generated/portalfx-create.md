@@ -6,6 +6,8 @@
     * [Add a provisioner component](#building-custom-create-forms-add-a-provisioner-component)
     * [Build your form](#building-custom-create-forms-build-your-form)
     * [Standard ARM fields](#building-custom-create-forms-standard-arm-fields)
+    * [ARM dropdown options](#building-custom-create-forms-arm-dropdown-options)
+    * [Migrating from legacy ARM dropdowns to Accessible versions](#building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions)
     * [Validation](#building-custom-create-forms-validation)
     * [Automation options](#building-custom-create-forms-automation-options)
     * [Testing](#building-custom-create-forms-testing)
@@ -187,10 +189,141 @@ Learn more about [building forms](portalfx-forms.md).
 All ARM subscription resources require a subscription, resource group, location and pricing dropdown. The portal offers built-in controls for each of these. Refer to the EngineV3 Create sample (`SamplesExtension\Extension\Client\Create\EngineV3\ViewModels\CreateEngineBladeViewModel.ts`) for a working example.
 
 <a name="building-custom-create-forms-standard-arm-fields-subscriptions-dropdown"></a>
-##### Subscriptions dropdown
+#### Subscriptions dropdown
 ```ts
-* `MsPortalFx.Azure.Subscriptions.DropDown`
+import * as SubscriptionDropDown from "Fx/Controls/SubscriptionDropDown";
+```
+```typescript
 
+// The subscriptions drop down.
+this.subscriptionsDropDown = SubscriptionDropDown.create(container, {
+    initialSubscriptionId: ko.observableArray<string>(),
+    validations: ko.observableArray([
+        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectSubscription)
+    ])
+});
+const subId = ko.pureComputed(() => {
+    const sub = this.subscriptionsDropDown.value();
+    return sub && sub.subscriptionId;
+})
+
+```
+
+<a name="building-custom-create-forms-standard-arm-fields-resource-groups-dropdown"></a>
+#### Resource groups dropdown
+```ts
+import * as ResourceGroupDropDown from "Fx/Controls/ResourceGroupDropDown";
+```
+```typescript
+
+// The resource group drop down with creator inputs
+this.resourceGroupDropDown = ResourceGroupDropDown.create(container, {
+    subscriptionId: subId,
+    validations: ko.observableArray([
+        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectResourceGroup)
+    ])
+});
+
+```
+<a name="building-custom-create-forms-standard-arm-fields-locations-dropdown"></a>
+#### Locations dropdown
+```ts
+import * as LocationDropDown from "Fx/Controls/LocationDropDown";
+```
+```typescript
+
+// The locations drop down.
+this.locationsDropDown = LocationDropDown.create(container, {
+    initialLocationName: ko.observableArray<string>(),
+    subscriptionId: subId,
+    validations: ko.observableArray([
+        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectLocation)
+    ])
+    // Optional -> Disable locations by returning a reason for why a location is disabled
+    // disable: (location) => ~["centralus", "eastus"].indexOf(location.name) && clientStrings.disabledLegalityIssues
+});
+
+```
+
+<a name="building-custom-create-forms-arm-dropdown-options"></a>
+### ARM dropdown options
+Each ARM dropdown can disable, hide, group, and sort.
+ 
+<a name="building-custom-create-forms-arm-dropdown-options-disable"></a>
+#### Disable
+This is the preferred method of disallowing the user to select a value from ARM. The disable callback will run for each fetched value from ARM. The return value of your callback will be a reason for why the value is disabled. If no reason is provided, then the value will not be disabled. This is to ensure the customer has information about why they can’t select an option, and reduces support calls.
+```typescript
+
+disable: (sub: DropDown.Subscription) => { return ~["sub-1", "sub-2"].indexOf(sub.subscriptionId) && createStrings.disableReason },
+
+```
+When disabling, the values will be displayed in groups with the reason they are disabled as the group header. Disabled groups will be placed at the bottom of the dropdown list.
+ 
+<a name="building-custom-create-forms-arm-dropdown-options-hide"></a>
+#### Hide
+This is an alternative method of disallowing the user to select a value from ARM. It's recommended to use the `disable` option so you can provide scenario-specific detail as to why a given dropdown value is disabled, and customers will be able to see that their specific desired location is not available. Disabling is preferable to hiding, as users often react negatively when they cannot visually locate their expected dropdown value.  In extreme cases, this can trigger incidents with your Blade. The hide callback will run for each fetched value from ARM. The return value of your callback will return a boolean for if the value should be hidden. If you choose to hide, a message telling the user why some values are hidden is required.
+```typescript
+
+hiding: {
+    hide: (item: DropDown.Subscription) => item.subscriptionId === "sub-5",
+    reason: createStrings.hideReason
+}
+
+```
+ 
+<a name="building-custom-create-forms-arm-dropdown-options-group"></a>
+#### Group
+This is a way for you to group values in the dropdown. The group callback will take a value from the dropdown and return a display string for which group the value should be in. If no display string or an empty string is provided, then the value will default to the top level of the group dropdown.
+ 
+A sort method has also been provided if you want to sort groups. It is a comparator function which takes two strings, the display strings of the groups you provide, and returns a number for the comparison. It defaults to alphabetical sorting.
+ 
+```typescript
+
+grouping: {
+    map: (item: DropDown.Subscription): string => {
+        return parseInt(item.uniqueDisplayName.slice(-1)) % 2 ? createStrings.regularSubscirption : createStrings.eaSubscription
+    },
+    sort: (a: string, b: string) => MsPortalFx.compare(a, b)
+},
+
+```
+ 
+If you both disable and group, values which are disabled will be placed under the disabled group rather than the grouping provided in this callback.
+ 
+<a name="building-custom-create-forms-arm-dropdown-options-sort"></a>
+#### Sort
+If you want to sort values in the dropdown, supply the 'sort' option, which should be a convention comparator function that returns a number greater or less than zero. It defaults to alphabetical based on the display string of the value.
+ 
+```typescript
+
+sort: (a: DropDown.Subscription, b: DropDown.Subscription) => MsPortalFx.compare(b.uniqueDisplayName, a.uniqueDisplayName)
+
+```
+ 
+If you sort and use disable or group functionality, this will sort inside of the groups provided.
+
+<a name="building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions"></a>
+### Migrating from legacy ARM dropdowns to Accessible versions
+For scenarios where your Form is built in terms of EditScope, the FX now provides versions of the new, accessible ARM dropdowns that are drop-in replacements for old, non-accessible controls.  These have minimal API changes and are simple to integrate into existing Blades/Parts.
+
+We have created a version of the accessible dropdowns which will enable you to upgrade with minimal api changes. 
+The options interface supports the following
+-`form`
+-`accessor` 
+These options enable the dropdowns to support editscope. 
+Validations have been changed to only support custom validations or `required` validations.
+
+The produced viewmodel will also fulfill the orignal contract for the following members
+-`getObjectByName`
+-`items`
+All other options and properties are either part of the new drop downs, or no longer available/supported. 
+
+
+<a name="building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions-subscriptions-dropdown"></a>
+#### Subscriptions dropdown
+In your current EditScope-based form, your Subscription dropdown looks something like this:
+```ts
+import SubscriptionsDropDown = MsPortalFx.Azure.Subscriptions.DropDown;
 // The subscriptions drop down.
 var subscriptionsDropDownOptions: SubscriptionsDropDown.Options = {
     options: ko.observableArray([]),
@@ -213,11 +346,43 @@ var subscriptionsDropDownOptions: SubscriptionsDropDown.Options = {
 };
 this.subscriptionsDropDown = new SubscriptionsDropDown(container, subscriptionsDropDownOptions);
 ```
-<a name="building-custom-create-forms-standard-arm-fields-resource-groups-dropdown"></a>
-##### Resource groups dropdown
-```ts
-* `MsPortalFx.Azure.ResourceGroups.DropDown`
 
+With the new, accessible Subscription dropdown, you'll change your code to look something like:
+```ts
+import * as SubscriptionDropDown from "FxObsolete/Controls/SubscriptionDropDown";
+```
+```typescript
+
+// The subscriptions drop down.
+const subscriptionsDropDownOptions: SubscriptionDropDown.Options = {
+    options: ko.observableArray([]),
+    form: this,
+    accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
+        return data.subscription;
+    }),
+    validations: ko.observableArray([
+        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectSubscription)
+    ]),
+    // Providing a list of resource providers (NOT the resource types) makes sure that when
+    // the deployment starts, the selected subscription has the necessary permissions to
+    // register with the resource providers (if not already registered).
+    // Example: Providers.Test, Microsoft.Compute, etc.
+    resourceProviders: ko.observable([resourceProvider]),
+    // Optional -> You can pass the gallery item to the subscriptions drop down, and the
+    // the subscriptions will be filtered to the ones that can be used to create this
+    // gallery item.
+    filterByGalleryItem: this._galleryItem
+};
+this.subscriptionsDropDown = SubscriptionDropDown.create(container, subscriptionsDropDownOptions);
+
+```
+
+<a name="building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions-resource-groups-legacy-dropdown"></a>
+#### Resource groups <strong>legacy</strong> dropdown
+In your current EditScope-based form, your Resource Group dropdown looks something like this:
+```ts
+import ResourceGroupsDropDown = MsPortalFx.Azure.ResourceGroups.DropDown;
+// The resource group drop down.
 var resourceGroupsDropDownOptions: ResourceGroups.DropDown.Options = {
     options: ko.observableArray([]),
     form: this,
@@ -230,10 +395,7 @@ var resourceGroupsDropDownOptions: ResourceGroups.DropDown.Options = {
         new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectResourceGroup),
         new MsPortalFx.Azure.RequiredPermissionsValidator(requiredPermissionsCallback)
     ]),
-    // Specifying the 'defaultNewValue' property provides a default name in the create new
-    // text box (shown if the user chooses to create a new resource group). If a resource group
-    // already exists with the same name, it will be automatically incremented (e.g.
-    // "NewResourceGroup_1", "NewResourceGroup_2", etc.).
+    // This is no longer supported. Set the `value` option to initial desired value
     defaultNewValue: "NewResourceGroup",
     // Optional -> RBAC permission checks on the resource group. Here, we're making sure the
     // user can create an engine under the selected resource group, but you can add any actions
@@ -248,26 +410,60 @@ var resourceGroupsDropDownOptions: ResourceGroups.DropDown.Options = {
 };
 this.resourceGroupDropDown = new ResourceGroups.DropDown(container, resourceGroupsDropDownOptions);
 ```
-<a name="building-custom-create-forms-standard-arm-fields-locations-dropdown"></a>
-##### Locations dropdown
-```ts
-* `MsPortalFx.Azure.Locations.DropDown`
-* [`Fx/Specs/DropDown`](/portal-sdk/generated/portalfx-extension-development.md#portalfx-extension-pricing-tier)
 
-  // The locations drop down.
- var locationsDropDownOptions: LocationsDropDown.Options = {
+With the new, accessible Resource Group dropdown, you'll change your code to look something like:
+```ts
+import * as ResourceGroupDropDown from "FxObsolete/Controls/ResourceGroupDropDown";
+```
+```typescript
+
+this.resourceGroupDropDown = ResourceGroupDropDown.create(container, {
+    options: ko.observableArray([]),
+    form: this,
+    accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
+        return data.resourceGroup;
+    }),
+    label: ko.observable<string>(ClientResources.resourceGroup),
+    subscriptionIdObservable: this.subscriptionsDropDown.subscriptionId,
+    validations: ko.observableArray([
+        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectResourceGroup),
+        new MsPortalFx.Azure.RequiredPermissionsValidator(requiredPermissionsCallback)
+    ]),
+    // Optional -> RBAC permission checks on the resource group. Here, we're making sure the
+    // user can create an engine under the selected resource group, but you can add any actions
+    // necessary to have permissions for on the resource group.
+    requiredPermissions: ko.observable({
+        actions: actions,
+        // Optional -> You can supply a custom error message. The message will be formatted
+        // with the list of actions (so you can have {0} in your message and it will be replaced
+        // with the array of actions).
+        message: ClientResources.enginePermissionCheckCustomValidationMessage.format(actions.toString())
+    }),
+    // Optional -> Will determine which mode is selectable by the user. It defaults to Both.
+    allowedMode: ko.observable(ResourceGroupDropDown.Mode.Both), //Alternatively Mode.UseExisting or Mode.CreateNew
+    value: { mode: ResourceGroupDropDown.Mode.CreateNew, value: { name: "NewResourceGroup_1", location: "" } }
+});
+
+```
+
+<a name="building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions-locations-legacy-dropdown"></a>
+#### Locations <strong>legacy</strong> dropdown
+In your current EditScope-based form, your Location dropdown looks something like this:
+```ts
+import LocationsDropDown = MsPortalFx.Azure.Locations.DropDown;
+// The locations drop down.
+var locationsDropDownOptions: LocationsDropDown.Options = {
     options: ko.observableArray([]),
     form: this,
     accessor: this.createEditScopeAccessor((data) => {
         return data.location;
     }),
-    subscriptionIdObservable: this.subscriptionsDropDown.subscriptionId,
+    subscriptionIdObservable: this.LocationDropDown.subscriptionId,
     resourceTypesObservable: ko.observable([resourceType]),
     validations: ko.observableArray<MsPortalFx.ViewModels.Validation>([
         new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectLocation)
     ])
-    // Optional -> Add location filtering by either providing a list of allowed locations
-    // OR a list of disallowed locations (not both). This can also be an observable.
+    // Optional -> This is no longer supported. Use the `disable` option (illustrated bellow).
     // filter: {
     //     allowedLocations: {
     //         locationNames: [ "centralus" ],
@@ -279,33 +475,85 @@ this.resourceGroupDropDown = new ResourceGroups.DropDown(container, resourceGrou
     //     }]
     // }
 };
-this.locationsDropDown = new LocationsDropDown(container, locationsDropDownOptions);
 ```
-<a name="building-custom-create-forms-standard-arm-fields-pricing-dropdown"></a>
-##### Pricing dropdown
+
+With the new, accessible Location dropdown, you'll change your code to look something like:
+```ts
+import * as LocationDropDown from "FxObsolete/Controls/LocationDropDown";
+```
+```typescript
+
+// The locations drop down.
+this.locationsDropDown = LocationDropDown.create(container, {
+    options: ko.observableArray([]),
+    form: this,
+    accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
+        return data.location;
+    }),
+    subscriptionIdObservable: this.subscriptionsDropDown.subscriptionId,
+    resourceTypesObservable: ko.observable([resourceType]),
+    validations: ko.observableArray([
+        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectLocation)
+    ])
+    // hiding: {
+    //     hide: (loc) => loc.name === "eastus",
+    //     // Provide a reason for hiding locations.
+    //     reason: createStrings.hiddenReason
+    // },
+    // disable: (loc) => loc.name === "centralus" && createStrings.disabledReason
+});
+
+```
+
+<a name="building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions-pricing-dropdown"></a>
+#### Pricing dropdown
 ```ts
 *`MsPortalFx.Azure.Pricing.DropDown`
 
 import * as Specs from "Fx/Specs/DropDown";
-...
-public specDropDown: Specs.DropDown;
-...
+```
+```typescript
+
+// The spec picker initial data observable.
+const initialDataObservable = ko.observable<SpecPicker.InitialData>({
+    selectedSpecId: "A0",
+    entityId: "",
+    recommendedSpecIds: ["small_basic", "large_standard"],
+    recentSpecIds: ["large_basic", "medium_basic"],
+    selectRecommendedView: false,
+    subscriptionId: "subscriptionId",
+    regionId: "regionId",
+    options: { test: "DirectEA" },
+    disabledSpecs: [
+        {
+            specId: "medium_standard",
+            message: ClientResources.robotPricingTierLauncherDisabledSpecMessage,
+            helpBalloonMessage: ClientResources.robotPricingTierLauncherDisabledSpecHelpBalloonMessage,
+            helpBalloonLinkText: ClientResources.robotPricingTierLauncherDisabledSpecLinkText,
+            helpBalloonLinkUri: ClientResources.robotPricingTierLauncherDisabledSpecLinkUri
+        }
+    ]
+});
 this.specDropDown = new Specs.DropDown(container, {
     form: this,
-    accessor: this.createEditScopeAccessor((data) => {
+    accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
         return data.spec;
     }),
-    supplyInitialData: supplyInitialData,
-    /**
-     * This extender should be the same extender view model used for the spec
-     * picker blade. You may need to extend your data context or share your data context between
-     * your create area and you spec picker area to use the extender with the current datacontext
-     */
-    specPickerExtender: new BillingSpecPickerExtender.BillingSpecPickerV3Extender(container, supplyInitialData(), dataContext)
+    initialData: initialDataObservable,
+    // This extender should be the same extender view model used for the spec picker blade.
+    // You may need to extend your data context or share your data context between your
+    // create area and you spec picker area to use the extender with the current datacontext.
+    specPickerExtender: new BillingSpecPickerExtender.BillingSpecPickerV3Extender(container, initialDataObservable(), dataContext),
+    pricingBlade: {
+        detailBlade: "BillingSpecPickerV3",
+        detailBladeInputs: {},
+        hotspot: "EngineSpecDropdown1"
+    }
 });
 
 ```
-<a name="building-custom-create-forms-standard-arm-fields-additional-custom-validation-to-the-arm-fields"></a>
+
+<a name="building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions-additional-custom-validation-to-the-arm-fields"></a>
 #### Additional/custom validation to the ARM fields
 Sometimes you need to add extra validation on any of the previous ARM fields. For instance, you might want to check with you RP/backend to make sure that the selected location is available in certain cirqumstances. To do that, just add a custom validator like you would do with any regular form field. Exmaple:
 
@@ -335,7 +583,7 @@ var locationsDropDownOptions: LocationsDropDown.Options = {
 this.locationsDropDown = new LocationsDropDown(container, locationsDropDownOptions);
 ```
 
-<a name="building-custom-create-forms-standard-arm-fields-wizards"></a>
+<a name="building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions-wizards"></a>
 #### Wizards
 The Azure portal has a **legacy pattern** for wizard blades, however customer feedback and usability has proven the design
 isn't ideal and shouldn't be used. Additionally, the wizard wasn't designed for

@@ -31,7 +31,7 @@ Be aware that [timezoneoffset](http://tantek.com/2015/218/b1/use-timezone-offset
 <a name="migrating-from-older-datetimecombo-or-datetimecombobox"></a>
 ## Migrating from older DateTimeCombo or DateTimeComboBox
 
-If you're combining two older DateTimeComboBoxes together to select a date/time range, please migrate to [DateTimeRangePicker](#portalfx-controls-datetimerangepicker.md)
+If you're combining two older DateTimeComboBoxes together to select a date/time range, please migrate to [DateTimeRangePicker](portalfx-controls-datetimerangepicker.md)
 
 1. Update the namespace with DateTimePicker
 
