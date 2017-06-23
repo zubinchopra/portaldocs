@@ -174,7 +174,7 @@ Here is a table that explains mapping of portal environment to extension configu
 | Environment     | URL                                               | Configuration File                                                                                                                                                               |
 |-----------------|---------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |                 |                                                   | (in portal repo)                                                                                                                                                                 |
-| **DOGFOOD**     | `df.{extension}.onecloud-ext.azure-test.net`      | [Extensions.test.json](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?path=%2FRDPackages%2FOneCloud%2FExtensions.test.json&version=GBdev&_a=contents) |
+| **DOGFOOD**     | `df.{extension}.onecloud-ext.azure-test.net`      | [Extensions.dogfood.json](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?path=%2FRDPackages%2FOneCloud%2FExtensions.dogfood.json&version=GBdev&_a=contents) |
 | **RC**          | `rc.{extension}.onecloud-ext.azure-test.net`      | [Extensions.prod.json](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?path=%2FRDPackages%2FOneCloud%2FExtensions.prod.json&version=GBdev&_a=contents) |                                                                                                                                                                                 |
 | **MPAC**        | `ms.{extension}.onecloud-ext.azure-test.net`      | [Extensions.prod.json](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?path=%2FRDPackages%2FOneCloud%2FExtensions.prod.json&version=GBdev&_a=contents) |                                                                                                                                                                                |
 | **Preview**     | `preview.{extension}.onecloud-ext.azure-test.net` | [Extensions.prod.json](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?path=%2FRDPackages%2FOneCloud%2FExtensions.prod.json&version=GBdev&_a=contents) |
@@ -184,9 +184,7 @@ Here is a table that explains mapping of portal environment to extension configu
 | **MOONCAKE**    | `main.{extension}.ext.azure.cn`                   | [Extensions.mc.json](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx?path=%2FRDPackages%2FOneCloud%2FExtensions.mc.json&version=GBdev&_a=contents)                    |
 
 
-   
-The above table implies that to manage extension configuraiton in Dogfood, BlackForest, FairFax and MoonCake the extension developer will need to send the pull request tfor modifying Extensions.test.json, Extensions.bf.json, Extensions.ff.json and Extensions.mc.json.
-However, the extension configuration for RC, MPAC, Preview and PROD is managed by the same file Extensions.prod.json. ** Therefore, extension can not host different stamps for these environments.**
+**NOTE** The RC, MPAC, Preview, and PROD environments all share the same `Extensions.prod.json` file for configuration; therefore you can only have one entry for your extension across all these environments.
 
 <a name="understanding-scenarios-for-config-change"></a>
 ## Understanding scenarios for config change
