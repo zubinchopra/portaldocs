@@ -94,11 +94,14 @@ var grid= new Grid.ViewModel<Website, WebsiteId>({
 Opens a blade when an arbitrary html element is clicked.  
  
 __NOTE__: The fxClick handler is new, and designed to handle the async nature of click communication between the shell and your extension
-__NOTE__: You should use semantically correct HTML in order to meet accessibility requirements.
+__NOTE__: You should use semantically correct HTML and should use either "A" or "Button" tags in order to meet accessibility requirements.
+__NOTE__: "A" tag with href "#" will be default prevented to disable navigation to the portal dashboard.
+__NOTE__: "A" tag with href "#someOtherNames" can be used for internal portal navigations and it will not be default prevented.
 
 ```javascript
 // Your html template
-<a data-bind= "fxClick: myOnClick">Click me!</a>
+<a href="#" data-bind="fxClick: myOnClick">Click me!</a>
+<button data-bind="fxClick: myOnClick">Click me!</button>
  
 // Your template blade or part view model
 public myOnClick(): void {
