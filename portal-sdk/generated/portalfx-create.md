@@ -6,7 +6,9 @@
     * [Add a provisioner component](#building-custom-create-forms-add-a-provisioner-component)
     * [Build your form](#building-custom-create-forms-build-your-form)
     * [Standard ARM fields](#building-custom-create-forms-standard-arm-fields)
+    * [Edit scopeless based accessible dropdowns](#building-custom-create-forms-edit-scopeless-based-accessible-dropdowns)
     * [ARM dropdown options](#building-custom-create-forms-arm-dropdown-options)
+    * [Edit scope based accessible dropdowns](#building-custom-create-forms-edit-scope-based-accessible-dropdowns)
     * [Migrating from legacy ARM dropdowns to Accessible versions](#building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions)
     * [Validation](#building-custom-create-forms-validation)
     * [Automation options](#building-custom-create-forms-automation-options)
@@ -188,7 +190,9 @@ Learn more about [building forms](portalfx-forms.md).
 ### Standard ARM fields
 All ARM subscription resources require a subscription, resource group, location and pricing dropdown. The portal offers built-in controls for each of these. Refer to the EngineV3 Create sample (`SamplesExtension\Extension\Client\Create\EngineV3\ViewModels\CreateEngineBladeViewModel.ts`) for a working example.
 
-<a name="building-custom-create-forms-standard-arm-fields-subscriptions-dropdown"></a>
+<a name="building-custom-create-forms-edit-scopeless-based-accessible-dropdowns"></a>
+### Edit scopeless based accessible dropdowns
+<a name="building-custom-create-forms-edit-scopeless-based-accessible-dropdowns-subscriptions-dropdown"></a>
 #### Subscriptions dropdown
 ```ts
 import * as SubscriptionDropDown from "Fx/Controls/SubscriptionDropDown";
@@ -209,7 +213,7 @@ const subId = ko.pureComputed(() => {
 
 ```
 
-<a name="building-custom-create-forms-standard-arm-fields-resource-groups-dropdown"></a>
+<a name="building-custom-create-forms-edit-scopeless-based-accessible-dropdowns-resource-groups-dropdown"></a>
 #### Resource groups dropdown
 ```ts
 import * as ResourceGroupDropDown from "Fx/Controls/ResourceGroupDropDown";
@@ -225,7 +229,7 @@ this.resourceGroupDropDown = ResourceGroupDropDown.create(container, {
 });
 
 ```
-<a name="building-custom-create-forms-standard-arm-fields-locations-dropdown"></a>
+<a name="building-custom-create-forms-edit-scopeless-based-accessible-dropdowns-locations-dropdown"></a>
 #### Locations dropdown
 ```ts
 import * as LocationDropDown from "Fx/Controls/LocationDropDown";
@@ -306,9 +310,31 @@ sort: (a: DropDown.Subscription, b: DropDown.Subscription) => MsPortalFx.compare
  
 If you sort and use disable or group functionality, this will sort inside of the groups provided.
 
+<a name="building-custom-create-forms-edit-scope-based-accessible-dropdowns"></a>
+### Edit scope based accessible dropdowns
 <a name="building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions"></a>
 ### Migrating from legacy ARM dropdowns to Accessible versions
 For scenarios where your Form is built in terms of EditScope, the FX now provides versions of the new, accessible ARM dropdowns that are drop-in replacements for old, non-accessible controls.  These have minimal API changes and are simple to integrate into existing Blades/Parts.
+
+The following options are no longer available for these dropdowns
+
+`cssClass` - no alternative
+`dropDownWidth` - no alternative
+`filterOptions` - no alternative
+`hideValidationCheck` - no alternative
+`iconLookup` - no alternative
+`iconSize` - no alternative
+`infoBalloonContent` - no alternative
+`inputAlignment` - no alternative
+`labelPosition` - The `label` option accepts html
+`options` - no alternative
+`popupAlignment` - no alternative
+`showValidationMessagesBelowControl` - no alternative
+`subLabel` - The `label` option accepts html
+`subLabelPosition` - The `label` option accepts html
+`telemetryKeys` - no alternative
+`viewModelValueChangesAreClean` - no alternative
+`visible` - use the `visible` binding in your html template
 
 <a name="building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions-subscriptions-dropdown"></a>
 #### Subscriptions dropdown

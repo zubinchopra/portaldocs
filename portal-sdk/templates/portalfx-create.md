@@ -163,6 +163,7 @@ Learn more about [building forms](portalfx-forms.md).
 ### Standard ARM fields
 All ARM subscription resources require a subscription, resource group, location and pricing dropdown. The portal offers built-in controls for each of these. Refer to the EngineV3 Create sample (`SamplesExtension\Extension\Client\Create\EngineV3\ViewModels\CreateEngineBladeViewModel.ts`) for a working example.
 
+### Edit scopeless based accessible dropdowns
 #### Subscriptions dropdown
 ```ts
 import * as SubscriptionDropDown from "Fx/Controls/SubscriptionDropDown";
@@ -211,8 +212,29 @@ If you want to sort values in the dropdown, supply the 'sort' option, which shou
  
 If you sort and use disable or group functionality, this will sort inside of the groups provided.
 
+### Edit scope based accessible dropdowns
 ### Migrating from legacy ARM dropdowns to Accessible versions
 For scenarios where your Form is built in terms of EditScope, the FX now provides versions of the new, accessible ARM dropdowns that are drop-in replacements for old, non-accessible controls.  These have minimal API changes and are simple to integrate into existing Blades/Parts.
+
+The following options are no longer available for these dropdowns
+
+`cssClass` - no alternative
+`dropDownWidth` - no alternative
+`filterOptions` - no alternative
+`hideValidationCheck` - no alternative
+`iconLookup` - no alternative
+`iconSize` - no alternative
+`infoBalloonContent` - no alternative
+`inputAlignment` - no alternative
+`labelPosition` - The `label` option accepts html
+`options` - no alternative
+`popupAlignment` - no alternative
+`showValidationMessagesBelowControl` - no alternative
+`subLabel` - The `label` option accepts html
+`subLabelPosition` - The `label` option accepts html
+`telemetryKeys` - no alternative
+`viewModelValueChangesAreClean` - no alternative
+`visible` - use the `visible` binding in your html template
 
 #### Subscriptions dropdown
 In your current EditScope-based form, your Subscription dropdown looks something like this:
