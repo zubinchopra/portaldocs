@@ -104,8 +104,8 @@ this.viewModelFactories.Blades().setDataContextFactory<typeof Blades>(
 Run the following [query][kusto-extension-reliability-summary]
 
 ```txt
-GetExtensionFailuresSummary(ago(1d))
-| where extensionName contains "Microsoft_Azure_Compute"
+GetExtensionFailuresSummary(ago(1d), now())
+| where extension contains "Microsoft_Azure_Compute"
 ```
 
 Updating the extensionName to be your extension, and increase the time range if the last 24 hours isn't sufficient.
@@ -303,8 +303,8 @@ to investigate further.
 Firstly, run the following [query][kusto-blade-reliabiltiy-summary], ensure you update the extension/time range.
 
 ```txt
-GetBladeFailuresSummary(ago(1h))
-| where extension == "Microsoft_Azure_Compute"
+GetBladeFailuresSummary(ago(1d), now())
+| where extension contains "Microsoft_Azure_Compute"
 ```
 
 | Field name        | Definition |
@@ -399,8 +399,8 @@ Once you have that, correlate the error reasons with the below list to see the g
 Firstly, run the following [query][kusto-part-reliabiltiy-summary], ensure you update the extension/time range.
 
 ```txt
-GetPartFailuresSummary(ago(1h))
-| where extension == "Microsoft_Azure_Compute"
+GetPartFailuresSummary(ago(1d), now())
+| where extension contains "Microsoft_Azure_Compute"
 ```
 
 | Field name        | Definition |
@@ -511,6 +511,6 @@ Once you have that, correlate the error reasons with the below list to see the g
 [TelemetryOnboarding]: <portalfx-telemetry-getting-started.md>
 [Ext-Perf/Rel-Report]: <http://aka.ms/portalfx/dashboard/extensionperf>
 [portalfx-cdn]: <portalfx-cdn>
-[kusto-extension-reliability-summary]: <https://azportal.kusto.windows.net:443/AzurePortal?query=H4sIAAAAAAAEAHNPLXGtKEnNK87Mz3NLzMwpLUotDi7NzU0sqtRITM%2fXMEzR1OTlqlEoz0gtSlVIhSn1S8xNVUjOzytJzMwrVlDyzUwuyi%2fOTyuJd6wCmhDvnJ9bUFqSqsTLxcsFAAXqLsliAAAA>
-[kusto-blade-reliabiltiy-summary]: <https://azportal.kusto.windows.net:443/AzurePortal?query=H4sIAAAAAAAEAHNPLXHKSUxJdUvMzCktSi0OLs3NTSyq1EhMz9cwzNDU5OWqUSjPSC1KVUitKEnNK87Mz1OwtVVQ8s1MLsovzk8riXesAuqLd87PLSgtSVXi5QJBADW0cJdWAAAA>
-[kusto-part-reliabiltiy-summary]: <https://azportal.kusto.windows.net:443/AzurePortal?query=H4sIAAAAAAAEAHNPLQlILCpxS8zMKS1KLQ4uzc1NLKrUSEzP1zDM0NTk5apRKM9ILUpVSK0oSc0rzszPU7C1VVDyzUwuyi%2fOTyuJd6wC6ot3zs8tKC1JVQIAAv63pU8AAAA%3d>
+[kusto-extension-reliability-summary]: <https://azportal.kusto.windows.net:443/AzurePortal?query=H4sIAAAAAAAEAHNPLXGtKEnNK87Mz3NLzMwpLUotDi7NzU0sqtRITM%2fXMEzR1FHIyy%2fX0NTk5apRKM9ILUpVSIXpUEjOzytJzMwrVlDyzUwuyi%2fOTyuJd6wCGhLvnJ9bUFqSqsTLxcsFALeT50BlAAAA>
+[kusto-blade-reliabiltiy-summary]: <https://azportal.kusto.windows.net:443/AzurePortal?query=H4sIAAAAAAAEAHNPLXHKSUxJdUvMzCktSi0OLs3NTSyq1EhMz9cwTNHUUcjLL9fQ1OTlqlEoz0gtSlVIrShJzSvOzM9TSM7PK0nMzCtWUPLNTC7KL85PK4l3rAIaEu%2bcn1tQWpKqxMvFywUAav8eqGEAAAA%3d>
+[kusto-part-reliabiltiy-summary]: <https://azportal.kusto.windows.net:443/AzurePortal?query=H4sIAAAAAAAEAHNPLQlILCpxS8zMKS1KLQ4uzc1NLKrUSEzP1zBM0dRRyMsv19DU5OWqUSjPSC1KVUitKEnNK87Mz1NIzs8rSczMK1ZQ8s1MLsovzk8riXesAhoS75yfW1BakqrEy8XLBQALqy%2fAYAAAAA%3d%>

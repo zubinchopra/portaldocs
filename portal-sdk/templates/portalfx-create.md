@@ -163,10 +163,61 @@ Learn more about [building forms](portalfx-forms.md).
 ### Standard ARM fields
 All ARM subscription resources require a subscription, resource group, location and pricing dropdown. The portal offers built-in controls for each of these. Refer to the EngineV3 Create sample (`SamplesExtension\Extension\Client\Create\EngineV3\ViewModels\CreateEngineBladeViewModel.ts`) for a working example.
 
-##### Subscriptions dropdown
+#### Subscriptions dropdown
 ```ts
-* `MsPortalFx.Azure.Subscriptions.DropDown`
+import * as SubscriptionDropDown from "Fx/Controls/SubscriptionDropDown";
+```
+{"gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#subscriptionDropDown"}
 
+#### Resource groups dropdown
+```ts
+import * as ResourceGroupDropDown from "Fx/Controls/ResourceGroupDropDown";
+```
+{"gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
+#### Locations dropdown
+```ts
+import * as LocationDropDown from "Fx/Controls/LocationDropDown";
+```
+{"gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#locationDropDown"}
+
+### ARM dropdown options
+Each ARM dropdown can disable, hide, group, and sort.
+ 
+#### Disable
+This is the preferred method of disallowing the user to select a value from ARM. The disable callback will run for each fetched value from ARM. The return value of your callback will be a reason for why the value is disabled. If no reason is provided, then the value will not be disabled. This is to ensure the customer has information about why they can’t select an option, and reduces support calls.
+{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#disable"}
+When disabling, the values will be displayed in groups with the reason they are disabled as the group header. Disabled groups will be placed at the bottom of the dropdown list.
+ 
+#### Hide
+This is an alternative method of disallowing the user to select a value from ARM. The hide callback will run for each fetched value from ARM. The return value of your callback will return a boolean for if the value should be hidden. If you choose to hide, a message telling the user why some values are hidden is required.
+{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#hide"}
+
+##### Note on Hide
+It's recommended to use the `disable` option so you can provide scenario-specific detail as to why a given dropdown value is disabled, and customers will be able to see that their specific desired value is not available. Disabling is preferable to hiding, as users often react negatively when they cannot visually locate their expected dropdown value.  In extreme cases, this can trigger incidents with your Blade.
+
+#### Group
+This is a way for you to group values in the dropdown. The group callback will take a value from the dropdown and return a display string for which group the value should be in. If no display string or an empty string is provided, then the value will default to the top level of the group dropdown.
+ 
+If you want to sort the groups (not the values within the group), you can supply the 'sort' option, which should be a conventional comparator function that determines the sort order by returning a number greater or less than zero. It defaults to alphabetical sorting.
+ 
+{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#group"}
+ 
+If you both disable and group, values which are disabled will be placed under the disabled group rather than the grouping provided in this callback.
+ 
+#### Sort
+If you want to sort values in the dropdown, supply the 'sort' option, which should be a convention comparator function that returns a number greater or less than zero. It defaults to alphabetical based on the display string of the value.
+ 
+{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#sort"}
+ 
+If you sort and use disable or group functionality, this will sort inside of the groups provided.
+
+### Migrating from legacy ARM dropdowns to Accessible versions
+For scenarios where your Form is built in terms of EditScope, the FX now provides versions of the new, accessible ARM dropdowns that are drop-in replacements for old, non-accessible controls.  These have minimal API changes and are simple to integrate into existing Blades/Parts.
+
+#### Subscriptions dropdown
+In your current EditScope-based form, your Subscription dropdown looks something like this:
+```ts
+import SubscriptionsDropDown = MsPortalFx.Azure.Subscriptions.DropDown;
 // The subscriptions drop down.
 var subscriptionsDropDownOptions: SubscriptionsDropDown.Options = {
     options: ko.observableArray([]),
@@ -189,10 +240,18 @@ var subscriptionsDropDownOptions: SubscriptionsDropDown.Options = {
 };
 this.subscriptionsDropDown = new SubscriptionsDropDown(container, subscriptionsDropDownOptions);
 ```
-##### Resource groups dropdown
-```ts
-* `MsPortalFx.Azure.ResourceGroups.DropDown`
 
+With the new, accessible Subscription dropdown, you'll change your code to look something like:
+```ts
+import * as SubscriptionDropDown from "FxObsolete/Controls/SubscriptionDropDown";
+```
+{"gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#subscriptionDropDown"}
+
+#### Resource groups **legacy** dropdown
+In your current EditScope-based form, your Resource Group dropdown looks something like this:
+```ts
+import ResourceGroupsDropDown = MsPortalFx.Azure.ResourceGroups.DropDown;
+// The resource group drop down.
 var resourceGroupsDropDownOptions: ResourceGroups.DropDown.Options = {
     options: ko.observableArray([]),
     form: this,
@@ -205,10 +264,7 @@ var resourceGroupsDropDownOptions: ResourceGroups.DropDown.Options = {
         new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectResourceGroup),
         new MsPortalFx.Azure.RequiredPermissionsValidator(requiredPermissionsCallback)
     ]),
-    // Specifying the 'defaultNewValue' property provides a default name in the create new
-    // text box (shown if the user chooses to create a new resource group). If a resource group
-    // already exists with the same name, it will be automatically incremented (e.g.
-    // "NewResourceGroup_1", "NewResourceGroup_2", etc.).
+    // This is no longer supported. Set the `value` option to initial desired value
     defaultNewValue: "NewResourceGroup",
     // Optional -> RBAC permission checks on the resource group. Here, we're making sure the
     // user can create an engine under the selected resource group, but you can add any actions
@@ -223,25 +279,30 @@ var resourceGroupsDropDownOptions: ResourceGroups.DropDown.Options = {
 };
 this.resourceGroupDropDown = new ResourceGroups.DropDown(container, resourceGroupsDropDownOptions);
 ```
-##### Locations dropdown
-```ts
-* `MsPortalFx.Azure.Locations.DropDown`
-* [`Fx/Specs/DropDown`](/portal-sdk/generated/portalfx-extension-development.md#portalfx-extension-pricing-tier)
 
-  // The locations drop down.
- var locationsDropDownOptions: LocationsDropDown.Options = {
+With the new, accessible Resource Group dropdown, you'll change your code to look something like:
+```ts
+import * as ResourceGroupDropDown from "FxObsolete/Controls/ResourceGroupDropDown";
+```
+{"gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
+
+#### Locations **legacy** dropdown
+In your current EditScope-based form, your Location dropdown looks something like this:
+```ts
+import LocationsDropDown = MsPortalFx.Azure.Locations.DropDown;
+// The locations drop down.
+var locationsDropDownOptions: LocationsDropDown.Options = {
     options: ko.observableArray([]),
     form: this,
     accessor: this.createEditScopeAccessor((data) => {
         return data.location;
     }),
-    subscriptionIdObservable: this.subscriptionsDropDown.subscriptionId,
+    subscriptionIdObservable: this.LocationDropDown.subscriptionId,
     resourceTypesObservable: ko.observable([resourceType]),
     validations: ko.observableArray<MsPortalFx.ViewModels.Validation>([
         new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectLocation)
     ])
-    // Optional -> Add location filtering by either providing a list of allowed locations
-    // OR a list of disallowed locations (not both). This can also be an observable.
+    // Optional -> This is no longer supported. Use the `disable` option (illustrated below).
     // filter: {
     //     allowedLocations: {
     //         locationNames: [ "centralus" ],
@@ -253,31 +314,22 @@ this.resourceGroupDropDown = new ResourceGroups.DropDown(container, resourceGrou
     //     }]
     // }
 };
-this.locationsDropDown = new LocationsDropDown(container, locationsDropDownOptions);
 ```
-##### Pricing dropdown
+
+With the new, accessible Location dropdown, you'll change your code to look something like:
+```ts
+import * as LocationDropDown from "FxObsolete/Controls/LocationDropDown";
+```
+{"gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#locationDropDown"}
+
+#### Pricing dropdown
 ```ts
 *`MsPortalFx.Azure.Pricing.DropDown`
 
 import * as Specs from "Fx/Specs/DropDown";
-...
-public specDropDown: Specs.DropDown;
-...
-this.specDropDown = new Specs.DropDown(container, {
-    form: this,
-    accessor: this.createEditScopeAccessor((data) => {
-        return data.spec;
-    }),
-    supplyInitialData: supplyInitialData,
-    /**
-     * This extender should be the same extender view model used for the spec
-     * picker blade. You may need to extend your data context or share your data context between
-     * your create area and you spec picker area to use the extender with the current datacontext
-     */
-    specPickerExtender: new BillingSpecPickerExtender.BillingSpecPickerV3Extender(container, supplyInitialData(), dataContext)
-});
-
 ```
+{"gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#specDropDown"}
+
 #### Additional/custom validation to the ARM fields
 Sometimes you need to add extra validation on any of the previous ARM fields. For instance, you might want to check with you RP/backend to make sure that the selected location is available in certain cirqumstances. To do that, just add a custom validator like you would do with any regular form field. Exmaple:
 
