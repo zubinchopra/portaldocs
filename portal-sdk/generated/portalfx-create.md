@@ -261,7 +261,7 @@ When disabling, the values will be displayed in groups with the reason they are 
  
 <a name="building-custom-create-forms-arm-dropdown-options-hide"></a>
 #### Hide
-This is an alternative method of disallowing the user to select a value from ARM. It's recommended to use the `disable` option so you can provide scenario-specific detail as to why a given dropdown value is disabled, and customers will be able to see that their specific desired location is not available. Disabling is preferable to hiding, as users often react negatively when they cannot visually locate their expected dropdown value.  In extreme cases, this can trigger incidents with your Blade. The hide callback will run for each fetched value from ARM. The return value of your callback will return a boolean for if the value should be hidden. If you choose to hide, a message telling the user why some values are hidden is required.
+This is an alternative method of disallowing the user to select a value from ARM. The hide callback will run for each fetched value from ARM. The return value of your callback will return a boolean for if the value should be hidden. If you choose to hide, a message telling the user why some values are hidden is required.
 ```typescript
 
 hiding: {
@@ -270,12 +270,16 @@ hiding: {
 }
 
 ```
- 
+
+<a name="building-custom-create-forms-arm-dropdown-options-hide-note-on-hide"></a>
+##### Note on Hide
+It's recommended to use the `disable` option so you can provide scenario-specific detail as to why a given dropdown value is disabled, and customers will be able to see that their specific desired value is not available. Disabling is preferable to hiding, as users often react negatively when they cannot visually locate their expected dropdown value.  In extreme cases, this can trigger incidents with your Blade.
+
 <a name="building-custom-create-forms-arm-dropdown-options-group"></a>
 #### Group
 This is a way for you to group values in the dropdown. The group callback will take a value from the dropdown and return a display string for which group the value should be in. If no display string or an empty string is provided, then the value will default to the top level of the group dropdown.
  
-A sort method has also been provided if you want to sort groups. It is a comparator function which takes two strings, the display strings of the groups you provide, and returns a number for the comparison. It defaults to alphabetical sorting.
+If you want to sort the groups (not the values within the group), you can supply the 'sort' option, which should be a conventional comparator function that determines the sort order by returning a number greater or less than zero. It defaults to alphabetical sorting.
  
 ```typescript
 
@@ -305,19 +309,6 @@ If you sort and use disable or group functionality, this will sort inside of the
 <a name="building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions"></a>
 ### Migrating from legacy ARM dropdowns to Accessible versions
 For scenarios where your Form is built in terms of EditScope, the FX now provides versions of the new, accessible ARM dropdowns that are drop-in replacements for old, non-accessible controls.  These have minimal API changes and are simple to integrate into existing Blades/Parts.
-
-We have created a version of the accessible dropdowns which will enable you to upgrade with minimal api changes. 
-The options interface supports the following
--`form`
--`accessor` 
-These options enable the dropdowns to support editscope. 
-Validations have been changed to only support custom validations or `required` validations.
-
-The produced viewmodel will also fulfill the orignal contract for the following members
--`getObjectByName`
--`items`
-All other options and properties are either part of the new drop downs, or no longer available/supported. 
-
 
 <a name="building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions-subscriptions-dropdown"></a>
 #### Subscriptions dropdown
@@ -355,7 +346,6 @@ import * as SubscriptionDropDown from "FxObsolete/Controls/SubscriptionDropDown"
 
 // The subscriptions drop down.
 const subscriptionsDropDownOptions: SubscriptionDropDown.Options = {
-    options: ko.observableArray([]),
     form: this,
     accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
         return data.subscription;
@@ -418,7 +408,6 @@ import * as ResourceGroupDropDown from "FxObsolete/Controls/ResourceGroupDropDow
 ```typescript
 
 this.resourceGroupDropDown = ResourceGroupDropDown.create(container, {
-    options: ko.observableArray([]),
     form: this,
     accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
         return data.resourceGroup;
@@ -463,7 +452,7 @@ var locationsDropDownOptions: LocationsDropDown.Options = {
     validations: ko.observableArray<MsPortalFx.ViewModels.Validation>([
         new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectLocation)
     ])
-    // Optional -> This is no longer supported. Use the `disable` option (illustrated bellow).
+    // Optional -> This is no longer supported. Use the `disable` option (illustrated below).
     // filter: {
     //     allowedLocations: {
     //         locationNames: [ "centralus" ],
@@ -485,7 +474,6 @@ import * as LocationDropDown from "FxObsolete/Controls/LocationDropDown";
 
 // The locations drop down.
 this.locationsDropDown = LocationDropDown.create(container, {
-    options: ko.observableArray([]),
     form: this,
     accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
         return data.location;

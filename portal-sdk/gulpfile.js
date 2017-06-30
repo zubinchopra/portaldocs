@@ -78,7 +78,14 @@ gulp.task('portal', function () {
                 return Q.ninvoke(dir, "paths", generatedDir, true)
                 .then(function(generatedFiles) {
                     console.log("Verifying urls are valid... (This may take a a couple of minutes)");
-                    checkLinkPromises = generatedFiles.map(function (fileName) {
+                    checkLinkPromises = generatedFiles.filter(function (fileName) {
+                        var filesToSkip = [
+                            "breaking-changes.md",
+                            "release-notes.md",
+                        ]
+                        
+                        return !filesToSkip.some(function(p) { return fileName.toUpperCase().endsWith(p.toUpperCase()) })
+                    }).map(function (fileName) {
                         return gulpCommon.checkLinks(path.resolve(generatedDir, fileName));
                     });
                     return Q.allSettled(checkLinkPromises);
@@ -99,7 +106,6 @@ gulp.task('portal', function () {
                         }
                     });
                 });
-                
             }
             
             return Q.defer().resolve();
