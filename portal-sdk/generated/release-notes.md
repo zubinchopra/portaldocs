@@ -1,4 +1,12 @@
-# Release Notes since 3/3/2017
+# Release Notes since 3/7/2017
+
+## 5.0.302.794
+0 Breaking Changes, 1 Features added and 1 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9541358'>9541358</a></td><td>Bug Fix</td><td>[Partner Request] - Update extension configuration for Microsoft_Azure_Batch in National Clouds</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9011051'>9011051</a></td><td>Feature</td><td>Roll Mooncake certificates to use new Certificate Authority</td></tr></table>
+
+## 5.0.302.792
+0 Breaking Changes, 0 Features added and 3 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9673089'>9673089</a></td><td>Bug Fix</td><td>[Custom deployment] Quickstart templates loaded from within the portal may fail to deploy because we send the incorrect URL to ARM</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9663436'>9663436</a></td><td>Bug Fix</td><td>[Fairfax] Moving IaaS V2 Extensions to hosting service</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9563242'>9563242</a></td><td>Bug Fix</td><td>AMD Dropdown does not reflect changes when in multiselect mode and using edit scope accessors</td></tr></table>
 
 ## 5.0.302.790
 0 Breaking Changes, 1 Features added and 1 Bugs Fixed
