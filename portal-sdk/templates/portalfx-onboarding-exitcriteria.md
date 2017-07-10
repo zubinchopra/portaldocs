@@ -26,7 +26,7 @@ MPAC and PROD performance is included in weekly status emails and each team is e
 
 See also:
 - [Dashboard](http://aka.ms/portalfx/dashboard/extensionperf)
-    - [Join auxdatapartners](http://igroup/join/auxdatapartners) for access
+    - [Telemetry Access](http://aka.ms/portalfx/docs/telemetryaccess) for access
 - [Checklist](/portal-sdk/generated/index-portalfx-extension-monitor.md#performance-checklist)
 - [Portal COP](/portal-sdk/generated/index-portalfx-extension-monitor.md#portalcop)
 - [Best pracitces](/portal-sdk/generated/index-portalfx-extension-monitor.md#performance-best-practices)
