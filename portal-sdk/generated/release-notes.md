@@ -1,4 +1,4 @@
-# Release Notes since 3/7/2017
+# Release Notes since 3/11/2017
 
 ## 5.0.302.794
 0 Breaking Changes, 1 Features added and 1 Bugs Fixed
@@ -160,7 +160,7 @@ Error: Could not get cost undefined
 
 ## 5.0.302.719
 0 Breaking Changes, 1 Features added and 1 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9046184'>9046184</a></td><td>Bug Fix</td><td>Merge DocDb changes from MPAC to PROD</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9042647'>9042647</a></td><td>Feature</td><td>Enable DocDB in FairFax</td></tr></table>
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9046184'>9046184</a></td><td>Bug Fix</td><td>Merge DocDb changes from MPAC to PROD</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9042647'>9042647</a></td><td>Feature</td><td>[DocDB] Enable in FairFax</td></tr></table>
 
 ## 5.0.302.717
 0 Breaking Changes, 0 Features added and 2 Bugs Fixed
