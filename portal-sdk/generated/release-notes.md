@@ -1,4 +1,12 @@
-# Release Notes since 3/11/2017
+# Release Notes since 3/12/2017
+
+## 5.0.302.797
+0 Breaking Changes, 1 Features added and 0 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9697470'>9697470</a></td><td>Feature</td><td>[ExtensionConfiguration] Enabling portal extension Microsoft_Azure_RecoveryServices in MoonCake</td></tr></table>
+
+## 5.0.302.796
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9691530'>9691530</a></td><td>Bug Fix</td><td>[Partner Request] - Enable DNS curation under Networking in BlackForest</td></tr></table>
 
 ## 5.0.302.794
 0 Breaking Changes, 1 Features added and 1 Bugs Fixed
