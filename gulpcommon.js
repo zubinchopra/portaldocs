@@ -17,9 +17,9 @@ var gitdown = require('gitdown');
 var path = require('path');
 var Q = require('q');
 var util = require('util');
-var checkPages = require('check-pages');
 var chalk = require('chalk');
 var urlExt = require('url-extractor');
+var fetch = require('node-fetch');
 var findup = require('findup');
 var gitPath = findup.sync(process.cwd(), '.git\\HEAD');
 var MarkdownContents = require('markdown-contents');
@@ -263,6 +263,7 @@ var self = module.exports = {
                 "onestb.cloudapp.net",  // fake url
                 "perf.demo.ext.azure.com",  // fake url
                 "ramweb",  // returns a certificate not trusted error
+                "servicetree.msftcloudes.com",  // returns 302 Unauthorized (invalid)
                 "technet.microsoft.com/en-us/library/cc730629(v=ws.10", // Bug in url extractor where its not capturing the entire url
                 "www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot;&gt;", // Bug in url extractor where it captured extra characters after the url
                 "&#x6d;", // html encoding for mailto: some reason there are multiple encodings
@@ -314,48 +315,37 @@ var self = module.exports = {
                 }
             });
         }).then(function() {
-            try {
-                // the check-pages tool doesn't like mp4's so skip them
-                var filteredLinks = links.filter(function(l) { return !l.endsWith(".mp4") })
-                
-                if (filteredLinks.length > 0) {
-                    //console.log("Links for " + inputFile);
-                    //console.log(chalk.yellow(filteredLinks));
-                    var checkPagesOptions = {
-                        pageUrls: filteredLinks,
-                        checkLinks: false,
-                        noEmptyFragments: true,
-                        noLocalLinks: true,
-                        queryHashes: true
-                        };
-                    
-                    var captureConsole = { 
-                        log: function(message) {
-                            // Do nothing if the link was succesful
-                        },
-                        error: function(message) {
-                            // 401 and 403 usually mean they require login/authentication, so ignore those failures
-                            if (!(message.startsWith("Bad page (401)") || message.startsWith("Bad page (403)"))) {
-                                var messageUrl = message.substring(message.indexOf(": ") + 2, message.length);
-                                var messageReason = message.substring(0, message.indexOf(": "));
-                                brokenLinks.push({ "url": messageUrl, "inputFile":inputFile, "reason": messageReason, "data":message })
+            // Check that all links are valid
+            return links.reduce((prev, curr) => {
+                return prev.then(() => {
+                    return fetch(curr, {
+                        method: "HEAD"
+                    }).then((response) => {
+                        if (!response.ok) {
+                            if (response.status === 401 /* Unauthorized */ ||
+                                response.status === 403 /* Forbidden */) {
+                                // Ignore authenticated endpoints
+                            } else if (response.status === 404 /* Not Found */ ||
+                                       response.status === 405 /* Method Not Allowed */ ||
+                                       response.status === 503 /* Service Unavailable */) {
+                                // Retry possibly unsupported HEAD requests
+                                return fetch(curr, {
+                                    method: "GET"
+                                }).then((response) => {
+                                    if (!response.ok) {
+                                        throw new Error(response.statusText);
+                                    }
+                                })
+                            } else {
+                                // Bad link
+                                throw new Error(response.statusText);
                             }
                         }
-                    }
-                    
-                    return Q.nfcall(checkPages, captureConsole, checkPagesOptions).then(function (count) {
-                    if (count > 0) {
-                        // Do nothing.
-                    }}, 
-                    function (err) { 
-                        // Do nothing.
+                    }).catch((ex) => {
+                        brokenLinks.push({ "url": curr, "inputFile": inputFile, "reason": ex.message });
                     });
-                }
-            }
-            catch (err) {
-                console.log(chalk.red("An error occured while checking links: " + err));
-                return Q.defer().resolve();
-            }
+                });
+            }, Q());
         }).then(function() {
             return brokenLinks;
         });
