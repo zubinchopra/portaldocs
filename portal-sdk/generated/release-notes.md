@@ -1,4 +1,8 @@
-# Release Notes since 3/12/2017
+# Release Notes since 3/14/2017
+
+## 5.0.302.798
+0 Breaking Changes, 0 Features added and 2 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9750183'>9750183</a></td><td>Bug Fix</td><td>horizontal scroll appears on parts that use msportalfx-padding class</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9662937'>9662937</a></td><td>Bug Fix</td><td>Batch helper can send more than 20 requests in the same call causing request to fail</td></tr></table>
 
 ## 5.0.302.797
 0 Breaking Changes, 1 Features added and 0 Bugs Fixed
