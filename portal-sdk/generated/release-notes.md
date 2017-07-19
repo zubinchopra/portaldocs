@@ -1,5 +1,17 @@
 # Release Notes since 3/19/2017
 
+## 5.0.302.804
+0 Breaking Changes, 2 Features added and 0 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9734654'>9734654</a></td><td>Feature</td><td>[EHS] EV2 JSON deployment templates and Content Unbundler Ev2 artifact generation</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9538348'>9538348</a></td><td>Feature</td><td>[ExtensionConfiguration] Onboarding for extension Microsoft_Azure_LocationServices</td></tr></table>
+
+## 5.0.302.802
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8369366'>8369366</a></td><td>Bug Fix</td><td>[Partner Request] - Azure Analysis Service - AAD app to access graph.windows.net</td></tr></table>
+
+## 5.0.302.799
+0 Breaking Changes, 2 Features added and 0 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9749232'>9749232</a></td><td>Feature</td><td>[EHS] Add specification of email, extension name and key in the csproj</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9734654'>9734654</a></td><td>Feature</td><td>[EHS] EV2 JSON deployment templates and Content Unbundler Ev2 artifact generation</td></tr></table>
+
 ## 5.0.302.798
 0 Breaking Changes, 0 Features added and 2 Bugs Fixed
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9750183'>9750183</a></td><td>Bug Fix</td><td>horizontal scroll appears on parts that use msportalfx-padding class</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9662937'>9662937</a></td><td>Bug Fix</td><td>Batch helper can send more than 20 requests in the same call causing request to fail</td></tr></table>
