@@ -316,25 +316,25 @@ If you sort and use disable or group functionality, this will sort inside of the
 ### Migrating from legacy ARM dropdowns to Accessible versions
 For scenarios where your Form is built in terms of EditScope, the FX now provides versions of the new, accessible ARM dropdowns that are drop-in replacements for old, non-accessible controls.  These have minimal API changes and are simple to integrate into existing Blades/Parts.
 
-The following options are no longer available for these dropdowns
+These dropdowns are, however, based on a new accessible control which no longer support the following options.
 
-`cssClass` - no alternative
-`dropDownWidth` - no alternative
-`filterOptions` - no alternative
-`hideValidationCheck` - no alternative
-`iconLookup` - no alternative
-`iconSize` - no alternative
-`infoBalloonContent` - no alternative
-`inputAlignment` - no alternative
-`labelPosition` - The `label` option accepts html
-`options` - no alternative
-`popupAlignment` - no alternative
-`showValidationMessagesBelowControl` - no alternative
-`subLabel` - The `label` option accepts html
-`subLabelPosition` - The `label` option accepts html
-`telemetryKeys` - no alternative
-`viewModelValueChangesAreClean` - no alternative
-`visible` - use the `visible` binding in your html template
+- `cssClass` - no alternative
+- `dropDownWidth` - no alternative
+- `filterOptions` - no alternative
+- `hideValidationCheck` - no alternative
+- `iconLookup` - no alternative
+- `iconSize` - no alternative
+- `infoBalloonContent` - no alternative
+- `inputAlignment` - no alternative
+- `labelPosition` - The `label` option accepts html
+- `options` - no alternative
+- `popupAlignment` - no alternative
+- `showValidationMessagesBelowControl` - no alternative
+- `subLabel` - The `label` option accepts html
+- `subLabelPosition` - The `label` option accepts html
+- `telemetryKeys` - no alternative
+- `viewModelValueChangesAreClean` - no alternative
+- `visible` - use the `visible` binding in your html template
 
 <a name="building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions-subscriptions-dropdown"></a>
 #### Subscriptions dropdown
