@@ -1,5 +1,21 @@
 # Release Notes since 3/21/2017
 
+## 5.0.302.811
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9671518'>9671518</a></td><td>Bug Fix</td><td>Replace MetricsBlade with MetricsBladeV2</td></tr></table>
+
+## 5.0.302.810
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9567603'>9567603</a></td><td>Bug Fix</td><td>[Ibiza][LOC] The translation of “Select” doesn’t support some symbols in the web site Spec Picker blade</td></tr></table>
+
+## 5.0.302.806
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9794046'>9794046</a></td><td>Bug Fix</td><td>Upgrade to the latest CosmosDB .NET SDK</td></tr></table>
+
+## 5.0.302.805
+0 Breaking Changes, 2 Features added and 1 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9761084'>9761084</a></td><td>Feature</td><td>PlusNew Blade redirect</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9749935'>9749935</a></td><td>Bug Fix</td><td>[SpecPicker] Remove pricing help link for sovereign clouds</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9734654'>9734654</a></td><td>Feature</td><td>[EHS] EV2 JSON deployment templates and Content Unbundler Ev2 artifact generation</td></tr></table>
+
 ## 5.0.302.804
 0 Breaking Changes, 2 Features added and 0 Bugs Fixed
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9734654'>9734654</a></td><td>Feature</td><td>[EHS] EV2 JSON deployment templates and Content Unbundler Ev2 artifact generation</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9538348'>9538348</a></td><td>Feature</td><td>[ExtensionConfiguration] Onboarding for extension Microsoft_Azure_LocationServices</td></tr></table>
