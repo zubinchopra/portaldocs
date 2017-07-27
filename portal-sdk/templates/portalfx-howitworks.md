@@ -17,17 +17,14 @@ Extensions are simply web applications written using the [Azure Portal SDK](down
 - The core programming model follows the [Model View ViewModel](http://en.wikipedia.org/wiki/Model_View_ViewModel) pattern. Most [UI elements](portalfx-ui-concepts.md) in the portal are backed by dynamic view models, which provide a 'live tile' style of UX.
 - View models make heavy use of [Knockout](http://knockoutjs.com/) for binding data to the client.
 - Building custom UI is enabled using standard web technologies like [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) and [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS).
-- Extensions are deployed to an endpoint owned by the service administrator.  Extension authors are responsible for hosting their own extensions.
+- Extension UI is deployed using the extension hosting service to an endpoint created for your team by ibiza team. 
+- Ibiza recommends not using Controllers so that all the APIs are exposed through ARM. This ensures that Azure portal customers have consistent experience while accessing the resources through UI, powershell or CLI. However, we understand in some scenarios extensions may need to omplement custom business logic. In this case, extension authors are responsible for hosting  controllers.
 
 **NOTE:** Learn more about [deployment](portalfx-deployment.md).
 
 When a user visits the Azure portal, extensions will be loaded based on the users subscription. Extensions can be loaded asynchronously, and even deactivated when it's not currently in use.
 
 ### What's different?
-
-The new Azure portal at [http://portal.azure.com](http://portal.azure.com) is significantly different from a developer perspective from the portal at [http://manage.windowsazure.com](http://manage.windowsazure.com). Based on feedback from developers who extended the management portal, we set out to solve a few challenges.
-
-**NOTE:** The management portal at [http://manage.windowsazure.com](http://manage.windowsazure.com) can still be used for customers who require services not yet available on [http://portal.azure.com](http://portal.azure.com).
 
 - Instead of a single frame, extensions run in their own IFRAME. This provides a certain level of process isolation, allowing for greater reliability, and data protection.
 - Instead of a single code repository, extensions are now developed in a separate repository from the shell.
