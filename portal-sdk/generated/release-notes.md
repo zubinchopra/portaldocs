@@ -1,5 +1,13 @@
 # Release Notes since 3/26/2017
 
+## 5.0.302.813
+0 Breaking Changes, 0 Features added and 2 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9867765'>9867765</a></td><td>Bug Fix</td><td>[SearchBox] Nullref in IE</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9793866'>9793866</a></td><td>Bug Fix</td><td>Remove feature flag and enable Coadmins feature in Mpac</td></tr></table>
+
+## 5.0.302.812
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8833082'>8833082</a></td><td>Bug Fix</td><td>[Partner Request] - Obtain AAD application for OMS extension</td></tr></table>
+
 ## 5.0.302.811
 0 Breaking Changes, 0 Features added and 1 Bugs Fixed
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9671518'>9671518</a></td><td>Bug Fix</td><td>Replace MetricsBlade with MetricsBladeV2</td></tr></table>
