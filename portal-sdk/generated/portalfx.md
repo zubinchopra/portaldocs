@@ -2,10 +2,17 @@
 <a name="home"></a>
 # Home
 
-Ibiza, as Azure's portal, is the framework and design language (UI) that unifies and provides access to all Microsoft cloud offerings. 
-The portal is a web application that provides a single webpage. In the portal, parts of the page are loaded by referencing service extensions that are dynamically accessed based on a customer’s action on the portal.
-The portal is basically a web application that hosts the shell.  The service extensions are built by partners such as Virtual Machine, SQL and DocumentDB using Ibiza SDK which provides the content needed by the portal dynamically. 
-Sounds interesting. Want to become a partner?
+Azure Portal is a single page web application. The parts of the page in the portal are loaded by referencing web applications, known as extensions, that are dynamically accessed based on a customer’s action on the portal. For example, when a customer clicks on virtual machine icon then the portal will automatically load Virtual Machine management extension. 
+
+Partners can instantaneously gain access to Azure portal’s large customer base by developing and registering extensions that provide unified and consistent look and feel.  
+
+The success of Azure portal is dependent on the success of our partners. For our partners to succeed we provide them access to necessary tools and an ecosystem where they can seek help and collaborate. 
+
+**Extension developers** can leverage Azure Portal SDK and extension hosting service to rapidly develop and ship extensions. Also, Azure portal has a strong developer community to help you build the extensions. 
+
+**Program / Product Managers** can gather deeper understanding of extension’s health and customer behavior using the Power BI reports and Kusto telemetry. 
+
+Ready to grow your business?
 
 <a name="home-onboard-ibiza-portal-sdk-generated-index-portalfx-extension-onboarding-md"></a>
 ## <a href="/portal-sdk/generated/index-portalfx-extension-onboarding.md">Onboard Ibiza</a>
@@ -22,6 +29,7 @@ Sounds interesting. Want to become a partner?
 1. [Localization / Globalization](/portal-sdk/generated/index-portalfx-extension-localization-globalization.md)
 1. [Accessibility](/portal-sdk/generated/index-portalfx-extension-accessibility.md)
 1. [Sharing PDE](/portal-sdk/generated/index-portalfx-extension-sharing-pde.md)
+1. [Post a release notification](/portal-sdk/generated/portalfx-extension-posting-whats-new-notification.md)
 
 Feeling Lost? Reach out to Community: [Stackoverflow](/portal-sdk/generated/index-portalfx-extension-QnA.md)
 

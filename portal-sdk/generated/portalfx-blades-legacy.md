@@ -294,23 +294,31 @@ var grid= new Grid.ViewModel<Website, WebsiteId>({
 <a name="blade-opening-and-closing-click-callbacks-custom-html"></a>
 ### Custom HTML
 
-Opens a blade when an arbitrary html element is clicked.  
- 
-__NOTE__: The fxClick handler is new, and designed to handle the async nature of click communication between the shell and your extension
-__NOTE__: You should use semantically correct HTML and should use either "A" or "Button" tags in order to meet accessibility requirements.
-__NOTE__: "A" tag with href "#" will be default prevented to disable navigation to the portal dashboard.
-__NOTE__: "A" tag with href "#someOtherNames" can be used for internal portal navigations and it will not be default prevented.
+To open a blade when the user clicks on an HTML element, use the `fxclick` Knockout data-binding, like so:
 
 ```javascript
 // Your html template
 <a href="#" data-bind="fxClick: myOnClick">Click me!</a>
-<button data-bind="fxClick: myOnClick">Click me!</button>
  
 // Your template blade or part view model
 public myOnClick(): void {
     container.openBlade(new SomeBladeReference(…));
 }
 ```
+
+In doing so, here are some best practices to follow:
+
+<a name="blade-opening-and-closing-click-callbacks-custom-html-do"></a>
+##### DO
+
+- Use standard `<a href="#">` tags when adding `fxclick` to open child blades. With this, your links will be accessible.
+
+<a name="blade-opening-and-closing-click-callbacks-custom-html-do-not"></a>
+##### DO NOT
+
+- Use `<div>` tags when adding `fxClick` to open child Blades. If you do this, you'll have to (unnecessarily) learn and apply additional HTML attributes to make your links accessible.
+
+- Use the Knockout `click` data-binding to open child Blades. The `fxClick` data-binding was developed specifically to handle the async nature of the click communication between the Portal Shell IFrame and your extension's IFrame.
 
 If you call any of the container.open* methods from within an fxclick handler then the `ext-msportalfx-activated` class will be automatically added to the html element that was clicked.
 The class will be automatically removed when the child blade is closed.
