@@ -1,4 +1,4 @@
-# Release Notes since 3/26/2017
+# Release Notes since 4/4/2017
 
 ## 5.0.302.813
 0 Breaking Changes, 0 Features added and 2 Bugs Fixed
@@ -229,22 +229,6 @@ Error: Could not get cost undefined
 ## 5.0.302.710
 0 Breaking Changes, 1 Features added and 0 Bugs Fixed
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8903598'>8903598</a></td><td>Feature</td><td>Switch to new eSTS endpoint for Fairfax - Blocked on eSTS team </td></tr></table>
-
-## 5.0.302.709
-0 Breaking Changes, 1 Features added and 0 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8438783'>8438783</a></td><td>Feature</td><td>Enable policies feature flag by default in RC and MPAC and Preview and PROD</td></tr></table>
-
-## 5.0.302.707
-0 Breaking Changes, 2 Features added and 0 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8820689'>8820689</a></td><td>Feature</td><td>[ExtensionConfiguration] <Enabling Extension in BlackForest> for extension <Microsoft_Azure_RecoveryServices></td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=7549708'>7549708</a></td><td>Feature</td><td>Build SVG compression into the SVGs added within extension PDL</td></tr></table>
-
-## 5.0.302.706
-0 Breaking Changes, 2 Features added and 1 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8852575'>8852575</a></td><td>Bug Fix</td><td>Update MoveResourceToolbarButton to accept PDL and no-PDL Blade 'Container' types</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8841662'>8841662</a></td><td>Feature</td><td>Enable Citrix_XenApp_Essentials in PROD</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8798060'>8798060</a></td><td>Feature</td><td>Add DocumentDB extension to the portal</td></tr></table>
-
-## 5.0.302.704
-0 Breaking Changes, 1 Features added and 2 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8830302'>8830302</a></td><td>Bug Fix</td><td>[Relex] manifest is not working in PROD</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8622979'>8622979</a></td><td>Feature</td><td>Add the 1px solid gray border to top docked footer</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=8615654'>8615654</a></td><td>Bug Fix</td><td>Add environemnt specific config script to relex deployment</td></tr></table>
 
 ## 5.0.302.701
 2 Breaking Changes, 20 Features added and 64 Bugs Fixed
