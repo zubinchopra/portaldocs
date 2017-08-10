@@ -163,7 +163,7 @@ export class EditorInstructionsPartViewModel
    /**
     * View model for the save button.
     */
-   public saveButton: MsPortalFx.ViewModels.Controls.Forms.Button.Contract;
+   public saveButton: Button.Contract;
 
    /**
     * Creates a new instance of the EditorInstructionsPartViewModel class.
@@ -181,12 +181,14 @@ export class EditorInstructionsPartViewModel
        this.editorVM = new SampleEditorViewModel(container);
 
        // Initialize the save button and wire it up such that it saves the content of the editor.
-       this.saveButton = new MsPortalFx.ViewModels.Controls.Forms.Button.ViewModel(container);
-       this.saveButton.click = () => {
-           this.editorVM.save.execute().then(() => {
-               // Here is where you would put code that is executed after any changes have been written back to the content property on the viewmodel.
-           });
-       };
+       this.saveButton = Button.create(container, {
+           text: ClientResources.Editor.save,
+           onClick: () => {
+               this.editorVM.save.execute().then(() => {
+                   // Here is where you would put code that is executed after any changes have been written back to the content property on the viewmodel.
+               });
+           }
+       });
    }
 }
 

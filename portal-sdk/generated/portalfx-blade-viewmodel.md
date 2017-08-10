@@ -50,7 +50,7 @@ public smartPhone: KnockoutObservable<TextBox.ViewModel>
 /**
  * OK button for submitting updated user data back to server.
  */
-public okButton: SimpleButton.ViewModel;
+public okButton: Button.Contract;
 
 /**
  * EntityView containing the person being edited
@@ -104,7 +104,7 @@ this.nameTextBox = new TextBox.ViewModel(container, {
 
 this.smartPhone = ko.observable<TextBox.ViewModel>();
 
-this.okButton = new SimpleButton.ViewModel(container, {
+this.okButton = Button.create(container, {
     text: "OK",
     onClick: () => {
         container.closeChildBlade();

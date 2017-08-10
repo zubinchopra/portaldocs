@@ -333,10 +333,12 @@ This next snippet shows how to programatically resize your part from within your
 
 ```typescript
 
-this.resizeToButton1.click = () => {
-    container.resizeTo(resizeA.width, resizeA.height);
-};
+onClick: () => {
+    container.resizeTo(resizeA.width, resizeA.height)
+}
+        });
 
+        
 ```
 
 <a name="parts-a-k-a-tiles-how-to-leverage-per-user-part-settings"></a>

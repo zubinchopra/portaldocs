@@ -1,5 +1,21 @@
 # Release Notes since 4/9/2017
 
+## 5.0.302.822
+0 Breaking Changes, 1 Features added and 1 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9945357'>9945357</a></td><td>Bug Fix</td><td>MonitorChart plots excess number of data points and can cause the browser session to crash</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9943292'>9943292</a></td><td>Feature</td><td>Enable Microsoft.DataLakeStore resource type for MonitorChart</td></tr></table>
+
+## 5.0.302.820
+0 Breaking Changes, 1 Features added and 0 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9899708'>9899708</a></td><td>Feature</td><td>[ContentUnbundler][EV2] Provide more friendly validation error message</td></tr></table>
+
+## 5.0.302.819
+0 Breaking Changes, 1 Features added and 0 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9838530'>9838530</a></td><td>Feature</td><td>[ClassicResources] Enable ManagementCerts in all regions by default and remove unneeded feature flags</td></tr></table>
+
+## 5.0.302.818
+0 Breaking Changes, 2 Features added and 0 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9763552'>9763552</a></td><td>Feature</td><td>[EHS][EV2] Support for per cloud configurations</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9517038'>9517038</a></td><td>Feature</td><td>[ExtensionConfiguration] Enable KeyVault UX in Blackforest for extension  Microsoft_Azure_KeyVault</td></tr></table>
+
 ## 5.0.302.817
 0 Breaking Changes, 2 Features added and 2 Bugs Fixed
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9910191'>9910191</a></td><td>Feature</td><td>[ContentUnbundler][EV2] Bug: ExtensionRoutePrefixKey didn't been replaced</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9872945'>9872945</a></td><td>Bug Fix</td><td>Add missing CustomerInsights resource type to MonitorChart</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9863219'>9863219</a></td><td>Feature</td><td>Enable new resource types for MonitorChart</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9845522'>9845522</a></td><td>Bug Fix</td><td>Enable AppInsights resource types for MonitorChart</td></tr></table>
