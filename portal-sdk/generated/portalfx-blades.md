@@ -730,7 +730,7 @@ constructor(container: MsPortalFx.ViewModels.ContainerContract,
     /**
      * This call marks the Blade as unauthorized, which should display a specialized UI.
      */
-    // container.unauthorized("This is my message");
+    container.unauthorized();
 }
 
 ```
