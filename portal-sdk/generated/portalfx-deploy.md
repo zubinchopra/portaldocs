@@ -15,26 +15,26 @@
     * [Resiliency and failover](#deploy-resiliency-and-failover)
     * [Extension Hosting Service](#deploy-extension-hosting-service)
     * [Why use extension hosting service](#deploy-why-use-extension-hosting-service)
-        * [30-sec Overview](#deploy-why-use-extension-hosting-service-30-sec-overview)
-        * [Prerequisites for all extensions:](#deploy-why-use-extension-hosting-service-prerequisites-for-all-extensions)
-        * [Prerequisites for extensions with server-side code (or Controllers)](#deploy-why-use-extension-hosting-service-prerequisites-for-extensions-with-server-side-code-or-controllers)
-        * [Step-by-Step Onboarding](#deploy-why-use-extension-hosting-service-step-by-step-onboarding)
-        * [Other common scenarions](#deploy-why-use-extension-hosting-service-other-common-scenarions)
-        * [Deploying a new version of extension](#deploy-why-use-extension-hosting-service-deploying-a-new-version-of-extension)
-        * [Monitoring and Logging](#deploy-why-use-extension-hosting-service-monitoring-and-logging)
-        * [FAQ](#deploy-why-use-extension-hosting-service-faq)
-        * [Using the CDN](#deploy-why-use-extension-hosting-service-using-the-cdn)
-        * [Creating the CDN account](#deploy-why-use-extension-hosting-service-creating-the-cdn-account)
-        * [Configuring your CDN service](#deploy-why-use-extension-hosting-service-configuring-your-cdn-service)
-        * [Configuring your extension](#deploy-why-use-extension-hosting-service-configuring-your-extension)
-        * [Configuring the Prefix](#deploy-why-use-extension-hosting-service-configuring-the-prefix)
-        * [Reading the prefix from configuration](#deploy-why-use-extension-hosting-service-reading-the-prefix-from-configuration)
-        * [IIS / ASP.NET Configuration](#deploy-why-use-extension-hosting-service-iis-asp-net-configuration)
-        * [Invalidating content on the CDN](#deploy-why-use-extension-hosting-service-invalidating-content-on-the-cdn)
-        * [Configuring versioning of your Extensioon](#deploy-why-use-extension-hosting-service-configuring-versioning-of-your-extensioon)
-        * [Updating extensions](#deploy-why-use-extension-hosting-service-updating-extensions)
-        * [Implications of changing the version](#deploy-why-use-extension-hosting-service-implications-of-changing-the-version)
-        * [FAQ](#deploy-why-use-extension-hosting-service-faq)
+    * [30-sec Overview](#deploy-30-sec-overview)
+        * [Prerequisites for onboarding hosting service for all extensions:](#deploy-30-sec-overview-prerequisites-for-onboarding-hosting-service-for-all-extensions)
+        * [Prerequisites for onboarding hosting service for extensions with server-side code (or Controllers)](#deploy-30-sec-overview-prerequisites-for-onboarding-hosting-service-for-extensions-with-server-side-code-or-controllers)
+        * [Step-by-Step Onboarding](#deploy-30-sec-overview-step-by-step-onboarding)
+        * [Other common scenarions](#deploy-30-sec-overview-other-common-scenarions)
+        * [Deploying a new version of extension](#deploy-30-sec-overview-deploying-a-new-version-of-extension)
+        * [Monitoring and Logging](#deploy-30-sec-overview-monitoring-and-logging)
+        * [FAQ](#deploy-30-sec-overview-faq)
+        * [Using the CDN](#deploy-30-sec-overview-using-the-cdn)
+        * [Creating the CDN account](#deploy-30-sec-overview-creating-the-cdn-account)
+        * [Configuring your CDN service](#deploy-30-sec-overview-configuring-your-cdn-service)
+        * [Configuring your extension](#deploy-30-sec-overview-configuring-your-extension)
+        * [Configuring the Prefix](#deploy-30-sec-overview-configuring-the-prefix)
+        * [Reading the prefix from configuration](#deploy-30-sec-overview-reading-the-prefix-from-configuration)
+        * [IIS / ASP.NET Configuration](#deploy-30-sec-overview-iis-asp-net-configuration)
+        * [Invalidating content on the CDN](#deploy-30-sec-overview-invalidating-content-on-the-cdn)
+        * [Configuring versioning of your Extensioon](#deploy-30-sec-overview-configuring-versioning-of-your-extensioon)
+        * [Updating extensions](#deploy-30-sec-overview-updating-extensions)
+        * [Implications of changing the version](#deploy-30-sec-overview-implications-of-changing-the-version)
+        * [FAQ](#deploy-30-sec-overview-faq)
 
 
 <a name="deploy-overview"></a>
@@ -223,26 +223,26 @@ In the first case, you can probably get away with fewer servers, but in the seco
     * [Resiliency and failover](#deploy-resiliency-and-failover)
     * [Extension Hosting Service](#deploy-extension-hosting-service)
     * [Why use extension hosting service](#deploy-why-use-extension-hosting-service)
-        * [30-sec Overview](#deploy-why-use-extension-hosting-service-30-sec-overview)
-        * [Prerequisites for all extensions:](#deploy-why-use-extension-hosting-service-prerequisites-for-all-extensions)
-        * [Prerequisites for extensions with server-side code (or Controllers)](#deploy-why-use-extension-hosting-service-prerequisites-for-extensions-with-server-side-code-or-controllers)
-        * [Step-by-Step Onboarding](#deploy-why-use-extension-hosting-service-step-by-step-onboarding)
-        * [Other common scenarions](#deploy-why-use-extension-hosting-service-other-common-scenarions)
-        * [Deploying a new version of extension](#deploy-why-use-extension-hosting-service-deploying-a-new-version-of-extension)
-        * [Monitoring and Logging](#deploy-why-use-extension-hosting-service-monitoring-and-logging)
-        * [FAQ](#deploy-why-use-extension-hosting-service-faq)
-        * [Using the CDN](#deploy-why-use-extension-hosting-service-using-the-cdn)
-        * [Creating the CDN account](#deploy-why-use-extension-hosting-service-creating-the-cdn-account)
-        * [Configuring your CDN service](#deploy-why-use-extension-hosting-service-configuring-your-cdn-service)
-        * [Configuring your extension](#deploy-why-use-extension-hosting-service-configuring-your-extension)
-        * [Configuring the Prefix](#deploy-why-use-extension-hosting-service-configuring-the-prefix)
-        * [Reading the prefix from configuration](#deploy-why-use-extension-hosting-service-reading-the-prefix-from-configuration)
-        * [IIS / ASP.NET Configuration](#deploy-why-use-extension-hosting-service-iis-asp-net-configuration)
-        * [Invalidating content on the CDN](#deploy-why-use-extension-hosting-service-invalidating-content-on-the-cdn)
-        * [Configuring versioning of your Extensioon](#deploy-why-use-extension-hosting-service-configuring-versioning-of-your-extensioon)
-        * [Updating extensions](#deploy-why-use-extension-hosting-service-updating-extensions)
-        * [Implications of changing the version](#deploy-why-use-extension-hosting-service-implications-of-changing-the-version)
-        * [FAQ](#deploy-why-use-extension-hosting-service-faq)
+    * [30-sec Overview](#deploy-30-sec-overview)
+        * [Prerequisites for onboarding hosting service for all extensions:](#deploy-30-sec-overview-prerequisites-for-onboarding-hosting-service-for-all-extensions)
+        * [Prerequisites for onboarding hosting service for extensions with server-side code (or Controllers)](#deploy-30-sec-overview-prerequisites-for-onboarding-hosting-service-for-extensions-with-server-side-code-or-controllers)
+        * [Step-by-Step Onboarding](#deploy-30-sec-overview-step-by-step-onboarding)
+        * [Other common scenarions](#deploy-30-sec-overview-other-common-scenarions)
+        * [Deploying a new version of extension](#deploy-30-sec-overview-deploying-a-new-version-of-extension)
+        * [Monitoring and Logging](#deploy-30-sec-overview-monitoring-and-logging)
+        * [FAQ](#deploy-30-sec-overview-faq)
+        * [Using the CDN](#deploy-30-sec-overview-using-the-cdn)
+        * [Creating the CDN account](#deploy-30-sec-overview-creating-the-cdn-account)
+        * [Configuring your CDN service](#deploy-30-sec-overview-configuring-your-cdn-service)
+        * [Configuring your extension](#deploy-30-sec-overview-configuring-your-extension)
+        * [Configuring the Prefix](#deploy-30-sec-overview-configuring-the-prefix)
+        * [Reading the prefix from configuration](#deploy-30-sec-overview-reading-the-prefix-from-configuration)
+        * [IIS / ASP.NET Configuration](#deploy-30-sec-overview-iis-asp-net-configuration)
+        * [Invalidating content on the CDN](#deploy-30-sec-overview-invalidating-content-on-the-cdn)
+        * [Configuring versioning of your Extensioon](#deploy-30-sec-overview-configuring-versioning-of-your-extensioon)
+        * [Updating extensions](#deploy-30-sec-overview-updating-extensions)
+        * [Implications of changing the version](#deploy-30-sec-overview-implications-of-changing-the-version)
+        * [FAQ](#deploy-30-sec-overview-faq)
 
 
 <a name="deploy-extension-hosting-service"></a>
@@ -283,8 +283,8 @@ Yes. In fact you can supplement your legacy DIY deployment infrastructure to use
 
 Post this code change, you can deploy the as a server-only service that will be behind Traffic Manager.
 
-<a name="deploy-why-use-extension-hosting-service-30-sec-overview"></a>
-### 30-sec Overview
+<a name="deploy-30-sec-overview"></a>
+## 30-sec Overview
 
 This section provides a quick 30-sec overview of how you deploy extension using hosting service
 
@@ -292,8 +292,8 @@ This section provides a quick 30-sec overview of how you deploy extension using 
 1. You upload zip file generated in Step #1 to a public read-only storage account owned by your team.
 1. Hosting service polls the storage account, detects the new version and downloads the zip file in each data center within 5 minutes and starts serving the new version to customers around the world.
 
-<a name="deploy-why-use-extension-hosting-service-prerequisites-for-all-extensions"></a>
-### Prerequisites for all extensions:
+<a name="deploy-30-sec-overview-prerequisites-for-onboarding-hosting-service-for-all-extensions"></a>
+### Prerequisites for onboarding hosting service for all extensions:
 
 1. **SDK Version**
     To generate the zip file during build process from your extension use Portal SDK 5.0.302.454 or above
@@ -301,21 +301,20 @@ This section provides a quick 30-sec overview of how you deploy extension using 
     **NOTE**: If your team plans to use EV2 for uploading zip file to storage account, we recommend using Portal SDK 5.0.302.817 or above. We have recently some new features that makes it easier to use EV2 with hosting service.
 
 2. **Build Output Format**
-    i. Verify build output directory is called **bin**
-    ii. Verify you can point IIS to **bin** directory and load extension
+    1. Verify build output directory is called **bin**
+    1. Verify you can point IIS to **bin** directory and load extension
 
-<a name="deploy-why-use-extension-hosting-service-prerequisites-for-extensions-with-server-side-code-or-controllers"></a>
-### Prerequisites for extensions with server-side code (or Controllers)
+<a name="deploy-30-sec-overview-prerequisites-for-onboarding-hosting-service-for-extensions-with-server-side-code-or-controllers"></a>
+### Prerequisites for onboarding hosting service for extensions with server-side code (or Controllers)
     
     Modify the relative controller URLs to absolute URLS. The Controllers will deploy a new server-only service that will be behind Traffic Manager.
 
     Since this process is typically same across all extension you can leverage the pull-request for cloud services extension : https://msazure.visualstudio.com/One/_git/AzureUX-CloudServices/commit/ac183c0ec197de7c7fd3e1eee1f7b41eb5f2dc8b
 
-
-<a name="deploy-why-use-extension-hosting-service-step-by-step-onboarding"></a>
+<a name="deploy-30-sec-overview-step-by-step-onboarding"></a>
 ### Step-by-Step Onboarding
 
-<a name="deploy-why-use-extension-hosting-service-step-by-step-onboarding-step-1-update-isdevelopmentmode-to-false"></a>
+<a name="deploy-30-sec-overview-step-by-step-onboarding-step-1-update-isdevelopmentmode-to-false"></a>
 #### Step 1: Update IsDevelopmentMode to false
 
 Content unbundler requires  development mode be set to false to assign correct build version to the zip file.
@@ -334,7 +333,7 @@ Here is an example of For example, monitoring extension
 If you wish to achieve this only on release builds a [web.Release.config transform](http://go.microsoft.com/fwlink/?LinkId=125889) can be used.
 
 
-<a name="deploy-why-use-extension-hosting-service-step-by-step-onboarding-step-2-install-microsoft-portal-tools-contentunbundler-and-import-targets"></a>
+<a name="deploy-30-sec-overview-step-by-step-onboarding-step-2-install-microsoft-portal-tools-contentunbundler-and-import-targets"></a>
 #### Step 2: Install Microsoft.Portal.Tools.ContentUnbundler and import targets
 
 Microsoft.Portal.Tools.ContentUnbundler provides content unbundler tool that can be run against the extension assemblies to extract static content and bundles. 
@@ -346,7 +345,7 @@ b. If you are using CoreXT global packages.config you will have to add the targe
 <Import Project="$(PkgMicrosoft_Portal_Tools_ContentUnbundler)\build\Microsoft.Portal.Tools.ContentUnbundler.targets" />
 ```
 
-<a name="deploy-why-use-extension-hosting-service-step-by-step-onboarding-step-3-verify-if-your-build-has-a-version-number-set"></a>
+<a name="deploy-30-sec-overview-step-by-step-onboarding-step-3-verify-if-your-build-has-a-version-number-set"></a>
 #### Step 3: Verify if your build has a version number set
 
 The zip file generated during the build should be named as BUILD_VERSION.zip, where BUILD_VERSION is the current version number of your build.
@@ -376,6 +375,14 @@ If your build does not have a version number, you can add AssemblyInfo.cs to you
 
 **NOTE**: Microsoft.Portal.Extensions.<YourExtension> here specifies the fully qualified name of **your** extension. Also, in this scenario the build version is hard-coded to 1.0.0.0
 
+1. Add new file **AssemblyInfo.cs**
+
+```xml
+<Compile Include="AssemblyInfo.cs" />
+```
+
+2. Update **AssemblyInfo.cs** content
+
 ```cs
 //-----------------------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
@@ -387,31 +394,71 @@ using Microsoft.Portal.Framework;
 [assembly: System.Reflection.AssemblyFileVersion("1.0.0.0")]
 ```
 
-<a name="deploy-why-use-extension-hosting-service-step-by-step-onboarding-step-4-environment-specific-configuration-files"></a>
+<a name="deploy-30-sec-overview-step-by-step-onboarding-step-4-environment-specific-configuration-files"></a>
 #### Step 4:  <strong>Environment specific configuration files</strong>
+
+In order to load your extension in a specific environments you will need to provide environment specific configuraiton file as an embedded resource in Content\Config\* directory. Here are example for each environment: 
+
+**NOTE**
+* The files need to be placed under **\Content\Config\**
+* The file should be set as en EmbeddedResource, otherwise the file will not be included in the output that gets generated by the content unbundler.
+* The files need to be named with the following convention: &lt;host&gt;.&lt;domain&gt;.json (e.g. portal.azure.com.json, ms.portal.azure.com.json)
+
+For now, just add this empty file as embedded resource:
+1. Dogfood: 
+        Configuration file name should be df.onecloud.azure-test.net.json. 
+```xml
+<EmbeddedResource Include="Content\Config\df.onecloud.azure-test.net.json" />
+```
+
+1. Production: 
+        Configuration file name should be portal.azure.com.json. 
+```xml
+<EmbeddedResource Include="Content\Config\portal.azure.com.json" />
+```
+	Production environment has 3 stamps
+        1. RC   **rc.portal.azure.com**
+        1. MPAC **ms.portal.azure.com**
+        1. PROD **portal.azure.com**
+
+    One single configuration file is enough for all three stamps.
+
+1. Mooncake (portal.azure.cn): 
+     Configuration file name should be portal.azure.cn.json
+```xml
+<EmbeddedResource Include="Content\Config\portal.azure.cn.json" />
+```     
+
+1. Blackforest (portal.microsoftazure.de)
+     Configration file name should be portal.microsoftazure.de.json
+```xml
+<EmbeddedResource Include="Content\Config\portal.microsoftazure.de.json" />
+```          
+
+1. Fairfax (portal.azure.us)
+    Configuration file name should be portal.azure.us.json
+```xml
+<EmbeddedResource Include="Content\Config\portal.azure.us.json" />
+```          
 
 Environment configuration files server 2 purposes:
 
 * Make the extension available in target environment
-* Override settings for target environment
+* Override settings for target environment. If there are no settings that needs to be overridden, the file should contain an empty json object. 
 
-The environment specific configuration files need to follow these conventions
 
-* The files need to be placed under **\Content\Config\**
-* The file should be set as en EmbeddedResource, otherwise the file will not be included in the output that gets generated by the content unbundler.
-* The files need to be named with the following convention: &lt;host&gt;.&lt;domain&gt;.json (e.g. portal.azure.com.json, ms.portal.azure.com.json)
-* The more generic the domain name, the more environments it covers. For example, it's enough to have a portal.azure.com.json. It will work with all portal production environments i.e *.portal.azure.com.
-* The file content is a json object with key/value pairs for settings to be overriden. If there are no settings that needs to be overridden, the file should contain an empty json object.
+* The file content is a json object with key/value pairs for settings to be overriden. 
 
-Example:
+Updating content of config file:
 
-The portal framework expects the settings to be in the format of Microsoft.Azure.MyExtension.MySetting. The framework will propagate setting to the client in the format of mySetting. So to be able to provide a value for this setting, the config file should be something like
+
+The portal framework expects the settings to be in the format of Microsoft.Azure.MyExtension.MySetting. The framework will propagate setting to the client in the format of mySetting. So to be able to provide a value for this setting, the web.config file should be something like
 
 ```xml
 <add key="Microsoft.Azure.MyExtension.MySetting" value="myValue" />
 ```
 
-The configuration file would like like:
+The equivalent configuration file would like like:
 
 ```json
 {
@@ -419,22 +466,7 @@ The configuration file would like like:
 }
 ```
 
-A configuration file should be provided for all the environments where the extension is expected to be loaded. Currently, the portal exists in the below environments:
-
-1. Dogfood: Host name is **df.onecloud.azure-test.net**. Configuration file name should be df.onecloud.azure-test.net.json
-
-1. Production: Production has 3 stamps
-	1. RC 
-	1. MPAC 
-	1. PROD **portal.azure.com**
-	
-	One single configuration file is enough for all these 3 stamps. portal.azure.com.json will cover all 3 of them.
-
-1. Mooncake: Host name is **portal.azure.cn**. Configuration file name should be portal.azure.cn.json
-1. Blackforest: Host name is **portal.microsoftazure.de**. Configration file name should be portal.microsoftazure.de.json
-1. Fairfax: Host name is **portal.azure.us**. Configuration file name should be portal.azure.us.json
-
-<a name="deploy-why-use-extension-hosting-service-step-by-step-onboarding-step-5-execute-content-unbundler-as-part-of-build-to-generate-zip-file"></a>
+<a name="deploy-30-sec-overview-step-by-step-onboarding-step-5-execute-content-unbundler-as-part-of-build-to-generate-zip-file"></a>
 #### Step 5: Execute content unbundler as part of build to generate zip file
 
 The tool will generate a folder and a zip file with a name same as the extension version. The folder will contain all content required to serve the extension.
@@ -465,12 +497,12 @@ Outside of CoreXT, the default settings in the targets file should work for most
     <ContentUnbundlerExtensionRoutePrefix>scheduler</ContentUnbundlerExtensionRoutePrefix>
   </PropertyGroup>
 ```
-<a name="deploy-why-use-extension-hosting-service-step-by-step-onboarding-step-6-upload-safe-deployment-config"></a>
+<a name="deploy-30-sec-overview-step-by-step-onboarding-step-6-upload-safe-deployment-config"></a>
 #### Step 6: Upload safe deployment config
 
-You will need to author this file.
+You will need to author this file. 
 
-1. Property names in the Config.json are case sensitive.
+1. Property names in the config.json are case sensitive.
 2. File name config.json is case sensitive.
 
 In addition to the zip files, the hosting service expects a config file in the storage account. This config file is used to specify the versions that hosting service needs to download, process and serve.
@@ -505,7 +537,7 @@ For example, based on the above mentioned config.json if a user from Central US 
 However, if a user from Singapoer loads the extension then the user will be served 1.0.0.1 of the extension.
 
 
-<a name="deploy-why-use-extension-hosting-service-step-by-step-onboarding-step-7-registering-your-extension-with-hosting-service"></a>
+<a name="deploy-30-sec-overview-step-by-step-onboarding-step-7-registering-your-extension-with-hosting-service"></a>
 #### Step 7: Registering your extension with hosting service
 
 Extensions that intend to use extension hosting service should publish the extracted deployment artifacts (zip file) that are generated during the build along with config.json to a public endpoint. 
@@ -541,7 +573,7 @@ Here is the SLA for onboarding
 
 **NOTE:** SLA is in Business days
 
-<a name="deploy-why-use-extension-hosting-service-other-common-scenarions"></a>
+<a name="deploy-30-sec-overview-other-common-scenarions"></a>
 ### Other common scenarions
 
 1. Using friendly names for side-loading the extension in Portal from hosting service
@@ -628,7 +660,7 @@ ii **Replace** <MY_EXTENSION_NAME> with unique name of extension defined in exte
 
 **Friendly Names** is an optional property and can be leveraged for development and testing by extension developers. Extension developers can provide any number of friendly names.
 
-<a name="deploy-why-use-extension-hosting-service-deploying-a-new-version-of-extension"></a>
+<a name="deploy-30-sec-overview-deploying-a-new-version-of-extension"></a>
 ### Deploying a new version of extension
 
 If you are using safe deployment then it is likely that you want to rollout a new version to a specific stage.
@@ -648,7 +680,7 @@ MPAC: https://hosting-ms.portal.azure.net/api/diagnostics
 PROD: https://hosting.portal.azure.net/api/diagnostics
 
 
-<a name="deploy-why-use-extension-hosting-service-monitoring-and-logging"></a>
+<a name="deploy-30-sec-overview-monitoring-and-logging"></a>
 ### Monitoring and Logging
 
 **Logging**
@@ -685,7 +717,7 @@ PROD: https://hosting.portal.azure.net/api/diagnostics
     You can access the logs of the hosting service using the below link
     https://jarvis-west.dc.ad.msft.net/53731DA4
 
-<a name="deploy-why-use-extension-hosting-service-faq"></a>
+<a name="deploy-30-sec-overview-faq"></a>
 ### FAQ
 
 1. When I build my project the output zip is called HostingSvc.zip rater then <some version>.zip
@@ -735,27 +767,27 @@ The default F5 experience for extension development remains unchanged however wi
 
 
 
-<a name="deploy-why-use-extension-hosting-service-using-the-cdn"></a>
+<a name="deploy-30-sec-overview-using-the-cdn"></a>
 ### Using the CDN
 Extension authors may choose to use a CDN to serve static images, scripts, and stylesheets. The Azure Portal SDK does not require the use of a CDN, or the use of a particular CDN. However, extensions served from Azure can take advantage of the built-in CDN capabilities in the SDK.
 
-<a name="deploy-why-use-extension-hosting-service-creating-the-cdn-account"></a>
+<a name="deploy-30-sec-overview-creating-the-cdn-account"></a>
 ### Creating the CDN account
 Follow this guide to set up your CDN account:
 
 <a href="http://www.windowsazure.com/en-us/documentation/articles/cdn-how-to-use/" target="_blank">http://www.windowsazure.com/en-us/documentation/articles/cdn-how-to-use/</a>
 
-<a name="deploy-why-use-extension-hosting-service-configuring-your-cdn-service"></a>
+<a name="deploy-30-sec-overview-configuring-your-cdn-service"></a>
 ### Configuring your CDN service
 After creating your CDN, there are a few options that need to be set.
 - Make sure HTTP and HTTPS are enabled by clicking the "Enable HTTPS" command.
 - Make sure query string status is enabled by clicking the "Enable Query String" command.
 
-<a name="deploy-why-use-extension-hosting-service-configuring-your-extension"></a>
+<a name="deploy-30-sec-overview-configuring-your-extension"></a>
 ### Configuring your extension
 To take advantage of the CDN capabilities in the Portal SDK, there are a few pieces that must be configured.
 
-<a name="deploy-why-use-extension-hosting-service-configuring-the-prefix"></a>
+<a name="deploy-30-sec-overview-configuring-the-prefix"></a>
 ### Configuring the Prefix
 After setting up your CDN, you will receive a url which can be used to access your content. It will be in the form:
 
@@ -770,7 +802,7 @@ This is the prefix for your CDN service. Your production service should be confi
 
 Notice that neither `http` nor `https` are used in the url. This is important. It allows your page to request content based on the current protocol of the request. Oftentimes, this setting will be blank in web.config, and instead configured in a `cscfg` for a cloud service.
 
-<a name="deploy-why-use-extension-hosting-service-reading-the-prefix-from-configuration"></a>
+<a name="deploy-30-sec-overview-reading-the-prefix-from-configuration"></a>
 ### Reading the prefix from configuration
 
 To read any FX configuration, you must have a class which inherits from `ApplicationContext`. This class needs to include a `CdnPrefix` property:
@@ -845,7 +877,7 @@ public class ApplicationConfiguration : ConfigurationSettings
 }
 ```
 
-<a name="deploy-why-use-extension-hosting-service-iis-asp-net-configuration"></a>
+<a name="deploy-30-sec-overview-iis-asp-net-configuration"></a>
 ### IIS / ASP.NET Configuration
 Files are pushed to the CDN using the following process:
 
@@ -864,7 +896,7 @@ The url used for the request is in the following form:
 
 The */CDN/* portion of this url is inserted after the host address, and before the rest of the route for requested content. The request handling code in the SDK automatically handles incoming requests of the form /CDN/Content/... and /Content/...   
 
-<a name="deploy-why-use-extension-hosting-service-invalidating-content-on-the-cdn"></a>
+<a name="deploy-30-sec-overview-invalidating-content-on-the-cdn"></a>
 ### Invalidating content on the CDN
 
 - Amd Bundles are invalidated using a **hash** of the file content i.e https://hubs-s3-portal.azurecomcdn.net/AzureHubs/Content/Dynamic/AmdBundleDefinition_**83A1A15A39494B7BB1F704FDB5F32596D4498792**.js?root=*HubsExtension/ServicesHealth/ServicesHealthArea
@@ -872,11 +904,11 @@ The */CDN/* portion of this url is inserted after the host address, and before t
 
 When you release to ensure that users are served the latest static content, as opposed to stale content,  you need to configure versioning.
 
-<a name="deploy-why-use-extension-hosting-service-configuring-versioning-of-your-extensioon"></a>
+<a name="deploy-30-sec-overview-configuring-versioning-of-your-extensioon"></a>
 ### Configuring versioning of your Extensioon
 
 
-<a name="deploy-why-use-extension-hosting-service-updating-extensions"></a>
+<a name="deploy-30-sec-overview-updating-extensions"></a>
 ### Updating extensions
 
 The portal shell relies on environment version for making runtime decisions, e.g.:
@@ -903,7 +935,7 @@ see (Azure internal teams only) [OneBranch versioning](https://microsoft.sharepo
 
 Once configured content will be served directly from your extension, or via CDN if configured, using a URL segment such as /Content/<Version> e.g /Content/**5.0.0.56**/Scripts, Content/**5.0.0.56**/Images.
 
-<a name="deploy-why-use-extension-hosting-service-implications-of-changing-the-version"></a>
+<a name="deploy-30-sec-overview-implications-of-changing-the-version"></a>
 ### Implications of changing the version
 
 You should not introduce breaking changes in your server code (e.g. incompatibility between client and server code). Instead leave a compatibile version of the old code around on the server for a few days, monitor its usage to ensure that customers/browsers are no longer accessing it (i.e all users have switched to the newer version of your code - likely by refreshing the portal), and then delete the code.
@@ -912,7 +944,7 @@ If you do end up in a situation where you make a breaking change, users will lik
 You will need to contact the portal team in order to find a way to get past this issue.
 
 
-<a name="deploy-why-use-extension-hosting-service-faq"></a>
+<a name="deploy-30-sec-overview-faq"></a>
 ### FAQ
 
 - I am not seeing paths w/ versioning during debug.

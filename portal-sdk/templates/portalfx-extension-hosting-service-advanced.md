@@ -6,8 +6,8 @@ This section is only relevant to extension developers who are using WARM and EV2
 
 If you are not familiar with WARM and EV2 we recommned that you read the documentation provided by WARM and EV2 team. If you have any questions about these systems please reach out to the respective teams.
 
-1. Onboard WARM: aka.ms/warm
-2. Onboard Express V2: aka.ms/ev2
+1. Onboard WARM: https://aka.ms/warm
+2. Onboard Express V2: https://aka.ms/ev2
 
 Deploying an extension with hosting requires extension developers to upload the zip file generated during build to a publically read-only storage account.
 Since EV2 does not provide an API to upload zip file to extension developer's storage account setting up deployment infrastructure can become a herculean task.

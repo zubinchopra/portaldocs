@@ -12,6 +12,7 @@
 
 * [Extension Hosting Service](portalfx-extension-hosting-service.md#extension-hosting-service)
 * [Why use extension hosting service](portalfx-extension-hosting-service.md#why-use-extension-hosting-service)
+* [30-sec Overview](portalfx-extension-hosting-service.md#30-sec-overview)
 
 * [Advanced Section](portalfx-extension-hosting-service-advanced.md#advanced-section)
 
