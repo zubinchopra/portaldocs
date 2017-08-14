@@ -3,7 +3,9 @@
     * [Creating an Extension](#getting-started-with-the-portal-sdk-creating-an-extension)
     * [Marketplace Gallery Integration and Create Experience](#getting-started-with-the-portal-sdk-marketplace-gallery-integration-and-create-experience)
     * [Browse](#getting-started-with-the-portal-sdk-browse)
-    * [Resource Menu](#getting-started-with-the-portal-sdk-resource-menu)
+    * [Resource Menu Blade](#getting-started-with-the-portal-sdk-resource-menu-blade)
+    * [V1 versus V2 in the samples extension](#getting-started-with-the-portal-sdk-v1-versus-v2-in-the-samples-extension)
+    * [Hello World for blades](#getting-started-with-the-portal-sdk-hello-world-for-blades)
     * [Next Steps](#getting-started-with-the-portal-sdk-next-steps)
     * [Questions?](#getting-started-with-the-portal-sdk-questions)
 
@@ -61,10 +63,14 @@ You will find that the project template has implemented many of the key componen
 
 - Marketplace Gallery Integration (How people create your resources)
 - Browse (How people browse resources they have created)
-- Resource Menu (How people use and manage resources they have created)
+- Resource Menu Blade (How people use and manage resources they have created)
 
 <a name="getting-started-with-the-portal-sdk-marketplace-gallery-integration-and-create-experience"></a>
 ### Marketplace Gallery Integration and Create Experience
+
+If you plan on selling things (like resources) in the portal then you probably want to integrate into the marketplace.  The marketplace offers users a consistent way to browse and search the set of curated items that they can purchase (or create).
+
+You integrate into the marketplace by building and publishing a package to the marketplace service.  This section will walk you through the basics of the marketplace.
 
 In your running portal, go to the marketplace by clicking __+New__ and then __See all__.
 
@@ -99,6 +105,10 @@ For more information on creating gallery packages and create forms see the [gall
 <a name="getting-started-with-the-portal-sdk-browse"></a>
 ### Browse
 
+The portal exposes a common navigation experience, called 'Browse', that gives end users a list of all the different services and resource types offered by the portal.
+
+You probably want your assets to be exposed in the navigation system. This section provides an overview.
+
 In the running portal you can navigate to __Browse -> My Resources__ to see your extension's browse experience.  
   
 ![Browse My Resources](../media/portalfx-overview/browse-my-resources.png)
@@ -113,18 +123,105 @@ The code for the browse implementation is located in __Client/Browse__.  You can
 
 For more information on the browse experience see the [Browse documentation](#getting-started-with-the-portal-sdk-browse).
 
-<a name="getting-started-with-the-portal-sdk-resource-menu"></a>
-### Resource Menu
+<a name="getting-started-with-the-portal-sdk-resource-menu-blade"></a>
+### Resource Menu Blade
 
-Click on your resource from within the browse list to open the resource menu.  Many of the standard Azure experiences such as __tags__, __locks__, and __acess control__ have been automatically injected into your menu.
+If you are building an extension for an Azure service then it's likely you have built a resource provider that exposes a top-level resource (e.g. Virtual Machine, Storage account).
 
-![Resource menu](../media/portalfx-overview/resource-menu.png)
+If that's the case then the resource menu blade is a great starting point. The idea is that after the user selects a particular resource from the browse experience they land on a menu blade that has a mixture of standard resource features (e.g. activity log, role based access control, Support, etc) and service-specific features (e.g. Tables in a storage account). This section walks through the basics. 
 
-The code for the resource menu is located in __Browse/ViewModels/AssetTypeViewModel__. You can extend the menu by modifying the __getMenuConfig__ function.
+Click on your resource from within the browse list to open the resource menu blade.  Many of the standard Azure experiences such as __tags__, __locks__, and __acess control__ have been automatically injected into your menu.
 
-![Resource menu code](../media/portalfx-overview/resource-menu-code.png)
+![Resource menu blade](../media/portalfx-overview/resource-menu.png)
 
-For more information on the resource menu see the [Resource menu documentation](/gallery-sdk/generated/index-gallery.md#resource-management-resource-menu).
+The code for the resource menu blade is located in __Browse/ViewModels/AssetTypeViewModel__. You can extend the menu by modifying the __getMenuConfig__ function.
+
+![Resource menu blade code](../media/portalfx-overview/resource-menu-code.png)
+
+For more information on the resource menu blade see the [Resource menu blade documentation](/gallery-sdk/generated/index-gallery.md#resource-management-resource-menu).
+
+<a name="getting-started-with-the-portal-sdk-v1-versus-v2-in-the-samples-extension"></a>
+### V1 versus V2 in the samples extension
+
+You will probably notice that the samples extension is forked into V1 and V2 folders.  
+
+V2 is our post-GA collection of new APIs that, when we're done, is meant to be the only set of APIs needed to develop a modern Ibiza extension.
+
+Our V1 APIs are riddled with APIs that support old UX patterns that we either have or want to move extensions away from. The V1 APIs are also quite difficult to use in many places, as they were developed quickly and early in the project when there was a lot of trial/error in both the UX design and in the associated APIs.
+
+So far, V2 covers these API areas, and we're adding more:
+
+- New Blade variations -- TemplateBlade, FrameBlade, MenuBlade importantly
+- Blade-opening/closing -- 'container.openBlade, et al'
+- no-PDL TypeScript decorators -- to define all recommended Blade/Part variations
+- Forms -- No V1 EditScope concept
+
+As for V1 concepts, these are concepts we're asking extensions to avoid where there are V2 APIs that can be used:
+- __PDL__
+- __EditScope__
+- __ParameterCollector/ParameterProvider__
+- __"Blades containing Parts"__
+- __Non-full-screen Blades__ -- that is, ones that open with a fixed width
+- __V1 Blade-opening__ -- Selectable/SelectableSet APIs
+- __V1 Forms__ -- using EditScope
+
+Bear in mind that we don't have the V2 space entirely built out. In the meantime, you will have to use V1 APIs in places, even the V1 concepts listed above.
+
+<a name="getting-started-with-the-portal-sdk-hello-world-for-blades"></a>
+### Hello World for blades
+
+Blades are the main unit of UX that can be built using the SDK. They are basically pages that can be loaded in the portal.
+
+To create a blade add a single file to your project in `$ProjectRoot\Client\<Area>\<Blade>.ts` where `<Area>` is a logically named area of your choosing and `<Blade>` is the name of your blade. An area is basically a folder.  Name it however it makes sense for your team.
+
+If you are defining a new area then you must add a file directly in the area folder called `<Area>Area.ts` where `<Area>` is your area name.  The contents of that file should be:
+
+```
+export class DataContext {
+}
+```
+
+Your blade file has a few required parts.  At the top you will have some import statements.
+
+```
+import * as TemplateBlade from "Fx/Composition/TemplateBlade";
+import { DataContext } from "./<Area>Area"; // todo - put your area name here
+```
+
+The next step is to add the template blade decorator.  This lets the framework discover your blade.  It is also where you define the html template.
+
+This template shows a simple text data-binding (corresponding data-binding code is below).
+
+```
+@TemplateBlade.Decorator({
+    htmlTemplate: `<div data-bind='text: helloWorldMessage'></div>`
+})
+export class <Name> // todo - put your blade name here
+{
+}
+```
+
+Next we'll implement the class. In this simple case we'll just set the title, subtitle, and bind the string 'Hello world!' to the UI.
+
+```
+export class <Name> // todo - put your blade name here
+{
+    public title = "My blade title";
+    public subtitle = "My blade subtitle";
+    public context: TemplateBlade.Context<void, DataContext>; // there are useful framework APIs that hang off of here
+    public helloWorldMessage = ko.observable("Hello world!"); // this is bound to the template above
+
+    public onInitialize()
+    {
+       // run any initialization code you need here
+       return Q();   // if you load data then return a loading promise here
+    }
+}
+```
+
+That's it. After you compile your blade you can test it out by deep linking using this format:
+
+`<PORTAL URI>#blade/<YOUR EXTENSION NAME>/<YOUR BLADE NAME>`
 
 <a name="getting-started-with-the-portal-sdk-next-steps"></a>
 ### Next Steps

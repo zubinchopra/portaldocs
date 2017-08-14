@@ -8,6 +8,6 @@ You're probably circumventing our icon preprocessing which happens at build time
 
 *(Note: This will happen if you serve it via json).*
 
-To work around this you can include the icon in your project normally, build, look at the generated file, find and copy your fresh sanitized svg markup, replace the html encoded carots and quotes, and that's it!
+To work around this you can include the icon in your project normally, build, look at the generated file, find and copy your fresh sanitized svg markup, replace the html encoded carets and quotes, and that's it!
 
 Next steps: [Working with Icons](portalfx-icons.md)

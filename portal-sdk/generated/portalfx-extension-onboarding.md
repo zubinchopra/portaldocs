@@ -311,9 +311,9 @@ are tracked for every extension:
 <a name="onboarding-exit-criteria-quality-metrics-performance-stakeholder-sean-watson-mailto-ibiza-perf-microsoft-com"></a>
 ### Performance (Stakeholder: <a href="mailto:ibiza-perf@microsoft.com">Sean Watson</a>)
 
-**All blades must meet the required blade reveal time of <4 seconds for the 80th percentile** before being enabled in
+**All blades must meet the required blade reveal time of < 4 seconds for the 80th percentile** before being enabled in
 PROD. Extensions must be enabled in MPAC to start tracking performance. Resource and Create blades are tracked
-explicitly. All other blades are rolled up into **Weighted Experience Score (WxP), which must be >80**. WxP
+explicitly. All blades are rolled up into **Weighted Experience Score (WxP), which must be > 80**. WxP
 determines the percentage of blade usage that meets the performance bar.
 
 Blade reveal time is the time it takes for all the parts above to fold to call revealContent() (load 1st level data)
@@ -321,9 +321,11 @@ or to resolve `onInputSet()` promises, whichever is earlier.
 
 MPAC and PROD performance is included in weekly status emails and each team is expected to investigate regressions.
 
+Meeting the performance bar is a requirement for public preview or GA.
+
 See also:
 - [Dashboard](http://aka.ms/portalfx/dashboard/extensionperf)
-    - [Join auxdatapartners](http://igroup/join/auxdatapartners) for access
+    - [Telemetry Access](http://aka.ms/portalfx/docs/telemetryaccess) for access
 - [Checklist](/portal-sdk/generated/index-portalfx-extension-monitor.md#performance-checklist)
 - [Portal COP](/portal-sdk/generated/index-portalfx-extension-monitor.md#portalcop)
 - [Best pracitces](/portal-sdk/generated/index-portalfx-extension-monitor.md#performance-best-practices)
@@ -339,6 +341,8 @@ reliability metrics must be met before your extension will be enabled in PROD. E
 start tracking reliability.
 
 MPAC and PROD reliability is included in weekly status emails and each team is expected to investigate regressions.
+
+Meeting the reliability bar is a requirement for public preview or GA.
 
 See also:
 - [#ibiza-performance on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-performance)

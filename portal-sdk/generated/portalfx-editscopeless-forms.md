@@ -8,15 +8,15 @@
 <a name="editscopeless-forms-initial-value-and-dirty-state"></a>
 ### Initial Value and Dirty State
 
-New Controls APIs support creating forms without initializing editscope. This make initialization of the Controls light-weight i.e. extension developers do need to worry about coupling the right editscope accessor.
-Since the editscope is not tied to each control anymore.There is no state assosciated with the contols. 
+New Controls APIs support creating forms without initializing their editscope. This makes the initialization of the Controls light-weight (i.e. extension developers do need to worry about coupling the right editscope accessor).
+Since the editscope is not tied to each control anymore, there is no state associated with the controls. 
 
 From the extension developer's point of view this means two things:
 
-1. There is no concept of itniial value for these controls. If you want to initialize the value of a control then you just need to set the value.
+1. There is no concept of initial value for these controls. If you want to initialize the value of a control then you just need to set the value.
 
 ```ts
-textboxViewModel.vale("Some Initial Value");
+textboxViewModel.value("Some Initial Value");
 ```  
 
 2. Extension developers have the freedom to control dirty state of control. 
@@ -43,10 +43,10 @@ List of all the new controls that are available in "Fx/Controls":
 1. CustomHtml
 1. DatePicker
 1. DateTimePicker
-1. DateTimeTangePicker
+1. DateTimeRangePicker
 1. DayPicker
 1. DropDown
-1. DuraitonPicker
+1. DurationPicker
 1. FileUpload
 1. MultiLineTextBox
 1. NumericTextBox
@@ -64,11 +64,11 @@ List of all the new controls that are available in "Fx/Controls":
 <a name="editscopeless-forms-initializing-controls"></a>
 ### Initializing Controls
 
-The controls are initialized through a factory method `create()`. This function returns an interface. 
+The controls are initialized through a factory method called `create()`. This function returns an interface. 
 
 For example,
 
-In this example, we invoke `create()` method to create a TextBox with specific label, sublabel and a list of validations.
+invoking the `create()` method to create a TextBox with specific label, subLabel and a collection of validations.
 
 ```ts
 import * as TextBox from "Fx/Controls/TextBox";
@@ -88,7 +88,7 @@ const firstNameViewModel = TextBox.create(container, {
 
 Ibiza SDK now supports showing loading indicator when the data is asynchronously loaded by an AJAX call that takes time to populate the dropdown.
 
-Here is an example of a dropdown that implements loading indicator
+Here is an example of a dropdown that implements a loading indicator
 
 ```ts
 
@@ -129,7 +129,7 @@ form.configureAlertOnClose(FxViewModels.AlertLevel.None);
 
 The other overload of this function can be used for more complex scenarios say when an extension developer chooses to compute the value of Alert's behavior and message function overload.
 
-For example, in this scenario extension developer is dynamically setting the behavior of alert and message based on the a checkbox and textBox.
+For example, in this scenario extension developer is dynamically setting the behavior of alert and message based on the checkbox and textBox.
 
 ```ts
 
@@ -150,10 +150,10 @@ this._container.form.configureAlertOnClose(ko.computed(container, () => {
 1. msportalfx-docking-footer
 1. msportalfx-padding
 
-As the name suggests msportalfx-docking-* classes are helpful when you need to dock stuff at the header, body or footer of the blade. 
+As the name suggests msportalfx-docking-* classes are helpful when you need to dock elements at the header, body or footer of the blade. 
 msportalfx-padding class is useful to add 10 x 10 padding to the blade.
 
-Managing the styling of blade gives extension developer throguh these css classes gives extension developers flexibility to use Blade as a canvas.
+Managing the styling of blade through these css classes gives extension developers flexibility to use Blades as a canvas.
 Unlike previous version of SDK, No-PDL blades do not add any padding / docking content behavior by default. Thus making it easy for extension developers to manage the styling.
 
 <a name="editscopeless-forms-replacing-action-bar-with-button"></a>
@@ -162,7 +162,7 @@ Unlike previous version of SDK, No-PDL blades do not add any padding / docking c
 <a name="editscopeless-forms-replacing-action-bar-with-button-implement-custom-styling"></a>
 #### Implement custom styling
 
-Extension developers can sue out-of-the-box CSS classes to dock a button at the botton of blade and make it look like Action Bar.
+Extension developers can use out-of-the-box CSS classes to dock a button at the bottom of blade and make it look like Action Bar.
 
 This sample shows how to replace the action bar by docking a button and errorInfo box at the bottom of blade using `msportalfx-docking-footer` css class.
 `msportalfx-padding` is used to add 10 x 10 padding to the docked footer
@@ -190,4 +190,3 @@ const okButtonClick = () => {
                         });
 };
 ```
-

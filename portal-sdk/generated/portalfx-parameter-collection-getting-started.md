@@ -18,74 +18,45 @@ Implementing a parameter collection flow requires two distinct components to be 
 
 <a name="implementing-a-parametercollector"></a>
 ## Implementing a ParameterCollector
-To define a Parameter Collector the 'ParameterCollector' attribute is applied in PDL to the BladeAction that is responsible for launching your parameter provider blade
 
-```xml
-<Lens Name="PartLens">
-  <Part PartKind="Button"
-        Name="ParameterCollectorButton"
-        ViewModel="{ViewModel Name=CollectorButtonViewModel,
-        	Module=./CollectorAsButtonPart/ViewModels/CollectorButtonViewModel}" >
+Parameter collectors use the openBlade APIs to open provider blades.  A parameter collector supplies provider configuraton, initial data and receives back the results from a parameter provider blade by configuring the compiler generated blade reference.
 
-    <BladeAction Blade="ParameterProviderFormBlade"
-    			 ParameterCollector="serverConfigCollector" />
+To open a parameter provider blade do the following steps -
+1. Import the compiler generated blade reference
+2. Create a new instance of the blade reference
+3. Invoke one of the 4 openBlade APIs (openBlade, openBladeAsync, openContextBlade, openContextBladeAsync)
 
-  </Part>
-</Lens>
-```
-
-Here the ParameterCollector property indicates which model property is responsible for sending initial data and receiving back a completed result. This attribute may only be used when the target blade contains a part marked with the 'ParameterProvider' attribute. Note that you can also specify additional BladeInput parameters if required.
-
-Continuing with this example serverConfigCollector now needs to be defined as a property of type ParameterCollector<TResult> on CollectorButtonViewModel. So that the ParameterCollector and ParameterProvider can exchange data the TResult generic type must match the TResult generic type used on the parameter provider model.  In this scenario we're define a simple model called ServerConfig and declare our property:
-
+<a name="implementing-a-parametercollector-importing-a-parameter-provider-blade-reference"></a>
+### Importing a parameter provider blade reference
 
 ```ts
-export class CollectorButtonViewModel extends MsPortalFx.ViewModels.ButtonPart {
-
-    public serverConfigCollector: MsPortalFx.ViewModels.ParameterCollector<ProviderModels.ServerConfig>;
-
-    constructor(container: MsPortalFx.ViewModels.PartContainerContract,
-    			initialState: any,
-    			dataContext: ParameterCollectionArea.DataContext) {
-		...
-    }
-}
-
+import { ParameterProviderAsTemplateBladeReference } from "../../../../_generated/BladeReferences";
 ```
 
-To send initial data to the provider and optionally receive a result back you can specify callbacks during initialization of the ParameterCollector.
+<a name="implementing-a-parametercollector-configuring-the-reference-for-parameter-collection"></a>
+### Configuring the reference for parameter collection
+
+To send initial data to the provider and optionally receive a result back you can specify callbacks during initialization of the provider blade reference.
 
 ```ts
-export class CollectorButtonViewModel extends MsPortalFx.ViewModels.ButtonPart {
-
-    public serverConfigCollector: MsPortalFx.ViewModels.ParameterCollector<ProviderModels.ServerConfig>;
-
-    constructor(container: MsPortalFx.ViewModels.PartContainerContract,
-    			initialState: any,
-    			dataContext: ParameterCollectionArea.DataContext) {
-
-        super();
-
-        this.serverConfigCollector = new MsPortalFx.ViewModels.ParameterCollector<ProviderModels.ServerConfig>(container, {
+        const providerReference = new ParameterProviderAsTemplateBladeReference<DataModels.ServerConfig, DataModels.ServerConfig>({
             supplyInitialData: () => {
                 return {
                     diskSpaceBytes: ko.observable(108 * 1024 * 1024 * 1024),
                     serverName: ko.observable(ClientResources.parameterProviderDefaultServerName)
                 };
             },
-            receiveResult: (result: ProviderModels.ServerConfig) => {
+            receiveResult: (result) => {
                 // A realistic parameter collector command would commence some operation on
                 // receiving data. For this sample we have nothing particular to commence,
                 // so we just show a notification to demonstrate that data was received.
-                MsPortalFx.UI.NotificationManager
-                    .create(ExtensionDefinition.NotificationDefinitions.ParameterCollectorReceivedResultNotification.name)
-                    .raise(ExtensionDefinition.NotificationDefinitions.ParameterCollectorReceivedResultNotification.succeeded, null, ko.toJS(result));
+                MsPortalFx.Hubs.Notifications.ClientNotification.publish({
+                    title: ClientResources.parameterCollectorReceivedResultNotificationTitle,
+                    description: ClientResources.parameterCollectorReceivedResultNotificationMessage.format(ko.toJS(result)),
+                    status: MsPortalFx.Hubs.Notifications.NotificationStatus.Success
+                });
             }
         });
-
-        this.title(ClientResources.openProviderBlade);
-    }
-}
 ```
 
 The complete list of supported options that can be supplied to the ParameterCollector constructor are defined are defined with the following signatures:
@@ -104,14 +75,6 @@ The complete list of supported options that can be supplied to the ParameterColl
 	A callback to be invoked when the child blade supplies a result and closes.
 	@param result The result given by the child blade.
 
-
-- **selectable?: Selectable<any>**
-
-	The selectable associated with the same <BladeAction> as this parameter collector. The parameter collector will supply initial data to the child blade when this becomes selected.
-
-	If not specified, this defaults to container.selectable (so it works with selectable parts without configuration).
-
-
 - **supplyProviderConfig? (): any**
 
 
@@ -127,9 +90,16 @@ The complete list of supported options that can be supplied to the ParameterColl
 
 	If you specify this option, do not also specify either supplyInitialData or receiveResult.
 
-The full source of this ParameterCollector implementation can be found within the SamplesExtension under SamplesExtension\Extension\Client\ParameterCollection\CollectorAsButtonPart
+<a name="implementing-a-parametercollector-opening-the-parameter-provider-blade"></a>
+### Opening the parameter provider blade
 
+Typically a parameter provider blade is opened in a either a fxclick handler or in a onClick callback.
 
+```ts
+    public onClick() {
+        this._container.openBlade(providerReference);
+    }
+```
 
 <a name="implementing-a-parameterprovider"></a>
 ## Implementing a ParameterProvider
@@ -265,5 +235,122 @@ The complete list of supported options that can be supplied to the ParameterProv
 
 
 The full source of this ParameterProvider implementation can be found within the SamplesExtension under SamplesExtension\Extension\Client\ParameterCollection\ParameterProviders.
+
+<a name="implementing-a-parameter-collector-using-pdl-not-recommended"></a>
+## Implementing a Parameter Collector using PDL (not recommended)
+
+To define a Parameter Collector the 'ParameterCollector' attribute is applied in PDL to the BladeAction that is responsible for launching your parameter provider blade
+
+```xml
+<Lens Name="PartLens">
+  <Part PartKind="Button"
+        Name="ParameterCollectorButton"
+        ViewModel="{ViewModel Name=CollectorButtonViewModel,
+        	Module=./CollectorAsButtonPart/ViewModels/CollectorButtonViewModel}" >
+
+    <BladeAction Blade="ParameterProviderFormBlade"
+    			 ParameterCollector="serverConfigCollector" />
+
+  </Part>
+</Lens>
+```
+
+Here the ParameterCollector property indicates which model property is responsible for sending initial data and receiving back a completed result. This attribute may only be used when the target blade contains a part marked with the 'ParameterProvider' attribute. Note that you can also specify additional BladeInput parameters if required.
+
+Continuing with this example serverConfigCollector now needs to be defined as a property of type ParameterCollector<TResult> on CollectorButtonViewModel. So that the ParameterCollector and ParameterProvider can exchange data the TResult generic type must match the TResult generic type used on the parameter provider model.  In this scenario we're define a simple model called ServerConfig and declare our property:
+
+
+```ts
+export class CollectorButtonViewModel extends MsPortalFx.ViewModels.ButtonPart {
+
+    public serverConfigCollector: MsPortalFx.ViewModels.ParameterCollector<ProviderModels.ServerConfig>;
+
+    constructor(container: MsPortalFx.ViewModels.PartContainerContract,
+    			initialState: any,
+    			dataContext: ParameterCollectionArea.DataContext) {
+		...
+    }
+}
+
+```
+
+To send initial data to the provider and optionally receive a result back you can specify callbacks during initialization of the ParameterCollector.
+
+```ts
+export class CollectorButtonViewModel extends MsPortalFx.ViewModels.ButtonPart {
+
+    public serverConfigCollector: MsPortalFx.ViewModels.ParameterCollector<ProviderModels.ServerConfig>;
+
+    constructor(container: MsPortalFx.ViewModels.PartContainerContract,
+    			initialState: any,
+    			dataContext: ParameterCollectionArea.DataContext) {
+
+        super();
+
+        this.serverConfigCollector = new MsPortalFx.ViewModels.ParameterCollector<ProviderModels.ServerConfig>(container, {
+            supplyInitialData: () => {
+                return {
+                    diskSpaceBytes: ko.observable(108 * 1024 * 1024 * 1024),
+                    serverName: ko.observable(ClientResources.parameterProviderDefaultServerName)
+                };
+            },
+            receiveResult: (result: ProviderModels.ServerConfig) => {
+                // A realistic parameter collector command would commence some operation on
+                // receiving data. For this sample we have nothing particular to commence,
+                // so we just show a notification to demonstrate that data was received.
+                MsPortalFx.UI.NotificationManager
+                    .create(ExtensionDefinition.NotificationDefinitions.ParameterCollectorReceivedResultNotification.name)
+                    .raise(ExtensionDefinition.NotificationDefinitions.ParameterCollectorReceivedResultNotification.succeeded, null, ko.toJS(result));
+            }
+        });
+
+        this.title(ClientResources.openProviderBlade);
+    }
+}
+```
+
+The complete list of supported options that can be supplied to the ParameterCollector constructor are defined are defined with the following signatures:
+
+- **supplyInitialData? (): TResult**
+
+    A callback that supplies initial data for the parameter provider in the child blade each time it opens.
+
+    Note that the object received by the parameter provider will be a
+    deep clone of the value you give, rather than the original instance,
+    because it is passed (and sometimes stored) in a serialized form.
+    @return Initial data for the child blade.
+
+- **receiveResult? (result: TResult): void**
+
+	A callback to be invoked when the child blade supplies a result and closes.
+	@param result The result given by the child blade.
+
+
+- **selectable?: Selectable<any>**
+
+	The selectable associated with the same <BladeAction> as this parameter collector. The parameter collector will supply initial data to the child blade when this becomes selected.
+
+	If not specified, this defaults to container.selectable (so it works with selectable parts without configuration).
+
+
+- **supplyProviderConfig? (): any**
+
+
+	A callback that supplies additional configuration options for the provider each time it opens. You can use this to pass non-editable data, for example configuring how a form will be displayed. @return Arbitrary configuration options for the child blade.
+
+
+- **FormFieldValueAccessor?: FormFieldValueAccessors<TResult>**
+
+
+	Provides an easy way to integrate a parameter collector with an EditScope.
+
+	The collector will supply initial data to the provider from this edit scope property, and will automatically insert the provider's output into this edit scope property. The net result is that your parameter collector will act as an editor for the specified edit scope property.
+
+	If you specify this option, do not also specify either supplyInitialData or receiveResult.
+
+The full source of this ParameterCollector implementation can be found within the SamplesExtension under SamplesExtension\Extension\Client\ParameterCollection\CollectorAsButtonPart
+
+
+
 
 Related Documentation: [ARM Provisioning API] (portalfx-provisioning-arm.md)

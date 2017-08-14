@@ -1,10 +1,9 @@
 * [Overview](#overview)
-* [Extension performance](#extension-performance)
-* [Blade performance](#blade-performance)
-* [Part performance](#part-performance)
-* [WxP score](#wxp-score)
-* [How to assess your performance](#how-to-assess-your-performance)
-* [Performance Checklist](#performance-checklist)
+    * [Extension performance](#overview-extension-performance)
+    * [Blade performance](#overview-blade-performance)
+    * [Part performance](#overview-part-performance)
+    * [WxP score](#overview-wxp-score)
+    * [How to assess your performance](#overview-how-to-assess-your-performance)
 * [Performance Frequently Asked Questions (FAQ)](#performance-frequently-asked-questions-faq)
     * [My Extension 'ManifestLoad' is above the bar, what should I do](#performance-frequently-asked-questions-faq-my-extension-manifestload-is-above-the-bar-what-should-i-do)
     * [My Extension 'InitializeExtensions' is above the bar, what should I do](#performance-frequently-asked-questions-faq-my-extension-initializeextensions-is-above-the-bar-what-should-i-do)
@@ -13,39 +12,41 @@
     * [My WxP score is below the bar, what should I do](#performance-frequently-asked-questions-faq-my-wxp-score-is-below-the-bar-what-should-i-do)
 * [Performance best practices](#performance-best-practices)
     * [Writing fast extensions](#performance-best-practices-writing-fast-extensions)
-* [Configuring CDN](#configuring-cdn)
-    * [Using the CDN](#configuring-cdn-using-the-cdn)
-    * [Creating the CDN account](#configuring-cdn-creating-the-cdn-account)
-    * [Configuring your CDN service](#configuring-cdn-configuring-your-cdn-service)
-    * [Configuring your extension](#configuring-cdn-configuring-your-extension)
-    * [Configuring the Prefix](#configuring-cdn-configuring-the-prefix)
-    * [Reading the prefix from configuration](#configuring-cdn-reading-the-prefix-from-configuration)
-    * [IIS / ASP.NET Configuration](#configuring-cdn-iis-asp-net-configuration)
-    * [Invalidating content on the CDN](#configuring-cdn-invalidating-content-on-the-cdn)
-    * [Configuring versioning of your Extensioon](#configuring-cdn-configuring-versioning-of-your-extensioon)
-    * [Updating extensions](#configuring-cdn-updating-extensions)
-    * [Implications of changing the version](#configuring-cdn-implications-of-changing-the-version)
-    * [FAQ](#configuring-cdn-faq)
-* [Extension HomePage Caching](#extension-homepage-caching)
-    * [Server side caching of extension home pages](#extension-homepage-caching-server-side-caching-of-extension-home-pages)
-    * [Client-side caching of extension home pages](#extension-homepage-caching-client-side-caching-of-extension-home-pages)
-    * [Implications of client side caching](#extension-homepage-caching-implications-of-client-side-caching)
-    * [How this works](#extension-homepage-caching-how-this-works)
-    * [How to test your changes](#extension-homepage-caching-how-to-test-your-changes)
-    * [Co-ordinating these changes with the portal](#extension-homepage-caching-co-ordinating-these-changes-with-the-portal)
-* [Persistent Caching of scripts across extension updates](#persistent-caching-of-scripts-across-extension-updates)
-    * [Making sure that scripts are available across extension updates](#persistent-caching-of-scripts-across-extension-updates-making-sure-that-scripts-are-available-across-extension-updates)
-    * [Example implementation as done in HubsExtension](#persistent-caching-of-scripts-across-extension-updates-example-implementation-as-done-in-hubsextension)
-    * [Verfiying that persistent caching is working](#persistent-caching-of-scripts-across-extension-updates-verfiying-that-persistent-caching-is-working)
-* [Run portalcop to identify and resolve common performance issues](#run-portalcop-to-identify-and-resolve-common-performance-issues)
-* [PortalCop](#portalcop)
-    * [Installing PortalCop](#portalcop-installing-portalcop)
-    * [Running PortalCop](#portalcop-running-portalcop)
-* [Performance alerting](#performance-alerting)
+    * [Configuring CDN](#performance-best-practices-configuring-cdn)
+        * [Using the CDN](#performance-best-practices-configuring-cdn-using-the-cdn)
+        * [Creating the CDN account](#performance-best-practices-configuring-cdn-creating-the-cdn-account)
+        * [Configuring your CDN service](#performance-best-practices-configuring-cdn-configuring-your-cdn-service)
+        * [Configuring your extension](#performance-best-practices-configuring-cdn-configuring-your-extension)
+        * [Configuring the Prefix](#performance-best-practices-configuring-cdn-configuring-the-prefix)
+        * [Reading the prefix from configuration](#performance-best-practices-configuring-cdn-reading-the-prefix-from-configuration)
+        * [IIS / ASP.NET Configuration](#performance-best-practices-configuring-cdn-iis-asp-net-configuration)
+        * [Invalidating content on the CDN](#performance-best-practices-configuring-cdn-invalidating-content-on-the-cdn)
+        * [Configuring versioning of your Extensioon](#performance-best-practices-configuring-cdn-configuring-versioning-of-your-extensioon)
+        * [Updating extensions](#performance-best-practices-configuring-cdn-updating-extensions)
+        * [Implications of changing the version](#performance-best-practices-configuring-cdn-implications-of-changing-the-version)
+        * [FAQ](#performance-best-practices-configuring-cdn-faq)
+    * [Extension HomePage Caching](#performance-best-practices-extension-homepage-caching)
+        * [Server side caching of extension home pages](#performance-best-practices-extension-homepage-caching-server-side-caching-of-extension-home-pages)
+        * [Client-side caching of extension home pages](#performance-best-practices-extension-homepage-caching-client-side-caching-of-extension-home-pages)
+        * [Implications of client side caching](#performance-best-practices-extension-homepage-caching-implications-of-client-side-caching)
+        * [How this works](#performance-best-practices-extension-homepage-caching-how-this-works)
+        * [How to test your changes](#performance-best-practices-extension-homepage-caching-how-to-test-your-changes)
+        * [Co-ordinating these changes with the portal](#performance-best-practices-extension-homepage-caching-co-ordinating-these-changes-with-the-portal)
+    * [Persistent Caching of scripts across extension updates](#performance-best-practices-persistent-caching-of-scripts-across-extension-updates)
+        * [Making sure that scripts are available across extension updates](#performance-best-practices-persistent-caching-of-scripts-across-extension-updates-making-sure-that-scripts-are-available-across-extension-updates)
+        * [Example implementation as done in HubsExtension](#performance-best-practices-persistent-caching-of-scripts-across-extension-updates-example-implementation-as-done-in-hubsextension)
+        * [Verfiying that persistent caching is working](#performance-best-practices-persistent-caching-of-scripts-across-extension-updates-verfiying-that-persistent-caching-is-working)
+    * [Run portalcop to identify and resolve common performance issues](#performance-best-practices-run-portalcop-to-identify-and-resolve-common-performance-issues)
+    * [PortalCop](#performance-best-practices-portalcop)
+        * [Installing PortalCop](#performance-best-practices-portalcop-installing-portalcop)
+        * [Running PortalCop](#performance-best-practices-portalcop-running-portalcop)
+    * [Optimize number CORS preflight requests to ARM using invokeApi](#performance-best-practices-optimize-number-cors-preflight-requests-to-arm-using-invokeapi)
+    * [Improve part responsiveness with revealContent](#performance-best-practices-improve-part-responsiveness-with-revealcontent)
+        * [Improving Part responsiveness](#performance-best-practices-improve-part-responsiveness-with-revealcontent-improving-part-responsiveness)
 
 
 <a name="overview"></a>
-## Overview
+# Overview
 
 Portal performance from a customers perspective is seen as all experiences throughout the product. 
 As an extension author you have a duty to uphold your experience to the performance bar at a minimum.
@@ -61,7 +62,7 @@ As an extension author you have a duty to uphold your experience to the performa
 | Extension | Manifest Load              | TODO                | ManifestLoad             | TODO |
 | Extension | Initialization             | TODO                | InitializeExtensions     | TODO | -->
 
-<a name="extension-performance"></a>
+<a name="overview-extension-performance"></a>
 ## Extension performance
 
 Extension performance effects both Blade and Part performance, as your extension is loaded and unloaded as and when it is required.
@@ -70,7 +71,7 @@ performance is effected.
 If the user were to browse away from your experience and browse back before your extension is unloaded obviously second visit will be faster, as they don't pay the cost
 of loading the extension.
 
-<a name="blade-performance"></a>
+<a name="overview-blade-performance"></a>
 ## Blade performance
 
 Blade performance is spread across a couple of main areas:
@@ -81,7 +82,7 @@ Blade performance is spread across a couple of main areas:
 
 All of which are encapsulated under the one BladeRevealed action.
 
-<a name="part-performance"></a>
+<a name="overview-part-performance"></a>
 ## Part performance
 
 Similar to Blade performance, Part performance is spread across a couple of areas:
@@ -91,7 +92,7 @@ Similar to Blade performance, Part performance is spread across a couple of area
 
 All of which are encapsulated under the one PartRevealed action.
 
-<a name="wxp-score"></a>
+<a name="overview-wxp-score"></a>
 ## WxP score
 
 The WxP score is a per extension Weight eXPerience score (WxP). It is calculated by the as follows:
@@ -118,7 +119,7 @@ WxP = (BladeViewsMeetingTheBar * 80thPercentileBar) / ((BladeViewsMeetingTheBar 
 
 As you can see the model penalizes the number of views which don’t meet the bar and also the count of those.
 
-<a name="how-to-assess-your-performance"></a>
+<a name="overview-how-to-assess-your-performance"></a>
 ## How to assess your performance
 
 There is two methods to assess your performance:
@@ -131,19 +132,8 @@ There is two methods to assess your performance:
 The first method is definitely the easiest way to determine your current assessment as this is maintained on a regular basis by the Fx team.
 You can, if preferred, run queries locally but ensure you are using the Fx provided Kusto functions to calculate your assessment.
 
-<a name="performance-checklist"></a>
-## Performance Checklist
-
-- [Configure CDN][portalfx-cdn]
-- [Extension HomePage Caching](portalfx-extension-homepage-caching.md)
-- [Persistent Caching of scripts across extension updates](portalfx-extension-persistent-caching-of-scripts.md)
-- [Run portalcop to identify and resolve common performance issues](portalfx-performance-portalcop.md)
-- [Optimize number CORS preflight requests to ARM using invokeApi](portalfx-data-loadingdata.md#loading-data-optimize-number-cors-preflight-requests-to-arm-using-invokeapi)
-- [Improve part responsiveness with revealContent](portalfx-parts-revealContent.md)
-- [Best practices](#performance-best-practices)
-
 <a name="performance-frequently-asked-questions-faq"></a>
-## Performance Frequently Asked Questions (FAQ)
+# Performance Frequently Asked Questions (FAQ)
 
 <!--### My Extension 'InitialExtensionResponse' is above the bar, what should I do
 
@@ -160,7 +150,7 @@ TODO
 TODO -->
 
 <a name="performance-frequently-asked-questions-faq-my-blade-revealed-is-above-the-bar-what-should-i-do"></a>
-### My Blade &#39;Revealed&#39; is above the bar, what should I do
+## My Blade &#39;Revealed&#39; is above the bar, what should I do
 
 1. Assess what is happening in your Blades's constructor and OnInputsSet.
 1. Can that be optimized?
@@ -171,7 +161,7 @@ TODO -->
     - If there's a high number of parts (> 3), consider removing some of the parts
 
 <a name="performance-frequently-asked-questions-faq-my-part-revealed-is-above-the-bar-what-should-i-do"></a>
-### My Part &#39;Revealed&#39; is above the bar, what should I do
+## My Part &#39;Revealed&#39; is above the bar, what should I do
 
 1. Assess what is happening in your Part's constructor and OnInputsSet.
 1. Can that be optimized?
@@ -179,14 +169,14 @@ TODO -->
 1. Do you have partial data before the OnInputsSet is fully resolved? If yes, then you can reveal early, display the partial data and handle loading UI for the individual components 
 
 <a name="performance-frequently-asked-questions-faq-my-wxp-score-is-below-the-bar-what-should-i-do"></a>
-### My WxP score is below the bar, what should I do
+## My WxP score is below the bar, what should I do
 
 Using the [Extension performance/reliability report][Ext-Perf/Rel-Report] you can see the WxP impact for each individual blade. Although given the Wxp calculation,
 if you are drastically under the bar its likely a high usage blade is not meeting the performance bar, if you are just under the bar then it's likely it's a low usage
 blade which is not meeting the bar.
 
 <a name="performance-best-practices"></a>
-## Performance best practices
+# Performance best practices
 
 
 <!-- THIS FILE IS REFERENCED IN THE portalfx-performance SECTION PLEASE START ALL HEADINGS WITH H3S -->
@@ -359,31 +349,31 @@ There is almost a 50% reduction in time with these optimizations, but also note 
 
 
 
-<a name="configuring-cdn"></a>
+<a name="performance-best-practices-configuring-cdn"></a>
 ## Configuring CDN
 
 
-<a name="configuring-cdn-using-the-cdn"></a>
+<a name="performance-best-practices-configuring-cdn-using-the-cdn"></a>
 ### Using the CDN
 Extension authors may choose to use a CDN to serve static images, scripts, and stylesheets. The Azure Portal SDK does not require the use of a CDN, or the use of a particular CDN. However, extensions served from Azure can take advantage of the built-in CDN capabilities in the SDK.
 
-<a name="configuring-cdn-creating-the-cdn-account"></a>
+<a name="performance-best-practices-configuring-cdn-creating-the-cdn-account"></a>
 ### Creating the CDN account
 Follow this guide to set up your CDN account:
 
 <a href="http://www.windowsazure.com/en-us/documentation/articles/cdn-how-to-use/" target="_blank">http://www.windowsazure.com/en-us/documentation/articles/cdn-how-to-use/</a>
 
-<a name="configuring-cdn-configuring-your-cdn-service"></a>
+<a name="performance-best-practices-configuring-cdn-configuring-your-cdn-service"></a>
 ### Configuring your CDN service
 After creating your CDN, there are a few options that need to be set.
 - Make sure HTTP and HTTPS are enabled by clicking the "Enable HTTPS" command.
 - Make sure query string status is enabled by clicking the "Enable Query String" command.
 
-<a name="configuring-cdn-configuring-your-extension"></a>
+<a name="performance-best-practices-configuring-cdn-configuring-your-extension"></a>
 ### Configuring your extension
 To take advantage of the CDN capabilities in the Portal SDK, there are a few pieces that must be configured.
 
-<a name="configuring-cdn-configuring-the-prefix"></a>
+<a name="performance-best-practices-configuring-cdn-configuring-the-prefix"></a>
 ### Configuring the Prefix
 After setting up your CDN, you will receive a url which can be used to access your content. It will be in the form:
 
@@ -398,7 +388,7 @@ This is the prefix for your CDN service. Your production service should be confi
 
 Notice that neither `http` nor `https` are used in the url. This is important. It allows your page to request content based on the current protocol of the request. Oftentimes, this setting will be blank in web.config, and instead configured in a `cscfg` for a cloud service.
 
-<a name="configuring-cdn-reading-the-prefix-from-configuration"></a>
+<a name="performance-best-practices-configuring-cdn-reading-the-prefix-from-configuration"></a>
 ### Reading the prefix from configuration
 
 To read any FX configuration, you must have a class which inherits from `ApplicationContext`. This class needs to include a `CdnPrefix` property:
@@ -473,7 +463,7 @@ public class ApplicationConfiguration : ConfigurationSettings
 }
 ```
 
-<a name="configuring-cdn-iis-asp-net-configuration"></a>
+<a name="performance-best-practices-configuring-cdn-iis-asp-net-configuration"></a>
 ### IIS / ASP.NET Configuration
 Files are pushed to the CDN using the following process:
 
@@ -492,7 +482,7 @@ The url used for the request is in the following form:
 
 The */CDN/* portion of this url is inserted after the host address, and before the rest of the route for requested content. The request handling code in the SDK automatically handles incoming requests of the form /CDN/Content/... and /Content/...   
 
-<a name="configuring-cdn-invalidating-content-on-the-cdn"></a>
+<a name="performance-best-practices-configuring-cdn-invalidating-content-on-the-cdn"></a>
 ### Invalidating content on the CDN
 
 - Amd Bundles are invalidated using a **hash** of the file content i.e https://hubs-s3-portal.azurecomcdn.net/AzureHubs/Content/Dynamic/AmdBundleDefinition_**83A1A15A39494B7BB1F704FDB5F32596D4498792**.js?root=*HubsExtension/ServicesHealth/ServicesHealthArea
@@ -500,11 +490,11 @@ The */CDN/* portion of this url is inserted after the host address, and before t
 
 When you release to ensure that users are served the latest static content, as opposed to stale content,  you need to configure versioning.
 
-<a name="configuring-cdn-configuring-versioning-of-your-extensioon"></a>
+<a name="performance-best-practices-configuring-cdn-configuring-versioning-of-your-extensioon"></a>
 ### Configuring versioning of your Extensioon
 
 
-<a name="configuring-cdn-updating-extensions"></a>
+<a name="performance-best-practices-configuring-cdn-updating-extensions"></a>
 ### Updating extensions
 
 The portal shell relies on environment version for making runtime decisions, e.g.:
@@ -531,7 +521,7 @@ see (Azure internal teams only) [OneBranch versioning](https://microsoft.sharepo
 
 Once configured content will be served directly from your extension, or via CDN if configured, using a URL segment such as /Content/<Version> e.g /Content/**5.0.0.56**/Scripts, Content/**5.0.0.56**/Images.
 
-<a name="configuring-cdn-implications-of-changing-the-version"></a>
+<a name="performance-best-practices-configuring-cdn-implications-of-changing-the-version"></a>
 ### Implications of changing the version
 
 You should not introduce breaking changes in your server code (e.g. incompatibility between client and server code). Instead leave a compatibile version of the old code around on the server for a few days, monitor its usage to ensure that customers/browsers are no longer accessing it (i.e all users have switched to the newer version of your code - likely by refreshing the portal), and then delete the code.
@@ -540,7 +530,7 @@ If you do end up in a situation where you make a breaking change, users will lik
 You will need to contact the portal team in order to find a way to get past this issue.
 
 
-<a name="configuring-cdn-faq"></a>
+<a name="performance-best-practices-configuring-cdn-faq"></a>
 ### FAQ
 
 - I am not seeing paths w/ versioning during debug.
@@ -548,11 +538,11 @@ You will need to contact the portal team in order to find a way to get past this
 
 
 
-<a name="extension-homepage-caching"></a>
+<a name="performance-best-practices-extension-homepage-caching"></a>
 ## Extension HomePage Caching
 
 
-<a name="extension-homepage-caching-server-side-caching-of-extension-home-pages"></a>
+<a name="performance-best-practices-extension-homepage-caching-server-side-caching-of-extension-home-pages"></a>
 ### Server side caching of extension home pages
 
 With the (5.0.302.85 or later) version of the SDK  extension home pages can be cached (to different levels).
@@ -600,7 +590,7 @@ It assumes that if you do change the output, you only do so by also incrementing
 Note: In this mode, if you make live updates to your extension without bumping the version, some chunk of your customers may not see those for a while because of caching.
 
 
-<a name="extension-homepage-caching-client-side-caching-of-extension-home-pages"></a>
+<a name="performance-best-practices-extension-homepage-caching-client-side-caching-of-extension-home-pages"></a>
 ### Client-side caching of extension home pages
 
 The above version of the feature only enables server side caching.
@@ -641,7 +631,7 @@ To enable this, here are the steps you need to take:
     We added it to ensure backward compatibility.
     When all extensions have moved to newer SDKs, we can eliminate it.
 
-<a name="extension-homepage-caching-implications-of-client-side-caching"></a>
+<a name="performance-best-practices-extension-homepage-caching-implications-of-client-side-caching"></a>
 ### Implications of client side caching
 
 1.  An implication of this change is that when you roll out an update to your extension, it might take a couple of hours for it to reach all your customers.
@@ -654,7 +644,7 @@ To enable this, here are the steps you need to take:
 
 We believe that the benefits of caching and fast load time generally outweigh these concerns.
 
-<a name="extension-homepage-caching-how-this-works"></a>
+<a name="performance-best-practices-extension-homepage-caching-how-this-works"></a>
 ### How this works
 
 We periodically load your extensions (from our servers) to get their manifests.
@@ -687,7 +677,7 @@ When the caching values are set, the browser will not even make a server request
 You will notice that we include the shellVersion also in the query string of the URL.
 This is just there to provide a mechanism to bust extension caches if we needed to.
 
-<a name="extension-homepage-caching-how-to-test-your-changes"></a>
+<a name="performance-best-practices-extension-homepage-caching-how-to-test-your-changes"></a>
 ### How to test your changes
 
 You can verify the behavior of different caching modes in your extension by launching the portal with the following query string:
@@ -708,7 +698,7 @@ To verify that the browser serves your extension entirely from cache on subseque
 - You will see the home page of your extension show up in the list of responses (along with the load time and size).
 - Then F5 to refresh the portal and navigate back to your extension. This time when your extension is served up, you should see the response served with no network activity. The response will show "(from cache)".  If you see this manifest caching is working as expected.
 
-<a name="extension-homepage-caching-co-ordinating-these-changes-with-the-portal"></a>
+<a name="performance-best-practices-extension-homepage-caching-co-ordinating-these-changes-with-the-portal"></a>
 ### Co-ordinating these changes with the portal
 
 Again, if you do make some of these changes, you still need to coordinate with the portal team to make sure that we make corresponding changes on our side too.
@@ -716,7 +706,7 @@ Basically that will tell us to stop sending your extension the sessionId part of
 Sorry about this part, we had to do it in order to stay entirely backward compatible/safe.
 
 
-<a name="persistent-caching-of-scripts-across-extension-updates"></a>
+<a name="performance-best-practices-persistent-caching-of-scripts-across-extension-updates"></a>
 ## Persistent Caching of scripts across extension updates
 
 <properties
@@ -725,7 +715,7 @@ Sorry about this part, we had to do it in order to stay entirely backward compat
     description=""
     authors="madjos" />
 
-<a name="persistent-caching-of-scripts-across-extension-updates-making-sure-that-scripts-are-available-across-extension-updates"></a>
+<a name="performance-best-practices-persistent-caching-of-scripts-across-extension-updates-making-sure-that-scripts-are-available-across-extension-updates"></a>
 ### Making sure that scripts are available across extension updates
 
 One problem that can impact reliability of extensions is scripts failing to load.
@@ -765,7 +755,7 @@ If we detect that it is getting hit too often, we will come up with a geo-distri
 If you do use one account per region to handle this, you will need to find a way to synchronize them.
 You could do this by using a custom implementation of the `Microsoft.Portal.Framework.IPersistentContentCache` interface.
 
-<a name="persistent-caching-of-scripts-across-extension-updates-example-implementation-as-done-in-hubsextension"></a>
+<a name="performance-best-practices-persistent-caching-of-scripts-across-extension-updates-example-implementation-as-done-in-hubsextension"></a>
 ### Example implementation as done in HubsExtension
 
 ```cs 
@@ -828,7 +818,7 @@ web.config
 
 ```
 
-<a name="persistent-caching-of-scripts-across-extension-updates-verfiying-that-persistent-caching-is-working"></a>
+<a name="performance-best-practices-persistent-caching-of-scripts-across-extension-updates-verfiying-that-persistent-caching-is-working"></a>
 ### Verfiying that persistent caching is working
 
 - Deploy a version of your extension. Examine the scripts it loads, they will be of the form `prefix<sha hash>suffix.js`
@@ -838,14 +828,14 @@ web.config
 - For those scripts try to request the original URL (from step 1) from your extension server (not via the cdn).
 - The script should still get served, but this time it is coming from the persistent cache.
 
-<a name="run-portalcop-to-identify-and-resolve-common-performance-issues"></a>
+<a name="performance-best-practices-run-portalcop-to-identify-and-resolve-common-performance-issues"></a>
 ## Run portalcop to identify and resolve common performance issues
 
-<a name="portalcop"></a>
+<a name="performance-best-practices-portalcop"></a>
 ## PortalCop
 The Portal Framework team has built a tool called PortalCop that can help reduce code size and remove redundant RESX entries.
 
-<a name="portalcop-installing-portalcop"></a>
+<a name="performance-best-practices-portalcop-installing-portalcop"></a>
 ### Installing PortalCop
 
 Run the following command in the NuGet Package Manager Console.
@@ -860,10 +850,10 @@ Or run the following in a Windows command prompt.
 nuget install PortalFx.PortalCop -Source https://msazure.pkgs.visualstudio.com/DefaultCollection/_packaging/Official/nuget/v3/index.json -Version 1.0.0.339
 ```
 
-<a name="portalcop-running-portalcop"></a>
+<a name="performance-best-practices-portalcop-running-portalcop"></a>
 ### Running PortalCop
 
-<a name="portalcop-running-portalcop-namespace-mode"></a>
+<a name="performance-best-practices-portalcop-running-portalcop-namespace-mode"></a>
 #### Namespace Mode
 
 NOTE: If you do not use AMD, please do not run this mode in your codebase.
@@ -887,7 +877,7 @@ Review the changes after running the tool. Especially, be wary of string content
    portalcop Namespace
 ```
 
-<a name="portalcop-running-portalcop-resx"></a>
+<a name="performance-best-practices-portalcop-running-portalcop-resx"></a>
 #### Resx
 
 To reduce code size and save on localization costs, you can use the PortalCop RESX mode to find unused/redundant resx strings. 
@@ -916,10 +906,134 @@ Constraints:
 - If you find any more scenarios that the tool incorrectly identifies as unused please report to [Ibiza Fx PM](mailto:ibizafxpm@microsoft.com)
 
 
-<a name="performance-alerting"></a>
-## Performance alerting
+<a name="performance-best-practices-optimize-number-cors-preflight-requests-to-arm-using-invokeapi"></a>
+## Optimize number CORS preflight requests to ARM using invokeApi
 
-Coming soon please reach out to sewatson if you are interested.
+[See more information here](portalfx-data-loadingdata.md#loading-data-optimize-number-cors-preflight-requests-to-arm-using-invokeapi.md)
+
+<a name="performance-best-practices-improve-part-responsiveness-with-revealcontent"></a>
+## Improve part responsiveness with revealContent
+
+
+<a name="performance-best-practices-improve-part-responsiveness-with-revealcontent-improving-part-responsiveness"></a>
+### Improving Part responsiveness
+
+<a name="performance-best-practices-improve-part-responsiveness-with-revealcontent-improving-part-responsiveness-overview"></a>
+#### Overview
+
+As a Part loads, by default, the user is presented with a *blocking* loading indicator:
+
+![Part with blocking loading indicator][opaque]
+[opaque]: ../media/portalfx-parts-opaquespinner.png
+
+By default, the lifetime of this *blocking* loading indicator is controlled by the promise returned from the Part's `onInputsSet` method:
+
+```ts
+public onInputsSet(inputs: Def.InputsContract): MsPortalFx.Base.Promise {
+	// When this promise is resolved, the loading indicator is removed.
+    return this._view.fetch(inputs.websiteId);
+}
+```
+
+Now, it is quite common that a Part's content can be revealed (that is, the *blocking* loading indicator can be removed) earlier, allowing the user to interact with the Part while its data continues to load.  An example of this looks like:
+
+![Part with non-blocking loading indicator][translucent]
+[translucent]: ../media/portalfx-parts-translucentspinner.png
+
+Here, essential content - like the "Accounts" SQL Database name - is displayed to the user while non-essential "status" (bottom left) loads in the background.
+While "status" loads, a *non-blocking* loading indicator is displayed at the top of the Part.  Crucially, the user can activate the Part (can interact with the Part) while the Part is in this *non-blocking* loading state.
+
+To optimize your Part to behave in this more responsive way, you'll use the `container.revealContent()` API from within your Part's view model.  A call to this API will:
+
+* remove the *blocking* loading indicator
+* reveal the Part's content
+* apply the *non-blocking* loading indicator
+* allow the user to interact with your Part
+
+Depending on the nature of your Part, you will call `container.revealContent()`:
+
+* from your Part view model's `constructor` *or*
+* from your Part view model's `onInputsSet` function:
+    * in a '.then(() => ...)' callback, once *essential data* has loaded
+    * in 'onInputsSet' directly, before initiating data-loading    
+
+You'll call `container.revealContent()` from your view model's `constructor` in scenarios where the Part has interesting content to display *even before any data is loaded*.  An example of this would be a chart that can show its X and Y-axis immediately:
+
+```ts
+export class BarChartPartViewModel implements Def.BarChartPartViewModel.Contract {
+
+    public barChartVM: MsPortalFx.ViewModels.Controls.Visualization.Chart.Contract<string, number>;
+
+    constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState: any, dataContext: ControlsArea.DataContext) {
+        // Initialize the chart view model.
+        this.barChartVM = new MsPortalFx.ViewModels.Controls.Visualization.Chart.ViewModel<string, number>(container);
+
+        // Configure the chart view model (incomplete as shown).
+        this.barChartVM.yAxis.showGridLines(true);
+		
+		container.revealContent();
+	}
+}
+```
+More often, you'll call `container.revealContent()` once some essential, fast-loading data is loaded:
+
+```ts
+public onInputsSet(inputs: MyPartInputs): Promise {
+    // This larger Promise still controls the lifetime of all loading indicators (the
+    // non-blocking one in this case, since 'container.revealContent()' has been called).
+    return Q.all([
+        this._essentialDataView.fetch(inputs.resourceId).then(() => {
+            // Show the Part content once essential, fast-loading data loads.
+            this._container.revealContent();
+        }),
+        this._slowLoadingNonEssentialDataView.fetch(inputs.resourceId)
+    ]);
+}
+```
+Less commonly, you'll call `container.revealContent()` when the essential data you'll display can be computed synchronously from the Part/Blade inputs:
+
+```ts
+public onInputsSet(inputs: MyPartInputs): Promise {
+
+    // In this case, the 'resourceGroupName' is sufficient to allow the user to interact with the Part/Blade.
+    var resourceDescriptor = ResourceTypes.parseResourceManagerDescriptor(inputs.resourceId);
+    this.resourceGroupName(resourceDescriptor.resourceGroup);
+    this._container.revealContent();
+
+    // This Promise controls the lifetime of all loading indicators (the
+    // non-blocking one in this case, since 'container.revealContent()' has been called).
+    return this._dataView.fetch(inputs.resourceId);
+}
+```
+In all cases above, the promise returned from `onInputsSet` still determines the visibility/presence of loading indicators.  Once the promise returned from `onInputsSet` is resolved, all loading indicators are removed:
+
+![Fully loaded Part with no loading indicator][nospinner]
+[nospinner]: ../media/portalfx-parts-nospinner.png
+
+Also, if the promise returned from `onInputsSet` is rejected (due to the rejection of either the fast- or slow-loading data promise), the Part will transition to show the default error UX (a "sad cloud").
+This treatment of the promise returned from `onInputsSet` behaves consistently, whether or not the Part makes use of `container.revealContent()`.  In this way, `container.revealContent()` is a *simple, additive* change you should use to optimize your Part's behavior.
+
+<a name="performance-best-practices-improve-part-responsiveness-with-revealcontent-improving-part-responsiveness-anti-patterns"></a>
+#### Anti-patterns
+
+It is important that loading indicators are consistently applied across the Parts/Blades of all extensions.  To achieve this:
+
+**Do** call `container.revealContent()` to limit the time where the user sees *blocking* loading indicators.
+
+**Do** return a Promise from `onInputsSet` that **reflects all data-loading** for your Part (or for your Blade, if the Blade is locked or `<TemplateBlade>`).
+
+**Do not** return a Promise from `onInputsSet` that removes loading indicators *before all Part data is loaded*.  While your Part data loads, if the user sees no loading indicator, your Part will appear broken and/or unresponsive.  For instance,
+
+```ts
+public onInputsSet(inputs: MyPartInputs): Promise {
+    this._view.fetch(inputs.resourceId);
+    
+    // DO NOT DO THIS!  Removes all loading indicators.
+    // Your Part will look broken while the `fetch` above completes.
+    return Q();
+}
+```
+
 
 [TelemetryOnboarding]: <portalfx-telemetry-getting-started.md>
 [Ext-Perf/Rel-Report]: <http://aka.ms/portalfx/dashboard/extensionperf>

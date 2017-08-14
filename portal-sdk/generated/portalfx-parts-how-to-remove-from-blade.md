@@ -1,6 +1,6 @@
 
-<a name="removig-a-part-from-a-blade-s-default-layout"></a>
-### Removig a part from a blade&#39;s default layout
+<a name="removing-a-part-from-a-blade-s-default-layout"></a>
+### Removing a part from a blade&#39;s default layout
 Your unlocked blade's default layout should be reflective of tiles you think provide the most out of the box value to users while meeting your performance goals.  That layout may change over time, and you may decide that a part that included in a blade's default layout at one point in time should not be included going forward.  
 
 If you find yourself in that position this is what you should do.

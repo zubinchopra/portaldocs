@@ -22,13 +22,13 @@ Controls are the building blocks of your experience. They allow users to view, e
 
 To learn more about any of our controls, click on any of the links below.
 
-- [Button](http://aka.ms/portalfx/samples#blade/SamplesExtension/SimpleButtonInstructions/selectedItem/SimpleButtonInstructions/selectedValue/SimpleButtonInstructions)
-- [Copyable Label](http://aka.ms/portalfx/samples#blade/SamplesExtension/CopyableLabelInstructions/selectedItem/CopyableLabelInstructions/selectedValue/CopyableLabelInstructions)
+- [Button](http://aka.ms/portalfx/samples#blade/SamplesExtension/SimpleButtonBlade)
+- [Copyable Label](http://aka.ms/portalfx/samples#blade/SamplesExtension/CopyableLabelBlade)
 - [File Upload (async)](http://aka.ms/portalfx/samples#blade/SamplesExtension/AsyncFileUploadInstructions/selectedItem/AsyncFileUploadInstructions/selectedValue/AsyncFileUploadInstructions)
 - [File Download Button](http://aka.ms/portalfx/samples#blade/SamplesExtension/FileDownloadButtonInstructions/selectedItem/FileDownloadButtonInstructions/selectedValue/FileDownloadButtonInstructions)
 - [Text Block](https://df.onecloud.azure-test.net/?samplesExtension=true#blade/SamplesExtension/TextBlockInstructions/selectedItem/TextBlockInstructions/selectedValue/TextBlockInstructions)
-- [OAuth Button](http://aka.ms/portalfx/samples#blade/SamplesExtension/OAuthButtonInstructions/selectedItem/OAuthButtonInstructions/selectedValue/OAuthButtonInstructions)
-- [Splitter](http://aka.ms/portalfx/samples#blade/SamplesExtension/SplitterInstructions/selectedItem/SplitterInstructions/selectedValue/SplitterInstructions)
+- [OAuth Button](http://aka.ms/portalfx/samples#blade/SamplesExtension/OAuthButtonBlade)
+- [Splitter](http://aka.ms/portalfx/samples#blade/SamplesExtension/SplitterBlade)
 - [Selector](http://aka.ms/portalfx/samples#blade/SamplesExtension/SelectorInstructions/selectedItem/SelectorInstructions/selectedValue/SelectorInstructions)
 - [Settings](http://aka.ms/portalfx/samples#blade/SamplesExtension/SettingsInstructions/selectedItem/SettingsInstructions/selectedValue/SettingsInstructions)
 - [Single Setting](http://aka.ms/portalfx/samples#blade/SamplesExtension/SingleSettingInstructions/selectedItem/SingleSettingInstructions/selectedValue/SingleSettingInstructions)
@@ -431,8 +431,7 @@ constructor(container: MsPortalFx.ViewModels.PartContainerContract,
 - [Tree View](http://aka.ms/portalfx/samples#blade/SamplesExtension/TreeViewInstructions/selectedItem/TreeViewInstructions/selectedValue/TreeViewInstructions)
 - [String List](http://aka.ms/portalfx/samples#blade/SamplesExtension/StringListInstructions/selectedItem/StringListInstructions/selectedValue/StringListInstructions)
 - [Query Builder](http://aka.ms/portalfx/samples#blade/SamplesExtension/QueryBuilderInstructions/selectedItem/QueryBuilderInstructions/selectedValue/QueryBuilderInstructions)
-- Grid
-    [Grid](portalfx-controls-grid.md)
+- [Grid](portalfx-controls-grid.md)
 
 <a name="controls-helpers-and-indicators"></a>
 ## Helpers and Indicators
