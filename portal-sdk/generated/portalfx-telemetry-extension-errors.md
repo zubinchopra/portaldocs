@@ -1,21 +1,21 @@
-<a name="extension-errors-dashboard"></a>
-## Extension Errors Dashboard
+<a name="how-to-analyze-client-errors"></a>
+## How to analyze client errors
 
 **Extension Errors dashboard** gives you the ability to look into the errors and warnings thrown by your extension.
 
 To view the Extension Errors PowerBi dashboard follow this link: [Extension Errors PowerBi dashboard](http://aka.ms/portalfx/dashboard/ExtensionErrors)
 
-<a name="extension-errors-dashboard-prerequisites"></a>
+<a name="how-to-analyze-client-errors-prerequisites"></a>
 ### Prerequisites
 
 **NOTE:** Note that your extension's errors/warnings will be tracked in this dashboard only if you have previously [onboarded to ExtTelemetry/ExtEvents tables](portalfx-telemetry.md).
 
-<a name="extension-errors-dashboard-prerequisites-getting-access-to-the-extension-errors-dashboard"></a>
+<a name="how-to-analyze-client-errors-prerequisites-getting-access-to-the-extension-errors-dashboard"></a>
 #### Getting access to the Extension Errors Dashboard
 
-In order to get acess to the Extension Errors Dashboard, you will need to join [Azure Portal Data](http://idwebelements/GroupManagement.aspx?Group=auxdatapartners&Operation=join) group.
+In order to get access to the Extension Errors Dashboard, ensure you have telemetry access. [See the Telemetry getting started](portalfx-telemetry-getting-started.md#permissions)
 
-<a name="extension-errors-dashboard-where-to-look-for-error-warning-spikes"></a>
+<a name="how-to-analyze-client-errors-where-to-look-for-error-warning-spikes"></a>
 ### Where to look for error/warning spikes
 
 "Errors by Environment" and "Warnings by Environment" are the charts that you need to monitor. You should check to see if there are any significant spikes in the report.
@@ -28,7 +28,7 @@ There are three charts on each column:
 
 In order to hide irrelevant spikes (where the portal is used by less than 10 users), you can select the option "Show Data" -> "Where total users > 10".
 
-<a name="extension-errors-dashboard-find-the-cause-of-error-warning-spikes"></a>
+<a name="how-to-analyze-client-errors-find-the-cause-of-error-warning-spikes"></a>
 ### Find the cause of error/warning spikes
 
 If you want to analyze a spike, you can drill down into the top errors thrown by your extension in a specific hour by going to the "1 Hour Error Drilldown" chart.
@@ -65,7 +65,7 @@ Another useful chart is the "Last 24 Hours Error Summary", which shows the error
 
 **NOTE:** We aggregate the error messages by omitting the text which is within double quotes (") or single quotes ('). We consider those parts to be the dynamic part of the message (e.g. an id, a timestamp etc.). For example, a message like [Could not find part "PartName1"] will be treated as [Could not find part ""]. Please use this format for all the logged error messages, if you want them to be aggregated by our queries.
 
-<a name="extension-errors-dashboard-additional-information"></a>
+<a name="how-to-analyze-client-errors-additional-information"></a>
 ### Additional information
 
 - All time stamps shown in this dashboard are UTC time stamps.

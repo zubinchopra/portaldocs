@@ -22,7 +22,7 @@
 # Basic Concepts
 * [UI Concepts](portalfx-ui-concepts.md#ui-concepts)
 
-* [TypeScript decorator support for extension metadata (formerly known as No-PDL or No PDL)](portalfx-no-pdl-programming.md#typescript-decorator-support-for-extension-metadata-formerly-known-as-no-pdl-or-no-pdl)
+* [Defining Blades and Parts using TypeScript decorators (a.k.a. 'no-PDL')](portalfx-no-pdl-programming.md#defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl)
 
 * [Parts (a.k.a. tiles)](portalfx-parts.md#parts-a-k-a-tiles)
 
