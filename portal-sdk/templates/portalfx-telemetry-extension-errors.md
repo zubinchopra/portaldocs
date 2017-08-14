@@ -1,4 +1,4 @@
-## Extension Errors Dashboard
+## How to analyze client errors
 
 **Extension Errors dashboard** gives you the ability to look into the errors and warnings thrown by your extension.
 
@@ -10,7 +10,7 @@ To view the Extension Errors PowerBi dashboard follow this link: [Extension Erro
 
 #### Getting access to the Extension Errors Dashboard
 
-In order to get acess to the Extension Errors Dashboard, you will need to join [Azure Portal Data](http://idwebelements/GroupManagement.aspx?Group=auxdatapartners&Operation=join) group.
+In order to get access to the Extension Errors Dashboard, ensure you have telemetry access. [See the Telemetry getting started](portalfx-telemetry-getting-started.md#permissions)
 
 ### Where to look for error/warning spikes
 

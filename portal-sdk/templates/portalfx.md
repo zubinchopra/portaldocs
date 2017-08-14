@@ -1,4 +1,4 @@
-
+﻿
 # Home 
 
 Ibiza, as Azure's portal, is the framework and design language (UI) that unifies and provides access to all Microsoft cloud offerings. 
@@ -20,6 +20,7 @@ Sounds interesting. Want to become a partner?
 1. [Localization / Globalization](/portal-sdk/generated/index-portalfx-extension-localization-globalization.md)
 1. [Accessibility](/portal-sdk/generated/index-portalfx-extension-accessibility.md)
 1. [Sharing PDE](/portal-sdk/generated/index-portalfx-extension-sharing-pde.md)
+1. [Post a release notification](/portal-sdk/generated/portalfx-extension-posting-whats-new-notification.md)
 
 Feeling Lost? Reach out to Community: [Stackoverflow](/portal-sdk/generated/index-portalfx-extension-QnA.md)
 

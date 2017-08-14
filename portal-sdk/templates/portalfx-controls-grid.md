@@ -56,7 +56,7 @@ Plugin compatibility:
 In the basic scenario your data is provided to the grid, throw the items param as a KnockoutObservableArray&lt;T>.
 The array can be one you create or more commonly it will be the items property of a QueryView.
 
-In virtualzation scenarios you will provide the data to the grid via a DataNavigator.
+In virtualization scenarios you will provide the data to the grid via a DataNavigator.
 Navigators can support two data retrieval patterns.
 - The first is sequential data access using continuation tokens.Sequential navigation can be enabled by the Pageable plugin.
 - The second is using random data access aka skip-take. Random access navigation can be enabled by the Pageable or Scrollable plugins.
@@ -96,7 +96,7 @@ The following formatters can be used for formatting dates:
 - YearMonth: July, 2013
 - ShortTime: 11:20 AM
 - LongTime: 11:20:19 AM
-- CustomDate: Any format posible using Intl date formatting
+- CustomDate: Any format possible using Intl date formatting
 
 {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Controls/Grid/ViewModels/FormattedGridViewModel.ts", "section": "grid#dateformatter"}
 
@@ -152,7 +152,7 @@ The $data object bound to the template will be in the following format where val
 
 ### Selection and Activation
 With the grid you can enable the SelectableRow extension that enables row selections and blade activations.
-Selection and activation are seperate concepts that overlap in the grid.
+Selection and activation are separate concepts that overlap in the grid.
 Activation in the grid is displaying a blade.
 Selection is the selecting of items within the grid.
 Depending on your settings the act of selecting may also activate a blade.
@@ -178,17 +178,17 @@ You can also opt out of sorting for a column by setting ``sortable = false``;
  
 ### Filtering
 The grid has a Filterable row plugin that can be used for filtering.
-The plugin provides a simple serch box UI that users can use to enter text.
+The plugin provides a simple search box UI that users can use to enter text.
 The filtering can occur on the server or in the grid locally.
 To enable filtering through the data navigator set serverFiltering to true.
 Otherwise the filtering will occur in the grid on the client.
 
 The client side filtering works as follows.
 The set of properties to filter against are by default the itemkeys of all columns.
-Alternatively, you can specify the set of properties to filter against usting the searchableColumns option.
+Alternatively, you can specify the set of properties to filter against using the searchableColumns option.
 For every searchable property the grid looks for a column definition.
 If a column definition is found the grid looks for a filterableFormat option.
-If a filterableFormat is found it isused to convert the data to value to a searchable string.
+If a filterableFormat is found it is used to convert the data to value to a searchable string.
 If a filterableFormat is not found the grid converts value to string using JSON.stringify and the text formatter.
 The grid then searches for all the search terms in the formatted property values.
 If every search term is found the item is added to the filter results.
@@ -214,7 +214,7 @@ The formatters specifically for editing are
 [All Controls in a Grid Sample][AllControlsSample]
 
 ### Paging
-The pagable plugin enables virtualization for large data sets using sequential and random access.
+The pageable plugin enables virtualization for large data sets using sequential and random access.
 Alternatively, there is a scrollable plugin for random access scrolling.
 
 For sequential data the ``type`` must be specified ``PageableType.Sequential``.
@@ -244,9 +244,9 @@ Your hierarchy will supply the current items to display to the grid.
 The hierarchy implementation is responsible for initializing and keeping track of the expanded states for all items.
 The grid will notify the hierarchy when the user expands or collapses a row and the hierarchy must update the items.
 
-Hierarchies may also support virtualization with the pagable or scrollable plugins.
+Hierarchies may also support virtualization with the pageable or scrollable plugins.
 For virtualization is common to create a custom data navigator that implements the hierarchy interface.
-This is because the navigator will be outputing data items that exclude collapsed children.
+This is because the navigator will be outputting data items that exclude collapsed children.
 Is is also important for virtual hierarchies to update the navigator ``metatdata totalItemCount`` on every expand/collapse to return the total items excluding collapsed children.
 Updating the count lets the grid know the virtualization needs updating.
 
@@ -259,7 +259,7 @@ Updating the count lets the grid know the virtualization needs updating.
 ### Context Menus
 The context menu shortcut is the ellipsis at the end of each grid row.
 It enables displaying the context menu by click.
-The context menu shorcut plugin is enabled by default.
+The context menu shortcut plugin is enabled by default.
 
 To customize the context menu you must supply a ``commandGroup`` property on your grid item containg the command group you wish to display.
 
@@ -276,7 +276,7 @@ This will ensure the blade content area has a height and width set to the viewpo
 A scrollable grid fixture element directly in the blade will then work properly.
 
 For virtualized scrolling you must supply a data navigator that supports loadBySkipTake.
-For non-virtualized grids you do not supply a data navigator and just set the grid ``items`` property directly. 
+For non-virtualized grids you do not supply a data navigator and just set the grid ``items`` property directly.
 
 [Scrollable Grid Sample][ScrollableSample]
 
@@ -286,9 +286,9 @@ The reordering can be automatic or handled by the extension using the ``reorderR
 
 [Reorderable Grid Sample][ReorderSample]
 
-### Dynamic Grid Definitiona
+### Dynamic Grid Definition
 In some cases an extension may not know grid columns or other properties in advance.
-In these sceanarios the extension author must define and create the grid at run-time.
+In these scenarios the extension author must define and create the grid at run-time.
 There are several options for dynamic definition of a grid.
 
 1. Create and add columns when data is available.  The columns property is an observable array and allows changes as needed.

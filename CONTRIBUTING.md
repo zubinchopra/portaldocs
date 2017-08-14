@@ -16,9 +16,9 @@
     $>npm install gulp -g
     ```
 1. To generate documents for Github:
-    - For AzureUx-PortalFx / framework repo, execute following command from docs directory:
+    - For AzureUx-PortalFx / framework repo, execute following command from doc directory:
         ```ts
-        $>cd AzureUx-PortalFx\docs
+        $>cd AzureUx-PortalFx\doc
         $>npm install --no-optional
         ```
     - For github repo,  execute following command from root directory

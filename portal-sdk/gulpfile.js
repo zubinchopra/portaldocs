@@ -78,7 +78,14 @@ gulp.task('portal', function () {
                 return Q.ninvoke(dir, "paths", generatedDir, true)
                 .then(function(generatedFiles) {
                     console.log("Verifying urls are valid... (This may take a a couple of minutes)");
-                    checkLinkPromises = generatedFiles.map(function (fileName) {
+                    checkLinkPromises = generatedFiles.filter(function (fileName) {
+                        var filesToSkip = [
+                            "breaking-changes.md",
+                            "release-notes.md",
+                        ]
+                        
+                        return !filesToSkip.some(function(p) { return fileName.toUpperCase().endsWith(p.toUpperCase()) })
+                    }).map(function (fileName) {
                         return gulpCommon.checkLinks(path.resolve(generatedDir, fileName));
                     });
                     return Q.allSettled(checkLinkPromises);
@@ -99,7 +106,6 @@ gulp.task('portal', function () {
                         }
                     });
                 });
-                
             }
             
             return Q.defer().resolve();
@@ -117,7 +123,7 @@ gulp.task('dynamicdocs', function () {
     var query = new storage.TableQuery()
         .where("InProductionDate ge datetime?", fourMonthsAgo.toISOString())
         .and("InProduction eq ?", true)
-        .and("Type ne ?", "Commit");
+        .and("Type ne ?", "");
     console.log("querying portalfx commit logs");
     return queryPortalFxLogs(query, null, null)
         .then(function (results) {
@@ -161,6 +167,7 @@ function generateDynamicDocs(portalFxLogs, outputDir) {
     var downloadUrlPromises = [];
     var aggregate = {};
 
+    const noChangesRowTemplate = "<tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr>"
     const releaseNoteRowTemplate = "<tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=%s'>%s</a></td><td>%s</td><td>%s</td></tr>";
     const breakingChangeRowTemplate = "<tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=%s'>%s</a></td><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=%s'>%s</a><p>%s</p></td></tr>";
     var startDate = new Date();
@@ -184,10 +191,14 @@ function generateDynamicDocs(portalFxLogs, outputDir) {
         var sdkVersion = entity.PartitionKey._;
         var isBreakingChange = entity.IsBreakingChange._;
         var title = entity.Title ? entity.Title._ : "";
+        
         aggregate[sdkVersion] = aggregate[sdkVersion] || { breakingCount: 0, featureCount: 0, bugFixCount: 0, downloadUrl: "", dateInProd: entity.Date._, breakingChanges: { rows: "", titles: [] } };
 
         if (previousRNVersion !== sdkVersion) {
             if (previousRNVersion) {
+                if (!rnRows) { // If there aren't any bug fixes/features then insert an empty row
+                    rnRows = noChangesRowTemplate;
+                }
                 aggregate[previousRNVersion].releaseNotes = rnRows;
                 rnRows = "";
             }
@@ -200,12 +211,14 @@ function generateDynamicDocs(portalFxLogs, outputDir) {
             previousRNVersion = sdkVersion;
         }
 
-        //add row to release notes        
-        rnRows = rnRows.concat(util.format(releaseNoteRowTemplate,
-            entity.RowKey._,
-            entity.RowKey._,
-            getPrettyChangeType(isBreakingChange, changeType),
-            title));
+        //add row to release notes
+        if (changeType != "Commit") {
+            rnRows = rnRows.concat(util.format(releaseNoteRowTemplate,
+                entity.RowKey._,
+                entity.RowKey._,
+                getPrettyChangeType(isBreakingChange, changeType),
+                title));
+        }
 
         //add row to breaking changes
         if (isBreakingChange) {

@@ -1,6 +1,6 @@
 {"gitdown": "contents"}
 
-## Overview
+# Overview
 
 Portal performance from a customers perspective is seen as all experiences throughout the product. 
 As an extension author you have a duty to uphold your experience to the performance bar at a minimum.
@@ -81,17 +81,7 @@ There is two methods to assess your performance:
 The first method is definitely the easiest way to determine your current assessment as this is maintained on a regular basis by the Fx team.
 You can, if preferred, run queries locally but ensure you are using the Fx provided Kusto functions to calculate your assessment.
 
-## Performance Checklist
-
-- [Configure CDN][portalfx-cdn]
-- [Extension HomePage Caching](portalfx-extension-homepage-caching.md)
-- [Persistent Caching of scripts across extension updates](portalfx-extension-persistent-caching-of-scripts.md)
-- [Run portalcop to identify and resolve common performance issues](portalfx-performance-portalcop.md)
-- [Optimize number CORS preflight requests to ARM using invokeApi](portalfx-data-loadingdata.md#loading-data-optimize-number-cors-preflight-requests-to-arm-using-invokeapi)
-- [Improve part responsiveness with revealContent](portalfx-parts-revealContent.md)
-- [Best practices](#performance-best-practices)
-
-## Performance Frequently Asked Questions (FAQ)
+# Performance Frequently Asked Questions (FAQ)
 
 <!--### My Extension 'InitialExtensionResponse' is above the bar, what should I do
 
@@ -105,7 +95,7 @@ TODO
 
 TODO -->
 
-### My Blade 'Revealed' is above the bar, what should I do
+## My Blade 'Revealed' is above the bar, what should I do
 
 1. Assess what is happening in your Blades's constructor and OnInputsSet.
 1. Can that be optimized?
@@ -115,20 +105,20 @@ TODO -->
     - If there's only a single part, if you're not using a `<TemplateBlade>` migrate your current blade over.
     - If there's a high number of parts (> 3), consider removing some of the parts
 
-### My Part 'Revealed' is above the bar, what should I do
+## My Part 'Revealed' is above the bar, what should I do
 
 1. Assess what is happening in your Part's constructor and OnInputsSet.
 1. Can that be optimized?
 1. If there are any AJAX calls, wrap them with custom telemetry and ensure they you aren't spending a large amount of time waiting on the result.
 1. Do you have partial data before the OnInputsSet is fully resolved? If yes, then you can reveal early, display the partial data and handle loading UI for the individual components 
 
-### My WxP score is below the bar, what should I do
+## My WxP score is below the bar, what should I do
 
 Using the [Extension performance/reliability report][Ext-Perf/Rel-Report] you can see the WxP impact for each individual blade. Although given the Wxp calculation,
 if you are drastically under the bar its likely a high usage blade is not meeting the performance bar, if you are just under the bar then it's likely it's a low usage
 blade which is not meeting the bar.
 
-## Performance best practices
+# Performance best practices
 
 {"gitdown": "include-file", "file": "../templates/portalfx-performance-bestpractices.md"}
 
@@ -148,9 +138,13 @@ blade which is not meeting the bar.
 
 {"gitdown": "include-file", "file": "../templates/portalfx-performance-portalcop.md"}
 
-## Performance alerting
+## Optimize number CORS preflight requests to ARM using invokeApi
 
-Coming soon please reach out to sewatson if you are interested.
+[See more information here](portalfx-data-loadingdata.md#loading-data-optimize-number-cors-preflight-requests-to-arm-using-invokeapi.md)
+
+## Improve part responsiveness with revealContent
+
+{"gitdown": "include-file", "file": "../templates/portalfx-parts-revealContent.md"}
 
 [TelemetryOnboarding]: <portalfx-telemetry-getting-started.md>
 [Ext-Perf/Rel-Report]: <http://aka.ms/portalfx/dashboard/extensionperf>
