@@ -69,8 +69,8 @@ Follow this to [official guidance from Ev2](https://microsoft.sharepoint.com/tea
 
     1. Create a KeyVault. 
     1. Grant Ev2 read access to your KeyVault
-    1. Create an Ev2 Certificate and add it to the vault as a secret. In the csproj config example above we named the certificate in key vault `PortalHostingServiceDeploymentCertificate` 
-    1. Create a KeyVault secret for the storage account connection string. **NOTE: ** The format needs to be in the default form `DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1};EndpointSuffix={3}` i.e the format provided by default from portal.azure.com
+    1. Create an Ev2 Certificate and add it to the vault as a secret. In the ServiceGroupRootReplacements.json config example below we named the certificate in key vault `CertKeyVaultUri` 
+    1. Create a KeyVault secret for the storage account connection string. **NOTE: ** The format needs to be in the default form `DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1};EndpointSuffix={2}` i.e the format provided by default from portal.azure.com
 
 Please ensure that any configuration for prod environments is done via jit access and on your SAW.
 
