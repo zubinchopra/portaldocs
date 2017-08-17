@@ -330,6 +330,18 @@ where FriendlyName2 can be replaced by any friendly name of the extension that i
     * New deployment script to be provided soon
 1. Viewing the active versions
     * The versions available in the Hosting Service can be seen by going to the following URL: http://hosting.portal.azure.net/api/diagnostics
+    
+#### Viewing an active version in a specific Stage
+
+To load the extension version which is deployed to a specific stage use the following feature flag:
+
+`feature.canmodifystamps=true&<Extension_Name>=<StageName_Or_BuildNumber>`
+
+* Use your extension name for `Extension_Name`
+  * Example: Microsoft_Azure_ClassicResources
+* Use the stage name or build number which is deployed to a certain stage for `StageName_Or_BuildNumber`
+  * StageName example: `stage1`
+  * BuildNumber example: for a builld number of `1.0.8.31` replace the `.` with `d`, so it would be `1d0d8d31`
 
 <a name="steps-needed-to-deploy-using-the-hosting-service-monitoring-and-logging"></a>
 ### Monitoring and Logging
