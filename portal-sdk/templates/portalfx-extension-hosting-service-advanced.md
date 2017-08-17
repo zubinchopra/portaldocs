@@ -36,8 +36,7 @@ For example, this is the csproj configuraiton for Monitoring Extension in the Co
     <ForceUnbundler>true</ForceUnbundler>
     <ContentUnbundlerExe>$(PkgMicrosoft_Portal_Tools_ContentUnbundler)\build\ContentUnbundler.exe</ContentUnbundlerExe>
     <ContentUnbundlerSourceDirectory>$(WebProjectOutputDir.Trim('\'))</ContentUnbundlerSourceDirectory>
-    <ContentUnbundlerOutputDirectory>$(BinariesBuildTypeArchDirectory)\ServiceGroupRoot</ContentUnbundlerOutputDirectory>
-    <ContentUnbundlerZipOutput>false</ContentUnbundlerZipOutput>
+    <ContentUnbundlerOutputDirectory>$(BinariesBuildTypeArchDirectory)\ServiceGroupRoot</ContentUnbundlerOutputDirectory>s
     <ContentUnbundlerExtensionRoutePrefix>monitoring</ContentUnbundlerExtensionRoutePrefix>
     <ContentUnbundlerMode>ExportEv2</ContentUnbundlerMode>
   </PropertyGroup>
