@@ -10,7 +10,7 @@
 
 To have a better customer experience, you may want to have richer experience in Ibiza portal. Sometimes to get this richer experience, you may have limited acheiving it using our famework. In such scenario, you may want us (Ibiza Team) to do some work in framework for achieving this goal.
 
-You can help us identify the enhancements aka features needed in frameworkusing this process. This process is for you folks to tell us exactly what you need and when you need it.
+You can help us identify the enhancements aka features needed in framework using this process. This process is for you folks to tell us exactly what you need and when you need it.
 
 <a name="partner-request-process-what-is-the-process"></a>
 ## What is the Process?
