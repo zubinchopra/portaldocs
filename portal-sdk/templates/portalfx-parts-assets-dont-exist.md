@@ -21,7 +21,7 @@ This distinction also lets our telemetry system tell the difference between a pa
 We strongly encourage teams to use the default behavior of having Ibiza handle 404 responses automatically, but there may be some valid exceptions where the standard behavior may not be the best thing to do.  In those very rare cases you can opt out of automatic 404 handling by setting the showNotFoundErrors flag to false when creating your data views.
 
 ```js
-this._dataView = dataContext.createView(container, { showNotFoundErrors: false });
+this._dataView = dataContext.createView(container, { interceptNotFound: false });
 ```
 
 If you do this then 404s will result in rejected promises as they always have and it will be up to your extension code to apply your special handling of 404 responses.
