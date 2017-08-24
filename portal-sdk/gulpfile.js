@@ -263,10 +263,18 @@ function writeDocsToFile(aggregate, outputDir) {
     var breakingChangesFile = fs.createWriteStream(path.resolve(outputDir, "breaking-changes.md"));
     var downloadsDoc = fs.createWriteStream(path.resolve(outputDir, "downloads.md"));
     const latestSdkVersion = Object.keys(aggregate)[0];
+    var latestDownloadableSdkVersion = ""
+    
+    // Find the highest version with a download link
+    var sortedVersions = Object.keys(aggregate).sort(versioncompare).reverse();
+    var latestDownloadableSdkVersion = sortedVersions.find(function (version) {
+        var aVersion = aggregate[version];
+        return !!aVersion.downloadUrl;
+    });
 
     releaseNotesFile.write(util.format("# Release Notes since %s", fourMonthsAgo.toLocaleDateString("en-US")));
     breakingChangesFile.write(util.format("# Breaking Changes since %s \n* Additional Q&A about breaking changes can be found [here](./breaking-changes.md) \n* To ask a question about breaking changes [use this](https://aka.ms/ask/ibiza-breaking-change)  \n", fourMonthsAgo.toLocaleDateString("en-US")));
-    downloadsDoc.write(util.format("# Download Portal SDK \n Download Latest Release: <a href=\"%s\">%s</a>\n<table><tr><th>Download</th><th>Detail</th><th>Breaking Changes</th></tr>", aggregate[latestSdkVersion].downloadUrl, latestSdkVersion));
+    downloadsDoc.write(util.format("# Download Portal SDK \n Download Latest Release: <a href=\"%s\">%s</a>\n<table><tr><th>Download</th><th>Detail</th><th>Breaking Changes</th></tr>", aggregate[latestDownloadableSdkVersion].downloadUrl, latestSdkVersion));
 
     Object.keys(aggregate).forEach(function (version) {
         var result = aggregate[version]
@@ -348,3 +356,20 @@ function getPrettyChangeType(isBreaking, changeType) {
         return changeType;
     }
 }
+
+/**
+ * Compares version numbers for sorting ascended.  Modified from semver-compare to look at 4 numbers rather than 3
+ */
+function versioncompare(a, b) {
+    var pa = a.split('.');
+    var pb = b.split('.');
+    for (var i = 0; i < 4; i++) {
+        var na = Number(pa[i]);
+        var nb = Number(pb[i]);
+        if (na > nb) return 1;
+        if (nb > na) return -1;
+        if (!isNaN(na) && isNaN(nb)) return 1;
+        if (isNaN(na) && !isNaN(nb)) return -1;
+    }
+    return 0;
+};
