@@ -4,8 +4,8 @@
 The essentials control is used for showing resource information with multiple properties.
 First 5 items in left pane of the essentials are obtained by calling Azure Resource Manager APIs with given resource id.
 More items can be specified in constructor or can be added dynamically later in both left and right panes.
-It has flexibility to customize layout and showing items without resource id.
-When there are more than 5 items in any panes, only first 5 items in each panes will be shown and rest of the items can be revealed when **View All** is clicked.
+It has flexibility to customize layout of properties in a column, to show properties for non-ARM resources, to responsively redistribute properties into 1 or 3+ columns when the Blade width shrinks or expands.
+When there are more than 5 items in any panes, only first 5 items in each panes will be shown and rest of the items can be revealed when **See more** is clicked.
 
 ![Essentials][essentials-sample]
 
@@ -27,6 +27,7 @@ When there are more than 5 items in any panes, only first 5 items in each panes 
 ### Features
 - [Resource Blade Open/Close Callbacks](#essentialsCallbacks)
 - [Add Dynamic Properties](#essentialsDynamicProps)
+- [Responsive Columns](#responsiveEssentials)
 
 <br><br>
 
@@ -150,144 +151,176 @@ To use the essentials, compose a template blade that hosts the essentials contro
 
 You can control the behavior of the essentials via initialization [options](#essentialsOptions) and provided [feature](#essentialsFeatures) functions.
 
-**Step 1**: Define the Html template for your part:
+**Step 1**: Setup `Settings` interface for preserving `expanded` state for Essentials. `Decorator`s for set `TemplateBlade` and access to the blade settings.
 
-`\Client\V1\Controls\Essentials\Templates\Essentials.html`
+`\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`
 
-**Step 2**: Create a viewmodel to bind your control to `DefaultEssentialsViewModel` implements the viewmodel for the editor.
+```typescript
 
-`\Client\V1\Controls\Essentials\ViewModels\DefaultEssentialsViewModel.ts.`
+export interface Settings {
+expanded: boolean;
+}
+
+/*
+ * Most common usage of essentials with a resourceId.
+ * It has fixed order of specific resource related items.
+ * This sample creates an essentials with resourceId and adds some items dynamically after the essentials control is initially rendered.
+ */
+@TemplateBlade.Decorator({
+htmlTemplate: `<div data-bind="pcControl: essentials"></div>`
+})
+// The 'Configurable' decorator is applied here so the Blade can persist the 'expanded' property of the essentials control.
+@TemplateBlade.Configurable.Decorator()
+export class EssentialsDefaultBlade {
+
+```
+
+**Step 2**: Configurations for Read/Write `expanded` state in the blade settings and initialize the essentials control.
+
+`\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`
+
+```typescript
+
+public title = ClientResources.essentialsDefaultEssentials;
+public subtitle = ClientResources.controls;
+
+public context: TemplateBlade.Context<void, DataContext> & TemplateBlade.Configurable.Context<Settings>;
+
+/**
+ * View model for the essentials.
+ */
+public essentials: Essentials.ViewModel;
+
+/**
+ * Creating an essentials and using data-loading for the blade.
+ * Note that it is returning a Promise of AJAX calling function.
+ */
+public onInitialize(): Q.Promise<void> {
+    const { container, configuration } = this.context;
+
+    // Create an essentials
+    this._initializeControl();
+
+    // Read from the blade settings and set "expand" state value for the essentials
+    const configValues = configuration.getValues();
+    if (typeof configValues.settings.expanded === "boolean") {
+        this.essentials.expanded(configValues.settings.expanded);
+    }
+
+    // Update the blade settings when "expanded" value is changed
+    this.essentials.expanded.subscribe(container, (expanded) => {
+        configuration.updateValues({
+            settings: { expanded }
+        });
+    });
+
+    // Once the Essentials control is instantiated, this Blade contains enough UI that it can remove the blocking loading indicator
+    container.revealContent();
+
+    //essentials#addDynamicProps
+    // Sample AJAX Action
+    let clickCounter = 0;
+    return sampleAJAXFunction()
+        .then((results: any) => {
+            // Generate array of Essentials.Item | Essentials.MultiLineItem from the results
+            const items: ((Essentials.Item | Essentials.MultiLineItem)[]) = results.map((data: any): Essentials.Item | Essentials.MultiLineItem => {
+                switch (data.type) {
+                    case "connectionString":
+                        const connectionString = ko.observable(ClientResources.essentialsConnectionStringValue);
+                        return {
+                            label: data.label,
+                            value: connectionString,
+                            onClick: () => {
+                                connectionString(data.value);
+                            }
+                        };
+                    case "text":
+                        return {
+                            label: data.label,
+                            value: data.value
+                        };
+                    case "url":
+                        return {
+                            label: data.label,
+                            value: data.value,
+                            onClick: new ClickableLink(ko.observable(data.url))
+                        };
+                    case "changeStatus":
+                        return {
+                            label: data.label,
+                            value: data.value,
+                            onClick: () => {
+                                this.essentials.modifyStatus(`${++clickCounter} ${ClientResources.essentialsTimesClicked}!`)
+                            }
+                        };
+                }
+            });
+
+            // Dynamically adding generated items to the essentials
+            this.essentials.addDynamicProperties(
+                // Add first two items to the left
+                items.slice(0, 2),
+                // Add next two items to the right
+                items.slice(2, 4)
+            );
+        });
+    //essentials#addDynamicProps
+}
+
+```
+
+**Step 3**: Define the `_initializeControl` that initializes the essentials control.
+
+`\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`
 
 ```typescript
 
 /**
-* ViewModel class for the Default Essentials blade.
-*/
-export class DefaultEssentialsViewModel
-   extends MsPortalFx.ViewModels.Blade
-   implements Def.DefaultEssentialsViewModel.Contract {
-
-   /**
-    * View model for the essentials.
-    * This sample is showing the scenario that resourceId is known in "onInputSet".
-    * Defining null observable in constructor and then populate the observable with the essentialsVM in "onInputSet" with the resourceId.
-    * Non-observable approach can be found in "NonResourceEssentialsViewModel".
-    */
-   public vm: KnockoutObservable<EssentialsVM>;
-
-   /**
-    * Expand/Collapse State for the essentials.
-    */
-   public expanded: KnockoutObservable<boolean>;
-
-   private _container: BladeContainer;
-
-   /**
-    * Creates the view model for the blade with an essentials control.
-    *
-    * @param container The container view model.
-    * @param initialState The initial state of the view model.
-    * @param context The context for the Blades area.
-    */
-   constructor(container: BladeContainer, initialState: any, dataContext: ControlsArea.DataContext) {
-       super();
-       this.title(ClientResources.essentialsDefaultEssentials);
-       this.subtitle(ClientResources.controls);
-       this._mockAPI();
-
-       this.vm = ko.observable(null);
-       this._container = container;
-       this.expanded = ko.observable<boolean>();
-   }
-
-   /**
-    * Read from the blade settings and set "expand" state value for the essentials.
-    */
-   public onInputsSet(inputs: Def.DefaultEssentialsViewModel.InputsContract, settings: Def.DefaultEssentialsViewModel.SettingsContract): MsPortalFx.Base.Promise {
-       this._initializeControl(this._container);
-       this._container.revealContent();
-       if (settings && settings.content && typeof settings.content.expanded === "boolean") {
-           this.expanded(settings.content.expanded);
-       } else {
-           // Expanded by Default
-           this.expanded(true);
-       }
-       //essentials#addDynamicProps
-       // Sample AJAX Action
-       return sampleAJAXFunction.call(this)
-           .then((properties: (Item | MultiLineItem)[]) => {
-               this.vm().addDynamicProperties(properties.slice(0, 2), properties.slice(2, 4));
-           });
-       //essentials#addDynamicProps
-   }
-
-   /**
-    * Initializes the Essentials.
-    */
-   private _initializeControl(container: BladeContainer): void {
-       const resourceId = "/subscriptions/sub123/resourcegroups/snowtraxpsx/providers/Microsoft.Test/snowmobiles/snowtraxpsx600";
-       const essentialsVM = new EssentialsVM(container, {
-           resourceId: resourceId,
-           expanded: this.expanded,
-           additionalRight: [{
-               label: ClientResources.essentialsItem,
-               value: ClientResources.essentialsSampleString
-           }, {
-               label: ClientResources.essentialsItem,
-               value: "Bing.com",
-               onClick: new ClickableLink(ko.observable("http://www.bing.com"))
-           }, {
-               label: ClientResources.essentialsMultiLineItem,
-               lines: [{
-                   value: ClientResources.essentialsSampleString
-               }, {
-                   value: "Bing.com",
-                   onClick: new ClickableLink(ko.observable("http://www.bing.com"))
-               }]
-           }],
-           //essentials#bladeCallbacks
-           onBladeOpen: (origin: BuiltInType) => {
-               switch (origin) {
-                   case BuiltInType.ResourceGroup:
-                       this.vm().modifyStatus(ClientResources.essentialsResourceGroupOpened);
-                       break;
-                   case BuiltInType.SubscriptionName:
-                       this.vm().modifyStatus(ClientResources.essentialsSubscriptionOpened);
-                       break;
-               }
-           },
-           onBladeClose: (origin: BuiltInType) => {
-               switch (origin) {
-                   case BuiltInType.ResourceGroup:
-                       this.vm().modifyStatus(ClientResources.essentialsResourceGroupClosed);
-                       break;
-                   case BuiltInType.SubscriptionName:
-                       this.vm().modifyStatus(ClientResources.essentialsSubscriptionClosed);
-                       break;
-               }
-           }
-           //essentials#bladeCallbacks
-       });
-       this.vm(essentialsVM);
-   }
-   
-```
-
-**Step 3**: Now you can consume your part from an extension by referencing it in the PDL:
-
-`\Client\V1\Controls\Essentials\Essentials.pdl`
-
-```xml
-
-<TemplateBlade Name="DefaultEssentials"
-               Style="Basic"
-               ViewModel="{ViewModel Name=DefaultEssentialsViewModel, Module=./Essentials/ViewModels/DefaultEssentialsViewModel}"
-               Template="{Html Source='Templates\\Essentials.html'}"
-               Pinnable="True">
-  <TemplateBlade.Settings>
-      <Setting Property="expanded" />
-  </TemplateBlade.Settings>
-</TemplateBlade>
+ * Initializes the Essentials control.
+ */
+private _initializeControl(): void {
+    this.essentials =  Essentials.create(this.context.container, {
+        resourceId: "/subscriptions/sub123/resourcegroups/snowtraxpsx/providers/Microsoft.Test/snowmobiles/snowtraxpsx600",
+        additionalRight: [{
+            label: ClientResources.essentialsItem,
+            value: ClientResources.essentialsSampleString
+        }, {
+            label: ClientResources.essentialsItem,
+            value: "Bing.com",
+            onClick: new ClickableLink(ko.observable("http://www.bing.com"))
+        }, {
+            label: ClientResources.essentialsMultiLineItem,
+            lines: [{
+                value: ClientResources.essentialsSampleString
+            }, {
+                value: "Bing.com",
+                onClick: new ClickableLink(ko.observable("http://www.bing.com"))
+            }]
+        }],
+        //essentials#bladeCallbacks
+        onBladeOpen: (origin: Essentials.BuiltInType) => {
+            switch (origin) {
+                case Essentials.BuiltInType.ResourceGroup:
+                    this.essentials.modifyStatus(ClientResources.essentialsResourceGroupOpened);
+                    break;
+                case Essentials.BuiltInType.SubscriptionName:
+                    this.essentials.modifyStatus(ClientResources.essentialsSubscriptionOpened);
+                    break;
+            }
+        },
+        onBladeClose: (origin: Essentials.BuiltInType) => {
+            switch (origin) {
+                case Essentials.BuiltInType.ResourceGroup:
+                    this.essentials.modifyStatus(ClientResources.essentialsResourceGroupClosed);
+                    break;
+                case Essentials.BuiltInType.SubscriptionName:
+                    this.essentials.modifyStatus(ClientResources.essentialsSubscriptionClosed);
+                    break;
+            }
+        }
+        //essentials#bladeCallbacks
+    });
+}
 
 ```
 
@@ -301,154 +334,140 @@ Custom layout essentials allows you to change layout orders of built-in properti
 
 You can control the behavior of the essentials via initialization [options](#essentialsOptions) and provided [feature](#essentialsFeatures) functions.
 
-**Step 1**: Define the Html template for your part:
+**Step 1**: Setup `Settings` interface for preserving `expanded` state for Essentials. `Decorator`s for set `TemplateBlade` and access to the blade settings.
 
-`\Client\V1\Controls\Essentials\Templates\Essentials.html`
+`\Client\V2\Controls\Essentials\EssentialsCustomLayoutBlade.ts`
 
-**Step 2**: Create a viewmodel to bind your control to `CustomLayoutEssentialsViewModel` implements the viewmodel for the editor.
+```typescript
 
-`\Client\V1\Controls\Essentials\ViewModels\CustomLayoutEssentialsViewModel.ts.`
+export interface Settings {
+expanded: boolean;
+}
+
+/*
+ * Mostly similar to EssentialsDefaultBlade sample.
+ * Unlike the default one, this sample shows the way to change orders of resource-related and user-defined items.
+ */
+@TemplateBlade.Decorator({
+htmlTemplate: `<div data-bind="pcControl: essentials"></div>`
+})
+// The 'Configurable' decorator is applied here so the Blade can persist the 'expanded' property of the essentials control.
+@TemplateBlade.Configurable.Decorator()
+export class EssentialsCustomLayoutBlade {
+
+```
+
+**Step 2**: Configurations for Read/Write `expanded` state in the blade settings and initialize the essentials control.
+
+`\Client\V2\Controls\Essentials\EssentialsCustomLayoutBlade.ts`
+
+```typescript
+
+public title = ClientResources.essentialsCustomLayoutEssentials;
+public subtitle = ClientResources.controls;
+
+public context: TemplateBlade.Context<void, DataContext> & TemplateBlade.Configurable.Context<Settings>;
+
+/**
+ * View model for the essentials.
+ */
+public essentials: Essentials.ViewModel;
+
+/**
+ * Creating an essentials and not using data-loading for the blade.
+ */
+public onInitialize(): Q.Promise<void> {
+    const { container, configuration } = this.context;
+
+    // Create an essentials
+    this._initializeControl();
+
+    // Read from the blade settings and set "expand" state value for the essentials
+    const configValues = configuration.getValues();
+    if (typeof configValues.settings.expanded === "boolean") {
+        this.essentials.expanded(configValues.settings.expanded);
+    }
+
+    // Update the blade settings when "expanded" value is changed
+    this.essentials.expanded.subscribe(container, (expanded) => {
+        configuration.updateValues({
+            settings: { expanded }
+        });
+    });
+
+    // Once the Essentials control is instantiated, this Blade contains enough UI that it can remove the blocking loading indicator
+    container.revealContent();
+
+    // Does not use data-loading for the blade.
+    return Q();
+}
+
+```
+
+**Step 3**: Define the `_initializeControl` that initializes the essentials control.
+
+`\Client\V2\Controls\Essentials\EssentialsCustomLayoutBlade.ts`
 
 ```typescript
 
 /**
-* ViewModel class for the Custom Layout Essentials blade.
-*/
-export class CustomLayoutEssentialsViewModel
-   extends MsPortalFx.ViewModels.Blade
-   implements Def.CustomLayoutEssentialsViewModel.Contract {
-
-   /**
-    * View model for the essentials.
-    * This sample is showing the scenario that resourceId is known in "onInputSet".
-    * Defining null observable in constructor and then populate the observable with the essentialsVM in "onInputSet" with the resourceId.
-    * Non-observable approach can be found in "NonResourceEssentialsViewModel".
-    */
-   public vm: KnockoutObservable<EssentialsVM>;
-
-   /**
-    * Expand/Collapse State for the essentials.
-    */
-   public expanded: KnockoutObservable<boolean>;
-
-   private _container: BladeContainer;
-
-   /**
-    * Creates the view model for the blade with an essentials control.
-    *
-    * @param container The container view model.
-    * @param initialState The initial state of the view model.
-    * @param context The context for the Blades area.
-    */
-   constructor(container: BladeContainer, initialState: any, dataContext: ControlsArea.DataContext) {
-       super();
-       this.title(ClientResources.essentialsCustomLayoutEssentials);
-       this.subtitle(ClientResources.controls);
-       this._mockAPI();
-
-       this.vm = ko.observable(null);
-       this._container = container;
-       this.expanded = ko.observable<boolean>();
-   }
-
-   /**
-    * Read from the blade settings and set "expand" state value for the essentials.
-    */
-   public onInputsSet(inputs: Def.CustomLayoutEssentialsViewModel.InputsContract, settings: Def.CustomLayoutEssentialsViewModel.SettingsContract): MsPortalFx.Base.Promise {
-       this._initializeControl(this._container);
-       this._container.revealContent();
-       if (settings && settings.content && typeof settings.content.expanded === "boolean") {
-           this.expanded(settings.content.expanded);
-       } else {
-           // Expanded by Default
-           this.expanded(true);
-       }
-
-       // Sample AJAX Action
-       return sampleAJAXFunction.call(this)
-           .then((properties: (Item | MultiLineItem)[]) => {
-               this.vm().addDynamicProperties(properties.slice(0, 2), properties.slice(2, 4));
-           });
-   }
-
-   /**
-    * Initializes the Essentials.
-    */
-   private _initializeControl(container: BladeContainer): void {
-       const resourceId = "/subscriptions/sub123/resourcegroups/snowtraxpsx/providers/Microsoft.Test/snowmobiles/snowtraxpsx600";
-       const essentialsVM = new EssentialsVM(container, {
-           resourceId: resourceId,
-           left: [
-               BuiltInType.Status,
-               {
-                   label: ClientResources.essentialsItem,
-                   value: ClientResources.essentialsSampleString
-               },
-               BuiltInType.ResourceGroup,
-               {
-                   label: ClientResources.essentialsDynamicChangeStatus,
-                   value: ClientResources.essentialsStatusWillBeChanged,
-                   onClick: () => {
-                       this.vm().modifyStatus(`${++clickCounter} ${ClientResources.essentialsTimesClicked}!`);
-                   }
-               },
-               {
-                   label: ClientResources.essentialsItem,
-                   value: "Bing.com",
-                   onClick: new ClickableLink(ko.observable("http://www.bing.com"))
-               }
-           ],
-           right: [
-               BuiltInType.Location,
-               {
-                   label: ClientResources.essentialsItem,
-                   value: ClientResources.essentialsSampleString
-               },
-               BuiltInType.SubscriptionId,
-               BuiltInType.SubscriptionName
-           ],
-           expanded: this.expanded,
-           onBladeOpen: (origin: BuiltInType) => {
-               switch (origin) {
-                   case BuiltInType.ResourceGroup:
-                       this.vm().modifyStatus(ClientResources.essentialsResourceGroupOpened);
-                       break;
-                   case BuiltInType.SubscriptionName:
-                       this.vm().modifyStatus(ClientResources.essentialsSubscriptionOpened);
-                       break;
-               }
-           },
-           onBladeClose: (origin: BuiltInType) => {
-               switch (origin) {
-                   case BuiltInType.ResourceGroup:
-                       this.vm().modifyStatus(ClientResources.essentialsResourceGroupClosed);
-                       break;
-                   case BuiltInType.SubscriptionName:
-                       this.vm().modifyStatus(ClientResources.essentialsSubscriptionClosed);
-                       break;
-               }
-           }
-       });
-       this.vm(essentialsVM);
-   }
-   
-```
-
-**Step 3**: Now you can consume your part from an extension by referencing it in the PDL:
-
-`\Client\V1\Controls\Essentials\Essentials.pdl`
-
-```xml
-
-<TemplateBlade Name="CustomLayoutEssentials"
-               Style="Basic"
-               ViewModel="{ViewModel Name=CustomLayoutEssentialsViewModel, Module=./Essentials/ViewModels/CustomLayoutEssentialsViewModel}"
-               Template="{Html Source='Templates\\Essentials.html'}"
-               Pinnable="True">
-  <TemplateBlade.Settings>
-    <Setting Property="expanded" />
-  </TemplateBlade.Settings>
-</TemplateBlade>
+ * Initializes the Essentials control.
+ */
+private _initializeControl(): void {
+    let clickCounter = 0;
+    this.essentials =  Essentials.create(this.context.container, {
+        resourceId: "/subscriptions/sub123/resourcegroups/snowtraxpsx/providers/Microsoft.Test/snowmobiles/snowtraxpsx600",
+        left: [
+            Essentials.BuiltInType.Status,
+            {
+                label: ClientResources.essentialsItem,
+                value: ClientResources.essentialsSampleString
+            },
+            Essentials.BuiltInType.ResourceGroup,
+            {
+                label: ClientResources.essentialsDynamicChangeStatus,
+                value: ClientResources.essentialsStatusWillBeChanged,
+                onClick: () => {
+                    this.essentials.modifyStatus(`${++clickCounter} ${ClientResources.essentialsTimesClicked}!`);
+                }
+            },
+            {
+                label: ClientResources.essentialsItem,
+                value: "Bing.com",
+                onClick: new ClickableLink(ko.observable("http://www.bing.com"))
+            }
+        ],
+        right: [
+            Essentials.BuiltInType.Location,
+            {
+                label: ClientResources.essentialsItem,
+                value: ClientResources.essentialsSampleString
+            },
+            Essentials.BuiltInType.SubscriptionId,
+            Essentials.BuiltInType.SubscriptionName
+        ],
+        onBladeOpen: (origin: Essentials.BuiltInType) => {
+            switch (origin) {
+                case Essentials.BuiltInType.ResourceGroup:
+                    this.essentials.modifyStatus(ClientResources.essentialsResourceGroupOpened);
+                    break;
+                case Essentials.BuiltInType.SubscriptionName:
+                    this.essentials.modifyStatus(ClientResources.essentialsSubscriptionOpened);
+                    break;
+            }
+        },
+        onBladeClose: (origin: Essentials.BuiltInType) => {
+            switch (origin) {
+                case Essentials.BuiltInType.ResourceGroup:
+                    this.essentials.modifyStatus(ClientResources.essentialsResourceGroupClosed);
+                    break;
+                case Essentials.BuiltInType.SubscriptionName:
+                    this.essentials.modifyStatus(ClientResources.essentialsSubscriptionClosed);
+                    break;
+            }
+        }
+    });
+}
 
 ```
 
@@ -462,149 +481,145 @@ Non-resource essentials allows you to use the essentials without a resource id. 
 
 You can control the behavior of the essentials via initialization [options](#essentialsOptions) and provided [feature](#essentialsFeatures) functions.
 
-**Step 1**: Define the Html template for your part:
+**Step 1**: Setup `Settings` interface for preserving `expanded` state for Essentials. `Decorator`s for set `TemplateBlade` and access to the blade settings.
 
-`\Client\V1\Controls\Essentials\Templates\Essentials.html`
-
-**Step 2**: Create a viewmodel to bind your control to `NonResourceEssentialsViewModel` implements the viewmodel for the editor.
-
-`\Client\V1\Controls\Essentials\ViewModels\NonResourceEssentialsViewModel.ts.`
+`\Client\V2\Controls\Essentials\EssentialsNonResourceBlade.ts`
 
 ```typescript
 
+export interface Settings {
+expanded: boolean;
+}
+
+/*
+ * Essentials sample without a resourceId.
+ * Since there is no resource items, all items should be provided by the author.
+ */
+@TemplateBlade.Decorator({
+htmlTemplate: `<div data-bind="pcControl: essentials"></div>`
+})
+// The 'Configurable' decorator is applied here so the Blade can persist the 'expanded' property of the essentials control.
+@TemplateBlade.Configurable.Decorator()
+export class EssentialsNonResourceBlade {
+
+```
+
+**Step 2**: Configurations for Read/Write `expanded` state in the blade settings and initialize the essentials control.
+
+`\Client\V2\Controls\Essentials\EssentialsNonResourceBlade.ts`
+
+```typescript
+
+public title = ClientResources.essentialsNonResourceEssentials;
+public subtitle = ClientResources.controls;
+
+public context: TemplateBlade.Context<void, DataContext> & TemplateBlade.Configurable.Context<Settings>;
+
 /**
-* ViewModel class for the Non-Resource Essentials blade.
-*/
-export class NonResourceEssentialsViewModel
-   extends MsPortalFx.ViewModels.Blade
-   implements Def.NonResourceEssentialsViewModel.Contract {
+ * View model for the essentials.
+ */
+public essentials: Essentials.ViewModel;
 
-   /**
-    * View model for the essentials.
-    */
-   public vm: EssentialsVM;
+/**
+ * Custom Status.
+ */
+private _customStatus: KnockoutObservable<string> = ko.observable(null);
 
-   /**
-    * Expand/Collapse State for the essentials.
-    */
-   public expanded: KnockoutObservable<boolean>;
+/**
+ * Creating an essentials and not using data-loading for the blade.
+ */
+public onInitialize(): Q.Promise<void> {
+    const { container, configuration } = this.context;
 
-   /**
-    * Custom Status.
-    */
-   public customStatus: KnockoutObservable<string> = ko.observable(null);
+    // Create an essentials
+    this._initializeControl();
 
-   /**
-    * Creates the view model for the blade with an essentials control.
-    *
-    * @param container The container view model.
-    * @param initialState The initial state of the view model.
-    * @param context The context for the Blades area.
-    */
-   constructor(container: BladeContainer, initialState: any, dataContext: ControlsArea.DataContext) {
-       super();
-       this.title(ClientResources.essentialsNonResourceEssentials);
-       this.subtitle(ClientResources.controls);
-       this._initializeControl(container);
-       container.revealContent();
-   }
+    // Read from the blade settings and set "expand" state value for the essentials
+    const configValues = configuration.getValues();
+    if (typeof configValues.settings.expanded === "boolean") {
+        this.essentials.expanded(configValues.settings.expanded);
+    }
 
-   /**
-    * Read from the blade settings and set "expand" state value for the essentials.
-    */
-   public onInputsSet(inputs: Def.NonResourceEssentialsViewModel.InputsContract, settings: Def.NonResourceEssentialsViewModel.SettingsContract): MsPortalFx.Base.Promise {
-       if (settings && settings.content && typeof settings.content.expanded === "boolean") {
-           this.expanded(settings.content.expanded);
-       } else {
-           // Expanded by Default
-           this.expanded(true);
-       }
+    // Update the blade settings when "expanded" value is changed
+    this.essentials.expanded.subscribe(container, (expanded) => {
+        configuration.updateValues({
+            settings: { expanded }
+        });
+    });
 
-       // Sample AJAX Action
-       return sampleAJAXFunction.call(this)
-           .then((properties: (Item | MultiLineItem)[]) => {
-               this.vm.addDynamicProperties(properties.slice(0, 2), properties.slice(2, 4));
-           });
-   }
+    // Once the Essentials control is instantiated, this Blade contains enough UI that it can remove the blocking loading indicator
+    container.revealContent();
 
-   /**
-    * Initializes the Essentials.
-    */
-   private _initializeControl(container: BladeContainer): void {
-       this.expanded = ko.observable<boolean>();
-       this.vm = new EssentialsVM(container, {
-           left: [
-               {
-                   label: ClientResources.essentialsItem,
-                   value: ClientResources.essentialsSampleString
-               },
-               {
-                   label: ClientResources.essentialsDynamicChangeStatus,
-                   value: ClientResources.essentialsStatusWillBeChanged,
-                   onClick: () => {
-                       this.customStatus(`${++clickCounter} ${ClientResources.essentialsTimesClicked}!`);
-                   }
-               },
-               {
-                   label: ClientResources.essentialsItem,
-                   value: "Bing.com",
-                   onClick: new ClickableLink(ko.observable("http://www.bing.com"))
-               },
-               {
-                   label: ClientResources.essentialsItem,
-                   value: ClientResources.essentialsSampleString
-               },
-               {
-                   label: ClientResources.essentialsItem,
-                   value: ClientResources.essentialsSampleString
-               }
-           ],
-           right: [
-               {
-                   label: ClientResources.essentialsCustomStatus,
-                   value: this.customStatus
-               },
-               {
-                   label: ClientResources.essentialsItem,
-                   value: "Bing.com",
-                   onClick: new ClickableLink(ko.observable("http://www.bing.com"))
-               },
-               {
-                   label: ClientResources.essentialsItem,
-                   value: "Bing.com",
-                   onClick: new ClickableLink(ko.observable("http://www.bing.com"))
-               },
-               {
-                   label: ClientResources.essentialsItem,
-                   value: ClientResources.essentialsSampleString
-               },
-               {
-                   label: ClientResources.essentialsItem,
-                   value: ClientResources.essentialsSampleString
-               }
-           ],
-           expanded: this.expanded
-       });
-   }
+    // Does not use data-loading for the blade.
+    return Q();
 }
 
 ```
 
-**Step 3**: Now you can consume your part from an extension by referencing it in the PDL:
+**Step 3**: Define the `_initializeControl` that initializes the essentials control.
 
-`\Client\V1\Controls\Essentials\Essentials.pdl`
+`\Client\V2\Controls\Essentials\EssentialsNonResourceBlade.ts`
 
-```xml
+```typescript
 
-<TemplateBlade Name="NonResourceEssentials"
-               Style="Basic"
-               ViewModel="{ViewModel Name=NonResourceEssentialsViewModel, Module=./Essentials/ViewModels/NonResourceEssentialsViewModel}"
-               Template="{Html Source='Templates\\Essentials.html'}"
-               Pinnable="True">
-  <TemplateBlade.Settings>
-    <Setting Property="expanded" />
-  </TemplateBlade.Settings>
-</TemplateBlade>
+/**
+ * Initializes the Essentials control.
+ */
+private _initializeControl(): void {
+    let clickCounter = 0;
+    this.essentials = Essentials.create(this.context.container, {
+        left: [
+            {
+                label: ClientResources.essentialsItem,
+                value: ClientResources.essentialsSampleString
+            },
+            {
+                label: ClientResources.essentialsDynamicChangeStatus,
+                value: ClientResources.essentialsStatusWillBeChanged,
+                onClick: () => {
+                    this._customStatus(`${++clickCounter} ${ClientResources.essentialsTimesClicked}!`);
+                }
+            },
+            {
+                label: ClientResources.essentialsItem,
+                value: "Bing.com",
+                onClick: new ClickableLink(ko.observable("http://www.bing.com"))
+            },
+            {
+                label: ClientResources.essentialsItem,
+                value: ClientResources.essentialsSampleString
+            },
+            {
+                label: ClientResources.essentialsItem,
+                value: ClientResources.essentialsSampleString
+            }
+        ],
+        right: [
+            {
+                label: ClientResources.essentialsCustomStatus,
+                value: this._customStatus
+            },
+            {
+                label: ClientResources.essentialsItem,
+                value: "Bing.com",
+                onClick: new ClickableLink(ko.observable("http://www.bing.com"))
+            },
+            {
+                label: ClientResources.essentialsItem,
+                value: "Bing.com",
+                onClick: new ClickableLink(ko.observable("http://www.bing.com"))
+            },
+            {
+                label: ClientResources.essentialsItem,
+                value: ClientResources.essentialsSampleString
+            },
+            {
+                label: ClientResources.essentialsItem,
+                value: ClientResources.essentialsSampleString
+            }
+        ]
+    });
+}
 
 ```
 
@@ -619,27 +634,27 @@ Resource blade open/close callback functions are provided and can be used for lo
 
 Note that this feature is not available in `NonResource` essentials.
 
-`\Client\V1\Controls\Essentials\ViewModels\DefaultEssentialsViewModel.ts.`
+`\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`
 
 ```typescript
 
-onBladeOpen: (origin: BuiltInType) => {
+onBladeOpen: (origin: Essentials.BuiltInType) => {
     switch (origin) {
-        case BuiltInType.ResourceGroup:
-            this.vm().modifyStatus(ClientResources.essentialsResourceGroupOpened);
+        case Essentials.BuiltInType.ResourceGroup:
+            this.essentials.modifyStatus(ClientResources.essentialsResourceGroupOpened);
             break;
-        case BuiltInType.SubscriptionName:
-            this.vm().modifyStatus(ClientResources.essentialsSubscriptionOpened);
+        case Essentials.BuiltInType.SubscriptionName:
+            this.essentials.modifyStatus(ClientResources.essentialsSubscriptionOpened);
             break;
     }
 },
-onBladeClose: (origin: BuiltInType) => {
+onBladeClose: (origin: Essentials.BuiltInType) => {
     switch (origin) {
-        case BuiltInType.ResourceGroup:
-            this.vm().modifyStatus(ClientResources.essentialsResourceGroupClosed);
+        case Essentials.BuiltInType.ResourceGroup:
+            this.essentials.modifyStatus(ClientResources.essentialsResourceGroupClosed);
             break;
-        case BuiltInType.SubscriptionName:
-            this.vm().modifyStatus(ClientResources.essentialsSubscriptionClosed);
+        case Essentials.BuiltInType.SubscriptionName:
+            this.essentials.modifyStatus(ClientResources.essentialsSubscriptionClosed);
             break;
     }
 }
@@ -650,19 +665,114 @@ onBladeClose: (origin: BuiltInType) => {
 <a name="essentials-control-features-add-dynamic-properties"></a>
 #### Add Dynamic Properties
 
-`\Client\V1\Controls\Essentials\ViewModels\DefaultEssentialsViewModel.ts.`
+`\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`
 
 ```typescript
 
 // Sample AJAX Action
-return sampleAJAXFunction.call(this)
-    .then((properties: (Item | MultiLineItem)[]) => {
-        this.vm().addDynamicProperties(properties.slice(0, 2), properties.slice(2, 4));
+let clickCounter = 0;
+return sampleAJAXFunction()
+    .then((results: any) => {
+        // Generate array of Essentials.Item | Essentials.MultiLineItem from the results
+        const items: ((Essentials.Item | Essentials.MultiLineItem)[]) = results.map((data: any): Essentials.Item | Essentials.MultiLineItem => {
+            switch (data.type) {
+                case "connectionString":
+                    const connectionString = ko.observable(ClientResources.essentialsConnectionStringValue);
+                    return {
+                        label: data.label,
+                        value: connectionString,
+                        onClick: () => {
+                            connectionString(data.value);
+                        }
+                    };
+                case "text":
+                    return {
+                        label: data.label,
+                        value: data.value
+                    };
+                case "url":
+                    return {
+                        label: data.label,
+                        value: data.value,
+                        onClick: new ClickableLink(ko.observable(data.url))
+                    };
+                case "changeStatus":
+                    return {
+                        label: data.label,
+                        value: data.value,
+                        onClick: () => {
+                            this.essentials.modifyStatus(`${++clickCounter} ${ClientResources.essentialsTimesClicked}!`)
+                        }
+                    };
+            }
+        });
+
+        // Dynamically adding generated items to the essentials
+        this.essentials.addDynamicProperties(
+            // Add first two items to the left
+            items.slice(0, 2),
+            // Add next two items to the right
+            items.slice(2, 4)
+        );
     });
 
 ```
 
 As the above code shows, the sample AJAX response contains 4 properties. First 2 items are added to left pane and last 2 items are added to right pane.
 
+<a name="responsiveEssentials"></a>
+<a name="essentials-control-features-responsive-columns"></a>
+#### Responsive Columns
+
+`\Client\V2\Controls\Essentials\EssentialsResponsiveBlade.ts`
+
+```typescript
+
+this.essentials =  Essentials.create(this.context.container, {
+    responsiveColumns: true,
+    resourceId: "/subscriptions/sub123/resourcegroups/snowtraxpsx/providers/Microsoft.Test/snowmobiles/snowtraxpsx600",
+    additionalRight: [{
+        label: ClientResources.essentialsItem,
+        value: ClientResources.essentialsSampleString
+    }, {
+        label: ClientResources.essentialsItem,
+        value: "Bing.com",
+        onClick: new ClickableLink(ko.observable("http://www.bing.com"))
+    }, {
+        label: ClientResources.essentialsMultiLineItem,
+        lines: [{
+            value: ClientResources.essentialsSampleString
+        }, {
+            value: "Bing.com",
+            onClick: new ClickableLink(ko.observable("http://www.bing.com"))
+        }]
+    }],
+    onBladeOpen: (origin: Essentials.BuiltInType) => {
+        switch (origin) {
+            case Essentials.BuiltInType.ResourceGroup:
+                this.essentials.modifyStatus(ClientResources.essentialsResourceGroupOpened);
+                break;
+            case Essentials.BuiltInType.SubscriptionName:
+                this.essentials.modifyStatus(ClientResources.essentialsSubscriptionOpened);
+                break;
+        }
+    },
+    onBladeClose: (origin: Essentials.BuiltInType) => {
+        switch (origin) {
+            case Essentials.BuiltInType.ResourceGroup:
+                this.essentials.modifyStatus(ClientResources.essentialsResourceGroupClosed);
+                break;
+            case Essentials.BuiltInType.SubscriptionName:
+                this.essentials.modifyStatus(ClientResources.essentialsSubscriptionClosed);
+                break;
+        }
+    }
+});
+
+```
+
+The optional `boolean` property `responsiveColumns` can be specified to `true` to use responsive columns feature.
+
+`Small` sized blade will contain single column and full screen will contain multiple number of columns depends on the blade's width.
 
 [essentials-sample]: ../media/portalfx-controls/essentials.png
