@@ -89,10 +89,14 @@ Sample `ServiceGroupRootReplacements.json`
     "TargetStorageConStringKeyVaultUri": "https://sometest.vault.azure.net/secrets/PortalHostingServiceStorageConnectionString",
     "TargetContainerName": "hostingservice",
     "ContactEmail": "youremail@microsoft.com",
-    "PortalExtensionName": "Microsoft_Azure_Monitoring"
+    "PortalExtensionName": "Microsoft_Azure_Monitoring",
+    "FriendlyNames": "friendlyname_1,friendlyname_2,friendlyname_3"
   }
 }
 ```
+Other environments that are supported:
+i. Test i.e. Dogfood
+i. Production
 
 iv Initiate a test deployment
 
@@ -113,6 +117,8 @@ To perform a [production deployment](https://microsoft.sharepoint.com/teams/WAG/
 
 The above config will result in a build output as required by Ev2 and the hosting service. It looks like the following:
 
+As of version 5.0.302.834
+
 ```
 
 out\retail-amd64\ServiceGroupRoot
@@ -121,16 +127,38 @@ out\retail-amd64\ServiceGroupRoot
                 \buildver.txt
                 \RolloutSpec.6h.json
                 \RolloutSpec.24h.json
-                \ServiceModel.6h.json
-                \ServiceModel.24h.json
+                \production.ServiceModel.6h.json
+                \production.ServiceModel.24h.json
+                \production.friendlyname_1.json
+                \production.friendlyname_2.json
+                \production.friendlyname_3.json
 
 ```
+
+As of version 5.0.302.837
+
+
+```
+
+out\retail-amd64\ServiceGroupRoot
+                \HostingSvc\1.2.1.0.zip
+                \Production.Parameters\*.json
+                \buildver.txt
+                \Production.RolloutSpec.6h.json
+                \Production.RolloutSpec.24h.json
+                \Production.ServiceModel.6h.json
+                \Production.ServiceModel.1D.json
+                \Production.friendlyname_1.json
+                \Production.friendlyname_2.json
+                \Production.friendlyname_3.json
+```
+
 
 ### FAQs
 
 1. Support for friendly names
 
-We are actively working on adding the support for friendly names for EV2 right now. ETA for this feature is 25th August  2017.
+The support for friendly name is now available in 5.0.302.834.
 
 1. Can I provide SAS token instead of keyvault for EV2 to access storage account
 
