@@ -86,3 +86,6 @@ this.dropDownVM = DropDown.create(container, {
    multiselect: true
 });
 ```
+
+## Accessibility 
+We handle most accessibility, one important note though is if you use an html template in your item text or image. You need to add an ariaLabel on that item.
