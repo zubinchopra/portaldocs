@@ -149,6 +149,6 @@ this.dropDownVM.isPopUpOpen.subscribe(container, (opened) => {
 We handle most accessibility, one important note though is if you use an html template or image binding in your item text. You need to add an ariaLabel on that item.
 
 
-## Migrating to the new control
+## Need to migrating to this control?
 Check out the documentation here: 
 https://github.com/Azure/portaldocs/blob/dev/portal-sdk/templates/portalfx-controls-dropdown-migration.md
