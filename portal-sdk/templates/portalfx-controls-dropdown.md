@@ -33,8 +33,6 @@ this.dropDownVM = DropDown.create(container, {
 });
 ```
 
------------
-
 ## Features
 
 #### Grouping
