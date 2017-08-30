@@ -3,13 +3,13 @@
 We've had several version of the dropdown control but have asked partners to standardize on the AMD dropdown control.
 You can use it by importing the AMD module:
 
-```
+```typescript
 import * as DropDown from "Fx/Controls/DropDown";
 ```
 
 creating the view model:
 
-```
+```typescript
 var dropDown = new DropDown.ViewModel(ltm, {...});
 ```
 
