@@ -97,10 +97,25 @@ this.dropDownVM = DropDown.create(container, {
 ```
 
 ### Placeholder
-Adds a default string to show if nothing is selected.
+Adds a default string to show if nothing is selected.'
 
-### isDropDownOpen
+```typescript
+this.dropDownVM = DropDown.create(container, {
+   items: myItems,
+   placeholder: "Select an item"
+});
+```
+
+### isPopUpOpen
 This a readonly observable which you can subscribe to know when the dropdown is opened/closed. Useful for delay loading your items they are popuplated from an expensive ajax call.
+
+```typescript
+this.dropDownVM.isPopUpOpen.subscribe(container, (opened) => {
+    if (opened) {
+        // make your expensive call here.
+    }
+});
+```
 
 ## Accessibility 
 We handle most accessibility, one important note though is if you use an html template or image binding in your item text. You need to add an ariaLabel on that item.
