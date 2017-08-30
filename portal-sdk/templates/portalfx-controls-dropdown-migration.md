@@ -1,3 +1,5 @@
+View full documentation for the AMD dropdown here: https://github.com/Azure/portaldocs/blob/dev/portal-sdk/templates/portalfx-controls-dropdown.md
+
 ### Migrating from older dropdown controls
 The biggest reason to replace usage of the older dropdown controls with the AMD dropdown is that all the features
 of the other dropdowns are now present in the AMD dropdown. You can now turn on filtering or add grouping to a 
