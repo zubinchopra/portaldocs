@@ -75,7 +75,7 @@ this.dropDownVM = DropDown.create(container, {
 ```
 
 #### multiItemDisplayText 
-If you want to change the format of the default text, you may set multiItemDisplayText. Include a {0} in the replaced string if you want to include the number of items selected.
+If you want to change the format of the default text, you may set `multiItemDisplayText`. Include a {0} in the replaced string if you want to include the number of items selected.
 
 ```typescript
 this.dropDownVM = DropDown.create(container, {
@@ -93,6 +93,23 @@ this.dropDownVM = DropDown.create(container, {
    items: myItems,
    filter: true,
    multiselect: true
+});
+```
+
+### Templating
+The dropdown supports both filtering & multiselect states to be active. The filter textbox will move into the dropdown.
+
+```typescript
+let myItems = [{
+        text: "<b>G1</b> - large"
+        value: "large"
+    },{
+        text: "<b>G2</b> - small"
+        value: "small"
+}];
+
+this.dropDownVM = DropDown.create(container, {
+   items: myItems
 });
 ```
 
