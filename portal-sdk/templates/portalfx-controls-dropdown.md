@@ -107,7 +107,7 @@ this.dropDownVM = DropDown.create(container, {
 });
 ```
 
-### Templating
+### Rich Templating
 The dropdown supports both filtering & multiselect states to be active. The filter textbox will move into the dropdown.
 
 ```typescript
