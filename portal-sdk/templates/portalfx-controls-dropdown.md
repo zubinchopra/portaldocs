@@ -35,7 +35,7 @@ this.dropDownVM = DropDown.create(container, {
 
 ## Features
 
-#### Grouping
+### Grouping
 Grouping is simple by expanding the dropdown item with a group type. 
  
  ###### Group type example
@@ -54,7 +54,7 @@ Grouping is simple by expanding the dropdown item with a group type.
 
 You are able to group multiple groups together to create a nested layout.
 
-#### Filtering / Searching
+### Filtering / Searching
 For large list of items you are able to turn on `filtering: true` to enable searching.
 
 ```typescript
@@ -64,8 +64,8 @@ this.dropDownVM = DropDown.create(container, {
 });
 ```
 
-#### Multiselect
-When you need multiple items selected we support `multiselect: true` to allow this.
+### Multiselect
+When you need multiple items selected we support `multiselect: true` to allow this. We will then show items selected as "X selected".
 
 ```typescript
 this.dropDownVM = DropDown.create(container, {
@@ -74,7 +74,18 @@ this.dropDownVM = DropDown.create(container, {
 });
 ```
 
-#### Filter & Multiselect
+#### multiItemDisplayText 
+If you want to change the format of the default text, you may set multiItemDisplayText. Include a {0} in the replaced string if you want to include the number of items selected.
+
+```typescript
+this.dropDownVM = DropDown.create(container, {
+   items: myItems,
+   multiselect: true,
+   multiItemDisplayText: "{0} subscriptions"
+});
+```
+
+### Filter & Multiselect
 The dropdown supports both filtering & multiselect states to be active. The filter textbox will move into the dropdown.
 
 ```typescript
