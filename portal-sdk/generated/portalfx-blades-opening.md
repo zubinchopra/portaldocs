@@ -55,7 +55,7 @@ These methods are now available on your template blade container.
 <a name="blade-opening-and-closing-opening-blades-recommended-pattern-opening-blades-within-the-menu"></a>
 ### Opening blades within the menu
 
-When your template blade is in context of a menu blade (i.e. the child of a menu blade), these methods are available on the menu object within the container (PDL) or the context (no-PDL) object. 
+When your template blade is in context of a menu blade (i.e. the child of a menu blade), these methods are available on the `menu` object within the `container` (PDL) or the `context` (no-PDL) object. 
 
 > When using these APIs be aware your blade might be opened outside of the context of a menu blade and the 
 > menu object will be null and you should account for that case by falling back to the standard blade opening 
