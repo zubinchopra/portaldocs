@@ -1,7 +1,16 @@
 * [Controls](#controls)
     * [Date and Time](#controls-date-and-time)
     * [Drop downs](#controls-drop-downs)
-        * [Migrating from older dropdown controls](#controls-drop-downs-migrating-from-older-dropdown-controls)
+    * [Features](#controls-features)
+        * [Grouping](#controls-features-grouping)
+        * [Filtering / Searching](#controls-features-filtering-searching)
+        * [Multiselect](#controls-features-multiselect)
+        * [Filter & Multiselect](#controls-features-filter-multiselect)
+        * [Rich Templating](#controls-features-rich-templating)
+        * [Placeholder](#controls-features-placeholder)
+        * [isPopUpOpen](#controls-features-ispopupopen)
+    * [Accessibility](#controls-accessibility)
+    * [Need to migrating to this control?](#controls-need-to-migrating-to-this-control)
     * [Editors](#controls-editors)
         * [Editor](#controls-editors-editor)
     * [Console](#controls-console)
@@ -51,35 +60,172 @@ To learn more about any of our controls, click on any of the links below.
 ## Drop downs
 - Drop Down
 	## DropDown
-We've had several version of the dropdown control but have asked partners to standardize on the AMD dropdown control.
-You can use it by importing the AMD module:
+The AMD dropdown has all the features of the old dropdowns. You can now turn on filtering or add grouping to a multiselect dropdown where previously adding a featuring might mean porting your code to a different control (or 
+wasn't possible depending on combination of features you were looking for). 
 
-```
-import * as DropDown from "Fx/Controls/DropDown";
-```
-
-creating the view model:
-
-```
-var dropDown = new DropDown.ViewModel(ltm, {...});
-```
-
-and then inserting it into a section or your HTML template via the pcControl binding. You can see it running
-in samples extension [here](http://aka.ms/portalfx/samples#blade/SamplesExtension/DropDownInstructions/selectedItem/DropDownInstructions/selectedValue/DropDown).
-
-<a name="controls-drop-downs-migrating-from-older-dropdown-controls"></a>
-### Migrating from older dropdown controls
-The biggest reason to replace usage of the older dropdown controls with the AMD dropdown is that all the features
-of the other dropdowns are now present in the AMD dropdown. You can now turn on filtering or add grouping to a 
-multiselect dropdown where previously adding a featuring might mean porting your code to a differen control (or 
-wasn't possible depending on combination of features you were looking for). The AMD dropdown supports:
-
+The AMD dropdown supports:
 - Grouping
 - Rich Templating
 - Filtering 
-- Custom Filtering, this also gives you a hook to replace items on keystroke.
+- Custom Filtering
 - Multiselect
 - Objects as the value
+
+You can use it by importing the AMD module:
+
+```typescript
+import * as DropDown from "Fx/Controls/DropDown";
+```
+
+Creating the view model: 
+
+```typescript
+// Items to popuplate the dropdown with.
+let myItems = [{
+    text: "Sample text",
+    value: "SampleValue"
+}, {
+    text: "Sample text 2",
+    value: "SampleValue2"
+}];
+
+this.dropDownVM = DropDown.create(container, {
+   items: myItems
+});
+```
+
+<a name="controls-features"></a>
+## Features
+
+<a name="controls-features-grouping"></a>
+### Grouping
+Grouping is simple by expanding the dropdown item with a group type. 
+ 
+ ###### Group type example
+```typescript
+let myItems = [{
+    text: "Sample header text",
+    children: [{
+        text: "Sample text",
+        value: "SampleValue"
+      }, {
+          text: "Sample text 2",
+          value: "SampleValue2"
+      }]
+}]
+```
+
+You are able to group multiple groups together to create a nested layout.
+
+<a name="controls-features-filtering-searching"></a>
+### Filtering / Searching
+For large list of items you are able to turn on `filtering: true` to enable searching.
+
+```typescript
+this.dropDownVM = DropDown.create(container, {
+   items: myItems,
+   filter: true
+});
+```
+
+<a name="controls-features-filtering-searching-filterplaceholder"></a>
+#### filterPlaceholder
+Popuplates the search both with a placeholder, overwrites the `placeholder` property on the dropdown.. 
+
+```typescript
+this.dropDownVM = DropDown.create(container, {
+   items: myItems,
+   filter: true,
+   filterPlaceholder: "Search items"
+});
+```
+
+<a name="controls-features-multiselect"></a>
+### Multiselect
+When you need multiple items selected we support `multiselect: true` to allow this. We will then show items selected as "X selected". The multiselect dropdown doesn't use `placeholder`, use below `multiItemDisplayText`.
+
+```typescript
+this.dropDownVM = DropDown.create(container, {
+   items: myItems,
+   multiselect: true
+});
+```
+
+<a name="controls-features-multiselect-multiitemdisplaytext"></a>
+#### multiItemDisplayText
+If you want to change the format of the default text, you may set `multiItemDisplayText`. Include a {0} in the replaced string if you want to include the number of items selected.
+
+```typescript
+this.dropDownVM = DropDown.create(container, {
+   items: myItems,
+   multiselect: true,
+   multiItemDisplayText: "{0} subscriptions"
+});
+```
+
+<a name="controls-features-filter-multiselect"></a>
+### Filter &amp; Multiselect
+The dropdown supports both filtering & multiselect states to be active. The filter textbox will move into the dropdown.
+
+```typescript
+this.dropDownVM = DropDown.create(container, {
+   items: myItems,
+   filter: true,
+   multiselect: true
+});
+```
+
+<a name="controls-features-rich-templating"></a>
+### Rich Templating
+The dropdown supports both filtering & multiselect states to be active. The filter textbox will move into the dropdown.
+
+```typescript
+let myItems = [{
+        text: "<b>G1</b> - large"
+        value: "large"
+    },{
+        text: "<b>G2</b> - small"
+        value: "small"
+}];
+
+this.dropDownVM = DropDown.create(container, {
+   items: myItems
+});
+```
+
+<a name="controls-features-placeholder"></a>
+### Placeholder
+Adds a default string to show if nothing is selected.'
+
+```typescript
+this.dropDownVM = DropDown.create(container, {
+   items: myItems,
+   placeholder: "Select an item"
+});
+```
+
+<a name="controls-features-ispopupopen"></a>
+### isPopUpOpen
+This a readonly observable which you can subscribe to know when the dropdown is opened/closed. Useful for delay loading your items they are popuplated from an expensive ajax call.
+
+```typescript
+this.dropDownVM.isPopUpOpen.subscribe(container, (opened) => {
+    if (opened) {
+        // make your expensive call here.
+    }
+});
+```
+
+<a name="controls-accessibility"></a>
+## Accessibility
+We handle most accessibility, one important note though is if you use an html template or image binding in your item text. You need to add an ariaLabel on that item.
+
+
+<a name="controls-need-to-migrating-to-this-control"></a>
+## Need to migrating to this control?
+Check out the documentation here: 
+https://github.com/Azure/portaldocs/blob/dev/portal-sdk/templates/portalfx-controls-dropdown-migration.md
+
 
 <a name="controls-editors"></a>
 ## Editors
