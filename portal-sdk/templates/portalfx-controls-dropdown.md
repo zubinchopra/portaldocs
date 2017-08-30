@@ -40,7 +40,7 @@ Grouping is simple by expanding the dropdown item with a group type.
  
  ###### Group type example
 ```typescript
-[{
+let myItems = [{
     text: "Sample header text",
     children: [{
         text: "Sample text",
@@ -95,6 +95,12 @@ this.dropDownVM = DropDown.create(container, {
    multiselect: true
 });
 ```
+
+### Placeholder
+Adds a default string to show if nothing is selected.
+
+### isDropDownOpen
+This a readonly observable which you can subscribe to know when the dropdown is opened/closed. Useful for delay loading your items they are popuplated from an expensive ajax call.
 
 ## Accessibility 
 We handle most accessibility, one important note though is if you use an html template or image binding in your item text. You need to add an ariaLabel on that item.
