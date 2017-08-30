@@ -18,6 +18,7 @@ import * as DropDown from "Fx/Controls/DropDown";
 Creating the view model: 
 
 ```typescript
+// Items to popuplate the dropdown with.
 let myItems = [{
     text: "Sample text",
     value: "SampleValue"
@@ -31,19 +32,14 @@ this.dropDownVM = DropDown.create(container, {
 });
 ```
 
-### Items/Groups
-##### Items example
-```typescript
-[{
-    text: "Sample text",
-    value: "SampleValue"
-}, {
-    text: "Sample text 2",
-    value: "SampleValue2"
-}]
-```
+-----------
 
-##### Group example
+## Features
+
+#### Grouping
+Grouping is simple by expanding the dropdown item with a group type. 
+ 
+ ###### Group type example
 ```typescript
 [{
     text: "Sample header text",
@@ -55,4 +51,37 @@ this.dropDownVM = DropDown.create(container, {
           value: "SampleValue2"
       }]
 }]
+```
+
+You are able to group multiple groups together to create a nested layout.
+
+#### Filtering / Searching
+For large list of items you are able to turn on `filtering: true` to enable searching.
+
+```typescript
+this.dropDownVM = DropDown.create(container, {
+   items: myItems,
+   filter: true
+});
+```
+
+#### Multiselect
+When you need multiple items selected we support `multiselect: true` to allow this.
+
+```typescript
+this.dropDownVM = DropDown.create(container, {
+   items: myItems,
+   multiselect: true
+});
+```
+
+#### Filter & Multiselect
+The dropdown supports both filtering & multiselect states to be active. The filter textbox will move into the dropdown.
+
+```typescript
+this.dropDownVM = DropDown.create(container, {
+   items: myItems,
+   filter: true,
+   multiselect: true
+});
 ```
