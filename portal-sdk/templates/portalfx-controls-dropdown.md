@@ -1,5 +1,5 @@
 ## DropDown
-The AMD dropdown has all the features of the old dropdowns. You can now turn on filtering or add grouping to a multiselect dropdown where previously adding a featuring might mean porting your code to a differen control (or 
+The AMD dropdown has all the features of the old dropdowns. You can now turn on filtering or add grouping to a multiselect dropdown where previously adding a featuring might mean porting your code to a different control (or 
 wasn't possible depending on combination of features you were looking for). 
 
 The AMD dropdown supports:
