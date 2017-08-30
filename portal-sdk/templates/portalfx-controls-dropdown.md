@@ -88,4 +88,4 @@ this.dropDownVM = DropDown.create(container, {
 ```
 
 ## Accessibility 
-We handle most accessibility, one important note though is if you use an html template in your item text or image. You need to add an ariaLabel on that item.
+We handle most accessibility, one important note though is if you use an html template or image binding in your item text. You need to add an ariaLabel on that item.
