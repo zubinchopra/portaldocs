@@ -64,8 +64,19 @@ this.dropDownVM = DropDown.create(container, {
 });
 ```
 
+#### filterPlaceholder 
+Popuplates the search both with a placeholder, overwrites the `placeholder` property on the dropdown.. 
+
+```typescript
+this.dropDownVM = DropDown.create(container, {
+   items: myItems,
+   filter: true,
+   filterPlaceholder: "Search items"
+});
+```
+
 ### Multiselect
-When you need multiple items selected we support `multiselect: true` to allow this. We will then show items selected as "X selected".
+When you need multiple items selected we support `multiselect: true` to allow this. We will then show items selected as "X selected". The multiselect dropdown doesn't use `placeholder`, use below `multiItemDisplayText`.
 
 ```typescript
 this.dropDownVM = DropDown.create(container, {
