@@ -1,4 +1,4 @@
-# Release Notes since 5/4/2017
+# Release Notes since 5/6/2017
 
 ## 5.0.302.838
 0 Breaking Changes, 1 Features added and 0 Bugs Fixed
@@ -243,25 +243,9 @@ stack: Error: Deployment completed at a non-terminal state: running
 0 Breaking Changes, 0 Features added and 1 Bugs Fixed
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9191283'>9191283</a></td><td>Bug Fix</td><td>skip response caching for non get requests</td></tr></table>
 
-## 5.0.302.742
-0 Breaking Changes, 0 Features added and 0 Bugs Fixed
-<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
-
-## 5.0.302.741
-0 Breaking Changes, 2 Features added and 7 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9218412'>9218412</a></td><td>Bug Fix</td><td>Guard against missing bootEnvironment</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9215327'>9215327</a></td><td>Bug Fix</td><td>Extension configuration for national clouds are using wrong certificates</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9215133'>9215133</a></td><td>Feature</td><td>Deployment Reliability: Adding test for verifying the for oAuthClientCertificate to minimize deployment time errors</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9203212'>9203212</a></td><td>Bug Fix</td><td>[WhatsNew] Add a link to What's New from the help pane</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9199815'>9199815</a></td><td>Bug Fix</td><td>[ARMTile] Huge arrow</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9190981'>9190981</a></td><td>Bug Fix</td><td>[GuidedTour] Misaligned arrows within tour </td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9124326'>9124326</a></td><td>Bug Fix</td><td>simultaneous error: HubsExtension-fx-?-?.metadata.icon</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9094353'>9094353</a></td><td>Feature</td><td>[ExtensionConfiguration] <Enable Extension in FairFax> for extension <Microsoft_AAD_ProtectionCenter></td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9033784'>9033784</a></td><td>Bug Fix</td><td>[ContextualHelp] Build contextual help pane</td></tr></table>
-
 ## 5.0.302.740
-0 Breaking Changes, 1 Features added and 1 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9215133'>9215133</a></td><td>Feature</td><td>Deployment Reliability: Adding test for verifying the for oAuthClientCertificate to minimize deployment time errors</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9194007'>9194007</a></td><td>Bug Fix</td><td>HOTFIX: PT Chart titles don't respect dark mode</td></tr></table>
-
-## 5.0.302.739
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9093639'>9093639</a></td><td>Bug Fix</td><td>opening two deep links to the portal in parallel has unpredictable results</td></tr></table>
-
-## 5.0.302.738
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9215327'>9215327</a></td><td>Bug Fix</td><td>Extension configuration for national clouds are using wrong certificates</td></tr></table>
+0 Breaking Changes, 1 Features added and 0 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9215133'>9215133</a></td><td>Feature</td><td>Deployment Reliability: Adding test for verifying the for oAuthClientCertificate to minimize deployment time errors</td></tr></table>
 
 ## 5.0.302.736
 0 Breaking Changes, 10 Features added and 69 Bugs Fixed
