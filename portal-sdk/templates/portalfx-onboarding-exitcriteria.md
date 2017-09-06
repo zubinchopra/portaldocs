@@ -25,7 +25,8 @@ or to resolve `onInputSet()` promises, whichever is earlier.
 MPAC and PROD performance is included in weekly status emails and each team is expected to investigate regressions.
 
 > Meeting the performance bar is a requirement for public preview or GA.
-> We require roughly 100+ loads of your experiences to get a signal, if you are unable to generate that traffic geniuely in your desired timeframe please hold a bug bash to drive up the traffic.
+
+> We require roughly 100+ loads of your experience (extension/blade/tiles) to get a signal, if you are unable to generate that traffic genuinely in your desired timeframe please hold a bug bash to drive up the traffic.
 
 See also:
 - [Dashboard](http://aka.ms/portalfx/dashboard/extensionperf)
@@ -46,7 +47,8 @@ start tracking reliability.
 MPAC and PROD reliability is included in weekly status emails and each team is expected to investigate regressions.
 
 > Meeting the reliability bar is a requirement for public preview or GA.
-> We require roughly 100+ loads of your experiences to get a signal, if you are unable to generate that traffic geniuely in your desired timeframe please hold a bug bash to drive up the traffic.
+
+> We require roughly 100+ loads of your experience (extension/blade/tiles) to get a signal, if you are unable to generate that traffic genuinely in your desired timeframe please hold a bug bash to drive up the traffic.
 
 See also:
 - [#ibiza-performance on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-performance)
