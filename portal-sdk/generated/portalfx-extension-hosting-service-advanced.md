@@ -93,7 +93,7 @@ Sample `ServiceGroupRootReplacements.json`
     "TargetContainerName": "hostingservice",
     "ContactEmail": "youremail@microsoft.com",
     "PortalExtensionName": "Microsoft_Azure_Monitoring",
-    "FriendlyNames": "friendlyname_1,friendlyname_2,friendlyname_3"
+    "FriendlyNames": [ "friendlyname_1", "friendlyname_2", "friendlyname_3" ]
   }
 }
 ```
