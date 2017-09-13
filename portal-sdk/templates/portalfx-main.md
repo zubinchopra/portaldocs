@@ -1,3 +1,10 @@
+# Onboarding
+These documents are for internal teams that want to build an extension for the Azure Portal.
+* [Process, stakeholders, and exit criteria](portalfx-onboarding-exitcriteria.md#exit-criteria-quality-metrics)
+* [Deploying your extension](portalfx-extension-hosting-service.md)
+* [Registering your extension](portalfx-extension-onboarding-developer-guide.md)
+
+
 Table of Contents
 
 1. Introduction 
