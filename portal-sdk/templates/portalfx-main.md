@@ -24,7 +24,21 @@ These documents are for internal teams that want to build an extension for the A
 * IDE Setup - *Typescript version / Compile on save*
   * [Visual Studio](portalfx-creating-extensions.md#prerequisites) *(with Extension project template)*
   * VS Code
-* [Configuration your extension for different environments](TBD)
+* [Understanding the extension](TBD)
+    Portal SDL uses "convention over configuration" to configure itself. This typically means that the name and location of files is used instead of explicit configuration, hence you need to familiarize yourself with the directory structure provided by portal SDK.
+    Here is a breakdown and links to the relevant sections:
+    * App Data
+    * App Start
+    * Client
+    * Configuration
+    * Content
+    * Controllers 
+    * Definitions
+    * GalleryPackages
+    * packages.config
+    * web.config
+    * .config
+    2. DataContext
 * [Packaging and running for different environments]
   * [Verioning your extension](portalfx-extension-versioning.md)
   * [Side-loading your extension in a real portal environment](portalfx-testinprod.md#testing-in-production)
@@ -58,10 +72,12 @@ These documents are for internal teams that want to build an extension for the A
 * [What are they?](portalfx-ui-concepts.md#ui-concepts)
     * How/when are Blades/Parts invoked?  How can I get my Blade/Part in front of more users?
     * [Blades]
-        * Use 'container.openBlade(…)' to open my Blade
-        * Work with other teams to have other extensions call 'container.openBlade(…)' to open my Blade
+        * [Use 'container.openBlade(…)' to open my Blade](portalfx-blades-opening.md)
+        * [Work with other teams to have other extensions call 'container.openBlade(…)' to open my Blade](portalfx-blades-opening.md#importing-the-pde-file)
         * Associate my Blade with an <AssetType> so it is opened from Browse
-        * Add my Blade as an entry in a Resource Blade or a Menu Blade
+        * [Add my Blade as an entry in a Resource Blade or a Menu Blade]
+            * [No-PDL](portalfx-no-pdl.md#building-a-menu-blade-using-decorators)
+            * [PDL](portalfx-blades-menublade.md)
     * [Parts]
         * Make my Blades pinnable using @Blade.Pinnable.Decorator/onPin
         * Call Fx/Pinner/pinParts from some Blade
@@ -72,24 +88,7 @@ These documents are for internal teams that want to build an extension for the A
 
 ### Component model
 		* Lifecycle
-			* [Content]
-				* Portal instantiates these in reaction to user interaction
-					◊ Ex. Open a Blade, add a Part to a Dashboard
-				* Portal disposes these in reaction to subsequent user interaction
-					◊ Ex. Close a Blade, unpin a Part from the Dashboard
-				* Refer to memory management
 		* What is a Blade's/Part's API?  How is it invoked?
-			* [Content]
-				* All Blades/Parts have "Parameters"
-					◊ Parameters are serializable
-					◊ A Blade/Part deeplink can be formed with parameter values
-				* Some Blades are deep-linkable / pinnable
-					◊ …if they only have Parameters
-				* Some Blades have richer interaction with a caller and are not deep-linkable / pinnable
-					◊ @ReturnsData.Decorator
-				* BladeReferences/PartReferences
-					◊ The way to summon a Blade or Part
-					◊ Code-generated based on decorators / PDL
 	○ How / when to go the IFrame route?
 		* [Content]
 			* [Rehost UI]
@@ -97,8 +96,8 @@ These documents are for internal teams that want to build an extension for the A
 			* [Make my own OSS choices]
 * [Blade/Part reuse across extensions]
     * [Making Blades/Parts reusable by other extensions](portalfx-extension-sharing-pde.md)
-    * [Reusing Blades/Parts from other extensions](portalfx-integrating-with-other-extensions.md]
-    * Not sure where to put this ? [RPC](portalfx-rpc.md#remote-procedure-calls-rpc)
+    * [Reusing Blades/Parts from other extensions](portalfx-integrating-with-other-extensions.md)
+    * [RPC](portalfx-rpc.md#remote-procedure-calls-rpc)  // TOD: Find Home
 ### Blades
 #### [Type of Blades](portalfx-blades.md#blades)
     * [TemplateBlade]
