@@ -31,14 +31,13 @@ These documents are for internal teams that want to build an extension for the A
   * [Deep linking to a blade you are developing](portalfx-creating-extensions.md#hello-world-for-blades)
   * [Deploying an extension ](portalfx-extension-hosting-service.md#extension-hosting-service)
 * [Debugging](portalfx-debugging.md#debugging)
+* Domain Configuration
+    * [When to use dynamic configuration](portalfx-domain-based-configuration.md#domain-based-configuration)
+    * [How to use dynamic configuration](portalfx-domain-based-configuration-pattern.md#expected-design-pattern)
+    * [Configuration](portalfx-dictionaryconfiguration.md)
+    * [Sample for accessing dynamic configuration](portalfx-domain-based-configuration-example.md)
 * Registering an extension
-  * [Configuration Changes]
-        * [Dynamic configuration in different domain]
-            * [When to use dynamic configuration](portalfx-domain-based-configuration.md#domain-based-configuration)
-            * [How to use dynamic configuration](portalfx-domain-based-configuration-pattern.md#expected-design-pattern)
-            * [Configuration](portalfx-dictionaryconfiguration.md)
-            * [Sample for accessing dynamic configuration](portalfx-domain-based-configuration-example.md)
-        * [Changes in extension configuraiton for national clouds](portalfx-deployment-sovereign.md) 
+  * [Changes in extension configuraiton for national clouds](portalfx-deployment-sovereign.md) 
   * [In the public cloud](portalfx-extension-onboarding-developer-guide.md)
   * [Improving extension reliability/ Adding peristent caching](portalfx-extension-persistent-caching-of-scripts.md)
 
@@ -50,43 +49,14 @@ These documents are for internal teams that want to build an extension for the A
 
 ## [Extensions](portalfx-howitworks.md#how-extensions-work)
 * What is an extension? 
-		* Content:
-			* [Collection of](portalfx-ui-concepts.md#ui-concepts)
-				* Blades
-				* Parts
-				* AssetTypes
-				* Commands -- delete
-			* [Developed with little/no server-side code]
-				* An extension is principally JavaScript that dynamically renders HTML on the client
-				* Your extension can be served from a trivial web server that simply serves HTML/JavaScript/CSS bundles
-* [Extension lifecycle](portalfx-howitworks.md#how-the-portal-works)
-		* Content:
-			* [Loaded only when needed / unloaded when not
-				* Why?  To scale
-			* [Only aware of loading when a Blade/Part/AssetType/Command is instantiated
-			* [Why is 'onLoaded' not important?
-* [Cross-extension UX integration] (TBD)
-		* Content:
-			* [Integration opportunities]
-				* Open another extension's Blade
-				* Pin another extension's Part to a Dashboard
-				* Open a Blade that is logically associated with another extension's ResourceType
-				* Reuse another extension's Command
-					◊ …which might encapsulate secured backend APIs
-			* [Cost of UX integration]
-				* Extension-loading is slow
-			* [Benefit of UX integration]
-				* UX integration across services is a key differentiator over our competitors
-					◊ 100+ services via the same web app
+    * [Ui Concepts](portalfx-ui-concepts.md#ui-concepts)
+    * [Extension lifecycle](portalfx-howitworks.md#how-the-portal-works)
+    * [Cross-extension UX integration] (TBD)
 
 ##  Blades and Parts
-### Content:
+
 * [What are they?](portalfx-ui-concepts.md#ui-concepts)
-			* [Blades are windows or web pages
-			* [Parts are added to Dashboards
-				* …and can navigate to Blades
-			* [NOTE: Parts are no longer found on Blades
-* How/when are Blades/Parts invoked?  How can I get my Blade/Part in front of more users?
+    * How/when are Blades/Parts invoked?  How can I get my Blade/Part in front of more users?
     * [Blades]
         * Use 'container.openBlade(…)' to open my Blade
         * Work with other teams to have other extensions call 'container.openBlade(…)' to open my Blade
@@ -99,6 +69,7 @@ These documents are for internal teams that want to build an extension for the A
         * Add 'galleryMetadata' to my Part to make it available to users in the Part Gallery
     * [FAQ]
         * When should I make my Blade pinnable?
+
 ### Component model
 		* Lifecycle
 			* [Content]
