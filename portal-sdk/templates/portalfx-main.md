@@ -87,17 +87,15 @@ These documents are for internal teams that want to build an extension for the A
         * When should I make my Blade pinnable?
 
 ### Component model
-		* Lifecycle
-		* What is a Blade's/Part's API?  How is it invoked?
-	○ How / when to go the IFrame route?
-		* [Content]
-			* [Rehost UI]
-			* [New, but richer UI]
-			* [Make my own OSS choices]
-* [Blade/Part reuse across extensions]
+* Lifecycle
+* What is a Blade's/Part's API?  How is it invoked?
+* How / when to go the IFrame route?
+ 
+### [Blade/Part reuse across extensions]
     * [Making Blades/Parts reusable by other extensions](portalfx-extension-sharing-pde.md)
     * [Reusing Blades/Parts from other extensions](portalfx-integrating-with-other-extensions.md)
     * [RPC](portalfx-rpc.md#remote-procedure-calls-rpc)  // TOD: Find Home
+
 ### Blades
 #### [Type of Blades](portalfx-blades.md#blades)
     * [TemplateBlade]
@@ -139,43 +137,25 @@ These documents are for internal teams that want to build an extension for the A
 ### [Parts]((portalfx-parts.md#parts-aka-tiles)
 * [Types of Parts])
     * [TemplatePart]
-        * Part
     * [FramePart]
-        * Refer to "How / when to go the IFrame route?"
     * [ButtonPart]
-    * [Legacy PDL intrinsic Parts]
+    * [Legacy PDL intrinsic Parts](portalfx-parts.md#how-to-use-one-of-the-built-in-parts-to-expose-your-data-in-pre-built-views)
 * Scenarios
     * [Building a Part Gallery Part](portalfx-parts.md#how-to-integrate-your-part-into-the-part-gallery)
-    * [Retiring a Part]
-    * [Redirecting a Part]
+    * [Retiring a Part](portalfx-parts-how-to-retire.md)
+    * [Redirecting a Part](portalfx-parts.md#removing-a-part-from-a-blades-default-layout)
 * Developing my Part
     * [Reference "Common features / behavior for Blades and Parts"]
     * [Title/subtitle/icon]
     * [Activation ('onClick')]
     * ['container' APIs (like 'openBlade')]
-• Common document for developing "content"
-◊ HTML template + Knockout + Controls
+* HTML template + Knockout + Controls
     * Include "why no access to DOM?"
-◊ Styling
-◊ Docking
-◊ Forms
+* Styling
+* Docking
+* Forms
     } Controls, "form" API, etc.
     } "Submit"-style UI
-• (Hidden doc) Common features / behavior for Blades and Parts
-	* Initialization - 'onInitialize'
-		* [Content]
-			* [Include]
-				* Refer to controlling the loading indicators
-				* When to use observables / when can I set members on my class
-	* Controlling the loading indicators
-		* [Content]:
-			* [Include 'onInitialize'/'revealContent']
-			* [Include 'addOperation']
-	* 'container' APIs (like 'openBlade')
-	* Data-loading pattern
-		* [DataContext / Area]
-		* [Add exemption from QC/EC for Forms]
-		* [Reference top-level doc on QueryCache/EntityCache/etc]
 • [Extension memory management / Lifetime manager](portalfx-data-lifetime.md#lifetime-manager)
 	○ Content:
 		* [Relate this to Blade/Part lifecycle]
@@ -222,6 +202,7 @@ These documents are for internal teams that want to build an extension for the A
     * [Donut](portalfx-controls-donut.md)
     * [Dropdown](portalfx-controls-dropdown.md)
         * [Migration](portalfx-controls-dropdown-migration.md)
+        * [Loading Indicator](portalfx-editscopeless-forms.md#using-the-loading-indicator-for-dropdown)
     * [Duration Picker]
     * [Essentials](portalfx-controls-essentials.md)
     * [File Download]
@@ -260,6 +241,21 @@ These documents are for internal teams that want to build an extension for the A
     * [Grid](portalfx-controls-grid.md)
         * [Data Virtualization](portalfx-data-virtualizedgriddata.md)
     * [Editable Grid]
+    * [Spec Picker Blade](portalfx-extension-pricing-tier.md)
+    * [Subscription Dropdown](portalfx-create.md#subscriptions-dropdown-1)
+    * [Resource Group dropdown](portalfx-create.md#resource-groups-legacy-dropdown)
+    * [Location dropdown](/portalfx-create.md#locations-legacy-dropdown)
+    * [Pricing Dropdown](portalfx-create.md#pricing-dropdown)
+* Forms
+    * [Building UI for Form](portalfx-forms.md#laying-out-your-ui-on-the-blade)
+    * [Submit Style UI]
+        * [Save/ Cancel Button](portalfx-editscopeless-forms.md#other-css-classes-that-can-be-useful)
+        * [Legacy Action Bar] (portalfx-fxcontrols-editscope-forms.md)
+    * [Prompt user to Save/Discard changes](portalfx-editscopeless-forms.md#customizing-alert-on-form-close)
+    * [EditScopeless Forms](portalfx-editscopeless-forms.md)
+    * [Legacy Editscope based Forms](portalfx-forms.md)
+    * [Using Editscopeless controls in EditScoped Forms](portalfx-fxcontrols-editscope-forms.md)
+
 Table of Contents
 
 1. Introduction 
