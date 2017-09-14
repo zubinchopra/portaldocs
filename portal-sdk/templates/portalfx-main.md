@@ -138,30 +138,30 @@ These documents are for internal teams that want to build an extension for the A
 			* [NoData]
 			* ["form" API]
 ### [Parts]((portalfx-parts.md#parts-aka-tiles)
-    * [Types of Parts])
-        * [TemplatePart]
-            * Part
-        * [FramePart]
-            * Refer to "How / when to go the IFrame route?"
-        * [ButtonPart]
-        * [Legacy PDL intrinsic Parts]
-    * Scenarios
-        * [Building a Part Gallery Part]
-        * [Retiring a Part]
-        * [Redirecting a Part]
-    * Developing my Part
-        * [Reference "Common features / behavior for Blades and Parts"]
-        * [Title/subtitle/icon]
-        * [Activation ('onClick')]
-        * ['container' APIs (like 'openBlade')]
+* [Types of Parts])
+    * [TemplatePart]
+        * Part
+    * [FramePart]
+        * Refer to "How / when to go the IFrame route?"
+    * [ButtonPart]
+    * [Legacy PDL intrinsic Parts]
+* Scenarios
+    * [Building a Part Gallery Part](portalfx-parts.md#how-to-integrate-your-part-into-the-part-gallery)
+    * [Retiring a Part]
+    * [Redirecting a Part]
+* Developing my Part
+    * [Reference "Common features / behavior for Blades and Parts"]
+    * [Title/subtitle/icon]
+    * [Activation ('onClick')]
+    * ['container' APIs (like 'openBlade')]
 • Common document for developing "content"
-	◊ HTML template + Knockout + Controls
-		* Include "why no access to DOM?"
-	◊ Styling
-	◊ Docking
-	◊ Forms
-		} Controls, "form" API, etc.
-		} "Submit"-style UI
+◊ HTML template + Knockout + Controls
+    * Include "why no access to DOM?"
+◊ Styling
+◊ Docking
+◊ Forms
+    } Controls, "form" API, etc.
+    } "Submit"-style UI
 • (Hidden doc) Common features / behavior for Blades and Parts
 	* Initialization - 'onInitialize'
 		* [Content]
@@ -186,19 +186,24 @@ These documents are for internal teams that want to build an extension for the A
 			* [KO factories]
 			* [EntityView/QueryView]
 ## Loading data
-    * [Understanding 'Area' and 'DataContext' ](portalfx-data-masterdetailsbrowse.md#the-masterdetail-area-and-datacontext)
-    * [Making Ajax calls to ARM and ARM APIs]
-        * [Authentication](portalfx-authentication.md#calling-arm)
-        * [Querying for data](portalfx-data-configuringdatacache.md)
-    * [Making Ajax calls to servies other than ARM](portalfx-authentication.md#calling-other-services)
-    * [Understanding Framework caches](portalfx-data.md#working-with-data)
-    * Common Scenarios
-        * [Auto-refreshing client data](portalfx-data-refreshingdata.md#auto-refreshing-client-side-data-aka-polling)
-        * [Shaping and filtering data](portalfx-data-projections.md) // TODO: Find better name
-        * [Master Detail](portalfx-data-masterdetailsbrowse.md#master-details-browse-scenario)
-        * [Legacy accessing C# model objects](portalfx-data-typemetadata.md#type-metadata)
-        * [Legacy Data Atomization](portalfx-data-atomization.md#data-atomization)
-    * Query Cache
+* [Area](portalfx-data.md#organizing-your-extension-source-code-into-areas)
+* Making Ajax calls to ARM and ARM APIs
+    * [Authentication](portalfx-authentication.md#calling-arm)
+    * [GET calls to ARM](portalfx-data.md#making-authenticated-ajax-calls)
+* [Data Context](portalfx-data.md#shared-data-access-using-datacontext)
+* [Data Views](portalfx-data.md#using-dataviews)
+* [Data Cache](portalfx-data.md#using-datacache-to-load-and-cache-data)
+    * [GET calls to ARM with Data Cache](portalfx-data.md#querying-for-data)
+    * [Controlling the AJAX calls for Data Cache](portalfx-data.md#loading-data)
+    * [Optimizing redundant calls](portalfx-data.md#loading-data)
+* Common Scenarios
+    * [Auto-refreshing client data](portalfx-data-refreshingdata.md#auto-refreshing-client-side-data-aka-polling)
+    * [Shaping and filtering data](portalfx-data-projections.md) // TODO: Find better name
+    * [Master Detail](portalfx-data.md#working-with-data)
+    * [Adressing Data Merge Failures](portalfx-data.md#data-merging)
+    * [Legacy accessing C# model objects](portalfx-data-typemetadata.md#type-metadata)
+    * [Legacy Data Atomization](portalfx-data-atomization.md#data-atomization)
+* [Making Ajax calls to servies other than ARM](portalfx-authentication.md#calling-other-services)
 
 * [Controls](portalfx-controls.md)
     * [Azue Storage Controls]
@@ -307,15 +312,7 @@ Table of Contents
         1. Side-loading the application
         2. Specifying a different Blade
 
-    2.8 How do extensions work ? WHy can't I write my custom javascript ?
-    2.8 Deploying an extension 
-    2.9 Registering an extension 
-        2.9.1 In public cloud
-        2.9.2 In national cloud
-3. Upgrading Azure Portal SDK   
-    3.1 Updating the NuGet packages
-    3.2 Updating the C# test framework
-    3.3 Updating the msportalfx-test framework
+
 4. Configuration
     4.1 Explaining web.config properties
         4.1.2. ThreadPoolConfiguration
@@ -334,7 +331,6 @@ Table of Contents
         4.3.1 Local [Settings in web.debug.config]
         4.3.2 Public [Settings in web.release.config]
         4.3.3 National Cloud specific settings [Settings in web.release.config]
-    4.3 Packaging and running for different environments
  6. Understanding Application lifecycle
     6.1 When is extension loaded / unloaded
     6.2 Performance implications of referencing another extension ?
