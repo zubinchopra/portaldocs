@@ -5,6 +5,286 @@ These documents are for internal teams that want to build an extension for the A
 * [Registering your extension](portalfx-extension-onboarding-developer-guide.md)
 
 
+# SDK Documentation
+
+## What's new?
+* [No-PDL Blades](portalfx-no-pdl-programming.md#defining-blades-and-parts-using-typescript-decorators-aka-no-pdl) - *Reduces the number of files and concepts to build UI*
+* [Forms without edit scope](portalfx-editscopeless-forms.md) - *More intuitive APIs for building forms*
+* [Editable Grid V2](TBD) - *Improved APIs designed to work with new forms*
+* [Extension Avialability Alerts](portalfx-telemetry-alerting.md#alerting) - *Get notified if your extension goes down*
+* [Actionable Notifications](TBD) - *Point users to well known next steps*
+* [EV2 support for the Extension Hosting Service](portalfx-extension-hosting-service-advanced.md#advanced-section) - *Nuff said*
+* [Multi-Column for Essentials Controls](portalfx-controls-essentials.md) - *Better use of screen real estate*
+* [TreeView improvements](TBD) - *Checkboxes, commands, and Load More / Virtualization*
+
+## Getting Started
+* [Downloading and Installing the SDK](downloads.md)
+  * Option 1 - Using the MSI Installer
+  * Option 2 - Using nuget packages [CoreXT and Non-CoreXT](portalfx-nuget-overview.md)
+* IDE Setup - *Typescript version / Compile on save*
+  * [Visual Studio](portalfx-creating-extensions.md#prerequisites) *(with Extension project template)*
+  * VS Code
+* [Configuration your extension for different environments](TBD)
+* [Packaging and running for different environments]
+  * [Verioning your extension](portalfx-extension-versioning.md)
+  * [Side-loading your extension in a real portal environment](portalfx-testinprod.md#testing-in-production)
+  * [Deep linking to a blade you are developing](portalfx-creating-extensions.md#hello-world-for-blades)
+  * [Deploying an extension ](portalfx-extension-hosting-service.md#extension-hosting-service)
+* [Debugging](portalfx-debugging.md#debugging)
+* Registering an extension
+  * [Configuration Changes]
+        * [Dynamic configuration in different domain]
+            * [When to use dynamic configuration](portalfx-domain-based-configuration.md#domain-based-configuration)
+            * [How to use dynamic configuration](portalfx-domain-based-configuration-pattern.md#expected-design-pattern)
+            * [Configuration](portalfx-dictionaryconfiguration.md)
+            * [Sample for accessing dynamic configuration](portalfx-domain-based-configuration-example.md)
+        * [Changes in extension configuraiton for national clouds](portalfx-deployment-sovereign.md) 
+  * [In the public cloud](portalfx-extension-onboarding-developer-guide.md)
+  * [Improving extension reliability/ Adding peristent caching](portalfx-extension-persistent-caching-of-scripts.md)
+
+## Upgrading Extension to use latest version of SDK
+  * [Upgrade policy](portalfx-deploy.md#3-understand-extension-runtime-compatibility)
+  * [Updating the NuGet packages](portalfx-nuget-overview.md)
+  * [Updating the C# test framework](TBD)
+  * [Updating the msportalfx-test framework](TBD)
+
+## [Extensions](portalfx-howitworks.md#how-extensions-work)
+* What is an extension? 
+		* Content:
+			* [Collection of](portalfx-ui-concepts.md#ui-concepts)
+				* Blades
+				* Parts
+				* AssetTypes
+				* Commands -- delete
+			* [Developed with little/no server-side code]
+				* An extension is principally JavaScript that dynamically renders HTML on the client
+				* Your extension can be served from a trivial web server that simply serves HTML/JavaScript/CSS bundles
+* [Extension lifecycle](portalfx-howitworks.md#how-the-portal-works)
+		* Content:
+			* [Loaded only when needed / unloaded when not
+				* Why?  To scale
+			* [Only aware of loading when a Blade/Part/AssetType/Command is instantiated
+			* [Why is 'onLoaded' not important?
+* [Cross-extension UX integration] (TBD)
+		* Content:
+			* [Integration opportunities]
+				* Open another extension's Blade
+				* Pin another extension's Part to a Dashboard
+				* Open a Blade that is logically associated with another extension's ResourceType
+				* Reuse another extension's Command
+					◊ …which might encapsulate secured backend APIs
+			* [Cost of UX integration]
+				* Extension-loading is slow
+			* [Benefit of UX integration]
+				* UX integration across services is a key differentiator over our competitors
+					◊ 100+ services via the same web app
+
+##  Blades and Parts
+### Content:
+* [What are they?](portalfx-ui-concepts.md#ui-concepts)
+			* [Blades are windows or web pages
+			* [Parts are added to Dashboards
+				* …and can navigate to Blades
+			* [NOTE: Parts are no longer found on Blades
+* How/when are Blades/Parts invoked?  How can I get my Blade/Part in front of more users?
+    * [Blades]
+        * Use 'container.openBlade(…)' to open my Blade
+        * Work with other teams to have other extensions call 'container.openBlade(…)' to open my Blade
+        * Associate my Blade with an <AssetType> so it is opened from Browse
+        * Add my Blade as an entry in a Resource Blade or a Menu Blade
+    * [Parts]
+        * Make my Blades pinnable using @Blade.Pinnable.Decorator/onPin
+        * Call Fx/Pinner/pinParts from some Blade
+            ◊ …even encourage partner extensions to do so
+        * Add 'galleryMetadata' to my Part to make it available to users in the Part Gallery
+    * [FAQ]
+        * When should I make my Blade pinnable?
+### Component model
+		* Lifecycle
+			* [Content]
+				* Portal instantiates these in reaction to user interaction
+					◊ Ex. Open a Blade, add a Part to a Dashboard
+				* Portal disposes these in reaction to subsequent user interaction
+					◊ Ex. Close a Blade, unpin a Part from the Dashboard
+				* Refer to memory management
+		* What is a Blade's/Part's API?  How is it invoked?
+			* [Content]
+				* All Blades/Parts have "Parameters"
+					◊ Parameters are serializable
+					◊ A Blade/Part deeplink can be formed with parameter values
+				* Some Blades are deep-linkable / pinnable
+					◊ …if they only have Parameters
+				* Some Blades have richer interaction with a caller and are not deep-linkable / pinnable
+					◊ @ReturnsData.Decorator
+				* BladeReferences/PartReferences
+					◊ The way to summon a Blade or Part
+					◊ Code-generated based on decorators / PDL
+	○ How / when to go the IFrame route?
+		* [Content]
+			* [Rehost UI]
+			* [New, but richer UI]
+			* [Make my own OSS choices]
+* [Blade/Part reuse across extensions]
+    * [Making Blades/Parts reusable by other extensions](portalfx-extension-sharing-pde.md)
+    * [Reusing Blades/Parts from other extensions](portalfx-integrating-with-other-extensions.md]
+    * Not sure where to put this ? [RPC](portalfx-rpc.md#remote-procedure-calls-rpc)
+### Blades
+#### [Type of Blades](portalfx-blades.md#blades)
+    * [TemplateBlade]
+        * Blade
+            * Special-case of TemplateBlade (without HTML template)
+        * Refer to 'Common document for developing "content"'
+    * [FrameBlade (and legacy <AppBlade>)]
+        * Refer to AppBlade
+        * Refer to "How / when to go the IFrame route?"
+    * [MenuBlade]
+        * Refer to Resource Menu Blade
+    * [Resource Menu Blade]
+        * Refer to Menu
+    * [Context Pane]
+#### Scenarios -- How do I choose?
+* [Create Blades](portalfx-create.md)
+* [Context Pane
+        * [Create Blades
+        * [Full-screen Blades
+        * [Settings Blades
+        * [FrameBlade/AppBlade
+            * Content:
+                ◊ Reference "How/When to go the IFrame route?"
+#### Developing my Blade
+			* [Reference "TemplateBlade/Blade" doc re: developing content for my Blade
+			* [Reference "Common features / behavior for Blades and Parts"
+			* [Reference to sections of common Blade/Part features/behaviors
+			* [Title/subtitle/icon]
+				* Include icon in FAQ and cross-reference here
+			* ['container' APIs (like 'openBlade')
+				* How you to choose your Container type for legacy PDL Blades?
+			* [CommandBar / Toolbar](portalfx-blades.md#adding-commands-to-a-templateblade)
+			* [Dialogs]
+				* Reference "developing content area" doc
+			* [StatusBar]
+			* [Unauthorized]
+			* [NoData]
+			* ["form" API]
+### [Parts]((portalfx-parts.md#parts-aka-tiles)
+    * [Types of Parts])
+        * [TemplatePart]
+            * Part
+        * [FramePart]
+            * Refer to "How / when to go the IFrame route?"
+        * [ButtonPart]
+        * [Legacy PDL intrinsic Parts]
+    * Scenarios
+        * [Building a Part Gallery Part]
+        * [Retiring a Part]
+        * [Redirecting a Part]
+    * Developing my Part
+        * [Reference "Common features / behavior for Blades and Parts"]
+        * [Title/subtitle/icon]
+        * [Activation ('onClick')]
+        * ['container' APIs (like 'openBlade')]
+• Common document for developing "content"
+	◊ HTML template + Knockout + Controls
+		* Include "why no access to DOM?"
+	◊ Styling
+	◊ Docking
+	◊ Forms
+		} Controls, "form" API, etc.
+		} "Submit"-style UI
+• (Hidden doc) Common features / behavior for Blades and Parts
+	* Initialization - 'onInitialize'
+		* [Content]
+			* [Include]
+				* Refer to controlling the loading indicators
+				* When to use observables / when can I set members on my class
+	* Controlling the loading indicators
+		* [Content]:
+			* [Include 'onInitialize'/'revealContent']
+			* [Include 'addOperation']
+	* 'container' APIs (like 'openBlade')
+	* Data-loading pattern
+		* [DataContext / Area]
+		* [Add exemption from QC/EC for Forms]
+		* [Reference top-level doc on QueryCache/EntityCache/etc]
+• [Extension memory management / Lifetime manager](portalfx-data-lifetime.md#lifetime-manager)
+	○ Content:
+		* [Relate this to Blade/Part lifecycle]
+		* [What are child lifetimes?]
+		* [Why do all ctors/factories require 'lifetimeManager']
+			* [Controls]
+			* [KO factories]
+			* [EntityView/QueryView]
+## Loading data
+    * [Understanding 'Area' and 'DataContext' ](portalfx-data-masterdetailsbrowse.md#the-masterdetail-area-and-datacontext)
+    * [Making Ajax calls to ARM and ARM APIs]
+        * [Authentication](portalfx-authentication.md#calling-arm)
+        * [Querying for data](portalfx-data-configuringdatacache.md)
+    * [Making Ajax calls to servies other than ARM](portalfx-authentication.md#calling-other-services)
+    * [Understanding Framework caches](portalfx-data.md#working-with-data)
+    * Common Scenarios
+        * [Auto-refreshing client data](portalfx-data-refreshingdata.md#auto-refreshing-client-side-data-aka-polling)
+        * [Shaping and filtering data](portalfx-data-projections.md) // TODO: Find better name
+        * [Master Detail](portalfx-data-masterdetailsbrowse.md#master-details-browse-scenario)
+        * [Legacy accessing C# model objects](portalfx-data-typemetadata.md#type-metadata)
+        * [Legacy Data Atomization](portalfx-data-atomization.md#data-atomization)
+    * Query Cache
+
+* [Controls](portalfx-controls.md)
+    * [Azue Storage Controls]
+    * [Button]
+    * [Checkbox]
+    * [Console](portalfx-controls-console.md)
+    * [Copyable Label]
+    * [Chart](portalfx-controls-chart.md)
+    * [Date Picker]
+    * [Date Polyfills]
+    * [Date Time Picker](portalfx-controls-datetimepicker.md)
+    * [Date Time Range Picker](portalfx-controls-datetimerangepicker.md)
+    * [Day Picker]
+    * [Diff Editor]
+    * [Editor](portalfx-controls-editor.md)
+    * [Docked Ballon]
+    * [Donut](portalfx-controls-donut.md)
+    * [Dropdown](portalfx-controls-dropdown.md)
+        * [Migration](portalfx-controls-dropdown-migration.md)
+    * [Duration Picker]
+    * [Essentials](portalfx-controls-essentials.md)
+    * [File Download]
+    * [File Upload]
+    * [Gallery]
+    * [Gauges]
+    * [Graph](portalfx-controls-graph-nuget.md)
+    * [Infobox]
+    * [Legend]
+    * [List View]
+    * [Tree View]
+    * [Toolbar](portalfx-controls-toolbar.md)
+    * [Log Stream]
+    * [Map]
+    * [Markdown]
+    * [Menu]
+    * [Monitor Chart](portalfx-controls-monitor-chart.md)
+    * [Textbox](portalfx-controls-textbox.md)
+        * [Textbox]
+        * [Numeric Textbox]
+        * [Multiline Textbox]
+        * [Password Box]
+        * [TextBlock]
+        * [TextBlock]
+    * [Option Picker]
+    * [OAuth Button]
+    * [Progress Bar]
+    * [Query Builder]
+    * [Search Box]
+    * [Search Box]
+    * [Sliders]
+        * [Sliders]
+        * [Custom Sliders]
+        * [Range Sliders]
+        * [Custom Range Sliders]
+    * [Grid](portalfx-controls-grid.md)
+        * [Data Virtualization](portalfx-data-virtualizedgriddata.md)
+    * [Editable Grid]
 Table of Contents
 
 1. Introduction 
