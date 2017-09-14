@@ -151,19 +151,6 @@ These documents are for internal teams that want to build an extension for the A
     * ['container' APIs (like 'openBlade')]
 * HTML template + Knockout + Controls
     * Include "why no access to DOM?"
-* Styling
-* Docking
-* Forms
-    } Controls, "form" API, etc.
-    } "Submit"-style UI
-• [Extension memory management / Lifetime manager](portalfx-data-lifetime.md#lifetime-manager)
-	○ Content:
-		* [Relate this to Blade/Part lifecycle]
-		* [What are child lifetimes?]
-		* [Why do all ctors/factories require 'lifetimeManager']
-			* [Controls]
-			* [KO factories]
-			* [EntityView/QueryView]
 ## Loading data
 * [Area](portalfx-data.md#organizing-your-extension-source-code-into-areas)
 * Making Ajax calls to ARM and ARM APIs
@@ -255,6 +242,15 @@ These documents are for internal teams that want to build an extension for the A
     * [EditScopeless Forms](portalfx-editscopeless-forms.md)
     * [Legacy Editscope based Forms](portalfx-forms.md)
     * [Using Editscopeless controls in EditScoped Forms](portalfx-fxcontrols-editscope-forms.md)
+* Advanced Styling
+• [Extension memory management / Lifetime manager](portalfx-data-lifetime.md#lifetime-manager)
+	○ Content:
+		* [Relate this to Blade/Part lifecycle]
+		* [What are child lifetimes?]
+		* [Why do all ctors/factories require 'lifetimeManager']
+			* [Controls]
+			* [KO factories]
+			* [EntityView/QueryView]
 
 Table of Contents
 
