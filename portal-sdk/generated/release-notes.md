@@ -1,4 +1,4 @@
-# Release Notes since 5/18/2017
+# Release Notes since 5/19/2017
 
 ## 5.0.302.856
 0 Breaking Changes, 1 Features added and 0 Bugs Fixed
@@ -9,8 +9,8 @@
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10220159'>10220159</a></td><td>Feature</td><td>[EV2] 1. Change directory structure. 2. Remove national cloud name from zip file name</td></tr></table>
 
 ## 5.0.302.854
-0 Breaking Changes, 1 Features added and 1 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=1508736'>1508736</a></td><td>Feature</td><td>Fixing B18HPTest and RR1XIOTestA TR config files.</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10240559'>10240559</a></td><td>Bug Fix</td><td>Fix the Jwt library version referenced by AAD core NuGet package and devkit</td></tr></table>
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=1508736'>1508736</a></td><td>Bug</td><td>Fix passing of locale to ContentUnbundler</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10240559'>10240559</a></td><td>Bug Fix</td><td>Fix the Jwt library version referenced by AAD core NuGet package and devkit</td></tr></table>
 
 ## 5.0.302.853
 0 Breaking Changes, 0 Features added and 1 Bugs Fixed
