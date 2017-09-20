@@ -1,3 +1,272 @@
+<a name="onboarding"></a>
+# Onboarding
+These documents are for internal teams that want to build an extension for the Azure Portal.
+* [Process, stakeholders, and exit criteria](portalfx-onboarding-exitcriteria.md#exit-criteria-quality-metrics)
+* [Deploying your extension](portalfx-extension-hosting-service.md)
+* [Registering your extension](portalfx-extension-onboarding-developer-guide.md)
+
+
+<a name="sdk-documentation"></a>
+# SDK Documentation
+
+<a name="sdk-documentation-what-s-new"></a>
+## What&#39;s new?
+* [No-PDL Blades](portalfx-no-pdl-programming.md#defining-blades-and-parts-using-typescript-decorators-aka-no-pdl) - *Reduces the number of files and concepts to build UI*
+* [Forms without edit scope](portalfx-editscopeless-forms.md) - *More intuitive APIs for building forms*
+* [Editable Grid V2](TBD) - *Improved APIs designed to work with new forms*
+* [Extension Avialability Alerts](portalfx-telemetry-alerting.md#alerting) - *Get notified if your extension goes down*
+* [Actionable Notifications](TBD) - *Point users to well known next steps*
+* [EV2 support for the Extension Hosting Service](portalfx-extension-hosting-service-advanced.md#advanced-section) - *Nuff said*
+* [Multi-Column for Essentials Controls](portalfx-controls-essentials.md) - *Better use of screen real estate*
+* [TreeView improvements](TBD) - *Checkboxes, commands, and Load More / Virtualization*
+
+<a name="sdk-documentation-getting-started"></a>
+## Getting Started
+* [Downloading and Installing the SDK](downloads.md)
+  * Option 1 - Using the MSI Installer
+  * Option 2 - Using nuget packages [CoreXT and Non-CoreXT](portalfx-nuget-overview.md)
+* IDE Setup - *Typescript version / Compile on save*
+  * [Visual Studio](portalfx-creating-extensions.md#prerequisites) *(with Extension project template)*
+  * VS Code
+* [Understanding the extension](TBD)
+    Portal SDL uses "convention over configuration" to configure itself. This typically means that the name and location of files is used instead of explicit configuration, hence you need to familiarize yourself with the directory structure provided by portal SDK.
+    Here is a breakdown and links to the relevant sections:
+    * App Data
+    * App Start
+    * Client
+    * Configuration
+    * Content
+    * Controllers 
+    * Definitions
+    * GalleryPackages
+    * packages.config
+    * web.config
+    * .config
+    2. DataContext
+* [Packaging and running for different environments]
+  * [Verioning your extension](portalfx-extension-versioning.md)
+  * [Side-loading your extension in a real portal environment](portalfx-testinprod.md#testing-in-production)
+  * [Deep linking to a blade you are developing](portalfx-creating-extensions.md#hello-world-for-blades)
+  * [Deploying an extension ](portalfx-extension-hosting-service.md#extension-hosting-service)
+* [Debugging](portalfx-debugging.md#debugging)
+* Domain Configuration
+    * [When to use dynamic configuration](portalfx-domain-based-configuration.md#domain-based-configuration)
+    * [How to use dynamic configuration](portalfx-domain-based-configuration-pattern.md#expected-design-pattern)
+    * [Configuration](portalfx-dictionaryconfiguration.md)
+    * [Sample for accessing dynamic configuration](portalfx-domain-based-configuration-example.md)
+* Registering an extension
+  * [Changes in extension configuraiton for national clouds](portalfx-deployment-sovereign.md) 
+  * [In the public cloud](portalfx-extension-onboarding-developer-guide.md)
+  * [Improving extension reliability/ Adding peristent caching](portalfx-extension-persistent-caching-of-scripts.md)
+
+<a name="sdk-documentation-upgrading-extension-to-use-latest-version-of-sdk"></a>
+## Upgrading Extension to use latest version of SDK
+  * [Upgrade policy](portalfx-deploy.md#3-understand-extension-runtime-compatibility)
+  * [Updating the NuGet packages](portalfx-nuget-overview.md)
+  * [Updating the C# test framework](TBD)
+  * [Updating the msportalfx-test framework](TBD)
+
+<a name="sdk-documentation-extensions-portalfx-howitworks-md-how-extensions-work"></a>
+## <a href="portalfx-howitworks.md#how-extensions-work">Extensions</a>
+* What is an extension? 
+    * [Ui Concepts](portalfx-ui-concepts.md#ui-concepts)
+    * [Extension lifecycle](portalfx-howitworks.md#how-the-portal-works)
+    * [Cross-extension UX integration] (TBD)
+
+<a name="sdk-documentation-blades-and-parts"></a>
+## Blades and Parts
+
+* [What are they?](portalfx-ui-concepts.md#ui-concepts)
+    * How/when are Blades/Parts invoked?  How can I get my Blade/Part in front of more users?
+    * [Blades]
+        * [Use 'container.openBlade(…)' to open my Blade](portalfx-blades-opening.md)
+        * [Work with other teams to have other extensions call 'container.openBlade(…)' to open my Blade](portalfx-blades-opening.md#importing-the-pde-file)
+        * Associate my Blade with an <AssetType> so it is opened from Browse
+        * [Add my Blade as an entry in a Resource Blade or a Menu Blade]
+            * [No-PDL](portalfx-no-pdl.md#building-a-menu-blade-using-decorators)
+            * [PDL](portalfx-blades-menublade.md)
+    * [Parts]
+        * Make my Blades pinnable using @Blade.Pinnable.Decorator/onPin
+        * Call Fx/Pinner/pinParts from some Blade
+            ◊ …even encourage partner extensions to do so
+        * Add 'galleryMetadata' to my Part to make it available to users in the Part Gallery
+    * [FAQ]
+        * When should I make my Blade pinnable?
+
+<a name="sdk-documentation-blades-and-parts-component-model"></a>
+### Component model
+* Lifecycle
+* What is a Blade's/Part's API?  How is it invoked?
+* How / when to go the IFrame route?
+ 
+<a name="sdk-documentation-blades-and-parts-blade-part-reuse-across-extensions"></a>
+### [Blade/Part reuse across extensions]
+    * [Making Blades/Parts reusable by other extensions](portalfx-extension-sharing-pde.md)
+    * [Reusing Blades/Parts from other extensions](portalfx-integrating-with-other-extensions.md)
+    * [RPC](portalfx-rpc.md#remote-procedure-calls-rpc)  // TOD: Find Home
+
+<a name="sdk-documentation-blades-and-parts-blades"></a>
+### Blades
+<a name="sdk-documentation-blades-and-parts-blades-type-of-blades-portalfx-blades-md-blades"></a>
+#### <a href="portalfx-blades.md#blades">Type of Blades</a>
+    * [TemplateBlade]
+        * Blade
+            * Special-case of TemplateBlade (without HTML template)
+        * Refer to 'Common document for developing "content"'
+    * [FrameBlade (and legacy <AppBlade>)]
+        * Refer to AppBlade
+        * Refer to "How / when to go the IFrame route?"
+    * [MenuBlade]
+        * Refer to Resource Menu Blade
+    * [Resource Menu Blade]
+        * Refer to Menu
+    * [Context Pane]
+<a name="sdk-documentation-blades-and-parts-blades-scenarios-how-do-i-choose"></a>
+#### Scenarios -- How do I choose?
+* [Create Blades](portalfx-create.md)
+* [Context Pane
+        * [Create Blades
+        * [Full-screen Blades
+        * [Settings Blades
+        * [FrameBlade/AppBlade
+            * Content:
+                ◊ Reference "How/When to go the IFrame route?"
+<a name="sdk-documentation-blades-and-parts-blades-developing-my-blade"></a>
+#### Developing my Blade
+			* [Reference "TemplateBlade/Blade" doc re: developing content for my Blade
+			* [Reference "Common features / behavior for Blades and Parts"
+			* [Reference to sections of common Blade/Part features/behaviors
+			* [Title/subtitle/icon]
+				* Include icon in FAQ and cross-reference here
+			* ['container' APIs (like 'openBlade')
+				* How you to choose your Container type for legacy PDL Blades?
+			* [CommandBar / Toolbar](portalfx-blades.md#adding-commands-to-a-templateblade)
+			* [Dialogs]
+				* Reference "developing content area" doc
+			* [StatusBar]
+			* [Unauthorized]
+			* [NoData]
+			* ["form" API]
+<a name="sdk-documentation-blades-and-parts-parts-portalfx-parts-md-parts-aka-tiles"></a>
+### <a href="(portalfx-parts.md#parts-aka-tiles">Parts</a>
+* [Types of Parts])
+    * [TemplatePart]
+    * [FramePart]
+    * [ButtonPart]
+    * [Legacy PDL intrinsic Parts](portalfx-parts.md#how-to-use-one-of-the-built-in-parts-to-expose-your-data-in-pre-built-views)
+* Scenarios
+    * [Building a Part Gallery Part](portalfx-parts.md#how-to-integrate-your-part-into-the-part-gallery)
+    * [Retiring a Part](portalfx-parts-how-to-retire.md)
+    * [Redirecting a Part](portalfx-parts.md#removing-a-part-from-a-blades-default-layout)
+* Developing my Part
+    * [Reference "Common features / behavior for Blades and Parts"]
+    * [Title/subtitle/icon]
+    * [Activation ('onClick')]
+    * ['container' APIs (like 'openBlade')]
+* HTML template + Knockout + Controls
+    * Include "why no access to DOM?"
+<a name="sdk-documentation-loading-data"></a>
+## Loading data
+* [Area](portalfx-data.md#organizing-your-extension-source-code-into-areas)
+* Making Ajax calls to ARM and ARM APIs
+    * [Authentication](portalfx-authentication.md#calling-arm)
+    * [GET calls to ARM](portalfx-data.md#making-authenticated-ajax-calls)
+* [Data Context](portalfx-data.md#shared-data-access-using-datacontext)
+* [Data Views](portalfx-data.md#using-dataviews)
+* [Data Cache](portalfx-data.md#using-datacache-to-load-and-cache-data)
+    * [GET calls to ARM with Data Cache](portalfx-data.md#querying-for-data)
+    * [Controlling the AJAX calls for Data Cache](portalfx-data.md#loading-data)
+    * [Optimizing redundant calls](portalfx-data.md#loading-data)
+* Common Scenarios
+    * [Auto-refreshing client data](portalfx-data-refreshingdata.md#auto-refreshing-client-side-data-aka-polling)
+    * [Shaping and filtering data](portalfx-data-projections.md) // TODO: Find better name
+    * [Master Detail](portalfx-data.md#working-with-data)
+    * [Adressing Data Merge Failures](portalfx-data.md#data-merging)
+    * [Legacy accessing C# model objects](portalfx-data-typemetadata.md#type-metadata)
+    * [Legacy Data Atomization](portalfx-data-atomization.md#data-atomization)
+* [Making Ajax calls to servies other than ARM](portalfx-authentication.md#calling-other-services)
+
+* [Controls](portalfx-controls.md)
+    * [Azue Storage Controls]
+    * [Button]
+    * [Checkbox]
+    * [Console](portalfx-controls-console.md)
+    * [Copyable Label]
+    * [Chart](portalfx-controls-chart.md)
+    * [Date Picker]
+    * [Date Polyfills]
+    * [Date Time Picker](portalfx-controls-datetimepicker.md)
+    * [Date Time Range Picker](portalfx-controls-datetimerangepicker.md)
+    * [Day Picker]
+    * [Diff Editor]
+    * [Editor](portalfx-controls-editor.md)
+    * [Docked Ballon]
+    * [Donut](portalfx-controls-donut.md)
+    * [Dropdown](portalfx-controls-dropdown.md)
+        * [Migration](portalfx-controls-dropdown-migration.md)
+        * [Loading Indicator](portalfx-editscopeless-forms.md#using-the-loading-indicator-for-dropdown)
+    * [Duration Picker]
+    * [Essentials](portalfx-controls-essentials.md)
+    * [File Download]
+    * [File Upload]
+    * [Gallery]
+    * [Gauges]
+    * [Graph](portalfx-controls-graph-nuget.md)
+    * [Infobox]
+    * [Legend]
+    * [List View]
+    * [Tree View]
+    * [Toolbar](portalfx-controls-toolbar.md)
+    * [Log Stream]
+    * [Map]
+    * [Markdown]
+    * [Menu]
+    * [Monitor Chart](portalfx-controls-monitor-chart.md)
+    * [Textbox](portalfx-controls-textbox.md)
+        * [Textbox]
+        * [Numeric Textbox]
+        * [Multiline Textbox]
+        * [Password Box]
+        * [TextBlock]
+        * [TextBlock]
+    * [Option Picker]
+    * [OAuth Button]
+    * [Progress Bar]
+    * [Query Builder]
+    * [Search Box]
+    * [Search Box]
+    * [Sliders]
+        * [Sliders]
+        * [Custom Sliders]
+        * [Range Sliders]
+        * [Custom Range Sliders]
+    * [Grid](portalfx-controls-grid.md)
+        * [Data Virtualization](portalfx-data-virtualizedgriddata.md)
+    * [Editable Grid]
+    * [Spec Picker Blade](portalfx-extension-pricing-tier.md)
+    * [Subscription Dropdown](portalfx-create.md#subscriptions-dropdown-1)
+    * [Resource Group dropdown](portalfx-create.md#resource-groups-legacy-dropdown)
+    * [Location dropdown](/portalfx-create.md#locations-legacy-dropdown)
+    * [Pricing Dropdown](portalfx-create.md#pricing-dropdown)
+* Forms
+    * [Building UI for Form](portalfx-forms.md#laying-out-your-ui-on-the-blade)
+    * [Submit Style UI]
+        * [Save/ Cancel Button](portalfx-editscopeless-forms.md#other-css-classes-that-can-be-useful)
+        * [Legacy Action Bar] (portalfx-fxcontrols-editscope-forms.md)
+    * [Prompt user to Save/Discard changes](portalfx-editscopeless-forms.md#customizing-alert-on-form-close)
+    * [EditScopeless Forms](portalfx-editscopeless-forms.md)
+    * [Legacy Editscope based Forms](portalfx-forms.md)
+    * [Using Editscopeless controls in EditScoped Forms](portalfx-fxcontrols-editscope-forms.md)
+* Advanced Styling
+• [Extension memory management / Lifetime manager](portalfx-data-lifetime.md#lifetime-manager)
+	○ Content:
+		* [Relate this to Blade/Part lifecycle]
+		* [What are child lifetimes?]
+		* [Why do all ctors/factories require 'lifetimeManager']
+			* [Controls]
+			* [KO factories]
+			* [EntityView/QueryView]
+
 Table of Contents
 
 1. Introduction 
@@ -49,15 +318,7 @@ Table of Contents
         1. Side-loading the application
         2. Specifying a different Blade
 
-    2.8 How do extensions work ? WHy can't I write my custom javascript ?
-    2.8 Deploying an extension 
-    2.9 Registering an extension 
-        2.9.1 In public cloud
-        2.9.2 In national cloud
-3. Upgrading Azure Portal SDK   
-    3.1 Updating the NuGet packages
-    3.2 Updating the C# test framework
-    3.3 Updating the msportalfx-test framework
+
 4. Configuration
     4.1 Explaining web.config properties
         4.1.2. ThreadPoolConfiguration
@@ -76,7 +337,6 @@ Table of Contents
         4.3.1 Local [Settings in web.debug.config]
         4.3.2 Public [Settings in web.release.config]
         4.3.3 National Cloud specific settings [Settings in web.release.config]
-    4.3 Packaging and running for different environments
  6. Understanding Application lifecycle
     6.1 When is extension loaded / unloaded
     6.2 Performance implications of referencing another extension ?

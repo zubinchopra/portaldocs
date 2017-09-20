@@ -169,16 +169,16 @@ portalAuth.SignInAndSkipPostValidation(userName: "", /** The account login to us
 //config#navigateToPortal
 
 // Check for and click the Untrusted Extension prompt if its present
-Portal.CheckAndClickExtensionTrustPrompt(webDriver);
-var portal = Portal.FindPortal(webDriver, false);
+Microsoft.Portal.TestFramework.Portal.CheckAndClickExtensionTrustPrompt(webDriver);
+var portal = Microsoft.Portal.TestFramework.Portal.FindPortal(webDriver, false);
 
 // Register a deployed extension via javascript and then reload the portal.  Not required if using the query string method to load from localhost
 (webDriver as IJavaScriptExecutor).ExecuteScript("MsPortalImpl.Extension.registerTestExtension({ name: \"SamplesExtension\", uri: \"https://df.onecloud.azure-test.net/Samples\"});");
 portal.WaitForPortalToReload(() => webDriver.Navigate().Refresh());
 
 // Check for and click the Untrusted Extension prompt if its present
-Portal.CheckAndClickExtensionTrustPrompt(webDriver);
-portal = Portal.FindPortal(webDriver, false);
+Microsoft.Portal.TestFramework.Portal.CheckAndClickExtensionTrustPrompt(webDriver);
+portal = Microsoft.Portal.TestFramework.Portal.FindPortal(webDriver, false);
 
 ```
 
@@ -252,16 +252,16 @@ namespace DocSampleTest
             //config#navigateToPortal
 
             // Check for and click the Untrusted Extension prompt if its present
-            Portal.CheckAndClickExtensionTrustPrompt(webDriver);
-            var portal = Portal.FindPortal(webDriver, false);
+            Microsoft.Portal.TestFramework.Portal.CheckAndClickExtensionTrustPrompt(webDriver);
+            var portal = Microsoft.Portal.TestFramework.Portal.FindPortal(webDriver, false);
 
             // Register a deployed extension via javascript and then reload the portal.  Not required if using the query string method to load from localhost
             (webDriver as IJavaScriptExecutor).ExecuteScript("MsPortalImpl.Extension.registerTestExtension({ name: \"SamplesExtension\", uri: \"https://df.onecloud.azure-test.net/Samples\"});");
             portal.WaitForPortalToReload(() => webDriver.Navigate().Refresh());
 
             // Check for and click the Untrusted Extension prompt if its present
-            Portal.CheckAndClickExtensionTrustPrompt(webDriver);
-            portal = Portal.FindPortal(webDriver, false);
+            Microsoft.Portal.TestFramework.Portal.CheckAndClickExtensionTrustPrompt(webDriver);
+            portal = Microsoft.Portal.TestFramework.Portal.FindPortal(webDriver, false);
             //config#sideLoadingExtension
 
             //config#dispose

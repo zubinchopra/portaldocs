@@ -465,7 +465,8 @@ this.resourceGroupDropDown = ResourceGroupDropDown.create(container, {
     }),
     // Optional -> Will determine which mode is selectable by the user. It defaults to Both.
     allowedMode: ko.observable(ResourceGroupDropDown.Mode.Both), //Alternatively Mode.UseExisting or Mode.CreateNew
-    value: { mode: ResourceGroupDropDown.Mode.CreateNew, value: { name: "NewResourceGroup_1", location: "" } }
+    value: { mode: ResourceGroupDropDown.Mode.CreateNew, value: { name: "NewResourceGroup_1", location: "" } },
+    createNewPlaceholder: ClientResources.createNew
 });
 
 ```
