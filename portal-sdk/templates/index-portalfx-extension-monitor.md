@@ -5,7 +5,13 @@
 {"gitdown": "include-headings", "file": "../templates/portalfx-telemetry-kusto-databases.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-telemetry.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-telemetry-live-telemetry.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-telemetry-alerting.md"}
+
+## Alerting
+{"gitdown": "include-headings", "file": "../templates/portalfx-telemetry-alerting-overview.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-telemetry-alerting-availability.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-telemetry-alerting-performance.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-telemetry-alerting-error-messages.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-telemetry-alerting-faq.md"}
 
 ## Performance 
 {"gitdown": "include-headings", "file": "../templates/portalfx-performance.md"}
