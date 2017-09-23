@@ -1,4 +1,4 @@
-# Alerting
+# Alerting infrastructure
 
 ## What are the alerts?
 

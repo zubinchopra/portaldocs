@@ -19,7 +19,7 @@
     * [Using Console Logs](portalfx-telemetry-live-telemetry.md#using-console-logs)
     * [Using Fiddler](portalfx-telemetry-live-telemetry.md#using-fiddler)
 
-* [Alerting](portalfx-telemetry-alerting.md#alerting)
+* [Alerting infrastructure](portalfx-telemetry-alerting.md#alerting-infrastructure)
     * [What are the alerts?](portalfx-telemetry-alerting.md#what-are-the-alerts)
     * [What is configurable?](portalfx-telemetry-alerting.md#what-is-configurable)
     * [How often do they run?](portalfx-telemetry-alerting.md#how-often-do-they-run)

@@ -49,6 +49,38 @@ These methods are now available on your template blade container.
     openContextBladeAsync(promiseToDetermineBladeToOpen: Promise<BladeReference>): Promise<boolean>; 
 ```
 
+### Opening blades within the menu
+
+When your template blade is in context of a menu blade (i.e. the child of a menu blade), these methods are available on the `menu` object within the `container` (PDL) or the `context` (no-PDL) object. 
+
+> When using these APIs be aware your blade might be opened outside of the context of a menu blade and the 
+> menu object will be null and you should account for that case by falling back to the standard blade opening 
+> APIs.
+
+```typescript
+    /**
+    * This method causes the menu blade to navigate to a different item
+    *
+    * @param id Identifier of the item to navigate too
+    */
+    switchItem(id: string): void;
+
+    /**
+    * Opens a child Blade in place.
+    *
+    * @param bladeToOpen A BladeReference describing the Blade to be opened.
+    */
+    openBlade(bladeToOpen: BladeReference): Promise<boolean>;
+
+    /**
+    * Opens a child Blade asynchronously in place.  While the Blade to be shown is being determined (via 'bladeReferencePromise') a loading
+    * indicator will be displayed on the new child Blade.
+    *
+    * @param promiseToDetermineBladeToOpen A Promise that will be resolved with a BladeReference describing the Blade to be opened.
+    */
+    openBladeAsync(promiseToDetermineBladeToOpen: Promise<BladeReference>): Promise<boolean>;
+```
+
 Each of these methods returns a promise that generally returns true.  If there is a blade on the screen that has unsaved edits to a form, the framework will prompt the user, giving them the option to keep the unsaved blade open.  If the user chooses to continue working on their unsaved edits then the blade opening promise will return false.
 
 For the Async methods, your code provides a promise.  If that promise fails (is rejected) then the promise returned from this API returns false.

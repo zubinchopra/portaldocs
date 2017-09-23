@@ -123,4 +123,29 @@ export class DeleteCommandViewModel implements MsPortalFx.ViewModels.CommandCont
 }
 ```
 
+#### Preserving icon coloring when user changes theme
+
+For any [built-in monochromatic icon (a.k.a. flat icon)](https://df.onecloud.azure-test.net/#blade/SamplesExtension/IconsMonochromaticBlade), its color changes relative to the portal's background color as the user changes themes.
+
+In light theme, monochromatic icon is presented with color black:
+
+![Flat icons with light theme][icon-light-theme]
+
+In dark theme, monochromatic icon is presented with color white:
+
+![Flat icons with dark theme][icon-dark-theme]
+
+If you would like to have color of your icon ***NOT*** be impacted by theme changes, you can supply the `{ isLogo: true }` option to the icon's factory method.
+In the following example, the Delete icon remains **black** in all portal themes.
+
+{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/UI/ViewModels/Blades/IconBladeViewModels.ts","section":"icon#flatIconWithLogoFlat"}
+
+Or, you can also add custom color and use `{isLogo: true}` to preserve it.
+In the following example, the Delete icon keeps **blue** in all portal themes.
+
+{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/UI/ViewModels/Blades/IconBladeViewModels.ts","section":"icon#flatIconWithPaletteAndLogoFlat"}
+
 Next steps: [Using built-in icons](portalfx-icons-builtin.md)
+
+[icon-light-theme]: ../media/portalfx-icons/icon-light-theme.PNG
+[icon-dark-theme]: ../media/portalfx-icons/icon-dark-theme.PNG

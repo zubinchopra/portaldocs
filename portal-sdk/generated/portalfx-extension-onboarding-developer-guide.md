@@ -336,6 +336,8 @@ Portal repository has 4 main branches i.e. dev, dogfood, mpac and production. **
 - buildall
 - testconfig   // This command will test if all the test cases passed. If any of the test cases fails, please verify your config again
 
+** To ensure that changes you have made are correct and will not cause any live-site issues, we strongly recommend you wait for Ibiza team to sign-off and complete the PR.**
+
 <a name="sla-for-deploying-the-configuration-changes"></a>
 ## SLA for deploying the configuration changes
 

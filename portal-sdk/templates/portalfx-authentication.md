@@ -161,46 +161,6 @@ MsPortalFx.Base.Net2.ajax({
 Then, exchange the Fx token for your own:
  
 ```cs
-// Get the token passed to the controller
-var portalAuthorizationHeader = HttpContext.Current.GetRequestContext().RequestCorrelationContext.GetCorrelationData<AuthorizationCorrelationProvider>();
-if (portalAuthorizationHeader == null) {
-    // This should never happen, the auth module should have returned 401 if there wasn’t a valid header present
-    throw new HttpException(401, "Unauthorized");
-}
-
-// Exchange it for the token that should pass to downstream services
-var exchangedAuthorizationHeader = GetExchangedToken(portalAuthorizationHeader, intuneClientId, intuneClientCert, "https://graph.windows.net/");
-
-// Call downstream service with exchanged header
-var headers = new NameValueCollection();
-headers.Add("Authorization", exchangedAuthorizationHeader);
-webApiClient.GetAsync(uri, "MyOperation", headers);
-
-// Helper method to exchange tokens
-string GetExchangedToken(string portalAuthorizationHeader, string clientId, X509Certificate2 clientCertificate, string resource) {
-
-    // proof that the intune extension is making the token request
-    var clientAssertion = new ClientAssertionCertificate(clientId, clientCertificate);
-
-    // proof that the request originated from the portal and is on behalf of a valid user
-    var accessToken = GetAccessTokenFromAuthorizationHeader(portalAuthorizationHeader);
-    var userAssertion = new UserAssertion(accessToken, "urn:ietf:params:oauth:grant-type:jwt-bearer"); 
-
-    // the actual token exchange
-    var exchangedToken = authContext.AcquireToken(resource, clientAssertion, userAssertion); 
-
-    return exchangedToken.GetAuthorizationHeader();
-}
-
-string GetAccessTokenFromAuthorizationHeader(string authorizationHeader) {
-    // The header will be in the form "Bearer ey......MZ"
-    // The access token in the last part of the header
-    var separator = new char[] { ' ' };
-    var accessToken = authorizationHeader.Split(separator, StringSplitOptions.RemoveEmptyEntries).LastOrDefault();
-
-    return accessToken;
-}
-=======
     // Get the token passed to the controller
     var portalAuthorizationHeader = PortalRequestContext.Current.GetCorrelationData<AuthorizationCorrelationProvider>();
     if (portalAuthorizationHeader == null) {
