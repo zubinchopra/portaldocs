@@ -252,6 +252,11 @@ var self = module.exports = {
             var urlsToSkip = [
                 "aka.ms/msportalfx-test", // Github returns a 404 if you aren't authorized instead of a 403
                 "examplecdn.vo.msecnd.net", // fake url
+                "mybizaextensiondf.blob.core.windows.net/extension", // fake url
+                "mybizaextensionprod.blob.core.windows.net/extension ", // fake url 
+                "mybizaextensionprod.blob.core.windows.net/extension",  // fake url 
+                "warm/newrelease/ev2", // Returns unable to get local issuer certificate
+                "msinterface/form.aspx?ID=4260",  // Returns connection timed out
                 "github.com/Azure/azure-marketplace/wiki", // Github returns a 404 if you aren't authorized instead of a 403/401
                 "github.com/Azure/msportalfx-test", // Github returns a 404 if you aren't authorized instead of a 403/401
                 "localhost",  // fake url/

@@ -1,5 +1,21 @@
 # Release Notes since 5/22/2017
 
+## 5.0.302.864
+0 Breaking Changes, 0 Features added and 0 Bugs Fixed
+<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
+
+## 5.0.302.863
+0 Breaking Changes, 0 Features added and 0 Bugs Fixed
+<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
+
+## 5.0.302.862
+0 Breaking Changes, 0 Features added and 0 Bugs Fixed
+<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
+
+## 5.0.302.861
+0 Breaking Changes, 3 Features added and 0 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=1541820'>1541820</a></td><td>Bug</td><td>Session timeout should default to never in all clouds</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=1531290'>1531290</a></td><td>Bug</td><td>Remove collection re-PUTs from CosmosDB code</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=1512952'>1512952</a></td><td>Bug</td><td>Bundle and RetryAttempt parameters should be removed in content requests</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10228416'>10228416</a></td><td>Feature</td><td>[Browse filtering] Decouple browse sub dropdown from global sub settings</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10183871'>10183871</a></td><td>Feature</td><td>Ignite: Expanded global search</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10141865'>10141865</a></td><td>Feature</td><td>Handle idle timeout</td></tr></table>
+
 ## 5.0.302.860
 0 Breaking Changes, 0 Features added and 0 Bugs Fixed
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=1542276'>1542276</a></td><td>Task</td><td>[Template] Update VS template to use new SDK features no-pdl etc.</td></tr></table>

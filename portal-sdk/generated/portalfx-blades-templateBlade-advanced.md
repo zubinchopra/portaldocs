@@ -203,10 +203,11 @@ constructor(container: MsPortalFx.ViewModels.ContainerContract,
     this.title(ClientResources.bladeUnauthorized);
     this.subtitle(ClientResources.bladesLensTitle);
 
-    /**
-     * This call marks the Blade as unauthorized, which should display a specialized UI.
-     */
-    container.unauthorized();
+    //This call marks the Blade as unauthorized, which should display a specialized UI.
+    // container.unauthorized();
+
+    // Or display a specialized UI with a customized message
+    container.unauthorized(ClientResources.bladeUnauthorizedCustomizedMessage);
 }
 
 ```

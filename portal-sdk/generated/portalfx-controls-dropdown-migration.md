@@ -1,3 +1,6 @@
+View full documentation for the AMD dropdown here: https://github.com/Azure/portaldocs/blob/dev/portal-sdk/templates/portalfx-controls-dropdown.md
+
+<a name="migrating-from-older-dropdown-controls"></a>
 ### Migrating from older dropdown controls
 The biggest reason to replace usage of the older dropdown controls with the AMD dropdown is that all the features
 of the other dropdowns are now present in the AMD dropdown. You can now turn on filtering or add grouping to a 
@@ -11,6 +14,7 @@ wasn't possible depending on combination of features you were looking for). The 
 - Multiselect
 - Objects as the value
 
+<a name="this-applies-to-upgrading-the-following-controls-to-the-new-amd-dropdown-pattern"></a>
 ### This applies to upgrading the following controls to the new AMD dropdown pattern
 
 ```typescript
@@ -20,7 +24,8 @@ wasn't possible depending on combination of features you were looking for). The 
     MsPortalFx.ViewModels.Obsolete.Forms.MultiSelectDropDown
 ```
 
-### How to convert to a new DropDown _if you bind your MultiSelectDropDown to an EditScope observable_
+<a name="how-to-convert-to-a-new-dropdown-_if-you-bind-your-multiselectdropdown-to-an-editscope-observable_"></a>
+### How to convert to a new DropDown <em>if you bind your MultiSelectDropDown to an EditScope observable</em>
 
 Using EditScope looked something like this (with "multiSelectDropDownValue"  being a path to an observable in the EditScope):
 
@@ -79,7 +84,8 @@ Now, follow the rest of the instructions below, which shows how to add multisele
 
 -----------------------------------------------------------------
 
-### How to convert to a new DropDown _if you do not bind your MultiSelectDropDown to an EditScope observable_
+<a name="how-to-convert-to-a-new-dropdown-_if-you-do-not-bind-your-multiselectdropdown-to-an-editscope-observable_"></a>
+### How to convert to a new DropDown <em>if you do not bind your MultiSelectDropDown to an EditScope observable</em>
 
 If your MultiSelectDropDown doesn’t make use of an EditScope, then you’ll convert to a DropDown using new form field APIs that were designed to be EditScope-less.  Beyond this MultiSelectDropDown->DropDown scenario, we recommend these new EditScope-less form field APIs _when developing entirely new Blades_.
 
@@ -146,6 +152,7 @@ Then inside your constructor:
 ```
 
 -----------------------------------------------------------------
+<a name="add-multi-select-functionality-to-your-new-dropdown"></a>
 ### Add multi-select functionality to your new DropDown
 
 Just add `multiselect: true` to your options in the create call like this:
@@ -160,6 +167,7 @@ Just add `multiselect: true` to your options in the create call like this:
 ```
 
 -----------------------------------------------------------------
+<a name="add-filtering-functionality-to-your-new-dropdown"></a>
 ### Add filtering functionality to your new DropDown
 
 Just add `filter: true` to your options in the create call like this:

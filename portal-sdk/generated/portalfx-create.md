@@ -6,6 +6,7 @@
     * [Add a provisioner component](#building-custom-create-forms-add-a-provisioner-component)
     * [Build your form](#building-custom-create-forms-build-your-form)
     * [Standard ARM fields](#building-custom-create-forms-standard-arm-fields)
+    * [Setting the value](#building-custom-create-forms-setting-the-value)
     * [Edit scopeless based accessible dropdowns](#building-custom-create-forms-edit-scopeless-based-accessible-dropdowns)
     * [ARM dropdown options](#building-custom-create-forms-arm-dropdown-options)
     * [Edit scope based accessible dropdowns](#building-custom-create-forms-edit-scope-based-accessible-dropdowns)
@@ -189,6 +190,12 @@ Learn more about [building forms](portalfx-forms.md).
 <a name="building-custom-create-forms-standard-arm-fields"></a>
 ### Standard ARM fields
 All ARM subscription resources require a subscription, resource group, location and pricing dropdown. The portal offers built-in controls for each of these. Refer to the EngineV3 Create sample (`SamplesExtension\Extension\Client\Create\EngineV3\ViewModels\CreateEngineBladeViewModel.ts`) for a working example.
+<a name="building-custom-create-forms-setting-the-value"></a>
+### Setting the value
+Each of these fields will retrieve values from the server and populate a dropdown with them. If you wish to set the value of these dropdowns, make sure to lookup the value from the `fetchedValues` array, and then set the `value` observable.
+```ts
+locationDropDown.value(locationDropDown.fetchedValues().first((value)=> value.name === "centralus"))
+```
 
 <a name="building-custom-create-forms-edit-scopeless-based-accessible-dropdowns"></a>
 ### Edit scopeless based accessible dropdowns
@@ -209,7 +216,7 @@ this.subscriptionsDropDown = SubscriptionDropDown.create(container, {
 const subId = ko.pureComputed(() => {
     const sub = this.subscriptionsDropDown.value();
     return sub && sub.subscriptionId;
-})
+});
 
 ```
 
@@ -246,6 +253,8 @@ this.locationsDropDown = LocationDropDown.create(container, {
     // Optional -> Disable locations by returning a reason for why a location is disabled
     // disable: (location) => ~["centralus", "eastus"].indexOf(location.name) && clientStrings.disabledLegalityIssues
 });
+// If setting the dropdown value programmatically, make sure to set it to an existing item in the dropdown
+// e.g. this.locationsDropDown.value(this.locationsDropDown.fetchedValues()[0])
 
 ```
 
