@@ -1,13 +1,67 @@
-# Onboarding
-These documents are for internal teams that want to build an extension for the Azure Portal.
-* [Process, stakeholders, and exit criteria](portalfx-onboarding-exitcriteria.md#exit-criteria-quality-metrics)
-* [Deploying your extension](portalfx-extension-hosting-service.md)
-* [Registering your extension](portalfx-extension-onboarding-developer-guide.md)
+
+# Azure portal extension development documentation
+
+## 1. Getting Started
+
+### 1.1 Installation Requirements
+
+* [Option 1 - Downloading the MSI Installer](downloads.md)
+* [Option 2 - Using nuget packages](portalfx-nuget-overview.md)
+
+### 1.2 Getting Set up in an IDE - *Typescript version / Compile on save*
+
+* [Visual Studio](portalfx-creating-extensions.md#prerequisites) *(with Extension project template)*
+* [VS Code](TBD) *(TBD)
+* [Need Help with setup?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
+
+### 1.3 Developing Hello World Extension
+
+### 1.4 Before you build your extension
+
+* [Join Ibiza aliases]
+* [Update your team's contact information]
+* [Leverage Ibiza team for early design review]
+* [Understand what it takes to build great extension](portalfx-onboarding-exitcriteria.md#exit-criteria-quality-metrics)
+* [Need Help with onboarding?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)
+
+### 1.4 Deploying your extension
 
 
-# SDK Documentation
+* [Deploy your extension using hosting service](portalfx-extension-hosting-service.md)
+* [Register your extension with hosting service]
+* [Validating extension registeration with hosting service]
+* [SLA for registering extension with hosting service]
+* [Need Help with hosting service?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)
 
-## What's new?
+### 1.5 Registering your extension
+
+* [Understanding how registeration works](portalfx-extension-onboarding-developer-guide.md)
+* [Register your extension in disabled mode in Dogfood]
+* [Register your extension in disabled mode in Public cloud]
+* [Register your extension in disabled mode in Mooncake]
+* [Register your extension in disabled mode in Blackforest]
+* [Register your extension in disabled mode in FairFax]
+* [SLA for registering your extension]
+* [Reducing SLA for registering your extension]
+* [Need Help with hosting service?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)
+
+### 1.6 Enabling extension for Public Preview/ GA
+
+* [Understand the crtieria for Public Preview in public cloud](portalfx-onboarding-exitcriteria.md#exit-criteria-quality-metrics)
+* [Enable your extension in Dogfood]
+* [Enable your extension in Public cloud]
+  * [Updating extension configuraiton for national clouds](portalfx-deployment-sovereign.md)
+* [Enable your extension in Mooncake]
+* [Enable your extension in Blackforest]
+* [Enable your extension in FairFax]
+* [SLA for enabling your extension]
+* [Reducing SLA for enabling your extension]
+* [Need Help with enabling your extension ?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)
+
+## 2. Developing your extension
+
+### 2.1 What's new
+
 * [No-PDL Blades](portalfx-no-pdl-programming.md#defining-blades-and-parts-using-typescript-decorators-aka-no-pdl) - *Reduces the number of files and concepts to build UI*
 * [Forms without edit scope](portalfx-editscopeless-forms.md) - *More intuitive APIs for building forms*
 * [Editable Grid V2](TBD) - *Improved APIs designed to work with new forms*
@@ -17,14 +71,8 @@ These documents are for internal teams that want to build an extension for the A
 * [Multi-Column for Essentials Controls](portalfx-controls-essentials.md) - *Better use of screen real estate*
 * [TreeView improvements](TBD) - *Checkboxes, commands, and Load More / Virtualization*
 
-## Getting Started
-* [Downloading and Installing the SDK](downloads.md)
-  * Option 1 - Using the MSI Installer
-  * Option 2 - Using nuget packages [CoreXT and Non-CoreXT](portalfx-nuget-overview.md)
-* IDE Setup - *Typescript version / Compile on save*
-  * [Visual Studio](portalfx-creating-extensions.md#prerequisites) *(with Extension project template)*
-  * VS Code
-* [Understanding the extension](TBD)
+### 2.1 Understanding the extension
+* (TBD)
     Portal SDL uses "convention over configuration" to configure itself. This typically means that the name and location of files is used instead of explicit configuration, hence you need to familiarize yourself with the directory structure provided by portal SDK.
     Here is a breakdown and links to the relevant sections:
     * App Data
@@ -38,7 +86,8 @@ These documents are for internal teams that want to build an extension for the A
     * packages.config
     * web.config
     * .config
-    2. DataContext
+
+2. DataContext
 * [Packaging and running for different environments]
   * [Verioning your extension](portalfx-extension-versioning.md)
   * [Side-loading your extension in a real portal environment](portalfx-testinprod.md#testing-in-production)
@@ -50,8 +99,7 @@ These documents are for internal teams that want to build an extension for the A
     * [How to use dynamic configuration](portalfx-domain-based-configuration-pattern.md#expected-design-pattern)
     * [Configuration](portalfx-dictionaryconfiguration.md)
     * [Sample for accessing dynamic configuration](portalfx-domain-based-configuration-example.md)
-* Registering an extension
-  * [Changes in extension configuraiton for national clouds](portalfx-deployment-sovereign.md) 
+ 
   * [In the public cloud](portalfx-extension-onboarding-developer-guide.md)
   * [Improving extension reliability/ Adding peristent caching](portalfx-extension-persistent-caching-of-scripts.md)
 

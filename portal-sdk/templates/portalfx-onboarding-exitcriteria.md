@@ -12,6 +12,8 @@ are tracked for every extension:
 5. Create success
 6. Resource move (ARM subscription-based services only)
 
+
+
 ### Performance (Stakeholder: [Sean Watson](mailto:ibiza-perf@microsoft.com))
 
 **All blades must meet the required blade reveal time of < 4 seconds for the 80th percentile** before being enabled in
@@ -103,3 +105,11 @@ See also:
 - [Dashboard](http://aka.ms/portalfx/resourcemove/dashboard)
 - [#ibiza-resources on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-resources)
 - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-resources)
+
+## Leveraging Ibiza's alerts to provide great customer experience
+
+1. SDK Age alerts
+1. Extension Availability Alerts
+1. Create Alerts
+1. Hosting Servie Alerts
+
