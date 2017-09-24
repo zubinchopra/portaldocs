@@ -4,24 +4,20 @@
 
 1. Azure portal SDK is supported on the Microsoft Windows 8, Windows Server 2012 R2, and Windows 10
 
-:bulb: **Productivity Tip**
-
-* Install Chrome http://google.com/dir so that you can levrage the debugger tools while developing your extension.
+:bulb: **Productivity Tip:** Install Chrome http://google.com/dir so that you can levrage the debugger tools while developing your extension.
 
 ## IDE Installation
 
 ### **Visual Studio**
 
-* Install Visual Studio
+1. Install Visual Studio
     Microsoft employees can install Visual Studio from [Network Share]( \\products\public\PRODUCTS\Developers\Visual Studio 2015\Enterprise 2015.3)
 
-* Install [Node tools](https://github.com/Microsoft/nodejstools#readme)
+1. Install [Node tools](https://github.com/Microsoft/nodejstools#readme)
 
-* Install [Typescript 2.3.0](https://marketplace.visualstudio.com/items?itemName=TypeScriptTeam.TypeScript203forVisualStudio2015)
+1. Install [Typescript 2.3.0](https://marketplace.visualstudio.com/items?itemName=TypeScriptTeam.TypeScript203forVisualStudio2015)
 
-* **Productivity Tip**
-
-* Set-up Compile on Save for typescript files
+:bulb: **Productivity Tip:** *Set-up Compile on Save for typescript files*
 
 Make sure you have typescript 2.0.3 installed on your machine. You can verify the tpescript version by executing following command:
 
