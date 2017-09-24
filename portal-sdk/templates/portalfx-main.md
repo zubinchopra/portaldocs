@@ -10,8 +10,8 @@
 
 ### 1.2 Getting Set up in an IDE - *Typescript version / Compile on save*
 
-* [Visual Studio](portalfx-creating-extensions.md#prerequisites) *(with Extension project template)*
-* [VS Code](TBD) *(TBD)
+* [Visual Studio](portalfx-ide-setup.md) *(with Extension project template)*
+* VS Code *(TBD)
 * [Need Help with setup?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
 
 ### 1.3 Developing Hello World Extension
