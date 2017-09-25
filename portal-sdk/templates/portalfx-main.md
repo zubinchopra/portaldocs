@@ -15,7 +15,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 ### 1.2 Getting Set up in an IDE - *Typescript version / Compile on save*
 
 * [Visual Studio](portalfx-ide-setup.md) *(with Extension project template)*
-* VS Code *(TBD)
+* VS Code *(Coming Soon....)
 * [Need Help with setup?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
 
 ### 1.3 Developing Hello World Extension

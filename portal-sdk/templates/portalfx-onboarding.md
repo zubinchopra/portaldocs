@@ -1,15 +1,13 @@
-Welcome to the Azure portal! We're excited to have you to join the family.
+# Azure Onboarding
 
-Most services that onboard Azure have to onboard the following 3 components:
+
+Welcome to the Azure portal! We're excited to have you to join the family. Most services that onboard Azure have to onboard the following 3 components:
 
 * Marketing content on [azure.com](https://azure.microsoft.com) or other website
 * Management APIs exposed via Azure Resource Manager (ARM) or Microsoft Graph
 * Management UI in the Azure portal and/or other tools/websites, like Visual Studio
 
-Our team i.e. Azure Portal UI (Ibiza, Portal Framework) can only help you with onboarding Management UI in the Azure portal. 
-
-The next section of documentation has some pointers to point you to right people if you looking for contacts for pre-requisite steps to onboarding Management UI. 
-However, this list may not be upto date so if you find the information is out of date, please send a pull request to update the documentation.
+:star: **Tip:** Our team i.e. Azure Portal UI (Ibiza, Portal Framework) can only help you with onboarding Management UI in the Azure portal. We have put together next section of documentation to help you identify the right people for pre-requisite steps to onboarding Management UI. If you identify that the list is not be upto date then please send a pull request to help next set of extension developers by upadting the documentation.
 
 The Azure onboarding process is streamlined to optimize the delivery of high quality experiences based on hundreds of
 hours of usability testing that meet Microsoft Common Engineering Criteria (CEC) and compliance requirements. **Do not
@@ -17,62 +15,75 @@ start designing UI or management APIs until after you've started the onboarding 
 latest patterns and practices. This will better optimize your time and avoid throw-away work by avoiding usability
 issues caused by anti-patterns and inconsistencies that block usability, performance, etc.
 
-1. **Business model review** (Stakeholders: [Brian Hillger’s team, Stacey Ellingson](mailto:ibiza-bmr@microsoft.com?subject=Azure%20Business%20model%20review))
+1. **Business model review**
+
+* For business model review of yhour service:
+  Reach out to [Brian Hillger’s team, Stacey Ellingson](mailto:ibiza-bmr@microsoft.com?subject=Azure%20Business%20model%20review))
 
 2. **Management APIs in ARM/Graph**
 
-    All services using Azure Billing must be exposed via Azure Resource Manager (ARM), the replacement for RDFE (Red Dog
-    Front End). Other services can use either ARM or Microsoft Graph. Typically, services that integrate deeply with
-    Office 365 use Graph. All others are encouraged to use ARM.
+All services using Azure Billing must be exposed via Azure Resource Manager (ARM), the replacement for RDFE (Red Dog Front End). Other services can use either ARM or Microsoft Graph. Typically, services that integrate deeply with Office 365 use Graph. All others are encouraged to use ARM.
 
-    The Azure portal SDK doesn't require any specific back-end, but does provide extra support for ARM-based resources.
-    Please [submit a partner request](http://aka.ms/portalfx/requests) for additional built-in support for standard
-    Graph or ARM APIs.
+* For onboarding Azure Resource Manager (ARM):
+  Reach out to [Ryan Jones](mailto:ibiza-arm@microsoft.com)
 
-    For Azure Resource Manager (ARM) (Stakeholder: [Ryan Jones](mailto:ibiza-arm@microsoft.com)):
-    - [ARM wiki (internal only)](http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Wiki.aspx)
-    - [Onboarding FAQ (intenral only)](http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx)
-    - External teams should [email the ARM team](mailto:aux-arm-leads@microsoft.com?subject=[Onboarding%20Request]%20to%20register%20&lt;RP%20Name&gt;)
+* External teams should [email the ARM team](mailto:aux-arm-leads@microsoft.com?subject=[Onboarding%20Request]%20to%20register%20&lt;RP%20Name&gt;)
 
-3. **CSS (Support)** (Stakeholders: [Wes Penner, CEGRM](mailto:ibiza-css@microsoft.com?subject=CSS%20intake%20questions))
+*Internal Only Resources*
 
-    [Start **CSS** onboarding](http://spot/intake) at least 3mos before public preview to ensure your customers can use
-    Azure support.
+* [Onboarding FAQ](http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx)
 
-4. **Azure.com** (Stakeholders: [Elena Salaks, Guy Burstein](mailto:ibiza-azure@microsoft.com))
+* [ARM wiki](http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Wiki.aspx)
 
-    All new services should be listed in [azure.com](https://azure.microsoft.com). This isn't a requirement for onboarding
-    the portal, but service categorization is the same between the azure.com Products menu, portal Services menu, and the
-    Azure Marketplace. The long-term goal is for all 3 to be the exact same, where services aren't listed in the portal
-    unless they're also on azure.com.
+3. **CSS (Support)**
 
-    Plan ahead for all the outbound communication, blogging, and marketing work to publicize your services as it goes out
-    to customers, in particular if your release time needs to be aligned with the Azure events and conferences. For preview
-    release, this could be an optional requirement, but for GA, your localized azure.com content and service updates plan
-    are exit criteria that will require the stakeholders to sign off.
+Start CSS [onboarding](http://spot/intake) at least 3 months before you plan to public preview your service to your customers so that they can use Azure support.
 
-    For more information about azure.com onboarding, see [http://acomdocs.azurewebsites.net](http://acomdocs.azurewebsites.net).
+* For onboarding CSS (Support):
+  Reach out to [Wes Penner, CEGRM](mailto:ibiza-css@microsoft.com?subject=CSS%20intake%20questions)
+
+4. **Azure.com**
+
+Azure.com helps your customers discover and learn about your service. To drive traffic on your extension it is important to you plan ahead for all the outbound communication, blogging, and marketing work to publicize your services as it goes out
+to customers.
+
+For preview release, presence of Azure.com could be an optional. For GA, you should definiely publish localized azure.com content and service updates plan
+are  will require the stakeholders to sign off.
+
+By aligning the category under which your new services is listed in  azure.com Products menu, portal Services menu, and the
+Azure Marketplace you can easily drive more traffic on your service. 
+
+* Check out [azure.com](https://azure.microsoft.com)
+
+* For onboarding Azure.com:
+  Reach out to [Elena Salaks, Guy Burstein](mailto:ibiza-azure@microsoft.com?subject=Azure.com%20questions)
+
+* For more information about azure.com onboarding, check [ACOM Docs](http://acomdocs.azurewebsites.net)
+
 
 5. **Azure Fundamentals**
 
-    The Azure Fundamentals are a set of Tenets each Azure service is expected to adhere to. The Azure Fundamentals program 
-    is described in this document [Azure Fundamentals]( https://microsoft.sharepoint.com/teams/WAG/EngSys/Shared%20Documents/Argon/Azure%20Fundamentals%20Proposal/Azure%20Fundamentals%20Proposal.docx?d=wf5b821bc31c44042adb55ebf4d8b408d). The document also identifies the Stakeholders and contacts for each of the Tenets.
+The Azure Fundamentals are a set of Tenets each Azure service is expected to adhere to. The Azure Fundamentals program
+is described in this document [Azure Fundamentals](https://microsoft.sharepoint.com/teams/WAG/EngSys/Shared%20Documents/Argon/Azure%20Fundamentals%20Proposal/Azure%20Fundamentals%20Proposal.docx?d=wf5b821bc31c44042adb55ebf4d8b408d). The document also identifies the Stakeholders and contacts for each of the Tenets.
+
+Execute the following process so the specific work required for the tenets appears in Service360:
     
-    Execute the following process so the specific work required for the tenets appears in Service360
     1. Add your service to ServiceTree: https://servicetree.msftcloudes.com
+    
     2. Make your service be "Active" in ServiceTree
+    
     3. Complete metadata in ServiceTree to enable the automation for various Service360 Action Items
+    
     4. Complete the Action Items identified in Service360 (http://aka.ms/s360)
 
-6. **Azure Compliance** (Stakeholders: [Azure Compliance team](mailto:azcompl@microsoft.com))
+6. **Azure Compliance**
 
-    Compliance criteria and practices are defined in [Quality Essentials](https://microsoft.sharepoint.com/teams/QualityEssentials/SitePages/GettingStarted.aspx)
-    throughout our development cycle. These ensure services meet the Trusted Cloud commitments outlined in the [Microsoft Azure Trust Center](http://azure.microsoft.com/en-us/support/trust-center/)
-    for our customers. There are mandatory procedures as Preview and GA requirement, and to be revisited for every
-    release cycle. QE provides the UI access to manage the release policies and procedures for each compliance. The tool
-    can be installed from [http://qe](http://qe).
+* For onboarding Azure.com:
+  Reach out to [Azure Compliance team](mailto:ibiza-azure@microsoft.com?subject=Azure.com%20questions)
 
-    QE tracks the following:
+Compliance criteria and practices are defined in [Quality Essentials](https://microsoft.sharepoint.com/teams/QualityEssentials/SitePages/GettingStarted.aspx) throughout our development cycle. These ensure services meet the Trusted Cloud commitments outlined in the [Microsoft Azure Trust Center](http://azure.microsoft.com/en-us/support/trust-center/)    for our customers. There are mandatory procedures as Preview and GA requirement, and to be revisited for every release cycle. QE provides the UI access to manage the release policies and procedures for each compliance. The tool can be installed from [QE](http://qe).
+
+QE tracks the following:
     - Accessibility
     - Global readiness
     - Global trade compliance
@@ -82,50 +93,51 @@ issues caused by anti-patterns and inconsistencies that block usability, perform
     - Security Development Lifecycle (SDL)
     - Software integrity
 
-    Some of the procedures such as Accessibility, GB Certificate, Privacy, and Security are also measured in the
-    [Service Health Review Scorecard](https://aka.ms/shr) and exit criteria for management review and tracking.
-    These requirements apply to both the portal fx and extensions. Since Fx provides the common infrastructure and UI
-    controls that govern the data handling and UX, hence some of the compliance work for extensions would be identical
-    across in Ibiza, and rationally be mitigated by the Framework. For example, Accessibility support on keyboard
-    navigation and screen reader recognition, as well as the regional format and text support to meet globalization
-    requirement are implemented at the controls that Framework distributed.  Same for Security threat modeling,
-    extension authentication to ARM, postMessage/RPC layer and UserSettings, etc. are handled by Framework. To minimize
-    the duplicate efforts on those items Fx provides some level of "blueprint" documentation you can use as a reference
-    for compliance procedures. You are still responsible to go through the tools and submit the results for approval
-    before shipping your extension. Contact [Amit Modi](mailto:ibiza-onboading-kick@microsoft.com)
-    for any questions about Fx coverage.
+Some of the procedures such as Accessibility, GB Certificate, Privacy, and Security are also measured in the
+[Service Health Review Scorecard](https://aka.ms/shr) and exit criteria for management review and tracking.
+These requirements apply to both the portal fx and extensions. Since Fx provides the common infrastructure and UI
+controls that govern the data handling and UX, hence some of the compliance work for extensions would be identical
+across in Ibiza, and rationally be mitigated by the Framework. For example, Accessibility support on keyboard
+navigation and screen reader recognition, as well as the regional format and text support to meet globalization
+requirement are implemented at the controls that Framework distributed.  Same for Security threat modeling,
+extension authentication to ARM, postMessage/RPC layer and UserSettings, etc. are handled by Framework. To minimize
+the duplicate efforts on those items Fx provides some level of "blueprint" documentation you can use as a reference
+for compliance procedures. You are still responsible to go through the tools and submit the results for approval
+before shipping your extension. Contact [Amit Modi](mailto:ibiza-onboading-kick@microsoft.com)
+for any questions about Fx coverage.
 
-   | Policy | Fx coverage |
-   |--------|-------------|
-   | [Accessibility](/portal-sdk/generated/index-portalfx-extension-development.md) | Generic control supports on keyboard, focus handling, touch, screen reader, high contrast, and theming |
-   | Global Readiness | Localizability, regional format, text support, China GB standard |
-   | Privacy | User settings data handling, encryption, and authentication |
-   | SDL | Threat modeling |
+| Policy | Fx coverage |
+|--------|-------------|
+| [Accessibility](/portal-sdk/generated/index-portalfx-extension-development.md) | Generic control supports on keyboard, focus handling, touch, screen reader, high contrast, and theming |
+| Global Readiness | Localizability, regional format, text support, China GB standard |
+| Privacy | User settings data handling, encryption, and authentication |
+| SDL | Threat modeling |
 
-7. **Localization** (Stakeholder: [Lynne Dong](mailto:ibiza-interntnl@microsoft.com))
+7. **Localization**
 
-    Nearly 70% of Azure users are from outside of the United States. Therefore, it is important to make Azure a globalized product.
-    There are a few requirements under the "Internationalization" criteria that your service is required to support.  This is the same
-    set of languages that are supported by Azure Portal for GA. Learn more about [internationalization requirements](http://aka.ms/azureintlrequirements).
+* For onboarding localization:
+  Reach out to [Lynne Dong](mailto:ibiza-interntnl@microsoft.com)
 
-8. **Onboarding kickoff** 
+Nearly 70% of Azure users are from outside of the United States. Therefore, it is important to make Azure a globalized product.
+There are a few requirements under the "Internationalization" criteria that your service is required to support.  This is the same set of languages that are supported by Azure Portal for GA. Learn more about [internationalization requirements](http://aka.ms/azureintlrequirements).
 
-    If you are planning to build a first party application i.e. you are a part of Microsoft, please email (Stakeholders: [Leon Welicki, Adam Abdelhamed, Amit Modi](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding))
+8. **Onboarding kickoff**
 
-    Setup a meeting to discuss the following:
+If you are planning to build a first party application i.e. you are a part of Microsoft, please email (Stakeholders: [Leon Welicki, Adam Abdelhamed, Amit Modi](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding))
+
+Setup a meeting to discuss the following:
     - Is your service targeting public Azure, on-prem, or both?
     - Service name
     - VP, PM, and engineering owners
     - Timelines (preview, GA)
     - Summary of the service and target scenarios
     
-    If you are planning to build a third party application i.e. you are an external partner, please email (Stakeholders: [Leon Welicki, Adam Abdelhamed](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding))
+If you are planning to build a third party application i.e. you are an external partner, please email (Stakeholders: [Leon Welicki, Adam Abdelhamed](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding))
     - Is your service targeting public Azure, on-prem, or both?
     - Service name
     - Summary of the service and target scenarios
     
-
-9. **Start building you extension for Azure Portal** 
+9. **Build your extension for Azure Portal** 
     
     Now you are ready to build your 1st extension.
 
