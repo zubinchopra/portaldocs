@@ -8,7 +8,7 @@ Publish these notifications as often as possible to inform customers about the n
 
 1. Publish a service update:
 
-    1. Follow the instructions at [https://acomdocs.azurewebsites.net/articles/service-updates-overview/](https://acomdocs.azurewebsites.net/articles/service-updates-overview/)
+    1. Follow the instructions at [https://acomdocs.azure.net/documentation/service-updates-overview/](https://acomdocs.azurewebsites.net/articles/service-updates-overview/)
     1. Write your post
     1. Tag your post with `PortalPreview` to ensure it shows up in the portal
     1. Publish :-)
