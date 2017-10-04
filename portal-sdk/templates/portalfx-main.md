@@ -3,33 +3,43 @@
 
 ## 1. Getting Started
 
-Azure portal extension development is supported on the Microsoft Windows 8, Windows Server 2012 R2, and Windows 10
+Azure portal extension development is supported on the Microsoft Windows 8, Windows Server 2012 R2, and Windows 10.
 
 :bulb: **Productivity Tip:** Install Chrome http://google.com/dir so that you can levrage the debugger tools while developing your extension.
 
-### 1.1 Installation Requirements
+### 1.1 Installation
 
-* [Option 1 - Downloading the MSI Installer](downloads.md)
-* [Option 2 - Using nuget packages](portalfx-nuget-overview.md)
+* [Option 1 - MSI Installer](downloads.md)
+* [Option 2 - Nuget packages](portalfx-nuget-overview.md)
 
 ### 1.2 Getting Set up in an IDE - *Typescript version / Compile on save*
 
 * [Visual Studio](portalfx-ide-setup.md) *(with Extension project template)*
-* VS Code *(Coming Soon....)
+* VS Code (Coming Soon....)
 * [Need Help with setup?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
 
 ### 1.3 Developing Hello World Extension
 
-### 1.4 Before you build your extension
+* [Architecture Overview](portalfx-howitworks.md)
+* [Creating your first extension from project template](portalfx-creating-extensions.md)
+* [Building a Hello World Blade]()
+* Add a text box to your Hello World Blade
+* Dock button at the bottom of your blade
+* Add Menu Bar to your Blade
+* Open Blade from your Hello World Blade
+* Open Context pane from your Hello World Blade
+ 
 
-* [Join Ibiza aliases]
+### 1.4 Extension development resources
+
+* [Start Onboarding]
+* [Subscribe to announcements]()
 * [Update your team's contact information]
-* [Leverage Ibiza team for early design review]
+* [Samples Extension](portalfx-sample-extensions.md)
 * [Understand what it takes to build great extension](portalfx-onboarding-exitcriteria.md#exit-criteria-quality-metrics)
 * [Need Help with onboarding?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)
 
 ### 1.4 Deploying your extension
-
 
 * [Deploy your extension using hosting service](portalfx-extension-hosting-service.md)
 * [Register your extension with hosting service]

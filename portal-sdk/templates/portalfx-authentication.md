@@ -1,13 +1,14 @@
 {"gitdown": "contents"}
+
 ### Overview 
 
-The portal uses an internal provider for authentication and authorization. 
+The portal uses an internal provider for authentication and authorization.
 
 The built-in cloud auth provider uses Azure Active Directory (AAD), which also supports Microsoft Account (MSA, formerly Windows Live ID) users. Please refer to _Accessing claims from your server_, if your extension needs to differentiate between AAD and MSA users.
 
-During sign-in, the portal obtains a token containing claims that identify the signed-in user and retrieves directories and subscriptions s/he has access to, if any.
+During sign-in, the portal obtains a token containing claims that identify the signed-in user and retrieves directories and subscriptions user has access to, if any.
 
- **NOTE:** Users can sign in without a subscription. Extensions must gracefully handle this case and return 0 assets when queried._
+ **NOTE:** Users can sign in without a subscription. Extensions must gracefully handle this case and return 0 assets when queried.
 
 
 #### Sign in flow
@@ -15,12 +16,12 @@ During sign-in, the portal obtains a token containing claims that identify the s
 The following is a high-level representation of the sign-in flow provided by the portal:
 
 1. User browses to the portal
-2. The portal redirects to AAD to sign in
-3. AAD redirects to the portal with a token
-4. The portal gets a list of directories the user has access to from ARM
-5. The portal gets a list of subscriptions the user has access to from ARM
-6. The portal signs the user into the last-used directory, the home directory for AAD accounts, or the first directory it gets from ARM for MSA accounts
-7. Finally, the portal loads the Startboard and all extensions
+1. The portal redirects to AAD to sign in
+1. AAD redirects to the portal with a token
+1. The portal gets a list of directories the user has access to from ARM
+1. The portal gets a list of subscriptions the user has access to from ARM
+1. The portal signs the user into the last-used directory, the home directory for AAD accounts, or the first directory it gets from ARM for MSA accounts
+1. Finally, the portal loads the Startboard and all extensions
 
 ## Calling ARM
 
@@ -46,67 +47,67 @@ To call ARM from your extension server, use the `WebApiClient` class. Like the c
     }
 ```
 
-## Calling alternate resources 
+## Calling alternate resources
 
 **Only First Party Extensions (i.e. Internal/ Microsoft extensions that comply with Azure Privacy terms and conditions) are allowed to call alternate resources.  Third party extensions get an encrypted token that cannot be decrypted by services other than ARM so they cannot call alternate resources.**
 
-If you are working on Internal / Microsoft extension but you are not sure that your extension scenarios comply with Azure terms and conditions then please reach out to [Ibiza LCA](mailto:ibiza-lca@microsoft.com).   
+If you are working on Internal / Microsoft extension but you are not sure that your extension scenarios comply with Azure terms and conditions then please reach out to [Ibiza LCA](mailto:ibiza-lca@microsoft.com).
 
-Calling alternate resources involves AAD Onboarding that can take 5-6 weeks so we recommend extension developers to think about this scenarios early in the design phase. 
+Calling alternate services involves AAD Onboarding which can take 5 to 6 weeks so if your extension needs to invoke services other than ARM, we recommend extension developers to reach out to Azure portal team early in the design phase.
 
 #### From client
+
 Only ibiza has the authority to mint tokens so in order to call external resourses extension developers need to request Ibiza to create the AAD and register the resources with Ibiza.
 
 Here is an example that walks you through on how to enable Contoso_Extension, a sample extension, that can query Graph APIs from extension client :
 
 1. To query graph API's, an extension owner would submit [RDTask](http://aka.ms/portalfx/newextension) to onboard AAD Application with the portal.AAD Onboarding can take 5-6 weeks so we recommend extension developers to think about this scenarios early in the design phase.
-2. Once ibiza team has created the app in https://aadonboardingsite.cloudapp.net/ you can reach out to  aadonboarding@microsoft.com to expedite the process.
-3. Submit [RDTask](http://aka.ms/portalfx/newextension) to register the AAD Applciation created in Step 1 into the portal's extension config. This step can be done in parallel to Step 2.
+1. Once ibiza team has created the app in [AAD onboarding app](https://aadonboardingsite.cloudapp.net/) you can reach out to  [AAD Onboarding Team](mailto:aadonboarding@microsoft.com) to expedite the process.
+1. Submit [RDTask](http://aka.ms/portalfx/newextension) to register the AAD Applciation created in Step 1 into the portal's extension config. This step can be done in parallel to Step 2.
    In this case the resourceAccess config for your extension in portal would look something like the following:
 
-```json
-{
-    "name": "Contoso_Extension",
-    "uri": "//stamp2.extension.contoso.com/Home",
-    "uriFormat": "//{0}.extension.contoso.com/Home",
-    "feedbackEmail": "extension.admin@contoso.com",
-    "resourceAccess": [{
-        "name": "",
-        "resource": "https://management.core.windows.net/"
-        }, {
-        "name": "graph",
-        "resource": "https://graph.windows.net"
-        }]
-}
-```
-
-4. Once the config changes are deployed in the requested (i.e. Dogfood/ PPE/ PROD) envirnonment then the extension will be able to request tokens for the graph resource using any of its data APIs
-
-```ts
-MsPortalFx.Base.Security.getAuthorizationToken({ resourceName: "graph" });
-
-MsPortalFx.Base.Net.ajax({
-    setAuthorizationHeader: { resourceName: "graph" }
-});
-
-new MsPortalFx.ViewModels.Controls.FileDownload.ViewModel(
-    container,
+    ```json
     {
-        context: ko.observable(new FileDownload.Context({
-            ...
-            addDefaultAuthorizationToken: {
-                resourceName: "graph"
-            },
-            ...
-        })),
+        "name": "Contoso_Extension",
+        "uri": "//stamp2.extension.contoso.com/Home",
+        "uriFormat": "//{0}.extension.contoso.com/Home",
+        "feedbackEmail": "extension.admin@contoso.com",
+        "resourceAccess": [{
+            "name": "",
+            "resource": "https://management.core.windows.net/"
+            }, {
+            "name": "graph",
+            "resource": "https://graph.windows.net"
+            }]
+    }
+    ```
+1. Once the config changes are deployed in the requested (i.e. Dogfood/ PPE/ PROD) envirnonment then the extension will be able to request tokens for the graph resource using any of its data APIs
+
+    ```ts
+    MsPortalFx.Base.Security.getAuthorizationToken({ resourceName: "graph" });
+
+    MsPortalFx.Base.Net.ajax({
+        setAuthorizationHeader: { resourceName: "graph" }
     });
 
-new MsPortalFx.ViewModels.FileDownloadCommand({
-    authorizationOptions: {
-        resourceName: "graph"
-    }
-});
-```
+    new MsPortalFx.ViewModels.Controls.FileDownload.ViewModel(
+        container,
+        {
+            context: ko.observable(new FileDownload.Context({
+                ...
+                addDefaultAuthorizationToken: {
+                    resourceName: "graph"
+                },
+                ...
+            })),
+        });
+
+    new MsPortalFx.ViewModels.FileDownloadCommand({
+        authorizationOptions: {
+            resourceName: "graph"
+        }
+    });
+    ```
 
 #### From Controller or Server-Side
 
@@ -116,9 +117,10 @@ The workflow in this case will be a little different from the one we described o
 
 
 1. To query graph API's, an extension author needs to create AAD application on [https://aadonboardingsite.cloudapp.net/](https://aadonboardingsite.cloudapp.net/). AAD Onboarding can take 5-6 weeks so we recommend extension developers to think about this scenarios early in the design phase.
-2. Once you have created the app you can reach out to  [aadonboarding@microsoft.com](aadonboarding@microsoft.com) to expedite the process.
-3. Once you have the App Id submit [RDTask](http://aka.ms/portalfx/newextension) to register the AAD Applciation created in Step 1 into the portal's extension config. This step can be done in parallel to Step 2.
+1. Once you have created the app you can reach out to  [aadonboarding@microsoft.com](aadonboarding@microsoft.com) to expedite the process.
+1. Once you have the App Id submit [RDTask](http://aka.ms/portalfx/newextension) to register the AAD Applciation created in Step 1 into the portal's extension config. This step can be done in parallel to Step 2.
    In this case the resourceAccess config for your extension in portal would look something like the following:
+
 ```json
    {
         "name": "Contoso_Extension",
@@ -139,9 +141,9 @@ Sample code for exchanging toke:
 
 Add an extra parameter to ajax calls (setAuthorizationHeader = { resourceName: "self" }
 
-Which means give me a token to myself and I’ll exchange that token later
+Which means give me a token to myself and I will exchange that token later
 
-```cs 
+```cs
     MsPortalFx.Base.Net2.ajax({
         uri: "MyController/MyAction",
         setAuthorizationHeader: { resourceName: "self" }
@@ -151,46 +153,46 @@ Which means give me a token to myself and I’ll exchange that token later
 ```
 
 Controller code.
- 
+
 ```cs
     // Get the token passed to the controller
     var portalAuthorizationHeader = PortalRequestContext.Current.GetCorrelationData<AuthorizationCorrelationProvider>();
     if (portalAuthorizationHeader == null) {
-        // This should never happen, the auth module should have returned 401 if there wasn’t a valid header present
+        // This should never happen, the auth module should have returned 401 if there wasn't a valid header present
         throw new HttpException(401, "Unauthorized");
     }
- 
+
     // Exchange it for the token that should pass to downstream services
     var exchangedAuthorizationHeader = GetExchangedToken(portalAuthorizationHeader, intuneClientId, intuneClientCert, "https://graph.windows.net/");
- 
+
     // Call downstream service with exchanged header
     var headers = new NameValueCollection();
     headers.Add("Authorization", exchangedAuthorizationHeader);
     webApiClient.GetAsync(uri, "MyOperation", headers);
- 
+
     // Helper method to exchange tokens
     string GetExchangedToken(string portalAuthorizationHeader, string clientId, X509Certificate2 clientCertificate, string resource) {
 
         // proof that the intune extension is making the token request
-        var clientAssertion = new ClientAssertionCertificate(clientId, clientCertificate);
-     
-        // proof that the request originated from the portal and is on behalf of a valid user
-        var accessToken = GetAccessTokenFromAuthorizationHeader(portalAuthorizationHeader);
-        var userAssertion = new UserAssertion(accessToken, "urn:ietf:params:oauth:grant-type:jwt-bearer"); 
-     
-        // the actual token exchange
-        var exchangedToken = authContext.AcquireToken(resource, clientAssertion, userAssertion); 
-     
-        return exchangedToken.GetAuthorizationHeader();
+        var clientAssertion = new ClientAssertionCertificate(clientId, clientCertificate);
+
+        // proof that the request originated from the portal and is on behalf of a valid user
+        var accessToken = GetAccessTokenFromAuthorizationHeader(portalAuthorizationHeader);
+        var userAssertion = new UserAssertion(accessToken, "urn:ietf:params:oauth:grant-type:jwt-bearer");
+
+        // the actual token exchange
+        var exchangedToken = authContext.AcquireToken(resource, clientAssertion, userAssertion);
+
+        return exchangedToken.GetAuthorizationHeader();
     }
- 
+
     string GetAccessTokenFromAuthorizationHeader(string authorizationHeader) {
-        // The header will be in the form "Bearer ey……MZ"
+        // The header will be in the form "Bearer eyï¿½ï¿½MZ"
         // The access token in the last part of the header
         var separator = new char[] { ' ' };
         var accessToken = authorizationHeader.Split(separator, StringSplitOptions.RemoveEmptyEntries).LastOrDefault();
-     
-        return accessToken;
+
+        return accessToken;
     }
 ```
 
