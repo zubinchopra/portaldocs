@@ -3,7 +3,7 @@
 ### **Visual Studio**
 
 1. Install Visual Studio
-    Microsoft employees can install Visual Studio from [Network Share]( \\products\public\PRODUCTS\Developers\Visual Studio 2015\Enterprise 2015.3)
+    Microsoft employees can install Visual Studio from [Network Share](\\products\public\PRODUCTS\Developers\Visual Studio 2015\Enterprise 2015.3)
 
 1. Install [Node tools](https://github.com/Microsoft/nodejstools#readme)
 
