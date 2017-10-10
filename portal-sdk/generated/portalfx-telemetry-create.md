@@ -487,6 +487,26 @@ Add this to your query and it will let you query larger data sets.
 
 We are hoping that we can work with Kusto to have a configuration in our function set for this, but for now this is the only option available.
 
+If you are still unable to execute your query over the time you want, try breaking up the query into multiple time frames and union the results. Here is an example of a 30 day query broken up into 2:
+
+```sql
+set notruncation;
+let startTime = datetime(2017-09-01);
+let endTime = datetime(2017-10-01);
+let midTime = startTime + ((endTime - startTime) / 2);
+GetCreateFlows(startTime, midTime)
+| where Extension  == "HubsExtension"
+| where Blade == "CreateEmptyResourceGroupBlade"
+| where ExecutionStatus == "Failed"
+| union (
+GetCreateFlows(midTime, endTime)
+| where Extension  == "HubsExtension"
+| where Blade == "CreateEmptyResourceGroupBlade"
+| where ExecutionStatus == "Failed"
+)
+```
+
+Note: Worried about duplicates caused from unions? Just remember the end date is exclusive for GetCreateFlows() and follow the pattern as demonstrated in the example above.
 
 <a name="a-name-faq-a-faq-i-m-getting-the-error-request-execution-has-timed-out-on-the-service-side-and-was-aborted"></a>
 ### I&#39;m getting the error, <code>Request execution has timed-out on the service side and was aborted.</code>
