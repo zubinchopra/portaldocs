@@ -95,13 +95,12 @@ We have built [Extension Errors Dashboard](portalfx-telemetry-extension-errors.m
 
 ## Available Power BI Dashboards
 
-Following are some of the dashboards that we support. If you do not have access to any of these please request the right permissions in [Getting Started](onenote:#Getting%20Started&section-id={B333CBFA-BF45-47DC-816B-37B2F3CFD7E8}&page-id={F1EE506C-5158-49DB-AD06-1027E2BC3EAD}&end&base-path=https://microsoft.sharepoint.com/teams/azureteams/aapt/azureux/portalfx/SiteAssets/PortalFx%20Notebook/Gauge/Ibiza%20Telemetry%20-%20Internal.one)
+Following are some of the dashboards that we support. If you do not have access to any of these please contact [ibiza-telemetry@microsoft.com](mailto:ibiza-telemetry@microsoft.com)
 
 |Name                            | PowerBi Link                                                                                                                                     | Metrics Description                                                                    |
 |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
-|Portal User Adoption Dashboard  | [http://aka.ms/portalfx/dashboard/PortalUserAdoption](http://aka.ms/portalfx/dashboard/PortalUserAdoption)                                       |                                                                                        |
-|Portal Performance Dashboard    | [http://aka.ms/portalfx/dashboard/PortalPerformance](http://aka.ms/portalfx/dashboard/PortalPerformance)                                         | [Perf Docs](portalfx-performance.md)                              |
-|Portal Reliability Dashboard    | [http://aka.ms/portalfx/dashboard/PortalReliability](http://aka.ms/portalfx/dashboard/PortalReliability)                                         | [Reliability Docs](portalfx-reliability.md)                       |
+|Portal Performance Dashboard    | [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf)                                         | [Perf Docs](portalfx-performance.md)                              |
+|Portal Reliability Dashboard    | [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf)                                          | [Reliability Docs](portalfx-reliability.md)                       |
 |Portal Create Dashboard         | [http://aka.ms/portalfx/dashboard/PortalCreate](http://aka.ms/portalfx/dashboard/PortalCreate)                                                   | [Create Docs](portalfx-telemetry-create.md)                       |
 |Extension Errors Dashboard      | [http://aka.ms/portalfx/dashboard/ExtensionErrors](http://aka.ms/portalfx/dashboard/ExtensionErrors)                                             | [Extension Errors Docs](portalfx-telemetry-extension-errors.md)   |
 
