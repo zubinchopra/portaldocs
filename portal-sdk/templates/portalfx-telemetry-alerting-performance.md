@@ -67,7 +67,7 @@ Per each of those, you can define a set of criteria like the below.
 
 ### What is environment?
 
-Environment can be "*" or "portal.azure.com" or "ms.portal.azure.com" or "canary.portal.azure.com" or any other legit portal domain name. "*" represents all Azure Portal Production environments(*.portal.azure.com).
+Environment can be "&ast;" or "portal.azure.com" or "ms.portal.azure.com" or "canary.portal.azure.com" or any other legit portal domain name. "&ast;" represents all Azure Portal Production environments(*.portal.azure.com).
 
 ### What is performance configuration?
 
