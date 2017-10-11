@@ -200,7 +200,7 @@ Currently performance alerts run every 5 minutes assessing the previous 90 minut
 
 There are two ways advised to decide how to set your thresholds.
 
-1. Use the out of box baselines determined by the [tool][alerting-tool].
+1. Use the out of box alert criteria determined by the [tool][alerting-tool].
 1. Run one of the kusto functions below to determine what would cause your alerts to fire.
     - [Extension][alerting-performance-extension-function]) 
     - [Blade][alerting-performance-blade-function]) 
@@ -213,7 +213,7 @@ There are two ways advised to decide how to set your thresholds.
 
 ## How do I know my extension's current configuration?
 
-Within kusto your configuration will be defined under a function. To find the function use the this [link][alerting-kusto-partner] and replace `PerfBaseline_HubsExtension` with `PerfBaseline_YOUR_EXTENSION_NAME`. The function will only exist once you have onboarded to the alerting infrastructure. Or visit the tool to view a read only version of your config, again this is only available once you have onboarded.
+Within kusto your configuration will be defined under a function. To find the function use the this [link][alerting-kusto-partner] and replace `PerfAlert_HubsExtension` with `PerfAlert_YOUR_EXTENSION_NAME`. The function will only exist once you have onboarded to the alerting infrastructure. Or visit the tool to view a read only version of your config, again this is only available once you have onboarded.
 
 
 [alerting-onboarding]: https://aka.ms/portalfx/alerting-onboarding
