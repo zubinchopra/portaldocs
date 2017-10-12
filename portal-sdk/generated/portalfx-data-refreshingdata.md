@@ -205,6 +205,7 @@ public updateSparkPlug(sparkPlug: DataModels.SparkPlug): FxBase.Promise {
             uri: uri + "&api-version=" + entityVersion,
             data: ko.toJSON(convertToResource(sparkPlug)),
             contentType: applicationJson,
+            useFxArmEndpoint: true,
         });
     } else {
         // Using local controller.

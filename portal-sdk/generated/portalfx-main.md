@@ -1,16 +1,96 @@
-<a name="onboarding"></a>
-# Onboarding
-These documents are for internal teams that want to build an extension for the Azure Portal.
-* [Process, stakeholders, and exit criteria](portalfx-onboarding-exitcriteria.md#exit-criteria-quality-metrics)
-* [Deploying your extension](portalfx-extension-hosting-service.md)
-* [Registering your extension](portalfx-extension-onboarding-developer-guide.md)
 
+<a name="azure-portal-extension-development-documentation"></a>
+# Azure portal extension development documentation
 
-<a name="sdk-documentation"></a>
-# SDK Documentation
+<a name="azure-portal-extension-development-documentation-1-getting-started"></a>
+## >
+<li>Getting Started</li>
+<
 
-<a name="sdk-documentation-what-s-new"></a>
-## What&#39;s new?
+Azure portal extension development is supported on the Microsoft Windows 8, Windows Server 2012 R2, and Windows 10.
+
+:bulb: **Productivity Tip:** Install Chrome http://google.com/dir so that you can levrage the debugger tools while developing your extension.
+
+<a name="azure-portal-extension-development-documentation-1-getting-started-1-1-installation"></a>
+### 1.1 Installation
+
+* [Option 1 - MSI Installer](downloads.md)
+* [Option 2 - Nuget packages](portalfx-nuget-overview.md)
+
+<a name="azure-portal-extension-development-documentation-1-getting-started-1-2-getting-set-up-in-an-ide-typescript-version-compile-on-save"></a>
+### 1.2 Getting Set up in an IDE - <em>Typescript version / Compile on save</em>
+
+* [Visual Studio](portalfx-ide-setup.md) *(with Extension project template)*
+* VS Code (Coming Soon....)
+* [Need Help with setup?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
+
+<a name="azure-portal-extension-development-documentation-1-getting-started-1-3-developing-hello-world-extension"></a>
+### 1.3 Developing Hello World Extension
+
+* [Architecture Overview](portalfx-howitworks.md)
+* [Creating your first extension from project template](portalfx-creating-extensions.md)
+* [Building a Hello World Blade]()
+* Add a text box to your Hello World Blade
+* Dock button at the bottom of your blade
+* Add Menu Bar to your Blade
+* Open Blade from your Hello World Blade
+* Open Context pane from your Hello World Blade
+ 
+
+<a name="azure-portal-extension-development-documentation-1-getting-started-1-4-extension-development-resources"></a>
+### 1.4 Extension development resources
+
+* [Start Onboarding]
+* [Subscribe to announcements]()
+* [Update your team's contact information]
+* [Samples Extension](portalfx-sample-extensions.md)
+* [Understand what it takes to build great extension](portalfx-onboarding-exitcriteria.md#exit-criteria-quality-metrics)
+* [Need Help with onboarding?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)
+
+<a name="azure-portal-extension-development-documentation-1-getting-started-1-4-deploying-your-extension"></a>
+### 1.4 Deploying your extension
+
+* [Deploy your extension using hosting service](portalfx-extension-hosting-service.md)
+* [Register your extension with hosting service]
+* [Validating extension registeration with hosting service]
+* [SLA for registering extension with hosting service]
+* [Need Help with hosting service?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)
+
+<a name="azure-portal-extension-development-documentation-1-getting-started-1-5-registering-your-extension"></a>
+### 1.5 Registering your extension
+
+* [Understanding how registeration works](portalfx-extension-onboarding-developer-guide.md)
+* [Register your extension in disabled mode in Dogfood]
+* [Register your extension in disabled mode in Public cloud]
+* [Register your extension in disabled mode in Mooncake]
+* [Register your extension in disabled mode in Blackforest]
+* [Register your extension in disabled mode in FairFax]
+* [SLA for registering your extension]
+* [Reducing SLA for registering your extension]
+* [Need Help with hosting service?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)
+
+<a name="azure-portal-extension-development-documentation-1-getting-started-1-6-enabling-extension-for-public-preview-ga"></a>
+### 1.6 Enabling extension for Public Preview/ GA
+
+* [Understand the crtieria for Public Preview in public cloud](portalfx-onboarding-exitcriteria.md#exit-criteria-quality-metrics)
+* [Enable your extension in Dogfood]
+* [Enable your extension in Public cloud]
+  * [Updating extension configuraiton for national clouds](portalfx-deployment-sovereign.md)
+* [Enable your extension in Mooncake]
+* [Enable your extension in Blackforest]
+* [Enable your extension in FairFax]
+* [SLA for enabling your extension]
+* [Reducing SLA for enabling your extension]
+* [Need Help with enabling your extension ?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)
+
+<a name="azure-portal-extension-development-documentation-2-developing-your-extension"></a>
+## >
+<li>Developing your extension</li>
+<
+
+<a name="azure-portal-extension-development-documentation-2-developing-your-extension-2-1-what-s-new"></a>
+### 2.1 What&#39;s new
+
 * [No-PDL Blades](portalfx-no-pdl-programming.md#defining-blades-and-parts-using-typescript-decorators-aka-no-pdl) - *Reduces the number of files and concepts to build UI*
 * [Forms without edit scope](portalfx-editscopeless-forms.md) - *More intuitive APIs for building forms*
 * [Editable Grid V2](TBD) - *Improved APIs designed to work with new forms*
@@ -20,15 +100,9 @@ These documents are for internal teams that want to build an extension for the A
 * [Multi-Column for Essentials Controls](portalfx-controls-essentials.md) - *Better use of screen real estate*
 * [TreeView improvements](TBD) - *Checkboxes, commands, and Load More / Virtualization*
 
-<a name="sdk-documentation-getting-started"></a>
-## Getting Started
-* [Downloading and Installing the SDK](downloads.md)
-  * Option 1 - Using the MSI Installer
-  * Option 2 - Using nuget packages [CoreXT and Non-CoreXT](portalfx-nuget-overview.md)
-* IDE Setup - *Typescript version / Compile on save*
-  * [Visual Studio](portalfx-creating-extensions.md#prerequisites) *(with Extension project template)*
-  * VS Code
-* [Understanding the extension](TBD)
+<a name="azure-portal-extension-development-documentation-2-developing-your-extension-2-1-understanding-the-extension"></a>
+### 2.1 Understanding the extension
+* (TBD)
     Portal SDL uses "convention over configuration" to configure itself. This typically means that the name and location of files is used instead of explicit configuration, hence you need to familiarize yourself with the directory structure provided by portal SDK.
     Here is a breakdown and links to the relevant sections:
     * App Data
@@ -42,7 +116,8 @@ These documents are for internal teams that want to build an extension for the A
     * packages.config
     * web.config
     * .config
-    2. DataContext
+
+2. DataContext
 * [Packaging and running for different environments]
   * [Verioning your extension](portalfx-extension-versioning.md)
   * [Side-loading your extension in a real portal environment](portalfx-testinprod.md#testing-in-production)
@@ -54,26 +129,25 @@ These documents are for internal teams that want to build an extension for the A
     * [How to use dynamic configuration](portalfx-domain-based-configuration-pattern.md#expected-design-pattern)
     * [Configuration](portalfx-dictionaryconfiguration.md)
     * [Sample for accessing dynamic configuration](portalfx-domain-based-configuration-example.md)
-* Registering an extension
-  * [Changes in extension configuraiton for national clouds](portalfx-deployment-sovereign.md) 
+ 
   * [In the public cloud](portalfx-extension-onboarding-developer-guide.md)
   * [Improving extension reliability/ Adding peristent caching](portalfx-extension-persistent-caching-of-scripts.md)
 
-<a name="sdk-documentation-upgrading-extension-to-use-latest-version-of-sdk"></a>
+<a name="azure-portal-extension-development-documentation-upgrading-extension-to-use-latest-version-of-sdk"></a>
 ## Upgrading Extension to use latest version of SDK
   * [Upgrade policy](portalfx-deploy.md#3-understand-extension-runtime-compatibility)
   * [Updating the NuGet packages](portalfx-nuget-overview.md)
   * [Updating the C# test framework](TBD)
   * [Updating the msportalfx-test framework](TBD)
 
-<a name="sdk-documentation-extensions-portalfx-howitworks-md-how-extensions-work"></a>
+<a name="azure-portal-extension-development-documentation-extensions-portalfx-howitworks-md-how-extensions-work"></a>
 ## <a href="portalfx-howitworks.md#how-extensions-work">Extensions</a>
 * What is an extension? 
     * [Ui Concepts](portalfx-ui-concepts.md#ui-concepts)
     * [Extension lifecycle](portalfx-howitworks.md#how-the-portal-works)
     * [Cross-extension UX integration] (TBD)
 
-<a name="sdk-documentation-blades-and-parts"></a>
+<a name="azure-portal-extension-development-documentation-blades-and-parts"></a>
 ## Blades and Parts
 
 * [What are they?](portalfx-ui-concepts.md#ui-concepts)
@@ -93,21 +167,21 @@ These documents are for internal teams that want to build an extension for the A
     * [FAQ]
         * When should I make my Blade pinnable?
 
-<a name="sdk-documentation-blades-and-parts-component-model"></a>
+<a name="azure-portal-extension-development-documentation-blades-and-parts-component-model"></a>
 ### Component model
 * Lifecycle
 * What is a Blade's/Part's API?  How is it invoked?
 * How / when to go the IFrame route?
  
-<a name="sdk-documentation-blades-and-parts-blade-part-reuse-across-extensions"></a>
+<a name="azure-portal-extension-development-documentation-blades-and-parts-blade-part-reuse-across-extensions"></a>
 ### [Blade/Part reuse across extensions]
     * [Making Blades/Parts reusable by other extensions](portalfx-extension-sharing-pde.md)
     * [Reusing Blades/Parts from other extensions](portalfx-integrating-with-other-extensions.md)
     * [RPC](portalfx-rpc.md#remote-procedure-calls-rpc)  // TOD: Find Home
 
-<a name="sdk-documentation-blades-and-parts-blades"></a>
+<a name="azure-portal-extension-development-documentation-blades-and-parts-blades"></a>
 ### Blades
-<a name="sdk-documentation-blades-and-parts-blades-type-of-blades-portalfx-blades-md-blades"></a>
+<a name="azure-portal-extension-development-documentation-blades-and-parts-blades-type-of-blades-portalfx-blades-md-blades"></a>
 #### <a href="portalfx-blades.md#blades">Type of Blades</a>
     * [TemplateBlade]
         * Blade
@@ -121,7 +195,7 @@ These documents are for internal teams that want to build an extension for the A
     * [Resource Menu Blade]
         * Refer to Menu
     * [Context Pane]
-<a name="sdk-documentation-blades-and-parts-blades-scenarios-how-do-i-choose"></a>
+<a name="azure-portal-extension-development-documentation-blades-and-parts-blades-scenarios-how-do-i-choose"></a>
 #### Scenarios -- How do I choose?
 * [Create Blades](portalfx-create.md)
 * [Context Pane
@@ -131,7 +205,7 @@ These documents are for internal teams that want to build an extension for the A
         * [FrameBlade/AppBlade
             * Content:
                 ◊ Reference "How/When to go the IFrame route?"
-<a name="sdk-documentation-blades-and-parts-blades-developing-my-blade"></a>
+<a name="azure-portal-extension-development-documentation-blades-and-parts-blades-developing-my-blade"></a>
 #### Developing my Blade
 			* [Reference "TemplateBlade/Blade" doc re: developing content for my Blade
 			* [Reference "Common features / behavior for Blades and Parts"
@@ -147,7 +221,7 @@ These documents are for internal teams that want to build an extension for the A
 			* [Unauthorized]
 			* [NoData]
 			* ["form" API]
-<a name="sdk-documentation-blades-and-parts-parts-portalfx-parts-md-parts-aka-tiles"></a>
+<a name="azure-portal-extension-development-documentation-blades-and-parts-parts-portalfx-parts-md-parts-aka-tiles"></a>
 ### <a href="(portalfx-parts.md#parts-aka-tiles">Parts</a>
 * [Types of Parts])
     * [TemplatePart]
@@ -165,7 +239,7 @@ These documents are for internal teams that want to build an extension for the A
     * ['container' APIs (like 'openBlade')]
 * HTML template + Knockout + Controls
     * Include "why no access to DOM?"
-<a name="sdk-documentation-loading-data"></a>
+<a name="azure-portal-extension-development-documentation-loading-data"></a>
 ## Loading data
 * [Area](portalfx-data.md#organizing-your-extension-source-code-into-areas)
 * Making Ajax calls to ARM and ARM APIs

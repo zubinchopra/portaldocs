@@ -5,6 +5,7 @@
     * [Accessibility (Stakeholder: [Paymon Parsadmehr](ibiza-accessibility@microsoft.com))](#exit-criteria-quality-metrics-accessibility-stakeholder-paymon-parsadmehr-ibiza-accessibility-microsoft-com)
     * [Create success (Stakeholder: [Paymon Parsadmehr](mailto:ibiza-create@microsoft.com))](#exit-criteria-quality-metrics-create-success-stakeholder-paymon-parsadmehr-mailto-ibiza-create-microsoft-com)
     * [Resource move (Stakeholder: [Edison Park](mailto:ibiza-resourceMove@microsoft.com))](#exit-criteria-quality-metrics-resource-move-stakeholder-edison-park-mailto-ibiza-resourcemove-microsoft-com)
+* [Leveraging Ibiza's alerts to provide great customer experience](#leveraging-ibiza-s-alerts-to-provide-great-customer-experience)
 
 
 <a name="exit-criteria-quality-metrics"></a>
@@ -19,6 +20,8 @@ are tracked for every extension:
 4. Accessibility
 5. Create success
 6. Resource move (ARM subscription-based services only)
+
+
 
 <a name="exit-criteria-quality-metrics-performance-stakeholder-sean-watson-mailto-ibiza-perf-microsoft-com"></a>
 ### Performance (Stakeholder: <a href="mailto:ibiza-perf@microsoft.com">Sean Watson</a>)
@@ -35,11 +38,12 @@ MPAC and PROD performance is included in weekly status emails and each team is e
 
 > Meeting the performance bar is a requirement for public preview or GA.
 
-> We require roughly 100+ loads of your experience (extension/blade/tiles) to get a signal, if you are unable to generate that traffic genuinely in your desired timeframe please hold a bug bash to drive up the traffic.
+**We require roughly 100+ loads of your experience (extension/blade/tiles) to get a signal, if you are unable to generate that traffic genuinely in your desired timeframe please hold a bug bash to drive up the traffic.**
 
 See also:
-- [Dashboard](http://aka.ms/portalfx/dashboard/extensionperf)
+- [Dashboard - latest geninue traffic only](http://aka.ms/portalfx/dashboard/extensionperf)
     - [Telemetry Access](http://aka.ms/portalfx/docs/telemetryaccess) for access
+    - [Query - including test/dev traffic](https://azportal.kusto.windows.net:443/AzurePortal?query=H4sIAAAAAAAEAHNPLXGtKEnNK87MzwtILUoLSs3JTEzKzMksqdRITM%2fXME%2fR1DFP0SkpKk3VVODlqlEoz0gtSlVIhelRsLVVUIrMLy2KhxsT75eYm6oEAE1EVjJZAAAA)
 - [Checklist](/portal-sdk/generated/index-portalfx-extension-monitor.md#performance-checklist)
 - [Portal COP](/portal-sdk/generated/index-portalfx-extension-monitor.md#portalcop)
 - [Best pracitces](/portal-sdk/generated/index-portalfx-extension-monitor.md#performance-best-practices)
@@ -58,11 +62,14 @@ MPAC and PROD reliability is included in weekly status emails and each team is e
 
 > Meeting the reliability bar is a requirement for public preview or GA.
 
-> We require roughly 100+ loads of your experience (extension/blade/tiles) to get a signal, if you are unable to generate that traffic genuinely in your desired timeframe please hold a bug bash to drive up the traffic.
+**We require roughly 100+ loads of your experience (extension/blade/tiles) to get a signal, if you are unable to generate that traffic genuinely in your desired timeframe please hold a bug bash to drive up the traffic.**
 
 See also:
-- [#ibiza-performance on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-performance)
-- [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-performance)
+- [Dashboard - latest geninue traffic only](http://aka.ms/portalfx/dashboard/extensionperf)
+    - [Telemetry Access](http://aka.ms/portalfx/docs/telemetryaccess) for access
+    - [Query - including test/dev traffic](https://azportal.kusto.windows.net:443/AzurePortal?query=H4sIAAAAAAAEAHNPLXGtKEnNK87MzwtILUoLSs3JTEzKzMksqdRITM%2fXME%2fR1DFP0SkpKk3VVODlqlEoz0gtSlVIhelRsLVVUIrMLy2KhxsT75eYm6oEAE1EVjJZAAAA)
+- [#ibiza-reliability on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-reliability)
+- [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-reliability)
 
 
 <a name="exit-criteria-quality-metrics-usability-stakeholder-angela-moulden-ibiza-usability-microsoft-com"></a>
@@ -117,3 +124,12 @@ See also:
 - [Dashboard](http://aka.ms/portalfx/resourcemove/dashboard)
 - [#ibiza-resources on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-resources)
 - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-resources)
+
+<a name="leveraging-ibiza-s-alerts-to-provide-great-customer-experience"></a>
+## Leveraging Ibiza&#39;s alerts to provide great customer experience
+
+1. SDK Age alerts
+1. Extension Availability Alerts
+1. Create Alerts
+1. Hosting Servie Alerts
+

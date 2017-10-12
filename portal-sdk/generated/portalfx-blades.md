@@ -782,7 +782,7 @@ Menu blades are defined in PDL as shown below:
 ```xml
 
 <MenuBlade
-  Name="SampleMenuBlade"
+  Name="PdlSampleMenuBlade"
   ViewModel="SampleMenuBlade" />
 
 ```

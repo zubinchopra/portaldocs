@@ -1,166 +1,55 @@
-Welcome to the Azure portal! We're excited to have you to join the family.
+<a name="azure-portal-onboarding"></a>
+# Azure Portal Onboarding
 
-Most services that onboard Azure have to onboard the following 3 components:
+<a name="azure-portal-onboarding-start-onboarding"></a>
+## Start Onboarding
 
-* Marketing content on [azure.com](https://azure.microsoft.com) or other website
-* Management APIs exposed via Azure Resource Manager (ARM) or Microsoft Graph
-* Management UI in the Azure portal and/or other tools/websites, like Visual Studio
+* For onboarding a **first-party extension** i.e. an extension  in Azure Portal, please email with following information to:
 
-Our team i.e. Azure Portal UI (Ibiza, Portal Framework) can only help you with onboarding Management UI in the Azure portal. 
+Stakeholders: [Leon Welicki, Adam Abdelhamed, Amit Modi](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding)
 
-The next section of documentation has some pointers to point you to right people if you looking for contacts for pre-requisite steps to onboarding Management UI. 
-However, this list may not be upto date so if you find the information is out of date, please send a pull request to update the documentation.
+    * Is your service targeting public Azure, on-prem, or both?
+    * Service name
+    * VP, PM, and engineering owners
+    * Timelines (preview, GA)
+    * Summary of the service and target scenarios
 
-The Azure onboarding process is streamlined to optimize the delivery of high quality experiences based on hundreds of
-hours of usability testing that meet Microsoft Common Engineering Criteria (CEC) and compliance requirements. **Do not
-start designing UI or management APIs until after you've started the onboarding process** to ensure you're following the
-latest patterns and practices. This will better optimize your time and avoid throw-away work by avoiding usability
-issues caused by anti-patterns and inconsistencies that block usability, performance, etc.
+* For onboarding a **third-party extension** i.e. you are an external partner, please email with following information to:
 
-1. **Business model review** (Stakeholders: [Brian Hillger’s team, Stacey Ellingson](mailto:ibiza-bmr@microsoft.com?subject=Azure%20Business%20model%20review))
+Stakeholders: [Leon Welicki, Adam Abdelhamed](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding)
 
-2. **Management APIs in ARM/Graph**
+    * Is your service targeting public Azure, on-prem, or both?
+    * Service name
+    * Summary of the service and target scenarios
 
-    All services using Azure Billing must be exposed via Azure Resource Manager (ARM), the replacement for RDFE (Red Dog
-    Front End). Other services can use either ARM or Microsoft Graph. Typically, services that integrate deeply with
-    Office 365 use Graph. All others are encouraged to use ARM.
+Most extensions have been successful by setting up early design review with Azure portal team. This gives extension owners an opportunity to understand how they can leverage Azure portal's design patterns in their extension.
 
-    The Azure portal SDK doesn't require any specific back-end, but does provide extra support for ARM-based resources.
-    Please [submit a partner request](http://aka.ms/portalfx/requests) for additional built-in support for standard
-    Graph or ARM APIs.
+feasible.
+<a name="azure-portal-onboarding-subscribe-to-announcements"></a>
+## Subscribe to announcements
 
-    For Azure Resource Manager (ARM) (Stakeholder: [Ryan Jones](mailto:ibiza-arm@microsoft.com)):
-    - [ARM wiki (internal only)](http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Wiki.aspx)
-    - [Onboarding FAQ (intenral only)](http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx)
-    - External teams should [email the ARM team](mailto:aux-arm-leads@microsoft.com?subject=[Onboarding%20Request]%20to%20register%20&lt;RP%20Name&gt;)
+Extension developers and program managers can stay upto date on product roadmap , latest features and workshop announcements by subscribing  to follwing DLs:
 
-3. **CSS (Support)** (Stakeholders: [Wes Penner, CEGRM](mailto:ibiza-css@microsoft.com?subject=CSS%20intake%20questions))
+* PMs should join [ibizapartners-pm](http://igroup/join/ibizapartners-pm)
+* Devs should join [ibizapartners-dev](http://igroup/join/ibizapartners-dev)
+* To learn about upcoming breaking changes, join [ibizabreak](http://igroup/join/ibizabreak)
 
-    [Start **CSS** onboarding](http://spot/intake) at least 3mos before public preview to ensure your customers can use
-    Azure support.
+<a name="azure-portal-onboarding-ask-questions-on-stackoverflow-ms-https-stackoverflow-microsoft-com"></a>
+## Ask questions on <a href="https://stackoverflow.microsoft.com">Stackoverflow@MS</a>
 
-4. **Azure.com** (Stakeholders: [Elena Salaks, Guy Burstein](mailto:ibiza-azure@microsoft.com))
+Join the extension developer community on [Stackoverflow@MS](https://stackoverflow.microsoft.com)  and let us know if you have any questions. Don't forget to tag questions with "ibiza" or [related](portalfx-stackoverflow.md) tags.
 
-    All new services should be listed in [azure.com](https://azure.microsoft.com). This isn't a requirement for onboarding
-    the portal, but service categorization is the same between the azure.com Products menu, portal Services menu, and the
-    Azure Marketplace. The long-term goal is for all 3 to be the exact same, where services aren't listed in the portal
-    unless they're also on azure.com.
+<a name="azure-portal-onboarding-learn-from-samples"></a>
+## Learn from Samples
 
-    Plan ahead for all the outbound communication, blogging, and marketing work to publicize your services as it goes out
-    to customers, in particular if your release time needs to be aligned with the Azure events and conferences. For preview
-    release, this could be an optional requirement, but for GA, your localized azure.com content and service updates plan
-    are exit criteria that will require the stakeholders to sign off.
+1. Explore samples in Dogfood environment:
 
-    For more information about azure.com onboarding, see [http://acomdocs.azurewebsites.net](http://acomdocs.azurewebsites.net).
+We understand that the best way to learn extension development is by looking at the code so Azure portal team ships samples that extension developers can leverage .
 
-5. **Azure Fundamentals**
+First-party extension developers i.e. Microsoft employees have access to Dogfood environment so they can browse thorugh the [samples](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKBlade) in DOGFOOD environment.
 
-    The Azure Fundamentals are a set of Tenets each Azure service is expected to adhere to. The Azure Fundamentals program 
-    is described in this document [Azure Fundamentals]( https://microsoft.sharepoint.com/teams/WAG/EngSys/Shared%20Documents/Argon/Azure%20Fundamentals%20Proposal/Azure%20Fundamentals%20Proposal.docx?d=wf5b821bc31c44042adb55ebf4d8b408d). The document also identifies the Stakeholders and contacts for each of the Tenets.
-    
-    Execute the following process so the specific work required for the tenets appears in Service360
-    1. Add your service to ServiceTree: https://servicetree.msftcloudes.com
-    2. Make your service be "Active" in ServiceTree
-    3. Complete metadata in ServiceTree to enable the automation for various Service360 Action Items
-    4. Complete the Action Items identified in Service360 (http://aka.ms/s360)
+Both First-party and Third-party extension developers can install and run samples extension on their local machine.
 
-6. **Azure Compliance** (Stakeholders: [Azure Compliance team](mailto:azcompl@microsoft.com))
-
-    Compliance criteria and practices are defined in [Quality Essentials](https://microsoft.sharepoint.com/teams/QualityEssentials/SitePages/GettingStarted.aspx)
-    throughout our development cycle. These ensure services meet the Trusted Cloud commitments outlined in the [Microsoft Azure Trust Center](http://azure.microsoft.com/en-us/support/trust-center/)
-    for our customers. There are mandatory procedures as Preview and GA requirement, and to be revisited for every
-    release cycle. QE provides the UI access to manage the release policies and procedures for each compliance. The tool
-    can be installed from [http://qe](http://qe).
-
-    QE tracks the following:
-    - Accessibility
-    - Global readiness
-    - Global trade compliance
-    - License terms
-    - Open source software
-    - Privacy
-    - Security Development Lifecycle (SDL)
-    - Software integrity
-
-    Some of the procedures such as Accessibility, GB Certificate, Privacy, and Security are also measured in the
-    [Service Health Review Scorecard](https://aka.ms/shr) and exit criteria for management review and tracking.
-    These requirements apply to both the portal fx and extensions. Since Fx provides the common infrastructure and UI
-    controls that govern the data handling and UX, hence some of the compliance work for extensions would be identical
-    across in Ibiza, and rationally be mitigated by the Framework. For example, Accessibility support on keyboard
-    navigation and screen reader recognition, as well as the regional format and text support to meet globalization
-    requirement are implemented at the controls that Framework distributed.  Same for Security threat modeling,
-    extension authentication to ARM, postMessage/RPC layer and UserSettings, etc. are handled by Framework. To minimize
-    the duplicate efforts on those items Fx provides some level of "blueprint" documentation you can use as a reference
-    for compliance procedures. You are still responsible to go through the tools and submit the results for approval
-    before shipping your extension. Contact [Amit Modi](mailto:ibiza-onboading-kick@microsoft.com)
-    for any questions about Fx coverage.
-
-   | Policy | Fx coverage |
-   |--------|-------------|
-   | [Accessibility](/portal-sdk/generated/index-portalfx-extension-development.md) | Generic control supports on keyboard, focus handling, touch, screen reader, high contrast, and theming |
-   | Global Readiness | Localizability, regional format, text support, China GB standard |
-   | Privacy | User settings data handling, encryption, and authentication |
-   | SDL | Threat modeling |
-
-7. **Localization** (Stakeholder: [Lynne Dong](mailto:ibiza-interntnl@microsoft.com))
-
-    Nearly 70% of Azure users are from outside of the United States. Therefore, it is important to make Azure a globalized product.
-    There are a few requirements under the "Internationalization" criteria that your service is required to support.  This is the same
-    set of languages that are supported by Azure Portal for GA. Learn more about [internationalization requirements](http://aka.ms/azureintlrequirements).
-
-8. **Onboarding kickoff** 
-
-    If you are planning to build a first party application i.e. you are a part of Microsoft, please email (Stakeholders: [Leon Welicki, Adam Abdelhamed, Amit Modi](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding))
-
-    Setup a meeting to discuss the following:
-    - Is your service targeting public Azure, on-prem, or both?
-    - Service name
-    - VP, PM, and engineering owners
-    - Timelines (preview, GA)
-    - Summary of the service and target scenarios
-    
-    If you are planning to build a third party application i.e. you are an external partner, please email (Stakeholders: [Leon Welicki, Adam Abdelhamed](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding))
-    - Is your service targeting public Azure, on-prem, or both?
-    - Service name
-    - Summary of the service and target scenarios
-    
-
-9. **Start building you extension for Azure Portal** 
-    
-    Now you are ready to build your 1st extension.
-
-    
-<a name="portal-extension"></a>
-## Portal extension
-
-Ready to write your first Azure portal extension? Here are a few resources to get you started:
- 
-1. **Join the right groups**:
-   - PMs should join [ibizapartners-pm](http://igroup/join/ibizapartners-pm)
-   - Devs should join [ibizapartners-dev](http://igroup/join/ibizapartners-dev)
-   - To be notified about upcoming breaking changes, join [ibizabeak](http://igroup/join/ibizabreak)
-
-1. **[Download the SDK](http://aka.ms/portalfx/download)**
-
-1. **[Read the docs](http://aka.ms/portalfx/documents)**
-
-   Our doc site provides the technical details while you are building your extension. The
-   [Getting Started](/portal-sdk/generated/index-portalfx-extension-development.md#getting-started)
-   section will guide you through how it works, build the extension, as well as the debugging tips during your code development.
-
-3. **[View the samples](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKBlade)**
-
-   The Fx team runs a battery of tests using samples that are available as part of the downloaded SDK as well as available from the DOGFOOD (DF) environment. Browse through the samples to explore live examples of APIs.
-
-4. **<a href="mailto:ibiza-onboading-kickoff?subject=Extension feasibility review">Setup a UX feasibility review</a>**
-
-   Before starting to build your extension, please setup time to review your design and ensure your desired outcome is
-   feasible.
-
-1. **[Ask questions on //stackoverflow](https://stackoverflow.microsoft.com)**
-
-   Join the community in https://stackoverflow.microsoft.com and let us know if you have any questions. (Don't forget to
-   tag questions with "ibiza" or related tag.)
 
 7. **[Side-load your extension for local testing](/portal-sdk/generated/index-portalfx-extension-development.md#debugging-testing-in-production)**
 

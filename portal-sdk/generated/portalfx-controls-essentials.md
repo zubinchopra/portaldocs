@@ -250,7 +250,7 @@ public onInitialize(): Q.Promise<void> {
                             label: data.label,
                             value: data.value,
                             onClick: () => {
-                                this.essentials.modifyStatus(`${++clickCounter} ${ClientResources.essentialsTimesClicked}!`)
+                                this.essentials.modifyStatus(`${++clickCounter} ${ClientResources.essentialsTimesClicked}!`);
                             }
                         };
                 }
@@ -701,7 +701,7 @@ return sampleAJAXFunction()
                         label: data.label,
                         value: data.value,
                         onClick: () => {
-                            this.essentials.modifyStatus(`${++clickCounter} ${ClientResources.essentialsTimesClicked}!`)
+                            this.essentials.modifyStatus(`${++clickCounter} ${ClientResources.essentialsTimesClicked}!`);
                         }
                     };
             }
