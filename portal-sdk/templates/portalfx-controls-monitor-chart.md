@@ -283,4 +283,4 @@ From here, users can explore other metrics, pin charts to dashboard, create an a
 [4]: ../media/portalfx-controls-monitor-chart/monitor-chart-control-overview-blade.png
 [5]: ../media/portalfx-controls-monitor-chart/monitor-chart-control-azure-monitor.png
 [6]: https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FFramework.Client%2FTypeScript%2FFx%2FControls%2FMonitorChart.ts&version=GBproduction&_a=contents
-[7]: https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FExtensions%2FHubsExtension%2FTypeScript%2FHubsExtension%2FForExport%2FMonitorChartPartExportedTypes.d.ts&version=GBproduction&_a=contents
+[7]: https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FExtensions%2FHubsExtension%2FTypeScript%2FHubsExtension%2FForExport%2FMonitorChartPart.d.ts&_a=contents
