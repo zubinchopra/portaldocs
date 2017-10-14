@@ -7,7 +7,7 @@ The alerts can be configured for extension performance, blade performance and pa
 At a high level you define;
 
 1. An environment for the alerts to run against. See definition [below](#what-is-environment)
-1. The performance configuration for the alerts within that environment
+2. The performance configuration for the alerts within that environment
 
 ```json
 {
@@ -79,15 +79,21 @@ An example of an extension performance alert criteria
 
 ```json
 [
-    { 
-        "percentile": 80,
-        "percentileThreshold": 4, 
-        "minAffectedUserCount": 270, 
-        "bottomMinAffectedUserCount": 54, 
-        "severity": 3,
-        "enabled": true
-    },
-   ...
+    {
+        "type": "extension",
+        "criteria": [
+            {
+                "percentile": 80,
+                "percentileThreshold": 4,
+                "minAffectedUserCount": 270,
+                "bottomMinAffectedUserCount": 54,
+                "severity": 3,
+                "enabled": true
+            }
+            ...
+        ]
+    }
+    ...
 ]
 ```
 
@@ -97,16 +103,22 @@ An example of a blade performance alert criteria
 
 ```json
 [
-    { 
-        "percentile": 80, 
-        "percentileThreshold": 3.34, 
-        "minAffectedUserCount": 65, 
-        "bottomMinAffectedUserCount": 13, 
-        "bladeName": "ContainersBlade", 
-        "severity": 3,
-        "enabled": true
-    },
-   ...
+    {
+        "type": "blade",
+        "criteria": [
+            {
+                "percentile": 80,
+                "percentileThreshold": 3.34,
+                "minAffectedUserCount": 65,
+                "bottomMinAffectedUserCount": 13,
+                "bladeName": "ContainersBlade",
+                "severity": 3,
+                "enabled": true
+            }
+            ...
+        ]
+    }
+    ...
 ]
 ```
 
@@ -118,16 +130,22 @@ An example of a part performance alert criteria
 
 ```json
 [
-    { 
-        "percentile": 95,
-        "percentileThreshold": 7.17, 
-        "minAffectedUserCount": 65, 
-        "bottomMinAffectedUserCount": 13, 
-        "partName": "Extension/Microsoft_Azure_Storage/PartType/StorageAccountPart", 
-        "severity": 3,
-        "enabled": true
-    },
-   ...
+    {
+        "type": "part",
+        "criteria": [
+            {
+                "percentile": 95,
+                "percentileThreshold": 7.17,
+                "minAffectedUserCount": 65,
+                "bottomMinAffectedUserCount": 13,
+                "bladeName": "Extension/Microsoft_Azure_Storage/PartType/StorageAccountPart",
+                "severity": 3,
+                "enabled": true
+            }
+            ...
+        ]
+    }
+    ...
 ]
 ```
 
