@@ -18,7 +18,7 @@ Therefore, to simplify the deployment process you can leverage EV2 extension dev
 <a name="advanced-section-configuring-contentunbundler-for-ev2-based-deployments"></a>
 ### Configuring ContentUnbundler for Ev2 based deployments
 
-As of SDK version 5.0.302.817, extension developers can leverage the EV2 mode in Content Unbundler to genearate the rollout spec, service mdoel schema and parameter files for EV2 deployment.
+As of SDK version 5.0.302.817, extension developers can leverage the EV2 mode in Content Unbundler to genearate the rollout spec, service mdoel schema and parameter files for EV2 deployment. Check the latest SDK version here: [Download Portal SDK](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/downloads.md).
 
 ** NOTE:** If you are reading this section of the document we assume you have followed the Step-By-Step documentation for hsoting service. At this point, the only missing piece in your deployment is EV2 integration.
 If that is not the case, we recommend you go through the Step-By-Step documentation.
