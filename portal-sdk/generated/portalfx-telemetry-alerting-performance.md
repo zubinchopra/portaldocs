@@ -9,7 +9,7 @@ The alerts can be configured for extension performance, blade performance and pa
 At a high level you define;
 
 1. An environment for the alerts to run against. See definition [below](#what-is-environment)
-1. The performance configuration for the alerts within that environment
+2. The performance configuration for the alerts within that environment
 
 ```json
 {
