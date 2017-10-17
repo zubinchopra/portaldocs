@@ -33,7 +33,7 @@ MPAC and PROD performance is included in weekly status emails and each team is e
 See also:
 - [Dashboard - latest geninue traffic only](http://aka.ms/portalfx/dashboard/extensionperf)
     - [Telemetry Access](http://aka.ms/portalfx/docs/telemetryaccess) for access
-    - [Query - including test/dev traffic](https://azportal.kusto.windows.net:443/AzurePortal?query=H4sIAAAAAAAEAHNPLXGtKEnNK87MzwtILUoLSs3JTEzKzMksqdRITM%2fXME%2fR1DFP0SkpKk3VVODlqlEoz0gtSlVIhelRsLVVUIrMLy2KhxsT75eYm6oEAE1EVjJZAAAA)
+    - [Query - including test/dev traffic](https://aka.ms/portalfx/perfsignoff)
 - [Checklist](/portal-sdk/generated/index-portalfx-extension-monitor.md#performance-checklist)
 - [Portal COP](/portal-sdk/generated/index-portalfx-extension-monitor.md#portalcop)
 - [Best pracitces](/portal-sdk/generated/index-portalfx-extension-monitor.md#performance-best-practices)
@@ -56,7 +56,7 @@ MPAC and PROD reliability is included in weekly status emails and each team is e
 See also:
 - [Dashboard - latest geninue traffic only](http://aka.ms/portalfx/dashboard/extensionperf)
     - [Telemetry Access](http://aka.ms/portalfx/docs/telemetryaccess) for access
-    - [Query - including test/dev traffic](https://azportal.kusto.windows.net:443/AzurePortal?query=H4sIAAAAAAAEAHNPLXGtKEnNK87MzwtILUoLSs3JTEzKzMksqdRITM%2fXME%2fR1DFP0SkpKk3VVODlqlEoz0gtSlVIhelRsLVVUIrMLy2KhxsT75eYm6oEAE1EVjJZAAAA)
+    - [Query - including test/dev traffic](https://aka.ms/portalfx/perfsignoff)
 - [#ibiza-reliability on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-reliability)
 - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-reliability)
 
