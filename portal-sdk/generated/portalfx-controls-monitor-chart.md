@@ -60,7 +60,7 @@ const monitorChartViewModel = MonitorChart.create(bladeOrPartContainer, moni
 ### [LEGACY BLADES] Using the control on a locked/unlocked blade
 If you are not using a template blade, you can reference the `MonitorChartPart` from the `HubsExtension` in your blade's pdl.
 
-> Ensure that you have the HubsExtension.pde added to your extension. You can get the HubsExtension.pde and the MonitorChartPart.d.ts file from Microsoft.Portal.Extensions.Hubs.<<Build#>>.nupkg
+> Ensure that you have the HubsExtension.pde added to your extension. You can get the HubsExtension.pde and the HubsExtension.d.ts file from Microsoft.Portal.Extensions.Hubs.<<Build#>>.nupkg
 
 **Example Blade PDL:**
 ```xml
@@ -117,7 +117,7 @@ export class MonitorChartTestBladeViewModel {
 
 **Example Adapted part view model:**
 ```typescript
-/// <reference path="../../_extensions/Hubs/Definitions/MonitorChartPart.d.ts />
+/// <reference path="../../_extensions/Hubs/HubsExtension.d.ts />
 import AggregationType = HubsExtension.MonitorChartPart.AggregationType;
 import MonitorChartPartOptions = HubsExtension.MonitorChartPart.Options;
 
@@ -151,7 +151,7 @@ export class MonitorChartPartAdapter {
 }
 ```
 
-> To see a complete list of the options you can pass to the MonitorChartPart, look at the `MonitorChartPart.d.ts` file either in the Hubs Nuget package, or [directly in the Hubs repo][7].
+> To see a complete list of the options you can pass to the MonitorChartPart, look at the `HubsExtension.d.ts` file either in the Hubs Nuget package, or [directly in the Hubs repo][7].
 
 <a name="monitor-chart-try-it-out-in-samples-extension"></a>
 ### Try it out in samples extension
