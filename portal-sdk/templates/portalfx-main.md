@@ -2,8 +2,7 @@
 # Azure portal extension development documentation
 
 <details>
-  <summary>Click to expand</summary>
-## 1. Getting Started
+  <summary>## 1. Getting Started</summary>
 
 Azure portal extension development is supported on the Microsoft Windows 8, Windows Server 2012 R2, and Windows 10.
 
@@ -76,8 +75,9 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 </details>
 
 
+<details>
+  <summary>## 2. What's new</summary>
 
-## 2. Developing your extension
 
 ### 2.1 What's new
 
@@ -90,6 +90,10 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Multi-Column for Essentials Controls](portalfx-controls-essentials.md) - *Better use of screen real estate*
 * [TreeView improvements](TBD) - *Checkboxes, commands, and Load More / Virtualization*
 
+</details>
+
+<details>
+  <summary>## 3. Developing your extension</summary
 ### 2.1 Understanding the extension
 * (TBD)
     Portal SDL uses "convention over configuration" to configure itself. This typically means that the name and location of files is used instead of explicit configuration, hence you need to familiarize yourself with the directory structure provided by portal SDK.
@@ -319,6 +323,8 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 			* [KO factories]
 			* [EntityView/QueryView]
 
+</details>
+  
 Table of Contents
 
 1. Introduction 
