@@ -103,7 +103,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 </details>
 
 <details>
-  <summary>4. Understanding your extension configuration</summary
+  <summary>4. Understanding your extension configuration</summary>
 
 ## Basic Configuration(Coming soon..)
 * [Side-loding environment]
@@ -122,7 +122,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 </details>
 
 <details>
-  <summary>5.  Versioning, Packaging and Deploying for different environments</summary
+  <summary>5.  Versioning, Packaging and Deploying for different environments</summary>
 
 * [Versioning your extension](portalfx-extension-versioning.md)
 * [Deploying an extension ](portalfx-extension-hosting-service.md#extension-hosting-service)
@@ -136,7 +136,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 </details>
 
 <details>
-  <summary>6. Extension Lifecycle</summary
+  <summary>6. Extension Lifecycle</summary>
 
 ## [Extensions]
 * [What is an extension?](portalfx-howitworks.md#how-extensions-work)
@@ -154,7 +154,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 </details>
 
 <details>
-  <summary>6. Developing your extension</summary
+  <summary>7. Developing your extension</summary>
 
 
 ##  Blades and Parts
@@ -222,30 +222,31 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Unauthorized]
 * [NoData]
 * ["form" API]
+
 ### [Parts]((portalfx-parts.md#parts-aka-tiles)
 * [Types of Parts])
     * [TemplatePart]
     * [FramePart]
     * [ButtonPart]
     * [Legacy PDL intrinsic Parts](portalfx-parts.md#how-to-use-one-of-the-built-in-parts-to-expose-your-data-in-pre-built-views)
-* Scenarios
+#### Scenarios
     * [Building a Part Gallery Part](portalfx-parts.md#how-to-integrate-your-part-into-the-part-gallery)
     * [Retiring a Part](portalfx-parts-how-to-retire.md)
     * [Redirecting a Part](portalfx-parts.md#removing-a-part-from-a-blades-default-layout)
-* Developing my Part
+#### Developing my Part
     * [Reference "Common features / behavior for Blades and Parts"]
     * [Title/subtitle/icon]
     * [Activation ('onClick')]
     * ['container' APIs (like 'openBlade')]
-* HTML template + Knockout + Controls
+    
+### HTML template + Knockout + Controls
     * Include "why no access to DOM?"
 
 </details>
 
 <details>
-  <summary>7. Data Layer</summary
+  <summary>8. Data Layer</summary>
 
-## Loading data
 * [Area](portalfx-data.md#organizing-your-extension-source-code-into-areas)
 * Making Ajax calls to ARM and ARM APIs
     * [Authentication](portalfx-authentication.md#calling-arm)
@@ -266,95 +267,99 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 </details>
 
 <details>
-  <summary>8. Control Libraries</summary
+  <summary>9. Control Libraries</summary>
 
 ## [Controls](portalfx-controls.md)
-    * [Azue Storage Controls]
-    * [Button]
-    * [Checkbox]
-    * [Console](portalfx-controls-console.md)
-    * [Copyable Label]
-    * [Chart](portalfx-controls-chart.md)
-    * [Date Picker]
-    * [Date Polyfills]
-    * [Date Time Picker](portalfx-controls-datetimepicker.md)
-    * [Date Time Range Picker](portalfx-controls-datetimerangepicker.md)
-    * [Day Picker]
-    * [Diff Editor]
-    * [Editor](portalfx-controls-editor.md)
-    * [Docked Ballon]
-    * [Donut](portalfx-controls-donut.md)
-    * [Dropdown](portalfx-controls-dropdown.md)
-        * [Migration](portalfx-controls-dropdown-migration.md)
-        * [Loading Indicator](portalfx-editscopeless-forms.md#using-the-loading-indicator-for-dropdown)
-    * [Duration Picker]
-    * [Essentials](portalfx-controls-essentials.md)
-    * [File Download]
-    * [File Upload]
-    * [Gallery]
-    * [Gauges]
-    * [Graph](portalfx-controls-graph-nuget.md)
-    * [Infobox]
-    * [Legend]
-    * [List View]
-    * [Tree View]
-    * [Toolbar](portalfx-controls-toolbar.md)
-    * [Log Stream]
-    * [Map]
-    * [Markdown]
-    * [Menu]
-    * [Monitor Chart](portalfx-controls-monitor-chart.md)
-    * [Textbox](portalfx-controls-textbox.md)
-        * [Textbox]
-        * [Numeric Textbox]
-        * [Multiline Textbox]
-        * [Password Box]
-        * [TextBlock]
-        * [TextBlock]
-    * [Option Picker]
-    * [OAuth Button]
-    * [Progress Bar]
-    * [Query Builder]
-    * [Search Box]
-    * [Search Box]
+
+* [Azue Storage Controls]
+* [Button]
+* [Checkbox]
+* [Console](portalfx-controls-console.md)
+* [Copyable Label]
+* [Chart](portalfx-controls-chart.md)
+* [Date Picker]
+* [Date Polyfills]
+* [Date Time Picker](portalfx-controls-datetimepicker.md)
+* [Date Time Range Picker](portalfx-controls-datetimerangepicker.md)
+* [Day Picker]
+* [Diff Editor]
+* [Editor](portalfx-controls-editor.md)
+* [Docked Ballon]
+* [Donut](portalfx-controls-donut.md)
+* [Dropdown](portalfx-controls-dropdown.md)
+    * [Migration](portalfx-controls-dropdown-migration.md)
+    * [Loading Indicator](portalfx-editscopeless-forms.md#using-the-loading-indicator-for-dropdown)
+* [Duration Picker]
+* [Essentials](portalfx-controls-essentials.md)
+* [File Download]
+* [File Upload]
+* [Gallery]
+* [Gauges]
+* [Graph](portalfx-controls-graph-nuget.md)
+* [Infobox]
+* [Legend]
+* [List View]
+* [Tree View]
+* [Toolbar](portalfx-controls-toolbar.md)
+* [Log Stream]
+* [Map]
+* [Markdown]
+* [Menu]
+* [Monitor Chart](portalfx-controls-monitor-chart.md)
+* [Textbox](portalfx-controls-textbox.md)
+    * [Textbox]
+    * [Numeric Textbox]
+    * [Multiline Textbox]
+    * [Password Box]
+    * [TextBlock]
+    * [TextBlock]
+* [Option Picker]
+* [OAuth Button]
+* [Progress Bar]
+* [Query Builder]
+* [Search Box]
+* [Search Box]
+* [Sliders]
     * [Sliders]
-        * [Sliders]
-        * [Custom Sliders]
-        * [Range Sliders]
-        * [Custom Range Sliders]
-    * [Grid](portalfx-controls-grid.md)
-        * [Data Virtualization](portalfx-data-virtualizedgriddata.md)
-    * [Editable Grid]
-    * [Spec Picker Blade](portalfx-extension-pricing-tier.md)
-    * [Subscription Dropdown](portalfx-create.md#subscriptions-dropdown-1)
-    * [Resource Group dropdown](portalfx-create.md#resource-groups-legacy-dropdown)
-    * [Location dropdown](/portalfx-create.md#locations-legacy-dropdown)
-    * [Pricing Dropdown](portalfx-create.md#pricing-dropdown)
+    * [Custom Sliders]
+    * [Range Sliders]
+    * [Custom Range Sliders]
+* [Grid](portalfx-controls-grid.md)
+    * [Data Virtualization](portalfx-data-virtualizedgriddata.md)
+* [Editable Grid]
+* [Spec Picker Blade](portalfx-extension-pricing-tier.md)
+* [Subscription Dropdown](portalfx-create.md#subscriptions-dropdown-1)
+* [Resource Group dropdown](portalfx-create.md#resource-groups-legacy-dropdown)
+* [Location dropdown](/portalfx-create.md#locations-legacy-dropdown)
+* [Pricing Dropdown](portalfx-create.md#pricing-dropdown)
+
 ## Forms
-    * [Building UI for Form](portalfx-forms.md#laying-out-your-ui-on-the-blade)
-    * [Submit Style UI]
-        * [Save/ Cancel Button](portalfx-editscopeless-forms.md#other-css-classes-that-can-be-useful)
-        * [Legacy Action Bar] (portalfx-fxcontrols-editscope-forms.md)
-    * [Prompt user to Save/Discard changes](portalfx-editscopeless-forms.md#customizing-alert-on-form-close)
-    * [EditScopeless Forms](portalfx-editscopeless-forms.md)
-    * [Legacy Editscope based Forms](portalfx-forms.md)
-    * [Using Editscopeless controls in EditScoped Forms](portalfx-fxcontrols-editscope-forms.md)
+
+* [Building UI for Form](portalfx-forms.md#laying-out-your-ui-on-the-blade)
+* [Submit Style UI]
+    * [Save/ Cancel Button](portalfx-editscopeless-forms.md#other-css-classes-that-can-be-useful)
+    * [Legacy Action Bar] (portalfx-fxcontrols-editscope-forms.md)
+* [Prompt user to Save/Discard changes](portalfx-editscopeless-forms.md#customizing-alert-on-form-close)
+* [EditScopeless Forms](portalfx-editscopeless-forms.md)
+* [Legacy Editscope based Forms](portalfx-forms.md)
+* [Using Editscopeless controls in EditScoped Forms](portalfx-fxcontrols-editscope-forms.md)
+
 ## Advanced Styling
 
 </details>
 
 
 <details>
-  <summary>9. Memory Management</summary
+  <summary>10. Memory Management</summary>
 
-• [Extension memory management / Lifetime manager](portalfx-data-lifetime.md#lifetime-manager)
-	○ Content:
-		* [Relate this to Blade/Part lifecycle]
-		* [What are child lifetimes?]
-		* [Why do all ctors/factories require 'lifetimeManager']
-			* [Controls]
-			* [KO factories]
-			* [EntityView/QueryView]
+## [Extension memory management / Lifetime manager](portalfx-data-lifetime.md#lifetime-manager)
+* Content:
+    * [Relate this to Blade/Part lifecycle]
+    * [What are child lifetimes?]
+    * [Why do all ctors/factories require 'lifetimeManager']
+        * [Controls]
+        * [KO factories]
+        * [EntityView/QueryView]
 
 </details>
 
