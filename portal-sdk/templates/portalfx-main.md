@@ -151,7 +151,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Is there some thing that executes when we unload the extension??]
 * [Performance implications of referencing another extension]
 * [ When is extension loaded / unloaded]
-<details>
+</details>
 
 <details>
   <summary>6. Developing your extension</summary
@@ -206,8 +206,6 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
     * [Making Blades/Parts reusable by other extensions](portalfx-extension-sharing-pde.md)
     * [Reusing Blades/Parts from other extensions](portalfx-integrating-with-other-extensions.md)
     * [RPC](portalfx-rpc.md#remote-procedure-calls-rpc)  // TOD: Find Home
-
-
             
 #### Developing my Blade
 * [Reference "TemplateBlade/Blade" doc re: developing content for my Blade
@@ -342,11 +340,12 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
     * [Legacy Editscope based Forms](portalfx-forms.md)
     * [Using Editscopeless controls in EditScoped Forms](portalfx-fxcontrols-editscope-forms.md)
 ## Advanced Styling
+
 </details>
 
 
 <details>
-  <summary>8. Memory Management</summary
+  <summary>9. Memory Management</summary
 
 • [Extension memory management / Lifetime manager](portalfx-data-lifetime.md#lifetime-manager)
 	○ Content:
@@ -356,6 +355,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 			* [Controls]
 			* [KO factories]
 			* [EntityView/QueryView]
+
 </details>
 
     
