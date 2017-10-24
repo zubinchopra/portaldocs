@@ -119,10 +119,6 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Controllers]
 * [Gallery package]
 
-## Extension lifecycle
-* [Program.ts / entry point]
-* [Extension.pdl]
-* [Is there some thing that executes when we unload the extension??]
 </details>
 
 <details>
@@ -140,16 +136,40 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 </details>
 
 <details>
+  <summary>6. Extension Lifecycle</summary
+
+## [Extensions]
+* [What is an extension?](portalfx-howitworks.md#how-extensions-work)
+* [Ui Concepts](portalfx-ui-concepts.md#ui-concepts)
+* [Extension lifecycle](portalfx-howitworks.md#how-the-portal-works)
+* [Cross-extension UX integration] (TBD)
+
+
+## Extension lifecycle
+* [Program.ts / entry point]
+* [Extension.pdl]
+* [Is there some thing that executes when we unload the extension??]
+* [Performance implications of referencing another extension]
+* [ When is extension loaded / unloaded]
+<details>
+
+<details>
   <summary>6. Developing your extension</summary
 
-## [Extensions](portalfx-howitworks.md#how-extensions-work)
-* What is an extension? 
-    * [Ui Concepts](portalfx-ui-concepts.md#ui-concepts)
-    * [Extension lifecycle](portalfx-howitworks.md#how-the-portal-works)
-    * [Cross-extension UX integration] (TBD)
 
 ##  Blades and Parts
-* [What are they?](portalfx-ui-concepts.md#ui-concepts)
+* [Introduction](portalfx-ui-concepts.md#ui-concepts)
+
+#### Common Scenarios
+* [Create Blades](portalfx-create.md)
+* [Context Pane]
+* [Full-screen Blades]
+* [Settings Blades]
+* [FrameBlade/AppBlade]
+* [Pinnable Blades]
+* [Adding part to Part/Tile Gallery]
+* [Invoking Blade/Part reuse across extensions]
+* [Shairing Blade/Part across extensions]
 
 ### Blades
 
@@ -160,12 +180,6 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Resource Menu Blade]
 * [Context Pane]
 
-#### Scenarios -- How do I choose?
-* [Create Blades](portalfx-create.md)
-* [Context Pane]
-* [Full-screen Blades]
-* [Settings Blades]
-* [FrameBlade/AppBlade]
 
 * How/when are Blades/Parts invoked?  How can I get my Blade/Part in front of more users?
 * [Blades]
@@ -227,27 +241,36 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
     * ['container' APIs (like 'openBlade')]
 * HTML template + Knockout + Controls
     * Include "why no access to DOM?"
+
+</details>
+
+<details>
+  <summary>7. Data Layer</summary
+
 ## Loading data
 * [Area](portalfx-data.md#organizing-your-extension-source-code-into-areas)
 * Making Ajax calls to ARM and ARM APIs
     * [Authentication](portalfx-authentication.md#calling-arm)
     * [GET calls to ARM](portalfx-data.md#making-authenticated-ajax-calls)
+* [Making Ajax calls to servies other than ARM](portalfx-authentication.md#calling-other-services)
 * [Data Context](portalfx-data.md#shared-data-access-using-datacontext)
 * [Data Views](portalfx-data.md#using-dataviews)
 * [Data Cache](portalfx-data.md#using-datacache-to-load-and-cache-data)
     * [GET calls to ARM with Data Cache](portalfx-data.md#querying-for-data)
     * [Controlling the AJAX calls for Data Cache](portalfx-data.md#loading-data)
     * [Optimizing redundant calls](portalfx-data.md#loading-data)
-* Common Scenarios
     * [Auto-refreshing client data](portalfx-data-refreshingdata.md#auto-refreshing-client-side-data-aka-polling)
     * [Shaping and filtering data](portalfx-data-projections.md) // TODO: Find better name
     * [Master Detail](portalfx-data.md#working-with-data)
     * [Adressing Data Merge Failures](portalfx-data.md#data-merging)
     * [Legacy accessing C# model objects](portalfx-data-typemetadata.md#type-metadata)
     * [Legacy Data Atomization](portalfx-data-atomization.md#data-atomization)
-* [Making Ajax calls to servies other than ARM](portalfx-authentication.md#calling-other-services)
+</details>
 
-* [Controls](portalfx-controls.md)
+<details>
+  <summary>8. Control Libraries</summary
+
+## [Controls](portalfx-controls.md)
     * [Azue Storage Controls]
     * [Button]
     * [Checkbox]
@@ -309,7 +332,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
     * [Resource Group dropdown](portalfx-create.md#resource-groups-legacy-dropdown)
     * [Location dropdown](/portalfx-create.md#locations-legacy-dropdown)
     * [Pricing Dropdown](portalfx-create.md#pricing-dropdown)
-* Forms
+## Forms
     * [Building UI for Form](portalfx-forms.md#laying-out-your-ui-on-the-blade)
     * [Submit Style UI]
         * [Save/ Cancel Button](portalfx-editscopeless-forms.md#other-css-classes-that-can-be-useful)
@@ -318,7 +341,13 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
     * [EditScopeless Forms](portalfx-editscopeless-forms.md)
     * [Legacy Editscope based Forms](portalfx-forms.md)
     * [Using Editscopeless controls in EditScoped Forms](portalfx-fxcontrols-editscope-forms.md)
-* Advanced Styling
+## Advanced Styling
+</details>
+
+
+<details>
+  <summary>8. Memory Management</summary
+
 • [Extension memory management / Lifetime manager](portalfx-data-lifetime.md#lifetime-manager)
 	○ Content:
 		* [Relate this to Blade/Part lifecycle]
@@ -327,103 +356,8 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 			* [Controls]
 			* [KO factories]
 			* [EntityView/QueryView]
-
 </details>
-  
-Table of Contents
 
-1. Introduction 
-    1.1 What's new ?
-        1.1.1. No-PDL Blades
-        1.1.2. EditScopeless forms
-        1.1.3. Editable Grid V2
-        1.1.4. Extension Avialability Alerts
-        1.1.5. Actionable Notifications
-        1.1.6. EV2 support for Extension Hosting Service 
-        1.1.7. Other Novelties 
-            - Multi-Column for Essentials Controls
-            - Adding checkbox, supplyCommands and Load More / Virtualization on Tree view
- 
----------------------------------------------------------
-1. What's new list will be reviewed on 1 st of every month to ensure that the stuff listed here is not too old
-2. PMs can update the list at any point to highlight new features
----------------------------------------------------------
-
-2. Getting Started
-    2.1 Installation Requirements
-    2.2 Downloading and Installing
-        2.2.1 Using the msi
-        2.2.2 Using the Nuget packages [ CoreXT and Non-CoreXT]
-    2.3 Creating an application
-        2.3.1 Using the project template
-    2.4 Hello World Example
-        2.4.1 On top of project template application
-    2.5 Getting Setup in an IDE
-        2.5.1 Visual Studio [ Typescript tool version/ Compile on Save]
-        2.5.2 VS Code [ Typescript tool version/ Compile on Save]
-    2.6 "Convention over configuration"
-        Portal SDL uses "convention over configuration" to configure itself. This typically means that the name and location of files is used instead of explicit configuration, hence you need to familiarize yourself with the directory structure provided by portal SDK.
-        Here is a breakdown and links to the relevant sections:
-        1. App Data
-        2. App Start
-        3. Client
-        4. Configuration
-        5. Content
-        6. Controllers 
-        7. Definitions
-        8. GalleryPackages
-        9. packages.config
-        10. web.config
-        10. .config
-        2. DataContext
-        3. 
-    2.7 Running and Debugging an extension
-        1. Side-loading the application
-        2. Specifying a different Blade
-
-
-4. Configuration
-    4.1 Explaining web.config properties
-        4.1.2. ThreadPoolConfiguration
-        4.1.3. SettingsReader
-        4.1.3. ServicePointManager
-        4.1.4  CamelCasedSerializedPropertyNames
-        4.1.5 IsDevelopmentMode
-        4.1.6 Logging
-    4.2 Per environment Configuration 
-        4.2.1. portal.azure.com.json
-        4.2.2. mooncake.azure.com.json
-        4.2.3. rc.azure.com.json
-        4.2.4. bf.azure.com.json
-        4.2.5. Other ARM/ AAD url settings
-    4.3 Packaging and running for different environments
-        4.3.1 Local [Settings in web.debug.config]
-        4.3.2 Public [Settings in web.release.config]
-        4.3.3 National Cloud specific settings [Settings in web.release.config]
- 6. Understanding Application lifecycle
-    6.1 When is extension loaded / unloaded
-    6.2 Performance implications of referencing another extension ?
- 7. Blades and Parts
-    7.1 What are Blades ? Deep-linkable Blades 
-    7.2 What are Parts ? When and Why make blades pinnable ?
-    7.3 Types of Blade (Blade, Template Blade, Context Pane, Resource Menu, Create Blade Full Screen Blade)
-    7.4 Framework Concepts to build these blades? Template Blade, Menu Blade, Frame Blade, Resource Menu Blade
-    7.4 How to integrate your part into the part gallery
-    7.5 Best way to load data in Blade/ Part ? 
-    7.5 Lifecycle of Blade ?
-    7.6 Why use Context Pane ?
-    7.6 How does pinning work in Blades  ?
-    7.7 Building and debugging my first IFrame Blade / Sample + Doc that shows opening a blade by clicking on button in IFrame
-    7.8 Updating Title, Subtitle and Icons on the blade? Why can't I have custom blades ?
-    7.9 Sharing Blade with other extensions 
-    7.10 Invoking Blade of other extensions 
- 5. Querying the data
-    5.1 Understanding Area and Data Context 
-    5.2 Making Ajax calls to ARM and ARM APIs   [https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-authentication.md#calling-arm]
-    5.3 Making Ajax calls to servies other than ARM [https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-authentication.md#calling-other-services]
-    5.4 Understanding Framework caches [https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-data.md#working-with-data]
-        5.4.1 Entity Cache
-        5.4.2 Query Cache
     
 
 
