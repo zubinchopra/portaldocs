@@ -1,6 +1,8 @@
 
 # Azure portal extension development documentation
 
+<details>
+  <summary>Click to expand</summary>
 ## 1. Getting Started
 
 Azure portal extension development is supported on the Microsoft Windows 8, Windows Server 2012 R2, and Windows 10.
@@ -71,6 +73,9 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [SLA for enabling your extension]
 * [Reducing SLA for enabling your extension]
 * [Need Help with enabling your extension ?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)
+</details>
+
+
 
 ## 2. Developing your extension
 
