@@ -2,7 +2,7 @@
 # Azure portal extension development documentation
 
 <details>
-  <summary>## 1. Getting Started</summary>
+  <summary>1. Getting Started</summary>
 
 Azure portal extension development is supported on the Microsoft Windows 8, Windows Server 2012 R2, and Windows 10.
 
@@ -19,17 +19,20 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * VS Code (Coming Soon....)
 * [Need Help with setup?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
 
-### 1.3 Developing Hello World Extension
+### 1.3 Running and Debugging Hello World Extension
 
 * [Architecture Overview](portalfx-howitworks.md)
 * [Creating your first extension from project template](portalfx-creating-extensions.md)
-* [Building a Hello World Blade]()
+* [Building a Hello World Blade](portalfx-creating-extensions.md#hello-world-for-blades)
+* [Side-loading your extension in a portal environment](portalfx-testinprod.md#testing-in-production)
+* [Debugging](portalfx-debugging.md#debugging)
+* [Deep linking to a blade you are developing](portalfx-creating-extensions.md#hello-world-for-blades)
 * Add a text box to your Hello World Blade
 * Dock button at the bottom of your blade
 * Add Menu Bar to your Blade
 * Open Blade from your Hello World Blade
 * Open Context pane from your Hello World Blade
- 
+
 
 ### 1.4 Extension development resources
 
@@ -65,7 +68,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Understand the crtieria for Public Preview in public cloud](portalfx-onboarding-exitcriteria.md#exit-criteria-quality-metrics)
 * [Enable your extension in Dogfood]
 * [Enable your extension in Public cloud]
-  * [Updating extension configuraiton for national clouds](portalfx-deployment-sovereign.md)
+* [Updating extension configuraiton for national clouds](portalfx-deployment-sovereign.md)
 * [Enable your extension in Mooncake]
 * [Enable your extension in Blackforest]
 * [Enable your extension in FairFax]
@@ -74,12 +77,8 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Need Help with enabling your extension ?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)
 </details>
 
-
 <details>
-  <summary>## 2. What's new</summary>
-
-
-### 2.1 What's new
+  <summary>2. What's new</summary>
 
 * [No-PDL Blades](portalfx-no-pdl-programming.md#defining-blades-and-parts-using-typescript-decorators-aka-no-pdl) - *Reduces the number of files and concepts to build UI*
 * [Forms without edit scope](portalfx-editscopeless-forms.md) - *More intuitive APIs for building forms*
@@ -89,48 +88,59 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [EV2 support for the Extension Hosting Service](portalfx-extension-hosting-service-advanced.md#advanced-section) - *Nuff said*
 * [Multi-Column for Essentials Controls](portalfx-controls-essentials.md) - *Better use of screen real estate*
 * [TreeView improvements](TBD) - *Checkboxes, commands, and Load More / Virtualization*
+</details>
 
+
+<details>
+  <summary>3. Upgrading from previous versions of SDK and test framework</summary>
+
+## Upgrading Extension to use latest version of SDK
+* [Upgrade policy](portalfx-deploy.md#3-understand-extension-runtime-compatibility)
+* SDK Update alerts(Coming Soon....)
+* [Updating the NuGet packages](portalfx-nuget-overview.md)
+* [Updating the C# test framework](TBD)
+* [Updating the msportalfx-test framework](TBD)
 </details>
 
 <details>
-  <summary>## 3. Developing your extension</summary
-### 2.1 Understanding the extension
-* (TBD)
-    Portal SDL uses "convention over configuration" to configure itself. This typically means that the name and location of files is used instead of explicit configuration, hence you need to familiarize yourself with the directory structure provided by portal SDK.
-    Here is a breakdown and links to the relevant sections:
-    * App Data
-    * App Start
-    * Client
-    * Configuration
-    * Content
-    * Controllers 
-    * Definitions
-    * GalleryPackages
-    * packages.config
-    * web.config
-    * .config
+  <summary>4. Understanding your extension configuration</summary
 
-2. DataContext
-* [Packaging and running for different environments]
-  * [Verioning your extension](portalfx-extension-versioning.md)
-  * [Side-loading your extension in a real portal environment](portalfx-testinprod.md#testing-in-production)
-  * [Deep linking to a blade you are developing](portalfx-creating-extensions.md#hello-world-for-blades)
-  * [Deploying an extension ](portalfx-extension-hosting-service.md#extension-hosting-service)
-* [Debugging](portalfx-debugging.md#debugging)
+## Basic Configuration(Coming soon..)
+* [Side-loding environment]
+* [Developer mode]
+* [Telemetry]
+* [Any other options ??]
+
+## Extension Configuration(Coming soon..)
+* [Extension Definition]
+* [ConfigurationSettings]
+* [ConfigurationSettings]
+* [CustomApplicationContext]
+* [Controllers]
+* [Gallery package]
+
+## Extension lifecycle
+* [Program.ts / entry point]
+* [Extension.pdl]
+* [Is there some thing that executes when we unload the extension??]
+</details>
+
+<details>
+  <summary>5.  Versioning, Packaging and Deploying for different environments</summary
+
+* [Versioning your extension](portalfx-extension-versioning.md)
+* [Deploying an extension ](portalfx-extension-hosting-service.md#extension-hosting-service)
+* [In the public cloud](portalfx-extension-onboarding-developer-guide.md)
+* [Improving extension reliability/ Adding peristent caching](portalfx-extension-persistent-caching-of-scripts.md)
 * Domain Configuration
     * [When to use dynamic configuration](portalfx-domain-based-configuration.md#domain-based-configuration)
     * [How to use dynamic configuration](portalfx-domain-based-configuration-pattern.md#expected-design-pattern)
     * [Configuration](portalfx-dictionaryconfiguration.md)
     * [Sample for accessing dynamic configuration](portalfx-domain-based-configuration-example.md)
- 
-  * [In the public cloud](portalfx-extension-onboarding-developer-guide.md)
-  * [Improving extension reliability/ Adding peristent caching](portalfx-extension-persistent-caching-of-scripts.md)
+</details>
 
-## Upgrading Extension to use latest version of SDK
-  * [Upgrade policy](portalfx-deploy.md#3-understand-extension-runtime-compatibility)
-  * [Updating the NuGet packages](portalfx-nuget-overview.md)
-  * [Updating the C# test framework](TBD)
-  * [Updating the msportalfx-test framework](TBD)
+<details>
+  <summary>6. Developing your extension</summary
 
 ## [Extensions](portalfx-howitworks.md#how-extensions-work)
 * What is an extension? 
@@ -139,23 +149,39 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
     * [Cross-extension UX integration] (TBD)
 
 ##  Blades and Parts
-
 * [What are they?](portalfx-ui-concepts.md#ui-concepts)
-    * How/when are Blades/Parts invoked?  How can I get my Blade/Part in front of more users?
-    * [Blades]
-        * [Use 'container.openBlade(…)' to open my Blade](portalfx-blades-opening.md)
-        * [Work with other teams to have other extensions call 'container.openBlade(…)' to open my Blade](portalfx-blades-opening.md#importing-the-pde-file)
-        * Associate my Blade with an <AssetType> so it is opened from Browse
-        * [Add my Blade as an entry in a Resource Blade or a Menu Blade]
-            * [No-PDL](portalfx-no-pdl.md#building-a-menu-blade-using-decorators)
-            * [PDL](portalfx-blades-menublade.md)
-    * [Parts]
-        * Make my Blades pinnable using @Blade.Pinnable.Decorator/onPin
-        * Call Fx/Pinner/pinParts from some Blade
-            ◊ …even encourage partner extensions to do so
-        * Add 'galleryMetadata' to my Part to make it available to users in the Part Gallery
-    * [FAQ]
-        * When should I make my Blade pinnable?
+
+### Blades
+
+#### [Type of Blades](portalfx-blades.md#blades)
+* [TemplateBlade]
+* [FrameBlade (and legacy <AppBlade>)]
+* [MenuBlade]
+* [Resource Menu Blade]
+* [Context Pane]
+
+#### Scenarios -- How do I choose?
+* [Create Blades](portalfx-create.md)
+* [Context Pane]
+* [Full-screen Blades]
+* [Settings Blades]
+* [FrameBlade/AppBlade]
+
+* How/when are Blades/Parts invoked?  How can I get my Blade/Part in front of more users?
+* [Blades]
+    * [Use 'container.openBlade(…)' to open my Blade](portalfx-blades-opening.md)
+    * [Work with other teams to have other extensions call 'container.openBlade(…)' to open my Blade](portalfx-blades-opening.md#importing-the-pde-file)
+    * Associate my Blade with an <AssetType> so it is opened from Browse
+    * [Add my Blade as an entry in a Resource Blade or a Menu Blade]
+        * [No-PDL](portalfx-no-pdl.md#building-a-menu-blade-using-decorators)
+        * [PDL](portalfx-blades-menublade.md)
+* [Parts]
+    * Make my Blades pinnable using @Blade.Pinnable.Decorator/onPin
+    * Call Fx/Pinner/pinParts from some Blade
+        ◊ …even encourage partner extensions to do so
+    * Add 'galleryMetadata' to my Part to make it available to users in the Part Gallery
+* [FAQ]
+    * When should I make my Blade pinnable?
 
 ### Component model
 * Lifecycle
@@ -167,44 +193,23 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
     * [Reusing Blades/Parts from other extensions](portalfx-integrating-with-other-extensions.md)
     * [RPC](portalfx-rpc.md#remote-procedure-calls-rpc)  // TOD: Find Home
 
-### Blades
-#### [Type of Blades](portalfx-blades.md#blades)
-    * [TemplateBlade]
-        * Blade
-            * Special-case of TemplateBlade (without HTML template)
-        * Refer to 'Common document for developing "content"'
-    * [FrameBlade (and legacy <AppBlade>)]
-        * Refer to AppBlade
-        * Refer to "How / when to go the IFrame route?"
-    * [MenuBlade]
-        * Refer to Resource Menu Blade
-    * [Resource Menu Blade]
-        * Refer to Menu
-    * [Context Pane]
-#### Scenarios -- How do I choose?
-* [Create Blades](portalfx-create.md)
-* [Context Pane
-        * [Create Blades
-        * [Full-screen Blades
-        * [Settings Blades
-        * [FrameBlade/AppBlade
-            * Content:
-                ◊ Reference "How/When to go the IFrame route?"
+
+            
 #### Developing my Blade
-			* [Reference "TemplateBlade/Blade" doc re: developing content for my Blade
-			* [Reference "Common features / behavior for Blades and Parts"
-			* [Reference to sections of common Blade/Part features/behaviors
-			* [Title/subtitle/icon]
-				* Include icon in FAQ and cross-reference here
-			* ['container' APIs (like 'openBlade')
-				* How you to choose your Container type for legacy PDL Blades?
-			* [CommandBar / Toolbar](portalfx-blades.md#adding-commands-to-a-templateblade)
-			* [Dialogs]
-				* Reference "developing content area" doc
-			* [StatusBar]
-			* [Unauthorized]
-			* [NoData]
-			* ["form" API]
+* [Reference "TemplateBlade/Blade" doc re: developing content for my Blade
+* [Reference "Common features / behavior for Blades and Parts"
+* [Reference to sections of common Blade/Part features/behaviors
+* [Title/subtitle/icon]
+    * Include icon in FAQ and cross-reference here
+* ['container' APIs (like 'openBlade')
+    * How you to choose your Container type for legacy PDL Blades?
+* [CommandBar / Toolbar](portalfx-blades.md#adding-commands-to-a-templateblade)
+* [Dialogs]
+    * Reference "developing content area" doc
+* [StatusBar]
+* [Unauthorized]
+* [NoData]
+* ["form" API]
 ### [Parts]((portalfx-parts.md#parts-aka-tiles)
 * [Types of Parts])
     * [TemplatePart]
