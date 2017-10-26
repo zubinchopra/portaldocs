@@ -365,8 +365,8 @@ In order to use the gallery loader you will need to set some values in the Azure
 ```xml
 <appSettings>
   <add key="Microsoft.Azure.Gallery.ServiceEndpoint" value="https://df.gallery.azure-test.net"/>
-  <add key="Microsoft.Azure.Gallery.ServiceSettings.PrivilegedOperationsCertificateThumbprint" value="F569803807B692011559C718715767056926F497"/>
-  <add key="Microsoft.Azure.Gallery.ServiceSettings.HighPrivilegeOperationsCertificateThumbprint" value="F569803807B692011559C718715767056926F497"/>
+  <add key="Microsoft.Azure.Gallery.ServiceSettings.PrivilegedOperationsCertificateThumbprint" value="57A279EF1839B861EB2CE9B62D90650219A98666"/>
+  <add key="Microsoft.Azure.Gallery.ServiceSettings.HighPrivilegeOperationsCertificateThumbprint" value="57A279EF1839B861EB2CE9B62D90650219A98666"/>
 </appSettings>
 ```
 
