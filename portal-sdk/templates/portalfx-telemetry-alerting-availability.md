@@ -84,7 +84,7 @@ Currently they run every 5 minutes assessing the previous hour of data.
 
 1. Generate the desired per extension configuration
     - This can be done by either manually editing the JSON file or making use of [the tool][alerting-tool] provided.
-1. Fill out the following work item [https://aka.ms/portalfx/alerting-onboarding][alerting-onboarding]
+1. Fill out the following work item [https://aka.ms/portalfx/alerting-onboarding][alerting-onboarding] and attach configuration JSON
 1. Set up correlation rules in ICM
 
 | Field | Value |
