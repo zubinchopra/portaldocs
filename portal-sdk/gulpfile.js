@@ -20,6 +20,9 @@ const templatesDir = path.resolve(sdkDir, 'templates');
 const mediaSourceDir = path.resolve(sdkDir, 'media');
 const fourMonthsAgo = new Date(new Date().setMonth(new Date().getMonth() - 4));
 
+const vstfrdWorkItemUrl = "http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=";
+const msazureWorkItemUrl = "https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=";
+
 /**  
  * generates docs for ux design team
  */
@@ -168,8 +171,8 @@ function generateDynamicDocs(portalFxLogs, outputDir) {
     var aggregate = {};
 
     const noChangesRowTemplate = "<tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr>"
-    const releaseNoteRowTemplate = "<tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=%s'>%s</a></td><td>%s</td><td>%s</td></tr>";
-    const breakingChangeRowTemplate = "<tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=%s'>%s</a></td><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=%s'>%s</a><p>%s</p></td></tr>";
+    const releaseNoteRowTemplate = "<tr><td><a href='%s%s'>%s</a></td><td>%s</td><td>%s</td></tr>";
+    const breakingChangeRowTemplate = "<tr><td><a href='%s%s'>%s</a></td><td><a href='%s%s'>%s</a><p>%s</p></td></tr>";
     var startDate = new Date();
     var expiryDate = new Date(startDate);
     expiryDate.setMonth(startDate.getMonth() + 1);
@@ -191,6 +194,7 @@ function generateDynamicDocs(portalFxLogs, outputDir) {
         var sdkVersion = entity.PartitionKey._;
         var isBreakingChange = entity.IsBreakingChange._;
         var title = entity.Title ? entity.Title._ : "";
+        var workItemUrl = getWorkItemUrl(changeType);
         
         aggregate[sdkVersion] = aggregate[sdkVersion] || { breakingCount: 0, featureCount: 0, bugFixCount: 0, downloadUrl: "", dateInProd: entity.Date._, breakingChanges: { rows: "", titles: [] } };
 
@@ -214,6 +218,7 @@ function generateDynamicDocs(portalFxLogs, outputDir) {
         //add row to release notes
         if (changeType != "Commit") {
             rnRows = rnRows.concat(util.format(releaseNoteRowTemplate,
+                workItemUrl,
                 entity.RowKey._,
                 entity.RowKey._,
                 getPrettyChangeType(isBreakingChange, changeType),
@@ -232,8 +237,10 @@ function generateDynamicDocs(portalFxLogs, outputDir) {
 
             aggregate[sdkVersion].breakingChanges.titles.push(title);
             bcRows = bcRows.concat(util.format(breakingChangeRowTemplate,
+                workItemUrl,
                 entity.RowKey._,
                 entity.RowKey._,
+                workItemUrl,
                 entity.RowKey._,
                 title,
                 entity.BreakingChangeDescription ? entity.BreakingChangeDescription._ : "No description available for this breaking change."));
@@ -318,13 +325,11 @@ function writeDocsToFile(aggregate, outputDir) {
  * updates versionAggregate the # of breaking changes, tasks and bugs
  */
 function updateAggregate(versionAggregate, isBreakingChange, changeType) {
-
     if (isBreakingChange) {
         versionAggregate.breakingCount += 1;
-    } else if (changeType === "RDTask") {
+    } else if (changeType === "RDTask" || changeType === "Task" || changeType === "Product Backlog Item") {
         versionAggregate.featureCount += 1;
-
-    } else if (changeType === "RDBug") {
+    } else if (changeType === "RDBug" || changeType == "Bug") {
         versionAggregate.bugFixCount += 1;
     }
 
@@ -348,13 +353,18 @@ function getBlobDownloadUrl(blobSvc, container, blobName, sdkVersion) {
 function getPrettyChangeType(isBreaking, changeType) {
     if (isBreaking) {
         return "<strong>Break</strong>";
-    } else if (changeType === "RDTask") {
+    } else if (changeType === "RDTask" || changeType == "Task" || changeType === "Product Backlog Item") {
         return "Feature";
-    } else if (changeType === "RDBug") {
+    } else if (changeType === "RDBug" || changeType == "Bug") {
         return "Bug Fix";
     } else {
         return changeType;
     }
+}
+
+function getWorkItemUrl(changeType) {
+    // We assume that if the change type starts with "RD" then its from VSTFRD, else its from MSAZURE.  While not perfect, this should catch most cases
+    return changeType.startsWith("RD") ? vstfrdWorkItemUrl : msazureWorkItemUrl
 }
 
 /**
