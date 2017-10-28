@@ -1,4 +1,16 @@
-# Release Notes since 6/27/2017
+# Release Notes since 6/28/2017
+
+## 5.0.302.880
+0 Breaking Changes, 0 Features added and 0 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=1650452'>1650452</a></td><td>Bug</td><td>[BulkCommands] All resources Delete bulk command should not delete disks for classic VMs</td></tr></table>
+
+## 5.0.302.879
+0 Breaking Changes, 0 Features added and 0 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=1645021'>1645021</a></td><td>Bug</td><td>[BulkCommands] For classinc VM delete don't delete the hard disks.</td></tr></table>
+
+## 5.0.302.878
+0 Breaking Changes, 0 Features added and 0 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=1570341'>1570341</a></td><td>Task</td><td>[MonitorChart] Enable batching everywhere</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=1554451'>1554451</a></td><td>Product Backlog Item</td><td>Enable Coadmins feature flag in Ibiza FF and MC - config changes</td></tr></table>
 
 ## 5.0.302.877
 0 Breaking Changes, 0 Features added and 0 Bugs Fixed
