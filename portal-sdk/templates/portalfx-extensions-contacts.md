@@ -19,6 +19,7 @@ If the information is not current, please send a pull request to update the docu
  |  | Guy Burstein |
 | Azure Compliance  | 	Azure Compliance team |
 | Fx Coverage 	  | Amit Modi |
+| | ibiza-onboading-kickoff@microsoft.com | 
 | Localization   | 	Lynne Dong |
 | Onboarding kickoff  | 	Leon Welicki |
 |   | Adam Abdelhamed |
@@ -29,6 +30,7 @@ If the information is not current, please send a pull request to update the docu
 | Performance   | 	Sean Watson |
 | Reliability  | 	Sean Watson |
 | Usability	  | Angela Moulden |
+| UX feasibility review | ibiza-onboading-kickoff@microsoft.com | 
 | Accessibility	  | Paymon Parsadmehr |
 | Create success  | 	Paymon Parsadmehr |
 | Resource Move  | 	Edison Park |

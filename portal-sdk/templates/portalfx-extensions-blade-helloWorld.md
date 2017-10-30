@@ -3,10 +3,10 @@
 
 <!-- link to this document is [portalfx-extensions-blade-helloWorld.md]()
 -->
-
+<!-- TODO:  Is it preferred to have revisions at the top of the document or the bottom of the document? -->
 ## Revisions
 
- [portalfx-extensions-blade-helloWorld-revisions.md](portalfx-extensions-blade-helloWorld-revisions.md)
+[portalfx-extensions-blade-helloWorld-revisions.md](portalfx-extensions-blade-helloWorld-revisions.md)
 
 ## Introduction
 

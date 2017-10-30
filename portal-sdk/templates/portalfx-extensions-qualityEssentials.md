@@ -25,4 +25,4 @@ Global Readiness	|    | 	Localizability, regional format, text support, China GB
 Privacy	| | 	User settings data handling, encryption, and authentication
 SDL	| | 	Threat modeling
 
-For more information and any questions about Fx coverage, contact ibiza-onboading-kick@microsoft.com.
+For more information and any questions about Fx coverage, reach out to the Fx Coverage contact that is located in [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md).

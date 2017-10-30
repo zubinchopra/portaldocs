@@ -7,3 +7,4 @@
 
 [How do I use SSL certs?](portalfx-extensions-faq-forDevelopers.md#sslCerts)
 
+[How do I load different versions of an extension?](portalfx-extensions-configuration-overview.md#configuration-selection)

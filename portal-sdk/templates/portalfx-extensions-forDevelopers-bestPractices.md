@@ -3,7 +3,9 @@
 -->
 
 ## Best Practices
-There are patterns or architectures that are recommended for every extension based on customer feedback and usability studies, but they are not required. Those patterns are included in the Best Practices section of the documentation for the blade that is being developed.
+There are patterns or architectures that are recommended for every extension based on customer feedback and usability studies, but they are not required. Those patterns are included in the Best Practices section of the documentation for the blade that is being developed. For more information, see [portalfx-blades-best-practices.md](portalfx-blades-best-practices.md).
 
 ### Performance Best Practices
-[https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/index-portalfx-extension-monitor.md#performance-best-practices](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/index-portalfx-extension-monitor.md#performance-best-practices)
+
+There are practices that can improve the performance of your extension.  For more information, see 
+[index-portalfx-extension-monitor.md#performance-best-practices](index-portalfx-extension-monitor.md#performance-best-practices).

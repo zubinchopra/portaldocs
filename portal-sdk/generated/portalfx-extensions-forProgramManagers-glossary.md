@@ -11,6 +11,7 @@ This document should remain identical to the glossary in portal-extensions-forDe
  | --- | ---|
 | .Net | A software framework developed by Microsoft that runs primarily on Microsoft Windows. | 
 | 1CS | One Compliance System  | 
+| above the fold | the portion of the webpage that is visible without scrolling  | 
 | API | Application Programming Interface  |
 | ARM | Azure Resource Manager |
 | Blade reveal time | The time it takes for all the parts above the fold to call ```revealContent()```, to load first-level data, or to resolve ```onInputSet()``` promises, whichever is earlier. |
@@ -31,7 +32,6 @@ This document should remain identical to the glossary in portal-extensions-forDe
 | GB Standard |  | 
 | Marketplace |  | 
 | MPAC | Internal Microsoft Environment portal instance (ms.portal.azure.com) | 
-| P0 scenarios | the most important user scenarios for an extension |
 | PHP | recursive acronym for PHP: Hypertext Preprocessor | 
 | PM | Portfolio Manager | 
 | PM | Program Manager | 

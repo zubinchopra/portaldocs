@@ -49,11 +49,14 @@ To become an Azure Portal developer, you need to perform the following tasks.
     --- | --- 
     Guidance for Program Managers and Dev Leads	 | Portal Extensions for Program Managers, located at [portalfx-extensions-forProgramManagers.md](portalfx-extensions-forProgramManagers.md)
     Private Preview, Public Preview, and GA  |	Portal Extension Development Phases, located at  [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md)
-    How it Works	 | How Extensions Work, located at [https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/index-portalfx-extension-development.md#getting-started](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/index-portalfx-extension-development.md#getting-started)
+    How it Works	 | Getting Started, located at [https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/index-portalfx-extension-development.md#getting-started](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/index-portalfx-extension-development.md#getting-started)
     Build an empty extension  |	Creating An Extension, located at [https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-creating-extensions.md#getting-started-with-the-portal-sdk](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-creating-extensions.md#getting-started-with-the-portal-sdk)
     Experiment with sample code	| Sample Extensions, located at [https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-sample-extensions.md#samples-extension](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-sample-extensions.md#samples-extension)
 
-1.	When you are ready to build the actual extension, you must also schedule a UX feasibility review. This allows time to time to review the design and ensure that the desired outcome is feasible. You can schedule this review by reaching out to ibiza-onboading-kickoff@microsoft.com and including “Extension Feasibility Review” in the subject line of the e-mail.
+1.	When you are ready to build the actual extension, you must also schedule a UX feasibility review. This allows time to review the design and ensure that the desired outcome is feasible. You can schedule this review by reaching out to the Ibiza team UX Feasibility Review contact that is located in [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md). Remember to include “Extension Feasibility Review” in the subject line of the e-mail.
+<!-- previously read
+ to ibiza-onboading-kickoff@microsoft.com and including “Extension Feasibility Review” in the subject line of the e-mail.
+-->
 1.	If the extension requires additional built-in support for standard Graph or ARM APIs, you can submit a partner request at the site located at [https://feedback.azure.com/forums/594979-ibiza-partners](https://feedback.azure.com/forums/594979-ibiza-partners).
 1. Complete the development and unit testing of the extension.
 1.	When you build the extension, you should also side-load it for local testing. Side-loading allows you to test and debug your extension locally against any environment. This is the preferred method of testing. For more information about side-loading, see [https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/index-portalfx-extension-development.md#debugging-testing-in-production](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/index-portalfx-extension-development.md#debugging-testing-in-production).
@@ -69,11 +72,11 @@ To become an Azure Portal developer, you need to perform the following tasks.
 1. 	Integrate your extension into the Marketplace. 
 In the following images, each icon in the Azure Portal Marketplace is referred to as a Gallery item. Gallery items take the form of a file with the .azpkg extension. You can think of this file as a zip which contains all assets for your gallery item: icons, screenshots, descriptions.
 
-    ![alt-text](../media/portalfx-extensions-AzurePortalMarketPlace.png "Azure Portal Marketplace")
+    ![alt-text](../media/portalfx-extensions/azurePortalMarketPlace.png "Azure Portal Marketplace")
 
     * **PROD:** The Marketplace team accepts fully finished .azkpg files from your team and performs upload to Production To onboard your gallery package, send the following email to 1store@microsoft.com.  The subject line should contain “Marketplace Onboarding Request” and the *.azpkg file should be attached to the email, as in the following image.
 
-        ![alt-text](../media/portalfx-extensions-marketplaceOnboardingRequest.png "Marketplace Onboarding Request")
+        ![alt-text](../media/portalfx-extensions/marketplaceOnboardingRequest.png "Marketplace Onboarding Request")
 
     * **DOGFOOD:** Use AzureGallery.exe to upload items to DOGFOOD using the following command:
 
@@ -88,7 +91,7 @@ In the following images, each icon in the Azure Portal Marketplace is referred t
 
     * The request to register your extension, for internal applications, is located at                   . It should be completed and emailed to ibizafxpm@microsoft.com, with the phrase ‘Register extension’ in the subject line. You'll automatically be notified when the configuration change is pushed to PROD. External teams can submit their request by sending an  email that resembles the following image.
 
-        ![alt-text](../media/portalfx-extensions-registrationRequest.png "Extension Registration Onboarding Request")
+        ![alt-text](../media/portalfx-extensions/registrationRequest.png "Extension Registration Onboarding Request")
  
 
     * Once deployed to DOGFOOD (DF), contact the Fx team to request that they enable the extension, if applicable. Every extension must meet required exit criteria / quality metrics before it will be enabled. Your extension will be enabled in production once all exit criteria have been met.
@@ -99,7 +102,7 @@ In the following images, each icon in the Azure Portal Marketplace is referred t
 
 
 
-    * Extension URLs must use a standard CNAME pattern. For more information about CNAMES, see [portalfx-extensions-cname-patterns.md](portalfx-extensions-cname-patterns.md).
+    * Extension URLs must use a standard CNAME pattern. For more information about CNAMES, see [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md).
 
     * Use a wildcard SSL cert for each environment to simplify maintenance, for example,   ``` *.{extension}.onecloud-ext.azure-test.net  ``` or  ``` *.{extension}.ext.azure.com) ``` . 
    To simplify overall management when your team is building separate, independent extensions, you can also use  ``` {extension}.{team}.ext.azure.com ``` and create a wildcard SSL cert for  ``` *.{team}.ext.azure.com ```. Internal teams can create SSL certs for DogFood using the SSL Administration Web page that is located at [http://ssladmin](http://ssladmin). 

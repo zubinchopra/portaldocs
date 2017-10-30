@@ -20,15 +20,15 @@
 
 1. The platform will side-load your application into the production portal. If the  browser displays the message 'Server Error in '/' Application' instead, it is likely that the NuGet packages are not yet associated with Visual Studio. The Visual Studio Error List dialog may display the error message that is in the following image.
 
-    ![alt-text](../media/portalfx-extensions-NuGetPackagesMissing.png "Missing NuGet Packages")
+    ![alt-text](../media/portalfx-extensions/nuGetPackagesMissing.png "Missing NuGet Packages")
 
     If this message is displayed, the missing packages can be installed by using the Nuget Package Manager. The Package Manager can be started by selecting Tools  -> Nuget Package Manager -> Package Manager Console, as in the following image.
 
-     ![alt-text](../media/portalfx-extensions-NugetPackageManagerConsole.png "Nuget Package Manager Console")
+     ![alt-text](../media/portalfx-extensions/nugetPackageManagerConsole.png "Nuget Package Manager Console")
 
      When the Package Manager console is  displayed, click on the Restore button that is associated with the error, as in the following image.
      
-     ![alt-text](../media/portalfx-extensions-NugetPackageManagerRestore.png "Nuget Package Manager Restore")
+     ![alt-text](../media/portalfx-extensions/nugetPackageManagerRestore.png "Nuget Package Manager Restore")
 
     Click on the F5 button to rebuild the application. When the build is successful, Visual Studio will proceed to the next step and side-load your application into the production portal.
 

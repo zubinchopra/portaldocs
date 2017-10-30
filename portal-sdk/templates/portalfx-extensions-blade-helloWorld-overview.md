@@ -7,18 +7,18 @@
 ## Conceptual Overview
 
 Use the following steps to develop a blade.
-1.	 You and your team will determine the types of blades that can be grouped together.  Decide on a name for this group, or area.  In this example, the area for blades is named ```Greetings```, and the blade that is being developed is named ```Aloha```. Remember to remove the angle brackets when substituting the name of the group for the parameter name <AreaName>.
+1.	 You and your team will determine the types of blades that can be grouped together.  Decide on a name for this group, or area.  In this example, the area for blades is named ```Greetings```, and the blade that is being developed is named ```Aloha```. Remember to remove the angle brackets when substituting the name of the group for the parameter name ```<AreaName>```.
 1.	Add a folder for the group of blades within the ```Client``` folder of the project. It should be named the same as the area.
 
-    ![alt-text](../media/portalfx-extensions-AreaFolder.png "Azure Portal Marketplace")
+    ![alt-text](../media/portalfx-extensions/areaFolder.png "Azure Portal Marketplace")
 
-1.	Add a file for the blade you are developing to the folder. The file should be named the same as the blade.
+1.	Add a file for the blade you are developing to the folder. The file should be named the same as the blade. In the following image, the name of the blade is ```Aloha```.
 
-    ![alt-text](../media/portalfx-extensions-AreaBladeFile.png "Azure Portal Marketplace")
+    ![alt-text](../media/portalfx-extensions/areaBladeFile.png "Azure Portal Marketplace")
 
 1.	Also add a file that describes the area to the area folder.  The name of the file should be the name of the group, concatenated with the word ‘Area’. 
 
-    ![alt-text](../media/portalfx-extensions-AreaGroupFile.png "Azure Portal Marketplace")
+    ![alt-text](../media/portalfx-extensions/areaGroupFile.png "Azure Portal Marketplace")
 
 1.	Within the file that was just created, add the following code.
 
@@ -61,12 +61,14 @@ Use the following steps to develop a blade.
 
         public onInitialize()
         {
-        // run any initialization code you need here
-        return Q();   // if you load data then return a loading promise here
+        // initialization code should be inserted here
+           return Q();   // if you load data then return a loading promise here
         }
     ```
 
 1.	 The blade can now be compiled. 
+
+        NOTE:  The blade title in the browser is not the same as the blade name as displayed in Visual Studio.
 
 1.	Test the new blade by using a link in the following format in the address bar of the browser.
 
@@ -86,22 +88,22 @@ Use the following steps to develop a blade.
 
     One example is as follows.
     ```
-    https://portal.azure.com#blade/HelloWorld6/Aloha 
+    https://portal.azure.com#blade/HelloWorld/Aloha 
     ```
 
     Keep in mind that there may be parameters to pass to Azure that affect the loading of the portal.  In the following case, the parameters are included in the URL previous to the name of the blade.
 
     ```
-    https://portal.azure.com/?feature.customportal=false&feature.canmodifyextensions=true#blade/HelloWorld6/Aloha
+    https://portal.azure.com/?feature.customportal=false&feature.canmodifyextensions=true#blade/HelloWorld/Aloha
     ```
 
     Also, test extensions may be added to the URI after the name of the blade that was just added, as in the following example.
 
     ```
-    https://portal.azure.com/?feature.customportal=false&feature.canmodifyextensions=true#blade/HelloWorld6/Aloha?testExtensions={"HelloWorld6":"https://localhost:44300/"}
+    https://portal.azure.com/?feature.customportal=false&feature.canmodifyextensions=true#blade/HelloWorld/Aloha?testExtensions={"HelloWorld":"https://localhost:44300/"}
     ```
 
-    When the site is properly accessed, the blade from this example should resemble the following inmage.
+    When the site is properly accessed, the blade from this example should resemble the following image.
 
-    ![alt-text](../media/portalfx-extensions-HelloWorldExtensionAlohaBlade.png "Azure Portal Marketplace")
+    ![alt-text](../media/portalfx-extensions/helloWorldExtensionAlohaBlade.png "Azure Portal Marketplace")
 

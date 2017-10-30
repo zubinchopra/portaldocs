@@ -5,15 +5,17 @@
 -->
 
 ## Glossary
+| Term | Meaning | 
+| --- | --- |
 
-area
+| area | Group of blades that are associated with a similar function.  |
 
-blade
+| blade |  |
 
-extension
+| extension | |
 
-framework
+| framework |  |
 
-SDK Software Development Kit
+| SDK | Software Development Kit |
 
-UX User experience
+| UX | User experience |
