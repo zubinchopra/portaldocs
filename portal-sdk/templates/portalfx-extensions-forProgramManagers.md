@@ -4,32 +4,28 @@
 
 # Portal Extensions for Program Managers
 
-[Revisions](portalfx-extensions-forProgramManagers-revisions.md)
+1.  [Revisions](portalfx-extensions-forProgramManagers-revisions.md)
 
-[Audience](portalfx-extensions-forProgramManagers-audience.md)
+1.  [Introduction](portalfx-extensions-forProgramManagers-intro.md)
 
-[Introduction](portalfx-extensions-forProgramManagers-intro.md)
+1.  [Requirements for Azure Services](portalfx-extensions-requirements.md)
 
-[Requirements for Azure Services](portalfx-extensions-requirements.md)
+1.  [Communication](portalfx-extensions-forProgramManagers-communication.md)
+   
+1.  [Conceptual Overview](portalfx-extensions-forProgramManagers-overview.md)
+  
+1.  [Development Phases](portalfx-extensions-developmentPhases.md)
+  
+1.  [Managing Development](portalfx-extensions-forProgramManagers-managingDevelopment.md)
+  
+1.  [Exit Criteria and Quality Metrics](portalfx-extensions-forProgramManagers-exitCriteria.md)
+  
+1.  [Best Practices](portalfx-extensions-forProgramManagers-bestPractices.md)
+   
+1.  [StackOverFlow Forums](portalfx-extensions-stackoverflow.md)
 
-[Communication](portalfx-extensions-forProgramManagers-communication.md)
+1.  [FAQs for Program Managers](portalfx-extensions-faq-forProgramManagers.md)
+  
+1.  [Contacts](portalfx-extensions-contacts.md)
+  
 
-[Conceptual Overview](portalfx-extensions-forProgramManagers-overview.md)
-
-[Development Phases](portalfx-extensions-developmentPhases.md)
-
-[Managing Development](portalfx-extensions-forProgramManagers-managingDevelopment.md)
-
-[Exit Criteria and Quality Metrics](portalfx-extensions-forProgramManagers-exitCriteria.md)
-
-[Best Practices](portalfx-extensions-forProgramManagers-bestPractices.md)
-
-[StackOverFlow Forums](portalfx-extensions-stackoverflow.md)
-
-[FAQs](portalfx-extensions-faq-forProgramManagers.md)
-
-[Glossary](portalfx-extensions-forProgramManagers-glossary.md)
-
-[Contacts](portalfx-extensions-contacts.md)
-
-[References](portalfx-extensions-forProgramManagers-references.md)

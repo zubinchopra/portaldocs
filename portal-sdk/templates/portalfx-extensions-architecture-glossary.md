@@ -15,5 +15,6 @@
 | UI | User Interface |
 | UX | User Experience |
 | Live tile | An object that displays information that are useful at a glance without opening an app. |
-| Single page application |  A web application or web site that interacts with the user by dynamically rewriting the current page rather than loading entire new pages from a server | 
 | SDK | Software Development Kit |
+| Single page application |  A web application or web site that interacts with the user by dynamically rewriting the current page rather than loading entire new pages from a server | 
+

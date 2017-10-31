@@ -4,28 +4,40 @@
 -->
 
 # Portal Extensions for Developers
-[Revisions](portalfx-extensions-forDevelopers-revisions.md)
 
-[Audience](portalfx-extensions-forDevelopers-audience.md)
 
-[Introduction](portalfx-extensions-forDevelopers-intro.md)
+1. [Revisions](portalfx-extensions-forDevelopers-revisions.md)
+    <!-- TODO: Should the audience document be combined with the introduction document? -->
 
-[Requirements for Azure Services](portalfx-extensions-requirements.md)
+1. [Audience](portalfx-extensions-forDevelopers-audience.md)
 
-[Quality Essentials](portalfx-extensions-qualityEssentials.md)
+1. [Introduction](portalfx-extensions-forDevelopers-intro.md)
 
-[Conceptual Overview](portalfx-extensions-forDevelopers-overview.md)
+1. [Requirements for Azure Services](portalfx-extensions-requirements.md)
 
-[Development Procedures](portalfx-extensions-forDevelopers-procedures.md)
+1. [Quality Essentials](portalfx-extensions-qualityEssentials.md)
 
-[Best Practices](portalfx-extensions-forDevelopers-bestPractices.md)
+1. [Conceptual Overview](portalfx-extensions-forDevelopers-overview.md)
 
-[StackOverFlow Forums](portalfx-extensions-stackoverflow.md)
+1. [Development Phases](portalfx-extensions-developmentPhases.md)
+  
+1. [Development Procedures](portalfx-extensions-forDevelopers-procedures.md)
 
-[FAQs](portalfx-extensions-faq-forDevelopers.md)
+1. [Exit Criteria and Quality Metrics](portalfx-extensions-forDevelopers-exitCriteria.md)
 
-[Glossary](portalfx-extensions-forDevelopers-glossary.md)
+1. [Best Practices](portalfx-extensions-forDevelopers-bestPractices.md)
 
-[Contacts](portalfx-extensions-contacts.md)
+1. [StackOverFlow Forums](portalfx-extensions-stackoverflow.md)
 
-[References](portalfx-extensions-forDevelopers-references.md)
+1. [FAQs](portalfx-extensions-faq-forDevelopers.md)
+
+
+    <!--  TODO:  Should the glossary document be combined with the introduction document? -->
+
+1. [Glossary](portalfx-extensions-forDevelopers-glossary.md)
+
+1. [Contacts](portalfx-extensions-contacts.md)
+
+
+    <!--  TODO: Should the references document be combined with the introduction document? -->
+1. [References](portalfx-extensions-forDevelopers-references.md)

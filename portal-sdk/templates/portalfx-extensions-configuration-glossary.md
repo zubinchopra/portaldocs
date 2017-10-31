@@ -14,6 +14,7 @@
  | FF  | FairFax |
  | flighting  | |
  | GA | Global Availability |
+ | iframe | an inline frame, used to embed another document within the current HTML document. |
  | MC | Mooncake |
  | MPAC | Internal Microsoft Environment portal instance (ms.portal.azure.com) | 
  | PCV1  |  |

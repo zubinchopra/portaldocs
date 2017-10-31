@@ -2,6 +2,11 @@
 <!-- link to this document is [portalfx-extensions-forProgramManagers-intro.md]()
 -->
 
+## Audience
+
+This document is intended for Developer Leads and Project Managers whose teams will be interacting with the Azure Portal and its teams.
+
+
 ## Introduction
 
 Welcome to the Azure portal! We're excited to have you to join the family.
@@ -25,3 +30,7 @@ Compliance criteria and practices are defined in [Quality Essentials](https://mi
 To meet customer expectations and continue to increase customer satisfaction, several quality metrics are tracked for every extension.
 
 Nearly 70% of Azure users are from outside of the United States. Therefore, it is important to make Azure a globalized product. There are a few Internationalization requirements that your service is required to support. This is the same set of languages that are supported by Azure Portal for GA. For more information about internationalization requirements, see [http://aka.ms/azureintlrequirements](http://aka.ms/azureintlrequirements). 
+
+1. [Glossary](portalfx-extensions-forProgramManagers-glossary.md)
+
+1. [References](portalfx-extensions-forProgramManagers-references.md)

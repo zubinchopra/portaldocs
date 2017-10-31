@@ -11,7 +11,7 @@ When a user visits the Azure portal, extensions will be loaded based on the user
 
 The Azure portal architecture is displayed in the following image.
 
- ![alt-text](../media/portalfx-deployment/deployment.png  "APortal Extension Architecture")
+ ![alt-text](../media/portalfx-deployment/deployment.png  "Portal Extension Architecture")
 
 ## Understanding the Extension Architecture
 
