@@ -10,12 +10,12 @@ These documents are for internal teams that want to build an extension for the A
 ## What's new?
 * [No-PDL Blades](portalfx-no-pdl-programming.md#defining-blades-and-parts-using-typescript-decorators-aka-no-pdl) - *Reduces the number of files and concepts to build UI*
 * [Forms without edit scope](portalfx-editscopeless-forms.md) - *More intuitive APIs for building forms*
-* [Editable Grid V2](TBD) - *Improved APIs designed to work with new forms*
+* Editable Grid V2 - *Improved APIs designed to work with new forms*
 * [Extension Avialability Alerts](portalfx-telemetry-alerting.md#alerting) - *Get notified if your extension goes down*
-* [Actionable Notifications](TBD) - *Point users to well known next steps*
+* Actionable Notifications - *Point users to well known next steps*
 * [EV2 support for the Extension Hosting Service](portalfx-extension-hosting-service-advanced.md#advanced-section) - *Nuff said*
 * [Multi-Column for Essentials Controls](portalfx-controls-essentials.md) - *Better use of screen real estate*
-* [TreeView improvements](TBD) - *Checkboxes, commands, and Load More / Virtualization*
+* TreeView improvements - *Checkboxes, commands, and Load More / Virtualization*
 
 ## Getting Started
 * [Downloading and Installing the SDK](downloads.md)
@@ -94,7 +94,7 @@ These documents are for internal teams that want to build an extension for the A
 ### [Blade/Part reuse across extensions]
     * [Making Blades/Parts reusable by other extensions](portalfx-extension-sharing-pde.md)
     * [Reusing Blades/Parts from other extensions](portalfx-integrating-with-other-extensions.md)
-    * [RPC](portalfx-rpc.md#remote-procedure-calls-rpc)  // TOD: Find Home
+    * [RPC](portalfx-rpc.md#remote-procedure-calls-rpc)  // TODO: Find Home
 
 ### Blades
 #### [Type of Blades](portalfx-blades.md#blades)
