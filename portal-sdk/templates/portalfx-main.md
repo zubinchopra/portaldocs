@@ -6,7 +6,6 @@
 
 Azure portal extension development is supported on the Microsoft Windows 8, Windows Server 2012 R2, and Windows 10.
 
-:bulb: **Productivity Tip:** Install Chrome http://google.com/dir so that you can levrage the debugger tools while developing your extension.
 
 ### 1.1 Installation
 
