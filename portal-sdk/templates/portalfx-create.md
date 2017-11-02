@@ -173,30 +173,30 @@ locationDropDown.value(locationDropDown.fetchedValues().first((value)=> value.na
 ```ts
 import * as SubscriptionDropDown from "Fx/Controls/SubscriptionDropDown";
 ```
-{"gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#subscriptionDropDown"}
+{"gitdown": "include-section", "file": "../../../src/SDK/devkit/VS/TB/PT/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#subscriptionDropDown"}
 
 #### Resource groups dropdown
 ```ts
 import * as ResourceGroupDropDown from "Fx/Controls/ResourceGroupDropDown";
 ```
-{"gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
+{"gitdown": "include-section", "file": "../../../src/SDK/devkit/VS/TB/PT/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
 #### Locations dropdown
 ```ts
 import * as LocationDropDown from "Fx/Controls/LocationDropDown";
 ```
-{"gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#locationDropDown"}
+{"gitdown": "include-section", "file": "../../../src/SDK/devkit/VS/TB/PT/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#locationDropDown"}
 
 ### ARM dropdown options
 Each ARM dropdown can disable, hide, group, and sort.
  
 #### Disable
 This is the preferred method of disallowing the user to select a value from ARM. The disable callback will run for each fetched value from ARM. The return value of your callback will be a reason for why the value is disabled. If no reason is provided, then the value will not be disabled. This is to ensure the customer has information about why they can’t select an option, and reduces support calls.
-{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#disable"}
+{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Resource.test.ts", "section": "config#disable"}
 When disabling, the values will be displayed in groups with the reason they are disabled as the group header. Disabled groups will be placed at the bottom of the dropdown list.
  
 #### Hide
 This is an alternative method of disallowing the user to select a value from ARM. The hide callback will run for each fetched value from ARM. The return value of your callback will return a boolean for if the value should be hidden. If you choose to hide, a message telling the user why some values are hidden is required.
-{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#hide"}
+{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Resource.test.ts", "section": "config#hide"}
 
 ##### Note on Hide
 It's recommended to use the `disable` option so you can provide scenario-specific detail as to why a given dropdown value is disabled, and customers will be able to see that their specific desired value is not available. Disabling is preferable to hiding, as users often react negatively when they cannot visually locate their expected dropdown value.  In extreme cases, this can trigger incidents with your Blade.
@@ -206,14 +206,14 @@ This is a way for you to group values in the dropdown. The group callback will t
  
 If you want to sort the groups (not the values within the group), you can supply the 'sort' option, which should be a conventional comparator function that determines the sort order by returning a number greater or less than zero. It defaults to alphabetical sorting.
  
-{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#group"}
+{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Resource.test.ts", "section": "config#group"}
  
 If you both disable and group, values which are disabled will be placed under the disabled group rather than the grouping provided in this callback.
  
 #### Sort
 If you want to sort values in the dropdown, supply the 'sort' option, which should be a convention comparator function that returns a number greater or less than zero. It defaults to alphabetical based on the display string of the value.
  
-{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#sort"}
+{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Resource.test.ts", "section": "config#sort"}
  
 If you sort and use disable or group functionality, this will sort inside of the groups provided.
 

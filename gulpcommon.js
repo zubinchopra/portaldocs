@@ -272,7 +272,9 @@ var self = module.exports = {
                 "technet.microsoft.com/en-us/library/cc730629(v=ws.10", // Bug in url extractor where its not capturing the entire url
                 "www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot;&gt;", // Bug in url extractor where it captured extra characters after the url
                 "&#x6d;", // html encoding for mailto: some reason there are multiple encodings
-                "&#109;" // html encoding for mailto: some reason there are multiple encodings
+                "&#109;", // html encoding for mailto: some reason there are multiple encodings
+                "\\\\products\\public\\PRODUCTS\\Developers\\Visual Studio 2015\\Enterprise 2015.3", // internal network share
+                "idwebelements", // internal
             ];
             
             var count = 0;

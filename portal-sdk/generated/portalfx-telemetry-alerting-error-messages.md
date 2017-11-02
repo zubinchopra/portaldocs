@@ -179,7 +179,7 @@ Currently error alerts run every 30 minutes assessing the previous 90 minute of 
 
     - This can be done by manually editing the error JSON file.
 
-1.	Fill out the following work item [https://aka.ms/portalfx/alerting-onboarding][alerting-onboarding]
+1.	Fill out the following work item [https://aka.ms/portalfx/alerting-onboarding][alerting-onboarding] and attach configuration JSON
 1.	Set up correlation rules in ICM
 
 

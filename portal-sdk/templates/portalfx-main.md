@@ -36,7 +36,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 ### 1.4 Extension development resources
 
 * [Start Onboarding]
-* [Subscribe to announcements]()
+* Subscribe to announcements
 * [Update your team's contact information]
 * [Samples Extension](portalfx-sample-extensions.md)
 * [Understand what it takes to build great extension](portalfx-onboarding-exitcriteria.md#exit-criteria-quality-metrics)
@@ -81,12 +81,12 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 * [No-PDL Blades](portalfx-no-pdl-programming.md#defining-blades-and-parts-using-typescript-decorators-aka-no-pdl) - *Reduces the number of files and concepts to build UI*
 * [Forms without edit scope](portalfx-editscopeless-forms.md) - *More intuitive APIs for building forms*
-* [Editable Grid V2](TBD) - *Improved APIs designed to work with new forms*
+* Editable Grid V2 - *Improved APIs designed to work with new forms*
 * [Extension Avialability Alerts](portalfx-telemetry-alerting.md#alerting) - *Get notified if your extension goes down*
-* [Actionable Notifications](TBD) - *Point users to well known next steps*
+* Actionable Notifications - *Point users to well known next steps*
 * [EV2 support for the Extension Hosting Service](portalfx-extension-hosting-service-advanced.md#advanced-section) - *Nuff said*
 * [Multi-Column for Essentials Controls](portalfx-controls-essentials.md) - *Better use of screen real estate*
-* [TreeView improvements](TBD) - *Checkboxes, commands, and Load More / Virtualization*
+* TreeView improvements - *Checkboxes, commands, and Load More / Virtualization*
 </details>
 
 
@@ -97,8 +97,8 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Upgrade policy](portalfx-deploy.md#3-understand-extension-runtime-compatibility)
 * SDK Update alerts(Coming Soon....)
 * [Updating the NuGet packages](portalfx-nuget-overview.md)
-* [Updating the C# test framework](TBD)
-* [Updating the msportalfx-test framework](TBD)
+* Updating the C# test framework
+* Updating the msportalfx-test framework
 </details>
 
 <details>
@@ -141,7 +141,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [What is an extension?](portalfx-howitworks.md#how-extensions-work)
 * [Ui Concepts](portalfx-ui-concepts.md#ui-concepts)
 * [Extension lifecycle](portalfx-howitworks.md#how-the-portal-works)
-* [Cross-extension UX integration] (TBD)
+* Cross-extension UX integration
 
 
 ## Extension lifecycle
@@ -182,8 +182,8 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 * How/when are Blades/Parts invoked?  How can I get my Blade/Part in front of more users?
 * [Blades]
-    * [Use 'container.openBlade(…)' to open my Blade](portalfx-blades-opening.md)
-    * [Work with other teams to have other extensions call 'container.openBlade(…)' to open my Blade](portalfx-blades-opening.md#importing-the-pde-file)
+    * [Use 'container.openBlade(...)' to open my Blade](portalfx-blades-opening.md)
+    * [Work with other teams to have other extensions call 'container.openBlade(...)' to open my Blade](portalfx-blades-opening.md#importing-the-pde-file)
     * Associate my Blade with an <AssetType> so it is opened from Browse
     * [Add my Blade as an entry in a Resource Blade or a Menu Blade]
         * [No-PDL](portalfx-no-pdl.md#building-a-menu-blade-using-decorators)
@@ -204,7 +204,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 ### [Blade/Part reuse across extensions]
     * [Making Blades/Parts reusable by other extensions](portalfx-extension-sharing-pde.md)
     * [Reusing Blades/Parts from other extensions](portalfx-integrating-with-other-extensions.md)
-    * [RPC](portalfx-rpc.md#remote-procedure-calls-rpc)  // TOD: Find Home
+    * [RPC](portalfx-rpc.md#remote-procedure-calls-rpc)  // TODO: Find Home
             
 #### Developing my Blade
 * [Reference "TemplateBlade/Blade" doc re: developing content for my Blade
@@ -329,7 +329,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Spec Picker Blade](portalfx-extension-pricing-tier.md)
 * [Subscription Dropdown](portalfx-create.md#subscriptions-dropdown-1)
 * [Resource Group dropdown](portalfx-create.md#resource-groups-legacy-dropdown)
-* [Location dropdown](/portalfx-create.md#locations-legacy-dropdown)
+* [Location dropdown](portalfx-create.md#locations-legacy-dropdown)
 * [Pricing Dropdown](portalfx-create.md#pricing-dropdown)
 
 ## Forms
@@ -337,7 +337,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Building UI for Form](portalfx-forms.md#laying-out-your-ui-on-the-blade)
 * [Submit Style UI]
     * [Save/ Cancel Button](portalfx-editscopeless-forms.md#other-css-classes-that-can-be-useful)
-    * [Legacy Action Bar] (portalfx-fxcontrols-editscope-forms.md)
+    * [Legacy Action Bar](portalfx-fxcontrols-editscope-forms.md)
 * [Prompt user to Save/Discard changes](portalfx-editscopeless-forms.md#customizing-alert-on-form-close)
 * [EditScopeless Forms](portalfx-editscopeless-forms.md)
 * [Legacy Editscope based Forms](portalfx-forms.md)

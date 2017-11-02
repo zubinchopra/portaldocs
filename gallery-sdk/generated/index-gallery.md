@@ -389,7 +389,7 @@ For preview packages the convention in the portal is to use a version such as: `
 For placeholder package you should use a version such as `0.1.0-placeholder`.
 
 
-[gallery-ui-examples](gallery-ui-examples.md)
+[gallery-ui-examples](#gallery-item-field-to-ui-element-mappings)
 
 
 <properties title="" pageTitle="Marketplace Search" description="" authors="aawest" />

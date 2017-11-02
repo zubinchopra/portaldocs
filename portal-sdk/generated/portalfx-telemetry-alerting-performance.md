@@ -67,13 +67,14 @@ Per each of those, you can define a set of criteria like the below.
 
 > Only blade or part are required to have a bladeName or partName property.
 
+<a name="what-is-environment" />
 <a name="performance-configuration-what-is-environment"></a>
-### What is environment?
+### What is environment
 
-Environment can be "&ast;" or "portal.azure.com" or "ms.portal.azure.com" or "canary.portal.azure.com" or any other legit portal domain name. "&ast;" represents all Azure Portal Production environments(*.portal.azure.com).
+Environment can be `*` or `portal.azure.com` or `ms.portal.azure.com` or `canary.portal.azure.com` or any other legit portal domain name. `*` represents all Azure Portal Production environments `*.portal.azure.com`
 
 <a name="performance-configuration-what-is-performance-configuration"></a>
-### What is performance configuration?
+### What is performance configuration
 
 Performance configuration is an array of criteria to run against that environment, see below for further examples.
 
@@ -207,7 +208,7 @@ Currently performance alerts run every 5 minutes assessing the previous 90 minut
 
     - This can be done by either manually editing the performance JSON file or making use of [the tool][alerting-tool]  provided.
 
-1.	Fill out the following work item [https://aka.ms/portalfx/alerting-onboarding][alerting-onboarding]
+1.	Fill out the following work item [https://aka.ms/portalfx/alerting-onboarding][alerting-onboarding] and attach configuration JSON
 1.	Set up correlation rules in ICM
 
 
@@ -227,6 +228,15 @@ Currently performance alerts run every 5 minutes assessing the previous 90 minut
 | Performance - Extension | ExtensionLoadPerformance |
 | Performance - Blade | BladeLoadPerformance |
 | Performance - Part | PartLoadPerformance|
+
+<a name="performance-how-do-i-use-the-tool-alerting-tool"></a>
+## How do I use [the tool][alerting-tool]?
+1. Go to performance tab. The grid shows the baselines for on-boarded extensions. Click 'Get Recommended Baseline' button and choose the environment and the extension you want to onboard
+![Perf Main Window](../media/portalfx-telemetry/customToolPerfMainWindow.png)
+2. The performance partner window pops up. Give it a few seconds, it's getting the recommended baselines from Kusto. After the Recommended Baseline grid is populated, you can search by env, type, bladeOrPartName, or percentile. You can also sort on any columns. Once you decide the baselines you'd like to onboard, highlight them and click "Add Selected Rows(s).." button.
+
+3. The baselines are added to 'Baseline to Export' grid. You can search, sort or select rows and check/uncheck 'Enabled' checkboxes. Or Remove the baseline(s) from the grid. You can also change the grid cell value by single clicking the grid cell. Once the baseline values are determined, export it to a JSON by clicking 'Export Baseline to JSON' button.
+![Perf Partner Window](../media/portalfx-telemetry/customToolPerfPartnerWindow.png)
 
 <a name="performance-what-should-i-set-the-thresholds-at"></a>
 ## What should I set the thresholds at?

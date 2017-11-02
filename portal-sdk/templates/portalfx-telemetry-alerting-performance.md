@@ -65,11 +65,12 @@ Per each of those, you can define a set of criteria like the below.
 
 > Only blade or part are required to have a bladeName or partName property.
 
-### What is environment?
+<a name="what-is-environment" />
+### What is environment
 
-Environment can be "&ast;" or "portal.azure.com" or "ms.portal.azure.com" or "canary.portal.azure.com" or any other legit portal domain name. "&ast;" represents all Azure Portal Production environments(*.portal.azure.com).
+Environment can be `*` or `portal.azure.com` or `ms.portal.azure.com` or `canary.portal.azure.com` or any other legit portal domain name. `*` represents all Azure Portal Production environments `*.portal.azure.com`
 
-### What is performance configuration?
+### What is performance configuration
 
 Performance configuration is an array of criteria to run against that environment, see below for further examples.
 
