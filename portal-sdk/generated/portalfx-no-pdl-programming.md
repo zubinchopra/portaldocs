@@ -62,34 +62,28 @@ Here is an example of a very simple template blade, represented by a single TpeS
 ```typescript
 
 /// <reference path="../../../TypeReferences.d.ts" />
-import * as BladesArea from "../BladesArea";
 import * as ClientResources from "ClientResources";
 import * as TemplateBlade from "Fx/Composition/TemplateBlade";
-
-export = Main;
-
-module Main {
-"use strict";
+import * as BladesArea from "../BladesArea";
 
 //docs#DecoratorReference
 @TemplateBlade.Decorator({
-    htmlTemplate: "" +
-        "<div class='msportalfx-padding'>" +
-        "  <div>This is a Template Blade.</div>" +
-        "</div>",
+htmlTemplate: "" +
+    "<div class='msportalfx-padding'>" +
+    "  <div>This is a Template Blade.</div>" +
+    "</div>",
 })
 //docs#DecoratorReference
 export class SimpleTemplateBlade {
-    public title = ClientResources.simpleTemplateBlade;
-    public subtitle: string;
+public title = ClientResources.simpleTemplateBlade;
+public subtitle: string;
 
 //docs#Context
-    public context: TemplateBlade.Context<void, BladesArea.DataContext>;
+public context: TemplateBlade.Context<void, BladesArea.DataContext>;
 //docs#Context
 
-    public onInitialize() {
-        return Q();  // This sample loads no data.
-    }
+public onInitialize() {
+    return Q();  // This sample loads no data.
 }
 }
 
@@ -100,10 +94,10 @@ This is the decorator code.  There are several options that can be specified as 
 ```typescript
 
 @TemplateBlade.Decorator({
-    htmlTemplate: "" +
-        "<div class='msportalfx-padding'>" +
-        "  <div>This is a Template Blade.</div>" +
-        "</div>",
+htmlTemplate: "" +
+    "<div class='msportalfx-padding'>" +
+    "  <div>This is a Template Blade.</div>" +
+    "</div>",
 })
 
 ```

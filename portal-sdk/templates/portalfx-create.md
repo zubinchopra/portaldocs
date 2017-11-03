@@ -1,26 +1,5 @@
-﻿* [Building create experiences](#building-create-experiences)
-* [Building custom create forms](#building-custom-create-forms)
-    * [Create Marketplace package (aka Gallery package)](#building-custom-create-forms-create-marketplace-package-aka-gallery-package)
-    * [Design for a single blade](#building-custom-create-forms-design-for-a-single-blade)
-    * [Add a provider component](#building-custom-create-forms-add-a-provider-component)
-    * [Add a provisioner component](#building-custom-create-forms-add-a-provisioner-component)
-    * [Build your form](#building-custom-create-forms-build-your-form)
-    * [Standard ARM fields](#building-custom-create-forms-standard-arm-fields)
-    * [Setting the value](#building-custom-create-forms-setting-the-value)
-    * [Edit scopeless based accessible dropdowns](#building-custom-create-forms-edit-scopeless-based-accessible-dropdowns)
-    * [ARM dropdown options](#building-custom-create-forms-arm-dropdown-options)
-    * [Edit scope based accessible dropdowns](#building-custom-create-forms-edit-scope-based-accessible-dropdowns)
-    * [Migrating from legacy ARM dropdowns to Accessible versions](#building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions)
-    * [Validation](#building-custom-create-forms-validation)
-    * [Automation options](#building-custom-create-forms-automation-options)
-    * [Testing](#building-custom-create-forms-testing)
-    * [Feedback](#building-custom-create-forms-feedback)
-    * [Telemetry](#building-custom-create-forms-telemetry)
-    * [Troubleshooting](#building-custom-create-forms-troubleshooting)
-    * [Additional topics](#building-custom-create-forms-additional-topics)
+﻿{"gitdown": "contents"}
 
-
-<a name="building-create-experiences"></a>
 ## Building create experiences
 
 The Azure portal offers 3 ways to build a create form:
@@ -41,10 +20,8 @@ The Azure portal offers 3 ways to build a create form:
 
     These are fully customized forms built using TypeScript in an Azure portal extension. Most teams build custom create forms for full flexibility in the UI and validation. This requires developing an extension.
 
-<a name="building-custom-create-forms"></a>
 ## Building custom create forms
 
-<a name="building-custom-create-forms-create-marketplace-package-aka-gallery-package"></a>
 ### Create Marketplace package (aka Gallery package)
 The Marketplace provides a categorized collection of packages which can be created in the portal. Publishing your package to the Marketplace is simple:
 
@@ -60,13 +37,11 @@ Note that the **+New** menu is curated and can change at any time based on C+E l
 
 ![The Marketplace][marketplace]
 
-<a name="building-custom-create-forms-design-for-a-single-blade"></a>
 ### Design for a single blade
 All create experiences should be designed for a single blade. Start by building a template blade. Always prefer dropdowns over pickers (form fields that allow selecting items from a list in a child blade) and avoid using selectors (form fields that open child blades).
 
 Email [ibizafxpm](mailto:ibizafxpm@microsoft.com?subject=Full-screen Create) if you have any questions about the current state of full-screen create experiences.
 
-<a name="building-custom-create-forms-add-a-provider-component"></a>
 ### Add a provider component
 The [parameter collection framework](portalfx-parameter-collection-overview.md) is platform that enables you to build UX to collect data from the user. If you're not familiar with collectors and providers, now is a good time to read more about it.
 
@@ -92,7 +67,6 @@ this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModel, 
 });
 ```
 
-<a name="building-custom-create-forms-add-a-provisioner-component"></a>
 ### Add a provisioner component
 A provisioner is another component in the [parameter collection framework](portalfx-parameter-collection-overview.md). If you're creating your resource by deploying a single template to ARM, you need to use an ARM provisioner. Otherwise, you need to use a regular provisioner to implement your custom deployment process.
 
@@ -176,7 +150,6 @@ this.provisioner = new ParameterCollection.Provisioner<DataModel>(container, {
 });
 ```
 
-<a name="building-custom-create-forms-build-your-form"></a>
 ### Build your form
 Use built-in form fields, like TextField and DropDown, to build your form the way you want. Use the built-in EditScope integration to manage changes and warn customers if they leave the form.
 
@@ -187,141 +160,64 @@ this.editScope = this.parameterProvider.editScope;
 ```
 Learn more about [building forms](portalfx-forms.md).
 
-<a name="building-custom-create-forms-standard-arm-fields"></a>
 ### Standard ARM fields
 All ARM subscription resources require a subscription, resource group, location and pricing dropdown. The portal offers built-in controls for each of these. Refer to the EngineV3 Create sample (`SamplesExtension\Extension\Client\Create\EngineV3\ViewModels\CreateEngineBladeViewModel.ts`) for a working example.
-<a name="building-custom-create-forms-setting-the-value"></a>
 ### Setting the value
 Each of these fields will retrieve values from the server and populate a dropdown with them. If you wish to set the value of these dropdowns, make sure to lookup the value from the `fetchedValues` array, and then set the `value` observable.
 ```ts
 locationDropDown.value(locationDropDown.fetchedValues().first((value)=> value.name === "centralus"))
 ```
 
-<a name="building-custom-create-forms-edit-scopeless-based-accessible-dropdowns"></a>
 ### Edit scopeless based accessible dropdowns
-<a name="building-custom-create-forms-edit-scopeless-based-accessible-dropdowns-subscriptions-dropdown"></a>
 #### Subscriptions dropdown
 ```ts
 import * as SubscriptionDropDown from "Fx/Controls/SubscriptionDropDown";
 ```
-```typescript
+{"gitdown": "include-section", "file": "../../../src/SDK/devkit/VS/TB/PT/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#subscriptionDropDown"}
 
-// The subscriptions drop down.
-this.subscriptionsDropDown = SubscriptionDropDown.create(container, {
-    initialSubscriptionId: ko.observableArray<string>(),
-    validations: ko.observableArray([
-        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectSubscription)
-    ])
-});
-const subId = ko.pureComputed(() => {
-    const sub = this.subscriptionsDropDown.value();
-    return sub && sub.subscriptionId;
-});
-
-```
-
-<a name="building-custom-create-forms-edit-scopeless-based-accessible-dropdowns-resource-groups-dropdown"></a>
 #### Resource groups dropdown
 ```ts
 import * as ResourceGroupDropDown from "Fx/Controls/ResourceGroupDropDown";
 ```
-```typescript
-
-// The resource group drop down with creator inputs
-this.resourceGroupDropDown = ResourceGroupDropDown.create(container, {
-    subscriptionId: subId,
-    validations: ko.observableArray([
-        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectResourceGroup)
-    ])
-});
-
-```
-<a name="building-custom-create-forms-edit-scopeless-based-accessible-dropdowns-locations-dropdown"></a>
+{"gitdown": "include-section", "file": "../../../src/SDK/devkit/VS/TB/PT/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
 #### Locations dropdown
 ```ts
 import * as LocationDropDown from "Fx/Controls/LocationDropDown";
 ```
-```typescript
+{"gitdown": "include-section", "file": "../../../src/SDK/devkit/VS/TB/PT/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#locationDropDown"}
 
-// The locations drop down.
-this.locationsDropDown = LocationDropDown.create(container, {
-    initialLocationName: ko.observableArray<string>(),
-    subscriptionId: subId,
-    validations: ko.observableArray([
-        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectLocation)
-    ])
-    // Optional -> Disable locations by returning a reason for why a location is disabled
-    // disable: (location) => ~["centralus", "eastus"].indexOf(location.name) && clientStrings.disabledLegalityIssues
-});
-// If setting the dropdown value programmatically, make sure to set it to an existing item in the dropdown
-// e.g. this.locationsDropDown.value(this.locationsDropDown.fetchedValues()[0])
-
-```
-
-<a name="building-custom-create-forms-arm-dropdown-options"></a>
 ### ARM dropdown options
 Each ARM dropdown can disable, hide, group, and sort.
  
-<a name="building-custom-create-forms-arm-dropdown-options-disable"></a>
 #### Disable
 This is the preferred method of disallowing the user to select a value from ARM. The disable callback will run for each fetched value from ARM. The return value of your callback will be a reason for why the value is disabled. If no reason is provided, then the value will not be disabled. This is to ensure the customer has information about why they can’t select an option, and reduces support calls.
-```typescript
-
-disable: (loc) => { return !!~["5ag", "3bg"].indexOf(loc.property) && "Disabled (location not allowed for subscription)"; },
-
-```
+{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Resource.test.ts", "section": "config#disable"}
 When disabling, the values will be displayed in groups with the reason they are disabled as the group header. Disabled groups will be placed at the bottom of the dropdown list.
  
-<a name="building-custom-create-forms-arm-dropdown-options-hide"></a>
 #### Hide
 This is an alternative method of disallowing the user to select a value from ARM. The hide callback will run for each fetched value from ARM. The return value of your callback will return a boolean for if the value should be hidden. If you choose to hide, a message telling the user why some values are hidden is required.
-```typescript
+{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Resource.test.ts", "section": "config#hide"}
 
-hiding: {
-    hide: (item: Value) => item.property === "5ag",
-    reason: "Some locations are hidden because because of legal restrictions on new software"
-}
-
-```
-
-<a name="building-custom-create-forms-arm-dropdown-options-hide-note-on-hide"></a>
 ##### Note on Hide
 It's recommended to use the `disable` option so you can provide scenario-specific detail as to why a given dropdown value is disabled, and customers will be able to see that their specific desired value is not available. Disabling is preferable to hiding, as users often react negatively when they cannot visually locate their expected dropdown value.  In extreme cases, this can trigger incidents with your Blade.
 
-<a name="building-custom-create-forms-arm-dropdown-options-group"></a>
 #### Group
 This is a way for you to group values in the dropdown. The group callback will take a value from the dropdown and return a display string for which group the value should be in. If no display string or an empty string is provided, then the value will default to the top level of the group dropdown.
  
 If you want to sort the groups (not the values within the group), you can supply the 'sort' option, which should be a conventional comparator function that determines the sort order by returning a number greater or less than zero. It defaults to alphabetical sorting.
  
-```typescript
-
-grouping: {
-    map: (item: Value): string => {
-        return item.property.slice(-2) === "bg" ? "Group B" : "Group A";
-    },
-    sort: (a: string, b: string) => MsPortalFx.compare(b, a)
-},
-
-```
+{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Resource.test.ts", "section": "config#group"}
  
 If you both disable and group, values which are disabled will be placed under the disabled group rather than the grouping provided in this callback.
  
-<a name="building-custom-create-forms-arm-dropdown-options-sort"></a>
 #### Sort
 If you want to sort values in the dropdown, supply the 'sort' option, which should be a convention comparator function that returns a number greater or less than zero. It defaults to alphabetical based on the display string of the value.
  
-```typescript
-
-sort: (a: Value, b: Value) => MsPortalFx.compare(b.property, a.property)
-
-```
+{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Resource.test.ts", "section": "config#sort"}
  
 If you sort and use disable or group functionality, this will sort inside of the groups provided.
 
-<a name="building-custom-create-forms-edit-scope-based-accessible-dropdowns"></a>
 ### Edit scope based accessible dropdowns
-<a name="building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions"></a>
 ### Migrating from legacy ARM dropdowns to Accessible versions
 For scenarios where your Form is built in terms of EditScope, the FX now provides versions of the new, accessible ARM dropdowns that are drop-in replacements for old, non-accessible controls.  These have minimal API changes and are simple to integrate into existing Blades/Parts.
 
@@ -345,7 +241,6 @@ These dropdowns are, however, based on a new accessible control which no longer 
 - `viewModelValueChangesAreClean` - no alternative
 - `visible` - use the `visible` binding in your html template
 
-<a name="building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions-subscriptions-dropdown"></a>
 #### Subscriptions dropdown
 In your current EditScope-based form, your Subscription dropdown looks something like this:
 ```ts
@@ -377,33 +272,9 @@ With the new, accessible Subscription dropdown, you'll change your code to look 
 ```ts
 import * as SubscriptionDropDown from "FxObsolete/Controls/SubscriptionDropDown";
 ```
-```typescript
+{"gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#subscriptionDropDown"}
 
-// The subscriptions drop down.
-const subscriptionsDropDownOptions: SubscriptionDropDown.Options = {
-    form: this,
-    accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
-        return data.subscription;
-    }),
-    validations: ko.observableArray([
-        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectSubscription)
-    ]),
-    // Providing a list of resource providers (NOT the resource types) makes sure that when
-    // the deployment starts, the selected subscription has the necessary permissions to
-    // register with the resource providers (if not already registered).
-    // Example: Providers.Test, Microsoft.Compute, etc.
-    resourceProviders: ko.observable([resourceProvider]),
-    // Optional -> You can pass the gallery item to the subscriptions drop down, and the
-    // the subscriptions will be filtered to the ones that can be used to create this
-    // gallery item.
-    filterByGalleryItem: this._galleryItem
-};
-this.subscriptionsDropDown = SubscriptionDropDown.create(container, subscriptionsDropDownOptions);
-
-```
-
-<a name="building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions-resource-groups-legacy-dropdown"></a>
-#### Resource groups <strong>legacy</strong> dropdown
+#### Resource groups **legacy** dropdown
 In your current EditScope-based form, your Resource Group dropdown looks something like this:
 ```ts
 import ResourceGroupsDropDown = MsPortalFx.Azure.ResourceGroups.DropDown;
@@ -440,38 +311,9 @@ With the new, accessible Resource Group dropdown, you'll change your code to loo
 ```ts
 import * as ResourceGroupDropDown from "FxObsolete/Controls/ResourceGroupDropDown";
 ```
-```typescript
+{"gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
 
-this.resourceGroupDropDown = ResourceGroupDropDown.create(container, {
-    form: this,
-    accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
-        return data.resourceGroup;
-    }),
-    label: ko.observable<string>(ClientResources.resourceGroup),
-    subscriptionIdObservable: this.subscriptionsDropDown.subscriptionId,
-    validations: ko.observableArray([
-        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectResourceGroup),
-        new MsPortalFx.Azure.RequiredPermissionsValidator(requiredPermissionsCallback)
-    ]),
-    // Optional -> RBAC permission checks on the resource group. Here, we're making sure the
-    // user can create an engine under the selected resource group, but you can add any actions
-    // necessary to have permissions for on the resource group.
-    requiredPermissions: ko.observable({
-        actions: actions,
-        // Optional -> You can supply a custom error message. The message will be formatted
-        // with the list of actions (so you can have {0} in your message and it will be replaced
-        // with the array of actions).
-        message: ClientResources.enginePermissionCheckCustomValidationMessage.format(actions.toString())
-    }),
-    // Optional -> Will determine which mode is selectable by the user. It defaults to Both.
-    allowedMode: ko.observable(ResourceGroupDropDown.Mode.Both), //Alternatively Mode.UseExisting or Mode.CreateNew
-    value: { mode: ResourceGroupDropDown.Mode.CreateNew, value: { name: "NewResourceGroup_1", location: "" } }
-});
-
-```
-
-<a name="building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions-locations-legacy-dropdown"></a>
-#### Locations <strong>legacy</strong> dropdown
+#### Locations **legacy** dropdown
 In your current EditScope-based form, your Location dropdown looks something like this:
 ```ts
 import LocationsDropDown = MsPortalFx.Azure.Locations.DropDown;
@@ -505,78 +347,16 @@ With the new, accessible Location dropdown, you'll change your code to look some
 ```ts
 import * as LocationDropDown from "FxObsolete/Controls/LocationDropDown";
 ```
-```typescript
+{"gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#locationDropDown"}
 
-// The locations drop down.
-this.locationsDropDown = LocationDropDown.create(container, {
-    form: this,
-    accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
-        return data.location;
-    }),
-    subscriptionIdObservable: this.subscriptionsDropDown.subscriptionId,
-    resourceTypesObservable: ko.observable([resourceType]),
-    validations: ko.observableArray([
-        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectLocation)
-    ])
-    // hiding: {
-    //     hide: (loc) => loc.name === "eastus",
-    //     // Provide a reason for hiding locations.
-    //     reason: createStrings.hiddenReason
-    // },
-    // disable: (loc) => loc.name === "centralus" && createStrings.disabledReason
-});
-
-```
-
-<a name="building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions-pricing-dropdown"></a>
 #### Pricing dropdown
 ```ts
 *`MsPortalFx.Azure.Pricing.DropDown`
 
 import * as Specs from "Fx/Specs/DropDown";
 ```
-```typescript
+{"gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#specDropDown"}
 
-// The spec picker initial data observable.
-const initialDataObservable = ko.observable<SpecPicker.InitialData>({
-    selectedSpecId: "A0",
-    entityId: "",
-    recommendedSpecIds: ["small_basic", "large_standard"],
-    recentSpecIds: ["large_basic", "medium_basic"],
-    selectRecommendedView: false,
-    subscriptionId: "subscriptionId",
-    regionId: "regionId",
-    options: { test: "DirectEA" },
-    disabledSpecs: [
-        {
-            specId: "medium_standard",
-            message: ClientResources.robotPricingTierLauncherDisabledSpecMessage,
-            helpBalloonMessage: ClientResources.robotPricingTierLauncherDisabledSpecHelpBalloonMessage,
-            helpBalloonLinkText: ClientResources.robotPricingTierLauncherDisabledSpecLinkText,
-            helpBalloonLinkUri: ClientResources.robotPricingTierLauncherDisabledSpecLinkUri
-        }
-    ]
-});
-this.specDropDown = new Specs.DropDown(container, {
-    form: this,
-    accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
-        return data.spec;
-    }),
-    initialData: initialDataObservable,
-    // This extender should be the same extender view model used for the spec picker blade.
-    // You may need to extend your data context or share your data context between your
-    // create area and you spec picker area to use the extender with the current datacontext.
-    specPickerExtender: new BillingSpecPickerExtender.BillingSpecPickerV3Extender(container, initialDataObservable(), dataContext),
-    pricingBlade: {
-        detailBlade: "BillingSpecPickerV3",
-        detailBladeInputs: {},
-        hotspot: "EngineSpecDropdown1"
-    }
-});
-
-```
-
-<a name="building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions-additional-custom-validation-to-the-arm-fields"></a>
 #### Additional/custom validation to the ARM fields
 Sometimes you need to add extra validation on any of the previous ARM fields. For instance, you might want to check with you RP/backend to make sure that the selected location is available in certain cirqumstances. To do that, just add a custom validator like you would do with any regular form field. Exmaple:
 
@@ -606,7 +386,6 @@ var locationsDropDownOptions: LocationsDropDown.Options = {
 this.locationsDropDown = new LocationsDropDown(container, locationsDropDownOptions);
 ```
 
-<a name="building-custom-create-forms-migrating-from-legacy-arm-dropdowns-to-accessible-versions-wizards"></a>
 #### Wizards
 The Azure portal has a **legacy pattern** for wizard blades, however customer feedback and usability has proven the design
 isn't ideal and shouldn't be used. Additionally, the wizard wasn't designed for
@@ -618,7 +397,6 @@ not be supported.
 Email [ibizafxpm](mailto:ibizafxpm@microsoft.com?subject=Create wizards + full screen) if you have any questions about
 the current state of wizards and full-screen Create support.
 
-<a name="building-custom-create-forms-validation"></a>
 ### Validation
 Create is our first chance to engage with and win customers and every hiccup puts us at risk of losing customers; specifically
 new customers. As a business, we need to lead that engagement on a positive note by creating resources quickly and easily.
@@ -630,7 +408,6 @@ In an effort to resolve Create success regressions as early as possible, sev 2 [
 incidents will be created and assigned to extension teams whenever the success rate
 drops 5% or more for 50+ deployments over a rolling 24-hour period.
 
-<a name="building-custom-create-forms-validation-arm-template-deployment-validation"></a>
 #### ARM template deployment validation
 If your form uses the ARM provisioner, you need to opt in to deployment validation manually by adding
 `CreateFeatures.EnableArmValidation` to the `HubsProvisioner<T>` options. Wizards are not currently supported; we are
@@ -650,7 +427,6 @@ Refer to the Engine V3 sample for a running example
 - Client\Create\EngineV3\ViewModels\CreateEngineBladeViewModel.ts
 - [http://aka.ms/portalfx/samples#create/microsoft.engine](http://aka.ms/portalfx/samples#create/microsoft.engine)
 
-<a name="building-custom-create-forms-automation-options"></a>
 ### Automation options
 If your form uses the ARM provisioner, you will get an "Automation options" link in the action bar by default. This link
 gets the same template that is sent to ARM and gives it to the user. This allows customers to automate the creation of
@@ -660,13 +436,11 @@ on a separate solution for wizards.
 Email [ibizafxpm](mailto:ibizafxpm@microsoft.com?subject=Create wizards + automation options)
 if you have any questions about wizard support.
 
-<a name="building-custom-create-forms-testing"></a>
 ### Testing
 Due to the importance of Create and how critical validation is, all Create forms should have automated testing to help
 avoid regressions and ensure the highest possible quality for your customers. Refer to [testing guidance](portalfx-test.md)
 for more information on building tests for your form.
 
-<a name="building-custom-create-forms-feedback"></a>
 ### Feedback
 
 When customers leave the Create blade before submitting the form, the portal asks for feedback. The feedback is stored
@@ -674,21 +448,17 @@ in the standard [telemetry](portalfx-telemetry.md) tables. Query for
 `source == "FeedbackPane" and action == "CreateFeedback"` to get Create abandonment feedback.
 
 
-<a name="building-custom-create-forms-telemetry"></a>
 ### Telemetry
 
 Refer to [Create telemetry](/portal-sdk/generated/index-portalfx-extension-monitor.md#portalfx-telemetry-create) for additional information on usage dashboards and queries.
 
-<a name="building-custom-create-forms-troubleshooting"></a>
 ### Troubleshooting
 
 Refer to the [troublshooting guide](portalfx-create-troubleshooting.md) for additional debugging information.
 
 
-<a name="building-custom-create-forms-additional-topics"></a>
 ### Additional topics
 
-<a name="building-custom-create-forms-additional-topics-initiating-create-from-other-places"></a>
 #### Initiating Create from other places
 Some scenarios may require launching your Create experience from outside the +New menu or Marketplace. The following
 are supported patterns:
