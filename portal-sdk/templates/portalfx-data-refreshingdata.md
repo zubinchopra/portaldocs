@@ -132,6 +132,8 @@ If the (optional) '`predicate`' parameter is supplied to the '`refreshAll`' call
 The '`refresh`' method is useful when the server data changes are known to be specific to a single cache entry (a single query in the case of QueryCache, a single entity 'id' in the case of EntityCache).
 
 {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/ResourceTypes/SparkPlug/SparkPlugData.ts","section":"dataRefresh#dataCacheRefresh"}
+
+{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/ResourceTypes/SparkPlug/SparkPlugData.ts","section":"dataRefresh#dataCacheRefreshCalled"}
   
 Using '`refresh`', only *a single AJAX call* will be issued to the server.
 

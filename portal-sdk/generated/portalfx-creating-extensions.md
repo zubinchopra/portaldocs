@@ -16,8 +16,8 @@
 <a name="getting-started-with-the-portal-sdk-prerequisites"></a>
 ### Prerequisites
 
-- Microsoft Windows 10, Windows Server 2012 R2, or latest
-- Visual Studio 2015 Update 3
+- Microsoft Windows 8, Windows Server 2012 R2, or latest
+- Visual Studio 2013 Update 4
 - Latest version of the <a href="http://www.typescriptlang.org/#Download" target="_blank">TypeScript plugin for Visual Studio</a>
 - Latest version of the <a href="../generated/downloads.md" target="_blank">Azure Portal SDK</a>
 

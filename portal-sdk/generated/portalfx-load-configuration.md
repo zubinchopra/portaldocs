@@ -49,16 +49,6 @@ public class ArmConfiguration : ConfigurationSettings
         get;
         private set;
     }
-
-    /// <summary>
-    /// Gets the Portal ARM/CSM endpoint
-    /// </summary>
-    [ConfigurationSetting]
-    public string PortalArmEndpoint
-    {
-        get;
-        private set;
-    }
 }
 
 ```

@@ -1,4 +1,4 @@
-# Performance
+﻿# Performance
 
 The alerts can be configured for extension performance, blade performance and part performance.
 
@@ -195,6 +195,7 @@ Currently performance alerts run every 5 minutes assessing the previous 90 minut
     - This can be done by either manually editing the performance JSON file or making use of [the tool][alerting-tool]  provided.
 
 1.	Fill out the following work item [https://aka.ms/portalfx/alerting-onboarding][alerting-onboarding] and attach configuration JSON
+
 1.	Set up correlation rules in ICM
 
 

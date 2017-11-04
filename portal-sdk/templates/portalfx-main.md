@@ -24,7 +24,7 @@ These documents are for internal teams that want to build an extension for the A
 * IDE Setup - *Typescript version / Compile on save*
   * [Visual Studio](portalfx-creating-extensions.md#prerequisites) *(with Extension project template)*
   * VS Code
-* [Understanding the extension](TBD)
+* Understanding the extension
     Portal SDL uses "convention over configuration" to configure itself. This typically means that the name and location of files is used instead of explicit configuration, hence you need to familiarize yourself with the directory structure provided by portal SDK.
     Here is a breakdown and links to the relevant sections:
     * App Data
@@ -58,14 +58,14 @@ These documents are for internal teams that want to build an extension for the A
 ## Upgrading Extension to use latest version of SDK
   * [Upgrade policy](portalfx-deploy.md#3-understand-extension-runtime-compatibility)
   * [Updating the NuGet packages](portalfx-nuget-overview.md)
-  * [Updating the C# test framework](TBD)
-  * [Updating the msportalfx-test framework](TBD)
+  * Updating the C# test framework
+  * Updating the msportalfx-test framework
 
 ## [Extensions](portalfx-howitworks.md#how-extensions-work)
 * What is an extension? 
     * [Ui Concepts](portalfx-ui-concepts.md#ui-concepts)
     * [Extension lifecycle](portalfx-howitworks.md#how-the-portal-works)
-    * [Cross-extension UX integration] (TBD)
+    * Cross-extension UX integration
 
 ##  Blades and Parts
 
@@ -231,7 +231,7 @@ These documents are for internal teams that want to build an extension for the A
     * [Spec Picker Blade](portalfx-extension-pricing-tier.md)
     * [Subscription Dropdown](portalfx-create.md#subscriptions-dropdown-1)
     * [Resource Group dropdown](portalfx-create.md#resource-groups-legacy-dropdown)
-    * [Location dropdown](/portalfx-create.md#locations-legacy-dropdown)
+    * [Location dropdown](portalfx-create.md#locations-legacy-dropdown)
     * [Pricing Dropdown](portalfx-create.md#pricing-dropdown)
 * Forms
     * [Building UI for Form](portalfx-forms.md#laying-out-your-ui-on-the-blade)

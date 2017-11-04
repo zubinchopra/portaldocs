@@ -1,42 +1,8 @@
-# Alerting infrastructure
-
-## What are the alerts?
-
-There are number of framework level provided alerts:
-
-1. Old SDKs
-1. Extension alive
-1. Create regression
-1. Availability
-1. Performance
-
-The framework provides a per extension configurable alerting infrastructure, this will cover:
-
-1. Create
-1. Availability
-1. Performance
-
-> Today it only applies to availability, we are working on expanding it into the other areas.
-
-Once the thresholds for any of the configured alerts are met or surpassed a ICM alert containing details will be opened agaisnt the owning team.
-
-## What is configurable?
-
-Each area will be configurable to it's own extent, as mentioned previously today that only includes availability.
-
-```json
-{
-    "name": "My_Awesome_Extension_Name",
-    "availability": {
-       ...
-    }
-}
-
-```
-
-### Availability
+# Availability
 
 The alerts can be configured for extension availability, blade availability and part availability. 
+
+## Configuration
 
 ```json
 {
@@ -83,28 +49,28 @@ Per each of those, you can define two different sets of custom criteria like the
 }
 ```
 
-#### What is the difference between critical and non-critical?
+### What is the difference between critical and non-critical?
 
 This maps to the severity you want the alerts to trigger in ICM. This allows you to opt into two different levels of alerting with different configuration.
 
-#### What is minFailureUserCount?
+### What is minFailureUserCount?
 
 This is the minimum number of unique users who have to encountered a failure before the threshold is surpassed.
 
-#### What is minFailureCount?
+### What is minFailureCount?
 
 This is the minimum number of failures that have occurred, for example the above configuration requires 5 or more failures.
 
-#### What is minAvailability?
+### What is minAvailability?
 
 This is the minimum availability as a percentage. For example your extension fails to load 10 out of 100 times that would be 90% available.
 
-#### What is inclusion/exclusion? 
+### What is inclusion/exclusion? 
 
 This only applies to blades or parts and defines what blades or parts to alert on, you can either use an inclusion model and specify the names you wish to include or
 an exclusion model and specify the names you wish to exclude.
 
-#### When do the alerts trigger?
+### When do the alerts trigger?
 
 Alerts will only trigger when all 3 of the criteria are met (AND). So the above critical configuration will only fire when
 5 or more unique users encounter failures *AND* there are 5 or more failure occurences *AND* the total availability < 80%, all within the last hour.
@@ -116,7 +82,7 @@ Currently they run every 5 minutes assessing the previous hour of data.
 
 ## How do I onboard?
 
-1. Generate your desired configuration
+1. Generate the desired per extension configuration
     - This can be done by either manually editing the JSON file or making use of [the tool][alerting-tool] provided.
 1. Fill out the following work item [https://aka.ms/portalfx/alerting-onboarding][alerting-onboarding]
 1. Set up correlation rules in ICM

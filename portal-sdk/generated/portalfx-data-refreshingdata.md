@@ -179,20 +179,47 @@ The '`refresh`' method is useful when the server data changes are known to be sp
 
 ```typescript
 
-public updateSparkPlug(sparkPlug: SamplesExtension.DataModels.SparkPlug): FxBase.PromiseV<any> {
-    return FxBaseNet.ajax({
-        uri: Util.appendSessionId(SparkPlugData._apiRoot),
-        type: "PUT",
-        contentType: "application/json",
-        data: ko.toJSON(sparkPlug)
-    }).then(() => {
+const promises: FxBase.Promise[] = [];
+this.sparkPlugsQuery.refresh({}, null);
+MsPortalFx.makeArray(sparkPlugs).forEach((sparkPlug) => {
+    promises.push(this.sparkPlugEntities.refresh(sparkPlug, null));
+});
+return Q.all(promises);
+
+```
+
+```typescript
+
+public updateSparkPlug(sparkPlug: DataModels.SparkPlug): FxBase.Promise {
+    let promise: FxBase.Promise;
+    const uri = appendSessionId(SparkPlugData._apiRoot);
+    if (useFrameworkPortal) {
+        // Using framework portal (NOTE: this is not allowed against ARM).
+        // NOTE: do NOT use invoke API since it doesn't handle CORS.
+        promise = FxBaseNet.ajaxExtended<any>({
+            headers: { accept: applicationJson },
+            isBackgroundTask: false,
+            setAuthorizationHeader: true,
+            setTelemetryHeader: "Update" + entityType,
+            type: "PATCH",
+            uri: uri + "&api-version=" + entityVersion,
+            data: ko.toJSON(convertToResource(sparkPlug)),
+            contentType: applicationJson,
+            useFxArmEndpoint: true,
+        });
+    } else {
+        // Using local controller.
+        promise = FxBaseNet.ajax({
+            uri: uri,
+            type: "PATCH",
+            contentType: "application/json",
+            data: ko.toJSON(sparkPlug),
+        });
+    }
+
+    return promise.then(() => {
         // This will refresh the set of data that is available in the underlying data cache.
-        // The {} params let the cache know to re-fetch any data that matches these parameters.
-        // In the case of this contrived scenario, we always fetch all data.  In the future we
-        // will add a way to refresh all (or selective) caches for a given type.  The second param
-        // manages lifetime, which is not needed in this case.
-        this.sparkPlugsQuery.refresh({}, null);
-        this.sparkPlugEntities.refresh(this._getSparkPlugId(sparkPlug), null);
+        SparkPlugData._debouncer.execute([this._getSparkPlugId(sparkPlug)]);
     });
 }
 

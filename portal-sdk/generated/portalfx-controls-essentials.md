@@ -237,11 +237,7 @@ public onInitialize(): Q.Promise<void> {
                     case "text":
                         return {
                             label: data.label,
-                            value: data.value,
-                            icon: {
-                                image: MsPortalFx.Base.Images.SmileyHappy(),
-                                position: Essentials.IconPosition.Right
-                            }
+                            value: data.value
                         };
                     case "url":
                         return {
@@ -254,7 +250,7 @@ public onInitialize(): Q.Promise<void> {
                             label: data.label,
                             value: data.value,
                             onClick: () => {
-                                this.essentials.modifyStatus(`${++clickCounter} ${ClientResources.essentialsTimesClicked}!`)
+                                this.essentials.modifyStatus(`${++clickCounter} ${ClientResources.essentialsTimesClicked}!`);
                             }
                         };
                 }
@@ -287,11 +283,7 @@ private _initializeControl(): void {
         resourceId: "/subscriptions/sub123/resourcegroups/snowtraxpsx/providers/Microsoft.Test/snowmobiles/snowtraxpsx600",
         additionalRight: [{
             label: ClientResources.essentialsItem,
-            value: ClientResources.essentialsSampleString,
-            icon: {
-                image: MsPortalFx.Base.Images.SmileyHappy(),
-                position: Essentials.IconPosition.Right
-            }
+            value: ClientResources.essentialsSampleString
         }, {
             label: ClientResources.essentialsItem,
             value: "Bing.com",
@@ -302,11 +294,7 @@ private _initializeControl(): void {
                 value: ClientResources.essentialsSampleString
             }, {
                 value: "Bing.com",
-                onClick: new ClickableLink(ko.observable("http://www.bing.com")),
-                icon: {
-                    image: MsPortalFx.Base.Images.SmileyHappy(),
-                    position: Essentials.IconPosition.Left
-                }
+                onClick: new ClickableLink(ko.observable("http://www.bing.com"))
             }]
         }],
         //essentials#bladeCallbacks
@@ -700,11 +688,7 @@ return sampleAJAXFunction()
                 case "text":
                     return {
                         label: data.label,
-                        value: data.value,
-                        icon: {
-                            image: MsPortalFx.Base.Images.SmileyHappy(),
-                            position: Essentials.IconPosition.Right
-                        }
+                        value: data.value
                     };
                 case "url":
                     return {
@@ -717,7 +701,7 @@ return sampleAJAXFunction()
                         label: data.label,
                         value: data.value,
                         onClick: () => {
-                            this.essentials.modifyStatus(`${++clickCounter} ${ClientResources.essentialsTimesClicked}!`)
+                            this.essentials.modifyStatus(`${++clickCounter} ${ClientResources.essentialsTimesClicked}!`);
                         }
                     };
             }

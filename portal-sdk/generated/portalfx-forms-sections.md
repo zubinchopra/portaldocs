@@ -19,7 +19,7 @@ This is the code to create the section:
 
 ```typescript
 
-const mySectionOptions: Section.Options = {
+var mySectionOptions: Section.Options = {
     children: ko.observableArray<any>([
         this.myTextBox,
         this.myChecklessTextBox,

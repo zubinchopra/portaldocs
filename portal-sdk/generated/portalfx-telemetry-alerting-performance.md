@@ -1,9 +1,8 @@
-<a name="performance"></a>
-# Performance
+﻿# Performance
 
 The alerts can be configured for extension performance, blade performance and part performance.
 
-<a name="performance-configuration"></a>
+<a name="configuration"></a>
 ## Configuration
 
 At a high level you define;
@@ -68,17 +67,17 @@ Per each of those, you can define a set of criteria like the below.
 > Only blade or part are required to have a bladeName or partName property.
 
 <a name="what-is-environment" />
-<a name="performance-configuration-what-is-environment"></a>
+<a name="configuration-what-is-environment"></a>
 ### What is environment
 
 Environment can be `*` or `portal.azure.com` or `ms.portal.azure.com` or `canary.portal.azure.com` or any other legit portal domain name. `*` represents all Azure Portal Production environments `*.portal.azure.com`
 
-<a name="performance-configuration-what-is-performance-configuration"></a>
+<a name="configuration-what-is-performance-configuration"></a>
 ### What is performance configuration
 
 Performance configuration is an array of criteria to run against that environment, see below for further examples.
 
-<a name="performance-configuration-extension"></a>
+<a name="configuration-extension"></a>
 ### Extension
 
 An example of an extension performance alert criteria
@@ -103,7 +102,7 @@ An example of an extension performance alert criteria
 ]
 ```
 
-<a name="performance-configuration-blade"></a>
+<a name="configuration-blade"></a>
 ### Blade
 
 An example of a blade performance alert criteria
@@ -129,7 +128,7 @@ An example of a blade performance alert criteria
 ]
 ```
 
-<a name="performance-configuration-part"></a>
+<a name="configuration-part"></a>
 ### Part
 
 An example of a part performance alert criteria
@@ -157,22 +156,22 @@ An example of a part performance alert criteria
 ]
 ```
 
-<a name="performance-configuration-what-is-percentile"></a>
+<a name="configuration-what-is-percentile"></a>
 ### What is percentile?
 
 This is at which percentile you want to measure the performance. Today the only options are 80 or 95.
 
-<a name="performance-configuration-what-is-percentilethreshold"></a>
+<a name="configuration-what-is-percentilethreshold"></a>
 ### What is percentileThreshold?
 
 This is the minimum duration (in seconds) when {percentile}% of users is above the {percentileThreshold}.
 
-<a name="performance-configuration-what-is-minaffectedusercount"></a>
+<a name="configuration-what-is-minaffectedusercount"></a>
 ### What is minAffectedUserCount?
 
 This is the minimum number of users whose load duration is above {percentileThreshold}.
 
-<a name="performance-configuration-what-is-bottomminaffectedusercount"></a>
+<a name="configuration-what-is-bottomminaffectedusercount"></a>
 ### What is bottomMinAffectedUserCount?
 
 This is used as a threshold to trigger an alert if the {percentile} defined is greater than or
@@ -182,7 +181,7 @@ equal to __double__ of the {percentileThreshold} defined.
 
 This is used to catch any unusual spikes on the weekends/low traffic periods.
 
-<a name="performance-configuration-when-do-the-alerts-trigger"></a>
+<a name="configuration-when-do-the-alerts-trigger"></a>
 ### When do the alerts trigger?
 
 Every 5 minutes, we get percentile load duration for the last 90 minutes. We get the most recent 6 sample points and calculate a weighted percentile load duration based on the following formula.
@@ -196,12 +195,12 @@ Alerts will only trigger when one of the following criteria is met.
 1. Weighted duration is above {percentileThreshold} and affected user count is above {minAffectedUserCount}
 1. Weighted duration is above 2 * {percentileThreshold} and affected user count is above {bottomMinAffectedUserCount}
 
-<a name="performance-how-often-do-they-run"></a>
+<a name="how-often-do-they-run"></a>
 ## How often do they run?
 
 Currently performance alerts run every 5 minutes assessing the previous 90 minute of data.
 
-<a name="performance-how-do-i-onboard"></a>
+<a name="how-do-i-onboard"></a>
 ## How do I onboard?
 
 1.	Generate the desired per extension configuration
@@ -209,6 +208,7 @@ Currently performance alerts run every 5 minutes assessing the previous 90 minut
     - This can be done by either manually editing the performance JSON file or making use of [the tool][alerting-tool]  provided.
 
 1.	Fill out the following work item [https://aka.ms/portalfx/alerting-onboarding][alerting-onboarding] and attach configuration JSON
+
 1.	Set up correlation rules in ICM
 
 
@@ -229,7 +229,7 @@ Currently performance alerts run every 5 minutes assessing the previous 90 minut
 | Performance - Blade | BladeLoadPerformance |
 | Performance - Part | PartLoadPerformance|
 
-<a name="performance-how-do-i-use-the-tool-alerting-tool"></a>
+<a name="how-do-i-use-the-tool-alerting-tool"></a>
 ## How do I use [the tool][alerting-tool]?
 1. Go to performance tab. The grid shows the baselines for on-boarded extensions. Click 'Get Recommended Baseline' button and choose the environment and the extension you want to onboard
 ![Perf Main Window](../media/portalfx-telemetry/customToolPerfMainWindow.png)
@@ -238,7 +238,7 @@ Currently performance alerts run every 5 minutes assessing the previous 90 minut
 3. The baselines are added to 'Baseline to Export' grid. You can search, sort or select rows and check/uncheck 'Enabled' checkboxes. Or Remove the baseline(s) from the grid. You can also change the grid cell value by single clicking the grid cell. Once the baseline values are determined, export it to a JSON by clicking 'Export Baseline to JSON' button.
 ![Perf Partner Window](../media/portalfx-telemetry/customToolPerfPartnerWindow.png)
 
-<a name="performance-what-should-i-set-the-thresholds-at"></a>
+<a name="what-should-i-set-the-thresholds-at"></a>
 ## What should I set the thresholds at?
 
 There are two ways advised to decide how to set your thresholds.
@@ -249,13 +249,13 @@ There are two ways advised to decide how to set your thresholds.
     - [Blade][alerting-performance-blade-function]) 
     - [Part][alerting-performance-part-function]) 
 
-<a name="performance-what-happens-if-i-need-to-update-them"></a>
+<a name="what-happens-if-i-need-to-update-them"></a>
 ## What happens if I need to update them?
 
 1.	Contact [ibizafxhot](mailto:ibizafxhot@microsoft.com) and attached the updated configuration
 1.	We will respond as soon as possible and apply the updates
 
-<a name="performance-how-do-i-know-my-extension-s-current-configuration"></a>
+<a name="how-do-i-know-my-extension-s-current-configuration"></a>
 ## How do I know my extension&#39;s current configuration?
 
 Within kusto your configuration will be defined under a function. To find the function use the this [link][alerting-kusto-partner] and replace `PerfAlert_HubsExtension` with `PerfAlert_YOUR_EXTENSION_NAME`. The function will only exist once you have onboarded to the alerting infrastructure. Or visit the tool to view a read only version of your config, again this is only available once you have onboarded.
