@@ -32,7 +32,7 @@ export class SampleEditorViewModel extends MsPortalFx.ViewModels.Controls.Docume
     */
    constructor(lifetimeManager: MsPortalFx.Base.LifetimeManager) {
        // Mock up sample javascript file content.
-       var content =
+       const content =
            [
                "function test1(name, job) {",
                "    alert('Welcome ' + name + ', the ' + job);",
@@ -51,10 +51,11 @@ export class SampleEditorViewModel extends MsPortalFx.ViewModels.Controls.Docume
            ].join("\n");
 
        // Set up whether or not to show line numbers and what the tab size is in the editor.
-       var options = {
+       const options = {
                lineNumbers: false,
+               enhancedScrollbar: true,
                tabSize: 4,
-               wrappingColumn: 0
+               wrappingColumn: 0,
            };
 
        // Initialize the editor with the above content and options, as well as set the type to be JavaScript.

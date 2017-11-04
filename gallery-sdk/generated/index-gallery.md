@@ -344,6 +344,7 @@ In order to add/update or remove a hide key or subscription filters associated w
 
 To update the filters for the a package run the following command.
 
+
 ```bat
 > AzureGallery.exe update -i [Publisher].[Name].[Version] -h [comma-separated hide key list] -sf [comma-separated subscription guid list]
 ```

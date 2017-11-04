@@ -1,7 +1,7 @@
 <a name="feature-flags"></a>
 # Feature flags
 
-Feature flags are specially-formatted querystring parameters extensions can use to enable or alter functionality. Feature flags can be used to enable/disable programmatic code (e.g. form elements, HTML template components, behavior). Feature flags cannot be used to hide blades, parts, or commands. If you need to hide parts, switch to [template blades](#portalfx-blades-templateBlade) and hide content accordingly. If you need to hide commands, use the [toolbar](#user-content-basic-concepts-blades-introduction-to-templateblade-adding-commands-to-a-templateblade).
+Feature flags are specially-formatted querystring parameters extensions can use to enable or alter functionality. Feature flags can be used to enable/disable programmatic code (e.g. form elements, HTML template components, behavior). Feature flags cannot be used to hide blades, parts, or commands. If you need to hide parts, switch to [template blades](portalfx-blades-templateBlade.md) and hide content accordingly. If you need to hide commands, use the [toolbar](portalfx-blades.md#adding-commands-to-a-templateblade).
 
 Feature flags have the following rules:
 
