@@ -1,4 +1,4 @@
-# Release Notes since 7/7/2017
+# Release Notes since 7/8/2017
 
 ## 5.0.302.902
 0 Breaking Changes, 4 Features added and 6 Bugs Fixed
@@ -285,19 +285,3 @@ stack: TypeError: Unable to get property ''length'' of undefined or null referen
 ## 5.0.302.796
 0 Breaking Changes, 0 Features added and 1 Bugs Fixed
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9691530'>9691530</a></td><td>Bug Fix</td><td>[Partner Request] - Enable DNS curation under Networking in BlackForest</td></tr></table>
-
-## 5.0.302.795
-0 Breaking Changes, 0 Features added and 0 Bugs Fixed
-<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
-
-## 5.0.302.794
-0 Breaking Changes, 1 Features added and 1 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9541358'>9541358</a></td><td>Bug Fix</td><td>[Partner Request] - Update extension configuration for Microsoft_Azure_Batch in National Clouds</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9011051'>9011051</a></td><td>Feature</td><td>Roll Mooncake certificates to use new Certificate Authority</td></tr></table>
-
-## 5.0.302.793
-0 Breaking Changes, 0 Features added and 0 Bugs Fixed
-<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
-
-## 5.0.302.792
-0 Breaking Changes, 0 Features added and 3 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9673089'>9673089</a></td><td>Bug Fix</td><td>[Custom deployment] Quickstart templates loaded from within the portal may fail to deploy because we send the incorrect URL to ARM</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9663436'>9663436</a></td><td>Bug Fix</td><td>[Fairfax] Moving IaaS V2 Extensions to hosting service</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9563242'>9563242</a></td><td>Bug Fix</td><td>AMD Dropdown does not reflect changes when in multiselect mode and using edit scope accessors</td></tr></table>
