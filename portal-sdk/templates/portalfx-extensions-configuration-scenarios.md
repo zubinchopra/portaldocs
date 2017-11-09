@@ -5,41 +5,42 @@
 ## Understanding scenarios for changing configs
 ### Onboarding a new or existing extension in the portal
 All new extensions should always be added to the portal configuration in disabled mode. 
-The following is an example of a pull request for registering a Scheduler extension in the FairFax environment.
+The following is an example of a pull request for registering a ``` Scheduler ``` extension in the FairFax environment.
 [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/459608f61d5c36864affafe6eb9d230655f67a29?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/459608f61d5c36864affafe6eb9d230655f67a29?refName=refs%2Fheads%2Fdev).
 
 ### Enabling an extension in the portal
 
-Your extension can only be enabled in production once all exit criteria have been met. Once you have received sign-off from all the stakeholders mentioned in exit criteria, please attach the email with workitem that you will use for sending pull request. How to send the pull request is specified in  [portalfx-extensions-pullRequest.md]([portalfx-extensions-pullRequest.md).
+Your extension can only be enabled in production once all exit criteria have been met. Once you have received sign-off from all the stakeholders that are included in the exit criteria for your extension, please attach the email to the workitem that you will use for sending pull request. How to send the pull request is specified in  [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md).
 
 Enabling an extension requires two changes:
 1.	To enable the extension, just remove the ```disables``` boolean attribute from the config.
 1.	Update the enabled extension count in test.
 
-    An example of a pull request for enabling HDInsight extension in the Mooncake extension is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev).
+    An example of a pull request for enabling ``` HDInsight ``` extension in the Mooncake environment is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev).
 
-### Moving from DIY deployment to Extension hosting service
-If your extension is migrating from DIY deployment to hosting service, we recommend using the following path to minimize the probability of regression.
+### Moving from DIY deployment to an Extension hosting service
+If your extension is migrating from DIY deployment to a hosting service, we recommend using the following steps  to minimize the probability of regression.
 
-1. Change the uri format to use hosting service (PROD)
+1. Change the ``` uri ``` format to use a hosting service in the PROD environment
 
-   An example of a pull request for modifying the uriFormat is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/c22b81463cab1d0c6b2c1abc803bc25fb2836aad?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/c22b81463cab1d0c6b2c1abc803bc25fb2836aad?refName=refs%2Fheads%2Fdev)
+   An example of a pull request for modifying the ``` uriFormat ``` parameter is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/c22b81463cab1d0c6b2c1abc803bc25fb2836aad?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/c22b81463cab1d0c6b2c1abc803bc25fb2836aad?refName=refs%2Fheads%2Fdev)
 
 1. Flight changes in MPAC
 
-    An example of a pull request for flighting extension in MPAC is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev]([https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev])
+    An example of a pull request for a flighting extension in MPAC is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev)
 
 1. Enable 100% traffic in MPAC and PROD
 
-    An example of a pull request that shows enabling 100% traffic without flighting for MicrosoftAzureClassicStorageExtension and 100% traffic with flighting for Microsoft_Azure_Storage is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/b81b415411f54ad83f93d43d37bcad097949a4e3?refName=refs%2Fheads%2Fdev&discussionId=-1&_a=summary&fullScreen=false](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/b81b415411f54ad83f93d43d37bcad097949a4e3?refName=refs%2Fheads%2Fdev&discussionId=-1&_a=summary&fullScreen=false).
+    An example of a pull request that shows enabling 100% traffic without flighting for ```MicrosoftAzureClassicStorageExtension```, and 100% traffic with flighting for ```Microsoft_Azure_Storage``` is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/b81b415411f54ad83f93d43d37bcad097949a4e3?refName=refs%2Fheads%2Fdev&discussionId=-1&_a=summary&fullScreen=false](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/b81b415411f54ad83f93d43d37bcad097949a4e3?refName=refs%2Fheads%2Fdev&discussionId=-1&_a=summary&fullScreen=false).
 
 1. Enable flighting in MPAC
 
-    Portal provides the ability to flight the MPAC customers to multiple stamps. Portal will distribute the traffic equally between all the registered stamps.    An example of a pull request is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
+    The Azure Portal provides the ability to flight the MPAC customers to multiple stamps. Portal will distribute the traffic equally between all the registered stamps.    An example of a pull request is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
     
-    * Hosting service
+    * Hosting service extension.pdl file
 
-      To flight traffic to multiple stamps, register other stamps in flightUri. For example, MPAC flight (friendly name) is used to flight traffic to another stamp.
+      To flight traffic to multiple stamps, register other stamps in ```flightUri```. For example, ``` MPACFlight ```
+       (friendly name) is used to flight traffic to another stamp.
 
     ``` 
       { 
@@ -52,7 +53,7 @@ If your extension is migrating from DIY deployment to hosting service, we recomm
         ],
       }
     ```
-    * Legacy deployment
+    * Legacy deployment extension.pdl file
 
     ``` 
       {
@@ -68,17 +69,29 @@ If your extension is migrating from DIY deployment to hosting service, we recomm
 
     An example of a pull request is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
     
-1.  Performance Improvements : Manifest Caching
-
+1.  Performance Improvements: Manifest Caching
+    
     Work In Progress
 
-1. Performance Improvements : You have removed PCV1 and PCV2 Code from your extension
+    <!--TODO:  locate the work that is in progress, and add it to the document.  Should this have been Best Practices? -->
+
+    For more information about extension caching, see [portalfx-performance.md#"performance-best-practices-extension-homepage-caching](portalfx-performance.md#"performance-best-practices-extension-homepage-caching)   and  [portalfx-performance.md#performance-best-practices-extension-homepage-caching-client-side-caching-of-extension-home-pages](portalfx-performance.md#performance-best-practices-extension-homepage-caching-client-side-caching-of-extension-home-pages)  .
+
+
+
+1. Performance Improvements : 
+
+    You have removed PCV1 and PCV2 Code from your extension
+    <!--TODO:  locate the work that is in progress, and add it to the document -->
 
     Work In Progress
 
 1. Updating the feedback email
-
+    <!--TODO:  locate the work that is in progress, and add it to the document -->
    Work In Progress
+
+
+     To update the feedback email, send a pull request as specified in [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md).
 
 
 ## SLA for deploying the configuration changes
@@ -100,13 +113,13 @@ Dogfood -> RC -> MPAC -> PROD -> National Clouds (BF, FF and MC).
 
 ## Expediting the deployment of configuration changes
 
-In order to expedite the deployment of changes, you will need to send the pull request for each branch in portal repository i.e. Dogfood, MPAC and Production. How to send the pull request is specified in  [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md).
+In order to expedite the deployment of changes, you will need to send the pull request for each branch in portal repository, i.e., Dogfood, MPAC and Production. How to send the pull request is specified in  [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md).
 
-All the pull requests should be sent for Dev branch. Once the pull request is marked as complete then you can cherry-pick the same commit from dev branch and send the pull request for Dogfood branch. Once the Dogfood pull request is marked complete then you can cherry-pick the same commit from dogfood branch and send the pull request for for MPAC branch. Once the MPAC pull request is marked complete then you can cherry-pick the same commit from MPAC branch and send the pull request for production branch. 
+All the pull requests should be sent for Dev branch. Once the pull request is marked as complete then you can cherry-pick the same commit from the dev branch and send the pull request for the Dogfood branch. Once the Dogfood pull request is marked complete, then you can cherry-pick the same commit from the dogfood branch and send the pull request for for MPAC branch. Once the MPAC pull request is marked complete then you can cherry-pick the same commit from the PAC branch and send the pull request for the production branch. 
 
-If the pull request is not sent in the previously specified order or the if commit message is changed, then it will lead to unit Test failure. In case of test failure your changes will be reverted without any notice.
+If the pull request is not sent in the previously specified order, or the if commit message is changed, then it will lead to unit Test failure. In case of test failure your changes will be reverted without any notice.
 
-The SLA for changes that are in PROD branch is in the following table.
+The SLA for deploying configuration changes to all regions in the Production Environment is in the following table.
 
 | Environment	| SLA |
 | --- | --- |
@@ -115,12 +128,10 @@ The SLA for changes that are in PROD branch is in the following table.
 | FAIRFAX	 | 10 days |
 | MOONCAKE | 	10 days |
 
-The previously specified SLA is to deploy configuration changes to all regions in Production Environment.
-
 As per the safe deployment mandate, deployment to production environment will be done in stages. Each stage is a logical grouping of regions. There are five stages in production environment. And, there is a 24-hour wait period between promoting the build from one batch to another. This implies that the minimum time to deploy a change in all regions in Production branch is five days.
 
 ## Receiving notification when changes are deployed
 
-Since you have associated your commit with a workitem, you will receive the notification when the config change that you have submitted is deployed to each region.
+Since you have associated your commit with a workitem, you will receive a notification when the config change that you have submitted is deployed to each region.
 
-In case other people in your team want to suscribe to these changes, please ask them to make a comment on the workitem. Once they have made a change they will start receiving the notifications.
+When other people in your team want to subscribe to these changes, please ask them to make a comment on the workitem. Once they have made a change they will start receiving the notifications.

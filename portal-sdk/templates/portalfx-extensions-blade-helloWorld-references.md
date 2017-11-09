@@ -8,7 +8,8 @@
 
 * Testing in production
 
-    [https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-testinprod.md](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-testinprod.md)
+    [portalfx-extensions-testing-in-production.md](portalfx-extensions-testing-in-production.md)
+
 
 * Guide to debugging extension failures
 

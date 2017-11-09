@@ -30,4 +30,4 @@ An extension that meets the exit criteria can be moved from public preview to GA
 
 ### Global Availability Phase (GA)
 
-When an extension passes all exit criteria for the public preview state, the developer has the option of promoting it to the GA state.  GA is     .    
+When an extension passes all exit criteria for the public preview state, the developer has the option of promoting it to the GA state. 

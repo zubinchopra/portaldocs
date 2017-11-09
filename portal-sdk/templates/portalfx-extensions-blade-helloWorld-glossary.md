@@ -10,7 +10,7 @@
 
 | area | Group of blades that are associated with a similar function.  |
 
-| blade |  |
+| blade | the main unit of UX that can be built using the SDK. Blades are basically pages that can be loaded in the portal.  |
 
 | extension | |
 

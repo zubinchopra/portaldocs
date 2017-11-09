@@ -20,6 +20,3 @@
 
 ## Glossary
 [portalfx-extensions-key-components-glossary.md](portalfx-extensions-key-components-glossary.md)
-
-## References
-[portalfx-extensions-key-components-references.md](portalfx-extensions-key-components-references.md)

@@ -108,9 +108,9 @@ This will make these feature flags available in client-code for all users.
 
 ## Shell feature flags
 The Fx team supports the following feature flags:
-
 | Feature | Notes |
 |---------|-------|
+| `clientOptimizations={true,false}` | Turns off bundling and minification of JavaScript to make debugging easier.  NOTE: This applies to both the portal and extensions source. |
 | `feature.autoenablemove=true` | Shows the "change" (resource move) link in Essentials for all resource types |
 | `feature.browsecuration={name}` | Switches the curation file used for the More Services menu, default favorites, and search results (available: default). [Submit an ibiza-browse partner request](http://aka.ms/new-ibiza-browse-request) for custom curation to support a specific scenario. |
 | `feature.browsecurationflags={a,b}` | Comma-delimited list of additional flags used to render Browse curation (available: appservice, aws, vms) |

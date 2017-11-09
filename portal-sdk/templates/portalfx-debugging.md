@@ -220,7 +220,7 @@ var viewModel = ko.dataFor($0)
 ```
 
 [See the ko.dataFor video in the debugging section for more details](/portal-sdk/generated/index-videos.md#debugging)
-
+<!-- TODO:  deprecate the link to portalfx-howitworks.md  and replace it with a link to portalfx-extensions-architecture.md -->
 *It's not actually your ViewModel, but rather a copy of your ViewModel in the shell side of the iframe kept in sync with your ViewModel in your iframe via something called the Proxy Observable (PO).  See the [aux docs architecture here](portalfx-howitworks.md).   For now, it's probably best to recognize that it's not the same ViewModel, but can be treated mostly as such.  Most bugs I've encountered don't involve issues in the PO layer.  We'll cover that how to look at errors across iframes in a later post.
 
 #### KnockoutObservable.subscribe and debugger

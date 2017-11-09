@@ -9,6 +9,8 @@ A: To contribute an extension to the portal, you don't need to clone our reposit
 You can write an extension using the [Ibiza SDK](http://aka.ms/portalfx/docs), deploy it to your own machine, and load it into the portal at runtime.
 When you're ready to register your extension in the preview or production environments, reach out to Ibiza team on: [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).
 
+<!-- TODO: deprecate the link to portalfx-howitworks.md  and replace it with a link to portalfx-extensions-architecture.md -->
+
 See also: [How the portal works](portalfx-howitworks.md)
 
 #### Q: I'm stuck. Where can I find help?

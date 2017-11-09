@@ -13,7 +13,8 @@ Welcome to the Azure portal! We're excited to have you to join the family.
 
 The Azure Portal UI team supports Ibiza and the Portal Framework, and can help you with onboarding a service into the Management UI in the Azure portal.
 
-Onboarding a service, or developing a portal extension, has three phases: private preview, public preview, and GA.  The development of a portal can stop at any one of those steps, depending on content.  A portal can also proceed to the next step when it meets the exit criteria for the current step. These phases are discussed in the sections named Private Preview, Public Preview, and GA. 
+Onboarding a service, or developing a portal extension, has three phases: private preview, public preview, and GA.  The development of a portal can stop at any one of those steps, depending on content.  A portal can also proceed to the next step when it meets the exit criteria for the current step. These phases are discussed in the document named [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md).
+
 
 Most services that onboard Azure need to use the following three components:
 * Marketing content on the Azure Web site or other websites
@@ -31,6 +32,7 @@ To meet customer expectations and continue to increase customer satisfaction, se
 
 Nearly 70% of Azure users are from outside of the United States. Therefore, it is important to make Azure a globalized product. There are a few Internationalization requirements that your service is required to support. This is the same set of languages that are supported by Azure Portal for GA. For more information about internationalization requirements, see [http://aka.ms/azureintlrequirements](http://aka.ms/azureintlrequirements). 
 
-1. [Glossary](portalfx-extensions-forProgramManagers-glossary.md)
+For more information about azure.com onboarding, see [http://acomdocs.azurewebsites.net](http://acomdocs.azurewebsites.net).
 
-1. [References](portalfx-extensions-forProgramManagers-references.md)
+* [Glossary](portalfx-extensions-forProgramManagers-glossary.md)
+

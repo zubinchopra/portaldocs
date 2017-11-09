@@ -135,6 +135,7 @@ Both First-party and Third-party extension developers can install and run sample
 
    `<Extension Name="Company_BrandOrSuite_ProductOrComponent" Preview="true">`
 
+<!--  TODO:  Deprecate the following section of this document by removing it and replacing it with a link to portalfx-extensions-cnames.md  -->
    Extension URLs must use a standard CNAME pattern. Create CNAMEs using
    [Microsoft's DNS](http://msinterface/form.aspx?ID=4260) (use any Azure property as the identity).
 
@@ -146,12 +147,15 @@ Both First-party and Third-party extension developers can install and run sample
    | **FAIRFAX**     | `main.{extension}.ext.azure.us` |
    | **MOONCAKE**    | `main.{extension}.ext.azure.cn` |
 
+<!--  TODO:  Deprecate the previous  section of this document by removing it and replacing it with a link to portalfx-extensions-cnames.md  -->
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-faq-forDevelopers.md  -->
    Use a wildcard SSL cert for each environment to simplify maintenance (e.g. `*.{extension}.onecloud-ext.azure-test.net`
    or `*.{extension}.ext.azure.com`). If your team is building separate, independent extensions, you can also use
    `{extension}.{team}.ext.azure.com` and create a wildcard SSL cert for `*.{team}.ext.azure.com` to simplify overall
    management. Internal teams can create SSL certs for DF using [http://ssladmin](http://ssladmin). Production certs
    must follow your organizations PROD cert process -- **do not use SSL Admin for production certs**.
-
+<!-- TODO:  deprecate the preceding   section of this document by removing it.  It has been  replaced by portalfx-extensions-faq-forDevelopers.md  -->
    **NOTE** : Registering an extension in Portal requires deployment so it can take almost 10 days. Please plan accordingly.
 
    [Request to register your extension (internal only)](https://aka.ms/portalfx/newextension) and email the work item id

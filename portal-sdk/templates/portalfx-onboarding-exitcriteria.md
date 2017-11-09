@@ -12,9 +12,14 @@ are tracked for every extension:
 5. Create success
 6. Resource move (ARM subscription-based services only)
 
-
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts  -->
 
 ### Performance (Stakeholder: [Sean Watson](mailto:ibiza-perf@microsoft.com))
+
+<!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts  
+portalfx-extensions-forProgramManagers-exitCriteria
+portalfx-extensions-forDevelopers-exitCriteria
+-->
 
 **All blades must meet the required blade reveal time of < 4 seconds for the 80th percentile** before being enabled in
 PROD. Extensions must be enabled in MPAC to start tracking performance. Resource and Create blades are tracked
@@ -40,8 +45,9 @@ See also:
 - [#ibiza-performance on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-performance)
 - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-performance)
 
-
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts  -->
 ### Reliability (Stakeholder: [Sean Watson](mailto:ibiza-reliability@microsoft.com))
+<!-- TODO:  deprecate the preceding section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts  -->
 
 Every extension, blade, and part must meet the **reliability SLA**. Extension, resource blade, and Create blade
 reliability metrics must be met before your extension will be enabled in PROD. Extensions must be enabled in MPAC to
@@ -60,15 +66,17 @@ See also:
 - [#ibiza-reliability on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-reliability)
 - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-reliability)
 
-
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts  -->
 ### Usability (Stakeholder: [Angela Moulden](ibiza-usability@microsoft.com))
+<!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts  -->
 
 Each service must define the critical, P0 scenarios for their business. These scenarios must be usability tested to
 ensure 80% success rate and an 80% experience score (based on a short survey). Usability must be measured by testing
 with at least 10 participants.
 
-
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts  -->
 ### Accessibility (Stakeholder: [Paymon Parsadmehr](ibiza-accessibility@microsoft.com))
+<!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts  -->
 
 Similar to the usability bar, every service must meet the Microsoft standards for accessibility for their critical, P0
 scenarios. Teams within C+E should work with the C+E Accessibility team to verify accessibility.
@@ -79,8 +87,9 @@ _**NOTE:** Accessibility is a **non-blocking** requirement today, but it will be
 - [#ibiza-accessibility on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-accessibility)
 - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-accessibility)
 
-
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts  -->
 ### Create success (Stakeholder: [Paymon Parsadmehr](mailto:ibiza-create@microsoft.com))
+<!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts  -->
 
 Every Create blade must meet the create success rate. For Create SLA check the Power BI Dashboard. If success drops 5% on a rolling 24h period with 50+ Creates, a
 sev 2 incident will be filed. This covers every error that causes Creates to fail after the user clicks the Create

@@ -1,5 +1,8 @@
 
 # Getting Started
+
+<!-- TODO: deprecate the link to portalfx-howitworks.md  and replace it with portalfx a link to -extensions-architecture.md -->
+
 {"gitdown": "include-headings", "file": "../templates/portalfx-howitworks.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-creating-extensions.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-sample-extensions.md"}

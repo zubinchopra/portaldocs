@@ -1,27 +1,22 @@
 
 <a name="portalfxExtensionsKeyComponentsOverview"></a>
-<!-- link to this document is [portalfx-extensions-key-components.md]()
+<!-- link to this document is [portalfx-extensions-key-components-overview.md]()
 -->
 
 ## Overview
-The project template implements many of the key components of an extension. Some of them are as follows:
+The Azure Portal Extension project template in Visual Studio implements many of the key components of an extension. Some of them are as follows:
 
 * Marketplace Gallery Integration 
 
-    How people create your resources
+    How people create resources
 
-    [portalfx-extensions-key-components-mgCreate.md](portalfx-extensions-key-components-mgCreate.md)
 
 * Browse Experience
 
-    How people browse resources they have created
-
-    [portalfx-extensions-key-components-browse.md](portalfx-extensions-key-components-browse.md)
+    How people browse resources that have been created
 
 * Resource Menu Blade 
 
     How people use and manage resources they have created
 
-    [portalfx-extensions-key-components-resourceMenuBlade.md](portalfx-extensions-key-components-resourceMenuBlade.md)
 
-  

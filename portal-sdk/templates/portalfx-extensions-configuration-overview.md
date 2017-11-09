@@ -10,7 +10,7 @@
 
 The following ```extension.config ``` file contains a typical configuration for an extension.
 
-```
+```json
 {
      name: "Microsoft_Azure_Demo",
      uri: "//demo.hosting.portal.azure.net/demo",
@@ -20,14 +20,18 @@ The following ```extension.config ``` file contains a typical configuration for 
      disabled: true,
 }
 ```
+
+<!-- TODO:  Include the definition of flightUri and explain that it is an optional parameter --->
+
 Its components are as follows.
 1. name
     <details>
-        <summary> The name for the extension, as specified in the Client\extension.pdl file of the extension.</summary>
+        <summary> The name for the extension, as specified in the             Client\extension.pdl
+        file of the extension.</summary>
     <a name="extensionPdl"></a> 
 
-    Typically, the extension.pdl file looks like the following.
-    ```
+    Typically, the ``` extension.pdl``` file looks like the following.
+    ```json
     <?xml version="1.0" encoding="utf-8" ?>
     <Definition xmlns="http://schemas.microsoft.com/aux/2013/pdl">
     <Extension Name="Microsoft_Azure_Demo" Version="1.0" EntryPointModulePath="Program"/>
@@ -58,9 +62,9 @@ Its components are as follows.
         </summary>
         <a name="extensionUri"></a> 
 
-    The following code contains the uri for an extension.
+    The following code contains the ```uri``` for an extension  that is being hosted by an extension hosting service.
     
-    ```
+    ```json
     uri: "//demo.hosting.portal.azure.net/demo",
     ```
 
@@ -71,8 +75,20 @@ Its components are as follows.
     ```      demo      ```: the name of the directory.
 
 
-     To update the uri, send a pull request   .
-     <!-- TODO:  To where should the pull request be sent? -->
+    The following code contains the ```uri``` for an extension  that is still using the DIY deployment.
+    
+    ```json
+    uri: "//main.demo.ext.azure.com",
+    ```
+
+    where
+
+    ```     main.demo.ext.azure.com     ```:   the address of the resource provider (RP).
+
+
+
+
+     To update the ```uri```, send a pull request as specified in [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md).
     </details>
       <a name="uriAndUriFormat"></a>
  
@@ -84,9 +100,9 @@ Its components are as follows.
         </summary>
         <a name="extensionUriFomat"></a> 
 
-    The following code contains the uriFormat for an extension.
+    The following code contains the uriFormat for an extension  that is being hosted by an extension hosting service.
     
-    ```
+    ```json
     uriFormat: "//demo.hosting.portal.azure.net/demo/{0}",
     ```
 
@@ -98,15 +114,15 @@ Its components are as follows.
 
     ``` {0} ```: the parameter marker that will contain the value to substitute into the name string, when the extension is loading, in order to specify the environment from which to load the extension.
     
-    The position of the parameter marker in the uriFormat is different for DIY deployment. The following code describes the uri and uriFormat for DIY deployment for extensions that have not yet onboarded a hosting service.
+    The position of the parameter marker is different for DIY deployment. The following code describes the ```uriFormat``` parameter for extensions that have not yet onboarded a hosting service.
 
-    ```  
+    ```json
     uri: "//main.demo.ext.azure.com",
     uriFormat: "//{0}.demo.ext.azure.com",
     ```
 
-    To update the uriFormat, send a pull request   .
-         <!-- TODO:  To where should the pull request be sent? -->
+    To update the uriFormat, send a pull request as specified in [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md).
+
     </details>
 
 
@@ -116,8 +132,7 @@ Its components are as follows.
     The email id to which to send all feedback about the extension. 
         </summary>
 
-     To update the feedback email, send a pull request   .
-         <!-- TODO:  To where should the pull request be sent? -->
+     To update the feedback email, send a pull request as specified in [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md).
     </details>
 
 1. Cacheability
@@ -139,7 +154,7 @@ Its components are as follows.
 1. disabled
     <details>
         <summary>
-            Registers the extension into the portal in hidden mode or displayable mode.  A value of  "false" disables an extension, and a value of "true" enables the extension. 
+            Registers the extension into the portal in hidden mode or in displayable mode.  A value of  "false" disables an extension, and a value of "true" enables the extension. 
         </summary>
 
     All extensions are registered into the portal in the disabled state, therefore they are disabled by default.  This hides the extension from users, and it will not be displayed in the portal. The extension will remain in hidden mode until it is ready for general use. This is useful if the extension is not  yet ready for the public preview phase or the GA phase. Most partners use this capability to test the extension, or to host it for private preview.
@@ -165,14 +180,14 @@ Its components are as follows.
 The Azure portal uses five different extension configuration files to manage the extension configuration. The following table explains the mapping of the portal environment to the extension configuration that is contained in the portal repository:
 | Portal Environment	| URL	|  Configuration File  |
 | --- | --- | --- |
-| DOGFOOD | 	df.{extension}.onecloud-ext.azure-test.net | 	Extensions.test.json | 
-| RC | rc.{extension}.onecloud-ext.azure-test.net	 | Extensions.prod.json | 
-| MPAC | 	ms.{extension}.onecloud-ext.azure-test.net | 	Extensions.prod.json | 
-| Preview | 	preview.{extension}.onecloud-ext.azure-test.net | 	Extensions.prod.json | 
-| PROD | 	main.{extension}.ext.azure.com	 | Extensions.prod.json | 
-|  BLACKFOREST | 	main.{extension}.ext.microsoftazure.de | 	Extensions.bf.json | 
-|  FAIRFAX | 	main.{extension}.ext.azure.us	 | Extensions.ff.json | 
-|  MOONCAKE	 | main.{extension}.ext.azure.cn	 | Extensions.mc.json | 
+| **DOGFOOD**     | `df.{extension}.onecloud-ext.azure-test.net`      | [Extensions.dogfood.json](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?_a=contents&path=%2Fsrc%2FRDPackages%2FOneCloud%2FExtensions.dogfood.json&version=GBdev) |
+| **RC**          | `rc.{extension}.onecloud-ext.azure-test.net`      | [Extensions.prod.json](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?_a=contents&path=%2Fsrc%2FRDPackages%2FOneCloud%2FExtensions.prod.json&version=GBdev) |                                                                                                                                                                                 |
+| **MPAC**        | `ms.{extension}.onecloud-ext.azure-test.net`      | [Extensions.prod.json](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?_a=contents&path=%2Fsrc%2FRDPackages%2FOneCloud%2FExtensions.prod.json&version=GBdev) |                                                                                                                                                                                |
+| **Preview**     | `preview.{extension}.onecloud-ext.azure-test.net` | [Extensions.prod.json](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?_a=contents&path=%2Fsrc%2FRDPackages%2FOneCloud%2FExtensions.prod.json&version=GBdev) |
+| **PROD**        | `main.{extension}.ext.azure.com`                  | [Extensions.prod.json](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?_a=contents&path=%2Fsrc%2FRDPackages%2FOneCloud%2FExtensions.prod.json&version=GBdev) |                                                                                                                                                                                 |
+| **BLACKFOREST** | `main.{extension}.ext.microsoftazure.de`          | [Extensions.bf.json](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?_a=contents&path=%2Fsrc%2FRDPackages%2FOneCloud%2FExtensions.bf.json&version=GBdev)                    |
+| **FAIRFAX**     | `main.{extension}.ext.azure.us`                   | [Extensions.ff.json](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?_a=contents&path=%2Fsrc%2FRDPackages%2FOneCloud%2FExtensions.ff.json&version=GBdev)                    |
+| **MOONCAKE**    | `main.{extension}.ext.azure.cn`                   | [Extensions.mc.json](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?_a=contents&path=%2Fsrc%2FRDPackages%2FOneCloud%2FExtensions.mc.json&version=GBdev)                    |
 
 The preceding table implies that to manage extension configuration in Dogfood, BlackForest, FairFax and MoonCake, the developer should send a pull request to modify ```Extensions.test.json```, ```Extensions.bf.json```, ```Extensions.ff.json``` and ```Extensions.mc.json```. 
 

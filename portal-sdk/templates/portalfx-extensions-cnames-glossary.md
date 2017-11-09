@@ -12,6 +12,7 @@
  | DNS | Domain Name Server |
  | FF  | FairFax |  
  | MPAC | Internal Microsoft Environment portal instance (ms.portal.azure.com) | 
+ |  National Cloud  | |
  | PROD | Production |
  | RC | |
  | TFS | Team Foundation Server |

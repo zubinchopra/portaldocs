@@ -2,12 +2,15 @@
 
 ## Getting started with the Portal SDK
 
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-developerInit-overview.md -->
 ### Prerequisites
 
 - Microsoft Windows 8, Windows Server 2012 R2, or latest
 - Visual Studio 2013 Update 4
 - Latest version of the <a href="http://www.typescriptlang.org/#Download" target="_blank">TypeScript plugin for Visual Studio</a>
 - Latest version of the <a href="../generated/downloads.md" target="_blank">Azure Portal SDK</a>
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-developerInit-extension.md  -->
 
 ### Creating an Extension
 The Azure Portal SDK includes everything you need to build extensions for the portal.  Included are variety of tools and samples that help developers build extensions on top of the framework.
@@ -36,6 +39,8 @@ You will find that the project template has implemented many of the key componen
 - Marketplace Gallery Integration (How people create your resources)
 - Browse (How people browse resources they have created)
 - Resource Menu Blade (How people use and manage resources they have created)
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-key-components-mgCreate.md -->
 
 ### Marketplace Gallery Integration and Create Experience
 
@@ -73,6 +78,9 @@ Fill out the create form and click create to actually create a resource.
 
 For more information on creating gallery packages and create forms see the [gallery documentation](/gallery-sdk/generated/index-gallery.md#Marketplace-Gallery-Integration-and-Create-Experience).
 
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-key-components-browse.md -->
+
 ### Browse 
 
 The portal exposes a common navigation experience, called 'Browse', that gives end users a list of all the different services and resource types offered by the portal.
@@ -92,6 +100,9 @@ The code for the browse implementation is located in __Client/Browse__.  You can
 ![Browse Code](../media/portalfx-overview/browse-code.png)
 
 For more information on the browse experience see the [Browse documentation](#getting-started-with-the-portal-sdk-browse).
+
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-key-components-resourceMenuBlade.md -->
 
 ### Resource Menu Blade
 
@@ -134,6 +145,8 @@ As for V1 concepts, these are concepts we're asking extensions to avoid where th
 - __V1 Forms__ -- using EditScope
 
 Bear in mind that we don't have the V2 space entirely built out. In the meantime, you will have to use V1 APIs in places, even the V1 concepts listed above.
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-blade-helloWorld.md -->
 
 ### Hello World for blades
 
@@ -190,11 +203,15 @@ That's it. After you compile your blade you can test it out by deep linking usin
 
 `<PORTAL URI>#blade/<YOUR EXTENSION NAME>/<YOUR BLADE NAME>`
 
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-blade-helloWorld-references.md -->
+
 ### Next Steps
 
 Read more about [testing in production](portalfx-testinprod.md).
 
 Next Steps: To debug issues loading an extension in the portal, go through the [Debugging extension failures](portalfx-debugging-extension-load-failures.md) guide.
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-stackoverflow.md -->
 
 ### Questions?
 

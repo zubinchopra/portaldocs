@@ -7,6 +7,9 @@
 
  This section contains all glossaries from all Azure Portal Extension documents. There may be some duplication because some documents contain terms that are used in other documents.
 
+Extension Architecture
+[portalfx-extensions-architecture-glossary.md](portalfx-extensions-architecture-glossary.md)
+
 CNAMEs and CNAME Records
 [portalfx-extensions-cnames-glossary.md]()
 

@@ -9,9 +9,6 @@ In order to meet customer expectations and continue to increase customer satisfa
 
 The quality metrics that are tracked are as follows.
 <!-- TODO:  Each of the following sections should have a "for more information" link, like maybe an external link -->
-<!-- TODO:  Is there a link to information about the weekly status email for MPAC and PROD reliability?? -->
-<!-- TODO:  For more information on how to define scenarios, see   -->
-<!-- TODO:  portalfx-create.md has a section named Validation, but it does not have a link.     -->
 
 1.	Performance
 
@@ -19,6 +16,7 @@ The quality metrics that are tracked are as follows.
 
     MPAC and PROD performance are included in weekly status emails and each team is expected to investigate regressions.
 
+    <!-- TODO:  Is there a link to information about the Weighted Experience Score (WxP)?? -->
 
 1.	Reliability
 
@@ -26,12 +24,12 @@ The quality metrics that are tracked are as follows.
 
     MPAC and PROD reliability is included in weekly status emails and each team is expected to investigate regressions.
 
-
+    <!-- TODO:  Is there a link to information about the weekly status email for MPAC and PROD reliability?? -->
 1.	Usability
 
     Each service or extension defines the critical P0 scenarios for their business. The extension is tested using these usability scenarios, with at least ten participants. A  success rate of 80% and an experience score of 80% are required for a passing usability score.
 
-
+    <!-- TODO:  For more information on how to define scenarios, see   -->
 1.	Accessibility
 
     The accessibility bar is similar to the usability bar, and every service must meet the accessibility standards that are tested in their critical P0 scenarios. C+E teams should work with their own Accessibility teams. 
@@ -51,7 +49,7 @@ The quality metrics that are tracked are as follows.
     Success rates are a non-blocking requirement.  Some exceptions can be granted to move an extension from the private preview stage to the public preview stage, but in general, the overall customer experience is reduced.
    
     For more information about creating success, see [http://aka.ms/portalfx/create.md#validation](http://aka.ms/portalfx/create.md#validation).
-
+<!-- TODO:  portalfx-create.md has a section named Validation, but it does not have a link.     -->
 
 ## Resource move
 
@@ -60,7 +58,8 @@ ARM-based services allow customers to move resources between subscriptions and r
 For more information on resource moves, see the following resources.
     
 * Documentation 
-    [https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-resourcemove.md](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-resourcemove.md)
+
+    [portalfx-resourcemove.md](portalfx-resourcemove.md)
 	
 * Dashboard
         

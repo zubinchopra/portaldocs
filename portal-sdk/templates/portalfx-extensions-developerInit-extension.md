@@ -3,14 +3,13 @@
 <!-- link to this document is [portalfx-extensions-developerInit-extension.md]()
 -->
 
-
 1. Launch Visual Studio and navigate to File -> New -> Project. In the new project dialog, select Installed -> Visual C# -> Azure Portal. Select the Azure Portal Extension project type, and give it a unique name.  The name of the project typically matches the solution name. Make sure you are using the correct location, and click the checkbox next to ```Create directory for solution```.  Then, click the ```OK``` button, as described in the following image.
 
     ![alt-text](../media/portalfx-overview/new-project-template.png "New Project Dialog")
 
 1.  Use the F5 key to compile and run the new project extension in IIS Express.
 
-1.  On first run you should see a request to install a certificate for localhost for IIS express Accept the certificate to continue, as in the following image.
+1.  On first run you should see a request to install a certificate for localhost for IIS Express. Accept the certificate to continue, as in the following image.
 
     ![alt-text](../media/portalfx-overview/enablehttps.png "Security Warning Dialog")
 

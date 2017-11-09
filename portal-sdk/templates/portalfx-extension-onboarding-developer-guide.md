@@ -1,3 +1,9 @@
+<!-- TODO: deprecate this document. It has been replaced as specified in the other TODO comments  -->
+
+
+
+
+<!-- TODO:  Remove  the following section, because it only contains titles of other sections in the document -->
 Please read this documentaiton, if you are looking for information on following scenarios:
 
 1. Onboarding / Registering a new extension in the portal
@@ -6,24 +12,33 @@ Please read this documentaiton, if you are looking for information on following 
 4. Performance Improvements : Manifest Caching
 5. Performance Improvements : You have removed PCV1 and PCV2 Code from you extension
 6. Updating the feedback email
-
-
+<!-- TODO:  Remove  the previous  section, because it only contains titles of other sections in the document -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-configuration-intro.md  -->
 **External Partners/ Third Party extension**
 
 Please read the next section to understand the capabilties that Portal can provide for your extension through configuration.
     
-You do not have access to repo, so please email us for any configuraiton changes: <a href="mailto:ibizafxpm@microsoft.com?subject=[Onboarding Request] Add &lt;Name&gt; extension to the portal&body=Extension name:  Company_[BrandOrSuite_]ProductOrComponent (e.g. Contoso_SomeSku_SomeProduct or Contoso_SomeProduct)%0A%0AURLs  (must adhere to pattern)%0APROD-- main.&lt;extension&gt;.ext.contoso.com%0A%0AContact info%0ABusiness Contacts:_________%0ADev leads: _________%0APROD on-call email: _________%0A">submit their request via email</a>.
-    
+You do not have access to repo, so please email us for any configuraiton changeshref="mailto:ibizafxpm@microsoft.com?subject=[Onboarding Request] Add &lt;Name&gt; extension to the portal&body=Extension name:  Company_[BrandOrSuite_]ProductOrComponent (e.g. Contoso_SomeSku_SomeProduct or Contoso_SomeProduct)%0A%0AURLs  (must adhere to pattern)%0APROD-- main.&lt;extension&gt;.ext.contoso.com%0A%0AContact info%0ABusiness Contacts:_________%0ADev leads: _________%0APROD on-call email: _________%0A">submit their request via email</a>: <a .
+  
+  <!-- TODO:  deprecate the preceding section of this document by removing it.  It has been  replaced by   portalfx-extensions-configuration-intro.md  -->
+  <!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-forDevelopers-procedures.md -->
 **First Party extensions**
-
 Once your service name is finalized, we recommend you to have your extension registered in all environments. 
-
+<!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  portalfx-extensions-forDevelopers-procedures.md -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-configuration-intro.md  -->
 It is important you read next section of the guide carefully as we rely on you manage your extension registration / configuration management in portal repository. 
-
+<!-- TODO:  deprecate the preceding   section of this document by removing it.  It has been  replaced by  portalfx-extensions-configuration-intro.md  -->
+<!-- TODO:  deprecate the following    section of this document by removing it.  Understanding the configuration is now in the document named   portalfx-extensions-configuration-overview.md -->
 Before we deep dive into how you can modify each attribute of configuration for above mentioned scenarios, lets understand the configuration:
+<!-- TODO:  deprecate the preceding   section of this document by removing it.  It has been  replaced by  portalfx-extensions-configuration-intro.md  -->
+<!-- TODO:  deprecate the following    section of this document by removing it.  It has been  replaced by  portalfx-extensions-configuration-overview.md -->
 
 Portal has a concept of extension configuration file that contains the configuration for all the extensions for a specific environment. For example, Extensions.Prod.json contains configuration for all extensions in Production.
+<!-- TODO:  deprecate the preceding   section of this document by removing it.  It has been  replaced by  portalfx-extensions-configuration-overview.md -->
 
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  
+portalfx-extensions-configuration-overview.md
+ -->
 ## Understanding the extension configuration in Portal 
    
 This is typical configuraiton for an extension:
@@ -61,12 +76,22 @@ If your extension is in preview mode then you also need to add the preview tag:
 ```
 <Extension Name="Microsoft_Azure_Demo" Version="1.0" Preview="true" EntryPointModulePath="Program"/>
 ```
-
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by  
+portalfx-extensions-configuration-overview.md
+ -->
+ <!-- TODO:  deprecate the following     section of this document by removing it.  It has been  replaced by  
+portalfx-extensions-configuration-glossary.md and portalfx-extensions-configuration-overview.md
+ -->
 ### 2. uri / uriFormat: 
 
 Every extension can deploy one or more "stamps" based on their testing requirements. In Azure parlance, a "stamp" is an instance of a service in a region. 
 The "main" stamp is used for production and is the only one that portal will be load by default. Additional stamps can be accessed using a URI format specified in extension config.
-   
+   <!-- TODO:  deprecate the previous    section of this document by removing it.  It has been  replaced by  
+portalfx-extensions-configuration-glossary.md
+ -->
+   <!-- TODO:  deprecate the following   section of this document by removing it.  It has been  replaced by  
+portalfx-extensions-configuration-overview.md
+ -->
 If you are using extension hosting service for deploying your extension, then the uri and uri format will look like:
 
 ```
@@ -80,7 +105,10 @@ If you have not yet onboarded hosting service and your extension is  still using
  uri: "//main.demo.ext.azure.com",
  uriFormat: "//{0}.demo.ext.azure.com",
 ```
-
+   <!-- TODO:  deprecate the previous    section of this document by removing it.  It has been  replaced by  
+portalfx-extensions-configuration-overview.md
+ -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-cnames.md  -->
 NOTE: Extension using legacy DIY URLs must use a standard CNAME pattern:
     
 | Environment     | URL                                        |
@@ -111,12 +139,17 @@ Create **National Cloud** CNAMEs using each cloud's process (search for "DNS" on
     - Example TFS request item of another hosting service extension: [Example](http://vstfrd:8080/Azure/Mooncake/_workitems#_a=edit&id=8798258&fullScreen=false)
 
 
+<!--  TODO:  Deprecate the previous section of this document by removing it.  It has been  replaced by portalfx-extensions-cnames.md  -->
+
+<!-- TODO:  deprecate the following section of this document by removing it.  It has been  replaced by portalfx-extensions-configuration-overview.md  -->
+ 
 Since hosting service provides mechanism for extensions to deploy using safe deployment practice, portal will load the version of your extension based on the region from where the customer is accessing the portal. For more details please refer to the [Hosting Service documentation](portalfx-extension-hosting-service.md).
 
 If you are using Legacy DIY deploment registeration format then the portal will always serve the stamp that is registered in uri. In our examples mentioned above, the portal will always serve main stamp of the extension.
 
 To use a secondary, test stamp, specify the feature.canmodifystamps flag in addition to a parameter matching the name of your extension as registered in the portal. For instance, https://portal.azure.com?feature.canmodifystamps=true&Microsoft_Azure_Demo=perf 
 would replace the {0} in the uriFormat string with perf and attempt to load the extension from there (making the extension URL https://perf.demo.ext.azure.com). Note that you must specify the flag feature.canmodifystamps=true in order to override the stamp.
+   
    
 ### 3. feedbackEmail: 
 
@@ -147,6 +180,7 @@ Most partners use this capabiltiy to either test the extension or host it for pr
 
 To temporarily enable a disabled extension (for your session only), add an extension override in the portal URL: https://portal.azure.com?Microsoft_Azure_Demo=true (where Microsoft_Azure_Demo is the name of the extension as registered with the portal). Conversely, you can temporarily disable an extension by setting it to false.
 
+
 ## Understanding which extension configuration to modify
 
 Azure portal has 5 different extension configuration files to manage the extension configuration.
@@ -169,6 +203,9 @@ Here is a table that explains mapping of portal environment to extension configu
    
 The above table implies that to manage extension configuraiton in Dogfood, BlackForest, FairFax and MoonCake the extension developer will need to send the pull request tfor modifying Extensions.test.json, Extensions.bf.json, Extensions.ff.json and Extensions.mc.json.
 However, the extension configuration for RC, MPAC, Preview and PROD is managed by the same file Extensions.prod.json. ** Therefore, extension can not host different stamps for these environments.**
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-configuration-overview.md  -->
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-configuration-scenarios.md  -->
 
 ## Understanding scenarios for config change
 
@@ -259,6 +296,8 @@ Here is a sample pull request: https://msazure.visualstudio.com/One/Azure%20Port
 
   Work In Progress
 
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-configuration-scenarios.md  -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-pullRequest.md  -->
 ## How to send the pull request
 
 Before creating a pull request, create workitem so that you can assosciate the workitem with the commit.
@@ -289,7 +328,8 @@ Portal repository has 4 main branches i.e. dev, dogfood, mpac and production. **
 - testconfig   // This command will test if all the test cases passed. If any of the test cases fails, please verify your config again
 
 ** To ensure that changes you have made are correct and will not cause any live-site issues, we strongly recommend you wait for Ibiza team to sign-off and complete the PR.**
-
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-pullRequest.md  -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-configuration-scenarios.md  -->
 ## SLA for deploying the configuration changes
 
 As per the safe dedployment mandate, all the configuration changes are treated as code change. This implies that all configuration changhes will go through the same deployment process as code change. 
@@ -338,13 +378,18 @@ Since you have assosciated your commit with a workitem, you will recieve the not
 
 In case other people, in your team want to suscribe to these changes, please ask them to make a comment on the workitem. Once they have made a change they will start recieving the notifications.
 
-
+<!-- TODO:  deprecate the previous   section of this document by removing it.  It has been  replaced by portalfx-extensions-configuration-scenarios.md  -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-faq-forDevelopers.md  -->
 ## Frequently asked questions
 
 Use a wildcard SSL cert for each environment to simplify maintenance (e.g. `*.{extension}.onecloud-ext.azure-test.net` or `*.{extension}.ext.azure.com`). If your team is building separate, independent extensions, you can also use
 `{extension}.{team}.ext.azure.com` and create a wildcard SSL cert for `*.{team}.ext.azure.com` to simplify overall management. Internal teams can create SSL certs for DF using [http://ssladmin](http://ssladmin). Production certs
 must follow your organizations PROD cert process -- **do not use SSL Admin for production certs**.
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-faq-forDevelopers.md  -->
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-forDevelopers-procedures.md -->
+
 
 **NOTE** : Registering an extension in Portal requires deployment so it can take almost 10 days. Please plan accordingly.
 
-   
+   <!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by  portalfx-extensions-forDevelopers-procedures.md -->

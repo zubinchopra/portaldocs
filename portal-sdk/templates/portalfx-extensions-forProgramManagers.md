@@ -4,8 +4,6 @@
 
 # Portal Extensions for Program Managers
 
-1.  [Revisions](portalfx-extensions-forProgramManagers-revisions.md)
-
 1.  [Introduction](portalfx-extensions-forProgramManagers-intro.md)
 
 1.  [Requirements for Azure Services](portalfx-extensions-requirements.md)

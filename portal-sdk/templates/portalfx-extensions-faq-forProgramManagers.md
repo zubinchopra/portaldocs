@@ -5,7 +5,7 @@
 
 ## Portal Extensions FAQs for Program Managers
 
-<a name="onboardingFAQ">Where are the onboarding FAQs?</a>
+<a name="onboardingFAQ"></a>
 
 [Where are the onboarding FAQs?](portalfx-extensions-faq-forDevelopers.md#onboardingFAQ)
 

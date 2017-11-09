@@ -8,11 +8,13 @@
  | Term | Meaning |
  | --- | --- |
  | BF  | Black Forest |
+ | cherry-pick  | Apply the changes introduced by some existing commits |
  | CNAME | Canonical Name record | 
  | DF | Dogfood |
  | DIY | Do It Yourself |
  | FF  | FairFax |
  | flighting  | |
+ | flighting extension  | |
  | GA | Global Availability |
  | iframe | an inline frame, used to embed another document within the current HTML document. |
  | MC | Mooncake |
@@ -20,11 +22,14 @@
  | PCV1  |  |
  | PCV2 | |
  | PDL | Program Design Language |
+ | Preview   | The development phase that is used by the developer and a small audience to validate the functionality of an extension |
  | PROD | Production |
  | region | The area in the world that that is served by a specific localization site | 
- | RP  | Resource Provider |
+ | RC  | |
+  | RP  | Resource Provider |
  | SLA | Service Level Agreement |
  | SSL | Secure Socket Layer |
+ | stakeholder |   A person, group or organization that has interest or concern in an organization. Stakeholders can affect or be affected by the organization's actions, objectives and policies. |
  | stamp |  An instance of a service in a region. Every extension can deploy one or more stamps based on testing requirements. The main stamp is used for production and is the only one that the portal will load by default.    | 
  | URI  |  Uniform Resource Identifier  | 
  | URL | Universal Resource Locator |

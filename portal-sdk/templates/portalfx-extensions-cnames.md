@@ -2,6 +2,7 @@
 
 <!-- link to this document is [portalfx-extensions-cnames.md]()
 -->
+
 ## Creating CNAMES
  Extension URLs use a standard CNAME pattern. The  CNAMEs can be created using DNS's that are specific to each environment, and use any Azure property as the identity.  The following table describes the URL's for each environment.
 
@@ -24,7 +25,7 @@ The PROD CNAME will be used for RC, MPAC, Preview and PROD environments.
 
 ## Other Environments
 Create National Cloud CNAMEs using the process specified in each cloud.
- For more information, search for "DNS" on their wiki pages.
+ For more information, search for "DNS" on their wiki pages, as described in the following table.
  | CLOUD | LOCATION |
  | --- | --- |
  |Fairfax | [http://aka.ms/fairfax](http://aka.ms/fairfax) |

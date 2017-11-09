@@ -5,7 +5,7 @@
 
 ## Understanding the Azure Portal Architecture
 
-The IFRAMEs loaded by the portal are entirely hidden. The scripts loaded by these IFRAME interact with the portal using Azure Portal SDK APIs. This allows the extensions to provide a consistent, and predictable experience for Azure portal users.
+The IFRAMEs loaded by the portal are entirely hidden. The scripts loaded by these IFRAMEs interact with the portal using Azure Portal SDK APIs. This allows the extensions to provide a consistent, and predictable, experience for Azure portal users.
 
 When a user visits the Azure portal, extensions will be loaded based on the users subscription. Extensions can be loaded asynchronously, and even deactivated when they are not currently in use.
 

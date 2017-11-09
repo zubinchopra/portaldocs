@@ -5,9 +5,7 @@
 
 # Portal Extensions for Developers
 
-
-1. [Revisions](portalfx-extensions-forDevelopers-revisions.md)
-    <!-- TODO: Should the audience document be combined with the introduction document? -->
+   <!-- TODO: Should the audience document be combined with the introduction document? -->
 
 1. [Audience](portalfx-extensions-forDevelopers-audience.md)
 
@@ -24,6 +22,8 @@
 1. [Development Procedures](portalfx-extensions-forDevelopers-procedures.md)
 
 1. [Exit Criteria and Quality Metrics](portalfx-extensions-forDevelopers-exitCriteria.md)
+
+1. [Status Codes](portalfx-extensions-status-codes.md)
 
 1. [Best Practices](portalfx-extensions-forDevelopers-bestPractices.md)
 
