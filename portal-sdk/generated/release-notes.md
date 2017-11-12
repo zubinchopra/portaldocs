@@ -1,4 +1,4 @@
-# Release Notes since 7/11/2017
+# Release Notes since 7/12/2017
 
 ## 5.0.302.902
 0 Breaking Changes, 4 Features added and 6 Bugs Fixed
@@ -277,11 +277,3 @@ stack: TypeError: Unable to get property ''length'' of undefined or null referen
 ## 5.0.302.798
 0 Breaking Changes, 0 Features added and 2 Bugs Fixed
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9750183'>9750183</a></td><td>Bug Fix</td><td>horizontal scroll appears on parts that use msportalfx-padding class</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9662937'>9662937</a></td><td>Bug Fix</td><td>Batch helper can send more than 20 requests in the same call causing request to fail</td></tr></table>
-
-## 5.0.302.797
-0 Breaking Changes, 1 Features added and 0 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9697470'>9697470</a></td><td>Feature</td><td>[ExtensionConfiguration] Enabling portal extension Microsoft_Azure_RecoveryServices in MoonCake</td></tr></table>
-
-## 5.0.302.796
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9691530'>9691530</a></td><td>Bug Fix</td><td>[Partner Request] - Enable DNS curation under Networking in BlackForest</td></tr></table>
