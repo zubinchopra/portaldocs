@@ -1,4 +1,16 @@
-# Release Notes since 7/12/2017
+# Release Notes since 7/13/2017
+
+## 5.0.302.905
+0 Breaking Changes, 1 Features added and 2 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1634689'>1634689</a></td><td>Bug Fix</td><td>[Parity Bug bash] Sub dropdown not dismissing when clicking away</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1633336'>1633336</a></td><td>Bug Fix</td><td>[Parity Bug bash][Ibiza][IE11] It will show bad UI in individual VM image(classic) when collapsing the ‘Recommended virtual machine size’ dropdown list</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10561404'>10561404</a></td><td>Feature</td><td>[ExtensionConfiguration] Update configuration for extension Microsoft_Azure_InformationProtection</td></tr></table>
+
+## 5.0.302.904
+0 Breaking Changes, 2 Features added and 3 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9804297'>9804297</a></td><td>Bug Fix</td><td>Update the extension configuration for WebsitesExtension in DF and PROD</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9446502'>9446502</a></td><td>Feature</td><td>[Perf] Native-promises-polyfilled Q</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1692396'>1692396</a></td><td>Bug Fix</td><td>Opening an RG blade from a failed deployment closes it immediately</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1666489'>1666489</a></td><td>Bug Fix</td><td>Send browser id as the client request id when redirecting to AAD</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1655669'>1655669</a></td><td>Feature</td><td>Set the MDS retention period for Ibiza Portal, HostingService, Relex, and vClassic logs to 30 days.</td></tr></table>
+
+## 5.0.302.903
+0 Breaking Changes, 3 Features added and 0 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1639144'>1639144</a></td><td>Feature</td><td>Add targeting support to the openDialog API</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1503867'>1503867</a></td><td>Feature</td><td>[Perf] Remove expensive selectors from shell & controls code</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10626694'>10626694</a></td><td>Feature</td><td>[ExtensionConfiguration] <Onboarding CPIM portal extension to Mooncake environment> for extension <Microsoft_AAD_B2CAdmin></td></tr></table>
 
 ## 5.0.302.902
 0 Breaking Changes, 4 Features added and 6 Bugs Fixed
@@ -273,7 +285,3 @@ stack: TypeError: Unable to get property ''length'' of undefined or null referen
 ## 5.0.302.799
 0 Breaking Changes, 2 Features added and 0 Bugs Fixed
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9749232'>9749232</a></td><td>Feature</td><td>[EHS] Add specification of email, extension name and key in the csproj</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9734654'>9734654</a></td><td>Feature</td><td>[EHS] EV2 JSON deployment templates and Content Unbundler Ev2 artifact generation</td></tr></table>
-
-## 5.0.302.798
-0 Breaking Changes, 0 Features added and 2 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9750183'>9750183</a></td><td>Bug Fix</td><td>horizontal scroll appears on parts that use msportalfx-padding class</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9662937'>9662937</a></td><td>Bug Fix</td><td>Batch helper can send more than 20 requests in the same call causing request to fail</td></tr></table>
