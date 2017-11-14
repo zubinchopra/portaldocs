@@ -1,5 +1,9 @@
 # Release Notes since 7/14/2017
 
+## 5.0.302.906
+0 Breaking Changes, 2 Features added and 0 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1719159'>1719159</a></td><td>Feature</td><td>Enable databricks extensoin</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10571845'>10571845</a></td><td>Feature</td><td>[Extension Config]Enabled Azure Policy Extension</td></tr></table>
+
 ## 5.0.302.905
 0 Breaking Changes, 1 Features added and 2 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1634689'>1634689</a></td><td>Bug Fix</td><td>[Parity Bug bash] Sub dropdown not dismissing when clicking away</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1633336'>1633336</a></td><td>Bug Fix</td><td>[Parity Bug bash][Ibiza][IE11] It will show bad UI in individual VM image(classic) when collapsing the ‘Recommended virtual machine size’ dropdown list</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10561404'>10561404</a></td><td>Feature</td><td>[ExtensionConfiguration] Update configuration for extension Microsoft_Azure_InformationProtection</td></tr></table>
