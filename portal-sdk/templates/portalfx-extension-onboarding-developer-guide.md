@@ -201,7 +201,7 @@ Here is a table that explains mapping of portal environment to extension configu
 
 
    
-The above table implies that to manage extension configuraiton in Dogfood, BlackForest, FairFax and MoonCake the extension developer will need to send the pull request tfor modifying Extensions.test.json, Extensions.bf.json, Extensions.ff.json and Extensions.mc.json.
+The above table implies that to manage extension configuraiton in Dogfood, BlackForest, Fairfax and MoonCake the extension developer will need to send the pull request tfor modifying Extensions.test.json, Extensions.bf.json, Extensions.ff.json and Extensions.mc.json.
 However, the extension configuration for RC, MPAC, Preview and PROD is managed by the same file Extensions.prod.json. ** Therefore, extension can not host different stamps for these environments.**
 <!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-configuration-overview.md  -->
 
@@ -211,7 +211,7 @@ However, the extension configuration for RC, MPAC, Preview and PROD is managed b
 
 ### 1. Onboarding / Registering a new extension in the portal (or Onboarding / Registering existing extension to a new environment in the portal)
    
-All new extensions should always be added to the portal configuration in disabled mode. Here is a sample pull request for registering a Scheduler extension in FairFax:
+All new extensions should always be added to the portal configuration in disabled mode. Here is a sample pull request for registering a Scheduler extension in Fairfax:
 https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/459608f61d5c36864affafe6eb9d230655f67a29?refName=refs%2Fheads%2Fdev
    
 ### 2. Enabling an extension in the portal 

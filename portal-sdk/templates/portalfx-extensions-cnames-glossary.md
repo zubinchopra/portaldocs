@@ -10,11 +10,11 @@
  | BF  | Black Forest |
  | CNAME | Canonical Name record | 
  | DNS | Domain Name Server |
- | FF  | FairFax |  
- | MPAC | Internal Microsoft Environment portal instance (ms.portal.azure.com) | 
- |  National Cloud  | |
+ | FF  | Fairfax |  
+ | MPAC | ms.portal.azure.com, the Azure portal instance for internal Microsoft customers. | 
+ | National Cloud  | |
  | PROD | Production |
- | RC | |
+ | RC | Release Candidate environment, used to deploy daily builds of the Azure Portal. There is no user traffic in this environment. |
  | TFS | Team Foundation Server |
  | URL   | Uniform Resource Locator |
  

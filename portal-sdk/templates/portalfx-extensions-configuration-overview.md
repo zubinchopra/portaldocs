@@ -1,14 +1,16 @@
-<a name="portalfxExtensionsConfigurationOverview.md"></a>
-<!-- link to this document is [portalfx-extensions-configuration-overview.md]()
--->
-
 ## Conceptual Overview
 
 ### Understanding the extension configuration in Portal
 
- The extension configuration file is named ```extension.config```, and contains the configuration for all the extensions for a specific environment. For example, ```Extensions.Prod.json``` contains the configuration for all extensions in Production.
+ The extension configuration file contains  information for all extensions registered in the Azure portal. It is located in the portal repository in the  `src/RDPackages/OneCloud/` directory that is located at [https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx?version=GBdev](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx?version=GBdev).
+ 
+  The configuration file name is based on the environment name, as in the following code.  
+ 
+ `Extensions.<EnvironmentName>.json`
+ 
+ For example, ```Extensions.Prod.json``` contains the configuration for all extensions in Production, and  `Extensions.dogfood.json` contains the configuration for all extensions in the dogfood environment.
 
-The following ```extension.config ``` file contains a typical configuration for an extension.
+ The following sample configuration file contains a typical configuration for an extension.
 
 ```json
 {
@@ -23,13 +25,13 @@ The following ```extension.config ``` file contains a typical configuration for 
 
 <!-- TODO:  Include the definition of flightUri and explain that it is an optional parameter --->
 
-Its components are as follows.
+Its options are as follows.
 1. name
-    <details>
-        <summary> The name for the extension, as specified in the             Client\extension.pdl
-        file of the extension.</summary>
     <a name="extensionPdl"></a> 
 
+     The name for the extension, as specified in the `Client\extension.pdl`
+        file of the Visual Studio project. The name is the same as the one specified by the developer in the code base.
+    
     Typically, the ``` extension.pdl``` file looks like the following.
     ```json
     <?xml version="1.0" encoding="utf-8" ?>
@@ -54,57 +56,53 @@ Its components are as follows.
 
     ```<Extension Name="Microsoft_Azure_Demo" Version="1.0" Preview="true" EntryPointModulePath="Program"/>```
  
-    </details>
+
 1. uri 
-    <details>
-        <summary>
-        The uniform resource identifier for the extension. This consists of the uri of the provider, followed by a forward slash, followed by the directory that contains the extension.
-        </summary>
-        <a name="extensionUri"></a> 
+   <a name="extensionUri"></a> 
 
-    The following code contains the ```uri``` for an extension  that is being hosted by an extension hosting service.
+   The uniform resource identifier for the extension. This consists of the uri of the provider, followed by a forward slash, followed by the directory that contains the extension. 
+   
+   When the user loads the extension in the portal, it is loaded from the `uri` specified in the extension configuration. 
+
+   The following code contains the ```uri``` for an extension  that is being hosted by an extension hosting service.
     
-    ```json
-    uri: "//demo.hosting.portal.azure.net/demo",
-    ```
+   ```json
+   uri: "//demo.hosting.portal.azure.net/demo",
+   ```
 
-    where
+   where
 
-    ```     demo.hosting.portal.azure.net     ```:   the address of the resource provider (RP)
+   ```     demo.hosting.portal.azure.net     ```:   the address of the resource provider (RP)
 
-    ```      demo      ```: the name of the directory.
+   ```      demo      ```: the name of the directory.
 
 
-    The following code contains the ```uri``` for an extension  that is still using the DIY deployment.
+   The following code contains the ```uri``` for an extension  that is still using the DIY deployment.
     
-    ```json
-    uri: "//main.demo.ext.azure.com",
-    ```
+   ```json
+   uri: "//main.demo.ext.azure.com",
+   ```
 
-    where
+   where
 
-    ```     main.demo.ext.azure.com     ```:   the address of the resource provider (RP).
+   ```     main.demo.ext.azure.com     ```:   the address of the resource provider (RP).
 
+   Additional extension stamps can be loaded by specifying the stamp name in the  `url` and specifying the feature flag `feature.canmodifystamps=true`. For more information about feature flags, see [portalfx-extension-flags.md](portalfx-extension-flags.md).
 
+   **NOTE** We recommend you follow the standard CNAME pattern, as specified in  [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md). 
 
+   To update the ```uri```, send a pull request as specified in [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md).
 
-     To update the ```uri```, send a pull request as specified in [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md).
-    </details>
-      <a name="uriAndUriFormat"></a>
- 
+1. uriFormat
+   <a name="extensionUriFomat"></a> 
 
-1.  uriFormat
-    <details>
-        <summary>
-        The uri for the extension, concatenated with a parameter marker that allows modification of the extension stamp.
-        </summary>
-        <a name="extensionUriFomat"></a> 
-
-    The following code contains the uriFormat for an extension  that is being hosted by an extension hosting service.
+   The `uri` for the extension, concatenated with a parameter marker that allows modification of the extension stamp.
     
-    ```json
-    uriFormat: "//demo.hosting.portal.azure.net/demo/{0}",
-    ```
+   The following code contains the `uriFormat` for an extension that is being hosted by an extension hosting service.
+    
+   ```json
+   uriFormat: "//demo.hosting.portal.azure.net/demo/{0}",
+   ```
 
     where
 
@@ -121,77 +119,62 @@ Its components are as follows.
     uriFormat: "//{0}.demo.ext.azure.com",
     ```
 
-    To update the uriFormat, send a pull request as specified in [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md).
+   **NOTE** We recommend you follow the standard CNAME pattern, as specified in  [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md). 
 
-    </details>
+   To update the uriFormat, send a pull request as specified in [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md).
+  
+   For more information about loading extension stamps, see [portalfx-extensions-testing-in-production-overview.md#customExtensionStamp](portalfx-extensions-testing-in-production-overview.md#customExtensionStamp).
 
-
+   For information on how developers can leverage secondary stamps, see [#extensionStamps](./portalfx-extensions-configuration-overview.md#extensionStamps).
+  
+    
 1. feedbackEmail
-    <details>
-        <summary>
-    The email id to which to send all feedback about the extension. 
-        </summary>
 
-     To update the feedback email, send a pull request as specified in [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md).
-    </details>
+   The email id to which to send all feedback about the extension. 
+
+   To update the feedback email, send a pull request as specified in [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md).
 
 1. Cacheability
-    <details>
-        <summary>
-          Enables caching of the extension on your extension server or on the client. The default value is "manifest".
-        </summary>
-        <a name="cacheability"></a> 
+   <a name="cacheability"></a> 
+
+   Enables caching of the extension on your extension server or on the client. The default value is "manifest".
       
-    If you are using legacy DIY deployment, then you will need to do some work before you can set the value of the cacheability attribute to ```manifest```, or your extension will reduce the performance of Azure Portal.
+   If you are using legacy DIY deployment, then you will need to do some work before you can set the value of the cacheability attribute to ```manifest```, or your extension will reduce the performance of Azure Portal.
 
-    Please read about Client-Side caching to improve the performance of your extension before setting the value to ``` none```. For more information about Client-Side caching, see     [portalfx-performance.md#performance-best-practices-extension-homepage-caching-client-side-caching-of-extension-home-pages](portalfx-performance.md#performance-best-practices-extension-homepage-caching-client-side-caching-of-extension-home-pages).
+   For more information about Client-Side caching and improving the performance of your extension, see     [portalfx-performance.md#performance-best-practices-extension-homepage-caching-client-side-caching-of-extension-home-pages](portalfx-performance.md#performance-best-practices-extension-homepage-caching-client-side-caching-of-extension-home-pages).
 
-    NOTE: Setting the value of the cacheability attribute to ```manifest``` is a pre-requisite for the public preview phase and the GA phase. For the private preview phase, the value of the cacheability attribute can be set to  ```none```.
+   **NOTE** Setting the value of the cacheability attribute to ```manifest``` is a requirement for registering your extension into the portal.  For assistance with caching, send an email to ibizaFXPM@microsoft.com.
     
-    For more information about caching, see [portalfx-performance.md#"performance-best-practices-extension-homepage-caching](portalfx-performance.md#"performance-best-practices-extension-homepage-caching)
-    </details>
+   For more information about caching, see [portalfx-performance.md#"performance-best-practices-extension-homepage-caching](portalfx-performance.md#"performance-best-practices-extension-homepage-caching).
+
 
 1. disabled
-    <details>
-        <summary>
-            Registers the extension into the portal in hidden mode or in displayable mode.  A value of  "false" disables an extension, and a value of "true" enables the extension. 
-        </summary>
+    
+   Registers the extension configuration into the portal in hidden mode.  A value of  `true` disables an extension, and a value of `false` enables the extension for display. 
+    
+   All extensions are registered into the portal in the disabled state, therefore they are disabled by default.  This hides the extension from users, and it will not be displayed in the portal. The extension will remain in hidden mode until it is ready for general use. This is useful if the extension is not  yet ready for the public preview phase or the GA phase. Most partners use this capability to test the extension, or to host it for private preview.
 
-    All extensions are registered into the portal in the disabled state, therefore they are disabled by default.  This hides the extension from users, and it will not be displayed in the portal. The extension will remain in hidden mode until it is ready for general use. This is useful if the extension is not  yet ready for the public preview phase or the GA phase. Most partners use this capability to test the extension, or to host it for private preview.
+   To temporarily enable a disabled extension in private preview for your session only, change the configuration by adding an extension override in the portal URL, as in the following example.
 
-    To temporarily enable a disabled extension in private preview for your session only, add an extension override in the portal URL, as in the following example.
+   ``` https://portal.azure.com?Microsoft_Azure_Demo=true ```
 
-    ``` https://portal.azure.com?Microsoft_Azure_Demo=true ```
+   where
 
-    where
+   ``` Microsoft_Azure_Demo ```
 
-    ``` Microsoft_Azure_Demo ```
+   is the name of the extension as registered with the portal.
 
-    is the name of the extension as registered with the portal.
+   Conversely, you can temporarily disable an extension for a session by changing this  configuration attribute to a value of `false`. The extension cannot be temporarily enabled or disabled in the production environment.
 
-    Conversely, you can temporarily disable an extension by setting this attribute to a value of false.
-
-    </details>
 
 ### Understanding which extension configuration to modify
 
 <a name="configuration-selection"></a>
 
-The Azure portal uses five different extension configuration files to manage the extension configuration. The following table explains the mapping of the portal environment to the extension configuration that is contained in the portal repository:
-| Portal Environment	| URL	|  Configuration File  |
-| --- | --- | --- |
-| **DOGFOOD**     | `df.{extension}.onecloud-ext.azure-test.net`      | [Extensions.dogfood.json](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?_a=contents&path=%2Fsrc%2FRDPackages%2FOneCloud%2FExtensions.dogfood.json&version=GBdev) |
-| **RC**          | `rc.{extension}.onecloud-ext.azure-test.net`      | [Extensions.prod.json](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?_a=contents&path=%2Fsrc%2FRDPackages%2FOneCloud%2FExtensions.prod.json&version=GBdev) |                                                                                                                                                                                 |
-| **MPAC**        | `ms.{extension}.onecloud-ext.azure-test.net`      | [Extensions.prod.json](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?_a=contents&path=%2Fsrc%2FRDPackages%2FOneCloud%2FExtensions.prod.json&version=GBdev) |                                                                                                                                                                                |
-| **Preview**     | `preview.{extension}.onecloud-ext.azure-test.net` | [Extensions.prod.json](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?_a=contents&path=%2Fsrc%2FRDPackages%2FOneCloud%2FExtensions.prod.json&version=GBdev) |
-| **PROD**        | `main.{extension}.ext.azure.com`                  | [Extensions.prod.json](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?_a=contents&path=%2Fsrc%2FRDPackages%2FOneCloud%2FExtensions.prod.json&version=GBdev) |                                                                                                                                                                                 |
-| **BLACKFOREST** | `main.{extension}.ext.microsoftazure.de`          | [Extensions.bf.json](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?_a=contents&path=%2Fsrc%2FRDPackages%2FOneCloud%2FExtensions.bf.json&version=GBdev)                    |
-| **FAIRFAX**     | `main.{extension}.ext.azure.us`                   | [Extensions.ff.json](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?_a=contents&path=%2Fsrc%2FRDPackages%2FOneCloud%2FExtensions.ff.json&version=GBdev)                    |
-| **MOONCAKE**    | `main.{extension}.ext.azure.cn`                   | [Extensions.mc.json](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?_a=contents&path=%2Fsrc%2FRDPackages%2FOneCloud%2FExtensions.mc.json&version=GBdev)                    |
+The Azure portal uses five different extension configuration files to manage the extension configuration. The description of mapping of the portal environment to the extension configuration is located at [portalfx-extensions-cnames.md#map-extension-config-to-environment](portalfx-extensions-cnames.md#map-extension-config-to-environment).
 
-The preceding table implies that to manage extension configuration in Dogfood, BlackForest, FairFax and MoonCake, the developer should send a pull request to modify ```Extensions.test.json```, ```Extensions.bf.json```, ```Extensions.ff.json``` and ```Extensions.mc.json```. 
-
-However, the extension configurations for RC, MPAC, Preview and PROD are all managed by the file ```Extensions.prod.json```. Therefore, the extension can not host different stamps for these environments, and a pull request to modify  ```Extensions.prod.json``` will modify all four environments.
+### Extension Stamps
+<a name="extensionStamps"></a>
 
 Because the hosting service provides a mechanism for deploying extensions using safe deployment practices, the portal will load the version of your extension based on the region from where the customer is accessing the portal. For more details, see the Hosting Service documentation located at [https://github.com/Azure/portaldocs/blob/dev/portal-sdk/templates/portalfx-extension-hosting-service.md](https://github.com/Azure/portaldocs/blob/dev/portal-sdk/templates/portalfx-extension-hosting-service.md).
 
@@ -201,15 +184,14 @@ Additional stamps can be accessed by using the ```uriFormat``` parameter that is
 
 To use a secondary test stamp, specify the ```feature.canmodifystamps ``` flag, and add a parameter that matches the name of your extension as registered in the portal, as in the following example.
 
-```
+``` 
+name: "Microsoft_Azure_Demo",
 uri: "//main.demo.ext.azure.com",
 uriFormat: "//{0}.demo.ext.azure.com",
 . . .
 https://portal.azure.com?feature.canmodifystamps=true&Microsoft_Azure_Demo=perf 
 ```
 
- The portal  will replace the ```{0}``` in the ```uriFormat``` string with ```perf```, and attempt to load the extension from  ```https://perf.demo.ext.azure.com```. 
+ The portal  will replace the ```{0}``` in the ```uriFormat``` string with ```perf```, and attempt to load the ```Microsoft_Azure_Demo``` extension from the ```https://perf.demo.ext.azure.com``` URL. The portal always uses the  HTTPS protocol.
 
- NOTE: You must specify the flag ```feature.canmodifystamps=true ``` in order to override the stamp.
-
-  NOTE: We recommend you follow the standard CNAME pattern, as specified in  [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md). |
+ **NOTE** You must specify the flag ```feature.canmodifystamps=true ``` in order to override the stamp.

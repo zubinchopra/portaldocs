@@ -3,13 +3,13 @@
 -->
 
 ## How to Send the Pull Request
-The Portal repository has 4 main branches: dev, dogfood, mpac and production. All the pull requests should be sent to the Dev branch.
+The Portal repository has four main branches: dev, dogfood, mpac and production. All the pull requests should be sent to the Dev branch.
 
 Before creating a pull request, create a workitem so that you can associate the workitem with the commit. Use  the site located at [https://aka.ms/portalfx/config/update](https://aka.ms/portalfx/config/update). By associating the workitem with the commit, you will get a notification when the configuration changes are deployed to each environment.
 
 Make sure you have access to make changes to the portal framework repository by joining the Azure Portal Partner Contributors group by using the site located at [https://ramweb/RequestAccess.aspx?ProjectID=19668](https://ramweb/RequestAccess.aspx?ProjectID=19668). For more information about developer prerequisites, see [portalfx-extensions-forDevelopers-procedures.md](portalfx-extensions-forDevelopers-procedures.md]).
 
-To ensure that the changes you have made are correct and will not cause any live-site issues, it is strongly recommended that you wait for the Ibiza team to sign-off and complete the PR. Ibiza team contacts are located at [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md]).
+To ensure that the changes you have made are correct and will not cause any live-site issues, it is strongly recommended that you wait for the Ibiza team to sign-off and complete the pull request. A list of Ibiza team contacts are located at [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md).
 
 The script for the pull request is the following code.
 ```

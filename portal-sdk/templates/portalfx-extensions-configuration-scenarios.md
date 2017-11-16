@@ -5,7 +5,7 @@
 ## Understanding scenarios for changing configs
 ### Onboarding a new or existing extension in the portal
 All new extensions should always be added to the portal configuration in disabled mode. 
-The following is an example of a pull request for registering a ``` Scheduler ``` extension in the FairFax environment.
+The following is an example of a pull request for registering a ``` Scheduler ``` extension in the Fairfax environment.
 [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/459608f61d5c36864affafe6eb9d230655f67a29?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/459608f61d5c36864affafe6eb9d230655f67a29?refName=refs%2Fheads%2Fdev).
 
 ### Enabling an extension in the portal
@@ -70,7 +70,7 @@ If your extension is migrating from DIY deployment to a hosting service, we reco
     An example of a pull request is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
     
 1.  Performance Improvements: Manifest Caching
-    
+    <a name="manifestCaching"></a> 
     Work In Progress
 
     <!--TODO:  locate the work that is in progress, and add it to the document.  Should this have been Best Practices? -->
@@ -80,13 +80,14 @@ If your extension is migrating from DIY deployment to a hosting service, we reco
 
 
 1. Performance Improvements : 
-
+    <a name="PCV1PCV2Removal"></a> 
     You have removed PCV1 and PCV2 Code from your extension
     <!--TODO:  locate the work that is in progress, and add it to the document -->
 
     Work In Progress
 
 1. Updating the feedback email
+    <a name="feedbackEmail"></a> 
     <!--TODO:  locate the work that is in progress, and add it to the document -->
    Work In Progress
 
