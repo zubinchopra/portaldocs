@@ -380,7 +380,7 @@ import * as SubscriptionDropDown from "FxObsolete/Controls/SubscriptionDropDown"
 ```typescript
 
 // The subscriptions drop down.
-const subscriptionsDropDownOptions: SubscriptionDropDown.Options = {
+const subscriptionsDropDownOptions: SubscriptionDropDownOptions = {
     form: this,
     accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
         return data.subscription;
@@ -398,7 +398,7 @@ const subscriptionsDropDownOptions: SubscriptionDropDown.Options = {
     // gallery item.
     filterByGalleryItem: this._galleryItem
 };
-this.subscriptionsDropDown = SubscriptionDropDown.create(container, subscriptionsDropDownOptions);
+this.subscriptionsDropDown = createSubscriptionDropDown(container, subscriptionsDropDownOptions);
 
 ```
 
@@ -442,7 +442,7 @@ import * as ResourceGroupDropDown from "FxObsolete/Controls/ResourceGroupDropDow
 ```
 ```typescript
 
-this.resourceGroupDropDown = ResourceGroupDropDown.create(container, {
+this.resourceGroupDropDown = createResourceGroupDropDown(container, {
     form: this,
     accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
         return data.resourceGroup;
@@ -464,8 +464,8 @@ this.resourceGroupDropDown = ResourceGroupDropDown.create(container, {
         message: ClientResources.enginePermissionCheckCustomValidationMessage.format(actions.toString())
     }),
     // Optional -> Will determine which mode is selectable by the user. It defaults to Both.
-    allowedMode: ko.observable(ResourceGroupDropDown.Mode.Both), //Alternatively Mode.UseExisting or Mode.CreateNew
-    value: { mode: ResourceGroupDropDown.Mode.CreateNew, value: { name: "NewResourceGroup_1", location: "" } },
+    allowedMode: ko.observable(ResourceGroupDropDownMode.Both), //Alternatively Mode.UseExisting or Mode.CreateNew
+    value: { mode: ResourceGroupDropDownMode.CreateNew, value: { name: "NewResourceGroup_1", location: "" } },
     createNewPlaceholder: ClientResources.createNew
 });
 
@@ -509,7 +509,7 @@ import * as LocationDropDown from "FxObsolete/Controls/LocationDropDown";
 ```typescript
 
 // The locations drop down.
-this.locationsDropDown = LocationDropDown.create(container, {
+this.locationsDropDown = createLocationDropDown(container, {
     form: this,
     accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
         return data.location;
@@ -558,7 +558,7 @@ const initialDataObservable = ko.observable<SpecPicker.InitialData>({
         }
     ]
 });
-this.specDropDown = new Specs.DropDown(container, {
+this.specDropDown = new SpecsDropDown(container, {
     form: this,
     accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
         return data.spec;
@@ -567,7 +567,7 @@ this.specDropDown = new Specs.DropDown(container, {
     // This extender should be the same extender view model used for the spec picker blade.
     // You may need to extend your data context or share your data context between your
     // create area and you spec picker area to use the extender with the current datacontext.
-    specPickerExtender: new BillingSpecPickerExtender.BillingSpecPickerV3Extender(container, initialDataObservable(), dataContext),
+    specPickerExtender: new BillingSpecPickerV3Extender(container, initialDataObservable(), dataContext),
     pricingBlade: {
         detailBlade: "BillingSpecPickerV3",
         detailBladeInputs: {},
