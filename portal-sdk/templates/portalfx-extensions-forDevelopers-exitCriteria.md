@@ -1,14 +1,12 @@
-<a name="portalfxExtensionsForDevelopersExitCriteria"></a>
-<!-- link to this document is [portalfx-extensions-forDevelopers-exitCriteria.md]()
--->
+## Exit Criteria and Quality Metrics
 
-## Exit Criteria and Quality Metrics for Developers
+Every new extension provides an opportunity for the iBiza team to improve the customer experience. By using the  following criteria to meet customer expectations, we can improve the customer experience for your extension and overall portal.
 
-The following are the criteria to meet for an extension to be moved from the private preview stage to the public preview stage.  In addition, there are also criteria that an extension meets previous to being moved from the public preview stage to GA.  Some exceptions can be granted to move an extension from the private preview stage to the public preview stage, but in general,  the overall customer experience is reduced.
+The following are the criteria to meet for an extension to be moved from the private preview stage to the public preview stage.  The criteria that an extension meets previous to being moved from the public preview stage to GA may be different. 
 
 Basic information on metrics is located at  [portalfx-extensions-forProgramManagers-exitCriteria.md](portalfx-extensions-forProgramManagers-exitCriteria.md).
 
-A developer should also be aware of the following criteria.
+Extension developers can drastically improve the customer experience by following these criteria. 
 
 1. Performance
 
@@ -16,7 +14,7 @@ A developer should also be aware of the following criteria.
 
     All blades meet the required blade reveal time of less than 4 seconds for the 80th percentile before being enabled in PROD. Extensions should be enabled in MPAC to start tracking performance. Resource and Create blades are tracked explicitly. 
 
-    We require at least 100 loads of your UX (extension/blade/tiles) to get a signal. If you are unable to generate that traffic genuinely in the expected timeframe, please hold a bug bash to increase the traffic.
+    We require at least 100 loads of the UX (extension/blade/tiles) to get a signal. If you cannot generate that traffic genuinely in the expected timeframe, please hold a bug bash to increase the traffic.
 
     For more information about performance, see the following resources:
     * Dashboard 
@@ -30,17 +28,16 @@ A developer should also be aware of the following criteria.
 
     *	Checklist
 
-        [https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/index-portalfx-extension-monitor.md#performance-checklist](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/index-portalfx-extension-monitor.md#performance-checklist)
+        [portalfx-performance.md](portalfx-performance.md)
 
     *	Portal COP (Telemetry)
 
-        [https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/index-portalfx-extension-monitor.md#portalcop](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/index-portalfx-extension-monitor.md#portalcop)
+        [portalfx-performance-portalcop.md](portalfx-performance-portalcop.md)
 
-        
 
 1. Reliability
     
-    We require at least 100 loads of your UX (extension/blade/tiles) to get a signal, if you are unable to generate that traffic genuinely in your desired timeframe please hold a bug bash to drive up the traffic.
+    We require at least 100 loads of the UX (extension/blade/tiles) to get a signal, if you cannot to generate that traffic genuinely in the desired timefram, please hold a bug bash to drive up the traffic.
 
 1. Usability
 
@@ -58,7 +55,7 @@ In order to ensure that every customer has a great customer experience, the app 
 
     If the success rate drops by 5% during a rolling 24-hour period that contains at least 50 Creates, a sev 2 incident will be filed. 
 
-    This applies to every error that causes Creates to fail when the Create button is clicked.
+    This applies to every error that causes Creates to fail when the `Create` button is clicked.
 
 ## Resource move 
 

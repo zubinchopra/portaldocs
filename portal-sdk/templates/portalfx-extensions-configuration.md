@@ -1,7 +1,3 @@
-<a name="portalfxExtensionsConfiguration.md"></a>
-<!-- link to this document is [portalfx-extensions-configuration.md]()
--->
-
 # Portal Extensions Configuration
 
 [Introduction](portalfx-extensions-configuration-intro.md)

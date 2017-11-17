@@ -1,13 +1,6 @@
-
-<a name="portalfxExtensionsForDevelopers"></a>
-<!-- link to this document is [portalfx-extensions-forDevelopers.md]()
--->
-
 # Portal Extensions for Developers
 
    <!-- TODO: Should the audience document be combined with the introduction document? -->
-
-1. [Audience](portalfx-extensions-forDevelopers-audience.md)
 
 1. [Introduction](portalfx-extensions-forDevelopers-intro.md)
 

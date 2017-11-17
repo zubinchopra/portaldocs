@@ -1,9 +1,3 @@
-
-<a name="portalfxExtensionsDeveloperInitReferences"></a>
-
-<!-- link to this document is [portalfx-extensions-DeveloperInit-references.md]()
--->
-
 ## References
 The following links describe some Azure portal applications and features that you may want to develop.
 

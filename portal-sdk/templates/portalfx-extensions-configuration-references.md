@@ -1,9 +1,5 @@
-<a name="portalfxExtensionsConfigurationReferences.md"></a>
-<!-- link to this document is [portalfx-extensions-configuration-references.md]()
--->
-
 ## References
-This section contains links to documents that will help you understand Azure Portal extension configuration.
+This section contains links to documents that explain the Azure Portal extension configuration.
 
 * Development Procedures
 

@@ -1,9 +1,4 @@
 
-<a name="portalfxExtensionsBladeHelloWorld"></a>
-
-<!-- link to this document is [portalfx-extensions-blade-helloWorld.md]()
--->
-
 ## Introduction
 
  [portalfx-extensions-blade-helloWorld-intro.md](portalfx-extensions-blade-helloWorld-intro.md)

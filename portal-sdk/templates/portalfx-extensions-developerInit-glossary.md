@@ -1,8 +1,4 @@
 
-<a name="portalfxExtensionsDeveloperInitGlossary"></a>
-<!-- link to this document is [portalfx-extensions-developerInit-glossary.md]()
--->
-
 ## Glossary
 
  This section contains a glossary of terms and acronyms that are used in this document.

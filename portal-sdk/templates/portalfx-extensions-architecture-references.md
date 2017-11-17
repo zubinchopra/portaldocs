@@ -1,11 +1,6 @@
 
-<a name="portalfxExtensionsArchitectureReferences"></a>
-
-<!-- link to this document is [portalfx-extensions-architecture-references.md]()
--->
-
 ## References
-This section contains links to documents that you may find useful while you are understanding Azure Portal Architecture.
+This section contains links to documents may be useful while you are understanding Azure Portal Architecture.
 
 * Asynchronous Module Loader (AMD) 
 

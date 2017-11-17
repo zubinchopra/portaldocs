@@ -1,8 +1,4 @@
 
-<a name="portalfxExtensionsArchitecture"></a>
-<!-- link to this document is [portalfx-extensions-architecture.md]()
--->
-
 ## Introduction 
 
 [portalfx-extensions-architecture-intro.md](portalfx-extensions-architecture-intro.md)

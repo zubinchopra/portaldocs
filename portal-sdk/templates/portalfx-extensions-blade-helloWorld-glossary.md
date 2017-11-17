@@ -1,8 +1,4 @@
 
-<a name="portalfxExtensionsBladeHelloWorldGlossary"></a>
-
-<!-- link to this document is [portalfx-extensions-blade-helloWorld-glossary.md]()
--->
 
 ## Glossary
 | Term | Meaning | 

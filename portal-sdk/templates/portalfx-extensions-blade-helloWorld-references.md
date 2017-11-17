@@ -1,9 +1,4 @@
 
-<a name="portalfxExtensionsBladeHelloWorldReferences"></a>
-
-<!-- link to this document is [portalfx-extensions-blade-helloWorld-references.md]()
--->
-
 ## References
 
 * Testing in production

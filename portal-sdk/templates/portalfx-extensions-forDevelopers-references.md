@@ -1,10 +1,5 @@
-
-<a name="portalfxExtensionsForDevelopersReferences"></a>
-<!-- link to this document is [portalfx-extensions-forDevelopers-references.md]()
--->
-
 ## References
-This section contains two subsections.  The first section contains links to documents from the Azure Portal UI team site, and the second section contains links to documents from other teams or about other products.  You may find them useful while you are developing your extensions.
+This section contains two subsections.  The first section contains links to documents from the Azure Portal UI team site, and the second section contains links to documents from other teams or about other products.  You may find them useful while you are developing extensions.
 
 ### Azure Portal UI team site documents
 
@@ -16,8 +11,7 @@ This section contains two subsections.  The first section contains links to docu
     [http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKBlade](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKBlade)
 
 * Common Scenarios 
-
-    [https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/index-portalfx-extension-development.md#common-scenarios-building-create-experiences](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/index-portalfx-extension-development.md#common-scenarios-building-create-experiences)
+    [portalfx-create.md#building-create-experiences](portalfx-create.md#building-create-experiences)
 
  * Debugging   
 [https://auxdocs.azurewebsites.net/Account/Login?ReturnUrl=%2Fen-us%2Fdocumentation%2Farticles%2Fportalfx-debugging](https://auxdocs.azurewebsites.net/Account/Login?ReturnUrl=%2Fen-us%2Fdocumentation%2Farticles%2Fportalfx-debugging)

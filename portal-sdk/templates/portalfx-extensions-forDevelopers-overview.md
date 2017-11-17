@@ -1,8 +1,3 @@
-
-<a name="portalfxExtensionsForDevelopersOverview"></a>
-<!-- link to this document is [portalfx-extensions-forDevelopers-overview.md]()
--->
-
 ## Conceptual Overview
 
 The items that are being developed add functionality to an Azure Portal, and therefore are named extensions, or blades.  Some examples of blades are in the following image.

@@ -1,8 +1,4 @@
 
-<a name="portalfxExtensionsDeveloperInit"></a>
-<!-- link to this document is [portalfx-extensions-developerInit.md]()
--->
-
 ## Introduction 
 [portalfx-extensions-developerInit-intro.md](portalfx-extensions-developerInit-intro.md)
 

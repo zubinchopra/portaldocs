@@ -1,7 +1,4 @@
 
-<a name="portalfxExtensionsArchitectureGlossary"></a>
-<!-- link to this document is [portalfx-extensions-architecture-glossary.md]()
--->
 
  This section contains a glossary of terms and acronyms that are used in this document.
 

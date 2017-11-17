@@ -1,7 +1,4 @@
 
-<a name="portalfxExtensionsArchitectureOverview"></a>
-<!-- link to this document is [portalfx-extensions-architecture-overview.md]()
--->
 
 ## Understanding the Azure Portal Architecture
 
@@ -21,7 +18,7 @@ The Azure portal architecture is displayed in the following image.
 1.	The core programming model follows the Model View ViewModel pattern. Most UI elements in the portal are backed by dynamic view models, which provide a 'live tile' style of UX.
 1.	View models make heavy use of Knockout for binding data to the client.
 1.	Building custom UI is enabled using standard web technologies like HTML and CSS.
-1.	Extension developers can provide customers of your service consistent experience across all clients i.e. UI, powershell or CLI by implementing business logic in APIs exposed through ARM.
-1.	Azure portal creates, or mints, tokens on behalf of extensions. This allows extensions to invoke ARM APIs out of the box. In case your extension needs to invoke services such as Graph then we recommend you go through Authentication guide to check if you need help from our team.
+1.	Extension developers can provide a consistent experience to customers of the  service across all clients, i.e. UI, powershell or CLI, by implementing business logic in APIs exposed through ARM.
+1.	Azure portal creates, or mints, tokens on behalf of extensions. This allows extensions to invoke ARM APIs out of the box. In case the extension needs to invoke services such as Graph then we recommend reviewing the Authentication guide to check if you need help from our team.
 1.	Extension developers can leverage the extension hosting service to deploy the extension's UI in all Azure data centers.
 
