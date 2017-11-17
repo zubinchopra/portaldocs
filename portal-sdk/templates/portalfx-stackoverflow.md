@@ -22,7 +22,7 @@
     <td> maftab </td>
 </tr>
 <tr>
-    <td> [ibiza-test](https://stackoverflow.microsoft.com/questions/tagged/ibiza-tets) </td>
+    <td> [ibiza-test](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test) </td>
     <td> maftab </td>
 </tr>
 <tr>
@@ -74,7 +74,7 @@
     <td> shresh </td>
 </tr>
 <tr>
-    <td> [ibiza-accesibility](https://stackoverflow.microsoft.com/questions/tagged/ibiza-accesibility) </td>
+    <td> [ibiza-accessibility](https://stackoverflow.microsoft.com/questions/tagged/ibiza-accessibility) </td>
     <td> paparsad </td>
 </tr>
 <tr>
