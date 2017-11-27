@@ -1,4 +1,4 @@
-﻿{"gitdown": "contents"}
+{"gitdown": "contents"}
 
 ## Building create experiences
 
@@ -24,7 +24,7 @@ The Azure portal offers 3 ways to build a create form:
 
 ### Create Marketplace package (aka Gallery package)
 The Marketplace provides a categorized collection of packages which can be created in the portal. Publishing your package to the Marketplace is simple:
-
+
 1. Create a package and publish it to the DF Marketplace yourself, if applicable. Learn more about [publishing packages to the Marketplace](../../gallery-sdk/generated/index-gallery.md).
 1. Side-load your extension to test it locally.
 1. Set a "hide key" before testing in production.
@@ -173,18 +173,18 @@ locationDropDown.value(locationDropDown.fetchedValues().first((value)=> value.na
 ```ts
 import * as SubscriptionDropDown from "Fx/Controls/SubscriptionDropDown";
 ```
-{"gitdown": "include-section", "file": "../../../src/SDK/devkit/VS/TB/PT/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#subscriptionDropDown"}
+{"gitdown": "include-section", "file": "../../../src/SDK/devkit/VS/PT/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#subscriptionDropDown"}
 
 #### Resource groups dropdown
 ```ts
 import * as ResourceGroupDropDown from "Fx/Controls/ResourceGroupDropDown";
 ```
-{"gitdown": "include-section", "file": "../../../src/SDK/devkit/VS/TB/PT/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
+{"gitdown": "include-section", "file": "../../../src/SDK/devkit/VS/PT/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
 #### Locations dropdown
 ```ts
 import * as LocationDropDown from "Fx/Controls/LocationDropDown";
 ```
-{"gitdown": "include-section", "file": "../../../src/SDK/devkit/VS/TB/PT/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#locationDropDown"}
+{"gitdown": "include-section", "file": "../../../src/SDK/devkit/VS/PT/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#locationDropDown"}
 
 ### ARM dropdown options
 Each ARM dropdown can disable, hide, group, and sort.
