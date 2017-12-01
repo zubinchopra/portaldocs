@@ -1,5 +1,9 @@
 # Release Notes since 7/30/2017
 
+## 5.0.302.912
+0 Breaking Changes, 0 Features added and 0 Bugs Fixed
+<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
+
 ## 5.0.302.911
 0 Breaking Changes, 2 Features added and 1 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1740864'>1740864</a></td><td>Bug Fix</td><td>Remove page configuration hash</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1716273'>1716273</a></td><td>Feature</td><td>[ExtensionConfiguration] Enable PROD public and update feedback for extension Microsoft_Azure_Migrate</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10451566'>10451566</a></td><td>Feature</td><td>[ExtensionConfiguration] - Update uri for extension Microsoft_Azure_Automation</td></tr></table>
@@ -179,8 +183,8 @@ stack: TypeError: Unable to get property ''length'' of undefined or null referen
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10090378'>10090378</a></td><td>Feature</td><td>Enable IRIS notifications in RC, MPAC, Preview & PROD</td></tr></table>
 
 ## 5.0.302.837
-0 Breaking Changes, 2 Features added and 0 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9763552'>9763552</a></td><td>Feature</td><td>[EHS][EV2] Support for per cloud configurations</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10090378'>10090378</a></td><td>Feature</td><td>Enable IRIS notifications in RC, MPAC, Preview & PROD</td></tr></table>
+1 Breaking Changes, 1 Features added and 0 Bugs Fixed
+<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9763552'>9763552</a></td><td><strong>Break</strong></td><td>[EHS][EV2] Support for per cloud configurations</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10090378'>10090378</a></td><td>Feature</td><td>Enable IRIS notifications in RC, MPAC, Preview & PROD</td></tr></table>
 
 ## 5.0.302.836
 0 Breaking Changes, 1 Features added and 0 Bugs Fixed
