@@ -6,6 +6,10 @@
         <th>Owner</th>
     </tr>
 <tr>
+    <td> [ibiza-hosting-service](https://stackoverflow.microsoft.com/questions/tagged/ibiza-hosting-service) </td>
+    <td> maftab </td>
+</tr>
+<tr>
     <td> [ibiza-breaking-changes](https://stackoverflow.microsoft.com/questions/tagged/ibiza-breaking-changes) </td>
     <td> amitmod </td>
 </tr>
