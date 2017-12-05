@@ -1,4 +1,4 @@
-# Release Notes since 8/3/2017
+# Release Notes since 8/5/2017
 
 ## 5.0.302.913
 0 Breaking Changes, 3 Features added and 0 Bugs Fixed
@@ -249,15 +249,3 @@ stack: TypeError: Unable to get property ''length'' of undefined or null referen
 ## 5.0.302.818
 1 Breaking Changes, 1 Features added and 0 Bugs Fixed
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9763552'>9763552</a></td><td><strong>Break</strong></td><td>[EHS][EV2] Support for per cloud configurations</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9517038'>9517038</a></td><td>Feature</td><td>[ExtensionConfiguration] Enable KeyVault UX in Blackforest for extension  Microsoft_Azure_KeyVault</td></tr></table>
-
-## 5.0.302.817
-0 Breaking Changes, 2 Features added and 2 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9910191'>9910191</a></td><td>Feature</td><td>[ContentUnbundler][EV2] Bug: ExtensionRoutePrefixKey didn't been replaced</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9872945'>9872945</a></td><td>Bug Fix</td><td>Add missing CustomerInsights resource type to MonitorChart</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9863219'>9863219</a></td><td>Feature</td><td>Enable new resource types for MonitorChart</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9845522'>9845522</a></td><td>Bug Fix</td><td>Enable AppInsights resource types for MonitorChart</td></tr></table>
-
-## 5.0.302.816
-0 Breaking Changes, 0 Features added and 3 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9875825'>9875825</a></td><td>Bug Fix</td><td>do not update iis settings if there are no changes needed</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9875458'>9875458</a></td><td>Bug Fix</td><td>try to make warmup code null ref less often</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9873375'>9873375</a></td><td>Bug Fix</td><td>[No-PDL] Switch default for 'isPinnable' back to 'false' to improve dev-exp</td></tr></table>
-
-## 5.0.302.815
-0 Breaking Changes, 1 Features added and 0 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9796410'>9796410</a></td><td>Feature</td><td>[EHS] externalize Ev2 replacements to json file rather then unbundler args</td></tr></table>
