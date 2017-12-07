@@ -1,4 +1,4 @@
-## How to send a pull request
+## Sending pull requests for portal extensions
 
 The Portal repository has four branches: `dev`, `Dogfood`, `MPAC`, and `PROD`. Pull requests are used to cherry-pick extension configurations from one branch to the next one by updating the configuration files that govern each environment. This document hypothesizes that the extension has been completely developed and tested, and is ready to be moved to the next branch, as specified in [portalfx-extensions-branches.md](portalfx-extensions-branches.md). The focus of the document is the extension configuration files in the portal repository; the source code for the extension is out of the scope of this document.
 
@@ -24,13 +24,14 @@ All the pull requests should be sent first to the dev branch. To add or update o
     git fetch
    ```
     
-    When these commands complete successfully, the developer has a clone of the Azure portal repository.
+    When these commands complete successfully, the developer has a clone of the Portal configuration directories.
 
 1.  The developer may need to modify the configuration file(s) to enable the extension, as specified in [portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension](portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension).
 
     **NOTE**: There should be one config file for every environment that will be affected by the pull request for this extension.
 
-1. Create a work item so that you can associate the work item with the commit. Use the site located at [https://aka.ms/portalfx/pullRequest](https://aka.ms/portalfx/pullRequest) to create the work item. Click the `New pull request` button, then select the branch that contains the staged changes in the first dropdown box.  Select the target branch in the second dropdown box. In the following example, the developer is requesting to move changes from the `extensionupdate` branch to the dev branch.
+1. Create a work item so that you can associate the work item with the commit. Use the site located at [https://aka.ms/portalfx/pullRequest](https://aka.ms/portalfx/pullRequest) to create the work item. 
+Click the `New pull request` button, then select the branch that contains the staged changes in the first dropdown box.  Select the target branch in the second dropdown box. In the following example, the developer is requesting to move changes from the local `extensionupdate` branch to the dev branch.
 
    ![alt-text](../media/portalfx-extensions-pullRequest/pull-request.png "Create Pull Request")
 
