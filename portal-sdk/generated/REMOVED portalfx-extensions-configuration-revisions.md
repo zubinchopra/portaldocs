@@ -2,6 +2,7 @@
 <!-- link to this document is [portalfx-extensions-configuration-revisions.md]()
 -->
 
+<a name="revisions"></a>
 ## Revisions
 
 This section contains the revisions for the document that is named Portal Extensions Configuration and is located at 

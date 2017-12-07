@@ -2,6 +2,7 @@
 <!-- link to this document is [portalfx-extensions-cnames-revisions.md]()
 -->
 
+<a name="revisions"></a>
 ## Revisions
 
 This section contains the revisions for the document that is named Portal Extensions CNames and is located at 

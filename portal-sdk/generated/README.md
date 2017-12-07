@@ -18,11 +18,12 @@ The success of Azure portal is dependent on the success of our partners. For our
 **Extension developers** can leverage Azure Portal SDK and extension hosting service to rapidly develop and ship extensions. Also, Azure portal has a strong developer community to help you build the extensions. 
 
 **Program / Product Managers** can gather deeper understanding of extension’s health and customer behavior using the Power BI reports and Kusto telemetry. 
-
+<!-- TODO:  This link does not belong here. Correct the link and/or remove it. -->
 Ready to grow your business?
 
 <a name="home-onboard-ibiza-portal-sdk-generated-index-portalfx-extension-onboarding-md"></a>
 ## <a href="/portal-sdk/generated/index-portalfx-extension-onboarding.md">Onboard Ibiza</a>
+[portalfx-extensions-forDevelopers.md](portalfx-extensions-forDevelopers.md)
 
 <a name="extension-developer-resources"></a>
 # Extension Developer Resources

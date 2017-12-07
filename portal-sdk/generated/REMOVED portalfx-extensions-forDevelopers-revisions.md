@@ -1,6 +1,7 @@
 <a name="portalfxExtensionsForDevelopersRevisions"></a>
 <!-- link to this document is [portalfx-extensions-forDevelopers-revisions.md]()
 -->
+<a name="revisions"></a>
 ## Revisions
 
 This section contains the revisions for the document that is named Portal Extensions for Developers and is located at 
