@@ -1,7 +1,9 @@
+<a name="introduction"></a>
 ## Introduction
 
 This document describes the various components of testing an extension in production. This includes status codes in addition to procedures for testing.  
 
+<a name="overview"></a>
 ## Overview
 
 Sideloading allows the testing and debugging of extensions locally against any environment. This is the preferred method of testing. However, an extension can be 
@@ -9,7 +11,8 @@ tested in production under specific conditions. It allows the developer to inclu
 
 Extensions can be loaded on a per-user basis on production deployments. This can be used to test a new extension or an existing extension on a developer's machine with production credentials. To reduce phishing risks, the extension is hosted on `localhost`, although it can be hosted on any port. 
 
-### Registering a Custom Extension 
+<a name="overview-registering-a-custom-extension"></a>
+### Registering a Custom Extension
 
 To register a custom extension, or register a different extension stamp, use the following parameters in the portal extension query string.
  

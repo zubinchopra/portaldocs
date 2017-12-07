@@ -1,5 +1,7 @@
+<a name="overview"></a>
 ## Overview
 
+<a name="overview-understanding-the-extension-configuration-in-portal"></a>
 ### Understanding the extension configuration in Portal
 
  The extension configuration file contains  information for all extensions registered in the Azure portal. It is located in the portal repository in the  `src/RDPackages/OneCloud/` directory that is located at [https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx?version=GBdev](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx?version=GBdev). For more information about loading extension stamps, see [portalfx-extensions-testing-in-production-overview.md#registering-a-custom-extension](portalfx-extensions-testing-in-production-overview.md#registering-a-custom-extension).
@@ -117,10 +119,12 @@ Its options are as follows.
 
 * **disabled**: Optional field. Registers the extension configuration into the portal in hidden mode.  A value of  `true` disables an extension, and a value of `false` enables the extension for display. The default value is `false`. For more information about enabling and disabling extensions, see [portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension](portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension).
  
+<a name="overview-understanding-which-extension-configuration-to-modify"></a>
 ### Understanding which extension configuration to modify
 
 The Azure portal uses five different extension configuration files to manage the extension configuration. The description of mapping of the portal environment to the extension configuration is located at [portalfx-extensions-branches.md](portalfx-extensions-branches.md).
 
+<a name="overview-extension-stamps"></a>
 ### Extension Stamps
 
 Because the hosting service provides a mechanism for deploying extensions using safe deployment practices, the portal will load the version of the extension that is based on the region from where the customer is accessing the portal. For more details, see the Hosting Service documentation located at [https://github.com/Azure/portaldocs/blob/dev/portal-sdk/templates/portalfx-extension-hosting-service.md](https://github.com/Azure/portaldocs/blob/dev/portal-sdk/templates/portalfx-extension-hosting-service.md).

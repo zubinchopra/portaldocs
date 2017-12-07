@@ -1,13 +1,13 @@
 # Portal Extensions Configuration
 
-[Introduction](portalfx-extensions-configuration-intro.md)
+<!-- document headers are in the individual documents -->
 
-[Conceptual overview](portalfx-extensions-configuration-overview.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-configuration-intro.md"}
 
-[Scenarios for changing configurations](portalfx-extensions-configuration-scenarios.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-configuration-overview.md"}
 
-[Frequently asked questions](portalfx-extensions-faq-configuration.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-configuration-scenarios.md"}
 
-[Glossary](portalfx-extensions-configuration-glossary.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-configuration.md"}
 
-[References](portalfx-extensions-configuration-references.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-configuration-glossary.md"}
