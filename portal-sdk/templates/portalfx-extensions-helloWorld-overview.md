@@ -1,6 +1,6 @@
 
 ## Introduction
-
+ 
 Blades are the main unit of the user experience (UX) that can be built using the Azure SDK. They are pages that can be loaded in the portal.
 
 Blades are components that are developed as part of the extension, and can be rendered at specific locations in the Portal UI. They are opened by using the `container.openContextPane(...)` API, as specified in the `MsPortalFx.d.ts` file of the project.
