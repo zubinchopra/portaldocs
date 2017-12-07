@@ -1,0 +1,132 @@
+<a name="hello-world-extension"></a>
+# Hello World Extension
+
+ 
+<a name="hello-world-extension-introduction"></a>
+## Introduction
+
+Blades are the main unit of the user experience (UX) that can be built using the Azure SDK. They are pages that can be loaded in the portal.
+
+Blades are components that are developed as part of the extension, and can be rendered at specific locations in the Portal UI. They are opened by using the `container.openContextPane(...)` API, as specified in the `MsPortalFx.d.ts` file of the project.
+
+<a name="hello-world-extension-conceptual-overview"></a>
+## Conceptual Overview
+
+Use the following steps to develop a blade.
+1.	 You and your team will determine the types of blades that can be grouped together in a shared context.   Decide on a name for this group, or area.  In this example, the area for blades is named ```Greetings```, and the blade that is being developed is named ```Aloha```. Remember to remove the angle brackets when substituting the name of the group for the parameter name ```<AreaName>```.
+1.	Add a folder for the group of blades within the ```Client``` folder of the project. It should be named the same as the area.
+
+    ![alt-text](../media/portalfx-extensions-helloWorld/areaFolder.png "Area Folder")
+
+1.	Add a file for the new blade to the folder. The file should be named the same as the blade. In the following image, the name of the blade is ```Aloha```.
+
+    ![alt-text](../media/portalfx-extensions-helloWorld/areaBladeFile.png "New Blade in Folder")
+
+1.	Also add a file that describes the area to the area folder.  The name of the file should be the name of the group, concatenated with the word ‘Area’. 
+
+    ![alt-text](../media/portalfx-extensions-helloWorld/areaGroupFile.png "GreetingsArea describes the area")
+
+1.	Within the file that was just created, add the following code.
+
+    ```cs
+    export class DataContext {
+    }
+    ```
+
+1. There are some basic parts that are required in the blade file.  The first part is the import statements, as in the following example.
+
+    ```cs
+    import * as TemplateBlade from "Fx/Composition/TemplateBlade";
+    import { DataContext } from "./<AreaName>Area"; // todo – substitute the name of the area, and remove the angle brackets 
+    ```
+
+1.	The second code part is the template blade decorator. This lets the framework discover the blade. It is also where the html template is defined.
+
+    The following  example shows the first part of a simple text data-binding. The corresponding data-binding code is in the next example.
+
+    ```js
+    @TemplateBlade.Decorator({
+        htmlTemplate: `<div data-bind='text: helloWrldMsg'></div>`
+    })
+
+    export class <BladeName> // todo – substitute the name of the blade, and remove the angle brackets 
+    {
+
+    }
+    ```
+
+1.	The following code implements the class for the new blade. In this instance the code sets the title, subtitle, and binds the string 'Hello world!' to the UI. This code should be added to the class in the TemplateBlade decorator from the preceding step.
+
+    **NOTE**: the text from the data-bind statement is named the same as the message, thereby completing the binding.
+
+    ```cs
+        public title = "My blade title";
+        public subtitle = "My blade subtitle";
+        public context: TemplateBlade.Context<void, DataContext>; // there are useful framework APIs that hang off of here
+        public helloWrldMsg = ko.observable("Hello world!"); // this is bound in the div statement in the previous example 
+
+        public onInitialize()
+        {
+        // initialization code should be inserted here
+           return Q();   // if the extension will load data then return a loading promise here
+        }
+    ```
+
+1.	 The extension can now be compiled.
+
+        **NOTE**:  The blade title in the browser is not the same as the blade name as displayed in Visual Studio.
+
+1.	Test the new extension by using a link in the following format in the address bar of the browser.
+
+    ```
+    <PORTAL URI>#blade/<extensionName>/<bladeName>
+    ```
+  
+    where
+
+    **#blade**: a literal
+
+    **extensionName**: The name of the extension that contains the blade
+
+    **bladeName**: The name of the blade that is being developed
+
+
+    One example is as follows.
+    ```json
+    https://portal.azure.com#blade/HelloWorld/Aloha 
+    ```
+
+    Keep in mind that there may be parameters to pass to Azure that affect the loading of the portal.  In the following case, the parameters are included in the URL previous to the name of the blade.
+
+    ```json
+    https://portal.azure.com/?feature.customportal=false&feature.canmodifyextensions=true#blade/HelloWorld/Aloha
+    ```
+
+    Also, test extensions may be added to the URI after the name of the blade that was just added, as in the following example.
+
+    ```json
+    https://portal.azure.com/?feature.customportal=false&feature.canmodifyextensions=true#blade/HelloWorld/Aloha?testExtensions={"HelloWorld":"https://localhost:44300/"}
+    ```
+
+    When the site is properly accessed, the blade from this example should resemble the following image.
+
+    ![alt-text](../media/portalfx-extensions-helloWorld/helloWorldExtensionAlohaBlade.png "New Extension and blade")
+
+
+
+ ## Glossary
+
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+| Term          | Meaning | 
+| ---           | --- |
+| area          | Group of context panes and parts that are associated with a single user-defined context.  |
+| blade         | An Azure SDK object, or an object from a framework API, that contains content by using an HTML template.  That template is bound to properties on the TypeScript class of the object. Also see context pane.   |
+| context pane  | The main unit of the Azure UX that can be built using the Azure SDK.   The vertical container that acts as the starting point for any journey. Context panes are basically Web pages that can be loaded in the portal. Also known as context blade or pane. |
+| data binding  | The process that establishes a connection between the application context pane and the business logic blade behind the pane. |
+| extension     | A Web application that was developed using the Azure Portal SDK and is made available to users through the Azure Portal. |
+| framework     | A software environment that provides large software platform functionality in the process of building and deploying applications. The larger platform is selectively changed by adding developer code to make software applications. |
+| part          | See context pane. |
+| SDK           | Software Development Kit. |
+| UI            | User interface. |
+| UX            | User experience. |
