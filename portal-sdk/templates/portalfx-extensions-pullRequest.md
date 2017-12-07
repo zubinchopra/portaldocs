@@ -1,43 +1,56 @@
 ## How to send a pull request
 
-The Portal repository has four main branches: dev, dogfood, mpac and production. All the pull requests should be sent to the dev branch. 
+The Portal repository has four branches: `dev`, `Dogfood`, `MPAC`, and `PROD`. Pull requests are used to cherry-pick extension configurations from one branch to the next one by updating the configuration files that govern each environment. This document hypothesizes that the extension has been completely developed and tested, and is ready to be moved to the next branch, as specified in [portalfx-extensions-branches.md](portalfx-extensions-branches.md). The focus of the document is the extension configuration files in the portal repository; the source code for the extension is out of the scope of this document.
 
+The configuration file for the extension that will be cherry-picked should be similar to the examples in [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md). The relationship between the environments and the configuration files specified in [portalfx-extensions-branches.md](portalfx-extensions-branches.md).
 
-<!-- TODO:  Determine whether the Github setup procedure is documented elsewhere.  It is not really a part of 
-the pull request process.  -->
+ For permission to send pull requests, developers should join the ```Azure Portal Core Team - 15003(15003)``` group as specified in [portalfx-extensions-forDevelopers-procedures.md#join-dls-and-request-permissions](portalfx-extensions-forDevelopers-procedures.md#join-dls-and-request-permissions).
 
-1. Set up the developer **GitHub** platform so that it can communicate with the remote repository branch. At the command line, type the following commands, without the remarks. 
+All the pull requests should be sent first to the dev branch. To add or update or your extension's configuration, use the following process to send a pull request to the reviewers that you can specify in the request.
+
+1. Open or locate the associated bug at [http://aka.ms/portalfx/exec/bug](http://aka.ms/portalfx/exec/bug). Then use the Bug id and bug title in the commit message and in the description of the pull request. You may want to add a description of the solution to the pull request.
+
+1. In the framework repository, the extension configuration files for all Portal environments are located at `<RepoRoot>\RDPackages\OneCloud`, where `<RepoRoot>` is the root of the repository.  The developer can communicate with the remote repository by setting up a local git repository. To manage the extension's configuration, make a clone by using the following commands at the command line.
 
    ```js
     git clone https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFx
     cd AzureUX-PortalFx\
     git checkout dev
     init.cmd
-    cd RDPackages\OneCloud
+    REM  The following directory contains the Environment.*.json files to which to add or update the extension
+    cd <RepoRoot>\RDPackages\OneCloud
   
     REM   fetch down all the branches from the Git remote
     git fetch
    ```
     
-    When these commands complete successfully, the developer has a local environment in which they deevelop their extensions.  They can create several extensions without making a pull request. Also, whether there needs to be a one-to-one correspondence between the new extensions and the pull request is team-dependent.
-    
-    When an extension is ready to be moved to a remote repository other than the dev branch, the process to create a pull request is as follows.
+    When these commands complete successfully, the developer has a clone of the Azure portal repository.
 
-1.  The developer may need to modify the configuration file. To enable the extension, the developer should update the extension test count in the `%ROOT%\src\StbPortal\Website.Server.Tests\DeploymentSettingsTests.cs` file. Otherwise, set the **disabled** property in the `config` file to false.
+1.  The developer may need to modify the configuration file(s) to enable the extension, as specified in [portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension](portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension).
 
-1.  Stage the changes in GitHub so that the pull request will pick them up from the remote repository. The commands for the staging process are as follows.  Remember to include the Bug Id in the custom commit message.
+    **NOTE**: There should be one config file for every environment that will be affected by the pull request for this extension.
+
+1. Create a work item so that you can associate the work item with the commit. Use the site located at [https://aka.ms/portalfx/pullRequest](https://aka.ms/portalfx/pullRequest) to create the work item. Click the `New pull request` button, then select the branch that contains the staged changes in the first dropdown box.  Select the target branch in the second dropdown box. In the following example, the developer is requesting to move changes from the `extensionupdate` branch to the dev branch.
+
+   ![alt-text](../media/portalfx-extensions-pullRequest/pull-request.png "Create Pull Request")
+
+1.  Stage the changes in the local git repository so that the pull request will pick them up from the remote repository, as described in [https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes). Remember to include the Work Item Id in the custom commit message. The commands for the staging process are as follows. 
 
      ```js
-    REM   Add files to the next commit for staging
-    git add <Modified_Files>
+    REM   Checkout file, then add them to the next commit for staging
+    git checkout -b myalias/extensionupdate
 
-    REM   Commit the staged content. Include the Bug ID in the custom commit message immediately
+    git add <Modified_Extension.*.json_Files>
+
+    REM   Commit the staged content. Include the Pull Request ID in the custom commit message immediately
     REM     after the pound sign.
     REM     Save the commit hash that is returned from this command for later reference.
-    git commit -m "#123456 Add/ Enable the extension"
+    REM     The build will break immediately if the commit message is in a different format
+    TEM       The developer will get a notification to update the commit message.
+    git commit -m "#1234567 Add/ Enable the extension"
 
     REM   Transmit local branch commits to the remote repository branch
-    git push origin myalias/myhotfix
+    git push origin myalias/extensionupdate
 
     cd %ROOT%\src\
     buildall
@@ -46,13 +59,13 @@ the pull request process.  -->
     REM   please verify the config again
     testconfig 
      ```
-    **NOTE**:  For more information, use the commit hash that is returned from the `git commit` command on the site that is located at [https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/commits](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/commits).
 
-1. Create a work item so that you can associate the work item with the commit. Use the site located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/pullrequests?_a=mine](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/pullrequests?_a=mine) to create the work item. Click the `New pull request` button, then select the branch that contains the staged changes in the first dropdown box.  Select the target branch in the second dropdown box.
-In the following  example, the developer is requesting to move changes from the `extensionupdate` branch to the dev branch.
+    The build will break immediately if the commit message is in a different format, and the developer will get a notification to update the commit message.
 
-   ![alt-text](../media/portalfx-extensions-pullRequest/pull-request.png "Create Pull Request")
+    **NOTE**:  Use the commit hash that was returned from the previous `git commit` command. It can also be found on the site that is located at [https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/commits](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/commits).
 
-1. To ensure that the changes you have made are correct and will not cause any live-site issues, the Ibiza team will review and complete the pull request.  A list of Ibiza team contacts to select as reviewers is located at [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md).  They will do a build time check of the commit message format. The build will break immediately if the commit message is in a different format, and the developer will get a notification to update the commit message previous to receiving any deployment notifications. Otherwise, the developer will receive an email for each environment when the configuration changes are deployed.
+1. Update the work item to include information about the commit and any last items that the Portal team may need in order to move the configuration files. Validate that the branches and reviewers are accurate, then click the `Create` button to email the pull request to the reviewers.
 
-<!-- TODO: Validate that this last sentence is accurate.n Is it just configuration changes, or is it also the extension?  -->
+1. The Ibiza team will review the pull request to ensure that the changes you have made are correct and will not cause any live-site issues.  If the pull request successfully passes the review, they will complete it.  A list of Ibiza team contacts to select as reviewers is located at [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md).  
+
+When the changes are successfully deployed in any environment, the developer will receive an email.
