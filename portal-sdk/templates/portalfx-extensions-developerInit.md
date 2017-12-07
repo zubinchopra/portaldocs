@@ -1,15 +1,7 @@
+# Setting up for Azure Portal Development
 
-## Introduction 
-[portalfx-extensions-developerInit-intro.md](portalfx-extensions-developerInit-intro.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-developerInit-overview.md"}
 
-## Overview
-[portalfx-extensions-developerInit-overview.md](portalfx-extensions-developerInit-overview.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-developerInit-procedure.md"}
 
-## Creating Your First Extension
-[portalfx-extensions-developerInit-extension.md](portalfx-extensions-developerInit-extension.md)
-
-## Glossary
-[portalfx-extensions-developerInit-glossary.md](portalfx-extensions-developerInit-glossary.md)
-
-## References
-[portalfx-extensions-developerInit-references.md](portalfx-extensions-developerInit-references.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-developerInit-glossary.md"}

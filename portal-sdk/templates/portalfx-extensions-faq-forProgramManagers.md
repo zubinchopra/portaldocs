@@ -1,13 +1,9 @@
+## Frequently asked questions
 
-<a name="portalfxExtensionsFAQForProgramManagers"></a>
-<!-- link to this document is [portalfx-extensions-faq-forProgramManagers.md]()
--->
+### Onboarding FAQ
 
-## Portal Extensions FAQs for Program Managers
+***Where are the onboarding FAQs for Sparta (ARM/CSM-RP)?***
 
-<a name="onboardingFAQ"></a>
-
-[Where are the onboarding FAQs?](portalfx-extensions-faq-forDevelopers.md#onboardingFAQ)
-
+The Onboarding FAQ is located at [http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx](http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx).
 
 * * *

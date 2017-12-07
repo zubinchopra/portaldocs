@@ -1,29 +1,26 @@
-<a name="portalExtensionsForProgramManagers"></a>
-<!-- link to this document is [portalfx-extensions-forProgramManagers.md]()
--->
-
 # Portal Extensions for Program Managers
 
-1.  [Introduction](portalfx-extensions-forProgramManagers-intro.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-overview.md"}
 
-1.  [Requirements for Azure Services](portalfx-extensions-requirements.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-requirements.md"}
 
-1.  [Communication](portalfx-extensions-forProgramManagers-communication.md)
-   
-1.  [Conceptual Overview](portalfx-extensions-forProgramManagers-overview.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-forProgramManagers-communication.md"}
   
-1.  [Development Phases](portalfx-extensions-developmentPhases.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-developmentPhases.md"}
   
-1.  [Managing Development](portalfx-extensions-forProgramManagers-managingDevelopment.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-forProgramManagers-managingDevelopment.md"}
   
-1.  [Exit Criteria and Quality Metrics](portalfx-extensions-forProgramManagers-exitCriteria.md)
-  
-1.  [Best Practices](portalfx-extensions-forProgramManagers-bestPractices.md)
-   
-1.  [StackOverFlow Forums](portalfx-extensions-stackoverflow.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-exitCriteria.md"}
 
-1.  [FAQs for Program Managers](portalfx-extensions-faq-forProgramManagers.md)
-  
-1.  [Contacts](portalfx-extensions-contacts.md)
-  
+<!-- 
+## Best Practices
+"gitdown": "include-file", "file": "../templates/portalfx-extensions-forProgramManagers-bestPractices.md"
+-->
 
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-stackoverflow.md"}
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-forProgramManagers.md"}
+  
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-contacts.md"}
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-forProgramManagers-glossary.md"}
