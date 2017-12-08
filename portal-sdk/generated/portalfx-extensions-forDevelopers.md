@@ -87,7 +87,7 @@ These requirements apply to both the portal fx and extensions. Since Fx provides
 | Accessibility     | [https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/index-portalfx-extension-development.md](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/index-portalfx-extension-development.md) | Generic control supports on keyboard, focus handling, touch, screen reader, high contrast, and theming |
 | Global Readiness  |           | Localizability, regional format, text support, China GB standard |
 | Privacy           |           | User settings data handling, encryption, and authentication |
-| SDL               |           | Threat modeling |
+| SDL               |           | Security Development Lifecycle Threat modeling |
 
 For more information and any questions about Fx coverage, reach out to the Fx Coverage contact that is located in [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md).
 
@@ -224,8 +224,7 @@ Read the following documents from the Azure Portal UI team site.  Our doc site p
 
     In the following images, each icon in the Azure Portal Marketplace is referred to as a Gallery item. Gallery items take the form of a file with the .azpkg extension. This is a  zip file which contains all assets for the gallery item: icons, screenshots, descriptions.
 
-      ![alt-text](../media/portalfx-extensions-forDevelopers
-      /azurePortalMarketPlace.png "Azure Portal Marketplace")
+    ![alt-text](../media/portalfx-extensions-forDevelopers/azurePortalMarketPlace.png "Azure Portal Marketplace")
 
     * **PROD:** The Marketplace team accepts fully finished .azkpg files from your team and uploads them to Production to onboard the gallery package. Send the following email to 1store@microsoft.com.  The subject line should contain “Marketplace Onboarding Request” and the *.azpkg file should be attached to the email, as in the following image.
 
@@ -337,7 +336,7 @@ If any of the reliability numbers of the extension are below the bar, please inv
 
 Each service or extension defines the critical P0 scenarios for their business. The extension is tested using these usability scenarios, with at least ten participants. A  success rate of 80% and an experience score of 80% are required for a passing usability score.
 
-For more information on how to define scenarios, see [portalfx-extensions-stub.md](portalfx-extensions-stub.md).
+For more information on how to define scenarios, see       .
 
 <a name="portal-extensions-for-developers-exit-criteria-and-quality-metrics-accessibility"></a>
 ### Accessibility

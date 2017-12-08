@@ -98,8 +98,7 @@ Read the following documents from the Azure Portal UI team site.  Our doc site p
 
     In the following images, each icon in the Azure Portal Marketplace is referred to as a Gallery item. Gallery items take the form of a file with the .azpkg extension. This is a  zip file which contains all assets for the gallery item: icons, screenshots, descriptions.
 
-      ![alt-text](../media/portalfx-extensions-forDevelopers
-      /azurePortalMarketPlace.png "Azure Portal Marketplace")
+    ![alt-text](../media/portalfx-extensions-forDevelopers/azurePortalMarketPlace.png "Azure Portal Marketplace")
 
     * **PROD:** The Marketplace team accepts fully finished .azkpg files from your team and uploads them to Production to onboard the gallery package. Send the following email to 1store@microsoft.com.  The subject line should contain “Marketplace Onboarding Request” and the *.azpkg file should be attached to the email, as in the following image.
 
