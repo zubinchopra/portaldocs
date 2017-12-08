@@ -558,11 +558,12 @@ If the information is not current, please send a pull request to update the docu
 
 <!-- TODO: Validate whether the ibizafxpm@microsoft.com  link is the correct one for sending pull requests to, when sending pull requests to the dev branch for new extensions. -->
 
-<a name="portal-extensions-for-developers-glossary"></a>
-## Glossary
+
+
 <!--
 This document should remain identical to the glossary in portal-extensions-forProgramManagers-glossary, because they were originally the same document.
 -->
+
   ## Glossary
 <!--
 This document should remain identical to the glossary in portal-extensions-forDevelopers-glossary, because they were originally the same document.
