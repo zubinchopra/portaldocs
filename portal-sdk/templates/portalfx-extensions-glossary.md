@@ -24,7 +24,7 @@
 ### Testing in Production
 {"gitdown": "include", "file": "./portalfx-extensions-testing-in-production-glossary.md"}
 
-### Status Codes and Error Messages 
+### Status Codes and Error Messages
 {"gitdown": "include-file", "file": "./portalfx-extensions-status-codes-glossary.md"}
 
 <!--
