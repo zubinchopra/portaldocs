@@ -14,7 +14,7 @@
 
 <!-- 
 ## Best Practices
-"gitdown": "include-file", "file": "../templates/portalfx-extensions-forProgramManagers-bestPractices.md"
+"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-forProgramManagers.md"
 -->
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-stackoverflow.md"}

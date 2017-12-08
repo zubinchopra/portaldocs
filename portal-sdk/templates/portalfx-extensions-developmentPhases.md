@@ -21,8 +21,8 @@ In the public preview state, the extension undergoes more development and review
 
 The icon to the right of the extension indicates whether the extension is in the private preview state or the public preview state, as in the following image.
 
- ![alt-text](../media/placeholder-image.png  "Private and Public extensions")
+ ![alt-text](../media/portalfx-extensions/previewMode.png "Private Preview State")
 
-### Global Availability Phase (GA)
+### Global Availability
 
 When an extension passes all exit criteria for the public preview state, it can be promoted to the Global Availability state. In order to move the extension to GA, the preview tag in the `extension.pdl` file is removed.

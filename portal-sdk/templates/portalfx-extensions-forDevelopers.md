@@ -14,7 +14,7 @@
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-status-codes.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-forDevelopers-bestPractices.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-forDevelopers.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-stackoverflow.md"}
 
