@@ -20,6 +20,6 @@ These requirements apply to both the portal fx and extensions. Since Fx provides
 | Accessibility     | [https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/index-portalfx-extension-development.md](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/index-portalfx-extension-development.md) | Generic control supports on keyboard, focus handling, touch, screen reader, high contrast, and theming |
 | Global Readiness  |           | Localizability, regional format, text support, China GB standard |
 | Privacy           |           | User settings data handling, encryption, and authentication |
-| SDL               |           | Threat modeling |
+| SDL               |           | Security Development Lifecycle Threat modeling |
 
 For more information and any questions about Fx coverage, reach out to the Fx Coverage contact that is located in [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md).
