@@ -1,12 +1,12 @@
 
-<a name="glossary"></a>
-## Glossary
+<a name="azure-portal-glossary"></a>
+# Azure Portal Glossary
 
  This section contains all glossaries from all Azure Portal Extension documents. There may be some duplication because documents may contain terms that are used in other documents.
 
-<a name="glossary-cnames-and-cname-records"></a>
-### CNAMEs and CNAME Records
-<a name="glossary"></a>
+<a name="azure-portal-glossary-cnames-and-cname-records"></a>
+## CNAMEs and CNAME Records
+<a name="azure-portal-glossary-glossary"></a>
 ## Glossary
 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
@@ -25,9 +25,9 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | TFS              | Team Foundation Server |
 | URL              | Uniform Resource Locator |
 
-<a name="glossary-extension-configuration"></a>
-### Extension Configuration
-<a name="glossary"></a>
+<a name="azure-portal-glossary-extension-configuration"></a>
+## Extension Configuration
+<a name="azure-portal-glossary-glossary"></a>
 ## Glossary
 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
@@ -69,8 +69,8 @@ This section contains a glossary of terms and acronyms that are used in this doc
 
   
 
-<a name="glossary-extensions-for-developers"></a>
-### Extensions for Developers
+<a name="azure-portal-glossary-extensions-for-developers"></a>
+## Extensions for Developers
 
 
 <!--
@@ -134,9 +134,9 @@ This section contains a glossary of terms and acronyms that are used in this doc
 
 
 
-<a name="glossary-extensions-for-program-managers"></a>
-### Extensions for Program Managers
-<a name="glossary"></a>
+<a name="azure-portal-glossary-extensions-for-program-managers"></a>
+## Extensions for Program Managers
+<a name="azure-portal-glossary-glossary"></a>
 ## Glossary
 <!--
 This document should remain identical to the glossary in portal-extensions-forDevelopers-glossary, because they were originally the same document.
@@ -193,9 +193,9 @@ This section contains a glossary of terms and acronyms that are used in this doc
 
 
 
-<a name="glossary-hello-world-extension"></a>
-### Hello World Extension
-<a name="glossary"></a>
+<a name="azure-portal-glossary-hello-world-extension"></a>
+## Hello World Extension
+<a name="azure-portal-glossary-glossary"></a>
 ## Glossary
  
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
@@ -213,10 +213,10 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | UI            | User interface. |
 | UX            | User experience. |
 
-<a name="glossary-initializing-the-developer-platform"></a>
-### Initializing the Developer Platform
+<a name="azure-portal-glossary-initializing-the-developer-platform"></a>
+## Initializing the Developer Platform
  
-<a name="glossary"></a>
+<a name="azure-portal-glossary-glossary"></a>
 ## Glossary
 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
@@ -229,9 +229,9 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | localhost         | A hostname that means this computer or this host.  |
 | sideload          | The process of transferring data between two local devices, or between the development platform and the local host. Also side load, side-load. |  
 
-<a name="glossary-testing-in-production"></a>
-### Testing in Production
-<a name="glossary"></a>
+<a name="azure-portal-glossary-testing-in-production"></a>
+## Testing in Production
+<a name="azure-portal-glossary-glossary"></a>
 ## Glossary
 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
@@ -243,9 +243,9 @@ extensions that are using them. |
 | synthetic traffic    | Traffic that has been created with a traffic generators and that behaves like real traffic. It can be used to capture the behavior the network or device under test. | 
 | sandboxed iframe     | Enables an extra set of restrictions for the content in the iframe.  It can treat the content as being from a unique origin, block form submission or script execution, prevent links from targeting other browsing context, and other items that restrict the behavior of the iframe during testing. | 
 
-<a name="glossary-status-codes-and-error-messages"></a>
-### Status Codes and Error Messages
-<a name="glossary"></a>
+<a name="azure-portal-glossary-status-codes-and-error-messages"></a>
+## Status Codes and Error Messages
+<a name="azure-portal-glossary-glossary"></a>
 ## Glossary
 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
@@ -257,21 +257,21 @@ This section contains a glossary of terms and acronyms that are used in this doc
 
 
 <!--
-<a name="glossary-hosting-service"></a>
-### Hosting Service
+<a name="azure-portal-glossary-hosting-service"></a>
+## Hosting Service
 "gitdown": "include-file", "file": "./portalfx-extensions-hosting-service-glossary.md"
 -->
 <!--
-<a name="glossary-key-components"></a>
-### Key Components
+<a name="azure-portal-glossary-key-components"></a>
+## Key Components
 "gitdown": "include-file", "file": "./portalfx-extensions-key-components-glossary.md"
 
-<a name="glossary-extension-architecture"></a>
-### Extension Architecture
+<a name="azure-portal-glossary-extension-architecture"></a>
+## Extension Architecture
 "gitdown": "include-file", "file": "./portalfx-extensions-architecture-glossary.md"
 -->
 <!--
-<a name="glossary-debugging-an-extension"></a>
-### Debugging an Extension
+<a name="azure-portal-glossary-debugging-an-extension"></a>
+## Debugging an Extension
 "gitdown": "include-file", "file": "./portalfx-extensions-debugging-glossary.md"
 -->
