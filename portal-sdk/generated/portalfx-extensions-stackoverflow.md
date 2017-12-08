@@ -9,43 +9,39 @@ To use the tags to read forum submissions, enter the following in the address ba
 
 ```https://stackoverflow.microsoft.com/questions/tagged/<ibizaTag>```
 
-where
-
- ``` ibizaTag``` 
- (without the angle brackets) is one of the tags from the following  list.
-
 To ask a question in a forum, enter the following in the address bar of your browser.
 
 ```https://stackoverflow.microsoft.com/questions/ask?tags=<ibizaTag>```
 
+where
 
- The current list of  tags is as follows:
- 
-| Tag  |  Owner  |
-| --- |  --- |
-| azure-gallery  |  | 
-| ibiza |  | 
-| ibiza-accessibility |  | 
-| ibiza-bad-samples-doc | amitmod | 
-| ibiza-blades-parts | sewatson  | 
-| ibiza-breaking-changes   |  amitmod | 
-| ibiza-browse  | edpark  | 
-| ibiza-controls  | Shresh | 
-| ibiza-create | Paparsad  | 
-| ibiza-data-caching | amitmod | 
-| ibiza-deployment | amitmod | 
-| ibiza-forms-create  | amitmod<br>Paparsad<br>Shresh | 
-| ibiza-kusto  |  | 
-| ibiza-localization-global  | Paparsad  | 
-| ibiza-missing-docs  |  | 
-| ibiza-monitoringux  |  rajram | 
-| ibiza-onboarding | |
-| ibiza-performance | sewatson  | 
-| ibiza-reliability | sewatson  | 
-| ibiza-resources  | Paparsad  | 
-| ibiza-sdkupdate  | amitmod  | 
-| ibiza-security-auth | edpark   | 
-| ibiza-telemetry  | sewatson  | 
-| ibiza-test | amitmod | 
-| ibiza-uncategorized |  | 
+**ibizaTag**:  One of the tags from the following table, without the angle brackets.
+
+| Tag                       | Email of Owner  |
+| ---                       | --- |
+| azure-gallery             | | 
+| ibiza                     | | 
+| ibiza-accessibility       | | 
+| ibiza-bad-samples-doc     | amitmod | 
+| ibiza-blades-parts        | sewatson  | 
+| ibiza-breaking-changes    | amitmod | 
+| ibiza-browse              | edpark  | 
+| ibiza-controls            | shresh | 
+| ibiza-create              | paparsad   | 
+| ibiza-data-caching        | amitmod | 
+| ibiza-deployment          | amitmod | 
+| ibiza-forms-create        | amitmod<br>paparsad<br>shresh | 
+| ibiza-kusto               | | 
+| ibiza-localization-global | paparsad  | 
+| ibiza-missing-docs        | | 
+| ibiza-monitoringux        | rajram | 
+| ibiza-onboarding          | |
+| ibiza-performance         | sewatson  | 
+| ibiza-reliability         | sewatson  | 
+| ibiza-resources           | paparsad  | 
+| ibiza-sdkupdate           | amitmod  | 
+| ibiza-security-auth       | edpark   | 
+| ibiza-telemetry           | sewatson  | 
+| ibiza-test                | amitmod | 
+| ibiza-uncategorized       | | 
 
