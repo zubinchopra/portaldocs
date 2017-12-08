@@ -93,13 +93,7 @@ FAQ's that are associated with testing an extension in the production environmen
 
 If there are enough FAQ's on the same subject, like sideloading, they have been grouped together in this document.
 Otherwise, FAQ's are listed in the order that they were encountered.
-<!-->
-***Where are the FAQs for    ?***
 
-    The FAQ  for    is located at []().
-
-* * *
--->
 <a name="azure-portal-frequently-asked-questions-frequently-asked-questions-sandboxed-iframe-security"></a>
 ### Sandboxed iframe security
 
