@@ -2,7 +2,7 @@
 ## Introduction 
 
 This document describes the creation of a blank Azure extension that validates that the developer's computer is ready for more portal development.
-
+   
 ## Overview
 
 Your development environment should have the most recent editions of operating systems and other software installed, as specified in [portalfx-extensions-forDevelopers-procedures.md#install-software](portalfx-extensions-forDevelopers-procedures.md#install-software).
