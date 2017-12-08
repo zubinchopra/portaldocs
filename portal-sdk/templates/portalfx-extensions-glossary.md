@@ -1,5 +1,5 @@
 
-# Glossary
+# Azure Portal Glossary
 
  This section contains all glossaries from all Azure Portal Extension documents. There may be some duplication because documents may contain terms that are used in other documents.
 
