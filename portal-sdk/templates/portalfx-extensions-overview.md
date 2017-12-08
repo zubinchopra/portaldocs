@@ -27,7 +27,7 @@ The customer has a different set of expectations for the extension in each phase
 
 Nearly 70% of Azure users are from outside of the United States. Therefore, it is important to make Azure a globalized product. There are a few internationalization requirements that the extension or service is required to support. This is the same set of languages that are supported by Azure Portal for GA.
 
-## For More Information 
+## For More Information
 
 For more information about development phases, see [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md).
 
