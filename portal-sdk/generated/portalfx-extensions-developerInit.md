@@ -1,4 +1,3 @@
-
 <a name="setting-up-for-azure-portal-development"></a>
 # Setting up for Azure Portal Development
 
