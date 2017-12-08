@@ -78,7 +78,7 @@ If any of the reliability numbers of the extension are below the bar, please inv
 
 Each service or extension defines the critical P0 scenarios for their business. The extension is tested using these usability scenarios, with at least ten participants. A  success rate of 80% and an experience score of 80% are required for a passing usability score.
 
-For more information on how to define scenarios, see [portalfx-extensions-stub.md](portalfx-extensions-stub.md).
+For more information on how to define scenarios, see       .
 
 <a name="exit-criteria-and-quality-metrics-accessibility"></a>
 ### Accessibility
