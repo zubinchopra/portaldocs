@@ -1,16 +1,11 @@
+# Testing in Production
 
-# Portal Extension Testing in Production 
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-testing-in-production-overview.md"}
 
-<a name="portalfxExtensionsHostingService"></a>
-<!-- link to this document is [portalfx-extensions-testing-in-production.md]()
--->
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-testing-in-production.md"}
 
-[Conceptual Overview](./portalfx-extensions-testing-in-production-overview.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-testing-in-production.md"}
 
-[Best Practices](./portalfx-extensions-testing-in-production-bestPractices.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-status-codes.md"}
 
-[FAQs](./portalfx-extensions-faq-testing-in-production.md)
-
-[Glossary](./portalfx-extensions-testing-in-production-glossary.md)
-
-[References](./portalfx-extensions-testing-in-production-references.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-testing-in-production-glossary.md"}

@@ -1,6 +1,6 @@
 ## Introduction
 
-This document describes the various components of testing an extension in production. This includes status codes in addition to procedures for testing.  
+This document describes the various components of testing an extension in production. This includes status codes and testing procedures.  
 
 ## Overview
 
@@ -9,26 +9,25 @@ tested in production under specific conditions. It allows the developer to inclu
 
 Extensions can be loaded on a per-user basis on production deployments. This can be used to test a new extension or an existing extension on a developer's machine with production credentials. To reduce phishing risks, the extension is hosted on `localhost`, although it can be hosted on any port. 
 
-### Registering a Custom Extension 
+## Registering a Custom Extension 
 
 To register a custom extension, or register a different extension stamp, use the following parameters in the portal extension query string.
  
 ```https://portal.azure.com/?feature.canmodifyextensions=true#?testExtensions={"<extensionName>":"<protocol>://<uri>/"}```
 
-
 where
 
-`portal.azure.com`: Portal environment in which to load the extension. Other portal environments are  ` rc.portal.azure.com`, `mpac.portal.azure.com`, and   `df.onecloud.azure-test.net`, although extension developers can sideload their extensions in any environment. 
+**portal.azure.com**: Portal environment in which to load the extension. Other portal environments are  ` rc.portal.azure.com`, `mpac.portal.azure.com`, and   `df.onecloud.azure-test.net`, although extension developers can sideload their extensions in any environment. 
 
-`feature.canmodifyextensions`: Required to support loading untrusted extensions for security purposes. This feature flag has a value of `true`. For more information about feature flags, see [portalfx-extension-flags.md](portalfx-extension-flags.md).
+**feature.canmodifyextensions**: Required to support loading untrusted extensions for security purposes. This feature flag has a value of `true`. For more information about feature flags, see [portalfx-extension-flags.md](portalfx-extension-flags.md).
 
-`testExtensions`: Contains the name of the extension, and the environment in which the environment is located.
+**testExtensions**: Contains the name of the extension, and the environment in which the environment is located.
 
-* `extensionName`: Matches the name of the extension, without the angle brackets, as specified in the extension configuration file.  For more information about the configuration file, see [portalfx-extensions-configuration-overview.md]().
+* **extensionName**: Matches the name of the extension, without the angle brackets, as specified in the `<Extension>` element  in the  extension configuration file.  For more information about the configuration file, see [portalfx-extensions-configuration-overview.md]().
 
-* `protocol`: Matches the protocol of the shell into which the extension is loaded, without the angle brackets.  It can have a value of `HTTP` or a value of `HTTPS`. For the production shell, the value is `HTTPS`.  If the value of this portion of the parameter is incorrectly specified, the browser will not allow the extension to communicate. 
+* **protocol**: Matches the protocol of the shell into which the extension is loaded, without the angle brackets.  It can have a value of `HTTP` or a value of `HTTPS`. For the production shell, the value is `HTTPS`.  If the value of this portion of the parameter is incorrectly specified, the browser will not allow the extension to communicate. 
 
-* `uri`: The extension endpoint. The actual host is `localhost`.  If using a host other than `localhost`, see the section named [portalfx-extensions-testing-in-production-overview.md#registering-test-extensions](portalfx-extensions-testing-in-production-overview.md#registering-test-extensions)'. If there is a port number associated with the extension, it can be appended to the `uri` if it is separated from the `uri` by a colon, as in the following example: `https://localhost:1234/`.
+* **uri**: The extension endpoint. The actual host is `localhost`.  If using a host other than `localhost`, see the section named [#registering-test-extensions](#registering-test-extensions). If there is a port number associated with the extension, it can be appended to the `uri` if it is separated from the `uri` by a colon, as in the following example: `https://localhost:1234/`.
 
 The custom extension that was registered will be saved to user settings, and available in future sessions. When using the portal in this mode, a banner is  displayed that indicates that the state of the configured extensions has been changed, as in the following image.
 
@@ -36,23 +35,27 @@ The custom extension that was registered will be saved to user settings, and ava
 
 For more information about testing switches, see the debugging guide that is located at [portalfx-debugging.md](portalfx-debugging.md).
 
-### Registering Test Extensions
+## Registering Test Extensions
 
- If you need to use a different hostname than `localhost`, the existing `registerTestExtension` API is still available. It allows the developer to register a custom extension from `localhost`, register a custom extension from a custom environment, or load an extension from a custom environment using a hosting service. Use the following steps for the `registerTestExtension` API. 
+ If you need to use a different hostname than  `localhost`, the existing `registerTestExtension` API is still available. It allows the developer to register a custom extension from `localhost`, register a custom extension from a custom environment, or load an extension from a custom environment using a hosting service. Use the following steps for the `registerTestExtension` API. 
  
- 1. Sign in to a production account at https://portal.azure.com?feature.canmodifyextensions=true
- 1. Hit F12 to open the developer tools in the browser
+ 1. Sign in to a production account at [https://portal.azure.com?feature.canmodifyextensions=true](https://portal.azure.com?feature.canmodifyextensions=true).
+ 1. Click F12 to open the developer tools in the browser.
  1. Run the following command in the browser console to register your custom extension:
  
-     ```
+   ```ts
      // use this command if the changes should persist until the user resets the settings or executes MsPortalImpl.Extension.unregisterTestExtension("extensionName")
      MsPortalImpl.Extension.registerTestExtension({ name: "extensionName", uri: "https://someserver:59344" });
  
      // use this command if the extension should be registered only for the current portal load
      MsPortalImpl.Extension.registerTestExtension({ name: "extensionName", uri: "https://someserver:59344" }, true);
-     ```
+   ```
 
- 1. Navigate to https://portal.azure.com?feature.canmodifyextensions=true&clientOptimizations=false
+ 1. Navigate to [https://portal.azure.com?feature.canmodifyextensions=true&clientOptimizations=false](https://portal.azure.com?feature.canmodifyextensions=true&clientOptimizations=false).
+ 
+
+ portalfx-debugging.md
+
  
  For more information about common hosting scenarios, see [https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-extension-hosting-service.md#other-common-scenarions](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-extension-hosting-service.md#other-common-scenarions).
 
@@ -60,23 +63,21 @@ For more information about testing switches, see the debugging guide that is loc
 
  For information about debugging switches, see  [https://github.com/Azure/portaldocs/blob/e78ff94d9c90fc71830173cec608f2d6f2f6679c/portal-sdk/generated/portalfx-debugging.md#diagnostic-switches](https://github.com/Azure/portaldocs/blob/e78ff94d9c90fc71830173cec608f2d6f2f6679c/portal-sdk/generated/portalfx-debugging.md#diagnostic-switches)
 
-### Loading custom stamps
+## Loading custom stamps
 
 Custom extension stamps can be loaded into the portal by using feature flags.  Diagnostic switches can also be used for testing in production.  For more information, see [portalfx-extension-flags.md](portalfx-extension-flags.md).
 
-#### The uriFormat and its capabilities
-
-The `uriFormat` parameter, in conjunction with the `uri` parameter, can extend the number of extension stamps that can be loaded in various portal environments. 
+The `uriFormat` parameter, in conjunction with the `uri` parameter, can increase the number of extension stamps that can be loaded in various portal environments. 
 
 For more information on the `uri` parameter, see [portalfx-extensions-configuration-overview.md#uri](portalfx-extensions-configuration-overview.md#uri).   For more information on the  `uriFormat` parameter, see [portalfx-extensions-configuration-overview.md#uriFomat](portalfx-extensions-configuration-overview.md#uriFomat).  
 
-#### Common use cases
+### Common use cases
 
 There are several scenarios in which a developer may use custom stamps to test various aspects of an extension. Some of them are as follows. 
 
 <details>
 
-<summary> Running automated tests</summary>
+<summary>Running automated tests</summary>
 
 Automated tests that run against a production environment should be marked as test/synthetic traffic. Use one of the following options to accomplish this.
 
@@ -85,7 +86,7 @@ Automated tests that run against a production environment should be marked as te
     ```TestTraffic-<TeamName>-<Component>  ```
 
 1. Set the query string parameter to `feature.UserType=test`. 
-This allows us to exclude test traffic from our reports.
+This setting excludes test traffic from our reports.
 </details>
 <details>
 <summary>Running regression tests</summary>
@@ -94,7 +95,7 @@ Regression tests and build verification tests are    .
 <!-- TODO: Determine how extension stamps are used to run partial tests. -->
 </details>
 <details>
-<summary> Obsolete script bundles</summary>
+<summary>Obsolete script bundles</summary>
 
 If the extension uses deprecated features that have been moved to obsolete script bundles, then the ```obsoleteBundlesBitmask``` flag should be specified, as in the following example.
 
