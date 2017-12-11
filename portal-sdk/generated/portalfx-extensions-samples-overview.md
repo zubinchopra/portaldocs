@@ -20,51 +20,56 @@ After installing the Portal Framework SDK, the local instance of the portal will
 [My Documents]\PortalSDK\FrameworkPortal\Extensions\SamplesExtension\SamplesExtension.sln
 ```
 
-The samples and the portal can be located with IntelliMirror in the following location.
+The samples and the portal can be located with **IntelliMirror** in the following location.
 
 ```bash
 %LOCALAPPDATA%\PortalSDK\FrameworkPortal\Extensions\SamplesExtension\SamplesExtension.sln
 ```
 
+You can edit the samples and then refresh the portal to see the changes. Each sample demonstrates a single usage of the API.  It is great for detailed information on any one API.
 
+For help other than documentation and samples, send an email to the Ibiza team on [Stackoverflow@MS](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza). For a list of topics and stackoverflow tags, see [portalfx-extensions-stackoverflow.md](portalfx-extensions-stackoverflow.md).
 
-If you make edits to the samples, you can refresh the portal to see your changes. Each sample demonstrates a single usage of the API.  It's great for detailed information on any one API.
+<!-- TODO: Determine whether there should be a list of samples and whether they are V1 or V2.   
+The alternative is to let the list default to the contents of the SamplesExtension.sln project. -->
 
-> If you need help beyond the documentation and samples, you reach out to Ibiza team on [Stackoverflow@MS](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).
+<a name="v1-versus-v2"></a>
+## V1 versus V2
 
-<a name="samples-extension-v1-versus-v2"></a>
-### V1 versus V2
-
-The samples are partially structured into two directories, **V1** and **V2**, as in the following example. 
+The samples are structured into two directories, **V1** and **V2**, as in the following example. 
 
  ![alt-text](../media/portalfx-extensions-samples/v1-and-v2.png  "V1 and V2 Directories")
 
-The samples in `V2` directories use the latest patterns.
+<!--TODO: Can "meant" be changed to "will"  or "intended" ? -->
 
-The `V2` directory contains the post-GA collection of new APIs are meant to be the only set of APIs needed to develop a modern Ibiza extension.
+<a name="v1-versus-v2-v2"></a>
+### V2
 
-Our `V1` APIs are contain or use APIs that support old UX patterns that are becoming obsolete or are less commonly used.  The `V1` APIs are also more difficult to use than the new API, for both the UX design and  the associated APIs.
+The samples in the **V2** directories use the latest patterns. It contains the post-GA collection of new APIs that are meant to be the only set of APIs needed to develop an Ibiza extension.
 
-The V2 samples address the following  API areas.
+The **V2** samples address the following API areas.
 
-- New Blade variations
-    TemplateBlade, FrameBlade, MenuBlade 
+* New Blade variations TemplateBlade, FrameBlade, MenuBlade 
 
-- Blade-opening/closing 
-    'container.openBlade, et al'
+* Blade-opening/closing `container.openBlade`, et al
 
-- no-PDL TypeScript decorators 
-    to define all recommended Blade/Part variations
+* no-PDL TypeScript decorators that define all recommended Blade/Part variations
 
-- Forms -- No V1 EditScope concept
+* Forms that do not use **V1** EditScope. For more information about EditScope, see [portalfx-forms-edit-scope-faq.md](portalfx-forms-edit-scope-faq.md).
 
-As for V1 concepts, these are concepts we're asking extensions to avoid where there are V2 APIs that can be used:
-- __PDL__
-- __EditScope__
-- __ParameterCollector/ParameterProvider__
-- __"Blades containing Parts"__
-- __Non-full-screen Blades__ -- that is, ones that open with a fixed width
-- __V1 Blade-opening__ -- Selectable/SelectableSet APIs
-- __V1 Forms__ -- using EditScope
+<a name="v1-versus-v2-v1"></a>
+### V1
 
-Bear in mind that we don't have the V2 space entirely built out. In the meantime, you will have to use V1 APIs in places, even the V1 concepts listed above.
+Our **V1** APIs use APIs that support previous UX patterns, or  are becoming obsolete or are less commonly used.  The **V1** APIs are also more difficult to use than the new API, for both the UX design and  the associated APIs.
+
+The following **V1** concepts should be avoided when **V2** APIs can be used instead.
+
+* PDL
+* EditScope
+* ParameterCollector/ParameterProvider
+* Blades containing Parts
+* Non-full-screen Blades, i.e., ones that open with a fixed width
+* **V1** Blade-opening -- Selectable/SelectableSet APIs
+* **V1** Forms that use EditScope
+
+**NOTE**: The **V2** space is not yet entirely built. In the meantime, use **V1** APIs in places, even the previously-listed **V1** concepts. For example, the source code for small, medium, and large blades is located in the `...\SamplesExtension\Extension\Client\V1\Blades\BladeWidth` directory.
