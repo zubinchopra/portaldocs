@@ -1,4 +1,8 @@
-## Sending pull requests for portal extensions
+## Publishing your portal extension
+
+After the extension as reached a certain stage in development, the portal's configuration files should be updated so that users other than your team can view the extension in the various Portal production and pre-production environments. For more information, see [portalfx-extensions-testing-in-production.md](portalfx-extensions-testing-in-production.md).
+
+<!-- TODO:  add link to sideloading document when it is ready for code review. -->
 
 The Portal repository has four branches: `dev`, `Dogfood`, `MPAC`, and `PROD`. Pull requests are used to cherry-pick extension configurations from one branch to the next one by updating the configuration files that govern each environment. This document hypothesizes that the extension has been completely developed and tested, and is ready to be moved to the next branch, as specified in [portalfx-extensions-branches.md](portalfx-extensions-branches.md). This document encompasses extension configuration files in the portal repository; the source code for the extension is out of the scope of this document.
 
@@ -33,11 +37,14 @@ All the pull requests should be sent first to the dev branch. To add or update o
 1.  Stage the changes in the local git repository so that the pull request will pick them up from the remote repository, as described in [https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes). Remember to include the bug ID or work item ID in the custom commit message. The commands for the staging process are as follows.
 
      ```js
-    REM   Checkout file, then add them to the next commit for staging
+    REM   Create a branch from which to issue a pull request in the Ibiza Git repository.
     git checkout -b myalias/extensionupdate
 
-    REM   Commit the staged content. 
+    REM   Commit the staged content. Possible values for this file are 
+    REM     Extensions.dogfood.json, Extensions.prod.json, Extensions.bf.json,
+    REM     and Extensions.ff.json, Extensions.mc.json
     git add <Modified_Extension.*.json_Files>
+
         
     REM   Include the Bug ID or Work Item ID in the custom commit message immediately after the pound sign.
     REM     Save the commit hash that is returned from this command for later reference.
