@@ -55,7 +55,7 @@ For more information about azure.com onboarding, see [http://acomdocs.azurewebsi
 ## Requirements for Azure Services
 
 All services using Azure Billing must be exposed by using the Azure Resource Manager (ARM). Services that do not use Azure Billing can use either ARM or Microsoft Graph. Usually, services that integrate deeply with Office 365 use Graph, while all others are encouraged to use ARM. 
-
+ 
 For more information about ARM API, see Azure Resource Manager (ARM) API Reference, located at [https://docs.microsoft.com/en-us/dynamics365/customer-engagement/customer-insights/ref/armapiref](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/customer-insights/ref/armapiref), and also see Resource Manager REST APIs, located at [https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-rest-api](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-rest-api).
 
 For more information about onboarding with Microsoft Graph, see [https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/azure_ad_overview](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/azure_ad_overview).
@@ -77,7 +77,7 @@ Quality Essentials  and 1CS provide access to manage the release policies and pr
 * Privacy
 * Security Development Lifecycle (SDL)
 * Software integrity
-
+ 
 Some of the procedures such as Accessibility, GB Certificate, Privacy, and Security are also measured in the Service Health Review Scorecard that is located at [https://aka.ms/shr](https://aka.ms/shr), and in the exit criteria for management review and tracking. 
 
 These requirements apply to both the portal fx and extensions. Since Fx provides the common infrastructure and UI controls that govern the data handling and UX, hence some of the compliance work for extensions would be identical across in Ibiza, and rationally be mitigated by the Framework. For example, Accessibility support on keyboard navigation and screen reader recognition, as well as the regional format and text support to meet globalization requirements, are implemented at the controls that Framework distributed.  The same is true for Security threat modeling, extension authentication to ARM, postMessage/RPC layer and UserSettings, etc. are handled by Framework. To minimize the duplicate efforts on those items, Fx provides some level of "blueprint" documentation that can be used as a reference for compliance procedures. You are still responsible to review the tools and submit the results for approval previous to shipping the extension. 
@@ -200,7 +200,7 @@ Read the following documents from the Azure Portal UI team site.  Our doc site p
 
 <a name="portal-extensions-for-developers-development-procedures-develop-and-deploy-the-extension"></a>
 ### Develop and deploy the extension
-
+ 
 1. Many extensions have been made more successful by setting up early design reviews with the Azure portal team. Taking the time to review the design gives extension owners an opportunity to understand how they can leverage Azure portal design patterns, and ensure that the desired outcome is feasible. When you are ready to build the extension, schedule a UX feasibility review with the Ibiza team UX contact by emailing ibiza-onboarding@microsoft.com and including “Extension Feasibility Review” in the subject line of the e-mail.
 
 1.	If the extension requires additional built-in support for standard Graph or ARM APIs, submit a partner request at the site located at [https://feedback.azure.com/forums/594979-ibiza-partners](https://feedback.azure.com/forums/594979-ibiza-partners). 
@@ -379,7 +379,7 @@ For more information on resource moves, see the following resources.
         
     [http://aka.ms/portalfx/resourcemove/dashboard](http://aka.ms/portalfx/resourcemove/dashboard)
 
-
+ 
 <a name="portal-extensions-for-developers-status-codes-and-error-messages"></a>
 ## Status Codes and Error Messages
 Status codes or error messages that are encountered while developing an extension may be dependent on the type of extension that is being created, or the development phase in which the message is encountered.  Terms that are encountered in the error messages may be defined in the [Glossary](portalfx-extensions-status-codes-glossary.md).
@@ -402,8 +402,7 @@ ERROR: The Storage Area Network (SAN) is missing in the certificate.
 
 SOLUTION: [https://stackoverflow.microsoft.com/questions/48581/cannot-load-localhost-ibiza-extension-with-err-connection-reset/49595#49595](https://stackoverflow.microsoft.com/questions/48581/cannot-load-localhost-ibiza-extension-with-err-connection-reset/49595#49595)
 
-* * *
-
+* * * 
 <a name="portal-extensions-for-developers-status-codes-and-error-messages-err_insecure_response"></a>
 ### ERR_INSECURE_RESPONSE
 
@@ -480,7 +479,7 @@ To ask a question in a forum, enter the following in the address bar of your bro
 ```https://stackoverflow.microsoft.com/questions/ask?tags=<ibizaTag>```
 
 where
-
+ 
 **ibizaTag**:  One of the tags from the following table, without the angle brackets.
 
 | Tag                       | Email of Owner  |
@@ -528,7 +527,7 @@ The Onboarding FAQ is located at [http://sharepoint/sites/AzureUX/Sparta/SpartaW
 ### SSL Certs
 
 ***How do I use SSL certs?***
-
+ 
  Azure portal ONLY supports loading extensions from HTTPS URLs. Use a wildcard SSL cert for each environment to simplify maintenance, for example,   ``` *.<extensionName>.onecloud-ext.azure-test.net  ``` or  ``` *.<extensionName>.ext.azure.com) ``` .    To simplify overall management when your team is building separate, independent extensions, you can also use  ``` <extensionName>.<team>.ext.azure.com ``` and create a wildcard SSL cert for  ``` *.<team>.ext.azure.com ```. Internal teams can create SSL certs for the DogFood environment using the SSL Administration Web page that is located at [http://ssladmin](http://ssladmin). 
  
  SSL Certs are relevant only for teams that host their own extensions.  Production certs must follow your organization’s PROD cert process. 
@@ -577,12 +576,12 @@ If the information is not current, please send a pull request to update the docu
 <!--
 This document should remain identical to the glossary in portal-extensions-forProgramManagers-glossary, because they were originally the same document.
 -->
-
+ 
   ## Glossary
 <!--
 This document should remain identical to the glossary in portal-extensions-forDevelopers-glossary, because they were originally the same document.
 -->
-
+ 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
 
 | Term                      | Meaning |

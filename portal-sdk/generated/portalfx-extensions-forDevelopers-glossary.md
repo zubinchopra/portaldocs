@@ -3,12 +3,12 @@
 <!--
 This document should remain identical to the glossary in portal-extensions-forProgramManagers-glossary, because they were originally the same document.
 -->
-
+ 
   ## Glossary
 <!--
 This document should remain identical to the glossary in portal-extensions-forDevelopers-glossary, because they were originally the same document.
 -->
-
+ 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
 
 | Term                      | Meaning |

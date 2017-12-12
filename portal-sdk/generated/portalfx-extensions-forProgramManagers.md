@@ -55,7 +55,7 @@ For more information about azure.com onboarding, see [http://acomdocs.azurewebsi
 ## Requirements for Azure Services
 
 All services using Azure Billing must be exposed by using the Azure Resource Manager (ARM). Services that do not use Azure Billing can use either ARM or Microsoft Graph. Usually, services that integrate deeply with Office 365 use Graph, while all others are encouraged to use ARM. 
-
+ 
 For more information about ARM API, see Azure Resource Manager (ARM) API Reference, located at [https://docs.microsoft.com/en-us/dynamics365/customer-engagement/customer-insights/ref/armapiref](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/customer-insights/ref/armapiref), and also see Resource Manager REST APIs, located at [https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-rest-api](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-rest-api).
 
 For more information about onboarding with Microsoft Graph, see [https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/azure_ad_overview](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/azure_ad_overview).
@@ -68,7 +68,7 @@ All new services should be listed in the Azure Web site that is located at [http
 ## Communication
 
 Plan ahead for all the outbound communication, blogging, and marketing work that publicizes new services during the time that they are being deployed to customers.  This coordination is important, particularly when software release commitments are aligned with the Azure events and conferences. This coordination may be optional for preview releases, but the localized azure.com content and service updates plan are required for stakeholder signoff, if the extension will be deployed to GA.
-
+ 
 
 
   
@@ -109,7 +109,7 @@ When an extension passes all exit criteria for the public preview state, it can 
 ## Managing Development
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-permissions.md"
-
+ 
 If you are planning to build a first-party application, i.e., you are a part of Microsoft, you should meet with the Onboarding team specified in [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md). In the meeting, you need to touch on the following points.
 * Whether the service will target public Azure, on-premises, or both
 * 	What is the name of the service
@@ -256,7 +256,7 @@ For more information on resource moves, see the following resources.
 ## Best Practices
 "gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-forProgramManagers.md"
 -->
-
+ 
 
 <a name="portal-extensions-for-program-managers-stackoverflow-forums"></a>
 ## Stackoverflow Forums
@@ -273,7 +273,7 @@ To ask a question in a forum, enter the following in the address bar of your bro
 ```https://stackoverflow.microsoft.com/questions/ask?tags=<ibizaTag>```
 
 where
-
+ 
 **ibizaTag**:  One of the tags from the following table, without the angle brackets.
 
 | Tag                       | Email of Owner  |
@@ -311,7 +311,7 @@ where
 
 <a name="portal-extensions-for-program-managers-frequently-asked-questions-onboarding-faq"></a>
 ### Onboarding FAQ
-
+ 
 ***Where are the onboarding FAQs for Sparta (ARM/CSM-RP)?***
 
 The Onboarding FAQ is located at [http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx](http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx).
@@ -359,7 +359,7 @@ If the information is not current, please send a pull request to update the docu
 <!--
 This document should remain identical to the glossary in portal-extensions-forDevelopers-glossary, because they were originally the same document.
 -->
-
+ 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
 
 | Term                      | Meaning |
