@@ -1,78 +1,109 @@
+<a name="nuget-packages-for-developing-extensions"></a>
+# NuGet packages for developing extensions
 
-<a name="nuget-packages-for-extension-dependencies"></a>
-# NuGet packages for Extension Dependencies
+Azure portal SDK (Ibiza SDK) ships portal framework assemblies, tools, test framework and extension PDE files as NuGet packages.
 
-NuGet has been selected to provided a simple way to both deliver and update portal framework assemblies, tools, test framework and extension PDE files. All extensions created with the Visual Studio portal project template use many of the NuGet packages listed here.  To get started you will need a Package Source
+<a name="nuget-packages-for-developing-extensions-set-up-nuget-package-source"></a>
+## Set-up NuGet package source
 
-<a name="nuget-packages-for-extension-dependencies-package-sources"></a>
-## Package Sources
+In order to download the NuGet pacakges developers can choose among the following package sources:
 
-NuGet uses a package source to retrieve NuGet Packages.  The portal NuGet packages are not currently distributed on public nuget.org and as such have been made available from the following sources
+<a name="nuget-packages-for-developing-extensions-set-up-nuget-package-source-wanuget-packages"></a>
+### <strong>Wanuget Packages</strong>
 
-- C:\Program Files (x86)\Microsoft SDKs\PortalSDK\Packages
+**Recommeneded approach for first-party extensions** i.e. extensions developed by Microsoft employees.
 
-	Until the sdk is made publicly available this is the prefered package source for external partners. The Portal.msi installs the NuGet packages to C:\Program Files (x86)\Microsoft SDKs\PortalSDK\Packages and sets up a package source named PortalSDK that can immediately be consumed from Visual Studio.
+1. For extensions using CoreXT
 
-- [https://msblox.pkgs.visualstudio.com/DefaultCollection/_packaging/IbizaPortal/nuget/v3/index.json](https://msblox.pkgs.visualstudio.com/DefaultCollection/_packaging/IbizaPortal/nuget/v3/index.json)
+Please ensure that [http://wanuget/Official](http://wanuget/Official) is listed as a package source in the CoreXT config located at:
 
-	This is the prefered package source for internal partners.  NuGets that are delivered to this feed will match the latest bits deployed to production. Internal teams using onebox will need to ensure [https://msblox.pkgs.visualstudio.com/DefaultCollection/_packaging/IbizaPortal/nuget/v3/index.json) is listed as a package source within enlistmentroot\.config\corext*.config
-    
-  * Note that this feed requires Nuget v3+.  We recommend using [Nuget 3.3+](http://dist.nuget.org/index.html) with the [VSTS credential provider](https://www.visualstudio.com/en-us/docs/package/get-started/nuget/auth#vsts-credential-provider)
-  * If you are using nuget v2, then you can use the following Nuget v2 url instead: https://msblox.pkgs.visualstudio.com/DefaultCollection/_packaging/IbizaPortal/nuget/v2.  You may be required to create a [Personal Access Token](https://www.visualstudio.com/en-us/docs/package/get-started/nuget/auth#personal-access-tokens) in order to get access.  
-  * If you get an error about not being able to find the Microsoft.Azure.Gallery.Common nupkg dependency then please add the [WaNuget official](http://wanuget/Official/nuget) feed.  If you are unable to access to the feed then you will need to use the nupkg bundled in the Portal.msi.
-  
-<a name="nuget-packages-for-extension-dependencies-nuget-packages"></a>
+```cmd
+{PATH_TO_YOUR_REPO}\.config\corext.config
+```
+
+where {PATH_TO_YOUR_REPO} is path to your extension's repository on your machine.
+
+```xml
+ <repo name="Official" uri="https://msazure.pkgs.visualstudio.com/DefaultCollection/_apis/packaging/Official/nuget/index.json" fallback="http://wanuget/Official/nuget" />
+```
+
+1. For extensions using non-CoreXT
+
+Please ensure that [http://wanuget/Official](http://wanuget/Official) is added to the package source.
+
+<a name="nuget-packages-for-developing-extensions-set-up-nuget-package-source-local-package-source"></a>
+### <strong>Local Package Source</strong>
+
+**Recommeneded approach for third-party extensions** i.e. extensions developed by external partners .
+
+External partners can download the NuGet packages by installing the [msi][portalfx-msi.md]. Installing the msi on a machine downloads the NuGet packages at following location on :
+
+```bash
+$>cd C:\Program Files (x86)\Microsoft SDKs\PortalSDK\Packages
+```
+
+<a name="nuget-packages-for-developing-extensions-nuget-packages"></a>
 ## NuGet Packages
 
-The following NuGet packages are available:
+<a name="nuget-packages-for-developing-extensions-nuget-packages-for-extension-development"></a>
+### <strong>For extension development</strong>
 
-<a name="nuget-packages-for-extension-dependencies-nuget-packages-dev"></a>
-### Dev
+* **Microsoft.Portal.Framework**
 
-- **Microsoft.Portal.Framework**
+This nuget provides framework assemblies Microsoft.Portal.Azure.dll, Microsoft.Portal.Core.dll,Microsoft.Portal.Framework.dll, Microsoft.WindowsAzure.ServiceRuntime.dll and WindowsAzureEventSource.dll
 
-	Delivers framework assemblies Microsoft.Portal.Azure.dll, Microsoft.Portal.Core.dll and Microsoft.Portal.Framework.dll
+* **Microsoft.Portal.Security.AadCore**
 
-- **Microsoft.Portal.Security.AadCore**
+This nuget provides AAD module used for auth Microsoft.Portal.AadCore.dll
 
-	Delivers AAD module used for auth Microsoft.Portal.AadCore.dll
+* **Microsoft.Portal.TypeMetadata**
 
-- **Microsoft.Portal.TypeMetadata**
+This nuget provides both runtime and compile time components that drive reflection-style features for the Azure Portal SDK.  This includes the compile time generation of C# model interfaces into TypeScript interfaces, and the injection of type information into the portal at runtime.
 
-	This nuget provides both runtime and compile time components that drive reflection-style features for the Azure Portal SDK.  This includes the compile time generation of C# model interfaces into TypeScript interfaces, and the injection of type information into the portal at runtime.
+* **Microsoft.Portal.Tools**
 
-<a name="nuget-packages-for-extension-dependencies-nuget-packages-tools"></a>
-### Tools
+This NuGet package provides PDC, Target files (.target) , Definition files (*.d.ts) and TypeScript 2.0.3 compiler.
 
-- **Microsoft.Portal.Tools**
+* **Microsoft.Portal.Tools.ContentUnbundler**
 
-	Delivers PDC, .target files, d.ts and TypeScript compiler.
+This NuGet package provides the content unbundler tool that helps extension developers package the extension UI in a zip file which can be served by hosting service.
 
-- **Microsoft.Portal.Azure.Website**
+<a name="nuget-packages-for-developing-extensions-nuget-packages-for-publishing-your-extension-in-marketplace"></a>
+### <strong>For publishing your extension in marketplace</strong>
 
-	Provides the Authenticated Developer Portal Website with Hubs and Billing Extensions.
+* **Microsoft.Azure.Gallery.AzureGalleryUtility**
 
-- **Microsoft.Portal.Azure.WebsiteNoAuth**
+This NuGet package provides tools to package, upload and update gallery items in Azure portal marketplace.
 
-	Provides the Unauthenticated Developer Portal Website
+<a name="nuget-packages-for-developing-extensions-nuget-packages-for-end-to-end-testing"></a>
+### For end to end testing
 
-- **Microsoft.Azure.Gallery.AzureGalleryUtility**
+* **Microsoft.Portal.TestFramework**
 
-	Provides a utility to package, upload and update gallery marketplace items
+Delivers the Portal TestFramework allowing you to UI based test cases with Selenium and Visual Studio - [to learn more about consuming the test framework see](https://auxdocs.azurewebsites.net/en-us/documentation/articles/portalfx-testing-ui-test-cases)
 
-<a name="nuget-packages-for-extension-dependencies-nuget-packages-test"></a>
-### Test
+<a name="nuget-packages-for-developing-extensions-nuget-packages-deprecated-nuget-packages"></a>
+### Deprecated NuGet packages
 
-- **Microsoft.Portal.TestFramework**
+Following Deprecated NuGet packages have been deprecated for over 2 years now. If you are building a new extension then we recommend you do not take a dependence on these NuGet packages. If you are using these packages for local developement, please reach out to [IbizaFxPM@microsoft.com](mailto:IbizaFxPM@microsoft.com) so that we can help you migrate to side-loading based approach.
 
-	Delivers the Portal TestFramework allowing you to UI based test cases with Selenium and Visual Studio - [to learn more about consuming the test framework see](https://auxdocs.azurewebsites.net/en-us/documentation/articles/portalfx-testing-ui-test-cases)
+* Microsoft.Portal.Azure.Website
 
-<a name="nuget-packages-for-extension-dependencies-pde-extensions"></a>
-## PDE Extensions
+Provides the Authenticated Developer Portal Website with Hubs and Billing Extensions that was used.
 
-See all available PDE's shipped as NuGet packages [here](portalfx.md#pde)
+* Microsoft.Portal.Azure.WebsiteNoAuth
 
-<a name="nuget-packages-for-extension-dependencies-sharing-your-extension-pde"></a>
-## Sharing your extension PDE
+Provides the Unauthenticated Developer Portal Website
 
-To learn how to share your PDE using NuGet see the guidance [here](portalfx-pde-publish.md)
+<a name="nuget-packages-for-developing-extensions-nuget-packages-shipping-your-extension-as-nuget-package"></a>
+### Shipping your extension as NuGet package
+
+Azure portal SDK also provides the capability to package and ship your extension as a NuGet package. This allows other extensions to invoke your extension's blades / parts at runtime. You can learn more about packaging and shairing your extension as NuGet(portalfx-pde-publish.md)
+
+<a name="nuget-packages-for-developing-extensions-invoking-other-extension-s-at-runtime"></a>
+## Invoking other extension&#39;s at runtime
+
+You can refer to other extension's NuGet packages in order to invoke their blades/ part's at runtime.
+Here is a list of all available PDE's shipped as NuGet packages [here](portalfx.md#pde)
+
+> NOTE: The list of NuGet packages published by extension's is contributed by extension developer's who ship these NuGet packages. If you do not see an extension's package listed here that does not mean they do not ship a NuGet package. In order to verify if an extension ships a NuGet package you can reach out to the respective teams at aka.ms/portalfx/partners.

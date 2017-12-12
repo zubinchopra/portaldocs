@@ -268,7 +268,7 @@ Each ARM dropdown can disable, hide, group, and sort.
 This is the preferred method of disallowing the user to select a value from ARM. The disable callback will run for each fetched value from ARM. The return value of your callback will be a reason for why the value is disabled. If no reason is provided, then the value will not be disabled. This is to ensure the customer has information about why they can’t select an option, and reduces support calls.
 ```typescript
 
-disable: (sub: DropDown.Subscription) => { return ~["sub-1", "sub-2"].indexOf(sub.subscriptionId) && createStrings.disableReason },
+disable: (loc) => { return !!~["5ag", "3bg"].indexOf(loc.property) && "Disabled (location not allowed for subscription)"; },
 
 ```
 When disabling, the values will be displayed in groups with the reason they are disabled as the group header. Disabled groups will be placed at the bottom of the dropdown list.
@@ -279,8 +279,8 @@ This is an alternative method of disallowing the user to select a value from ARM
 ```typescript
 
 hiding: {
-    hide: (item: DropDown.Subscription) => item.subscriptionId === "sub-5",
-    reason: createStrings.hideReason
+    hide: (item: Value) => item.property === "5ag",
+    reason: "Some locations are hidden because because of legal restrictions on new software"
 }
 
 ```
@@ -298,10 +298,10 @@ If you want to sort the groups (not the values within the group), you can supply
 ```typescript
 
 grouping: {
-    map: (item: DropDown.Subscription): string => {
-        return parseInt(item.uniqueDisplayName.slice(-1)) % 2 ? createStrings.regularSubscirption : createStrings.eaSubscription
+    map: (item: Value): string => {
+        return item.property.slice(-2) === "bg" ? "Group B" : "Group A";
     },
-    sort: (a: string, b: string) => MsPortalFx.compare(a, b)
+    sort: (a: string, b: string) => MsPortalFx.compare(b, a)
 },
 
 ```
@@ -314,7 +314,7 @@ If you want to sort values in the dropdown, supply the 'sort' option, which shou
  
 ```typescript
 
-sort: (a: DropDown.Subscription, b: DropDown.Subscription) => MsPortalFx.compare(b.uniqueDisplayName, a.uniqueDisplayName)
+sort: (a: Value, b: Value) => MsPortalFx.compare(b.property, a.property)
 
 ```
  
