@@ -1,8 +1,8 @@
 ## Development Procedures
 
-The items that are being developed add functionality to an Azure Portal, and therefore are named extensions, or context panes.  Some examples of context panes are in the following image.
+The items that are being developed add functionality to an Azure Portal, and therefore are named extensions.  Some examples are in the following image.
 
- ![alt-text](../media/portalfx-ui-concepts/blade.png "Azure Portal Context Panes")
+ ![alt-text](../media/portalfx-ui-concepts/blade.png "Azure Portal Blades")
 
 Perform the following tasks to become part of Azure portal extension developer community.
 
