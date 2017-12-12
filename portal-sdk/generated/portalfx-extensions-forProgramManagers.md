@@ -9,11 +9,11 @@ Welcome to the Azure portal! We're excited to have you to join the family. The A
 <a name="portal-extensions-for-program-managers-overview"></a>
 ## Overview
 
-The user experience for services that are visible in the Azure Portal are named extensions and blades, or context panes.  Some examples of context panes are in the following image.
+The user experience for services that are visible in the Azure Portal are named extensions.  Some examples are in the following image.
 
-![alt-text](../media/portalfx-create/plus-new.png  "Extensions and Context Panes")
+![alt-text](../media/portalfx-create/plus-new.png  "Extensions")
 
-Onboarding a service, or developing a portal extension, has three phases: private preview, public preview, and Global Availability (GA). 
+Onboarding a service, or developing a portal extension, has three phases: private preview, public preview, and Global Availability (GA). Azure portal onboarding is creating a UI for a service in Azure portal, and is a subset of Azure onboarding.
 
 Most services that onboard to Azure can leverage the following components of the Azure ecosystem:
 1. Management APIs that are exposed via Azure Resource Manager (ARM) or Microsoft Graph
@@ -79,22 +79,18 @@ Plan ahead for all the outbound communication, blogging, and marketing work that
 <a name="portal-extensions-for-program-managers-development-phases-private-preview"></a>
 ### Private Preview
 
-The extension is in private preview stage when it has been added to the Azure portal configuration. It is still in hidden/ disabled state, and the preview tag in the the `extension.pdl` file is set to `Preview="true"`. This means that the developer and their team have acquired a small team of reviewers with which to collaborate on the development and testing of the extension.  The developer can then modify the extension until it meets specific criteria for usability, reliability, performance, and other factors. The criteria are located at [Exit Criteria and Quality Metrics](portalfx-extensions-exitCriteria.md). 
+The extension is in private preview stage when it has been added to the Azure portal configuration. It is still in hidden/ disabled state, and the preview tag in the the `extension.pdl` file is set to `Preview="true"`.  In this state the extension is not visible to all the customers of Azure portal; instead, the developer and their team have acquired a small team of reviewers with which to collaborate on the development and testing of the extension. Some teams also leverage this phase for testing the business model by providing a specific URL to their customers that allows them to access this extension. The developer can then modify the extension until it meets specific criteria for usability, reliability, performance, and other factors. The criteria are located at [Exit Criteria and Quality Metrics](portalfx-extensions-exitCriteria.md). 
 
-When the criteria are met, the developer starts the processes that will move the extension from the private preview state to the public preview state. They should also start the CSS onboarding process at least three months previous to public preview. The CSS onboarding process requires information like the disclosure level, and the key contacts for the release. It allows the appropriate teams enough time to ensure that customers of the extension have access to Azure support and other permissions necessary to access the site.  To start the process, send an email to ibiza-css@microsoft.com. For more information about CSS contacts, see [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md). For more information about the CSS onboarding process, see [http://spot/intake](http://spot/intake).
+When the criteria are met, the developer starts the processes that will move the extension from the private preview state to the public preview state. They should also start the CSS onboarding process with the CSS team at least three months previous to public preview. The CSS onboarding process requires information like the disclosure level, and the key contacts for the release. It allows the appropriate teams enough time to ensure that customers of the extension have access to Azure support and other permissions necessary to access the site.  To start the process, send an email to ibiza-css@microsoft.com. For more information about CSS contacts, see [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md). For more information about the CSS onboarding process, see [http://spot/intake](http://spot/intake).
 
 When all requirements are met, CSS will release the extension from private preview to public preview. The extension will be enabled, but the preview tag in the the `extension.pdl` file is still set to `Preview="true"`.
 
 This process is separate from onboarding to Azure.
 
-<!-- TODO:  If all extensions eventually leave the private preview state, this paragraph can be removed.  The iterative process does not need to be described. -->
-
-**NOTE**: Not all extensions will be moved to public preview, because factors exist that require that the extension remain in the private preview state.
-
 <a name="portal-extensions-for-program-managers-development-phases-public-preview"></a>
 ### Public Preview
 
-In the public preview state, the extension undergoes more development and review, this time with a larger audience.  The exit criteria for the public preview state are the same as the exit criteria for the private preview state. An extension that meets the exit criteria with this new audience can be moved from public preview to Global Availability.
+In the public preview state, the extension undergoes more development and review, and it can be used by all customers in Azure portal.  The exit criteria for the public preview state are the same as the exit criteria for the private preview state, except for Usability.  Public Preview requires extensions to have a score of 7/10, whereas GA requires extensions to have a score of 8/10.  An extension that meets the exit criteria with this public audience can be moved from public preview to Global Availability. The criteria that are used to validate promoting the extension out of the public preview state are located at [Exit Criteria and Quality Metrics](portalfx-extensions-exitCriteria.md).
 
 The icon to the right of the extension indicates whether the extension is in the private preview state or the public preview state, as in the following image.
 
@@ -103,7 +99,7 @@ The icon to the right of the extension indicates whether the extension is in the
 <a name="portal-extensions-for-program-managers-development-phases-global-availability"></a>
 ### Global Availability
 
-When an extension passes all exit criteria for the public preview state, it can be promoted to the Global Availability state. In order to move the extension to GA, the preview tag in the `extension.pdl` file is removed.
+When an extension passes all exit criteria for the public preview state, it can be promoted to the Global Availability state. In order to move the extension to GA, the preview tag in the `extension.pdl` file is removed. This will remove the preview tag from the display. 
   
 <a name="portal-extensions-for-program-managers-managing-development"></a>
 ## Managing Development
@@ -128,7 +124,7 @@ When these meetings have concluded, your team will be ready to build extensions.
 <a name="portal-extensions-for-program-managers-exit-criteria-and-quality-metrics"></a>
 ## Exit Criteria and Quality Metrics
 
-In order to meet customer expectations and continue to increase customer satisfaction, there are quality metrics that are tracked for every extension, context pane, and part.  These metrics help developers build extensions that compile, that contain the items that are requested by the partners of the developer, and that pass acceptance tests that are created by the partners that are associated with a specific phase. When the extension meets the criteria, it becomes a candidate for being moved from the private preview stage to the public preview stage, or from the public preview stage to Global Availability (GA).
+In order to meet customer expectations and continue to increase customer satisfaction, there are quality metrics that are tracked for every extension, and part.  These metrics help developers build extensions that compile, that contain the items that are requested by the partners of the developer, and that pass acceptance tests that are created by the partners that are associated with a specific phase. When the extension meets the criteria, it becomes a candidate for being moved from the private preview stage to the public preview stage, or from the public preview stage to Global Availability (GA).
 
 Every new extension provides an opportunity for the Ibiza team to improve the customer experience. By using set criteria to meet customer expectations, we can improve the customer experience for the extension and overall portal. Extension developers can drastically improve the customer experience by following these criteria. 
 
@@ -141,7 +137,7 @@ Basic information on the quality metrics that are tracked is located at  .
 <a name="portal-extensions-for-program-managers-exit-criteria-and-quality-metrics-performance"></a>
 ### Performance
 
-The Weighted Experience Score (WxP) determines the percentage of context pane usage that meets the performance bar. The metrics for all context panes within an extension are combined into the WxP, which requires a passing score of greater than 80. Meeting the performance bar is a requirement for public preview or Global Availability (GA).
+The Weighted Experience Score (WxP) determines the percentage of blade usage that meets the performance bar. The metrics for all blades within an extension are combined into the WxP, which requires a passing score of greater than 80. Meeting the performance bar is a requirement for public preview or Global Availability (GA).
 
 MPAC and PROD performance are included in weekly status emails and each team is expected to investigate regressions.
 
@@ -149,7 +145,7 @@ For more information about the Weighted Experience Score, see  [portalfx-perform
 
 Blade reveal time is the time it takes for all the parts above the fold to call ```revealContent()``` to load first level data, or to resolve ```onInputSet()``` promises, whichever is earlier.
 
-All context panes meet the required blade reveal time of less than 4 seconds for the 80th percentile before being enabled in PROD. Extensions should be enabled in MPAC to start tracking performance. Resource and Create context panes are tracked explicitly. 
+All blades meet the required blade reveal time of less than 4 seconds for the 80th percentile before being enabled in PROD. Extensions should be enabled in MPAC to start tracking performance. Resource and Create blades are tracked explicitly. 
 
 We require at least 100 loads of the UX (extension/blade/tiles) to get a signal. If you cannot generate that traffic authentically in the expected timeframe, please hold a bug bash to increase the traffic.
 
@@ -225,9 +221,9 @@ Extensions and Resource Providers (RPs) are responsible for validating all input
 
 Services that use ARM template deployment and other ARM-based services should also validate resource provider registration, permissions, and deployment to avoid common issues and improve extension success rates. Validating against some factors is required for the preview and GA phases.
 
-Check the Power BI Dashboard for Service Level Agreements (SLA) that are associated with Creating context panes. The Ibiza Extension Perf/Reliability/Usage Dashboard is located at [aka.ms/ibizaperformance](aka.ms/ibizaperformance).
+Check the Power BI Dashboard for Service Level Agreements (SLA) that are associated with Creating extensions. The Ibiza Extension Perf/Reliability/Usage Dashboard is located at [aka.ms/ibizaperformance](aka.ms/ibizaperformance).
 
-It is important to meet the success rate previous to moving the extension to the next phase, because various phases are associated with service level agreements and other items that are affected if an extension does not work.  For example, context panes with a success rate below 99% will result in sev 2 incidents. Also, if the success rate drops by 5% during a rolling 24-hour period that contains at least 50 Creates, a sev 2 incident will be filed. This applies to every error that causes Creates to fail when the `Create` button is clicked.
+It is important to meet the success rate previous to moving the extension to the next phase, because various phases are associated with service level agreements and other items that are affected if an extension does not work.  For example, extensions with a success rate below 99% will result in sev 2 incidents. Also, if the success rate drops by 5% during a rolling 24-hour period that contains at least 50 Creates, a sev 2 incident will be filed. This applies to every error that causes Creates to fail when the `Create` button is clicked.
 
 Success rates are a non-blocking requirement.  Some exceptions can be granted to move an extension from the private preview stage to the public preview stage, but in general, the overall customer experience is reduced.
    
@@ -405,7 +401,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | SSL                       | Secure Socket Layer  | 
 | URL                       | Uniform Resource Locator | 
 | VP                        | Vice President | 
-| Weighted Experience Score | The percentage of context pane usage that meets the performance bar. |
+| Weighted Experience Score | The percentage of blade usage that meets the performance bar. |
 | WxP                       | See Weighted Experience Score.  | 
 
 

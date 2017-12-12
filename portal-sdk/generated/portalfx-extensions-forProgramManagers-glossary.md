@@ -49,7 +49,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | SSL                       | Secure Socket Layer  | 
 | URL                       | Uniform Resource Locator | 
 | VP                        | Vice President | 
-| Weighted Experience Score | The percentage of context pane usage that meets the performance bar. |
+| Weighted Experience Score | The percentage of blade usage that meets the performance bar. |
 | WxP                       | See Weighted Experience Score.  | 
 
 

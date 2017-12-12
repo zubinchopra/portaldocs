@@ -6,11 +6,11 @@ Welcome to the Azure portal! We're excited to have you to join the family. The A
 <a name="overview"></a>
 ## Overview
 
-The user experience for services that are visible in the Azure Portal are named extensions and blades, or context panes.  Some examples of context panes are in the following image.
+The user experience for services that are visible in the Azure Portal are named extensions.  Some examples are in the following image.
 
-![alt-text](../media/portalfx-create/plus-new.png  "Extensions and Context Panes")
+![alt-text](../media/portalfx-create/plus-new.png  "Extensions")
 
-Onboarding a service, or developing a portal extension, has three phases: private preview, public preview, and Global Availability (GA). 
+Onboarding a service, or developing a portal extension, has three phases: private preview, public preview, and Global Availability (GA). Azure portal onboarding is creating a UI for a service in Azure portal, and is a subset of Azure onboarding.
 
 Most services that onboard to Azure can leverage the following components of the Azure ecosystem:
 1. Management APIs that are exposed via Azure Resource Manager (ARM) or Microsoft Graph
