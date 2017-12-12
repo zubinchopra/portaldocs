@@ -203,9 +203,7 @@ Read the following documents from the Azure Portal UI team site.  Our doc site p
 
 1. Many extensions have been made more successful by setting up early design reviews with the Azure portal team. Taking the time to review the design gives extension owners an opportunity to understand how they can leverage Azure portal design patterns, and ensure that the desired outcome is feasible. When you are ready to build the extension, schedule a UX feasibility review with the Ibiza team UX contact by emailing ibiza-onboarding@microsoft.com and including “Extension Feasibility Review” in the subject line of the e-mail.
 
-    <!-- TODO: find the original source for the guidance about standard Graphs and partner requests.  
-      1.	If the extension requires additional built-in support for standard Graph or ARM APIs, submit a partner request at the site located at [https://feedback.azure.com/forums/594979-ibiza-partners](https://feedback.azure.com/forums/594979-ibiza-partners). For more information about the site, see [portalfx-extension-partner-request-process.md](portalfx-extension-partner-request-process.md).
-     -->
+1.	If the extension requires additional built-in support for standard Graph or ARM APIs, submit a partner request at the site located at [https://feedback.azure.com/forums/594979-ibiza-partners](https://feedback.azure.com/forums/594979-ibiza-partners). 
 
 1.	When you build the extension, remember to sideload it for local testing. Sideloading allows the testing and debugging of the extension locally against any environment. This is the preferred method of testing. For more information about sideloading, see [portalfx-testinprod.md](portalfx-testinprod.md).
 
@@ -384,22 +382,14 @@ For more information on resource moves, see the following resources.
 
 <a name="portal-extensions-for-developers-status-codes-and-error-messages"></a>
 ## Status Codes and Error Messages
-Status codes or error messages that are encountered while developing an extension may be dependent on the type of extension that is being created, or the development phase in which the message is encountered.
+Status codes or error messages that are encountered while developing an extension may be dependent on the type of extension that is being created, or the development phase in which the message is encountered.  Terms that are encountered in the error messages may be defined in the [Glossary](portalfx-extensions-status-codes-glossary.md).
 
-[Glossary](portalfx-extensions-status-codes-glossary.md)
+<a name="portal-extensions-for-developers-status-codes-and-error-messages-console-error-messages"></a>
+### CONSOLE ERROR MESSAGES
 
-<a name="portal-extensions-for-developers-status-codes-and-error-messages-err_insecure_response"></a>
-### ERR_INSECURE_RESPONSE
+***Console error messages in F12 developer tools***
 
-ERR_INSECURE_RESPONSE in the browser console
-
-My Extension fails to side load and I get an ERR_INSECURE_RESPONSE in the browser console.
-
-![alt-text](../media/portalfx-testinprod/errinsecureresponse.png "ERR_INSECURE_RESPONSE Log")
-
-ERROR: the browser is trying to load the extension but the SSL certificate from localhost is not trusted.
-
-SOLUTION: Install and trust the certificate.
+Some console and HTTP error messages are located at[https://msdn.microsoft.com/en-us/library/dn423949(v=vs.85).aspx](https://msdn.microsoft.com/en-us/library/dn423949(v=vs.85).aspx).
 
 * * *
 
@@ -414,6 +404,21 @@ SOLUTION: [https://stackoverflow.microsoft.com/questions/48581/cannot-load-local
 
 * * *
 
+<a name="portal-extensions-for-developers-status-codes-and-error-messages-err_insecure_response"></a>
+### ERR_INSECURE_RESPONSE
+
+ERR_INSECURE_RESPONSE in the browser console
+
+***My Extension fails to side load and I get an ERR_INSECURE_RESPONSE in the browser console***.
+
+![alt-text](../media/portalfx-testinprod/errinsecureresponse.png "ERR_INSECURE_RESPONSE Log")
+
+ERROR: the browser is trying to load the extension but the SSL certificate from localhost is not trusted.
+
+SOLUTION: Install and trust the certificate.
+
+* * *
+
 <a name="portal-extensions-for-developers-status-codes-and-error-messages-portal-error-520"></a>
 ### Portal Error 520
 
@@ -423,17 +428,26 @@ ERROR: The Portal displays a 520 error, as in the following image.
 
 ![alt-text](../media/portalfx-debugging/failure.png "Portal Error Message")
 
-This can happen for a variety of reasons.
+The Web server is returning an unknown error. 
 
-SOLUTION: Use the following steps.
+SOLUTION: Use the following troubleshooting steps.
 
-* Check the browser console, and look for errors.
+* Check the browser console, and look for errors that describe the error condition in more detail. 
 * Click on the failed part. With some types of errors, this will add a stack trace to the browser console.
 * Double check the Knockout template for correct syntax.
-* Ensure all variables referenced on the template are available as public properties on the corresponding view model class.
+* Ensure that all variables that are used in the template are public properties on the corresponding view model class.
 * Reset the desktop state.
 * Enable first chance exceptions in the JavaScript debugger.
-* Set break points inside of the view model constructor, and ensure no errors are thrown.
+* Set break points inside the viewModel constructor to ensure no errors are thrown.
+
+* * *
+
+<a name="portal-extensions-for-developers-status-codes-and-error-messages-sandboxed-iframe-security"></a>
+### Sandboxed iframe security
+
+***Error: 'Security of a sandboxed iframe is potentially compromised by allowing script and same origin access'.***
+ 
+The Azure Portal should frame the extension URL, as specified in [portalfx-extensions-developerInit-procedure.md](portalfx-extensions-developerInit-procedure.md) and [portalfx-extensions-key-components.md](portalfx-extensions-key-components.md).  Also see [#console-error-messages](#console-error-messages).
 
 * * *
 

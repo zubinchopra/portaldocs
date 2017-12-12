@@ -13,7 +13,7 @@ To ask a question in a forum, enter the following in the address bar of your bro
 ```https://stackoverflow.microsoft.com/questions/ask?tags=<ibizaTag>```
 
 where
-
+ 
 **ibizaTag**:  One of the tags from the following table, without the angle brackets.
 
 | Tag                       | Email of Owner  |

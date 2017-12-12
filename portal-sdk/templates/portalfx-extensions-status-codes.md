@@ -17,8 +17,7 @@ ERROR: The Storage Area Network (SAN) is missing in the certificate.
 
 SOLUTION: [https://stackoverflow.microsoft.com/questions/48581/cannot-load-localhost-ibiza-extension-with-err-connection-reset/49595#49595](https://stackoverflow.microsoft.com/questions/48581/cannot-load-localhost-ibiza-extension-with-err-connection-reset/49595#49595)
 
-* * *
-
+* * * 
 ### ERR_INSECURE_RESPONSE
 
 ERR_INSECURE_RESPONSE in the browser console
