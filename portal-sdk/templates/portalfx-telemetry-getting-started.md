@@ -14,7 +14,7 @@ Data Source: [https://AzPortal.kusto.windows.net](https://AzPortal.kusto.windows
 
 ### Permissions
 
-All Azure employees should have access, if you don't have access ensure you have joined your team's standard access group and it's listed here [http://aka.ms/standardaccess](http://aka.ms/standardaccess). If it is not listed then please reach out to [Ibiza Telemetry](mailto:ibiza-telemetry@microsoft.com).
+All Azure employees should have access, if you don't have access ensure you have joined your team's standard access group and it has access to (REDMOND\AZURE-ALL-PSV), to confirm that ensure it's listed here [http://aka.ms/standardaccess](http://aka.ms/standardaccess). If it is not listed then please reach out to [Ibiza Telemetry](mailto:ibiza-telemetry@microsoft.com).
 
 
 ### Kusto Documentation & Links
