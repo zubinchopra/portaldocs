@@ -1,9 +1,8 @@
 
 <a name="getting-started"></a>
 # Getting Started
-* [Getting Started](portalfx-howitworks.md#getting-started)
-    * [How the portal works](portalfx-howitworks.md#how-the-portal-works)
-    * [How extensions work](portalfx-howitworks.md#how-extensions-work)
+* [Understanding the Azure Portal Architecture](portalfx-howitworks.md#understanding-the-azure-portal-architecture)
+* [Understanding the Azure Portal Extension Architecture](portalfx-howitworks.md#understanding-the-azure-portal-extension-architecture)
 
 * [Getting started with the Portal SDK](portalfx-creating-extensions.md#getting-started-with-the-portal-sdk)
 
@@ -50,7 +49,7 @@
 <a name="authentication"></a>
 # Authentication
 * [Calling ARM](portalfx-authentication.md#calling-arm)
-* [Calling other services](portalfx-authentication.md#calling-other-services)
+* [Calling alternate resources](portalfx-authentication.md#calling-alternate-resources)
 
 * [Working with data](portalfx-data.md#working-with-data)
 
