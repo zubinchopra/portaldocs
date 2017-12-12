@@ -180,7 +180,10 @@ import * as SubscriptionDropDown from "Fx/Controls/SubscriptionDropDown";
 import * as ResourceGroupDropDown from "Fx/Controls/ResourceGroupDropDown";
 ```
 {"gitdown": "include-section", "file": "../../../src/SDK/devkit/VS/TB/PT/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
+<<<<<<< HEAD
 
+=======
+>>>>>>> bafa7a3ceb607c7a52fbe4438363254ea22cd900
 #### Locations dropdown
 ```ts
 import * as LocationDropDown from "Fx/Controls/LocationDropDown";

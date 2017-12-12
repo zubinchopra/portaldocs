@@ -195,6 +195,10 @@ Currently performance alerts run every 5 minutes assessing the previous 90 minut
     - This can be done by either manually editing the performance JSON file or making use of [the tool][alerting-tool]  provided.
 
 1.	Fill out the following work item [https://aka.ms/portalfx/alerting-onboarding][alerting-onboarding] and attach configuration JSON
+<<<<<<< HEAD
+
+=======
+>>>>>>> bafa7a3ceb607c7a52fbe4438363254ea22cd900
 1.	Set up correlation rules in ICM
 
 

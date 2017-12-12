@@ -12,6 +12,8 @@ are tracked for every extension:
 5. Create success
 6. Resource move (ARM subscription-based services only)
 
+
+
 ### Performance (Stakeholder: [Sean Watson](mailto:ibiza-perf@microsoft.com))
 
 **All blades must meet the required blade reveal time of < 4 seconds for the 80th percentile** before being enabled in
@@ -26,11 +28,12 @@ MPAC and PROD performance is included in weekly status emails and each team is e
 
 > Meeting the performance bar is a requirement for public preview or GA.
 
-> We require roughly 100+ loads of your experience (extension/blade/tiles) to get a signal, if you are unable to generate that traffic genuinely in your desired timeframe please hold a bug bash to drive up the traffic.
+**We require roughly 100+ loads of your experience (extension/blade/tiles) to get a signal, if you are unable to generate that traffic genuinely in your desired timeframe please hold a bug bash to drive up the traffic.**
 
 See also:
-- [Dashboard](http://aka.ms/portalfx/dashboard/extensionperf)
+- [Dashboard - latest geninue traffic only](http://aka.ms/portalfx/dashboard/extensionperf)
     - [Telemetry Access](http://aka.ms/portalfx/docs/telemetryaccess) for access
+    - [Query - including test/dev traffic](https://aka.ms/portalfx/perfsignoff)
 - [Checklist](/portal-sdk/generated/index-portalfx-extension-monitor.md#performance-checklist)
 - [Portal COP](/portal-sdk/generated/index-portalfx-extension-monitor.md#portalcop)
 - [Best pracitces](/portal-sdk/generated/index-portalfx-extension-monitor.md#performance-best-practices)
@@ -48,11 +51,14 @@ MPAC and PROD reliability is included in weekly status emails and each team is e
 
 > Meeting the reliability bar is a requirement for public preview or GA.
 
-> We require roughly 100+ loads of your experience (extension/blade/tiles) to get a signal, if you are unable to generate that traffic genuinely in your desired timeframe please hold a bug bash to drive up the traffic.
+**We require roughly 100+ loads of your experience (extension/blade/tiles) to get a signal, if you are unable to generate that traffic genuinely in your desired timeframe please hold a bug bash to drive up the traffic.**
 
 See also:
-- [#ibiza-performance on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-performance)
-- [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-performance)
+- [Dashboard - latest geninue traffic only](http://aka.ms/portalfx/dashboard/extensionperf)
+    - [Telemetry Access](http://aka.ms/portalfx/docs/telemetryaccess) for access
+    - [Query - including test/dev traffic](https://aka.ms/portalfx/perfsignoff)
+- [#ibiza-reliability on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-reliability)
+- [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-reliability)
 
 
 ### Usability (Stakeholder: [Angela Moulden](ibiza-usability@microsoft.com))
@@ -103,3 +109,11 @@ See also:
 - [Dashboard](http://aka.ms/portalfx/resourcemove/dashboard)
 - [#ibiza-resources on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-resources)
 - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-resources)
+
+## Leveraging Ibiza's alerts to provide great customer experience
+
+1. SDK Age alerts
+1. Extension Availability Alerts
+1. Create Alerts
+1. Hosting Servie Alerts
+
