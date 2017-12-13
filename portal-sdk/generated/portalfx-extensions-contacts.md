@@ -29,7 +29,7 @@ If the information is not current, please send a pull request to update the docu
 | Quality Essentials                            |                                           | Get1CS@microsoft.com​ |
 | Reliability                                   | Sean Watson                               | ibiza-reliability@microsoft.com |
 | Resource Move                                 | Edison Park                               | ibiza-resourceMove@microsoft.com |
-| Usability	                                    | Angela Moulden                            | ibiza-usability@microsoft.com |
+| Usability	                                    | Joe Hallock; Mariah Jackson               | ibiza-usability@microsoft.com |
 | UX feasibility review                         |                                           | ibiza-onboarding@microsoft.com | 
 
 <!-- TODO: Validate whether the ibizafxpm@microsoft.com  link is the correct one for sending pull requests to, when sending pull requests to the dev branch for new extensions. -->
