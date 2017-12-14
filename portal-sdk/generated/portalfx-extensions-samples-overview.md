@@ -31,7 +31,7 @@ You can edit the samples and then refresh the portal to see the changes. Each sa
 For help other than documentation and samples, send an email to the Ibiza team on [Stackoverflow@MS](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza). For a list of topics and stackoverflow tags, see [portalfx-extensions-stackoverflow.md](portalfx-extensions-stackoverflow.md).
 
 <!-- TODO: Determine whether there should be a list of samples and whether they are V1 or V2.   
-The alternative is to let the list default to the contents of the SamplesExtension.sln project. -->
+The alternative is to let the list default to the contents of the SamplesExtension.sln project, and the reverse cross-reference that is created by documents like portalfx-blades-appblades.md. -->
 
 <a name="v1-versus-v2"></a>
 ## V1 versus V2
@@ -73,3 +73,45 @@ The following **V1** concepts should be avoided when **V2** APIs can be used ins
 * **V1** Forms that use EditScope
 
 **NOTE**: The **V2** space is not yet entirely built. In the meantime, use **V1** APIs in places, even the previously-listed **V1** concepts. For example, the source code for small, medium, and large blades is located in the `...\SamplesExtension\Extension\Client\V1\Blades\BladeWidth` directory.
+
+**NOTE**: Sample source code is included in topics that discuss the various Azure SDK API items. The list of topics and samples is as follows.
+
+<!-- | Topic | Version | Sample |  Experience | -->
+<!-- | Topic | Document |  Version | Sample |  Experience | -->
+
+| ----- | ------ | 
+| [portalfx-debugging.md](portalfx-debugging.md) | N/A |
+| [portalfx-testing-taking-screenshots.md](portalfx-testing-taking-screenshots.md) | N/A |
+| [portalfx-blades-pinning.md](portalfx-blades-pinning.md) | N/A |
+| [portalfx-icons.md](portalfx-icons.md) | V1 | .../Client/V1/UI/ViewModels/Blades/IconBladeViewModels.ts | | 
+| [portalfx-forms-sections.md](portalfx-forms-sections.md) | V1 |
+| [portalfx-forms-construction.md](portalfx-forms-construction.md) | V1 |
+| [portalfx-extension-pricing-tier.md](portalfx-extension-pricing-tier.md) | V1 |
+| [portalfx-data-projections.md](portalfx-data-projections.md) | V1 |
+| [portalfx-data-overview.md](portalfx-data-overview.md) | V1 |
+| [portalfx-controls-grid.md](portalfx-controls-grid.md) | V1 |
+| [portalfx-blades-templateblade-reference.md](portalfx-blades-templateblade-reference.md) | V1 |
+| [portalfx-blades-menublade.md](portalfx-blades-menublade.md) | V1 |
+| [portalfx-parts.md](portalfx-parts.md) | V1 |
+| [portalfx-forms-edit-scope-faq.md](portalfx-forms-edit-scope-faq.md) | V1 |
+| [portalfx-data-refreshingdata.md](portalfx-data-refreshingdata.md) | V1 |
+| [portalfx-data-masterdetailsbrowse.md](portalfx-data-masterdetailsbrowse.md) | V1 |
+| [portalfx-create.md](portalfx-create.md) | V1 |
+| [portalfx-controls-datetimerangepicker.md](portalfx-controls-datetimerangepicker.md) | V1 |
+| [portalfx-controls-datetimepicker.md](portalfx-controls-datetimepicker.md) | V1 |
+| [portalfx-blades-templateblade-advanced.md](portalfx-blades-templateblade-advanced.md) | V1 |
+| [portalfx-blades-outputs.md](portalfx-blades-outputs.md) | V1 |
+| [portalfx-blades-appblades.md](portalfx-blades-appblades.md) | V1 |
+| [portalfx-parameter-collection-getting-started.md](portalfx-parameter-collection-getting-started.md) | V1 |
+| [portalfx-hubsextension-pde.md](portalfx-hubsextension-pde.md) | V1 |
+| [portalfx-extension-reference-obsolete-bundle.md](portalfx-extension-reference-obsolete-bundle.md) | V1 |
+| [portalfx-create-engine-sample.md](portalfx-create-engine-sample.md) | V1 |
+| [portalfx-create-robot-sample.md](portalfx-create-robot-sample.md) | V1 |
+| [portalfx-faq.md](portalfx-faq.md) | V1 |
+| [portalfx-data-virtualizedgriddata.md](portalfx-data-virtualizedgriddata.md) | V1 |
+| [portalfx-blades-ui.md](portalfx-blades-ui.md) | V1 |
+| [portalfx-no-pdl-programming.md](portalfx-no-pdl-programming.md) | V2 |
+| [portalfx-controls-textbox.md](portalfx-controls-textbox.md) | V2 |
+| [portalfx-controls-essentials.md](portalfx-controls-essentials.md) | V2 |
+| [portalfx-controls-editor.md](portalfx-controls-editor.md) | V2 |
+
