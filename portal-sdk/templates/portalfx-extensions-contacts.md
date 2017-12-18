@@ -2,7 +2,7 @@
 
 For assistance with the prerequisites for onboarding Management UI, contact the following people.  
 
-If the information is not current, please send a pull request to update the documentation. For more information on how to send a pull request, see [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md).
+If the information is not current, please send a pull request to update the documentation. For more information on how to send a pull request, see [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
 
 <!-- TODO: validate person names against links in portalfx-onboarding.md -->
 

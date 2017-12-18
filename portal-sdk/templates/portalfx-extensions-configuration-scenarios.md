@@ -25,7 +25,7 @@ As part of permanently enabling the extension, the developer should update the e
 
 ### Enabling an extension in the portal
 
-The extension can only be enabled in production after all exit criteria have been met. Once you have received sign-off from all the stakeholders that are included in the exit criteria for the extension, please attach the email to the workitem that is used for sending the pull request, as specified in  [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md).
+The extension can only be enabled in production after all exit criteria have been met. Once you have received sign-off from all the stakeholders that are included in the exit criteria for the extension, please attach the email to the workitem that is used for sending the pull request, as specified in  [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
 
 Enabling an extension requires two changes:
 1.	To enable the extension, just remove the ```disables``` boolean attribute from the config.
@@ -104,7 +104,7 @@ Work In Progress
 
 Work In Progress
 
-To update the feedback email, send a pull request as specified in [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md).
+To update the feedback email, send a pull request as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
 
 
 ## SLA for deploying the configuration changes
@@ -126,7 +126,7 @@ Dogfood -> RC -> MPAC -> PROD -> National Clouds (BF, FF and MC).
 
 ## Expediting the deployment of configuration changes
 
-In order to expedite the deployment of changes, you can send a pull request for each branch in the portal repository, i.e., Dogfood, MPAC and Production. How to send the pull request is specified in  [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md).
+In order to expedite the deployment of changes, you can send a pull request for each branch in the portal repository, i.e., Dogfood, MPAC and Production. How to send the pull request is specified in  [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
 
 Typically, all pull requests are for the Dev branch. When a pull request for an environment is marked as complete, the specified commit can be cherry-picked from that environment and included in a pull request for the next branch. The dev branch is followed by the Dogfood branch, which in turn is followed by the MPAC branch and finally the production branch. 
 

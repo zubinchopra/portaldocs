@@ -67,9 +67,9 @@ All the pull requests should be sent first to the dev branch. To add or update o
 
     **NOTE**:  Use the commit hash that was returned from the previous `git commit` command. It can also be found on the site that is located at [https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/commits](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/commits).
 
-1. Create a work item and associate it with the commit. Use the site located at [https://aka.ms/portalfx/pullRequest](https://aka.ms/portalfx/pullRequest). Click the `New pull request` button, then select the branch that contains the staged changes in the first dropdown box.  Select the target branch in the second dropdown box. In the following example, the developer is requesting to move configuration changes from their `extensionupdate` branch to the `dev` branch.
+1. Create a work item and associate it with the commit. Use the site located at [https://aka.ms/portalfx/publishing](https://aka.ms/portalfx/publishing). Click the `New pull request` button, then select the branch that contains the staged changes in the first dropdown box.  Select the target branch in the second dropdown box. In the following example, the developer is requesting to move configuration changes from their `extensionupdate` branch to the `dev` branch.
 
-   ![alt-text](../media/portalfx-extensions-pullRequest/pull-request.png "Create Pull Request")
+   ![alt-text](../media/portalfx-extensions-publishing/pull-request.png "Create Pull Request")
 
 1. The pull request description should include the bug ID, the bug title, and optionally a short description of the solution, and any other items that the Ibiza team may need to update the portal environment configuration files. Validate that the branches and reviewers are accurate, then click the `Create` button to email the pull request to the reviewers.
 
