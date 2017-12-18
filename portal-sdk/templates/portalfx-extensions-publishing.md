@@ -1,10 +1,10 @@
 ## Publishing your portal extension
 
-When an extension development team decides to make the extension publically available, the portal's configuration files should be updated so that users other than the team can view the extension in the various Portal production and pre-production environments. For more information, see [portalfx-extensions-testing-in-production.md](portalfx-extensions-testing-in-production.md).
+When an extension development team decides to make the extension publicly available, the portal's configuration files are updated so that users other than the team can view the extension in the various Portal production and pre-production environments. 
 
 <!-- TODO:  add link to sideloading document when it is ready for code review. -->
 
-The Portal repository has four branches: `dev`, `Dogfood`, `MPAC`, and `PROD`. Pull requests are used to cherry-pick extension configurations from one branch to the next one by updating the configuration files that govern each environment. This document hypothesizes that the extension has been completely developed and tested, and is ready to be moved to the next branch, as specified in [portalfx-extensions-branches.md](portalfx-extensions-branches.md). This document encompasses extension configuration files in the portal repository; the source code for the extension is out of the scope of this document.
+The Portal is deployed in four different environments: `dev`, `Dogfood`, `MPAC`, and `PROD`. The deployments are from four branches in the Portal repository. Pull requests are used to cherry-pick extension configurations from one branch to the next one by updating the configuration files that govern each environment. This document assumes that the extension has been completely developed and tested, and is ready to be moved to the next branch, as specified in [portalfx-extensions-branches.md](portalfx-extensions-branches.md). This document encompasses extension configuration files in the portal repository; the source code for the extension is out of the scope of this document.
 
 The configuration file for the extension that will be cherry-picked should be similar to the examples in [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md). The relationship between the environments and the configuration files specified in [portalfx-extensions-branches.md](portalfx-extensions-branches.md).
 
