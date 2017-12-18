@@ -18,7 +18,7 @@ For more information about feature flags that are used in hosting, see [portalfx
 
 The Portal provides options for sideloading your extension for testing. If you wish to sideload your extension, either as a localhost extension or as a deployed extension, you can set the appropriate query strings and execute the `registerTestExtension` function for deployed extensions. For a localhost extension you can just set a query string. For more information, see [portalfx-extensions-testing-in-production-overview.md#registering-test-extensions](portalfx-extensions-testing-in-production-overview.md#registering-test-extensions).
  
-The developer may want to programmatically register a deployed extension via JavaScript and then reload the portal. This step is optional if they use the query string method to load the extension from the localhost. To load an extension from the test environment or an unregistered source, extension developers can leverage the following approach.
+The developer may want to programmatically register a deployed extension with JavaScript and then reload the portal. This step is optional if they use a query string method to load the extension into the browser from the localhost. To load an extension from the test environment or an unregistered source, extension developers can leverage the following approach.
 
 1. Sign in to a production account at [https://portal.azure.com?feature.canmodifyextensions=true](https://portal.azure.com?feature.canmodifyextensions=true)
 1. Click **F12** to open the Developer Tools in the browser
@@ -51,7 +51,7 @@ The registered extension will be saved to User Settings , and will be available 
 
 * * *
 
-The following example illustrates a complete URL and query string that instructs the portal to load the extension named "Microsoft_Azure_Demo" from endpoint "https://DemoServer:44300". It registers the extension only for the current user session. 
+The following example describes a complete URL and query string that instructs the portal to load the extension named "Microsoft_Azure_Demo" from endpoint "https://DemoServer:44300". It registers the extension only for the current user session. 
 
 ```ts
    MsPortalImpl.Extension.registerTestExtension({ name: "Microsoft_Azure_Demo", uri: "https://DemoServer:44300" }, true);
@@ -61,7 +61,7 @@ For more information on loading, see [portalfx-testing-ui-test-cases.md](portalf
 
 * * *
 
-When testing is completed, the developer can run the `unregisterTestExtension` method in Console (Developer Tools) to reset the user settings and unregister the extension, as in the following example.
+When testing is completed, the developer can run the `unregisterTestExtension` method in the Developer Tools Console to reset the user settings and unregister the extension, as in the following example.
 
 ```ts
   MsPortalImpl.Extension.unregisterTestExtension("<extensionName>");
