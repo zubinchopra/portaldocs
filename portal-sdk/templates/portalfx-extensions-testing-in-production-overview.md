@@ -4,14 +4,13 @@ This document describes the various components of testing an extension in produc
 
 ## Overview
 
-Sideloading allows the testing and debugging of extensions locally against any environment. This is the preferred method of testing. However, an extension can be 
-tested in production under specific conditions. It allows the developer to include hotfixes, customize the extension for different environments, and other factors. 
+Sideloading allows the testing and debugging of extensions locally against any environment. This is the preferred method of testing. However, an extension can be tested in production under specific conditions. It allows the developer to include hotfixes, customize the extension for different environments, and other factors. 
 
 Extensions can be loaded on a per-user basis on production deployments. This can be used to test a new extension or an existing extension on a developer's machine with production credentials. To reduce phishing risks, the extension is hosted on `localhost`, although it can be hosted on any port. 
 
-## Registering a Custom Extension 
+## Registering a Customized Extension 
 
-To register a custom extension, or register a different extension stamp, use the following parameters in the portal extension query string.
+To register a customized extension, or register a different extension stamp, use the following parameters in the portal extension query string.
  
 ```https://portal.azure.com/?feature.canmodifyextensions=true#?testExtensions={"<extensionName>":"<protocol>://<uri>/"}```
 
@@ -19,15 +18,18 @@ where
 
 **portal.azure.com**: Portal environment in which to load the extension. Other portal environments are  ` rc.portal.azure.com`, `mpac.portal.azure.com`, and   `df.onecloud.azure-test.net`, although extension developers can sideload their extensions in any environment. 
 
-**feature.canmodifyextensions**: Required to support loading untrusted extensions for security purposes. This feature flag has a value of `true`. For more information about feature flags, see [portalfx-extension-flags.md](portalfx-extension-flags.md).
+**feature.canmodifyextensions**: Required to support loading untrusted extensions for security purposes.  This feature flag grants permission to the portal to load extensions from URLs other than the ones that are typically used by customers.  It triggers an additional portal UI that indicates that the portal is running with untrusted extensions. This feature flag has a value of `true`.  For more information about feature flags, see [portalfx-extension-flags.md](portalfx-extension-flags.md).
 
-**testExtensions**: Contains the name of the extension, and the environment in which the environment is located.
+**testExtensions**: Contains the name of the extension, and the environment in which the environment is located. It specifies the intent to load the extension `<extensionName>` from the `localhost:<Port_Number>` into the current session of the portal.
 
-* **extensionName**: Matches the name of the extension, without the angle brackets, as specified in the `<Extension>` element  in the  extension configuration file.  For more information about the configuration file, see [portalfx-extensions-configuration-overview.md]().
+* **extensionName**: Matches the name of the extension, without the angle brackets, as specified in the `<Extension>` element  in the  `extension.pdl` file.  For more information about the configuration file, see [portalfx-extensions-configuration-overview.md]().
 
 * **protocol**: Matches the protocol of the shell into which the extension is loaded, without the angle brackets.  It can have a value of `HTTP` or a value of `HTTPS`. For the production shell, the value is `HTTPS`.  If the value of this portion of the parameter is incorrectly specified, the browser will not allow the extension to communicate. 
 
-* **uri**: The extension endpoint. The actual host is `localhost`.  If using a host other than `localhost`, see the section named [#registering-test-extensions](#registering-test-extensions). If there is a port number associated with the extension, it can be appended to the `uri` if it is separated from the `uri` by a colon, as in the following example: `https://localhost:1234/`.
+* **uri**: The extension endpoint. The actual host is `localhost`.  If using a host other than `localhost`, see the section named [#registering-test-extensions](#registering-test-extensions). If there is a port number associated with the extension, it can be appended to the `uri` if it is separated from the `uri` by a colon, as in the following example: `https://localhost:1234/`. For example, the following  `uri`  loads an extension named Microsoft_Azure_Demo from localhost: 
+
+[https://portal.azure.com/?feature.canmodifyextensions=true#?testExtensions={"Microsoft_Azure_Demo":"https://localhost:44300/"}](https://portal.azure.com/?feature.canmodifyextensions=true#?testExtensions={"Microsoft_Azure_Demo":"https://localhost:44300/"})
+
 
 The custom extension that was registered will be saved to user settings, and available in future sessions. When using the portal in this mode, a banner is  displayed that indicates that the state of the configured extensions has been changed, as in the following image.
 
