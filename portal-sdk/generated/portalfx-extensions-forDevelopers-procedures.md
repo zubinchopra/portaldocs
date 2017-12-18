@@ -70,7 +70,7 @@ Read the following documents from the Azure Portal UI team site.  Our doc site p
 | Private Preview, Public Preview, and GA       | Portal Extension Development Phases, located at [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md) |
 | How it Works	                                | Getting Started, located at [portalfx-howitworks.md#getting-started](portalfx-howitworks.md#getting-started)
 | Build an empty extension                      | Creating An Extension, located at [portalfx-extensions-developerInit.md](portalfx-extensions-developerInit.md) |
-| Experiment with sample code	                | Sample Extensions, located at [portalfx-sample-extensions.md#samples-extension](portalfx-sample-extensions.md#samples-extension) |
+| Experiment with sample code	                  | Sample Extensions, located at [portalfx-extensions-samples.md](portalfx-extensions-samples.md) |
 
 <a name="development-procedures-develop-and-deploy-the-extension"></a>
 ### Develop and deploy the extension
@@ -115,7 +115,7 @@ Read the following documents from the Azure Portal UI team site.  Our doc site p
 
 Once the name of the extension or service name is finalized, request to have the extension registered in all environments. Registering an extension in Portal requires deployment so it can take almost 10 days in the Production environment. Please plan accordingly.
 
-* For internal partners, the request to register an extension is a pull request, as specified in [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md).
+* For internal partners, the request to register an extension is a pull request, as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
  
 * External teams can submit their requests by sending an email that resembles the following image.
 

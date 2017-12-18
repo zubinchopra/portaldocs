@@ -76,7 +76,7 @@ Its options are as follows.
 
       **NOTE**: For extensions that are not using a hosting service, we recommend that the `uri` follow the standard CNAME pattern, as specified in [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md). 
 
-  When the user loads the extension in the portal, it is loaded from the `uri` specified in the extension configuration. To update the ```uri```, send a pull request as specified in [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md). Additional extension stamps can be loaded by specifying the stamp name in the  `uri` and specifying the feature flag `feature.canmodifystamps=true`. For more information about feature flags, see [portalfx-extension-flags.md](portalfx-extension-flags.md).
+  When the user loads the extension in the portal, it is loaded from the `uri` specified in the extension configuration. To update the ```uri```, send a pull request as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md). Additional extension stamps can be loaded by specifying the stamp name in the  `uri` and specifying the feature flag `feature.canmodifystamps=true`. For more information about feature flags, see [portalfx-extension-flags.md](portalfx-extension-flags.md).
 
 * **uriFormat**: The `uri` for the extension, followed by a forward slash, followed by a parameter marker that allows modification of the extension stamp.
     
@@ -103,17 +103,17 @@ Its options are as follows.
 
       **NOTE**: We recommend that the `uriFormat` follow  the standard CNAME pattern, as specified in  [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md). 
 
-  To update the `uriFormat`, send a pull request as specified in [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md).
+  To update the `uriFormat`, send a pull request as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
     
 * **feedbackEmail**: The email id to which to send all feedback about the extension. 
 
-  To update the feedback email, send a pull request as specified in [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md).
+  To update the feedback email, send a pull request as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
 
 * **cacheability**: Enables caching of the extension on your extension server or on the client. The default value is "manifest".
       
   If legacy DIY deployment is being used, then you will need to do some work before the value of the `cacheability` attribute can be set to ```manifest```. Otherwise, the extension will reduce the performance of Azure Portal.
 
-  **NOTE**: Setting the value of the `cacheability` attribute to ```manifest``` is a requirement for registering the extension into the portal.  For assistance with caching, send a pull request as specified in [portalfx-extensions-pullRequest.md](portalfx-extensions-pullRequest.md).
+  **NOTE**: Setting the value of the `cacheability` attribute to ```manifest``` is a requirement for registering the extension into the portal.  For assistance with caching, send a pull request as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
     
   For more information about caching, see [portalfx-extension-homepage-caching.md](portalfx-extension-homepage-caching.md).
 
