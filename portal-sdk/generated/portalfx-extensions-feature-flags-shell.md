@@ -10,8 +10,6 @@ There are two naming conventions for feature flags. Some feature flags have thei
 <!--TODO: can the canmodifystamps flag ever be required or included when it is false?  -->
 <!--TODO: is the canmodifystamps always required when extensionName is used? -->
 
-
-
 <a name="shell-feature-flags-feature-flags-from-the-feature-object"></a>
 ### Feature flags from the feature object
 
