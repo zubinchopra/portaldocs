@@ -160,7 +160,7 @@ Sample source code is included in topics that discuss the various Azure SDK API 
     | Intrinsic Tile             | [portalfx-parts-intrinsic.md](portalfx-parts-intrinsic.md)                           | `<dir>\Client\V1\Parts\Intrinsic\ ViewModels\IntrinsicBladeViewModel.ts` | [https://aka.ms/portalfx/samples/#blade/SamplesExtension/IntrinsicPartsIndexBlade](https://aka.ms/portalfx/samples/#blade/SamplesExtension/IntrinsicPartsIndexBlade) | 
     | Pinning Parts              | [portalfx-parts-pinning.md](portalfx-parts-pinning.md)                               | `<dir>\Client\V1\Hubs\Browse\Browse.pdl` | | 
     | Portal Parts               | [portalfx-parts.md](portalfx-parts.md)                                               | `<dir>\Client\V1\Parts\PartsArea.ts` |
-    | Toolbar        | @#@#@# |  `<dir>\Client\V1\Blades\Toolbar\BladeWithToolbarViewModels.ts` | 
+    | Toolbar        | [portalfx-blades-templateBlade.md](portalfx-blades-templateBlade.md)|  `<dir>\Client\V1\Blades\Toolbar\BladeWithToolbarViewModels.ts` | 
     | View Model                 | [portalfx-blade-viewmodel.md](portalfx-blade-viewmodel.md)                           | `<dir>\Client\V1\Blades\Template\ ViewModels\TemplateBladeViewModels` |  |
     
   * Controller Components
