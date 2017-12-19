@@ -56,12 +56,11 @@ There are two naming conventions for feature flags. Some feature flags have thei
 
 **customportal**:  Overrides the `ms.portal` redirect when signing in to portal.azure.com. A value of `false` overrides the redirect, and a value of `true`   .
 
-**disableextensions**:  Disables all extensions. A value of `true` disables the extension, and a value of `false` enables it. 
-For example, the following command disables all extensions, enables hubs, and enables the specific extension to be tested.
+**disableextensions**:  Disables all extensions. A value of `true` disables the extension, and a value of `false` enables it. **NOTE**: Extensions must be enabled explicitly with this flag, including Hubs. For example, the following command disables all extensions, enables hubs, and enables the specific extension to be tested.
 
 `?feature.DisableExtensions=true&HubsExtension=true&MyOtherExtension=true `
 
-* **NOTE**: Extensions must be enabled explicitly with this flag, including Hubs. 
+ 
 
 **eagerlyrevealassetpart**:  Asset part will infer resource names from ARM resource IDs, and will auto-reveal its content as soon as it has an icon and name.
 
@@ -112,7 +111,7 @@ For example, the following command disables all extensions, enables hubs, and en
 
 **showbugreportlink**:  Shows or hides the **Report bug** link in the top bar. A value of `true` shows the link,  and a value of `false` hides it.
 
-**showpreviewtags**: Hides the preview ribbon on the startboard and shows labels in blade headers when extensions are marked as in preview   **NOTE**: Does not hide the preview ribbon.
+**showpreviewtags**: Hides the preview ribbon on the startboard and shows labels in blade headers when extensions are marked as in preview.   **NOTE**: Does not hide the preview ribbon.
 
 <!--TODO:  verify whether these relex settings have ceased to exist or are just not used -->
 **showrelexdialog**:  Hides the relex dialog that is displayed if performance is slow.
