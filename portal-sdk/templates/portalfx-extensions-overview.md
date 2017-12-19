@@ -1,10 +1,10 @@
 ## Introduction
 
-Welcome to the Azure portal! We're excited to have you to join the family. The Azure Portal UI team supports Ibiza and the Portal Framework, and can help you with onboarding a service into the Management UI in the Azure portal.
+Welcome to Azure! We're excited to have you to join the family. The Azure Portal team supports the Azure Portal, its SDK, and the Framework that service teams use to integrate their management UI into the Azure Portal.
 
 ## Overview
 
-The user experience for services that are visible in the Azure Portal are named extensions.  Some examples are in the following image.
+Extensions are developed by teams that integrate user interfaces into the Azure Portal. Some examples are in the following image.
 
 ![alt-text](../media/portalfx-create/plus-new.png  "Extensions")
 
@@ -15,9 +15,9 @@ Most services that onboard to Azure can leverage the following components of the
 1. Management UI in the Azure portal and/or other tools/websites, like Visual Studio
 1. Marketing content on the Azure Web site or other websites
 
-The Azure onboarding process is streamlined to optimize the delivery of high quality experiences based on hundreds of hours of usability testing that meet Microsoft Common Engineering Criteria (CEC) and compliance requirements. Do not start designing UI or management APIs until after the onboarding process begins, to ensure the latest patterns and practices are being followed. This will better optimize developer resources and reduce re-working due to anti-patterns and inconsistencies that block usability, performance, and other factors.
+The Azure onboarding process is streamlined to optimize the delivery of high-quality experiences based on hundreds of hours of usability testing that meet Microsoft Common Engineering Criteria (CEC) and compliance requirements. Do not start designing UI or management APIs until after the onboarding process begins, to ensure the latest patterns and practices are being followed. This will better optimize developer resources and reduce re-working due to anti-patterns and inconsistencies that block usability, performance, and other factors.
 
-The Azure Fundamentals are a set of Tenets each Azure service is expected to adhere to. The Azure Fundamentals program is described in this document [Azure Fundamentals](https://microsoft.sharepoint.com/:w:/r/teams/WAG/EngSys/_layouts/15/Doc.aspx?sourcedoc=%7BF5B821BC-31C4-4042-ADB5-5EBF4D8B408D%7D&file=Azure%20Fundamentals%20Proposal.docx&action=edit&mobileredirect=true). The document also identifies the stakeholders and contacts for each of the Tenets.
+The Azure Fundamentals are a set of tenets to which each Azure service is expected to adhere. The Azure Fundamentals program is described in this document [Azure Fundamentals](https://microsoft.sharepoint.com/:w:/r/teams/WAG/EngSys/_layouts/15/Doc.aspx?sourcedoc=%7BF5B821BC-31C4-4042-ADB5-5EBF4D8B408D%7D&file=Azure%20Fundamentals%20Proposal.docx&action=edit&mobileredirect=true). The document also identifies the stakeholders and contacts for each of the Tenets.
 
 The Azure Fundamentals document is located at [https://microsoft.sharepoint.com/teams/WAG/EngSys/Shared%20Documents/Argon/Azure%20Fundamentals%20Proposal/Azure%20Fundamentals%20Proposal.docx?d=wf5b821bc31c44042adb55ebf4d8b408d](https://microsoft.sharepoint.com/teams/WAG/EngSys/Shared%20Documents/Argon/Azure%20Fundamentals%20Proposal/Azure%20Fundamentals%20Proposal.docx?d=wf5b821bc31c44042adb55ebf4d8b408d).
 

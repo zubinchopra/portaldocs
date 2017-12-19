@@ -2,9 +2,12 @@
 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
 
+<!-- TODO:  Determine the difference between a branch, a region, and an environment. They are not  completely interchangeable, then we can standardize usage. -->
+
 | Term                     | Meaning |
 | ---                      | --- |
 | BF                       | Black Forest |
+| branch | |
 | build verification test  | A subset of regression testing, this is a set of non-exhaustive tests that verify whether the most important application functions work. Its results are used to determine whether a build is stable enough to proceed with further testing. |
 | BVT                      | Build Verification Test |
 | cherry-pick              | Apply the changes introduced by an existing GitHub commit. |
@@ -12,6 +15,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | CNAME                    | Canonical Name record. A type of resource record in the Domain Name System (DNS) that specifies that a domain name is an alias for another domain (the 'canonical' domain). | 
 | DF                       | Dogfood |
 | DIY                      | Do It Yourself |
+| environment              | A configuration of computers in which extensions can be run. For example, environments are Blackforest, Dogfood, Mooncake, and Production.  | 
 | feature flag             | A switch that allows a user to turn on or off specific functionalities of an extension. Flags are  passed from the portal to extensions and their controllers, and are used as an alternative to maintaining multiple source-code branches in order to hide, enable or disable a feature during run time. Most, but not all, feature flags, are made available by using the syntax `feature.<featureName> = true`.   |
 | FF                       | Fairfax |
 | flighting                | |

@@ -25,11 +25,9 @@ For information on how developers can leverage secondary stamps, see [portalfx-e
 }
 ```
 
-<!-- TODO:  Include the definition of flightUri and explain that it is an optional parameter --->
-
 Its options are as follows.
 
-* **name**:  The name for the extension, as specified in the `Client\extension.pdl` file of the extension project.
+* **name**:  Required. The name for the extension, as specified in the `Client\extension.pdl` file of the extension project.
     
     <!--TODO: for more information about the extension.pdl file, see ...  although the pdl file is related, it is really a separate subject -->
 
@@ -50,7 +48,7 @@ Its options are as follows.
 
     ```<Extension Name="Microsoft_Azure_Demo" Version="1.0" Preview="true" EntryPointModulePath="Program"/>```
  
-* **uri**: The uniform resource identifier for the extension. This consists of the uri of the provider, followed by a forward slash, followed by the directory or path that contains the extension. 
+* **uri**: Required. The uniform resource identifier for the extension. This consists of the uri of the provider, followed by a forward slash, followed by the directory or path that contains the extension. 
    
    * Hosting service uri
  
@@ -76,7 +74,7 @@ Its options are as follows.
 
   When the user loads the extension in the portal, it is loaded from the `uri` specified in the extension configuration. To update the ```uri```, send a pull request as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md). Additional extension stamps can be loaded by specifying the stamp name in the  `uri` and specifying the feature flag `feature.canmodifystamps=true`. For more information about feature flags, see [portalfx-extension-flags.md](portalfx-extension-flags.md).
 
-* **uriFormat**: The `uri` for the extension, followed by a forward slash, followed by a parameter marker that allows modification of the extension stamp.
+* **uriFormat**: Required. The `uri` for the extension, followed by a forward slash, followed by a parameter marker that allows modification of the extension stamp.
     
   * Hosting service uriFormat
 
@@ -103,20 +101,22 @@ Its options are as follows.
 
   To update the `uriFormat`, send a pull request as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
     
-* **feedbackEmail**: The email id to which to send all feedback about the extension. 
+* **feedbackEmail**: Required. The email id to which to send all feedback about the extension. 
 
   To update the feedback email, send a pull request as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
 
-* **cacheability**: Enables caching of the extension on your extension server or on the client. The default value is "manifest".
+* **cacheability**: Required. Enables caching of the extension on your extension server or on the client. The default value is "manifest".
       
   If legacy DIY deployment is being used, then you will need to do some work before the value of the `cacheability` attribute can be set to ```manifest```. Otherwise, the extension will reduce the performance of Azure Portal.
 
-  **NOTE**: Setting the value of the `cacheability` attribute to ```manifest``` is a requirement for registering the extension into the portal.  For assistance with caching, send a pull request as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
+  **NOTE**: Setting the value of the `cacheability` attribute to `manifest` is a requirement for registering the extension into the portal.  For assistance with caching, send a pull request as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
     
   For more information about caching, see [portalfx-extension-homepage-caching.md](portalfx-extension-homepage-caching.md).
 
-* **disabled**: Optional field. Registers the extension configuration into the portal in hidden mode.  A value of  `true` disables an extension, and a value of `false` enables the extension for display. The default value is `false`. For more information about enabling and disabling extensions, see [portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension](portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension).
+* **disabled**: Optional. Registers the extension configuration into the portal in hidden mode.  A value of  `true` disables an extension, and a value of `false` enables the extension for display. The default value is `false`. For more information about enabling and disabling extensions, see [portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension](portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension).
  
+* **flightUris**: Optional.  The uri concatenated to a friendly name in order to flight traffic to another stamp, as in the following example:  `//demo.hosting.portal.azure.net/demo/MPACFlight`.
+
 ### Understanding which extension configuration to modify
 
 The Azure portal uses five different extension configuration files to manage the extension configuration. The description of mapping of the portal environment to the extension configuration is located at [portalfx-extensions-branches.md](portalfx-extensions-branches.md).
