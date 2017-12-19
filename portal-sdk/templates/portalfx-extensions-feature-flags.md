@@ -1,6 +1,6 @@
 
 # Extension flags
-
+    
 There are three types of flags that are associated with extensions. Using these flags allows the developer to make modifications to the server, to the browser, and to the extension code, regardless of the environment in which the extension is being tested.  Consequently, the purpose of each type of flag is similar but not identical. For example, flags that modify the environment in which the extension is running, instead of the extension itself, are either trace mode flags or diagnostic switches. 
 
 * [Trace mode flags](#trace-modes)
