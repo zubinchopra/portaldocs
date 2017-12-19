@@ -9,8 +9,6 @@ There are two naming conventions for feature flags. Some feature flags have thei
 <!--TODO: can the canmodifystamps flag ever be required or included when it is false?  -->
 <!--TODO: is the canmodifystamps always required when extensionName is used? -->
 
-
-
 ### Feature flags from the feature object
 
 **abovethefold**:  A value of `true` means that the item is above the fold, or is initially displayed on the Web page without scrolling.  A value of `false` means that the item is not above the fold.
