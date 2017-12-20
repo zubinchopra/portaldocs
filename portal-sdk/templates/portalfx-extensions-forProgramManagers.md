@@ -23,4 +23,6 @@
   
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-contacts.md"}
 
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-onboarding-fyi.md"}
+
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-forProgramManagers-glossary.md"}
