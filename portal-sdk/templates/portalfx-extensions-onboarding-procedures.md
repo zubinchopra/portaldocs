@@ -130,11 +130,11 @@ Read the following documents from the Azure Portal UI team site.  Our doc site p
 
     In the following images, each icon in the Azure Portal Marketplace is referred to as a Gallery item. Gallery items take the form of a file with the .azpkg extension. This is a  zip file which contains all assets for the gallery item: icons, screenshots, descriptions.
 
-    ![alt-text](../media/portalfx-extensions-forDevelopers/azurePortalMarketPlace.png "Azure Portal Marketplace")
+    ![alt-text](../media/portalfx-extensions-onboarding/azurePortalMarketPlace.png "Azure Portal Marketplace")
 
     * **PROD:** The Marketplace team accepts fully finished .azkpg files from your team and uploads them to Production to onboard the gallery package. Send the following email to 1store@microsoft.com.  The subject line should contain “Marketplace Onboarding Request” and the *.azpkg file should be attached to the email, as in the following image.
 
-      ![alt-text](../media/portalfx-extensions-forDevelopers/marketplaceOnboardingRequest.png "Marketplace Onboarding Request")
+      ![alt-text](../media/portalfx-extensions-onboarding/marketplaceOnboardingRequest.png "Marketplace Onboarding Request")
 
     * **DOGFOOD:** Use AzureGallery.exe to upload items to DOGFOOD using the following command:
 
@@ -152,7 +152,7 @@ Once the name of the extension or service name is finalized, request to have the
  
 * External teams can submit their requests by sending an email that resembles the following image.
 
-  ![alt-text](../media/portalfx-extensions-forDevelopers/registrationRequest.png "Extension Registration Onboarding Request")
+  ![alt-text](../media/portalfx-extensions-onboarding/registrationRequest.png "Extension Registration Onboarding Request")
  
 * After deploying the extension to the DOGFOOD (DF) environment, contact the Fx team to request that they enable the extension, if applicable. Every extension  meets required exit criteria / quality metrics before it will be enabled. The  extension will be enabled in production once all exit criteria have been met.
 
