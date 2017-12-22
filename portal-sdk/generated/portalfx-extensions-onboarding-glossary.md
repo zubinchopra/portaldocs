@@ -1,8 +1,5 @@
 <a name="glossary"></a>
 ## Glossary
-<!--
-This document should remain identical to the glossary in portal-extensions-forDevelopers-glossary, because they were originally the same document.
--->
  
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
 
@@ -19,10 +16,12 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | CLI                       | Command Line Interface  | 
 | CNAME                     | Canonical Name record. A type of resource record in the Domain Name System (DNS) that specifies that a domain name is an alias for another domain (the 'canonical' domain). | 
 | CSS                       | CSS Release management  | 
+| Definition file | A file that provides type information for JavaScript code that is inherently not statically typed. Definition files are a fundamental part of using existing JavaScript libraries in TypeScript, and the file suffix is always  *.d.ts. |
 | DEV                       | Development | 
 | DF                        | Dogfood | 
 | DNS                       | Domain Name Server  | 
 | DNS                       | Domain Name System  | 
+| first-party extension     | An Azure portal extension that is developed by Microsoft |
 | FAQ                       | Frequently Asked Questions | 
 | GA                        | Global Availability | 
 | gallery                   | Also known as Marketplace or Azure Portal Marketplace. See Marketplace Gallery. | 
@@ -32,6 +31,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | Marketplace Gallery       | Also known as the Gallery or Marketplace Gallery. | 
 | MPAC                      | ms.portal.azure.com, the Azure portal instance for internal Microsoft customers.  | 
 | P0 scenarios              | The most important user scenarios for an extension. Less important scenarios that are used for usability testing are categorized as P1, P2, or P3. |
+| PDE | | 
 | PHP                       | Recursive acronym for PHP: Hypertext Preprocessor. | 
 | PM                        | Program Manager | 
 | PM                        | Project Manager | 
@@ -45,8 +45,10 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | SDK                       | Software Development Kit | 
 | SDL                       | Security Development Lifecycle |
 | Service 360               | An extension of Service Portfolio Management. It enhances a Service Portfolio by providing a single view of business service performance across an organization, for business processes such as Operation, Risk, Investment, and Finance. | 
+| single page application | A web application that dynamically rewrites displayed pages instead of providing entire new pages from a server. | 
 | SLA                       | Service Level Agreement | 
 | SSL                       | Secure Socket Layer  | 
+| third-party extension     | An Azure portal extension that is developed by partners outside of Microsoft |
 | URL                       | Uniform Resource Locator | 
 | VP                        | Vice President | 
 | Weighted Experience Score | The percentage of blade usage that meets the performance bar. |
