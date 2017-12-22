@@ -33,7 +33,8 @@ FAQ's that are associated with testing an extension in the production environmen
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-testing-in-production.md"}
 
+<!--
 ## Hosting Service
 
 "gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-hosting-service.md"
-
+-->
