@@ -9,11 +9,8 @@
 ## Extension Configuration
 {"gitdown": "include-file", "file": "./portalfx-extensions-configuration-glossary.md"}
 
-## Extensions for Developers
-{"gitdown": "include-file", "file": "./portalfx-extensions-forDevelopers-glossary.md"}
-
-## Extensions for Program Managers
-{"gitdown": "include-file", "file": "./portalfx-extensions-forProgramManagers-glossary.md"}
+## Extensions Onboarding
+{"gitdown": "include-file", "file": "./portalfx-extensions-onboarding-glossary.md"}
 
 ## Hello World Extension
 {"gitdown": "include-file", "file": "./portalfx-extensions-helloWorld-glossary.md"}

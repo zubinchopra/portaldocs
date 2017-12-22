@@ -1,10 +1,12 @@
 ## Development Procedures
 
-The items that are being developed add functionality to an Azure Portal, and therefore are named extensions.  Some examples are in the following image.
+The items that are being developed extend  functionality to an Azure Portal, and therefore are named extensions.  Some examples are in the following image.
 
  ![alt-text](../media/portalfx-ui-concepts/blade.png "Azure Portal Blades")
 
 Perform the following tasks to become part of Azure portal extension developer community.
+
+* Prerequisites to Azure portal onboarding
 
 1. [Join DLs and request permissions](#join-dls-and-request-permissions) 
 
@@ -14,6 +16,7 @@ Perform the following tasks to become part of Azure portal extension developer c
 
 1. [Review Technical Guidance](#review-technical-guidance)
 
+* Develop the extension
 1. [Develop and deploy the extension](#develop-and-deploy-the-extension)
 
 1. [Register the extension](#register-the-extension)
@@ -59,6 +62,10 @@ Install the following software. Your team should be aware of the most current do
 
 * Quality Essentials that is located at [http://qe](http://qe), or One Compliance System (1CS) that is located at  [https://microsoft.sharepoint.com/teams/1CS/SitePages/Home.aspx](https://microsoft.sharepoint.com/teams/1CS/SitePages/Home.aspx)
 
+* Node tools that are located at [https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1](https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1)
+
+* Nuget package loading instructions are located at [portalfx-extensions-onboarding-nuget.md](portalfx-extensions-onboarding-nuget.md) and at [portalfx-extensions-developerInit-procedure.md](portalfx-extensions-developerInit-procedure.md).
+
 * Set up the source code management system on your computer. Teams use **GitHub**, **VSO**, and other content management systems. Which one is used by your team is team-dependent.
 
 Test that your computer is ready for Azure development by creating a blank extension, as specified in [portalfx-extensions-developerInit-procedure.md](portalfx-extensions-developerInit-procedure.md).
@@ -66,6 +73,10 @@ Test that your computer is ready for Azure development by creating a blank exten
 ### Schedule Kickoff Meetings
  
 If you are planning to build a first-party application, i.e., you are a part of Microsoft, you should meet with the Onboarding team specified in [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md). 
+
+<!--TODO: Are the business model review and the feasibility study previous to or a  part of the kickoff meetings?  they are in the step-by-step named Develop and deploy the extension -->
+
+Make sure the extension that will be developed has passed the business model review and is feasible previous to the kickoff meetings. For more information about business model reviews and feasibility studies, see .
 
 Schedule and attend the kickoff meeting(s) hosted by your PM or Dev Lead. These meetings will touch on the following points.
 

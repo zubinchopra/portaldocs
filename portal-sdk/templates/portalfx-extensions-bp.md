@@ -10,18 +10,15 @@ This section contains all Best Practices that have been added to Azure Portal to
 
 ## Extensions for Developers
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-forDevelopers.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-onboarding.md"}
 
 <!-- 
-## Extensions for Program Managers
-
-"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-forProgramManagers.md"
 
 ## Hosting Service
 
 "gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-hosting-service.md"
-
+-->
 ## Sideloading
 
 "gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-sideloading.md"
--->
+

@@ -3,6 +3,10 @@
 
 This section contains all Azure Portal FAQ's.
 
+
+<!-- TODO:  FAQ Format in the individual docs  is ###Link, ***title***, Description, Solution, 3 Asterisks -->
+
+
 <!--
 ## Debugging Extensions
 
@@ -17,17 +21,11 @@ FAQ's that are associated with configurations for extensions.
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-configuration.md"}
 
-## Extensions for Developers
+## Extensions Onboarding
 
 FAQ's for developers that are new to the Azure Portal Extension development process.
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-forDevelopers.md"}
-
-## Extensions for Program Managers
-
-FAQ's for Program Managers and Developer Leads that are new to the Azure Portal Extension development process.
-
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-forProgramManagers.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-onboarding.md"}
 
 ## Testing in Production
 
@@ -35,9 +33,7 @@ FAQ's that are associated with testing an extension in the production environmen
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-testing-in-production.md"}
 
-<!--
 ## Hosting Service
 
 "gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-hosting-service.md"
 
--->

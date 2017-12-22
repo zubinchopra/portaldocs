@@ -4,11 +4,18 @@ In order to meet customer expectations and continue to increase customer satisfa
 
 Every new extension provides an opportunity for the Ibiza team to improve the customer experience. By using set criteria to meet customer expectations, we can improve the customer experience for the extension and overall portal. Extension developers can drastically improve the customer experience by following these criteria. 
 
-The criteria that are tracked for each extension are sent out as part of an executive summary every Friday. Extensions that fail to meet the criteria are usually prime candidates for having brought down the customer experience in the Azure portal. Such extensions are highlighted in the weekly status report.
+## Customer experience metrics
 
-Basic information on the quality metrics that are tracked is located at  .
+The criteria that are tracked for each extension are reported as part of an executive summary every Friday. Extensions that fail to meet the criteria are typically prime candidates for having brought down the customer experience in the Azure portal. Such extensions are highlighted in the weekly status report.
 
-<!-- TODO:  Each of the following sections should have a "for more information" link, like maybe an external link -->
+Customer experience metrics are tracked by the Azure portal team, and are reported to the VP sponsor of the extension by using weekly status emails. These metrics are also reported as part of the weekly S360 meeting, and the executive review meeting. Any extension that does not meet the following criteria is required to justify the reasons for a negative customer experience. Extension developers can improve the customer experience of Azure portal by ensuring that their extensions meet the following criteria previous to enabling the extension for public preview or Global Availability. 
+
+* [Performance](#performance)
+* [Reliability](#reliability)
+* [Usability](#usability)
+* [Accessibility](#accessibility)
+* [Localization](#localization)
+* [Create Success Rate](#create-success-rate)
 
 ###	Performance
 
@@ -72,7 +79,8 @@ If any of the reliability numbers of the extension are below the bar, please inv
 
 ###	Usability
 
-Each service or extension defines the critical P0 scenarios for their business. The extension is tested using these usability scenarios, with at least ten participants. A  success rate of 80% and an experience score of 80% are required for a passing usability score.
+
+Each service or extension defines the critical P0 scenarios for their business. The extension is tested using these usability scenarios, with at least ten participants. A success rate of 80% and an experience score of 80% are required for a passing usability score.
 
 For more information on how to define scenarios, see       .
 
@@ -84,6 +92,10 @@ The accessibility bar is similar to the usability bar, and every service must me
 
 For more information about accessibility, see [portalfx-accessibility.md](portalfx-accessibility.md).
     
+### **Localization**
+
+Nearly 70% of Azure users are from outside of the United States. Therefore, it is important to make Azure a globalized product. There are a few requirements under the "Internationalization" criteria that your service is required to support.  This is the same set of languages that are supported by Azure Portal for GA. For more information about internationalization requirements, see [http://aka.ms/azureintlrequirements](http://aka.ms/azureintlrequirements). For onboarding localization, please reach out to Bruno Lewin and the Internationalization team at [mailto:ibiza-interntnl@microsoft.com](mailto:ibiza-interntnl@microsoft.com).
+
 ###	Create Success Rate
     
 The success of an extension is combined of several factors, the most important of which is customer satisfaction. In order to ensure that every customer has a great customer experience, the extension should be within the create success rate.   The create success rate is defined as the number of times the UX completes the generation process when the create button is clicked. When the extension meets or exceeds those factors, it is eligible for public preview or Global Availability.
