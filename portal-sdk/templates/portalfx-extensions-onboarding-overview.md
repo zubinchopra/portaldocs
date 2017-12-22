@@ -12,11 +12,6 @@ An extension is essentially the user experience for a service. Extensions are de
 
 Extension developers can quickly grow a business by networking with a large pool of Azure portal customers when they develop extensions for Azure portal.
 
-## Overview
-
-Extensions are developed by teams that integrate user interfaces into the Azure Portal. 
-
-
 ## Onboarding a service
 
 Onboarding a service, or developing a portal extension, has three phases: private preview, public preview, and Global Availability (GA). Azure portal onboarding is creating a UI for a service in Azure portal, and is a subset of Azure onboarding.
