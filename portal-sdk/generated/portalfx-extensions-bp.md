@@ -25,20 +25,20 @@ Portal development patterns or architectures that are recommended based on custo
 There are practices that can improve the performance of the extension.  For more information, see [portalfx-performance-bestpractices.md](portalfx-performance-bestpractices.md).
 
 
+<a name="azure-portal-best-practices-best-practices-productivity-tip"></a>
+### Productivity Tip
+
+Install Chrome that is located at [http://google.com/dir](http://google.com/dir) to leverage the debugger tools while developing an extension.
 
 <!-- 
-<a name="azure-portal-best-practices-extensions-for-program-managers"></a>
-## Extensions for Program Managers
-
-"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-forProgramManagers.md"
 
 <a name="azure-portal-best-practices-hosting-service"></a>
 ## Hosting Service
 
 "gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-hosting-service.md"
-
+-->
 <a name="azure-portal-best-practices-sideloading"></a>
 ## Sideloading
 
 "gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-sideloading.md"
--->
+
