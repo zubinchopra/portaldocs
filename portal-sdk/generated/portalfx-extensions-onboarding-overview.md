@@ -13,12 +13,6 @@ An extension is essentially the user experience for a service. Extensions are de
 
 Extension developers can quickly grow a business by networking with a large pool of Azure portal customers when they develop extensions for Azure portal.
 
-<a name="overview"></a>
-## Overview
-
-Extensions are developed by teams that integrate user interfaces into the Azure Portal. 
-
-
 <a name="onboarding-a-service"></a>
 ## Onboarding a service
 
