@@ -32,9 +32,12 @@ This section contains a glossary of terms and acronyms that are used in this doc
 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
 
+<!-- TODO:  Determine the difference between a branch, a region, and an environment. They are not  completely interchangeable, then we can standardize usage. -->
+
 | Term                     | Meaning |
 | ---                      | --- |
 | BF                       | Black Forest |
+| branch | |
 | build verification test  | A subset of regression testing, this is a set of non-exhaustive tests that verify whether the most important application functions work. Its results are used to determine whether a build is stable enough to proceed with further testing. |
 | BVT                      | Build Verification Test |
 | cherry-pick              | Apply the changes introduced by an existing GitHub commit. |
@@ -42,6 +45,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | CNAME                    | Canonical Name record. A type of resource record in the Domain Name System (DNS) that specifies that a domain name is an alias for another domain (the 'canonical' domain). | 
 | DF                       | Dogfood |
 | DIY                      | Do It Yourself |
+| environment              | A configuration of computers in which extensions can be run. For example, environments are Blackforest, Dogfood, Mooncake, and Production.  | 
 | feature flag             | A switch that allows a user to turn on or off specific functionalities of an extension. Flags are  passed from the portal to extensions and their controllers, and are used as an alternative to maintaining multiple source-code branches in order to hide, enable or disable a feature during run time. Most, but not all, feature flags, are made available by using the syntax `feature.<featureName> = true`.   |
 | FF                       | Fairfax |
 | flighting                | |
@@ -69,79 +73,11 @@ This section contains a glossary of terms and acronyms that are used in this doc
 
   
 
-<a name="azure-portal-glossary-extensions-for-developers"></a>
-## Extensions for Developers
-
-
-<!--
-This document should remain identical to the glossary in portal-extensions-forProgramManagers-glossary, because they were originally the same document.
--->
-
-  ## Glossary
-<!--
-This document should remain identical to the glossary in portal-extensions-forDevelopers-glossary, because they were originally the same document.
--->
-
-This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
-
-| Term                      | Meaning |
-| ---                       | --- |
-| .Net                      | A software framework developed by Microsoft that runs primarily on Microsoft Windows. | 
-| 1CS                       | One Compliance System  | 
-| API                       | Application Programming Interface  |
-| ARM                       | Azure Resource Manager |
-| blade reveal time         | The time it takes for all the parts above the fold to call ```revealContent()```, to load first-level data, or to resolve ```onInputSet()``` promises, whichever is earlier. |
-| C+E                       | Cloud + Enterprise | 
-| CEC                       | Common Engineering Criteria  | 
-| CEGRM                     | CSS Release management team | 
-| CLI                       | Command Line Interface  | 
-| CNAME                     | Canonical Name record. A type of resource record in the Domain Name System (DNS) that specifies that a domain name is an alias for another domain (the 'canonical' domain). | 
-| CSS                       | CSS Release management  | 
-| DEV                       | Development | 
-| DF                        | Dogfood | 
-| DNS                       | Domain Name Server  | 
-| DNS                       | Domain Name System  | 
-| FAQ                       | Frequently Asked Questions | 
-| GA                        | Global Availability | 
-| gallery                   | Also known as Marketplace or Azure Portal Marketplace. See Marketplace Gallery. | 
-| GB Certificate            | Six Sigma Green Belt Certification.  | 
-| GB Standard               | GB stands for Guobiao, or “National Standard” in Chinese. The GB standard is the basis for testing products that require certification. | 
-| Marketplace               | See Marketplace Gallery. | 
-| Marketplace Gallery       | Also known as the Gallery or Marketplace Gallery. | 
-| MPAC                      | ms.portal.azure.com, the Azure portal instance for internal Microsoft customers.  | 
-| P0 scenarios              | The most important user scenarios for an extension. Less important scenarios that are used for usability testing are categorized as P1, P2, or P3. |
-| PHP                       | Recursive acronym for PHP: Hypertext Preprocessor. | 
-| PM                        | Program Manager | 
-| PM                        | Project Manager | 
-| PROD                      | Production  | 
-| QE                        | Quality Essential | 
-| RDFE                      | Red Dog Front End | 
-| REST                      | Representational state transfer   | 
-| RP                        | Resource Provider  | 
-| RP schema                 | Resource Provider schema | 
-| RPC                       | Remote Procedure Call | 
-| SDK                       | Software Development Kit | 
-| SDL                       | Security Development Lifecycle |
-| Service 360               | An extension of Service Portfolio Management. It enhances a Service Portfolio by providing a single view of business service performance across an organization, for business processes such as Operation, Risk, Investment, and Finance. | 
-| SLA                       | Service Level Agreement | 
-| SSL                       | Secure Socket Layer  | 
-| URL                       | Uniform Resource Locator | 
-| VP                        | Vice President | 
-| Weighted Experience Score | The percentage of context pane usage that meets the performance bar. |
-| WxP                       | See Weighted Experience Score.  | 
-
-
-
-
-
-<a name="azure-portal-glossary-extensions-for-program-managers"></a>
-## Extensions for Program Managers
+<a name="azure-portal-glossary-extensions-onboarding"></a>
+## Extensions Onboarding
 <a name="azure-portal-glossary-glossary"></a>
 ## Glossary
-<!--
-This document should remain identical to the glossary in portal-extensions-forDevelopers-glossary, because they were originally the same document.
--->
-
+ 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
 
 | Term                      | Meaning |
@@ -157,10 +93,12 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | CLI                       | Command Line Interface  | 
 | CNAME                     | Canonical Name record. A type of resource record in the Domain Name System (DNS) that specifies that a domain name is an alias for another domain (the 'canonical' domain). | 
 | CSS                       | CSS Release management  | 
+| Definition file | A file that provides type information for JavaScript code that is inherently not statically typed. Definition files are a fundamental part of using existing JavaScript libraries in TypeScript, and the file suffix is always  *.d.ts. |
 | DEV                       | Development | 
 | DF                        | Dogfood | 
 | DNS                       | Domain Name Server  | 
 | DNS                       | Domain Name System  | 
+| first-party extension     | An Azure portal extension that is developed by Microsoft |
 | FAQ                       | Frequently Asked Questions | 
 | GA                        | Global Availability | 
 | gallery                   | Also known as Marketplace or Azure Portal Marketplace. See Marketplace Gallery. | 
@@ -170,6 +108,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | Marketplace Gallery       | Also known as the Gallery or Marketplace Gallery. | 
 | MPAC                      | ms.portal.azure.com, the Azure portal instance for internal Microsoft customers.  | 
 | P0 scenarios              | The most important user scenarios for an extension. Less important scenarios that are used for usability testing are categorized as P1, P2, or P3. |
+| PDE | | 
 | PHP                       | Recursive acronym for PHP: Hypertext Preprocessor. | 
 | PM                        | Program Manager | 
 | PM                        | Project Manager | 
@@ -183,11 +122,13 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | SDK                       | Software Development Kit | 
 | SDL                       | Security Development Lifecycle |
 | Service 360               | An extension of Service Portfolio Management. It enhances a Service Portfolio by providing a single view of business service performance across an organization, for business processes such as Operation, Risk, Investment, and Finance. | 
+| single page application | A web application that dynamically rewrites displayed pages instead of providing entire new pages from a server. | 
 | SLA                       | Service Level Agreement | 
 | SSL                       | Secure Socket Layer  | 
+| third-party extension     | An Azure portal extension that is developed by partners outside of Microsoft |
 | URL                       | Uniform Resource Locator | 
 | VP                        | Vice President | 
-| Weighted Experience Score | The percentage of context pane usage that meets the performance bar. |
+| Weighted Experience Score | The percentage of blade usage that meets the performance bar. |
 | WxP                       | See Weighted Experience Score.  | 
 
 
@@ -202,13 +143,12 @@ This section contains a glossary of terms and acronyms that are used in this doc
 
 | Term          | Meaning | 
 | ---           | --- |
-| area          | Group of context panes and parts that are associated with a single user-defined context.  |
-| blade         | An Azure SDK object, or an object from a framework API, that contains content by using an HTML template.  That template is bound to properties on the TypeScript class of the object. Also see context pane.   |
-| context pane  | The main unit of the Azure UX that can be built using the Azure SDK.   The vertical container that acts as the starting point for any journey. Context panes are basically Web pages that can be loaded in the portal. Also known as context blade or pane. |
-| data binding  | The process that establishes a connection between the application context pane and the business logic blade behind the pane. |
+| area          | Group of blades and parts that are associated with a single user-defined context.  |
+| blade         | An Azure SDK object, or an object from a framework API, that contains content by using an HTML template.  That template is bound to properties on the TypeScript class of the object.  The main unit of the Azure UX that can be built using the Azure SDK.   The vertical container that acts as the starting point for any journey.  Web pages that can be loaded in the portal. |
+| data binding  | The process that establishes a connection between the application UI and the business logic  behind the pane. |
 | extension     | A Web application that was developed using the Azure Portal SDK and is made available to users through the Azure Portal. |
 | framework     | A software environment that provides large software platform functionality in the process of building and deploying applications. The larger platform is selectively changed by adding developer code to make software applications. |
-| part          | See context pane. |
+| part          | See blade. |
 | SDK           | Software Development Kit. |
 | UI            | User interface. |
 | UX            | User experience. |
@@ -238,10 +178,12 @@ This section contains a glossary of terms and acronyms that are used in this doc
  
 | Term                 | Meaning |
 | ---                  | --- |
-| obsolete script      | A script that makes certain parts of the portal act as legacy code, in order to limit the performance costs of the old functionality to only 
-extensions that are using them. | 
-| synthetic traffic    | Traffic that has been created with a traffic generators and that behaves like real traffic. It can be used to capture the behavior the network or device under test. | 
+|  endpoint            | A device that is connected to a LAN and accepts or transmits communications across a network. In terms of directories or Web pages, there may be several endpoints that are defined on the same device.  | 
+| obsolete script      | A script that makes certain parts of the portal act as legacy code, in order to limit the performance costs of the old functionality to only extensions that are using them. | 
 | sandboxed iframe     | Enables an extra set of restrictions for the content in the iframe.  It can treat the content as being from a unique origin, block form submission or script execution, prevent links from targeting other browsing context, and other items that restrict the behavior of the iframe during testing. | 
+| SAN                  | Storage Area Network  | 
+| synthetic traffic    | Traffic that has been created with a traffic generators and that behaves like real traffic. It can be used to capture the behavior the network or device under test. | 
+
 
 <a name="azure-portal-glossary-status-codes-and-error-messages"></a>
 ## Status Codes and Error Messages
@@ -250,9 +192,11 @@ extensions that are using them. |
 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
  
-| Term                         | Meaning |
-| ---                          | --- |
-| desktop state                | A snapshot of |
+| Term                      | Meaning |
+| ---                       | --- |
+| desktop state             | A snapshot of |
+| first chance exception    | An exception's first pass through the debugger. Exceptions are thrown to the debugger first and then to the actual program.  If the exception is not handled by the program, it gets thrown to the debugger a second time. |
+| SSL                       | Secure Socket Layer |
 
 
 
