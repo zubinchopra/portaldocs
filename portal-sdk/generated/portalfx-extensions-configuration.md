@@ -152,6 +152,10 @@ Its options are as follows.
 * **disabled**: Optional. Registers the extension configuration into the portal in hidden mode.  A value of  `true` disables an extension, and a value of `false` enables the extension for display. The default value is `false`. For more information about enabling and disabling extensions, see [portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension](portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension).
  
 * **flightUris**: Optional.  The uri concatenated to a friendly name in order to flight traffic to another stamp, as in the following example:  `//demo.hosting.portal.azure.net/demo/MPACFlight`.
+ 
+ <!--TODO: Update portalfx-extensions-migrate-existing-to-extensioncontrollerbase.md when it is determined that this flag should be here and/or in the feature flags document. -->
+ 
+ * **scriptoptimze**: Leverage the performance optimizations in the base controller. A value of `true`  , whereas a value of `false` .
 
 ### Understanding which extension configuration to modify
 
@@ -369,7 +373,7 @@ When the development team wants to subscribe to these changes, ask them to make 
 
 ***How do I use SSL certs?***
 
-[portalfx-extensions-faq-forDevelopers.md#sslCerts](portalfx-extensions-faq-forDevelopers.md#sslCerts)
+[portalfx-extensions-faq-onboarding.md#sslCerts](portalfx-extensions-faq-onboarding.md#sslCerts)
 
 * * *
 
