@@ -39,7 +39,7 @@ For more information about performance and reliability, see the following resour
 
   * Telemetry Access for access 
         
-    [http://aka.ms/portalfx/docs/telemetryaccess](http://aka.ms/portalfx/docs/telemetryaccess)
+    [portalfx-telemetry-getting-started.md](portalfx-telemetry-getting-started.md)
 
   * Query - including test/dev traffic
 
@@ -48,8 +48,6 @@ For more information about performance and reliability, see the following resour
 * Checklist
 
     [portalfx-performance.md](portalfx-performance.md)
-        
-   [http://aka.ms/portalfx/performance/checklist](http://aka.ms/portalfx/performance/checklist)
 
 * Portal COP (Telemetry)
 
@@ -60,8 +58,6 @@ For more information about performance and reliability, see the following resour
 Every extension meets the reliability Service Level Agreement (SLA). There are some reliability metrics should be met previous to enabling the extension in the production environment; however, extensions must be enabled in MPAC in order to start tracking reliability. Meeting the reliability bar is a requirement for public preview or GA.
 
 MPAC and PROD reliability are included in weekly status emails and each team is expected to investigate regressions.
-
-<!-- TODO:  Is there a link to information about the weekly status email for MPAC and PROD reliability?? -->
 
 We require at least 100 loads of the UX (extension/blade/tiles) to get a signal, if you cannot generate that traffic authentically in the expected timeframe, please hold a bug bash to increase traffic.
 
@@ -104,15 +100,13 @@ Extensions and Resource Providers (RPs) are responsible for validating all input
 
 Services that use ARM template deployment and other ARM-based services should also validate resource provider registration, permissions, and deployment to avoid common issues and improve extension success rates. Validating against some factors is required for the preview and GA phases.
 
-Check the Power BI Dashboard for Service Level Agreements (SLA) that are associated with Creating extensions. The Ibiza Extension Perf/Reliability/Usage Dashboard is located at [aka.ms/ibizaperformance](aka.ms/ibizaperformance).
+Check the Power BI Dashboard for Service Level Agreements (SLA) that are associated with Creating extensions. The Ibiza Extension Perf/Reliability/Usage Dashboard is located at [http://aka.ms/ibizaperformance](http://aka.ms/ibizaperformance).
 
 It is important to meet the success rate previous to moving the extension to the next phase, because various phases are associated with service level agreements and other items that are affected if an extension does not work.  For example, extensions with a success rate below 99% will result in sev 2 incidents. Also, if the success rate drops by 5% during a rolling 24-hour period that contains at least 50 Creates, a sev 2 incident will be filed. This applies to every error that causes Creates to fail when the `Create` button is clicked.
 
 Success rates are a non-blocking requirement.  Some exceptions can be granted to move an extension from the private preview stage to the public preview stage, but in general, the overall customer experience is reduced.
    
 For more information about creating success, see [portalfx-create.md#validation](portalfx-create.md#validation).
-
-<!-- TODO:  portalfx-create.md has a section named Validation, but it does not have a link.     -->
 
 ## Resource move
 
