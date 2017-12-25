@@ -1,4 +1,4 @@
-# Release Notes since 8/24/2017
+# Release Notes since 8/25/2017
 
 ## 5.0.302.954
 0 Breaking Changes, 2 Features added and 2 Bugs Fixed
@@ -217,7 +217,3 @@ stack: TypeError: Unable to get property ''length'' of undefined or null referen
 ## 5.0.302.835
 0 Breaking Changes, 2 Features added and 6 Bugs Fixed
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9966745'>9966745</a></td><td>Bug Fix</td><td>editable grid inside of custom html crashes with null ref.</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9932920'>9932920</a></td><td>Bug Fix</td><td>[Error] Interactions.DismissHandler: An error occurred on dismiss. Unregister might have been forgotten on cleanup of the dismissable element. DismissHandle log name: dropdown</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9679585'>9679585</a></td><td>Feature</td><td>[ExtensionConfiguration] Change the uriFormat from DIY deployment to the HostingService for extension Microsoft_Azure_DMS</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9663673'>9663673</a></td><td>Bug Fix</td><td>[Grid1] Clickable items do not show correct cursor</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9609245'>9609245</a></td><td>Bug Fix</td><td>[Validation] Running triggerValidation should always rerun custom validators</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10066041'>10066041</a></td><td>Bug Fix</td><td>Toast notifications do not show up when an existing notification is updated</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10057358'>10057358</a></td><td>Bug Fix</td><td>Date picker icon not showing up in all environments for "Edit chart" context pane's "custom" Time Range picker</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10040754'>10040754</a></td><td>Feature</td><td>PartRedirect: Add telemetry</td></tr></table>
-
-## 5.0.302.834
-0 Breaking Changes, 1 Features added and 0 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10049376'>10049376</a></td><td>Feature</td><td>[ContentUnbundler][ContentUnbundler] Implement EV2 Set friendly name</td></tr></table>
