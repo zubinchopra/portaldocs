@@ -11,11 +11,9 @@ For more information about updating the extension configuration, see [portalfx-e
 <a name="common-hosting-service-scenarios-new-extensions"></a>
 ### New extensions
 
-If the extension does not exist in the portal yet, register it into the portal in the disabled state. The following json files contain example registrations for various environments.
+If the extension does not exist in the portal yet, register it into the portal in the disabled state. The following json files contain registrations for various environments.
 
-* Dogfood environment
-
-  Registration for `Extensions.dogfood.json`
+* Dogfood environment registration that is stored in  `Extensions.dogfood.json`
 
 ```json
 {
@@ -27,9 +25,7 @@ If the extension does not exist in the portal yet, register it into the portal i
 },
 ```
 
-* PROD environment
-
-  Registration for `Extensions.prod.json`,  i.e. RC, MPAC and Prod environments
+* PROD environment registration that is stored in  `Extensions.prod.json`,  i.e. RC, MPAC and Prod environments
 
 ```json
 {
@@ -45,9 +41,7 @@ If the extension does not exist in the portal yet, register it into the portal i
 
 If the extension is already registered in the portal, but is in the process of being migrated to the hosting service, update the **uriFormat** in the `config` file.  The following json files contain example registrations for various environments.
 
-* Dogfood environment
-
-  Registration for `Extensions.dogfood.json`
+* Dogfood environment registration that is stored in  `Extensions.dogfood.json`
 
 ```json
 {
