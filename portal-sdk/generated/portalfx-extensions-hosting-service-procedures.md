@@ -48,7 +48,7 @@ The zip file generated during the build should be named `<BUILD_VERSION>.zip`, w
     Display the version number of the build.
     In this example, the computer displays the following build version.
 
-    ```js
+    ```cs
     $>set CURRENT_BUILD_VERSION
     CURRENT_BUILD_VERSION=5.0.0.440
     ```
