@@ -11,7 +11,9 @@ A hosting service can make your web sites accessible through the World Wide Web 
 
 Teams that deploy UI for extensions with the classic cloud service model typically have to invest significant amounts of time to onboard to [MDS](portalfx-extensions-hosting-service-glossary.md), setup compliant deployments across all data centers, and configure [cdn](portalfx-extensions-hosting-service-glossary.md), storage and caching optimizations for each extension.
 
-The process of setting up and maintaining this infrastructure can be high. By leveraging a hosting service, developers can deploy extensions in all data centers without resource-heavy investments in the Web infrastructure.
+The cost of setting up and maintaining this infrastructure can be high. By leveraging the extension hosting service, developers can deploy extensions in all data centers without resource-heavy investments in the Web infrastructure.
+
+You can ask questions on Stackoverflow with the tags [ibiza-deployment](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment) and [ibiza-hosting-service](https://stackoverflow.microsoft.com/questions/tagged/ibiza-hosting-service).
 
 <a name="reasons-for-using-the-hosting-service"></a>
 ## Reasons for using the hosting service
@@ -22,7 +24,7 @@ More than 50% of the extensions have been migrated from legacy DIY deployment to
     
    * Use safe deployment practices
 
-   * Distributes the extension to all data centers in various geographical locations
+   * Distribute the extension to all data centers in various geographical locations
 
    * CDN configured
 
@@ -34,43 +36,47 @@ More than 50% of the extensions have been migrated from legacy DIY deployment to
 <details>
 <summary>Enhanced monitoring </summary>
 
-* Removes need for on-call rotation for hosting specific issues because the portal is now hosting. On-call support is still required for dev code live site issues
+* Removes the need for on-call rotation for hosting specific issues because the portal is now hosting. On-call support is still required for dev code live site issues
 
-* The hosting service provides full visibility into the health and activity for an extension
+* Provides full visibility into the health and activity for an extension
 </details>
 <details>
 <summary>Reduced COGS</summary>
 
-*  No hosting COGS
-*  Reduced development costs allow the team to focus on building the domain specifics of the extension, instead of allocating resources to configuring deployment
+*  No hosting [COGS](portalfx-extensions-hosting-service-glossary.md)
+*  Reduced development costs allow teams to focus on building the domain specific portions of the extension, instead of allocating resources to configuring deployment
 </details>
 
-<a name="hosting-service-and-server-side-code"></a>
-## Hosting service and server-side code
+<a name="hosting-services-and-server-side-code"></a>
+## Hosting services and server-side code
 Extensions that have server-side code or controllers can use hosting services.  In fact, you can supplement a legacy DIY deployment infrastructure to use a hosting service, and deploy extensions in a way that complies with safe-deployment practices. 
-1.	In most cases, UI controllers or MVC controllers are legacy, and it is easy to obsolete these controllers. One advantage of replacing obsolete UI controllers is that all client applications, such as Ibiza and PowerShell, will now have a consistent experience. You can replace UI controllers under the following conditions.
+1.	In most cases, UI controllers or MVC controllers are legacy, and it is easy to obsolete these controllers. One advantage of replacing obsolete UI controllers is that all client applications, such as **Ibiza** and **PowerShell**, will have a consistent experience. You can replace UI controllers under the following conditions.
     *	If the functionality is already available from another service
     *	By hosting server-side code within an existing RP
-1.	If replacing UI controllers is not a short term task, the extension can be deployed through a hosting service by modifying the relative controller URLs.  They are located in  client code, and can be changed to specify absolute URLS. 
+1.	If replacing UI controllers is not a short-term task, the extension can be deployed through a hosting service by modifying the relative controller URLs.  They are located in  client code, and can be changed to specify absolute URLS. 
+
+    <!--TODO: Locate a better word than "pull-request" for sample code.  This links to the commit branch instead of a request that can be sent to another team for processing. -->
 
     The following is a sample pull-request for a cloud services extension. [https://msazure.visualstudio.com/One/_git/AzureUX-CloudServices/commit/ac183c0ec197de7c7fd3e1eee1f7b41eb5f2dc8b](https://msazure.visualstudio.com/One/_git/AzureUX-CloudServices/commit/ac183c0ec197de7c7fd3e1eee1f7b41eb5f2dc8b).
     
     When this code change is posted, the extension can be deployed as a server-only service that is behind **Traffic Manager**.
- 
- ## How to deploy extensions using the hosting service 
- 
-1.	Integrate **Content Unbundler**, a tool shipped with with Azure Portal SDK, as part of the  build. For more information, see [portalfx-extensions-developerInit-procedure.md#create-a-blank-extension](portalfx-extensions-developerInit-procedure.md#create-a-blank-extension).
-1.  Use the **Content Unbundler** tool to generate a zip file that contains all the static files in the extension.
-1.	Upload the zip file to a public read-only storage account that is owned by your team.
-1.	The hosting service will poll the storage account, detect the new version and download the zip file in each data center within 5 minutes 
-1.  The hosting service starts serving the new version to customers around the world.
+    
+    The extension versions that are available in the Hosting Service are located at the following URLs.
+
+    * Dogfood: [https://hosting.onecloud.azure-test.net/api/diagnostics](https://hosting.onecloud.azure-test.net/api/diagnostics)
+    * MPAC: [https://hosting-ms.portal.azure.net/api/diagnostics](https://hosting-ms.portal.azure.net/api/diagnostics)
+    * PROD: [https://hosting.portal.azure.net/api/diagnostics](https://hosting.portal.azure.net/api/diagnostics)
 
  ## Prerequisites for onboarding hosting service
- 
+
+The **Visual Studio** project that is associated with developing the extension contains several files that will be updated or overridden while getting the extension ready for the hosting service. This topic discusses the files to create or change to meet requirements for the onboarding process. This procedure uses the **Content Unbundler** tool that was installed with the **nuGet** packages in Visual Studio.  For more information, see [portalfx-extensions-developerInit-procedure.md#create-a-blank-extension](portalfx-extensions-developerInit-procedure.md#create-a-blank-extension) and [portalfx-extensions-onboarding-nuget.md](portalfx-extensions-onboarding-nuget.md).
+
+
+
 1. For all extensions
    * SDK Version 
 
-     To generate the zip file during the extension build process, use Portal SDK 5.0.302.454 or newer
+     Use Portal SDK 5.0.302.454 or newer to generate the zip file during the extension build process.
     
      **NOTE**: If your team plans to use EV2 for uploading the zip file to its storage account, we recommend using Portal SDK 5.0.302.817 or newer. Some new features have recently been added that make it easier to use EV2 with a hosting service.
 
@@ -81,56 +87,64 @@ Extensions that have server-side code or controllers can use hosting services.  
 
 1. For extensions with controllers or server-side code
 
-   Modify the relative controller URLs to contain absolute URLS. The Controllers will deploy a new server-only service that will be behind the **Traffic Manager**.
+   Modify the relative controller URLs to contain absolute URLS. The controllers will deploy a new server-only service that will be behind the **Traffic Manager**.
    
    Because this process is typically the same across all extensions, you can use the following pull request for a cloud services extension.
   [https://msazure.visualstudio.com/One/_git/AzureUX-CloudServices/commit/ac183c0ec197de7c7fd3e1eee1f7b41eb5f2dc8b](https://msazure.visualstudio.com/One/_git/AzureUX-CloudServices/commit/ac183c0ec197de7c7fd3e1eee1f7b41eb5f2dc8b).
 
+ 
+ ## How to deploy extensions using the hosting service 
+ 
+1.	Integrate **Content Unbundler**, a tool shipped with with Azure Portal SDK, as part of the  build. For more information, see [portalfx-extensions-developerInit-procedure.md#create-a-blank-extension](portalfx-extensions-developerInit-procedure.md#create-a-blank-extension).
+1.  Use the **Content Unbundler** tool to generate a zip file that contains all the static files in the extension.
+1.	Upload the zip file to a public read-only storage account that is owned by your team.
+1.	The hosting service will poll the storage account, detect the new version and download the zip file in each data center within 5 minutes.
+1.  The hosting service starts serving the new version to customers around the world.
 
-<a name="hosting-service-and-server-side-code-monitoring-and-logging"></a>
+<a name="hosting-services-and-server-side-code-monitoring-and-logging"></a>
 ### Monitoring and Logging
-
 <details>
-
 <summary>Logging</summary>
 
- The portal provides a way for extensions to log to MDS using a feature that can be enabled in the extension.
+  The portal provides a way for extensions to log to MDS using a feature that can be enabled in the extension. The logs generated by the extension when this feature is enabled are located in tables in the portal's MDS account. For more information about the portal logging feature, see  [portalfx-telemetry.md#logging](portalfx-telemetry.md#logging).
 
- For more information about the portal logging feature, see  [https://auxdocs.azurewebsites.net/en-us/documentation/articles/portalfx-telemetry-logging](https://auxdocs.azurewebsites.net/en-us/documentation/articles/portalfx-telemetry-logging).
 
- The logs generated by the extension when this feature is enabled can be found in tables in the portal's MDS account.
 </details>
 <details>
 <summary>Trace Events</summary>
 
-Trace events are located at the following Web site. 
+Trace events are stored in a **Kusto** database, and can be analyzed with the Kusto.WebExplorer tool. The following link contains a query that specifies which trace events to consider for analysis.
+[https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/Azportal/databases/AzurePortal?query=ExtEvents%7Cwhere+PreciseTimeStamp%3Eago(10m)](https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/Azportal/databases/AzurePortal?query=ExtEvents%7Cwhere+PreciseTimeStamp%3Eago(10m))
 
->[https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/Azportal/databases/AzurePortal?query=ExtEvents%7Cwhere+PreciseTimeStamp%3Eago(10m)](https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/Azportal/databases/AzurePortal?query=ExtEvents%7Cwhere+PreciseTimeStamp%3Eago(10m))
+The following image contains a list of tables that are a part of the Kusto database schema. It also displays the columns from the `ExtEvents` table that was used in the previous query.
 
->ExtEvents | where PreciseTimeStamp >ago(10m)
+ ![alt-text](../media/portalfx-extensions-hosting-service/KustoWebExplorerQuery.png  "Trace Event Parameters")
+
+For more information about Kusto WebExplorer and associated functions, see [https://kusto.azurewebsites.net/docs/queryLanguage/query_language_syntax.html?q=cross](https://kusto.azurewebsites.net/docs/queryLanguage/query_language_syntax.html?q=cross). For questions to the developer community, use the  Stackoverflow tag [ibiza-deployment](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment) and [ibiza-hosting-service](https://stackoverflow.microsoft.com/questions/tagged/ibiza-hosting-service).
+
 </details>
 <details>
 <summary>Telemetry Events</summary>
 
-Telemetry events are located at the following Web site. 
->[https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/Azportal/databases/AzurePortal?query=ExtTelemetry%7Cwhere+PreciseTimeStamp%3Eago(10m)](https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/Azportal/databases/AzurePortal?query=ExtTelemetry%7Cwhere+PreciseTimeStamp%3Eago(10m))
+Telemetry events are stored in the **Kusto** database in the `ExtTelemetry` table.  To  review telemetry events, use the following query against the Kusto.WebExplorer site.
 
->ExtTelemetry | where PreciseTimeStamp >ago(10m)
+[https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/Azportal/databases/AzurePortal?query=ExtTelemetry%7Cwhere+PreciseTimeStamp%3Eago(10m)](https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/Azportal/databases/AzurePortal?query=ExtTelemetry%7Cwhere+PreciseTimeStamp%3Eago(10m))
+
 </details>
 <details>
 <summary>Monitoring</summary>
 
  There are two categories of issues that are monitored for each extension.
 
- * Portal loading and running the extension
+1.  Portal loading and running the extension
 
-   The portal has alerts that notify extensions when they fail to load for any reason. Issues like blade load failures and part load failures are also monitored.
+    The portal has alerts that notify extensions when they fail to load for any reason. Issues like blade load failures and part load failures are also monitored.
 
-<!-- TODO: Determine whether the work that needed to be done to monitor blade load failures and part load failures has been done. -->
-<!-- TODO: Determine whether it is the extension that is notified, or the partner that is notified. -->
+   <!-- TODO: Determine whether the work that needed to be done to monitor blade load failures and part load failures has been done. -->
+   <!-- TODO: Determine whether it is the extension that is notified, or the partner that is notified. -->
 
 
- * Hosting Service downloading and servicing the extension
+1. Hosting Service downloading and servicing the extension
 
     The hosting service pings the endpoint that contains the extension bits every minute. It will then download any new configurations and versions it finds. If it fails to download or process the downloaded files, it logs these as errors in its own MDS tables.
 
@@ -141,16 +155,9 @@ Telemetry events are located at the following Web site.
   </details>
 
 
-<a name="procedure-for-onboarding-hosting-service"></a>
-## Procedure for onboarding hosting service
 
-The **Visual Studio** project that is associated with developing the extension contains several files that will be updated or overridden while getting the extension ready for the hosting service. This topic discusses the files to create or change to meet requirements for the onboarding process. This procedure uses the **Content Unbundler** tool that was installed with the **nuGet** packages in Visual Studio.  For more information, see [portalfx-extensions-developerInit-procedure.md#create-a-blank-extension](portalfx-extensions-developerInit-procedure.md#create-a-blank-extension) and [portalfx-extensions-onboarding-nuget.md](portalfx-extensions-onboarding-nuget.md).
-
-The extension versions that are available in the Hosting Service are located at the following URLs.
-
-* Dogfood: [https://hosting.onecloud.azure-test.net/api/diagnostics](https://hosting.onecloud.azure-test.net/api/diagnostics)
-* MPAC: [https://hosting-ms.portal.azure.net/api/diagnostics](https://hosting-ms.portal.azure.net/api/diagnostics)
-* PROD: [https://hosting.portal.azure.net/api/diagnostics](https://hosting.portal.azure.net/api/diagnostics)
+<a name="checklist-for-onboarding-hosting-service"></a>
+## Checklist for onboarding hosting service
 
 The procedure for onboarding to the hosting service is as follows. Click on the arrow next to the checklist entry for an in-depth discussion of each step.
 
@@ -205,7 +212,7 @@ The zip file generated during the build should be named `<BUILD_VERSION>.zip`, w
 
 * Non-CoreXT extensions
 
-    There are multiple build systems used by various teams. After you have determined the build version for your team, please send a pull request to help other extension developers. The pull request  is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/pullrequests?_a=mine](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/pullrequests?_a=mine).
+    There are multiple build systems used by various teams. After you have determined which build version is used by your team, please send a pull request to help other extension developers. The pull request is located at [https://aka.ms/portalfx/pullrequest](https://aka.ms/portalfx/pullrequest).
 
     If the extension build does not have a version number, the `AssemblyInfo.cs` file in the **Visual Studio** project can be edited to set the build version to 1.0.0.0.  If the file does not exist, add it in the same folder as the one that contains the `<extensionName>.csproj` and `web.config` files. The process is as follows.
 
@@ -234,13 +241,13 @@ The zip file generated during the build should be named `<BUILD_VERSION>.zip`, w
 
 Environment configuration files serve two purposes.
 
-* They override settings for the target environment 
-* They make the extension available in the target environment
+* They [override settings](#overriding-settings) for the target environment 
+* They [load the extension](#loading-in-the-target-environment) in the target environment
 
-<a name="procedure-for-onboarding-hosting-service-overriding-settings"></a>
+<a name="checklist-for-onboarding-hosting-service-overriding-settings"></a>
 ### Overriding settings
 
-The content of the file is a json object with key/value pairs for settings to be overridden.  If there are no settings to override, the file should contain an empty json object. 
+The content of the configuration file is a json object with key/value pairs for settings to be overridden.  If there are no settings to override, the file should contain an empty json object. 
 
 The settings for the portal framework are in the format of `Microsoft.Azure.<extensionName>.<settingName>`, where `settingName`, without the angle brackets, is the name of the setting. The framework will propagate the setting to the client in the format of `<settingName>`. For example, the `web.config` file that contains this setting would resemble the following.
 
@@ -256,12 +263,18 @@ The equivalent configuration file would resemble the following.
 }
 ```
 
-<a name="procedure-for-onboarding-hosting-service-loading-in-the-target-environment"></a>
+<a name="checklist-for-onboarding-hosting-service-loading-in-the-target-environment"></a>
 ### Loading in the target environment
 
-In order to load the extension in a specific environment, the environment-specific configuration file should be an embedded resource in the `Content\Config\*` directory. If the file is not set as an `EmbeddedResource`,  it will not be included in the output that gets generated by the **Content Unbundler** tool. 
+In order to load the extension in a specific environment, the  configuration file should be an embedded resource in the `Content\Config\*` directory of the **Visual Studio** project, as in the following example.
 
-The files should be named using the following convention:
+ ![alt-text](../media/portalfx-extensions-hosting-service/contentConfig.png  "Trace Event Parameters")
+
+<!--TODO: Determine whether the phrase ' in the EmbeddedContentMetadata.txt file' needs to be includedn or whether it is too much detail. -->
+
+If the file is not set as an `EmbeddedResource` in the EmbeddedContentMetadata.txt file, it will not be included in the output that gets generated by the **Content Unbundler** tool. 
+
+ The files are named using the following convention:
 
 `<host>.<domain>.json`
 
@@ -317,9 +330,9 @@ The following are examples for each environment.
     ```
 
 
-1. Fairfax 
+1. FairFax 
 
-   The Configuration file name is named `portal.azure.us.json`, as in the following example.
+   The configuration file name is named `portal.azure.us.json`, as in the following example.
 
     ```xml
     <EmbeddedResource Include="Content\Config\portal.azure.us.json" />
@@ -328,26 +341,25 @@ The following are examples for each environment.
 </details>
 <details>
 <summary>5. Execute Content Unbundler to generate zip file</summary>
-<!-- TODO:  find a section that describes the build process and a generic discussion of the files that it  produces. -->
 
-As part of the build, the **Content Unbundler** tool generates a folder and a zip file that are named the same as the extension version. The folder contains all content required to serve the extension.
+When the extension project is built, the **Content Unbundler** tool generates a folder and a zip file that are named the same as the extension version. The folder contains all content required to serve the extension.
 
-You can override any of the default configuration items for the build environment.
+You can override any of the default configuration parameters for the build environment.
 
-**ContentUnbundlerSourceDirectory**: This contains the name of the build output directory that contains the `web.config` file and the /bin directory. The default value is `$(OutputPath)`.
+* **ContentUnbundlerSourceDirectory**: This contains the name of the build output directory that contains the `web.config` file and the /bin directory. The default value is `$(OutputPath)`.
 
-**ContentUnbundlerOutputDirectory**: This contains the name of the output directory in which the **Content Unbundler** will place the unbundled content.  It will create a folder named `HostingSvc`. The default value is `$(OutputPath)`.
+* **ContentUnbundlerOutputDirectory**: This contains the name of the output directory in which the **Content Unbundler** will place the unbundled content.  It will create a folder named `HostingSvc`. The default value is `$(OutputPath)`.
 
-**ContentUnbundlerRunAfterTargets**: This is used to sequence when the RunContentUnbundler target will run.  The value of this property will be used to set the `AfterTargets` property of the RunContentUnbundler.  The default value is `AfterBuild`. 
+* **ContentUnbundlerRunAfterTargets**: This is used to sequence when the RunContentUnbundler target will run.  The value of this property is used to set the `AfterTargets` property of the RunContentUnbundler.  The default value is `AfterBuild`. 
 
-**ContentUnbundlerExtensionRoutePrefix**: This contains the prefix name of the extension that is supplied as part of onboarding to the extension host.
+* **ContentUnbundlerExtensionRoutePrefix**: This contains the prefix name of the extension that is supplied as part of onboarding to the extension host.
 
-**ContentUnbundlerZipOutput**: Zips the unbundled output that can be used for deployment. A value of `true` zips the output, whereas a value of `false`  does not create a .zip file. Defaults to `false`.   
+* **ContentUnbundlerZipOutput**: Zips the unbundled output that can be used for deployment. A value of `true` zips the output, whereas a value of `false`  does not create a .zip file. Defaults to `false`.   
 
-<a name="procedure-for-onboarding-hosting-service-corext-extension-configuration"></a>
-### CoreXT extension configuration
+The following examples are customized  configuration files.
+* CoreXT extension configuration
 
-The following example is the customized configuration for a **CoreXT**  extension named "scheduler". 
+    The following example is the customized configuration for a **CoreXT**  extension named "scheduler". 
 
 ```xml
   <PropertyGroup>
@@ -358,9 +370,9 @@ The following example is the customized configuration for a **CoreXT**  extensio
   </PropertyGroup>
 ```
 
-<a name="procedure-for-onboarding-hosting-service-non-corext-extension-configuration"></a>
-### Non-CoreXT extension configuration
-Outside of CoreXT, the default settings in the `targets` file should work for most cases. The only property that needs to be overridden is **ContentUnbundlerExtensionRoutePrefix**, as in the following example.
+* Non-CoreXT extension configuration
+
+    Outside of CoreXT, the default settings in the `targets` file should work for most cases. The only property that needs to be overridden is **ContentUnbundlerExtensionRoutePrefix**, as in the following example.
 
 ```xml
   <PropertyGroup>
@@ -405,35 +417,36 @@ When a user requests an extension in the Azure Portal, the portal will determine
 
 **$version**:  Required attribute. This is the version of the current `config.json` schema. The hosting service requires extension developers to use the latest version, which is 3.
 
-**stage(1-5)**: Required attributes. A valid version number for the extension.  The version number is associated with the Datacenter that has the same stage number.
+**stage(1-5)**: Required attributes. A valid version number for the extension.  The version number is associated with the datacenter that has the same stage number.
 
-For example, based on the preceding `config.json` file, if a user in the Central US region requests to load `Microsoft_Azure_<extensionName>`, then the hosting service will load the stage 1 version for the user, which is version 1.0.0.5. However, if a user in Singapore loads the extension, then the hosting service will load the stage 5 version, which is 1.0.0.1.
+* In this example, based on the preceding `config.json` file, if a user in the Central US region requests to load `Microsoft_Azure_<extensionName>`, then the hosting service will load the stage 1 version for the user, which is version 1.0.0.5. However, if a user in Singapore loads the extension, then the hosting service will load the stage 5 version, which is 1.0.0.1.
 
 **friendlyName**: Optional. A unique name, without the angle brackets, that is assigned to a specific build version for sideloading. There is no limit to the number of friendly names can be provided by the developer for development and testing.
 
 <!-- TODO: are friendly names separated by commas? -->
-
+For more information about testing extensions with stages in configuration files, see [portalfx-extensions-hosting-service-scenarios.md#deploying-a-new-version-to-a-stage](portalfx-extensions-hosting-service-scenarios.md#deploying-a-new-version-to-a-stage).
 </details>
 <details>
 <summary>7. Registering the extension with the hosting service</summary>
 
 <!-- TODO:  determine how to make a public endpoint in order to copy the build files to it. -->
 
-Extensions that use a hosting service should publish the extracted deployment artifacts that are generated during the build to a public endpoint. This means copying the zip files for the build, along with the `config.json` file, to a directory that          .
+Extensions should publish the extracted deployment artifacts that are generated during the build to a public endpoint. This means copying the zip files for the build, along with the `config.json` file, to a directory that          .
 
 <!-- TODO:  Verify whether this is the extension name or the extension directory.  -->
-The developer should have access to two public endpoints, one for the Dogfood environment and one for the production environment.  An example of a Dogfood environment endpoint is `https://mybizaextensiondf.blob.core.windows.net/<extensionName>`.  An example of a PROD environment endpoint is `https://mybizaextensionprod.blob.core.windows.net/<extensionName>`.
+1. The developer should have access to two public endpoints, one for the Dogfood environment and one for the production environment.  An example of a Dogfood environment endpoint is `https://mybizaextensiondf.blob.core.windows.net/<extensionName>`.  An example of a PROD environment endpoint is `https://mybizaextensionprod.blob.core.windows.net/<extensionName>`.
 
-<!-- TODO:  determine what 'at the same level' means.-->
-Make sure that all the zip files and the `config.json` file are at the same level previous to copying the extension to the endpoints.
+    <!-- TODO:  determine what 'at the same level' means.-->
 
-After these files are available on a public endpoint, file a request to register the public endpoint.  The link is located at   [https://aka.ms/extension-hosting-service/onboarding](https://aka.ms/extension-hosting-service/onboarding). To onboard the extension, please provide following information in the request. 
+1. Make sure that all the zip files and the `config.json` file are at the same level previous to copying the extension to the endpoints.
 
-1. **Extension Name**: The name of the extension, as specified in the  `extension.pdl` file.
+1. After these files are available on a public endpoint, file a request to register the public endpoint.  The link is located at   [https://aka.ms/extension-hosting-service/onboarding](https://aka.ms/extension-hosting-service/onboarding). To onboard the extension, please provide following information in the request. 
 
-1. **Dogfood storage account**:  The public read-only endpoint that serves zip files for the Dogfood environment.
+    * **Extension Name**: The name of the extension, as specified in the  `extension.pdl` file.
 
-1. **Prod storage account**: The public read-only endpoint that serves zip files for the production environment.
+    * **Dogfood storage account**:  The public read-only endpoint that serves zip files for the Dogfood environment.
+
+    * **Prod storage account**: The public read-only endpoint that serves zip files for the production environment.
 
 <!-- Determine whether this SLA should be the same as the table in portalfx-extensions-configuration-scenarios.md -->
 
@@ -464,11 +477,9 @@ For more information about updating the extension configuration, see [portalfx-e
 <a name="common-hosting-service-scenarios-new-extensions"></a>
 ### New extensions
 
-If the extension does not exist in the portal yet, register it into the portal in the disabled state. The following json files contain example registrations for various environments.
+If the extension does not exist in the portal yet, register it into the portal in the disabled state. The following json files contain registrations for various environments.
 
-* Dogfood environment
-
-  Registration for `Extensions.dogfood.json`
+* Dogfood environment registration that is stored in  `Extensions.dogfood.json`
 
 ```json
 {
@@ -480,9 +491,7 @@ If the extension does not exist in the portal yet, register it into the portal i
 },
 ```
 
-* PROD environment
-
-  Registration for `Extensions.prod.json`,  i.e. RC, MPAC and Prod environments
+* PROD environment registration that is stored in  `Extensions.prod.json`,  i.e. RC, MPAC and Prod environments
 
 ```json
 {
@@ -498,9 +507,7 @@ If the extension does not exist in the portal yet, register it into the portal i
 
 If the extension is already registered in the portal, but is in the process of being migrated to the hosting service, update the **uriFormat** in the `config` file.  The following json files contain example registrations for various environments.
 
-* Dogfood environment
-
-  Registration for `Extensions.dogfood.json`
+* Dogfood environment registration that is stored in  `Extensions.dogfood.json`
 
 ```json
 {
@@ -586,13 +593,6 @@ The versions available in the hosting service are located at the following URLs.
 | Dogfood     | https://hosting.onecloud.azure-test.net/api/diagnostics |
 | MPAC        | https://hosting-ms.portal.azure.net/api/diagnostics     |
 | PROD        | https://hosting.portal.azure.net/api/diagnostics        |
-
-
-
-<a name="best-practices"></a>
-## Best Practices
-
-
 
 
 
@@ -698,7 +698,7 @@ For performance reasons, once a version is uploaded, it will not be uploaded aga
 
 ***How much time does hosting service take to rollout a new version of extension to the relevant stage?*** 
 
-The hosting service takes about 5 minutes to publish the latest version to all DCs.
+The hosting service takes about 5 minutes to publish the latest version to all data centers.
 
 * * *
 
@@ -717,7 +717,7 @@ We have seen scenarios where customers did not refresh the portal for 2 weeks.
 
 ***My local build is slow. How can I speed up the dev/test cycles ?***
 
-The default F5 experience for extension development remains unchanged however with the addition of the **ContentUnbundler** target some teams prefer to optimize to only run it on official builds or when they set a flag to force it to run.  The following example demonstrates how the Azure Scheduler extension is doing this within CoreXT.
+The default F5 experience for extension development remains unchanged however with the addition of the **ContentUnbundler** target some teams prefer to optimize to only run it on official builds or when they set a flag to force it to run.  The following example demonstrates how the Azure Scheduler extension is doing this within **CoreXT**.
 
 ```xml
     <PropertyGroup>
@@ -772,7 +772,7 @@ Sample config.json for version 2.0.0.0
 
 ***Do I need to register a new storage account everytime I need to upload zip file ?***
 
-No. Registering storage account with hosting service is one-time process. This allows the hosting service to know where to get the latest version of your extension.
+No. Registering a storage account with the hosting service is one-time process, as specified in . This allows the hosting service to find the latest version of your extension.
 
 * * * 
 
@@ -796,7 +796,7 @@ You can ask questions on Stackoverflow with the tag [ibiza-deployment](https://s
 | ---                   | --- |
 | caching               | Hosting service extensions use persistent caching, index page caching, and manifest caching, among others. |
 | CDN                   | Content Delivery Network | 
-| COGS                  | | 
+| COGS                  | Cost of Goods Sold | 
 | controller            | The main code that links the application to the operating system, or to the server, for   multitasking, or access to other services. Contains intelligence that becomes a part of the data model when using MVVM modeling instead of MVC modeling. |
 | DIY                   | Do It Yourself |
 | endpoint              | A device that is connected to a LAN and accepts or transmits communications across a network. In terms of directories or Web pages, there may be several endpoints that are defined on the same device. |
@@ -806,7 +806,3 @@ You can ask questions on Stackoverflow with the tag [ibiza-deployment](https://s
 | RP                    | Resource Provider |
 | server-side code      | |
 | zip file              | The extracted deployment artifacts that are generated during the build.  Tney and the  `config.json` file will be deployed to a public endpoint.  |
-
-<!-- 
-"gitdown": "include-file", "file": "../templates/portalfx-extensions-hosting-service-references.md"
--->
