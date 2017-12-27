@@ -291,14 +291,15 @@ Extensions should publish the extracted deployment artifacts that are generated 
 <!-- Determine whether this SLA should be the same as the table in portalfx-extensions-configuration-scenarios.md -->
 
 The SLA for onboarding the extension is in the following table, expressed in business days.
-| Environment     | SLA     |
-|-----------------|---------|
-| **DOGFOOD**     | 5 days  |
-| **MPAC**        | 7 days  |
-| **PROD**        | 12 days |
-| **BLACKFOREST** | 15 days |
-| **FAIRFAX**     | 15 days |
-| **MOONCAKE**    | 15 days |
+
+| Environment | SLA     |
+|-------------|---------|
+| DOGFOOD     | 5 days  |
+| MPAC        | 7 days  |
+| PROD        | 12 days |
+| BLACKFOREST | 15 days |
+| FAIRFAX     | 15 days |
+| MOONCAKE    | 15 days |
 
 </details>
 
