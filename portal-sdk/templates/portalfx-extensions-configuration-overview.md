@@ -116,6 +116,10 @@ Its options are as follows.
 * **disabled**: Optional. Registers the extension configuration into the portal in hidden mode.  A value of  `true` disables an extension, and a value of `false` enables the extension for display. The default value is `false`. For more information about enabling and disabling extensions, see [portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension](portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension).
  
 * **flightUris**: Optional.  The uri concatenated to a friendly name in order to flight traffic to another stamp, as in the following example:  `//demo.hosting.portal.azure.net/demo/MPACFlight`.
+ 
+ <!--TODO: Update portalfx-extensions-migrate-existing-to-extensioncontrollerbase.md when it is determined that this flag should be here and/or in the feature flags document. -->
+ 
+ * **scriptoptimze**: Leverage the performance optimizations in the base controller. A value of `true`  , whereas a value of `false` .
 
 ### Understanding which extension configuration to modify
 
@@ -123,7 +127,7 @@ The Azure portal uses five different extension configuration files to manage the
 
 ### Extension Stamps
 
-Because the hosting service provides a mechanism for deploying extensions using safe deployment practices, the portal will load the version of the extension that is based on the region from where the customer is accessing the portal. For more details, see the Hosting Service documentation located at [https://github.com/Azure/portaldocs/blob/dev/portal-sdk/templates/portalfx-extension-hosting-service.md](https://github.com/Azure/portaldocs/blob/dev/portal-sdk/templates/portalfx-extension-hosting-service.md).
+Because the hosting service provides a mechanism for deploying extensions using safe deployment practices, the portal will load the version of the extension that is based on the region from where the customer is accessing the portal. For more details, see the Hosting Service documentation located at [portalfx-extensions-hosting-service.md](portalfx-extensions-hosting-service.md).
 
 If the Legacy DIY deployment registration format is used, then the portal will always serve the stamp that is registered in the ```uri```. In the preceding  examples, the portal will always serve main stamp of the extension.
 

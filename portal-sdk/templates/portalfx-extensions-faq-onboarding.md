@@ -16,4 +16,25 @@ The SharePoint Sparta Onboarding FAQ is located at [http://sharepoint/sites/Azur
   Production certs must follow your organization’s PROD cert process. 
 
  **NOTE** Do not use the SSL Admin site for production certs.
+
  * * *
+ ### Compile on Save
+
+ ***What is Compile on Save ?**
+Compile on Save is a TypeScript option that   . To use it, make sure that TypeScript 2.0.3 was installed on your machine. The version can be verified by executing the following  command:
+
+```bash
+$>tsc -version
+```
+Then, verify that when a typescript file is saved, that  the following text is displayed in the bottom left corner of your the visual studio application.
+
+![alt-text](../media/portalfx-ide-setup/ide-setup.png "CompileOnSaveVisualStudio")
+
+ * * *
+
+### Other onboarding questions
+
+***How can I ask questions about onboarding ?***
+
+You can ask questions on Stackoverflow with the tag [onboarding](https://stackoverflow.microsoft.com/questions/tagged/onboarding).
+

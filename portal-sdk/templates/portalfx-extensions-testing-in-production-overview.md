@@ -20,7 +20,7 @@ where
 
 **feature.canmodifyextensions**: Required to support loading untrusted extensions for security purposes.  This feature flag grants permission to the portal to load extensions from URLs other than the ones that are typically used by customers.  It triggers an additional portal UI that indicates that the portal is running with untrusted extensions. This feature flag has a value of `true`.  For more information about feature flags, see [portalfx-extension-flags.md](portalfx-extension-flags.md).
 
-**testExtensions**: Contains the name of the extension, and the environment in which the environment is located. It specifies the intent to load the extension `<extensionName>` from the `localhost:<Port_Number>` into the current session of the portal.
+**testExtensions**: Contains the name of the extension, and the environment in which the environment is located. It specifies the intent to load the extension `<extensionName>` from the `localhost:<portNumber>` into the current session of the portal.
 
 * **extensionName**: Matches the name of the extension, without the angle brackets, as specified in the `<Extension>` element  in the  `extension.pdl` file.  For more information about the configuration file, see [portalfx-extensions-configuration-overview.md]().
 

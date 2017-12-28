@@ -19,3 +19,4 @@ Please checkout the stackoverflow post: [https://stackoverflow.microsoft.com/que
 You need to allow the Azure Portal to frame your extension URL. For more information, [click here](portalfx-creating-extensions.md).
 
 * * *
+

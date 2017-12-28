@@ -21,6 +21,8 @@ Perform the following tasks to become part of Azure portal extension developer c
 
 1. [Register the extension](#register-the-extension)
 
+You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
+
 ### Join DLs and request permissions
 
 Request the following permissions to stay current on product roadmaps, get news on latest features, and read workshop announcements.
@@ -100,6 +102,7 @@ Read the following documents from the Azure Portal UI team site.  Our doc site p
 | Private Preview, Public Preview, and GA       | Portal Extension Development Phases, located at [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md) |
 | How it Works	                                | Getting Started, located at [portalfx-howitworks.md#getting-started](portalfx-howitworks.md#getting-started)
 | Build an empty extension                      | Creating An Extension, located at [portalfx-extensions-developerInit.md](portalfx-extensions-developerInit.md) |
+| Portal environments and extension configurations | [portalfx-extensions-branches.md](portalfx-extensions-branches.md) | 
 | Experiment with sample code	                  | Sample Extensions, located at [portalfx-extensions-samples.md](portalfx-extensions-samples.md) |
 
 ### Develop and deploy the extension
