@@ -4,28 +4,49 @@
 <details>
   <summary>1. Getting Started</summary>
 
-Azure portal extension development is supported on the Microsoft Windows 8, Windows Server 2012 R2, and Windows 10.
+<!--TODO: Previously 
+### 1.1 [Installation] -->
 
-:bulb: **Productivity Tip:** Install Chrome http://google.com/dir so that you can levrage the debugger tools while developing your extension.
 
-### 1.1 Installation
+### 1.1 [Installation](portalfx-extensions-onboarding-procedures.md#install-software)
 
-* [Option 1 - MSI Installer](downloads.md)
-* [Option 2 - Nuget packages](portalfx-nuget-overview.md)
-
-### 1.2 Getting Set up in an IDE - *Typescript version / Compile on save*
-
-* [Visual Studio](portalfx-ide-setup.md) *(with Extension project template)*
 * VS Code (Coming Soon....)
+
 * [Need Help with setup?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
+
+<a name="azure-portal-extension-development-documentation-1-2-running-and-debugging-hello-world-extension"></a>
+
+### 1.2 Introduction to Extensions
+
+* [Architecture Overview](portalfx-howitworks.md)
+
+* [Extension configurations](portalfx-extensions-configuration.md)
+
+* [Portal environments and extension configurations](portalfx-extensions-branches.md)
+
+* [Understanding how registration works](portalfx-extensions-onboarding-procedures.md#register-the-extension)
+
+<a name="azure-portal-extension-development-documentation-1-3-running-and-debugging-hello-world-extension"></a>
 
 ### 1.3 Running and Debugging Hello World Extension
 
-* [Architecture Overview](portalfx-howitworks.md)
-* [Creating your first extension from project template](portalfx-creating-extensions.md)
-* [Building a Hello World Blade](portalfx-creating-extensions.md#hello-world-for-blades)
-* [Side-loading your extension in a portal environment](portalfx-testinprod.md#testing-in-production)
-* [Debugging](portalfx-debugging.md#debugging)
+
+
+<!--TODO: Previously * [Creating your first extension from project template](portalfx-creating-extensions.md) -->
+* [Creating your first extension from project template](portalfx-extensions-developerInit.md)
+
+<!--TODO: Previously * [Building a Hello World Blade](portalfx-creating-extensions.md#hello-world-for-blades) 
+-->
+* [Building a Hello World Blade](portalfx-extensions-helloWorld.md)
+
+<!-- Previously * [Side-loading your extension in a portal environment](portalfx-testinprod.md#testing-in-production)-->
+* [Sideloading your extension in a portal environment](portalfx-extensions-sideloading.md)
+
+<!--TODO: Previously * [Debugging](portalfx-debugging.md#debugging) -->
+* [Debugging](portalfx-extensions-debugging.md#debugging)
+
+* [Testing in Production](portalfx-extensions-testing-in-production.md)
+
 * [Deep linking to a blade you are developing](portalfx-creating-extensions.md#hello-world-for-blades)
 * Add a text box to your Hello World Blade
 * Dock button at the bottom of your blade
@@ -33,27 +54,44 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * Open Blade from your Hello World Blade
 * Open Context pane from your Hello World Blade
 
+<a name="azure-portal-extension-development-documentation-1-4-extension-development-resources"></a>
 
 ### 1.4 Extension development resources
 
 * [Start Onboarding]
-* [Subscribe to announcements]()
+* Subscribe to announcements
 * [Update your team's contact information]
-* [Samples Extension](portalfx-sample-extensions.md)
-* [Understand what it takes to build great extension](portalfx-onboarding-exitcriteria.md#exit-criteria-quality-metrics)
+
+<!-- TODO: Previously 
+* [Samples Extension](portalfx-sample-extensions.md) -->
+* [Samples Extension](portalfx-extensions-samples.md)
+
+<!-- TODO: Previously 
+* [Understand what it takes to build great extension](portalfx-onboarding-exitcriteria.md#exit-criteria-quality-metrics) -->
+* [Understand what it takes to build great extension](portalfx-extensions-exitCriteria.md)
+
 * [Need Help with onboarding?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)
+
+<a name="azure-portal-extension-development-documentation-1-4-deploying-your-extension"></a>
 
 ### 1.4 Deploying your extension
 
-* [Deploy your extension using hosting service](portalfx-extension-hosting-service.md)
+<!--TODO: Previously 
+* [Deploy your extension using hosting service](portalfx-extension-hosting-service.md) -->
+
+* [Deploy your extension using hosting service](portalfx-extensions-hosting-service.md)
+
 * [Register your extension with hosting service]
 * [Validating extension registeration with hosting service]
 * [SLA for registering extension with hosting service]
 * [Need Help with hosting service?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)
 
+<a name="azure-portal-extension-development-documentation-1-5-registering-your-extension"></a>
+
 ### 1.5 Registering your extension
 
-* [Understanding how registeration works](portalfx-extension-onboarding-developer-guide.md)
+
+
 * [Register your extension in disabled mode in Dogfood]
 * [Register your extension in disabled mode in Public cloud]
 * [Register your extension in disabled mode in Mooncake]
@@ -62,6 +100,8 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [SLA for registering your extension]
 * [Reducing SLA for registering your extension]
 * [Need Help with hosting service?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)
+
+<a name="azure-portal-extension-development-documentation-1-6-enabling-extension-for-public-preview-ga"></a>
 
 ### 1.6 Enabling extension for Public Preview/ GA
 
@@ -82,36 +122,43 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 * [No-PDL Blades](portalfx-no-pdl-programming.md#defining-blades-and-parts-using-typescript-decorators-aka-no-pdl) - *Reduces the number of files and concepts to build UI*
 * [Forms without edit scope](portalfx-editscopeless-forms.md) - *More intuitive APIs for building forms*
-* [Editable Grid V2](TBD) - *Improved APIs designed to work with new forms*
+* Editable Grid V2 - *Improved APIs designed to work with new forms*
 * [Extension Avialability Alerts](portalfx-telemetry-alerting.md#alerting) - *Get notified if your extension goes down*
-* [Actionable Notifications](TBD) - *Point users to well known next steps*
+* Actionable Notifications - *Point users to well known next steps*
 * [EV2 support for the Extension Hosting Service](portalfx-extension-hosting-service-advanced.md#advanced-section) - *Nuff said*
 * [Multi-Column for Essentials Controls](portalfx-controls-essentials.md) - *Better use of screen real estate*
-* [TreeView improvements](TBD) - *Checkboxes, commands, and Load More / Virtualization*
+* TreeView improvements - *Checkboxes, commands, and Load More / Virtualization*
 </details>
 
 
 <details>
   <summary>3. Upgrading from previous versions of SDK and test framework</summary>
 
+<a name="azure-portal-extension-development-documentation-upgrading-extension-to-use-latest-version-of-sdk"></a>
 ## Upgrading Extension to use latest version of SDK
 * [Upgrade policy](portalfx-deploy.md#3-understand-extension-runtime-compatibility)
 * SDK Update alerts(Coming Soon....)
 * [Updating the NuGet packages](portalfx-nuget-overview.md)
-* [Updating the C# test framework](TBD)
-* [Updating the msportalfx-test framework](TBD)
+* Updating the C# test framework
+* Updating the msportalfx-test framework
 </details>
 
 <details>
   <summary>4. Understanding your extension configuration</summary>
 
+<a name="azure-portal-extension-development-documentation-basic-configuration-coming-soon"></a>
+
 ## Basic Configuration(Coming soon..)
+
 * [Side-loding environment]
 * [Developer mode]
 * [Telemetry]
 * [Any other options ??]
 
+<a name="azure-portal-extension-development-documentation-extension-configuration-coming-soon"></a>
+
 ## Extension Configuration(Coming soon..)
+
 * [Extension Definition]
 * [ConfigurationSettings]
 * [ConfigurationSettings]
@@ -138,14 +185,19 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 <details>
   <summary>6. Extension Lifecycle</summary>
 
+<a name="azure-portal-extension-development-documentation-extensions"></a>
+
 ## [Extensions]
 * [What is an extension?](portalfx-howitworks.md#how-extensions-work)
 * [Ui Concepts](portalfx-ui-concepts.md#ui-concepts)
 * [Extension lifecycle](portalfx-howitworks.md#how-the-portal-works)
-* [Cross-extension UX integration] (TBD)
+* Cross-extension UX integration
 
+
+<a name="azure-portal-extension-development-documentation-extension-lifecycle"></a>
 
 ## Extension lifecycle
+
 * [Program.ts / entry point]
 * [Extension.pdl]
 * [Is there some thing that executes when we unload the extension??]
@@ -157,10 +209,16 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
   <summary>7. Developing your extension</summary>
 
 
-##  Blades and Parts
+<a name="azure-portal-extension-development-documentation-blades-and-parts"></a>
+
+## Blades and Parts
+
 * [Introduction](portalfx-ui-concepts.md#ui-concepts)
 
+<a name="azure-portal-extension-development-documentation-blades-and-parts-common-scenarios"></a>
+
 #### Common Scenarios
+
 * [Create Blades](portalfx-create.md)
 * [Context Pane]
 * [Full-screen Blades]
@@ -171,9 +229,16 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Invoking Blade/Part reuse across extensions]
 * [Shairing Blade/Part across extensions]
 
+<a name="azure-portal-extension-development-documentation-blades-and-parts-blades"></a>
+
 ### Blades
 
-#### [Type of Blades](portalfx-blades.md#blades)
+<a name="azure-portal-extension-development-documentation-blades-and-parts-blades-type-of-blades-portalfx-blades-md-blades"></a>
+
+<a href="portalfx-blades.md#blades"></a>
+
+#### Types of Blades
+
 * [TemplateBlade]
 * [FrameBlade (and legacy <AppBlade>)]
 * [MenuBlade]
@@ -183,8 +248,8 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 * How/when are Blades/Parts invoked?  How can I get my Blade/Part in front of more users?
 * [Blades]
-    * [Use 'container.openBlade(…)' to open my Blade](portalfx-blades-opening.md)
-    * [Work with other teams to have other extensions call 'container.openBlade(…)' to open my Blade](portalfx-blades-opening.md#importing-the-pde-file)
+    * [Use 'container.openBlade(...)' to open my Blade](portalfx-blades-opening.md)
+    * [Work with other teams to have other extensions call 'container.openBlade(...)' to open my Blade](portalfx-blades-opening.md#importing-the-pde-file)
     * Associate my Blade with an <AssetType> so it is opened from Browse
     * [Add my Blade as an entry in a Resource Blade or a Menu Blade]
         * [No-PDL](portalfx-no-pdl.md#building-a-menu-blade-using-decorators)
@@ -197,17 +262,23 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [FAQ]
     * When should I make my Blade pinnable?
 
+<a name="azure-portal-extension-development-documentation-blades-and-parts-component-model"></a>
+
 ### Component model
 * Lifecycle
 * What is a Blade's/Part's API?  How is it invoked?
 * How / when to go the IFrame route?
  
+<a name="azure-portal-extension-development-documentation-blades-and-parts-blade-part-reuse-across-extensions"></a>
+
 ### [Blade/Part reuse across extensions]
     * [Making Blades/Parts reusable by other extensions](portalfx-extension-sharing-pde.md)
     * [Reusing Blades/Parts from other extensions](portalfx-integrating-with-other-extensions.md)
-    * [RPC](portalfx-rpc.md#remote-procedure-calls-rpc)  // TOD: Find Home
+    * [RPC](portalfx-rpc.md#remote-procedure-calls-rpc)  // TODO: Find Home
             
-#### Developing my Blade
+<a name="azure-portal-extension-development-documentation-blades-and-parts-blade-part-reuse-across-extensions-developing-my-blade"></a>
+
+#### Developing Blades
 * [Reference "TemplateBlade/Blade" doc re: developing content for my Blade
 * [Reference "Common features / behavior for Blades and Parts"
 * [Reference to sections of common Blade/Part features/behaviors
@@ -223,22 +294,30 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [NoData]
 * ["form" API]
 
-### [Parts]((portalfx-parts.md#parts-aka-tiles)
+<a name="azure-portal-extension-development-documentation-blades-and-parts-parts-portalfx-parts-md-parts-aka-tiles"></a>
+
+### <a href="(portalfx-parts.md#parts-aka-tiles">Parts</a>
 * [Types of Parts])
     * [TemplatePart]
     * [FramePart]
     * [ButtonPart]
     * [Legacy PDL intrinsic Parts](portalfx-parts.md#how-to-use-one-of-the-built-in-parts-to-expose-your-data-in-pre-built-views)
+<a name="azure-portal-extension-development-documentation-blades-and-parts-parts-portalfx-parts-md-parts-aka-tiles-scenarios"></a>
+
 #### Scenarios
     * [Building a Part Gallery Part](portalfx-parts.md#how-to-integrate-your-part-into-the-part-gallery)
     * [Retiring a Part](portalfx-parts-how-to-retire.md)
     * [Redirecting a Part](portalfx-parts.md#removing-a-part-from-a-blades-default-layout)
+<a name="azure-portal-extension-development-documentation-blades-and-parts-parts-portalfx-parts-md-parts-aka-tiles-developing-my-part"></a>
+
 #### Developing my Part
     * [Reference "Common features / behavior for Blades and Parts"]
     * [Title/subtitle/icon]
     * [Activation ('onClick')]
     * ['container' APIs (like 'openBlade')]
     
+<a name="azure-portal-extension-development-documentation-blades-and-parts-html-template-knockout-controls"></a>
+
 ### HTML template + Knockout + Controls
     * Include "why no access to DOM?"
 
@@ -269,7 +348,9 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 <details>
   <summary>9. Control Libraries</summary>
 
-## [Controls](portalfx-controls.md)
+<a name="azure-portal-extension-development-documentation-controls-portalfx-controls-md"></a>
+
+## <a href="portalfx-controls.md">Controls</a>
 
 * [Azue Storage Controls]
 * [Button]
@@ -330,20 +411,22 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Spec Picker Blade](portalfx-extension-pricing-tier.md)
 * [Subscription Dropdown](portalfx-create.md#subscriptions-dropdown-1)
 * [Resource Group dropdown](portalfx-create.md#resource-groups-legacy-dropdown)
-* [Location dropdown](/portalfx-create.md#locations-legacy-dropdown)
+* [Location dropdown](portalfx-create.md#locations-legacy-dropdown)
 * [Pricing Dropdown](portalfx-create.md#pricing-dropdown)
 
+<a name="azure-portal-extension-development-documentation-forms"></a>
 ## Forms
 
 * [Building UI for Form](portalfx-forms.md#laying-out-your-ui-on-the-blade)
 * [Submit Style UI]
     * [Save/ Cancel Button](portalfx-editscopeless-forms.md#other-css-classes-that-can-be-useful)
-    * [Legacy Action Bar] (portalfx-fxcontrols-editscope-forms.md)
+    * [Legacy Action Bar](portalfx-fxcontrols-editscope-forms.md)
 * [Prompt user to Save/Discard changes](portalfx-editscopeless-forms.md#customizing-alert-on-form-close)
 * [EditScopeless Forms](portalfx-editscopeless-forms.md)
 * [Legacy Editscope based Forms](portalfx-forms.md)
 * [Using Editscopeless controls in EditScoped Forms](portalfx-fxcontrols-editscope-forms.md)
 
+<a name="azure-portal-extension-development-documentation-advanced-styling"></a>
 ## Advanced Styling
 
 </details>
@@ -352,7 +435,8 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 <details>
   <summary>10. Memory Management</summary>
 
-## [Extension memory management / Lifetime manager](portalfx-data-lifetime.md#lifetime-manager)
+<a name="azure-portal-extension-development-documentation-extension-memory-management-lifetime-manager-portalfx-data-lifetime-md-lifetime-manager"></a>
+## <a href="portalfx-data-lifetime.md#lifetime-manager">Extension memory management / Lifetime manager</a>
 * Content:
     * [Relate this to Blade/Part lifecycle]
     * [What are child lifetimes?]
