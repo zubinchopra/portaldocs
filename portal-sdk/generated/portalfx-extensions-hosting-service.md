@@ -15,6 +15,15 @@ The cost of setting up and maintaining this infrastructure can be high. By lever
 
 You can ask questions on Stackoverflow with the tags [ibiza-deployment](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment) and [ibiza-hosting-service](https://stackoverflow.microsoft.com/questions/tagged/ibiza-hosting-service).
 
+<a name="how-the-hosting-service-serves-an-extension"></a>
+## How the hosting service serves an extension
+
+ The runtime component of the hosting service is hosted inside an Azure Cloud Service. The extension developer provides a publicly accessible endpoint that contains the contents that the hosting service will serve. When an extension onboards to the service, the service  locates a file named  `config.json` in this endpoint.
+
+The hosting service will upload the config file, and look into it to figure out which zip files it needs. There can be multiple versions of the extension referenced in `config.json`. The hosting service will upload them and unpack them on the local disk. After it has successfully uploaded and expanded all versions of the extension referenced in `config.json`, it will write `config.json` to disk.
+
+For performance reasons, a version of an extension can only be uploaded once.
+
 <a name="reasons-for-using-the-hosting-service"></a>
 ## Reasons for using the hosting service
 
@@ -450,17 +459,188 @@ Extensions should publish the extracted deployment artifacts that are generated 
 <!-- Determine whether this SLA should be the same as the table in portalfx-extensions-configuration-scenarios.md -->
 
 The SLA for onboarding the extension is in the following table, expressed in business days.
-| Environment     | SLA     |
-|-----------------|---------|
-| **DOGFOOD**     | 5 days  |
-| **MPAC**        | 7 days  |
-| **PROD**        | 12 days |
-| **BLACKFOREST** | 15 days |
-| **FAIRFAX**     | 15 days |
-| **MOONCAKE**    | 15 days |
+
+| Environment | SLA     |
+|-------------|---------|
+| DOGFOOD     | 5 days  |
+| MPAC        | 7 days  |
+| PROD        | 12 days |
+| BLACKFOREST | 15 days |
+| FAIRFAX     | 15 days |
+| MOONCAKE    | 15 days |
 
 </details>
 
+
+
+<a name="advanced-hosting-service-procedures"></a>
+## Advanced Hosting Service Procedures
+
+**NOTE**: This section of the document assumes that the reader has reviewed the hosting service document located at [portalfx-extensions-hosting-service-procedures.md](portalfx-extensions-hosting-service-procedures.md). 
+
+**NOTE**: This section is only relevant to extension developers who are using [WARM](portalfx-extensions-hosting-service-glossary.md) and [EV2](portalfx-extensions-hosting-service-glossary.md) for deployment, or who plan to migrate to WARM and EV2 for deployment.
+
+<a name="advanced-hosting-service-procedures-ev2-integration-with-hosting-service"></a>
+### EV2 Integration with hosting service
+
+If you are not familiar with WARM and EV2, it is recommended that you read the documentation provided by their teams. If you have any questions about these systems please reach out to the respective teams.
+
+* Onboard WARM: [https://aka.ms/warm](https://aka.ms/warm)
+* Onboard Express V2: [https://aka.ms/ev2](https://aka.ms/ev2)
+
+Deploying an extension with hosting requires extension developers to upload the zip file that was generated during the build to a  storage account that is read-only to the public.
+
+Since EV2 does not provide an API to upload the zip file, setting up the deployment infrastructure can become an unmanageable task. The deployment process is simplified  by leveraging a KeyVault and the EV2 extension that was developed by the Ibiza team. The EV2 extension allows the upload of the zip file to a storage account in a way that is compliant.
+
+<a name="advanced-hosting-service-procedures-configuring-contentunbundler-for-ev2-based-deployments"></a>
+### Configuring ContentUnbundler for Ev2-based deployments
+
+As of SDK version 5.0.302.817, extension developers can leverage the EV2 mode in **Content Unbundler** to generate the rollout spec, service model schema, and parameter files for EV2 deployment.
+
+**Basic Scenario**:
+
+In the most common scenario, extension developers can execute **ContentUnbundler** in EV2 mode. This will generate the rollout spec, service model schema and parameter files. The procedure is as follows. 
+
+1.  Specify the `ContentUnbundlerMode` as ExportEv2. This attribute is provided in addition to other properties.
+
+    The following is the `csproj` configuration for the Monitoring Extension in the **CoreXT** environment.
+
+    ```xml
+    <!-- ContentUnbundler parameters -->
+    <PropertyGroup>
+        <ForceUnbundler>true</ForceUnbundler>
+        <ContentUnbundlerExe>$(PkgMicrosoft_Portal_Tools_ContentUnbundler)\build\ContentUnbundler.exe</ContentUnbundlerExe>
+        <ContentUnbundlerSourceDirectory>$(WebProjectOutputDir.Trim('\'))</ContentUnbundlerSourceDirectory>
+        <ContentUnbundlerOutputDirectory>$(BinariesBuildTypeArchDirectory)\ServiceGroupRoot</ContentUnbundlerOutputDirectory>s
+        <ContentUnbundlerExtensionRoutePrefix>monitoring</ContentUnbundlerExtensionRoutePrefix>
+        <ContentUnbundlerMode>ExportEv2</ContentUnbundlerMode>
+    </PropertyGroup>
+    .
+    .
+    .
+    .
+    <Import Project="$(PkgMicrosoft_Portal_Tools_ContentUnbundler)\build\Microsoft.Portal.Tools.ContentUnbundler.targets" />
+    ```
+1. Add a `ServiceGroupRootReplacements.json` file.
+
+    The `ServiceGroupRootReplacements.json` file contains the following parameters, among others:  `TargetContainerName`, `AzureSubscriptionId`, `CertKeyVaultUri`,`TargetStorageConStringKeyVaultUri` and the extension name. This will require you to set up a KeyVault for certificates and other items that are used for connectivity.
+
+    <details>
+
+    <summary>1. Set up KeyVault</summary>
+
+     <!--TODO:  Determine who provides the storage account: the extension developer or the Azure Portal -->
+
+      During deployment, the zip file from the official build will be copied to the storage account that was provided when onboarding to the hosting service.  To do this, Ev2 and the hosting service need two secrets:
+
+      * The certificate that Ev2 will use to call the hosting service to initate a deployment.
+
+        **NOTE**: Azure ignores this certificate but it is still required. The extension is validated based on an allowed list of storage accounts and the storage credential you supply by using the  `TargetStorageConStringKeyVaultUri` and `TargetContainerName` settings.
+
+      * The connection string to the target storage account where the extension will be deployed. The format of the connection string is the default form `DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1};EndpointSuffix={3}`, which is the format provided from portal.azure.com.
+      
+    </details>
+    <details>
+    <summary>2. Onboard to KeyVault</summary>
+
+      The official guidance from Ev2 is located at  [https://aka.ms/portalfx/ev2keyvault](https://aka.ms/portalfx/ev2keyvault).  Follow the instructions to:
+
+      1. Create a KeyVault. 
+      1. Grant Ev2 read access to your KeyVault
+      1. Create an Ev2 Certificate and add it to the KeyVault as a secret. In the following `csproj` config example, the name of the certificate in the KeyVault is `PortalHostingServiceDeploymentCertificate`.
+      1. Create a KeyVault secret for the storage account connection string. Any configuration for prod environments is done via [jit](portalfx-extensions-hosting-service-glossary.md) access and on your [SAW](portalfx-extensions-hosting-service-glossary.md).
+
+    </details>
+    <details>
+    <summary>3. Add the file to your project</summary>
+
+      Add `ServiceGroupRootReplacements.json` to the extension `csproj`, as in the following example.
+
+      ```xml
+      <Content Include="ServiceGroupRootReplacements.json">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      ```
+        
+      The following file is an example of a `ServiceGroupRootReplacements.json` file.
+
+      ```json
+            {
+            "production": {
+                "AzureSubscriptionId": "<SubscriptionId>",
+                "CertKeyVaultUri": "https://sometest.vault.azure.net/secrets/PortalHostingServiceDeploymentCertificate",
+                "TargetStorageConStringKeyVaultUri": "https://sometest.vault.azure.net/secrets/PortalHostingServiceStorageConnectionString",
+                "TargetContainerName": "hostingservice",
+                "ContactEmail": "youremail@microsoft.com",
+                "PortalExtensionName": "Microsoft_Azure_Monitoring",
+                "FriendlyNames": [ "friendlyname_1", "friendlyname_2", "friendlyname_3" ]
+            }
+            }
+      ```
+
+      Other environments that are supported are the Dogfood test environment and the Production environment.
+    </details>
+   
+1.  Initiate a test deployment
+
+
+      You can quickly run a test deployment from a local build, previous to onboarding to WARM, by using the `New-AzureServiceRollout` commandlet.  Be sure that you are not testing in production, i.e, that the target storage account in the key vault that is being used is not the production storage account, and the **-RolloutInfra** switch is set to `Test`.  The following is an example.
+
+      ``` PowerShell
+        New-AzureServiceRollout -ServiceGroupRoot E:\dev\vso\AzureUX-PortalFX\out\ServiceGroupRoot -RolloutSpec E:\dev\vso\AzureUX-PortalFX\out\ServiceGroupRoot\RolloutSpec.24h.json -RolloutInfra Test -Verbose -WaitToComplete
+    ```
+      Replace \<RolloutSpec> with the path to `RolloutSpec.24h.json` in the build.
+
+
+    **NOTE**: The Ev2 Json templates perform either a 24-hour or a 6-hour rollout to each stage within the hosting service's safe deployment stages. Currently, the gating health check endpoint returns `true` in all cases, so really the check only provides a time gated rollout.  This means that you need to validate the health of the deployment in each stage, or cancel the deployment using the `Stop-AzureServiceRollout` command if something goes wrong. Once a stop is executed, you need to rollback the content to the previous version using the `New-AzureServiceRollout` command.  This document will be updated once health check rules are defined and enforced.  If you would like to implement your own health check endpoint you can customize the Ev2 json specs found in the NuGet.
+
+
+
+<a name="advanced-hosting-service-procedures-what-output-is-generated"></a>
+### What output is generated?
+
+The above configuration will result in a build output as required by Ev2 and the hosting service. The following examples are for different versions of the SDK.
+
+* As of version 5.0.302.834
+
+```
+out\retail-amd64\ServiceGroupRoot
+                \HostingSvc\1.2.1.0.zip
+                \Parameters\*.json
+                \buildver.txt
+                \RolloutSpec.6h.json
+                \RolloutSpec.24h.json
+                \production.ServiceModel.6h.json
+                \production.ServiceModel.24h.json
+                \production.friendlyname_1.json
+                \production.friendlyname_2.json
+                \production.friendlyname_3.json
+
+```
+
+* As of version 5.0.302.837
+
+
+```
+out\retail-amd64\ServiceGroupRoot
+                \HostingSvc\1.2.1.0.zip
+                \Production.Parameters\*.json
+                \buildver.txt
+                \Production.RolloutSpec.6h.json
+                \Production.RolloutSpec.24h.json
+                \Production.ServiceModel.6h.json
+                \Production.ServiceModel.1D.json
+                \Production.friendlyname_1.json
+                \Production.friendlyname_2.json
+                \Production.friendlyname_3.json
+```
+<a name="advanced-hosting-service-procedures-warm-integration-with-hosting-service"></a>
+### WARM Integration with hosting service
+
+  It is assumed that you have already onboarded to WARM if you will be deploying to production, or deploying by using the WARM UX. The production deployment instructions are  
+  specified in the site located at  [https://aka.ms/portalfx/warmproduction](https://aka.ms/portalfx/warmproduction), and the WARM UX deployment instructions are specified in the site located at [https://warm/newrelease/ev2](https://warm/newrelease/ev2).  
+  
+  If you have not already onboarded to WARM, see the guidance from the Ev2 team that is located at [https://aka.ms/portalfx/warmonboarding](https://aka.ms/portalfx/warmonboarding). If you have questions, you can reach out to ev2sup@microsoft.com.
 
 
 
@@ -656,6 +836,53 @@ You can also click on the links in the table to open the correct Stackoverflow f
 
 <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
 
+
+<a name="frequently-asked-questions-content-unbundler-throws-aggregate-exception"></a>
+### Content Unbundler throws aggregate exception
+
+***Content Unbundler throws an Aggregate Exception during build.***
+
+This usually happens when the build output generated by content unbundler is different from expected format.  The solution is as follows.
+
+1. Verify build output directory is called **bin**
+1. Verify you can point IIS to **bin** directory and load extension
+
+For more information, see [portalfx-extensions-hosting-service-overview.md#prerequisites-for-onboarding-hosting-service](portalfx-extensions-hosting-service-overview.md#prerequisites-for-onboarding-hosting-service).
+
+* * *
+
+<a name="frequently-asked-questions-finding-old-ux-after-deployment"></a>
+### Finding old UX After Deployment
+
+***Some customers of my extension are finding the old UX even after deploying the latest package. Is there a bug in hosting service ?***
+
+No this is not a bug. All clients will not get the new version as soon as it gets deployed. The new version is only served when the customer refreshes the portal. We have seen customers that keep the portal open for long periods of time. In such scenarios, when customer loads the extension they are going to get the old version that has been cached.
+We have seen scenarios where customers did not refresh the portal for 2 weeks. 
+
+* * * 
+
+<a name="frequently-asked-questions-friendly-name-support"></a>
+### Friendly name support
+
+***When will support for friendly names become available ?***
+
+Azure support for friendly names became available in SDK release 5.0.302.834.
+
+* * *
+
+<a name="frequently-asked-questions-how-extensions-are-served"></a>
+### How extensions are served
+
+***How does hosting service serve my extension?***
+
+The runtime component of the hosting service is hosted inside an Azure Cloud Service. When an extension onboards, a publicly accessible endpoint is provided by the extension developer which will contain the contents that the hosting service should serve. For the hosting service to pick them up, it will look for a file called `config.json` that has a specific schema described below. 
+
+The hosting service will upload the config file, look into it to figure out which zip files it needs to download. There can be multiple versions of the extension referenced in `config.json`. The hosting service will upload them and unpack them on the local disk. After it has successfully uploaded and expanded all versions of the extension referenced in `config.json`, it will write `config.json` to disk.
+
+For performance reasons, once a version is uploaded, it will not be uploaded again. 
+
+* * * 
+
 <a name="frequently-asked-questions-output-zip-file-incorrectly-named"></a>
 ### Output zip file incorrectly named
 
@@ -679,18 +906,7 @@ The primary cause of this issue is that your `web.config` appSetting for **IsDev
 
 * * * 
 
-<a name="frequently-asked-questions-how-extensions-are-served"></a>
-### How extensions are served
 
-***How does hosting service serve my extension?***
-
-The runtime component of the hosting service is hosted inside an Azure Cloud Service. When an extension onboards, a publicly accessible endpoint is provided by the extension developer which will contain the contents that the hosting service should serve. For the hosting service to pick them up, it will look for a file called `config.json` that has a specific schema described below. 
-
-The hosting service will upload the config file, look into it to figure out which zip files it needs to download. There can be multiple versions of the extension referenced in `config.json`. The hosting service will upload them and unpack them on the local disk. After it has successfully uploaded and expanded all versions of the extension referenced in `config.json`, it will write `config.json` to disk.
-
-For performance reasons, once a version is uploaded, it will not be uploaded again. 
-
-* * * 
 
 <a name="frequently-asked-questions-rollout-time-for-stages"></a>
 ### Rollout time for stages
@@ -701,15 +917,15 @@ The hosting service takes about 5 minutes to publish the latest version to all d
 
 * * *
 
-<a name="frequently-asked-questions-finding-old-ux-after-deployment"></a>
-### Finding old UX After Deployment
 
-***Some customers of my extension are finding the old UX even after deploying the latest package. Is there a bug in hosting service ?***
+<a name="frequently-asked-questions-sas-tokens"></a>
+### SAS Tokens
 
-No this is not a bug. All clients will not get the new version as soon as it gets deployed. The new version is only served when the customer refreshes the portal. We have seen customers that keep the portal open for long periods of time. In such scenarios, when customer loads the extension they are going to get the old version that has been cached.
-We have seen scenarios where customers did not refresh the portal for 2 weeks. 
+***Can I provide a SAS token instead of keyvault for EV2 to access the storage account ?***
 
-* * * 
+The current rolloutspec generated by **ContentUnbundler** only provides support for using keyvault. If you would like to use SAS tokens, please submit a request on [user voice](https:\\aka.ms\portalfx\uservoice)
+
+* * *
 
 <a name="frequently-asked-questions-speed-up-test-cycles"></a>
 ### Speed up test cycles
@@ -728,19 +944,14 @@ The default F5 experience for extension development remains unchanged however wi
 
 * * * 
 
-<a name="frequently-asked-questions-content-unbundler-throws-aggregate-exception"></a>
-### Content unbundler throws aggregate exception
+<a name="frequently-asked-questions-storage-account-registration"></a>
+### Storage account registration
 
-***Content Unbundler throws an Aggregate Exception during build.***
+***Do I need to register a new storage account everytime I need to upload zip file ?***
 
-This usually happens when the build output generated by content unbundler is different from expected format.  The solution is as follows.
+No. Registering a storage account with the hosting service is one-time process, as specified in . This allows the hosting service to find the latest version of your extension.
 
-1. Verify build output directory is called **bin**
-1. Verify you can point IIS to **bin** directory and load extension
-
-For more information, see [portalfx-extensions-hosting-service-overview.md#prerequisites-for-onboarding-hosting-service](portalfx-extensions-hosting-service-overview.md#prerequisites-for-onboarding-hosting-service).
-
-* * *
+* * * 
 
 <a name="frequently-asked-questions-zip-file-replaced-in-storage-account"></a>
 ### Zip file replaced in storage account
@@ -762,16 +973,7 @@ Sample config.json for version 2.0.0.0
         "stage5": "2.0.0.0",
     }
 ```
-**NOTE:** This samples depicts that all stages are serving version 2.0.0.0.
-
-* * * 
-
-<a name="frequently-asked-questions-storage-account-registration"></a>
-### Storage account registration
-
-***Do I need to register a new storage account everytime I need to upload zip file ?***
-
-No. Registering a storage account with the hosting service is one-time process, as specified in . This allows the hosting service to find the latest version of your extension.
+**NOTE**: This samples depicts that all stages are serving version 2.0.0.0.
 
 * * * 
 
@@ -784,24 +986,28 @@ You can ask questions on Stackoverflow with the tag [ibiza-deployment](https://s
 
 * * * 
 
-
 <!--  required section -->
 <a name="glossary"></a>
 ## Glossary
 
  This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
 
-| Term                  | Meaning |
-| ---                   | --- |
-| caching               | Hosting service extensions use persistent caching, index page caching, and manifest caching, among others. |
-| CDN                   | Content Delivery Network | 
-| COGS                  | Cost of Goods Sold | 
-| controller            | The main code that links the application to the operating system, or to the server, for   multitasking, or access to other services. Contains intelligence that becomes a part of the data model when using MVVM modeling instead of MVC modeling. |
-| DIY                   | Do It Yourself |
-| endpoint              | A device that is connected to a LAN and accepts or transmits communications across a network. In terms of directories or Web pages, there may be several endpoints that are defined on the same device. |
-| Enhanced monitoring   |  |
-| MDS                   |  | 
-| public endpoint       | |
-| RP                    | Resource Provider |
-| server-side code      | |
-| zip file              | The extracted deployment artifacts that are generated during the build.  They and the  `config.json` file will be deployed to a public endpoint.  |
+| Term                 | Meaning |
+| ---                  | --- |
+| caching              | Hosting service extensions use persistent caching, index page caching, and manifest caching, among others. |
+| CDN                  | Content Delivery Network | 
+| COGS                 | Cost of Goods Sold | 
+| controller           | The main code that links the application to the operating system, or to the server, for   multitasking, or access to other services. Contains intelligence that becomes a part of the data model when using MVVM modeling instead of MVC modeling. |
+| DIY                  | Do It Yourself |
+| EV2                  | Express Version 2 |
+| Express Version 2    | Safe, secure and compliant way to roll out services to multiple regions across public and private clouds.  | 
+| endpoint             | A device that is connected to a LAN and accepts or transmits communications across a network. In terms of directories or Web pages, there may be several endpoints that are defined on the same device. |
+| Enhanced monitoring  |  |
+| jit                  | Just In Time | 
+| MDS                  |  Multilayer Director Switch | 
+| public endpoint      | |
+| RP                   | Resource Provider |
+| SAW                  | Secure Admin Workstation | 
+| server-side code     | Scripts that are located on a server that produce customized responses for each client request to the website, as opposed to the web server serving static web pages. |
+| WARM                 | Windows Azure Release Management |
+| zip file             | The extracted deployment artifacts that are generated during the build.  They and the  `config.json` file will be deployed to a public endpoint.  |

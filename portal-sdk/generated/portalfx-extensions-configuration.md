@@ -163,7 +163,7 @@ The Azure portal uses five different extension configuration files to manage the
 
 ### Extension Stamps
 
-Because the hosting service provides a mechanism for deploying extensions using safe deployment practices, the portal will load the version of the extension that is based on the region from where the customer is accessing the portal. For more details, see the Hosting Service documentation located at [https://github.com/Azure/portaldocs/blob/dev/portal-sdk/templates/portalfx-extension-hosting-service.md](https://github.com/Azure/portaldocs/blob/dev/portal-sdk/templates/portalfx-extension-hosting-service.md).
+Because the hosting service provides a mechanism for deploying extensions using safe deployment practices, the portal will load the version of the extension that is based on the region from where the customer is accessing the portal. For more details, see the Hosting Service documentation located at [portalfx-extensions-hosting-service.md](portalfx-extensions-hosting-service.md).
 
 If the Legacy DIY deployment registration format is used, then the portal will always serve the stamp that is registered in the ```uri```. In the preceding  examples, the portal will always serve main stamp of the extension.
 
@@ -383,6 +383,8 @@ When the development team wants to subscribe to these changes, ask them to make 
 ***How do I load different versions of an extension?***
 
 Understanding which extension configuration to modify is located at [portalfx-extensions-configuration-overview.md#understanding-which-extension-configuration-to-modify](portalfx-extensions-configuration-overview.md#understanding-which-extension-configuration-to-modify).
+
+
 
 
 <a name="portal-extensions-configuration-glossary"></a>

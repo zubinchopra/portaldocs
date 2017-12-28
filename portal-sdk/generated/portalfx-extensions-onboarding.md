@@ -89,8 +89,6 @@ The extension is in private preview stage when it has been registered into the A
 
 Some teams also leverage this phase for testing the business model by providing a specific URL to their customers that allows them to access this extension. For more information about providing access to a limited set of customers, see [portalfx-hidden-extension-feedback.md](portalfx-hidden-extension-feedback.md).
 
-<!--TODO: Determine whether portalfx-extensions-private-preview.md be a better title. -->
-
 The developer can then modify the extension until it meets specific criteria for usability, reliability, performance, and other factors. The criteria are located at [Exit Criteria and Quality Metrics](portalfx-extensions-exitCriteria.md). 
 
 When the criteria are met, the developer starts the processes that will move the extension from the private preview state to the public preview state. They should also start the CSS onboarding process with the CSS team at least three months previous to public preview. The CSS onboarding process requires information like the disclosure level, and the key contacts for the release. It allows the appropriate teams enough time to ensure that customers of the extension have access to Azure support and other permissions necessary to access the site.  To start the process, send an email to ibiza-css@microsoft.com. For more information about CSS contacts, see [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md). For more information about the CSS onboarding process, see [http://spot/intake](http://spot/intake).
@@ -146,6 +144,8 @@ Perform the following tasks to become part of Azure portal extension developer c
 1. [Develop and deploy the extension](#develop-and-deploy-the-extension)
 
 1. [Register the extension](#register-the-extension)
+
+You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
 
 <a name="portal-extensions-for-developers-development-procedures-join-dls-and-request-permissions"></a>
 ### Join DLs and request permissions
@@ -230,6 +230,7 @@ Read the following documents from the Azure Portal UI team site.  Our doc site p
 | Private Preview, Public Preview, and GA       | Portal Extension Development Phases, located at [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md) |
 | How it Works	                                | Getting Started, located at [portalfx-howitworks.md#getting-started](portalfx-howitworks.md#getting-started)
 | Build an empty extension                      | Creating An Extension, located at [portalfx-extensions-developerInit.md](portalfx-extensions-developerInit.md) |
+| Portal environments and extension configurations | [portalfx-extensions-branches.md](portalfx-extensions-branches.md) | 
 | Experiment with sample code	                  | Sample Extensions, located at [portalfx-extensions-samples.md](portalfx-extensions-samples.md) |
 
 <a name="portal-extensions-for-developers-development-procedures-develop-and-deploy-the-extension"></a>
@@ -337,7 +338,7 @@ For more information about performance and reliability, see the following resour
 
   * Telemetry Access for access 
         
-    [http://aka.ms/portalfx/docs/telemetryaccess](http://aka.ms/portalfx/docs/telemetryaccess)
+    [portalfx-telemetry-getting-started.md](portalfx-telemetry-getting-started.md)
 
   * Query - including test/dev traffic
 
@@ -346,8 +347,6 @@ For more information about performance and reliability, see the following resour
 * Checklist
 
     [portalfx-performance.md](portalfx-performance.md)
-        
-   [http://aka.ms/portalfx/performance/checklist](http://aka.ms/portalfx/performance/checklist)
 
 * Portal COP (Telemetry)
 
@@ -359,8 +358,6 @@ For more information about performance and reliability, see the following resour
 Every extension meets the reliability Service Level Agreement (SLA). There are some reliability metrics should be met previous to enabling the extension in the production environment; however, extensions must be enabled in MPAC in order to start tracking reliability. Meeting the reliability bar is a requirement for public preview or GA.
 
 MPAC and PROD reliability are included in weekly status emails and each team is expected to investigate regressions.
-
-<!-- TODO:  Is there a link to information about the weekly status email for MPAC and PROD reliability?? -->
 
 We require at least 100 loads of the UX (extension/blade/tiles) to get a signal, if you cannot generate that traffic authentically in the expected timeframe, please hold a bug bash to increase traffic.
 
@@ -407,15 +404,13 @@ Extensions and Resource Providers (RPs) are responsible for validating all input
 
 Services that use ARM template deployment and other ARM-based services should also validate resource provider registration, permissions, and deployment to avoid common issues and improve extension success rates. Validating against some factors is required for the preview and GA phases.
 
-Check the Power BI Dashboard for Service Level Agreements (SLA) that are associated with Creating extensions. The Ibiza Extension Perf/Reliability/Usage Dashboard is located at [aka.ms/ibizaperformance](aka.ms/ibizaperformance).
+Check the Power BI Dashboard for Service Level Agreements (SLA) that are associated with Creating extensions. The Ibiza Extension Perf/Reliability/Usage Dashboard is located at [http://aka.ms/ibizaperformance](http://aka.ms/ibizaperformance).
 
 It is important to meet the success rate previous to moving the extension to the next phase, because various phases are associated with service level agreements and other items that are affected if an extension does not work.  For example, extensions with a success rate below 99% will result in sev 2 incidents. Also, if the success rate drops by 5% during a rolling 24-hour period that contains at least 50 Creates, a sev 2 incident will be filed. This applies to every error that causes Creates to fail when the `Create` button is clicked.
 
 Success rates are a non-blocking requirement.  Some exceptions can be granted to move an extension from the private preview stage to the public preview stage, but in general, the overall customer experience is reduced.
    
 For more information about creating success, see [portalfx-create.md#validation](portalfx-create.md#validation).
-
-<!-- TODO:  portalfx-create.md has a section named Validation, but it does not have a link.     -->
 
 <a name="portal-extensions-for-developers-resource-move"></a>
 ## Resource move
@@ -596,7 +591,30 @@ The SharePoint Sparta Onboarding FAQ is located at [http://sharepoint/sites/Azur
   Production certs must follow your organization’s PROD cert process. 
 
  **NOTE** Do not use the SSL Admin site for production certs.
+
  * * *
+ ### Compile on Save
+
+ ***What is Compile on Save ?**
+Compile on Save is a TypeScript option that   . To use it, make sure that TypeScript 2.0.3 was installed on your machine. The version can be verified by executing the following  command:
+
+```bash
+$>tsc -version
+```
+Then, verify that when a typescript file is saved, that  the following text is displayed in the bottom left corner of your the visual studio application.
+
+![alt-text](../media/portalfx-ide-setup/ide-setup.png "CompileOnSaveVisualStudio")
+
+ * * *
+
+<a name="portal-extensions-for-developers-frequently-asked-questions-other-onboarding-questions"></a>
+### Other onboarding questions
+
+***How can I ask questions about onboarding ?***
+
+You can ask questions on Stackoverflow with the tag [onboarding](https://stackoverflow.microsoft.com/questions/tagged/onboarding).
+
+
    
 <a name="portal-extensions-for-developers-contacts"></a>
 ## Contacts
@@ -604,8 +622,6 @@ The SharePoint Sparta Onboarding FAQ is located at [http://sharepoint/sites/Azur
 For assistance with the prerequisites for onboarding Management UI, contact the following people.  
 
 If the following table is not current, please send a pull request to update the the contact list. For more information on how to send a pull request, see [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
-
-<!-- TODO: validate person names against links in portalfx-onboarding.md -->
 
 | Function                                      | Azure Stakeholder                          | Contact |
 | --------------------------------------------- | -----------------------------------------  |  --- |
@@ -619,7 +635,7 @@ If the following table is not current, please send a pull request to update the 
 | Business model review                         | L&R - Operations - GD\&F; Stacey Ellingson | ibiza-bmr@microsoft.com |
 | Create success                                | Balbir Singh                               | ibiza-create@microsoft.com |
 | CSS Support                                   | Wes Penner; CEGRM                          | ibiza-css@microsoft.com |
-| External Partner Contact                      |                                            | ibizaFXPM@microsoft.com |
+| External Partner Contact                      |                                            | ibizafxpm@microsoft.com |
 | Fx Coverage 	                                | Adam Abdelhamed                               | ibiza-onboarding@microsoft.com |
 | Localization                                  | Bruno Lewin                                | ibiza-interntnl@microsoft.com |
 | Onboarding kickoff                            | Leon Welicki; Adam Abdelhamed  | ibiza-onboarding@microsoft.com |

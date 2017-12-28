@@ -85,7 +85,7 @@ These best practices are in addition to the techniques that are documented in to
 
 ***What is the best environment for sideloading during initial testing?***
 
-It is best practice to sideload an extension from the localhost environment until The FAQs for debugging extensions is located at [portalfx-extensions-hosting-service.md](portalfx-extensions-hosting-service.md).
+ The FAQs for debugging extensions is located at [portalfx-extensions-hosting-service.md](portalfx-extensions-hosting-service.md).
 
 * * *
 
@@ -115,6 +115,8 @@ Please checkout the stackoverflow post: [https://stackoverflow.microsoft.com/que
 You need to allow the Azure Portal to frame your extension URL. For more information, [click here](portalfx-creating-extensions.md).
 
 * * *
+
+
 
 <a name="sideloading-an-extension-glossary"></a>
 ## Glossary

@@ -66,7 +66,7 @@ All the pull requests should be sent first to the dev branch. To add or update o
 
     **NOTE**:  Use the commit hash that was returned from the previous `git commit` command. It can also be found on the site that is located at [https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/commits](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/commits).
 
-1. Create a work item and associate it with the commit. Use the site located at [https://aka.ms/portalfx/publishing](https://aka.ms/portalfx/publishing). Click the `New pull request` button, then select the branch that contains the staged changes in the first dropdown box.  Select the target branch in the second dropdown box. In the following example, the developer is requesting to move configuration changes from their `extensionupdate` branch to the `dev` branch.
+1. Create a work item and associate it with the commit. Use the site located at [https://aka.ms/portalfx/pullrequest](https://aka.ms/portalfx/pullrequest). Click the `New pull request` button, then select the branch that contains the staged changes in the first dropdown box.  Select the target branch in the second dropdown box. In the following example, the developer is requesting to move configuration changes from their `extensionupdate` branch to the `dev` branch.
 
    ![alt-text](../media/portalfx-extensions-publishing/pull-request.png "Create Pull Request")
 
