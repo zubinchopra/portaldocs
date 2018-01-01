@@ -2,10 +2,30 @@
 # Azure portal extension development documentation
 
 <details>
-  <summary>1. Getting Started</summary>
+  <summary>1. Onboarding</summary>
+
+1.1 [Introduction](portalfx-onboarding-introduction.md)
+
+1.2 [Onboarding Azure](portalfx-onboarding-azure.md)
+
+1.3 [Onboarding Azure Portal](portalfx-onboarding-portal-extension.md)
+
+1.4 [Onboarding different environments of Azure Portal](portalfx-extensions-branches.md)
+
+1.5 [Managing your extension's configuration in Azure portal](portalfx-extensions-configuration-scenarios.md)
+
+1.6 [Onboarding Checklist for Azure Portal](portalfx-customer-experience-metrics.md)
+
+1.7 [Pulishing your extension to Marketplace](portalfx-extensions-forDevelopers-procedures.md)
+
+1.8 Ask Questions on [Stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)
+
+</details>
+
+<details>
+  <summary>2. Getting Started</summary>
 
 Azure portal extension development is supported on the Microsoft Windows 8, Windows Server 2012 R2, and Windows 10.
-
 
 ### 1.1 Installation
 
