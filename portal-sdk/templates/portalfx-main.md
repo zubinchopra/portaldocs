@@ -116,7 +116,6 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Validating extension registeration with hosting service]
 * [Versioning your extension](portalfx-extension-versioning.md)
 * [Deploying your extension using Express V2 + Hosting Service]
-* [Deploying your extension using Express V2 + Hosting Service]
 * [SLA for registering extension with hosting service]
 * [Ask Questions on Stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)
 
@@ -199,17 +198,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 </details>
 
 <details>
-  <summary>Setting up infrastructure for different domains</summary>
-
-* Domain Configuration
-    * [When to use dynamic configuration](portalfx-domain-based-configuration.md#domain-based-configuration)
-    * [How to use dynamic configuration](portalfx-domain-based-configuration-pattern.md#expected-design-pattern)
-    * [Configuration](portalfx-dictionaryconfiguration.md)
-    * [Sample for accessing dynamic configuration](portalfx-domain-based-configuration-example.md)
-</details>
-
-<details>
-  <summary>6. Extension Lifecycle</summary>
+  <summary>Extension Lifecycle</summary>
 
 ## [Extensions]
 * [What is an extension?](portalfx-howitworks.md#how-extensions-work)
@@ -329,6 +318,16 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 ### HTML template + Knockout + Controls
     * Include "why no access to DOM?"
 
+### Debugging
+
+* Using Azure portal's Debug tool 
+* Debugging extension load failures
+* Debugging console errors 
+* [Debugging the Javascript](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-debugging.md#debugging-javascript)
+* [Debugging the knockout](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-debugging.md#debugging-knockout)
+* [Debugging the data stack](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-debugging.md#debugging-the-data-stack)
+* Testing in production
+* Marking automated tests as test/synthetic traffic
 </details>
 
 <details>
@@ -410,25 +409,16 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Submit Style UI]
     * [Save/ Cancel Button](portalfx-editscopeless-forms.md#other-css-classes-that-can-be-useful)
     * [Legacy Action Bar](portalfx-fxcontrols-editscope-forms.md)
+* [Adding validation to form fields]
+* [Adding Custom validation to form fields]
 * [Prompt user to Save/Discard changes](portalfx-editscopeless-forms.md#customizing-alert-on-form-close)
-* [EditScopeless Forms](portalfx-editscopeless-forms.md)
+* [Adding user feedback on Save operation using InfoBox]
+* [Adding user feedback on Long running operation using Notifications]
+* Customize styling of your controls using Custom Controls
 * [Legacy Editscope based Forms](portalfx-forms.md)
 * [Using Editscopeless controls in EditScoped Forms](portalfx-fxcontrols-editscope-forms.md)
 
-## Advanced Styling
-* Custom Controls: Customizing styling of your controls
-
 </details>
-
-
-<details>
-  <summary>Publishing Notifications </summary>
-
-* [Client Side Events]
-* [Server Events]
-* [Publishing Notifications through IRIS]
-</details>
-
 
 <details>
   <summary>Calling ARM and other backend APIs</summary>
@@ -438,6 +428,31 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
     * [Authentication](portalfx-authentication.md#calling-arm)
     * [GET calls to ARM](portalfx-data.md#making-authenticated-ajax-calls)
 * [Making Ajax calls to servies other than ARM](portalfx-authentication.md#calling-other-services)
+</details>
+
+
+<details>
+  <summary>Publishing Notifications </summary>
+
+* [Client Side Events]
+* [Server Side Events]
+* [Publishing Notifications through IRIS]
+
+</details>
+
+<details>
+  <summary>Advanced Styling Options</summary>
+
+* CSS Style sanitization
+* Adding Custom CSS
+* [Layout classes]
+* [Typography]
+* [Adding custom Icons]
+* [Adding Badges to Icons]
+* [Themed color classes] (https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-style-guide-themed-color-classes.md#style-guide-themed-color-classes)
+* Coloring to convey status
+* Coloring to differentiate data
+
 </details>
 
 
@@ -459,8 +474,76 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
     * [Legacy Data Atomization](portalfx-data-atomization.md#data-atomization)
 </details>
 
+<details>
+  <summary>Logging </summary>
+
+* [Logging](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/logging)
+</details>
 
 
+<details>
+  <summary>Telemetry - Only for First party extensions </summary>
+
+## 1. Telemetry
+* Portal Telemetry Overview
+* Set up and verify telemetry logging from your extension
+* Available Power BI Dashboards
+* Collecting Feedback From Your Users
+* Requesting access to portal telemetry data
+* Accessing raw events in Kusto
+
+## 2. Monitoring your resource creation Telemetry
+
+* What is resource creation telemetry ?
+* Why is resource creation telemetry monitored ?
+* How is resource creation telemetry calculated ?
+* Monitoring your create telemetry through Power BI Dashboards
+* Trobuleshooting failures in create telemetry 
+* Alerting for resource creation failures
+
+
+## 2. Monitoring your extension's performance
+
+* Why is extension performance monitored ?
+* How is extension performance monitored ?
+* How is your extension's performance calculated ?
+
+* Best practices for improving extension performance 
+
+
+## 3. Monitoring your extension's reliability
+
+* Why is extension reliability monitored ?
+* How is extension reliability monitored ?
+* How is your extension's reliability calculated ?
+* Best practices for improving extension reliabhility
+
+## 4. Monitoring your extension's availability 
+
+* Why is extension availability monitored ?
+* How is extension availability monitored ?
+* How is your extension's availability calculated ?
+* Configuring alerts for your extension availability 
+* Best practices for improving extension availability 
+
+</details>
+
+<details>
+  <summary>Localization / Globalization</summary>
+  
+  * [How loacalization works in framework (Supported languages / fallback)](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-localization.md#understanding-localization)
+  * [Setting up Localization for your extension]
+  * [Setting up Localization for your gallery package]
+  * [Testing locaization with side-loading]
+  * [Formatting numbers, currencies and dates](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-globalization.md#globalization-api)
+</details>
+
+
+<details>
+  <summary>Accessibility </summary>
+  
+  * <!-- TODO: Work with Paymon and Chris to identify what needs to be added here -->
+</details>
 
 <details>
   <summary>Memory Management</summary>
@@ -474,6 +557,17 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
         * [KO factories]
         * [EntityView/QueryView]
 
+</details>
+
+
+<details>
+  <summary>Setting up infrastructure for different domains</summary>
+
+* Domain Configuration
+    * [When to use dynamic configuration](portalfx-domain-based-configuration.md#domain-based-configuration)
+    * [How to use dynamic configuration](portalfx-domain-based-configuration-pattern.md#expected-design-pattern)
+    * [Configuration](portalfx-dictionaryconfiguration.md)
+    * [Sample for accessing dynamic configuration](portalfx-domain-based-configuration-example.md)
 </details>
 
     
