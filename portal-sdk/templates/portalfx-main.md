@@ -54,7 +54,7 @@
 ### 12. Feedback (Alert, Notification, Popover (such as password), below the control error message)
 ### 13. Layout
     - [Docking] (https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/alluplayout)
-    = [Old CSS] (https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/styleguidelayoututilitytitle)
+    - [Old CSS classes] (https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/styleguidelayoututilitytitle)
 ### 14. [Color Palette](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/styleguidecolorpalettetitle)
 ### 15. Hiding vs Disabling items 
 ### 16. Unsupported feature or operation vs Unauthorized access
@@ -160,10 +160,12 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 <details>
   <summary>Obsolete Features</summary>
+
   While these features are not going away anytime soon. We do not recommend taking dependecy on these features for any new development.
-  * [Editable Grid V1]
-  * PDL-Blades for non-create scenarios
-  * Using Edit Scope for non-create scenarios
+  
+### 1. [Editable Grid V1]
+### 2. PDL-Blades for non-create scenarios
+### 3. Using Edit Scope for non-create scenarios
 </details>
 
 
