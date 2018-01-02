@@ -28,6 +28,7 @@
 
 
 </details>
+<br/>
 
 <details>
   <summary>Quick reference for Framework SLAs</summary>
@@ -36,6 +37,7 @@
   2. [Azure portal extension onboarding  SLA](portalfx-extension-onboarding.md)
   3. [Hosting service extension onboarding  SLA](portalfx-hosting-service-onboarding-sla.md)
 </details>
+<br/>
 
 <details>
   <summary>Design Guidelines for your service's user experience</summary>
@@ -64,6 +66,7 @@
 ### 20. Resource creation design
 ### 21. Resource Menu overview design 
 </details>
+<br/>
 
 <details>
   <summary>Getting Started</summary>
@@ -96,11 +99,21 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * Open Context pane from your Hello World Blade
 
 </details>
+<br/>
+
+
+<details>
+  <summary>Sideloading</summary>
+
+### 1. Testing in production
+### 2. Marking automated tests as test/synthetic traffic
+</details>
+<br/>
 
 <details>
   <summary>Onboarding your extension in Azure portal</summary>
 
-### 1.1 Azure portal infrastructure overview
+### 1. Azure portal infrastructure overview
 
 * Understanding Azure portal environments
 * Set up dev, test and prod environment for your extension 
@@ -109,7 +122,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * SLA for deploying changes in Azure portal code to different environments
 * SLA for deploying changes in Hosting Service code to different environments
 
-### 1.2 Setting up deployment infrastructure for your extension
+### 2. Setting up deployment infrastructure for your extension
 
 * [Hosting service: Common Deployment infrastructure for extensions ](portalfx-extension-hosting-service.md)
 * [Onboarding your extension to hosting service]
@@ -119,7 +132,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [SLA for registering extension with hosting service]
 * [Ask Questions on Stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)
 
-### 1.5 Registering your extension
+### 3. Registering your extension
 
 * [Understanding how registeration works](portalfx-extension-onboarding-developer-guide.md)
 * [Register your extension in disabled mode in Dogfood]
@@ -131,7 +144,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Reducing SLA for registering your extension]
 * [Ask Questions on Stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)
 
-### 1.6 Enabling extension for Public Preview/ GA
+### 4. Enabling extension for Public Preview/ GA
 
 * [Tracking the customer experience metrics for Public Preview in public cloud](portalfx-onboarding-exitcriteria.md#exit-criteria-quality-metrics)
 * [Enable your extension in Dogfood]
@@ -144,6 +157,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Reducing SLA for enabling your extension]
 * [Ask Questions on Stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)
 </details>
+<br/>
 
 <details>
   <summary>New Features</summary>
@@ -156,40 +170,40 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [EV2 support for the Extension Hosting Service](portalfx-extension-hosting-service-advanced.md#advanced-section) - *Nuff said*
 * [Multi-Column for Essentials Controls](portalfx-controls-essentials.md) - *Better use of screen real estate*
 * TreeView improvements - *Checkboxes, commands, and Load More / Virtualization*
+
 </details>
+<br/>
 
 <details>
   <summary>Obsolete Features</summary>
 
-  While these features are not going away anytime soon. We do not recommend taking dependecy on these features for any new development.
+While these features are not going away anytime soon. We do not recommend taking dependecy on these features for any new development.
   
 ### 1. [Editable Grid V1]
 ### 2. PDL-Blades for non-create scenarios
 ### 3. Using Edit Scope for non-create scenarios
+
 </details>
+<br/>
 
 
 <details>
   <summary>Upgrading your extension to latest version of SDK and test framework</summary>
 
-## Upgrading Extension to use latest version of SDK
+###  Upgrading Extension to use latest version of SDK
 * [Upgrade policy](portalfx-deploy.md#3-understand-extension-runtime-compatibility)
 * SDK Update alerts(Coming Soon....)
 * [Updating the NuGet packages](portalfx-nuget-overview.md)
 * Updating the C# test framework
 * Updating the msportalfx-test framework
 </details>
+<br/>
 
 <details>
   <summary>Understanding your extension project</summary>
 
-## Basic Configuration(Coming soon..)
-* [Side-loding environment]
-* [Developer mode]
-* [Telemetry]
-* [Any other options ??]
 
-## Extension Configuration(Coming soon..)
+### Extension Configuration(Coming soon..)
 * [Extension Definition]
 * [ConfigurationSettings]
 * [ConfigurationSettings]
@@ -198,6 +212,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Gallery package]
 
 </details>
+<br/>
 
 <details>
   <summary>Extension Lifecycle</summary>
@@ -216,27 +231,38 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Performance implications of referencing another extension]
 * [ When is extension loaded / unloaded]
 </details>
+<br/>
 
 <details>
-  <summary>7. Common Scenarios for your extension</summary>
+  <summary>Common Scenarios for your extension</summary>
 
 #### Common Scenarios for ARM based extensions
 * [Create resource](portalfx-create.md)
-* [List resources ]
+* [Subscription Dropdown]
+* [Location Dropdown]
+* [Resource Group Dropdown]
+* [Pricing Picker]
+* [Pricing Dropdown]
+* [ARM Template deployment](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-provisioning-arm.md#deploying-arm-templates)
+* [List resources / Browse]
+* Resource menu
 * [Resource overview]
+* [Essentials Control]
+* Defining permissions and checking access
+* Resource Tags
+* Resource moves
 
 #### Common Scenarios for Non-ARM based extensions
 * [Create experience](portalfx-create.md)
 * [Custom experience]
 
 </details>
+<br/>
 
 <details>
-  <summary>8. Developing your extension</summary>
-
+  <summary>Developing your extension</summary>
 
 ##  Blades and Parts
-
 * [Introduction](portalfx-ui-concepts.md#ui-concepts)
 
 #### Common Scenarios
@@ -319,18 +345,24 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
     
 ### HTML template + Knockout + Controls
     * Include "why no access to DOM?"
+</details>
+<br/>
 
-### Debugging
+<details>
+  <summary>Debugging</summary>
 
-* Using Azure portal's Debug tool 
+### 1. Using Azure portal's Debug tool 
 * Debugging extension load failures
 * Debugging console errors 
 * [Debugging the Javascript](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-debugging.md#debugging-javascript)
 * [Debugging the knockout](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-debugging.md#debugging-knockout)
 * [Debugging the data stack](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-debugging.md#debugging-the-data-stack)
-* Testing in production
-* Marking automated tests as test/synthetic traffic
+### 2. using Developer Mode
+
 </details>
+<br/>
+
+
 
 <details>
   <summary>Control Libraries</summary>
