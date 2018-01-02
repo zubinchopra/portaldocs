@@ -10,4 +10,6 @@
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-feature-flags-shell.md"}
 
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-feature-flags-services.md"}
+
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-feature-flags-glossary.md"}

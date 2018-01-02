@@ -1,12 +1,14 @@
 
 ## Feature Flags
 
-Extension flags and feature flags are specially-formatted query string parameters that are sent through the portal to extensions and their controller methods.  They are often used while Testing in Production (TIP) to enable and disable features that are maintained in the extension code. Feature flags can only be used on items like form elements or HTML template components; they cannot be used to hide blades, parts, or commands. There is no pre-registration of feature flags because the process of using feature flags is dynamic.
+Extension flags and feature flags are specially-formatted query string parameters that are sent through the portal to extensions and their controller methods.  They are often used while testing in production  to enable and disable features that are maintained in the extension code. Feature flags can only be used on items like form elements or HTML template components; they cannot be used to hide blades, parts, or commands. There is no pre-registration of feature flags because the process of using feature flags is dynamic.
 
 Flags are only accessible by the extension in which they are defined, and therefore are not shared across extensions. Typically, the flag is boolean and has a descriptive name. Most feature flags are set to a value of `true` or `false`, which respectively enables or disables the feature. However, some feature flags send non-boolean values to the extension when more than two options are appropriate to test a specific feature.
 
-The only limitation on developer-designed feature flag names is that they cannot contain underscores. Feature flags are named according to the following rules.
+Features are enabled by appending a flag to the query string, as in the following example: `https://portal.azure.com/?<extensionName>_<flagName>=<value>`, where ```flagName```, without angle brackets, is the feature to enable for the extension. 
 
+The only limitation on developer-designed feature flag names is that they cannot contain underscores. Feature flags are named according to the following rules.
+<!--TODO:  Determine whether the underscore between the extensionName and the flagName is a requirement. -->
 * Must be formatted as `<extensionName><flagName>` (e.g. `azurecomputesomeflag`)
 * Can contain any non-empty value (e.g. `azurecomputesomeflag=true`)
 * Are all lower case
@@ -28,7 +30,15 @@ The only limitation on developer-designed feature flag names is that they cannot
 
 ### Modifying code for feature flags
 
-Developers can create feature flags for extensions, and plan to manage them as a part of the software maintenance process.  Typically, the feature is boolean and has a descriptive name. A value of `true` turns on the feature, and a value of `false` turns it off. The following code examples demonstrate how to turn feature flags on and off inside the code. 
+Developers can create feature flags for extensions, and plan to manage them as a part of the software maintenance process.  Typically, the feature is boolean and has a descriptive name. A value of `true` turns on the feature, and a value of `false` turns it off. 
+
+<!--TODO:  Determine whether the following statement  is factual. Are these code changes with feature flags, code changes with extension definition, or code changes with no flags at all? -->
+For more information about using features that require code changes, see
+[portalfx-logging-from-typescript-and-dotnet.md](portalfx-logging-from-typescript-and-dotnet.md).
+
+<!--TODO:  Determine whether the previous statement  is factual. -->
+
+The following code examples demonstrate how to turn feature flags on and off inside the code. 
 
 <details>
 <summary>TypeScript </summary>
@@ -141,7 +151,7 @@ This option will make these feature flags available in client-side code for all 
 
 <!-- TODO: Determine whether Ibiza contacts for feature flags should be added to the document -->
 <!-- TODO:  determine whether browsecuration affects the Browse menu, the More Services menu, or both -->
-<!-- TODO:  determine [Submit an ibiza-browse partner request](http://aka.ms/new-ibiza-browse-request) is the right link for custom curation  -->
+
 
 </details>
 
