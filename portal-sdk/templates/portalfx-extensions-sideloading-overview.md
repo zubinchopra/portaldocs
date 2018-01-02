@@ -17,6 +17,7 @@ For more information about feature flags that are used in hosting, see [portalfx
 ## Load from test environment
 
 The Portal provides options for sideloading your extension for testing. If you wish to sideload your extension, either as a localhost extension or as a deployed extension, you can set the appropriate query strings and execute the `registerTestExtension` function for deployed extensions. For a localhost extension you can just set a query string. For more information, see [portalfx-extensions-testing-in-production-overview.md#registering-test-extensions](portalfx-extensions-testing-in-production-overview.md#registering-test-extensions).
+
  
 The developer may want to programmatically register a deployed extension with JavaScript and then reload the portal. This step is optional if they use a query string method to load the extension into the browser from the localhost. To load an extension from the test environment or an unregistered source, extension developers can leverage the following approach.
 
