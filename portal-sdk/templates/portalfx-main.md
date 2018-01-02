@@ -2,7 +2,7 @@
 # Azure portal extension development documentation
 
 <details>
-  <summary>1. Onboarding</summary>
+  <summary>Undersrading process for Onboarding your service in Azure portal</summary>
 
 1.1 [Introduction](portalfx-onboarding-introduction.md)
 
@@ -18,12 +18,55 @@
 
 1.7 [Pulishing your extension to Marketplace](portalfx-extensions-forDevelopers-procedures.md)
 
-1.8 Ask Questions on [Stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)
+### 1.8 Extension development resources
+
+* [Start Onboarding]
+* Subscribe to announcements
+* [Update your team's contact information]
+* [Samples Extension](portalfx-sample-extensions.md)
+* [Need Help with onboarding?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)
+
 
 </details>
 
 <details>
-  <summary>2. Getting Started</summary>
+  <summary>Quick reference for Framework SLAs</summary>
+
+  1. [SDK Update SLA](portalfx-sdk-sla.md)
+  2. [Azure portal extension onboarding  SLA](portalfx-extension-onboarding.md)
+  3. [Hosting service extension onboarding  SLA](portalfx-hosting-service-onboarding-sla.md)
+</details>
+
+<details>
+  <summary>Design Guidelines for your service's user experience</summary>
+
+### 1. Ibiza or Azure portal design language
+### 2. Full screen experiences 
+### 3. Maintain Context While Changing Views (menu Blade or resource menu)
+### 4. React Immediately [Prompt notification for long running operations]
+### 5. Explain what just happened (error, warning or success messages)
+### 6. Percieved user performance
+### 7. Icons
+### 8. [Typography](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/styleguidetypographytitle)
+### 9. Commonly used Layouts (Forms , Table (or Grid))
+### 10. Navigation (Toolbar, Menu, Breadcrumb, Tabs, Accordion, Steps)
+### 11. Data Display (Grid, Accordion, Tree, 
+### 12. Feedback (Alert, Notification, Popover (such as password), below the control error message)
+### 13. Layout
+    - [Docking] (https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/alluplayout)
+    = [Old CSS] (https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/styleguidelayoututilitytitle)
+### 14. [Color Palette](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/styleguidecolorpalettetitle)
+### 15. Hiding vs Disabling items 
+### 16. Unsupported feature or operation vs Unauthorized access
+### 17. Journey vs context pane
+### 18. Save and Cancel Button in Toolbar vs Floating vs Docked at Bottom
+### 19. Entry point for your service / blade (Asset, Menu item, toolbar)
+### 20. Resource creation design
+### 21. Resource Menu overview design 
+</details>
+
+<details>
+  <summary>Getting Started</summary>
 
 Azure portal extension development is supported on the Microsoft Windows 8, Windows Server 2012 R2, and Windows 10.
 
@@ -52,23 +95,30 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * Open Blade from your Hello World Blade
 * Open Context pane from your Hello World Blade
 
+</details>
 
-### 1.4 Extension development resources
+<details>
+  <summary>Onboarding your extension in Azure portal</summary>
 
-* [Start Onboarding]
-* Subscribe to announcements
-* [Update your team's contact information]
-* [Samples Extension](portalfx-sample-extensions.md)
-* [Understand what it takes to build great extension](portalfx-onboarding-exitcriteria.md#exit-criteria-quality-metrics)
-* [Need Help with onboarding?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)
+### 1.1 Azure portal infrastructure overview
 
-### 1.4 Deploying your extension
+* Understanding Azure portal environments
+* Set up dev, test and prod environment for your extension 
+* Understanding hosting service environments 
+* Understanding Safe deployment for Azure portal and extensions
+* SLA for deploying changes in Azure portal code to different environments
+* SLA for deploying changes in Hosting Service code to different environments
 
-* [Deploy your extension using hosting service](portalfx-extension-hosting-service.md)
-* [Register your extension with hosting service]
+### 1.2 Setting up deployment infrastructure for your extension
+
+* [Hosting service: Common Deployment infrastructure for extensions ](portalfx-extension-hosting-service.md)
+* [Onboarding your extension to hosting service]
 * [Validating extension registeration with hosting service]
+* [Versioning your extension](portalfx-extension-versioning.md)
+* [Deploying your extension using Express V2 + Hosting Service]
+* [Deploying your extension using Express V2 + Hosting Service]
 * [SLA for registering extension with hosting service]
-* [Need Help with hosting service?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)
+* [Ask Questions on Stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)
 
 ### 1.5 Registering your extension
 
@@ -80,11 +130,11 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Register your extension in disabled mode in FairFax]
 * [SLA for registering your extension]
 * [Reducing SLA for registering your extension]
-* [Need Help with hosting service?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)
+* [Ask Questions on Stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)
 
 ### 1.6 Enabling extension for Public Preview/ GA
 
-* [Understand the crtieria for Public Preview in public cloud](portalfx-onboarding-exitcriteria.md#exit-criteria-quality-metrics)
+* [Tracking the customer experience metrics for Public Preview in public cloud](portalfx-onboarding-exitcriteria.md#exit-criteria-quality-metrics)
 * [Enable your extension in Dogfood]
 * [Enable your extension in Public cloud]
 * [Updating extension configuraiton for national clouds](portalfx-deployment-sovereign.md)
@@ -93,11 +143,11 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Enable your extension in FairFax]
 * [SLA for enabling your extension]
 * [Reducing SLA for enabling your extension]
-* [Need Help with enabling your extension ?](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)
+* [Ask Questions on Stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)
 </details>
 
 <details>
-  <summary>2. What's new</summary>
+  <summary>New Features</summary>
 
 * [No-PDL Blades](portalfx-no-pdl-programming.md#defining-blades-and-parts-using-typescript-decorators-aka-no-pdl) - *Reduces the number of files and concepts to build UI*
 * [Forms without edit scope](portalfx-editscopeless-forms.md) - *More intuitive APIs for building forms*
@@ -109,9 +159,17 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * TreeView improvements - *Checkboxes, commands, and Load More / Virtualization*
 </details>
 
+<details>
+  <summary>Obsolete Features</summary>
+  While these features are not going away anytime soon. We do not recommend taking dependecy on these features for any new development.
+  * [Editable Grid V1]
+  * PDL-Blades for non-create scenarios
+  * Using Edit Scope for non-create scenarios
+</details>
+
 
 <details>
-  <summary>3. Upgrading from previous versions of SDK and test framework</summary>
+  <summary>Upgrading your extension to latest version of SDK and test framework</summary>
 
 ## Upgrading Extension to use latest version of SDK
 * [Upgrade policy](portalfx-deploy.md#3-understand-extension-runtime-compatibility)
@@ -122,7 +180,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 </details>
 
 <details>
-  <summary>4. Understanding your extension configuration</summary>
+  <summary>Understanding your extension project</summary>
 
 ## Basic Configuration(Coming soon..)
 * [Side-loding environment]
@@ -141,12 +199,8 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 </details>
 
 <details>
-  <summary>5.  Versioning, Packaging and Deploying for different environments</summary>
+  <summary>Setting up infrastructure for different domains</summary>
 
-* [Versioning your extension](portalfx-extension-versioning.md)
-* [Deploying an extension ](portalfx-extension-hosting-service.md#extension-hosting-service)
-* [In the public cloud](portalfx-extension-onboarding-developer-guide.md)
-* [Improving extension reliability/ Adding peristent caching](portalfx-extension-persistent-caching-of-scripts.md)
 * Domain Configuration
     * [When to use dynamic configuration](portalfx-domain-based-configuration.md#domain-based-configuration)
     * [How to use dynamic configuration](portalfx-domain-based-configuration-pattern.md#expected-design-pattern)
@@ -173,10 +227,25 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 </details>
 
 <details>
-  <summary>7. Developing your extension</summary>
+  <summary>7. Common Scenarios for your extension</summary>
+
+#### Common Scenarios for ARM based extensions
+* [Create resource](portalfx-create.md)
+* [List resources ]
+* [Resource overview]
+
+#### Common Scenarios for Non-ARM based extensions
+* [Create experience](portalfx-create.md)
+* [Custom experience]
+
+</details>
+
+<details>
+  <summary>8. Developing your extension</summary>
 
 
 ##  Blades and Parts
+
 * [Introduction](portalfx-ui-concepts.md#ui-concepts)
 
 #### Common Scenarios
@@ -198,7 +267,6 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [MenuBlade]
 * [Resource Menu Blade]
 * [Context Pane]
-
 
 * How/when are Blades/Parts invoked?  How can I get my Blade/Part in front of more users?
 * [Blades]
@@ -264,29 +332,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 </details>
 
 <details>
-  <summary>8. Data Layer</summary>
-
-* [Area](portalfx-data.md#organizing-your-extension-source-code-into-areas)
-* Making Ajax calls to ARM and ARM APIs
-    * [Authentication](portalfx-authentication.md#calling-arm)
-    * [GET calls to ARM](portalfx-data.md#making-authenticated-ajax-calls)
-* [Making Ajax calls to servies other than ARM](portalfx-authentication.md#calling-other-services)
-* [Data Context](portalfx-data.md#shared-data-access-using-datacontext)
-* [Data Views](portalfx-data.md#using-dataviews)
-* [Data Cache](portalfx-data.md#using-datacache-to-load-and-cache-data)
-    * [GET calls to ARM with Data Cache](portalfx-data.md#querying-for-data)
-    * [Controlling the AJAX calls for Data Cache](portalfx-data.md#loading-data)
-    * [Optimizing redundant calls](portalfx-data.md#loading-data)
-    * [Auto-refreshing client data](portalfx-data-refreshingdata.md#auto-refreshing-client-side-data-aka-polling)
-    * [Shaping and filtering data](portalfx-data-projections.md) // TODO: Find better name
-    * [Master Detail](portalfx-data.md#working-with-data)
-    * [Adressing Data Merge Failures](portalfx-data.md#data-merging)
-    * [Legacy accessing C# model objects](portalfx-data-typemetadata.md#type-metadata)
-    * [Legacy Data Atomization](portalfx-data-atomization.md#data-atomization)
-</details>
-
-<details>
-  <summary>9. Control Libraries</summary>
+  <summary>Control Libraries</summary>
 
 ## [Controls](portalfx-controls.md)
 
@@ -352,9 +398,15 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Location dropdown](portalfx-create.md#locations-legacy-dropdown)
 * [Pricing Dropdown](portalfx-create.md#pricing-dropdown)
 
+</details>
+<details>
+  <summary>Control Libraries</summary>
+
 ## Forms
 
-* [Building UI for Form](portalfx-forms.md#laying-out-your-ui-on-the-blade)
+* [Developing Forms ](Doc with all controls in HTML rather than in typescript)
+* [Developing Forms in Typescript](portalfx-forms.md#laying-out-your-ui-on-the-blade)
+* Left aligned label vs top aligned label forms
 * [Submit Style UI]
     * [Save/ Cancel Button](portalfx-editscopeless-forms.md#other-css-classes-that-can-be-useful)
     * [Legacy Action Bar](portalfx-fxcontrols-editscope-forms.md)
@@ -364,12 +416,54 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [Using Editscopeless controls in EditScoped Forms](portalfx-fxcontrols-editscope-forms.md)
 
 ## Advanced Styling
+* Custom Controls: Customizing styling of your controls
 
 </details>
 
 
 <details>
-  <summary>10. Memory Management</summary>
+  <summary>Publishing Notifications </summary>
+
+* [Client Side Events]
+* [Server Events]
+* [Publishing Notifications through IRIS]
+</details>
+
+
+<details>
+  <summary>Calling ARM and other backend APIs</summary>
+
+* [Area](portalfx-data.md#organizing-your-extension-source-code-into-areas)
+* Making Ajax calls to ARM and ARM APIs
+    * [Authentication](portalfx-authentication.md#calling-arm)
+    * [GET calls to ARM](portalfx-data.md#making-authenticated-ajax-calls)
+* [Making Ajax calls to servies other than ARM](portalfx-authentication.md#calling-other-services)
+</details>
+
+
+<details>
+  <summary>Data Layer</summary>
+
+* [Data Context](portalfx-data.md#shared-data-access-using-datacontext)
+* When to use Data Views and Data Cache?
+* [Data Views](portalfx-data.md#using-dataviews)
+* [Data Cache](portalfx-data.md#using-datacache-to-load-and-cache-data)
+    * [GET calls to ARM with Data Cache](portalfx-data.md#querying-for-data)
+    * [Controlling the AJAX calls for Data Cache](portalfx-data.md#loading-data)
+    * [Optimizing redundant calls](portalfx-data.md#loading-data)
+    * [Auto-refreshing client data](portalfx-data-refreshingdata.md#auto-refreshing-client-side-data-aka-polling)
+    * [Shaping and filtering data](portalfx-data-projections.md) // TODO: Find better name
+    * [Master Detail](portalfx-data.md#working-with-data)
+    * [Adressing Data Merge Failures](portalfx-data.md#data-merging)
+    * [Legacy accessing C# model objects](portalfx-data-typemetadata.md#type-metadata)
+    * [Legacy Data Atomization](portalfx-data-atomization.md#data-atomization)
+</details>
+
+
+
+
+<details>
+  <summary>Memory Management</summary>
 
 ## [Extension memory management / Lifetime manager](portalfx-data-lifetime.md#lifetime-manager)
 * Content:
