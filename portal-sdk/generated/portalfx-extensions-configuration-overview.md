@@ -74,7 +74,7 @@ Its options are as follows.
 
       **NOTE**: For extensions that are not using a hosting service, we recommend that the `uri` follow the standard CNAME pattern, as specified in [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md). 
 
-  When the user loads the extension in the portal, it is loaded from the `uri` specified in the extension configuration. To update the ```uri```, send a pull request as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md). Additional extension stamps can be loaded by specifying the stamp name in the  `uri` and specifying the feature flag `feature.canmodifystamps=true`. For more information about feature flags, see [portalfx-extension-flags.md](portalfx-extension-flags.md).
+  When the user loads the extension in the portal, it is loaded from the `uri` specified in the extension configuration. To update the ```uri```, send a pull request as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md). Additional extension stamps can be loaded by specifying the stamp name in the  `uri` and specifying the feature flag `feature.canmodifystamps=true`. For more information about feature flags, see [portalfx-extensions-feature-flags.md](portalfx-extensions-feature-flags.md).
 
 * **uriFormat**: Required. The `uri` for the extension, followed by a forward slash, followed by a parameter marker that allows modification of the extension stamp.
     
@@ -137,7 +137,7 @@ If the Legacy DIY deployment registration format is used, then the portal will a
 
 Additional stamps can be accessed by using the ```uriFormat``` parameter that is specified in the extension config file.
 
-To use a secondary test stamp, specify the ```feature.canmodifystamps ``` flag, and add a parameter that matches the name of the  extension as registered in the portal, as in the following example.
+To use a secondary test stamp, specify the `feature.canmodifystamps` flag, and add a parameter that matches the name of the  extension as registered in the portal, as in the following example.
 
 ```json
 name: "Microsoft_Azure_Demo",
