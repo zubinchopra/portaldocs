@@ -4,40 +4,40 @@
 <a name="extension-flags"></a>
 # Extension flags
     
-There are three types of flags that are associated with extensions. Using these flags allows the developer to make modifications to the server, to the browser, and to the extension code, regardless of the environment in which the extension is being tested.  Consequently, the purpose of each type of flag is similar but not identical. For example, flags that modify the environment in which the extension is running, instead of the extension itself, are either trace mode flags or diagnostic switches. 
+There are five types of flags that are associated with extensions. The purpose of each type of flag is similar but not identical. For example, flags that modify the browser in which the extension is running are not  flags that modify the extension itself. Extension flags are invoked by appending them to the query string, as in the following example: `https://portal.azure.com/?<extensionName>_<extensionFlag>=<value>`, where ```extensionFlag```, without angle brackets, is the feature to enable for the extension named `extensionName`.
 
-* [portalfx-extensions-feature-flags-trace-mode.md](portalfx-extensions-feature-flags-trace-mode.md)
+Using these flags allows the developer to make modifications to the server, to the browser, and to the extension code, or make use of Azure-supplied extensions, regardless of the stage in which the extension is being tested.  
 
-  These instructions to the debugging environment will temporarily set specific server characteristics, toggle a specific behavior, or enable the logging of specific types of events. 
+**NOTE**: Features that are invoked through the extensiondefinition are outside of the scope of this document.
 
-* [portalfx-extensions-feature-flags-diagnostics.md](portalfx-extensions-feature-flags-diagnostics.md)
+The following table specifies the flags that can be used with the Azure portal and its extensions, categorized by the type of flag.
+| Flag | Purpose | Document | 
+| -- | -- | -- |
+| Trace mode | Instructions to the debugging environment. Temporarily set server characteristics, toggle a behavior, or enable event logging. | [portalfx-extensions-feature-flags-trace-mode.md](portalfx-extensions-feature-flags-trace-mode.md) |
+| Diagnostic switches  |   Directives to JavaScript. For example, the `clientOptimizations` flag changes browser behavior instead of the extension that is running in the browser. Switches that have functionality other than selecting content for the browser `console.log` are outside of the scope of this document.  | [portalfx-extensions-feature-flags-diagnostics.md](portalfx-extensions-feature-flags-diagnostics.md) |
+| Developer features | Allow the extension to specify its own features. Developers can create and maintain their own flags. |  [portalfx-extensions-feature-flags-developer.md](portalfx-extensions-feature-flags-developer.md)  |
+| Shell flags | Connect the developer's extension to Azure API features. The Shell features are maintained by the Azure Portal team. Shell features do not require changes to the code in the extension. |  [portalfx-extensions-feature-flags-shell.md](portalfx-extensions-feature-flags-shell.md) |
+| Service flags | Connect the developer's extension to Azure API extensions. These services are maintained by teams other than the Azure Portal team. Azure services require additions to the code in the developer's extension. |  [portalfx-extensions-feature-flags-services.md](portalfx-extensions-feature-flags-services.md) |
 
-  These are directives to JavaScript. For example, the `clientOptimizations` flag is a directive to the browser instead of the portal extension that is running in the browser. Switches that have functionality other than selecting content for the browser `console.log` are outside of the scope of this document.
-  
-* [portalfx-extensions-feature-flags-developer.md](portalfx-extensions-feature-flags-developer.md)
-
-  These flags connect the extension to testing features that are within the Azure API. Developers can create and maintain their own flags.
-
-*  [portalfx-extensions-feature-flags-shell.md](portalfx-extensions-feature-flags-shell.md)
-
-  These flags connect the extension to testing features that are within the Azure API. The Shell features are maintained by the Azure Portal team.
+<!-- The following sentence is from portalfx-domain-based-configuration-pattern.md. -->
+  Changing the default feature flags that are sent to the extension requires Shell configuration changes and redeployment.
 
 
 <a name="extension-flags-trace-mode-flags"></a>
 ## Trace Mode Flags
 
-Trace mode flags are associated with code that exists inside the portal, and can be configured externally through the `.config` file. The trace mode allows the developer to enable, disable, and filter tracking output. The information it displays is associated with debugging, moreso than with regular operation of the extension. This information is an addition to standard console errors, and it can be used to monitor application execution and performance in a deployed environment.  The errors that are presented in the console assist in fixing extension issues. For more information about trace modes, see [https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/how-to-create-initialize-and-configure-trace-switches](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/how-to-create-initialize-and-configure-trace-switches).
+Trace mode flags are associated with code that exists inside the portal, and can be configured externally through the `.config` file. Trace mode is also enabled by appending flags to the end of the querystring.  For example, [https://portal.azure.com/?trace=diagnostics](https://portal.azure.com/?trace=diagnostics) will enable verbose debugging information in the console. The trace mode allows the developer to enable, disable, and filter tracking output.
 
+The information that trace mode displays is associated with debugging, moreso than with regular operation of the extension. This information is an addition to standard console errors, and it can be used to monitor application execution and performance in a deployed environment.  The errors that are presented in the console assist in fixing extension issues. For more information about trace modes, see [https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/how-to-create-initialize-and-configure-trace-switches](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/how-to-create-initialize-and-configure-trace-switches).
+
+Often the errors that are displayed in the console can lead you down the path of fixing your issues. In addition to viewing the standard errors displayed in the console, it's often useful to load the portal in trace mode. 
  <!--TODO:  Verify whether this section contains all trace modes for the Azure Portal. -->
 
-Trace modes are enabled by appending a flag to the end of the query string. Trace mode syntax is as follows:  ```trace=<settingName>```, 
- where ```settingName```, without angle brackets, is the type of trace to run on the extension.
-
- The Azure trace mode flags are in the following list.
+Trace modes are enabled by appending them to the query string, as in the following example: `https://portal.azure.com/?trace=<settingName>`, where ```settingName```, without angle brackets, is the type of trace to run on the extension. The Azure trace mode flags are in the following list.
 
 **desktop**: Log all shell desktop operations. Useful for reporting errors to the alias.
 
-**diagnostics**: Display the debug hub, and add verbose tracing.
+**diagnostics**: Display the debug hub, and add verbose tracing. Also used for capturing callstacks across iframes.
 
 **inputsset.debug.viewModelOrPdlName**: Break into debugger when `onInputsSet` is about to be called on extension side. This trace can use the `viewmodel` name or the blade or part name to filter trace.
 
@@ -62,23 +62,34 @@ Trace modes are enabled by appending a flag to the end of the query string. Trac
  <!--TODO:  Validate that this statement is accurate for Azure Portal -->
  A variety of diagnostic switches can be used when debugging an extension. Diagnostic switches are slightly different from trace switches in that diagnostics may be controlled by the system, whereas traces are more dependent upon the logic of the code that is being debugged.
 
+ Diagnostic switches are invoked by appending them to the query string, as in the following example: `https://portal.azure.com/?<diagnosticSwitch>=<value>`. The keyboard shortcut CTRL+ALT+D toggles the visibility of the debug tool, as specified in [portalfx-extensions-debugging-overview.md](portalfx-extensions-debugging-overview.md). The yellow sticky that is located at the bottom on the right side of the window can be used to toggle client optimizations and other diagnostic switches.
+
  The diagnostic switches are in the following list.
 
-**clientOptimizations**: Turns off bundling and minification of JavaScript to make debugging easier.    A value of `true` turns on bundling and minification,  and a value of `false` turns them off.
+**clientOptimizations**: Turns off bundling and minification of JavaScript to make debugging easier.    A value of `true` turns on bundling and minification,  and a value of `false` turns them both off. A value of `bundle` turns off JavaScript minification but retains bundling so the Portal still loads fairly quickly.  The value `bundle` is the suggested value for Portal extension debugging. 
+<!-- Determine whether the following note is what was meant by "The 'bundle' value turns off JavaScript minification but retains bundling so the Portal still loads fairly quickly (which it doesn't for 'false' when bundling is turned off and many loose JavaScript files are loaded).". -->
+**NOTE**:  A value of  `false` turns off bundling, but does not unload JavaScript files that were loaded.  
+**Recommendation**:  When debugging an extension, the developer should supply `false` for this flag to disable script minification and to turn on additional diagnostics.
 
   **NOTE**:  This applies to both the portal and extensions source. If testing extensions that are already deployed to production, use the **clientOptimizations** flag instead of the ***IsDevelopmentMode** appSetting. If working in a development environment instead, use the ***IsDevelopmentMode** appSetting instead of the **clientOptimizations** flag to turn off bundling and minification for this extension only. This will speed up portal load during development and testing.  To change the ***IsDevelopmentMode** appSetting, locate the appropriate `web.config` file and change the value of the ***IsDevelopmentMode** appSetting to `true`.
+
+<!--TODO:  Determine whether the nocdn flag is a shell flag or a service flag instead of a diagnostics flag -->
+
+  **nocdn**: A value of `true` will bypass the CDN when loading resources for the portal only. A value of `force` will bypass the CDN when loading resources for the portal and all extensions.
 
 
 
 <a name="extension-flags-feature-flags"></a>
 ## Feature Flags
 
-Extension flags and feature flags are specially-formatted query string parameters that are sent through the portal to extensions and their controller methods.  They are often used while Testing in Production (TIP) to enable and disable features that are maintained in the extension code. Feature flags can only be used on items like form elements or HTML template components; they cannot be used to hide blades, parts, or commands. There is no pre-registration of feature flags because the process of using feature flags is dynamic.
+Extension flags and feature flags are specially-formatted query string parameters that are sent through the portal to extensions and their controller methods.  They are often used while testing in production  to enable and disable features that are maintained in the extension code. Feature flags can only be used on items like form elements or HTML template components; they cannot be used to hide blades, parts, or commands. There is no pre-registration of feature flags because the process of using feature flags is dynamic.
 
 Flags are only accessible by the extension in which they are defined, and therefore are not shared across extensions. Typically, the flag is boolean and has a descriptive name. Most feature flags are set to a value of `true` or `false`, which respectively enables or disables the feature. However, some feature flags send non-boolean values to the extension when more than two options are appropriate to test a specific feature.
 
-The only limitation on developer-designed feature flag names is that they cannot contain underscores. Feature flags are named according to the following rules.
+Features are enabled by appending a flag to the query string, as in the following example: `https://portal.azure.com/?<extensionName>_<flagName>=<value>`, where ```flagName```, without angle brackets, is the feature to enable for the extension. 
 
+The only limitation on developer-designed feature flag names is that they cannot contain underscores. Feature flags are named according to the following rules.
+<!--TODO:  Determine whether the underscore between the extensionName and the flagName is a requirement. -->
 * Must be formatted as `<extensionName><flagName>` (e.g. `azurecomputesomeflag`)
 * Can contain any non-empty value (e.g. `azurecomputesomeflag=true`)
 * Are all lower case
@@ -101,7 +112,15 @@ The only limitation on developer-designed feature flag names is that they cannot
 <a name="extension-flags-feature-flags-modifying-code-for-feature-flags"></a>
 ### Modifying code for feature flags
 
-Developers can create feature flags for extensions, and plan to manage them as a part of the software maintenance process.  Typically, the feature is boolean and has a descriptive name. A value of `true` turns on the feature, and a value of `false` turns it off. The following code examples demonstrate how to turn feature flags on and off inside the code. 
+Developers can create feature flags for extensions, and plan to manage them as a part of the software maintenance process.  Typically, the feature is boolean and has a descriptive name. A value of `true` turns on the feature, and a value of `false` turns it off. 
+
+<!--TODO:  Determine whether the following statement  is factual. Are these code changes with feature flags, code changes with extension definition, or code changes with no flags at all? -->
+For more information about using features that require code changes, see
+[portalfx-logging-from-typescript-and-dotnet.md](portalfx-logging-from-typescript-and-dotnet.md).
+
+<!--TODO:  Determine whether the previous statement  is factual. -->
+
+The following code examples demonstrate how to turn feature flags on and off inside the code. 
 
 <details>
 <summary>TypeScript </summary>
@@ -214,7 +233,7 @@ This option will make these feature flags available in client-side code for all 
 
 <!-- TODO: Determine whether Ibiza contacts for feature flags should be added to the document -->
 <!-- TODO:  determine whether browsecuration affects the Browse menu, the More Services menu, or both -->
-<!-- TODO:  determine [Submit an ibiza-browse partner request](http://aka.ms/new-ibiza-browse-request) is the right link for custom curation  -->
+
 
 </details>
 
@@ -227,16 +246,64 @@ For more information about feature flags, see [https://docs.microsoft.com/en-us/
 <a name="extension-flags-shell-feature-flags"></a>
 ## Shell feature flags
 
-The Ibiza Fx team supports the following feature flags, or Shell feature flags. These flags are only available to the Shell, unless they are configured to be shared. Unless otherwise noted, a value of `true` enables the extension, and a value of `false` disables it.
+The Ibiza Fx team supports the following feature flags, or Shell feature flags. These flags are only available to the Shell, unless they are configured to be shared. Unless otherwise noted, a value of `true` enables the feature, and a value of `false` disables it. 
 
-There are two naming conventions for feature flags. Some feature flags have their own names, like **hubsextension_showserverevents**; however, the syntax for most feature flags assumes they are a property of the feature object, in which case they are invoked with the  syntax: ```feature.<featureName>=true```.
-
+There are three naming conventions for feature flags. Some feature flags have their own names, like **hubsextension_showserverevents**; however, the syntax for most feature flags assumes they are a property of the feature object, in which case they are invoked with the  syntax: ```feature.<featureName>=true```. Otherwise, they are directives to the extension, in which case the syntax is `<extensionName>_<flagName>=<value>`. For more information about developer-specified feature flags in extensions, see [portalfx-extensions-feature-flags-developer.md](portalfx-extensions-feature-flags-developer.md).
+<!-- TODO:  Determine whether hubsextension_showserverevents is the showserverevents feature flag for the hubsextension extension.  -->
 <!--TODO: can an extension name contain capital letters or special characters? -->
 <!--TODO: can the canmodifystamps flag ever be required or included when it is false?  -->
 <!--TODO: is the canmodifystamps always required when extensionName is used? -->
 
+The keyboard shortcut CTRL+ALT+D toggles the visibility of the debug tool, as specified in [portalfx-extensions-debugging-overview.md](portalfx-extensions-debugging-overview.md). The yellow sticky that is located at the bottom on the right side of the window can be used to toggle client optimizations and other shell feature flags.
+
+<a name="extension-flags-shell-feature-flags-the-extensionname-flag"></a>
+### The extensionName flag
+
+The name of the extension can be used as a feature flag. The extension name can contain any character in the ranges between [a-z] or [0-9]. 
+<!--TODO: Determine whether all uses of the extensionName flag require the 'canmodifystamps` flag. -->
+Requires the `canmodifystamps` flag to contain a value of `true` in order to be in effect. Used to enable or disable an extension, use different configuration stamps, and provide other run-time functionality.  A value of `true` will temporarily enable a disabled extension, and allows the use of other flags. A value of `false` will temporarily disable the extension and leave it in hidden mode, as in the following example: `https://portal.azure.com?Microsoft_Azure_DevTestLab=true`.  For more information, see [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
+
+The name of the extension can be used in the query string to access various Shell flags. These are flags that are independent of the **canmodifystamps** flag.
+
+```js
+   &<extensionName>=true,[<otherShellFlags>]
+```
+ How to use the flags that are within the extension is specified in [portalfx-extensions-feature-flags-developer.md](portalfx-extensions-feature-flags-developer.md);  The Shell flags are in the following table.
+    
+  <!--TODO:  Validate that the parameters are used correctly.  -->
+
+  | Directive | Use | 
+  | --------- | --- |
+  | webworker | A value of `true` enables webworkers in the portal for all extensions who have explicitly been set as supporting webworkers in the `extensions.json` file. For example, `webworker=true,Microsoft_Azure_Demo=true,extName=<id>` will allow the webworker whose id is specified in `extName` to use the extension named Microsoft_Azure_Demo. 
+
+
+
+
+<a name="extension-flags-shell-feature-flags-the-canmodifystamps-flag"></a>
+### The canmodifystamps flag
+
+The **canmodifystamps** flag is used in conjunction with the **extensionName** parameter to pass developer-specified values to the extension, to specify which stage or build number to use, and other purposes. When the **canmodifystamps** flag is set to true, the following run options can be enabled.
+
+* Use a secondary test stamp, as specified in [portalfx-extensions-configuration-overview.md#extension-stamps](portalfx-extensions-configuration-overview.md#extension-stamps). If the developer is using a secondary test stamp, enter one of the following into the query string immediately after the **canmodifystamps** flag.
+ ```js
+   &<extensionName>=<stageName>
+   &<extensionName>=<buildNumber>
+   &<extensionName>=<uriFormatPrefix> 
+ ```
+  * **extensionName**: The name of the extension.
+
+    * **stageName**:  The stage that represents a datacenter, as specified in [portalfx-extensions-hosting-service-scenarios.md#sideloading](portalfx-extensions-hosting-service-scenarios.md#sideloading). Use the name that is deployed to a specific stage, for example, stage1.
+    * **buildNumber**:  The build number as specified in [portalfx-extensions-hosting-service-scenarios.md#sideloading](portalfx-extensions-hosting-service-scenarios.md#sideloading). Replace the dots in the build number with the letter 'd', so that build number 1.0.8.31 is represented by 1d0d8d31.
+    * **uriFormatPrefix**: The value to use when building the **uriFormat** string. For example, when **uriFormat** is `//{0}.devtest.ext.azure.com`, the query string `https://portal.azure.com?feature.canmodifystamps=true&Microsoft_Azure_DevTestLab=perf` would cause  the `{0}` in the **uriFormat** string to be replaced with `perf` and attempt to load the extension from `https://perf.devtest.ext.azure.com`.
+    
+ * Create custom deployment environments, as specified in [portalfx-deployment.md](portalfx-deployment.md).
+
 <a name="extension-flags-shell-feature-flags-feature-flags-from-the-feature-object"></a>
 ### Feature flags from the feature object
+
+<!-- Content included from oneNote document named Extension feature flags -->
+
+The following are the feature flags that are invoked with the syntax: `feature.<featureName>=true` unless otherwise noted.
 
 **abovethefold**:  A value of `true` means that the item is above the fold, or is initially displayed on the Web page without scrolling.  A value of `false` means that the item is not above the fold.
 
@@ -245,10 +312,9 @@ There are two naming conventions for feature flags. Some feature flags have thei
 **browsecategories**: Enables categories in the **Browse** menu.
 
 <!--TODO: Validate what the default value is. -->
-**browsecuration={fileName}**:  Switches the curation file used for the **More Services** menu, default favorites, and search results.  The default is ***available***.  To submit a partner request for custom curation to support a specific scenario, see [http://aka.ms/new-ibiza-browse-request](http://aka.ms/new-ibiza-browse-request).
+**browsecuration={fileName}**:  Switches the curation file used for the **More Services** menu, default favorites, and search results.  The default is `available`.  To submit a partner request for custom curation to support a specific scenario, see [https:\\aka.ms\portalfx\uservoice](https:\\aka.ms\portalfx\uservoice).
 
 **browsecurationflags={a,b}**:  Comma-delimited list, in brackets, of additional flags used while rendering browse curation.  The list is in the following table.
-
 
 | Flag        | Purpose |
 | ----------- | --- | 
@@ -265,36 +331,24 @@ There are two naming conventions for feature flags. Some feature flags have thei
 | storage     | Add all storage services to the **Storage** category  
 | vm          | Rename **Compute** to **VMs**, and rename **Web + Mobile** to **App Services** |
 
-**canmodifyextensions**:  Required to support loading untrusted extensions for security purposes. For more information, see [portalfx-testinprod.md](portalfx-testinprod.md).
-
-**canmodifystamps**:  Use a secondary test stamp, as specified in [portalfx-extensions-configuration-overview.md#extension-stamps](portalfx-extensions-configuration-overview.md#extension-stamps). If the developer is using a secondary test stamp, as specified with  **canmodifystamps**=true, enter the following into the query string immediately after the **canmodifystamps** flag.
-
-   `&<extensionName>=<stageName_or_buildNumber>` 
-
-  where
-
-   * **extensionName**: The name of the extension
-   * **stageName_or_buildNumber**:  The stage as specified in [portalfx-extensions-hosting-service-scenarios.md#sideloading](portalfx-extensions-hosting-service-scenarios.md#sideloading). Use the stage name or build number that is deployed to a specific stage, for example, stage1. If using a BuildNumber, replace the dots with the letter 'd', so that build number 1.0.8.31 is represented by 1d0d8d31.
+**canmodifyextensions**:  Required to support loading untrusted extensions for security purposes. For more information, see [portalfx-extensions-testing-in-production-overview.md#registering-a-customized-extension](portalfx-extensions-testing-in-production-overview.md#registering-a-customized-extension).
 
 <!--TODO: Determine whether the following flag is associated with msportalfx-test.md#msportalfx-test-running-ci-->
 **ci**:  Sets up  the portal up to work better with tests by disabling NPS popups and other items.
 
 **consoletelemetry**:  Logs most telemetry events to the browser console.
 
-**customportal**:  Overrides the `ms.portal` redirect when signing in to portal.azure.com. A value of `false` overrides the redirect, and a value of `true`   .
+**customportal**:  Overrides the `ms.portal` redirect when signing in to portal.azure.com. A value of `false` turns off automatic redirection for users in the microsoft.com tenant, and a value of `true`   .
 
-**disableextensions**:  Disables all extensions. A value of `true` disables the extension, and a value of `false` enables it. **NOTE**: Extensions must be enabled explicitly with this flag, including Hubs. For example, the following command disables all extensions, enables hubs, and enables the specific extension to be tested.
-
-`?feature.DisableExtensions=true&HubsExtension=true&MyOtherExtension=true `
-
- 
+**disableextensions**:  Disables all extensions. A value of `true` disables the extension, and a value of `false` enables it. **NOTE**: Extensions must be enabled explicitly with this flag, including Hubs. For example, the following command disables all extensions, enables hubs, and enables the specific extension to be tested. `?feature.DisableExtensions=true&HubsExtension=true&MyOtherExtension=true `
 
 **eagerlyrevealassetpart**:  Asset part will infer resource names from ARM resource IDs, and will auto-reveal its content as soon as it has an icon and name.
 
 **extloadtimeout**:  Extension loading timeout (in seconds???).  Can contain any characters in the ranges [0-9]. The maximum value is .
 
 **fakepreviewassets**: Reserved for team use. <!-- `=true  | Forces Clocks and Hosts (from samples - see Client\V1\Blades\DynamicBlade\ViewModels) to be in preview (for testing only). A value of `true` forces the preview mode,  and a value of `false`       it. -->
-  
+
+<!--TODO: Does the following feature go away with relex? -->
 **fastmanifest**:  Enables relex-based manifest caching.   A value of `true` enables  the caching, and a value of `false`  disables it.
 
 **feedback**:  Disables the feedback pane. A value of `true` enables the feedback pane, and a value of `false`  disables it.
@@ -317,16 +371,20 @@ There are two naming conventions for feature flags. Some feature flags have thei
 
 **pinnedextensions**:  Comma-delimited list, in brackets, of extensions that are never unloaded.  Pins the specified extensions so that they exist during the lifetime of the portal.
 
-**pov2**:  Use ProxiedObservables version 2 (POv2) .
+**pov2**:  Use ProxiedObservables version 2 (POv2), as specified in .
 
-**pov2compatibilitymode**:  Disable compatibility mode for POv2, when enabled.  A value of `true` enables compatibility mode,   and a value of `false`  disables it, so that the extension can run faster.  
+**pov2compatibilitymode**:  Disable compatibility mode for POv2, when enabled.  A value of `true` enables compatibility mode, and a value of `false`  disables it, so that the extension can run faster. 
 
 **prefetch**: Enables or disables a script prefetch feature in the portal for diagnostics purposes. Reserved for team use. 
 
-<!--TODO:  verify whether these relex settings have ceased to exist or are just not used -->
-**relex**:  Comma-delimited list of extensions to load in Relex. **NOTE**: An asterisk ("*") will load all extensions in Relex.
+**rapidtoasts**: Enables or disables toast notifications, and sets the default time that a toast is displayed, in milliseconds.  A value of zero disables toasts. 
 
-**relexsinglecomm=true**:  When run in conjunction with the `feature.relex` flag, runs the corresponding extensions in relex with a single web socket connection to relex for all extensions.
+<!--TODO:  verify whether these relex settings have ceased to exist or are just not used -->
+**relex**:  Not used.  Comma-delimited list of extensions to load in Relex. **NOTE**: An asterisk ("*") will load all extensions in Relex.
+
+**relexsinglecomm=true**:  Not used. When run in conjunction with the `feature.relex` flag, runs the corresponding extensions in relex with a single web socket connection to relex for all extensions.
+
+<!--TODO: Determine whether ?feature.resourcemenu=true belongs here.-->
 
 **seetemplate**: "See template" link in Create blades. A value of `true`         ,  and a value of `false`      . 
 
@@ -341,7 +399,7 @@ There are two naming conventions for feature flags. Some feature flags have thei
 **showpreviewtags**: Hides the preview ribbon on the startboard and shows labels in blade headers when extensions are marked as in preview.   **NOTE**: Does not hide the preview ribbon.
 
 <!--TODO:  verify whether these relex settings have ceased to exist or are just not used -->
-**showrelexdialog**:  Hides the relex dialog that is displayed if performance is slow.
+**showrelexdialog**:  Not used. Hides the relex dialog that is displayed if performance is slow.
 
 **testhubsurl**:  Reserved for team use.
 
@@ -353,40 +411,93 @@ There are two naming conventions for feature flags. Some feature flags have thei
 
 **UserType**: A value of "test" excludes test traffic from Azure reports.
 
+**verbosediagnostics**: Valid values are in the following table.
+| Value | Meaning |
+| ----- | ------- |
+| all   | Includes default diagnostics and all filtered diagnostics in the Ctrl+Alt+A popup window | 
+| permissions |  Includes default diagnostics and the permissions entry in the Ctrl+Alt+A popup window | 
+| assets | Includes default diagnostics and the assets/assetManagement entries in the Ctrl+Alt+A popup window | 
+| desktop | Includes default diagnostics and the desktop entry in the Ctrl+Alt+A popup window | 
+
 **waitforpendingchanges**: Reserved for future use.
 
-<!--TODO:  Validate that the parameters are used correctly.  -->
-**webworker**: Used in conjunction with `<extensionName>=true`. A value of `true` enables webworkers in the portal who have explicitly been set as supporting webworkers in the `extensions.json` file for all extensions. For example,
-
-  ```webworker=true, Microsoft_Azure_Demo=true, extName=``` 
-
-will allow the webworker whose id specified in `extName` to use the specified extension.
 
 <!--TODO: Validate that "before flipping the switch" means enabling an extension in production. -->
+<!--TODO: Validate that this information from the OneNote document is current. -->
+**webworker**: Used in conjunction with **microsoft_azure_compute**. Enables the webworkers for all extensions that have explicitly set supporting webworkers, and forces **microsoft_azure_compute** into a web worker. For example, `feature.webworker=true,microsoft_azure_compute` can be added to the query string. Useful for testing extensions manually or through CI previous to enabling them in production.  
 
-**webworker**: Used in conjunction with **microsoft_azure_compute**. Enables the webworkers <>     for all extensions that have explicitly set supporting webworkers, and forces **microsoft_azure_compute** into a web worker. Useful for testing extensions manually or through CI previous to enabling them in production.  
+<!-- before flipping the switch.-->
 
 <!-- TODO:  Find a name for the feature flags that are not invoked with the "feature.<name> syntax. -->
 
 <a name="extension-flags-shell-feature-flags-features-other-than-the-feature-object"></a>
 ### Features other than the <code>feature</code> object
 
-**extensionName**:  The name of the extension, which is used as a feature flag. Can contain any character in the ranges between [a-z] or [0-9]. Requires the `canmodifystamps` flag to contain a value of `true` in order to be in effect. Used to enable or disable an extension, or use a different configuration stamp.  A value of `true` will temporarily enable a disabled extension, and a value of `false` will temporarily disable it, as in the following example: `https://portal.azure.com?Microsoft_Azure_DevTestLab=true`.  For more information, see [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
-
-**canmodifystamps**: Specifies the extension stamp that is located in a specific stage, or that is associated with a specific build. For more information about enabling and disabling extensions, see [portalfx-deployment.md#enable-or-disable-extensions-onboarding-ibiza](portalfx-deployment.md#enable-or-disable-extensions-onboarding-ibiza). For more information about extension stamps, see [portalfx-extensions-configuration-overview.md#extension-stamps](portalfx-extensions-configuration-overview.md#extension-stamps). 
-
 **hubsextension_showserverevents**:  Automatically shows all error and warning events as notifications.
-
+<!--TODO:  Determine whether microsoft_azure_marketplace is an extension name or an example extension name.  If such is the case, then the following 4 flags should be documented as only the suffix name. -->
 **microsoft_azure_marketplace_Curation**:  Associated with Marketplace extensions. Uses a named curation  . For more information about curations, see   .
 
 **microsoft_azure_marketplace_curation**: Associated with Marketplace extensions. Uses a named curation . For more information about curations, see   .
 
-**microsoft_azure_marketplace_itemhidekey**: Associated with Marketplace extensions. Shows specified Marketplace items that are otherwise hidden. A value of `true` shows the item,  and a value of `false` hides it. Used in conjunction with **extensionName** when the extension is enabled. For more information about hidekeys, see   .
+<!--TODO:  Determine whether microsoft_azure_marketplace_ItemHideKey is different from microsoft_azure_marketplace_itemhidekey. -->
+
+**microsoft_azure_marketplace_itemhidekey**: Associated with Marketplace extensions. Shows specified Marketplace items that are otherwise hidden, or shows unpublished items in the gallery. A value of `true` shows the item,  and a value of `false` hides it. Used in conjunction with **extensionName** when the extension is enabled. For example, if the hidekey is `DevTestLabHidden`,the following will display the extension in the "Create New" experience while it is enabled.
+`https://portal.azure.com?<extensionName>=true&microsoft_azure_marketplace_ItemHideKey=DevTestLabHidden`.
 
 **microsoft_azure_marketplace_quotaIdOverride**:  Associated with Marketplace extensions and the Create Launcher. A value of `true` ,  and a value of `false`. 
 
-**testExtensions**: Contains the name of the extension, and the environment in which the environment is located. It specifies the intent to load the extension `<extensionName>` from the `localhost:<portNumber>` into the current session of the portal. The **name** and **uri**  parameters are as specified in [portalfx-extensions-configuration-overview.md#understanding-the-extension-configuration-in-portal](portalfx-extensions-configuration-overview.md#understanding-the-extension-configuration-in-portal).
+**testExtensions**: Contains the name of the extension, and the environment in which the extension is located. For example, `?testExtensions={"HelloWorld":"https://localhost:44300/"}` specifies the intent to load the `HelloWorld` extension from the localhost port 44300 into the current session of the portal. The **name** and **uri**  parameters are as specified in [portalfx-extensions-configuration-overview.md#understanding-the-extension-configuration-in-portal](portalfx-extensions-configuration-overview.md#understanding-the-extension-configuration-in-portal).
 
+
+<a name="extension-flags-flags-for-services"></a>
+## Flags for Services
+
+Flags are only accessible by the extension in which they are defined, and therefore are not shared across extensions. Typically, the flag is boolean and has a descriptive name. Most feature flags are set to a value of `true` or `false`, which respectively enables or disables the feature. However, some feature flags send non-boolean values to the extension when more than two options are appropriate to test a specific feature.
+
+Features are enabled by appending a flag to the query string, as in the following example: `https://portal.azure.com/?<extensionName>_<flagName>=<value>`, where ```flagName```, without angle brackets, is the feature to enable for the extension. 
+
+<a name="extension-flags-flags-for-services-the-support-extension"></a>
+### The support extension
+
+<!--TODO:  Determine whether there are other extensions that can be used by developer extensions that require code changes in addition to the query string feature flag. -->
+
+Azure provides a support extension so that every resource that subscribes can assess its health, check the audit logs, get troubleshooting information, or open a support ticket. For questions regarding the process please reach out to the support adoption alias <AzSFAdoption@microsoft.com>.
+
+Code must be added to the extension for each setting that will be used.  The following flags are used in coordination with the support extension, as specified in [portalfx-blades-bladeKinds.md#support-settings](portalfx-blades-bladeKinds.md#support-settings).
+
+After the extension has been modified for the support extension, these flags can be used to obtain various types of support.  They are invoked as follows. 
+
+```js
+   &<extensionName>=troubleshootsettingsenabled=true
+   &<extensionName>=healthsettingsenabled=true
+   &<extensionName>=requestsettingsenabled=true
+```
+
+* **troubleshootsettingsenabled**:  A value of `true`   , and a value of `false`    .
+
+* **healthsettingsenabled**: A value of `true`   , and a value of `false`    .
+
+* **requestsettingsenabled**:  A value of `true`   , and a value of `false`    .
+
+<a name="extension-flags-flags-for-services-the-azure-content-delivery-network"></a>
+### The Azure Content Delivery Network
+
+The Azure Content Delivery Network, as specified in [portalfx-pde-cdn.md](portalfx-pde-cdn.md), requires code changes and allows the use of an extension flag to provide the capability to send audio, video, images, and other files to customers.
+
+<a name="extension-flags-flags-for-services-other-feature-flag-services"></a>
+### Other feature flag services
+
+<!--TODO: Determine whether any of the following information qualifies as being feature flag services. -->
+
+resource menu blade, as specified in [portalfx-creating-extensions.md](portalfx-creating-extensions.md).
+
+Features provided in [portalfx-data-configuringdatacache.md](portalfx-data-configuringdatacache.md).
+
+Features provided by  `MsPortalFx.Data.QueryCache` and `MsPortalFx.Data.EntityCache` provide. `QueryCache` is used to query for a collection of data. `EntityCache` is used to load an individual entity.
+
+ ?feature.disablebladecustomization
+
+<!--TODO: Determine whether any of the preceding information qualifies as being feature flag services. -->
 
 
 <a name="extension-flags-glossary"></a>
@@ -396,14 +507,19 @@ This section contains a glossary of terms and acronyms that are used in this doc
 
 | Term                | Meaning |
 | ------------------- | --- |
+| CDN                 | Content delivery network | 
 | CI infrastructure   | | 
 | configuration stamp | | 
 | curation            | The process of categorizing content around a specific topic or area of interest. Curated items often formed into various types of collections and are displayed together according to theme or purpose. | 
 | diagnostic switch  | |
 | feature flag       | A coding technique that allows the enabling or disabling of new code within a solution. It allows the testing and development-level viewing of new features, before they are complete and ready for private preview.  |
 | IRIS               | | 
+| manifest caching | | 
+| marketplace | | 
 | MVC                | Model-View-Controller, a methodology of software organization that separates the view from the data storage model in a way that allows the processor or a controller to multitask or switch between applications or orientations without losing data or damaging the view.|
 | NPS popups         | | 
 | ProxiedObservables | | 
-| TIP                | Testing in Production  |
+| query string       | | 
+| stage | | 
 | trace mode         | |
+| web worker | |
