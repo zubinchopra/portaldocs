@@ -17,6 +17,8 @@
 | geodistribution      | The process of deploying software in multiple geographic regions as a single logical database. |
 | jit                  | Just In Time | 
 | MDS                  |  Multilayer Director Switch | 
+| MVC                  | Model-View-Controller, a methodology of software organization that separates the view from the data storage model in a way that allows the processor or a controller to multitask or switch between applications or orientations without losing data or damaging the view. |
+| MVVM                 | Model-View-View-Model methodology.  A  method of software organization that separates the view from the data storage model, but depends on intelligence in the view or in the data objects so that there is no controller module that needs to process or transfer information.  The controller's function is handled instead by the device operating system or by the server that is communicating with the application. This methodology allows the application to multitask, call other functions that are located on the device, or switch between orientations without losing data or damaging the view. |
 | public endpoint      | |
 | RP                   | Resource Provider |
 | SAW                  | Secure Admin Workstation | 
