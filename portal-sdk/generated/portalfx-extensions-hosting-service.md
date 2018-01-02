@@ -33,7 +33,7 @@ More than 50% of the extensions have been migrated from legacy DIY deployment to
     
    * Use safe deployment practices
 
-   * Distribute the extension to all data centers in various geographical locations
+   * [Geodistributes](portalfx-extensions-hosting-service-glossary.md) the extension to all data centers
 
    * CDN configured
 
@@ -794,7 +794,11 @@ where
 **ibizaTag**:  One of the tags from the following table, without the angle brackets.
 
 You can also click on the links in the table to open the correct Stackoverflow forum.
-
+<!--TODO: Determine whether the following UserVoice categories also have Stackoverflow support. 
+ibiza-notifications
+ibiza-quotas
+ibiza-samples-docs
+-->
 
 | Tag                                                                                                            | Owner               | Contact |
 | -------------------------------------------------------------------------------------------------------------- | ------------------- | ------- |
@@ -1003,6 +1007,8 @@ You can ask questions on Stackoverflow with the tag [ibiza-deployment](https://s
 | Express Version 2    | Safe, secure and compliant way to roll out services to multiple regions across public and private clouds.  | 
 | endpoint             | A device that is connected to a LAN and accepts or transmits communications across a network. In terms of directories or Web pages, there may be several endpoints that are defined on the same device. |
 | Enhanced monitoring  |  |
+| geodistribute        | Distribute the extension to all data centers in various geographical locations. |
+| geodistribution      | The process of deploying software in multiple geographic regions as a single logical database. |
 | jit                  | Just In Time | 
 | MDS                  |  Multilayer Director Switch | 
 | public endpoint      | |

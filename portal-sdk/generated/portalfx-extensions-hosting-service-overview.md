@@ -27,7 +27,7 @@ More than 50% of the extensions have been migrated from legacy DIY deployment to
     
    * Use safe deployment practices
 
-   * Distribute the extension to all data centers in various geographical locations
+   * [Geodistributes](portalfx-extensions-hosting-service-glossary.md) the extension to all data centers
 
    * CDN configured
 

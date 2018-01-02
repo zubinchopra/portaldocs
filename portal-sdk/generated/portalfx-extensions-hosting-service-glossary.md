@@ -14,6 +14,8 @@
 | Express Version 2    | Safe, secure and compliant way to roll out services to multiple regions across public and private clouds.  | 
 | endpoint             | A device that is connected to a LAN and accepts or transmits communications across a network. In terms of directories or Web pages, there may be several endpoints that are defined on the same device. |
 | Enhanced monitoring  |  |
+| geodistribute        | Distribute the extension to all data centers in various geographical locations. |
+| geodistribution      | The process of deploying software in multiple geographic regions as a single logical database. |
 | jit                  | Just In Time | 
 | MDS                  |  Multilayer Director Switch | 
 | public endpoint      | |
