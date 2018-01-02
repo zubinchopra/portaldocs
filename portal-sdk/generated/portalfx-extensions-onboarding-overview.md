@@ -5,11 +5,11 @@ Welcome to Azure! We're excited to have you to join the family and become a part
 
 The Microsoft Azure portal, located at [https://portal.azure.com](https://portal.azure.com), is a central place where Azure customers can provision and manage Azure resources. The Azure portal is a [single page application](portalfx-extensions-onboarding-glossary.md) that may contain more than one Web application. The parts of the page in the portal are dynamically loaded based on customer actions.
 
-An extension is essentially the user experience for a service. Extensions are developed by teams that integrate user interfaces into the Azure Portal. Extensions are dynamically accessed and loaded in Azure portal based on customer actions in the portal. For example, when a customer clicks on the `Virtual Machines` icon in the Azure portal, then the portal loads the Virtual Machine management extension. This extension provides the user experience to provision and manage virtual machines, as in the following image. 
+An extension is essentially the user experience (UX) for a service. Extensions are developed by teams that integrate user interfaces into the Azure Portal. Extensions are dynamically accessed and loaded based on customer actions in the portal. For example, when a customer clicks on the `Virtual Machines` icon in the Azure portal, then the portal loads the Virtual Machine management extension. This extension provides the allows the user to provision and manage virtual machines, as in the following image. 
 
-<!-- TODO:  Create screen-shot of VM machine extension that is visible in https://ms.portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Compute%2FVirtualMachines -->
+<!--TODO:  Determine whether the following image is acceptable, because it is not fictitious. -->
 
-![alt-text](../media/portalfx-onboarding/extension-introduction.PNG "Virtual Machine Extension")
+![alt-text](../media/portalfx-extensions-onboarding/vmMachines.png "Virtual Machine Extension")
 
 Extension developers can quickly grow a business by networking with a large pool of Azure portal customers when they develop extensions for Azure portal.
 
