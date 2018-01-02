@@ -432,8 +432,10 @@ While these features are not going away anytime soon. We do not recommend taking
 * [Pricing Dropdown](portalfx-create.md#pricing-dropdown)
 
 </details>
+<br/>
+
 <details>
-  <summary>Control Libraries</summary>
+  <summary>Developing Forms</summary>
 
 ## Forms
 
@@ -453,6 +455,7 @@ While these features are not going away anytime soon. We do not recommend taking
 * [Using Editscopeless controls in EditScoped Forms](portalfx-fxcontrols-editscope-forms.md)
 
 </details>
+<br/>
 
 <details>
   <summary>Calling ARM and other backend APIs</summary>
@@ -463,6 +466,7 @@ While these features are not going away anytime soon. We do not recommend taking
     * [GET calls to ARM](portalfx-data.md#making-authenticated-ajax-calls)
 * [Making Ajax calls to servies other than ARM](portalfx-authentication.md#calling-other-services)
 </details>
+<br/>
 
 
 <details>
@@ -473,6 +477,7 @@ While these features are not going away anytime soon. We do not recommend taking
 * [Publishing Notifications through IRIS]
 
 </details>
+<br/>
 
 <details>
   <summary>Advanced Styling Options</summary>
@@ -488,6 +493,7 @@ While these features are not going away anytime soon. We do not recommend taking
 * Coloring to differentiate data
 
 </details>
+<br/>
 
 
 <details>
@@ -507,12 +513,14 @@ While these features are not going away anytime soon. We do not recommend taking
     * [Legacy accessing C# model objects](portalfx-data-typemetadata.md#type-metadata)
     * [Legacy Data Atomization](portalfx-data-atomization.md#data-atomization)
 </details>
+<br/>
 
 <details>
   <summary>Logging </summary>
 
 * [Logging](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/logging)
 </details>
+<br/>
 
 
 <details>
@@ -561,6 +569,8 @@ While these features are not going away anytime soon. We do not recommend taking
 * Best practices for improving extension availability 
 
 </details>
+<br/>
+
 
 <details>
   <summary>Localization / Globalization</summary>
@@ -571,6 +581,8 @@ While these features are not going away anytime soon. We do not recommend taking
   * [Testing locaization with side-loading]
   * [Formatting numbers, currencies and dates](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-globalization.md#globalization-api)
 </details>
+<br/>
+
 
 
 <details>
@@ -578,6 +590,8 @@ While these features are not going away anytime soon. We do not recommend taking
   
   * <!-- TODO: Work with Paymon and Chris to identify what needs to be added here -->
 </details>
+<br/>
+
 
 <details>
   <summary>Memory Management</summary>
@@ -592,10 +606,12 @@ While these features are not going away anytime soon. We do not recommend taking
         * [EntityView/QueryView]
 
 </details>
+<br/>
+
 
 
 <details>
-  <summary>Setting up infrastructure for different domains</summary>
+  <summary>Managing extension configuration for different domains or protal as a service</summary>
 
 * Domain Configuration
     * [When to use dynamic configuration](portalfx-domain-based-configuration.md#domain-based-configuration)
@@ -603,6 +619,8 @@ While these features are not going away anytime soon. We do not recommend taking
     * [Configuration](portalfx-dictionaryconfiguration.md)
     * [Sample for accessing dynamic configuration](portalfx-domain-based-configuration-example.md)
 </details>
+<br/>
+
 
     
 
