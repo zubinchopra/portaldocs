@@ -8,6 +8,7 @@ Using these flags allows the developer to make modifications to the server, to t
 **NOTE**: Features that are invoked through the extensiondefinition are outside of the scope of this document.
 
 The following table specifies the flags that can be used with the Azure portal and its extensions, categorized by the type of flag.
+
 | Flag | Purpose | Document | 
 | -- | -- | -- |
 | Trace mode | Instructions to the debugging environment. Temporarily set server characteristics, toggle a behavior, or enable event logging. | [portalfx-extensions-feature-flags-trace-mode.md](portalfx-extensions-feature-flags-trace-mode.md) |
