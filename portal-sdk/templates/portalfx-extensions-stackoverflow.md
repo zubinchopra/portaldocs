@@ -17,7 +17,11 @@ where
 **ibizaTag**:  One of the tags from the following table, without the angle brackets.
 
 You can also click on the links in the table to open the correct Stackoverflow forum.
-
+<!--TODO: Determine whether the following UserVoice categories also have Stackoverflow support. 
+ibiza-notifications
+ibiza-quotas
+ibiza-samples-docs
+-->
 
 | Tag                                                                                                            | Owner               | Contact |
 | -------------------------------------------------------------------------------------------------------------- | ------------------- | ------- |

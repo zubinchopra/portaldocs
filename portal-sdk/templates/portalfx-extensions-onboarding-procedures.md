@@ -58,6 +58,8 @@ Install the following software. Your team should be aware of the most current do
 
 * Typescript for Visual Studio 15 that is located at [https://www.microsoft.com/en-us/download/details.aspx?id=48593](https://www.microsoft.com/en-us/download/details.aspx?id=48593)
 
+* VS Code that is located at [https://code.visualstudio.com/docs/setup/setup-overview](https://code.visualstudio.com/docs/setup/setup-overview)
+
 * Knockout that is located at [http://knockoutjs.com/downloads/](http://knockoutjs.com/downloads/)
 
 * Azure Portal SDK that is located at [http://aka.ms/portalfx/download](http://aka.ms/portalfx/download)
