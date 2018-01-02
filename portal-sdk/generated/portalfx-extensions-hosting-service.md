@@ -59,7 +59,7 @@ More than 50% of the extensions have been migrated from legacy DIY deployment to
 <a name="hosting-services-and-server-side-code"></a>
 ## Hosting services and server-side code
 Extensions that have server-side code or controllers can use hosting services.  In fact, you can supplement a legacy DIY deployment infrastructure to use a hosting service, and deploy extensions in a way that complies with safe-deployment practices. 
-1.	In most cases, UI controllers or MVC controllers are legacy, and it is easy to obsolete these controllers. One advantage of replacing obsolete UI controllers is that all client applications, such as **Ibiza** and **PowerShell**, will have a consistent experience. You can replace UI controllers under the following conditions.
+1.	In most cases, UI controllers or [MVC](portalfx-extensions-hosting-service-glossary.md) controllers are legacy, and it is easy to obsolete these controllers. One advantage of replacing obsolete UI controllers is that all client applications, such as **Ibiza** and **PowerShell**, will have a consistent experience. You can replace UI controllers under the following conditions.
     *	If the functionality is already available from another service
     *	By hosting server-side code within an existing RP
 1.	If replacing UI controllers is not a short-term task, the extension can be deployed through a hosting service by modifying the relative controller URLs.  They are located in  client code, and can be changed to specify absolute URLS. 
@@ -1011,6 +1011,8 @@ You can ask questions on Stackoverflow with the tag [ibiza-deployment](https://s
 | geodistribution      | The process of deploying software in multiple geographic regions as a single logical database. |
 | jit                  | Just In Time | 
 | MDS                  |  Multilayer Director Switch | 
+| MVC                  | Model-View-Controller, a methodology of software organization that separates the view from the data storage model in a way that allows the processor or a controller to multitask or switch between applications or orientations without losing data or damaging the view. |
+| MVVM                 | Model-View-View-Model methodology.  A  method of software organization that separates the view from the data storage model, but depends on intelligence in the view or in the data objects so that there is no controller module that needs to process or transfer information.  The controller's function is handled instead by the device operating system or by the server that is communicating with the application. This methodology allows the application to multitask, call other functions that are located on the device, or switch between orientations without losing data or damaging the view. |
 | public endpoint      | |
 | RP                   | Resource Provider |
 | SAW                  | Secure Admin Workstation | 
