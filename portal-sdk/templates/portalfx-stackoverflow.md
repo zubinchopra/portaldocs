@@ -11,11 +11,11 @@
 </tr>
 <tr>
     <td> [ibiza-breaking-changes](https://stackoverflow.microsoft.com/questions/tagged/ibiza-breaking-changes) </td>
-    <td> amitmod </td>
+    <td> mjoshi </td>
 </tr>
 <tr>
     <td> [ibiza-missing-docs](https://stackoverflow.microsoft.com/questions/tagged/ibiza-bad-samples-docs) </td>
-    <td> amitmod </td>
+    <td> adamab </td>
 </tr>
 <tr>
     <td> [ibiza-sdkupdate](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate) </td>
@@ -47,7 +47,7 @@
 </tr>
 <tr>
     <td> [ibiza-data-caching](https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching) </td>
-    <td> amitmod </td>
+    <td> brado </td>
 </tr>
 <tr>
     <td> [ibiza-localization-global](https://stackoverflow.microsoft.com/questions/tagged/ibiza-localization-global) </td>
@@ -83,6 +83,6 @@
 </tr>
 <tr>
     <td> [ibiza](https://stackoverflow.microsoft.com/questions/tagged/ibiza) </td>
-    <td> amitmod </td>
+    <td> adamab </td>
 </tr>
 </table>
