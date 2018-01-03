@@ -13,10 +13,9 @@ The following table specifies the flags that can be used with the Azure portal a
 | Flag | Purpose | Document | 
 | -- | -- | -- |
 | Trace mode | Instructions to the debugging environment. Temporarily set server characteristics, toggle a behavior, or enable event logging. | [portalfx-extensions-feature-flags-trace-mode.md](portalfx-extensions-feature-flags-trace-mode.md) |
-| Diagnostic switches  |   Directives to JavaScript. For example, the `clientOptimizations` flag changes browser behavior instead of the extension that is running in the browser. Switches that have functionality other than selecting content for the browser `console.log` are outside of the scope of this document.  | [portalfx-extensions-feature-flags-diagnostics.md](portalfx-extensions-feature-flags-diagnostics.md) |
 | Developer features | Allow the extension to specify its own features. Developers can create and maintain their own flags. |  [portalfx-extensions-feature-flags-developer.md](portalfx-extensions-feature-flags-developer.md)  |
 | Shell flags | Connect the developer's extension to Azure API features. The Shell features are maintained by the Azure Portal team. Shell features do not require changes to the code in the extension. |  [portalfx-extensions-feature-flags-shell.md](portalfx-extensions-feature-flags-shell.md) |
-| Service flags | Connect the developer's extension to Azure API extensions. These services are maintained by teams other than the Azure Portal team. Azure services require additions to the code in the developer's extension. |  [portalfx-extensions-feature-flags-services.md](portalfx-extensions-feature-flags-services.md) |
+
 
 <!-- The following sentence is from portalfx-domain-based-configuration-pattern.md. -->
   Changing the default feature flags that are sent to the extension requires Shell configuration changes and redeployment.
