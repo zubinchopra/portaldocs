@@ -1,20 +1,18 @@
 
 ## Feature Flags
 
-Extension flags and feature flags are specially-formatted query string parameters that are sent through the portal to extensions and their controller methods.  They are often used while testing in production  to enable and disable features that are maintained in the extension code. Feature flags can only be used on items like form elements or HTML template components; they cannot be used to hide blades, parts, or commands. There is no pre-registration of feature flags because the process of using feature flags is dynamic.
+Extension flags and feature flags are specially-formatted query string parameters that are sent through the portal to extensions and their controller methods.  They are often used while testing to enable and disable features that are maintained in the source code. Feature flags can only be used on items like form elements or HTML template components; they cannot be used to hide blades, parts, or commands. There is no pre-registration of feature flags because the process of using feature flags is dynamic.
 
 Flags are only accessible by the extension in which they are defined, and therefore are not shared across extensions. Typically, the flag is boolean and has a descriptive name. Most feature flags are set to a value of `true` or `false`, which respectively enables or disables the feature. However, some feature flags send non-boolean values to the extension when more than two options are appropriate to test a specific feature.
 
-Features are enabled by appending a flag to the query string, as in the following example: `https://portal.azure.com/?<extensionName>_<flagName>=<value>`, where ```flagName```, without angle brackets, is the feature to enable for the extension. 
+Features are enabled by appending a flag to the query string, as in the following example: `https://portal.azure.com/?<extensionName>_<flagName>=<value>`, where ```flagName```, without angle brackets, is the feature to enable for the extension. The extension name and the underscore are used by the portal to determine the extension for which the feature flag applies.
 
 The only limitation on developer-designed feature flag names is that they cannot contain underscores. Feature flags are named according to the following rules.
 <!--TODO:  Determine whether the underscore between the extensionName and the flagName is a requirement. -->
-* Must be formatted as `<extensionName><flagName>` (e.g. `azurecomputesomeflag`)
+* Must be formatted as `<extensionName>_<flagName>` (e.g. `azurecomputesomeflag`)
 * Can contain any non-empty value (e.g. `azurecomputesomeflag=true`)
 * Are all lower case
 * Cannot include an underscore in the flag portion of the name (i.e., `azure_compute_some_flag` does not work, but `azure_compute_someflag` works)
-
-<!--TODO:  Determine whether any upper case letters are optional.  -->
 
  In the following example, the  `pricingtier` feature flag is used in two different extensions. 
 
@@ -22,21 +20,15 @@ The only limitation on developer-designed feature flag names is that they cannot
 
 * From Hubs Extension
 
-    `fx.environment.extensionFlags = { “hubsextension_pricingtier”: “value1” }`
+    `MsPortalFx.getFeatureValue("pricingtier") = “value1”`
  
 * From Billing Extension
 
-    `fx.environment.extensionFlags = { “microsoft_azure_billing_pricingtier”: “value2” }`
-
+    `MsPortalFx.getFeatureValue("pricingtier") = “value2”`
+    
 ### Modifying code for feature flags
 
 Developers can create feature flags for extensions, and plan to manage them as a part of the software maintenance process.  Typically, the feature is boolean and has a descriptive name. A value of `true` turns on the feature, and a value of `false` turns it off. 
-
-<!--TODO:  Determine whether the following statement  is factual. Are these code changes with feature flags, code changes with extension definition, or code changes with no flags at all? -->
-For more information about using features that require code changes, see
-[portalfx-logging-from-typescript-and-dotnet.md](portalfx-logging-from-typescript-and-dotnet.md).
-
-<!--TODO:  Determine whether the previous statement  is factual. -->
 
 The following code examples demonstrate how to turn feature flags on and off inside the code. 
 
@@ -158,3 +150,5 @@ This option will make these feature flags available in client-side code for all 
 <br>
 
 For more information about feature flags, see [https://docs.microsoft.com/en-us/vsts/articles/phase-features-with-feature-flags](https://docs.microsoft.com/en-us/vsts/articles/phase-features-with-feature-flags).
+
+You can ask questions on Stackoverflow with the tag [ibiza](https://stackoverflow.microsoft.com/questions/tagged/ibiza).
