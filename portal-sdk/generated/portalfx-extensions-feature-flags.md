@@ -4,20 +4,17 @@
 <a name="extension-flags"></a>
 # Extension flags
     
-There are five types of flags that are associated with extensions. The purpose of each type of flag is similar but not identical. For example, flags that modify the browser in which the extension is running are not  flags that modify the extension itself. Extension flags are invoked by appending them to the query string, as in the following example: `https://portal.azure.com/?<extensionName>_<extensionFlag>=<value>`, where ```extensionFlag```, without angle brackets, is the feature to enable for the extension named `extensionName`.
+There are three types of flags that are associated with extensions. The purpose of each type of flag is similar but not identical. The extension makes use of a flag's value by making modifications to the server, to the browser, and to the extension at runtime.
 
-Using these flags allows the developer to make modifications to the server, to the browser, and to the extension code, or make use of Azure-supplied extensions, regardless of the stage in which the extension is being tested.  
+**NOTE**: Features that are invoked through `extensiondefinition` are outside of the scope of this document. For more information about using `extensiondefinition`, see [portalfx-parameter-collection-getting-started.md](portalfx-parameter-collection-getting-started.md) and the `Microsoft.Portal.Framework.ExtensionDefinition` class.
 
-**NOTE**: Features that are invoked through the extensiondefinition are outside of the scope of this document.
+The following table specifies the types of flags that can be used with the Azure portal.
 
-The following table specifies the flags that can be used with the Azure portal and its extensions, categorized by the type of flag.
-
-| Flag | Purpose | Document | 
-| -- | -- | -- |
-| Trace mode | Instructions to the debugging environment. Temporarily set server characteristics, toggle a behavior, or enable event logging. | [portalfx-extensions-feature-flags-trace-mode.md](portalfx-extensions-feature-flags-trace-mode.md) |
-| Developer features | Allow the extension to specify its own features. Developers can create and maintain their own flags. |  [portalfx-extensions-feature-flags-developer.md](portalfx-extensions-feature-flags-developer.md)  |
-| Shell flags | Connect the developer's extension to Azure API features. The Shell features are maintained by the Azure Portal team. Shell features do not require changes to the code in the extension. |  [portalfx-extensions-feature-flags-shell.md](portalfx-extensions-feature-flags-shell.md) |
-
+| Flag               | Purpose | Document | 
+| ------------------ | ------- | -------- |
+| Trace mode         | Invoked with  `https://portal.azure.com/?trace=<settingName>`. <br> Temporarily set server characteristics, toggle a behavior, or enable event logging.  | [portalfx-extensions-feature-flags-trace-mode.md](portalfx-extensions-feature-flags-trace-mode.md) |
+| Developer features |  Invoked with `https://portal.azure.com/?<extensionName>_<extensionFlag>=<value>`. <br> Allow the extension developers to specify features that they maintain. |  [portalfx-extensions-feature-flags-developer.md](portalfx-extensions-feature-flags-developer.md)  |
+| Shell flags        |  Invoked with  `https://portal.azure.com/?<featureName>=<value>`. <br> Connect the developer's extension to features that are maintained by the Azure Portal team. Shell features do not require changes to the code in the extension. |  [portalfx-extensions-feature-flags-shell.md](portalfx-extensions-feature-flags-shell.md) |
 
 <!-- The following sentence is from portalfx-domain-based-configuration-pattern.md. -->
   Changing the default feature flags that are sent to the extension requires Shell configuration changes and redeployment.
@@ -37,7 +34,7 @@ Trace modes are enabled by appending them to the query string, as in the followi
 
 **desktop**: Log all shell desktop operations. Useful for reporting errors to the alias.
 
-**diagnostics**: Display the debug hub, and add verbose tracing. Also used for capturing callstacks across iframes.
+**diagnostics**: Display the debug hub, and add verbose tracing. Also used to enable callstack capturing for all communication that occurs between iframes.
 
 **inputsset.debug.viewModelOrPdlName**: Break into debugger when `onInputsSet` is about to be called on extension side. This trace can use the `viewmodel` name or the blade or part name to filter trace.
 
@@ -59,7 +56,7 @@ Trace modes are enabled by appending them to the query string, as in the followi
 <a name="extension-flags-feature-flags"></a>
 ## Feature Flags
 
-Extension flags and feature flags are specially-formatted query string parameters that are sent through the portal to extensions and their controller methods.  They are often used while testing to enable and disable features that are maintained in the source code. Feature flags can only be used on items like form elements or HTML template components; they cannot be used to hide blades, parts, or commands. There is no pre-registration of feature flags because the process of using feature flags is dynamic.
+Extension flags and feature flags are specially-formatted query string parameters that are sent through the portal to extensions and their controller methods.  They are often used while testing to enable and disable features that are maintained in the source code. Feature flags can only be used on items like form elements or HTML template components; they cannot be used to hide blades, parts, or commands. 
 
 Flags are only accessible by the extension in which they are defined, and therefore are not shared across extensions. Typically, the flag is boolean and has a descriptive name. Most feature flags are set to a value of `true` or `false`, which respectively enables or disables the feature. However, some feature flags send non-boolean values to the extension when more than two options are appropriate to test a specific feature.
 
@@ -219,7 +216,7 @@ You can ask questions on Stackoverflow with the tag [ibiza](https://stackoverflo
 
 The Ibiza Fx team supports the following feature flags, or Shell feature flags. These flags are only available to the Shell, unless they are configured to be shared. Unless otherwise noted, a value of `true` enables the feature, and a value of `false` disables it. 
 
-There are three naming conventions for feature flags. Some feature flags have their own names, like **hubsextension_showserverevents** or `https://portal.azure.com/?<featureName>=<value>`; however, the syntax for most feature flags assumes they are a property of the feature object, in which case they are invoked with the  syntax: ```feature.<featureName>=true```. Otherwise, they are directives to the extension, in which case the syntax is `<extensionName>_<flagName>=<value>`. For more information about developer-specified feature flags in extensions, see [portalfx-extensions-feature-flags-developer.md](portalfx-extensions-feature-flags-developer.md).
+There are three naming conventions for feature flags. Some feature flags have their own names, like **hubsextension_showserverevents** or `https://portal.azure.com/?<featureName>=<value>`; however, the syntax for most feature flags assumes they are a property of the feature object, in which case they are invoked with the  syntax: `https://portal.azure.com/?feature.<featureName>=true`. Otherwise, they are directives to the extension, in which case the syntax is `<extensionName>_<flagName>=<value>`. For more information about developer-specified feature flags in extensions, see [portalfx-extensions-feature-flags-developer.md](portalfx-extensions-feature-flags-developer.md).
 <!-- TODO:  Determine whether hubsextension_showserverevents is the showserverevents feature flag for the hubsextension extension.  -->
 <!--TODO: can an extension name contain capital letters or special characters? -->
 <!--TODO: can the canmodifystamps flag ever be required or included when it is false?  -->
