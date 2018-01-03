@@ -12,7 +12,7 @@ Trace modes are enabled by appending them to the query string, as in the followi
 
 **desktop**: Log all shell desktop operations. Useful for reporting errors to the alias.
 
-**diagnostics**: Display the debug hub, and add verbose tracing. Also used for capturing callstacks across iframes.
+**diagnostics**: Display the debug hub, and add verbose tracing. Also used to enable callstack capturing for all communication that occurs between iframes.
 
 **inputsset.debug.viewModelOrPdlName**: Break into debugger when `onInputsSet` is about to be called on extension side. This trace can use the `viewmodel` name or the blade or part name to filter trace.
 
