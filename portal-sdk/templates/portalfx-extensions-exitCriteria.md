@@ -104,7 +104,10 @@ Check the Power BI Dashboard for Service Level Agreements (SLA) that are associa
 
 It is important to meet the success rate previous to moving the extension to the next phase, because various phases are associated with service level agreements and other items that are affected if an extension does not work.  For example, extensions with a success rate below 99% will result in sev 2 incidents. Also, if the success rate drops by 5% during a rolling 24-hour period that contains at least 50 Creates, a sev 2 incident will be filed. This applies to every error that causes Creates to fail when the `Create` button is clicked.
 
-Success rates are a non-blocking requirement.  Some exceptions can be granted to move an extension from the private preview stage to the public preview stage, but in general, the overall customer experience is reduced.
+Success rates are a non-blocking requirement. 
+<!-- TODO: Determine whether any mention at all of the exception process should be on GitHub, as in the following sentence.
+   Some exceptions can be granted to move an extension from the private preview stage to the public preview stage, but in general, the overall customer experience is reduced.
+-->
    
 For more information about creating success, see [portalfx-create.md#validation](portalfx-create.md#validation).
 
