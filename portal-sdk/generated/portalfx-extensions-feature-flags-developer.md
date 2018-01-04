@@ -1,12 +1,12 @@
 
-<a name="feature-flags"></a>
-## Feature Flags
+<a name="extension-flags"></a>
+## Extension Flags
 
-Extension flags and feature flags are specially-formatted query string parameters that are sent through the portal to extensions and their controller methods.  They are often used while testing to enable and disable features that are maintained in the source code. Feature flags can only be used on items like form elements or HTML template components; they cannot be used to hide blades, parts, or commands. 
+Extension flags and feature flags are specially-formatted query string parameters that are sent through the portal to extensions and their controller methods.  They are often used while testing to enable and disable features that are maintained in the source code. Flags can only be used on items like form elements or HTML template components; they cannot be used to hide blades, parts, or commands. 
 
-Flags are only accessible by the extension in which they are defined, and therefore are not shared across extensions. Typically, the flag is boolean and has a descriptive name. Most feature flags are set to a value of `true` or `false`, which respectively enables or disables the feature. However, some feature flags send non-boolean values to the extension when more than two options are appropriate to test a specific feature.
+Flags are only accessible by the extension in which they are defined, and therefore are not shared across extensions. Typically, the flag is boolean and has a descriptive name. Most flags are set to a value of `true` or `false`, which respectively enables or disables the feature. However, some  flags send non-boolean values to the extension when more than two options are appropriate to test a specific feature.
 
-Features are enabled by appending a flag to the query string, as in the following example: `https://portal.azure.com/?<extensionName>_<flagName>=<value>`, where ```flagName```, without angle brackets, is the feature to enable for the extension. The extension name and the underscore are used by the portal to determine the extension for which the feature flag applies.
+Extension features are enabled by appending a flag to the query string, as in the following example: `https://portal.azure.com/?<extensionName>_<flagName>=<value>`, where ```flagName```, without angle brackets, is the feature to enable for the extension. The extension name and the underscore are used by the portal to determine the extension for which the feature flag applies.
 
 The only limitation on developer-designed feature flag names is that they cannot contain underscores. Feature flags are named according to the following rules.
 <!--TODO:  Determine whether the underscore between the extensionName and the flagName is a requirement. -->
@@ -27,7 +27,7 @@ The only limitation on developer-designed feature flag names is that they cannot
 
     `MsPortalFx.getFeatureValue("pricingtier") = “value2”`
     
-<a name="feature-flags-modifying-code-for-feature-flags"></a>
+<a name="extension-flags-modifying-code-for-feature-flags"></a>
 ### Modifying code for feature flags
 
 Developers can create feature flags for extensions, and plan to manage them as a part of the software maintenance process.  Typically, the feature is boolean and has a descriptive name. A value of `true` turns on the feature, and a value of `false` turns it off. 

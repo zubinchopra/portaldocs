@@ -1,7 +1,7 @@
 
 <a name="trace-mode-flags"></a>
 ## Trace Mode Flags
-
+   
 Trace mode flags are associated with code that exists inside the portal, and can be configured externally through the `.config` file. Trace mode is also enabled by appending flags to the end of the querystring.  For example, [https://portal.azure.com/?trace=diagnostics](https://portal.azure.com/?trace=diagnostics) will enable verbose debugging information in the console. The trace mode allows the developer to enable, disable, and filter tracking output.
 
 The information that trace mode displays is associated with debugging, moreso than with regular operation of the extension. This information is an addition to standard console errors, and it can be used to monitor application execution and performance in a deployed environment.  The errors that are presented in the console assist in fixing extension issues. For more information about trace modes, see [https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/how-to-create-initialize-and-configure-trace-switches](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/how-to-create-initialize-and-configure-trace-switches).

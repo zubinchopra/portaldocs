@@ -6,7 +6,6 @@ The Ibiza Fx team supports the following feature flags, or Shell feature flags. 
 
 There are three naming conventions for feature flags. Some feature flags have their own names, like **hubsextension_showserverevents** or `https://portal.azure.com/?<featureName>=<value>`; however, the syntax for most feature flags assumes they are a property of the feature object, in which case they are invoked with the  syntax: `https://portal.azure.com/?feature.<featureName>=true`. Otherwise, they are directives to the extension, in which case the syntax is `<extensionName>_<flagName>=<value>`. For more information about developer-specified feature flags in extensions, see [portalfx-extensions-feature-flags-developer.md](portalfx-extensions-feature-flags-developer.md).
 <!-- TODO:  Determine whether hubsextension_showserverevents is the showserverevents feature flag for the hubsextension extension.  -->
-<!--TODO: can an extension name contain capital letters or special characters? -->
 <!--TODO: can the canmodifystamps flag ever be required or included when it is false?  -->
 <!--TODO: is the canmodifystamps always required when extensionName is used? -->
 
@@ -24,15 +23,13 @@ The name of the extension can be used in the query string to access various Shel
 ```js
    &<extensionName>=true,[<otherShellFlags>]
 ```
- How to use the flags that are within the extension is specified in [portalfx-extensions-feature-flags-developer.md](portalfx-extensions-feature-flags-developer.md);  The Shell flags are in the following table.
+ How to use the flags that are within the extension is specified in [portalfx-extensions-feature-flags-developer.md](portalfx-extensions-feature-flags-developer.md);  The Shell flags that require `&<extensionName>=true` are in the following table.
     
   <!--TODO:  Validate that the parameters are used correctly.  -->
 
   | Directive | Use | 
   | --------- | --- |
   | webworker | A value of `true` enables webworkers in the portal for all extensions who have explicitly been set as supporting webworkers in the `extensions.json` file. For example, `webworker=true,Microsoft_Azure_Demo=true,extName=<id>` will allow the webworker whose id is specified in `extName` to use the extension named Microsoft_Azure_Demo. 
-
-
 
 
 <a name="shell-feature-flags-the-canmodifystamps-flag"></a>
@@ -195,10 +192,9 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 
 <!-- Determine whether the following note is what was meant by "The 'bundle' value turns off JavaScript minification but retains bundling so the Portal still loads fairly quickly (which it doesn't for 'false' when bundling is turned off and many loose JavaScript files are loaded).". -->
 
-**NOTE**:  A value of  `false` turns off bundling, but does not unload JavaScript files that were loaded.  
-**Recommendation**:  When debugging an extension, the developer should supply `false` for this flag to disable script minification and to turn on additional diagnostics.
+  * **NOTE**:  A value of  `false` turns off bundling, but does not unload JavaScript files that were loaded.  **Recommendation**:  When debugging an extension, the developer should supply `false` for this flag to disable script minification and to turn on additional diagnostics.
 
-  **NOTE**:  This applies to both the portal and extensions source. If testing extensions that are already deployed to production, use the **clientOptimizations** flag instead of the ***IsDevelopmentMode** appSetting. If working in a development environment instead, use the ***IsDevelopmentMode** appSetting instead of the **clientOptimizations** flag to turn off bundling and minification for this extension only. This will speed up portal load during development and testing.  To change the ***IsDevelopmentMode** appSetting, locate the appropriate `web.config` file and change the value of the ***IsDevelopmentMode** appSetting to `true`.
+  * **NOTE**:  This applies to both the portal and extensions source. If testing extensions that are already deployed to production, use the **clientOptimizations** flag instead of the ***IsDevelopmentMode** appSetting. If working in a development environment instead, use the ***IsDevelopmentMode** appSetting instead of the **clientOptimizations** flag to turn off bundling and minification for this extension only. This will speed up portal load during development and testing.  To change the ***IsDevelopmentMode** appSetting, locate the appropriate `web.config` file and change the value of the ***IsDevelopmentMode** appSetting to `true`.
 
 <!--TODO:  Determine whether microsoft_azure_marketplace is an extension name or an example extension name.  If such is the case, then the following 4 flags should be documented as only the suffix name. -->
 

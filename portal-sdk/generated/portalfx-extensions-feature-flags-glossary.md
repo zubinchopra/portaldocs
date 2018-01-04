@@ -15,7 +15,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | manifest caching | | 
 | marketplace | | 
 | MVC                | Model-View-Controller, a methodology of software organization that separates the view from the data storage model in a way that allows the processor or a controller to multitask or switch between applications or orientations without losing data or damaging the view.|
-| NPS popups         | | 
+| NPS popups         | Net Promoter Score | 
 | ProxiedObservables | | 
 | query string       | | 
 | stage | | 
