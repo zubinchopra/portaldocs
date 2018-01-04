@@ -47,7 +47,7 @@ The **canmodifystamps** flag is used in conjunction with the **extensionName** p
     * **buildNumber**:  The build number as specified in [portalfx-extensions-hosting-service-scenarios.md#sideloading](portalfx-extensions-hosting-service-scenarios.md#sideloading). Replace the dots in the build number with the letter 'd', so that build number 1.0.8.31 is represented by 1d0d8d31.
     * **uriFormatPrefix**: The value to use when building the **uriFormat** string. For example, when **uriFormat** is `//{0}.devtest.ext.azure.com`, the query string `https://portal.azure.com?feature.canmodifystamps=true&Microsoft_Azure_DevTestLab=perf` would cause  the `{0}` in the **uriFormat** string to be replaced with `perf` and attempt to load the extension from `https://perf.devtest.ext.azure.com`.
     
-### Shell Feature flags from the feature object
+### Shell flags
 
 The following are the feature flags that are invoked with the syntax: `feature.<featureName>=true` unless otherwise noted.
 
@@ -168,7 +168,7 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 
 **feature.waitforpendingchanges**: Reserved for future use.
 
-### Marketplace features
+### Marketplace feature flags
 
 <!--TODO:  Determine whether microsoft_azure_marketplace is an extension name or an example extension name.  If such is the case, then the following 4 flags should be documented as only the suffix name. -->
 

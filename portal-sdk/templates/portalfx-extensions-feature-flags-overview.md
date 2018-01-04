@@ -1,5 +1,5 @@
 
-# Extension flags
+# Extension flags and Feature Flags
     
 There are three types of flags that are associated with extensions. The purpose of each type of flag is similar but not identical. The extension makes use of a flag's value by making modifications to the server, to the browser, and to the extension at runtime.
 
