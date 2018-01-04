@@ -46,7 +46,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | DF                       | Dogfood |
 | DIY                      | Do It Yourself |
 | environment              | A configuration of computers in which extensions can be run. For example, environments are Blackforest, Dogfood, Mooncake, and Production.  | 
-| feature flag             | A switch that allows a user to turn on or off specific functionalities of an extension. Flags are  passed from the portal to extensions and their controllers, and are used as an alternative to maintaining multiple source-code branches in order to hide, enable or disable a feature during run time. Most, but not all, feature flags, are made available by using the syntax `feature.<featureName> = true`.   |
+| feature flag             | A switch that allows a user to turn on or off specific functionalities of an extension. Flags are  passed from the portal to extensions and their controllers, and are used as an alternative to maintaining multiple source-code branches in order to hide, enable or disable a feature during run time. Most, but not all, feature flags are made available by using the syntax `feature.<featureName> = true`.   |
 | FF                       | Fairfax |
 | flighting                | |
 | flighting extension      | |
@@ -77,7 +77,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 ## Extensions Onboarding
 <a name="azure-portal-glossary-glossary"></a>
 ## Glossary
- 
+    
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
 
 | Term                      | Meaning |
@@ -178,7 +178,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
  
 | Term                 | Meaning |
 | ---                  | --- |
-|  endpoint            | A device that is connected to a LAN and accepts or transmits communications across a network. In terms of directories or Web pages, there may be several endpoints that are defined on the same device.  | 
+| endpoint            | A device that is connected to a LAN and accepts or transmits communications across a network. In terms of directories or Web pages, there may be several endpoints that are defined on the same device.  | 
 | obsolete script      | A script that makes certain parts of the portal act as legacy code, in order to limit the performance costs of the old functionality to only extensions that are using them. | 
 | sandboxed iframe     | Enables an extra set of restrictions for the content in the iframe.  It can treat the content as being from a unique origin, block form submission or script execution, prevent links from targeting other browsing context, and other items that restrict the behavior of the iframe during testing. | 
 | SAN                  | Storage Area Network  | 
@@ -189,7 +189,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 ## Status Codes and Error Messages
 <a name="azure-portal-glossary-glossary"></a>
 ## Glossary
-
+   
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
  
 | Term                      | Meaning |
