@@ -1,6 +1,6 @@
 <a name="contacts"></a>
 ## Contacts
-
+   
 For assistance with the prerequisites for onboarding Management UI, contact the following people.  
 
 If the following table is not current, please send a pull request to update the the contact list. For more information on how to send a pull request, see [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
@@ -18,10 +18,10 @@ If the following table is not current, please send a pull request to update the 
 | Create success                                | Balbir Singh                               | ibiza-create@microsoft.com |
 | CSS Support                                   | Wes Penner; CEGRM                          | ibiza-css@microsoft.com |
 | External Partner Contact                      |                                            | ibizafxpm@microsoft.com |
-| Fx Coverage 	                                | Adam Abdelhamed                               | ibiza-onboarding@microsoft.com |
+| Fx Coverage 	                                | Adam Abdelhamed; Santhosh Somayajula       | ibiza-onboarding@microsoft.com |
 | Localization                                  | Bruno Lewin                                | ibiza-interntnl@microsoft.com |
-| Onboarding kickoff                            | Leon Welicki; Adam Abdelhamed  | ibiza-onboarding@microsoft.com |
-| Third Party Applications (External partners)  | Leon Welicki; Adam Abdelhamed              | ibiza-onboarding@microsoft.com |
+| Onboarding kickoff                            | Leon Welicki; Adam Abdelhamed; Santhosh Somayajula | ibiza-onboarding@microsoft.com |
+| Third Party Applications (External partners)  | Leon Welicki; Adam Abdelhamed; Santhosh Somayajula             | ibiza-onboarding@microsoft.com |
 | Performance                                   | Sean Watson                                | ibiza-perf@microsoft.com |
 | Pull requests                                 |                                            | ibizafxpm@microsoft.com |
 | Registration for internal extensions          |                                            | ibizafxpm@microsoft.com |
@@ -29,6 +29,6 @@ If the following table is not current, please send a pull request to update the 
 | Reliability                                   | Sean Watson                                | ibiza-reliability@microsoft.com |
 | Resource Move                                 | Edison Park                                | ibiza-resourceMove@microsoft.com |
 | Usability	                                    | Joe Hallock; Mariah Jackson                | ibiza-usability@microsoft.com |
-| UX feasibility review                         |                                            | ibiza-onboarding@microsoft.com | 
+| UX feasibility review                         | Santhosh Somayajula                        | ibiza-onboarding@microsoft.com | 
 
 <!-- TODO: Validate whether the ibizafxpm@microsoft.com  link is the correct one for sending pull requests to, when sending pull requests to the dev branch for new extensions. -->
