@@ -1,4 +1,4 @@
-
+# Extension Flags and Feature Flags
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-feature-flags-overview.md"}
 

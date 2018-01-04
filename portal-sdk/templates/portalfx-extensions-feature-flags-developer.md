@@ -1,41 +1,28 @@
 
-## Feature Flags
+## Extension Flags
 
-Extension flags and feature flags are specially-formatted query string parameters that are sent through the portal to extensions and their controller methods.  They are often used while testing to enable and disable features that are maintained in the source code. Feature flags can only be used on items like form elements or HTML template components; they cannot be used to hide blades, parts, or commands. 
+Extension flags and feature flags are specially-formatted query string parameters that are sent through the portal to extensions and their controller methods.  They are often used while testing to enable and disable features that are maintained in the source code. Flags can only be used on items like form elements or HTML template components; they cannot be used to hide blades, parts, or commands. 
 
-Flags are only accessible by the extension in which they are defined, and therefore are not shared across extensions. Typically, the flag is boolean and has a descriptive name. Most feature flags are set to a value of `true` or `false`, which respectively enables or disables the feature. However, some feature flags send non-boolean values to the extension when more than two options are appropriate to test a specific feature.
+Flags are only accessible by the extension in which they are defined, and therefore are not shared across extensions. Typically, the flag is boolean and has a descriptive name. Most flags are set to a value of `true` or `false`, which respectively enables or disables the feature. However, some  flags send non-boolean values to the extension when more than two options are appropriate to test a specific feature.
 
-Features are enabled by appending a flag to the query string, as in the following example: `https://portal.azure.com/?<extensionName>_<flagName>=<value>`, where ```flagName```, without angle brackets, is the feature to enable for the extension. The extension name and the underscore are used by the portal to determine the extension for which the feature flag applies.
+Extension features are enabled by appending a flag to the query string, as in the following example: `https://portal.azure.com/?<extensionName>_<flagName>=<value>`, where ```flagName```, without angle brackets, is the feature to enable for the extension. The extension name and the underscore are used by the portal to determine the extension for which the feature flag applies.
 
 The only limitation on developer-designed feature flag names is that they cannot contain underscores. Feature flags are named according to the following rules.
-<!--TODO:  Determine whether the underscore between the extensionName and the flagName is a requirement. -->
 * Must be formatted as `<extensionName>_<flagName>` (e.g. `azurecomputesomeflag`)
 * Can contain any non-empty value (e.g. `azurecomputesomeflag=true`)
 * Are all lower case
 * Cannot include an underscore in the flag portion of the name (i.e., `azure_compute_some_flag` does not work, but `azure_compute_someflag` works)
-
- In the following example, the  `pricingtier` feature flag is used in two different extensions. 
-
-   ```https://portal.azure.com/?hubsextension_pricingtier=whatever1&microsoft_azure_billing_pricingtier=whatever2```
-
-* From Hubs Extension
-
-    `MsPortalFx.getFeatureValue("pricingtier") = “value1”`
- 
-* From Billing Extension
-
-    `MsPortalFx.getFeatureValue("pricingtier") = “value2”`
-    
-### Modifying code for feature flags
+ 
+### Feature flag API contract
 
 Developers can create feature flags for extensions, and plan to manage them as a part of the software maintenance process.  Typically, the feature is boolean and has a descriptive name. A value of `true` turns on the feature, and a value of `false` turns it off. 
 
 The following code examples demonstrate how to turn feature flags on and off inside the code. 
 
 <details>
-<summary>TypeScript </summary>
+<summary>Reading feature flags in TypeScript </summary>
 
-* Enabling a feature
+* Detecting whether a feature flag is set
 
     Use the ```MsPortalFx.isFeatureEnabled``` and  ```MsPortalFx.getFeatureValue``` APIs to access feature values in TypeScript, as in the following code.
 
@@ -48,7 +35,7 @@ The following code examples demonstrate how to turn feature flags on and off ins
     }
    ```
 
-*  Setting behavior based on feature flag value
+*  Detecting the value of a feature flag
 
     Query string with parameters: `https://portal.azure.com?azure_compute_someotherflag=value1`
 
@@ -69,7 +56,7 @@ The following code examples demonstrate how to turn feature flags on and off ins
 
 </details>
 <details>
-<summary> C# </summary>
+<summary> Programming default values for feature flags in C#</summary>
 
 Feature flags can be enabled for all users in one or more deployments by using an extension configuration, as in the following code. 
 
@@ -109,13 +96,13 @@ Feature flags can be enabled for all users in one or more deployments by using a
 }" />
  ```
 
-* The asterisk specifies the default case. Requests to the extension will enable those features, regardless of the domain.
+* The asterisk specifies the default case. The feature flag will be set to the specified value for all requests to the extension, regardless of the domain.
 
 * Feature flags that are associated with the domain name in an environment, i.e. the domain name of the incoming extension requests, will take precedence over the feature flags that are in the default case.
 
 </details>
 <details>
-<summary>Ajax</summary> 
+<summary>Reading feature flags in the context of an AJAX call in C#</summary> 
 
 *  Using the RequestFlags dictionary
 
@@ -128,22 +115,7 @@ Feature flags can be enabled for all users in one or more deployments by using a
     }
    ```
 
-*  Overriding Defaults 
-
-    To enable this for all users, `ApplicationContext` can be configured to specify a list of default query string parameters.  The extension should override the `GetDefaultQueryString` method, as in the following figure.
-
-   ```cs
-    public override IReadOnlyDictionary<string, string> GetDefaultQueryString(string host)
-    {
-        // read the default query string parameters from config and return.
-    }
-   ```
-
-This option will make these feature flags available in client-side code for all users.
-
-<!-- TODO: Determine whether Ibiza contacts for feature flags should be added to the document -->
 <!-- TODO:  determine whether browsecuration affects the Browse menu, the More Services menu, or both -->
-
 
 </details>
 
