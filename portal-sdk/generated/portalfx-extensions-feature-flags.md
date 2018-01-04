@@ -1,9 +1,7 @@
+
+
 <a name="extension-flags-and-feature-flags"></a>
-# Extension Flags and Feature Flags
-
-
-<a name="extension-flags"></a>
-# Extension flags
+# Extension flags and Feature Flags
     
 There are three types of flags that are associated with extensions. The purpose of each type of flag is similar but not identical. The extension makes use of a flag's value by making modifications to the server, to the browser, and to the extension at runtime.
 
@@ -21,7 +19,7 @@ The following table specifies the types of flags that can be used with the Azure
   Changing the default feature flags that are sent to the extension requires Shell configuration changes and redeployment.
 
 
-<a name="extension-flags-trace-mode-flags"></a>
+<a name="extension-flags-and-feature-flags-trace-mode-flags"></a>
 ## Trace Mode Flags
    
 Trace mode flags are associated with code that exists inside the portal, and can be configured externally through the `.config` file. Trace mode is also enabled by appending flags to the end of the querystring.  For example, [https://portal.azure.com/?trace=diagnostics](https://portal.azure.com/?trace=diagnostics) will enable verbose debugging information in the console. The trace mode allows the developer to enable, disable, and filter tracking output.
@@ -54,7 +52,7 @@ Trace modes are enabled by appending them to the query string, as in the followi
 
 
 
-<a name="extension-flags-extension-flags"></a>
+<a name="extension-flags-and-feature-flags-extension-flags"></a>
 ## Extension Flags
 
 Extension flags and feature flags are specially-formatted query string parameters that are sent through the portal to extensions and their controller methods.  They are often used while testing to enable and disable features that are maintained in the source code. Flags can only be used on items like form elements or HTML template components; they cannot be used to hide blades, parts, or commands. 
@@ -69,7 +67,7 @@ The only limitation on developer-designed feature flag names is that they cannot
 * Are all lower case
 * Cannot include an underscore in the flag portion of the name (i.e., `azure_compute_some_flag` does not work, but `azure_compute_someflag` works)
  
-<a name="extension-flags-extension-flags-feature-flag-api-contract"></a>
+<a name="extension-flags-and-feature-flags-extension-flags-feature-flag-api-contract"></a>
 ### Feature flag API contract
 
 Developers can create feature flags for extensions, and plan to manage them as a part of the software maintenance process.  Typically, the feature is boolean and has a descriptive name. A value of `true` turns on the feature, and a value of `false` turns it off. 
@@ -113,7 +111,7 @@ The following code examples demonstrate how to turn feature flags on and off ins
 
 </details>
 <details>
-<summary> Programming default values for feature flags in C#</summary>
+<summary>Programming default values for feature flags in C#</summary>
 
 Feature flags can be enabled for all users in one or more deployments by using an extension configuration, as in the following code. 
 
@@ -184,7 +182,7 @@ You can ask questions on Stackoverflow with the tag [ibiza](https://stackoverflo
 
 
 
-<a name="extension-flags-shell-feature-flags"></a>
+<a name="extension-flags-and-feature-flags-shell-feature-flags"></a>
 ## Shell feature flags
 
 The Ibiza Fx team supports the following feature flags, or Shell feature flags. These flags are only available to the Shell, unless they are configured to be shared. Unless otherwise noted, a value of `true` enables the feature, and a value of `false` disables it. 
@@ -196,7 +194,7 @@ There are three naming conventions for feature flags. Some feature flags have th
 
 The keyboard shortcut CTRL+ALT+D toggles the visibility of the debug tool, as specified in [portalfx-extensions-debugging-overview.md](portalfx-extensions-debugging-overview.md). The yellow sticky that is located at the bottom on the right side of the window can be used to toggle client optimizations and other shell feature flags.
 
-<a name="extension-flags-shell-feature-flags-the-extensionname-flag"></a>
+<a name="extension-flags-and-feature-flags-shell-feature-flags-the-extensionname-flag"></a>
 ### The extensionName flag
 
 The name of the extension can be used as a feature flag. The extension name can contain any character in the ranges between [a-z] or [0-9]. 
@@ -216,7 +214,7 @@ The name of the extension can be used in the query string to access various Shel
   | webworker | A value of `true` enables webworkers in the portal for all extensions who have explicitly been set as supporting webworkers in the `extensions.json` file. Also forces the extension into a web worker, for example, `webworker=true,Microsoft_Azure_Demo=true,extName=<id>` will allow the webworker whose id is specified in `extName` to use the extension named Microsoft_Azure_Demo.  Useful for testing extensions manually or through CI previous to enabling them in production.  
 <!-- before flipping the switch.-->
     
-<a name="extension-flags-shell-feature-flags-the-canmodifystamps-flag"></a>
+<a name="extension-flags-and-feature-flags-shell-feature-flags-the-canmodifystamps-flag"></a>
 ### The canmodifystamps flag
 
 The **canmodifystamps** flag is used in conjunction with the **extensionName** parameter to pass developer-specified values to the extension, to specify which stage or build number to use, and other purposes. When the **canmodifystamps** flag is set to true, the following run options can be enabled.
@@ -235,8 +233,8 @@ The **canmodifystamps** flag is used in conjunction with the **extensionName** p
     * **buildNumber**:  The build number as specified in [portalfx-extensions-hosting-service-scenarios.md#sideloading](portalfx-extensions-hosting-service-scenarios.md#sideloading). Replace the dots in the build number with the letter 'd', so that build number 1.0.8.31 is represented by 1d0d8d31.
     * **uriFormatPrefix**: The value to use when building the **uriFormat** string. For example, when **uriFormat** is `//{0}.devtest.ext.azure.com`, the query string `https://portal.azure.com?feature.canmodifystamps=true&Microsoft_Azure_DevTestLab=perf` would cause  the `{0}` in the **uriFormat** string to be replaced with `perf` and attempt to load the extension from `https://perf.devtest.ext.azure.com`.
     
-<a name="extension-flags-shell-feature-flags-shell-feature-flags-from-the-feature-object"></a>
-### Shell Feature flags from the feature object
+<a name="extension-flags-and-feature-flags-shell-feature-flags-shell-flags"></a>
+### Shell flags
 
 The following are the feature flags that are invoked with the syntax: `feature.<featureName>=true` unless otherwise noted.
 
@@ -357,8 +355,8 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 
 **feature.waitforpendingchanges**: Reserved for future use.
 
-<a name="extension-flags-shell-feature-flags-marketplace-features"></a>
-### Marketplace features
+<a name="extension-flags-and-feature-flags-shell-feature-flags-marketplace-feature-flags"></a>
+### Marketplace feature flags
 
 <!--TODO:  Determine whether microsoft_azure_marketplace is an extension name or an example extension name.  If such is the case, then the following 4 flags should be documented as only the suffix name. -->
 
@@ -374,7 +372,7 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 **microsoft_azure_marketplace_quotaIdOverride**:  Associated with Marketplace extensions and the Create Launcher. A value of `true` ,  and a value of `false`. 
 
 
-<a name="extension-flags-glossary"></a>
+<a name="extension-flags-and-feature-flags-glossary"></a>
 ## Glossary
 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).

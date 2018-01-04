@@ -58,7 +58,7 @@ The following code examples demonstrate how to turn feature flags on and off ins
 
 </details>
 <details>
-<summary> Programming default values for feature flags in C#</summary>
+<summary>Programming default values for feature flags in C#</summary>
 
 Feature flags can be enabled for all users in one or more deployments by using an extension configuration, as in the following code. 
 
