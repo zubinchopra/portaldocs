@@ -1,5 +1,13 @@
 # Release Notes since 9/5/2017
 
+## 5.0.302.956
+0 Breaking Changes, 0 Features added and 0 Bugs Fixed
+<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
+
+## 5.0.302.955
+0 Breaking Changes, 1 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1799567'>1799567</a></td><td>Feature</td><td>Fx/Ajax.batch() API enhancements to differentiate foreground and background requests</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1797089'>1797089</a></td><td>Bug Fix</td><td>Increase MonitorChart default polling interval to 5 minutes</td></tr></table>
+
 ## 5.0.302.954
 0 Breaking Changes, 2 Features added and 2 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1803864'>1803864</a></td><td>Bug Fix</td><td>Feature values should be case sensitive</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1798457'>1798457</a></td><td>Feature</td><td>Compute extension to flight AFD extension</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1787065'>1787065</a></td><td>Bug Fix</td><td>Widgets.TopBar.ts doesn't show the title correctly</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1748372'>1748372</a></td><td>Feature</td><td>[ExtensionConfiguration] Browse config update for extension Microsoft_Intune_Edu</td></tr></table>
