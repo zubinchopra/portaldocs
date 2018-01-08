@@ -27,8 +27,7 @@ The name of the extension can be used in the query string to access various Shel
   | --------- | --- |
   | nocdn | A value of `true` will bypass the CDN when loading resources for the Portal only. A value of `force` will bypass the CDN when loading resources for the Portal and all extensions.|
 | testExtensions | Contains the name of the extension, and the environment in which the extension is located. For example, `?testExtensions={"HelloWorld":"https://localhost:44300/"}` specifies the intent to load the `HelloWorld` extension from the localhost port 44300 into the current session of the Portal. The **name** and **uri**  parameters are as specified in [portalfx-extensions-configuration-overview.md#understanding-the-extension-configuration-in-portal](portalfx-extensions-configuration-overview.md#understanding-the-extension-configuration-in-portal).|
-  | webworker | A value of `true` enables webworkers in the Portal for all extensions who have explicitly been set as supporting webworkers in the `extensions.json` file. Also forces the extension into a web worker, for example, `webworker=true,Microsoft_Azure_Demo=true,extName=<id>` will allow the webworker whose id is specified in `extName` to use the extension named Microsoft_Azure_Demo.  Useful for testing extensions manually or through CI previous to enabling them in production.  
-<!-- before flipping the switch.-->
+
     
 <a name="shell-feature-flags-the-canmodifystamps-flag"></a>
 ### The canmodifystamps flag
@@ -80,7 +79,7 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 | storage     | Add all storage services to the **Storage** category  
 | vm          | Rename **Compute** to **VMs**, and rename **Web + Mobile** to **App Services** |
 
-**feature.canmodifyextensions**:  Required to support loading untrusted extensions for security purposes. For more information, see [portalfx-extensions-testing-in-production-overview.md#registering-a-customized-extension](portalfx-extensions-testing-in-production-overview.md#registering-a-customized-extension).
+**feature.canmodifyextensions**:  Required to support loading untrusted extensions for security purposes. For more information, see [portalfx-extensions-testing-in-production-overview.md#loading-customized-extensions](portalfx-extensions-testing-in-production-overview.md#loading-customized-extensions).
 
 <!--TODO: Determine whether the following flag is associated with msportalfx-test.md#msportalfx-test-running-ci-->
 
@@ -170,6 +169,18 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 | desktop | Includes default diagnostics and the desktop entry in the Ctrl+Alt+A popup window | 
 
 **feature.waitforpendingchanges**: Reserved for future use.
+
+**feature.webworker**: Loads the extension in a separate webworker thread, which makes the extension more performant.  The flag is useful for testing extensions previous to enabling them in production. In a webworker thread, objects such as [DOM](portalfx-extensions-flags-glossary.md), cookies, and other items are not available. The query string parameter works in conjunction with the **supportsWebWorkers** parameter in the `extensions.json` file. The  `extensions.json` file must contain the value  `supportsWebWorkers: "true"`, in order for the feature flag to invoke behavior.  When the `supportsWebWorkers` parameter is absent or set to false, the feature flag cannot invoke any behavior. The query string is as follows: `https://portal.azure.com?extName=<webWorkerId>,<extensionName1>=true,<extensionName2>=true, <extensionName3>=true,feature.webworker=<value>`, where
+
+  * **webWorkerId**: Identifies the webworker thread.
+
+  * **extensionName\<number>**: Matches the name of the extension, without the angle brackets, as specified in the `<Extension>` element in the  `extension.pdl` file.
+  
+  * **feature.webworker**: A value of `true` will allow the extensions to run in the specified webworker. A value of `false` will not run the extensions in a webworker.  In the previous example, the **feature.webworker** flag allows the webworker whose id is specified in `webWorkerId` to use the extensions named `<extensionName1>`, `<extensionName2>,` and `<extensionName3>`.
+
+    For more information about webworkers, see [https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers).
+
+    **NOTE**:  There is no default that will turn on all extensions for an environment on the basis of the `supportsWebWorkers: "true"` parameter in the json file.
 
 <a name="shell-feature-flags-marketplace-feature-flags"></a>
 ### Marketplace feature flags
