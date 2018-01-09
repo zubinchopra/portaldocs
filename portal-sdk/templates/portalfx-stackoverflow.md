@@ -81,8 +81,4 @@
     <td> [ibiza-accessibility](https://stackoverflow.microsoft.com/questions/tagged/ibiza-accessibility) </td>
     <td> paparsad </td>
 </tr>
-<tr>
-    <td> [ibiza](https://stackoverflow.microsoft.com/questions/tagged/ibiza) </td>
-    <td> adamab </td>
-</tr>
 </table>
