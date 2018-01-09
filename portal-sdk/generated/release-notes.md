@@ -1,4 +1,4 @@
-# Release Notes since 9/7/2017
+# Release Notes since 9/9/2017
 
 ## 5.0.302.956
 0 Breaking Changes, 0 Features added and 0 Bugs Fixed
@@ -174,15 +174,3 @@ stack: TypeError: Unable to get property ''length'' of undefined or null referen
 ## 5.0.302.848
 0 Breaking Changes, 3 Features added and 0 Bugs Fixed
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10208818'>10208818</a></td><td>Feature</td><td>[MonitorChart] Enable metrics for new resource types</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10206105'>10206105</a></td><td>Feature</td><td>[ExtensionConfiguration] Enable in MC for extension Microsoft_AAD_IAM</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10142893'>10142893</a></td><td>Feature</td><td>[ExtensionConfiguration] Enable for extension Microsoft_Azure_CostManagement</td></tr></table>
-
-## 5.0.302.847
-0 Breaking Changes, 0 Features added and 0 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1311955'>1311955</a></td><td>DeploymentTask</td><td>FC125.0.7  - SN2PrdApp06 - FCC+HE-GuestOS_Update_SAT.xml</td></tr></table>
-
-## 5.0.302.846
-0 Breaking Changes, 0 Features added and 0 Bugs Fixed
-<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
-
-## 5.0.302.844
-0 Breaking Changes, 1 Features added and 0 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10173265'>10173265</a></td><td>Feature</td><td>[Ev2] Export environment specific zip file</td></tr></table>
