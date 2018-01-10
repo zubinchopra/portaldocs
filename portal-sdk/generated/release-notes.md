@@ -1,4 +1,4 @@
-# Release Notes since 9/9/2017
+# Release Notes since 9/10/2017
 
 ## 5.0.302.956
 0 Breaking Changes, 0 Features added and 0 Bugs Fixed
@@ -162,15 +162,3 @@ stack: TypeError: Unable to get property ''length'' of undefined or null referen
 ## 5.0.302.851
 1 Breaking Changes, 0 Features added and 0 Bugs Fixed
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10227953'>10227953</a></td><td><strong>Break</strong></td><td>_addProperty method of the Properties Part ViewModel is inefficient</td></tr></table>
-
-## 5.0.302.850
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10221123'>10221123</a></td><td>Bug Fix</td><td>ExtensionClientTrace and ExtesionTelemetry controllers should be whitelisted to the app ids from the extension config</td></tr></table>
-
-## 5.0.302.849
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10221758'>10221758</a></td><td>Bug Fix</td><td>Blackforest certificates need to be rolled</td></tr></table>
-
-## 5.0.302.848
-0 Breaking Changes, 3 Features added and 0 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10208818'>10208818</a></td><td>Feature</td><td>[MonitorChart] Enable metrics for new resource types</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10206105'>10206105</a></td><td>Feature</td><td>[ExtensionConfiguration] Enable in MC for extension Microsoft_AAD_IAM</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10142893'>10142893</a></td><td>Feature</td><td>[ExtensionConfiguration] Enable for extension Microsoft_Azure_CostManagement</td></tr></table>
