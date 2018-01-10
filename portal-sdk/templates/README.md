@@ -56,17 +56,18 @@ GitHub performs its own linking when documents are generated or are displayed in
 The following images describe what happens to the link, based on the amount of the topic document that  GitHub is displaying.
 1. When the portalfx-extensions-flags.md document is selected from the gitHub index, and the reader scrolls down, the portalfx-extensions-flags-extension.md subtopic is displayed with the following information in the address bar.
 
- ![alt-text](../media/portalfx/github-topic.png "Topic selected from gitHub index")
+    ![alt-text](../media/portalfx/github-topic.png "Topic selected from gitHub index")
 
 1. when the mouse hovers next to or on the subtopic header, the following icon is displayed to the left of the subtopic name.
 
- ![alt-text](../media/portalfx/github-link.png "Link icon")
+    ![alt-text](../media/portalfx/github-link.png "Link icon")
 
 1. When the link icon is clicked, GitHub switches to the subtopic document with the following information in the address bar.
  ![alt-text](../media/portalfx/github-subtopic-from-topic.png "Subtopic selected from previous document")
 
-Note that the link that points to the document is different from the link that is displayed when the subtopic is selected from the GitHub index, as in the following example.
- ![alt-text](../media/portalfx/github-subtopic-from-github.png "Subtopic selected from gitHub index")
+    **NOTE**: The link that points to the document is different from the link that is displayed when the subtopic is selected from the GitHub index, as in the following example.
+
+    ![alt-text](../media/portalfx/github-subtopic-from-github.png "Subtopic selected from gitHub index")
 
 Azure developers will become familiar with the difference in links as they navigate through GitHub using the main index, the GitHub index, and the links in the topics.
 
