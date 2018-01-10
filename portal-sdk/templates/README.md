@@ -35,6 +35,7 @@ The Azure documents are modularized, using the naming conventions in [#topic-nam
 Other subtopics are most easily located when they use the following subtopic naming nodes, regardless of major area or topic.
 
 | Node         | Purpose                               | Example | 
+| ------------ | ------------------------------------- | ------- | 
 | advanced     | For larger or more complex extensions | portalfx-extensions-hosting-service-advanced.md  |
 | procedure(s) | Checklist                             | portalfx-extensions-developerInit-procedure.md |
 | fyi          | Relevant references which were not used inline within the context of the topic. | portalfx-extensions-debugging-fyi.md |
@@ -54,9 +55,11 @@ GitHub performs its own linking when documents are generated or are displayed in
 
 The following images describe what happens to the link, based on the amount of the topic document that  GitHub is displaying.
 1. When the portalfx-extensions-flags.md document is selected from the gitHub index, and the reader scrolls down, the portalfx-extensions-flags-extension.md subtopic is displayed with the following information in the address bar.
+
  ![alt-text](../media/portalfx/github-topic.png "Topic selected from gitHub index")
 
 1. when the mouse hovers next to or on the subtopic header, the following icon is displayed to the left of the subtopic name.
+
  ![alt-text](../media/portalfx/github-link.png "Link icon")
 
 1. When the link icon is clicked, GitHub switches to the subtopic document with the following information in the address bar.
