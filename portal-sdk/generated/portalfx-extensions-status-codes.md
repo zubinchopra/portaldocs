@@ -29,7 +29,7 @@ SOLUTION: [https://stackoverflow.microsoft.com/questions/48581/cannot-load-local
 ERR_INSECURE_RESPONSE in the browser console
 
 ***My Extension fails to sideload and I get an ERR_INSECURE_RESPONSE in the browser console***.
-
+   
 ![alt-text](../media/portalfx-testinprod/errinsecureresponse.png "ERR_INSECURE_RESPONSE Log")
 
 ERROR: the browser is trying to load the extension but the SSL certificate from localhost is not trusted.
@@ -113,7 +113,7 @@ SOLUTION:
 <a name="status-codes-and-error-messages-portal-error-520"></a>
 ### Portal Error 520
 
-***The portal encountered a part it cannot render***
+***The Portal encountered a part it cannot render***
 
 ERROR: The Portal displays a 520 error, as in the following image.
 
