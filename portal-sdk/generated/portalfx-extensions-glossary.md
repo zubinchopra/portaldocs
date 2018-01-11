@@ -17,7 +17,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | CNAME            | Canonical Name record. A type of resource record in the Domain Name System (DNS) that specifies that a domain name is an alias for another domain (the 'canonical' domain). | 
 | DNS              | Domain name server |
 | FF               | Fairfax |  
-| MPAC             | ms.portal.azure.com, the Azure portal instance for internal Microsoft customers. | 
+| MPAC             | ms.portal.azure.com, the Azure Portal instance for internal Microsoft customers. | 
 | national cloud   | Network instances of Microsoft enterprise cloud services that are isolated physically and logically. They are confined within the geographic borders of specific countries and operated by local personnel. See sovereign cloud. |
 | PROD             | Production |
 | RC               | Release Candidate environment, used to deploy daily builds of the Azure Portal. There is no user traffic in this environment. |
@@ -46,14 +46,14 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | DF                       | Dogfood |
 | DIY                      | Do It Yourself |
 | environment              | A configuration of computers in which extensions can be run. For example, environments are Blackforest, Dogfood, Mooncake, and Production.  | 
-| feature flag             | A switch that allows a user to turn on or off specific functionalities of an extension. Flags are  passed from the portal to extensions and their controllers, and are used as an alternative to maintaining multiple source-code branches in order to hide, enable or disable a feature during run time. Most, but not all, feature flags are made available by using the syntax `feature.<featureName> = true`.   |
+| feature flag             | A switch that allows a user to turn on or off specific functionalities of an extension. Flags are  passed from the Portal to extensions and their controllers, and are used as an alternative to maintaining multiple source-code branches in order to hide, enable or disable a feature during run time. Most, but not all, feature flags are made available by using the syntax `feature.<featureName> = true`.   |
 | FF                       | Fairfax |
 | flighting                | |
 | flighting extension      | |
 | GA                       | Global Availability |
 | iframe                   | An inline frame, used to embed another document within the current HTML document. |
 | MC                       | Mooncake |
-| MPAC                     | ms.portal.azure.com, the Azure portal instance for internal Microsoft customers.  | 
+| MPAC                     | ms.portal.azure.com, the Azure Portal instance for internal Microsoft customers.  | 
 | PCV1                     | Parameter Collector V1 |
 | PCV2                     | Parameter Collector V2 |
 | PDL                      | Program Design Language |
@@ -66,7 +66,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | smoke test               | see build verification test  |
 | SSL                      | Secure Socket Layer |
 | stakeholder              | A person, group or organization that has interest or concern in an organization. Stakeholders can affect or be affected by the organization's actions, objectives and policies. |
-| stamp                    | An instance of a service in a region. Every extension can deploy one or more stamps based on testing requirements. The main stamp is used for production and is the only one that the portal will load by default.    | 
+| stamp                    | An instance of a service in a region. Every extension can deploy one or more stamps based on testing requirements. The main stamp is used for production and is the only one that the Portal will load by default.    | 
 | URI                      | Universal Resource Identifier  | 
 | URL                      | Uniform Resource Locator |
 
@@ -98,7 +98,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | DF                        | Dogfood | 
 | DNS                       | Domain Name Server  | 
 | DNS                       | Domain Name System  | 
-| first-party extension     | An Azure portal extension that is developed by Microsoft |
+| first-party extension     | An Azure Portal extension that is developed by Microsoft |
 | FAQ                       | Frequently Asked Questions | 
 | GA                        | Global Availability | 
 | gallery                   | Also known as Marketplace or Azure Portal Marketplace. See Marketplace Gallery. | 
@@ -106,7 +106,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | GB Standard               | GB stands for Guobiao, or “National Standard” in Chinese. The GB standard is the basis for testing products that require certification. | 
 | Marketplace               | See Marketplace Gallery. | 
 | Marketplace Gallery       | Also known as the Gallery or Marketplace Gallery. | 
-| MPAC                      | ms.portal.azure.com, the Azure portal instance for internal Microsoft customers.  | 
+| MPAC                      | ms.portal.azure.com, the Azure Portal instance for internal Microsoft customers.  | 
 | P0 scenarios              | The most important user scenarios for an extension. Less important scenarios that are used for usability testing are categorized as P1, P2, or P3. |
 | PDE | | 
 | PHP                       | Recursive acronym for PHP: Hypertext Preprocessor. | 
@@ -125,7 +125,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | single page application | A web application that dynamically rewrites displayed pages instead of providing entire new pages from a server. | 
 | SLA                       | Service Level Agreement | 
 | SSL                       | Secure Socket Layer  | 
-| third-party extension     | An Azure portal extension that is developed by partners outside of Microsoft |
+| third-party extension     | An Azure Portal extension that is developed by partners outside of Microsoft |
 | URL                       | Uniform Resource Locator | 
 | VP                        | Vice President | 
 | Weighted Experience Score | The percentage of blade usage that meets the performance bar. |
@@ -144,7 +144,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | Term          | Meaning | 
 | ---           | --- |
 | area          | Group of blades and parts that are associated with a single user-defined context.  |
-| blade         | An Azure SDK object, or an object from a framework API, that contains content by using an HTML template.  That template is bound to properties on the TypeScript class of the object.  The main unit of the Azure UX that can be built using the Azure SDK.   The vertical container that acts as the starting point for any journey.  Web pages that can be loaded in the portal. |
+| blade         | An Azure SDK object, or an object from a framework API, that contains content by using an HTML template.  That template is bound to properties on the TypeScript class of the object.  The main unit of the Azure UX that can be built using the Azure SDK.   The vertical container that acts as the starting point for any journey.  Web pages that can be loaded in the Portal. |
 | data binding  | The process that establishes a connection between the application UI and the business logic  behind the pane. |
 | extension     | A Web application that was developed using the Azure Portal SDK and is made available to users through the Azure Portal. |
 | framework     | A software environment that provides large software platform functionality in the process of building and deploying applications. The larger platform is selectively changed by adding developer code to make software applications. |
@@ -178,12 +178,23 @@ This section contains a glossary of terms and acronyms that are used in this doc
  
 | Term                 | Meaning |
 | ---                  | --- |
-| endpoint            | A device that is connected to a LAN and accepts or transmits communications across a network. In terms of directories or Web pages, there may be several endpoints that are defined on the same device.  | 
-| obsolete script      | A script that makes certain parts of the portal act as legacy code, in order to limit the performance costs of the old functionality to only extensions that are using them. | 
+| Developer Tools Console | | 
+| diagnostic switch | | 
+| endpoint             | A device that is connected to a LAN and accepts or transmits communications across a network. In terms of directories or Web pages, there may be several endpoints that are defined on the same device.  |
+| extension stamps | |
+| hotfix | |
+| localhost            | A hostname that means this computer or this host.  |
+| obsolete script      | A script that makes certain parts of the Portal act as legacy code, in order to limit the performance costs of the old functionality to only extensions that are using them. | 
+| phishing | | 
+| pull request | |
+| private preview | |
+| query string       | The part of a uniform resource locator (URL) that contains data. Query strings are generated by form submission, or by being entered into the address bar of the browser after the URL. The  query string is specified by the values following the question mark (?). The values are used in Web processing, along with the path component of the URL. Query strings should not be used to transfer large amounts of data.  | 
 | sandboxed iframe     | Enables an extra set of restrictions for the content in the iframe.  It can treat the content as being from a unique origin, block form submission or script execution, prevent links from targeting other browsing context, and other items that restrict the behavior of the iframe during testing. | 
 | SAN                  | Storage Area Network  | 
+| sideloading          | Loading an extension for a specific user session from any source other than the uri that is registered in the Portal.  The process of transferring data between two local devices, or between the development platform and the local host. Also side load, side-load. |   
 | synthetic traffic    | Traffic that has been created with a traffic generators and that behaves like real traffic. It can be used to capture the behavior the network or device under test. | 
-
+| untrusted extension | An extension that is not accompanied by an SSL certificate. |
+| usability testing | |
 
 <a name="azure-portal-glossary-status-codes-and-error-messages"></a>
 ## Status Codes and Error Messages
