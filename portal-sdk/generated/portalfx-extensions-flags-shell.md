@@ -161,6 +161,7 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 **feature.UserType**: A value of "test" excludes test traffic from Azure reports.
 
 **feature.verbosediagnostics**: Valid values are in the following table.
+
 | Value | Meaning |
 | ----- | ------- |
 | all   | Includes default diagnostics and all filtered diagnostics in the Ctrl+Alt+A popup window | 
