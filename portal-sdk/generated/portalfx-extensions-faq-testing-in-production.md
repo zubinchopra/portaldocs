@@ -1,41 +1,44 @@
 <a name="frequently-asked-questions"></a>
 ## Frequently asked questions
 
-If there are enough FAQ's on the same subject, like sideloading, they have been grouped together in this document.
-Otherwise, FAQ's are listed in the order that they were encountered.
+If there are enough FAQ's on the same subject, like sideloading, they have been grouped together in this document. Otherwise, FAQ's are listed in the order that they were encountered. Items that are specifically status codes or error messages can be located in [portalfx-extensions-status-codes.md](portalfx-extensions-status-codes.md).
+
+<a name="frequently-asked-questions-faqs-for-debugging-extensions"></a>
+### FAQs for Debugging Extensions
+
+***Where are the FAQ's for normal debugging?***
+
+The FAQs for debugging extensions is located at [portalfx-extensions-faq-debugging.md](portalfx-extensions-faq-debugging.md).
+
+* * *
 
 <a name="frequently-asked-questions-sandboxed-iframe-security"></a>
 ### Sandboxed iframe security
 
-***Error: 'Security of a sandboxed iframe is potentially compromised by allowing script and same origin access'.***
- 
-The Azure Portal should frame the extension URL, as specified in [portalfx-extensions-developerInit-procedure.md](portalfx-extensions-developerInit-procedure.md) and [portalfx-extensions-key-components.md](portalfx-extensions-key-components.md).
+*** I get an error 'Security of a sandboxed iframe is potentially compromised by allowing script and same origin access'. How do I fix this? ***
+
+You need to allow the Azure Portal to frame your extension URL. For more information, [click here](portalfx-creating-extensions.md).
 
 * * *
 
-<a name="frequently-asked-questions-err_connection_reset"></a>
-### ERR_CONNECTION_RESET
+<a name="sideloading-faqs"></a>
+## Sideloading FAQs
 
-***Cannot load `localhost` Ibiza extension with ERR_CONNECTION_RESET***
+<a name="sideloading-faqs-sideloading-extension-gets-an-err_insecure_response"></a>
+### Sideloading Extension gets an ERR_INSECURE_RESPONSE
 
-   [portalfx-extensions-status-codes.md#err-connection-reset](portalfx-extensions-status-codes.md#err-connection-reset)
+*** My Extension fails to side load and I get an ERR_INSECURE_RESPONSE in the browser console ***
 
-* * *
+![ERR_INSECURE_RESPONSE](../media/portalfx-testinprod/errinsecureresponse.png)
 
-<a name="frequently-asked-questions-sideloading-errors"></a>
-### Sideloading errors
+In this case the browser is trying to load the extension but the SSL certificate from localhost is not trusted the solution is to install/trust the certificate.
 
-<a name="frequently-asked-questions-sideloading-errors-err_insecure_response"></a>
-#### ERR_INSECURE_RESPONSE
-
-***My Extension fails to sideload and I get an ERR_INSECURE_RESPONSE message in the browser console.***
-
-[portalfx-extensions-status-codes.md#err-insecure-response](portalfx-extensions-status-codes.md#err-insecure-response)
+Please checkout the stackoverflow post: [https://stackoverflow.microsoft.com/questions/15194/ibiza-extension-unable-to-load-insecure](https://stackoverflow.microsoft.com/questions/15194/ibiza-extension-unable-to-load-insecure)
 
 * * *
 
-<a name="frequently-asked-questions-sideloading-errors-sideloading-in-chrome"></a>
-#### Sideloading in Chrome
+<a name="sideloading-faqs-sideloading-in-chrome"></a>
+### Sideloading in Chrome
 
 ***Ibiza sideloading in Chrome fails to load parts***
     
@@ -43,17 +46,34 @@ Enable the `allow-insecure-localhost` flag, as described in [https://stackoverfl
 
 * * *
 
-<a name="frequently-asked-questions-sideloading-errors-sideloading-gallery-packages"></a>
+<a name="sideloading-faqs-sideloading-in-chrome-sideloading-gallery-packages"></a>
 #### Sideloading gallery packages
+
 ***Trouble sideloading gallery packages***
-[https://stackoverflow.microsoft.com/questions/12136/trouble-side-loading-gallery-packages](https://stackoverflow.microsoft.com/questions/12136/trouble-side-loading-gallery-packages)
+
+SOLUTION:  Some troubleshooting steps are located at [https://stackoverflow.microsoft.com/questions/12136/trouble-side-loading-gallery-packages](https://stackoverflow.microsoft.com/questions/12136/trouble-side-loading-gallery-packages)
 
 * * *
 
-<a name="frequently-asked-questions-sideloading-errors-sideloading-friendly-names"></a>
+<a name="sideloading-faqs-sideloading-in-chrome-sideloading-friendly-names"></a>
 #### Sideloading friendly names
 
 ***Sideloading friendly names is not working in the Dogfood environment***
-[https://stackoverflow.microsoft.com/questions/64951/extension-hosting-service-side-loading-friendlynames-not-working-in-dogfood](https://stackoverflow.microsoft.com/questions/64951/extension-hosting-service-side-loading-friendlynames-not-working-in-dogfood)
+
+In order for Portal to load  a test version of an extension, i.e., load without using the PROD stamp, developers can append the feature flag `feature.canmodifystamps`. The following example uses the sideload url to load the "test" version of extension.
+
+`https://portal.azure.com?feature.canmodifystamps=true&<extensionName>=test`
+
+The parameter `feature.canmodifystamps=true` is required for side-loading, and 
+ **extensionName**, without the angle brackets, is replaced with the unique name of extension as defined in the `extension.pdl` file. For more information, see [https://stackoverflow.microsoft.com/questions/64951/extension-hosting-service-side-loading-friendlynames-not-working-in-dogfood](https://stackoverflow.microsoft.com/questions/64951/extension-hosting-service-side-loading-friendlynames-not-working-in-dogfood).
 
 * * *
+
+<a name="sideloading-faqs-other-testing-questions"></a>
+### Other testing questions
+
+***How can I ask questions about testing ?***
+
+You can ask questions on Stackoverflow with the tag [ibiza-test](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test).
+
+--------

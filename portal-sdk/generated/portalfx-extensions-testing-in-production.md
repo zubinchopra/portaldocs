@@ -225,12 +225,10 @@ For more information about obsolete bundles and obsolete script bundles, see [po
 <a name="testing-in-production-best-practices"></a>
 ## Best Practices
 
-This section contains best practices for testing extensions in production.
-
 <a name="testing-in-production-best-practices-onebox-stb-is-not-available"></a>
 ### Onebox-stb is not available
 
-    Onebox-stb has been deprecated. Please do not use it. Instead, migrate extensions to sideloading. For help on migration, send an email to  ibiza-onboarding@microsoft.com.
+  Onebox-stb has been deprecated. Please do not use it. Instead, migrate extensions to sideloading. For help on migration, send an email to  ibiza-onboarding@microsoft.com.
 
 * * * 
 
@@ -314,6 +312,36 @@ The parameter `feature.canmodifystamps=true` is required for side-loading, and
 You can ask questions on Stackoverflow with the tag [ibiza-test](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test).
 
 --------
+
+
+<a name="testing-in-production-faqs-for-debugging-extensions"></a>
+## FAQs for Debugging Extensions
+
+<a name="testing-in-production-faqs-for-debugging-extensions-ssl-certificates"></a>
+### SSL certificates
+
+***How do I use SSL certs?***
+
+[portalfx-extensions-faq-onboarding.md#sslCerts](portalfx-extensions-faq-onboarding.md#sslCerts)
+
+* * *
+
+<a name="testing-in-production-faqs-for-debugging-extensions-loading-different-versions-of-an-extension"></a>
+### Loading different versions of an extension
+
+***How do I load different versions of an extension?***
+
+Understanding which extension configuration to modify is located at [portalfx-extensions-configuration-overview.md#understanding-which-extension-configuration-to-modify](portalfx-extensions-configuration-overview.md#understanding-which-extension-configuration-to-modify).
+
+* * *
+
+<a name="testing-in-production-faqs-for-debugging-extensions-other-debugging-questions"></a>
+### Other debugging questions
+
+***How can I ask questions about debugging ?***
+
+You can ask questions on Stackoverflow with the tag [ibiza](https://stackoverflow.microsoft.com/questions/tagged/ibiza).
+
 
 
 <a name="testing-in-production-status-codes-and-error-messages"></a>
