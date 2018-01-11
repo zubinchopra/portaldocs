@@ -44,18 +44,20 @@ Extensions can be loaded on a per-user basis on production deployments. Sideload
 
 ## Registering extensions with the registerTestExtension API
 
-If you want to make programmatic changes to an extension instead of using the URL in the query string, you can use the existing `registerTestExtension` API. It allows the developer to register a custom extension from `localhost`, or register a custom extension from a custom environment. Use the following steps for the `registerTestExtension` API. 
- 
+The developer may want to programmatically register a deployed extension with JavaScript and then reload the Portal. This step is optional if they use a [query string](portalfx-extensions-testing-in-production-glossary.md) method to load the extension into the browser from the localhost. For programmatic changes to an extension instead of using the URL in the query string, the existing `registerTestExtension` API can be used instead. It allows the developer to register a custom extension from `localhost`, or register a custom extension from a custom environment. To load an extension from the test environment or an unregistered source, extension developers can leverage the following approach.
+
  <!-- TODO: Determine whether the registerTestExtension API can be used with the hosting service or if the hosting service only allows query strings. If the registerTestExtension API allows use of a hosting service, find the example code so that the following sentence can be  re-included into the document:
   or load an extension from a custom environment using a hosting service.
  -->
+
+<!--TODO:  Determine whether the following can be considered a different format
+  `MsPortalImpl.Extension.registerTestExtension({name,uri},settings)`     -->
  
-1. Sign in to a production account at [https://portal.azure.com?feature.canmodifyextensions=true](https://portal.azure.com?feature.canmodifyextensions=true).
+1. Sign in to a production account at [https://portal.azure.com?feature.canmodifyextensions=true](https://portal.azure.com?feature.canmodifyextensions=true)
 
-1.  Click F12 to open the developer tools in the browser.
-
-1.  Run the following command in the browser console to register a custom extension.
-
+1. Click **F12** to open the Developer Tools in the browser
+  
+1. Run the following command in the browser console to register a custom extension.
     ```ts
     // use this command if the changes should persist 
     //  until the user resets the settings or
@@ -72,7 +74,7 @@ If you want to make programmatic changes to an extension instead of using the UR
     MsPortalImpl.Extension.registerTestExtension({
       name: "<extensionName>",
       uri: "<protocol>://<endpoint>:<portNumber>" }, 
-      true);
+      <settings>);
     ```
     where
 
@@ -84,6 +86,8 @@ If you want to make programmatic changes to an extension instead of using the UR
 
     * **portNumber**: The port number associated with the endpoint that serves the extension, as in the following example: `https://DemoServer:59344/`. 
 
+    * **settings**: Registers the extension in the portal. It is a boolean value that specifies the timeframe for which the Portal will run the registered extension.  A value of  `true` means that the registered extension is valid only for the current browser session.  A value of `false` means that the registered extension is valid across browser sessions. This state is saved in the browser's local storage. This is the default.
+
 1. Navigate to [https://portal.azure.com?feature.canmodifyextensions=true&clientOptimizations=false](https://portal.azure.com?feature.canmodifyextensions=true&clientOptimizations=false).
  
 The following example describes a complete URL and [query string](portalfx-extensions-testing-in-production-glossary.md) that instructs the Portal to load the extension named "Microsoft_Azure_Demo" from endpoint "https://DemoServer:59344". It registers the extension only for the current user session. 
@@ -91,7 +95,7 @@ The following example describes a complete URL and [query string](portalfx-exten
    ```ts
    MsPortalImpl.Extension.registerTestExtension({
      name: "Microsoft_Azure_Demo",
-     uri: "https://DemoServer:44300" }, true);
+     uri: "https://DemoServer:44300"});
    ```
  
 ## Unregistering test extensions
@@ -101,7 +105,6 @@ When testing is completed, the developer can run the `unregisterTestExtension` m
 ```ts
   MsPortalImpl.Extension.unregisterTestExtension("<extensionName>");
 ```
-
 
 ## Loading customized extensions
 
@@ -125,36 +128,6 @@ where
 
   * **uri**: The extension endpoint. If there is a port number associated with the extension, it can be appended to the `uri` by separating it from the `uri` by a colon, as in the following example: `https://localhost:1234/`. 
 
- The custom extension that was registered will be saved to user settings, and available in future sessions. When using the Portal in this mode, a banner is displayed that indicates that the state of the configured extensions has been changed, as in the following image.
-
-![alt-text](../media/portalfx-testinprod/localExtensions.png "Local extensions")
-
-<details>
-<summary>Load localhost from development computer</summary>
-
-
-</details>
-<details>
-<summary>Load extension that was deployed to a test environment</summary>
-
-<!-- TODO:  Determine whether this is trying to split registerTestExtension  from mention in the address bar.
--->
-
-The Portal provides options for sideloading an extension for testing. If you wish to sideload an extension, the `registerTestExtension` function can be used either as a localhost extension or as a deployed extension, with the appropriate query strings.  For a localhost extension you can just set a query string. For more information, see [registering-extensions-with-the-registertestextension-api](#registering-extensions-with-the-registertestextension-api).
-
-The developer may want to programmatically register a deployed extension with JavaScript and then reload the Portal. This step is optional if they use a [query string](portalfx-extensions-testing-in-production-glossary.md) method to load the extension into the browser from the localhost. To load an extension from the test environment or an unregistered source, extension developers can leverage the following approach.
-
-1. Sign in to a production account at [https://portal.azure.com?feature.canmodifyextensions=true](https://portal.azure.com?feature.canmodifyextensions=true)
-1.# Click **F12** to open the Developer Tools in the browser
-1. In the **Console** window of the browser's Developer Tools, evaluate the following JavaScript snippet to register an extension in the Portal.
-
-    `MsPortalImpl.Extension.registerTestExtension({name,uri},settings)` 
-
-where
-* **name** and **uri** parameters are as specified in [portalfx-extensions-configuration-overview.md#understanding-the-extension-configuration-in-portal](portalfx-extensions-configuration-overview.md#understanding-the-extension-configuration-in-portal).
- 
-* **settings**: Registers the extension in the portal. It is a boolean value that specifies the timeframe for which the Portal will run the registered extension.  A value of  `true` means that the registered extension is valid only for the current browser session.  A value of `false` means that the registered extension is valid across browser sessions. This state is saved in the browser's local storage. This is the default.
-
 The following example registers the extension in User Settings.
 
 ```ts
@@ -169,10 +142,9 @@ where
 
 * **portNumber**: The port where extension is hosted on `<serverName>`
 
-The registered extension will be saved to User Settings , and will be available in future sessions. When the Portal is used in this mode, it displays a banner that indicates that the state of the configured extensions has been changed, as in the following image.
+ The custom extension that was registered will be saved to user settings, and available in future sessions. When using the Portal in this mode, a banner is displayed that indicates that the state of the configured extensions has been changed, as in the following image.
 
-![Local extensions](../media/portalfx-testinprod/localExtensions.png)
-</details>
+![alt-text](../media/portalfx-testinprod/localExtensions.png "Local extensions")
 
 For more information on loading, see [portalfx-testing-ui-test-cases.md](portalfx-testing-ui-test-cases.md).
 
