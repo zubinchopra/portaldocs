@@ -10,5 +10,5 @@
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-status-codes.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-testing-in-production-glossary.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-testing-in-production.md"}
 
