@@ -16,7 +16,7 @@ This section contains all Best Practices that have been added to Azure Portal to
 
 <a name="azure-portal-best-practices-best-practices"></a>
 ## Best Practices
-
+   
 Portal development patterns or architectures that are recommended based on customer feedback and usability studies are located in the topic for the blade that is being developed. For more information, see [portalfx-blades-best-practices.md](portalfx-blades-best-practices.md).
 
 <a name="azure-portal-best-practices-best-practices-performance"></a>

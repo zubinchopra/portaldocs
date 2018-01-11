@@ -15,7 +15,7 @@ To load the extension programmatically, see [#registering-extensions-with-the-re
 
 ## Sideloading
 
-The difference betweeen sideloading and testing in production is the endpoint from which the extension is loaded. The following query string can be used to load an extension by using the address bar.
+The difference between sideloading and testing in production is the endpoint from which the extension is loaded. The following query string can be used to load an extension by using the address bar.
 
 ```<protocol>://<environment>/?feature.canmodifyextensions=true#?testExtensions={"<extensionName>":"<protocol>://<endpoint>:<portNumber>"}```
 
@@ -40,8 +40,6 @@ In the following example, the endpoint is a server that the developer specifies.
 ```https://portal.azure.com/?feature.canmodifyextensions=true#?testExtensions={"Microsoft_Azure_Demo":"https://DemoServer:59344/}"```
 
 Extensions can be loaded on a per-user basis on production deployments. Sideloading can be used to test a new extension or an existing extension on a developer's machine with production credentials. To reduce phishing risks, the extension is hosted on `localhost`, although it can be hosted on any port.
-
- There are other ways of testing extensions in production, like using diagnostic switches. For more information, see [portalfx-extension-flags.md](portalfx-extension-flags.md).
 
 ## Registering extensions with the registerTestExtension API
 
