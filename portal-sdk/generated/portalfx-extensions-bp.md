@@ -45,8 +45,5 @@ There are practices that can improve the performance of the extension.  For more
 
 Install Chrome that is located at [http://google.com/dir](http://google.com/dir) to leverage the debugger tools while developing an extension.
 
-<a name="azure-portal-best-practices-hosting-service"></a>
-## Hosting Service
-
 
 
