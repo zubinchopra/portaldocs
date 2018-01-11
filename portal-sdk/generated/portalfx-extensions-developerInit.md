@@ -5,7 +5,7 @@
 <a name="setting-up-for-azure-portal-development-introduction"></a>
 ## Introduction
 
-This document describes the creation of a blank Azure extension that validates that the developer's computer is ready for more portal development.
+This document describes the creation of a blank Azure extension that validates that the developer's computer is ready for more Portal development.
    
 <a name="setting-up-for-azure-portal-development-overview"></a>
 ## Overview
@@ -26,7 +26,7 @@ For more information about building an extension with TypeScript decorators, wat
 <a name="setting-up-for-azure-portal-development-create-a-blank-extension"></a>
 ## Create a blank extension
 
-This process validates that your development environment is set up correctly to develop extensions and blades, and validates that the local extension can be loaded in the Azure portal. The empty extension that is created by this process can be modified later for actual development. For more information about developing and testing extensions, see [portalfx-extensions-debugging.md](portalfx-extensions-debugging.md).
+This process validates that your development environment is set up correctly to develop extensions and blades, and validates that the local extension can be loaded in the Azure Portal. The empty extension that is created by this process can be modified later for actual development. For more information about developing and testing extensions, see [portalfx-extensions-debugging.md](portalfx-extensions-debugging.md).
 
 1. Launch **Visual Studio 2015** and navigate to `File -> New -> Project`. In the new project dialog, select `Installed -> Visual C# -> Azure Portal`. Select the `Azure Portal Extension` project type, and give it a unique name.  The name of the project typically matches the solution name. The location can be the same as any other **Visual Studio** project directory.  Then, click the checkbox next to ```Create directory for solution```.  Then, click the ```OK``` button, as described in the following image.
 
@@ -60,9 +60,9 @@ This process validates that your development environment is set up correctly to 
    
    ![alt-text](../media/portalfx-extensions-developerInit/packages.png "Packages Config with Content Unbundler")
 
-   Click on the F5 button to rebuild the application. When the build is successful, **Visual Studio** will proceed to the next step and sideload the application into the production portal.
+   Click on the F5 button to rebuild the application. When the build is successful, **Visual Studio** will proceed to the next step and sideload the application into the production Portal.
 
-1. The portal will prompt you to allow the sideloaded extension. Click the ```Allow``` button, as in the following image.
+1. The Portal will prompt you to allow the sideloaded extension. Click the ```Allow``` button, as in the following image.
 
     ![alt-text](../media/portalfx-overview/untrusted-extensions.png "Untrusted Extensions Dialog")
     

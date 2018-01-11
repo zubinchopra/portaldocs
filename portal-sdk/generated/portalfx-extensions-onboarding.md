@@ -1,40 +1,40 @@
-<a name="portal-extensions-for-developers"></a>
-# Portal Extensions for Developers
+<a name="portal-extensions"></a>
+# Portal Extensions
 
-<a name="portal-extensions-for-developers-introduction"></a>
+<a name="portal-extensions-introduction"></a>
 ## Introduction
-
+   
 Welcome to Azure! We're excited to have you to join the family and become a partner. The Azure Portal team supports the Azure Portal, its SDK, and the Framework that service teams use to integrate their management UI into the Azure Portal.
 
-The Microsoft Azure portal, located at [https://portal.azure.com](https://portal.azure.com), is a central place where Azure customers can provision and manage Azure resources. The Azure portal is a [single page application](portalfx-extensions-onboarding-glossary.md) that may contain more than one Web application. The parts of the page in the portal are dynamically loaded based on customer actions.
+The Microsoft Azure Portal, located at [https://portal.azure.com](https://portal.azure.com), is a central place where Azure customers can provision and manage Azure resources. The Azure Portal is a [single page application](portalfx-extensions-onboarding-glossary.md) that may contain more than one Web application. The parts of the page in the Portal are dynamically loaded based on customer actions.
 
-An extension is essentially the user experience (UX) for a service. Extensions are developed by teams that integrate user interfaces into the Azure Portal. Extensions are dynamically accessed and loaded based on customer actions in the portal. For example, when a customer clicks on the `Virtual Machines` icon in the Azure portal, then the portal loads the Virtual Machine management extension. This extension provides the allows the user to provision and manage virtual machines, as in the following image. 
+A UI extension is essentially the user experience (UX) for a service. Extensions are developed by teams that integrate user interfaces into the Azure Portal. Extensions are dynamically accessed and loaded based on customer actions in the Portal. For example, when a customer clicks on the `Virtual Machines` icon in the Azure Portal, then the Portal loads the Virtual Machines extension. This extension provides the UI that allows the user to provision and manage virtual machines, as in the following image. 
 
 <!--TODO:  Determine whether the following image is acceptable, because it is not fictitious. -->
 
 ![alt-text](../media/portalfx-extensions-onboarding/vmMachines.png "Virtual Machine Extension")
 
-Extension developers can quickly grow a business by networking with a large pool of Azure portal customers when they develop extensions for Azure portal.
+Extension developers can quickly grow a business by networking with a large pool of Azure Portal customers when they develop extensions for Azure Portal.
 
-<a name="portal-extensions-for-developers-onboarding-a-service"></a>
+<a name="portal-extensions-onboarding-a-service"></a>
 ## Onboarding a service
 
-Onboarding a service, or developing a portal extension, has three phases: private preview, public preview, and Global Availability (GA). Azure portal onboarding is creating a UI for a service in Azure portal, and is a subset of Azure onboarding.
+Onboarding a service, or developing a Portal extension, has three phases: private preview, public preview, and Global Availability (GA). Azure Portal onboarding is creating a UI for a service in Azure Portal, and is a subset of Azure onboarding.
 
 Most services that onboard to Azure can leverage the following components of the Azure ecosystem:
 1. Management APIs that are exposed via Azure Resource Manager (ARM) or Microsoft Graph
-1. Management UI in the Azure portal and/or other tools/websites, like Visual Studio
+1. Management UI in the Azure Portal and/or other tools/websites, like Visual Studio
 1. Marketing content on the Azure Web site or other websites
 
 The Azure onboarding process is streamlined to optimize the delivery of high-quality experiences based on hundreds of hours of usability testing that meet Microsoft Common Engineering Criteria (CEC) and compliance requirements. This will better optimize developer resources and reduce re-working due to anti-patterns and inconsistencies that block usability, performance, and other factors. Therefore, we strongly recommend starting the onboarding process previous to designing UI or management APIs.
 
-The Azure Fundamentals are a set of tenets to which each Azure service is expected to adhere. The Azure Fundamentals program is described in this document [Azure Fundamentals](https://microsoft.sharepoint.com/:w:/r/teams/WAG/EngSys/_layouts/15/Doc.aspx?sourcedoc=%7BF5B821BC-31C4-4042-ADB5-5EBF4D8B408D%7D&file=Azure%20Fundamentals%20Proposal.docx&action=edit&mobileredirect=true). The document also identifies the stakeholders and contacts for each of the Tenets.
+The Azure Fundamentals are a set of tenets to which each Azure service is expected to adhere. The Azure Fundamentals program is described in the document located at [https://aka.ms/azurefundamentals](https://aka.ms/azurefundamentals). The document also identifies the stakeholders and contacts for each of the tenets.
 
-The Azure Fundamentals document is located at [https://microsoft.sharepoint.com/teams/WAG/EngSys/Shared%20Documents/Argon/Azure%20Fundamentals%20Proposal/Azure%20Fundamentals%20Proposal.docx?d=wf5b821bc31c44042adb55ebf4d8b408d](https://microsoft.sharepoint.com/teams/WAG/EngSys/Shared%20Documents/Argon/Azure%20Fundamentals%20Proposal/Azure%20Fundamentals%20Proposal.docx?d=wf5b821bc31c44042adb55ebf4d8b408d).
+The Azure Fundamentals document is 
 
 Compliance criteria and practices are defined in Quality Essentials throughout the development cycle. These ensure that services meet the Trusted Cloud commitments outlined in the Microsoft Azure Trust Center for our customers. These are required procedures for preview and Global Availability, and are to be revisited for every release cycle.
 
-The customer has a different set of expectations for the extension in each phase. To meet customer expectations, we have compiled exit criteria for each phase. The development of an extension  can proceed to the next step when it meets the exit criteria for the current step. To meet customer expectations and continue to increase customer satisfaction, several quality metrics are tracked for every extension by the Get1CS team. An overview of Quality Essentials is located at [https://microsoft.sharepoint.com/teams/QualityEssentials/SitePages/GettingStarted.aspx](https://microsoft.sharepoint.com/teams/QualityEssentials/SitePages/GettingStarted.aspx). There may be tools to install from thr QE and 1CS sites that are part of the Quality Essentials process. The Azure team only tracks the exit criteria and localization requirements.
+The customer has a different set of expectations for the extension in each phase. To meet customer expectations, we have compiled exit criteria for each phase. The development of an extension  can proceed to the next step when it meets the exit criteria for the current step. To meet customer expectations and continue to increase customer satisfaction, several quality metrics are tracked for every extension by the Get1CS team. An overview of Quality Essentials is located at [https://aka.ms/qualityessentials](https://aka.ms/qualityessentials). There may be tools to install from the QE and 1CS sites that are part of the Quality Essentials process. The Azure team only tracks the exit criteria and localization requirements.
 
 Nearly 70% of Azure users are from outside of the United States. Therefore, it is important to make Azure a globalized product. There are a few internationalization requirements that the extension or service is required to support. This is the same set of languages that are supported by Azure Portal for GA.
 
@@ -42,19 +42,31 @@ Nearly 70% of Azure users are from outside of the United States. Therefore, it i
 
 
 
+<a name="portal-extensions-requirements-for-azure-services"></a>
+## Requirements for Azure Services
+   
+All services using Azure Billing must be exposed by using the Azure Resource Manager (ARM). Services that do not use Azure Billing can use either ARM or Microsoft Graph. Usually, services that integrate deeply with Office 365 use Graph, while all others are encouraged to use ARM. 
+ 
+For more information about ARM API, see Azure Resource Manager (ARM) API Reference, located at [https://docs.microsoft.com/en-us/dynamics365/customer-engagement/customer-insights/ref/armapiref](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/customer-insights/ref/armapiref), and also see Resource Manager REST APIs, located at [https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-rest-api](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-rest-api).
 
-<a name="portal-extensions-for-developers-communication"></a>
+For more information about onboarding with Microsoft Graph, see [https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/azure_ad_overview](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/azure_ad_overview).
+
+The Azure Portal SDK doesn't require any specific back-end, but does provide extra support for ARM-based resources. 
+
+All new services should be listed in the Azure Web site that is located at [https://azure.microsoft.com](https://azure.microsoft.com). This isn't a requirement for onboarding the Portal, but service categorization is the same between the azure.com Products menu, Portal Services menu, and the Azure Marketplace. The service should not be listed in the Portal unless it is also on azure.microsoft.com.
+
+<a name="portal-extensions-communication"></a>
 ## Communication
-
+   
 Plan ahead for all the outbound communication, blogging, and marketing work that publicizes new services during the time that they are being deployed to customers.  This coordination is important, particularly when software release commitments are aligned with the Azure events and conferences. This coordination may be optional for preview releases, but the localized azure.com content and service updates plan are required for stakeholder signoff, if the extension will be deployed to GA.
  
 
 
-  
+     
 
-<a name="portal-extensions-for-developers-quality-essentials"></a>
+<a name="portal-extensions-quality-essentials"></a>
 ## Quality Essentials
-
+  
 Quality Essentials  and 1CS provide access to manage the release policies and procedures for each compliance. QE tracks the following policies.
 * Accessibility
 * Global readiness
@@ -67,25 +79,25 @@ Quality Essentials  and 1CS provide access to manage the release policies and pr
  
 Some of the procedures such as Accessibility, GB Certificate, Privacy, and Security are also measured in the Service Health Review Scorecard that is located at [https://aka.ms/shr](https://aka.ms/shr), and in the exit criteria for management review and tracking. 
 
-These requirements apply to both the portal fx and extensions. Since Fx provides the common infrastructure and UI controls that govern the data handling and UX, hence some of the compliance work for extensions would be identical across in Ibiza, and rationally be mitigated by the Framework. For example, Accessibility support on keyboard navigation and screen reader recognition, as well as the regional format and text support to meet globalization requirements, are implemented at the controls that Framework distributed.  The same is true for Security threat modeling, extension authentication to ARM, postMessage/RPC layer and UserSettings, etc. are handled by Framework. To minimize the duplicate efforts on those items, Fx provides some level of "blueprint" documentation that can be used as a reference for compliance procedures. You are still responsible to review the tools and submit the results for approval previous to shipping the extension. 
+These requirements apply to both the Portal fx and extensions. Since Fx provides the common infrastructure and UI controls that govern the data handling and UX, hence some of the compliance work for extensions would be identical across in Ibiza, and rationally be mitigated by the Framework. For example, Accessibility support on keyboard navigation and screen reader recognition, as well as the regional format and text support to meet globalization requirements, are implemented at the controls that Framework distributed.  The same is true for Security threat modeling, extension authentication to ARM, postMessage/RPC layer and UserSettings, etc. are handled by Framework. To minimize the duplicate efforts on those items, Fx provides some level of "blueprint" documentation that can be used as a reference for compliance procedures. You are still responsible to review the tools and submit the results for approval previous to shipping the extension. 
 
 | Policy            | Location  | Fx coverage |
 | ---               | ---       | --- |
-| Accessibility     | [https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/index-portalfx-extension-development.md](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/index-portalfx-extension-development.md) | Generic control supports on keyboard, focus handling, touch, screen reader, high contrast, and theming |
-| Global Readiness  |           | Localizability, regional format, text support, China GB standard |
-| Privacy           |           | User settings data handling, encryption, and authentication |
-| SDL               |           | Security Development Lifecycle Threat modeling |
+| Accessibility     | [portalfx-accessibility.md](portalfx-accessibility.md) | Generic control supports on keyboard, focus handling, touch, screen reader, high contrast, and theming |
+| Global Readiness  | [portalfx-globalization.md](portalfx-globalization.md) and [portalfx-localization.md](portalfx-localization.md) | Localizability, regional format, text support, China GB standard |
+| Privacy           |  [portalfx-authentication.md](portalfx-authentication.md) | User settings data handling, encryption, and authentication |
+| SDL               |  [https://microsoft.sharepoint.com/ teams/QualityEssentials/SitePages/ SDL_SecurityDevelopmentLifecycleOverview.aspx](https://microsoft.sharepoint.com/teams/QualityEssentials/SitePages/SDL_SecurityDevelopmentLifecycleOverview.aspx)         | Security Development Lifecycle Threat modeling |
 
 For more information and any questions about Fx coverage, reach out to the Fx Coverage contact that is located in [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md).
 
-
-<a name="portal-extensions-for-developers-development-phases"></a>
+   
+<a name="portal-extensions-development-phases"></a>
 ## Development Phases
 
-<a name="portal-extensions-for-developers-development-phases-private-preview"></a>
+<a name="portal-extensions-development-phases-private-preview"></a>
 ### Private Preview
 
-The extension is in private preview stage when it has been registered into the Azure portal configuration. It is still in hidden/ disabled state, and the preview tag in the the `extension.pdl` file is set to `Preview="true"`.  In this state the extension is not visible to all the customers of Azure portal; instead, the developer and their team have acquired a small team of reviewers with which to collaborate on the development and testing of the extension. 
+The extension is in private preview stage when it has been registered into the Azure Portal configuration. It is still in hidden/ disabled state, and the preview tag in the the `extension.pdl` file is set to `Preview="true"`.  In this state the extension is not visible to all the customers of Azure Portal; instead, the developer and their team have acquired a small team of reviewers with which to collaborate on the development and testing of the extension. 
 
 Some teams also leverage this phase for testing the business model by providing a specific URL to their customers that allows them to access this extension. For more information about providing access to a limited set of customers, see [portalfx-hidden-extension-feedback.md](portalfx-hidden-extension-feedback.md).
 
@@ -97,18 +109,18 @@ When all requirements are met, CSS will release the extension from private previ
 
 This process is separate from onboarding to Azure.
 
-<a name="portal-extensions-for-developers-development-phases-public-preview"></a>
+<a name="portal-extensions-development-phases-public-preview"></a>
 ### Public Preview
 
 The public preview state assumes that the extension met the exit criteria for the private preview phase, and that the private preview phase  validated the business model of the service.
 
-In the public preview state, the extension undergoes more development and review, and it can be used by all customers in Azure portal.  The exit criteria for the public preview state are the same as the exit criteria for the private preview state, except for Usability.  Public Preview requires extensions to have a score of 7/10, whereas GA requires extensions to have a score of 8/10.  An extension that meets the exit criteria with this public audience can be moved from public preview to Global Availability. The criteria that are used to validate promoting the extension out of the public preview state are located at [Exit Criteria and Quality Metrics](portalfx-extensions-exitCriteria.md).
+In the public preview state, the extension undergoes more development and review, and it can be used by all customers in Azure Portal.  The exit criteria for the public preview state are the same as the exit criteria for the private preview state, except for Usability.  Public Preview requires extensions to have a score of 7/10, whereas GA requires extensions to have a score of 8/10.  An extension that meets the exit criteria with this public audience can be moved from public preview to Global Availability. The criteria that are used to validate promoting the extension out of the public preview state are located at [Exit Criteria and Quality Metrics](portalfx-extensions-exitCriteria.md).
 
 The icon to the right of the extension indicates whether the extension is in the private preview state or the public preview state, as in the following image.
 
  ![alt-text](../media/portalfx-extensions-onboarding/previewMode.png "Private Preview State")
 
-<a name="portal-extensions-for-developers-development-phases-global-availability"></a>
+<a name="portal-extensions-development-phases-global-availability"></a>
 ### Global Availability
 
 The global availability state assumes that the extension met the exit criteria for the public preview phase, and that the public  preview phase validated the business model of the service.
@@ -117,20 +129,20 @@ When an extension passes all exit criteria for the public preview state, it can 
 
 <!-- the `extension.pdl` file is not the JSON file. -->
 
- Enabling the extension for public preview will make the extension visible to all the customers in Azure portal. Remove the preview tag in the `extension.pdl` configuration file to make the extension visible, as in the following example.
+ Enabling the extension for public preview will make the extension visible to all the customers in Azure Portal. Remove the preview tag in the `extension.pdl` configuration file to make the extension visible, as in the following example.
  
 ![alt-text](../media/portalfx-extensions-onboarding/GAMode.png "Global Availability")
   
-<a name="portal-extensions-for-developers-development-procedures"></a>
+<a name="portal-extensions-development-procedures"></a>
 ## Development Procedures
-
+   
 The items that are being developed extend  functionality to an Azure Portal, and therefore are named extensions.  Some examples are in the following image.
 
  ![alt-text](../media/portalfx-ui-concepts/blade.png "Azure Portal Blades")
 
-Perform the following tasks to become part of Azure portal extension developer community.
+Perform the following tasks to become part of Azure Portal extension developer community.
 
-* Prerequisites to Azure portal onboarding
+* Prerequisites to Azure Portal onboarding
 
 1. [Join DLs and request permissions](#join-dls-and-request-permissions) 
 
@@ -147,7 +159,7 @@ Perform the following tasks to become part of Azure portal extension developer c
 
 You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
 
-<a name="portal-extensions-for-developers-development-procedures-join-dls-and-request-permissions"></a>
+<a name="portal-extensions-development-procedures-join-dls-and-request-permissions"></a>
 ### Join DLs and request permissions
 
 Request the following permissions to stay current on product roadmaps, get news on latest features, and read workshop announcements.
@@ -166,7 +178,7 @@ Request the following permissions to stay current on product roadmaps, get news 
 
 * Developers who want to contribute to the Azure documentation or test framework should join groups from the site located at [http://aka.ms/azuregithub](http://aka.ms/azuregithub).
 
-<a name="portal-extensions-for-developers-development-procedures-install-software"></a>
+<a name="portal-extensions-development-procedures-install-software"></a>
 ### Install Software
    
 Install the following software. Your team should be aware of the most current download locations so that you can complete your own installs.
@@ -200,7 +212,7 @@ Install the following software. Your team should be aware of the most current do
 
 Test that your computer is ready for Azure development by creating a blank extension, as specified in [portalfx-extensions-developerInit-procedure.md](portalfx-extensions-developerInit-procedure.md).
 
-<a name="portal-extensions-for-developers-development-procedures-schedule-kickoff-meetings"></a>
+<a name="portal-extensions-development-procedures-schedule-kickoff-meetings"></a>
 ### Schedule Kickoff Meetings
  
 If you are planning to build a first-party application, i.e., you are a part of Microsoft, you should meet with the Onboarding team specified in [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md). 
@@ -221,7 +233,7 @@ If you are planning to build a first party application, i.e., you are a part of 
 
 When these meetings have concluded, your team will be ready to build extensions.
 
-<a name="portal-extensions-for-developers-development-procedures-review-technical-guidance"></a>
+<a name="portal-extensions-development-procedures-review-technical-guidance"></a>
 ### Review Technical Guidance
 
 Read the following documents from the Azure Portal UI team site.  Our doc site provides technical guidance for use while you are building an extension.
@@ -235,12 +247,12 @@ Read the following documents from the Azure Portal UI team site.  Our doc site p
 | Portal environments and extension configurations | [portalfx-extensions-branches.md](portalfx-extensions-branches.md) | 
 | Experiment with sample code	                  | Sample Extensions, located at [portalfx-extensions-samples.md](portalfx-extensions-samples.md) |
 
-<a name="portal-extensions-for-developers-development-procedures-develop-and-deploy-the-extension"></a>
+<a name="portal-extensions-development-procedures-develop-and-deploy-the-extension"></a>
 ### Develop and deploy the extension
  
 1. To ensure that the business goals of the new extension or service are aligned with Azure's business strategy, please reach out to the Integrated Marketing Team or the L&R - Operations - GD&F team at [mailto:ibiza-bmr@microsoft.com?subject=Azure%20Business%20model%20review](mailto:ibiza-bmr@microsoft.com?subject=Azure%20Business%20model%20review). Brian Hillger’s team and Stacey Ellingson’s team will guide you through the business model review process. The extension or service is not ready to be onboarded to Azure until its business model has received approval from those teams. Do not proceed with the next step until the business model has received approval.
 
-1. Schedule a UX feasibility review with the Ibiza team UX contact by emailing [mailto:ibiza-onboarding@microsoft.com?subject=Extension%20Feasibility%20Review](mailto:ibiza-onboarding@microsoft.com?subject=Extension%20Feasibility%20Review).  Many extensions have been made more successful by setting up early design reviews with the Azure portal team. Taking the time to review the design gives extension owners an opportunity to understand how they can leverage Azure portal design patterns, and ensure that the desired outcome is feasible. 
+1. Schedule a UX feasibility review with the Ibiza team UX contact by emailing [mailto:ibiza-onboarding@microsoft.com?subject=Extension%20Feasibility%20Review](mailto:ibiza-onboarding@microsoft.com?subject=Extension%20Feasibility%20Review).  Many extensions have been made more successful by setting up early design reviews with the Azure Portal team. Taking the time to review the design gives extension owners an opportunity to understand how they can leverage Azure Portal design patterns, and ensure that the desired outcome is feasible. 
 
 1. If the extension requires additional built-in support for standard Graph or ARM APIs, submit a partner request at the site located at [https://aka.ms/portalfx/uservoice](https://aka.ms/portalfx/uservoice).  For information about other components that the new service needs, see [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md).
 
@@ -278,7 +290,7 @@ Read the following documents from the Azure Portal UI team site.  Our doc site p
 
     For more dev/test scenarios, see [https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-package-development-and-debugging-testing-in-production](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-package-development-and-debugging-testing-in-production).
 
-<a name="portal-extensions-for-developers-development-procedures-register-the-extension"></a>
+<a name="portal-extensions-development-procedures-register-the-extension"></a>
 ### Register the extension
 
 Once the name of the extension or service name is finalized, request to have the extension registered in all environments. Registering an extension in Portal requires deployment so it can take almost 10 days in the Production environment. Please plan accordingly.
@@ -296,19 +308,19 @@ Once the name of the extension or service name is finalized, request to have the
 * Extension URLs must use a standard CNAME pattern. For more information about CNAMES, see [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md).
 
   
-<a name="portal-extensions-for-developers-exit-criteria-and-quality-metrics"></a>
+<a name="portal-extensions-exit-criteria-and-quality-metrics"></a>
 ## Exit Criteria and Quality Metrics
-
+      
 In order to meet customer expectations and continue to increase customer satisfaction, there are quality metrics that are tracked for every extension, and part.  These metrics help developers build extensions that compile, that contain the items that are requested by the partners of the developer, and that pass acceptance tests that are created by the partners that are associated with a specific phase. When the extension meets the criteria, it becomes a candidate for being moved from the private preview stage to the public preview stage, or from the public preview stage to Global Availability (GA).
 
-Every new extension provides an opportunity for the Ibiza team to improve the customer experience. By using set criteria to meet customer expectations, we can improve the customer experience for the extension and overall portal. Extension developers can drastically improve the customer experience by following these criteria. 
+Every new extension provides an opportunity for the Ibiza team to improve the customer experience. By using set criteria to meet customer expectations, we can improve the customer experience for the extension and overall Portal. Extension developers can drastically improve the customer experience by following these criteria. 
 
-<a name="portal-extensions-for-developers-customer-experience-metrics"></a>
+<a name="portal-extensions-customer-experience-metrics"></a>
 ## Customer experience metrics
 
-The criteria that are tracked for each extension are reported as part of an executive summary every Friday. Extensions that fail to meet the criteria are typically prime candidates for having brought down the customer experience in the Azure portal. Such extensions are highlighted in the weekly status report.
+The criteria that are tracked for each extension are reported as part of an executive summary every Friday. Extensions that fail to meet the criteria are typically prime candidates for having brought down the customer experience in the Azure Portal. Such extensions are highlighted in the weekly status report.
 
-Customer experience metrics are tracked by the Azure portal team, and are reported to the VP sponsor of the extension by using weekly status emails. These metrics are also reported as part of the weekly S360 meeting, and the executive review meeting. Any extension that does not meet the following criteria is required to justify the reasons for a negative customer experience. Extension developers can improve the customer experience of Azure portal by ensuring that their extensions meet the following criteria previous to enabling the extension for public preview or Global Availability. 
+Customer experience metrics are tracked by the Azure Portal team, and are reported to the VP sponsor of the extension by using weekly status emails. These metrics are also reported as part of the weekly S360 meeting, and the executive review meeting. Any extension that does not meet the following criteria is required to justify the reasons for a negative customer experience. Extension developers can improve the customer experience of Azure Portal by ensuring that their extensions meet the following criteria previous to enabling the extension for public preview or Global Availability. 
 
 * [Performance](#performance)
 * [Reliability](#reliability)
@@ -317,7 +329,7 @@ Customer experience metrics are tracked by the Azure portal team, and are report
 * [Localization](#localization)
 * [Create Success Rate](#create-success-rate)
 
-<a name="portal-extensions-for-developers-customer-experience-metrics-performance"></a>
+<a name="portal-extensions-customer-experience-metrics-performance"></a>
 ### Performance
 
 The Weighted Experience Score (WxP) determines the percentage of blade usage that meets the performance bar. The metrics for all blades within an extension are combined into the WxP, which requires a passing score of greater than 80. Meeting the performance bar is a requirement for public preview or Global Availability (GA).
@@ -354,7 +366,7 @@ For more information about performance and reliability, see the following resour
 
     [portalfx-performance-portalcop.md](portalfx-performance-portalcop.md)
 
-<a name="portal-extensions-for-developers-customer-experience-metrics-reliability"></a>
+<a name="portal-extensions-customer-experience-metrics-reliability"></a>
 ### Reliability
 
 Every extension meets the reliability Service Level Agreement (SLA). There are some reliability metrics should be met previous to enabling the extension in the production environment; however, extensions must be enabled in MPAC in order to start tracking reliability. Meeting the reliability bar is a requirement for public preview or GA.
@@ -375,7 +387,7 @@ Use the following query to calculate the performance and reliability of your ext
 
 If any of the reliability numbers of the extension are below the bar, please investigate and resolve the related issues.
 
-<a name="portal-extensions-for-developers-customer-experience-metrics-usability"></a>
+<a name="portal-extensions-customer-experience-metrics-usability"></a>
 ### Usability
 
 
@@ -383,7 +395,7 @@ Each service or extension defines the critical P0 scenarios for their business. 
 
 For more information on how to define scenarios, see       .
 
-<a name="portal-extensions-for-developers-customer-experience-metrics-accessibility"></a>
+<a name="portal-extensions-customer-experience-metrics-accessibility"></a>
 ### Accessibility
 
 The accessibility bar is similar to the usability bar, and every service must meet the accessibility standards that are tested in their critical P0 scenarios. C+E teams should work with their own Accessibility teams. 
@@ -392,12 +404,12 @@ The accessibility bar is similar to the usability bar, and every service must me
 
 For more information about accessibility, see [portalfx-accessibility.md](portalfx-accessibility.md).
     
-<a name="portal-extensions-for-developers-customer-experience-metrics-localization"></a>
+<a name="portal-extensions-customer-experience-metrics-localization"></a>
 ### <strong>Localization</strong>
 
 Nearly 70% of Azure users are from outside of the United States. Therefore, it is important to make Azure a globalized product. There are a few requirements under the "Internationalization" criteria that your service is required to support.  This is the same set of languages that are supported by Azure Portal for GA. For more information about internationalization requirements, see [http://aka.ms/azureintlrequirements](http://aka.ms/azureintlrequirements). For onboarding localization, please reach out to Bruno Lewin and the Internationalization team at [mailto:ibiza-interntnl@microsoft.com](mailto:ibiza-interntnl@microsoft.com).
 
-<a name="portal-extensions-for-developers-customer-experience-metrics-create-success-rate"></a>
+<a name="portal-extensions-customer-experience-metrics-create-success-rate"></a>
 ### Create Success Rate
     
 The success of an extension is combined of several factors, the most important of which is customer satisfaction. In order to ensure that every customer has a great customer experience, the extension should be within the create success rate.   The create success rate is defined as the number of times the UX completes the generation process when the create button is clicked. When the extension meets or exceeds those factors, it is eligible for public preview or Global Availability.
@@ -417,7 +429,7 @@ Success rates are a non-blocking requirement.
    
 For more information about creating success, see [portalfx-create.md#validation](portalfx-create.md#validation).
 
-<a name="portal-extensions-for-developers-resource-move"></a>
+<a name="portal-extensions-resource-move"></a>
 ## Resource move
 
 ARM-based services allow customers to move resources between subscriptions and resource groups.
@@ -433,12 +445,12 @@ For more information on resource moves, see the following resources.
     [http://aka.ms/portalfx/resourcemove/dashboard](http://aka.ms/portalfx/resourcemove/dashboard)
 
  
-<a name="portal-extensions-for-developers-status-codes-and-error-messages"></a>
+<a name="portal-extensions-status-codes-and-error-messages"></a>
 ## Status Codes and Error Messages
 Status codes or error messages that are encountered while developing an extension may be dependent on the type of extension that is being created, or the development phase in which the message is encountered.  Terms that are encountered in the error messages may be defined in the [Glossary](portalfx-extensions-status-codes-glossary.md).
 <!-- TODO:  Find at least one status code for each of these conditions. -->
 
-<a name="portal-extensions-for-developers-status-codes-and-error-messages-console-error-messages"></a>
+<a name="portal-extensions-status-codes-and-error-messages-console-error-messages"></a>
 ### Console Error Messages
 
 ***Console error messages in F12 developer tools***
@@ -447,7 +459,7 @@ Some console and HTTP error messages are located at[https://msdn.microsoft.com/e
 
 * * *
 
-<a name="portal-extensions-for-developers-status-codes-and-error-messages-err_connection_reset"></a>
+<a name="portal-extensions-status-codes-and-error-messages-err_connection_reset"></a>
 ### ERR_CONNECTION_RESET
 
 ***Cannot load `localhost` Ibiza extension with ERR_CONNECTION_RESET***
@@ -458,13 +470,13 @@ SOLUTION: [https://stackoverflow.microsoft.com/questions/48581/cannot-load-local
 
 * * * 
 
-<a name="portal-extensions-for-developers-status-codes-and-error-messages-err_insecure_response"></a>
+<a name="portal-extensions-status-codes-and-error-messages-err_insecure_response"></a>
 ### ERR_INSECURE_RESPONSE
 
 ERR_INSECURE_RESPONSE in the browser console
 
 ***My Extension fails to sideload and I get an ERR_INSECURE_RESPONSE in the browser console***.
-
+   
 ![alt-text](../media/portalfx-testinprod/errinsecureresponse.png "ERR_INSECURE_RESPONSE Log")
 
 ERROR: the browser is trying to load the extension but the SSL certificate from localhost is not trusted.
@@ -473,7 +485,7 @@ SOLUTION: Install and trust the certificate.
 
 * * *
 
-<a name="portal-extensions-for-developers-status-codes-and-error-messages-failed-to-initialize"></a>
+<a name="portal-extensions-status-codes-and-error-messages-failed-to-initialize"></a>
 ### Failed To Initialize
 
 ERROR: The extension failed to initialize. One or more calls to methods on the extension's entry point class failing.
@@ -482,7 +494,7 @@ SOLUTION: Scan all the relevant error messages during the timeframe of the failu
 
 * * * 
 
-<a name="portal-extensions-for-developers-status-codes-and-error-messages-first-response-not-received"></a>
+<a name="portal-extensions-status-codes-and-error-messages-first-response-not-received"></a>
 ### First Response Not Received
 
 ERROR: The shell loaded the extension URL obtained from the config into an IFrame; however there wasn't any response from the extension.
@@ -495,7 +507,7 @@ SOLUTION:
 
 * * * 
 
-<a name="portal-extensions-for-developers-status-codes-and-error-messages-invalid-definition"></a>
+<a name="portal-extensions-status-codes-and-error-messages-invalid-definition"></a>
 ### Invalid Definition
 
 ERROR: The definition that was received from an extension had validation errors.
@@ -504,7 +516,7 @@ SOLUTION: Scan the error logs for all the validation errors in the extension def
 
 * * * 
 
-<a name="portal-extensions-for-developers-status-codes-and-error-messages-invalid-extension-name"></a>
+<a name="portal-extensions-status-codes-and-error-messages-invalid-extension-name"></a>
 ### Invalid Extension Name
 
 ERROR: The name of the extension as specified in the `extensions.json` configuration file doesn't match the name of the extension in the extension manifest.
@@ -515,7 +527,7 @@ If the name in the manifest is incorrect, contact the relevant extension team to
 
 * * * 
 
-<a name="portal-extensions-for-developers-status-codes-and-error-messages-invalid-indicate-loaded"></a>
+<a name="portal-extensions-status-codes-and-error-messages-invalid-indicate-loaded"></a>
 ### Invalid Indicate Loaded
 
 ERROR: The manifest for an extension was received at an invalid time. e.g. if the manifest was already obtained or the extension was already loaded.
@@ -524,7 +536,7 @@ SOLUTION: Report this issue to the framework team for investigation.
 
 * * * 
 
-<a name="portal-extensions-for-developers-status-codes-and-error-messages-invalid-manifest"></a>
+<a name="portal-extensions-status-codes-and-error-messages-invalid-manifest"></a>
 ### Invalid Manifest
 
 ERROR: The manifest that was received from an extension had validation errors.
@@ -533,7 +545,7 @@ SOLUTION: Scan the error logs for all the validation errors in the extension man
 
 * * * 
 
-<a name="portal-extensions-for-developers-status-codes-and-error-messages-manifest-not-received"></a>
+<a name="portal-extensions-status-codes-and-error-messages-manifest-not-received"></a>
 ### Manifest Not Received
 
 ERROR: The bootstrap logic was completed, however the extension did not return a manifest to the shell. The shell waits for a period of time (currently 40 seconds as of 2014/10/06) and then times out.
@@ -545,10 +557,10 @@ SOLUTION:
 
 * * * 
 
-<a name="portal-extensions-for-developers-status-codes-and-error-messages-portal-error-520"></a>
+<a name="portal-extensions-status-codes-and-error-messages-portal-error-520"></a>
 ### Portal Error 520
 
-***The portal encountered a part it cannot render***
+***The Portal encountered a part it cannot render***
 
 ERROR: The Portal displays a 520 error, as in the following image.
 
@@ -568,7 +580,7 @@ SOLUTION: Use the following troubleshooting steps.
 
 * * *
 
-<a name="portal-extensions-for-developers-status-codes-and-error-messages-sandboxed-iframe-security"></a>
+<a name="portal-extensions-status-codes-and-error-messages-sandboxed-iframe-security"></a>
 ### Sandboxed iframe security
 
 ***Error: 'Security of a sandboxed iframe is potentially compromised by allowing script and same origin access'.***
@@ -577,7 +589,7 @@ The Azure Portal should frame the extension URL, as specified in [portalfx-exten
 
 * * *
 
-<a name="portal-extensions-for-developers-status-codes-and-error-messages-timed-out"></a>
+<a name="portal-extensions-status-codes-and-error-messages-timed-out"></a>
 ### Timed Out
 
 ERROR: The extension failed to load after the predefined timeout, which is currently 40 seconds.
@@ -586,7 +598,7 @@ SOLUTION: Scan the errors to see if there are any other relevant error messages 
 
 * * * 
 
-<a name="portal-extensions-for-developers-status-codes-and-error-messages-too-many-bootgets"></a>
+<a name="portal-extensions-status-codes-and-error-messages-too-many-bootgets"></a>
 ### Too Many BootGets
 
 ERROR: The extension tried to send the bootGet message to request for Fx scripts multiple times. The error should specify the number of times it refreshed before the extension was disabled.
@@ -595,7 +607,7 @@ SOLUTION:  Scan the errors to see if there are any other relevant error messages
 
 * * * 
 
-<a name="portal-extensions-for-developers-status-codes-and-error-messages-too-many-refreshes"></a>
+<a name="portal-extensions-status-codes-and-error-messages-too-many-refreshes"></a>
 ### Too Many Refreshes
 
 ERROR: The extension tried  to reload itself within the IFrame multiple times. The error should specify the number of times it refreshed before the extension was disabled.
@@ -606,27 +618,27 @@ SOLUTION: Scan the errors to see if there are any other relevant error messages 
 
 
 
-<a name="portal-extensions-for-developers-best-practices"></a>
+<a name="portal-extensions-best-practices"></a>
 ## Best Practices
-
+   
 Portal development patterns or architectures that are recommended based on customer feedback and usability studies are located in the topic for the blade that is being developed. For more information, see [portalfx-blades-best-practices.md](portalfx-blades-best-practices.md).
 
-<a name="portal-extensions-for-developers-best-practices-performance"></a>
+<a name="portal-extensions-best-practices-performance"></a>
 ### Performance
 
 There are practices that can improve the performance of the extension.  For more information, see [portalfx-performance-bestpractices.md](portalfx-performance-bestpractices.md).
 
 
-<a name="portal-extensions-for-developers-best-practices-productivity-tip"></a>
+<a name="portal-extensions-best-practices-productivity-tip"></a>
 ### Productivity Tip
 
 Install Chrome that is located at [http://google.com/dir](http://google.com/dir) to leverage the debugger tools while developing an extension.
 
-
-<a name="portal-extensions-for-developers-stackoverflow-forums"></a>
+   
+<a name="portal-extensions-stackoverflow-forums"></a>
 ## Stackoverflow Forums
 
-Azure portal strives to answer the questions that are tagged with Ibiza tags on the Microsoft [Stackoverflow](https://stackoverflow.microsoft.com) Web site in 24 hours. If you do not receive a response in 24 hours, please email the owner associated with the tag. Third-party developers that have stackoverflow questions should work with their primary contact.  If you do not yet have a primary contact, please reach out to our onboarding team at [mailto:ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com).
+The Ibiza team strives to answer the questions that are tagged with Ibiza tags on the Microsoft [Stackoverflow](https://stackoverflow.microsoft.com) Web site within 24 hours. If you do not receive a response within 24 hours, please email the owner associated with the tag. Third-party developers that have Stackoverflow questions should work with their primary contact.  If you do not yet have a primary contact, please reach out to our onboarding team at [mailto:ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com).
 
 To help the Azure UI team answer your questions, the submissions are categorized into various topics that are marked with tags. 
 To read forum submissions, enter the following in the address bar of your browser:
@@ -669,7 +681,7 @@ ibiza-samples-docs
 | [ibiza-localization-global](https://stackoverflow.microsoft.com/questions/tagged/ibiza-localization-global)    | Paymon Parsadmehr   | |
 | [ibiza-missing-docs](https://stackoverflow.microsoft.com/questions/tagged/ibiza-missing-docs)                  |                     | |
 | [ibiza-monitoringux](https://stackoverflow.microsoft.com/questions/tagged/ibiza-monitoringux)                  |                     | |
-| [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)                      |                     | |
+| [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)                      | Santhosh Somayajula                 | |
 | [ibiza-performance](https://stackoverflow.microsoft.com/questions/tagged/ibiza-performance)                    | Sean Watson         | |
 | [ibiza-reliability](https://stackoverflow.microsoft.com/questions/tagged/ibiza-reliability)                    | Sean Watson         | |
 | [ibiza-resources](https://stackoverflow.microsoft.com/questions/tagged/ibiza-resources)                        | Balbir Singh        | |
@@ -681,10 +693,10 @@ ibiza-samples-docs
 
 
 
-<a name="portal-extensions-for-developers-frequently-asked-questions"></a>
+<a name="portal-extensions-frequently-asked-questions"></a>
 ## Frequently asked questions
 
-<a name="portal-extensions-for-developers-frequently-asked-questions-onboarding-faq"></a>
+<a name="portal-extensions-frequently-asked-questions-onboarding-faq"></a>
 ### Onboarding FAQ
 
 ***Where are the onboarding FAQs for Sparta (ARM/CSM-RP)?***
@@ -692,12 +704,12 @@ ibiza-samples-docs
 The SharePoint Sparta Onboarding FAQ is located at [http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx](http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx).
 
 * * *
-<a name="portal-extensions-for-developers-frequently-asked-questions-ssl-certs"></a>
+<a name="portal-extensions-frequently-asked-questions-ssl-certs"></a>
 ### SSL Certs
-
+   
 ***How do I use SSL certs?***
  
- SSL Certs are relevant only for teams that host their own extensions.  Azure portal ONLY supports loading extensions from HTTPS URLs. Use a wildcard SSL cert for each environment to simplify maintenance, for example,   ``` *.<extensionName>.onecloud-ext.azure-test.net  ``` or  ``` *.<extensionName>.ext.azure.com) ``` .    To simplify overall management when your team is building separate, independent extensions, you can also use  ``` <extensionName>.<team>.ext.azure.com ``` and create a wildcard SSL cert for  ``` *.<team>.ext.azure.com ```. Internal teams can create SSL certs for the DogFood environment using the SSL Administration Web page that is located at [http://ssladmin](http://ssladmin). 
+ SSL Certs are relevant only for teams that host their own extensions.  Azure Portal ONLY supports loading extensions from HTTPS URLs. Use a wildcard SSL cert for each environment to simplify maintenance, for example,   ``` *.<extensionName>.onecloud-ext.azure-test.net  ``` or  ``` *.<extensionName>.ext.azure.com) ``` .    To simplify overall management when your team is building separate, independent extensions, you can also use  ``` <extensionName>.<team>.ext.azure.com ``` and create a wildcard SSL cert for  ``` *.<team>.ext.azure.com ```. Internal teams can create SSL certs for the DogFood environment using the SSL Administration Web page that is located at [http://ssladmin](http://ssladmin). 
  
   Production certs must follow your organization’s PROD cert process. 
 
@@ -718,7 +730,7 @@ Then, verify that when a typescript file is saved, that  the following text is d
 
  * * *
 
-<a name="portal-extensions-for-developers-frequently-asked-questions-other-onboarding-questions"></a>
+<a name="portal-extensions-frequently-asked-questions-other-onboarding-questions"></a>
 ### Other onboarding questions
 
 ***How can I ask questions about onboarding ?***
@@ -727,44 +739,42 @@ You can ask questions on Stackoverflow with the tag [onboarding](https://stackov
 
 
    
-<a name="portal-extensions-for-developers-contacts"></a>
+<a name="portal-extensions-contacts"></a>
 ## Contacts
-
+   
 For assistance with the prerequisites for onboarding Management UI, contact the following people.  
 
 If the following table is not current, please send a pull request to update the the contact list. For more information on how to send a pull request, see [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
 
-| Function                                      | Azure Stakeholder                          | Contact |
-| --------------------------------------------- | -----------------------------------------  |  --- |
-| Accessibility	                                | Paymon Parsadmehr, Erica Mohler            | ibiza-accessibility@microsoft.com |
-| Activity logs	                                | Marck Robinson                             | ibiza-activity-logs@microsoft.com |
-| The ARM Team                                  |                                            | aux-arm-leads@microsoft.com |
-| Azure.com	                                    | Elena Salaks; Guy Burstein                 | ibiza-azure@microsoft.com |
-| Azure Compliance                              | Azure Compliance team                      | azcompl@microsoft.com |
-| Azure Resource Manager (ARM)                  | Vlad Joanovic                              | ibiza-arm@microsoft.com |
-| Business model review                         | Integrated Marketing; Brian Hillger’s team | ibiza-bmr@microsoft.com|
-| Business model review                         | L&R - Operations - GD\&F; Stacey Ellingson | ibiza-bmr@microsoft.com |
-| Create success                                | Balbir Singh                               | ibiza-create@microsoft.com |
-| CSS Support                                   | Wes Penner; CEGRM                          | ibiza-css@microsoft.com |
-| External Partner Contact                      |                                            | ibizafxpm@microsoft.com |
-| Fx Coverage 	                                | Adam Abdelhamed                               | ibiza-onboarding@microsoft.com |
-| Localization                                  | Bruno Lewin                                | ibiza-interntnl@microsoft.com |
-| Onboarding kickoff                            | Leon Welicki; Adam Abdelhamed  | ibiza-onboarding@microsoft.com |
-| Third Party Applications (External partners)  | Leon Welicki; Adam Abdelhamed              | ibiza-onboarding@microsoft.com |
-| Performance                                   | Sean Watson                                | ibiza-perf@microsoft.com |
-| Pull requests                                 |                                            | ibizafxpm@microsoft.com |
-| Registration for internal extensions          |                                            | ibizafxpm@microsoft.com |
-| Quality Essentials                            |                                            | Get1CS@microsoft.com​ |
-| Reliability                                   | Sean Watson                                | ibiza-reliability@microsoft.com |
-| Resource Move                                 | Edison Park                                | ibiza-resourceMove@microsoft.com |
-| Usability	                                    | Joe Hallock; Mariah Jackson                | ibiza-usability@microsoft.com |
-| UX feasibility review                         |                                            | ibiza-onboarding@microsoft.com | 
+| Function                                      | Azure Stakeholder                          | Contact                                                                       |
+| --------------------------------------------- | -----------------------------------------  | ----------------------------------------------------------------------------- |
+| Accessibility	                                | Paymon Parsadmehr, Erica Mohler            | [ibiza-accessibility@microsoft.com](mailto:ibiza-accessibility@microsoft.com) |
+| Activity logs	                                | Marck Robinson                             | [ibiza-activity-logs@microsoft.com](mailto:ibiza-activity-logs@microsoft.com)  |
+| The ARM Team                                  |                                            | [aux-arm-leads@microsoft.com](mailto:aux-arm-leads@microsoft.com)  |
+| Azure.com	                                    | Elena Salaks; Guy Burstein                 | [ibiza-azure@microsoft.com](mailto:ibiza-azure@microsoft.com)  |
+| Azure Compliance                              | Azure Compliance team                      | [azcompl@microsoft.com](mailto:azcompl@microsoft.com)  |
+| Azure Resource Manager (ARM)                  | Vlad Joanovic                              | [ibiza-arm@microsoft.com](mailto:ibiza-arm@microsoft.com)  |
+| Business model review                         | Integrated Marketing; Brian Hillger’s team | [ibiza-bmr@microsoft.com](mailto:ibiza-bmr@microsoft.com)  |
+| Business model review                         | L&R - Operations - GD\&F; Stacey Ellingson | [ibiza-bmr@microsoft.com](mailto:ibiza-bmr@microsoft.com)  |
+| Create success                                | Balbir Singh                               | [ibiza-create@microsoft.com](mailto:ibiza-create@microsoft.com)  |
+| CSS Support                                   | Wes Penner; CEGRM                          | [ibiza-css@microsoft.com](mailto:ibiza-css@microsoft.com)  |
+| External Partner Contact                      |                                            | [ibizafxpm@microsoft.com](mailto:ibizafxpm@microsoft.com)  |
+| Fx Coverage 	                                | Adam Abdelhamed; Santhosh Somayajula       | [ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com)  |
+| Localization                                  | Bruno Lewin                                | [ibiza-interntnl@microsoft.com](mailto:ibiza-interntnl@microsoft.com)  |
+| Onboarding kickoff                            | Leon Welicki; Adam Abdelhamed; Santhosh Somayajula | [ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com) |
+| Third Party Applications (External partners)  | Leon Welicki; Adam Abdelhamed; Santhosh Somayajula | [ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com) |
+| Performance                                   | Sean Watson                                | [ibiza-perf@microsoft.com](mailto:ibiza-perf@microsoft.com) |
+| Pull requests                                 |                                            | [ibizafxpm@microsoft.com](mailto:ibizafxpm@microsoft.com) |
+| Registration for internal extensions          |                                            | [ibizafxpm@microsoft.com](mailto:ibizafxpm@microsoft.com) |
+| Quality Essentials                            |                                            | [Get1CS@microsoft.com​](mailto:Get1CS@microsoft.com) |
+| Reliability                                   | Sean Watson                                | [ibiza-reliability@microsoft.com](mailto:ibiza-reliability@microsoft.com) |
+| Resource Move                                 | Edison Park                                | [ibiza-resourceMove@microsoft.com](mailto:ibiza-resourceMove@microsoft.com) |
+| Usability	                                    | Joe Hallock; Mariah Jackson                | [ibiza-usability@microsoft.com](mailto:ibiza-usability@microsoft.com) |
+| UX feasibility review                         | Santhosh Somayajula                        | [ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com) | 
 
-<!-- TODO: Validate whether the ibizafxpm@microsoft.com  link is the correct one for sending pull requests to, when sending pull requests to the dev branch for new extensions. -->
-
-<a name="portal-extensions-for-developers-for-more-information"></a>
+<a name="portal-extensions-for-more-information"></a>
 ## For More Information
-
+   
 For more information about development phases, see [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md).
 
 For more information about the Microsoft Azure Trust Center, see [http://azure.microsoft.com/en-us/support/trust-center/](http://azure.microsoft.com/en-us/support/trust-center/).
@@ -779,9 +789,9 @@ For more information about localization requirements, see [portalfx-localization
 
 For more information about azure.com onboarding, see [http://acomdocs.azurewebsites.net](http://acomdocs.azurewebsites.net).
 
-<a name="portal-extensions-for-developers-glossary"></a>
+<a name="portal-extensions-glossary"></a>
 ## Glossary
- 
+    
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
 
 | Term                      | Meaning |
@@ -802,7 +812,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | DF                        | Dogfood | 
 | DNS                       | Domain Name Server  | 
 | DNS                       | Domain Name System  | 
-| first-party extension     | An Azure portal extension that is developed by Microsoft |
+| first-party extension     | An Azure Portal extension that is developed by Microsoft |
 | FAQ                       | Frequently Asked Questions | 
 | GA                        | Global Availability | 
 | gallery                   | Also known as Marketplace or Azure Portal Marketplace. See Marketplace Gallery. | 
@@ -810,7 +820,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | GB Standard               | GB stands for Guobiao, or “National Standard” in Chinese. The GB standard is the basis for testing products that require certification. | 
 | Marketplace               | See Marketplace Gallery. | 
 | Marketplace Gallery       | Also known as the Gallery or Marketplace Gallery. | 
-| MPAC                      | ms.portal.azure.com, the Azure portal instance for internal Microsoft customers.  | 
+| MPAC                      | ms.portal.azure.com, the Azure Portal instance for internal Microsoft customers.  | 
 | P0 scenarios              | The most important user scenarios for an extension. Less important scenarios that are used for usability testing are categorized as P1, P2, or P3. |
 | PDE | | 
 | PHP                       | Recursive acronym for PHP: Hypertext Preprocessor. | 
@@ -829,7 +839,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | single page application | A web application that dynamically rewrites displayed pages instead of providing entire new pages from a server. | 
 | SLA                       | Service Level Agreement | 
 | SSL                       | Secure Socket Layer  | 
-| third-party extension     | An Azure portal extension that is developed by partners outside of Microsoft |
+| third-party extension     | An Azure Portal extension that is developed by partners outside of Microsoft |
 | URL                       | Uniform Resource Locator | 
 | VP                        | Vice President | 
 | Weighted Experience Score | The percentage of blade usage that meets the performance bar. |
