@@ -170,13 +170,11 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 
   * **webWorkerId**: Identifies the webworker thread.
 
-  * **extensionName\<number>**: Matches the name of the extension, without the angle brackets, as specified in the `<Extension>` element in the  `extension.pdl` file.
+  * **extensionName\<number>**: Required field. Matches the name of the extension, without the angle brackets, as specified in the `<Extension>` element in the  `extension.pdl` file.  There is no default that will turn on all extensions in an environment on the basis of the `supportsWebWorkers: "true"` parameter in the json file.
   
-  * **feature.webworker**: A value of `true` will allow the extensions to run in the specified webworker. A value of `false` will not run the extensions in a webworker.  In the previous example, the **feature.webworker** flag allows the webworker whose id is specified in `webWorkerId` to use the extensions named `<extensionName1>`, `<extensionName2>,` and `<extensionName3>`.
+  * **feature.webworker**: A value of `true` will allow the extensions to run in the specified webworker. A value of `false` will not run the extensions in a webworker.  In the previous query string, the **feature.webworker** flag allows the webworker whose id is specified in `webWorkerId` to use the extensions named `<extensionName1>`, `<extensionName2>,` and `<extensionName3>`.
 
     For more information about webworkers, see [https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers).
-
-    **NOTE**:  There is no default that will turn on all extensions for an environment on the basis of the `supportsWebWorkers: "true"` parameter in the json file.
 
 ### Marketplace feature flags
 

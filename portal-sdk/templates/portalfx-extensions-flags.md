@@ -8,4 +8,4 @@
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-flags-shell.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-flags-glossary.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-flags.md"}
