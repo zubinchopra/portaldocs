@@ -1,7 +1,7 @@
 
 <a name="best-practices"></a>
 ## Best Practices
-
+   
 These best practices are in addition to the techniques that are documented in topics like [portalfx-extensions-testing-in-production.md](portalfx-extensions-testing-in-production.md).
 
 

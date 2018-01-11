@@ -1,6 +1,6 @@
 <a name="frequently-asked-questions"></a>
 ## Frequently asked questions
-
+   
 <a name="frequently-asked-questions-extension-will-not-sideload"></a>
 ### Extension will not sideload
 
