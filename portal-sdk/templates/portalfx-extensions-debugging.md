@@ -1,25 +1,19 @@
 
-# Portal Extension Hosting Service
+# Debugging an Extension 
 
-<a name="portalfxExtensionsDebugging"></a>
-<!-- link to this document is [portalfx-extensions-debugging.md]()
--->
-
-<!--  required Intro section has moved to  the overview document for this topic. -->
-
-[Introduction](portalfx-extensions-debugging-intro.md)
+<!--  required Intro section has moved to the overview document for this topic. -->
 
 <!--  required section -->
-[Conceptual Overview](portalfx-extensions-debugging-overview.md)
+## Conceptual Overview
 
-[Development Procedures](portalfx-extensions-debugging-procedures.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-debugging-overview.md"}
 
-[Best Practices](portalfx-extensions-debugging-bestPractices.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-debugging.md"}
 
-[StackOverFlow Forums](portalfx-extensions-stackoverflow.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-stackoverflow.md"}
 
-[FAQs](portalfx-extensions-faq-debugging.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-debugging.md"}
 
-[Glossary](portalfx-extensions-debugging-glossary.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-debugging.md"}
 
-[References](portalfx-extensions-debugging-references.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-debugging-fyi.md"}

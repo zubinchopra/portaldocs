@@ -2,4 +2,4 @@
  
  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-helloWorld-overview.md"}
 
- {"gitdown": "include-file", "file": "../templates/portalfx-extensions-helloWorld-glossary.md"}
+ {"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-helloWorld.md"}

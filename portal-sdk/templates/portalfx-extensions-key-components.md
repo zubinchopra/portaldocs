@@ -1,22 +1,12 @@
 
-<a name="portalfxExtensionsKeyComponents"></a>
-<!-- link to this document is [portalfx-extensions-key-components.md]()
--->
+# Key Components of an Extension 
 
-## Introduction 
-[portalfx-extensions-key-components-intro.md](portalfx-extensions-key-components-intro.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-key-components-overview.md"}
 
-## Overview
-[portalfx-extensions-key-components-overview.md](portalfx-extensions-key-components-overview.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-key-components-mgCreate.md"}
 
-## Marketplace Gallery Integration and Create Experience
-[portalfx-extensions-key-components-mgCreate.md](portalfx-extensions-key-components-mgCreate.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-key-components-browse.md"}
 
-## Browse Experience
-[portalfx-extensions-key-components-browse.md](portalfx-extensions-key-components-browse.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-key-components-resourceMenu.md"}
 
-## Resource Menu Blade Experience
-[portalfx-extensions-key-components-resourceMenuBlade.md](portalfx-extensions-key-components-resourceMenuBlade.md)
-
-## Glossary
-[portalfx-extensions-key-components-glossary.md](portalfx-extensions-key-components-glossary.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-key-components.md"}

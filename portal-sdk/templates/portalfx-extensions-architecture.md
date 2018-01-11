@@ -1,16 +1,9 @@
+# Azure Portal Extensions Architecture
 
-## Introduction 
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-architecture-intro.md"}
 
-[portalfx-extensions-architecture-intro.md](portalfx-extensions-architecture-intro.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-architecture-overview.md"}
 
-## Overview
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-architecture.md"}
 
-[portalfx-extensions-architecture-overview.md](portalfx-extensions-architecture-overview.md)
-
-## Glossary
-
-[portalfx-extensions-architecture-glossary.md](portalfx-extensions-architecture-glossary.md)
-
-## References
-
-[portalfx-extensions-architecture-references.md](portalfx-extensions-architecture-references.md)
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-architecture-references.md"}

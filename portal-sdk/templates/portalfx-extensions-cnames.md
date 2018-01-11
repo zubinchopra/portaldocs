@@ -31,4 +31,4 @@ Create National Cloud CNAMEs using the process specified in each cloud.  For mor
  | Mooncake | [https://aka.ms/mooncake](https://aka.ms/mooncake) |
  
 ## Glossary
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-cnames-glossary.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-cnames.md"}

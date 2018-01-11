@@ -4,4 +4,4 @@
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-developerInit-procedure.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-developerInit-glossary.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-developerInit.md"}
