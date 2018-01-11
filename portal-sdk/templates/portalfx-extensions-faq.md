@@ -3,10 +3,7 @@
 
 This section contains all Azure Portal FAQ's.
 
-
 <!-- TODO:  FAQ Format in the individual docs  is ###Link, ***title***, Description, Solution, 3 Asterisks -->
-
-
 
 ## Debugging Extensions
 

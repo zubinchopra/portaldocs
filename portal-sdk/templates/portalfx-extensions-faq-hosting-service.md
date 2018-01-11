@@ -69,8 +69,6 @@ The primary cause of this issue is that your `web.config` appSetting for **IsDev
 
 * * * 
 
-
-
 ### Rollout time for stages
 
 ***How much time does hosting service take to rollout a new version of extension to the relevant stage?*** 
