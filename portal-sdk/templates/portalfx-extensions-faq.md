@@ -32,7 +32,7 @@ FAQ's for developers that are new to the Azure Portal Extension development proc
 
 ## Samples 
 
-FAQ's that are associated with Azure samples. 
+FAQ's that are associated with Azure samples.
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-samples.md"}
 
