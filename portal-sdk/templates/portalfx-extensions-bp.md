@@ -9,7 +9,5 @@ This document  contains all Best Practices that have been added to Azure Portal 
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-onboarding.md"}
 
-## Hosting Service
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-hosting-service.md"}
 
