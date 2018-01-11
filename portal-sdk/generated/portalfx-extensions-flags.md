@@ -8,7 +8,7 @@
 There are three types of query string flags that are used with extensions to modify run-time behavior. The purpose of each type of flag is similar but not identical. The Azure Portal makes use of flag values by making modifications to the server or browser, to the shell, and to the extension at runtime. Query string flags can be differentiated by the naming convention that is used to invoke them.
 * Some feature flags have their own names, like  `https://portal.azure.com/?<featureName>=<value>`
 * Most feature flags are invoked with the  syntax: `https://portal.azure.com/?feature.<featureName>=true`
-* Otherwise, flags are directives to the extension, in which case the syntax is `<extensionName>_<flagName>=<value>`
+* Otherwise, flags are directives to the extension, in which case the syntax is `<extensionName>_<extensionFlag>=<value>`
 
 **NOTE**: Features that are invoked through `extensiondefinition` are outside of the scope of this document. For more information about using `extensiondefinition`, see `Microsoft.Portal.Framework.ExtensionDefinition` class.
 
@@ -16,10 +16,10 @@ The following table specifies the types of query string flags that are used with
 
 | Flag               | Purpose | Document | 
 | ------------------ | ------- | -------- |
-| Trace mode         | Temporarily set server characteristics, toggle a behavior, or enable event logging. <br> Invoked with  `https://portal.azure.com/?trace=<settingName>`.   | [portalfx-extensions-flags-trace.md](portalfx-extensions-flags-trace.md) |
+| Trace mode         | Temporarily set server characteristics, toggle a behavior, or enable event logging. For the most part, trace mode does   not require changes to extension code. The exception is certain types of logging, as specified in [portalfx-logging-from-typescript-and-dotnet.md](portalfx-logging-from-typescript-and-dotnet.md). <br> Invoked with  `https://portal.azure.com/?trace=<settingName>`.   | [portalfx-extensions-flags-trace.md](portalfx-extensions-flags-trace.md) |
 | Extension Flags | Allow developers to specify features that they maintain. <br>Invoked with `https://portal.azure.com/?<extensionName>_<extensionFlag>=<value>`.   |  [portalfx-extensions-flags-extension.md](portalfx-extensions-flags-extension.md)  |
-| Shell flags        | Connect the developer's extension to features that are maintained by the Azure Portal team. Shell features do not require changes to the code in the developer's extension.<br> Invoked with  `https://portal.azure.com/?<featureName>=<value>`.   |  [portalfx-extensions-flags-shell.md](portalfx-extensions-flags-shell.md) |
-
+| Shell flags        | Connect the developer's extension to features that are maintained by the Azure Portal team. Shell features do not require changes to the code in the developer's extension.<br> Invoked with  `https://portal.azure.com/?feature.<featureName>=<value>`.   |  [portalfx-extensions-flags-shell.md](portalfx-extensions-flags-shell.md) |
+  
 <!-- The following sentence is from portalfx-domain-based-configuration-pattern.md. -->
   Changing the default feature flags that are sent to the extension requires Shell configuration changes and redeployment.
 
@@ -384,13 +384,11 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 
   * **webWorkerId**: Identifies the webworker thread.
 
-  * **extensionName\<number>**: Matches the name of the extension, without the angle brackets, as specified in the `<Extension>` element in the  `extension.pdl` file.
+  * **extensionName\<number>**: Required field. Matches the name of the extension, without the angle brackets, as specified in the `<Extension>` element in the  `extension.pdl` file.  There is no default that will turn on all extensions in an environment on the basis of the `supportsWebWorkers: "true"` parameter in the json file.
   
-  * **feature.webworker**: A value of `true` will allow the extensions to run in the specified webworker. A value of `false` will not run the extensions in a webworker.  In the previous example, the **feature.webworker** flag allows the webworker whose id is specified in `webWorkerId` to use the extensions named `<extensionName1>`, `<extensionName2>,` and `<extensionName3>`.
+  * **feature.webworker**: A value of `true` will allow the extensions to run in the specified webworker. A value of `false` will not run the extensions in a webworker.  In the previous query string, the **feature.webworker** flag allows the webworker whose id is specified in `webWorkerId` to use the extensions named `<extensionName1>`, `<extensionName2>,` and `<extensionName3>`.
 
     For more information about webworkers, see [https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers).
-
-    **NOTE**:  There is no default that will turn on all extensions for an environment on the basis of the `supportsWebWorkers: "true"` parameter in the json file.
 
 <a name="portal-query-string-flags-shell-feature-flags-marketplace-feature-flags"></a>
 ### Marketplace feature flags
