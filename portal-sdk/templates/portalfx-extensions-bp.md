@@ -4,7 +4,7 @@ This document  contains all Best Practices that have been added to Azure Portal 
    
 ## Debugging
 
-"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-debugging.md"
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-debugging.md"
 
 ## Extensions Onboarding
 
@@ -12,5 +12,5 @@ This document  contains all Best Practices that have been added to Azure Portal 
 
 ## Hosting Service
 
-"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-hosting-service.md"
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-hosting-service.md"
 

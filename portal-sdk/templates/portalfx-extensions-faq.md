@@ -9,7 +9,7 @@ This section contains all Azure Portal FAQ's.
 
 FAQ's that are associated with ordinary extension testing.
 
-"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-debugging.md"
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-debugging.md"}
 
 ## Extension Configurations 
 
@@ -25,7 +25,7 @@ FAQ's for developers that are new to the Azure Portal Extension development proc
 
 ## Hosting Service
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-hosting-service.md"
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-hosting-service.md"}
 
 ## Samples 
 

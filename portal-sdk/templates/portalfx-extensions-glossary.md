@@ -7,7 +7,7 @@
 {"gitdown": "include-file", "file": "./portalfx-extensions-glossary-cnames.md"}
 
 ## Debugging Extensions 
-"gitdown": "include-file", "file": "./portalfx-extensions-glossary-debugging.md"
+{"gitdown": "include-file", "file": "./portalfx-extensions-glossary-debugging.md"}
 
 ## Extension Configuration
 {"gitdown": "include-file", "file": "./portalfx-extensions-glossary-configuration.md"}
@@ -22,7 +22,7 @@
 {"gitdown": "include-file", "file": "./portalfx-extensions-glossary-helloWorld.md"}
 
 ## Hosting Service
-"gitdown": "include-file", "file": "./portalfx-extensions-glossary-hosting-service.md"
+{"gitdown": "include-file", "file": "./portalfx-extensions-glossary-hosting-service.md"}
 
 ## Initializing the Developer Platform
 {"gitdown": "include-file", "file": "./portalfx-extensions-glossary-developerInit.md"}
