@@ -75,8 +75,6 @@ The primary cause of this issue is that your `web.config` appSetting for **IsDev
 
 * * * 
 
-
-
 <a name="frequently-asked-questions-rollout-time-for-stages"></a>
 ### Rollout time for stages
 
