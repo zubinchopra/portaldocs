@@ -10,6 +10,28 @@ The FAQs for debugging extensions is located at [portalfx-extensions-faq-debuggi
 
 * * *
 
+### Sandboxed iframe security
+
+*** I get an error 'Security of a sandboxed iframe is potentially compromised by allowing script and same origin access'. How do I fix this? ***
+
+You need to allow the Azure Portal to frame your extension URL. For more information, [click here](portalfx-creating-extensions.md).
+
+* * *
+
+## Sideloading FAQs
+
+### Sideloading Extension gets an ERR_INSECURE_RESPONSE
+
+*** My Extension fails to side load and I get an ERR_INSECURE_RESPONSE in the browser console ***
+
+![ERR_INSECURE_RESPONSE](../media/portalfx-testinprod/errinsecureresponse.png)
+
+In this case the browser is trying to load the extension but the SSL certificate from localhost is not trusted the solution is to install/trust the certificate.
+
+Please checkout the stackoverflow post: [https://stackoverflow.microsoft.com/questions/15194/ibiza-extension-unable-to-load-insecure](https://stackoverflow.microsoft.com/questions/15194/ibiza-extension-unable-to-load-insecure)
+
+* * *
+
 ### Sideloading in Chrome
 
 ***Ibiza sideloading in Chrome fails to load parts***
@@ -30,7 +52,7 @@ SOLUTION:  Some troubleshooting steps are located at [https://stackoverflow.micr
 
 ***Sideloading friendly names is not working in the Dogfood environment***
 
-In order for portal to load  a test version of an extension, i.e., load without using the PROD stamp, developers can append the feature flag `feature.canmodifystamps`. The following example uses the sideload url to load the "test" version of extension.
+In order for Portal to load  a test version of an extension, i.e., load without using the PROD stamp, developers can append the feature flag `feature.canmodifystamps`. The following example uses the sideload url to load the "test" version of extension.
 
 `https://portal.azure.com?feature.canmodifystamps=true&<extensionName>=test`
 
@@ -45,3 +67,4 @@ The parameter `feature.canmodifystamps=true` is required for side-loading, and
 
 You can ask questions on Stackoverflow with the tag [ibiza-test](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test).
 
+--------

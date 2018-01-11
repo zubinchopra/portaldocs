@@ -2,7 +2,7 @@
 <a name="stackoverflow-forums"></a>
 ## Stackoverflow Forums
 
-Azure portal strives to answer the questions that are tagged with Ibiza tags on the Microsoft [Stackoverflow](https://stackoverflow.microsoft.com) Web site in 24 hours. If you do not receive a response in 24 hours, please email the owner associated with the tag. Third-party developers that have stackoverflow questions should work with their primary contact.  If you do not yet have a primary contact, please reach out to our onboarding team at [mailto:ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com).
+The Ibiza team strives to answer the questions that are tagged with Ibiza tags on the Microsoft [Stackoverflow](https://stackoverflow.microsoft.com) Web site within 24 hours. If you do not receive a response within 24 hours, please email the owner associated with the tag. Third-party developers that have Stackoverflow questions should work with their primary contact.  If you do not yet have a primary contact, please reach out to our onboarding team at [mailto:ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com).
 
 To help the Azure UI team answer your questions, the submissions are categorized into various topics that are marked with tags. 
 To read forum submissions, enter the following in the address bar of your browser:
