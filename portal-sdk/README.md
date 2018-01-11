@@ -1,5 +1,6 @@
+# Azure
 
-## Readme
+## Introduction
 
 Azure Portal is a single page web application. The parts of the page in the Portal are loaded by referencing web applications, known as extensions, that are dynamically accessed based on a customer’s action on the Portal. For example, when a customer clicks on virtual machine icon then the Portal will automatically load Virtual Machine management extension. 
 
@@ -11,7 +12,7 @@ The success of Azure Portal is dependent on the success of our partners. For our
 
 **Program / Product Managers** can gather deeper understanding of extension’s health and customer behavior using the Power BI reports and Kusto telemetry. 
 
-### Azure Portal Documentation
+### Azure Portal Library
 
 This repository contains the documents that specify how to interact with Azure portal development.  This includes how to onboard an organization that wants to build extensions, how to develop the extensions, where to find sample code, and other topics. Developers can increase their knowledge of extensions, publish them for world use, and interact with other developers through Stackoverflow and other support forums. 
 
