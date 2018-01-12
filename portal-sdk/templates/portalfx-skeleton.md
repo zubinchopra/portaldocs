@@ -1,13 +1,12 @@
 # Skeleton
-This document contains the skeleton for authoring Azure documents that are stored  in gitHub.
-<!-- topic name is a level 1 at the beginning of the doc>
 
-<!-- gitHub files that should be included based on the topic-subtopic relationship are linked to in this document using gitHub.  Because this is a sample document, all gitHub commands are slightly malformed.  To use this skeleton to create a new topic, fill in the parameters that are designated with angle brackets, and then put a curly bracket at the beginning of the gitHub command.
--->
+This document contains the skeleton for authoring Azure documents that are stored in gitHub.
 
-<!-- Subtopics should be included in this order.  -->
+<!-- topic name is a level 1 header at the beginning of the doc-->
 
-<!--  required Overview document.  -->
+gitHub files that should be included based on the topic-subtopic relationship are linked to in this document using gitHub.  Because this is a sample document, all gitHub commands are slightly malformed.  To use this skeleton to create a new topic, fill in the parameters that are designated with angle brackets, and then put a curly bracket at the beginning of the gitHub command.
+
+ <!--  required Overview document.  -->
 "gitdown": "include-file", "file": "../templates/portalfx-<major-area>-overview.md"}
 {"gitdown": "include-file", "file": "../templates/portalfx-skeleton-overview.md"}
 
@@ -37,7 +36,7 @@ This document contains the skeleton for authoring Azure documents that are store
 "gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-<major-area>.md"}
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-skeleton.md"}
 
-<!-- A partial list of documents that are might be useful inline (instead of linked to) is as follows.
+ A partial list of documents that are might be useful inline (instead of linked to) is as follows.
 portalfx-extensions-branches.md
 portalfx-extensions-cnames.md
 portalfx-extensions-contacts.md
@@ -49,4 +48,3 @@ portalfx-extensions-stackoverflow.md
 portalfx-extensions-status-codes.md
 
 Any sections from other documents that are not this generic should probably be linked to within the subtopics.
--->
