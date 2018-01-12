@@ -6,7 +6,7 @@ This document contains the skeleton for authoring Azure documents that are store
 
 GitHub files that should be included based on the topic-subtopic relationship are linked to in this document using gitHub.  Because this is a sample document, all gitHub commands are slightly malformed.  To use this skeleton to create a new topic, fill in the parameters that are designated with angle brackets, and then enclose the gitHub command in curly brackets. Remember that the command "gitdown" is at the beginning of the line and is enclosed in double quotes.
 
-<!--  required Overview document.  -->
+<!--  required Overview MARKDOWN document.  -->
 <!--                                   "../templates/portalfx-==major-area==-overview.md" -->
    {"gitdown": "include-file", "file": "../templates/portalfx-skeleton-overview.md"}
 
