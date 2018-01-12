@@ -1,5 +1,5 @@
 # Skeleton
-
+This document contains the skeleton for authoring Azure documents that are stored  in gitHub.
 <!-- topic name is a level 1 at the beginning of the doc>
 
 <!-- gitHub files that should be included based on the topic-subtopic relationship are linked to in this document using gitHub.  Because this is a sample document, all gitHub commands are slightly malformed.  To use this skeleton to create a new topic, fill in the parameters that are designated with angle brackets, and then put a curly bracket at the beginning of the gitHub command.
