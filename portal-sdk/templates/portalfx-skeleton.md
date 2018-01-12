@@ -14,24 +14,24 @@ GitHub files that should be included based on the topic-subtopic relationship ar
 <!--          "include-file", "file": "../templates/portalfx-<major-area>-<topic>-<subtopic1>.md"  -->
 <!--          "include-file", "file": "../templates/portalfx-<major-area>-<topic>-<subtopic2>.md"  -->
 
-<!--  optional checklist document. Use this when there are specific steps to follow, or when there are specific tasks that the developer must verify as being completed.  -->
-<!--        "include-file", "file": "../templates/portalfx-<major-area>-<topic>-procedures.md"  -->
+<!--  optional checklist document. Use this when there are specific steps to follow, or when there are specific tasks that the developer must verify as being completed. 
+            "include-file", "file": "../templates/portalfx-<major-area>-<topic>-procedures.md"  -->
 {"gitdown": "include-file", "file": "../templates/portalfx-skeleton-procedure.md"}
   
-<!--  optional Best Practices document -->
-<!--        "include-file", "file": "../templates/portalfx-<major-area>-bp-<topic>.md"  -->
+<!--  optional Best Practices document
+            "include-file", "file": "../templates/portalfx-<major-area>-bp-<topic>.md"  -->
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-skeleton.md"}
 
-<!--  optional FAQ document -->
-<!--        "include-file", "file": "../templates/portalfx-<major-area>-faq-<topic>.md"  -->
+<!--  optional FAQ document
+            "include-file", "file": "../templates/portalfx-<major-area>-faq-<topic>.md"  -->
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-skeleton.md"}
    
-<!--  optional FYI document, for links that could not be included in the content within the natural flow of the doc -->
-<!--        "include-file", "file": "../templates/portalfx-<major-area>-<topic>-fyi.md"  -->
+<!--  optional FYI document, for links that could not be included in the content within the natural flow of the doc 
+            "include-file", "file": "../templates/portalfx-<major-area>-<topic>-fyi.md"  -->
 {"gitdown": "include-file", "file": "../templates/portalfx-skeleton-fyi.md"}
 
-<!--  required Glossary document.  -->
-<!--        "include-file", "file": "../templates/portalfx-extensions-glossary-<major-area>.md"  -->
+<!--  required Glossary document. 
+            "include-file", "file": "../templates/portalfx-extensions-glossary-<major-area>.md"  -->
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-skeleton.md"}
 
 A partial list of documents that are might be useful inline (instead of linked to) is as follows.
