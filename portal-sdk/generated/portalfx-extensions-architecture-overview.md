@@ -1,11 +1,7 @@
-<a name="azure-portal-extensions-architecture"></a>
-# Azure Portal Extensions Architecture
-
-
-<a name="azure-portal-extensions-architecture-overview"></a>
+<a name="overview"></a>
 ## Overview
 
-<a name="azure-portal-extensions-architecture-overview-understanding-the-azure-portal-architecture"></a>
+<a name="overview-understanding-the-azure-portal-architecture"></a>
 ### Understanding the Azure Portal Architecture
 
 The IFRAMEs loaded by the Portal are entirely hidden. The scripts loaded by these IFRAMEs interact with the Portal using Azure Portal SDK APIs. This allows the extensions to provide a consistent, and predictable, experience for Azure Portal users.
@@ -16,7 +12,7 @@ The Azure Portal architecture is displayed in the following image.
 
  ![alt-text](../media/portalfx-deployment/deployment.png  "Portal Extension Architecture")
 
-<a name="azure-portal-extensions-architecture-overview-understanding-the-extension-architecture"></a>
+<a name="overview-understanding-the-extension-architecture"></a>
 ### Understanding the Extension Architecture
 
 1.	Typically an extension is an ASP.NET Web API project, which is modified to include content specific to the Portal.
@@ -78,25 +74,3 @@ This section contains links to documents that describe Azure Portal Architecture
 * UI elements 
 
     [https://github.com/Azure/portaldocs/blob/dev/portal-sdk/templates/portalfx-ui-concepts.md](https://github.com/Azure/portaldocs/blob/dev/portal-sdk/templates/portalfx-ui-concepts.md)
-
-<a name="azure-portal-extensions-architecture-glossary"></a>
-## Glossary
-
-This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
-
-| Term                              | Meaning |
-| ---                               | --- |
-| AMD                               | Asynchronous Module Definition |
-| API                               | Application Programmer Interface |
-| ARM                               | Azure Resource Manager | 
-| asynchronous module definition    | A JavaScript API that specifies a mechanism that defines code modules and their dependencies in order to load them asynchronously. |
-| CLI                               | Command Line Interface |
-| extension                         | A Web application that was developed using the Azure Portal SDK and is made available to users through the Azure Portal. |
-| UI                                | User Interface |
-| UX                                | User Experience |
-| live tile                         | An object that displays information that are useful at a glance without opening an app. |
-| SDK                               | Software Development Kit |
-| single page application           | A web application or web site that interacts with the user by dynamically rewriting the current page rather than loading entire new pages from a server. | 
-
-
-
