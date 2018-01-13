@@ -1,5 +1,33 @@
 # Release Notes since 9/12/2017
 
+## 5.0.302.969
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1893689'>1893689</a></td><td>Bug Fix</td><td>Hotfix production to prevent hammering CRP from browse tile</td></tr></table>
+
+## 5.0.302.968
+0 Breaking Changes, 1 Features added and 2 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1867737'>1867737</a></td><td>Bug Fix</td><td>Investigate session timeout occurring too often, from MPAC report.</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1599134'>1599134</a></td><td>Feature</td><td>[Regions] Update new regions script</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10734786'>10734786</a></td><td>Bug Fix</td><td>[Intune App] The wrong expiration date is selected for some iOS IPA app packages</td></tr></table>
+
+## 5.0.302.967
+0 Breaking Changes, 0 Features added and 0 Bugs Fixed
+<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
+
+## 5.0.302.966
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1737949'>1737949</a></td><td>Bug Fix</td><td>Services need to be de-duplicated in search based on resourceType and not just ID</td></tr></table>
+
+## 5.0.302.964
+0 Breaking Changes, 0 Features added and 0 Bugs Fixed
+<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
+
+## 5.0.302.963
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1823035'>1823035</a></td><td>Bug Fix</td><td>[Curation]Enable DNS in fairfax</td></tr></table>
+
+## 5.0.302.962
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1867450'>1867450</a></td><td>Bug Fix</td><td>Remove default portal idle timeout in Fairfax</td></tr></table>
+
 ## 5.0.302.961
 0 Breaking Changes, 0 Features added and 1 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1861584'>1861584</a></td><td>Bug Fix</td><td>[From IcM 55403425] When using column chooser for scoped browse (like Resource Group blade), the column chooser fails to load (nullref)</td></tr></table>
@@ -166,15 +194,3 @@ stack: TypeError: Unable to get property ''length'' of undefined or null referen
 ## 5.0.302.854
 0 Breaking Changes, 0 Features added and 2 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1508736'>1508736</a></td><td>Bug Fix</td><td>Fix passing of locale to ContentUnbundler</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10240559'>10240559</a></td><td>Bug Fix</td><td>Fix the Jwt library version referenced by AAD core NuGet package and devkit</td></tr></table>
-
-## 5.0.302.853
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10147524'>10147524</a></td><td>Bug Fix</td><td>Redirecting from MPAC to PROD adds %3f to query</td></tr></table>
-
-## 5.0.302.852
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10221758'>10221758</a></td><td>Bug Fix</td><td>Blackforest certificates need to be rolled</td></tr></table>
-
-## 5.0.302.851
-1 Breaking Changes, 0 Features added and 0 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10227953'>10227953</a></td><td><strong>Break</strong></td><td>_addProperty method of the Properties Part ViewModel is inefficient</td></tr></table>
