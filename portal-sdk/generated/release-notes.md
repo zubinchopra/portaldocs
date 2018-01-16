@@ -1,4 +1,4 @@
-# Release Notes since 9/15/2017
+# Release Notes since 9/16/2017
 
 ## 5.0.302.969
 0 Breaking Changes, 0 Features added and 1 Bugs Fixed
@@ -181,16 +181,4 @@ stack: TypeError: Unable to get property ''length'' of undefined or null referen
 
 ## 5.0.302.858
 0 Breaking Changes, 0 Features added and 0 Bugs Fixed
-<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
-
-## 5.0.302.856
-0 Breaking Changes, 1 Features added and 0 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=1267516'>1267516</a></td><td>Feature</td><td>[WABO] [Prod] [SN3PrdHPC01] Verify Compute Cluster IP Ranges are Whitelisted by SQL Azure</td></tr></table>
-
-## 5.0.302.855
-0 Breaking Changes, 1 Features added and 0 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10220159'>10220159</a></td><td>Feature</td><td>[EV2] 1. Change directory structure. 2. Remove national cloud name from zip file name</td></tr></table>
-
-## 5.0.302.854
-0 Breaking Changes, 0 Features added and 2 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1508736'>1508736</a></td><td>Bug Fix</td><td>Fix passing of locale to ContentUnbundler</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10240559'>10240559</a></td><td>Bug Fix</td><td>Fix the Jwt library version referenced by AAD core NuGet package and devkit</td></tr></table>
+<table></table>
