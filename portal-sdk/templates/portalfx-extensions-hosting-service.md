@@ -16,4 +16,4 @@
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-hosting-service.md"}
 
 <!--  required section -->
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-hosting-service-glossary.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-hosting-service.md"}
