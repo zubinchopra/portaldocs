@@ -1,5 +1,9 @@
 # Release Notes since 9/17/2017
 
+## 5.0.302.970
+0 Breaking Changes, 0 Features added and 3 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1887207'>1887207</a></td><td>Bug Fix</td><td>Add Framework.Client to Microsoft.Portal.TestFramework due to loc dependency</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1801085'>1801085</a></td><td>Bug Fix</td><td>MsPortalImpl\Interactions\Interactions.FlowLayoutDragDrop.ts, line:111 throws "Cannot read property 'elementObject' of null"</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1769638'>1769638</a></td><td>Bug Fix</td><td>All Services blade does not honor discovery policy when switched to "By name" view</td></tr></table>
+
 ## 5.0.302.969
 0 Breaking Changes, 0 Features added and 1 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1893689'>1893689</a></td><td>Bug Fix</td><td>Hotfix production to prevent hammering CRP from browse tile</td></tr></table>
