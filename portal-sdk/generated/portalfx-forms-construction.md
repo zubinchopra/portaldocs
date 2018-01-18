@@ -2,18 +2,22 @@
 <a name="loading-editing-and-saving-data"></a>
 ## Loading, editing and saving data
 
-The code for this example comes from the 'basic form' sample in SamplesExtension. The code lives in:
-`\Client\Forms\Samples\Basic\FormsSampleBasic.pdl`
-`\Client\Forms\Samples\Basic\Templates\FormSampleBasic.html`
-`\Client\Forms\Samples\Basic\ViewModels\FromsSampleBasicBlade.ts`
+This sample reads and writes data to the server directly via `ajax()` calls. 
 
-We start by getting an edit scope via a `MsPortalFx.Data.EditScopeView` object. In this sample we'll read and write
-data to the server directly via `ajax()` calls but you can also get an edit scope view from other data cache objects
-if the data you have is already on the client.
+In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>` is the `SamplesExtension\` directory. Links to the Dogfood environment will display working copies of the samples that were made available with the SDK.
 
-We'll load/save our data by creating an `EditScopeCache` object and defining two functions. `supplyExistingData` will
-read the data from the server & `saveEditScopeChanges` will write it back:
+The code for this example is associated with the 'basic form' sample. It is located at 
+* `<dir>\Client\Forms\Samples\Basic\FormsSampleBasic.pdl`
+* `<dir>\Client\Forms\Samples\Basic\Templates\FormSampleBasic.html`
+* `<dir>\Client\Forms\Samples\Basic\ViewModels\FromsSampleBasicBlade.ts`
 
+The following code will load and save data by creating an `EditScopeCache` object and defining two functions. The `supplyExistingData` function reads the data from the server, and the `saveEditScopeChanges` function writes it back.
+
+1. Instantiate an edit scope via a `MsPortalFx.Data.EditScopeView` object. 
+
+**NOTE**: When the data to manipulate is already on the client, you can also get an edit scope view from other data cache objects.
+
+<!--
 ```typescript
 
 let editScopeCache = EditScopeCache.createNew<WebsiteModel, number>({
@@ -64,8 +68,11 @@ let editScopeCache = EditScopeCache.createNew<WebsiteModel, number>({
 });
 
 ```
+-->
 
-Note the server returns strings but the model type we're using (`WebsiteModel`) is defined as:
+2. Transform the data to make it match the model type.
+
+The server returns strings, but the model type that is being used  (`WebsiteModel`) is defined as:
 
 ```ts
 interface WebsiteModel {
@@ -75,21 +82,25 @@ interface WebsiteModel {
 }
 ```
 
-So during both save and load of the data we have to do some transforming to make it match the model type.
+Therefore, the save and load of the data have to transform the data to make it match the model type.
 
-The control view models actually take a reference to a `Form.ViewModel` so we need to create a form and pass it the
-reference to the edit scope:
+<!-- TODO: Determine whether `Form.ViewModel` is an optional field. -->
+The control view models require a reference to a `Form.ViewModel`, so we need to create a form and send the reference to the editScope to it, as in the following example.
 
+`<dir>\Client\V1\Forms\Samples\Basic\ViewModels\FormsSampleBasicBlade.ts`
+<!--
 ```typescript
 
 this._form = new Form.ViewModel<WebsiteModel>(this._lifetime);
 this._form.editScope = this._editScopeView.editScope;
 
 ```
+-->
 
-For this form we'll just display one textbox that lets the user edit the name of the 
-website:
+This form displays one textbox that lets the user edit the name of the website, as in the following code.
 
+`<dir>\Client\V1\Forms\Samples\Basic\ViewModels\FormsSampleBasicBlade.ts`
+<!--
 ```typescript
 
 let websiteName = new TextBox.ViewModel(
@@ -112,17 +123,19 @@ this.section = new Section.ViewModel(this._lifetime, {
 });
 
 ```
+-->
 
-We render the form using a section. If you add a list of controls to the section's children observable array they will be laid out one after the
-other on the blade so it's often an easy way to get the standard look of most forms in the portal. Alternatively you could hand author the HTML 
-for the form by binding each control into HTML template for the blade.
+The form is rendered using a section. Add all the controls that should be displayed into the `children` observable array of the section. This positions the controls sequentially on a blade, by default, so it's often an easy way to standardize the look of most forms in the Portal. An alternative to the default positioning is to manually author the HTML for the form by binding each control into HTML template for the blade.
 
-This sample also includes two commands at the top of the blade to save/discard. Commands are used since the design for this blade is
-to stay open after a save/discard operation. If the blade was to close after save/discard then we would recommend using an action bar
-at the bottom of the blade. The commands check to make sure the edit scope has been populated before they enable themselves via
-the 'canExecute' computed we create. They also keep themselves disabled during save operations via an observable named `_saving`
-that the part maintains:
+This sample includes two commands at the top of the blade that will save or discard data. Commands are used because this blade stays open after a save/discard operation. If the blade was to close after the operation, then there would be an action bar at the bottom of the blade to use instead. 
 
+The commands check to make sure the edit scope has been populated previous to enabling themselves via the `canExecute` label in the `ko.pureComputed` code.
+<!-- TODO: Determine whether this is a label, a case, or a method. --> 
+They also keep themselves disabled during save operations via an observable named `_saving` that the part maintains, as in the following code.
+
+`<dir>\Client\V1\Forms\Samples\Basic\ViewModels\FormsSampleBasicBlade.ts`
+
+<!--
 ```typescript
 
 // set up save command
@@ -162,6 +175,8 @@ this.commandBar = new Toolbars.Toolbar(this._lifetime);
 this.commandBar.setItems([saveCommand, discardCommand]);
 
 ```
+-->
 
-Since we're using the edit scope the save/disard commands can just call the `saveChanges()` or `revertAll()` methods on edit scope 
-to trigger the right action.
+Because the edit scope is being used, the save/discard commands can just call the `saveChanges()` or `revertAll()` methods on the edit scope to trigger the right action.
+
+For more information, see [http://knockoutjs.com/documentation/computed-writable.html](http://knockoutjs.com/documentation/computed-writable.html).
