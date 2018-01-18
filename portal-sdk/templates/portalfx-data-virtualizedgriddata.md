@@ -1,4 +1,5 @@
 
+## Virtualized data for the grid
 ## Querying for virtualized data
 
 If your back end is going to return significant amounts of data, you should consider using the `DataNavigator` class provided by the framework. There are two models for querying virtualized data from the server:

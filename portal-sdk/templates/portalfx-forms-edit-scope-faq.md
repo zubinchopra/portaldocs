@@ -199,7 +199,7 @@ To correctly (according to the EditScope design) add or remove an 'entity' objec
 #### Common error scenario
 
 Often, extensions encounter this "Entity-typed object/array is not known to this edit scope..." error as a side-effect of modeling their data as 'entities' binding with [editable grid](#editable-grid) in some ParameterProvider Blade.  Then, commonly, the error is encountered when applying the array edits in a corresponding ParameterCollector Blade.  Here are two schemes that can be useful to avoid this error:
-* Use the ['`applyArrayAsEdits'`](#apply-array-as-edits) EditScope method mentioned above to commit array edits to an EditScope.
+* Use the [`applyArrayAsEdits`](#apply-array-as-edits) EditScope method mentioned above to commit array edits to an EditScope.
 * Define type metadata for this array *twice* - once only for editing the data in an editable grid (array items typed as 'entities'), and separately for committing to an EditScope in the ParameterCollector Blade (array items typed as not 'entities').  
   
   

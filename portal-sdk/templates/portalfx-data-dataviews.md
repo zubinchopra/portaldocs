@@ -1,4 +1,4 @@
-
+## Consuming data
 ## Using DataViews
 
 The `QueryView` and `EntityView` both serve the purposes of presenting data from the cache to the view model, and providing reference counting. A DataView is created from the `createView` method of a QueryCache or EntityCache:

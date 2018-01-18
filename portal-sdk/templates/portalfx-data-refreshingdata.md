@@ -1,5 +1,8 @@
 
-<a name="refresh-implicitrefresh"></a>
+## Refreshing cached data
+
+### Refresh implicitrefresh
+
 ## Auto-refreshing client-side data (a.k.a. 'polling')  
 
 In many scenarios, users expect to see their rendered data update implicitly as server data changes. This is fairly straightforward to accomplish by configuring your QueryCache/EntityCache to include 'polling'.

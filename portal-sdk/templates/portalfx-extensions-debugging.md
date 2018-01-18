@@ -4,7 +4,7 @@
 <!--  required Intro section has moved to the overview document for this topic. -->
 
 <!--  required section -->
-## Conceptual Overview
+## Overview
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-debugging-overview.md"}
 

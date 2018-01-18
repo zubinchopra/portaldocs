@@ -1,5 +1,7 @@
 
-## Master details browse scenario
+## Master details browse 
+ How to share data across a parent blade that shows a list of 
+resources and a child blade that shows details about an individual resource 
 
 The code for this example comes from the 'master detail browse' sample in SamplesExtension. The code lives in:
 `\Client\MasterDetail\MasterDetailArea.ts`

@@ -2,7 +2,7 @@
 
 One of the most productive ways to learn how to develop code is by reviewing program source.  The Azure Portal team ships samples that extension developers can leverage.
 
-All developers who install the Portal Framework SDK that is located at [http://aka.ms/portalfx/download](http://aka.ms/portalfx/download) also install the samples on their computers during the installation the process. The source for the samples is located in the `Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension` folder.
+All developers who install the Portal Framework SDK that is located at [http://aka.ms/portalfx/download](http://aka.ms/portalfx/download) also install the samples on their computers during the installation process. The source for the samples is located in the `Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension` folder.
 
 First-party extension developers, i.e. Microsoft employees, have access to the Dogfood environment, therefore they can view the samples that are located at [https://aka.ms/portalfx/viewSamples](https://aka.ms/portalfx/viewSamples).
 
@@ -75,7 +75,7 @@ Sample source code is included in topics that discuss the various Azure SDK API 
 
 * All Azure API's
 
-  | API ScreenObject            | Document | Sample | 
+  | API Topic            | Document | Sample | 
   | --------------------------  | ----------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------   | 
   | Bundling and Configuration  | [Portalfx-extensions-migrate-existing-to-extensioncontrollerbase.md](Portalfx-extensions-migrate-existing-to-extensioncontrollerbase.md)  |                                                                               | 
   | Configuration Settings      | [Portalfx-load-configuration.md](Portalfx-load-configuration.md)                                                                          | `<dir>\Configuration\ArmConfiguration.cs`                                     |
@@ -90,7 +90,7 @@ Sample source code is included in topics that discuss the various Azure SDK API 
 
 * Version 2 API 
 
-  | API ScreenObject                                | Document                                                                 | Sample                                                           | Experience |
+  | API Topic                             | Document                                                                 | Sample                                                           | Experience |
   | ----------------------------------------------  | ------------------------------------------------------------------------ | ---------------------------------------------------------------- | ---------- |
   | Defining Extensions with TypeScript decorators  | [Portalfx-no-pdl-programming.md](Portalfx-no-pdl-programming.md)         | `<dir>\Client\V2\Blades\Template\ SimpleTemplateBlade.ts`        | [https://aka.ms/Portalfx/sampleTypeScript](https://aka.ms/Portalfx/sampleTypeScript) | 
   | Extension Controls                              | [Portalfx-controls.md](Portalfx-controls.md)                             |                                                                  | [http://aka.ms/Portalfx/controls](http://aka.ms/Portalfx/controls) |
@@ -102,7 +102,7 @@ Sample source code is included in topics that discuss the various Azure SDK API 
 
   * Introductions
 
-    | API ScreenObject               | Document                                                                                             | Sample                                                            | Experience |
+    | API Topic             | Document                                                                                             | Sample                                                            | Experience |
     | ------------------------------ | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | ---------- |
     | Create ARM Resource Experience | [Portalfx-create-engine-sample.md](Portalfx-create-engine-sample.md)                                 |                                                                   | [https://aka.ms/Portalfx/sampleCreateEngine](https://aka.ms/Portalfx/sampleCreateEngine)  |
     | Create Custom Experience       | [Portalfx-create-robot-sample.md](Portalfx-create-robot-sample.md)                                   |                                                                   | |
@@ -110,9 +110,15 @@ Sample source code is included in topics that discuss the various Azure SDK API 
     | Forms Without EditScopes       | [Portalfx-editscopeless-forms.md](Portalfx-editscopeless-forms.md)                                   |                                                                   | |
     | Getting Started                | [Portalfx-parameter-collection-getting-started.md](Portalfx-parameter-collection-getting-started.md) | `<dir>\Client\V1\ParameterCollection\ ParameterCollectionArea.ts` | |
  
+  * Scenarios 
+    
+    | Scenario        | Document                                                                                         | Sample | 
+    | --------------------- | ------------------------------------------------------------------------------------------------ | ------ | 
+    | EditScopeAccessor | [portalfx-forms-working-with-edit-scopes.md#editscopeaccessor](portalfx-forms-working-with-edit-scopes.md#editscopeaccessor) |     `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts` |  
+  
   * Debugging and Logging
 
-    | API ScreenObject      | Document                                                                                         | Sample | 
+    | API Topic      | Document                                                                                         | Sample | 
     | --------------------- | ------------------------------------------------------------------------------------------------ | ------ | 
     | Logging and Debugging | [Portalfx-logging-from-typescript-and-dotnet.md](Portalfx-logging-from-typescript-and-dotnet.md) | `<dir>\Client\V1\Diagnostics\Logging\ ViewModels\LoggingViewModels.ts` |  
     | Logging Telemetry     | [Portalfx-telemetry-logging.md](Portalfx-telemetry-logging.md)                                   | `<dir>\Configuration\ApplicationConfiguration.cs` |  
@@ -121,7 +127,7 @@ Sample source code is included in topics that discuss the various Azure SDK API 
 
   * Modeling Data
 
-    | API ScreenObject                    | Document                                                                     | Sample | 
+    | API  Data Model Element                   | Document                                                                     | Sample | 
     | ----------------------------------- | ---------------------------------------------------------------------------- | ------ | 
     | Data View                           | [Portalfx-data-overview.md](Portalfx-data-overview.md)                       |  `<dir>\Client\V1\MasterDetail\MasterDetailEdit\ ViewModels\MasterViewModels.ts`  | 
     | Data Transformations                | [Portalfx-data-projections.md](Portalfx-data-projections.md)                 | `<dir>\Client\V1\Data\Projection\ ViewModels\MapAndMapIntoViewModels.ts` | 
@@ -162,7 +168,7 @@ Sample source code is included in topics that discuss the various Azure SDK API 
     
   * Controller Components
 
-    | API ScreenObject               | Document | Sample | Experience |
+    | API Controller Topic               | Document | Sample | Experience |
     | ------------------------------ | -------- | ------ | ---------- |
     | Blade Properties               | [Portalfx-blades-properties.md](Portalfx-blades-properties.md)                           | `<dir>\Client\V1\Blades\Properties\ ViewModels\BladePropertyViewModels.ts` | | 
     | Closing an Extension           | [Portalfx-blades-closing.md](Portalfx-blades-closing.md)                                 | `<dir>\Client\V1\Commands\OpenBladeCommand\ ViewModels\OpenBladeCommandViewModels.ts` |  [http://aka.ms/Portalfx/samples#blade/SamplesExtension/SDKMenuBlade/openbladeapi](http://aka.ms/Portalfx/samples#blade/SamplesExtension/SDKMenuBlade/openbladeapi) |
