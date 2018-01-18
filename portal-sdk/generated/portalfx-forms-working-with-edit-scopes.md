@@ -2,7 +2,6 @@
 <a name="working-with-edit-scopes"></a>
 ## Working with Edit Scopes
 
-
 Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide many common functions that would otherwise be difficult to orchestrate:
 
   * Track changes in field values across a form
@@ -150,3 +149,58 @@ private _initializeForm(): void {
 ```
 
 The code above creates a new set of form field objects which are bound to the edit scope.
+
+  
+<a name="working-with-edit-scopes-editscopeaccessor"></a>
+### EditScopeAccessor
+
+Form fields require a binding to one or more EditScope observables. Consequently, they have two constructor overloads.  Extension developers can configure this binding by supplying a path from the root of the EditScope/Form model down to the observable to which the form field should bind. They can do this by selecting one of the two form field constructor variations. 
+
+In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
+
+1. **EditScopeAccessor** This is the preferred, compile-time verified methodology. The form field ViewModel constructor accepts an EditScopeAccessor, wraps a compile-time verified lambda, and returns the EditScope observable to which the Form field should bind, as in the following code.
+
+    `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`
+
+    <!--```typescript
+
+this.textBoxSimpleAccessor = new MsPortalFx.ViewModels.Forms.TextBox.ViewModel(
+    container,
+    this,
+    this.createEditScopeAccessor<string>((data) => { return data.state; }),
+    textBoxSimpleAccessorOptions);
+
+``` -->
+    The EditScopeAccessor methodology is preferred for the following reasons.
+
+    * The supplied lambda will be compile-time verified. This code is more maintainable, for example, when the property names on the Form model types are changed.
+    * There are advanced variations of `EditScopeAccessor` that enable less-common scenarios like binding multiple `EditScope` observables to a single form field or translating form model data for presentation to the user, as in the following code.
+
+      `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`
+  
+    <!--```typescript
+
+this.textBoxReadWriteAccessor = new MsPortalFx.ViewModels.Forms.TextBox.ViewModel(
+    container,
+    this,
+    this.createEditScopeAccessor<string>(<MsPortalFx.ViewModels.Forms.EditScopeAccessors.Options<FormIntegratedFormData.FormIntegratedFormData, string>>{
+        readFromEditScope: (data: FormIntegratedFormData.FormIntegratedFormData): string => {
+            return data.state2().toUpperCase();
+        },
+        writeToEditScope: (data: FormIntegratedFormData.FormIntegratedFormData, newValue: string): void => {
+            data.state2(newValue);
+        }
+    }),
+    textBoxReadWriteAccessorOptions);
+
+``` -->
+
+1. **String-typed path** This methodology is discouraged because it is not compile-time verified. The form field ViewModel constructor accepts a string-typed path that contains the location of the EditScope observable to which the Form field should bind, as in the following code.
+
+    `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`
+
+  <!--```typescript
+
+this.textBoxViewModel = new MsPortalFx.ViewModels.Forms.TextBox.ViewModel(container, this, "name", textBoxOptions);
+
+``` -->

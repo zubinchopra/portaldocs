@@ -1,8 +1,9 @@
 <a name="data-shaping"></a>
-<a name="shaping-and-filtering-data"></a>
-## Shaping and filtering data
+## Data shaping
+<a name="data-shaping-shaping-and-filtering-data"></a>
+### Shaping and filtering data
 
-<a name="shaping-and-filtering-data-understanding-observable-map-and-mapinto"></a>
+<a name="data-shaping-understanding-observable-map-and-mapinto"></a>
 ### Understanding observable map() and mapInto()
 
 When working with data in a QueryCache the most common operation you'll want to do is reshape all the items in the cache into a format that is better for displaying in the UI. Let's look at example that shows how knockout observable versions of `map()` and `mapInto()` can be used to accomplish this and some pitfalls to watch out for.
@@ -170,7 +171,7 @@ var projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProject
 
 ```
 
-This is the same as our buggy implementation of map() we wrote earlier. Hit the 'Buggy mapInto' button and then play around with updating status() and model() of the top row while that row is activated. You'll notice, unlike map(), that the child blade doesn't close however you'll also notice that when the source data in the QueryCache changes __the observable changes are not present in the projected object__. The reason for this is mapInto() ignores any observables that use in the mapping function you supply. It is therefore guaranteed that a projected item will stay the same item as long as the source item is around but if you write your map incorrectly it isn't guaranteed the projected data is update to date.
+This is the same as our buggy implementation of map() we wrote earlier. Click the 'Buggy mapInto' button and then play around with updating status() and model() of the top row while that row is activated. You'll notice, unlike map(), that the child blade doesn't close however you'll also notice that when the source data in the QueryCache changes __the observable changes are not present in the projected object__. The reason for this is mapInto() ignores any observables that use in the mapping function you supply. It is therefore guaranteed that a projected item will stay the same item as long as the source item is around but if you write your map incorrectly it isn't guaranteed the projected data is update to date.
 
 So to summarize:
 
@@ -181,7 +182,7 @@ mapInto() | No | Yes
 
 However if the projection is done correctly both functions should work identically.
 
-<a name="shaping-and-filtering-data-using-knockout-projections"></a>
+<a name="data-shaping-using-knockout-projections"></a>
 ### Using Knockout projections
 
 In many cases extension authors will want to shape and filter data as it is loaded via QueryView and EntityView.
@@ -215,7 +216,7 @@ this.grid = new Grid.ViewModel<RobotDetails, string>(
 
 ```
 
-<a name="shaping-and-filtering-data-chaining-uses-of-map-and-filter"></a>
+<a name="data-shaping-chaining-uses-of-map-and-filter"></a>
 ### Chaining uses of <code>map</code> and <code>filter</code>
 
 Often, it is convenient to chain uses of `map` and `filter`:
@@ -240,7 +241,7 @@ container.registerForDispose(projectedItems.subscribe(personItems));
 
 This filters to only Lumia 520 owners and then maps to just the columns the grid uses.  Additional pipeline stages can be added with more map/filters/computeds to do more complex projections and filtering.
 
-<a name="shaping-and-filtering-data-anti-patterns-and-best-practices"></a>
+<a name="data-shaping-anti-patterns-and-best-practices"></a>
 ### Anti-patterns and best practices
 
 **Do not** unwrap observables directly in your mapping function - When returning a new object from the function supplied to `map`, you should **avoid unwrapping observables** directly in the mapping function, illustrated by `computedName` here:

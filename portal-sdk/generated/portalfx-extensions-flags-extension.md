@@ -22,11 +22,11 @@ Developers can create flags for extensions, and plan to manage them as a part of
 The following code examples demonstrate how to turn extension  flags on and off inside the code. 
 
 <details>
-<summary>Reading flags in TypeScript </summary>
+<summary>Reading flags in **TypeScript** </summary>
 
 * Detecting whether a flag is set
 
-    Use the ```MsPortalFx.isFeatureEnabled``` and  ```MsPortalFx.getFeatureValue``` APIs to access feature values in TypeScript, as in the following code.
+    Use the ```MsPortalFx.isFeatureEnabled``` and  ```MsPortalFx.getFeatureValue``` APIs to access feature values in **TypeScript**, as in the following code.
 
     Query string with parameters: `https://portal.azure.com?azure_compute_someflag=true`
 

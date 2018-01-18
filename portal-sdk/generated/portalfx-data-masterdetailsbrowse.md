@@ -1,6 +1,8 @@
 
-<a name="master-details-browse-scenario"></a>
-## Master details browse scenario
+<a name="master-details-browse"></a>
+## Master details browse
+ How to share data across a parent blade that shows a list of 
+resources and a child blade that shows details about an individual resource 
 
 The code for this example comes from the 'master detail browse' sample in SamplesExtension. The code lives in:
 `\Client\MasterDetail\MasterDetailArea.ts`
@@ -17,7 +19,7 @@ be from the QueryCache we create. That saves us from having to query the server 
 when data in the QueryCache is updated that update is reflected across all blades at the same time. This ensures the user is always
 presented with a consistent view of the data.
 
-<a name="master-details-browse-scenario-the-masterdetail-area-and-datacontext"></a>
+<a name="master-details-browse-the-masterdetail-area-and-datacontext"></a>
 ### The MasterDetail Area and DataContext
 The portal uses a concept calls an Area to hold the QueryCache and other data objects that will be shared across multiple blades.
 To create an Area create a folder named for the area you're creating (`MasterDetail` in this case) inside your extension's `Client` folder. 
@@ -62,7 +64,7 @@ this.viewModelFactories.V1$MasterDetail().setDataContextFactory<typeof MasterDet
 
 ```
 
-<a name="master-details-browse-scenario-the-websites-querycache-and-entitycache"></a>
+<a name="master-details-browse-the-websites-querycache-and-entitycache"></a>
 ### The websites QueryCache and EntityCache
 Now that we've gone over the DataContext that is be available to all blades in the Area let's go over the data caches we'll use
 in the master/detail browse scenario. 
@@ -143,7 +145,7 @@ going to the server and creating a second copy of the website data on the client
 and a function that given a item from the QueryCache will return say whether this is the object requested by the parameters to the
 fetch call.
 
-<a name="master-details-browse-scenario-implementing-the-master-view"></a>
+<a name="master-details-browse-implementing-the-master-view"></a>
 ### Implementing the master view
 Now let's get in to how to visualize the data in the caches. The first step is to make sure the PDL that defines the blades
 specifies the right Area so your view models receive your DataContext. In the `<Definition>` tag at the top of the PDL file 
@@ -227,7 +229,7 @@ array to the items array of the view. The view will update it's items array as s
 If you look through the rest of the code you'll see we've configured the grid to activate any of the websites when they're clicked on.
 We'll pass the 'id' of the website that is activated to the details blade as an input.
 
-<a name="master-details-browse-scenario-implementing-the-detail-view"></a>
+<a name="master-details-browse-implementing-the-detail-view"></a>
 ### Implementing the detail view
 The detail view will use the EntityCache (which we hooked up to our QueryCache) from the DataContext to display the details of a
 website. Once you understand what's going on in the master blade you should have a pretty good handle of what's going on here.

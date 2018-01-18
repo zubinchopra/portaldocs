@@ -102,11 +102,11 @@ Developers can create flags for extensions, and plan to manage them as a part of
 The following code examples demonstrate how to turn extension  flags on and off inside the code. 
 
 <details>
-<summary>Reading flags in TypeScript </summary>
+<summary>Reading flags in **TypeScript** </summary>
 
 * Detecting whether a flag is set
 
-    Use the ```MsPortalFx.isFeatureEnabled``` and  ```MsPortalFx.getFeatureValue``` APIs to access feature values in TypeScript, as in the following code.
+    Use the ```MsPortalFx.isFeatureEnabled``` and  ```MsPortalFx.getFeatureValue``` APIs to access feature values in **TypeScript**, as in the following code.
 
     Query string with parameters: `https://portal.azure.com?azure_compute_someflag=true`
 
@@ -224,7 +224,7 @@ The keyboard shortcut CTRL+ALT+D toggles the visibility of the debug tool, as sp
 <a name="portal-query-string-flags-shell-feature-flags-the-extensionname-flag"></a>
 ### The extensionName flag
 
-The name of the extension can be used as a feature flag. The extension name can contain any character in the ranges between [a-z] or [0-9]. 
+The name of the extension can be used as a feature flag. The extension name can contain any character in the ranges between [a-z] or [0-9]. The portal query string can handle multiple extensions simultaneously.
 <!--TODO: Determine whether all uses of the extensionName flag require the 'canmodifystamps` flag. -->
  This flag is used to enable or disable an extension, use different configuration stamps, and provide other run-time functionality.  A value of `true` will temporarily enable a disabled extension, and allows the use of other flags. A value of `false` will temporarily disable the extension and leave it in hidden mode. The syntax for the extensionName flag is `https://portal.azure.com?Microsoft_Azure_DevTestLab=true`. It requires the `canmodifystamps` flag to contain a value of `true` in order to be in effect.  For more information, see [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
 

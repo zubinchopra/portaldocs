@@ -1,6 +1,7 @@
-
-<a name="querying-for-data"></a>
-## Querying for data
+<a name="configuring-the-data-cache"></a>
+## Configuring the data cache
+<a name="configuring-the-data-cache-querying-for-data"></a>
+### Querying for data
 
 Multiple parts or services in your extension will rely on the same set of data. In the case of queries, this may be a list of results. In the case of a details blade, it may be a single entity. In either case, it's critical to ensure that all parts reading a given set of data do the following:
 

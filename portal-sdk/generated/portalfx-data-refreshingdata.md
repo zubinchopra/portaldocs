@@ -1,5 +1,10 @@
 
-<a name="refresh-implicitrefresh"></a>
+<a name="refreshing-cached-data"></a>
+## Refreshing cached data
+
+<a name="refreshing-cached-data-refresh-implicitrefresh"></a>
+### Refresh implicitrefresh
+
 <a name="auto-refreshing-client-side-data-a-k-a-polling"></a>
 ## Auto-refreshing client-side data (a.k.a. &#39;polling&#39;)
 

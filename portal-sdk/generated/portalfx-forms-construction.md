@@ -13,9 +13,11 @@ The code for this example is associated with the 'basic form' sample. It is loca
 
 The following code will load and save data by creating an `EditScopeCache` object and defining two functions. The `supplyExistingData` function reads the data from the server, and the `saveEditScopeChanges` function writes it back.
 
-1. Instantiate an edit scope via a `MsPortalFx.Data.EditScopeView` object. 
+<a name="loading-editing-and-saving-data-procedure"></a>
+### Procedure
+The code instantiates an edit scope via a `MsPortalFx.Data.EditScopeView` object. 
 
-**NOTE**: When the data to manipulate is already on the client, you can also get an edit scope view from other data cache objects.
+**NOTE**: When the data to manipulate is already located on the client, an edit scope view can also be obtained from other data cache objects.
 
 <!--
 ```typescript
@@ -70,22 +72,16 @@ let editScopeCache = EditScopeCache.createNew<WebsiteModel, number>({
 ```
 -->
 
-2. Transform the data to make it match the model type.
+Then, it transforms the data to make it match the model type. The server returns strings, but the `WebsiteModel` type that is being used is defined in the following code.
 
-The server returns strings, but the model type that is being used  (`WebsiteModel`) is defined as:
-
-```ts
-interface WebsiteModel {
-    id: KnockoutObservable<number>;
-    name: KnockoutObservable<string>;
-    running: KnockoutObservable<boolean>;
-}
-```
-
-Therefore, the save and load of the data have to transform the data to make it match the model type.
-
-<!-- TODO: Determine whether `Form.ViewModel` is an optional field. -->
-The control view models require a reference to a `Form.ViewModel`, so we need to create a form and send the reference to the editScope to it, as in the following example.
+  ```ts
+   interface WebsiteModel {
+      id: KnockoutObservable<number>;
+      name: KnockoutObservable<string>;
+      running: KnockoutObservable<boolean>;
+  }
+  ```
+  Therefore, the save and load functions have to transform the data to make it match the `WebsiteModel` model type. The control `viewModels` require a reference to a `Form.ViewModel`, so the code creates a form and sends the reference to the `editScope` to it, as in the following example.
 
 `<dir>\Client\V1\Forms\Samples\Basic\ViewModels\FormsSampleBasicBlade.ts`
 <!--
@@ -97,7 +93,7 @@ this._form.editScope = this._editScopeView.editScope;
 ```
 -->
 
-This form displays one textbox that lets the user edit the name of the website, as in the following code.
+This form displays one textbox that lets the user edit the name of the website, as specified in the following code.
 
 `<dir>\Client\V1\Forms\Samples\Basic\ViewModels\FormsSampleBasicBlade.ts`
 <!--
@@ -125,9 +121,9 @@ this.section = new Section.ViewModel(this._lifetime, {
 ```
 -->
 
-The form is rendered using a section. Add all the controls that should be displayed into the `children` observable array of the section. This positions the controls sequentially on a blade, by default, so it's often an easy way to standardize the look of most forms in the Portal. An alternative to the default positioning is to manually author the HTML for the form by binding each control into HTML template for the blade.
+The form is rendered using a section. The code adds all the controls that should be displayed into the `children` observable array of the section. This positions the controls sequentially on a blade, by default, so it is often an easy way to standardize the look of forms in the Portal. An alternative to the default positioning is to manually author the HTML for the form by binding each control into an HTML template for the blade.
 
-This sample includes two commands at the top of the blade that will save or discard data. Commands are used because this blade stays open after a save/discard operation. If the blade was to close after the operation, then there would be an action bar at the bottom of the blade to use instead. 
+This sample includes two commands at the top of the blade that will save or discard data. Commands are used because this blade stays open after a save/discard operation. If the blade were to close after the operation, then there would be an action bar at the bottom of the blade to use instead. 
 
 The commands check to make sure the edit scope has been populated previous to enabling themselves via the `canExecute` label in the `ko.pureComputed` code.
 <!-- TODO: Determine whether this is a label, a case, or a method. --> 

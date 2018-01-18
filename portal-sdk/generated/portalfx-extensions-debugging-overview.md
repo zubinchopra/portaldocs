@@ -1,15 +1,5 @@
 
-<a name="debugging-an-extension"></a>
-# Debugging an Extension
-
-<!--  required Intro section has moved to the overview document for this topic. -->
-
-<!--  required section -->
-<a name="debugging-an-extension-overview"></a>
-## Overview
-
-
-<a name="debugging-an-extension-introduction"></a>
+<a name="introduction"></a>
 ## Introduction
 
 Occasionally, difficulties may be encountered while developing an extension. When that happens, the debug tool that is contained in the Portal can help remove obstacles.  
@@ -20,10 +10,10 @@ Here are a few tips that help get extension development back on track. If you st
 
 To debug and test your local extension against the production portal, see [portalfx-extensions-testing-in-production.md](portalfx-extensions-testing-in-production.md).  
 
-<a name="debugging-an-extension-overview"></a>
+<a name="overview"></a>
 ## Overview
 
-<a name="debugging-an-extension-overview-using-the-debug-tool"></a>
+<a name="overview-using-the-debug-tool"></a>
 ### Using the Debug Tool
 The Portal contains a debug tool to aid with extension development. The keyboard shortcut CTRL+ALT+D toggles the visibility of the debug tool, as in the following image.
 
@@ -57,7 +47,7 @@ The stickys that are associated with each part provide the following information
     * **Track**: dump the view model observables
 * **Deep link**: Optional. Links to the blade.
 
-<a name="debugging-an-extension-overview-toggling-optimizations"></a>
+<a name="overview-toggling-optimizations"></a>
 ### Toggling optimizations
 
 Bundling and minification can be enabled or disabled for debugging.
@@ -88,7 +78,7 @@ where
 
 The `IsDevelopmentMode` setting can be used on the server to alter the default optimization settings for the extension. for more information about the  `IsDevelopmentMode` setting and its alternatives, see [portalfx-extensions-feature-flags-diagnostics.md](portalfx-extensions-feature-flags-diagnostics.md).
 
-<a name="debugging-an-extension-overview-restore-default-settings"></a>
+<a name="overview-restore-default-settings"></a>
 ### Restore default settings
 
 The Portal tracks the state of the desktop for users as they navigate through the Portal. It stores the list of opened blades, active journeys, part selection status, and various other states of the Portal. At development time, it is often necessary to clear this information. If new parts are not displayed as expected, this is often the cause.
@@ -104,7 +94,7 @@ Next, click the `Restore default settings` option, as in the following image.
 
 The Portal refreshes when the `Apply` button is clicked, and user settings are cleared.
 
-<a name="debugging-an-extension-overview-checking-the-console-for-errors"></a>
+<a name="overview-checking-the-console-for-errors"></a>
 ### Checking the console for errors
 
 The Portal logs a significant amount of information into the browser developer console. Often this surfaces common errors and problems.
@@ -123,12 +113,12 @@ After opening the console, refresh the Portal to display all messages. Then, do 
 As of 9/14/2016 the best, and fastest, Developer Tools are provided by Google Chrome.
 
 -->
-<a name="debugging-an-extension-overview-trace-modes"></a>
+<a name="overview-trace-modes"></a>
 ### Trace Modes
 
 The errors that are presented in the console can be of great assistance in fixing extension issues. The trace mode that is included in the Portal will display information other than the standard console errors. Trace mode is enabled by appending a flag to the end of the query string. For example,  `https://portal.azure.com/?trace=diagnostics` will enable verbose debugging information in the console. For more information about trace modes, see [portalfx-extensions-feature-flags-trace-mode.md](portalfx-extensions-feature-flags-trace-mode.md). For other debugging services, see [portalfx-extensions-feature-flags.md](portalfx-extensions-feature-flags.md).
 
-<a name="debugging-an-extension-overview-ensuring-the-extension-is-loaded"></a>
+<a name="overview-ensuring-the-extension-is-loaded"></a>
 ### Ensuring the extension is loaded
 
 You can check if the  extension is loaded in the debug panel (CTRL+ALT+D) by clicking 'Loaded extensions', as in the following example.
@@ -143,7 +133,7 @@ Extensions load failures are logged along with an associated failure code.  This
 
 If the extension is not loaded, or if the extension site is not running, another guide that may be of assistance is "Creating an Extension", located at [portalfx-extensions-developerInit-procedure.md](portalfx-extensions-developerInit-procedure.md).
 
-<a name="debugging-an-extension-overview-debugging-javascript"></a>
+<a name="overview-debugging-javascript"></a>
 ### Debugging JavaScript
 
 
@@ -155,7 +145,7 @@ To debug a specific view model, search for the code by class name. You can now s
 
 For more information about debugging JavaScript, view the video named ***Debugging tools for the Web***, located at [https://vimeo.com/157292748](https://vimeo.com/157292748).
 
-<a name="debugging-an-extension-overview-debugging-the-data-stack"></a>
+<a name="overview-debugging-the-data-stack"></a>
 ### Debugging the data stack
 
 The data stack contains all the information that the browser associates with the current testing session.  If, for example, edit scope changes are not displayed in the query cache,  or if  a row in the grid is updated without immediately apparent cause, the data stack may provide some answers to the debugging process.  Here are tips on how to debug using the data stack.
@@ -164,12 +154,12 @@ The data stack contains all the information that the browser associates with the
 
 * When the edited data is contained in an `EditScope` object, it is accessible via the root property on the `EditScope` object. If `EditScopeView` object is being used, then the edited data is available at `editScopeView.editScope().root` after the `editScope()` observable is populated. The original data can be viewed using the `getOriginal()` method, so to view the original root object, the code can perform the  `editScope.getOriginal(editScope.root)` method.
 
-<a name="debugging-an-extension-overview-debugging-extensions-that-use-knockout"></a>
+<a name="overview-debugging-extensions-that-use-knockout"></a>
 ### Debugging Extensions that use Knockout
 
 All of the Azure UI data that comes from the view model (i.e., the `ViewModel` object that is bound to the HTML source)  is bound to the user interface by  the **Knockout** (KO) JavaScript library. As a result, when something does not display correctly on the screen, generally there is a discrepancy between the ViewModel and the framework code. This section discusses solutions for oddities that may be  encountered in the UI.
 
-<a name="debugging-an-extension-overview-debugging-extensions-that-use-knockout-knockout-commands"></a>
+<a name="overview-debugging-extensions-that-use-knockout-knockout-commands"></a>
 #### Knockout Commands
 
 One of the most useful commands when debugging knockout user interfaces is in the following code.
@@ -261,229 +251,3 @@ For more information:
 
 
 
-
-
-
-## Best Practices
-
-Methodologies exist that assist developers in improving the product while it is still in the testing stage. Some strategies include describing bugs accurately, including code-coverage test cases in a thorough test plan, and other items.
-
-A number of textbooks are devoted to the arts of software testing and maintenance.  Items that have been documented here do not preclude industry-standard practices.
-
-### :bulb: Productivity Tip
-
-**Typescript** 2.0.3 should be installed on your machine. The   version can be verified by executing the following command:
-
-```bash
-$>tsc -version
-```
-
-Also, **Typescript** files should be set up to Compile on Save.
-
-
-   
-## Stackoverflow Forums
-
-The Ibiza team strives to answer the questions that are tagged with Ibiza tags on the Microsoft [Stackoverflow](https://stackoverflow.microsoft.com) Web site within 24 hours. If you do not receive a response within 24 hours, please email the owner associated with the tag. Third-party developers that have Stackoverflow questions should work with their primary contact.  If you do not yet have a primary contact, please reach out to our onboarding team at [mailto:ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com).
-
-To help the Azure UI team answer your questions, the submissions are categorized into various topics that are marked with tags. 
-To read forum submissions, enter the following in the address bar of your browser:
-
-```https://stackoverflow.microsoft.com/questions/tagged/<ibizaTag>```
-
-To ask a question in a forum, enter the following in the address bar of your browser.
-
-```https://stackoverflow.microsoft.com/questions/ask?tags=<ibizaTag>```
-
-where
- 
-**ibizaTag**:  One of the tags from the following table, without the angle brackets.
-
-You can also click on the links in the table to open the correct Stackoverflow forum.
-<!--TODO: Determine whether the following UserVoice categories also have Stackoverflow support. 
-ibiza-notifications
-ibiza-quotas
-ibiza-samples-docs
--->
-
-| Tag                                                                                                            | Owner               | Contact |
-| -------------------------------------------------------------------------------------------------------------- | ------------------- | ------- |
-| [azure-gallery](https://stackoverflow.microsoft.com/questions/tagged/azure-gallery)                            |                     | |
-| [ibiza](https://stackoverflow.microsoft.com/questions/tagged/ibiza)                                            | Adam Abdelhamed         | |
-| [ibiza-accessibility](https://stackoverflow.microsoft.com/questions/tagged/ibiza-accessibility)                | Paymon Parsadmehr   | [mailto:ibiza-accessibility@microsoft.com](mailto:ibiza-accessibility@microsoft.com) | 
-| [ibiza-bad-samples-doc](https://stackoverflow.microsoft.com/questions/tagged/ibiza-bad-samples-doc)            | Adam Abdelhamed          | |
-| [ibiza-blades-parts](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts)                  | Sean Watson         | |
-| [ibiza-breaking-changes](https://stackoverflow.microsoft.com/questions/tagged/ibiza-breaking-changes)          | Adam Abdelhamed          | |
-| [ibiza-browse](https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse)                              | Sean Watson         | |
-| [ibiza-controls](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls)                          | Shrey Shirwaikar    | |
-| [ibiza-controls-grid](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls-grid)                | Shrey Shirwaikar    | |
-| [ibiza-create](https://stackoverflow.microsoft.com/questions/tagged/ibiza-create)                              | Balbir Singh        | |
-| [ibiza-data-caching](https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching)                  | Adam Abdelhamed          | |
-| [ibiza-deployment](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)                      | Umair Aftab         | |
-| [ibiza-forms](https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms)                                | Shrey Shirwaikar    | |
-| [ibiza-forms-create](https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms-create)                  | Paymon Parsadmehr; Shrey Shirwaikar | |
-| [ibiza-hosting-service](https://stackoverflow.microsoft.com/questions/tagged/ibiza-hosting-service)            | Umair Aftab         | |
-| [ibiza-kusto](https://stackoverflow.microsoft.com/questions/tagged/ibiza-kusto)                                |                     | |
-| [ibiza-localization-global](https://stackoverflow.microsoft.com/questions/tagged/ibiza-localization-global)    | Paymon Parsadmehr   | |
-| [ibiza-missing-docs](https://stackoverflow.microsoft.com/questions/tagged/ibiza-missing-docs)                  |                     | |
-| [ibiza-monitoringux](https://stackoverflow.microsoft.com/questions/tagged/ibiza-monitoringux)                  |                     | |
-| [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)                      | Santhosh Somayajula                 | |
-| [ibiza-performance](https://stackoverflow.microsoft.com/questions/tagged/ibiza-performance)                    | Sean Watson         | |
-| [ibiza-reliability](https://stackoverflow.microsoft.com/questions/tagged/ibiza-reliability)                    | Sean Watson         | |
-| [ibiza-resources](https://stackoverflow.microsoft.com/questions/tagged/ibiza-resources)                        | Balbir Singh        | |
-| [ibiza-sdkupdate](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)                        | Umair Aftab         | |
-| [ibiza-security-auth](https://stackoverflow.microsoft.com/questions/tagged/ibiza-security-auth)                | Santhosh Somayajula | |
-| [ibiza-telemetry](https://stackoverflow.microsoft.com/questions/tagged/ibiza-telemetry)                        | Sean Watson         | |
-| [ibiza-test](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test)                                  | Adam Abdelhamed          | |
-| [ibiza-uncategorized](https://stackoverflow.microsoft.com/questions/tagged/ibiza-uncategorized)                |                     | |
-
-
-
-<a name="debugging-an-extension-faqs-for-debugging-extensions"></a>
-## FAQs for Debugging Extensions
-
-<a name="debugging-an-extension-faqs-for-debugging-extensions-ssl-certificates"></a>
-### SSL certificates
-
-***How do I use SSL certs?***
-
-[portalfx-extensions-faq-onboarding.md#sslCerts](portalfx-extensions-faq-onboarding.md#sslCerts)
-
-* * *
-
-<a name="debugging-an-extension-faqs-for-debugging-extensions-loading-different-versions-of-an-extension"></a>
-### Loading different versions of an extension
-
-***How do I load different versions of an extension?***
-
-Understanding which extension configuration to modify is located at [portalfx-extensions-configuration-overview.md#understanding-which-extension-configuration-to-modify](portalfx-extensions-configuration-overview.md#understanding-which-extension-configuration-to-modify).
-
-* * * 
-
-<a name="debugging-an-extension-faqs-for-debugging-extensions-checking-the-version-of-a-loaded-extension"></a>
-### Checking the version of a loaded extension
-
-***I have set ApplicationContext.Version for my extension, how do I check what version of my extension is currently loaded in shell ?***
-
-1.  Navigate to the Portal where your extension is hosted or side loaded.
-1. Press F12 in the browser and select the console tab.
-1. Set the current frame dropdown to that of your extension.
-1. In the console type `fx.environment.version` and click enter to see the version of the extension on the client, as in the following image.
-
-    ![alt-text](../media/portalfx-debugging/select-extension-iframe.png "Select extension iframe")
-
-1. In addition, any requests that are made to the extension, including **Ajax** calls, should also return the version on the server in the response, as in the following image.
-
-    ![alt-text](../media/portalfx-debugging/response-headers-show-version.png "Response Headers from extension show version")
-
-  **NOTE**: There  can be a difference in the `fx.environment.version` on the client and the version in the `x-ms-version` returned from the server.  This can occur when the user starts a session and the extension is updated/deployed while the session is still active.
-
-* * *
-
-<a name="debugging-an-extension-faqs-for-debugging-extensions-other-debugging-questions"></a>
-### Other debugging questions
-
-***How can I ask questions about debugging ?***
-
-You can ask questions on Stackoverflow with the tag [ibiza](https://stackoverflow.microsoft.com/questions/tagged/ibiza).
-
-
-
-<a name="debugging-an-extension-glossary"></a>
-## Glossary
-
-This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
- 
-| Term                         | Meaning |
-| ---                          | --- |
-| data stack                   | Contains all the information that the browser associates with the current testing session. |
-| deep link                    | A link that jumps directly into the extension within the Portal. Each deep link consists of the Portal URL, the target directory domain name or tenant id (e.g. microsoft.com), the type prefix (i.e. asset, resource, blade, browse, or marketplace), and the actual deep link target. |
-| Document Object Model (DOM)  | A methodology that treats an  HTML, XHTML, or XML page as a tree structure that contains hierarchical objects. These nodes   represent every item  that is part of the document and can be manipulated programmatically. Visible changes to DOM nodes may be displayed in the browser. |
-| iFrame                       | An inline frame that embeds a document within the current HTML document. | 
-| Knockout                     | A standalone JavaScript implementation of the Model-View-ViewModel architecture. | 
-| KO                         |  Knockout   | 
-| minification                 | The process of removing all unnecessary characters from source code without changing its functionality. These characters may be whitespace, newlines, comments, and other non-executable items that increase code readability. Minification reduces the amount of data that is transferred across the Internet, and can be interpreted immediately without being uncompressed. | 
-| PO | Proxy Observable |
-| proxy observable (PO)        | A tool that synchronizes the ViewModel in an iframe with a copy of that ViewModel that is used by the Knockout debugger. | 
-| Selenium                     | Software-testing framework for web applications that  provides a playback tool for authoring tests.  |
-| startboard                   | |
-| sticky                       | Provides quick statistics and fast access to specific types of testing functionality. |
-| ViewModel                    | Holds all the data associated with the screen. Allows user data to be separated from context pane data and to persist through configuration changes. Also view model, View-Model. |
-
-
-
-<a name="debugging-an-extension-for-more-information"></a>
-## For More Information
-
-The following links point to references that may assist in debugging the extension.
-
-<a name="debugging-an-extension-for-more-information-azure"></a>
-### Azure
-   
-1. Deploying the extension
-
-    [portalfx-deployment.md](portalfx-deployment.md)
-    
-1. Testing in production
-
-    [portalfx-extensions-testing-in-production.md](portalfx-extensions-testing-in-production.md)
-
-    [portalfx-testinprod.md](portalfx-testinprod.md)
-
-
-<a name="debugging-an-extension-for-more-information-chrome"></a>
-### Chrome
-
-***Chrome DevTools Overview***
-
-   [https://developer.chrome.com/devtools](https://developer.chrome.com/devtools)
-     
-***Debugging tools for the Web***
-
-   [https://vimeo.com/157292748](https://vimeo.com/157292748)
-
-<a name="debugging-an-extension-for-more-information-edge-f12-developer-tools"></a>
-### Edge F12 Developer Tools
-    
-   [https://docs.microsoft.com/en-us/microsoft-edge/f12-devtools-guide/debugger](https://docs.microsoft.com/en-us/microsoft-edge/f12-devtools-guide/debugger)
-
-<a name="debugging-an-extension-for-more-information-javascript"></a>
-### JavaScript
-
-***How to step through your code***
-
-   [https://developers.google.com/web/tools/chrome-devtools/javascript/step-code](https://developers.google.com/web/tools/chrome-devtools/javascript/step-code)
-
-<a name="debugging-an-extension-for-more-information-knockout"></a>
-### Knockout
-
-***Knockout.js Troubleshooting Strategies***
-    [http://www.knockmeout.net/2013/06/knockout-debugging-strategies-plugin.html](http://www.knockmeout.net/2013/06/knockout-debugging-strategies-plugin.html)
-
-
-***Essential Knockout and JavaScript Tips***
-    [https://app.pluralsight.com/library/courses/knockout-tips/table-of-contents](https://app.pluralsight.com/library/courses/knockout-tips/table-of-contents)
-
- ***Knockout debugging videos***
-
-* ***Using ko.dataFor to get the view model of an element***
-  [https://auxdocs.blob.core.windows.net/videos/koDataFor.mp4](https://auxdocs.blob.core.windows.net/videos/koDataFor.mp4)
-
-* ***Using subscribe to figure out what causes observable changes to  view model properties***
-  [https://auxdocs.blob.core.windows.net/videos/kosubscribe.mp4](https://auxdocs.blob.core.windows.net/videos/kosubscribe.mp4)
-
-*  ***How to get call stacks from across iframes***
-    [https://auxdocs.blob.core.windows.net/videos/messageContext.mp4](https://auxdocs.blob.core.windows.net/videos/messageContext.mp4)
-
-<a name="debugging-an-extension-for-more-information-mozilla"></a>
-### Mozilla
-
-***Firefox Debugger***
-    [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger)
-
-<a name="debugging-an-extension-for-more-information-npm"></a>
-### NPM
-
-***Proxy Observable***
-
-  [https://www.npmjs.com/package/proxy-observable](https://www.npmjs.com/package/proxy-observable)

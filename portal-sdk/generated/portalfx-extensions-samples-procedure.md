@@ -15,4 +15,4 @@ Sideload the extension. When it loads, click on the `More Services` option in th
 
 In the filter box, search for "Azure Portal SDK". You can use `Shift + Space` to mark it as a favorite site.
 
-Make changes to the sample that best fits the needs of the development project, then refresh the portal to view the changes. 
+Make changes to the sample that best fits the needs of the development project, then refresh the Portal to view the changes. 

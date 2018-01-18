@@ -5,16 +5,17 @@ The Azure SDK includes extensive support for displaying and managing user input.
 
   * Labels
   * Validation, as in the following image
-  ![alt-text](../media/portalfx-forms/forms.png "Forms Example") 
+
+    ![alt-text](../media/portalfx-forms/forms.png "Forms Example") 
   * Change tracking
   * Form reset
   * Persisting edits across journeys and browser sessions
  
 To develop extensions that use forms, review the following topics:
 
-* [Developing UI Layouts](portalfx-forms-sections.md)
-* [Building forms](portalfx-forms-construction.md)
-* [Validation](portalfx-forms-field-validation.md)
-* [Edit Scopes](portalfx-forms-working-with-edit-scopes.md)
-* [Command integration](portalfx-forms-integrating-with-commands.md)
+* [Designing and arranging the UI](portalfx-forms-sections.md)
+* [Loading, editing and saving data](portalfx-forms-construction.md)
+* [Field Validation](portalfx-forms-field-validation.md)
+* [Working with Edit Scopes](portalfx-forms-working-with-edit-scopes.md)
+* [Integrating Forms with Commands](portalfx-forms-integrating-with-commands.md)
 

@@ -10,9 +10,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | Document Object Model (DOM)  | A methodology that treats an  HTML, XHTML, or XML page as a tree structure that contains hierarchical objects. These nodes   represent every item  that is part of the document and can be manipulated programmatically. Visible changes to DOM nodes may be displayed in the browser. |
 | iFrame                       | An inline frame that embeds a document within the current HTML document. | 
 | Knockout                     | A standalone JavaScript implementation of the Model-View-ViewModel architecture. | 
-| KO                         |  Knockout   | 
 | minification                 | The process of removing all unnecessary characters from source code without changing its functionality. These characters may be whitespace, newlines, comments, and other non-executable items that increase code readability. Minification reduces the amount of data that is transferred across the Internet, and can be interpreted immediately without being uncompressed. | 
-| PO | Proxy Observable |
 | proxy observable (PO)        | A tool that synchronizes the ViewModel in an iframe with a copy of that ViewModel that is used by the Knockout debugger. | 
 | Selenium                     | Software-testing framework for web applications that  provides a playback tool for authoring tests.  |
 | startboard                   | |
