@@ -30,6 +30,26 @@ FAQ's that are associated with ordinary extension testing.
 
 Understanding which extension configuration to modify is located at [portalfx-extensions-configuration-overview.md#understanding-which-extension-configuration-to-modify](portalfx-extensions-configuration-overview.md#understanding-which-extension-configuration-to-modify).
 
+* * * 
+
+<a name="faqs-for-debugging-extensions-checking-the-version-of-a-loaded-extension"></a>
+### Checking the version of a loaded extension
+
+***I have set ApplicationContext.Version for my extension, how do I check what version of my extension is currently loaded in shell ?***
+
+1.  Navigate to the Portal where your extension is hosted or side loaded.
+1. Press F12 in the browser and select the console tab.
+1. Set the current frame dropdown to that of your extension.
+1. In the console type `fx.environment.version` and click enter to see the version of the extension on the client, as in the following image.
+
+    ![alt-text](../media/portalfx-debugging/select-extension-iframe.png "Select extension iframe")
+
+1. In addition, any requests that are made to the extension, including **Ajax** calls, should also return the version on the server in the response, as in the following image.
+
+    ![alt-text](../media/portalfx-debugging/response-headers-show-version.png "Response Headers from extension show version")
+
+  **NOTE**: There  can be a difference in the `fx.environment.version` on the client and the version in the `x-ms-version` returned from the server.  This can occur when the user starts a session and the extension is updated/deployed while the session is still active.
+
 * * *
 
 <a name="faqs-for-debugging-extensions-other-debugging-questions"></a>
@@ -84,8 +104,11 @@ FAQ's for developers that are new to the Azure Portal Extension development proc
 The SharePoint Sparta Onboarding FAQ is located at [http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx](http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx).
 
 * * *
+
 <a name="frequently-asked-questions-ssl-certs"></a>
 ### SSL Certs
+   
+   <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
    
 ***How do I use SSL certs?***
  
@@ -96,15 +119,17 @@ The SharePoint Sparta Onboarding FAQ is located at [http://sharepoint/sites/Azur
  **NOTE** Do not use the SSL Admin site for production certs.
 
  * * *
+
  ### Compile on Save
 
- ***What is Compile on Save ?**
-Compile on Save is a TypeScript option that   . To use it, make sure that TypeScript 2.0.3 was installed on your machine. The version can be verified by executing the following  command:
+**What is Compile on Save ?**
+
+Compile on Save is a **TypeScript** option that   . To use it, make sure that **TypeScript** 2.0.3 was installed on your machine. The version can be verified by executing the following  command:
 
 ```bash
 $>tsc -version
 ```
-Then, verify that when a typescript file is saved, that  the following text is displayed in the bottom left corner of your the visual studio application.
+Then, verify that when a **TypeScript** file is saved, that the following text is displayed in the bottom left corner of your the **Visual Studio** application.
 
 ![alt-text](../media/portalfx-ide-setup/ide-setup.png "CompileOnSaveVisualStudio")
 
@@ -333,6 +358,8 @@ FAQ's that are associated with testing an extension in the production environmen
 
 <a name="frequently-asked-questions"></a>
 ## Frequently asked questions
+
+<!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
 
 If there are enough FAQ's on the same subject, like sideloading, they have been grouped together in this document. Otherwise, FAQ's are listed in the order that they were encountered. Items that are specifically status codes or error messages can be located in [portalfx-extensions-status-codes.md](portalfx-extensions-status-codes.md).
 

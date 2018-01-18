@@ -1,6 +1,8 @@
 <a name="frequently-asked-questions"></a>
 ## Frequently asked questions
 
+<!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
+
 If there are enough FAQ's on the same subject, like sideloading, they have been grouped together in this document. Otherwise, FAQ's are listed in the order that they were encountered. Items that are specifically status codes or error messages can be located in [portalfx-extensions-status-codes.md](portalfx-extensions-status-codes.md).
 
 <a name="frequently-asked-questions-faqs-for-debugging-extensions"></a>
