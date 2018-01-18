@@ -7,10 +7,10 @@ A number of textbooks are devoted to the arts of software testing and maintenanc
 
 ### :bulb: Productivity Tip
 
-Typescript 2.0.3 should be installed on your machine. The typescript  version can be verified by executing the following command:
+**Typescript** 2.0.3 should be installed on your machine. The   version can be verified by executing the following command:
 
 ```bash
 $>tsc -version
 ```
 
-Also, Typescript files should be set up to Compile on Save.
+Also, **Typescript** files should be set up to Compile on Save.
