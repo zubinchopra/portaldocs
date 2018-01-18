@@ -17,5 +17,5 @@ If so, the subtopics are not included in this document; instead, they are includ
 Subtopic documents can authored along the same lines.
 
 
-| glossary | meaning  |
+| Term              | Meaning |
 | -------- | -------- |
