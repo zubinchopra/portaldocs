@@ -19,5 +19,21 @@ If so, the subtopics are not included in this document; instead, they are includ
 Subtopic documents can authored along the same lines.
 
 
-| Term              | Meaning |
-| -------- | -------- |
+| Term           | Meaning |
+| -------------- | -------- |
+| above the fold | Initially displayed on the Web page without scrolling. |
+| best practice  | A technique or methodology that, through experience and research, has proven to reliably lead to a desired result. |
+| checklist      | A step-by-step set of instructions on how to accomplish a task. |
+| FAQ            | Frequently Asked Questions |
+| FYI            | For Your Information 
+| gitHub         | A Web-based hosting service for version control or content management. |
+| major area     | 
+| overarching    | comprehensive; all-embracing. For example, the overarching skeleton document contains everything that has to do with Azure skeleton topics. Its name is used in skeleton subtopic files.  |
+| procedure      | See checklist. |
+| process validation | A procedure that ensures that the process has completed successfully, within expected levels of granularity. |
+| SAS | Shared Access Signature |
+| separator  |
+| topic |
+| triage |
+| subtopic |
+| 
