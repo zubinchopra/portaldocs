@@ -27,3 +27,26 @@ This process validates that [state purpose of checklist]. Include images as appr
 
 1. Optional.  A compliment that indicates that the procedure is complete.
 
+<a name="create-document-with-the-skeleton"></a>
+## Create document with the skeleton
+
+The following is a sample procedure. It specifies how to author a document in the Azure library.
+
+1. Make a copy all of the `skeleton` files in the template directory.  
+
+1. Rename each file with the major area and the topic, for example, `portalfx-extension-style-guide*.md`, in which case, the overarching document is the `portalfx-extension-style-guide.md` file. 
+
+1. Author the topic by placing the appropriate content in each file. Ensure that each subtopic is complete, correct, and accurate.topic is complete, correct, and accurate.
+
+1. At the end of the process, delete files that have no content, like Best Practices or FAQ.
+
+1. Cross-check the document content against the links that were planned for inclusion. If all links have been used, delete the FYI document.
+
+1. Glossarize the topic by locating and defining on first mention all words that are used within the topic.  Exceptions are in the following list.
+   * Common English usage, as specified in major dictionaries like [Cambridge](https://dictionary.cambridge.org), [Merriam-Webster](https://www.merriam-webster.com), [Oxford](https://en.oxforddictionaries.com), [Random House](http://www.dictionary.com).
+  
+   * Common computing terms as specified in major sources like [https://techterms.com/](https://techterms.com/).
+  
+   * Common acronyms as specified in major sources like [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+ 1. Amend the overarching document so that the gitHub commands include each existing section once and only once. The overarching skeleton document includes placemarkers for this purpose.

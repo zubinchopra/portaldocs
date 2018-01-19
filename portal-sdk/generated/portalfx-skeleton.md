@@ -1,43 +1,79 @@
 <a name="skeleton"></a>
 # Skeleton
-
-This document contains the skeleton for authoring Azure documents that are stored in gitHub.
-
 <!-- topic name is a level 1 header at the beginning of the doc-->
 
-GitHub files that should be included based on the topic-subtopic relationship are linked to in this document using gitHub.  Because this is a sample document, all gitHub commands are slightly malformed.  To use this skeleton to create a new topic, fill in the parameters that are designated with angle brackets, and then enclose the gitHub command in curly brackets. Remember that the command "gitdown" is at the beginning of the line and is enclosed in double quotes.
+This document contains the skeleton for authoring Azure documents that are stored in gitHub. The skeleton will be used by gitHub to generate the document for the entire topic.  This information is contained in this document as gitHub commands so that an author can fill them in when the subtopics are written, and then generate the topic document.
+This is the only document wtihin the topic that contains an H1-level header.
 
-<!--  required Overview MARKDOWN document.  -->
-<!--                                   "../templates/portalfx-==major-area==-overview.md" -->
-   ## Skeleton Overview
+1. Documents are organized by  major areas.  Some major areas are as follows:
+
+   * blades
+   * controls 
+   * create
+   * data
+   * extensions
+   * forms
+   * parameters
+   * parts
+   * samples
+   * styling
+   * telemetry
+   * ux
+
+1. Within these major areas, documents are organized by topic. Some topics are object names or specific features. For example, some filenames are `portalfx-blades-outputs.md`, `portalfx-controls-editor.md`, and `portalfx-forms-sections.md`.
+
+1. There are some topics that do not have a major area. They are not specific to one topic, and consequently, may be linked to within several topics. A partial list is as follows.
+
+   * portalfx-extensions-branches.md
+   * portalfx-extensions-cnames.md
+   * portalfx-extensions-contacts.md
+   * portalfx-extensions-developmentPhases.md
+   * portalfx-extensions-exitCriteria.md
+   * portalfx-extensions-publishing.md
+   * portalfx-extensions-qualityEssentials.md
+   * portalfx-extensions-stackoverflow.md
+   * portalfx-extensions-status-codes.md
+
+1. Subtopics that occur within topics, like overviews or procedures, will always use that word as the last node within the filename.  Subtopics that are specific to a topic are self-naming, in one or two words. The last node of the file is the name of the subtopic, and is used to sort subtopics within the topic. Some filenames are `portalfx-telemetry-alerting-overview.md`, `portalfx-data-overview.md`, `portalfx-telemetry-alerting-performance.md` or `portalfx-style-guide-utility-classes.md`. 
+
+1. Best Practices, FAQ's, and glossaries use a slightly different naming convention, in that they are named `portalfx-extensions-bp-<major-area>`,  `portalfx-extensions-faq-<major-area>`, `portalfx-extensions-glossary-<major-area>`, respectively.
+
+1. Subtopic files are contained within the topic document in the following order.
+
+    | Name | Purpose |
+    | ---- | ------- |
+    | `portalfx-<major-area>-<topic>-overview.md` | Required. General discussion of topic.|
+    | `portalfx-<major-area>-<topic>-<subtopic1>.md` | Optional. A section that is used when the topic goes deeper than an overview.  The last item in the overview may be a table that links to these sections, in addition to relying on the gitHub includes that are a part of the overarching document. |
+    | `portalfx-<major-area>-<topic>-<subtopic2>.md` |     Optional. A section that is used when the topic goes deeper than an overview. |
+    | `portalfx-<major-area>-<topic>-procedures.md` | Optional.  Checklist document. Used when there are specific steps to follow, or when there are specific tasks whose completion must be verified. |
+    | `portalfx-extensions-bp-<topic>.md` | Optional. Best Practices for the topic. |
+    | `portalfx-extensions-faq-<topic>.md` | Optional. Frequently Asked Questions for the topic. |
+    | `portalfx-<major-area>-<topic>-fyi.md` | Optional. For Your Information. Contains links that could not be included in the content within the natural flow of the topic and subtopic. Typically, by the time the entire topic has been authored, there are few, if any, links left for this section.  |
+    | `portalfx-extensions-glossary-<topic>.md` | Required. Glossary for the topic. |
+
+1. Sections that have been written for other documents can be linked to within the subtopics using normal gitHub linking procedures. This is best practice, and is preferred over copying and modifying paragraphs from file to file.
+
+1. Files are included in a topic by gitHub, based on the topic-subtopic relationship. They are linked to in this overarching document with gitHub commands.  Because this skeleton file also functions as a sample document, the gitHub commands in the following section are slightly malformed.  To use this skeleton to create a new topic, fill in the parameters that are designated with angle brackets, and then enclose the gitHub command in curly brackets. Remember that the command "gitdown" is at the beginning of the line and is enclosed in double quotes.
+
+<!--  required Overview document.  -->
+<!-- gitdown": "include-file", "file": "../templates/portalfx-<topic>-overview.md"} -->
+   
+<a name="skeleton-overview"></a>
+## Overview
+
 <!-- topic name is a level 2 at the beginning of the doc>
 
 <!--  required document.  -->
-
 This document describes the topic at a general level.  If portions of the topic lend itself to further discussion, a subtopic document is a good idea. If so, the subtopics are not included in this document; instead, they are included in the overarching document that contains a gitHub link to this overview.  This method reduces gitHub commands to one document per topic.
 
-Subtopic documents can authored along the same lines.
-
-<!-- A list of documents that might be linked to as a part of the discussion of the topic are as follows.
-There documents do not have a major area.
-
-portalfx-extensions-branches.md
-portalfx-extensions-cnames.md
-portalfx-extensions-contacts.md
-portalfx-extensions-developmentPhases.md
-portalfx-extensions-exitCriteria.md
-portalfx-extensions-publishing.md
-portalfx-extensions-qualityEssentials.md
-portalfx-extensions-stackoverflow.md
-portalfx-extensions-status-codes.md
--->
+Subtopic documents can be authored along the same lines.
 
 <!--  optional subtopic documents. Use these when the topic goes deeper than an overview. The overview may contain a table that links to these sections, in addition to (or instead of) relying on the following gitHub includes. -->
-<!--                                  "../templates/portalfx-==major-area==-==topic==-==subtopic1==.md"  -->
-<!--                                  "../templates/portalfx-==major-area==-==topic==-==subtopic2==.md"  -->
+<!--  gitdown": "include-file", "file":  "../templates/portalfx-<major-area>-<topic>-<subtopic1>.md"  -->
+<!--  gitdown": "include-file", "file":  "../tempates/portalfx-<major-area>-<topic>-<subtopic2>.md"  -->
 
 <!--  optional checklist document. Use this when there are specific steps to follow, or when there are specific tasks that the developer must verify as being completed. 
-                                    "../templates/portalfx-==major-area==-==topic==-procedures.md"  -->
+  gitdown": "include-file", "file": "../templates/portalfx-<major-area>-<topic>-procedures.md"  -->
 <a name="skeleton-skeleton-procedure"></a>
 ## Skeleton Procedure
 <!-- topic name is a level 2 at the beginning of the doc>
@@ -67,10 +103,32 @@ This process validates that [state purpose of checklist]. Include images as appr
 
 1. Optional.  A compliment that indicates that the procedure is complete.
 
+<a name="skeleton-create-document-with-the-skeleton"></a>
+## Create document with the skeleton
 
+The following is a sample procedure. It specifies how to author a document in the Azure library.
+
+1. Make a copy all of the `skeleton` files in the template directory.  
+
+1. Rename each file with the major area and the topic, for example, `portalfx-extension-style-guide*.md`, in which case, the overarching document is the `portalfx-extension-style-guide.md` file. 
+
+1. Author the topic by placing the appropriate content in each file. Ensure that each subtopic is complete, correct, and accurate.topic is complete, correct, and accurate.
+
+1. At the end of the process, delete files that have no content, like Best Practices or FAQ.
+
+1. Cross-check the document content against the links that were planned for inclusion. If all links have been used, delete the FYI document.
+
+1. Glossarize the topic by locating and defining on first mention all words that are used within the topic.  Exceptions are in the following list.
+   * Common English usage, as specified in major dictionaries like [Cambridge](https://dictionary.cambridge.org), [Merriam-Webster](https://www.merriam-webster.com), [Oxford](https://en.oxforddictionaries.com), [Random House](http://www.dictionary.com).
+  
+   * Common computing terms as specified in major sources like [https://techterms.com/](https://techterms.com/).
+  
+   * Common acronyms as specified in major sources like [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+ 1. Amend the overarching document so that the gitHub commands include each existing section once and only once. The overarching skeleton document includes placemarkers for this purpose.
   
 <!--  optional Best Practices document
-                                    "../templates/portalfx-==major-area==-bp-==topic==.md"  -->
+  gitdown": "include-file", "file": "../templates/portalfx-<major-area>-bp-<topic>.md"  -->
 
 <a name="skeleton-best-practices"></a>
 ## Best Practices
@@ -113,80 +171,78 @@ Onebox-stb is no longer available. Please do not use it. Instead, migrate extens
 
 
 <!--  optional FAQ document
-                                    "../templates/portalfx-==major-area==-faq-==topic==.md"  -->
+  gitdown": "include-file", "file": "../templates/portalfx-<major-area>-faq-<topic>.md"  -->
 <a name="skeleton-frequently-asked-questions-for-authoring-azure-documents"></a>
 ## Frequently asked questions for Authoring Azure Documents
 <!-- Title is required, as a level 2 heading.  If appropriate, the phrase ' for <topic>' can be appended. -->
 
-FAQ's are items that are encountered many times, and developer teams appreciate the opportunity to answer the question only once and then refer individuals to this best answer.
+FAQ's are items that are encountered many times, and developer teams appreciate the opportunity to answer the question only once and then direct individuals to this best answer.
 
-Best practices often result in improved performance, smaller software footprint, increased reusability, or similar factors. Some practices are documented in industry practice, like the ***Testing Computer Software*** textbook that is located at [https://www.researchgate.net/publication/220689439_Testing_computer_software_2_ed](https://www.researchgate.net/publication/220689439_Testing_computer_software_2_ed). Although Stackoverflow contains good ideas, it is a forum centered more around answering questions than providing best practices.
+The entire FAQ should be above the fold.  Any answer that requires scrolling to be read, at a normal default browser font size, should be added to the document topic or subtopic instead.
 
-This document contains best practices, that are related to the topic whose name is a node in the filename. These practices did not fit in the overview discussion of the topic or subtopic, for whatever reasons. They also did not belong in a procedure document for the topic. If there are no best practices for a topic, this optional  document can be added when appropriate.
+In some instances, the FAQ answer can contain the phrase "for more information about" and a link to the answer.  If the topic is complete, instead of writing a solution in the FAQ, just use the link.
 
-In the discussion, mention why these practices are considered best practices, or are good practice for the industry or within software development.  If some of these practices are results of usability studies, a sentence like the following is appropriate.
+The format for an FAQ item is comprised of the following five items. 
 
-"This section also includes practices that are recommended based on customer feedback and usability studies."
+1.  ###Link
 
-Descriptions that are in other ***Best Practices*** documents should not be copied into this document.  Instead, summarize the procedure here and use a link to the content that is in the other document. These links are usually called out with the phrase "For more information, see . . . " and are the last sentence in the section.  
+    The level-H3 heading is  a link to the FAQ so that other documents can use it to land on the page. The link can be crafted from the title, and should be less than about five words long.
 
+1.  ***title***
 
+    The title is styled in italics, and always ends with a question mark.  It is optional to begin the title with "Q: ". Titles that are obviously copied from sources like [Stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza) should not be edited unless they are very long.  If the title contains multiple questions, some of them can be removed after the answer is crafted.
 
-The format for a FAQ item is 
-*  ###Link
-*  ***title***
-*  Description
-* The word "SOLUTION:" followed by the Solution
-*  3 Asterisks 
-   
+1.  Description
 
-   ### SAS Tokens
+    This field is optional when the title of the FAQ describes the entire problem. This content may be from sources like **Stackoverflow**. The author who provides the answer may choose to describe the situation in more detail.
 
-***Can I provide a SAS token instead of keyvault for EV2 to access the storage account ?***
+1. The word "SOLUTION:" followed by the solution to the question. 
 
-The current rolloutspec generated by **ContentUnbundler** only provides support for using keyvault. If you would like to use SAS tokens, please submit a request on [user voice](https:\\aka.ms\portalfx\uservoice)
+1.  Three Asterisks 
+
+    This styling displays a separator between FAQ's.
 
 * * *
 
-***When will support for friendly names become available ?***
+<a name="skeleton-frequently-asked-questions-for-authoring-azure-documents-sample-faq-conversations"></a>
+### Sample FAQ Conversations
+
+<a name="skeleton-frequently-asked-questions-for-authoring-azure-documents-sas-tokens"></a>
+### SAS Tokens
+
+***Can I provide a SAS token instead of keyvault for EV2 to access the storage account ?***
+
+SOLUTION:
+The current rolloutspec generated by **ContentUnbundler** only provides support for using keyvault. If you would like to use SAS tokens, please submit a request on [user voice](https:\\aka.ms\portalfx\uservoice).
+
+* * *
+
+<a name="skeleton-frequently-asked-questions-for-authoring-azure-documents-"></a>
+### 
+
+***Q: When will support for friendly names become available ?***
 
 Azure support for friendly names became available in SDK release 5.0.302.834.
 
 * * *
 
-<a name="skeleton-frequently-asked-questions-for-authoring-azure-documents-ssl-certificates"></a>
-### SSL certificates
+<a name="skeleton-frequently-asked-questions-for-authoring-azure-documents-other-topic-questions"></a>
+### Other \<topic>  questions
 
-***How do I use SSL certs?***
-
-[portalfx-extensions-faq-onboarding.md#sslCerts](portalfx-extensions-faq-onboarding.md#sslCerts)
-
-* * *
-
-<a name="skeleton-frequently-asked-questions-for-authoring-azure-documents-loading-different-versions-of-an-extension"></a>
-### Loading different versions of an extension
-
-***How do I load different versions of an extension?***
-
-Understanding which extension configuration to modify is located at [portalfx-extensions-configuration-overview.md#understanding-which-extension-configuration-to-modify](portalfx-extensions-configuration-overview.md#understanding-which-extension-configuration-to-modify).
-
-* * *
-
-<a name="skeleton-frequently-asked-questions-for-authoring-azure-documents-other-debugging-questions"></a>
-### Other debugging questions
-
-***How can I ask questions about debugging ?***
+***How can I ask questions about \<topic> ?***
 
 You can ask questions on Stackoverflow with the tag [ibiza](https://stackoverflow.microsoft.com/questions/tagged/ibiza).
 
+The Stackoverflow FAQ item should be included in every topic that contains an FAQ subtopic. For a list of Stackoverflow tags, see [portalfx-extensions-stackoverflow](portalfx-extensions-stackoverflow).
 
+* * *
    
 <!--  optional FYI document, for links that could not be included in the content within the natural flow of the doc 
-                                    "../templates/portalfx-==major-area==-==topic==-fyi.md"  -->
+  gitdown": "include-file", "file": "../templates/portalfx-<major-area>-<topic>-fyi.md"  -->
 
 
 <!--  required Glossary document. 
-                                    "../templates/portalfx-extensions-glossary-==major-area==.md"  -->
+  gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-<major-area>.md"  -->
 <a name="skeleton-skeleton-glossary"></a>
 ## Skeleton Glossary
 
@@ -210,17 +266,3 @@ Subtopic documents can authored along the same lines.
 
 | Term              | Meaning |
 | -------- | -------- |
-
-
-A partial list of documents that are might be useful inline (instead of linked to) is as follows.
-portalfx-extensions-branches.md
-portalfx-extensions-cnames.md
-portalfx-extensions-contacts.md
-portalfx-extensions-developmentPhases.md
-portalfx-extensions-exitCriteria.md
-portalfx-extensions-publishing.md
-portalfx-extensions-qualityEssentials.md
-portalfx-extensions-stackoverflow.md
-portalfx-extensions-status-codes.md
-
-Any sections from other documents that are not this generic should probably be linked to within the subtopics.
