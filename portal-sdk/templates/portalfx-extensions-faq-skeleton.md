@@ -19,7 +19,7 @@ The format for an FAQ item is comprised of the following five items.
 
 1.  Description
 
-    This field is optional when the title of the FAQ describes the entire problem. This content may be from sources like **Stackoverflow**. The author who provides the answer may choose to describe the situation in more detail.
+    This field is optional when the title of the FAQ describes the entire situation. This content may be from sources like **Stackoverflow**. The author who provides the answer may choose to describe the situation in more detail.
 
 1. The word "SOLUTION:" followed by the solution to the question. 
 

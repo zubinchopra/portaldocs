@@ -39,45 +39,47 @@ This is the only document wtihin the topic that contains an H1-level header.
 
 1. Subtopic files are contained within the topic document in the following order.
 
-    | Name | Purpose |
-    | ---- | ------- |
-    | `portalfx-<major-area>-<topic>-overview.md` | Required. General discussion of topic.|
+    | Name                                           | Purpose |
+    | ---------------------------------------------- | ------- |
+    | `portalfx-<major-area>-<topic>-overview.md`    | Required. General discussion of topic. |
     | `portalfx-<major-area>-<topic>-<subtopic1>.md` | Optional. A section that is used when the topic goes deeper than an overview.  The last item in the overview may be a table that links to these sections, in addition to relying on the gitHub includes that are a part of the overarching document. |
-    | `portalfx-<major-area>-<topic>-<subtopic2>.md` |     Optional. A section that is used when the topic goes deeper than an overview. |
-    | `portalfx-<major-area>-<topic>-procedures.md` | Optional.  Checklist document. Used when there are specific steps to follow, or when there are specific tasks whose completion must be verified. |
-    | `portalfx-extensions-bp-<topic>.md` | Optional. Best Practices for the topic. |
-    | `portalfx-extensions-faq-<topic>.md` | Optional. Frequently Asked Questions for the topic. |
-    | `portalfx-<major-area>-<topic>-fyi.md` | Optional. For Your Information. Contains links that could not be included in the content within the natural flow of the topic and subtopic. Typically, by the time the entire topic has been authored, there are few, if any, links left for this section.  |
-    | `portalfx-extensions-glossary-<topic>.md` | Required. Glossary for the topic. |
+    | `portalfx-<major-area>-<topic>-<subtopic2>.md` | Optional. A section that is used when the topic goes deeper than an overview. |
+    | `portalfx-<major-area>-<topic>-procedures.md`  | Optional.  Checklist document. Used when there are specific steps to follow, or when there are specific tasks whose completion must be verified. |
+    | `portalfx-extensions-bp-<topic>.md`            | Optional. Best Practices for the topic. |
+    | `portalfx-extensions-faq-<topic>.md`           | Optional. Frequently Asked Questions for the topic. |
+    | `portalfx-<major-area>-<topic>-fyi.md`         | Optional. For Your Information. Contains links that could not be included in the content within the natural flow of the topic and subtopic. Typically, by the time the entire topic has been authored, there are few, if any, links left for this section.  |
+    | `portalfx-extensions-glossary-<topic>.md`      | Required. Glossary for the topic. |
 
 1. Sections that have been written for other documents can be linked to within the subtopics using normal gitHub linking procedures. This is best practice, and is preferred over copying and modifying paragraphs from file to file.
 
-1. Files are included in a topic by gitHub, based on the topic-subtopic relationship. They are linked to in this overarching document with gitHub commands.  Because this skeleton file also functions as a sample document, the gitHub commands in the following section are slightly malformed.  To use this skeleton to create a new topic, fill in the parameters that are designated with angle brackets, and then enclose the gitHub command in curly brackets. Remember that the command "gitdown" is at the beginning of the line and is enclosed in double quotes.
+1. Files are included in a topic by gitHub, based on the topic-subtopic relationship. They are linked to in this overarching document with gitHub commands.  Because this skeleton file also functions as a sample document, the gitHub commands in the following section are slightly malformed.  To use this skeleton to create a new topic, fill in the parameters that are designated with angle brackets, and then enclose the gitHub command in curly brackets.
 
-<!--  required Overview document.  -->
+ **NOTE**: The command "gitdown" is at the beginning of each inclusion line and is enclosed in double quotes.
+ 
+<!-- required Overview document.  -->
 <!-- gitdown": "include-file", "file": "../templates/portalfx-<topic>-overview.md"} -->
    {"gitdown": "include-file", "file": "../templates/portalfx-skeleton-overview.md"}
 
 <!--  optional subtopic documents. Use these when the topic goes deeper than an overview. The overview may contain a table that links to these sections, in addition to (or instead of) relying on the following gitHub includes. -->
-<!--  gitdown": "include-file", "file":  "../templates/portalfx-<major-area>-<topic>-<subtopic1>.md"  -->
-<!--  gitdown": "include-file", "file":  "../tempates/portalfx-<major-area>-<topic>-<subtopic2>.md"  -->
+<!-- gitdown": "include-file", "file":  "../templates/portalfx-<major-area>-<topic>-<subtopic1>.md"  -->
+<!-- gitdown": "include-file", "file":  "../templates/portalfx-<major-area>-<topic>-<subtopic2>.md"  -->
 
-<!--  optional checklist document. Use this when there are specific steps to follow, or when there are specific tasks that the developer must verify as being completed. 
-  gitdown": "include-file", "file": "../templates/portalfx-<major-area>-<topic>-procedures.md"  -->
-{"gitdown": "include-file", "file": "../templates/portalfx-skeleton-procedure.md"}
+<!-- optional checklist document. Use this when there are specific steps to follow, or when there are specific tasks that the developer must verify as being completed. -->
+<!-- gitdown": "include-file", "file": "../templates/portalfx-<major-area>-<topic>-procedures.md"  -->
+   {"gitdown": "include-file", "file": "../templates/portalfx-skeleton-procedure.md"}
   
-<!--  optional Best Practices document
-  gitdown": "include-file", "file": "../templates/portalfx-<major-area>-bp-<topic>.md"  -->
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-skeleton.md"}
+<!-- optional Best Practices document -->
+<!-- gitdown": "include-file", "file": "../templates/portalfx-<major-area>-bp-<topic>.md"  -->
+   {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-skeleton.md"}
 
-<!--  optional FAQ document
-  gitdown": "include-file", "file": "../templates/portalfx-<major-area>-faq-<topic>.md"  -->
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-skeleton.md"}
+<!-- optional FAQ document -->
+<!-- gitdown": "include-file", "file": "../templates/portalfx-<major-area>-faq-<topic>.md"  -->
+   {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-skeleton.md"}
    
-<!--  optional FYI document, for links that could not be included in the content within the natural flow of the doc 
-  gitdown": "include-file", "file": "../templates/portalfx-<major-area>-<topic>-fyi.md"  -->
-{"gitdown": "include-file", "file": "../templates/portalfx-skeleton-fyi.md"}
+<!-- optional FYI document, for links that could not be included in the content within the natural flow of the doc -->
+<!-- gitdown": "include-file", "file": "../templates/portalfx-<major-area>-<topic>-fyi.md"  -->
+   {"gitdown": "include-file", "file": "../templates/portalfx-skeleton-fyi.md"}
 
-<!--  required Glossary document. 
-  gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-<major-area>.md"  -->
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-skeleton.md"}
+<!-- required Glossary document. -->
+<!-- gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-<major-area>.md"  -->
+   {"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-skeleton.md"}

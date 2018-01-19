@@ -3,13 +3,15 @@
 
 <!--  required document.  -->
 
-This document describes procedures or checklists that are associated with a topic.  These are the types of items that must all be completed, sometimes in a specific order, in order to accomplish a specific developer task.
+This document describes procedures or checklists that are associated with a topic.  These are the types of items that must all be completed, sometimes in a specific order, in order to accomplish a specific developer task. 
 
-For the most part, procedures do not include phrases like "as specified in. . ."; references to other topics should have been included in the main topic, or in the overarching document that contains all of the gitHub links.
+Procedures and checklists do not describe the items that are being manipulated; instead, they describe how to manipulate them. Developers may review the topic or use the procedure in any order.
+
+For the most part, procedures do not include phrases like "as specified in. . ."; references to other topics should have been included in the main topic, or in the overarching document that contains all of the gitHub links. However, a link may be appropriate for  more complicated  procedures  if a subprocedure  is best described in its own subtopic.
 
 ## Name of Process 
 
-This process validates that [state purpose of checklist]. Include images as appropriate, as in the following diagram.
+This process validates that [state purpose of checklist]. Images of the procedure are optional.  Images  should be included in the document above the procedure that they specify, as in the following diagram.
 
    ![alt-text](../media/partner-request-flow.png "New Project Dialog")
 
@@ -33,11 +35,11 @@ The following is a sample procedure. It specifies how to author a document in th
 
 1. Rename each file with the major area and the topic, for example, `portalfx-extension-style-guide*.md`, in which case, the overarching document is the `portalfx-extension-style-guide.md` file. 
 
-1. Author the topic by placing the appropriate content in each file. Ensure that each subtopic is complete, correct, and accurate.topic is complete, correct, and accurate.
+1. Author the topic by placing the appropriate content in each file. Ensure that each topic or subtopic is complete and accurate.
 
 1. At the end of the process, delete files that have no content, like Best Practices or FAQ.
 
-1. Cross-check the document content against the links that were planned for inclusion. If all links have been used, delete the FYI document.
+1. Cross-check the document content against the links that were planned for inclusion. If all links have been used in the topic or subtopics, delete the FYI document.
 
 1. Glossarize the topic by locating and defining on first mention all words that are used within the topic.  Exceptions are in the following list.
    * Common English usage, as specified in major dictionaries like [Cambridge](https://dictionary.cambridge.org), [Merriam-Webster](https://www.merriam-webster.com), [Oxford](https://en.oxforddictionaries.com), [Random House](http://www.dictionary.com).
@@ -46,4 +48,4 @@ The following is a sample procedure. It specifies how to author a document in th
   
    * Common acronyms as specified in major sources like [https://www.acronymfinder.com](https://www.acronymfinder.com).
 
- 1. Amend the overarching document so that the gitHub commands include each existing section once and only once. The overarching skeleton document includes placemarkers for this purpose.
+ 1. Amend the overarching document so that the gitHub commands include each existing section once and only once. The overarching skeleton document includes placeholders for this purpose.
