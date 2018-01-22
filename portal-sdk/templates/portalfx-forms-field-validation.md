@@ -33,7 +33,7 @@ In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  
 
 For an example of each of these validators in action, view the sample file that is located at `<dir>\Client\V1\Forms\Samples\Validations\ViewModels\FormValidationsViewModels.ts`.
 
-Validators are added to the form objects that are available on the view model, as in the following code.
+Validators are added to the form objects that are on the ViewModel, as in the following code.
 
 ```ts
 var nameTextboxOptions  = <MsPortalFx.ViewModels.Forms.TextBox.Options>{

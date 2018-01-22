@@ -1,5 +1,5 @@
 
-## EditScope FAQ  
+## Frequently asked questions
 
 For an end-to-end overview of EditScope and how it's used in the Azure Portal FX, please refer to the video and accompanying PowerPoint presentation here:  
 [Forms: Working with Edit Scopes](portalfx-forms-working-with-edit-scopes.md)
