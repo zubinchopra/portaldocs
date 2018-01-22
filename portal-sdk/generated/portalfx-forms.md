@@ -490,15 +490,7 @@ In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  
 
     `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`
 
-    <!--```typescript
-
-this.textBoxSimpleAccessor = new MsPortalFx.ViewModels.Forms.TextBox.ViewModel(
-    container,
-    this,
-    this.createEditScopeAccessor<string>((data) => { return data.state; }),
-    textBoxSimpleAccessorOptions);
-
-``` -->
+    <!--gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts", "section": "formsEditScopeFaq#editScopeAccessor"} -->
     The EditScopeAccessor methodology is preferred for the following reasons.
 
     * The supplied lambda will be compile-time verified. This code is more maintainable, for example, when the property names on the Form model types are changed.
@@ -506,35 +498,17 @@ this.textBoxSimpleAccessor = new MsPortalFx.ViewModels.Forms.TextBox.ViewModel(
 
       `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`
   
-    <!--```typescript
-
-this.textBoxReadWriteAccessor = new MsPortalFx.ViewModels.Forms.TextBox.ViewModel(
-    container,
-    this,
-    this.createEditScopeAccessor<string>(<MsPortalFx.ViewModels.Forms.EditScopeAccessors.Options<FormIntegratedFormData.FormIntegratedFormData, string>>{
-        readFromEditScope: (data: FormIntegratedFormData.FormIntegratedFormData): string => {
-            return data.state2().toUpperCase();
-        },
-        writeToEditScope: (data: FormIntegratedFormData.FormIntegratedFormData, newValue: string): void => {
-            data.state2(newValue);
-        }
-    }),
-    textBoxReadWriteAccessorOptions);
-
-``` -->
+    <!-- gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts", "section": "formsEditScopeFaq#editScopeAccessorAdvanced"} -->
 
 1. **String-typed path** This methodology is discouraged because it is not compile-time verified. The form field ViewModel constructor accepts a string-typed path that contains the location of the EditScope observable to which the Form field should bind, as in the following code.
 
     `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`
 
-  <!--```typescript
-
-this.textBoxViewModel = new MsPortalFx.ViewModels.Forms.TextBox.ViewModel(container, this, "name", textBoxOptions);
-
-``` -->
+  <!--gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts", "section": "formsEditScopeFaq#editScopePath"} -->
 
 
 
+<a name="developing-forms-integrating-forms-with-commands"></a>
 ## Integrating Forms with Commands
 
 In most cases, editable forms are accompanied by commands which act upon those forms. There are two ways that form data can be made available to the command:
@@ -570,8 +544,10 @@ In the previous snippet, the `enabled` property of the command is toggled based 
   * **formValid**: loaded by using the part that contains a form on the blade
 
 
+<a name="developing-forms-frequently-asked-questions"></a>
 ## Frequently asked questions
 
+<a name="developing-forms-frequently-asked-questions-should-i-use-an-action-bar-or-a-commands-toolbar-on-my-form"></a>
 ### Should I use an action bar or a commands toolbar on my form?
 
 It depends on the scenario that drives the UX. If the form will capture some data from the user and expect the blade to be closed after submitting the changes, then use an action bar, as specified in [portalfx-ux-create-forms.md#action-bar-+-blue-buttons](portalfx-ux-create-forms.md#action-bar-+-blue-buttons).  However, if the form will edit or update some data, and expect the user to make multiple changes before the blade is closed, then use commands, as specified in [portalfx-commands.md](portalfx-commands.md). 
@@ -588,8 +564,10 @@ It depends on the scenario that drives the UX. If the form will capture some dat
 
 
 
+<a name="developing-forms-frequently-asked-questions"></a>
 ## Frequently asked questions
 
+<a name="developing-forms-frequently-asked-questions-discard-change-pop-up-always-displayed"></a>
 ### Discard change pop-up always displayed
 
 ***Q: My users see the 'discard change?' pop-up, even when they've made no changes on my Form Blade. What's wrong?*** 
@@ -604,6 +582,7 @@ Rather than initializing the EditScope by programmatically modifying/updating Ed
   
 * * *
 
+<a name="developing-forms-frequently-asked-questions-editscope-location"></a>
 ### EditScope Location
 
 ***Q: I need to integrate my Form with an EditScope. Where do I get the EditScope?*** 
@@ -620,6 +599,7 @@ SOLUTION: This varies according to the UX design. Developers can choose between 
 
 * * *
   
+<a name="developing-forms-frequently-asked-questions-what-is-an-editscopeaccessor"></a>
 ### What is an EditScopeAccessor?
 
 ***Q: Form fields have two constructor overloads, which should I use? What is an EditScopeAccessor?*** 
@@ -628,6 +608,7 @@ SOLUTION: For more information about EditScopeAccessors, see [portalfx-forms-wor
 
 * * * 
 
+<a name="developing-forms-frequently-asked-questions-type-metadata"></a>
 ### Type metadata
 <!-- TODO:  Move this back to the TypeScript  document -->
 ***Q: When do I need to worry about type metadata for my EditScope?***
@@ -637,7 +618,9 @@ SOLUTION: For many of the most common, simple Form scenarios, there is no need t
 For more information about type metadata, see [portalfx-data-typemetadata.md](portalfx-data-typemetadata.md).
 
  For EditScope and Forms, extensions supply [type metadata] for the following scenarios: 
+<a name="developing-forms-frequently-asked-questions-type-metadata-editable-grid"></a>
 #### Editable grid
+<a name="developing-forms-frequently-asked-questions-type-metadata-entity-type"></a>
 #### Entity-type
 
 * **Editable grid** - Today's editable grid was developed to work exclusively with EditScope 'entity' arrays. An EditScope 'entity' array is one where created/updated/deleted array items are tracked individually by EditScope. To grant this special treatment to an array in the EditScope/Form model, supply type metadata for the type of the array items (for the `T` in `KnockoutObservableArray<T>`). The type is marked as an "entity type" and, the property/properties that constitute the entity's 'id' are specified in the following examples. 
@@ -676,6 +659,7 @@ public class Person
     
 ```
   
+<a name="developing-forms-frequently-asked-questions-type-metadata-track-edits"></a>
 #### Track edits
 
 * **Opting out of edit tracking** - There are Form scenarios where some properties on the EditScope/Form model are not meant for editing but are - possibly - for presentation only. In this situation, the extension can instruct EditScope to *not track* user edits for such EditScope/Form model properties, like so:
@@ -710,6 +694,7 @@ To either of these, extensions pass the type name used when registering the type
   
 * * * 
 
+<a name="developing-forms-frequently-asked-questions-missing-rows-from-editable-grid"></a>
 ### Missing rows from editable grid
 <!-- TODO:  Move this to the EditScope document -->
 ***Q: The user added/removed rows from my editable grid, but I don't see the corresponding adds/removes in my EditScope array.  What gives?***
@@ -746,6 +731,7 @@ this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModels.
 
 ```
 
+<a name="developing-forms-frequently-asked-questions-missing-rows-from-editable-grid-apply-array-as-edits"></a>
 #### Apply array as edits
 
 And there is a corresponding '`applyArrayAsEdits`' EditScope method that simplifies applying edits to an existing EditScope 'entity' array. This is often done in a ParameterCollector's '`receiveResult`' callback, as in the following example.
@@ -776,6 +762,7 @@ This pair of EditScope methods significantly simplifies working with EditScope '
   
 * * *
 
+<a name="developing-forms-frequently-asked-questions-keeping-editscope-from-tracking-changes"></a>
 ### Keeping EditScope from tracking changes
 
 ***Q: Some of my Form data is not editable. How do I keep EditScope from tracking changes for this data?***
@@ -784,6 +771,7 @@ SOLUTION: For more information about configuring an EditScope by using type meta
   
 * * *
 
+<a name="developing-forms-frequently-asked-questions-key-value-pairs"></a>
 ### Key-value pairs
 <!-- TODO:  Move this to the EditScope or edit grid document -->
 ***Q: My Form data is just key/value-pairs. How do I model a Dictionary/StringMap in EditScope? Why can't I just use a JavaScript object like a property bag?***
@@ -802,7 +790,8 @@ Here's a sample that does something similar, converting - in this case - an arra
 
 * * *
 
-#### Modeling your data as an 'entity' array
+<a name="developing-forms-frequently-asked-questions-key-value-pairs-modeling-your-data-as-an-entity-array"></a>
+#### Modeling your data as an &#39;entity&#39; array
 
 SOLUTION: 
 ```typescript
@@ -824,7 +813,8 @@ value: KnockoutObservable<string>;
 
 * * *
 
-#### Converting your data to an 'entity' array for consumption by editable grid
+<a name="developing-forms-frequently-asked-questions-key-value-pairs-converting-your-data-to-an-entity-array-for-consumption-by-editable-grid"></a>
+#### Converting your data to an &#39;entity&#39; array for consumption by editable grid
 
 SOLUTION: 
 ```typescript
@@ -857,7 +847,7 @@ this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<string[], K
   
 * * *
 
-<a name="developing-forms-working-with-edit-scopes-q-what-should-be-returned-from-saveeditscopechanges-i-don-t-understand-the-different-values-of-the-accepteditscopechangesaction-enum"></a>
+<a name="developing-forms-frequently-asked-questions-q-what-should-be-returned-from-saveeditscopechanges-i-don-t-understand-the-different-values-of-the-accepteditscopechangesaction-enum"></a>
 ### Q: What should be returned from &#39;saveEditScopeChanges&#39;? I don&#39;t understand the different values of the <code>AcceptEditScopeChangesAction</code> enum.
 
 <!-- TODO:  Move this to the EditScope document -->
@@ -877,14 +867,14 @@ For these cases, the extension will resolve the `saveEditScopeChanges` Promise w
 
 For more information about each enum value, see the jsdoc comments around `MsPortalFx.Data.AcceptEditScopeChangesAction` or in `MsPortalFxDocs.js` in Visual Studio or any code editor.
 
-<a name="developing-forms-working-with-edit-scopes-q-what-should-be-returned-from-saveeditscopechanges-i-don-t-understand-the-different-values-of-the-accepteditscopechangesaction-enum-caveat-anti-pattern"></a>
+<a name="developing-forms-frequently-asked-questions-q-what-should-be-returned-from-saveeditscopechanges-i-don-t-understand-the-different-values-of-the-accepteditscopechangesaction-enum-caveat-anti-pattern"></a>
 #### Caveat / anti-pattern
 
 There is an important anti-pattern to avoid here re: '`saveEditScopeChanges`'. If the AJAX call that saves the user's edits fails, the extension should merely **reject** the '`saveEditScopeChanges`' Promise (which is natural to do with Q Promise-chaining/piping). The extension *should not* resolve their Promise with '`AcceptEditScopeChangesAction.DiscardClientChanges`', since this will lose the user's Form edits (a data-loss bug).
   
 * * *
 
-<a name="developing-forms-working-with-edit-scopes-common-error-entity-typed-object-array-is-not-known-to-this-edit-scope"></a>
+<a name="developing-forms-frequently-asked-questions-common-error-entity-typed-object-array-is-not-known-to-this-edit-scope"></a>
 ### Common error: &quot;Entity-typed object/array is not known to this edit scope...&quot;
 
 SOLUTION: 
@@ -905,7 +895,7 @@ To correctly (according to the EditScope design) add or remove an 'entity' objec
 
 * * *
 
-<a name="developing-forms-working-with-edit-scopes-common-error-entity-typed-object-array-is-not-known-to-this-edit-scope-common-error-scenario"></a>
+<a name="developing-forms-frequently-asked-questions-common-error-entity-typed-object-array-is-not-known-to-this-edit-scope-common-error-scenario"></a>
 #### Common error scenario
 
 SOLUTION: 
@@ -915,7 +905,7 @@ Often, extensions encounter this "Entity-typed object/array is not known to this
   
 * * *
 
-<a name="developing-forms-working-with-edit-scopes-editable-object-not-present"></a>
+<a name="developing-forms-frequently-asked-questions-editable-object-not-present"></a>
 ### Editable object not present
 
 ***"Encountered a property 'foo' on an editable object that is not present on the original object..."***
