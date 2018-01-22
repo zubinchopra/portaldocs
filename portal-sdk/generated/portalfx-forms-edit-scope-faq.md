@@ -1,13 +1,13 @@
 
-<a name="editscope-faq"></a>
-## EditScope FAQ
+<a name="frequently-asked-questions"></a>
+## Frequently asked questions
 
 For an end-to-end overview of EditScope and how it's used in the Azure Portal FX, please refer to the video and accompanying PowerPoint presentation here:  
 [Forms: Working with Edit Scopes](portalfx-forms-working-with-edit-scopes.md)
 
 When applying EditScope to common Form scenarios, here is a quick reference with answers to frequently-asked questions.
 
-<a name="editscope-faq-q-my-users-see-the-discard-change-pop-up-even-when-they-ve-made-no-changes-on-my-form-blade-what-s-wrong-here"></a>
+<a name="frequently-asked-questions-q-my-users-see-the-discard-change-pop-up-even-when-they-ve-made-no-changes-on-my-form-blade-what-s-wrong-here"></a>
 ### Q: My users see the &#39;discard change?&#39; pop-up, even when they&#39;ve made no changes on my Form Blade. What&#39;s wrong here?
 
 The EditScope '`root`' property returns an object or array that includes uses of Knockout observables (`KnockoutObservable<T>` and `KnockoutObservableArray<T>`). Any observable located within the EditScope is designed to be modified/updated **only by the user**, via Form fields that are bound to EditScope observables. Importantly, these EditScope observables *were not designed* to be modified directly from extension TypeScript code. If extension code modifies an observable *during Form/Blade initialization*, the EditScope will record this *as a user edit*, and this "accidental edit" will trigger the 'discard changes?' pop-up when the user tries to close the associated Blade.  
@@ -18,7 +18,7 @@ Rather than initializing the EditScope by programmatically modifying/updating Ed
 * If neither of the above techniques suits the scenario, the '`editScope.resetValue()`' method can be used to set a new/initial value for an EditScope observable in a way that *is not recorded as a user edit* (although this only works for observables storing primitive-typed values).  
   
   
-<a name="editscope-faq-q-i-need-to-integrate-my-form-with-an-editscope-where-do-i-get-the-editscope-from"></a>
+<a name="frequently-asked-questions-q-i-need-to-integrate-my-form-with-an-editscope-where-do-i-get-the-editscope-from"></a>
 ### Q: I need to integrate my Form with an EditScope. Where do I get the EditScope from?
 
 This varies *according to the UX design* being developed. Extensions choose between using a ParameterProvider component or EditScopeCache component as follows:
@@ -34,7 +34,7 @@ When using ParameterProvider, the Blade will make use of '`parameterProvider.edi
 When using EditScopeCache, in the view model the Blade will make use of an EditScopeView (see '`editScopeCache.createView(...)`') to load/acquire the EditScope.  
   
   
-<a name="editscope-faq-q-form-fields-have-two-constructor-overloads-which-should-i-use-what-is-an-editscopeaccessor"></a>
+<a name="frequently-asked-questions-q-form-fields-have-two-constructor-overloads-which-should-i-use-what-is-an-editscopeaccessor"></a>
 ### Q: Form fields have two constructor overloads, which should I use? What is an EditScopeAccessor?
 
 Form fields require a binding to one or more EditScope observables. Extension developers configure this binding by supplying - essentially - *a path from the root* of the EditScope/Form model down to the observable to which the Form field should bind. They can do this by selecting one of the two Form field constructor variations:  
@@ -82,7 +82,7 @@ this.textBoxReadWriteAccessor = new MsPortalFx.ViewModels.Forms.TextBox.ViewMode
 ```  
   
   
-<a name="editscope-faq-q-when-do-i-need-to-worry-about-type-metadata-portalfx-data-typemetadata-md-for-my-editscope"></a>
+<a name="frequently-asked-questions-q-when-do-i-need-to-worry-about-type-metadata-portalfx-data-typemetadata-md-for-my-editscope"></a>
 ### Q: When do I need to worry about <a href="portalfx-data-typemetadata.md">type metadata</a> for my EditScope?
 
 For many of the most common, simple Form scenarios, there is *no need* to describe the EditScope/Form model in terms of type metadata. Generally speaking, supplying type metadata is the way to turn on *advanced* FX behavior, in much the same way that - in .NET - developers apply custom attributes to their .NET types to tailor .NET FX behavior for the types.  
@@ -159,7 +159,7 @@ Extensions can supply type metadata to configure their EditScope as follows:
 To either of these, extensions pass the type name used when registering the type metadata via '`MsPortalFx.Data.Metadata.setTypeMetadata`'.  
   
   
-<a name="editscope-faq-q-the-user-added-removed-rows-from-my-editable-grid-but-i-don-t-see-the-corresponding-adds-removes-in-my-editscope-array-what-gives"></a>
+<a name="frequently-asked-questions-q-the-user-added-removed-rows-from-my-editable-grid-but-i-don-t-see-the-corresponding-adds-removes-in-my-editscope-array-what-gives"></a>
 ### Q: The user added/removed rows from my editable grid, but I don&#39;t see the corresponding adds/removes in my EditScope array.  What gives?
 
 EditScope 'entity' arrays were designed with a few requirements in mind:
@@ -222,13 +222,13 @@ this.itemsCollector = new MsPortalFx.ViewModels.ParameterCollector<DataModels.Se
 This pair of EditScope methods significantly simplifies working with EditScope 'entity' arrays.  
   
   
-<a name="editscope-faq-q-some-of-my-form-data-is-not-editable-how-do-i-keep-editscope-from-tracking-changes-for-this-data"></a>
+<a name="frequently-asked-questions-q-some-of-my-form-data-is-not-editable-how-do-i-keep-editscope-from-tracking-changes-for-this-data"></a>
 ### Q: Some of my Form data is not editable. How do I keep EditScope from tracking changes for this data?
 
 See [mention of '`trackEdits`'](#track-edits) above re: configuring an EditScope via type metadata.  
   
   
-<a name="editscope-faq-q-my-form-data-is-just-key-value-pairs-how-do-i-model-a-dictionary-stringmap-in-editscope-why-can-t-i-just-use-a-javascript-object-like-a-property-bag"></a>
+<a name="frequently-asked-questions-q-my-form-data-is-just-key-value-pairs-how-do-i-model-a-dictionary-stringmap-in-editscope-why-can-t-i-just-use-a-javascript-object-like-a-property-bag"></a>
 ### Q: My Form data is just key/value-pairs. How do I model a Dictionary/StringMap in EditScope? Why can&#39;t I just use a JavaScript object like a property bag?
 
 <a name="only-observable-changes"></a>
@@ -244,7 +244,7 @@ Often, additionally, it is important to let users edit the Dictionary/StringMap/
 
 Here's a sample that does something similar, converting - in this case - an array of strings into an 'entity' array for consumption by editable grid.  
 
-<a name="editscope-faq-q-my-form-data-is-just-key-value-pairs-how-do-i-model-a-dictionary-stringmap-in-editscope-why-can-t-i-just-use-a-javascript-object-like-a-property-bag-modeling-your-data-as-an-entity-array"></a>
+<a name="frequently-asked-questions-q-my-form-data-is-just-key-value-pairs-how-do-i-model-a-dictionary-stringmap-in-editscope-why-can-t-i-just-use-a-javascript-object-like-a-property-bag-modeling-your-data-as-an-entity-array"></a>
 #### Modeling your data as an &#39;entity&#39; array
 
 ```typescript
@@ -264,7 +264,7 @@ value: KnockoutObservable<string>;
 
 ```  
 
-<a name="editscope-faq-q-my-form-data-is-just-key-value-pairs-how-do-i-model-a-dictionary-stringmap-in-editscope-why-can-t-i-just-use-a-javascript-object-like-a-property-bag-converting-your-data-to-an-entity-array-for-consumption-by-editable-grid"></a>
+<a name="frequently-asked-questions-q-my-form-data-is-just-key-value-pairs-how-do-i-model-a-dictionary-stringmap-in-editscope-why-can-t-i-just-use-a-javascript-object-like-a-property-bag-converting-your-data-to-an-entity-array-for-consumption-by-editable-grid"></a>
 #### Converting your data to an &#39;entity&#39; array for consumption by editable grid
 
 ```typescript
@@ -296,7 +296,7 @@ this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<string[], K
 ```  
   
   
-<a name="editscope-faq-q-what-do-i-return-from-saveeditscopechanges-i-don-t-understand-the-different-values-of-the-accepteditscopechangesaction-enum"></a>
+<a name="frequently-asked-questions-q-what-do-i-return-from-saveeditscopechanges-i-don-t-understand-the-different-values-of-the-accepteditscopechangesaction-enum"></a>
 ### Q: What do I return from &#39;saveEditScopeChanges&#39;? I don&#39;t understand the different values of the &#39;<code>AcceptEditScopeChangesAction</code>&#39; enum.
 
 When creating an EditScopeCache, the '`saveEditScopeChanges`' callback supplied by the extension is called to push EditScope edits to a server/backend. This callback returns a Promise that should be resolved when the 'save' AJAX call completes (once the server/backend accepts the user's edits).  
@@ -314,13 +314,13 @@ For these cases, the extension will resolve their '`saveEditScopeChanges`' Promi
 
 See the jsdoc comments around '`MsPortalFx.Data.AcceptEditScopeChangesAction`' for comprehensive documentation for each enum value.  
 
-<a name="editscope-faq-q-what-do-i-return-from-saveeditscopechanges-i-don-t-understand-the-different-values-of-the-accepteditscopechangesaction-enum-caveat-anti-pattern"></a>
+<a name="frequently-asked-questions-q-what-do-i-return-from-saveeditscopechanges-i-don-t-understand-the-different-values-of-the-accepteditscopechangesaction-enum-caveat-anti-pattern"></a>
 #### Caveat / anti-pattern
 
 There is an important anti-pattern to avoid here re: '`saveEditScopeChanges`'. If the AJAX call that saves the user's edits fails, the extension should merely **reject** the '`saveEditScopeChanges`' Promise (which is natural to do with Q Promise-chaining/piping). The extension *should not* resolve their Promise with '`AcceptEditScopeChangesAction.DiscardClientChanges`', since this will lose the user's Form edits (a data-loss bug).
   
   
-<a name="editscope-faq-common-error-entity-typed-object-array-is-not-known-to-this-edit-scope"></a>
+<a name="frequently-asked-questions-common-error-entity-typed-object-array-is-not-known-to-this-edit-scope"></a>
 ### Common error: &quot;Entity-typed object/array is not known to this edit scope...&quot;
 
 EditScope data follows a particular data model. In short, the EditScope is a hierarchy of 'entity' objects. By default, when the EditScope's '`root`' is an object, this object is considered an 'entity'. The EditScope becomes a hierarchy of 'entities' when:
@@ -338,7 +338,7 @@ To correctly (according to the EditScope design) add or remove an 'entity' objec
 * '`getCreated/addCreated`' - These APIs allow for the addition of new, 'created' entity objects. The '`getCreated`' method returns a distinct, out-of-band array that collects all 'created' entities corresponding to a given 'entity' array. The '`addCreated`' method is merely a helper method that places a new 'entity' object in this '`getCreated`' array.
 * '`markForDelete`' - 'Deleting' an 'entity' from the EditScope is treated as a non-destructive operation. This is so that - if the extension chooses - they can render 'deleted' (but unsaved) edits with strike-through styling (or equivalent). Calling this '`markForDelete`' method merely puts the associated 'entity' in a 'deleted' state.  
 
-<a name="editscope-faq-common-error-entity-typed-object-array-is-not-known-to-this-edit-scope-common-error-scenario"></a>
+<a name="frequently-asked-questions-common-error-entity-typed-object-array-is-not-known-to-this-edit-scope-common-error-scenario"></a>
 #### Common error scenario
 
 Often, extensions encounter this "Entity-typed object/array is not known to this edit scope..." error as a side-effect of modeling their data as 'entities' binding with [editable grid](#editable-grid) in some ParameterProvider Blade.  Then, commonly, the error is encountered when applying the array edits in a corresponding ParameterCollector Blade.  Here are two schemes that can be useful to avoid this error:
@@ -346,7 +346,7 @@ Often, extensions encounter this "Entity-typed object/array is not known to this
 * Define type metadata for this array *twice* - once only for editing the data in an editable grid (array items typed as 'entities'), and separately for committing to an EditScope in the ParameterCollector Blade (array items typed as not 'entities').  
   
   
-<a name="editscope-faq-common-error-encountered-a-property-foo-on-an-editable-object-that-is-not-present-on-the-original-object"></a>
+<a name="frequently-asked-questions-common-error-encountered-a-property-foo-on-an-editable-object-that-is-not-present-on-the-original-object"></a>
 ### Common error: &quot;Encountered a property &#39;foo&#39; on an editable object that is not present on the original object...&quot;
 
 As discussed [above](#only-observable-changes), the extension should mutate the EditScope/Form model by making observable changes and by calling EditScope APIs. For any object residing in the EditScope, merely adding/removing keys cannot be detected by EditScope (or by the FX at large) and, consequently, edits cannot be tracked. When an extension *attempts* to add/remove keys from an EditScope object, this puts the EditScope edit-tracking in an inconsistent state. When the EditScope detects such an inconsistency, it issues the error above to encourage the extension developer to use (exclusively) observable changes and EditScope APIs to mutate/change the EditScope/Form model.  

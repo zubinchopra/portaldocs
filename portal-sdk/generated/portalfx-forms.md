@@ -31,8 +31,7 @@ To develop extensions that use forms, review the following topics:
 <a name="developing-forms-designing-and-arranging-the-ui-the-section-viewmodel"></a>
 ### The section viewModel
 
-While blade templates allow manual layout of controls as specific DOM elements, the generally recommended approach
-is to bind a section `viewModel` into the DOM and then add control `viewModels` to the `children` observable array of the section. For example, the following image contains two sections with varying numbers of child objects in their respective arrays.
+While blade templates allow manual layout of controls as specific DOM elements, the generally recommended approach is to bind a section `viewModel` into the DOM and then add control `viewModels` to the `children` observable array of the section. For example, the following image contains two sections with varying numbers of child objects in their respective arrays.
 
 ![alt-text](../media/portalfx-forms-sections/forms-sections.png "Form Section")
 
@@ -47,18 +46,19 @@ two controls to avoid large amounts of HTML in the blade template. However, plac
 <!-- TODO:  Determine whether "two controls" means the section viewModel and the customHtml control.
 -->
 
-To use a section, create a section viewMmodel and bind it into the DOM in the blade template using the `pcControl` binding handler. Then add all the controls that should be displayed into the `children` observable array of the section. This positions the controls sequentially on a blade, by default. 
+To use a section, create a section ViewModel and bind it into the DOM in the blade template using the `pcControl` binding handler. Then add all the controls that should be displayed into the `children` observable array of the section. This positions the controls sequentially on a blade, by default. 
 
 The section's `style` property can be used to achieve other layouts. This includes table layouts that display controls in multiple rows and columns, as a list of tabs, or as a combination of layouts.
 
-In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
+In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK. Clicking on the following link will display a working copy of a basic Portal form.
 
-Follow [http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/formsallup](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/formsallup) and then click on 'Basic Create Form' to view  an example and of basic form creation. The code to create the section is located at  `<dir>\Client\V1\Forms\Samples\BasicCreate\ViewModels\Parts\FormsSampleBasicCreatePart.ts`.
+[http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/formsallup](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/formsallup) 
+
+Click on 'Basic Create Form' to view an example of basic form creation. The code to create the section is located at  `<dir>\Client\V1\Forms\Samples\BasicCreate\ViewModels\Parts\FormsSampleBasicCreatePart.ts`.
 
 The following template binds the section into the DOM, and will autogenerate the layout for all of the child objects. 
 
 `<dir>\Client\V1\Forms\Samples\BasicCreate\Templates\FormSampleBasicCreate.html`
-
 
 <!--TODO:  Determine how to include live samples of code when the page is generated.  For example, 
 ```typescript
@@ -91,22 +91,16 @@ At the present time, this is a link to elsewhere on the hard drive (the local re
 <a name="developing-forms-loading-editing-and-saving-data"></a>
 ## Loading, editing and saving data
 
-This sample reads and writes data to the server directly via `ajax()` calls. 
+This sample reads and writes data to the server directly via `ajax()` calls. It loads and saves data by creating an `EditScopeCache` object and defining two functions. The `supplyExistingData` function reads the data from the server, and the `saveEditScopeChanges` function writes it back.
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>` is the `SamplesExtension\` directory. Links to the Dogfood environment will display working copies of the samples that were made available with the SDK.
 
-The code for this example is associated with the 'basic form' sample. It is located at 
-* `<dir>\Client\Forms\Samples\Basic\FormsSampleBasic.pdl`
-* `<dir>\Client\Forms\Samples\Basic\Templates\FormSampleBasic.html`
-* `<dir>\Client\Forms\Samples\Basic\ViewModels\FromsSampleBasicBlade.ts`
+The code for this example is associated with the basic form sample. It is located at 
+* `<dir>\Client\V1\Forms\Samples\Basic\FormsSampleBasic.pdl`
+* `<dir>\Client\V1\Forms\Samples\Basic\Templates\FormSampleBasic.html`
+* `<dir>\Client\V1\Forms\Samples\Basic\ViewModels\FromsSampleBasicBlade.ts`
 
-The following code will load and save data by creating an `EditScopeCache` object and defining two functions. The `supplyExistingData` function reads the data from the server, and the `saveEditScopeChanges` function writes it back.
-
-<a name="developing-forms-loading-editing-and-saving-data-procedure"></a>
-### Procedure
-The code instantiates an edit scope via a `MsPortalFx.Data.EditScopeView` object. 
-
-**NOTE**: When the data to manipulate is already located on the client, an edit scope view can also be obtained from other data cache objects.
+The code instantiates an `EditScope` via a `MsPortalFx.Data.EditScopeView` object. When the data to manipulate is already located on the client, an edit scope view can also be obtained from other data cache objects.
 
 <!--
 ```typescript
@@ -161,7 +155,7 @@ let editScopeCache = EditScopeCache.createNew<WebsiteModel, number>({
 ```
 -->
 
-Then, it transforms the data to make it match the model type. The server returns strings, but the `WebsiteModel` type that is being used is defined in the following code.
+Then, the code transforms the data to make it match the model type. The server returns strings, but the `WebsiteModel` type that is used is defined in the following code.
 
   ```ts
    interface WebsiteModel {
@@ -182,7 +176,7 @@ this._form.editScope = this._editScopeView.editScope;
 ```
 -->
 
-This form displays one textbox that lets the user edit the name of the website, as specified in the following code.
+This form displays one textbox that allows the user to edit the name of the website, as specified in the following code.
 
 `<dir>\Client\V1\Forms\Samples\Basic\ViewModels\FormsSampleBasicBlade.ts`
 <!--
@@ -210,13 +204,13 @@ this.section = new Section.ViewModel(this._lifetime, {
 ```
 -->
 
-The form is rendered using a section. The code adds all the controls that should be displayed into the `children` observable array of the section. This positions the controls sequentially on a blade, by default, so it is often an easy way to standardize the look of forms in the Portal. An alternative to the default positioning is to manually author the HTML for the form by binding each control into an HTML template for the blade.
+The form is rendered using a section. The code loads all the controls that should be displayed into the `children` observable array of the section. This positions the controls sequentially on a blade, by default, so it is an easy way to standardize the look of forms in the Portal. An alternative to the default positioning is to manually author the HTML for the form by binding each control into an HTML template for the blade.
 
 This sample includes two commands at the top of the blade that will save or discard data. Commands are used because this blade stays open after a save/discard operation. If the blade were to close after the operation, then there would be an action bar at the bottom of the blade to use instead. 
 
-The commands check to make sure the edit scope has been populated previous to enabling themselves via the `canExecute` label in the `ko.pureComputed` code.
-<!-- TODO: Determine whether this is a label, a case, or a method. --> 
-They also keep themselves disabled during save operations via an observable named `_saving` that the part maintains, as in the following code.
+The commands check to make sure that the `EditScope` has been populated previous to enabling themselves via the `canExecute` portion of the `ko.pureComputed` code.
+
+The commands also keep themselves disabled during save operations via a `_saving` observable that the blade maintains, as in the following code.
 
 `<dir>\Client\V1\Forms\Samples\Basic\ViewModels\FormsSampleBasicBlade.ts`
 
@@ -262,7 +256,7 @@ this.commandBar.setItems([saveCommand, discardCommand]);
 ```
 -->
 
-Because the edit scope is being used, the save/discard commands can just call the `saveChanges()` or `revertAll()` methods on the edit scope to trigger the right action.
+Because the `EditScope` is being used, the save/discard commands can just call the `saveChanges()` or `revertAll()` methods on the edit scope to trigger the right action.
 
 For more information, see [http://knockoutjs.com/documentation/computed-writable.html](http://knockoutjs.com/documentation/computed-writable.html).
 
@@ -302,7 +296,7 @@ In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  
 
 For an example of each of these validators in action, view the sample file that is located at `<dir>\Client\V1\Forms\Samples\Validations\ViewModels\FormValidationsViewModels.ts`.
 
-Validators are added to the form objects that are available on the view model, as in the following code.
+Validators are added to the form objects that are on the ViewModel, as in the following code.
 
 ```ts
 var nameTextboxOptions  = <MsPortalFx.ViewModels.Forms.TextBox.Options>{
@@ -319,17 +313,25 @@ var nameTextboxOptions  = <MsPortalFx.ViewModels.Forms.TextBox.Options>{
 <a name="developing-forms-working-with-edit-scopes"></a>
 ## Working with Edit Scopes
 
-Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide many common functions that would otherwise be difficult to orchestrate:
+Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide many common functions that would otherwise be difficult to orchestrate, like the following:
 
   * Track changes in field values across a form
   * Track validation of all fields in a form
-  * Provide a simple way to discard all changes in a form
-  * Persist unsaved changes in a form to the cloud
+  * Provide a way to discard all changes in a form
+  * Persist unsaved changes from the form to the cloud
   * Simplify merging changes from the server into the current edit
 
-Any user edits collected in an edit scope are saved in the browser's session storage. This is managed for extension developers by the shell. Parts or blades may request an edit scope, but the most common usage is in a blade. A blade will define a `BladeParameter` with a `Type` of `NewEditScope`. This informs the shell that a blade is asking for a new edit scope object. Within the rest of the blade, that parameter can be attached to an `editScopeId` property on any part. For an example of requesting an edit scope from PDL, view the following sample:
+In some instances, development approaches that do not use `editScopes` are preferred.  For more information about forms without editScopes, see  [portalfx-editscopeless-forms.md](portalfx-editscopeless-forms.md) and [portalfx-controls-dropdown-migration.md](portalfx-controls-dropdown-migration.md).
 
-`\Client\Data\MasterDetailEdit\MasterDetailEdit.pdl`
+In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>` is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK. 
+
+Any edits that were made by the user and collected in an `EditScope` are saved in the storage for the browser session. This is managed by the shell. Parts or blades may request an `EditScope`, but the most common usage is in a blade. A blade defines a `BladeParameter` with a `Type` of `NewEditScope`. This informs the shell that a blade is asking for a new `editScope` object. Within the rest of the blade, that parameter can be attached to an `editScopeId` property on any part. Using this method, many parts and commands on the blade can all read from the same editScopeId. This is common when a command needs to save information about a part. After sending the `editScopeId` to the part as a property, the `viewModel`  loads the `editScope` from the cloud. 
+
+<a name="developing-forms-working-with-edit-scopes-request-an-editscope-from-pdl"></a>
+### Request an editscope from pdl
+
+For an example of requesting an `editScope` from PDL, view the following code.  The sample is also located at `<dir>\Client\V1\MasterDetail\MasterDetailEdit\MasterDetailEdit.pdl`.  The `valid` is using the `section` object of the form to determine if the form is currently valid.  This is not directly related to the edit scope, but will be relevant in the section named []().
+
 
 ```xml
 <!-- Display detail blade with an edit scope. Blade consists of a form and commands.-->
@@ -363,11 +365,14 @@ Any user edits collected in an edit scope are saved in the browser's session sto
 </Blade>
 ```
 
-Using this method, many parts (and commands!) on the blade may all read from the same editScopeId. This is very common when a command needs to save information about a part. After passing the editScopeId into the part as a property, the view model must load the edit scope from the cloud. The data in
-the edit scope will include original values and saved edits. The pattern to access inputs on a part is to use the `onInputsSet` method. For an example of loading an edit scope, view the following file in the samples:
+<a name="developing-forms-working-with-edit-scopes-load-an-edit-scope"></a>
+### Load an edit scope
 
-`\Client\Data\MasterDetailEdit\ViewModels\DetailViewModels.ts`
+The data in the `editScope` includes original values and saved edits. The method to access inputs on a part is the `onInputsSet` method. In the constructor, a new `MsPortalFx.Data.EditScopeView` object is created from the `dataContext`. The `EditScopeView` provides a stable observable reference to an `EditScope` object. The `editScopeId` will be sent in as a member of the `inputs` object when the part is bound.
 
+For an example of loading an edit scope, view the following code.  The sample is also located at `<dir>\Client\V1\MasterDetail\MasterDetailEdit\ViewModels\DetailViewModels.ts`. 
+
+<!-- TODO: Determine whether this inline code should be replaced when the samples code is replaced and linked in gitHub, or whether the links to the SDK samples are sufficient. -->
 ```ts
 // create a new editScopeView
 constructor(container: MsPortalFx.ViewModels.PartContainerContract,
@@ -390,11 +395,18 @@ public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
 }
 ```
 
-In the constructor, a new `MsPortalFx.Data.EditScopeView` object is created from the `dataContext`. The `EditScopeView` provides a stable observable reference to an `EditScope` object. The editScopeId will be passed in as a member of the `inputs` object when the part is bound. The `valid` computed
-above is using the `section` object of the form to determine if the form is currently valid (not directly related to the edit scope, but this will come up in the commands section below). The code that loads the edit scope is largely related to data loading, so the data context is the preferred location for the
-code. For an example of loading an edit scope from a data context, view the following sample:
+<!--TODO:  Determine which piece of code is associated with this paragraph.  -->
 
-`\Client\Data\MasterDetailEdit\MasterDetailEditData.ts`
+ The code that loads the `EditScope` is largely related to data loading, so the data context is the preferred location for the code. 
+
+<a name="developing-forms-working-with-edit-scopes-load-an-edit-scope-from-a-data-context"></a>
+### Load an edit scope from a data context
+
+ <!--TODO:  The following sample code does not exist by this name.  -->
+ For an example of loading an edit scope from a data context, view the sample that is located at `<dir>\Client\Data\MasterDetailEdit\MasterDetailEditData.ts`.
+ <!--TODO:  The  previous sample code does not exist by this name.  -->
+
+The following code creates a new `EditScopeCache`, which is bound to the `DataModels.WebsiteModel` object type. It uses an edit scope within a form.  The `fetchForExistingData()` method on the cache provides a promise, which informs the `ViewModel` that the `editScope` is loaded and available.
 
 ```ts
 this.editScopeCache = MsPortalFx.Data.EditScopeCache.create<DataModels.WebsiteModel, number>({
@@ -415,10 +427,10 @@ this.editScopeCache = MsPortalFx.Data.EditScopeCache.create<DataModels.WebsiteMo
 });
 ```
 
-The code above creates a new `EditScopeCache`, which is bound to the `DataModels.WebsiteModel` object type. The `fetchForExistingData()` method on the cache provides a promise, which informs the view model that the edit scope is loaded and available. For an example of using the edit scope within a form,
-view the following sample:
+<a name="developing-forms-working-with-edit-scopes-create-new-objects-and-bind-them-to-the-editscope"></a>
+### Create new objects and bind them to the editScope
 
-`\Client\Data\MasterDetailEdit\ViewModels\DetailViewModels.ts`
+The following code creates a new set of form field objects and binds them to the `editScope`. The sample is also located at  `<dir>\Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\DetailViewModels.ts`.  
 
 ```ts
 private _initializeForm(): void {
@@ -465,13 +477,12 @@ private _initializeForm(): void {
     }
 ```
 
-The code above creates a new set of form field objects which are bound to the edit scope.
+For more information about form fields, see [portalfx-controls.md#forms](portalfx-controls.md#forms).
 
-  
 <a name="developing-forms-working-with-edit-scopes-editscopeaccessor"></a>
 ### EditScopeAccessor
 
-Form fields require a binding to one or more EditScope observables. Consequently, they have two constructor overloads.  Extension developers can configure this binding by supplying a path from the root of the EditScope/Form model down to the observable to which the form field should bind. They can do this by selecting one of the two form field constructor variations. 
+Form fields require a binding to one or more `EditScope` observables. Consequently, they have two constructor overloads.  Extension developers can configure this binding by supplying a path from the root of the EditScope/Form model down to the observable to which the form field should bind. They can do this by selecting one of the two form field constructor variations. 
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
@@ -526,15 +537,18 @@ this.textBoxViewModel = new MsPortalFx.ViewModels.Forms.TextBox.ViewModel(contai
 
 ## Integrating Forms with Commands
 
-In most cases, editable forms are accompanied by commands which act upon those forms. There are two ways form data are made available to the command:
+In most cases, editable forms are accompanied by commands which act upon those forms. There are two ways that form data can be made available to the command:
 
-  * Part property bindings - a value from a part view model on a blade may be bound into the command view model
-  * Edit scope loading - the editScopeId requested by the blade can be bound to a part and a command. By sharing an Id, they can act on the same object.
+  * **Part property bindings**: a value from a part ViewModel on a blade may be bound into the command ViewModel
+  * **Edit scope loading**: the editScopeId requested by the blade can be bound to a part and a command. By sharing an Id, they can act on the same object.
 
-The most common use of part to command binding is sharing the `dirty` or `valid` properties of a form with a command view model. The command view model can choose to enable/disable save buttons based on validity, or enable/disable a discard button when edits are made. For an example of using a binding
-between a part and command, view the `SaveItemCommand` class in the following sample:
+The most common use of part-to-command binding is sharing the `dirty` or `valid` properties of a form with a command ViewModel. The command ViewModel can enable or disable a save button based on validity, or enable or disable a discard button when edits are made. For example, when `EditScopeId` and `currentItemId` are acquired, the command can be enabled if the editscope is dirty and the form is valid, which implies that the form contains valid data.
 
-`\Client\Data\MasterDetailEdit\ViewModels\DetailViewModels.ts`
+In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>` is the `SamplesExtension\` directory. Links to the Dogfood environment will display working copies of the samples that were made available with the SDK.
+
+The sample  located at  `<dir>\Client\V1\MasterDetail\MasterDetailEdit\ViewModels\DetailViewModels.ts` demonstrates a `SaveItemCommand` class that uses the binding between a part and a command. This code is also included in the following example.
+
+<!--TODO:  Determine whether the code matches the sample that ships. This task should be performed for all code samples. --> 
 
 ```ts
 this._editScopeView = dataContext.masterDetailEditSample.editScopeCache.createView(container);
@@ -549,28 +563,28 @@ this.enabled = ko.computed((): boolean => {
 });
 ```
 
-In this snippet, the `enabled` property of the command is toggled based on the validity of the form. Inputs to this command include:
+In the previous snippet, the `enabled` property of the command is toggled based on the validity of the form. Inputs to this command include:
 
-  * **editScopeId** \- loaded via a "NewEditScope" blade parameter
-  * **currentItemId** \- loaded via a "Key" blade parameter
-  * **formValid** \- loaded via the part containing a form on the blade
+  * **editScopeId**: loaded by using a `NewEditScope` blade parameter
+  * **currentItemId**: loaded by using a `Key` blade parameter
+  * **formValid**: loaded by using the part that contains a form on the blade
 
 
 ## Frequently asked questions
 
 ### Should I use an action bar or a commands toolbar on my form?
 
-It depends on the scenario that drives the UX. If the form will capture some data from the user and expect the blade to be closed after submitting the changes, then use an action bar, as specified in [portalfx-ux-create-forms.md#action-bar-+-blue-buttons](portalfx-ux-create-forms.md#action-bar-+-blue-buttons).  However, if the form will edit/update some data and expect the user to make multiple changes before the blade is closed, then use commands, as specified in . 
+It depends on the scenario that drives the UX. If the form will capture some data from the user and expect the blade to be closed after submitting the changes, then use an action bar, as specified in [portalfx-ux-create-forms.md#action-bar-+-blue-buttons](portalfx-ux-create-forms.md#action-bar-+-blue-buttons).  However, if the form will edit or update some data, and expect the user to make multiple changes before the blade is closed, then use commands, as specified in [portalfx-commands.md](portalfx-commands.md). 
 
 * Action Bar
 
-  The action bar will have one button whose label is something like "OK", "Create", or "Submit". The blade should be automatically close immediately after the action bar button is clicked. Users can abandon the form by clicking the close button (the top-right 'x' button). Developers can use a `ParameterProvider` to simplify the code, because it provisions the `editScope` and implicitly closes the blade based on action bar clicks. 
+  The action bar will have one button whose label is something like "OK", "Create", or "Submit". The blade should automatically close immediately after the action bar button is clicked. Users can abandon the form by clicking the Close button that is located at the top right of the application bar. Developers can use a `ParameterProvider` to simplify the code, because it provisions the `editScope` and implicitly closes the blade based on clicking on the action bar. 
 
-  Alternatively, the action bar can contain two buttons, like "OK" and "Cancel", but that requires further configuration of the action bar. The two-button methos is not recommended because all the "Cancel" button is made redundant by the close button.
+  Alternatively, the action bar can contain two buttons, like "OK" and "Cancel", but that requires further configuration. The two-button method is not recommended because the "Cancel" button is made redundant by the Close button.
 
 * Commands
-
-  There are  typically two commands at the top of the blade: "Save" and "Discard". The user can make edits and click "Save" to commit the changes. The blade should show the appropriate UX for saving the data and will stay on the screen after the data has been saved. The user can make further changes and click "Save" again. The user can also discard their changes by clicking "Discard". Once the user is satisfied with the changes, they can close the blade manually.
+  
+  Typically, the two commands at the top of the blade are the "Save" command and the "Discard" command. The user can make edits and click "Save" to commit the changes. The blade should show the appropriate UX for saving the data, and will stay on the screen after the data has been saved. The user can make further changes and click "Save" again. The user can also discard their changes by clicking "Discard". Once the user is satisfied with the changes, they can close the blade manually.
 
 
 
@@ -618,14 +632,15 @@ SOLUTION: For more information about EditScopeAccessors, see [portalfx-forms-wor
 <!-- TODO:  Move this back to the TypeScript  document -->
 ***Q: When do I need to worry about type metadata for my EditScope?***
 
-SOLUTION: For many of the most common, simple Form scenarios, there is no need to describe the EditScope/Form model in terms of type metadata. Generally speaking, supplying type metadata is the way to turn on *advanced* FX behavior, in much the same way that - in .NET - developers apply custom attributes to their .NET types to tailor .NET FX behavior for the types.  
+SOLUTION: For many of the most common, simple Form scenarios, there is no need to describe the EditScope/Form model in terms of type metadata. Generally speaking, supplying type metadata is the way to turn on advanced FX behavior, in much the same way that - in .NET - developers apply custom attributes to their .NET types to tailor .NET FX behavior for the types.
 
-Re: EditScope and Forms, extensions supply [type metadata](portalfx-data-typemetadata.md) for the following scenarios:  
+For more information about type metadata, see [portalfx-data-typemetadata.md](portalfx-data-typemetadata.md).
 
+ For EditScope and Forms, extensions supply [type metadata] for the following scenarios: 
 #### Editable grid
 #### Entity-type
 
-* **Editable grid** - Today's editable grid was developed to work exclusively with EditScope 'entity' arrays. An EditScope 'entity' array is one where created/updated/deleted array items are tracked individually by EditScope. To grant this special treatment to an array in the EditScope/Form model, supply type metadata for the type of the array items (for the `T` in `KnockoutObservableArray<T>`). In the following, the type is marked as an "entity type" and, additionally, the property/properties that constitute the entity's 'id' are specified:  
+* **Editable grid** - Today's editable grid was developed to work exclusively with EditScope 'entity' arrays. An EditScope 'entity' array is one where created/updated/deleted array items are tracked individually by EditScope. To grant this special treatment to an array in the EditScope/Form model, supply type metadata for the type of the array items (for the `T` in `KnockoutObservableArray<T>`). The type is marked as an "entity type" and, the property/properties that constitute the entity's 'id' are specified in the following examples. 
 
 In TypeScript:
 
@@ -733,7 +748,7 @@ this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModels.
 
 #### Apply array as edits
 
-And there is a corresponding '`applyArrayAsEdits`' EditScope method that simplifies applying edits to an existing EditScope 'entity' array. This is often done in a ParameterCollector's '`receiveResult`' callback:
+And there is a corresponding '`applyArrayAsEdits`' EditScope method that simplifies applying edits to an existing EditScope 'entity' array. This is often done in a ParameterCollector's '`receiveResult`' callback, as in the following example.
 
 ```typescript
 
@@ -900,11 +915,13 @@ Often, extensions encounter this "Entity-typed object/array is not known to this
   
 * * *
 
-<a name="developing-forms-working-with-edit-scopes-common-error-encountered-a-property-foo-on-an-editable-object-that-is-not-present-on-the-original-object"></a>
-### Common error: &quot;Encountered a property &#39;foo&#39; on an editable object that is not present on the original object...&quot;
+<a name="developing-forms-working-with-edit-scopes-editable-object-not-present"></a>
+### Editable object not present
+
+***"Encountered a property 'foo' on an editable object that is not present on the original object..."***
 
 SOLUTION: 
-As discussed in [portalfx-extensions-faq-edit-scope.md#key-value-pairs](portalfx-extensions-faq-edit-scope.md#key-value-pairs), the extension should mutate the EditScope/Form model by making observable changes and by calling EditScope APIs. For any object residing in the EditScope, merely adding/removing keys cannot be detected by EditScope (or by the FX at large) and, consequently, edits cannot be tracked. When an extension *attempts* to add/remove keys from an EditScope object, this puts the EditScope edit-tracking in an inconsistent state. When the EditScope detects such an inconsistency, it issues the error above to encourage the extension developer to use (exclusively) observable changes and EditScope APIs to mutate/change the EditScope/Form model.  
+As discussed in [portalfx-extensions-faq-edit-scope.md#key-value-pairs](portalfx-extensions-faq-edit-scope.md#key-value-pairs), the extension should mutate the EditScope/Form model by making observable changes and by calling EditScope APIs. For any object residing in the `EditScope`, merely adding and removing keys cannot be detected by `EditScope` or by the FX at large and, consequently, edits cannot be tracked. When an extension attempts to add or remove keys from an `EditScope` object, this puts the `EditScope` edit-tracking in an inconsistent state. When the `EditScope` detects such an inconsistency, it issues the `Encountered a property...` error to encourage the extension developer to use only observable changes and `EditScope` APIs to mutate/change the EditScope/Form model.  
 
 * * *
 

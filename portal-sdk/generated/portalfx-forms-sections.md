@@ -5,8 +5,7 @@
 <a name="designing-and-arranging-the-ui-the-section-viewmodel"></a>
 ### The section viewModel
 
-While blade templates allow manual layout of controls as specific DOM elements, the generally recommended approach
-is to bind a section `viewModel` into the DOM and then add control `viewModels` to the `children` observable array of the section. For example, the following image contains two sections with varying numbers of child objects in their respective arrays.
+While blade templates allow manual layout of controls as specific DOM elements, the generally recommended approach is to bind a section `viewModel` into the DOM and then add control `viewModels` to the `children` observable array of the section. For example, the following image contains two sections with varying numbers of child objects in their respective arrays.
 
 ![alt-text](../media/portalfx-forms-sections/forms-sections.png "Form Section")
 
@@ -21,18 +20,19 @@ two controls to avoid large amounts of HTML in the blade template. However, plac
 <!-- TODO:  Determine whether "two controls" means the section viewModel and the customHtml control.
 -->
 
-To use a section, create a section viewMmodel and bind it into the DOM in the blade template using the `pcControl` binding handler. Then add all the controls that should be displayed into the `children` observable array of the section. This positions the controls sequentially on a blade, by default. 
+To use a section, create a section ViewModel and bind it into the DOM in the blade template using the `pcControl` binding handler. Then add all the controls that should be displayed into the `children` observable array of the section. This positions the controls sequentially on a blade, by default. 
 
 The section's `style` property can be used to achieve other layouts. This includes table layouts that display controls in multiple rows and columns, as a list of tabs, or as a combination of layouts.
 
-In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
+In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK. Clicking on the following link will display a working copy of a basic Portal form.
 
-Follow [http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/formsallup](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/formsallup) and then click on 'Basic Create Form' to view  an example and of basic form creation. The code to create the section is located at  `<dir>\Client\V1\Forms\Samples\BasicCreate\ViewModels\Parts\FormsSampleBasicCreatePart.ts`.
+[http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/formsallup](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/formsallup) 
+
+Click on 'Basic Create Form' to view an example of basic form creation. The code to create the section is located at  `<dir>\Client\V1\Forms\Samples\BasicCreate\ViewModels\Parts\FormsSampleBasicCreatePart.ts`.
 
 The following template binds the section into the DOM, and will autogenerate the layout for all of the child objects. 
 
 `<dir>\Client\V1\Forms\Samples\BasicCreate\Templates\FormSampleBasicCreate.html`
-
 
 <!--TODO:  Determine how to include live samples of code when the page is generated.  For example, 
 ```typescript

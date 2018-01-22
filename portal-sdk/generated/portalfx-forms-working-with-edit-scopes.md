@@ -2,17 +2,25 @@
 <a name="working-with-edit-scopes"></a>
 ## Working with Edit Scopes
 
-Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide many common functions that would otherwise be difficult to orchestrate:
+Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide many common functions that would otherwise be difficult to orchestrate, like the following:
 
   * Track changes in field values across a form
   * Track validation of all fields in a form
-  * Provide a simple way to discard all changes in a form
-  * Persist unsaved changes in a form to the cloud
+  * Provide a way to discard all changes in a form
+  * Persist unsaved changes from the form to the cloud
   * Simplify merging changes from the server into the current edit
 
-Any user edits collected in an edit scope are saved in the browser's session storage. This is managed for extension developers by the shell. Parts or blades may request an edit scope, but the most common usage is in a blade. A blade will define a `BladeParameter` with a `Type` of `NewEditScope`. This informs the shell that a blade is asking for a new edit scope object. Within the rest of the blade, that parameter can be attached to an `editScopeId` property on any part. For an example of requesting an edit scope from PDL, view the following sample:
+In some instances, development approaches that do not use `editScopes` are preferred.  For more information about forms without editScopes, see  [portalfx-editscopeless-forms.md](portalfx-editscopeless-forms.md) and [portalfx-controls-dropdown-migration.md](portalfx-controls-dropdown-migration.md).
 
-`\Client\Data\MasterDetailEdit\MasterDetailEdit.pdl`
+In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>` is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK. 
+
+Any edits that were made by the user and collected in an `EditScope` are saved in the storage for the browser session. This is managed by the shell. Parts or blades may request an `EditScope`, but the most common usage is in a blade. A blade defines a `BladeParameter` with a `Type` of `NewEditScope`. This informs the shell that a blade is asking for a new `editScope` object. Within the rest of the blade, that parameter can be attached to an `editScopeId` property on any part. Using this method, many parts and commands on the blade can all read from the same editScopeId. This is common when a command needs to save information about a part. After sending the `editScopeId` to the part as a property, the `viewModel`  loads the `editScope` from the cloud. 
+
+<a name="working-with-edit-scopes-request-an-editscope-from-pdl"></a>
+### Request an editscope from pdl
+
+For an example of requesting an `editScope` from PDL, view the following code.  The sample is also located at `<dir>\Client\V1\MasterDetail\MasterDetailEdit\MasterDetailEdit.pdl`.  The `valid` is using the `section` object of the form to determine if the form is currently valid.  This is not directly related to the edit scope, but will be relevant in the section named []().
+
 
 ```xml
 <!-- Display detail blade with an edit scope. Blade consists of a form and commands.-->
@@ -46,11 +54,14 @@ Any user edits collected in an edit scope are saved in the browser's session sto
 </Blade>
 ```
 
-Using this method, many parts (and commands!) on the blade may all read from the same editScopeId. This is very common when a command needs to save information about a part. After passing the editScopeId into the part as a property, the view model must load the edit scope from the cloud. The data in
-the edit scope will include original values and saved edits. The pattern to access inputs on a part is to use the `onInputsSet` method. For an example of loading an edit scope, view the following file in the samples:
+<a name="working-with-edit-scopes-load-an-edit-scope"></a>
+### Load an edit scope
 
-`\Client\Data\MasterDetailEdit\ViewModels\DetailViewModels.ts`
+The data in the `editScope` includes original values and saved edits. The method to access inputs on a part is the `onInputsSet` method. In the constructor, a new `MsPortalFx.Data.EditScopeView` object is created from the `dataContext`. The `EditScopeView` provides a stable observable reference to an `EditScope` object. The `editScopeId` will be sent in as a member of the `inputs` object when the part is bound.
 
+For an example of loading an edit scope, view the following code.  The sample is also located at `<dir>\Client\V1\MasterDetail\MasterDetailEdit\ViewModels\DetailViewModels.ts`. 
+
+<!-- TODO: Determine whether this inline code should be replaced when the samples code is replaced and linked in gitHub, or whether the links to the SDK samples are sufficient. -->
 ```ts
 // create a new editScopeView
 constructor(container: MsPortalFx.ViewModels.PartContainerContract,
@@ -73,11 +84,18 @@ public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
 }
 ```
 
-In the constructor, a new `MsPortalFx.Data.EditScopeView` object is created from the `dataContext`. The `EditScopeView` provides a stable observable reference to an `EditScope` object. The editScopeId will be passed in as a member of the `inputs` object when the part is bound. The `valid` computed
-above is using the `section` object of the form to determine if the form is currently valid (not directly related to the edit scope, but this will come up in the commands section below). The code that loads the edit scope is largely related to data loading, so the data context is the preferred location for the
-code. For an example of loading an edit scope from a data context, view the following sample:
+<!--TODO:  Determine which piece of code is associated with this paragraph.  -->
 
-`\Client\Data\MasterDetailEdit\MasterDetailEditData.ts`
+ The code that loads the `EditScope` is largely related to data loading, so the data context is the preferred location for the code. 
+
+<a name="working-with-edit-scopes-load-an-edit-scope-from-a-data-context"></a>
+### Load an edit scope from a data context
+
+ <!--TODO:  The following sample code does not exist by this name.  -->
+ For an example of loading an edit scope from a data context, view the sample that is located at `<dir>\Client\Data\MasterDetailEdit\MasterDetailEditData.ts`.
+ <!--TODO:  The  previous sample code does not exist by this name.  -->
+
+The following code creates a new `EditScopeCache`, which is bound to the `DataModels.WebsiteModel` object type. It uses an edit scope within a form.  The `fetchForExistingData()` method on the cache provides a promise, which informs the `ViewModel` that the `editScope` is loaded and available.
 
 ```ts
 this.editScopeCache = MsPortalFx.Data.EditScopeCache.create<DataModels.WebsiteModel, number>({
@@ -98,10 +116,10 @@ this.editScopeCache = MsPortalFx.Data.EditScopeCache.create<DataModels.WebsiteMo
 });
 ```
 
-The code above creates a new `EditScopeCache`, which is bound to the `DataModels.WebsiteModel` object type. The `fetchForExistingData()` method on the cache provides a promise, which informs the view model that the edit scope is loaded and available. For an example of using the edit scope within a form,
-view the following sample:
+<a name="working-with-edit-scopes-create-new-objects-and-bind-them-to-the-editscope"></a>
+### Create new objects and bind them to the editScope
 
-`\Client\Data\MasterDetailEdit\ViewModels\DetailViewModels.ts`
+The following code creates a new set of form field objects and binds them to the `editScope`. The sample is also located at  `<dir>\Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\DetailViewModels.ts`.  
 
 ```ts
 private _initializeForm(): void {
@@ -148,13 +166,12 @@ private _initializeForm(): void {
     }
 ```
 
-The code above creates a new set of form field objects which are bound to the edit scope.
+For more information about form fields, see [portalfx-controls.md#forms](portalfx-controls.md#forms).
 
-  
 <a name="working-with-edit-scopes-editscopeaccessor"></a>
 ### EditScopeAccessor
 
-Form fields require a binding to one or more EditScope observables. Consequently, they have two constructor overloads.  Extension developers can configure this binding by supplying a path from the root of the EditScope/Form model down to the observable to which the form field should bind. They can do this by selecting one of the two form field constructor variations. 
+Form fields require a binding to one or more `EditScope` observables. Consequently, they have two constructor overloads.  Extension developers can configure this binding by supplying a path from the root of the EditScope/Form model down to the observable to which the form field should bind. They can do this by selecting one of the two form field constructor variations. 
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
