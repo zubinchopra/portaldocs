@@ -241,7 +241,11 @@ The Stackoverflow FAQ item should be included in every topic that contains an FA
    
 <!-- optional FYI document, for links that could not be included in the content within the natural flow of the doc -->
 <!-- gitdown": "include-file", "file": "../templates/portalfx-<major-area>-<topic>-fyi.md"  -->
+   ## For More Information
    
+For more information about documentation best practices by copying and modifying the document skeleton, see [portalfx-extensions-bp-skeleton.md](portalfx-extensions-bp-skeleton.md).
+
+
 
 <!-- required Glossary document. -->
 <!-- gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-<major-area>.md"  -->
@@ -257,13 +261,6 @@ The Stackoverflow FAQ item should be included in every topic that contains an FA
 This document contains all terms that are in the topic, with the following exceptions.
 * Standard English Language
 * Standard Computing terms, like the ones found in This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
-
- that are describes the topic at a general level.  If portions of the topic lend itself to further discussion, starting a subtopic document is a good idea.
-
-If so, the subtopics are not included in this document; instead, they are included in the overarching document that contains a gitHub link to  this overview.  This method reduces gitHub commands to one document per topic.
-
-Subtopic documents can authored along the same lines.
-
 
 | Term           | Meaning |
 | -------------- | -------- |
