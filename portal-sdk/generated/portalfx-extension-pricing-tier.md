@@ -278,7 +278,7 @@ Sample Resource Map
 "default": [ // List of spec cards
     {
         "id": "Standard_D15_v2", // Roundtrip spec card ID of your choice to track request/response
-        "firstParty": [ // list of first party 
+        "firstParty": [ // list of first party
             {
                 "id": "STANDARD_D15_V2",
                 "resourceId": "4naypwzhqsu7yaeruxj3fpqa5ah5p9ax4nayrti71j3x5pdwtc7y4imyqeyy6a", // resource target key for this spec (you can use GUID now) work with PM if you don’t know this

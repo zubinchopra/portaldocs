@@ -43,7 +43,7 @@ Accessibility is about making the portal usable by people who have limitations t
 * A fully accessible default theme (Blue)  
   _**NOTE:** When using that theme, the contrast ratio for all text must meet <a href="http://www.interactiveaccessibility.com/web-accessibility-guidelines">AAA guidelines</a>._
 
-* The Portal must support HighContrast mode and should display controls and chrome accordingly
+* The Portal supports HighContrast mode and should display controls and chrome accordingly.
 
 <a name="accessibility-what-the-framework-provides-focus-management-is-handled-by-the-framework-and-must-follow-those-rules-unless-focus-is-changed-by-the-user-first"></a>
 #### Focus management is handled by the framework and must follow those rules (unless focus is changed by the user first):
@@ -59,10 +59,10 @@ Accessibility is about making the portal usable by people who have limitations t
 
 <a name="accessibility-troubleshooting-issues"></a>
 ## Troubleshooting issues:
-- <a href="http://vstfrd:8080/Azure/RD/_workitems#path=Shared+Queries%2FAUX%2FIbiza%2FAccessibility%2FAll+D+and+F+bugs&_a=query">***Known issues*** </a> 
+- <a href="http://vstfrd:8080/Azure/RD/_workitems#path=Shared+Queries%2FAUX%2FIbiza%2FAccessibility%2FIbiza+Accessibility+-+Triaged+Active&_a=query">***Known issues*** </a> 
 
 - **Is this a control owned by the framework?**   
-		<a href="http://aka.ms/portalfx/accessibility/bug">File a framework bug (internal only)</a>
+	`	<a href="http://aka.ms/portalfx/accessibility/bug">File a framework bug (internal only)</a>
 - **Missing text or labels?**   
 	Use the attribute TITLE to add a description that is shown on hover. If still not possible, use aria-label as last resort. <a href="http://www.w3schools.com/html/html_attributes.asp">Learn more about HTML attributes.</a>
 
@@ -73,8 +73,9 @@ Accessibility is about making the portal usable by people who have limitations t
 ## Testing for accessibility
 
 * **High-contrast**  
-  IE or Firefox with Windows in High Contrast Mode Black on White.  
-	_**NOTE:** Chrome does not support High Contrast natively, and extensions apply filters that are not properly accessible._
+  Native support for IE/Edge with Windows High Contrast Mode (WHCM).
+  Other browsers do not support WHCM natively, and neither other OS system, therefore a custom theme is provided in the settings pane of the portal.  
+	_**NOTE:** The custom theme is a good approximation of WCHM behavior and can be used to quickly verify your compliance. To properly verify though, please use High Contrast settings option 2 with Edge._
 
 * **Screen reader**  
   Either combination of NVDA/Firefox or Narrator/Edge  
@@ -86,22 +87,33 @@ Accessibility is about making the portal usable by people who have limitations t
 
 <a name="accessibility-basic-accessibility-checklist"></a>
 ## Basic accessibility checklist:
+Before testing
 
-1. Ensure there is accessible name (required) and description (optional) for content and interactive UI elements in your extension.
+- Extension should be updating to SDK version 788 or more recent.  
 
-2. Verify keyboard accessibility of your blade content and forms.  
-  - Navigate to your content in the portal and ensure focus is captured to your content in the expected way (autofocus on open provided by the framework)  
-  - Ensure the <a href="https://www.paciellogroup.com/blog/2014/08/using-the-tabindex-attribute/">tab order is natural</a> while navigating the blade content
-  - Verify that portal provided keyboard shortcuts are functional within your provided content  
-3. Visually verify your UI to ensure:  
-  - Text contrast meets <a href="http://www.interactiveaccessibility.com/web-accessibility-guidelines">AAA guidelines</a>  
-	Color contrast ratio- The updated Section 508 of the Americans with Disability Act, as well as other legislation, requires that the default color contrasts between text and its background must be 5:1. For large text (18-point font sizes, or 14 points and bolded), the required default contrast is 3:1.   
-  - Elements render as designed in the high-contrast themes  
-  - Color must not be the only means of conveying information  
-	Color dependence is defined as using color as the sole means to convey information. For example, a single indicator that is green for 'on', orange for 'standby', and red for 'off' is color dependent. When color is the only means to convey information, people who are color blind, and people who cannot see, do not have access to the same information that others have. The status or function that is being conveyed by color also needs to be available in a textual format that can be viewed by all, and can be read by screen reader software. This requirement does not mean that color cannot be used; it means that color cannot be the only means of conveying the information.   
-4. Run accessibility tools, address reported issues, and verify the screen reading experience.   
-  - <a href="https://www.1eswiki.com/wiki/Trusted_Tester_with_Keros" >Baseline accessibility assessment (internal only)</a>
+- Extension should update to use supported controls.  
+https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/controls  
+*Exceptions: (DiffEditor, DatePolyFills, PairedTimeline) are not supported by Framework* 	
 
+- Extension should ensure theming support in both Light and Dark mode when using custom colors
+
+- Extension should not interfere with High Contrast theming.  
+	*Common mistake*: Using a `<div>` instead of an `<a>` for a link
+
+- When introducing user actionable areas that are not based on supported controls, extension should use `fxClick` as documented. `click` binding is not supported.
+
+- Extensions creating custom implementation of supported controls should be identified.
+
+- Image and logos that are part of the Narrator Items mode should be labelled properly, or marked as aria-hidden if not significant.
+
+- Review all controls and ensure that labels are being used. If labels are omitted then use aria labels in the viewmodel.
+
+- Verify keyboard accessibility of your blade content and forms. Navigate to your content in the portal and ensure focus is captured to your content in the expected way (autofocus on open provided by the framework)  
+
+
+After Testing report is given to extension
+- Ibiza provides a list of common pattern that are not issues with justifications
+- Ibiza provides a list of external product bugs that are not issues to fix with justifications and bug links
 
 <a name="accessibility-best-practices"></a>
 ## Best Practices
@@ -139,7 +151,7 @@ Accessibility is about making the portal usable by people who have limitations t
 <a name="accessibility-accessibility-planning"></a>
 ## Accessibility Planning
 
-As we continue to work through our accessibility backlog we would like to streamline the process as best we can to be as efficient as possible. Below is a template to help guide you through what tags to use as bugs are filed. Most (95%) of bugs will fall into one of the 8 issues below. All bugs that you feel are framework issues should be assigned to Paymon Parsadmehr. If you feel a bug falls into more than one category, please add all corresponding tags to the bug. If you feel the bug does not fit into any of the buckets please reach out to me (paparsad) and we can take a look together to see where it fits. As we resolve each bucket we will send out updates for folks to be aware of the progress as well as be ready for regress testing from vendor teams. Please reach out to me if there are any other questions or concerns. 
+As we continue to work through our accessibility backlog we would like to streamline the process as best we can to be as efficient as possible. Below is a template to help guide you through what tags to use as bugs are filed. Most (95%) of bugs will fall into one of the 8 issues below. All bugs that you feel are framework issues should be assigned to Paymon Parsadmehr. If you feel a bug falls into more than one category, please add all corresponding tags to the bug. If you feel the bug does not fit into any of the buckets please reach out to Paymon Parsadmehr to assess issue. As we resolve each bucket we will send out updates for folks to be aware of progress as well as regress testing updates from vendor teams. Please reach out to (paparsad) if there are any other questions or concerns. 
  
  
 Below are the tagging rules as well as examples of each bug class. 
@@ -208,5 +220,5 @@ Additional guidance
  
 **updating legacy controls will require extension code changes. We are working on a list of these controls and will share by end of the April. 
 
-1.   Use the following [bug template](http://vstfrd:8080/Azure/RD/_workItems#_a=new&witd=RDBug&%5BSystem.AssignedTo%5D=Paymon%20Parsadmehr%20%3CNORTHAMERICA%5Cpaparsad%3E&%5BSystem.Description%5D=%3Cp%3E%3Cb%3EUpdate%26nbsp%3Bthe%20following%20fields%20and%20erase%20these%20instructions%3A%3C%2Fb%3E%3C%2Fp%3E%3Cp%3E1-%20Change%20TITLE%3C%2Fp%3E%3Cp%3E2-%20Add%20proper%20TAGS%20%28see%20email%29%3C%2Fp%3E%3Cp%3E3-%20Ensure%20FILE%20ATTACHMENTS%20include%20a%20screenshot%20circling%20the%20issue%20area%20with%20brief%20text.%20Videos%20aren%27t%20sufficient.%20Please%20don%27t%20use%20zip%20files.%3C%2Fp%3E%3Cp%3E4-%20Update%20DESCRIPTION%20with%20repro%20to%20problem%20area%20and%20expected%20behavior.%20No%20MAS%20description%2C%20no%20sample.%20Just%20repro%20and%20expectation.%3C%2Fp%3E&%5BMicrosoft.Rd.HowFound%5D=Acceptance&%5BMicrosoft.Azure.IssueType%5D=Code%20Defect&%5BSystem.AreaPath%5D=RD%5CAzure%20App%20Plat%5CAzurePortal%5CFx&%5BSystem.IterationPath%5D=RD%5CAzure%20App%20Plat%5CIbiza%5CNext) to file bugs 
+1.   Use the following [bug template](http://vstfrd:8080/Azure/RD/_workItems/create/RDBug?%5BSystem.Title%5D=Accessibility%3A+MAS%23+%3A++%5Btitle+for+bug%5D&%5BSystem.Description%5D=%3Cp%3E%3Cstrong%3EScenario+%3A%3C%2Fstrong%3E%26nbsp%3B%3C%2Fp%3E%3Cp%3E%3Cb%3EBlade+Name%3A%3C%2Fb%3E%26nbsp%3B%3C%2Fp%3E%3Cp%3E%3Cbr%3E%3Cb%3EAdd+One+Screenshot%3C%2Fb%3E%3C%2Fp%3E%3Cp%3E%3Cb%3E%3C%2Fb%3E%3Cbr%3E%3C%2Fp%3E%3Cdiv%3E%3Cp+style%3D'color%3Argb(34%2C+34%2C+34)%3Bfont-family%3A%22Segoe+UI%22%2C+%22Helvetica+Neue%22%2C+Helvetica%2C+Arial%2C+Verdana%3B'%3E%3Cstrong%3ERepro+Steps%3A%3C%2Fstrong%3E%3C%2Fp%3E%3Cp+style%3D'color%3Argb(34%2C+34%2C+34)%3Bfont-family%3A%22Segoe+UI%22%2C+%22Helvetica+Neue%22%2C+Helvetica%2C+Arial%2C+Verdana%3B'%3E%3Cbr%3E%3C%2Fp%3E%3Cp+style%3D'color%3Argb(34%2C+34%2C+34)%3Bfont-family%3A%22Segoe+UI%22%2C+%22Helvetica+Neue%22%2C+Helvetica%2C+Arial%2C+Verdana%3B'%3E%3Cbr%3E%3C%2Fp%3E%3Cp+style%3D'color%3Argb(34%2C+34%2C+34)%3Bfont-family%3A%22Segoe+UI%22%2C+%22Helvetica+Neue%22%2C+Helvetica%2C+Arial%2C+Verdana%3B'%3E%3Cspan+style%3D%22line-height%3A14.26px%3Bfont-size%3A10pt%3B%22%3E%3Cstrong%3EExpected+Result%3A%3C%2Fstrong%3E%3C%2Fspan%3E%3C%2Fp%3E%3Cp+style%3D'color%3Argb(34%2C+34%2C+34)%3Bfont-family%3A%22Segoe+UI%22%2C+%22Helvetica+Neue%22%2C+Helvetica%2C+Arial%2C+Verdana%3B'%3E%3Cbr%3E%3C%2Fp%3E%3Cp+style%3D'color%3Argb(34%2C+34%2C+34)%3Bfont-family%3A%22Segoe+UI%22%2C+%22Helvetica+Neue%22%2C+Helvetica%2C+Arial%2C+Verdana%3B'%3E%3Cbr%3E%3C%2Fp%3E%3Cp+style%3D'color%3Argb(34%2C+34%2C+34)%3Bfont-family%3A%22Segoe+UI%22%2C+%22Helvetica+Neue%22%2C+Helvetica%2C+Arial%2C+Verdana%3B'%3E%3Cstrong%3EActual+Result%3A%3C%2Fstrong%3E%3C%2Fp%3E%3Cp+style%3D'color%3Argb(34%2C+34%2C+34)%3Bfont-family%3A%22Segoe+UI%22%2C+%22Helvetica+Neue%22%2C+Helvetica%2C+Arial%2C+Verdana%3B'%3E%3Cbr%3E%3C%2Fp%3E%3Cp+style%3D'color%3Argb(34%2C+34%2C+34)%3Bfont-family%3A%22Segoe+UI%22%2C+%22Helvetica+Neue%22%2C+Helvetica%2C+Arial%2C+Verdana%3B'%3E%3Cstrong%3ENarrator+Behavior%3A%3C%2Fstrong%3E%3C%2Fp%3E%3Cp+style%3D'color%3Argb(34%2C+34%2C+34)%3Bfont-family%3A%22Segoe+UI%22%2C+%22Helvetica+Neue%22%2C+Helvetica%2C+Arial%2C+Verdana%3B'%3E%3Cb%3E%3C%2Fb%3E%3Cbr%3E%3C%2Fp%3E%3Cp+style%3D'color%3Argb(34%2C+34%2C+34)%3Bfont-family%3A%22Segoe+UI%22%2C+%22Helvetica+Neue%22%2C+Helvetica%2C+Arial%2C+Verdana%3B'%3E%3Cstrong%3ESuggested+Fix%3A%3C%2Fstrong%3E%3Cbr%3E%3C%2Fp%3E%3Cp+style%3D'color%3Argb(34%2C+34%2C+34)%3Bfont-family%3A%22Segoe+UI%22%2C+%22Helvetica+Neue%22%2C+Helvetica%2C+Arial%2C+Verdana%3B'%3E%3Cbr%3E%3C%2Fp%3E%3Cp+style%3D'color%3Argb(34%2C+34%2C+34)%3Bfont-family%3A%22Segoe+UI%22%2C+%22Helvetica+Neue%22%2C+Helvetica%2C+Arial%2C+Verdana%3B'%3E%3Cbr%3E%3C%2Fp%3E%3Cp+style%3D'color%3Argb(34%2C+34%2C+34)%3Bfont-family%3A%22Segoe+UI%22%2C+%22Helvetica+Neue%22%2C+Helvetica%2C+Arial%2C+Verdana%3B'%3E%3Cbr%3E%3C%2Fp%3E%3Cp+style%3D'color%3Argb(34%2C+34%2C+34)%3Bfont-family%3A%22Segoe+UI%22%2C+%22Helvetica+Neue%22%2C+Helvetica%2C+Arial%2C+Verdana%3B'%3E%3Cbr%3E%3C%2Fp%3E%3Cp+style%3D'color%3Argb(34%2C+34%2C+34)%3Bfont-family%3A%22Segoe+UI%22%2C+%22Helvetica+Neue%22%2C+Helvetica%2C+Arial%2C+Verdana%3B'%3E%3Cbr%3E%3C%2Fp%3E%3C%2Fdiv%3E&%5BSystem.Tags%5D=A11YMAS%3B+Accessibility%3B+Aria-attr%3B+ASR%3B+Bug-Activated%3B+HubsResource%3B+Ibiza%3B+MAS40B%3B+SEPOConfirmation%3B+V2A%3B+Wipro%3B+Wipro-Ibiza&%5BMicrosoft.VSTS.Common.ActivatedBy%5D=Paymon+Parsadmehr+%3CNORTHAMERICA%5Cpaparsad%3E&%5BMicrosoft.VSTS.Common.Priority%5D=1&%5BMicrosoft.Rd.HowFound%5D=Other&%5BMicrosoft.Azure.AreaIdValidation%5D=SelectedAreaIdIsValid&%5BMicrosoft.Azure.IssueType%5D=Code+Defect&%5BMicrosoft.VSTS.Common.StackRank%5D=1&%5BSystem.AreaPath%5D=RD%5CAzure+App+Plat%5CAzurePortal%5CFx) to file bugs 
 

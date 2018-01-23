@@ -34,7 +34,7 @@ Accessibility is about making the portal usable by people who have limitations t
 * A fully accessible default theme (Blue)  
   _**NOTE:** When using that theme, the contrast ratio for all text must meet <a href="http://www.interactiveaccessibility.com/web-accessibility-guidelines">AAA guidelines</a>._
 
-* The Portal must support HighContrast mode and should display controls and chrome accordingly
+* The Portal supports HighContrast mode and should display controls and chrome accordingly.
 
 <a name="accessibility-what-the-framework-provides-focus-management-is-handled-by-the-framework-and-must-follow-those-rules-unless-focus-is-changed-by-the-user-first"></a>
 #### Focus management is handled by the framework and must follow those rules (unless focus is changed by the user first):
@@ -50,10 +50,10 @@ Accessibility is about making the portal usable by people who have limitations t
 
 <a name="accessibility-troubleshooting-issues"></a>
 ## Troubleshooting issues:
-- <a href="http://vstfrd:8080/Azure/RD/_workitems#path=Shared+Queries%2FAUX%2FIbiza%2FAccessibility%2FAll+D+and+F+bugs&_a=query">***Known issues*** </a> 
+- <a href="http://vstfrd:8080/Azure/RD/_workitems#path=Shared+Queries%2FAUX%2FIbiza%2FAccessibility%2FIbiza+Accessibility+-+Triaged+Active&_a=query">***Known issues*** </a> 
 
 - **Is this a control owned by the framework?**   
-		<a href="http://aka.ms/portalfx/accessibility/bug">File a framework bug (internal only)</a>
+	`	<a href="http://aka.ms/portalfx/accessibility/bug">File a framework bug (internal only)</a>
 - **Missing text or labels?**   
 	Use the attribute TITLE to add a description that is shown on hover. If still not possible, use aria-label as last resort. <a href="http://www.w3schools.com/html/html_attributes.asp">Learn more about HTML attributes.</a>
 
@@ -64,8 +64,9 @@ Accessibility is about making the portal usable by people who have limitations t
 ## Testing for accessibility
 
 * **High-contrast**  
-  IE or Firefox with Windows in High Contrast Mode Black on White.  
-	_**NOTE:** Chrome does not support High Contrast natively, and extensions apply filters that are not properly accessible._
+  Native support for IE/Edge with Windows High Contrast Mode (WHCM).
+  Other browsers do not support WHCM natively, and neither other OS system, therefore a custom theme is provided in the settings pane of the portal.  
+	_**NOTE:** The custom theme is a good approximation of WCHM behavior and can be used to quickly verify your compliance. To properly verify though, please use High Contrast settings option 2 with Edge._
 
 * **Screen reader**  
   Either combination of NVDA/Firefox or Narrator/Edge  
@@ -77,22 +78,33 @@ Accessibility is about making the portal usable by people who have limitations t
 
 <a name="accessibility-basic-accessibility-checklist"></a>
 ## Basic accessibility checklist:
+Before testing
 
-1. Ensure there is accessible name (required) and description (optional) for content and interactive UI elements in your extension.
+- Extension should be updating to SDK version 788 or more recent.  
 
-2. Verify keyboard accessibility of your blade content and forms.  
-  - Navigate to your content in the portal and ensure focus is captured to your content in the expected way (autofocus on open provided by the framework)  
-  - Ensure the <a href="https://www.paciellogroup.com/blog/2014/08/using-the-tabindex-attribute/">tab order is natural</a> while navigating the blade content
-  - Verify that portal provided keyboard shortcuts are functional within your provided content  
-3. Visually verify your UI to ensure:  
-  - Text contrast meets <a href="http://www.interactiveaccessibility.com/web-accessibility-guidelines">AAA guidelines</a>  
-	Color contrast ratio- The updated Section 508 of the Americans with Disability Act, as well as other legislation, requires that the default color contrasts between text and its background must be 5:1. For large text (18-point font sizes, or 14 points and bolded), the required default contrast is 3:1.   
-  - Elements render as designed in the high-contrast themes  
-  - Color must not be the only means of conveying information  
-	Color dependence is defined as using color as the sole means to convey information. For example, a single indicator that is green for 'on', orange for 'standby', and red for 'off' is color dependent. When color is the only means to convey information, people who are color blind, and people who cannot see, do not have access to the same information that others have. The status or function that is being conveyed by color also needs to be available in a textual format that can be viewed by all, and can be read by screen reader software. This requirement does not mean that color cannot be used; it means that color cannot be the only means of conveying the information.   
-4. Run accessibility tools, address reported issues, and verify the screen reading experience.   
-  - <a href="https://www.1eswiki.com/wiki/Trusted_Tester_with_Keros" >Baseline accessibility assessment (internal only)</a>
+- Extension should update to use supported controls.  
+https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/controls  
+*Exceptions: (DiffEditor, DatePolyFills, PairedTimeline) are not supported by Framework* 	
 
+- Extension should ensure theming support in both Light and Dark mode when using custom colors
+
+- Extension should not interfere with High Contrast theming.  
+	*Common mistake*: Using a `<div>` instead of an `<a>` for a link
+
+- When introducing user actionable areas that are not based on supported controls, extension should use `fxClick` as documented. `click` binding is not supported.
+
+- Extensions creating custom implementation of supported controls should be identified.
+
+- Image and logos that are part of the Narrator Items mode should be labelled properly, or marked as aria-hidden if not significant.
+
+- Review all controls and ensure that labels are being used. If labels are omitted then use aria labels in the viewmodel.
+
+- Verify keyboard accessibility of your blade content and forms. Navigate to your content in the portal and ensure focus is captured to your content in the expected way (autofocus on open provided by the framework)  
+
+
+After Testing report is given to extension
+- Ibiza provides a list of common pattern that are not issues with justifications
+- Ibiza provides a list of external product bugs that are not issues to fix with justifications and bug links
 
 <a name="accessibility-best-practices"></a>
 ## Best Practices

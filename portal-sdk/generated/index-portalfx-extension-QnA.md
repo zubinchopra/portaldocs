@@ -5,85 +5,110 @@
 ## Stackoverflow
 
 <table>
-    <tr>
-        <th>Stackoverflow Tag</th>
-        <th>Owner</th>
-    </tr>
-<tr>
-    <td> [ibiza-breaking-changes](https://stackoverflow.microsoft.com/questions/tagged/ibiza-breaking-changes) </td>
-    <td> amitmod </td>
+ <tr>
+    <th>Stackoverflow Tag</th>
+    <th>Use for</th>
+    <th>Owner</th>
 </tr>
 <tr>
-    <td> [ibiza-missing-docs](https://stackoverflow.microsoft.com/questions/tagged/ibiza-bad-samples-docs) </td>
-    <td> amitmod </td>
+    <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza">ibiza</a></td>
+    <td> generic ibiza tag, use in conjunction with a more specific tag below </td>
+    <td> adamab </td>
 </tr>
 <tr>
-    <td> [ibiza-sdkupdate](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate) </td>
+    <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-hosting-service">ibiza-hosting-service</a> </td>
+    <td> questions related to the extension hosting service onboarding, contentunbundler and runtime</td>
     <td> maftab </td>
 </tr>
 <tr>
-    <td> [ibiza-deployment](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment) </td>
+    <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-breaking-changes">ibiza-breaking-changes</a> </td>
+    <td> breaking changes that are insufficiently documented on https://aka.ms/portalfx/breaking </td>
+    <td> mjoshi </td>
+</tr>
+<tr>
+    <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-bad-samples-docs">ibiza-missing-docs</a> </td>
+    <td> docs at https://aka.ms/portalfx/docs that is missing, missing content or difficult to understand </td>
+    <td> adamab </td>
+</tr>
+<tr>
+    <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate">ibiza-sdkupdate</a> </td>
+    <td> issues encountered during updating from one version of the ibiza sdk to another e.g NuGet, MSI, powershell, VSIX project template related issues</td>
     <td> maftab </td>
 </tr>
 <tr>
-    <td> [ibiza-test](https://stackoverflow.microsoft.com/questions/tagged/ibiza-tets) </td>
+    <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment">ibiza-deployment</a> </td>
+    <td> issue related to the deployment and onboarding of your extension </td>
     <td> maftab </td>
 </tr>
 <tr>
-    <td> [ibiza-controls](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls) </td>
+    <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-test">ibiza-test</a> </td>
+    <td> any issue related to the CSharp test framework Microsoft.Portal.TestFramework and the nodejs test framework msportalfx-test</td>
+    <td> maftab </td>
+</tr>
+<tr>
+    <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls">ibiza-controls</a> </td>
+    <td> </td>
     <td> shresh </td>
 </tr>
 <tr>
-    <td> [ibiza-browse](https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse) </td>
+    <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse">ibiza-browse</a></td>
+    <td> </td>
     <td> edpark </td>
  </tr>
  <tr>   
-    <td> [ibiza-security-auth](https://stackoverflow.microsoft.com/questions/tagged/ibiza-security-auth) </td>
+    <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-security-auth">ibiza-security-auth</a> </td>
+    <td> </td>
     <td> sansom </td>
 </tr>
 <tr>
-    <td> [ibiza-blades-parts](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts) </td>
+    <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts">ibiza-blades-parts</a> </td>
+    <td> </td>
     <td> sewatson </td>
 </tr>
 <tr>
-    <td> [ibiza-data-caching](https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching) </td>
-    <td> amitmod </td>
+    <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching">ibiza-data-caching</a> </td>
+    <td> </td>
+    <td> brado </td>
 </tr>
 <tr>
-    <td> [ibiza-localization-global](https://stackoverflow.microsoft.com/questions/tagged/ibiza-localization-global) </td>
+    <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-localization-global">ibiza-localization-global</a> </td>
+    <td> </td>
     <td> paparsad </td>
 </tr>
 <tr>   
-    <td> [ibiza-telemetry](https://stackoverflow.microsoft.com/questions/tagged/ibiza-telemetry) </td>
+    <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-telemetry">ibiza-telemetry</a> </td>
+    <td> </td>
     <td> sewatson </td>
 </tr>
 <tr>
-    <td> [ibiza-performance](https://stackoverflow.microsoft.com/questions/tagged/ibiza-performance) </td>
+    <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-performance">ibiza-performance</a> </td>
+    <td> </td>
     <td> sewatson </td>
 </tr>
 <tr>
-    <td> [ibiza-resources](https://stackoverflow.microsoft.com/questions/tagged/ibiza-resources) </td>
+    <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-resources">ibiza-resources</a> </td>
+    <td> </td>
     <td> balbirsi </td>
 </tr>
 <tr>
-    <td> [ibiza-create](https://stackoverflow.microsoft.com/questions/tagged/ibiza-create) </td>
+    <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-create">ibiza-create</a> </td>
+    <td> </td>
     <td> balbirsi </td>
 </tr>
 <tr>
-    <td> [ibiza-forms](https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms) </td>
+    <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms">ibiza-forms</a> </td>
+    <td> </td>
     <td> shresh </td>
 </tr>
 <tr>
-    <td> [ibiza-controls-grid](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls-grid) </td>
+    <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls-grid">ibiza-controls-grid</a> </td>
+    <td> </td>
     <td> shresh </td>
 </tr>
 <tr>
-    <td> [ibiza-accesibility](https://stackoverflow.microsoft.com/questions/tagged/ibiza-accesibility) </td>
+    <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-accessibility">ibiza-accessibility</a></td>
+    <td> </td>
     <td> paparsad </td>
-</tr>
-<tr>
-    <td> [ibiza](https://stackoverflow.microsoft.com/questions/tagged/ibiza) </td>
-    <td> amitmod </td>
 </tr>
 </table>
 

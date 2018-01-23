@@ -1,4 +1,4 @@
-﻿* [Building create experiences](#building-create-experiences)
+* [Building create experiences](#building-create-experiences)
 * [Building custom create forms](#building-custom-create-forms)
     * [Create Marketplace package (aka Gallery package)](#building-custom-create-forms-create-marketplace-package-aka-gallery-package)
     * [Design for a single blade](#building-custom-create-forms-design-for-a-single-blade)
@@ -47,7 +47,7 @@ The Azure portal offers 3 ways to build a create form:
 <a name="building-custom-create-forms-create-marketplace-package-aka-gallery-package"></a>
 ### Create Marketplace package (aka Gallery package)
 The Marketplace provides a categorized collection of packages which can be created in the portal. Publishing your package to the Marketplace is simple:
-
+
 1. Create a package and publish it to the DF Marketplace yourself, if applicable. Learn more about [publishing packages to the Marketplace](../../gallery-sdk/generated/index-gallery.md).
 1. Side-load your extension to test it locally.
 1. Set a "hide key" before testing in production.
