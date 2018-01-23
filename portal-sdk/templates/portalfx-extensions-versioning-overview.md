@@ -1,9 +1,7 @@
 
 ## Overview
 
-### Stamp the version at compile time
-
-The portal shell relies on environment versioning for making runtime decisions. Some examples are as follows.
+The portal shell relies on environment versioning for making runtime decisions. Consequently, the version of the extension can be stamped at compile time while being moved to the environment. Some examples are as follows.
 
 * Invalidating cached manifests
 * Invalidating static content that is served indirectly via CDN, or directly from an extension
@@ -23,9 +21,9 @@ Developers  should ensure that the version number is correctly stamped and updat
 
 Developers can also override this behavior by deriving from the `ApplicationContext` class,  MEF-exporting the derived class as `[Export(typeof(ApplicationContext))]`, and overriding the `get` method for the `Version` property on the class. 
 
-**NOTE**:  Ensure that the overridden get method returns a constant value for a specific build.
+**NOTE**:  Ensure that the overridden `get` method returns a constant value for a specific build.
 
-After configured content can be served directly from the extension, or by CDN if configured, the      can use  a URL segment such as /Content/<Version> e.g /Content/**5.0.0.56**/Scripts, or Content/**5.0.0.56**/Images.
+After configured content can be served directly from the extension, or by CDN if configured, the      can use  a URL segment such as `/Content/<Version>`, for example, `/Content/**5.0.0.56**/Scripts`, or `Content/**5.0.0.56**/Images`.
 
 For more information about assembly version attributes, see [https://aka.ms/assemblyversion](https://aka.ms/assemblyversion).
 
@@ -41,13 +39,13 @@ Developers should not introduce breaking changes into the server code. For examp
 
 When all users have switched to the newer version of the code, probably by refreshing the portal, the previous version can be deleted. This is  accomplished by making new controllers and methods instead of making breaking changes to existing ones. 
 
-When breaking changes occur, the browser will probably display a broken experience until the portal is reloaded. You can contact the portal team  at [mailto:ibiza-onboarding@microsoft.com?subject=[Breaking Change] ](mailto:ibiza-onboarding@microsoft.com?subject=[Breaking Change])  to find a way to resolve or c circumvent this issue.
+When breaking changes occur, the browser will probably display a broken experience until the portal is reloaded. You can contact the portal team  at [mailto:ibiza-onboarding@microsoft.com?subject=[Breaking Change] ](mailto:ibiza-onboarding@microsoft.com?subject=[Breaking Change])  to find a way to resolve or circumvent this issue.
 
 ### PDL Versioning
 
 Two build settings have been added to allow the extension version to be stamped at build time.   They are `ExtensionVersion` and `ExtensionDescription`.
 
-The following is a *.csproj file that uses the two build settings for an extension.
+The following is a `*.csproj` file that uses the two build settings for an extension.
 
 ```xml
 <PropertyGroup>
@@ -60,7 +58,7 @@ The following is a *.csproj file that uses the two build settings for an extensi
 
 In order for the shell to provide browser caching, the recommendation is for all content in the  directory to be an embedded resource. The exception to this recommendation is `svg` files. The `getContentUri` API works with embedded resources and enables content versioning so that content gets cached for a specific build.
 
-The following example
+The following example displays a .
 
 ```xml
 <EmbeddedResource Include="Content\SamplesExtension\Scripts\MsPortalFxDocs.js" />
