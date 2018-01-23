@@ -1,4 +1,4 @@
-# Release Notes since 9/21/2017
+# Release Notes since 9/23/2017
 
 ## 5.0.302.970
 0 Breaking Changes, 0 Features added and 3 Bugs Fixed
@@ -155,19 +155,3 @@
 ## 5.0.302.869
 0 Breaking Changes, 1 Features added and 3 Bugs Fixed
 <table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9835151'>9835151</a></td><td>Bug Fix</td><td>remove dead feature flags</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1554819'>1554819</a></td><td>Bug Fix</td><td>hide function apps from national clouds</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1547719'>1547719</a></td><td>Feature</td><td>[MenuBlade] Expose a 'tooltip' property on menu items</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10331399'>10331399</a></td><td>Bug Fix</td><td>[Partner Request] - Azure Batch extension onboarding to AAD in national clouds</td></tr></table>
-
-## 5.0.302.864
-0 Breaking Changes, 0 Features added and 0 Bugs Fixed
-<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
-
-## 5.0.302.863
-0 Breaking Changes, 0 Features added and 0 Bugs Fixed
-<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
-
-## 5.0.302.862
-0 Breaking Changes, 0 Features added and 0 Bugs Fixed
-<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
-
-## 5.0.302.861
-0 Breaking Changes, 3 Features added and 3 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1541820'>1541820</a></td><td>Bug Fix</td><td>Session timeout should default to never in all clouds</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1531290'>1531290</a></td><td>Bug Fix</td><td>Remove collection re-PUTs from CosmosDB code</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1512952'>1512952</a></td><td>Bug Fix</td><td>Bundle and RetryAttempt parameters should be removed in content requests</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10228416'>10228416</a></td><td>Feature</td><td>[Browse filtering] Decouple browse sub dropdown from global sub settings</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10183871'>10183871</a></td><td>Feature</td><td>Ignite: Expanded global search</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10141865'>10141865</a></td><td>Feature</td><td>Handle idle timeout</td></tr></table>
