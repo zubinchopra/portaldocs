@@ -28,68 +28,7 @@ Most services that onboard to Azure can leverage the following components of the
 
 The Azure onboarding process is streamlined to optimize the delivery of high-quality experiences based on hundreds of hours of usability testing that meet Microsoft Common Engineering Criteria (CEC) and compliance requirements. This will better optimize developer resources and reduce re-working due to anti-patterns and inconsistencies that block usability, performance, and other factors. Therefore, we strongly recommend starting the onboarding process previous to designing UI or management APIs.
 
-The Azure Fundamentals are a set of tenets to which each Azure service is expected to adhere. The Azure Fundamentals program is described in the document located at [https://aka.ms/azurefundamentals](https://aka.ms/azurefundamentals). The document also identifies the stakeholders and contacts for each of the tenets.
-
-The Azure Fundamentals document is 
-
-Compliance criteria and practices are defined in Quality Essentials throughout the development cycle. These ensure that services meet the Trusted Cloud commitments outlined in the Microsoft Azure Trust Center for our customers. These are required procedures for preview and Global Availability, and are to be revisited for every release cycle.
-
-The customer has a different set of expectations for the extension in each phase. To meet customer expectations, we have compiled exit criteria for each phase. The development of an extension  can proceed to the next step when it meets the exit criteria for the current step. To meet customer expectations and continue to increase customer satisfaction, several quality metrics are tracked for every extension by the Get1CS team. An overview of Quality Essentials is located at [https://aka.ms/qualityessentials](https://aka.ms/qualityessentials). There may be tools to install from the QE and 1CS sites that are part of the Quality Essentials process. The Azure team only tracks the exit criteria and localization requirements.
-
-Nearly 70% of Azure users are from outside of the United States. Therefore, it is important to make Azure a globalized product. There are a few internationalization requirements that the extension or service is required to support. This is the same set of languages that are supported by Azure Portal for GA.
-
-
-
-
-
-<a name="portal-extensions-requirements-for-azure-services"></a>
-## Requirements for Azure Services
-   
-All services using Azure Billing must be exposed by using the Azure Resource Manager (ARM). Services that do not use Azure Billing can use either ARM or Microsoft Graph. Usually, services that integrate deeply with Office 365 use Graph, while all others are encouraged to use ARM. 
  
-For more information about ARM API, see Azure Resource Manager (ARM) API Reference, located at [https://docs.microsoft.com/en-us/dynamics365/customer-engagement/customer-insights/ref/armapiref](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/customer-insights/ref/armapiref), and also see Resource Manager REST APIs, located at [https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-rest-api](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-rest-api).
-
-For more information about onboarding with Microsoft Graph, see [https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/azure_ad_overview](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/azure_ad_overview).
-
-The Azure Portal SDK doesn't require any specific back-end, but does provide extra support for ARM-based resources. 
-
-All new services should be listed in the Azure Web site that is located at [https://azure.microsoft.com](https://azure.microsoft.com). This isn't a requirement for onboarding the Portal, but service categorization is the same between the azure.com Products menu, Portal Services menu, and the Azure Marketplace. The service should not be listed in the Portal unless it is also on azure.microsoft.com.
-
-<a name="portal-extensions-communication"></a>
-## Communication
-   
-Plan ahead for all the outbound communication, blogging, and marketing work that publicizes new services during the time that they are being deployed to customers.  This coordination is important, particularly when software release commitments are aligned with the Azure events and conferences. This coordination may be optional for preview releases, but the localized azure.com content and service updates plan are required for stakeholder signoff, if the extension will be deployed to GA.
- 
-
-
-     
-
-<a name="portal-extensions-quality-essentials"></a>
-## Quality Essentials
-  
-Quality Essentials  and 1CS provide access to manage the release policies and procedures for each compliance. QE tracks the following policies.
-* Accessibility
-* Global readiness
-* Global trade compliance
-* License terms
-* Open source software
-* Privacy
-* Security Development Lifecycle (SDL)
-* Software integrity
- 
-Some of the procedures such as Accessibility, GB Certificate, Privacy, and Security are also measured in the Service Health Review Scorecard that is located at [https://aka.ms/shr](https://aka.ms/shr), and in the exit criteria for management review and tracking. 
-
-These requirements apply to both the Portal fx and extensions. Since Fx provides the common infrastructure and UI controls that govern the data handling and UX, hence some of the compliance work for extensions would be identical across in Ibiza, and rationally be mitigated by the Framework. For example, Accessibility support on keyboard navigation and screen reader recognition, as well as the regional format and text support to meet globalization requirements, are implemented at the controls that Framework distributed.  The same is true for Security threat modeling, extension authentication to ARM, postMessage/RPC layer and UserSettings, etc. are handled by Framework. To minimize the duplicate efforts on those items, Fx provides some level of "blueprint" documentation that can be used as a reference for compliance procedures. You are still responsible to review the tools and submit the results for approval previous to shipping the extension. 
-
-| Policy            | Location  | Fx coverage |
-| ---               | ---       | --- |
-| Accessibility     | [portalfx-accessibility.md](portalfx-accessibility.md) | Generic control supports on keyboard, focus handling, touch, screen reader, high contrast, and theming |
-| Global Readiness  | [portalfx-globalization.md](portalfx-globalization.md) and [portalfx-localization.md](portalfx-localization.md) | Localizability, regional format, text support, China GB standard |
-| Privacy           |  [portalfx-authentication.md](portalfx-authentication.md) | User settings data handling, encryption, and authentication |
-| SDL               |  [https://microsoft.sharepoint.com/ teams/QualityEssentials/SitePages/ SDL_SecurityDevelopmentLifecycleOverview.aspx](https://microsoft.sharepoint.com/teams/QualityEssentials/SitePages/SDL_SecurityDevelopmentLifecycleOverview.aspx)         | Security Development Lifecycle Threat modeling |
-
-For more information and any questions about Fx coverage, reach out to the Fx Coverage contact that is located in [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md).
-
    
 <a name="portal-extensions-development-phases"></a>
 ## Development Phases
@@ -101,7 +40,7 @@ The extension is in private preview stage when it has been registered into the A
 
 Some teams also leverage this phase for testing the business model by providing a specific URL to their customers that allows them to access this extension. For more information about providing access to a limited set of customers, see [portalfx-hidden-extension-feedback.md](portalfx-hidden-extension-feedback.md).
 
-The developer can then modify the extension until it meets specific criteria for usability, reliability, performance, and other factors. The criteria are located at [Exit Criteria and Quality Metrics](portalfx-extensions-exitCriteria.md). 
+The developer can then modify the extension until it meets specific criteria for usability, reliability, performance, and other factors. The criteria are located at [top-exit-criteria.md](top-exit-criteria.md). 
 
 When the criteria are met, the developer starts the processes that will move the extension from the private preview state to the public preview state. They should also start the CSS onboarding process with the CSS team at least three months previous to public preview. The CSS onboarding process requires information like the disclosure level, and the key contacts for the release. It allows the appropriate teams enough time to ensure that customers of the extension have access to Azure support and other permissions necessary to access the site.  To start the process, send an email to ibiza-css@microsoft.com. For more information about CSS contacts, see [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md). For more information about the CSS onboarding process, see [http://spot/intake](http://spot/intake).
 
@@ -114,7 +53,7 @@ This process is separate from onboarding to Azure.
 
 The public preview state assumes that the extension met the exit criteria for the private preview phase, and that the private preview phase  validated the business model of the service.
 
-In the public preview state, the extension undergoes more development and review, and it can be used by all customers in Azure Portal.  The exit criteria for the public preview state are the same as the exit criteria for the private preview state, except for Usability.  Public Preview requires extensions to have a score of 7/10, whereas GA requires extensions to have a score of 8/10.  An extension that meets the exit criteria with this public audience can be moved from public preview to Global Availability. The criteria that are used to validate promoting the extension out of the public preview state are located at [Exit Criteria and Quality Metrics](portalfx-extensions-exitCriteria.md).
+In the public preview state, the extension undergoes more development and review, and it can be used by all customers in Azure Portal.  The exit criteria for the public preview state are the same as the exit criteria for the private preview state, except for Usability.  Public Preview requires extensions to have a score of 7/10, whereas GA requires extensions to have a score of 8/10.  An extension that meets the exit criteria with this public audience can be moved from public preview to Global Availability. The criteria that are used to validate promoting the extension out of the public preview state are located at [top-exit-criteria.md](top-exit-criteria.md).
 
 The icon to the right of the extension indicates whether the extension is in the private preview state or the public preview state, as in the following image.
 
@@ -125,7 +64,7 @@ The icon to the right of the extension indicates whether the extension is in the
 
 The global availability state assumes that the extension met the exit criteria for the public preview phase, and that the public  preview phase validated the business model of the service.
 
-When an extension passes all exit criteria for the public preview state, it can be promoted to the Global Availability state. The criteria that are used to validate promoting the extension out of the public preview state are located at [Exit Criteria and Quality Metrics](portalfx-extensions-exitCriteria.md).
+When an extension passes all exit criteria for the public preview state, it can be promoted to the Global Availability state. The criteria that are used to validate promoting the extension out of the public preview state are located at [top-exit-criteria.md](top-exit-criteria.md).
 
 <!-- the `extension.pdl` file is not the JSON file. -->
 
@@ -206,7 +145,7 @@ Install the following software. Your team should be aware of the most current do
 
 1. Node tools that are located at [https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1](https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1)
 
-1. Nuget package loading instructions are located at [portalfx-extensions-onboarding-nuget.md](portalfx-extensions-onboarding-nuget.md) and at [portalfx-extensions-developerInit-procedure.md](portalfx-extensions-developerInit-procedure.md).
+1. Nuget package loading instructions are located at [top-portalfx-extensions-nuget.md](top-portalfx-extensions-nuget.md) and at [portalfx-extensions-developerInit-procedure.md](portalfx-extensions-developerInit-procedure.md).
 
 1. Set up the source code management system on your computer. Teams use **GitHub**, **VSO**, and other content management systems. Which one is used by your team is team-dependent.
 
@@ -268,7 +207,7 @@ Read the following documents from the Azure Portal UI team site.  Our doc site p
     * Complete metadata in ServiceTree to enable the automation for various Service360 Action Items
     * Complete the Action Items identified in Service360, which is located at [http://aka.ms/s360](http://aka.ms/s360)
 
-1.	Address the exit criteria to meet previous to moving the extension to the next development phase. The exit criteria are located at [portalfx-extensions-exitCriteria.md](portalfx-extensions-exitCriteria.md).
+1.	Address the exit criteria to meet previous to moving the extension to the next development phase. The exit criteria are located at [top-exit-criteria.md](top-exit-criteria.md).
 
 1. Create configuration files for the extension as specified in [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
 
@@ -306,143 +245,6 @@ Once the name of the extension or service name is finalized, request to have the
    Extension names must use standard extension name format, as in the example located at [portalfx-extensions-configuration-overview.md#name](portalfx-extensions-configuration-overview.md#name).
 
 * Extension URLs must use a standard CNAME pattern. For more information about CNAMES, see [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md).
-
-  
-<a name="portal-extensions-exit-criteria-and-quality-metrics"></a>
-## Exit Criteria and Quality Metrics
-      
-In order to meet customer expectations and continue to increase customer satisfaction, there are quality metrics that are tracked for every extension, and part.  These metrics help developers build extensions that compile, that contain the items that are requested by the partners of the developer, and that pass acceptance tests that are created by the partners that are associated with a specific phase. When the extension meets the criteria, it becomes a candidate for being moved from the private preview stage to the public preview stage, or from the public preview stage to Global Availability (GA).
-
-Every new extension provides an opportunity for the Ibiza team to improve the customer experience. By using set criteria to meet customer expectations, we can improve the customer experience for the extension and overall Portal. Extension developers can drastically improve the customer experience by following these criteria. 
-
-<a name="portal-extensions-customer-experience-metrics"></a>
-## Customer experience metrics
-
-The criteria that are tracked for each extension are reported as part of an executive summary every Friday. Extensions that fail to meet the criteria are typically prime candidates for having brought down the customer experience in the Azure Portal. Such extensions are highlighted in the weekly status report.
-
-Customer experience metrics are tracked by the Azure Portal team, and are reported to the VP sponsor of the extension by using weekly status emails. These metrics are also reported as part of the weekly S360 meeting, and the executive review meeting. Any extension that does not meet the following criteria is required to justify the reasons for a negative customer experience. Extension developers can improve the customer experience of Azure Portal by ensuring that their extensions meet the following criteria previous to enabling the extension for public preview or Global Availability. 
-
-* [Performance](#performance)
-* [Reliability](#reliability)
-* [Usability](#usability)
-* [Accessibility](#accessibility)
-* [Localization](#localization)
-* [Create Success Rate](#create-success-rate)
-
-<a name="portal-extensions-customer-experience-metrics-performance"></a>
-### Performance
-
-The Weighted Experience Score (WxP) determines the percentage of blade usage that meets the performance bar. The metrics for all blades within an extension are combined into the WxP, which requires a passing score of greater than 80. Meeting the performance bar is a requirement for public preview or Global Availability (GA).
-
-MPAC and PROD performance are included in weekly status emails and each team is expected to investigate regressions.
-
-For more information about the Weighted Experience Score, see  [portalfx-performance.md#wxp-score](portalfx-performance.md#wxp-score).
-
-Blade reveal time is the time it takes for all the parts above the fold to call ```revealContent()``` to load first level data, or to resolve ```onInputSet()``` promises, whichever is earlier.
-
-All blades meet the required blade reveal time of less than 4 seconds for the 80th percentile before being enabled in PROD. Extensions should be enabled in MPAC to start tracking performance. Resource and Create blades are tracked explicitly. 
-
-We require at least 100 loads of the UX (extension/blade/tiles) to get a signal. If you cannot generate that traffic authentically in the expected timeframe, please hold a bug bash to increase the traffic.
-
-For more information about performance and reliability, see the following resources:
-
-* Dashboard 
-
-  [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf)
-
-  * Telemetry Access for access 
-        
-    [portalfx-telemetry-getting-started.md](portalfx-telemetry-getting-started.md)
-
-  * Query - including test/dev traffic
-
-    [https://aka.ms/portalfx/perfsignoff](https://aka.ms/portalfx/perfsignoff)
-
-* Checklist
-
-    [portalfx-performance.md](portalfx-performance.md)
-
-* Portal COP (Telemetry)
-
-    [portalfx-performance-portalcop.md](portalfx-performance-portalcop.md)
-
-<a name="portal-extensions-customer-experience-metrics-reliability"></a>
-### Reliability
-
-Every extension meets the reliability Service Level Agreement (SLA). There are some reliability metrics should be met previous to enabling the extension in the production environment; however, extensions must be enabled in MPAC in order to start tracking reliability. Meeting the reliability bar is a requirement for public preview or GA.
-
-MPAC and PROD reliability are included in weekly status emails and each team is expected to investigate regressions.
-
-We require at least 100 loads of the UX (extension/blade/tiles) to get a signal, if you cannot generate that traffic authentically in the expected timeframe, please hold a bug bash to increase traffic.
-
-Use the following query to calculate the performance and reliability of your extension.
-    
-```json 
-    // First parameter startDate
-    // Second parameter timeSpan
-    // Third parameter includeTestTraffic - set this to `false` if you are already in public preview
-    GetExtensionPerfReliability(now(),7d,true) 
-    | where extension == "<extensionName>"
-```
-
-If any of the reliability numbers of the extension are below the bar, please investigate and resolve the related issues.
-
-<a name="portal-extensions-customer-experience-metrics-usability"></a>
-### Usability
-
-
-Each service or extension defines the critical P0 scenarios for their business. The extension is tested using these usability scenarios, with at least ten participants. A success rate of 80% and an experience score of 80% are required for a passing usability score.
-
-For more information on how to define scenarios, see       .
-
-<a name="portal-extensions-customer-experience-metrics-accessibility"></a>
-### Accessibility
-
-The accessibility bar is similar to the usability bar, and every service must meet the accessibility standards that are tested in their critical P0 scenarios. C+E teams should work with their own Accessibility teams. 
-    
-**NOTE**: Accessibility is a blocking requirement.
-
-For more information about accessibility, see [portalfx-accessibility.md](portalfx-accessibility.md).
-    
-<a name="portal-extensions-customer-experience-metrics-localization"></a>
-### <strong>Localization</strong>
-
-Nearly 70% of Azure users are from outside of the United States. Therefore, it is important to make Azure a globalized product. There are a few requirements under the "Internationalization" criteria that your service is required to support.  This is the same set of languages that are supported by Azure Portal for GA. For more information about internationalization requirements, see [http://aka.ms/azureintlrequirements](http://aka.ms/azureintlrequirements). For onboarding localization, please reach out to Bruno Lewin and the Internationalization team at [mailto:ibiza-interntnl@microsoft.com](mailto:ibiza-interntnl@microsoft.com).
-
-<a name="portal-extensions-customer-experience-metrics-create-success-rate"></a>
-### Create Success Rate
-    
-The success of an extension is combined of several factors, the most important of which is customer satisfaction. In order to ensure that every customer has a great customer experience, the extension should be within the create success rate.   The create success rate is defined as the number of times the UX completes the generation process when the create button is clicked. When the extension meets or exceeds those factors, it is eligible for public preview or Global Availability.
-     
-Extensions and Resource Providers (RPs) are responsible for validating all inputs to ensure the Create is not submitted unless that Create will be successful. This applies to all services.
-
-Services that use ARM template deployment and other ARM-based services should also validate resource provider registration, permissions, and deployment to avoid common issues and improve extension success rates. Validating against some factors is required for the preview and GA phases.
-
-Check the Power BI Dashboard for Service Level Agreements (SLA) that are associated with Creating extensions. The Ibiza Extension Perf/Reliability/Usage Dashboard is located at [http://aka.ms/ibizaperformance](http://aka.ms/ibizaperformance).
-
-It is important to meet the success rate previous to moving the extension to the next phase, because various phases are associated with service level agreements and other items that are affected if an extension does not work.  For example, extensions with a success rate below 99% will result in sev 2 incidents. Also, if the success rate drops by 5% during a rolling 24-hour period that contains at least 50 Creates, a sev 2 incident will be filed. This applies to every error that causes Creates to fail when the `Create` button is clicked.
-
-Success rates are a non-blocking requirement. 
-<!-- TODO: Determine whether any mention at all of the exception process should be on GitHub, as in the following sentence.
-   Some exceptions can be granted to move an extension from the private preview stage to the public preview stage, but in general, the overall customer experience is reduced.
--->
-   
-For more information about creating success, see [portalfx-create.md#validation](portalfx-create.md#validation).
-
-<a name="portal-extensions-resource-move"></a>
-## Resource move
-
-ARM-based services allow customers to move resources between subscriptions and resource groups.
-
-For more information on resource moves, see the following resources.
-    
-* Documentation 
-
-    [portalfx-resourcemove.md](portalfx-resourcemove.md)
-	
-* Dashboard
-        
-    [http://aka.ms/portalfx/resourcemove/dashboard](http://aka.ms/portalfx/resourcemove/dashboard)
 
  
 <a name="portal-extensions-status-codes-and-error-messages"></a>
@@ -784,7 +586,7 @@ For more information about development phases, see [portalfx-extensions-developm
 
 For more information about the Microsoft Azure Trust Center, see [http://azure.microsoft.com/en-us/support/trust-center/](http://azure.microsoft.com/en-us/support/trust-center/).
 
-For more information about exit criteria, see [portalfx-extensions-exitCriteria.md](portalfx-extensions-exitCriteria.md).
+For more information about exit criteria, see [top-exit-criteria.md](top-exit-criteria.md).
 
  For more information about quality metrics, see the One Compliance System Web site that is located at [https://microsoft.sharepoint.com/teams/1CS/SitePages/Home.aspx](https://microsoft.sharepoint.com/teams/1CS/SitePages/Home.aspx).
 
