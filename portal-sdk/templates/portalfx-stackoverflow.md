@@ -68,7 +68,7 @@
 </tr>
 <tr>
     <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-localization-global">ibiza-localization-global</a> </td>
-    <td> </td>
+    <td> Questions related to Localization or globalization within the portal. Guidence on what is or not supported and current languages that portal supports.</td>
     <td> paparsad </td>
 </tr>
 <tr>   
@@ -103,7 +103,7 @@
 </tr>
 <tr>
     <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-accessibility">ibiza-accessibility</a></td>
-    <td> </td>
+    <td> Questions regarding accessibility onboarding, best practices, supported accessible controls, etc. Also, questions regarding the accessibility bug process and exception process. </td>
     <td> paparsad </td>
 </tr>
 </table>
