@@ -2,7 +2,7 @@
 <a name="introduction"></a>
 ## Introduction
  
-Blades are the main unit of the user experience (UX) that can be built using the Azure SDK. They are pages that can be loaded in the portal.
+Blades are the main unit of the user experience (UX) that can be built using the Azure SDK. They are pages that can be loaded in the Portal.
 
 Blades are components that are developed as part of the extension, and can be rendered at specific locations in the Portal UI. They are opened by using the `container.openContextPane(...)` API, as specified in the `MsPortalFx.d.ts` file of the project.
 
@@ -93,7 +93,7 @@ Use the following steps to develop a blade.
     https://portal.azure.com#blade/HelloWorld/Aloha 
     ```
 
-    Keep in mind that there may be parameters to pass to Azure that affect the loading of the portal.  In the following case, the parameters are included in the URL previous to the name of the blade.
+    Keep in mind that there may be parameters to pass to Azure that affect the loading of the Portal.  In the following case, the parameters are included in the URL previous to the name of the blade.
 
     ```json
     https://portal.azure.com/?feature.customportal=false&feature.canmodifyextensions=true#blade/HelloWorld/Aloha

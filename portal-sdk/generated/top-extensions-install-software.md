@@ -31,16 +31,12 @@ Install the following software. Your team should be aware of the most current do
 
 1. Node tools that are located at [https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1](https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1)
 
-1. Nuget package loading instructions are located at [top-portalfx-extensions-nuget.md](top-portalfx-extensions-nuget.md) and at [portalfx-extensions-developerInit-procedure.md](portalfx-extensions-developerInit-procedure.md).
+1. Nuget package loading instructions are located at [top-portalfx-extensions-nuget.md](top-portalfx-extensions-nuget.md) and at [portalfx-extensions-getting-started-procedure.md](portalfx-extensions-getting-started-procedure.md).
 
 1. Set up the source code management system on your computer. Teams use **GitHub**, **VSO**, and other content management systems. Which one is used by your team is team-dependent.
 
-Test that your computer is ready for Azure development by creating a blank extension, as specified in [portalfx-extensions-developerInit-procedure.md](portalfx-extensions-developerInit-procedure.md).
+Test that your computer is ready for Azure development by creating a blank extension, as specified in [portalfx-extensions-create-blank-procedure.md](portalfx-extensions-create-blank-procedure.md).
 
-<a name="install-software-for-extension-development-other-installations"></a>
-## Other Installations
-
-The MSI Installer
 
 
 <a name="install-software-for-extension-development-other-software-installation"></a>

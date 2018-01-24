@@ -75,7 +75,7 @@ Read the following documents from the Azure Portal UI team site.  Our doc site p
 | Guidance for Program Managers and Dev Leads   | Portal Extensions for Program Managers, located at [portalfx-extensions-forProgramManagers.md](portalfx-extensions-forProgramManagers.md) |
 | Private Preview, Public Preview, and GA       | Portal Extension Development Phases, located at [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md) |
 | How it Works	                                | Getting Started, located at [portalfx-howitworks.md#getting-started](portalfx-howitworks.md#getting-started)
-| Build an empty extension                      | Creating An Extension, located at [portalfx-extensions-developerInit.md](portalfx-extensions-developerInit.md) |
+| Build an empty extension                      | Creating An Extension, located at [portalfx-extensions-create-blank-procedure.md](portalfx-extensions-create-blank-procedure.md) |
 | Portal environments and extension configurations | [portalfx-extensions-branches.md](portalfx-extensions-branches.md) | 
 | Experiment with sample code	                  | Sample Extensions, located at [portalfx-extensions-samples.md](portalfx-extensions-samples.md) |
 

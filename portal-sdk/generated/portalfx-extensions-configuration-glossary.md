@@ -17,14 +17,14 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | DF                       | Dogfood |
 | DIY                      | Do It Yourself |
 | environment              | A configuration of computers in which extensions can be run. For example, environments are Blackforest, Dogfood, Mooncake, and Production.  | 
-| feature flag             | A switch that allows a user to turn on or off specific functionalities of an extension. Flags are  passed from the portal to extensions and their controllers, and are used as an alternative to maintaining multiple source-code branches in order to hide, enable or disable a feature during run time. Most, but not all, feature flags are made available by using the syntax `feature.<featureName> = true`.   |
+| feature flag             | A switch that allows a user to turn on or off specific functionalities of an extension. Flags are  passed from the Portal to extensions and their controllers, and are used as an alternative to maintaining multiple source-code branches in order to hide, enable or disable a feature during run time. Most, but not all, feature flags are made available by using the syntax `feature.<featureName> = true`.   |
 | FF                       | Fairfax |
 | flighting                | |
 | flighting extension      | |
 | GA                       | Global Availability |
 | iframe                   | An inline frame, used to embed another document within the current HTML document. |
 | MC                       | Mooncake |
-| MPAC                     | ms.portal.azure.com, the Azure portal instance for internal Microsoft customers.  | 
+| MPAC                     | ms.portal.azure.com, the Azure Portal instance for internal Microsoft customers.  | 
 | PCV1                     | Parameter Collector V1 |
 | PCV2                     | Parameter Collector V2 |
 | PDL                      | Program Design Language |
@@ -37,7 +37,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | smoke test               | see build verification test  |
 | SSL                      | Secure Socket Layer |
 | stakeholder              | A person, group or organization that has interest or concern in an organization. Stakeholders can affect or be affected by the organization's actions, objectives and policies. |
-| stamp                    | An instance of a service in a region. Every extension can deploy one or more stamps based on testing requirements. The main stamp is used for production and is the only one that the portal will load by default.    | 
+| stamp                    | An instance of a service in a region. Every extension can deploy one or more stamps based on testing requirements. The main stamp is used for production and is the only one that the Portal will load by default.    | 
 | URI                      | Universal Resource Identifier  | 
 | URL                      | Uniform Resource Locator |
 

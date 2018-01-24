@@ -2,15 +2,12 @@
 <a name="frequently-asked-questions"></a>
 ## Frequently asked questions
 
-For an end-to-end overview of EditScope and how it's used in the Azure Portal FX, please refer to the video and accompanying PowerPoint presentation here:  
-[Forms: Working with Edit Scopes](portalfx-forms-working-with-edit-scopes.md)
-
-When applying EditScope to common Form scenarios, here is a quick reference with answers to frequently-asked questions.
+For an end-to-end overview of EditScope and how it is used in the Azure Portal FX, see the "Forms: Working with Edit Scopes" video and accompanying PowerPoint presentation located at [portalfx-forms-working-with-edit-scopes.md](portalfx-forms-working-with-edit-scopes.md).
 
 <a name="frequently-asked-questions-q-my-users-see-the-discard-change-pop-up-even-when-they-ve-made-no-changes-on-my-form-blade-what-s-wrong-here"></a>
 ### Q: My users see the &#39;discard change?&#39; pop-up, even when they&#39;ve made no changes on my Form Blade. What&#39;s wrong here?
 
-The EditScope '`root`' property returns an object or array that includes uses of Knockout observables (`KnockoutObservable<T>` and `KnockoutObservableArray<T>`). Any observable located within the EditScope is designed to be modified/updated **only by the user**, via Form fields that are bound to EditScope observables. Importantly, these EditScope observables *were not designed* to be modified directly from extension TypeScript code. If extension code modifies an observable *during Form/Blade initialization*, the EditScope will record this *as a user edit*, and this "accidental edit" will trigger the 'discard changes?' pop-up when the user tries to close the associated Blade.  
+The EditScope `root` property returns an object or array that includes uses of Knockout observables (`KnockoutObservable<T>` and `KnockoutObservableArray<T>`). Any observable located within the EditScope is designed to be modified/updated **only by the user**, via Form fields that are bound to EditScope observables. Importantly, these EditScope observables *were not designed* to be modified directly from extension TypeScript code. If extension code modifies an observable *during Form/Blade initialization*, the EditScope will record this *as a user edit*, and this "accidental edit" will trigger the 'discard changes?' pop-up when the user tries to close the associated Blade.  
 
 Rather than initializing the EditScope by programmatically modifying/updating EditScope observables, use these alternative techniques:
 * If the extension uses a ParameterProvider component to manage its EditScope, initialize the EditScope data in the '`mapIncomingData[Async]`' callback supplied to ParameterProvider.
@@ -221,12 +218,10 @@ this.itemsCollector = new MsPortalFx.ViewModels.ParameterCollector<DataModels.Se
 
 This pair of EditScope methods significantly simplifies working with EditScope 'entity' arrays.  
   
-  
 <a name="frequently-asked-questions-q-some-of-my-form-data-is-not-editable-how-do-i-keep-editscope-from-tracking-changes-for-this-data"></a>
 ### Q: Some of my Form data is not editable. How do I keep EditScope from tracking changes for this data?
 
 See [mention of '`trackEdits`'](#track-edits) above re: configuring an EditScope via type metadata.  
-  
   
 <a name="frequently-asked-questions-q-my-form-data-is-just-key-value-pairs-how-do-i-model-a-dictionary-stringmap-in-editscope-why-can-t-i-just-use-a-javascript-object-like-a-property-bag"></a>
 ### Q: My Form data is just key/value-pairs. How do I model a Dictionary/StringMap in EditScope? Why can&#39;t I just use a JavaScript object like a property bag?
@@ -244,8 +239,8 @@ Often, additionally, it is important to let users edit the Dictionary/StringMap/
 
 Here's a sample that does something similar, converting - in this case - an array of strings into an 'entity' array for consumption by editable grid.  
 
-<a name="frequently-asked-questions-q-my-form-data-is-just-key-value-pairs-how-do-i-model-a-dictionary-stringmap-in-editscope-why-can-t-i-just-use-a-javascript-object-like-a-property-bag-modeling-your-data-as-an-entity-array"></a>
-#### Modeling your data as an &#39;entity&#39; array
+<a name="frequently-asked-questions-q-my-form-data-is-just-key-value-pairs-how-do-i-model-a-dictionary-stringmap-in-editscope-why-can-t-i-just-use-a-javascript-object-like-a-property-bag-modeling-data-as-an-entity-array"></a>
+#### Modeling data as an &#39;entity&#39; array
 
 ```typescript
 
@@ -264,8 +259,8 @@ value: KnockoutObservable<string>;
 
 ```  
 
-<a name="frequently-asked-questions-q-my-form-data-is-just-key-value-pairs-how-do-i-model-a-dictionary-stringmap-in-editscope-why-can-t-i-just-use-a-javascript-object-like-a-property-bag-converting-your-data-to-an-entity-array-for-consumption-by-editable-grid"></a>
-#### Converting your data to an &#39;entity&#39; array for consumption by editable grid
+<a name="frequently-asked-questions-q-my-form-data-is-just-key-value-pairs-how-do-i-model-a-dictionary-stringmap-in-editscope-why-can-t-i-just-use-a-javascript-object-like-a-property-bag-converting-data-to-an-entity-array-for-consumption-by-editable-grid"></a>
+#### Converting data to an &#39;entity&#39; array for consumption by editable grid
 
 ```typescript
 

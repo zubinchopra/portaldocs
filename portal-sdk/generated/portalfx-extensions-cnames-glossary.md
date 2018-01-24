@@ -9,7 +9,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | CNAME            | Canonical Name record. A type of resource record in the Domain Name System (DNS) that specifies that a domain name is an alias for another domain (the 'canonical' domain). | 
 | DNS              | Domain name server |
 | FF               | Fairfax |  
-| MPAC             | ms.portal.azure.com, the Azure portal instance for internal Microsoft customers. | 
+| MPAC             | ms.portal.azure.com, the Azure Portal instance for internal Microsoft customers. | 
 | national cloud   | Network instances of Microsoft enterprise cloud services that are isolated physically and logically. They are confined within the geographic borders of specific countries and operated by local personnel. See sovereign cloud. |
 | PROD             | Production |
 | RC               | Release Candidate environment, used to deploy daily builds of the Azure Portal. There is no user traffic in this environment. |

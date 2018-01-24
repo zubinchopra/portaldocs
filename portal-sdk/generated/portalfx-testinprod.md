@@ -1,3 +1,6 @@
+
+<!-- TODO: deprecate this document. It has been replaced by portalfx-extensions-testing-in-production-overview.md and portalfx-extensions-faq-testing-in-production.md    -->
+
 * [Testing in production](#testing-in-production)
 * [Marking automated tests as test/synthetic traffic](#marking-automated-tests-as-test-synthetic-traffic)
     * [FAQ](#marking-automated-tests-as-test-synthetic-traffic-faq)
@@ -6,16 +9,21 @@
 <a name="testing-in-production"></a>
 ## Testing in production
 
-Extensions can be registered on a per-user basis on production deployments. This can be used to test a new extension or existing extension on a developer's machine with production credentials. To register a custom extension supply both of the following in the query string feature.canmodifyextensions and testExtensions in the following form:
+  <!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-testing-in-production-overview.md  -->
 
-* [https://portal.azure.com/?feature.canmodifyextensions=true#?testExtensions={"YourExtensionName":"https://localhost:1234/"}](https://portal.azure.com/?feature.canmodifyextensions=true#?testExtensions={"YourExtensionName":"https://localhost:1234/"})
+Extensions can be registered on a per-user basis on production deployments. This can be used to test a new extension or existing extension on a developer's machine with production credentials. 
 
-  The `feature.canmodifyextensions=true` feature flag is required to support loading untrusted extensions for security purposes. The `YourExtensionName` must match the name in the `<Extension>` element in PDL and the `uri` refers to the extension endpoint. The actual uri host must be localhost. The protocol you use (HTTP vs HTTPS) must match the protocol of the Shell you’re loading your extension into (so for the production Shell, your extension must be on HTTPS), otherwise browsers won’t allow the two to communicate. (see below)
+  
+To register a custom extension supply both of the following in the query string feature.canmodifyextensions and testExtensions in the following form:
+
+* [https://portal.azure.com/?feature.canmodifyextensions=true#?testExtensions={"<extensionName>":"https://localhost:1234/"}](https://portal.azure.com/?feature.canmodifyextensions=true#?testExtensions={"<extensionName>":"https://localhost:1234/"})
+
+  The `feature.canmodifyextensions=true` feature flag is required to support loading untrusted extensions for security purposes. The `extensionName` must match the name in the `<Extension>` element in PDL and the `uri` refers to the extension endpoint. The actual uri host must be localhost. The protocol you use (HTTP vs HTTPS) must match the protocol of the Shell you’re loading your extension into (so for the production Shell, your extension must be on HTTPS), otherwise browsers won’t allow the two to communicate. (see below)
 
 To avoid this being a phishing risk, we enforce that your extension must be hosted on localhost (any port, but no other hostname). If you need to use a different hostname than localhost, the existing registerTestExtension API is still available and may be used as follows:
 
 * Sign in to a production account at [https://portal.azure.com?feature.canmodifyextensions=true](https://portal.azure.com?feature.canmodifyextensions=true)
-* Hit F12 to open the developer tools in the browser
+* Click F12 to open the developer tools in the browser
 * Run the following command to register your custom extension:
 
 ```ts
@@ -30,9 +38,10 @@ To avoid this being a phishing risk, we enforce that your extension must be host
 
   * For other useful switches, please refer to the [debugging guide](portalfx-debugging.md)
 
-The registered extension will be saved to user settings, and available in future sessions. When using the portal in this mode, you will see a banner letting you know the state of the configured extensions has been changed:
+The registered extension will be saved to user settings, and available in future sessions. When using the Portal in this mode, you will see a banner letting you know the state of the configured extensions has been changed:
 
 ![Local extensions](../media/portalfx-testinprod/localExtensions.png)
+
 
 <a name="marking-automated-tests-as-test-synthetic-traffic"></a>
 ## Marking automated tests as test/synthetic traffic
@@ -53,6 +62,9 @@ Automated tests that run against a production environment need to be marked as t
 
 This allows us to exclude test traffic from our reports.
 
+<!-- TODO:  deprecate the preceding section of this document by removing it.  It has been  replaced by portalfx-extensions-testing-in-production-overview.md  -->
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-faq-testing-in-production.md -->
 <a name="marking-automated-tests-as-test-synthetic-traffic-faq"></a>
 ### FAQ
 
@@ -67,3 +79,5 @@ In this case the browser is trying to load the extension but the SSL certificate
 #### I get an error &#39;Security of a sandboxed iframe is potentially compromised by allowing script and same origin access&#39;. How do I fix this?
 
 You need to allow the Azure Portal to frame your extension URL. For more information, [click here](portalfx-creating-extensions.md)
+
+<!-- TODO:  deprecate the preceding section of this document by removing it.  It has been  replaced by portalfx-extensions-faq-testing-in-production.md -->

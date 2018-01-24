@@ -28,7 +28,7 @@ This is the only document wtihin the topic that contains an H1-level header.
    * portalfx-extensions-cnames.md
    * portalfx-extensions-contacts.md
    * portalfx-extensions-developmentPhases.md
-   * portalfx-extensions-exitCriteria.md
+   * top-exit-criteria.md
    * portalfx-extensions-publishing.md
    * portalfx-extensions-qualityEssentials.md
    * portalfx-extensions-stackoverflow.md
@@ -168,7 +168,10 @@ Each best practice section ends with three asterisks, as in '* * *', to include 
 <a name="skeleton-best-practices-onebox-stb-has-been-deprecated"></a>
 ### Onebox-stb has been deprecated
 
-Onebox-stb is no longer available. Please do not use it. Instead, migrate extensions to sideloading. For more information about sideloading, see [portalfx-extensions-testing-in-production-overview.md#sideloading](portalfx-extensions-testing-in-production-overview.md#sideloading). For help on migration, send an email to [ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com).
+Onebox-stb is no longer available. Please do not use it. Instead, migrate extensions to sideloading. For more information about sideloading, see [portalfx-extensions-testing-in-production-overview.md#sideloading](portalfx-extensions-testing-in-production-overview.md#sideloading).
+
+For help on migration, send an email to 
+ <a href="mailto:ibiza-onboarding@microsoft.com?subject=Help on Migration">mailto:ibiza-onboarding@microsoft.com?subject=Help on Migration</a>.
 
 * * * 
 

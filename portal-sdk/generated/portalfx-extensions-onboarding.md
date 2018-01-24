@@ -149,7 +149,7 @@ Read the following documents from the Azure Portal UI team site.  Our doc site p
 | Guidance for Program Managers and Dev Leads   | Portal Extensions for Program Managers, located at [portalfx-extensions-forProgramManagers.md](portalfx-extensions-forProgramManagers.md) |
 | Private Preview, Public Preview, and GA       | Portal Extension Development Phases, located at [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md) |
 | How it Works	                                | Getting Started, located at [portalfx-howitworks.md#getting-started](portalfx-howitworks.md#getting-started)
-| Build an empty extension                      | Creating An Extension, located at [portalfx-extensions-developerInit.md](portalfx-extensions-developerInit.md) |
+| Build an empty extension                      | Creating An Extension, located at [portalfx-extensions-create-blank-procedure.md](portalfx-extensions-create-blank-procedure.md) |
 | Portal environments and extension configurations | [portalfx-extensions-branches.md](portalfx-extensions-branches.md) | 
 | Experiment with sample code	                  | Sample Extensions, located at [portalfx-extensions-samples.md](portalfx-extensions-samples.md) |
 
@@ -354,7 +354,7 @@ SOLUTION: Use the following troubleshooting steps.
 
 ***Error: 'Security of a sandboxed iframe is potentially compromised by allowing script and same origin access'.***
  
-The Azure Portal should frame the extension URL, as specified in [portalfx-extensions-developerInit-procedure.md](portalfx-extensions-developerInit-procedure.md) and [portalfx-extensions-key-components.md](portalfx-extensions-key-components.md).  Also see [#console-error-messages](#console-error-messages).
+The Azure Portal should frame the extension URL, as specified in [portalfx-extensions-getting-started-procedure.md](portalfx-extensions-getting-started-procedure.md) and [portalfx-extensions-key-components.md](portalfx-extensions-key-components.md).  Also see [#console-error-messages](#console-error-messages).
 
 * * *
 
