@@ -8,7 +8,7 @@
 
 {"gitdown": "include-file", "file": "../templates/portalfx-forms-field-validation.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-forms-working-with-edit-scopes.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-legacy-editscopes.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-forms-integrating-with-commands.md"}
 
