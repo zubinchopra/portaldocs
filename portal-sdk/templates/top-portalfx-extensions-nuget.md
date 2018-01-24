@@ -28,7 +28,7 @@ In order to download the NuGet packages as part of an extension, developers can 
 </details>
 <details><summary>Local packages</summary>
 
-External partners can download and install the NuGet packages when they install and use **Visual Studio 2015**. For more information, see [portalfx-extensions-developerInit-procedure.md](portalfx-extensions-developerInit-procedure.md). The packages that are installed are located in the `C:\Program Files (x86)\Microsoft SDKs\PortalSDK\Packages` directory.
+External partners can download and install the NuGet packages when they install and use **Visual Studio 2015**. For more information, see [portalfx-extensions-getting-started-procedure.md](portalfx-extensions-getting-started-procedure.md). The packages that are installed are located in the `C:\Program Files (x86)\Microsoft SDKs\PortalSDK\Packages` directory.
 
 **NOTE**: This is the recommended approach for [third-party extensions](portalfx-extensions-onboarding-glossary.md).
 </details>

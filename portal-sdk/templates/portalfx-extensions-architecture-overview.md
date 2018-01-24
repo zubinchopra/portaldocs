@@ -13,8 +13,8 @@ The Azure Portal architecture is displayed in the following image.
 ### Understanding the Extension Architecture
 
 1.	Typically an extension is an ASP.NET Web API project, which is modified to include content specific to the Portal.
-1.	The client APIs use TypeScript to provide a productive experience for building JavaScript.
-1.	TypeScript is built using the Asynchronous Module Loader (AMD) module system via require.js.
+1.	The client APIs use **TypeScript** to provide a productive experience for building JavaScript.
+1.	**TypeScript** is built using the Asynchronous Module Loader (AMD) module system via require.js.
 1.	The core programming model follows the Model View ViewModel pattern. Most UI elements in the Portal are backed by dynamic view models, which provide a 'live tile' style of UX.
 1.	View models make heavy use of Knockout for binding data to the client.
 1.	Building custom UI is enabled using standard web technologies like HTML and CSS.

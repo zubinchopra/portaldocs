@@ -7,7 +7,10 @@
 The SharePoint Sparta Onboarding FAQ is located at [http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx](http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx).
 
 * * *
+
 ### SSL Certs
+   
+   <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
    
 ***How do I use SSL certs?***
  
@@ -18,15 +21,17 @@ The SharePoint Sparta Onboarding FAQ is located at [http://sharepoint/sites/Azur
  **NOTE** Do not use the SSL Admin site for production certs.
 
  * * *
+
  ### Compile on Save
 
- ***What is Compile on Save ?**
-Compile on Save is a TypeScript option that   . To use it, make sure that TypeScript 2.0.3 was installed on your machine. The version can be verified by executing the following  command:
+**What is Compile on Save ?**
+
+Compile on Save is a **TypeScript** option that   . To use it, make sure that **TypeScript** 2.0.3 was installed on your machine. The version can be verified by executing the following  command:
 
 ```bash
 $>tsc -version
 ```
-Then, verify that when a typescript file is saved, that  the following text is displayed in the bottom left corner of your the visual studio application.
+Then, verify that when a **TypeScript** file is saved, that the following text is displayed in the bottom left corner of your the **Visual Studio** application.
 
 ![alt-text](../media/portalfx-ide-setup/ide-setup.png "CompileOnSaveVisualStudio")
 

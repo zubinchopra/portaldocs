@@ -25,7 +25,7 @@
 {"gitdown": "include-file", "file": "./portalfx-extensions-glossary-hosting-service.md"}
 
 ## Initializing the Developer Platform
-{"gitdown": "include-file", "file": "./portalfx-extensions-glossary-developerInit.md"}
+{"gitdown": "include-file", "file": "./portalfx-extensions-glossary-getting-started.md"}
 
 ## Status Codes and Error Messages
 {"gitdown": "include-file", "file": "./portalfx-extensions-glossary-status-codes.md"}

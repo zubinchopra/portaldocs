@@ -30,6 +30,9 @@ Each best practice section ends with three asterisks, as in '* * *', to include 
 
 ### Onebox-stb has been deprecated
 
-Onebox-stb is no longer available. Please do not use it. Instead, migrate extensions to sideloading. For more information about sideloading, see [portalfx-extensions-testing-in-production-overview.md#sideloading](portalfx-extensions-testing-in-production-overview.md#sideloading). For help on migration, send an email to [ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com).
+Onebox-stb is no longer available. Please do not use it. Instead, migrate extensions to sideloading. For more information about sideloading, see [portalfx-extensions-testing-in-production-overview.md#sideloading](portalfx-extensions-testing-in-production-overview.md#sideloading).
+
+For help on migration, send an email to 
+ <a href="mailto:ibiza-onboarding@microsoft.com?subject=Help on Migration">mailto:ibiza-onboarding@microsoft.com?subject=Help on Migration</a>.
 
 * * * 

@@ -1,20 +1,17 @@
 
-<a name="portalfxExtensionsKeyComponentsMGCreate"></a>
-<!-- link to this document is [portalfx-extensions-key-components-mgCreate.md]()
--->
-
 ## Marketplace Gallery Integration and Create Experience
-If your business intends to sell Portal resoources, then you may want to integrate them into the Azure Marketplace. The Marketplace offers users a consistent way to browse and search items that they can create or purchase.
 
-You integrate an extension or a resource into the Marketplace by building and publishing a package to the Marketplace service. This section describes the basic pieces of the Marketplace.
+If your business intends to sell Portal resources, then you may want to integrate them into the Azure Marketplace. The Marketplace offers users a consistent way to browse and search items that they can create or purchase.
 
-1. In your running portal, go to the Marketplace by clicking the ```+New```  button and then the ```See all``` button, as in the following image.
+You can integrate an extension or a resource into the Marketplace by building and publishing a package to the Marketplace service. This section describes the basic pieces of the Marketplace.
+
+1. In the running Portal, go to the Marketplace by clicking the ```+New```  button and then the ```See all``` button, as in the following image.
 
     ![alt-text](../media/portalfx-overview/marketplace-launch.png "Portal Marketplace")
 
 <!-- Determine whether only one is displayed in the blade.  -->
 
-1. Then click the ```Local Development ``` category. The name of the Marketplace item that is  displayed in the ```Local Development ``` blade matches the name that was selected when creating your Visual Studio project. Click the gallery item to launch the item details blade.
+1. Then click the ```Local Development ``` category. The name of the Marketplace item that is  displayed in the ```Local Development ``` blade matches the name that was selected when creating its Visual Studio project. Click the gallery item to launch the item details blade.
 
     ![alt-text](../media/portalfx-overview/marketplace-local-development.png "Local Development Blade ")
  
@@ -38,9 +35,15 @@ You integrate an extension or a resource into the Marketplace by building and pu
 
     ![alt-text](../media/portalfx-overview/create-blade.png "Client/Resource/Create Directory")
 
-    NOTE:  The name "CreateBlade" in the ```Create.pdl``` file matches the name in the ``` UIDefinition.json```  file.
+    **NOTE**  The name "CreateBlade" in the ```Create.pdl``` file matches the name in the ``` UIDefinition.json```  file.
  
-1. Return to the portal and enter the common resource properties in the ``` Create ``` form, then  click the ```Create``` button  to create the resource.
+1. Return to the Portal and enter the common resource properties in the ``` Create ``` form, then  click the ```Create``` button  to create the resource.
 
 <!-- TODO:  Locate a gallery doc that describes the common resource properties. -->
 For more information on creating gallery packages and ```Create``` forms, see the    document in the gallery documentation.
+<!-- TODO:  The previous sentence was:
+For more information on creating gallery packages and create forms see the [gallery documentation](/gallery-sdk/generated/index-gallery.md#Marketplace-Gallery-Integration-and-Create-Experience).
+Determine what the content was, and whether it has been included in the key components document.
+-->
+
+For more information about creating Portal experiences, see     [portalfx-create.md#building-create-experiences](portalfx-create.md#building-create-experiences).
