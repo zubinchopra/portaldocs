@@ -63,7 +63,7 @@
 </tr>
 <tr>
     <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching">ibiza-data-caching</a> </td>
-    <td> </td>
+    <td>Questions related to loading and caching data for use in your extension's Blades, Parts, etc. This includes topics like issuing AJAX calls from your extension, the QueryCache/EntityCache caching components, etc.</td>
     <td> brado </td>
 </tr>
 <tr>
