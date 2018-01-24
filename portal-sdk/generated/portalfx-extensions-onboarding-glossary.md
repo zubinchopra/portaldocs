@@ -1,6 +1,6 @@
 <a name="glossary"></a>
 ## Glossary
- 
+    
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
 
 | Term                      | Meaning |
@@ -21,7 +21,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | DF                        | Dogfood | 
 | DNS                       | Domain Name Server  | 
 | DNS                       | Domain Name System  | 
-| first-party extension     | An Azure portal extension that is developed by Microsoft |
+| first-party extension     | An Azure Portal extension that is developed by Microsoft |
 | FAQ                       | Frequently Asked Questions | 
 | GA                        | Global Availability | 
 | gallery                   | Also known as Marketplace or Azure Portal Marketplace. See Marketplace Gallery. | 
@@ -29,7 +29,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | GB Standard               | GB stands for Guobiao, or “National Standard” in Chinese. The GB standard is the basis for testing products that require certification. | 
 | Marketplace               | See Marketplace Gallery. | 
 | Marketplace Gallery       | Also known as the Gallery or Marketplace Gallery. | 
-| MPAC                      | ms.portal.azure.com, the Azure portal instance for internal Microsoft customers.  | 
+| MPAC                      | ms.portal.azure.com, the Azure Portal instance for internal Microsoft customers.  | 
 | P0 scenarios              | The most important user scenarios for an extension. Less important scenarios that are used for usability testing are categorized as P1, P2, or P3. |
 | PDE | | 
 | PHP                       | Recursive acronym for PHP: Hypertext Preprocessor. | 
@@ -48,7 +48,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | single page application | A web application that dynamically rewrites displayed pages instead of providing entire new pages from a server. | 
 | SLA                       | Service Level Agreement | 
 | SSL                       | Secure Socket Layer  | 
-| third-party extension     | An Azure portal extension that is developed by partners outside of Microsoft |
+| third-party extension     | An Azure Portal extension that is developed by partners outside of Microsoft |
 | URL                       | Uniform Resource Locator | 
 | VP                        | Vice President | 
 | Weighted Experience Score | The percentage of blade usage that meets the performance bar. |

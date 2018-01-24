@@ -1,13 +1,13 @@
 <a name="development-procedures"></a>
 ## Development Procedures
-
+   
 The items that are being developed extend  functionality to an Azure Portal, and therefore are named extensions.  Some examples are in the following image.
 
  ![alt-text](../media/portalfx-ui-concepts/blade.png "Azure Portal Blades")
 
-Perform the following tasks to become part of Azure portal extension developer community.
+Perform the following tasks to become part of Azure Portal extension developer community.
 
-* Prerequisites to Azure portal onboarding
+* Prerequisites to Azure Portal onboarding
 
 1. [Join DLs and request permissions](#join-dls-and-request-permissions) 
 
@@ -48,7 +48,7 @@ Request the following permissions to stay current on product roadmaps, get news 
    
 Install the following software. Your team should be aware of the most current download locations so that you can complete your own installs.
 
-* Windows 8, Windows Server 2012 R2, or the most recent edition of the client or server platform. Some downloads are located at the following sites.
+1. Windows 8, Windows Server 2012 R2, or the most recent edition of the client or server platform. Some downloads are located at the following sites.
   * Windows 8
     
     [https://www.microsoft.com/en-us/software-download/windows8](https://www.microsoft.com/en-us/software-download/windows8)
@@ -57,23 +57,23 @@ Install the following software. Your team should be aware of the most current do
 
     [https://www.microsoft.com/en-us/download/details.aspx?id=41703](https://www.microsoft.com/en-us/download/details.aspx?id=41703)
 
-* Visual Studio 2015 that is located at [https://www.visualstudio.com/downloads/](https://www.visualstudio.com/downloads/)
+1. Visual Studio 2015 that is located at [https://www.visualstudio.com/downloads/](https://www.visualstudio.com/downloads/)
 
-* Typescript for Visual Studio 15 that is located at [https://www.microsoft.com/en-us/download/details.aspx?id=48593](https://www.microsoft.com/en-us/download/details.aspx?id=48593)
+1. Typescript for Visual Studio 15 that is located at [https://www.microsoft.com/en-us/download/details.aspx?id=48593](https://www.microsoft.com/en-us/download/details.aspx?id=48593)
 
-* VS Code that is located at [https://code.visualstudio.com/docs/setup/setup-overview](https://code.visualstudio.com/docs/setup/setup-overview)
+1. VS Code that is located at [https://code.visualstudio.com/docs/setup/setup-overview](https://code.visualstudio.com/docs/setup/setup-overview)
 
-* Knockout that is located at [http://knockoutjs.com/downloads/](http://knockoutjs.com/downloads/)
+1. Knockout that is located at [http://knockoutjs.com/downloads/](http://knockoutjs.com/downloads/)
 
-* Azure Portal SDK that is located at [http://aka.ms/portalfx/download](http://aka.ms/portalfx/download)
+1. Azure Portal SDK that is located at [http://aka.ms/portalfx/download](http://aka.ms/portalfx/download)
 
-* Quality Essentials that is located at [http://qe](http://qe), or One Compliance System (1CS) that is located at  [https://microsoft.sharepoint.com/teams/1CS/SitePages/Home.aspx](https://microsoft.sharepoint.com/teams/1CS/SitePages/Home.aspx)
+1. Quality Essentials that is located at [http://qe](http://qe), or One Compliance System (1CS) that is located at  [https://microsoft.sharepoint.com/teams/1CS/SitePages/Home.aspx](https://microsoft.sharepoint.com/teams/1CS/SitePages/Home.aspx)
 
-* Node tools that are located at [https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1](https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1)
+1. Node tools that are located at [https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1](https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1)
 
-* Nuget package loading instructions are located at [portalfx-extensions-onboarding-nuget.md](portalfx-extensions-onboarding-nuget.md) and at [portalfx-extensions-developerInit-procedure.md](portalfx-extensions-developerInit-procedure.md).
+1. Nuget package loading instructions are located at [portalfx-extensions-onboarding-nuget.md](portalfx-extensions-onboarding-nuget.md) and at [portalfx-extensions-developerInit-procedure.md](portalfx-extensions-developerInit-procedure.md).
 
-* Set up the source code management system on your computer. Teams use **GitHub**, **VSO**, and other content management systems. Which one is used by your team is team-dependent.
+1. Set up the source code management system on your computer. Teams use **GitHub**, **VSO**, and other content management systems. Which one is used by your team is team-dependent.
 
 Test that your computer is ready for Azure development by creating a blank extension, as specified in [portalfx-extensions-developerInit-procedure.md](portalfx-extensions-developerInit-procedure.md).
 
@@ -117,7 +117,7 @@ Read the following documents from the Azure Portal UI team site.  Our doc site p
  
 1. To ensure that the business goals of the new extension or service are aligned with Azure's business strategy, please reach out to the Integrated Marketing Team or the L&R - Operations - GD&F team at [mailto:ibiza-bmr@microsoft.com?subject=Azure%20Business%20model%20review](mailto:ibiza-bmr@microsoft.com?subject=Azure%20Business%20model%20review). Brian Hillger’s team and Stacey Ellingson’s team will guide you through the business model review process. The extension or service is not ready to be onboarded to Azure until its business model has received approval from those teams. Do not proceed with the next step until the business model has received approval.
 
-1. Schedule a UX feasibility review with the Ibiza team UX contact by emailing [mailto:ibiza-onboarding@microsoft.com?subject=Extension%20Feasibility%20Review](mailto:ibiza-onboarding@microsoft.com?subject=Extension%20Feasibility%20Review).  Many extensions have been made more successful by setting up early design reviews with the Azure portal team. Taking the time to review the design gives extension owners an opportunity to understand how they can leverage Azure portal design patterns, and ensure that the desired outcome is feasible. 
+1. Schedule a UX feasibility review with the Ibiza team UX contact by emailing [mailto:ibiza-onboarding@microsoft.com?subject=Extension%20Feasibility%20Review](mailto:ibiza-onboarding@microsoft.com?subject=Extension%20Feasibility%20Review).  Many extensions have been made more successful by setting up early design reviews with the Azure Portal team. Taking the time to review the design gives extension owners an opportunity to understand how they can leverage Azure Portal design patterns, and ensure that the desired outcome is feasible. 
 
 1. If the extension requires additional built-in support for standard Graph or ARM APIs, submit a partner request at the site located at [https://aka.ms/portalfx/uservoice](https://aka.ms/portalfx/uservoice).  For information about other components that the new service needs, see [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md).
 
