@@ -184,13 +184,13 @@ Request the following permissions to stay current on product roadmaps, get news 
 Install the following software. Your team should be aware of the most current download locations so that you can complete your own installs.
 
 1. Windows 8, Windows Server 2012 R2, or the most recent edition of the client or server platform. Some downloads are located at the following sites.
-  * Windows 8
+    * Windows 8
     
-    [https://www.microsoft.com/en-us/software-download/windows8](https://www.microsoft.com/en-us/software-download/windows8)
+      [https://www.microsoft.com/en-us/software-download/windows8](https://www.microsoft.com/en-us/software-download/windows8)
 
-  * Windows Server 2012 R2
+    * Windows Server 2012 R2
 
-    [https://www.microsoft.com/en-us/download/details.aspx?id=41703](https://www.microsoft.com/en-us/download/details.aspx?id=41703)
+      [https://www.microsoft.com/en-us/download/details.aspx?id=41703](https://www.microsoft.com/en-us/download/details.aspx?id=41703)
 
 1. Visual Studio 2015 that is located at [https://www.visualstudio.com/downloads/](https://www.visualstudio.com/downloads/)
 
