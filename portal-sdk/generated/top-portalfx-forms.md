@@ -313,6 +313,8 @@ var nameTextboxOptions  = <MsPortalFx.ViewModels.Forms.TextBox.Options>{
 <a name="developing-forms-working-with-edit-scopes"></a>
 ## Working with Edit Scopes
 
+**NOTE**:  EditScopes are becoming obsolete.   It is recommended that extensions be developed without edit scopes, as specified in [portalfx-editscopeless-forms.md](portalfx-editscopeless-forms.md).
+
 Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide many common functions that would otherwise be difficult to orchestrate, like the following:
 
   * Track changes in field values across a form
