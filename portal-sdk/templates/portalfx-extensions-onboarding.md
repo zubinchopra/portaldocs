@@ -1,18 +1,10 @@
 # Portal Extensions 
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-onboarding-overview.md"}
-
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-onboarding-requirements.md"}
-
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-onboarding-communication.md"}
-     
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-qualityEssentials.md"}
-
+ 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-developmentPhases.md"}
   
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-onboarding-procedures.md"}
-  
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-exitCriteria.md"}
  
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-status-codes.md"}
 
