@@ -1,10 +1,10 @@
 ## Introduction 
 
-It is important to read this guide carefully, as we rely on you to manage the extension registration / configuration management process  in the portal repository. External partners should also read this guide to understand the capabilities that Portal can provide for  extensions by using configuration. However, external partner requests should be submitted by sending an email to ```ibizafxpm@microsoft.com ``` instead of using the internal sites that are in this document. 
+It is important to read this guide carefully, as we rely on you to manage the extension registration / configuration management process  in the Portal repository. External partners should also read this guide to understand the capabilities that Portal can provide for  extensions by using configuration. However, external partner requests should be submitted by sending an email to ```ibizafxpm@microsoft.com ``` instead of using the internal sites that are in this document. 
 
 The subject of the email should contain the following.
 
-``` <Onboarding Request ID> Add <extensionName> extension to the portal  ```
+``` <Onboarding Request ID> Add <extensionName> extension to the Portal  ```
 
 where 
 

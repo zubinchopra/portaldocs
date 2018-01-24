@@ -1,14 +1,11 @@
 
 ## Frequently asked questions
 
-For an end-to-end overview of EditScope and how it's used in the Azure Portal FX, please refer to the video and accompanying PowerPoint presentation here:  
-[Forms: Working with Edit Scopes](portalfx-forms-working-with-edit-scopes.md)
-
-When applying EditScope to common Form scenarios, here is a quick reference with answers to frequently-asked questions.
+For an end-to-end overview of EditScope and how it is used in the Azure Portal FX, see the "Forms: Working with Edit Scopes" video and accompanying PowerPoint presentation located at [portalfx-forms-working-with-edit-scopes.md](portalfx-forms-working-with-edit-scopes.md).
 
 ### Q: My users see the 'discard change?' pop-up, even when they've made no changes on my Form Blade. What's wrong here?  
 
-The EditScope '`root`' property returns an object or array that includes uses of Knockout observables (`KnockoutObservable<T>` and `KnockoutObservableArray<T>`). Any observable located within the EditScope is designed to be modified/updated **only by the user**, via Form fields that are bound to EditScope observables. Importantly, these EditScope observables *were not designed* to be modified directly from extension TypeScript code. If extension code modifies an observable *during Form/Blade initialization*, the EditScope will record this *as a user edit*, and this "accidental edit" will trigger the 'discard changes?' pop-up when the user tries to close the associated Blade.  
+The EditScope `root` property returns an object or array that includes uses of Knockout observables (`KnockoutObservable<T>` and `KnockoutObservableArray<T>`). Any observable located within the EditScope is designed to be modified/updated **only by the user**, via Form fields that are bound to EditScope observables. Importantly, these EditScope observables *were not designed* to be modified directly from extension TypeScript code. If extension code modifies an observable *during Form/Blade initialization*, the EditScope will record this *as a user edit*, and this "accidental edit" will trigger the 'discard changes?' pop-up when the user tries to close the associated Blade.  
 
 Rather than initializing the EditScope by programmatically modifying/updating EditScope observables, use these alternative techniques:
 * If the extension uses a ParameterProvider component to manage its EditScope, initialize the EditScope data in the '`mapIncomingData[Async]`' callback supplied to ParameterProvider.
@@ -127,11 +124,9 @@ And there is a corresponding '`applyArrayAsEdits`' EditScope method that simplif
 
 This pair of EditScope methods significantly simplifies working with EditScope 'entity' arrays.  
   
-  
 ### Q: Some of my Form data is not editable. How do I keep EditScope from tracking changes for this data?
 
 See [mention of '`trackEdits`'](#track-edits) above re: configuring an EditScope via type metadata.  
-  
   
 ### Q: My Form data is just key/value-pairs. How do I model a Dictionary/StringMap in EditScope? Why can't I just use a JavaScript object like a property bag?  
 
@@ -148,11 +143,11 @@ Often, additionally, it is important to let users edit the Dictionary/StringMap/
 
 Here's a sample that does something similar, converting - in this case - an array of strings into an 'entity' array for consumption by editable grid.  
 
-#### Modeling your data as an 'entity' array
+#### Modeling data as an 'entity' array
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/ParameterCollection/ParameterProviders/ViewModels/ProviderViewModels.ts", "section": "formsEditScopeFaq#makeEntityForEditableGrid"}  
 
-#### Converting your data to an 'entity' array for consumption by editable grid
+#### Converting data to an 'entity' array for consumption by editable grid
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/ParameterCollection/ParameterProviders/ViewModels/ProviderViewModels.ts", "section": "formsEditScopeFaq#makeEntityForEditableGrid2"}  
   

@@ -1,8 +1,8 @@
 ## Skeleton Glossary 
 
-<!-- topic name is a level 2 at the beginning of the doc.  Including the major area in the name is optional. -->
+<!-- ## <major-area> <topic> 
 
-## <major-area> <topic> 
+<!-- topic name is a level 2 at the beginning of the doc.  Including the major area in the name is optional, as in the preceding level 2 header. -->
 
 <!--  The Glossary is a required document.  -->
 
