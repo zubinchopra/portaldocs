@@ -1,4 +1,5 @@
-# Steps that do not involve the Ibiza team (e.g. compliance, marketplace integration)
+# Onboarding outside of Ibiza
+## Compliance, Marketplace Integration, and others
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-onboarding-requirements.md"}
 
