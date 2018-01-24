@@ -1,8 +1,10 @@
-<a name="steps-that-do-not-involve-the-ibiza-team-e-g-compliance-marketplace-integration"></a>
-# Steps that do not involve the Ibiza team (e.g. compliance, marketplace integration)
+<a name="onboarding-outside-of-ibiza"></a>
+# Onboarding outside of Ibiza
+<a name="onboarding-outside-of-ibiza-compliance-marketplace-integration-and-others"></a>
+## Compliance, Marketplace Integration, and others
 
 
-<a name="steps-that-do-not-involve-the-ibiza-team-e-g-compliance-marketplace-integration-requirements-for-azure-services"></a>
+<a name="onboarding-outside-of-ibiza-requirements-for-azure-services"></a>
 ## Requirements for Azure Services
    
 All services using Azure Billing must be exposed by using the Azure Resource Manager (ARM). Services that do not use Azure Billing can use either ARM or Microsoft Graph. Usually, services that integrate deeply with Office 365 use Graph, while all others are encouraged to use ARM. 
@@ -16,7 +18,7 @@ The Azure Portal SDK doesn't require any specific back-end, but does provide ext
 All new services should be listed in the Azure Web site that is located at [https://azure.microsoft.com](https://azure.microsoft.com). This isn't a requirement for onboarding the Portal, but service categorization is the same between the azure.com Products menu, Portal Services menu, and the Azure Marketplace. The service should not be listed in the Portal unless it is also on azure.microsoft.com.
 
 
-<a name="steps-that-do-not-involve-the-ibiza-team-e-g-compliance-marketplace-integration-quality-essentials"></a>
+<a name="onboarding-outside-of-ibiza-quality-essentials"></a>
 ## Quality Essentials
   
 Quality Essentials  and 1CS provide access to manage the release policies and procedures for each compliance. QE tracks the following policies.
@@ -43,14 +45,14 @@ These requirements apply to both the Portal fx and extensions. Since Fx provides
 For more information and any questions about Fx coverage, reach out to the Fx Coverage contact that is located in [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md).
 
 
-<a name="steps-that-do-not-involve-the-ibiza-team-e-g-compliance-marketplace-integration-azure-fundamentals"></a>
+<a name="onboarding-outside-of-ibiza-azure-fundamentals"></a>
 ## Azure Fundamentals
 
 The Azure Fundamentals are a set of tenets to which each Azure service is expected to adhere. The Azure Fundamentals program is described in the document located at [https://aka.ms/azurefundamentals](https://aka.ms/azurefundamentals). The document also identifies the stakeholders and contacts for each of the tenets.
 
 The Azure Fundamentals document is 
 
-<a name="steps-that-do-not-involve-the-ibiza-team-e-g-compliance-marketplace-integration-quality-essentials"></a>
+<a name="onboarding-outside-of-ibiza-quality-essentials"></a>
 ## Quality Essentials
 
 Compliance criteria and practices are defined in Quality Essentials throughout the development cycle. These ensure that services meet the Trusted Cloud commitments outlined in the Microsoft Azure Trust Center for our customers. These are required procedures for preview and Global Availability, and are to be revisited for every release cycle.
@@ -62,7 +64,7 @@ Nearly 70% of Azure users are from outside of the United States. Therefore, it i
 
 
 
-<a name="steps-that-do-not-involve-the-ibiza-team-e-g-compliance-marketplace-integration-communication"></a>
+<a name="onboarding-outside-of-ibiza-communication"></a>
 ## Communication
    
 Plan ahead for all the outbound communication, blogging, and marketing work that publicizes new services during the time that they are being deployed to customers.  This coordination is important, particularly when software release commitments are aligned with the Azure events and conferences. This coordination may be optional for preview releases, but the localized azure.com content and service updates plan are required for stakeholder signoff, if the extension will be deployed to GA.
