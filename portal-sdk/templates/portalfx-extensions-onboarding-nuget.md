@@ -1,6 +1,6 @@
 # NuGet Packages
 
-The Azure portal SDK ships framework assemblies, tools, test framework and extension [PDE](portalfx-extensions-onboarding-glossary.md) files as NuGet packages. It also provides the capability to ship extensions as NuGet packages. This allows extensions to invoke blades and parts from other extensions at runtime. For more information about sharing  extensions as NuGet packages, see [portalfx-pde-publish.md](portalfx-pde-publish.md).
+The Azure Portal SDK ships framework assemblies, tools, test framework and extension [PDE](Portalfx-extensions-onboarding-glossary.md) files as NuGet packages. It also provides the capability to ship extensions as NuGet packages. This allows extensions to invoke blades and parts from other extensions at runtime. For more information about sharing  extensions as NuGet packages, see [portalfx-pde-publish.md](portalfx-pde-publish.md).
 
 ## Download NuGet packages
 
@@ -40,7 +40,7 @@ The following tables describe the various NuGet packages by category.
 <summary>For development</summary>
 
 After installation, NuGet packages that are used for development are listed in the `NuGet Package Manager` tool in the **Visual Studio** project for the extension that is being built.
-
+   
 | Package | Purpose | 
 | ------- | ------- |
 | Microsoft.Portal.Framework | Contains framework assemblies Microsoft.Portal.Azure.dll, Microsoft.Portal.Core.dll,Microsoft.Portal.Framework.dll, Microsoft.WindowsAzure.ServiceRuntime.dll and WindowsAzureEventSource.dll.  |
@@ -55,7 +55,7 @@ After installation, NuGet packages that are used for development are listed in t
 
 | Package | Purpose | 
 | ------- | ------- |
-| Microsoft.Azure.Gallery.AzureGalleryUtility | Contains tools to package, upload and update gallery items in the Azure portal marketplace. | 
+| Microsoft.Azure.Gallery.AzureGalleryUtility | Contains tools to package, upload and update gallery items in the Azure Portal marketplace. | 
 </details>
 <details>
 
