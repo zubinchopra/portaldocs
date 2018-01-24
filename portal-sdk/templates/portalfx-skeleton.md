@@ -27,7 +27,7 @@ This is the only document wtihin the topic that contains an H1-level header.
    * portalfx-extensions-cnames.md
    * portalfx-extensions-contacts.md
    * portalfx-extensions-developmentPhases.md
-   * portalfx-extensions-exitCriteria.md
+   * top-exit-criteria.md
    * portalfx-extensions-publishing.md
    * portalfx-extensions-qualityEssentials.md
    * portalfx-extensions-stackoverflow.md
