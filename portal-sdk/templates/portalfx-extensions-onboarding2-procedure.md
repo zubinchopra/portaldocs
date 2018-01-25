@@ -1,4 +1,4 @@
-## Development Procedures
+## Overview
    
 Perform the following tasks to develop an Azure extension.
 

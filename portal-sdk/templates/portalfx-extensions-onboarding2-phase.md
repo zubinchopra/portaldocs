@@ -1,4 +1,6 @@
-# Portal development phase 2: development
+# Portal development phase 2
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-onboarding2-overview.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-onboarding2-procedure.md"}
 
