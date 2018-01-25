@@ -1,5 +1,7 @@
+<a name="portal-development-phase-2"></a>
+# Portal development phase 2
   
-<a name="development"></a>
+<a name="portal-development-phase-2-development"></a>
 ## Development
 
 Developing a Portal extension has three phases: private preview, public preview, and Global Availability (GA). Azure Portal onboarding is creating a UI for a service in Azure Portal, and is a subset of Azure onboarding.

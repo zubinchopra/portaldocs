@@ -38,15 +38,9 @@ Perform the following tasks to become part of Azure Portal extension developer c
  
 You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
 
-
-
-
-
-
   
 <a name="portal-development-phase-2"></a>
 # Portal development phase 2
-
   
 <a name="portal-development-phase-2-development"></a>
 ## Development
@@ -71,77 +65,6 @@ Perform the following tasks to develop an Azure extension.
 You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
 
 
-
-<a name="portal-development-phase-2-best-practices"></a>
-## Best Practices
-   
-Portal development patterns or architectures that are recommended based on customer feedback and usability studies are located in the topic for the blade that is being developed. For more information, see [portalfx-blades-best-practices.md](portalfx-blades-best-practices.md).
-
-<a name="portal-development-phase-2-best-practices-performance"></a>
-### Performance
-
-There are practices that can improve the performance of the extension.  For more information, see [portalfx-performance-bestpractices.md](portalfx-performance-bestpractices.md).
-
-
-<a name="portal-development-phase-2-best-practices-productivity-tip"></a>
-### Productivity Tip
-
-Install Chrome that is located at [http://google.com/dir](http://google.com/dir) to leverage the debugger tools while developing an extension.
-
-<a name="portal-development-phase-2-frequently-asked-questions"></a>
-## Frequently asked questions
-
-<a name="portal-development-phase-2-frequently-asked-questions-onboarding-faq"></a>
-### Onboarding FAQ
-
-***Where are the onboarding FAQs for Sparta (ARM/CSM-RP)?***
-
-The SharePoint Sparta Onboarding FAQ is located at [http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx](http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx).
-
-* * *
-
-<a name="portal-development-phase-2-frequently-asked-questions-ssl-certs"></a>
-### SSL Certs
-   
-   <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
-   
-***How do I use SSL certs?***
- 
- SSL Certs are relevant only for teams that host their own extensions.  Azure Portal ONLY supports loading extensions from HTTPS URLs. Use a wildcard SSL cert for each environment to simplify maintenance, for example,   ``` *.<extensionName>.onecloud-ext.azure-test.net  ``` or  ``` *.<extensionName>.ext.azure.com) ``` .    To simplify overall management when your team is building separate, independent extensions, you can also use  ``` <extensionName>.<team>.ext.azure.com ``` and create a wildcard SSL cert for  ``` *.<team>.ext.azure.com ```. Internal teams can create SSL certs for the DogFood environment using the SSL Administration Web page that is located at [http://ssladmin](http://ssladmin). 
- 
-  Production certs must follow your organization’s PROD cert process. 
-
- **NOTE** Do not use the SSL Admin site for production certs.
-
- * * *
-
- ### Compile on Save
-
-**What is Compile on Save ?**
-
-Compile on Save is a **TypeScript** option that   . To use it, make sure that **TypeScript** 2.0.3 was installed on your machine. The version can be verified by executing the following  command:
-
-```bash
-$>tsc -version
-```
-Then, verify that when a **TypeScript** file is saved, that the following text is displayed in the bottom left corner of your the **Visual Studio** application.
-
-![alt-text](../media/portalfx-ide-setup/ide-setup.png "CompileOnSaveVisualStudio")
-
- * * *
-
-<a name="portal-development-phase-2-frequently-asked-questions-other-onboarding-questions"></a>
-### Other onboarding questions
-
-***How can I ask questions about onboarding ?***
-
-You can ask questions on Stackoverflow with the tag [onboarding](https://stackoverflow.microsoft.com/questions/tagged/onboarding).
-
-
-
-
-
-  
 <a name="portal-development-phase-3"></a>
 # Portal development phase 3
 
@@ -222,6 +145,22 @@ You can ask questions on Stackoverflow with the tag [onboarding](https://stackov
 
 
 
+<a name="portal-development-phase-3-for-more-information"></a>
+## For More Information
+   
+For more information about development phases, see [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md).
+
+For more information about the Microsoft Azure Trust Center, see [http://azure.microsoft.com/en-us/support/trust-center/](http://azure.microsoft.com/en-us/support/trust-center/).
+
+For more information about exit criteria, see [top-exit-criteria.md](top-exit-criteria.md).
+
+ For more information about quality metrics, see the One Compliance System Web site that is located at [https://microsoft.sharepoint.com/teams/1CS/SitePages/Home.aspx](https://microsoft.sharepoint.com/teams/1CS/SitePages/Home.aspx).
+
+For more information about internationalization requirements, see [http://aka.ms/azureintlrequirements](http://aka.ms/azureintlrequirements). 
+
+For more information about localization requirements, see [portalfx-localization.md](portalfx-localization.md). 
+
+For more information about azure.com onboarding, see [http://acomdocs.azurewebsites.net](http://acomdocs.azurewebsites.net).
  
 <a name="portal-development-phase-3-status-codes-and-error-messages"></a>
 ## Status Codes and Error Messages
@@ -486,23 +425,6 @@ If the following table is not current, please send a pull request to update the 
 | Resource Move                                 | Edison Park                                | [ibiza-resourceMove@microsoft.com](mailto:ibiza-resourceMove@microsoft.com) |
 | Usability	                                    | Joe Hallock; Mariah Jackson                | [ibiza-usability@microsoft.com](mailto:ibiza-usability@microsoft.com) |
 | UX feasibility review                         | :star:Santhosh Somayajula                        | [ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com) | 
-
-<a name="portal-development-phase-3-for-more-information"></a>
-## For More Information
-   
-For more information about development phases, see [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md).
-
-For more information about the Microsoft Azure Trust Center, see [http://azure.microsoft.com/en-us/support/trust-center/](http://azure.microsoft.com/en-us/support/trust-center/).
-
-For more information about exit criteria, see [top-exit-criteria.md](top-exit-criteria.md).
-
- For more information about quality metrics, see the One Compliance System Web site that is located at [https://microsoft.sharepoint.com/teams/1CS/SitePages/Home.aspx](https://microsoft.sharepoint.com/teams/1CS/SitePages/Home.aspx).
-
-For more information about internationalization requirements, see [http://aka.ms/azureintlrequirements](http://aka.ms/azureintlrequirements). 
-
-For more information about localization requirements, see [portalfx-localization.md](portalfx-localization.md). 
-
-For more information about azure.com onboarding, see [http://acomdocs.azurewebsites.net](http://acomdocs.azurewebsites.net).
  
 <a name="portal-development-phase-3-glossary"></a>
 ## Glossary

@@ -1,6 +1,9 @@
 <a name="portal-development-phase-1"></a>
 # Portal development phase 1
 
+<a name="portal-development-phase-1"></a>
+# Portal development phase 1
+
 <a name="portal-development-phase-1-onboarding"></a>
 ## Onboarding
    
@@ -19,8 +22,5 @@ Perform the following tasks to become part of Azure Portal extension developer c
 1. [Get the developers started](top-extensions-getting-started.md)
  
 You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
-
-
-
 
 

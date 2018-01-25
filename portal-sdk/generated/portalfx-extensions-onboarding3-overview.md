@@ -1,4 +1,7 @@
-<a name="deployment"></a>
+<a name="portal-development-phase-3"></a>
+# Portal development phase 3
+
+<a name="portal-development-phase-3-deployment"></a>
 ## Deployment
 
 1. [Deploy the extension](portalfx-extensions-onboarding3-deployment.md)
