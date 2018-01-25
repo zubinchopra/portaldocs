@@ -1,4 +1,6 @@
 ## Data shaping
+In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
+
 ### Shaping and filtering data
 
 ### Understanding observable map() and mapInto()

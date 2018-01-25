@@ -1,6 +1,8 @@
 
 ## Loading Data 
 
+In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
+
 ### Controlling the AJAX call with `supplyData`
 
 In the simple case, the QueryCache is given a simple `sourceUri` attribute which it uses to form a request. This request is sent via a `GET`, with a default set of headers. In some cases, developers may wish to manually make the request.  This can be useful for a few scenarios:
@@ -11,7 +13,7 @@ In the simple case, the QueryCache is given a simple `sourceUri` attribute which
 
 To override the code that makes the request, use the `supplyData` method:
 
-`\Client\Data\SupplyData\SupplyData.ts`
+`<dir>\Client\V1\Data\SupplyData\SupplyData.ts`
 
 ```ts
 public websitesQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModels.WebsiteModel, any>({
@@ -263,7 +265,7 @@ In this example when `response.modified` is equal to false then no merge operati
 ### Making authenticated AJAX calls
 
 For most services, developers will make Ajax calls from the client to the server. Often the server will act as a proxy, making another call to a back end API (such as ARM) which requires authentication. When bootstrapping extensions, the portal will pass a JWT token to the extension. That same token can be included in the HTTP headers of a request to ARM, providing end to end authentication. To help make those authenticated calls, the portal includes an API which performs Ajax requests similar to the jQuery `$.ajax()` library named `MsPortalFx.Base.Net.ajax()`. If you're using QueryCache or EntityCache, this class is used by default. However, it can also be used independently:
-
+<!-- TODO:  Determine whether LoaderSampleData.ts is still used or has been replaced.  It is no longer in <SDK>\\Extensions\SamplesExtension\Extension -->
 `\Client\Data\Loader\LoaderSampleData.ts`
 
 ```ts
