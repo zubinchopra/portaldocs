@@ -7,6 +7,8 @@
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-onboarding2-phase.md"}
   
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-onboarding3-phase.md"}
+ 
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-status-codes.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-stackoverflow.md"}
    

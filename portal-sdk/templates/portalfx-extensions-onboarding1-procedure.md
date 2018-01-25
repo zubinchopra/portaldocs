@@ -6,8 +6,6 @@ The items that are being developed extend functionality to an Azure Portal, and 
 
 Perform the following tasks to become part of Azure Portal extension developer community.
 
-* Prerequisites to Azure Portal onboarding
-
 1. [Schedule Kickoff Meetings](#schedule-kickoff-meetings)
 
 1. [Onboard with related teams](top-external-onboarding.md)
@@ -42,11 +40,13 @@ When these meetings have concluded, your team will be ready to build extensions.
 
 Request the following permissions to stay current on product roadmaps, get news on latest features, and read workshop announcements.
 
-* PMs and Developer Leads need to join the  `ibizapartners PM`  group by clicking on this link: [http://igroup/join/ibizapartners-pm](http://igroup/join/ibizapartners-pm). 
+* PMs and Developer Leads need to join the `ibizapartners PM`  group by clicking on this link: [http://igroup/join/ibizapartners-pm](http://igroup/join/ibizapartners-pm). 
 
 * Developers should join the  `ibizapartners DEV` group by clicking on this  link:  [http://igroup/join/ibizapartners-dev](http://igroup/join/ibizapartners-dev). 
 
-* Developers should join the  ```Azure Portal Core Team - 15003(15003)``` group by using this link: [http://ramweb](http://ramweb).
+* Developers should join the appropriate group listed on [http://aka.ms/standardaccess](http://aka.ms/standardaccess) to get access to portal telemetry. All groups on this page receive access. 
+
+* Developers should join the  `Azure Portal Core Team - 15003(15003)` group by using this link: [http://ramweb](http://ramweb).
 
 * PMs, Developers, and Developer Leads should subscribe to the partner request process by joining the ```Uservoice ``` group at this link:  [https://aka.ms/portalfx/uservoice](https://aka.ms/portalfx/uservoice). For more information about the partner request process, see [portalfx-extension-partner-request-process.md](portalfx-extension-partner-request-process.md).
 

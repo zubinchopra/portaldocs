@@ -6,10 +6,8 @@ The Microsoft Azure Portal, located at [https://portal.azure.com](https://portal
 
 A UI extension is essentially the user experience (UX) for a service. Extensions are developed by teams that integrate user interfaces into the Azure Portal. Extensions are dynamically accessed and loaded based on customer actions in the Portal.
 
-The portal has an extension model where each team that builds user interfaces (UI) can create and deploy extensions. This process requires a relationship to be established between your team and the Portal team. This document reviews the process of onboarding your team and starting that relationship. The process is specified in the following image.
+The portal has an extension model where each team that builds user interfaces (UI) can create and deploy extensions. This process requires a relationship to be established between your team and the Portal team. This document reviews the process of onboarding your team and starting that relationship. 
+
+Onboarding a service, or developing a Portal extension, has three phases: onboarding, development, and deployment. The process is specified in the following image.
 
 ![alt-text](../media/portalfx-extensions-onboarding/azure-onboarding.png "Azure Onboarding Process")
-
-## Onboarding a service
-
-Onboarding a service, or developing a Portal extension, has three phases: onboarding, development, and deployment.
