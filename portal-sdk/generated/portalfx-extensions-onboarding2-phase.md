@@ -2,8 +2,8 @@
 # Portal development phase 2
 
   
-<a name="portal-development-phase-2-overview"></a>
-## Overview
+<a name="portal-development-phase-2-development"></a>
+## Development
 
 Developing a Portal extension, has three phases: private preview, public preview, and Global Availability (GA). Azure Portal onboarding is creating a UI for a service in Azure Portal, and is a subset of Azure onboarding.
 
@@ -15,8 +15,8 @@ Most services that onboard to Azure can leverage the following components of the
 The Azure onboarding process is streamlined to optimize the delivery of high-quality experiences based on hundreds of hours of usability testing that meet Microsoft Common Engineering Criteria (CEC) and compliance requirements. This will better optimize developer resources and reduce re-working due to anti-patterns and inconsistencies that block usability, performance, and other factors. Therefore, we strongly recommend starting the onboarding process previous to designing UI or management APIs.
 
 
-<a name="portal-development-phase-2-overview"></a>
-## Overview
+<a name="portal-development-phase-2-development-procedures"></a>
+## Development Procedures
    
 Perform the following tasks to develop an Azure extension.
 
@@ -28,7 +28,7 @@ Perform the following tasks to develop an Azure extension.
 
 You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
 
-<a name="portal-development-phase-2-overview-learn-about-the-hosting-service"></a>
+<a name="portal-development-phase-2-development-procedures-learn-about-the-hosting-service"></a>
 ### Learn about the hosting service
 
  Teams that are new to Azure development can learn about the hosting service and plan the deployment strategy for new extensions. Your team should network with support teams by reaching out to the following teams.
@@ -67,7 +67,7 @@ You can ask developer community questions on Stackoverflow with the tag [ibiza-o
 
 While the portal team cannot help directly with all of these factors, we we do maintain, see [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md).
 
-<a name="portal-development-phase-2-overview-develop-the-extension"></a>
+<a name="portal-development-phase-2-development-procedures-develop-the-extension"></a>
 ### Develop the extension
 
 1. Build the extension and sideload it for local testing. Sideloading allows the testing and debugging of the extension locally against any environment. This is the preferred method of testing. For more information about sideloading, see [portalfx-extensions-sideloading-overview.md](portalfx-extensions-sideloading-overview.md) and [portalfx-testinprod.md](portalfx-testinprod.md). 
@@ -78,7 +78,7 @@ While the portal team cannot help directly with all of these factors, we we do m
 
 1. Create configuration files for the extension as specified in [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
 
-<a name="portal-development-phase-2-overview-register-the-extension"></a>
+<a name="portal-development-phase-2-development-procedures-register-the-extension"></a>
 ### Register the extension
 
 Once the name of the extension or service name is finalized, request to have the extension registered in all environments. Registering an extension in Portal requires deployment so it can take almost 10 days in the Production environment. Please plan accordingly.
@@ -87,8 +87,6 @@ Once the name of the extension or service name is finalized, request to have the
  
 * External teams can submit their requests by reaching out to the <a href="mailto:ibizafxpm@microsoft.com?subject=Onboarding Request: Add <extensionName> to the Portal&body=Extension Name:  <br><br>Company:  <br><br>Brand or Suite:  <br><br>Product or Component:  <br><br> URLs: <br><br>Production: main.<extensionName>.ext.<company>.com<br><br>  Contact info: <br><br>Business Contacts <br><br> Dev leads: <br><br> PROD on-call email: <br><br>">ibizafxpm team</a> with an onboarding request, as in the following example.
 
-  ![alt-text](../media/portalfx-extensions-onboarding/registrationRequest.png "Extension Registration Onboarding Request")
- 
 * After deploying the extension to the DOGFOOD (DF) environment, contact the Fx team to request that they enable the extension, if applicable. Every extension  meets required exit criteria / quality metrics before it will be enabled. The  extension will be enabled in production once all exit criteria have been met.
 
    Extension names must use standard extension name format, as in the example located at [portalfx-extensions-configuration-overview.md#name](portalfx-extensions-configuration-overview.md#name).

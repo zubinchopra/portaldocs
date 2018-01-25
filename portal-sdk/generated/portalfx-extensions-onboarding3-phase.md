@@ -1,7 +1,7 @@
 <a name="portal-development-phase-3"></a>
 # Portal development phase 3
-<a name="portal-development-phase-3-overview"></a>
-## Overview
+<a name="portal-development-phase-3-deployment"></a>
+## Deployment
 
 1. [Deploy the extension](#deploy-the-extension)
 
@@ -10,7 +10,7 @@
 You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
 
 
-<a name="portal-development-phase-3-overview-deploy-the-extension"></a>
+<a name="portal-development-phase-3-deployment-deploy-the-extension"></a>
 ### Deploy the extension
 
 1. Review the development phases that are located at [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md) to understand how development is related to exit criteria.

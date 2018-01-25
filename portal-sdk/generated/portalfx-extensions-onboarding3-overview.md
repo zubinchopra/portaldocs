@@ -1,5 +1,5 @@
-<a name="overview"></a>
-## Overview
+<a name="deployment"></a>
+## Deployment
 
 1. [Deploy the extension](#deploy-the-extension)
 
