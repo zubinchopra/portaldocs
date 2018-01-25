@@ -8,11 +8,11 @@ Perform the following tasks to become part of Azure Portal extension developer c
 
 * Prerequisites to Azure Portal onboarding
 
+1. [Schedule Kickoff Meetings](#schedule-kickoff-meetings)
+
 1. [Join DLs and request permissions](#join-dls-and-request-permissions) 
 
 1. [Install Software](portalfx-extensions-install-software.md)
-
-1. [Schedule Kickoff Meetings](#schedule-kickoff-meetings)
 
 1. [Review Technical Guidance](#review-technical-guidance)
 
