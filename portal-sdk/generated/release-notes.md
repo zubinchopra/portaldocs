@@ -1,4 +1,12 @@
-# Release Notes since 9/24/2017
+# Release Notes since 9/25/2017
+
+## 5.0.302.975
+0 Breaking Changes, 1 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1883638'>1883638</a></td><td>Feature</td><td>Update configuration for information protection extension</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1724863'>1724863</a></td><td>Bug Fix</td><td>Remove ?bundle=true workaround</td></tr></table>
+
+## 5.0.302.974
+0 Breaking Changes, 1 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1891421'>1891421</a></td><td>Feature</td><td>Register the WorkloadInsights Extension in the Portal [Prod] </td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1789149'>1789149</a></td><td>Bug Fix</td><td>Move extension age logging to be logged by the Portal</td></tr></table>
 
 ## 5.0.302.972
 0 Breaking Changes, 1 Features added and 1 Bugs Fixed
