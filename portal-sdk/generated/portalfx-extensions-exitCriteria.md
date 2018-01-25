@@ -1,16 +1,16 @@
 <a name="exit-criteria-and-quality-metrics"></a>
 ## Exit Criteria and Quality Metrics
-
+      
 In order to meet customer expectations and continue to increase customer satisfaction, there are quality metrics that are tracked for every extension, and part.  These metrics help developers build extensions that compile, that contain the items that are requested by the partners of the developer, and that pass acceptance tests that are created by the partners that are associated with a specific phase. When the extension meets the criteria, it becomes a candidate for being moved from the private preview stage to the public preview stage, or from the public preview stage to Global Availability (GA).
 
-Every new extension provides an opportunity for the Ibiza team to improve the customer experience. By using set criteria to meet customer expectations, we can improve the customer experience for the extension and overall portal. Extension developers can drastically improve the customer experience by following these criteria. 
+Every new extension provides an opportunity for the Ibiza team to improve the customer experience. By using set criteria to meet customer expectations, we can improve the customer experience for the extension and overall Portal. Extension developers can drastically improve the customer experience by following these criteria. 
 
 <a name="customer-experience-metrics"></a>
 ## Customer experience metrics
 
-The criteria that are tracked for each extension are reported as part of an executive summary every Friday. Extensions that fail to meet the criteria are typically prime candidates for having brought down the customer experience in the Azure portal. Such extensions are highlighted in the weekly status report.
+The criteria that are tracked for each extension are reported as part of an executive summary every Friday. Extensions that fail to meet the criteria are typically prime candidates for having brought down the customer experience in the Azure Portal. Such extensions are highlighted in the weekly status report.
 
-Customer experience metrics are tracked by the Azure portal team, and are reported to the VP sponsor of the extension by using weekly status emails. These metrics are also reported as part of the weekly S360 meeting, and the executive review meeting. Any extension that does not meet the following criteria is required to justify the reasons for a negative customer experience. Extension developers can improve the customer experience of Azure portal by ensuring that their extensions meet the following criteria previous to enabling the extension for public preview or Global Availability. 
+Customer experience metrics are tracked by the Azure Portal team, and are reported to the VP sponsor of the extension by using weekly status emails. These metrics are also reported as part of the weekly S360 meeting, and the executive review meeting. Any extension that does not meet the following criteria is required to justify the reasons for a negative customer experience. Extension developers can improve the customer experience of Azure Portal by ensuring that their extensions meet the following criteria previous to enabling the extension for public preview or Global Availability. 
 
 * [Performance](#performance)
 * [Reliability](#reliability)
@@ -112,7 +112,10 @@ Check the Power BI Dashboard for Service Level Agreements (SLA) that are associa
 
 It is important to meet the success rate previous to moving the extension to the next phase, because various phases are associated with service level agreements and other items that are affected if an extension does not work.  For example, extensions with a success rate below 99% will result in sev 2 incidents. Also, if the success rate drops by 5% during a rolling 24-hour period that contains at least 50 Creates, a sev 2 incident will be filed. This applies to every error that causes Creates to fail when the `Create` button is clicked.
 
-Success rates are a non-blocking requirement.  Some exceptions can be granted to move an extension from the private preview stage to the public preview stage, but in general, the overall customer experience is reduced.
+Success rates are a non-blocking requirement. 
+<!-- TODO: Determine whether any mention at all of the exception process should be on GitHub, as in the following sentence.
+   Some exceptions can be granted to move an extension from the private preview stage to the public preview stage, but in general, the overall customer experience is reduced.
+-->
    
 For more information about creating success, see [portalfx-create.md#validation](portalfx-create.md#validation).
 

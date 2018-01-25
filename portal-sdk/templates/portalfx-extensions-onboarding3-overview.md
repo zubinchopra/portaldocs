@@ -1,4 +1,4 @@
-## Overview
+## Deployment
 
 1. [Deploy the extension](#deploy-the-extension)
 
