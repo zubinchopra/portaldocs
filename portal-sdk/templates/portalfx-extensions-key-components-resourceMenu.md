@@ -1,11 +1,5 @@
 
-<a name="portalfxExtensionsKeyComponentsResourceMenuBlade"></a>
-<!-- link to this document is [portalfx-extensions-key-components-resourceMenuBlade.md]()
--->
-
-## Resource Menu Blade
-
-
+## Resource Menu
 
 If you are building an extension for an Azure service, then you probably built a resource provider that displays a top-level resource, like a  Virtual Machine or a  Storage account.
 
@@ -13,12 +7,13 @@ If that's the case, then the ```Resource``` menu blade is a great starting point
 
 ![alt-text](../media/portalfx-overview/resource-menu.png "Menu blade")
 
-Click on your resource from within the ```Browse``` list to open the resource menu blade. Many of the standard Azure experiences such as tags, locks, and access control have been automatically injected into your menu.
+Click on your resource from within the ```Browse``` list to open the resource menu. Many of the standard Azure experiences such as tags, locks, and access controls have been automatically injected into the menu.
 
-The code for the resource menu blade is located in the ``` AssetTypeViewModel ``` file in the ``` Browse/ViewModels ``` folder in your Visual Studio project. You can extend the menu by modifying the ```getMenuConfig ``` function, as in the following image.
+The code for the resource menu blade is located in the ``` AssetTypeViewModel ``` file in the ``` Browse/ViewModels ``` folder in the associated Visual Studio project. The menu can be extended by modifying the ```getMenuConfig ``` function, as in the following image.
 
 ![alt-text](../media/portalfx-overview/resource-menu-code.png "VS getConfig Function")
 
-<!-- TODO:  Locate a gallery doc that describes the common resource properties. -->
-For more information on the Resource Menu Blade,  see the    document.
+<!-- TODO:  Locate a gallery doc that describes the common resource properties.  [Resource menu blade documentation](/gallery-sdk/generated/index-gallery.md#resource-management-resource-menu).-->
+
+For more information on the Resource Menu,  see          .
 
