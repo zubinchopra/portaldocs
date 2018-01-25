@@ -3,6 +3,8 @@
 ## Virtualized data for the grid
 <a name="querying-for-virtualized-data"></a>
 ## Querying for virtualized data
+In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
+
 
 If your back end is going to return significant amounts of data, you should consider using the `DataNavigator` class provided by the framework. There are two models for querying virtualized data from the server:
 

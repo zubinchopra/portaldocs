@@ -1,5 +1,7 @@
 <a name="data-shaping"></a>
 ## Data shaping
+In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
+
 <a name="data-shaping-shaping-and-filtering-data"></a>
 ### Shaping and filtering data
 

@@ -2,6 +2,8 @@
 <a name="refreshing-cached-data"></a>
 ## Refreshing cached data
 
+In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
+
 <a name="refreshing-cached-data-refresh-implicitrefresh"></a>
 ### Refresh implicitrefresh
 
@@ -22,13 +24,12 @@ public robotsQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModels.
 
 Additionally, the extension can customize the polling interval by using the '`pollingInterval`' option. By default, the polling interval is 60 seconds. It can be customized down to a minimum of 10 seconds. The minimum is enforced to avoid server load that might result from some accidental, overly aggressive change to '`pollingInterval`' by an extension developer. (There have been cases where even this 10 second minumum has caused customer impact due to increased server load.)
 
-<a name="refresh-datamerging"></a>
 <a name="data-merging"></a>
 ## Data merging
 
 For Azure Portal UI to be responsive, it is often important - when data changes - to avoid rerendering entire Blades and Parts. Rather, in most cases, it is better to make *granular* data changes so that FX controls and Knockout HTML templates can rerender *only small portions* of Blade/Part UI. In many common cases of refreshing data, the newly-loaded server data *precisely matches* already-cached data, and in this case *no UI rerendering happens*.
 
-When QueryCache/EntityCache data is refreshed - either *implicitly* as [above](#refresh-implicitrefresh) or *explicitly* as described [here](#refresh-explicitrefresh) - newly-loaded server data is added to already-cached, client-side data through a process called "data merging":
+When QueryCache/EntityCache data is refreshed - either *implicitly* as [#refresh-implicitrefresh](#refresh-implicitrefresh) or *explicitly* as described [#refresh-explicitrefresh](#refresh-explicitrefresh) - newly-loaded server data is added to already-cached, client-side data through a process called "data merging":
 
 * The newly-loaded server data is compared to already-cached data
 * Differences between newly-loaded and already-cached data are detected. For instance, "property <X> on object <Y> changed value" and "the Nth item in array <Z> was removed".
@@ -65,9 +66,9 @@ Data merge failed for data set 'FooBarDataSet'. The error message was: ...
 Importantly, this error is not due to bugs in the data-merging algorithm. Rather, some JavaScript code (frequently extension code) is causing an exception to be thrown. This error should be accompanied with a JavaScript stack trace that extension developers can use to isolate and fix such bugs.  
 
 <a name="data-merging-data-merging-caveats-entityview-item-observable-doesn-t-change-on-refresh"></a>
-#### EntityView &#39;<code>item</code>&#39; observable doesn&#39;t change on refresh?
+#### EntityView <code>item</code> observable doesn&#39;t change on refresh?
 
-Occasionally, extension developers are surprised that the EntityView '`item`' observable does not change (doesn't notify subscribers) when the EntityView/EntityCache is refreshed (either [implicitly](#refresh-implicitrefresh) or [explicitly](#refresh-explicitrefresh)) and, consequently, code like this doesn't work as expected:
+Occasionally, extension developers are surprised that the EntityView `item` observable does not change (doesn't notify subscribers) when the EntityView/EntityCache is refreshed (either [implicitly](#refresh-implicitrefresh) or [explicitly](#refresh-explicitrefresh)) and, consequently, code like this doesn't work as expected:
 
 ```ts
 entityView.item.subscribe(lifetime, () => {
@@ -79,7 +80,7 @@ entityView.item.subscribe(lifetime, () => {
 });
 ```
 
-This is because the "data merge" algorithm doesn't *replace* already-cached objects (unless such an object is an array item). Rather, objects are merged *in-place*, to optimize for limited/no UI re-rendering when data changes (see [here](#refresh-datamerging) for details).  
+This is because the "data merge" algorithm doesn't *replace* already-cached objects (unless such an object is an array item). Rather, objects are merged *in-place*, to optimize for limited/no UI re-rendering when data changes (see [here](#data-merging) for details).  
 
 A better coding pattern to follow is to use `ko.reactor` and `ko.computed` as below:  
 
@@ -122,7 +123,7 @@ public updateRobot(robot: SamplesExtension.DataModels.Robot): FxBase.PromiseV<an
 In this scenario, since the AJAX call will be issued from a DataContext, refreshing data in QueryCaches/EntityCaches will be done using QueryCache/EntityCache methods directly. See ["Refreshing/updating a QueryCache/EntityCache"](#refresh-datacache) below.
   
 <a name="refresh-dataview-sample"></a>
-* **User clicks 'Refresh' command** - (Less common) The user clicks on some 'Refresh'-like command on a Blade or Part, implemented in that Blade/Part's view model.
+* **User clicks 'Refresh' command** - (Less common) The user clicks on some 'Refresh'-like command on a Blade or Part, implemented in that Blade/Part's ViewModel.
 
 ```ts
 class RefreshCommand implements MsPortalFx.ViewModels.Commands.Command<void> {
@@ -143,7 +144,7 @@ class RefreshCommand implements MsPortalFx.ViewModels.Commands.Command<void> {
     }
 ```
   
-In this scenario, since the data being refreshed is that data rendered *in a specific Blade/Part*, refreshing data in the associated QueryCache/EntityCache is best done in terms of QueryView/EntityView methods (for that QueryView/EntityView in use by the Blade/Part view model). See ["Refreshing a QueryView/EntityView"](#refresh-dataview) below.
+In this scenario, since the data being refreshed is that data rendered *in a specific Blade/Part*, refreshing data in the associated QueryCache/EntityCache is best done in terms of QueryView/EntityView methods (for that QueryView/EntityView in use by the Blade/Part ViewModel). See ["Refreshing a QueryView/EntityView"](#refresh-dataview) below.
 
 <a name="refresh-datacache"></a>
 <a name="explicitly-proactively-reflecting-server-data-changes-on-the-client-refreshing-or-updating-a-querycache-entitycache"></a>
@@ -156,7 +157,7 @@ To understand the design behind this collection of methods and how to select the
 <a name="explicitly-proactively-reflecting-server-data-changes-on-the-client-refreshing-or-updating-a-querycache-entitycache-refreshall"></a>
 #### &#39;<code>refreshAll</code>&#39;
   
-As mentioned above, this method will issue an AJAX call (either using the '`supplyData`' or '`sourceUri`' option supplied to the QueryCache/EntityCache) for each entry currently held in the QueryCache/EntityCache.  Upon completion, each AJAX result is [merged](#refresh-datamerging) onto its corresponding cache entry.  
+As mentioned above, this method will issue an AJAX call (either using the '`supplyData`' or '`sourceUri`' option supplied to the QueryCache/EntityCache) for each entry currently held in the QueryCache/EntityCache.  Upon completion, each AJAX result is [merged](#data-merging) onto its corresponding cache entry.  
 
 ```typescript
 
