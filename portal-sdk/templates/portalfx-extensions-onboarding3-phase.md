@@ -1,7 +1,6 @@
 # Portal development phase 3
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-onboarding3-overview.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-onboarding3-procedure.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-onboarding3-overview.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-onboarding.md"}
 

@@ -6,11 +6,11 @@ The items that are being developed extend functionality to an Azure Portal, and 
 
 Perform the following tasks to become part of Azure Portal extension developer community.
 
-1. [Schedule Kickoff Meetings](portalfx-extensions-schedule-kickoff-meetings.md)
+1. [Schedule Kickoff Meetings](portalfx-extensions-onboarding1-kickoffs.md)
 
 1. [Onboard with related teams](top-external-onboarding.md)
 
-1. [Join DLs and request permissions](portalfx-extensions-request-permissions.md) 
+1. [Join DLs and request permissions](portalfx-extensions-onboarding1-permissions.md) 
 
 1. [Get the developers started](top-extensions-getting-started.md)
  
