@@ -72,7 +72,7 @@ After installation, NuGet packages that are used for development are listed in t
 
 <summary>Deprecated packages</summary>
 
-The following NuGet packages have been deprecated. Do not use these packages when building new extensions. If the packages were used in local development, please reach out to [IbizaFxPM@microsoft.com](mailto:IbizaFxPM@microsoft.com) for assistance with migration to sideloading.
+The following NuGet packages have been deprecated. Do not use these packages when building new extensions. If the packages were used in local development, please reach out to the <a href="mailto:IbizaFxPM@microsoft.com?subject=Migration to Sideloading">IbizaFxPM team</a> for assistance with migration to sideloading.
 
 | Package | Purpose | 
 | ------- | ------- |
