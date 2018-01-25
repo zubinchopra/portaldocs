@@ -1,8 +1,7 @@
-<a name="portal-development-phase-3-deployment"></a>
-# Portal development phase 3: deployment
-
-<a name="portal-development-phase-3-deployment-deployment-procedures"></a>
-## Deployment Procedures
+<a name="portal-development-phase-3"></a>
+# Portal development phase 3
+<a name="portal-development-phase-3-overview"></a>
+## Overview
 
 1. [Deploy the extension](#deploy-the-extension)
 
@@ -10,7 +9,8 @@
 
 You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
 
-<a name="portal-development-phase-3-deployment-deployment-procedures-deploy-the-extension"></a>
+
+<a name="portal-development-phase-3-overview-deploy-the-extension"></a>
 ### Deploy the extension
 
 1. Review the development phases that are located at [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md) to understand how development is related to exit criteria.
@@ -43,26 +43,26 @@ You can ask developer community questions on Stackoverflow with the tag [ibiza-o
 
 
 
-<a name="portal-development-phase-3-deployment-best-practices"></a>
+<a name="portal-development-phase-3-best-practices"></a>
 ## Best Practices
    
 Portal development patterns or architectures that are recommended based on customer feedback and usability studies are located in the topic for the blade that is being developed. For more information, see [portalfx-blades-best-practices.md](portalfx-blades-best-practices.md).
 
-<a name="portal-development-phase-3-deployment-best-practices-performance"></a>
+<a name="portal-development-phase-3-best-practices-performance"></a>
 ### Performance
 
 There are practices that can improve the performance of the extension.  For more information, see [portalfx-performance-bestpractices.md](portalfx-performance-bestpractices.md).
 
 
-<a name="portal-development-phase-3-deployment-best-practices-productivity-tip"></a>
+<a name="portal-development-phase-3-best-practices-productivity-tip"></a>
 ### Productivity Tip
 
 Install Chrome that is located at [http://google.com/dir](http://google.com/dir) to leverage the debugger tools while developing an extension.
 
-<a name="portal-development-phase-3-deployment-frequently-asked-questions"></a>
+<a name="portal-development-phase-3-frequently-asked-questions"></a>
 ## Frequently asked questions
 
-<a name="portal-development-phase-3-deployment-frequently-asked-questions-onboarding-faq"></a>
+<a name="portal-development-phase-3-frequently-asked-questions-onboarding-faq"></a>
 ### Onboarding FAQ
 
 ***Where are the onboarding FAQs for Sparta (ARM/CSM-RP)?***
@@ -71,7 +71,7 @@ The SharePoint Sparta Onboarding FAQ is located at [http://sharepoint/sites/Azur
 
 * * *
 
-<a name="portal-development-phase-3-deployment-frequently-asked-questions-ssl-certs"></a>
+<a name="portal-development-phase-3-frequently-asked-questions-ssl-certs"></a>
 ### SSL Certs
    
    <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
@@ -101,7 +101,7 @@ Then, verify that when a **TypeScript** file is saved, that the following text i
 
  * * *
 
-<a name="portal-development-phase-3-deployment-frequently-asked-questions-other-onboarding-questions"></a>
+<a name="portal-development-phase-3-frequently-asked-questions-other-onboarding-questions"></a>
 ### Other onboarding questions
 
 ***How can I ask questions about onboarding ?***

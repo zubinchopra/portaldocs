@@ -1,8 +1,8 @@
-<a name="portal-development-phase-1-onboarding"></a>
-# Portal development phase 1: onboarding
+<a name="portal-development-phase-1"></a>
+# Portal development phase 1
 
-<a name="portal-development-phase-1-onboarding-development-procedures"></a>
-## Development Procedures
+<a name="portal-development-phase-1-overview"></a>
+## Overview
    
 The items that are being developed extend functionality to an Azure Portal, and therefore are named extensions.  Some examples are in the following image.
 
@@ -20,7 +20,9 @@ Perform the following tasks to become part of Azure Portal extension developer c
  
 You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
 
-<a name="portal-development-phase-1-onboarding-development-procedures-schedule-kickoff-meetings"></a>
+
+
+<a name="portal-development-phase-1-overview-schedule-kickoff-meetings"></a>
 ### Schedule Kickoff Meetings
  
 Reach out to the <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">Portal team</a> and request a kickoff meeting. A team representative will deliver a 30-minute overview of the onboarding process. We can direct you to the latest patterns and practices, talk about the relationship between our teams,  and answer questions.  
@@ -41,7 +43,7 @@ If you are planning to build a first party application, i.e., you are a part of 
 
 When these meetings have concluded, your team will be ready to build extensions.
 
-<a name="portal-development-phase-1-onboarding-development-procedures-join-dls-and-request-permissions"></a>
+<a name="portal-development-phase-1-overview-join-dls-and-request-permissions"></a>
 ### Join DLs and request permissions
 
 Request the following permissions to stay current on product roadmaps, get news on latest features, and read workshop announcements.

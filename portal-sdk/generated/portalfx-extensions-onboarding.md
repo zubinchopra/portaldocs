@@ -16,11 +16,11 @@ Onboarding a service, or developing a Portal extension, has three phases: onboar
 
 ![alt-text](../media/portalfx-extensions-onboarding/azure-onboarding.png "Azure Onboarding Process")
  
-<a name="portal-development-phase-1-onboarding"></a>
-# Portal development phase 1: onboarding
+<a name="portal-development-phase-1"></a>
+# Portal development phase 1
 
-<a name="portal-development-phase-1-onboarding-development-procedures"></a>
-## Development Procedures
+<a name="portal-development-phase-1-overview"></a>
+## Overview
    
 The items that are being developed extend functionality to an Azure Portal, and therefore are named extensions.  Some examples are in the following image.
 
@@ -38,7 +38,9 @@ Perform the following tasks to become part of Azure Portal extension developer c
  
 You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
 
-<a name="portal-development-phase-1-onboarding-development-procedures-schedule-kickoff-meetings"></a>
+
+
+<a name="portal-development-phase-1-overview-schedule-kickoff-meetings"></a>
 ### Schedule Kickoff Meetings
  
 Reach out to the <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">Portal team</a> and request a kickoff meeting. A team representative will deliver a 30-minute overview of the onboarding process. We can direct you to the latest patterns and practices, talk about the relationship between our teams,  and answer questions.  
@@ -59,7 +61,7 @@ If you are planning to build a first party application, i.e., you are a part of 
 
 When these meetings have concluded, your team will be ready to build extensions.
 
-<a name="portal-development-phase-1-onboarding-development-procedures-join-dls-and-request-permissions"></a>
+<a name="portal-development-phase-1-overview-join-dls-and-request-permissions"></a>
 ### Join DLs and request permissions
 
 Request the following permissions to stay current on product roadmaps, get news on latest features, and read workshop announcements.
@@ -87,11 +89,25 @@ Request the following permissions to stay current on product roadmaps, get news 
 
 
   
-<a name="portal-development-phase-2-development"></a>
-# Portal development phase 2: development
+<a name="portal-development-phase-2"></a>
+# Portal development phase 2
 
-<a name="portal-development-phase-2-development-development-procedures"></a>
-## Development Procedures
+  
+<a name="portal-development-phase-2-overview"></a>
+## Overview
+
+Developing a Portal extension, has three phases: private preview, public preview, and Global Availability (GA). Azure Portal onboarding is creating a UI for a service in Azure Portal, and is a subset of Azure onboarding.
+
+Most services that onboard to Azure can leverage the following components of the Azure ecosystem:
+1. Management APIs that are exposed via Azure Resource Manager (ARM) or Microsoft Graph
+1. Management UI in the Azure Portal and/or other tools/websites, like Visual Studio
+1. Marketing content on the Azure Web site or other websites
+
+The Azure onboarding process is streamlined to optimize the delivery of high-quality experiences based on hundreds of hours of usability testing that meet Microsoft Common Engineering Criteria (CEC) and compliance requirements. This will better optimize developer resources and reduce re-working due to anti-patterns and inconsistencies that block usability, performance, and other factors. Therefore, we strongly recommend starting the onboarding process previous to designing UI or management APIs.
+
+
+<a name="portal-development-phase-2-overview"></a>
+## Overview
    
 Perform the following tasks to develop an Azure extension.
 
@@ -103,7 +119,7 @@ Perform the following tasks to develop an Azure extension.
 
 You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
 
-<a name="portal-development-phase-2-development-development-procedures-learn-about-the-hosting-service"></a>
+<a name="portal-development-phase-2-overview-learn-about-the-hosting-service"></a>
 ### Learn about the hosting service
 
  Teams that are new to Azure development can learn about the hosting service and plan the deployment strategy for new extensions. Your team should network with support teams by reaching out to the following teams.
@@ -142,7 +158,7 @@ You can ask developer community questions on Stackoverflow with the tag [ibiza-o
 
 While the portal team cannot help directly with all of these factors, we we do maintain, see [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md).
 
-<a name="portal-development-phase-2-development-development-procedures-develop-the-extension"></a>
+<a name="portal-development-phase-2-overview-develop-the-extension"></a>
 ### Develop the extension
 
 1. Build the extension and sideload it for local testing. Sideloading allows the testing and debugging of the extension locally against any environment. This is the preferred method of testing. For more information about sideloading, see [portalfx-extensions-sideloading-overview.md](portalfx-extensions-sideloading-overview.md) and [portalfx-testinprod.md](portalfx-testinprod.md). 
@@ -153,7 +169,7 @@ While the portal team cannot help directly with all of these factors, we we do m
 
 1. Create configuration files for the extension as specified in [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
 
-<a name="portal-development-phase-2-development-development-procedures-register-the-extension"></a>
+<a name="portal-development-phase-2-overview-register-the-extension"></a>
 ### Register the extension
 
 Once the name of the extension or service name is finalized, request to have the extension registered in all environments. Registering an extension in Portal requires deployment so it can take almost 10 days in the Production environment. Please plan accordingly.
@@ -172,26 +188,26 @@ Once the name of the extension or service name is finalized, request to have the
 
 
 
-<a name="portal-development-phase-2-development-best-practices"></a>
+<a name="portal-development-phase-2-best-practices"></a>
 ## Best Practices
    
 Portal development patterns or architectures that are recommended based on customer feedback and usability studies are located in the topic for the blade that is being developed. For more information, see [portalfx-blades-best-practices.md](portalfx-blades-best-practices.md).
 
-<a name="portal-development-phase-2-development-best-practices-performance"></a>
+<a name="portal-development-phase-2-best-practices-performance"></a>
 ### Performance
 
 There are practices that can improve the performance of the extension.  For more information, see [portalfx-performance-bestpractices.md](portalfx-performance-bestpractices.md).
 
 
-<a name="portal-development-phase-2-development-best-practices-productivity-tip"></a>
+<a name="portal-development-phase-2-best-practices-productivity-tip"></a>
 ### Productivity Tip
 
 Install Chrome that is located at [http://google.com/dir](http://google.com/dir) to leverage the debugger tools while developing an extension.
 
-<a name="portal-development-phase-2-development-frequently-asked-questions"></a>
+<a name="portal-development-phase-2-frequently-asked-questions"></a>
 ## Frequently asked questions
 
-<a name="portal-development-phase-2-development-frequently-asked-questions-onboarding-faq"></a>
+<a name="portal-development-phase-2-frequently-asked-questions-onboarding-faq"></a>
 ### Onboarding FAQ
 
 ***Where are the onboarding FAQs for Sparta (ARM/CSM-RP)?***
@@ -200,7 +216,7 @@ The SharePoint Sparta Onboarding FAQ is located at [http://sharepoint/sites/Azur
 
 * * *
 
-<a name="portal-development-phase-2-development-frequently-asked-questions-ssl-certs"></a>
+<a name="portal-development-phase-2-frequently-asked-questions-ssl-certs"></a>
 ### SSL Certs
    
    <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
@@ -230,7 +246,7 @@ Then, verify that when a **TypeScript** file is saved, that the following text i
 
  * * *
 
-<a name="portal-development-phase-2-development-frequently-asked-questions-other-onboarding-questions"></a>
+<a name="portal-development-phase-2-frequently-asked-questions-other-onboarding-questions"></a>
 ### Other onboarding questions
 
 ***How can I ask questions about onboarding ?***
@@ -242,11 +258,10 @@ You can ask questions on Stackoverflow with the tag [onboarding](https://stackov
 
 
   
-<a name="portal-development-phase-3-deployment"></a>
-# Portal development phase 3: deployment
-
-<a name="portal-development-phase-3-deployment-deployment-procedures"></a>
-## Deployment Procedures
+<a name="portal-development-phase-3"></a>
+# Portal development phase 3
+<a name="portal-development-phase-3-overview"></a>
+## Overview
 
 1. [Deploy the extension](#deploy-the-extension)
 
@@ -254,7 +269,8 @@ You can ask questions on Stackoverflow with the tag [onboarding](https://stackov
 
 You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
 
-<a name="portal-development-phase-3-deployment-deployment-procedures-deploy-the-extension"></a>
+
+<a name="portal-development-phase-3-overview-deploy-the-extension"></a>
 ### Deploy the extension
 
 1. Review the development phases that are located at [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md) to understand how development is related to exit criteria.
@@ -287,26 +303,26 @@ You can ask developer community questions on Stackoverflow with the tag [ibiza-o
 
 
 
-<a name="portal-development-phase-3-deployment-best-practices"></a>
+<a name="portal-development-phase-3-best-practices"></a>
 ## Best Practices
    
 Portal development patterns or architectures that are recommended based on customer feedback and usability studies are located in the topic for the blade that is being developed. For more information, see [portalfx-blades-best-practices.md](portalfx-blades-best-practices.md).
 
-<a name="portal-development-phase-3-deployment-best-practices-performance"></a>
+<a name="portal-development-phase-3-best-practices-performance"></a>
 ### Performance
 
 There are practices that can improve the performance of the extension.  For more information, see [portalfx-performance-bestpractices.md](portalfx-performance-bestpractices.md).
 
 
-<a name="portal-development-phase-3-deployment-best-practices-productivity-tip"></a>
+<a name="portal-development-phase-3-best-practices-productivity-tip"></a>
 ### Productivity Tip
 
 Install Chrome that is located at [http://google.com/dir](http://google.com/dir) to leverage the debugger tools while developing an extension.
 
-<a name="portal-development-phase-3-deployment-frequently-asked-questions"></a>
+<a name="portal-development-phase-3-frequently-asked-questions"></a>
 ## Frequently asked questions
 
-<a name="portal-development-phase-3-deployment-frequently-asked-questions-onboarding-faq"></a>
+<a name="portal-development-phase-3-frequently-asked-questions-onboarding-faq"></a>
 ### Onboarding FAQ
 
 ***Where are the onboarding FAQs for Sparta (ARM/CSM-RP)?***
@@ -315,7 +331,7 @@ The SharePoint Sparta Onboarding FAQ is located at [http://sharepoint/sites/Azur
 
 * * *
 
-<a name="portal-development-phase-3-deployment-frequently-asked-questions-ssl-certs"></a>
+<a name="portal-development-phase-3-frequently-asked-questions-ssl-certs"></a>
 ### SSL Certs
    
    <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
@@ -345,7 +361,7 @@ Then, verify that when a **TypeScript** file is saved, that the following text i
 
  * * *
 
-<a name="portal-development-phase-3-deployment-frequently-asked-questions-other-onboarding-questions"></a>
+<a name="portal-development-phase-3-frequently-asked-questions-other-onboarding-questions"></a>
 ### Other onboarding questions
 
 ***How can I ask questions about onboarding ?***
@@ -355,12 +371,12 @@ You can ask questions on Stackoverflow with the tag [onboarding](https://stackov
 
 
  
-<a name="portal-development-phase-3-deployment-status-codes-and-error-messages"></a>
+<a name="portal-development-phase-3-status-codes-and-error-messages"></a>
 ## Status Codes and Error Messages
 Status codes or error messages that are encountered while developing an extension may be dependent on the type of extension that is being created, or the development phase in which the message is encountered.  Terms that are encountered in the error messages may be defined in the [Glossary](portalfx-extensions-glossary-status-codes.md).
 <!-- TODO:  Find at least one status code for each of these conditions. -->
 
-<a name="portal-development-phase-3-deployment-status-codes-and-error-messages-console-error-messages"></a>
+<a name="portal-development-phase-3-status-codes-and-error-messages-console-error-messages"></a>
 ### Console Error Messages
 
 ***Console error messages in F12 developer tools***
@@ -369,7 +385,7 @@ Some console and HTTP error messages are located at[https://msdn.microsoft.com/e
 
 * * *
 
-<a name="portal-development-phase-3-deployment-status-codes-and-error-messages-err_connection_reset"></a>
+<a name="portal-development-phase-3-status-codes-and-error-messages-err_connection_reset"></a>
 ### ERR_CONNECTION_RESET
 
 ***Cannot load `localhost` Ibiza extension with ERR_CONNECTION_RESET***
@@ -380,7 +396,7 @@ SOLUTION: [https://stackoverflow.microsoft.com/questions/48581/cannot-load-local
 
 * * * 
 
-<a name="portal-development-phase-3-deployment-status-codes-and-error-messages-err_insecure_response"></a>
+<a name="portal-development-phase-3-status-codes-and-error-messages-err_insecure_response"></a>
 ### ERR_INSECURE_RESPONSE
 
 ERR_INSECURE_RESPONSE in the browser console
@@ -395,7 +411,7 @@ SOLUTION: Install and trust the certificate.
 
 * * *
 
-<a name="portal-development-phase-3-deployment-status-codes-and-error-messages-failed-to-initialize"></a>
+<a name="portal-development-phase-3-status-codes-and-error-messages-failed-to-initialize"></a>
 ### Failed To Initialize
 
 ERROR: The extension failed to initialize. One or more calls to methods on the extension's entry point class failing.
@@ -404,7 +420,7 @@ SOLUTION: Scan all the relevant error messages during the timeframe of the failu
 
 * * * 
 
-<a name="portal-development-phase-3-deployment-status-codes-and-error-messages-first-response-not-received"></a>
+<a name="portal-development-phase-3-status-codes-and-error-messages-first-response-not-received"></a>
 ### First Response Not Received
 
 ERROR: The shell loaded the extension URL obtained from the config into an IFrame; however there wasn't any response from the extension.
@@ -417,7 +433,7 @@ SOLUTION:
 
 * * * 
 
-<a name="portal-development-phase-3-deployment-status-codes-and-error-messages-invalid-definition"></a>
+<a name="portal-development-phase-3-status-codes-and-error-messages-invalid-definition"></a>
 ### Invalid Definition
 
 ERROR: The definition that was received from an extension had validation errors.
@@ -426,7 +442,7 @@ SOLUTION: Scan the error logs for all the validation errors in the extension def
 
 * * * 
 
-<a name="portal-development-phase-3-deployment-status-codes-and-error-messages-invalid-extension-name"></a>
+<a name="portal-development-phase-3-status-codes-and-error-messages-invalid-extension-name"></a>
 ### Invalid Extension Name
 
 ERROR: The name of the extension as specified in the `extensions.json` configuration file doesn't match the name of the extension in the extension manifest.
@@ -437,7 +453,7 @@ If the name in the manifest is incorrect, contact the relevant extension team to
 
 * * * 
 
-<a name="portal-development-phase-3-deployment-status-codes-and-error-messages-invalid-indicate-loaded"></a>
+<a name="portal-development-phase-3-status-codes-and-error-messages-invalid-indicate-loaded"></a>
 ### Invalid Indicate Loaded
 
 ERROR: The manifest for an extension was received at an invalid time. e.g. if the manifest was already obtained or the extension was already loaded.
@@ -446,7 +462,7 @@ SOLUTION: Report this issue to the framework team for investigation.
 
 * * * 
 
-<a name="portal-development-phase-3-deployment-status-codes-and-error-messages-invalid-manifest"></a>
+<a name="portal-development-phase-3-status-codes-and-error-messages-invalid-manifest"></a>
 ### Invalid Manifest
 
 ERROR: The manifest that was received from an extension had validation errors.
@@ -455,7 +471,7 @@ SOLUTION: Scan the error logs for all the validation errors in the extension man
 
 * * * 
 
-<a name="portal-development-phase-3-deployment-status-codes-and-error-messages-manifest-not-received"></a>
+<a name="portal-development-phase-3-status-codes-and-error-messages-manifest-not-received"></a>
 ### Manifest Not Received
 
 ERROR: The bootstrap logic was completed, however the extension did not return a manifest to the shell. The shell waits for a period of time (currently 40 seconds as of 2014/10/06) and then times out.
@@ -467,7 +483,7 @@ SOLUTION:
 
 * * * 
 
-<a name="portal-development-phase-3-deployment-status-codes-and-error-messages-portal-error-520"></a>
+<a name="portal-development-phase-3-status-codes-and-error-messages-portal-error-520"></a>
 ### Portal Error 520
 
 ***The Portal encountered a part it cannot render***
@@ -490,7 +506,7 @@ SOLUTION: Use the following troubleshooting steps.
 
 * * *
 
-<a name="portal-development-phase-3-deployment-status-codes-and-error-messages-sandboxed-iframe-security"></a>
+<a name="portal-development-phase-3-status-codes-and-error-messages-sandboxed-iframe-security"></a>
 ### Sandboxed iframe security
 
 ***Error: 'Security of a sandboxed iframe is potentially compromised by allowing script and same origin access'.***
@@ -499,7 +515,7 @@ The Azure Portal should frame the extension URL, as specified in [portalfx-exten
 
 * * *
 
-<a name="portal-development-phase-3-deployment-status-codes-and-error-messages-timed-out"></a>
+<a name="portal-development-phase-3-status-codes-and-error-messages-timed-out"></a>
 ### Timed Out
 
 ERROR: The extension failed to load after the predefined timeout, which is currently 40 seconds.
@@ -508,7 +524,7 @@ SOLUTION: Scan the errors to see if there are any other relevant error messages 
 
 * * * 
 
-<a name="portal-development-phase-3-deployment-status-codes-and-error-messages-too-many-bootgets"></a>
+<a name="portal-development-phase-3-status-codes-and-error-messages-too-many-bootgets"></a>
 ### Too Many BootGets
 
 ERROR: The extension tried to send the bootGet message to request for Fx scripts multiple times. The error should specify the number of times it refreshed before the extension was disabled.
@@ -517,7 +533,7 @@ SOLUTION:  Scan the errors to see if there are any other relevant error messages
 
 * * * 
 
-<a name="portal-development-phase-3-deployment-status-codes-and-error-messages-too-many-refreshes"></a>
+<a name="portal-development-phase-3-status-codes-and-error-messages-too-many-refreshes"></a>
 ### Too Many Refreshes
 
 ERROR: The extension tried  to reload itself within the IFrame multiple times. The error should specify the number of times it refreshed before the extension was disabled.
@@ -528,7 +544,7 @@ SOLUTION: Scan the errors to see if there are any other relevant error messages 
 
 
    
-<a name="portal-development-phase-3-deployment-stackoverflow-forums"></a>
+<a name="portal-development-phase-3-stackoverflow-forums"></a>
 ## Stackoverflow Forums
 
 The Ibiza team strives to answer the questions that are tagged with Ibiza tags on the Microsoft [Stackoverflow](https://stackoverflow.microsoft.com) Web site within 24 hours. If you do not receive a response within 24 hours, please email the owner associated with the tag. Third-party developers that have Stackoverflow questions should work with their primary contact.  If you do not yet have a primary contact, please reach out to our onboarding team at [mailto:ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com).
@@ -586,7 +602,7 @@ ibiza-samples-docs
 
 
    
-<a name="portal-development-phase-3-deployment-contacts"></a>
+<a name="portal-development-phase-3-contacts"></a>
 ## Contacts
    
 For assistance with the prerequisites for onboarding Management UI, contact the following people.  A :star: means they are a part of the Azure team instead of a support team contact.
@@ -619,7 +635,7 @@ If the following table is not current, please send a pull request to update the 
 | Usability	                                    | Joe Hallock; Mariah Jackson                | [ibiza-usability@microsoft.com](mailto:ibiza-usability@microsoft.com) |
 | UX feasibility review                         | :star:Santhosh Somayajula                        | [ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com) | 
 
-<a name="portal-development-phase-3-deployment-for-more-information"></a>
+<a name="portal-development-phase-3-for-more-information"></a>
 ## For More Information
    
 For more information about development phases, see [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md).
@@ -636,7 +652,7 @@ For more information about localization requirements, see [portalfx-localization
 
 For more information about azure.com onboarding, see [http://acomdocs.azurewebsites.net](http://acomdocs.azurewebsites.net).
  
-<a name="portal-development-phase-3-deployment-glossary"></a>
+<a name="portal-development-phase-3-glossary"></a>
 ## Glossary
     
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
