@@ -43,7 +43,7 @@
 </tr>
 <tr>
     <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls">ibiza-controls</a> </td>
-    <td> </td>
+    <td>An Ibiza monitored tag for questions related to Ibiza controls</td>
     <td> shresh </td>
 </tr>
 <tr>
@@ -93,12 +93,12 @@
 </tr>
 <tr>
     <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms">ibiza-forms</a> </td>
-    <td> </td>
+    <td>An Ibiza monitored tag for questions related to Ibiza-forms </td>
     <td> shresh </td>
 </tr>
 <tr>
     <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls-grid">ibiza-controls-grid</a> </td>
-    <td> </td>
+    <td>An Ibiza monitored tag for questions related to Ibiza Grid Control. </td>
     <td> shresh </td>
 </tr>
 <tr>
