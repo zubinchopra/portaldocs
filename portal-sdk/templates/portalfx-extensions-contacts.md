@@ -17,7 +17,7 @@ If the following table is not current, please send a pull request to update the 
 | Create success                                | :star:Balbir Singh                               | [ibiza-create@microsoft.com](mailto:ibiza-create@microsoft.com)  |
 | CSS Support                                   | Wes Penner; CEGRM                          | [ibiza-css@microsoft.com](mailto:ibiza-css@microsoft.com)  |
 | External Partner Contact                      |                                            | [ibizafxpm@microsoft.com](mailto:ibizafxpm@microsoft.com)  |
-| Fx Coverage 	                                | :star:Adam Abdelhamed; Santhosh Somayajula       | [ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com)  |
+| Fx Coverage 	                                | :star:Adam Abdelhamed; :star: Santhosh Somayajula       | [ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com)  |
 | Localization                                  | Bruno Lewin                                | [ibiza-interntnl@microsoft.com](mailto:ibiza-interntnl@microsoft.com)  |
 | Onboarding kickoff                            | :star:Leon Welicki; :star:Adam Abdelhamed; :star:Santhosh Somayajula | [ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com) |
 | Third Party Applications (External partners)  | :star:Leon Welicki; :star:Adam Abdelhamed; :star:Santhosh Somayajula | [ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com) |
