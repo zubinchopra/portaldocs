@@ -6,6 +6,7 @@ Couldn't find what you needed? [Ask about the docs on stackoverflow](https://sta
 * [Overview / Getting Started](./generated/top-onboarding.md)
 * [Steps that do not involve the Ibiza team (e.g. compliance, marketplace integration)](./generated/top-external-onboarding.md)
 * [Manage cloud/environment specific configuration](./generated/top-extensions-configuration.md)
+
 * [Exit criteria](./generated/top-exit-criteria.md)
 Kickoff the onboarding experience by sending mail to <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">Azure Onboarding Team</a>
 
@@ -34,16 +35,18 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 [Ask an sdk setup question on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
 
 ## Developing your user interface UI
-The next few sections walk through the different types of UI that can be built using the framework. There are [Samples](./generated/portalfx-extensions-samples.md) that show how to do many common development tasks. 
+The next few sections walk through the different types of UI that can be built using the framework. There are [samples](./generated/portalfx-extensions-samples.md) that show how to do many common development tasks. 
 
 ### Blades
 The primary UI building block is a called a blade. A blade is like a page. It generally takes up the full screen, has a presence in the portal breadcrumb, and has an 'X' button to close it.
 [Developing blades](portalfx-blades.md#blades)
+
 [Ask a question about blades on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts)
 
 ### Parts
 If you want your experience to have a presence on Azure dashboards then you will want to build parts (a.k.a. tiles).
 [Developing parts](portalfx-blades.md#blades)
+
 [Ask a question about parts on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts)
 
 ### Building UI with HTML templates and Fx controls
@@ -64,6 +67,7 @@ When using HTML and framework controls you have some control over styling. These
 ### Forms
 Many experiences require the user to fill out a form. The Ibiza controls library provides support for forms. It also provides a TypeScript based section model that lets you build your form in code without expressing all the fields in an html template.
 * [Developing forms](./generated/portalfx-forms.md)
+
 [Ask a forms related question on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms)
 
 ### Common scenarios and integration points
@@ -71,6 +75,7 @@ Many experiences require the user to fill out a form. The Ibiza controls library
 * [Adding your resource or service into the __browse__ menu]()
 * [Common UX for Azure Resource Manager (ARM) based services]()
 [Ask about browse integration on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse)
+
 [Ask about create scenarios on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-create)
 
 ### Other UI concepts
@@ -108,6 +113,7 @@ The Ibiza team provides limited testing support. Due to resource constraints the
 * [Unit testing support]()
 * [C# Test Framework (Open source)]()
 * [Node.js Test Framework (Open source)]()
+
 [Ask a test related question on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test)
 
 ## Telemetry and alerting
@@ -118,6 +124,7 @@ The Ibiza team collects standard telemetry for __generic actions__ like blade op
 * [Performance and reliability monitoring / alerting]()
 * [Collecting feedback from your users]()
 * [Set up and verify telemetry logging from your extension]()
+
 [Ask about telemetry on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-telemetry)
 [Ask about performance and reliability on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-performance)
 
@@ -128,18 +135,21 @@ The Azure portal supports multiple languages and locales. You will need to local
 * [Setting up Localization for your gallery package]()
 * [Testing locaization with side-loading]()
 * [Formatting numbers, currencies and dates](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-globalization.md#globalization-api)
+
 [Ask about localization / globalization on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-localization-global)
 
 ## Accessibility
 The Azure portal strives to meet high accessibility standards to ensure the product is accessible to to users of all levels of ability. There is regular testing and a process with SLAs for getting issues addressed quickly.
 * [Accessibility guidelines]()
 * [Accessibility testing and SLAs]()
+
 [Ask about accessibility on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-accesibility)
 
 ## Deploying your extension
 Learn how to deploy your extension to the various clouds and environments.
 * [Extension registration, environments (e.g. dogfood, prod), clouds (e.g. Mooncake, BlackForest, Fairfax) and Ibiza team SLAs](./generated/portalfx-extensions-publishing.md)
-* [Understanding the journy from private preview to public preview to GA](./generated/portalfx-extensions-developmentPhases.md)
+* [Extension Development Phases](./generated/portalfx-extensions-developmentPhases.md)
+
 [Ask a deployment question on Stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)
 
 ### Deployment using the Ibiza hosting service
