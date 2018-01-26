@@ -16,14 +16,16 @@ The success of Azure Portal is dependent on the success of our partners. For our
 
 This repository contains the documents that specify how to interact with Azure portal development.  This includes how to onboard an organization that wants to build extensions, how to develop the extensions, where to find sample code, and other topics. Developers can increase their knowledge of extensions, publish them for world use, and interact with other developers through Stackoverflow and other support forums. 
 
-Developers can locate information through the gitHub link located at [https://github.com/Azure/portaldocs/tree/master/portal-sdk/generated](https://github.com/Azure/portaldocs/tree/master/portal-sdk/generated) or through the index located at [portalfx.md](./generated/portalfx.md). THey may also use links to individual topics or subtopics as appropriate.
+Developers can locate information through the gitHub link located at [https://github.com/Azure/portaldocs/tree/master/portal-sdk/generated](https://github.com/Azure/portaldocs/tree/master/portal-sdk/generated) or through the index located at [README.md](./README.md). THey may also use links to individual topics or subtopics as appropriate.
 
 ### Topic Naming Convention
 
-The naming convention for all topics can assist individuals who would rather navigate via GitHub than through a menu. It is as follows.
+**NOTE**: Nearly all documents that have been promoted to the master index have a first node of "top".  In some instances, the second node is also omitted. Otherwise, all documents use the following naming convention.
+
+The following aming convention for all topics that can assist individuals who would rather navigate via GitHub than through the [master index](./README.md). 
 * All topics use 'portalfx' in the first node of the name.
 * Major areas use a different second node, for example, 'extensions', 'style', or 'parameters'. 
-* All related docs have the same name prefix.  The last node is the one that best describes the topic name.  
+* All related docs have the same name prefix.  The last node is the one that best describes the topic name.  If the topic has phases instead of subtopics, this node has a numeric suffix to it.  For example, onboarding has three phases, and the underlying names are 'onboarding1', 'onboarding2', and `onboarding3'.
 * The document whose name ends with the topic name, the one without a suffix is the main topic doc.  
 * All subtopics are displayed in the topic doc in a meaningful order. 
 * Any subtopic that could be included in several topics does not include the topic name.  For example, [portalfx-extensions-qualityEssentials.md](./generated/portalfx-extensions-qualityEssentials.md) or [portalfx-extensions-contacts.md](./generated/portalfx-extensions-contacts.md) are both included in the portalfx-extensions-onboarding topic, but are not specific to onboarding, therefore  "onboarding" is omitted from the name.
@@ -82,7 +84,3 @@ The following images describe what happens to the link, based on the amount of t
     ![alt-text](./media/portalfx/github-subtopic-from-github.png "Subtopic selected from gitHub index")
 
 Azure developers will become familiar with the difference in links as they navigate through GitHub using the main index, the GitHub index, and the links in the topics.
-
-## Code of Conduct
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
