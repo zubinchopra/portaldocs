@@ -4,6 +4,7 @@
 
 | Term                 | Meaning |
 | ---                  | --- |
+| bake time |  The time to wait between each stage of an extension deployment |
 | caching              | Hosting service extensions use persistent caching, index page caching, and manifest caching, among others. |
 | CDN                  | Content Delivery Network | 
 | COGS                 | Cost of Goods Sold | 

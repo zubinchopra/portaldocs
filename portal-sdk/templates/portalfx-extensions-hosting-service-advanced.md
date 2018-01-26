@@ -155,6 +155,60 @@ out\retail-amd64\ServiceGroupRoot
                 \Production.friendlyname_2.json
                 \Production.friendlyname_3.json
 ```
+
+### Specify ContentUnbundler bake time
+
+The **ContentUnbundler** EV2 template files that are shipped are now formatted to accept customized monitor durations, which is the time to wait between each stage of a deployment, also known as bake time. To accommodate this, the files have been renamed from:
+`Blackforest.RolloutParameters.PT6H.json`
+to:
+`Blackforest.RolloutParameters.{MonitorDuration}.json`.
+
+The monitor duration can be specified by updating the  `ServiceGroupRootReplacements.json` file to include a new array called "MonitorDuration", as in the following example.
+
+```
+"Test": {
+    "AzureSubscriptionId": "0531c8c8-df32-4254-a717-b6e983273e5f",
+    "CertKeyVaultUri": "https://stzhao0resourcedf.vault.azure.net/secrets/PortalHostingServiceDeploymentCertificate",
+    "TargetStorageConStringKeyVaultUri": "https://stzhao0resourcedf.vault.azure.net/secrets/PortalHostingServiceStorageConnectionString",
+    "TargetContainerName": "hostingservicedf",
+    "ContactEmail": "rowong@microsoft.com",
+    "PortalExtensionName": "Microsoft_Azure_Resources",
+    "FriendlyNames": [
+      "friendlyname1"
+    ],
+    "MonitorDuration": [
+        "PT1H",
+        "PT30M"
+    ]
+```
+
+If no monitor durations are specified, then the **ContentUnbundler** EV2 generation will default to 6 hours (PT6H) and 1 day (P1D).
+
+### Skipping safe deployment
+
+**ContentUnbundler** EV2 templates now support generating deployment files that do not include a delay between stages.  This can be enabled by adding the key/value pair 
+`"SkipSafeDeployment": "true" ` in the corresponding environment in the `ServiceGroupRootReplacements.json` file.  The following example adds the SkipSafeDeployment key/value pair to the extension named `Microsoft_MyExtension` in the **MOONCAKE** environment.
+
+```
+"Mooncake": {
+    "AzureSubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "certKeyVaultUri": "https://mykeyvault-.vault.azure.net/secrets/MyCertificate",
+    "targetStorageConStringKeyVaultUri": "https://mykeyvault-df.vault.azure.net/secrets/MyConnectionString",
+    "targetContainerName": "myService",
+    "contactEmail": "myEmail@myCompany.com",
+    "portalExtensionName": "Microsoft_MyExtension",
+    "friendlyNames": [
+      "Name1",
+      "F2"
+    ],
+    "SkipSafeDeployment": "true"
+  },
+```
+
+### Friendly name removal
+
+To remove a friendly name, just run an EV2 deployment with the `Rolloutspec.RemoveFriendlyName.<friendlyName>.json` file.
+
 ### WARM Integration with hosting service
 
   It is assumed that you have already onboarded to WARM if you will be deploying to production, or deploying by using the WARM UX. The production deployment instructions are  
