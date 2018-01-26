@@ -7,6 +7,8 @@
 <a name="overview"></a>
 ## Overview
 
+The Ibiza team provides and operates a common extension hosting service that makes it easy to get an extension into a global distribution system without having to manage your own infrastructure.
+
 A hosting service can make your web sites accessible through the World Wide Web by providing server space, Internet connectivity and data center security.
 
 Teams that deploy UI for extensions with the classic cloud service model typically have to invest significant amounts of time to onboard to [MDS](portalfx-extensions-hosting-service-glossary.md), setup compliant deployments across all data centers, and configure [cdn](portalfx-extensions-hosting-service-glossary.md), storage and caching optimizations for each extension.
@@ -78,9 +80,7 @@ Extensions that have server-side code or controllers can use hosting services.  
 
  ## Prerequisites for onboarding hosting service
 
-The **Visual Studio** project that is associated with developing the extension contains several files that will be updated or overridden while getting the extension ready for the hosting service. This topic discusses the files to create or change to meet requirements for the onboarding process. This procedure uses the **Content Unbundler** tool that was installed with the **nuGet** packages in Visual Studio.  For more information, see [portalfx-extensions-developerInit-procedure.md#create-a-blank-extension](portalfx-extensions-developerInit-procedure.md#create-a-blank-extension) and [portalfx-extensions-onboarding-nuget.md](portalfx-extensions-onboarding-nuget.md).
-
-
+The **Visual Studio** project that is associated with developing the extension contains several files that will be updated or overridden while getting the extension ready for the hosting service. This topic discusses the files to create or change to meet requirements for the onboarding process. This procedure uses the **Content Unbundler** tool that was installed with the **nuGet** packages in Visual Studio.  For more information, see [portalfx-extensions-create-blank-procedure.md](portalfx-extensions-create-blank-procedure.md) and [top-portalfx-extensions-nuget.md](top-portalfx-extensions-nuget.md).
 
 1. For all extensions
    * SDK Version 
@@ -104,7 +104,7 @@ The **Visual Studio** project that is associated with developing the extension c
  
  ## How to deploy extensions using the hosting service 
  
-1.	Integrate **Content Unbundler**, a tool shipped with with Azure Portal SDK, as part of the  build. For more information, see [portalfx-extensions-developerInit-procedure.md#create-a-blank-extension](portalfx-extensions-developerInit-procedure.md#create-a-blank-extension).
+1.	Integrate **Content Unbundler**, a tool shipped with with Azure Portal SDK, as part of the  build. For more information, see [portalfx-extensions-create-blank-procedure.md](portalfx-extensions-create-blank-procedure.md).
 1.  Use the **Content Unbundler** tool to generate a zip file that contains all the static files in the extension.
 1.	Upload the zip file to a public read-only storage account that is owned by your team.
 1.	The hosting service will poll the storage account, detect the new version and download the zip file in each data center within 5 minutes.
@@ -206,7 +206,7 @@ If the **IsDevelopmentMode** flag setting should be reserved for release builds 
 <details>
 <summary>3. Verify the version number of the build</summary>
 
-The zip file generated during the build should be named `<BUILD_VERSION>.zip`, where <BUILD_VERSION> is the current version number.
+The zip file generated during the build should be named `<BUILD_VERSION>.zip`, where <BUILD_VERSION> is the current version number. For more information about version numbers, see [portalfx-extensions-versioning.md](portalfx-extensions-versioning.md).
 
 * CoreXT extensions
 
@@ -636,6 +636,63 @@ out\retail-amd64\ServiceGroupRoot
                 \Production.friendlyname_2.json
                 \Production.friendlyname_3.json
 ```
+
+<a name="advanced-hosting-service-procedures-specify-contentunbundler-bake-time"></a>
+### Specify ContentUnbundler bake time
+
+The **ContentUnbundler** EV2 template files that are shipped are now formatted to accept customized monitor durations, which is the time to wait between each stage of a deployment, also known as bake time. To accommodate this, the files have been renamed from:
+`Blackforest.RolloutParameters.PT6H.json`
+to:
+`Blackforest.RolloutParameters.{MonitorDuration}.json`.
+
+The monitor duration can be specified by updating the  `ServiceGroupRootReplacements.json` file to include a new array called "MonitorDuration", as in the following example.
+
+```
+"Test": {
+    "AzureSubscriptionId": "0531c8c8-df32-4254-a717-b6e983273e5f",
+    "CertKeyVaultUri": "https://stzhao0resourcedf.vault.azure.net/secrets/PortalHostingServiceDeploymentCertificate",
+    "TargetStorageConStringKeyVaultUri": "https://stzhao0resourcedf.vault.azure.net/secrets/PortalHostingServiceStorageConnectionString",
+    "TargetContainerName": "hostingservicedf",
+    "ContactEmail": "rowong@microsoft.com",
+    "PortalExtensionName": "Microsoft_Azure_Resources",
+    "FriendlyNames": [
+      "friendlyname1"
+    ],
+    "MonitorDuration": [
+        "PT1H",
+        "PT30M"
+    ]
+```
+
+If no monitor durations are specified, then the **ContentUnbundler** EV2 generation will default to 6 hours (PT6H) and 1 day (P1D).
+
+<a name="advanced-hosting-service-procedures-skipping-safe-deployment"></a>
+### Skipping safe deployment
+
+**ContentUnbundler** EV2 templates now support generating deployment files that do not include a delay between stages.  This can be enabled by adding the key/value pair 
+`"SkipSafeDeployment": "true" ` in the corresponding environment in the `ServiceGroupRootReplacements.json` file.  The following example adds the SkipSafeDeployment key/value pair to the extension named `Microsoft_MyExtension` in the **MOONCAKE** environment.
+
+```
+"Mooncake": {
+    "AzureSubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "certKeyVaultUri": "https://mykeyvault-.vault.azure.net/secrets/MyCertificate",
+    "targetStorageConStringKeyVaultUri": "https://mykeyvault-df.vault.azure.net/secrets/MyConnectionString",
+    "targetContainerName": "myService",
+    "contactEmail": "myEmail@myCompany.com",
+    "portalExtensionName": "Microsoft_MyExtension",
+    "friendlyNames": [
+      "Name1",
+      "F2"
+    ],
+    "SkipSafeDeployment": "true"
+  },
+```
+
+<a name="advanced-hosting-service-procedures-friendly-name-removal"></a>
+### Friendly name removal
+
+To remove a friendly name, just run an EV2 deployment with the `Rolloutspec.RemoveFriendlyName.<friendlyName>.json` file.
+
 <a name="advanced-hosting-service-procedures-warm-integration-with-hosting-service"></a>
 ### WARM Integration with hosting service
 
@@ -802,37 +859,34 @@ ibiza-quotas
 ibiza-samples-docs
 -->
 
-| Tag                                                                                                            | Owner               | Contact |
-| -------------------------------------------------------------------------------------------------------------- | ------------------- | ------- |
-| [azure-gallery](https://stackoverflow.microsoft.com/questions/tagged/azure-gallery)                            |                     | |
-| [ibiza](https://stackoverflow.microsoft.com/questions/tagged/ibiza)                                            | Adam Abdelhamed         | |
-| [ibiza-accessibility](https://stackoverflow.microsoft.com/questions/tagged/ibiza-accessibility)                | Paymon Parsadmehr   | [mailto:ibiza-accessibility@microsoft.com](mailto:ibiza-accessibility@microsoft.com) | 
-| [ibiza-bad-samples-doc](https://stackoverflow.microsoft.com/questions/tagged/ibiza-bad-samples-doc)            | Adam Abdelhamed          | |
-| [ibiza-blades-parts](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts)                  | Sean Watson         | |
-| [ibiza-breaking-changes](https://stackoverflow.microsoft.com/questions/tagged/ibiza-breaking-changes)          | Adam Abdelhamed          | |
-| [ibiza-browse](https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse)                              | Sean Watson         | |
-| [ibiza-controls](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls)                          | Shrey Shirwaikar    | |
-| [ibiza-controls-grid](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls-grid)                | Shrey Shirwaikar    | |
-| [ibiza-create](https://stackoverflow.microsoft.com/questions/tagged/ibiza-create)                              | Balbir Singh        | |
-| [ibiza-data-caching](https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching)                  | Adam Abdelhamed          | |
-| [ibiza-deployment](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)                      | Umair Aftab         | |
-| [ibiza-forms](https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms)                                | Shrey Shirwaikar    | |
-| [ibiza-forms-create](https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms-create)                  | Paymon Parsadmehr; Shrey Shirwaikar | |
-| [ibiza-hosting-service](https://stackoverflow.microsoft.com/questions/tagged/ibiza-hosting-service)            | Umair Aftab         | |
-| [ibiza-kusto](https://stackoverflow.microsoft.com/questions/tagged/ibiza-kusto)                                |                     | |
-| [ibiza-localization-global](https://stackoverflow.microsoft.com/questions/tagged/ibiza-localization-global)    | Paymon Parsadmehr   | |
-| [ibiza-missing-docs](https://stackoverflow.microsoft.com/questions/tagged/ibiza-missing-docs)                  |                     | |
-| [ibiza-monitoringux](https://stackoverflow.microsoft.com/questions/tagged/ibiza-monitoringux)                  |                     | |
-| [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding)                      | Santhosh Somayajula                 | |
-| [ibiza-performance](https://stackoverflow.microsoft.com/questions/tagged/ibiza-performance)                    | Sean Watson         | |
-| [ibiza-reliability](https://stackoverflow.microsoft.com/questions/tagged/ibiza-reliability)                    | Sean Watson         | |
-| [ibiza-resources](https://stackoverflow.microsoft.com/questions/tagged/ibiza-resources)                        | Balbir Singh        | |
-| [ibiza-sdkupdate](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)                        | Umair Aftab         | |
-| [ibiza-security-auth](https://stackoverflow.microsoft.com/questions/tagged/ibiza-security-auth)                | Santhosh Somayajula | |
-| [ibiza-telemetry](https://stackoverflow.microsoft.com/questions/tagged/ibiza-telemetry)                        | Sean Watson         | |
-| [ibiza-test](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test)                                  | Adam Abdelhamed          | |
-| [ibiza-uncategorized](https://stackoverflow.microsoft.com/questions/tagged/ibiza-uncategorized)                |                     | |
-
+| Tag        | Purpose | Owner               | Contact |
+| ---------- | ------- | ------------------- | ------- |
+| [azure-gallery](https://stackoverflow.microsoft.com/questions/tagged/azure-gallery)                   |     |                | |
+| [ibiza](https://stackoverflow.microsoft.com/questions/tagged/ibiza)                                   | Generic tag, for use in conjunction with a more specific tag, or when the topic is unknown                                                  | Adam Abdelhamed         | |
+| [ibiza-accessibility](https://stackoverflow.microsoft.com/questions/tagged/ibiza-accessibility)       | | Paymon Parsadmehr   | <a href="mailto:ibiza-accessibility@microsoft.com?subject=Stackoverflow: Accessibility">mailto:ibiza-accessibility@microsoft.com </a>| 
+| [ibiza-bad-samples-docs](https://stackoverflow.microsoft.com/questions/tagged/ibiza-bad-samples-docs) | Topics that are not included in [https://aka.ms/portalfx/docs](https://aka.ms/portalfx/docs), are incomplete, or are difficult to understand  |  Adam Abdelhamed  | |
+| [ibiza-blades-parts](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts)         | | Sean Watson         | |
+| [ibiza-breaking-changes](https://stackoverflow.microsoft.com/questions/tagged/ibiza-breaking-changes) | Breaking changes that are not included in the [https://aka.ms/portalfx/breaking](https://aka.ms/portalfx/breaking) topic              | Madhur Joshi          | |
+| [ibiza-browse](https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse)                     | | Sean Watson         | |
+| [ibiza-controls](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls)                 | | Shrey Shirwaikar    | |
+| [ibiza-controls-grid](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls-grid)       | | Shrey Shirwaikar    | |
+| [ibiza-create](https://stackoverflow.microsoft.com/questions/tagged/ibiza-create)                     | | Balbir Singh        | |
+| [ibiza-data-caching](https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching)         | | Brad Olenik           | |
+| [ibiza-deployment](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)             | Deployment and onboarding of an extension  | Umair Aftab         | |
+| [ibiza-forms](https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms)                       | | Shrey Shirwaikar    | |
+| [ibiza-forms-create]()         | Deprecated tag.  Use #ibiza-forms for forms questions and #ibiza-create for Create questions. | Paymon Parsadmehr; Shrey Shirwaikar | |
+| [ibiza-hosting-service](https://stackoverflow.microsoft.com/questions/tagged/ibiza-hosting-service)   | Extension hosting service onboarding, **ContentUnbundler** and runtime   | Umair Aftab         | |
+| [ibiza-kusto](https://stackoverflow.microsoft.com/questions/tagged/ibiza-kusto)                       | | |
+| [ibiza-localization-global](https://stackoverflow.microsoft.com/questions/tagged/ibiza-localization-global)  |  | Paymon Parsadmehr   | |
+| [ibiza-missing-docs](https://stackoverflow.microsoft.com/questions/tagged/ibiza-missing-docs)         | Topics that are not included in [https://aka.ms/portalfx/docs](https://aka.ms/portalfx/docs), are incomplete, or are difficult to understand  | Adam  Abdelhamed            | |
+| [ibiza-monitoringux](https://stackoverflow.microsoft.com/questions/tagged/ibiza-monitoringux)         | |                     | |
+| [ibiza-performance](https://stackoverflow.microsoft.com/questions/tagged/ibiza-performance)           | | Sean Watson         | |
+| [ibiza-reliability](https://stackoverflow.microsoft.com/questions/tagged/ibiza-reliability)           | | Sean Watson         | |
+| [ibiza-resources](https://stackoverflow.microsoft.com/questions/tagged/ibiza-resources)               | | Balbir Singh        | |
+| [ibiza-sdkupdate](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)               | Issues encountered during updating from one version of the ibiza sdk to another, for example,  **NuGet**, **MSI**, **PowerShell**, or **VSIX** project template-related issues   | Umair Aftab         | |
+| [ibiza-security-auth](https://stackoverflow.microsoft.com/questions/tagged/ibiza-security-auth)       | | Santhosh Somayajula | |
+| [ibiza-telemetry](https://stackoverflow.microsoft.com/questions/tagged/ibiza-telemetry)               | | Sean Watson         | |
+| [ibiza-test](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test)                         | The CSharp test framework `Microsoft.Portal.TestFramework` and the nodejs test framework `msportalfx-test`                        | Umair Aftab              | |
 
 
 
@@ -998,6 +1052,7 @@ You can ask questions on Stackoverflow with the tag [ibiza-deployment](https://s
 
 | Term                 | Meaning |
 | ---                  | --- |
+| bake time |  The time to wait between each stage of an extension deployment |
 | caching              | Hosting service extensions use persistent caching, index page caching, and manifest caching, among others. |
 | CDN                  | Content Delivery Network | 
 | COGS                 | Cost of Goods Sold | 
