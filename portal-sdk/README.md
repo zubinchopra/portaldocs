@@ -1,14 +1,15 @@
 # Azure portal extension documentation
 This is the home page for all documentation related to onboarding, developing, operating, and anything else to do with owning an Azure portal extension.
+
 Couldn't find what you needed? [Ask about the docs on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-missing-docs).
 
 ## Onboarding a new extension
 * [Overview / Getting Started](./generated/top-onboarding.md)
 * [Steps that do not involve the Ibiza team (e.g. compliance, marketplace integration)](./generated/top-external-onboarding.md)
 * [Manage cloud/environment specific configuration](./generated/top-extensions-configuration.md)
-
 * [Exit criteria](./generated/top-exit-criteria.md)
-Kickoff the onboarding experience by sending mail to <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">Azure Onboarding Team</a>
+
+Kickoff the onboarding experience by sending mail to <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">Azure Onboarding Team</a>.
 
 ## Azure portal architecture
 Learn how the framework is structured and how it is designed to run in multiple clouds / environments.
@@ -126,6 +127,7 @@ The Ibiza team collects standard telemetry for __generic actions__ like blade op
 * [Set up and verify telemetry logging from your extension]()
 
 [Ask about telemetry on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-telemetry)
+
 [Ask about performance and reliability on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-performance)
 
 ## Localization / Globalization

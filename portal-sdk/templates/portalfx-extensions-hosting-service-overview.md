@@ -1,5 +1,7 @@
 ## Overview
 
+The Ibiza team provides and operates a common extension hosting service that makes it easy to get an extension into a global distribution system without having to manage your own infrastructure.
+
 A hosting service can make your web sites accessible through the World Wide Web by providing server space, Internet connectivity and data center security.
 
 Teams that deploy UI for extensions with the classic cloud service model typically have to invest significant amounts of time to onboard to [MDS](portalfx-extensions-hosting-service-glossary.md), setup compliant deployments across all data centers, and configure [cdn](portalfx-extensions-hosting-service-glossary.md), storage and caching optimizations for each extension.
