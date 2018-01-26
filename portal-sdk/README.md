@@ -2,7 +2,7 @@
 This is the home page for all documentation related to onboarding, developing, operating, and anything else to do with owning an Azure portal extension.
 Couldn't find what you needed? [Ask about the docs on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-missing-docs).
 ## Onboarding a new extension
-* [Overview / Getting Started](http://top-level/onboarding-overview.md)
+* [Overview / Getting Started](./generated/top-onboarding.md)
 * [Steps that do not involve the Ibiza team (e.g. compliance, marketplace integration)](top-external-onboarding.md)
 * [Manage cloud/environment specific configuration](top-extensions-configuration.md)
 * [Exit criteria](top-exit-criteria.md)
