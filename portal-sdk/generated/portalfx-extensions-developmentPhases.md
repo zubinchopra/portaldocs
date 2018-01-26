@@ -2,6 +2,8 @@
 <a name="development-phases"></a>
 ## Development Phases
 
+Typically, there are three typical types of releases for an extension: private preview, public preview, and Global Availability(GA).  For the purposes of deployment, public preview and GA are the same, except that the UI may show preview labels and disclaimers where appropriate.
+
 <a name="development-phases-private-preview"></a>
 ### Private Preview
 

@@ -19,7 +19,7 @@ FAQ's that are associated with ordinary extension testing.
 
 ***How do I use SSL certs?***
 
-[portalfx-extensions-faq-onboarding.md#sslCerts](portalfx-extensions-faq-onboarding.md#sslCerts)
+[portalfx-extensions-faq-onboarding2.md#sslCerts](portalfx-extensions-faq-onboarding2.md#sslCerts)
 
 * * *
 
@@ -74,7 +74,7 @@ FAQ's that are associated with configurations for extensions.
 
 ***How do I use SSL certs?***
 
-[portalfx-extensions-faq-onboarding.md#sslCerts](portalfx-extensions-faq-onboarding.md#sslCerts)
+[portalfx-extensions-faq-onboarding2.md#sslCerts](portalfx-extensions-faq-onboarding2.md#sslCerts)
 
 * * *
 

@@ -47,16 +47,17 @@ SOLUTION: For more information about EditScopeAccessors, see [portalfx-forms-wor
 <!-- TODO:  Move this back to the TypeScript  document -->
 ***Q: When do I need to worry about type metadata for my EditScope?***
 
-SOLUTION: For many of the most common, simple Form scenarios, there is no need to describe the EditScope/Form model in terms of type metadata. Generally speaking, supplying type metadata is the way to turn on *advanced* FX behavior, in much the same way that - in .NET - developers apply custom attributes to their .NET types to tailor .NET FX behavior for the types.  
+SOLUTION: For many of the most common, simple Form scenarios, there is no need to describe the EditScope/Form model in terms of type metadata. Generally speaking, supplying type metadata is the way to turn on advanced FX behavior, in much the same way that - in .NET - developers apply custom attributes to their .NET types to tailor .NET FX behavior for the types.
 
-Re: EditScope and Forms, extensions supply [type metadata](portalfx-data-typemetadata.md) for the following scenarios:  
+For more information about type metadata, see [portalfx-data-typemetadata.md](portalfx-data-typemetadata.md).
 
+ For EditScope and Forms, extensions supply [type metadata] for the following scenarios: 
 <a name="frequently-asked-questions-type-metadata-editable-grid"></a>
 #### Editable grid
 <a name="frequently-asked-questions-type-metadata-entity-type"></a>
 #### Entity-type
 
-* **Editable grid** - Today's editable grid was developed to work exclusively with EditScope 'entity' arrays. An EditScope 'entity' array is one where created/updated/deleted array items are tracked individually by EditScope. To grant this special treatment to an array in the EditScope/Form model, supply type metadata for the type of the array items (for the `T` in `KnockoutObservableArray<T>`). In the following, the type is marked as an "entity type" and, additionally, the property/properties that constitute the entity's 'id' are specified:  
+* **Editable grid** - Today's editable grid was developed to work exclusively with EditScope 'entity' arrays. An EditScope 'entity' array is one where created/updated/deleted array items are tracked individually by EditScope. To grant this special treatment to an array in the EditScope/Form model, supply type metadata for the type of the array items (for the `T` in `KnockoutObservableArray<T>`). The type is marked as an "entity type" and, the property/properties that constitute the entity's 'id' are specified in the following examples. 
 
 In TypeScript:
 
@@ -167,7 +168,7 @@ this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModels.
 <a name="frequently-asked-questions-missing-rows-from-editable-grid-apply-array-as-edits"></a>
 #### Apply array as edits
 
-And there is a corresponding '`applyArrayAsEdits`' EditScope method that simplifies applying edits to an existing EditScope 'entity' array. This is often done in a ParameterCollector's '`receiveResult`' callback:
+And there is a corresponding '`applyArrayAsEdits`' EditScope method that simplifies applying edits to an existing EditScope 'entity' array. This is often done in a ParameterCollector's '`receiveResult`' callback, as in the following example.
 
 ```typescript
 
@@ -338,10 +339,12 @@ Often, extensions encounter this "Entity-typed object/array is not known to this
   
 * * *
 
-<a name="frequently-asked-questions-common-error-encountered-a-property-foo-on-an-editable-object-that-is-not-present-on-the-original-object"></a>
-### Common error: &quot;Encountered a property &#39;foo&#39; on an editable object that is not present on the original object...&quot;
+<a name="frequently-asked-questions-editable-object-not-present"></a>
+### Editable object not present
+
+***"Encountered a property 'foo' on an editable object that is not present on the original object..."***
 
 SOLUTION: 
-As discussed in [portalfx-extensions-faq-edit-scope.md#key-value-pairs](portalfx-extensions-faq-edit-scope.md#key-value-pairs), the extension should mutate the EditScope/Form model by making observable changes and by calling EditScope APIs. For any object residing in the EditScope, merely adding/removing keys cannot be detected by EditScope (or by the FX at large) and, consequently, edits cannot be tracked. When an extension *attempts* to add/remove keys from an EditScope object, this puts the EditScope edit-tracking in an inconsistent state. When the EditScope detects such an inconsistency, it issues the error above to encourage the extension developer to use (exclusively) observable changes and EditScope APIs to mutate/change the EditScope/Form model.  
+As discussed in [portalfx-extensions-faq-edit-scope.md#key-value-pairs](portalfx-extensions-faq-edit-scope.md#key-value-pairs), the extension should mutate the EditScope/Form model by making observable changes and by calling EditScope APIs. For any object residing in the `EditScope`, merely adding and removing keys cannot be detected by `EditScope` or by the FX at large and, consequently, edits cannot be tracked. When an extension attempts to add or remove keys from an `EditScope` object, this puts the `EditScope` edit-tracking in an inconsistent state. When the `EditScope` detects such an inconsistency, it issues the `Encountered a property...` error to encourage the extension developer to use only observable changes and `EditScope` APIs to mutate/change the EditScope/Form model.  
 
 * * *

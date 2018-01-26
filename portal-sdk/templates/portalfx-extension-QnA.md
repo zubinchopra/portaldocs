@@ -1,1 +1,2 @@
-{"gitdown": "include-file", "file": "../templates/portalfx-stackoverflow.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-stackoverflow.md"}
+<!-- TODO:  deprecate this document by removing it.  It has been replaced by portalfx-extensions-stackoverflow.md   -->
