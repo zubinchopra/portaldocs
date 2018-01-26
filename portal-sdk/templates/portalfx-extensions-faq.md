@@ -21,7 +21,7 @@ FAQ's that are associated with configurations for extensions.
 
 FAQ's for developers that are new to the Azure Portal Extension development process.
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-onboarding.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-onboarding2.md"}
 
 ## Hosting Service
 

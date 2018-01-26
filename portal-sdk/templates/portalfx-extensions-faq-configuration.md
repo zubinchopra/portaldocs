@@ -4,7 +4,7 @@
 
 ***How do I use SSL certs?***
 
-[portalfx-extensions-faq-onboarding.md#sslCerts](portalfx-extensions-faq-onboarding.md#sslCerts)
+[portalfx-extensions-faq-onboarding2.md#sslCerts](portalfx-extensions-faq-onboarding2.md#sslCerts)
 
 * * *
 
