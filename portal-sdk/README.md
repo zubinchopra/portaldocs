@@ -4,8 +4,8 @@ Couldn't find what you needed? [Ask about the docs on stackoverflow](https://sta
 ## Onboarding a new extension
 * [Overview / Getting Started](./generated/top-onboarding.md)
 * [Steps that do not involve the Ibiza team (e.g. compliance, marketplace integration)](top-external-onboarding.md)
-* [Manage cloud/environment specific configuration](top-extensions-configuration.md)
-* [Exit criteria](top-exit-criteria.md)
+* [Manage cloud/environment specific configuration](./generated/top-extensions-configuration.md)
+* [Exit criteria](./generated/top-exit-criteria.md)
 Kickoff the onboarding experience by sending mail to __ibiza-onboading-kick@microsoft.com__.
 ## Azure portal architecture
 Learn how the framework is structured and how it is designed to run in multiple clouds / environments.
@@ -24,7 +24,7 @@ Learn how the framework is structured and how it is designed to run in multiple 
 Azure portal extension development is supported on the Microsoft Windows 8, Windows Server 2012 R2, and Windows 10.
 1. Install the SDK(top-extensions-install-software.md)
 * [How to use the MSI Installer](downloads.md)
-* [How to update portal Nuget packages](top-portalfx-extensions-nuget.md)
+* [How to update portal Nuget packages](./generated/top-portalfx-extensions-nuget.md)
 2. Configure your IDE - *Typescript version / Compile on save*
 * [Visual Studio](portalfx-ide-setup.md) *(with Extension project template)*
 * [VS Code]()
@@ -54,7 +54,7 @@ When using HTML and framework controls you have some control over styling. These
 * [Theming]()
 ### Forms
 Many experiences require the user to fill out a form. The Ibiza controls library provides support for forms. It also provides a TypeScript based section model that lets you build your form in code without expressing all the fields in an html template.
-* [Developing forms](portalfx-forms.md)
+* [Developing forms](./generated/portalfx-forms.md)
 [Ask a forms related question on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms)
 ### Common scenarios and integration points
 * [Blades that __create__ or provision resources and services](portalfx-create.md)
@@ -94,7 +94,7 @@ The Ibiza team provides limited testing support. Due to resource constraints the
 * [Unit testing support]()
 * [C# Test Framework (Open source)]()
 * [Node.js Test Framework (Open source)]()
-[Ask a test related question on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-tets)
+[Ask a test related question on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test)
 ## Telemetry and alerting
 The Ibiza team collects standard telemetry for __generic actions__ like blade opening and commmand execution. It also collects __performance__, __reliability__, and __user feedback__ information that facilitate the operation of your extension. You can also write your own events via the telemetry system. Ibiza supports alerting for common operations scenarios.
 * [Portal telemetry overview]()
@@ -121,8 +121,7 @@ The Azure portal strives to meet high accessibility standards to ensure the prod
 ## Deploying your extension
 Learn how to deploy your extension to the various clouds and environments.
 * [Extension registration, environments (e.g. dogfood, prod), clouds (e.g. Mooncake, BlackForest, Fairfax) and Ibiza team SLAs]()
-* [Understanding the journy from private preview to public preview to GA](
-portalfx-extensions-developmentPhases.md)
+* [Understanding the journy from private preview to public preview to GA](./generated/portalfx-extensions-developmentPhases.md)
 [Ask a deployment question on Stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)
 ### Deployment using the Ibiza hosting service
 The Ibiza team provides and operates a common extension hosting service that makes it easy to get your bits into a globally distributed system without having to manage your own infrastructure.
@@ -137,7 +136,7 @@ You should strive to use the Ibiza hosting service. If for some reason this is n
 ## Upgrading the Ibiza SDK
 Extensions are required to be running a version of the Ibiza SDK that has been published withing the past 4 months. 
 * [Upgrade policy and alerts](portalfx-deploy.md#3-understand-extension-runtime-compatibility)
-* [Upgrading Ibiza NuGet packages](top-portalfx-extensions-nuget.md)
+* [Upgrading Ibiza NuGet packages](./generated/top-portalfx-extensions-nuget.md)
 * [Updating the C# test framework]()
 * [Updating the msportalfx-test framework]()
 
@@ -145,7 +144,7 @@ Extensions are required to be running a version of the Ibiza SDK that has been p
 These features are supported, but have had no recent investment. No additional investment is planned. There are modern capabilities that should be used instead if you are developing new features.
 * [PDL based blades and parts]()
 * [Controls in the msportalfx namespace]()
-* [EditScope](portalfx-legacy-editscopes.md)
+* [EditScope](./generated/portalfx-legacy-editscopes.md)
 ## Frequently asked questions
 * TBD
 *
