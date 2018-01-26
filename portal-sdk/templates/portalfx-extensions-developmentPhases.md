@@ -1,6 +1,8 @@
    
 ## Development Phases
 
+Typically, there are three typical types of releases for an extension: private preview, public preview, and Global Availability(GA).  For the purposes of deployment, public preview and GA are the same, except that the UI may show preview labels and disclaimers where appropriate.
+
 ### Private Preview
 
 The extension is in private preview stage when it has been registered into the Azure Portal configuration. It is still in hidden/ disabled state, and the preview tag in the the `extension.pdl` file is set to `Preview="true"`.  In this state the extension is not visible to all the customers of Azure Portal; instead, the developer and their team have acquired a small team of reviewers with which to collaborate on the development and testing of the extension. 

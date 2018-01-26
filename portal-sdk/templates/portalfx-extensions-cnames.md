@@ -30,5 +30,4 @@ Create National Cloud CNAMEs using the process specified in each cloud.  For mor
  | Blackforest  | [https://aka.ms/blackforest](https://aka.ms/blackforest)  |
  | Mooncake | [https://aka.ms/mooncake](https://aka.ms/mooncake) |
  
-## Glossary
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-cnames.md"}
