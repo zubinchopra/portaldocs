@@ -41,7 +41,7 @@ If the **IsDevelopmentMode** flag setting should be reserved for release builds 
 <details>
 <summary>3. Verify the version number of the build</summary>
 
-The zip file generated during the build should be named `<BUILD_VERSION>.zip`, where <BUILD_VERSION> is the current version number.
+The zip file generated during the build should be named `<BUILD_VERSION>.zip`, where <BUILD_VERSION> is the current version number. For more information about version numbers, see [portalfx-extensions-versioning.md](portalfx-extensions-versioning.md).
 
 * CoreXT extensions
 
@@ -92,7 +92,7 @@ Environment configuration files serve two purposes.
 
 The content of the configuration file is a json object with key/value pairs for settings to be overridden.  If there are no settings to override, the file should contain an empty json object. 
 
-The settings for the portal framework are in the format of `Microsoft.Azure.<extensionName>.<settingName>`, where `settingName`, without the angle brackets, is the name of the setting. The framework will propagate the setting to the client in the format of `<settingName>`. For example, the `web.config` file that contains this setting would resemble the following.
+The settings for the Portal framework are in the format of `Microsoft.Azure.<extensionName>.<settingName>`, where `settingName`, without the angle brackets, is the name of the setting. The framework will propagate the setting to the client in the format of `<settingName>`. For example, the `web.config` file that contains this setting would resemble the following.
 
 ```xml
 <add key="Microsoft.Azure.<extensionName>.<settingName>" value="myValue" />
@@ -242,7 +242,7 @@ Safe deployment practices require that extensions are rolled out to all data cen
 
 <!-- TODO:  Determine whether an extension can use the "stageDefinition" and "$sequence" parameters, or if they are reserved for hosting service use -->
 
-When a user requests an extension in the Azure Portal, the portal will determine which version to load, based on the datacenter that is nearest to the user's geographical location.
+When a user requests an extension in the Azure Portal, the Portal will determine which version to load, based on the datacenter that is nearest to the user's geographical location.
 
  The config file specifies the versions of the extension that the hosting service will download, process and serve. It is authored by the developer as part of creating the extension.  The config file is located in the storage account, and its name is  `config.json`.  The file name is case sensitive, as are the names of the properties that it contains, as in the following example.
 
@@ -293,16 +293,9 @@ Extensions should publish the extracted deployment artifacts that are generated 
 
 <!-- Determine whether this SLA should be the same as the table in portalfx-extensions-configuration-scenarios.md -->
 
-The SLA for onboarding the extension is in the following table, expressed in business days.
-
-| Environment | SLA     |
-|-------------|---------|
-| DOGFOOD     | 5 days  |
-| MPAC        | 7 days  |
-| PROD        | 12 days |
-| BLACKFOREST | 15 days |
-| FAIRFAX     | 15 days |
-| MOONCAKE    | 15 days |
-
 </details>
 
+<a name="service-level-agreement-for-hosting-service"></a>
+## Service level agreement for hosting service
+
+The SLA for onboarding the extension to the hosting service is located at [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md).
