@@ -2,7 +2,7 @@
 <a name="introduction"></a>
 ## Introduction
 
-This document describes the creation of a blank Azure extension that validates that the developer's computer is ready for more portal development.
+This document describes the creation of a blank Azure extension that validates that the developer's computer is ready for more Portal development.
    
 <a name="overview"></a>
 ## Overview

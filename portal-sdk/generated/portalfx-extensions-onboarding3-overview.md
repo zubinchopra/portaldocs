@@ -4,8 +4,8 @@
 <a name="portal-development-phase-3-deployment"></a>
 ## Deployment
 
-1. [Deploy the extension](portalfx-extensions-onboarding3-deployment.md)
+1. [Types of Releases](portalfx-extensions-developmentPhases.md)
 
-1. [Register the extension](portalfx-extensions-onboarding3-registration.md)
+1. [Deploy the extension](portalfx-extensions-onboarding3-deployment-procedure.md)
 
 You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
