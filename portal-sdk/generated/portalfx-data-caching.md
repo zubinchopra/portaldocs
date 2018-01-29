@@ -23,7 +23,7 @@ Multiple parts or services in an extension will rely on the same set of data. Fo
 These are all features that `MsPortalFx.Data.QueryCache` and `MsPortalFx.Data.EntityCache` provide. 
 
 <!--TODO: Remove the following placeholder sentence when it is explained in more detail. -->
-Because it is the way it is, the specification is not strictly an object-property method model.
+Because this discussion includes AJAX, TypeScript, and template classes, it does not not strictly specify  an object-property method model.
 
 <a name="configuring-the-data-cache-querycache"></a>
 ### QueryCache
