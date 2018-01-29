@@ -184,7 +184,7 @@ Within the Portal implementation itself, we have applied this optimization to th
 
 ### Reusing loaded/cached data with `findCachedEntity`
 
-Browsing resources is a very common activity in the new Azure Portal.  Here, columns in the resource list should be loaded using a `QueryCache<TEntity, ...>`.  When the user activates a resource list item, the details shown in the resource Blade should be loaded using an `EntityCache<TEntity, ...>`, where `TEntity` is often shared between these two data caches.  To show details of a resource, rather than issue an ajax call to load the resource details model into `EntityCache`, use the `findCachedEntity` option to locate this already loaded entity in some other `QueryCache` (or even nested in some other `EntityCache`):
+Browsing resources is a very common activity in the new Azure Portal.  Here, columns in the resource list should be loaded using a `QueryCache<TEntity, ...>`.  When the user activates a resource list item, the details shown in the resource Blade should be loaded using an `EntityCache<TEntity, ...>`, where `TEntity` is often shared between these two data caches.  To show details of a resource, rather than issue an AJAX call to load the resource details model into `EntityCache`, use the `findCachedEntity` option to locate this already loaded entity in some other `QueryCache` (or nested in some other `EntityCache`):
 
 ```ts
 this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataModels.WebsiteModel, number>({
@@ -264,7 +264,7 @@ In this example when `response.modified` is equal to false then no merge operati
 
 ### Making authenticated AJAX calls
 
-For most services, developers will make Ajax calls from the client to the server. Often the server will act as a proxy, making another call to a back end API (such as ARM) which requires authentication. When bootstrapping extensions, the portal will pass a JWT token to the extension. That same token can be included in the HTTP headers of a request to ARM, providing end to end authentication. To help make those authenticated calls, the portal includes an API which performs Ajax requests similar to the jQuery `$.ajax()` library named `MsPortalFx.Base.Net.ajax()`. If you're using QueryCache or EntityCache, this class is used by default. However, it can also be used independently:
+For most services, developers will make Ajax calls from the client to the server. Often the server will act as a proxy, making another call to a back end API (such as ARM) which requires authentication. When bootstrapping extensions, the portal will pass a JWT token to the extension. That same token can be included in the HTTP headers of a request to ARM, providing end to end authentication. To help make those authenticated calls, the portal includes an API which performs Ajax requests similar to the jQuery `$.ajax()` library named `MsPortalFx.Base.Net.ajax()`. If the extension uses a `DataCache` object,  this class is used by default. However, it can also be used independently, as specified in the following example.
 <!-- TODO:  Determine whether LoaderSampleData.ts is still used or has been replaced.  It is no longer in <SDK>\\Extensions\SamplesExtension\Extension -->
 `\Client\Data\Loader\LoaderSampleData.ts`
 

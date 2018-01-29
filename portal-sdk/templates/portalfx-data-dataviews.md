@@ -3,7 +3,7 @@
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
-The `QueryView` and `EntityView` both present data from the cache to the `ViewModel`, and provide reference counting. A `DataView` is created from the `createView` method of a QueryCache or EntityCache, as in the following example.
+The `QueryView` and `EntityView` cache objects both present data from the cache to the `ViewModel`, and provide reference counting. A `DataView` is created from the `createView` method of the cache object that was used, as in the following example.
 
  The sample  located at `<dir>Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\MasterViewModels.ts`   demonstrates a `SaveItemCommand` class that uses the binding between a part and a command. This code is also included in the following example.
 
