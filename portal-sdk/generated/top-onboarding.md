@@ -3,14 +3,12 @@
 
 <a name="portal-extensions-introduction"></a>
 ## Introduction
+
+
+If you are working on an Azure service and want to expose UI to your customers in the Azure portal then this is the right starting point. The portal has an extension model where each team that builds UI creates and deploys an extension. This process requires a relationship to be established between your team and the central portal team. This document walks you through the process of onboarding your team and starting that relationship. 
    
-Welcome to Azure! We're excited to have you to join the family and become a partner. If you are developing a service and want your customers to access it by using the Azure Portal, then this is the right starting point. The Azure Portal team supports the Azure Portal, its SDK, and the Framework that service teams use to integrate their management UI into the Azure Portal. 
-
-The Microsoft Azure Portal, located at [https://portal.azure.com](https://portal.azure.com), is a central place where Azure customers can provision and manage Azure resources. The Azure Portal is a [single page application](portalfx-extensions-onboarding-glossary.md) that may contain more than one Web application. The parts of the page in the Portal are dynamically loaded based on customer actions.
-
-A UI extension is essentially the user experience (UX) for a service. Extensions are developed by teams that integrate user interfaces into the Azure Portal. Extensions are dynamically accessed and loaded based on customer actions in the Portal.
-
-The portal has an extension model where each team that builds user interfaces (UI) can create and deploy extensions. This process requires a relationship to be established between your team and the Portal team. This document reviews the process of onboarding your team and starting that relationship. 
+<a name="portal-extensions-process-overview"></a>
+## Process overview
 
 Onboarding a service, or developing a Portal extension, has three phases: onboarding, development, and deployment. The process is specified in the following image.
 
@@ -26,7 +24,7 @@ The items that are being developed extend functionality to an Azure Portal, and 
 
 1. [Schedule Kickoff Meetings](portalfx-extensions-onboarding1-kickoffs.md)
 
-1. [Onboard with related teams](top-external-onboarding.md)
+1. [Onboard with related teams](portalfx-extensions-onboarding1-relatedTeams.md)
 
 1. [Join DLs and request permissions](portalfx-extensions-onboarding1-permissions.md) 
 
@@ -41,20 +39,13 @@ You can ask developer community questions on Stackoverflow with the tag [ibiza-o
 <a name="portal-development-phase-2-development"></a>
 ## Development
 
-Developing a Portal extension has three phases: private preview, public preview, and Global Availability (GA). Azure Portal onboarding is creating a UI for a service in Azure Portal, and is a subset of Azure onboarding.
-
-Most services that onboard to Azure can leverage the following components of the Azure ecosystem:
-1. Management APIs that are exposed via Azure Resource Manager (ARM) or Microsoft Graph
-1. Management UI in the Azure Portal and/or other tools/websites, like Visual Studio
-1. Marketing content on the Azure Web site or other websites
-
-The Azure onboarding process is streamlined to optimize the delivery of high-quality experiences based on hundreds of hours of usability testing that meet Microsoft Common Engineering Criteria (CEC) and compliance requirements. This will better optimize developer resources and reduce re-working due to anti-patterns and inconsistencies that block usability, performance, and other factors. Therefore, we strongly recommend starting the onboarding process previous to designing UI or management APIs.
-
 Perform the following tasks to develop an Azure extension.
 
-1. [Learn about the hosting service](portalfx-extensions-onboarding2-hosting.md)
-
 1. [Develop the extension](portalfx-extensions-onboarding2-develop.md)
+
+    The development guide that is located at [top-extensions-getting-started.md](top-extensions-getting-started.md) has all the right pointers.
+
+1. [Learn about the hosting service](portalfx-extensions-hosting-service-overview.md)
 
 1. [Register the extension](portalfx-extensions-onboarding2-registration.md)
 
@@ -67,9 +58,9 @@ You can ask developer community questions on Stackoverflow with the tag [ibiza-o
 <a name="portal-development-phase-3-deployment"></a>
 ## Deployment
 
-1. [Deploy the extension](portalfx-extensions-onboarding3-deployment.md)
+1. [Types of Releases](portalfx-extensions-developmentPhases.md)
 
-1. [Register the extension](portalfx-extensions-onboarding3-registration.md)
+1. [Deploy the extension](portalfx-extensions-onboarding3-deployment-procedure.md)
 
 You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
 
