@@ -6,7 +6,7 @@ The items that are being developed extend functionality to an Azure Portal, and 
 
 1. [Schedule Kickoff Meetings](portalfx-extensions-onboarding1-kickoffs.md)
 
-1. [Onboard with related teams](top-external-onboarding.md)
+1. [Onboard with related teams](portalfx-extensions-onboarding1-relatedTeams.md)
 
 1. [Join DLs and request permissions](portalfx-extensions-onboarding1-permissions.md) 
 

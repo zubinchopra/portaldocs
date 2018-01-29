@@ -1,5 +1,5 @@
 
-### Deploy the extension
+### Deployment procedure
 
 1. Review the development phases that are located at [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md) to understand how development is related to exit criteria.
 

@@ -1,6 +1,7 @@
-### Learn about the hosting service
+### Onboard with related teams
 
- Teams that are new to Azure development can learn about the hosting service and plan the deployment strategy for new extensions. Your team should network with support teams by reaching out to the following teams.
+ Teams that are new to Azure development can plan and implement the deployment strategy for new extensions. 
+ Onboarding to Azure is a big task that spans many teams that you will work with to get your entire service up and running. These include, but are not limited to the following teams.
 
 1. Azure Resource Manager team 
 
