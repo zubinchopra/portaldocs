@@ -15,11 +15,11 @@ Atomization can be switched only for entities, which have globally unique IDs (p
 
 ```
 
-The Atomization attribute is set to "off" by default. The Atomization attribute is not inherited and has to be set to `true` for all types that should be atomized. 
-In the simpliest case, all entities within an extension will use the same atomization context, which defaults to one.
+The Atomization attribute is set to 'off' by default. The Atomization attribute is not inherited and has to be set to `true` for all types that should be atomized. 
+In the simplest case, all entities within an extension will use the same atomization context, which defaults to one.
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
-It is possible to select a different atomization context for a given entity cache/query cache, as in the following example.
+It is possible to select a different atomization context for a given cache object, as in the following example.
 
 ```cs
 

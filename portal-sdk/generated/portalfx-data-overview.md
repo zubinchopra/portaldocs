@@ -125,31 +125,18 @@ export class DataContext {
 
 The `DataContext` class does not specify the use of any single FX base class or interface. In practice, the members of a DataContext class typically include the following.
 
-* **DataCache classes**
-
-  The Azure Portal FX DataCache classes are `QueryCache`, `EntityCache` and the `EditScopeCache`.  They are a full-featured way of loading and caching data used by blade and part `ViewModels`.
+<a name="overview-data-caches"></a>
+### Data caches
+ 
+  The `DataCache` classes are afull-featured and convenient way to load and cache data required by blade and part `ViewModels`. `DataCache` classes are specified in [portalfx-data-caching.md](portalfx-data-caching.md). 
 
 * **CRUD methods**
 
   The CRUD methods are Create, Replace, Update, and Delete. Commands for  blades and parts often use these methods to modify server data. These commands should be implemented in methods on the `DataContext` class, where each method can issue **AJAX** calls and reflect server changes in associated DataCaches.
 
-<a name="overview-data-caches"></a>
-### Data caches
-
-The `DataCache` classes are a convenient way to load and cache data required by blade and part ViewModels. They are designed to match typical data consumption requirements of blade and part ViewModels.
-
 * **QueryCache**
 
   Loads data of type `Array<T>` according to an extension-specified `TQuery` type. `QueryCache` is useful for loading data for list-like views like Grid, List, Tree, or Chart.
-
-* **EntityCache**
-
-  Loads data of type `T` according to some extension-specified `TId` type. `EntityCache` is useful for loading data into property views and single-record views.
-
-* **EditScopeCache**
-
-   EditScopeCache is less commonly used. It loads and manages instances of `EditScope`, which is a change-tracked, editable model for use in Forms, as specified in [portalfx-forms-working-with-edit-scopes.md](portalfx-forms-working-with-edit-scopes.md).  
-
 
 The `DataCache` classes all share the same API. The usage pattern is as follows.
 
