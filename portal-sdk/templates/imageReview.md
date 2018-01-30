@@ -1,5 +1,6 @@
 # All images in the ../media library
 Hover over the image to display the name of the file in which it is located.
+The updates are for images that are actually in use; if an image is found to be no longer in use, it can be marked as "obsolete" in order to be archived.
 
 ## Media
 
@@ -10,6 +11,9 @@ Hover over the image to display the name of the file in which it is located.
 
 
 ![alt-text](../media/placeholder-image.png "media/placeholder-image.png")
+
+
+Update the following image to a more current blade and associated website.
 
 
 ![alt-text](../media/portalfx-parts/part-sharing.png "portalfx-parts/part-sharing.png")
@@ -145,7 +149,7 @@ Update the following image to include  a fictitious name.
 
 ## portalfx-controls
 
-Update the following image to include  a fictitious name.
+
 
 ![alt-text](../media/portalfx-controls/asset.png "portalfx-controls/asset.png ")
 
@@ -222,12 +226,15 @@ Update the following image to a more current blade and associated website.
 ![alt-text](../media/portalfx-controls/fileUpload.png "portalfx-controls/fileUpload.png ")
 
 
+Update the following image to include a fictitious name.
+Update the following image to a standard size.
+
 ![alt-text](../media/portalfx-controls/gallery.png "portalfx-controls/gallery.png ")
 
 
 ![alt-text](../media/portalfx-controls/gauge.png "portalfx-controls/gauge.png ")
 
-
+Update the following image to include a fictitious name.
 ![alt-text](../media/portalfx-controls/graph.png "portalfx-controls/graph.png ")
 
 
@@ -240,6 +247,7 @@ Update the following image to a standard size.
 ![alt-text](../media/portalfx-controls/gridchart.png "portalfx-controls/gridchart.png")
 
 
+Update the following image to include a fictitious name.
 ![alt-text](../media/portalfx-controls/grid-intro.png "portalfx-controls/grid-intro.png ")
 
 
@@ -320,18 +328,30 @@ Update the following image to a standard size.
 
 ## portalfx-controls-monitor-chart
 
+
+Update the following image for fictitious names. 
+
+
 ![alt-text](../media/portalfx-controls-monitor-chart/monitor-chart-control-single-input.png "portalfx-controls-monitor-chart/monitor-chart-control-single-input.png ")
+
+Update the following image for fictitious names. 
 
 
 ![alt-text](../media/portalfx-controls-monitor-chart/monitor-chart-control-azure-monitor.png "portalfx-controls-monitor-chart/monitor-chart-control-azure-monitor.png ")
 
 
+Update the following image for fictitious names. 
+
 ![alt-text](../media/portalfx-controls-monitor-chart/monitor-chart-control-multiple-inputs.png "portalfx-controls-monitor-chart/monitor-chart-control-multiple-inputs.png ")
 
+
+Update the following image for fictitious names. 
 
 ![alt-text](../media/portalfx-controls-monitor-chart/monitor-chart-control-overview-blade.png "portalfx-controls-monitor-chart/monitor-chart-control-overview-blade.png ")
 
 ## portalfx-create
+
+Update the following image to remove damage. 
 
 ![alt-text](../media/portalfx-create/create-originating-from-blade-part.png "portalfx-create/create-originating-from-blade-part.png ")
 
@@ -358,6 +378,8 @@ Update the following image to a standard size.
 
 ## portalfx-debugging
 
+Determine whether 'justbe' in the following image should be replaced with a fictitious name.
+
 ![alt-text](../media/portalfx-debugging/browserConsole.png "portalfx-debugging/browserConsole.png ")
 
 
@@ -366,6 +388,8 @@ Update the following image to a standard size.
 
 ![alt-text](../media/portalfx-debugging/consoleExtensionLoaded.png "portalfx-debugging/consoleExtensionLoaded.png ")
 
+
+Update the following image for fictitious names. 
 
 ![alt-text](../media/portalfx-debugging/debugMode.png "portalfx-debugging/debugMode.png")
 
@@ -379,8 +403,13 @@ Update the following image to a standard size.
 ![alt-text](../media/portalfx-debugging/failure.png "portalfx-debugging/failure.png")
 
 
+
+Update the following image for fictitious names. 
+
 ![alt-text](../media/portalfx-debugging/loadedExtensions.png "portalfx-debugging/loadedExtensions.png")
 
+
+Update the following image for fictitious names. 
 
 ![alt-text](../media/portalfx-debugging/resetDesktop.png "portalfx-debugging/resetDesktop.png ")
 
@@ -388,11 +417,16 @@ Update the following image to a standard size.
 ![alt-text](../media/portalfx-debugging/response-headers-show-version.png "portalfx-debugging/response-headers-show-version.png ")
 
 
+Update the following image for fictitious names. 
+
 ![alt-text](../media/portalfx-debugging/restoreDefaultSettings.png "portalfx-debugging/restoreDefaultSettings.png ")
 
 
 ![alt-text](../media/portalfx-debugging/select-extension-iframe.png "portalfx-debugging/select-extension-iframe.png")
 
+
+
+Update the following image for fictitious names. 
 
 ![alt-text](../media/portalfx-debugging/settings.png "portalfx-deployment/settings.png")
 
@@ -402,17 +436,28 @@ Update the following image to a standard size.
 
 ## portalfx-essentials
 
+
+Update the following image for fictitious names. 
+
 ![alt-text](../media/portalfx-essentials/essentials.png "portalfx-essentials/essentials.png")
 
+
+Update the following image for fictitious names. 
 
 ![alt-text](../media/portalfx-essentials/quickstart.png "portalfx-essentials/quickstart.png ")
 
 
+Update the following image for fictitious names. 
+
 ![alt-text](../media/portalfx-essentials/rbac.png "portalfx-essentials/rbac.png")
 
 
+Update the following image for fictitious names. 
+
 ![alt-text](../media/portalfx-essentials/settings.png "portalfx-essentials/settings.png")
 
+
+Update the following image for fictitious names. 
 
 ![alt-text](../media/portalfx-essentials/tags.png "portalfx-essentials/tags.png")
 
@@ -449,17 +494,22 @@ Update the following image to a standard size.
 ![alt-text](../media/portalfx-extensions-onboarding/azure-onboarding.png "portalfx-extensions-onboarding/azure-onboarding.png ")
 
 
+The following image has already been validated as using   fictitious names. 
+
 ![alt-text](../media/portalfx-extensions-onboarding/azurePortalMarketPlace.png "portalfx-extensions-onboarding/azurePortalMarketPlace.png ")
 
 
 ![alt-text](../media/portalfx-extensions-onboarding/GAMode.png "portalfx-extensions-onboarding/GAMode.png ")
 
 
+Deprecate the following image. 
+
 ![alt-text](../media/portalfx-extensions-onboarding/marketplaceOnboardingRequest.png "portalfx-extensions-onboarding/marketplaceOnboardingRequest.png ")
 
 
 ![alt-text](../media/portalfx-extensions-onboarding/previewMode.png "portalfx-extensions-onboarding/previewMode.png ")
 
+Deprecate the following image.
 
 ![alt-text](../media/portalfx-extensions-onboarding/registrationRequest.png "portalfx-extensions-onboarding/registrationRequest.png ")
 
@@ -467,6 +517,9 @@ Update the following image to a standard size.
 ![alt-text](../media/portalfx-extensions-onboarding/vmMachines.png "portalfx-extensions-onboarding/vmMachines.png ")
 
 ## portalfx-extensions-publishing
+
+
+The following image has already been validated as using   fictitious names. 
 
 ![alt-text](../media/portalfx-extensions-publishing/pull-request.png "portalfx-extensions-publishing/pull-request.png ")
 
@@ -508,6 +561,9 @@ Update the following image to a standard size.
 ![alt-text](../media/portalfx-internal/EventViewerClientTrace.png "portalfx-internal/EventViewerClientTrace.png")
 
 ## portalfx-lens
+
+Update the following image to a more current blade and associated website.
+
 
 ![alt-text](../media/portalfx-lens/lens.png "portalfx-lens/lens.png")
 
