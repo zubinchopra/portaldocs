@@ -3,289 +3,315 @@ Hover over the image to display the name of the file in which it is located.
 
 ## Media
 
-![alt-text](../media/access-denied-pr.png "media/partner-request-flow.png")
+![alt-text](../media/access-denied-pr.png "media/access-denied-pr.png")
 
 
-![alt-text](../media/partner-request-flow.png "media/placeholder-image.png")
+![alt-text](../media/partner-request-flow.png "media/partner-request-flow.png")
 
 
-![alt-text](../media/placeholder-image.png "media/portalfx-parts-nospinner.png")
+![alt-text](../media/placeholder-image.png "media/placeholder-image.png")
 
 
-![alt-text](../media/samples.png "msportalfx-test/FileSetTestFrameworkPropertyMocha.png")
+![alt-text](../media/samples.png "samples.png")
 
 
 ## msportalfx-test
 
-![alt-text](../media/msportalfx-test/FileSetTestFrameworkPropertyMocha.png "msportalfx-test/NewTypeScriptNodeJsExistingProject.png")
+![alt-text](../media/msportalfx-test/FileSetTestFrameworkPropertyMocha.png "FileSetTestFrameworkPropertyMocha.png")
 
 
-![alt-text](../media/msportalfx-test/NewTypeScriptNodeJsExistingProject.png "msportalfx-test-contribute/github-join-azure.png")
+![alt-text](../media/msportalfx-test/NewTypeScriptNodeJsExistingProject.png "NewTypeScriptNodeJsExistingProject.png")
 
 
-![alt-text](../media/msportalfx-test-contribute/github-join-azure.png "msportalfx-test-contribute/github-join-repo.png")
+Update the following image to a standard size.
 
+![alt-text](../media/msportalfx-test-contribute/github-join-azure.png "msportalfx-test-contribute/github-join-azure.png")
 
-![alt-text](../media/msportalfx-test-contribute/github-join-repo.png "msportalfx-test-contribute/github-join-team.png")
+Update the following image to a standard size.
 
+![alt-text](../media/msportalfx-test-contribute/github-join-repo.png "msportalfx-test-contribute/github-join-repo.png")
 
-![alt-text](../media/msportalfx-test-contribute/github-join-team.png "msportalfx-test-contribute/github-signup-2fa.png")
+Update the following image to a standard size.
 
+![alt-text](../media/msportalfx-test-contribute/github-join-team.png "msportalfx-test-contribute/github-join-team.png")
 
-![alt-text](../media/msportalfx-test-contribute/github-signup-2fa.png "portalfx/github-link.png")
+Update the following image to a standard size.
+Update the following image to include a fictitious name. 
+
+![alt-text](../media/msportalfx-test-contribute/github-signup-2fa.png "msportalfx-test-contribute/github-signup-2fa.png")
 
 ## portalfx
 
-![alt-text](../media/portalfx/github-link.png "portalfx/github-subtopic-from-github.png")
+![alt-text](../media/portalfx/github-link.png "portalfx/github-link.png")
 
 
 ![alt-text](../media/portalfx/github-subtopic-from-github.png "portalfx/github-subtopic-from-topic.png")
 
 
-![alt-text](../media/portalfx/github-subtopic-from-topic.png "portalfx/github-topic.png")
+![alt-text](../media/portalfx/github-subtopic-from-topic.png "portalfx/github-subtopic-from-topic.png")
 
 
-![alt-text](../media/portalfx/github-topic.png "portalfx-blade-viewmodel/NoSmartPhone.png")
+![alt-text](../media/portalfx/github-topic.png "portalfx/github-topic.png")
 
 
 ## portalfx-bladeKinds
 
-![alt-text](../media/portalfx-bladeKinds/BladeKindsIntro.png "portalfx-bladeKinds/NoticeBlade.PNG")
+![alt-text](../media/portalfx-bladeKinds/BladeKindsIntro.png "portalfx-bladeKinds/BladeKindsIntro.png")
 
-![alt-text](../media/portalfx-bladeKinds/NoticeBlade.PNG "portalfx-bladeKinds/PropertiesBlade.PNG")
+
+![alt-text](../media/portalfx-bladeKinds/NoticeBlade.PNG "portalfx-bladeKinds/NoticeBlade.PNG ")
+
 
 Update the following image to remove the word "me"
-![alt-text](../media/portalfx-bladeKinds/PropertiesBlade.PNG "portalfx-bladeKinds/QuickStartBlade.PNG")
+
+![alt-text](../media/portalfx-bladeKinds/PropertiesBlade.PNG "portalfx-bladeKinds/PropertiesBlade.PNG")
 
 
-![alt-text](../media/portalfx-bladeKinds/QuickStartBlade.PNG "portalfx-bladeKinds/SettingListBlade.PNG")
+![alt-text](../media/portalfx-bladeKinds/QuickStartBlade.PNG "portalfx-bladeKinds/QuickStartBlade.PNG ")
 
 
-![alt-text](../media/portalfx-bladeKinds/SettingListBlade.PNG "portalfx-blades/blade-status.png")
+![alt-text](../media/portalfx-bladeKinds/SettingListBlade.PNG "portalfx-bladeKinds/SettingListBlade.PNG")
 
 ## portalfx-blades
 
-Update the following image to a more current blade.
-![alt-text](../media/portalfx-blades/blade.png "portalfx-blades/create.png")
+
+Update the following image to a more current blade and associated website.
+
+![alt-text](../media/portalfx-blades/blade.png "portalfx-blades/blade.png ")
 
 
-![alt-text](../media/portalfx-blades/blade-status.png "portalfx-blades/blade.png")
+![alt-text](../media/portalfx-blades/blade-status.png "portalfx-blades/blade-status.png ")
 
 
-![alt-text](../media/portalfx-blades/create.png "portalfx-blades/notice.png")
+![alt-text](../media/portalfx-blades/create.png "portalfx-blades/create.png")
 
 
-![alt-text](../media/portalfx-blades/notice.png "portalfx-blades/pinned-website.png")
+![alt-text](../media/portalfx-blades/notice.png "portalfx-blades/notice.png ")
 
 
-![alt-text](../media/portalfx-blades/pinned.png "portalfx-blades/properties.png")
+Update the following image to include a fictitious name.
+
+![alt-text](../media/portalfx-blades/pinned.png "portalfx-blades/pinned.png ")
+
+Update the following image to include a fictitious name.
+
+![alt-text](../media/portalfx-blades/pinned-website.png "portalfx-blades/pinned-website.png ")
+
+Update the following image to a more current blade and associated website.
+
+![alt-text](../media/portalfx-blades/properties.png "portalfx-blades/properties.png ")
 
 
-![alt-text](../media/portalfx-blades/pinned-website.png "portalfx-blades/pinned.png")
-
-
-![alt-text](../media/portalfx-blades/properties.png "portalfx-blades/quickstart.png")
-
-
-![alt-text](../media/portalfx-blades/quickstart.png "portalfx-browse/nocode.png")
+![alt-text](../media/portalfx-blades/quickstart.png "portalfx-blades/quickstart.png ")
 
 ## portalfx-blade-viewmodel
 
-![alt-text](../media/portalfx-blade-viewmodel/NoSmartPhone.png "portalfx-blade-viewmodel/SmartPhone.png")
+![alt-text](../media/portalfx-blade-viewmodel/NoSmartPhone.png "portalfx-blade-viewmodel/NoSmartPhone.png ")
 
 
-![alt-text](../media/portalfx-blade-viewmodel/SmartPhone.png "portalfx-bladeKinds/BladeKindsIntro.png")
+![alt-text](../media/portalfx-blade-viewmodel/SmartPhone.png "portalfx-blade-viewmodel/SmartPhone.png ")
 
 ## portalfx-browse
 
-![alt-text](../media/portalfx-browse/nocode.png "portalfx-commands/commandBar.png")
+![alt-text](../media/portalfx-browse/nocode.png "portalfx-browse/nocode.png ")
 
 ## portalfx-commands
 
-![alt-text](../media/portalfx-commands/commandBar.png "portalfx-commands/commandDialog.png")
+
+Update the following image to include  a fictitious name.
+
+![alt-text](../media/portalfx-commands/commandBar.png "portalfx-commands/commandBar.png")
 
 
-![alt-text](../media/portalfx-commands/commandDialog.png "portalfx-commands/commandList.png")
+Update the following image to include  a fictitious name.
 
-Update the following image to include a  a fictitious name.
-![alt-text](../media/portalfx-commands/commandList.png "portalfx-controls/asset.png")
+![alt-text](../media/portalfx-commands/commandDialog.png "portalfx-commands/commandDialog.png")
+
+Update the following image to include  a fictitious name.
+
+![alt-text](../media/portalfx-commands/commandList.png "portalfx-commands/commandList.png")
 
 ## portalfx-controls
 
-Update the following image to include a  a fictitious name.
-![alt-text](../media/portalfx-controls/asset.png "portalfx-controls/barchart.png")
+Update the following image to include  a fictitious name.
 
+![alt-text](../media/portalfx-controls/asset.png "portalfx-controls/asset.png ")
 
-![alt-text](../media/portalfx-controls/barchart.png "portalfx-controls/button.png")
 
+![alt-text](../media/portalfx-controls/barchart.png "portalfx-controls/barchart.png ")
 
-![alt-text](../media/portalfx-controls/button.png "portalfx-controls/buttonActive.png")
 
+![alt-text](../media/portalfx-controls/button.png "portalfx-controls/button.png")
 
-![alt-text](../media/portalfx-controls/buttonActive.png "portalfx-controls/buttonDefault.png")
 
+![alt-text](../media/portalfx-controls/buttonActive.png "portalfx-controls/buttonActive.png")
 
-![alt-text](../media/portalfx-controls/buttonDefault.png "portalfx-controls/buttonDisabledActive.png")
 
+![alt-text](../media/portalfx-controls/buttonDefault.png "portalfx-controls/buttonDefault.png ")
 
-![alt-text](../media/portalfx-controls/buttonDisabledActive.png "portalfx-controls/buttonDisabledDefault.png")
 
+![alt-text](../media/portalfx-controls/buttonDisabledActive.png "portalfx-controls/buttonDisabledActive.png ")
 
-![alt-text](../media/portalfx-controls/buttonDisabledDefault.png "portalfx-controls/buttonDisabledHover.png")
 
+![alt-text](../media/portalfx-controls/buttonDisabledDefault.png "portalfx-controls/buttonDisabledDefault.png ")
 
-![alt-text](../media/portalfx-controls/buttonDisabledHover.png "portalfx-controls/buttonHover.png")
 
+![alt-text](../media/portalfx-controls/buttonDisabledHover.png "portalfx-controls/buttonDisabledHover.png")
 
-![alt-text](../media/portalfx-controls/buttonHover.png "portalfx-controls/chart.png")
 
+![alt-text](../media/portalfx-controls/buttonHover.png "portalfx-controls/buttonHover.png")
 
-![alt-text](../media/portalfx-controls/chart.png "portalfx-controls/checkbox.png")
 
+![alt-text](../media/portalfx-controls/chart.png "portalfx-controls/chart.png ")
 
-![alt-text](../media/portalfx-controls/checkbox.png "portalfx-controls/collectionsummary.png")
 
+![alt-text](../media/portalfx-controls/checkbox.png "portalfx-controls/checkbox.png ")
 
-![alt-text](../media/portalfx-controls/collectionsummary.png "portalfx-controls/console-large.png")
 
+![alt-text](../media/portalfx-controls/collectionsummary.png "portalfx-controls/collectionsummary.png ")
 
-![alt-text](../media/portalfx-controls/console.png "portalfx-controls/controls.pdn")
 
+Update the following image to a more current blade and associated website.
 
-![alt-text](../media/portalfx-controls/console-large.png "portalfx-controls/console.png")
+![alt-text](../media/portalfx-controls/console-large.png "portalfx-controls/console-large.png ")
 
 
-![alt-text](../media/portalfx-controls/controls.pdn "portalfx-controls/copyableLabel.png")
 
+![alt-text](../media/portalfx-controls/copyableLabel.png "portalfx-controls/copyableLabel.png ")
 
-![alt-text](../media/portalfx-controls/copyableLabel.png "portalfx-controls/datePolyfill.png")
 
+![alt-text](../media/portalfx-controls/datePolyfill.png "portalfx-controls/datePolyfill.png ")
 
-![alt-text](../media/portalfx-controls/datePolyfill.png "portalfx-controls/datetime.png")
 
+![alt-text](../media/portalfx-controls/datetime.png "portalfx-controls/datetime.png ")
 
-![alt-text](../media/portalfx-controls/datetime.png "portalfx-controls/diff.png")
 
+![alt-text](../media/portalfx-controls/diff.png "portalfx-controls/diff.png ")
 
-![alt-text](../media/portalfx-controls/diff.png "portalfx-controls/dockedBalloon.png")
 
+![alt-text](../media/portalfx-controls/dockedBalloon.png "portalfx-controls/dockedBalloon.png ")
 
-![alt-text](../media/portalfx-controls/dockedBalloon.png "portalfx-controls/Donut.png")
 
+![alt-text](../media/portalfx-controls/Donut.png "portalfx-controls/Donut.png ")
 
-![alt-text](../media/portalfx-controls/Donut.png "portalfx-controls/dropdown.png")
 
+![alt-text](../media/portalfx-controls/dropdown.png "portalfx-controls/dropdown.png ")
 
-![alt-text](../media/portalfx-controls/dropdown.png "portalfx-controls/editor-code.png")
 
+![alt-text](../media/portalfx-controls/editor.png "portalfx-controls/editor.png ")
 
-![alt-text](../media/portalfx-controls/editor.png "portalfx-controls/essentials.PNG")
 
+![alt-text](../media/portalfx-controls/editor-code.png "portalfx-controls/editor-code.png ")
 
-![alt-text](../media/portalfx-controls/editor-code.png "portalfx-controls/editor.png")
 
+![alt-text](../media/portalfx-controls/essentials.PNG "portalfx-controls/essentials.PNG ")
 
-![alt-text](../media/portalfx-controls/essentials.PNG "portalfx-controls/fileUpload.png")
 
+![alt-text](../media/portalfx-controls/fileUpload.png "portalfx-controls/fileUpload.png ")
 
-![alt-text](../media/portalfx-controls/fileUpload.png "portalfx-controls/gallery.png")
 
+![alt-text](../media/portalfx-controls/gallery.png "portalfx-controls/gallery.png ")
 
-![alt-text](../media/portalfx-controls/gallery.png "portalfx-controls/gauge.png")
 
+![alt-text](../media/portalfx-controls/gauge.png "portalfx-controls/gauge.png ")
 
-![alt-text](../media/portalfx-controls/gauge.png "portalfx-controls/graph.png")
 
+![alt-text](../media/portalfx-controls/graph.png "portalfx-controls/graph.png ")
 
-![alt-text](../media/portalfx-controls/graph.png "portalfx-controls/grid-intro.png")
 
 
-![alt-text](../media/portalfx-controls/grid.png "portalfx-controls/gridchart.png")
+Update the following image to a standard size.
 
+![alt-text](../media/portalfx-controls/grid.png "portalfx-controls/grid.png ")
 
-![alt-text](../media/portalfx-controls/gridchart.png "portalfx-controls/infolist.png")
 
+![alt-text](../media/portalfx-controls/gridchart.png "portalfx-controls/gridchart.png")
 
-![alt-text](../media/portalfx-controls/grid-intro.png "portalfx-controls/grid.png")
 
+![alt-text](../media/portalfx-controls/grid-intro.png "portalfx-controls/grid-intro.png ")
 
-![alt-text](../media/portalfx-controls/infolist.png "portalfx-controls/listView.png")
 
+![alt-text](../media/portalfx-controls/infolist.png "portalfx-controls/infolist.png ")
 
-![alt-text](../media/portalfx-controls/listView.png "portalfx-controls/logStream.png")
 
+![alt-text](../media/portalfx-controls/listView.png "portalfx-controls/listView.png ")
 
-![alt-text](../media/portalfx-controls/logStream.png "portalfx-controls/map.png")
 
+![alt-text](../media/portalfx-controls/logStream.png "portalfx-controls/logStream.png ")
 
-![alt-text](../media/portalfx-controls/map.png "portalfx-controls/metrics.png")
 
+![alt-text](../media/portalfx-controls/map.png "portalfx-controls/map.png")
 
-![alt-text](../media/portalfx-controls/metrics.png "portalfx-controls/numericTextBox.png")
 
+![alt-text](../media/portalfx-controls/metrics.png "portalfx-controls/metrics.png ")
 
-![alt-text](../media/portalfx-controls/numericTextBox.png "portalfx-controls/optionPicker.png")
 
+![alt-text](../media/portalfx-controls/numericTextBox.png "portalfx-controls/numericTextBox.png ")
 
-![alt-text](../media/portalfx-controls/optionPicker.png "portalfx-controls/pairedTimeline.png")
 
+![alt-text](../media/portalfx-controls/optionPicker.png "portalfx-controls/optionPicker.png ")
 
-![alt-text](../media/portalfx-controls/pairedTimeline.png "portalfx-controls/password.png")
 
+![alt-text](../media/portalfx-controls/pairedTimeline.png "portalfx-controls/pairedTimeline.png ")
 
-![alt-text](../media/portalfx-controls/password.png "portalfx-controls/progressBar.png")
 
+![alt-text](../media/portalfx-controls/password.png "portalfx-controls/password.png ")
 
-![alt-text](../media/portalfx-controls/progressBar.png "portalfx-controls/progressOverlay.png")
 
+![alt-text](../media/portalfx-controls/progressBar.png "portalfx-controls/progressBar.png ")
 
-![alt-text](../media/portalfx-controls/progressOverlay.png "portalfx-controls/queryBuilder.png")
 
+![alt-text](../media/portalfx-controls/progressOverlay.png "portalfx-controls/progressOverlay.png ")
 
-![alt-text](../media/portalfx-controls/queryBuilder.png "portalfx-controls/quickstart.png")
 
+![alt-text](../media/portalfx-controls/queryBuilder.png "portalfx-controls/queryBuilder.png ")
 
-![alt-text](../media/portalfx-controls/quickstart.png "portalfx-controls/scrollbar.png")
 
+![alt-text](../media/portalfx-controls/quickstart.png "portalfx-controls/quickstart.png")
 
-![alt-text](../media/portalfx-controls/scrollbar.png "portalfx-controls/selector.png")
 
+![alt-text](../media/portalfx-controls/scrollbar.png "portalfx-controls/scrollbar.png ")
 
-![alt-text](../media/portalfx-controls/selector.png "portalfx-controls/settings.png")
 
+![alt-text](../media/portalfx-controls/selector.png "portalfx-controls/selector.png ")
 
-![alt-text](../media/portalfx-controls/settings.png "portalfx-controls/setup.png")
 
+![alt-text](../media/portalfx-controls/settings.png "portalfx-controls/settings.png ")
 
-![alt-text](../media/portalfx-controls/setup.png "portalfx-controls/singleSetting.png")
 
+![alt-text](../media/portalfx-controls/setup.png "portalfx-controls/setup.png ")
 
-![alt-text](../media/portalfx-controls/singleSetting.png "portalfx-controls/slider.png")
 
+![alt-text](../media/portalfx-controls/singleSetting.png "portalfx-controls/singleSetting.png ")
 
-![alt-text](../media/portalfx-controls/slider.png "portalfx-controls/stringList.png")
 
+![alt-text](../media/portalfx-controls/slider.png "portalfx-controls/slider.png ")
 
-![alt-text](../media/portalfx-controls/stringList.png "portalfx-controls/textbox.png")
 
+![alt-text](../media/portalfx-controls/stringList.png "portalfx-controls/stringList.png ")
 
-![alt-text](../media/portalfx-controls/textbox.png "portalfx-controls/toggle.png")
 
+![alt-text](../media/portalfx-controls/textbox.png "portalfx-controls/textbox.png ")
 
-![alt-text](../media/portalfx-controls/toggle.png "portalfx-controls/treeView.png")
 
+![alt-text](../media/portalfx-controls/toggle.png "portalfx-controls/toggle.png ")
 
-![alt-text](../media/portalfx-controls/treeView.png "portalfx-controls/wizard.png")
 
+Update the following image to a standard size.
 
-![alt-text](../media/portalfx-controls/wizard.png "portalfx-controls-monitor-chart/monitor-chart-control-azure-monitor.png")
+![alt-text](../media/portalfx-controls/treeView.png "portalfx-controls/treeView.png ")
+
+
+Update the following image to a standard size.
+
+![alt-text](../media/portalfx-controls/wizard.png "portalfx-controls/wizard.png ")
 
 ## portalfx-controls-monitor-chart
 
-![alt-text](../media/portalfx-controls-monitor-chart/monitor-chart-control-single-input.png "portalfx-create/create-originating-from-blade-part.png")
+![alt-text](../media/portalfx-controls-monitor-chart/monitor-chart-control-single-input.png "portalfx-controls-monitor-chart/monitor-chart-control-single-input.png ")
 
 
-![alt-text](../media/portalfx-controls-monitor-chart/monitor-chart-control-azure-monitor.png "portalfx-controls-monitor-chart/monitor-chart-control-multiple-inputs.png")
+![alt-text](../media/portalfx-controls-monitor-chart/monitor-chart-control-azure-monitor.png "portalfx-controls-monitor-chart/monitor-chart-control-azure-monitor.png ")
 
 
 ![alt-text](../media/portalfx-controls-monitor-chart/monitor-chart-control-multiple-inputs.png "portalfx-controls-monitor-chart/monitor-chart-control-overview-blade.png")
@@ -295,206 +321,206 @@ Update the following image to include a  a fictitious name.
 
 ## portalfx-create
 
-![alt-text](../media/portalfx-create/create-originating-from-blade-part.png "portalfx-create/plus-new.png")
+![alt-text](../media/portalfx-create/create-originating-from-blade-part.png "portalfx-create/create-originating-from-blade-part.png ")
 
 
-![alt-text](../media/portalfx-create/plus-new.png "portalfx-create-deploytoazure/deploybutton.png")
+![alt-text](../media/portalfx-create/plus-new.png "portalfx-create/plus-new.png ")
 
 ## portalfx-create-deploytoazure
 
-![alt-text](../media/portalfx-create-deploytoazure/deploybutton.png "portalfx-data/loadmore-grid.png")
+![alt-text](../media/portalfx-create-deploytoazure/deploybutton.png "portalfx-create-deploytoazure/deploybutton.png ")
 
 ## portalfx-data
 
-![alt-text](../media/portalfx-data/loadmore-grid.png "portalfx-data/pageable-grid.png")
+![alt-text](../media/portalfx-data/loadmore-grid.png "loadmore-grid.png")
 
 
-![alt-text](../media/portalfx-data/pageable-grid.png "portalfx-data-context/area.png")
+![alt-text](../media/portalfx-data/pageable-grid.png "portalfx-data/pageable-grid.png")
 
 ## portalfx-data-context
 
-![alt-text](../media/portalfx-data-context/area.png "portalfx-data-context/dataContext.png")
+![alt-text](../media/portalfx-data-context/area.png "portalfx-data-context/area.png")
 
 
-![alt-text](../media/portalfx-data-context/dataContext.png "portalfx-debugging/browserConsole.png")
+![alt-text](../media/portalfx-data-context/dataContext.png "portalfx-data-context/dataContext.png ")
 
 ## portalfx-debugging
 
-![alt-text](../media/portalfx-debugging/browserConsole.png "portalfx-debugging/consoleError.png")
+![alt-text](../media/portalfx-debugging/browserConsole.png "portalfx-debugging/browserConsole.png ")
 
 
-![alt-text](../media/portalfx-debugging/consoleError.png "portalfx-debugging/consoleExtensionLoaded.png")
+![alt-text](../media/portalfx-debugging/consoleError.png "portalfx-debugging/consoleError.png ")
 
 
-![alt-text](../media/portalfx-debugging/consoleExtensionLoaded.png "portalfx-debugging/debugMode.png")
+![alt-text](../media/portalfx-debugging/consoleExtensionLoaded.png "portalfx-debugging/consoleExtensionLoaded.png ")
 
 
-![alt-text](../media/portalfx-debugging/debugMode.png "portalfx-debugging/debugScript.png")
+![alt-text](../media/portalfx-debugging/debugMode.png "portalfx-debugging/debugMode.png")
 
 
-![alt-text](../media/portalfx-debugging/debugScript.png "portalfx-debugging/extensionPageError.png")
+![alt-text](../media/portalfx-debugging/debugScript.png "portalfx-debugging/debugScript.png ")
 
 
-![alt-text](../media/portalfx-debugging/extensionPageError.png "portalfx-debugging/failure.png")
+![alt-text](../media/portalfx-debugging/extensionPageError.png "portalfx-debugging/extensionPageError.png")
 
 
-![alt-text](../media/portalfx-debugging/failure.png "portalfx-debugging/loadedExtensions.png")
+![alt-text](../media/portalfx-debugging/failure.png "portalfx-debugging/failure.png")
 
 
-![alt-text](../media/portalfx-debugging/loadedExtensions.png "portalfx-debugging/resetDesktop.png")
+![alt-text](../media/portalfx-debugging/loadedExtensions.png "portalfx-debugging/loadedExtensions.png")
 
 
-![alt-text](../media/portalfx-debugging/resetDesktop.png "portalfx-debugging/response-headers-show-version.png")
+![alt-text](../media/portalfx-debugging/resetDesktop.png "portalfx-debugging/resetDesktop.png ")
 
 
-![alt-text](../media/portalfx-debugging/response-headers-show-version.png "portalfx-debugging/restoreDefaultSettings.png")
+![alt-text](../media/portalfx-debugging/response-headers-show-version.png "portalfx-debugging/response-headers-show-version.png ")
 
 
-![alt-text](../media/portalfx-debugging/restoreDefaultSettings.png "portalfx-debugging/select-extension-iframe.png")
+![alt-text](../media/portalfx-debugging/restoreDefaultSettings.png "portalfx-debugging/restoreDefaultSettings.png ")
 
 
-![alt-text](../media/portalfx-debugging/select-extension-iframe.png "portalfx-debugging/settings.png")
+![alt-text](../media/portalfx-debugging/select-extension-iframe.png "portalfx-debugging/select-extension-iframe.png")
 
 
-![alt-text](../media/portalfx-debugging/settings.png "portalfx-deployment/deployment.png")
+![alt-text](../media/portalfx-debugging/settings.png "portalfx-deployment/settings.png")
 
 ## portalfx-deployment
 
-![alt-text](../media/portalfx-deployment/deployment.png "portalfx-essentials/essentials.png")
+![alt-text](../media/portalfx-deployment/deployment.png "portalfx-deployment/deployment.png ")
 
 ## portalfx-essentials
 
-![alt-text](../media/portalfx-essentials/essentials.png "portalfx-essentials/quickstart.png")
+![alt-text](../media/portalfx-essentials/essentials.png "portalfx-essentials/essentials.png")
 
 
-![alt-text](../media/portalfx-essentials/quickstart.png "portalfx-essentials/rbac.png")
+![alt-text](../media/portalfx-essentials/quickstart.png "portalfx-essentials/quickstart.png ")
 
 
-![alt-text](../media/portalfx-essentials/rbac.png "portalfx-essentials/settings.png")
+![alt-text](../media/portalfx-essentials/rbac.png "portalfx-essentials/rbac.png")
 
 
-![alt-text](../media/portalfx-essentials/settings.png "portalfx-essentials/tags.png")
+![alt-text](../media/portalfx-essentials/settings.png "portalfx-essentials/settings.png")
 
 
-![alt-text](../media/portalfx-essentials/tags.png "portalfx-extensions-branches/extensionEnvironments.png")
+![alt-text](../media/portalfx-essentials/tags.png "portalfx-essentials/tags.png")
 
 ## portalfx-extensions-branches
 
-![alt-text](../media/portalfx-extensions-branches/extensionEnvironments.png "portalfx-extensions-developmentPhases/browseMenu.png")
+![alt-text](../media/portalfx-extensions-branches/extensionEnvironments.png "portalfx-extensions-branches/extensionEnvironments.png ")
 
 ## portalfx-extensions-developmentPhases
 
-![alt-text](../media/portalfx-extensions-developmentPhases/browseMenu.png "portalfx-extensions-helloWorld/areaBladeFile.png")
+![alt-text](../media/portalfx-extensions-developmentPhases/browseMenu.png "portalfx-extensions-developmentPhases/browseMenu.png ")
 
 ## portalfx-extensions-helloWorld
 
-![alt-text](../media/portalfx-extensions-helloWorld/areaBladeFile.png "portalfx-extensions-helloWorld/areaFolder.png")
+![alt-text](../media/portalfx-extensions-helloWorld/areaBladeFile.png "portalfx-extensions-helloWorld/areaBladeFile.png ")
 
 
-![alt-text](../media/portalfx-extensions-helloWorld/areaFolder.png "portalfx-extensions-helloWorld/areaGroupFile.png")
+![alt-text](../media/portalfx-extensions-helloWorld/areaFolder.png "portalfx-extensions-helloWorld/areaFolder.png ")
 
 
-![alt-text](../media/portalfx-extensions-helloWorld/areaGroupFile.png "portalfx-extensions-helloWorld/helloWorldExtensionAlohaBlade.png")
+![alt-text](../media/portalfx-extensions-helloWorld/areaGroupFile.png "portalfx-extensions-helloWorld/areaGroupFile.png ")
 
 
-![alt-text](../media/portalfx-extensions-helloWorld/helloWorldExtensionAlohaBlade.png "portalfx-extensions-hosting-service/contentConfig.png")
+![alt-text](../media/portalfx-extensions-helloWorld/helloWorldExtensionAlohaBlade.png "portalfx-extensions-helloWorld/helloWorldExtensionAlohaBlade.png ")
 
 ## portalfx-extensions-hosting-service
 
-![alt-text](../media/portalfx-extensions-hosting-service/contentConfig.png "portalfx-extensions-hosting-service/KustoWebExplorerQuery.png")
+![alt-text](../media/portalfx-extensions-hosting-service/contentConfig.png "portalfx-extensions-hosting-service/contentConfig.png ")
 
 
-![alt-text](../media/portalfx-extensions-hosting-service/KustoWebExplorerQuery.png "portalfx-extensions-onboarding/azure-onboarding.png")
+![alt-text](../media/portalfx-extensions-hosting-service/KustoWebExplorerQuery.png "portalfx-extensions-hosting-service/KustoWebExplorerQuery.png ")
 
 ## portalfx-extensions-onboarding
 
-![alt-text](../media/portalfx-extensions-onboarding/azure-onboarding.png "portalfx-extensions-onboarding/azurePortalMarketPlace.png")
+![alt-text](../media/portalfx-extensions-onboarding/azure-onboarding.png "portalfx-extensions-onboarding/azure-onboarding.png ")
 
 
-![alt-text](../media/portalfx-extensions-onboarding/azurePortalMarketPlace.png "portalfx-extensions-onboarding/GAMode.png")
+![alt-text](../media/portalfx-extensions-onboarding/azurePortalMarketPlace.png "portalfx-extensions-onboarding/azurePortalMarketPlace.png ")
 
 
-![alt-text](../media/portalfx-extensions-onboarding/GAMode.png "portalfx-extensions-onboarding/marketplaceOnboardingRequest.png")
+![alt-text](../media/portalfx-extensions-onboarding/GAMode.png "portalfx-extensions-onboarding/GAMode.png ")
 
 
-![alt-text](../media/portalfx-extensions-onboarding/marketplaceOnboardingRequest.png "portalfx-extensions-onboarding/previewMode.png")
+![alt-text](../media/portalfx-extensions-onboarding/marketplaceOnboardingRequest.png "portalfx-extensions-onboarding/marketplaceOnboardingRequest.png ")
 
 
-![alt-text](../media/portalfx-extensions-onboarding/previewMode.png "portalfx-extensions-onboarding/registrationRequest.png")
+![alt-text](../media/portalfx-extensions-onboarding/previewMode.png "portalfx-extensions-onboarding/previewMode.png ")
 
 
-![alt-text](../media/portalfx-extensions-onboarding/registrationRequest.png "portalfx-extensions-onboarding/vmMachines.png")
+![alt-text](../media/portalfx-extensions-onboarding/registrationRequest.png "portalfx-extensions-onboarding/registrationRequest.png ")
 
 
-![alt-text](../media/portalfx-extensions-onboarding/vmMachines.png "portalfx-extensions-publishing/pull-request.png")
+![alt-text](../media/portalfx-extensions-onboarding/vmMachines.png "portalfx-extensions-onboarding/vmMachines.png ")
 
 ## portalfx-extensions-publishing
 
-![alt-text](../media/portalfx-extensions-publishing/pull-request.png "portalfx-extensions-samples/samples-services.png")
+![alt-text](../media/portalfx-extensions-publishing/pull-request.png "portalfx-extensions-publishing/pull-request.png ")
 
 ## portalfx-extensions-samples
 
-![alt-text](../media/portalfx-extensions-samples/samples.png "portalfx-extensions-samples/v1-and-v2.png")
+![alt-text](../media/portalfx-extensions-samples/samples.png "portalfx-extensions-samples/samples.png")
 
 
-![alt-text](../media/portalfx-extensions-samples/samples-services.png "portalfx-extensions-samples/samples.png")
+![alt-text](../media/portalfx-extensions-samples/samples-services.png "portalfx-extensions-samples/samples-services.png ")
 
 
-![alt-text](../media/portalfx-extensions-samples/v1-and-v2.png "portalfx-forms/forms.png")
+![alt-text](../media/portalfx-extensions-samples/v1-and-v2.png "portalfx-extensions-samples/v1-and-v2.png")
 
 ## portalfx-forms
 
-![alt-text](../media/portalfx-forms/forms.png "portalfx-forms-field-validation/formValidation.png")
+![alt-text](../media/portalfx-forms/forms.png "portalfx-forms/forms.png ")
 
 ## portalfx-forms-field-validation
 
-![alt-text](../media/portalfx-forms-field-validation/formValidation.png "portalfx-forms-sections/forms-sections.png")
+![alt-text](../media/portalfx-forms-field-validation/formValidation.png "portalfx-forms-field-validation/formValidation.png ")
 
 ## portalfx-forms-sections
 
-![alt-text](../media/portalfx-forms-sections/forms-sections.png "portalfx-icons/icon-dark-theme.PNG")
+![alt-text](../media/portalfx-forms-sections/forms-sections.png "portalfx-forms-sections/forms-sections.png ")
 
 ## portalfx-icons
 
-![alt-text](../media/portalfx-icons/icon-dark-theme.PNG "portalfx-icons/icon-light-theme.PNG")
+![alt-text](../media/portalfx-icons/icon-dark-theme.PNG "portalfx-icons/icon-dark-theme.PNG")
 
 
-![alt-text](../media/portalfx-icons/icon-light-theme.PNG "portalfx-ide-setup/ide-setup.png")
+![alt-text](../media/portalfx-icons/icon-light-theme.PNG "portalfx-icons/icon-light-theme.PNG")
 
 ## portalfx-ide-setup
 
-![alt-text](../media/portalfx-ide-setup/ide-setup.png "portalfx-internal/EventViewerClientTrace.png")
+![alt-text](../media/portalfx-ide-setup/ide-setup.png "portalfx-ide-setup/ide-setup.png")
 
 ## portalfx-internal
 
-![alt-text](../media/portalfx-internal/EventViewerClientTrace.png "portalfx-lens/lens.png")
+![alt-text](../media/portalfx-internal/EventViewerClientTrace.png "portalfx-internal/EventViewerClientTrace.png")
 
 ## portalfx-lens
 
-![alt-text](../media/portalfx-lens/lens.png "portalfx-notifications/notifications.png")
+![alt-text](../media/portalfx-lens/lens.png "portalfx-lens/lens.png")
 
 ## portalfx-notifications
 
-![alt-text](../media/portalfx-notifications/notifications.png "portalfx-overview/browse-code.png")
+![alt-text](../media/portalfx-notifications/notifications.png "portalfx-notifications/notifications.png")
 
 ## portalfx-overview
 
-![alt-text](../media/portalfx-overview/browse-code.png "portalfx-overview/browse-my-resources-list.png")
+![alt-text](../media/portalfx-overview/browse-code.png "portalfx-overview/browse-code.png")
 
 
-![alt-text](../media/portalfx-overview/browse-my-resources.png "portalfx-overview/create-blade-screenshot.png")
+![alt-text](../media/portalfx-overview/browse-my-resources.png "portalfx-overview/browse-my-resources.png ")
 
 
-![alt-text](../media/portalfx-overview/browse-my-resources-list.png "portalfx-overview/browse-my-resources.png")
+![alt-text](../media/portalfx-overview/browse-my-resources-list.png "portalfx-overview/browse-my-resources-list.png ")
 
 
-![alt-text](../media/portalfx-overview/create-blade.png "portalfx-overview/enablehttps.png")
+![alt-text](../media/portalfx-overview/create-blade.png "portalfx-overview/create-blade.png ")
 
 
-![alt-text](../media/portalfx-overview/create-blade-screenshot.png "portalfx-overview/create-blade.png")
+![alt-text](../media/portalfx-overview/create-blade-screenshot.png "portalfx-overview/create-blade-screenshot.png ")
 
 
-![alt-text](../media/portalfx-overview/enablehttps.png "portalfx-overview/first-run-debugging-dialog.png")
+![alt-text](../media/portalfx-overview/enablehttps.png "portalfx-overview/enablehttps.png ")
 
 
 ![alt-text](../media/portalfx-overview/first-run-debugging-dialog.png "portalfx-overview/gallery-item-details.png")
