@@ -9,3 +9,4 @@ Browse the following topics to learn about portal styling:
 {"gitdown": "include-file", "file": "../templates/portalfx-style-guide-themed-color-classes.md"}
 {"gitdown": "include-file", "file": "../templates/portalfx-style-guide-utility-classes.md"}
 {"gitdown": "include-file", "file": "../templates/portalfx-style-guide-color-palette.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-style-guide.md"}
