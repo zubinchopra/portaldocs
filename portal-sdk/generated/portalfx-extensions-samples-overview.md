@@ -12,7 +12,7 @@ First-party extension developers, i.e. Microsoft employees, have access to the D
 
 The samples extension provides an individual sample for each feature available in the framework, as described in the following image.
 
- ![alt-text](../media/Portalfx-extensions-samples/samples.png  "Samples Extension Solution")
+ ![alt-text](../media/portalfx-extensions-samples/samples.png  "Samples Extension Solution")
 
 After installing the Portal Framework SDK, the local instance of the Portal will open with the samples extension pre-registered.  You can open the `SamplesExtension` solution file to experiment with samples in the IDE.
 
@@ -55,14 +55,14 @@ The **V2** samples address the following API areas.
 
 * no-PDL TypeScript decorators that define all recommended Blade/Part variations
 
-* Forms that do not use **V1** EditScope. For more information about EditScope, see [Portalfx-forms-edit-scope-faq.md](Portalfx-forms-edit-scope-faq.md).
+* Forms that do not use **V1** EditScope. For more information about EditScope, see [portalfx-forms-edit-scope-faq.md](portalfx-forms-edit-scope-faq.md).
 
 <a name="v1-versus-v2-v1"></a>
 ### V1
 
 Our **V1** APIs use APIs that support previous UX patterns, or  are becoming obsolete or are less commonly used.  The **V1** APIs are also more difficult to use than the new API, for both the UX design and  the associated APIs.
 
-The following **V1** concepts should be avoided when **V2** APIs can be used instead.
+The following **V1** concepts should not be used when **V2** APIs can be used instead.
 
 * Blades containing Parts
 * **V1** Blade-opening -- Selectable/SelectableSet APIs

@@ -234,6 +234,8 @@ Onebox-stb has been deprecated. Please do not use it. Instead, migrate extension
 <a name="testing-in-production-frequently-asked-questions"></a>
 ## Frequently asked questions
 
+<!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
+
 If there are enough FAQ's on the same subject, like sideloading, they have been grouped together in this document. Otherwise, FAQ's are listed in the order that they were encountered. Items that are specifically status codes or error messages can be located in [portalfx-extensions-status-codes.md](portalfx-extensions-status-codes.md).
 
 <a name="testing-in-production-frequently-asked-questions-faqs-for-debugging-extensions"></a>
@@ -320,7 +322,7 @@ You can ask questions on Stackoverflow with the tag [ibiza-test](https://stackov
 
 ***How do I use SSL certs?***
 
-[portalfx-extensions-faq-onboarding.md#sslCerts](portalfx-extensions-faq-onboarding.md#sslCerts)
+[portalfx-extensions-faq-onboarding2.md#sslCerts](portalfx-extensions-faq-onboarding2.md#sslCerts)
 
 * * *
 
@@ -330,6 +332,26 @@ You can ask questions on Stackoverflow with the tag [ibiza-test](https://stackov
 ***How do I load different versions of an extension?***
 
 Understanding which extension configuration to modify is located at [portalfx-extensions-configuration-overview.md#understanding-which-extension-configuration-to-modify](portalfx-extensions-configuration-overview.md#understanding-which-extension-configuration-to-modify).
+
+* * * 
+
+<a name="testing-in-production-faqs-for-debugging-extensions-checking-the-version-of-a-loaded-extension"></a>
+### Checking the version of a loaded extension
+
+***I have set ApplicationContext.Version for my extension, how do I check what version of my extension is currently loaded in shell ?***
+
+1.  Navigate to the Portal where your extension is hosted or side loaded.
+1. Press F12 in the browser and select the console tab.
+1. Set the current frame dropdown to that of your extension.
+1. In the console type `fx.environment.version` and click enter to see the version of the extension on the client, as in the following image.
+
+    ![alt-text](../media/portalfx-debugging/select-extension-iframe.png "Select extension iframe")
+
+1. In addition, any requests that are made to the extension, including **Ajax** calls, should also return the version on the server in the response, as in the following image.
+
+    ![alt-text](../media/portalfx-debugging/response-headers-show-version.png "Response Headers from extension show version")
+
+  **NOTE**: There  can be a difference in the `fx.environment.version` on the client and the version in the `x-ms-version` returned from the server.  This can occur when the user starts a session and the extension is updated/deployed while the session is still active.
 
 * * *
 
@@ -344,7 +366,7 @@ You can ask questions on Stackoverflow with the tag [ibiza](https://stackoverflo
 
 <a name="testing-in-production-status-codes-and-error-messages"></a>
 ## Status Codes and Error Messages
-Status codes or error messages that are encountered while developing an extension may be dependent on the type of extension that is being created, or the development phase in which the message is encountered.  Terms that are encountered in the error messages may be defined in the [Glossary](portalfx-extensions-status-codes-glossary.md).
+Status codes or error messages that are encountered while developing an extension may be dependent on the type of extension that is being created, or the development phase in which the message is encountered.  Terms that are encountered in the error messages may be defined in the [Glossary](portalfx-extensions-glossary-status-codes.md).
 <!-- TODO:  Find at least one status code for each of these conditions. -->
 
 <a name="testing-in-production-status-codes-and-error-messages-console-error-messages"></a>
@@ -482,7 +504,7 @@ SOLUTION: Use the following troubleshooting steps.
 
 ***Error: 'Security of a sandboxed iframe is potentially compromised by allowing script and same origin access'.***
  
-The Azure Portal should frame the extension URL, as specified in [portalfx-extensions-developerInit-procedure.md](portalfx-extensions-developerInit-procedure.md) and [portalfx-extensions-key-components.md](portalfx-extensions-key-components.md).  Also see [#console-error-messages](#console-error-messages).
+The Azure Portal should frame the extension URL, as specified in [portalfx-extensions-getting-started-procedure.md](portalfx-extensions-getting-started-procedure.md) and [portalfx-extensions-key-components.md](portalfx-extensions-key-components.md).  Also see [#console-error-messages](#console-error-messages).
 
 * * *
 
