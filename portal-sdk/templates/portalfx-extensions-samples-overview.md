@@ -67,11 +67,11 @@ The following **V1** concepts should not be used when **V2** APIs can be used in
 * ParameterCollector/ParameterProvider
 * PDL
 
-**NOTE**: Building the **V2** space is still in process, therefore  the previously-listed **V1** concepts are not completely deprecated. For example, the source code for small, medium, and large blades is located in the `<dir>\Client\V1\Blades\BladeWidth` directory. In the meantime, use **V1** APIs in places where a ***v2*** replacement is not evident.
+**NOTE**: Building the **V2** space is still in process, therefore  the previously-listed **V1** concepts are not completely deprecated. For example, the source code for small, medium, and large blades is located in the `<dir>\Client\V1\Blades\BladeWidth` directory. In the meantime, use **V1** APIs in places where a **V2** replacement is not evident.
 
 ## Sample Source Code
 
-Sample source code is included in topics that discuss the various Azure SDK API items. In the following tables, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to Dogfood copies of samples are included in the tables as appropriate.
+Sample source code is included in topics that discuss the various Azure SDK API items. In the following tables, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to Dogfood copies of sample experiences are included in the tables as appropriate.
 
 * All Azure API's
 
@@ -106,7 +106,7 @@ Sample source code is included in topics that discuss the various Azure SDK API 
     | ------------------------------ | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | ---------- |
     | Create ARM Resource Experience | [portalfx-create-engine-sample.md](portalfx-create-engine-sample.md)                                 |                                                                   | [https://aka.ms/portalfx/sampleCreateEngine](https://aka.ms/portalfx/sampleCreateEngine)  |
     | Create Custom Experience       | [portalfx-create-robot-sample.md](portalfx-create-robot-sample.md)                                   |                                                                   | |
-    | Forms with EditScopes          | [portalfx-forms-working-with-edit-scopes.md](portalfx-forms-working-with-edit-scopes.md)             | `<dir>\Client\V1\MasterDetail\ MasterDetailEdit\ViewModels.ts`    | |
+    | Forms with EditScopes          | [portalfx-legacy-editscopes.md](portalfx-legacy-editscopes.md)             | `<dir>\Client\V1\MasterDetail\ MasterDetailEdit\ViewModels.ts`    | |
     | Forms Without EditScopes       | [portalfx-editscopeless-forms.md](portalfx-editscopeless-forms.md)                                   |                                                                   | |
     | Getting Started                | [portalfx-parameter-collection-getting-started.md](portalfx-parameter-collection-getting-started.md) | `<dir>\Client\V1\ParameterCollection\ ParameterCollectionArea.ts` | |
  
@@ -114,7 +114,7 @@ Sample source code is included in topics that discuss the various Azure SDK API 
     
     | Scenario        | Document                                                                                         | Sample | 
     | --------------------- | ------------------------------------------------------------------------------------------------ | ------ | 
-    | EditScopeAccessor | [portalfx-forms-working-with-edit-scopes.md#editscopeaccessor](portalfx-forms-working-with-edit-scopes.md#editscopeaccessor) |     `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts` |  
+    | EditScopeAccessor | [portalfx-legacy-editscopes.md#editscopeaccessor](portalfx-legacy-editscopes.md#editscopeaccessor) |     `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts` |  
   
   * Debugging and Logging
 
