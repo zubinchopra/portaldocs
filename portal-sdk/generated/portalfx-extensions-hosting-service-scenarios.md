@@ -4,14 +4,14 @@
 
 <!-- TODO: Determine whether these should be Best Practices instead of common scenarios -->
 
-Hosting service scenarios are based on varying the content of the `config` file.  To load your extension in the portal, it must be registered in the portal configuration. If the extension is loaded in the portal from the hosting service, then there are no changes required to sideload it. 
+Hosting service scenarios are based on varying the content of the `config` file.  To load your extension in the Portal, it must be registered in the Portal configuration. If the extension is loaded in the Portal from the hosting service, then there are no changes required to sideload it. 
 
 For more information about updating the extension configuration, see [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md). For more information about sideloading, see [portalfx-extensions-sideloading-overview.md](portalfx-extensions-sideloading-overview.md).
  
 <a name="common-hosting-service-scenarios-new-extensions"></a>
 ### New extensions
 
-If the extension does not exist in the portal yet, register it into the portal in the disabled state. The following json files contain registrations for various environments.
+If the extension does not exist in the Portal yet, register it into the Portal in the disabled state. The following json files contain registrations for various environments.
 
 * Dogfood environment registration that is stored in  `Extensions.dogfood.json`
 
@@ -39,7 +39,7 @@ If the extension does not exist in the portal yet, register it into the portal i
 <a name="common-hosting-service-scenarios-existing-extensions"></a>
 ### Existing extensions
 
-If the extension is already registered in the portal, but is in the process of being migrated to the hosting service, update the **uriFormat** in the `config` file.  The following json files contain example registrations for various environments.
+If the extension is already registered in the Portal, but is in the process of being migrated to the hosting service, update the **uriFormat** in the `config` file.  The following json files contain example registrations for various environments.
 
 * Dogfood environment registration that is stored in  `Extensions.dogfood.json`
 
@@ -76,7 +76,7 @@ The hosting service allows developers to sideload any version of the extension t
 
 where 
 
-**https://portal.azure.com**: The name of the portal in this example.
+**https://portal.azure.com**: The name of the Portal in this example.
 
 **feature.canmodifystamps=true**: Required for sideloading.
 
