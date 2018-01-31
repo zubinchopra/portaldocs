@@ -7,7 +7,7 @@
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-hosting-service-procedures.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-hosting-service-advanced.md"}
+{"gitdown": "include-file", "file": "../templates/top-hosting-service-advanced.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-hosting-service-scenarios.md"}
 
