@@ -10,7 +10,7 @@ First-party extension developers, i.e. Microsoft employees, have access to the D
 
 The samples extension provides an individual sample for each feature available in the framework, as described in the following image.
 
- ![alt-text](../media/Portalfx-extensions-samples/samples.png  "Samples Extension Solution")
+ ![alt-text](../media/portalfx-extensions-samples/samples.png  "Samples Extension Solution")
 
 After installing the Portal Framework SDK, the local instance of the Portal will open with the samples extension pre-registered.  You can open the `SamplesExtension` solution file to experiment with samples in the IDE.
 
