@@ -1,21 +1,26 @@
-<a name="style-guide-color-palette"></a>
-## Style Guide: Color Palette
-The portal offers a built-in set of coloring classes based on a core palette. Using these classes ensures a consistent experience for all users. This is especially important when the color conveys meaning, or differentiating data.
+<a name="color-palette"></a>
+## Color palette
 
-1. [Coloring to convey status](#statuscolortext)
-1. [Coloring to differentiate data](#bgcolortext)
-1. [Coloring SVG](#svgcolortext)
+The Portal offers a built-in set of classes that are based on a core color palette. These classes ensure a consistent experience for all users. This is especially important when the color conveys meaning, or differentiates data. The purposes are discussed in the following list.
 
-<a name="a-name-statuscolortext-a-coloring-to-convey-status"></a>
-## <a name="statuscolortext"></a>Coloring to convey status
-When conveying status, use these classes to relevant UI in your design. These classes ensure any future changes to the status colors will automatically apply to your content.
+1. [Convey status](#convey-status)
 
-* "`msportalfx-bg-*`" changes the background color.
-* "`msportalfx-text-*`" changes the foreground color. The foreground color applies to text and based on the text color as basis, like border.
-* "`msportalfx-br-*`" changes the border color.
-* "`msportalfx-fill-*`" changes the SVG fill color.
+1. [Differentiate data](#differentiate-data)
 
-Use them in combination to update multiple aspects simulteanously.
+1. [Color SVG](#color-svg)
+
+<a name="convey-status"></a>
+## Convey status
+
+These classes can be applied to specific UI elements  in an extension to convey status. These classes ensure any future changes to the status colors will automatically be applied to the content of the extension. The names of the class prefixes are as follows.
+
+* `msportalfx-bg-*` changes the background color.
+* `msportalfx-text-*` changes the foreground color. The foreground color will be the same for the text and for the border.
+* `msportalfx-br-*` changes the border color.
+* `msportalfx-fill-*` changes the SVG fill color.
+
+The classes can be combined to update multiple aspects simultaneously.
+In the following example, each class prefix is applied to a box.  The "info" box on the left presents data, and the "dirty" box on the right indicates that the data has been updated.
 
 <div id="statuspalette">
 <div class="statuscontainer">
@@ -57,9 +62,10 @@ Error
 </div>
 </div>
 
-<a name="a-name-bgcolortext-a-coloring-to-differentiate-data"></a>
-## <a name="bgcolortext"></a>Coloring to differentiate data
-When representing data, differentiating with color is a common technique. For example, drawing lines in a chart, or coloring pie chart sections. The following sets of classes are provided to specify a background color on your elements. They also define a contrasted color for the text. They don't change appearance between themes.
+<a name="differentiate-data"></a>
+## Differentiate data
+
+Differentiating data with color is a common representation technique, for example, when drawing lines in a chart, or coloring pie chart sections. The following sets of classes are provided to specify background colors for elements. They also define a contrasted color for the text. They do not change appearance between themes.
 
 <div id="bgcolorpalette">
 <div class="bgcolorcontainer">
@@ -166,8 +172,8 @@ Tint 3
 </div>
 </div>
 
-<a name="a-name-svgcolortext-a-coloring-svg"></a>
-## <a name="svgcolortext"></a>Coloring SVG
+<a name="color-svg"></a>
+## Color SVG
 Certain types of custom SVG content should adhere to the color palette. This is mostly for custom controls that use color to differentiate data, like charts. Iconography does not have this requirement, and instead you should refer to the [Icons](portalfx-icons.md) documentation to color those.
 
 To use the palette within SVG content, use the same class names as the one for [data differentiation](#bgcolortext). The classes affect both the "`stroke`" and "`fill`" properties. The CSS rules assume the target element is within an "`g`" element contained in an "`svg`" element. The following sample shows proper usage:
