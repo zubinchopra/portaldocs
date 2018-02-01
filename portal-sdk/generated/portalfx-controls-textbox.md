@@ -1,88 +1,97 @@
 <a name="textbox"></a>
 ## Textbox
 
-The Textbox control provides an easy way allow users to input data.
+The `Textbox` control provides an easy way to allow users to input data.
 
-You can use it by importing the module:
-```
-import * as TextBox from "Fx/Controls/TextBox";
-```
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
-Then creating the view model:
-```
-public textBox: TextBox.Contract;
+1. The Textbox control is used by importing the module, as in the following code.
 
-this.textBox = TextBox.create(container, {
-    label: "someLabel"
-    //Other options...
-});
-```
+    ```c#
+    import * as TextBox from "Fx/Controls/TextBox";
+    ```
 
-And then either:
-- inserting it as a member of a Section, or
-- including it in an HTML template via a 'pcControl' binding.
-You can see examples running in SamplesExtension [here](http://aka.ms/portalfx/samples#blade/SamplesExtension/Textboxblade) along with the source code here: `SamplesExtension\Extension\Client\V2\Controls\TextBox\TextBoxBlade.ts`.
+1. Then, create the ViewModel.
 
+    ```c#
+    public textBox: TextBox.Contract;
 
-<a name="migrating-from-older-textbox"></a>
-## Migrating from older <code>TextBox</code>:
+    this.textBox = TextBox.create(container, {
+        label: "someLabel"
+        //Other options...
+    });
+    ```
 
-The `MsPortalFx.ViewModels.Controls.Forms.TextBox` control is being deprecated. When you update your Ibiza SDK to a newer version, you will see compile-time errors reflecting this.
+1. Insert the `Textbox` control as a member of a Section, or include it in an HTML template by using a 'pcControl' binding. The sample is located at `\Client\V2\Controls\TextBox\TextBoxBlade.ts`. This code is also included in the working copy located at [http://aka.ms/portalfx/samples#blade/SamplesExtension/Textboxblade](http://aka.ms/portalfx/samples#blade/SamplesExtension/Textboxblade).
 
-Here are the steps you can take to replace your use of this deprecated control with the new, recommended `TextBox` control in the `'Fx/Controls/TextBox'` module.
+<a name="migrating-from-textbox"></a>
+## Migrating from  <code>TextBox</code>
 
+The `MsPortalFx.ViewModels.Controls.Forms.TextBox` control is being deprecated. When the Ibiza SDK is updated to a newer version,  compile-time errors will reflect this.
 
-**1. Please update the `Textbox` with the new namespace**
+Use the following steps to replace the deprecated control with the new `TextBox` control in the `Fx/Controls/TextBox` module.
 
-Old code:
-```
-const textBoxVM = new MsPortalFx.ViewModels.Controls.Forms.TextBox.ViewModel(lifetimeManager, {...// Options goes here});
-```
-New code:
-```
-import * as TextBox from "Fx/Controls/TextBox";
-const textBoxVM = TextBox.create(lifetimeManager, {...// Options goes here});
-```
+1. Update the `Textbox` with the new namespace.
 
-**2. Please update with the new properties, especially `TextBox.ViewModel.placeholder` and `TextBox.ViewModel.events.enterPressed`**
+    <details>
+    <summary>Old code</summary>
 
-**For `TextBox.ViewModel.placeholder`**
+    ```cs
+    const textBoxVM = new MsPortalFx.ViewModels.Controls.Forms.TextBox.ViewModel(lifetimeManager, {...// Options goes here});
+    ```
+    </details>
+    <details>
+    <summary>New code</summary>
 
-Old code:
-```
-textBoxVM.placeHolder("PlaceHolder text goes here");
-```
+    ```cs
+    import * as TextBox from "Fx/Controls/TextBox";
+    const textBoxVM = TextBox.create(lifetimeManager, {...// Options goes here});
+    ```
+    </details>
 
-New code:
-```
-const textBoxVM = TextBox.create(lifetimeManager, {
-    placeHolderText: "PlaceHolder text goes here",
-    //other options goes here…
-});
+1. Update the properties, especially `TextBox.ViewModel.placeholder` and `TextBox.ViewModel.events.enterPressed`, for `TextBox.ViewModel.placeholder`.
+    <details>
+    <summary>Old code</summary>
 
-//or
+    ```cs
+    textBoxVM.placeHolder("PlaceHolder text goes here");
+    ```
+    </details>
+    <details>
+    <summary>New code</summary>
 
-textBoxVM.placeHolderText("PlaceHolder text goes here");
-```
+    ```cs
+    const textBoxVM = TextBox.create(lifetimeManager, {
+        placeHolderText: "PlaceHolder text goes here",
+        //other options goes here…
+    });
 
-**For `TextBox.ViewModel.events.enterPressed`**
+    //or
 
-Old code:
-```
-textBoxVM.events.enterPressed = (value: string): void => {
-    // Functions goes here...
-    let enterPresseded: boolean = true;
-};
-```
+    textBoxVM.placeHolderText("PlaceHolder text goes here");
+    ```
+    </details>
+1. Move the `TextBox.ViewModel.events.enterPressed` method  to the `TextBox.ViewModel.onEnterPressed` method.
 
-Move it to `TextBox.ViewModel.onEnterPressed`
-
-New code:
-```
-const textBoxVM = TextBox.create(lifetimeManager, {
-    onEnterPressed: (value: string) => {
+    <details>
+    <summary>Old code</summary>
+    <!--TODO:  Determine whether  enterPresseded is a typographical error. -->
+    ```cs
+    textBoxVM.events.enterPressed = (value: string): void => {
         // Functions goes here...
         let enterPresseded: boolean = true;
-    }
-});
-```
+    };
+    ```
+    </details>
+    <details>
+    <summary>New code</summary>
+    
+    ```cs
+    const textBoxVM = TextBox.create(lifetimeManager, {
+        onEnterPressed: (value: string) => {
+            // Functions goes here...
+            let enterPresseded: boolean = true;
+        }
+    });
+    ```
+    </details>

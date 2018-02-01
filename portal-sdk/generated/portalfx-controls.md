@@ -1,12 +1,3 @@
-* [Controls](#controls)
-    * [Date and Time](#controls-date-and-time)
-    * [Drop downs](#controls-drop-downs)
-    * [Editors](#controls-editors)
-    * [Forms](#controls-forms)
-    * [Lists](#controls-lists)
-    * [Helpers and Indicators](#controls-helpers-and-indicators)
-    * [Data Visualization Objects](#controls-data-visualization-objects)
-
 
 <a name="controls"></a>
 # Controls
@@ -22,24 +13,27 @@ The Azure components of the experience are documented several ways.
 * The location of the sample code is included  so that the developer can view the source for the component, or modify it as appropriate for the extensions they develop.  
 * A completed version of the component can be viewed in the Dogfood environment; in some instances, links are provided to the API reference for the component.
 
-**NOTE**: In the following tables, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory. If there is a working copy of the sample in the Dogfood environment, it can be experienced by using the link in the table.
+**NOTE**: In the following tables, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it can be experienced by using the link in the table.
 
 To learn more about any of our controls, click on any of the links below.
 
-| Control | Document | Sample | Experience |
-| ------- | -------- | ------ | ---------- |
-| Button  | | |  http://aka.ms/portalfx/samples#blade/SamplesExtension/SimpleButtonBlade |
+<a name="controls-basic-screen-controls"></a>
+## Basic Screen Controls
+
+| Control | Image | Document | Sample | Experience |
+| ------- | ----- | -------- | ------ | ---------- |
+| Button  | | | |  http://aka.ms/portalfx/samples#blade/SamplesExtension/SimpleButtonBlade |
 | Copyable Label | | `<dir>\Client\V2\Controls\ CopyableLabel\CopyableLabelBlade.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/CopyableLabelBlade |
-| File Download Button |  | `<dir>\Client\V1\Controls\FileDownloadButton\ViewModels\ FileDownloadButtonViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/FileDownloadButtonInstructions/selectedItem/FileDownloadButtonInstructions/selectedValue/FileDownloadButtonInstructions |  
-| File Upload (async) | | `<dir>\Client\V1\Controls\AsyncFileUpload\ViewModels\ AsyncFileUploadViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/AsyncFileUploadInstructions/selectedItem/AsyncFileUploadInstructions/selectedValue/AsyncFileUploadInstructions |
+| File Download Button | |  | `<dir>\Client\V1\Controls\FileDownloadButton\ViewModels\ FileDownloadButtonViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/FileDownloadButtonInstructions/selectedItem/FileDownloadButtonInstructions/selectedValue/FileDownloadButtonInstructions |  
+| File Upload (async) | |  | `<dir>\Client\V1\Controls\AsyncFileUpload\ViewModels\ AsyncFileUploadViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/AsyncFileUploadInstructions/selectedItem/AsyncFileUploadInstructions/selectedValue/AsyncFileUploadInstructions |
 | Markdown Control | | `<dir>\Client\V1\Controls\Markdown\ViewModels\ MarkdownViewModels.ts`| http://aka.ms/portalfx/samples#blade/SamplesExtension/MarkdownInstructions/selectedItem/MarkdownInstructions/selectedValue/MarkdownInstructions |
 | OAuth Button   | | `<dir>\Client\V2\Controls\ OAuthButton\OAuthButtonBlade.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/OAuthButtonBlade | 
-| Selector |  | `<dir>\Client\V1\Controls\Selector\ViewModels\ SelectorViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/SelectorInstructions/selectedItem/SelectorInstructions/selectedValue/SelectorInstructions | 
 | Settings |  | `<dir>\Client\V1\Controls\Settings\ViewModels\ SettingsViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/SettingsInstructions/selectedItem/SettingsInstructions/selectedValue/SettingsInstructions | 
 | Single Setting |  |  `<dir>\Client\V1\Controls\SingleSetting\ViewModels\ SingleSettingViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/SingleSettingInstructions/selectedItem/SingleSettingInstructions/selectedValue/SingleSettingInstructions | 
 | Splitter | | `<dir>\Client\V2\Controls\ Splitter\SplitterBlade.ts` |  http://aka.ms/portalfx/samples#blade/SamplesExtension/SplitterBlade | 
-| Text Block | | `<dir>\Client\V1\Controls\TextBlock\ViewModels\ TextBlockViewModels.ts` | https://df.onecloud.azure-test.net/?samplesExtension=true#blade/SamplesExtension/TextBlockInstructions/selectedItem/TextBlockInstructions/selectedValue/TextBlockInstructions | 
-| Toolbar (does not work) | |  `<dir>\Client\V1\Controls\Toolbar\ViewModels\ ToolbarViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/ToolbarInstructions/selectedItem/ToolbarInstructions/selectedValue/ToolbarInstructions |
+| Text Block |   | `<dir>\Client\V1\Controls\TextBlock\ViewModels\ TextBlockViewModels.ts` | [https://df.onecloud.azure-test.net/?samplesExtension=true#blade/SamplesExtension/TextBlockInstructions/selectedItem/TextBlockInstructions/selectedValue/TextBlockInstructions | 
+| Text Box | [portalfx-controls-textbox.md](portalfx-controls-textbox.md)  | `<dir>\Client\V2\Controls\TextBox\TextBoxBlade.ts` | [http://aka.ms/portalfx/samples#blade/SamplesExtension/Textboxblade](http://aka.ms/portalfx/samples#blade/SamplesExtension/Textboxblade) | 
+| Toolbar  | [portalfx-controls-toolbar.md](portalfx-controls-toolbar.md)  |  `<dir>\Client\V1\Controls\Toolbar\ViewModels\ ToolbarViewModels.ts` | (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/ToolbarInstructions/selectedItem/ToolbarInstructions/selectedValue/ToolbarInstructions |
 
 <a name="controls-date-and-time"></a>
 ## Date and Time
@@ -47,7 +41,7 @@ To learn more about any of our controls, click on any of the links below.
 | Date/time Object | Document | Sample | Experience |
 | ------- | -------- | ------ | ---------- |
 |  Date Picker  (does not work) |  | `<dir>\Client\V2\Controls\ DatePicker\DatePickerBlade.ts` |  http://aka.ms/portalfx/samples#blade/SamplesExtension/DatePickerInstructions/selectedItem/DatePickerInstructions/selectedValue/DatePickerInstructions |
-| Date/Time Picker  (does not work) |  |  `<dir>\Client\V2\Controls\ DateTimePicker\DateTimePickerBlade.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/DateTimePickerInstructions/selectedItem/DateTimePickerInstructions/selectedValue/DateTimePickerInstructions |
+| Date/Time Picker   |  [portalfx-controls-datetimepicker.md](portalfx-controls-datetimepicker.md)  |  `<dir>\Client\V2\Controls\ DateTimePicker\DateTimePickerBlade.ts`   | (does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/DateTimePickerInstructions/selectedItem/DateTimePickerInstructions/selectedValue/DateTimePickerInstructions |
 | Date/Time Range Picker (does not work) |  |   `<dir>\Client\V2\Controls\ DateTimeRangePicker\DateTimeRangePickerBlade.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/DateTimeRangePickerInstructions/selectedItem/DateTimeRangePickerInstructions/selectedValue/DateTimeRangePickerInstructions |
 | Date Polyfills |  | `<dir>\Client\V1\Controls\DatePolyFills\ViewModels\ DatePolyFillsViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/DatePolyFillsInstructions/selectedItem/DatePolyFillsInstructions/selectedValue/DatePolyFillsInstructions |
 | Day Picker (does not work) |  | `<dir>\Client\V2\Controls\ DayPicker\DayPickerBlade.ts`   |  http://aka.ms/portalfx/samples#blade/SamplesExtension/DayPickerInstructions/selectedItem/DayPickerInstructions/selectedValue/DayPickerInstructions |
@@ -117,23 +111,33 @@ To learn more about any of our controls, click on any of the links below.
 | ------------- | -------- | ------ | ---------- |
 | | | Aggregates  | |
 | Chart         | [portalfx-controls-chart.md](portalfx-controls-chart.md) | | |
-| Donut         | [portalfx-controls-donut.md](portalfx-controls-donut.md) | | |
+| Donut         | [portalfx-controls-donut.md](portalfx-controls-donut.md) | `<dir>\Client\V2\Controls\Donut\DonutBlade.ts`  | |
 |       | |  Gauges | |
-| Quota Gauge   | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/QuotaGaugeBlade) |
+| Quota Gauge   | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/QuotaGaugeBlade |
 | Single Value Gauge | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/SingleValueGaugeBlade |
-| Step Gauge | | | (http://aka.ms/portalfx/samples#blade/SamplesExtension/StepGaugeBlade) |
+| Step Gauge | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/StepGaugeBlade |
 | | | Graphs   | | |
-| Standard Graph  | | | (http://aka.ms/portalfx/samples#blade/SamplesExtension/graphInstructions) |
-| Custom Html Nodes | | | (http://aka.ms/portalfx/samples#blade/SamplesExtension/graphCustomNodeInstructions)
-| Metrics | | | (http://aka.ms/portalfx/samples#blade/SamplesExtension/MetricsInstructions/selectedItem/MetricsInstructions/selectedValue/MetricsInstructions) | 
+| Standard Graph  | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/graphInstructions |
+| Custom Html Nodes | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/graphCustomNodeInstructions
+| Metrics | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/MetricsInstructions/selectedItem/MetricsInstructions/selectedValue/MetricsInstructions | 
 | | | Maps  | |
-| Base Map | | | (http://aka.ms/portalfx/samples#blade/SamplesExtension/BaseMapInstructions) |
-| Hexagon Layout Map] | | |(http://aka.ms/portalfx/samples#blade/SamplesExtension/HexagonMapInstructions) |
-| Menu] | | |(http://aka.ms/portalfx/samples#blade/SamplesExtension/MenuInstructions/selectedItem/MenuInstructions/selectedValue/MenuInstructions) |
-| Log Stream] | | | (http://aka.ms/portalfx/samples#blade/SamplesExtension/LogStreamInstructions/selectedItem/LogStreamInstructions/selectedValue/LogStreamInstructions) |
-| Spec Comparison Table] | | | (http://aka.ms/portalfx/samples#blade/SamplesExtension/SpecComparisonTableInstructions/selectedItem/SpecComparisonTableInstructions/selectedValue/SpecComparisonTableInstructions) |
-| Video Control] | | | (http://aka.ms/portalfx/samples#blade/SamplesExtension/VideoInstructions/selectedItem/VideoInstructions/selectedValue/VideoInstructions) |
-| Legend] | | | (http://aka.ms/portalfx/samples#blade/SamplesExtension/Legend/selectedItem/Legend/selectedValue/Legend)  | 
-| HotSpot] | | | (http://aka.ms/portalfx/samples#blade/SamplesExtension/HotSpotInstructions/selectedItem/HotSpotInstructions/selectedValue/HotSpotInstructions) |
-| Video] | | | (http://aka.ms/portalfx/samples#blade/SamplesExtension/VideoInstructions/selectedItem/VideoInstructions/selectedValue/VideoInstructions) |
-| Terminal Emulator] | | | (http://aka.ms/portalfx/samples#blade/SamplesExtension/TerminalEmulatorInstructionsBlade/selectedItem/TerminalEmulatorInstructionsBlade/selectedValue/TerminalEmulatorInstructionsBlade) |
+| Base Map | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/BaseMapInstructions |
+| Hexagon Layout Map | | |http://aka.ms/portalfx/samples#blade/SamplesExtension/HexagonMapInstructions |
+| Menu | | |http://aka.ms/portalfx/samples#blade/SamplesExtension/MenuInstructions/selectedItem/MenuInstructions/selectedValue/MenuInstructions |
+| Log Stream | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/LogStreamInstructions/selectedItem/LogStreamInstructions/selectedValue/LogStreamInstructions |
+| Spec Comparison Table | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/SpecComparisonTableInstructions/selectedItem/SpecComparisonTableInstructions/selectedValue/SpecComparisonTableInstructions |
+| Video Control | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/VideoInstructions/selectedItem/VideoInstructions/selectedValue/VideoInstructions |
+| Legend | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/Legend/selectedItem/Legend/selectedValue/Legend  | 
+| HotSpot | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/HotSpotInstructions/selectedItem/HotSpotInstructions/selectedValue/HotSpotInstructions |
+| Video | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/VideoInstructions/selectedItem/VideoInstructions/selectedValue/VideoInstructions |
+| Terminal Emulator | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/TerminalEmulatorInstructionsBlade/selectedItem/TerminalEmulatorInstructionsBlade/selectedValue/TerminalEmulatorInstructionsBlade |
+
+
+<a name="controls-deprecated-controls"></a>
+## Deprecated controls
+
+The following controls have been deprecated.  They have been replaced with more performant controls, or replaced with best practices that reduce issues in usability testing and improve the Create success rate. However, they are included here for backward compatibility.
+
+| Control  | Image | Document | Sample | Experience |
+| -------- | ----- | -------- | ------ | ---------- |
+| Selector | ![alt-text](../media/portalfx-ux-create-forms/creator_selector.jpg "creator_selector") | |  `<dir>\Client\V1\Controls\Selector\ViewModels\ SelectorViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/SelectorInstructions/selectedItem/SelectorInstructions/selectedValue/SelectorInstructions | 
