@@ -1,11 +1,11 @@
 
 # Debugging an Extension 
 
+<!-- Intro section has moved to the overview document for this topic. -->
+
 <!--  required section -->
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-debugging-overview.md"}
-
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-debugging-tool.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-debugging-load-failures.md"}
 

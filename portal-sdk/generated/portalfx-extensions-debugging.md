@@ -2,8 +2,6 @@
 <a name="debugging-an-extension"></a>
 # Debugging an Extension
 
-<!-- Intro section has moved to the overview document for this topic. -->
-
 <!--  required section -->
 
 
@@ -18,8 +16,9 @@ Here are a few tips that help get extension development back on track. If you st
 
 To debug and test your local extension against the production portal, see [portalfx-extensions-testing-in-production.md](portalfx-extensions-testing-in-production.md).  
 
-<a name="debugging-an-extension-overview-using-the-debug-tool"></a>
-### Using the Debug Tool
+<a name="debugging-an-extension-the-debug-tool"></a>
+## The debug tool
+
 The Portal contains a debug tool to aid with extension development. The keyboard shortcut CTRL+ALT+D toggles the visibility of the debug tool, as in the following image.
 
  ![alt-text](../media/portalfx-debugging/debugMode.png "Portal Debug Tool")
@@ -51,7 +50,7 @@ The stickys that are associated with each part provide the following information
     * **Track**: dump the view model observables
 * **Deep link**: Optional. Links to the blade.
 
-<a name="debugging-an-extension-overview-toggling-optimizations"></a>
+<a name="debugging-an-extension-the-debug-tool-toggling-optimizations"></a>
 ### Toggling optimizations
 
 Bundling and minification can be enabled or disabled for debugging.
@@ -82,7 +81,7 @@ where
 
 The `IsDevelopmentMode` setting can be used on the server to alter the default optimization settings for the extension. for more information about the  `IsDevelopmentMode` setting and its alternatives, see [portalfx-extensions-feature-flags-diagnostics.md](portalfx-extensions-feature-flags-diagnostics.md).
 
-<a name="debugging-an-extension-overview-restore-default-settings"></a>
+<a name="debugging-an-extension-the-debug-tool-restore-default-settings"></a>
 ### Restore default settings
 
 The Portal tracks the state of the desktop for users as they navigate through the Portal. It stores the list of opened blades, active journeys, part selection status, and various other states of the Portal. At development time, it is often necessary to clear this information. If new parts are not displayed as expected, this is often the cause.
