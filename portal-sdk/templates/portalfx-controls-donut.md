@@ -5,12 +5,14 @@ Donut charts are a great way to visualize proportional data.
 
 ![Donut](../media/portalfx-ui-concepts/donut.png)
 
-Donuts can be added to your part templates with the following html:
+Donuts can be added to part templates with the following html:
 
 ```xml
 <div data-bind='pcDonut: donutVM' style='height:500px; width:500px'></div>
 ```
 
-A sample ViewModel can be found here:
+The sample located at `<dir>\Client\V2\Controls\Donut\DonutBlade.ts` includes a donut blade.  
 
-`\Client\Controls\Donut\ViewModels\DonutViewModels.ts`
+
+<!-- TODO:  Determine why the previous sample, ViewModels\DonutViewModels.ts, no longer exists in what is shipped with the SDK. Also  determine whether the previous xml is still relevant, or if there is a better sample.
+-->
