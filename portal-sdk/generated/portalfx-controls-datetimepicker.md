@@ -1,62 +1,68 @@
 <a name="datetimepicker"></a>
 ## DateTimePicker
 
-The DateTimePicker control provides an easy way select date and time, e.g. 6/5/2017 1:45:00 PM.
-This is the recommended control for Blade UI where users pick a date and time. All previous controls that had this functionality are obsolete.
+The `DateTimePicker` control provides an easy way select date and time, for example, "6/5/2017 1:45:00 PM."  The `DateTimePicker` control is the recommended control for date and time selection.
 
-You can use it by importing the module:
-```
-import * as DateTimePicker from "Fx/Controls/DateTimePicker";
-```
+**NOTE**:  All previous controls that provided this functionality are obsolete.
 
-Then creating the view model:
-```
-public dateTimePicker: DateTimePicker.Contract;
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
-this.dateTimePicker = DateTimePicker.create(container, {
-    label: "someLabel"
-    //Other options...
-});
+1. The DateTimePicker control is used by importing the module, as in the following code.
 
-```
-And then either:
-- inserting it as a member of a Section, or
-- including it in an HTML template via a 'pcControl' binding.
-You can see examples running in SamplesExtension [here](http://aka.ms/portalfx/samples#blade/SamplesExtension/DateTimePickerInstructions/selectedItem/DateTimePickerInstructions/selectedValue/DateTimePickerInstructions) along with the source code here: `SamplesExtension\Extension\Client\V1\Controls\DateTimePicker\ViewModels\DateTimePickerViewModels.ts`.
+   ```c#
+    import * as DateTimePicker from "Fx/Controls/DateTimePicker";
+   ```
 
-By default, this control displays date according to the user's local [timezoneoffset](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTimezoneOffset). If the `showTimezoneDropdown` option is supplied as `true`, users can choose a timezoneoffset using the Timezone Dropdown. The viewmodel's `value` property will *always* normalize the date/time value to the user's local timezoneoffset. Typically, backends will return UTC dates, and these will be converted by the DateTimePicker control such that the view model `value` property will reflect the user's locale.
+1. Then, create the ViewModel.
 
-Be aware that [timezoneoffset](http://tantek.com/2015/218/b1/use-timezone-offsets) !== timezone. If you need to use timezones (e.g., to ensure constant scheduling time), you should set `showTimezoneDropdown` to `false`, and use separate dropdown control populated with timezones used on your backend (which may vary, but preferably [IANA timezones](https://www.iana.org/time-zones)).
+   ```c#
+   public dateTimePicker: DateTimePicker.Contract;
 
-<a name="migrating-from-older-datetimecombo-or-datetimecombobox"></a>
-## Migrating from older DateTimeCombo or DateTimeComboBox
+   this.dateTimePicker = DateTimePicker.create(container, {
+       label: "someLabel"
+       //Other options...
+   });
 
-If you're combining two older DateTimeComboBoxes together to select a date/time range, please migrate to [DateTimeRangePicker](portalfx-controls-datetimerangepicker.md)
+   ```
 
-1. Update the namespace with DateTimePicker
+1. Insert the `DateTimePicker` control as a member of a Section, or include it in an HTML template by using a 'pcControl' binding. The sample is located at 
+`<dir>\Client\V2\Controls\DateTimePicker\DateTimePickerBlade.ts`  . This code is also included in the working copy located at [http://aka.ms/portalfx/samples#blade/SamplesExtension/DateTimePickerInstructions/selectedItem/DateTimePickerInstructions/selectedValue/DateTimePickerInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/DateTimePickerInstructions/selectedItem/DateTimePickerInstructions/selectedValue/DateTimePickerInstructions).
 
-Old code:
-```
-var dateTimeVM = new MsPortalFx.ViewModels.Obsolete.Forms.DateTimeCombo.ViewModel(container, {...});
+By default, this control displays the date according to the user's local time zone offset, as specified in [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTimezoneOffset](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTimezoneOffset). If the `showTimezoneDropdown` option has a value of `true`, users can choose a `timezoneOffset` using the Timezone Dropdown. The ViewModel's `value` property will always normalize the date/time value to the user's local `timezoneOffset`. Typically, servers return [UTC](portalfx-extensions-glossary-controls.md) dates that are converted by the `DateTimePicker` control to display the user's locale in the ViewModel `value` property.
 
-//or
-var dateTimeVM = new MsPortalFx.ViewModels.Obsolete.Forms.DateTimeComboBox.ViewModel(container, {...});
-```
+Be aware that the offset for the timezone is not the timezone. If the extension needs to use timezones to ensure constant scheduling time, it should set `showTimezoneDropdown` to `false`, and use a separate dropdown control that it populates with the timezones for the server.  There are several Web sites that provide international time zones; the IANA timezones can be located in  [https://www.iana.org/time-zones](https://www.iana.org/time-zones). For more information about timezone offsets and timezone names, see [http://tantek.com/2015/218/b1/use-timezone-offsets](http://tantek.com/2015/218/b1/use-timezone-offsets).
 
-New code:
-```
-import * as DateTimePicker from "Fx/Controls/DateTimePicker";
-var dateTimeVM = DateTimePicker.create(container, {...});
-```
+<a name="migrating-from-datetimecombo-or-datetimecombobox"></a>
+## Migrating from <code>DateTimeCombo</code> or <code>DateTimeComboBox</code>
 
-2. If you have set `DateTimeComboBox.formatString`, please remove it.
-The new DateTimePicker does not support formatting the datetime value now. Value will be presented in general date/time pattern (long time) by default, e.g. 6/7/2017 4:20:00 PM.
+If the extension previously combined two `DateTimeComboBoxes` together to select a date/time range, it should be updated to use the `DateTimeRangePicker` object, as specified in [portalfx-controls-datetimerangepicker.md](portalfx-controls-datetimerangepicker.md). The procedure is as follows.
 
-Old code:
+1. Update the namespace with DateTimePicker.
+
+    <details>
+
+    <summary>Old code</summary>
+
+    ```
+    var dateTimeVM = new MsPortalFx.ViewModels.Obsolete.Forms.DateTimeCombo.ViewModel(container, {...});
+
+    //or
+    var dateTimeVM = new MsPortalFx.ViewModels.Obsolete.Forms.DateTimeComboBox.ViewModel(container, {...});
+    ```
+
+    </details>
+
+    <details>
+    <summary>New code</summary>
+
+    ```
+    import * as DateTimePicker from "Fx/Controls/DateTimePicker";
+    var dateTimeVM = DateTimePicker.create(container, {...});
+    ```
+    </details>
+
+2. If the `DateTimeComboBox.formatString` was set, it should be removed from the extension. The new `DateTimePicker` does not support formatting the datetime value. The value are presented in the general long date/time pattern by default, for example, " 6/7/2017 4:20:00 PM". An example of the code that should be removed is as follows.
+
 ```
 dateTimeVM.formatString("G");
-```
-New code:
-```
-//Just remove it.
 ```
