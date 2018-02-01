@@ -47,14 +47,14 @@ Custom language can be used by declaring inherited Editor control viewmodel with
 export class CustomLanguageEditorPartViewModel {
 
     /**
-     * View model for the editor.
+     * ViewModel for the editor.
      */
     public editor: Editor.ViewModel;
 
     /**
      * Creates a new instance of the EditorInstructionsPartViewModel class.
      *
-     * @param container The view model for the part container.
+     * @param container The ViewModel for the part container.
      * @param initialState The initial state for the part.
      * @param dataContext The data context.
      */
@@ -63,7 +63,7 @@ export class CustomLanguageEditorPartViewModel {
         initialState: any,
         dataContext: ControlsArea.DataContext) {
 
-        // Initialize the editor view model.  If we were getting the data from teh data context, we would pass it in here.
+        // Initialize the editor ViewModel.  If we were getting the data from teh data context, we would pass it in here.
         this.editor = new CustomLanguageEditorViewModel(container);
 
         // create the initial markers

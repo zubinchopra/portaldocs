@@ -7,7 +7,7 @@ You can use it by importing the module:
 import * as TextBox from "Fx/Controls/TextBox";
 ```
 
-Then creating the view model:
+Then creating the ViewModel:
 ```
 public textBox: TextBox.Contract;
 

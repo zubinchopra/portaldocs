@@ -16,7 +16,7 @@ You can use it by importing the AMD module:
 import * as DropDown from "Fx/Controls/DropDown";
 ```
 
-Creating the view model: 
+Creating the ViewModel: 
 
 ```typescript
 // Items to popuplate the dropdown with.

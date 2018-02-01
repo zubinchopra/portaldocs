@@ -13,7 +13,7 @@ Your web page must statically include the following scripts before your require 
 
 You then must use requirejs to load the graph control. Specify your program entry in data-main. There are 3 modules you should ever need to explicitly bring in as dependencies. 
 Viva.Controls/Controls/Visualization/Graph/GraphWidget (contains the widget)
-Viva.Controls/Controls/Visualization/Graph/GraphViewModel (the view model backing the widget)
+Viva.Controls/Controls/Visualization/Graph/GraphViewModel (the ViewModel backing the widget)
 Viva.Controls/Controls/Visualization/Graph/GraphEntityViewModel (defines graph node and edges classes)
 
 An example module that consumes the control:

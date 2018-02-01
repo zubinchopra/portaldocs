@@ -11,10 +11,6 @@ Donuts can be added to your part templates with the following html:
 <div data-bind='pcDonut: donutVM' style='height:500px; width:500px'></div>
 ```
 
-A sample view model can be found here:
+A sample ViewModel can be found here:
 
 `\Client\Controls\Donut\ViewModels\DonutViewModels.ts`
-
-Other visualization controls:
-
-* [Chart](portalfx-controls-chart.md)

@@ -47,11 +47,11 @@ You can simple change switch to the DropDown like this by adding this import:
     import * as DropDown from "Fx/Controls/DropDown";
 ```
 
-Add the property to your Blade view model:
+Add the property to your Blade ViewModel:
 
 ```typescript
     /**
-    * View model for the drop down control.
+    * ViewModel for the drop down control.
     */
     public dropDown: DropDown.ViewModel<string>; 
 ```
@@ -88,7 +88,7 @@ If your MultiSelectDropDown doesn’t make use of an EditScope, then you’ll co
 Your MultiSelectDropDown would look something like this:
 ```typescript
     /**
-    * View model for the multiselect drop down control.
+    * ViewModel for the multiselect drop down control.
     */
     public multiSelectDropDownVM: MultiSelectDropDown.ViewModel<string>;
         
@@ -121,10 +121,10 @@ New import:
     import * as DropDown from "Fx/Controls/DropDown";
 ```
 
-Add the property to your Blade view model:
+Add the property to your Blade ViewModel:
 ```typescript
     /**
-    * View model for the drop down control.
+    * ViewModel for the drop down control.
     */
     public dropDown: DropDown.Contract<string>;
 ```
@@ -178,5 +178,5 @@ Just add `filter: true` to your options in the create call like this:
 -----------------------------------------------------------------
 **Notes:**
  - You can mix filtering/multiselect to have a filterable multiselect DropDown.
- - When multi-select is true, the 'value' property of your DropDown view model (that is, `dropDown.value`) is no longer a semicolon-separated string. Rather, it's of type `TValue[]`, where `TValue` is the generic type argument supplied to `DropDown.create<TValue>`.
+ - When multi-select is true, the 'value' property of your DropDown ViewModel (that is, `dropDown.value`) is no longer a semicolon-separated string. Rather, it's of type `TValue[]`, where `TValue` is the generic type argument supplied to `DropDown.create<TValue>`.
 

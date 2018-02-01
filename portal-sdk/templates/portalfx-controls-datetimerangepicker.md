@@ -8,7 +8,7 @@ You can use it by importing the module:
 import * as DateTimeRangePicker from "Fx/Controls/DateTimeRangePicker";
 ```
 
-Then creating the view model:
+Then creating the ViewModel:
 ```
 public dateTimeRangePicker: DateTimeRangePicker.Contract;
 

@@ -64,7 +64,7 @@ Navigators can support two data retrieval patterns.
 [Data Documentation](portalfx-data.md)
 
 ### Defining Columns
-Columns are defined by setting the columns property on the grid view model.
+Columns are defined by setting the columns property on the grid ViewModel.
 The header text of the column is declared with the name property.
 Cell values for the column are determined by the itemKey property.
 The itemKey specifies the name of the property on your data item.
@@ -292,10 +292,10 @@ In these scenarios the extension author must define and create the grid at run-t
 There are several options for dynamic definition of a grid.
 
 1. Create and add columns when data is available.  The columns property is an observable array and allows changes as needed.
-2. Make the grid view model property on your part/blade observable. Instead of declaring `public grid: Grid.ViewModel<T>;` declare the grid as `public grid: KnockoutObservable<Grid.ViewModel<T>>;`. This makes your view model property observable so you can set it whenever you want.  You can also clear it by setting it to null. The template would be the same `<div data-bind="pcControl: grid"></div>`.
+2. Make the grid ViewModel property on your part/blade observable. Instead of declaring `public grid: Grid.ViewModel<T>;` declare the grid as `public grid: KnockoutObservable<Grid.ViewModel<T>>;`. This makes your ViewModel property observable so you can set it whenever you want.  You can also clear it by setting it to null. The template would be the same `<div data-bind="pcControl: grid"></div>`.
 3. Use sections for layout.  If you are using sections you can add the grid to the section children dynamically.
 4. CustomHtml control has an updatable inner viewmodel.
-5. htmlTemplate binding allows you to dynamically specify both the view model and the template `<div data-bind="htmlTemplate: { data: viewModel, html: template }"></div>`
+5. htmlTemplate binding allows you to dynamically specify both the ViewModel and the template `<div data-bind="htmlTemplate: { data: viewModel, html: template }"></div>`
 
 ### Further Resources
 - [All Grid Samples][GridSamples]

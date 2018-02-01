@@ -9,7 +9,8 @@ The Monitor Chart control is available in SDK version **5.0.302.731** and above.
 - **Automatic responsive behavior** - You can pass in an array of charts to display and the control takes care of css responsiveness
 
 ### Pre-requisites: Onboard to Monitor config
-If you are onboarding to Azure Monitor for the first time, please reach out to the [Monitoring team](mailto:ibizamon@microsoft.com).
+
+If you are onboarding to Azure Monitor for the first time, please reach out to the <a href="mailto:ibizamon@microsoft.com?subject=Azure Monitor Onboarding">Monitoring team</a>.
 
 The Monitoring team will add your resource type to a config which allows the Monitor Control to know how to fetch metrics for your resources.
 
@@ -96,7 +97,7 @@ If you are not using a template blade, you can reference the `MonitorChartPart` 
 </Definition>
 ```
 
-**Example Blade view model:**
+**Example Blade ViewModel:**
 ```typescript
 import * as Blade from "Fx/Composition/Pdl/Blade";
 
@@ -110,7 +111,7 @@ export class MonitorChartTestBladeViewModel {
 }
 ```
 
-**Example Adapted part view model:**
+**Example Adapted part ViewModel:**
 ```typescript
 /// <reference path="../../_extensions/Hubs/Definitions/MonitorChartPart.d.ts />
 import AggregationType = HubsExtension.MonitorChartPart.AggregationType;
