@@ -1,12 +1,21 @@
 
 # Debugging an Extension 
 
-<!--  required Intro section has moved to the overview document for this topic. -->
+<!-- Intro section has moved to the overview document for this topic. -->
 
 <!--  required section -->
-## Overview
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-debugging-overview.md"}
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-debugging-load-failures.md"}
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-debugging-console-errors.md"}
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-debugging-javascript.md"}
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-debugging-knockout.md"}
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-debugging-data-stacks.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-debugging.md"}
 
