@@ -1,5 +1,5 @@
 
-# Debugging an Extension 
+# Extension Controls
 
 <!--  required section -->
 
