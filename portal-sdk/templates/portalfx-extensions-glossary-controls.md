@@ -4,6 +4,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
  
 | Term             | Meaning |
 | ---              | --- |
+| IANA | Internet Assigned Numbers Authority | 
 | timezone         | The local time of a region or a country, based on factors like time zone maps and Daylight Savings Time. | 
 | timezone offset  | The difference, in minutes, between UTC time and the current time in the current locale.|
 | UTC              | Universal Coordinated Time  |
