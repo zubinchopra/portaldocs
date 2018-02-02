@@ -1,4 +1,16 @@
-# Release Notes since 10/1/2017
+# Release Notes since 10/2/2017
+
+## 5.0.302.981
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1915225'>1915225</a></td><td>Bug Fix</td><td>Multiple OpenIdConnect.nonce cookies cause header to be too long</td></tr></table>
+
+## 5.0.302.980
+0 Breaking Changes, 1 Features added and 0 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1921241'>1921241</a></td><td>Feature</td><td>Enabling Microsoft_Azure_ManagementGroups Extension in Production</td></tr></table>
+
+## 5.0.302.979
+0 Breaking Changes, 2 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1918578'>1918578</a></td><td>Feature</td><td>[Microsoft_Azure_Health] Enable on national clouds</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1897230'>1897230</a></td><td>Bug Fix</td><td>Remove Microsoft_Azure_SqlVM from list of extensions</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1818156'>1818156</a></td><td>Feature</td><td>UT Support for extension teams</td></tr></table>
 
 ## 5.0.302.978
 0 Breaking Changes, 2 Features added and 1 Bugs Fixed
