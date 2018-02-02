@@ -25,7 +25,7 @@ Learn how the framework is structured and how it is designed to run in multiple 
 * [Multi-Column for Essentials Controls]() - *Better use of screen real estate*
 * [TreeView improvements]() - *Checkboxes, commands, and Load More / Virtualization*
 
-## Development guide
+## [Development guide](top-development-guide.md)
 Azure portal extension development is supported on the Microsoft Windows 8, Windows Server 2012 R2, and Windows 10.
 1. Install the SDK(./generated/top-extensions-install-software.md)
 * [How to use the MSI Installer](downloads.md)
@@ -52,11 +52,11 @@ If you want your experience to have a presence on Azure dashboards then you will
 
 ### Building UI with HTML templates and Fx controls
 Any template based UI in the portal (e.g. [template blades]() or [template parts]()) can make use of a rich controls library maintained by the Ibiza team.
-* [Controls overview](portalfx-controls.md)
+* [Controls overview](top-controls.md)
 * [Controls playground]()
 [Ask a controls related question on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls)
 
-### Styling and Theming
+### [Styling and Theming](top-extensions-style.md)
 When using HTML and framework controls you have some control over styling. These documents walk through the relevant topics.
 * [CSS Style sanitization]()
 * [Adding Custom CSS]()
@@ -67,7 +67,7 @@ When using HTML and framework controls you have some control over styling. These
 
 ### Forms
 Many experiences require the user to fill out a form. The Ibiza controls library provides support for forms. It also provides a TypeScript based section model that lets you build your form in code without expressing all the fields in an html template.
-* [Developing forms](./generated/portalfx-forms.md)
+* [Developing forms](./generated/top-portalfx-forms.md)
 
 [Ask a forms related question on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms)
 
@@ -102,12 +102,12 @@ Since your extension is just web code, you can make AJAX calls to various backen
 * [Sharing blades and parts across extensions]()
 
 ## Debugging
-* [Using developer mode]()
-* [Debugging extension load failures]()
-* [Debugging console errors]()
-* [Debugging javascript](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-debugging.md#debugging-javascript)
-* [Debugging knockout](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-debugging.md#debugging-knockout)
-* [Debugging the data stack](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-debugging.md#debugging-the-data-stack)
+* [Using developer mode](./generated/portalfx-extensions-debugging-tool.md)
+* [Debugging extension load failures](./generated/portalfx-extensions-debugging-load-failures.md)
+* [Debugging console errors](./generated/portalfx-extensions-debugging-console-errors.md)
+* [Debugging javascript](./generated/portalfx-extensions-debugging-javascript.md)
+* [Debugging knockout](./generated/portalfx-extensions-debugging-knockout.md)
+* [Debugging the data stack](./generated/portalfx-extensions-debugging-data-stacks.md)
 
 ## Testing
 The Ibiza team provides limited testing support. Due to resource constraints the C# and Node.js framework is open source. This is so that partners can unblock themselves in case the Ibiza team cannot make requested improvements as quickly as you might expect.
