@@ -1,19 +1,18 @@
-View full documentation for the AMD dropdown here: https://github.com/Azure/portaldocs/blob/dev/portal-sdk/templates/portalfx-controls-dropdown.md
+## Migrating from obsolete dropdown controls
 
-### Migrating from older dropdown controls
-The biggest reason to replace usage of the older dropdown controls with the AMD dropdown is that all the features
-of the other dropdowns are now present in the AMD dropdown. You can now turn on filtering or add grouping to a 
-multiselect dropdown where previously adding a featuring might mean porting your code to a differen control (or 
-wasn't possible depending on combination of features you were looking for). The AMD dropdown supports:
+The biggest reason to replace usage of older dropdown controls with the AMD dropdown is that all the features
+of the other dropdowns are now present in the AMD dropdown. Extensions can now turn on filtering or add grouping to a multiselect dropdown.
 
-- Grouping
-- Rich Templating
-- Filtering 
-- Custom Filtering, this also gives you a hook to replace items on keystroke.
-- Multiselect
-- Objects as the value
+The AMD dropdown supports:
 
-### This applies to upgrading the following controls to the new AMD dropdown pattern
+* Grouping
+* Rich Templating
+* Filtering 
+* Custom Filtering, this also gives you a hook to replace items on keystroke.
+* Multiselect
+* Objects as the value
+
+This applies to upgrading the following controls to the new AMD dropdown pattern.
 
 ```typescript
     MsPortalFx.ViewModels.Obsolete.Forms.DropDown
@@ -22,70 +21,79 @@ wasn't possible depending on combination of features you were looking for). The 
     MsPortalFx.ViewModels.Obsolete.Forms.MultiSelectDropDown
 ```
 
-### How to convert to a new DropDown _if you bind your MultiSelectDropDown to an EditScope observable_
+### How to convert to a new DropDown
 
-Using EditScope looked something like this (with "multiSelectDropDownValue"  being a path to an observable in the EditScope):
+<details>
 
-```typescript
-    this.myMultiSelectDropDown = new MultiSelectDropDown.ViewModel(this._container, this, "multiSelectDropDownValue", {
-        ...
-    });
-```
+   <summary>MultiSelectDropDown was bound to an EditScope observable</summary>
 
-or if you're using an EditScopeAccessor:
+   The following code is a sample of using  `multiSelectDropDownValue` as a path to an `EditScope` observable.
 
-```typescript
-    MultiSelectDropDown.ViewModel(this._container, this, this.createEditScopeAccessor<string>((data) => { return data.multiSelectDropDownValue; }), {
-        ...
-    });
-```
+   ```typescript
+       this.myMultiSelectDropDown = new MultiSelectDropDown.ViewModel(this._container, this, "multiSelectDropDownValue", {
+           ...
+       });
+   ```
 
-You can simple change switch to the DropDown like this by adding this import:
+   The following code is an example of using  `multiSelectDropDownValue` as a path to an  `EditScopeAccessor` observable.
 
-```typescript
-    // Add this import @ the top of the file
-    import * as DropDown from "Fx/Controls/DropDown";
-```
+   ```typescript
+       MultiSelectDropDown.ViewModel(this._container, this, this.createEditScopeAccessor<string>((data) => { return data.multiSelectDropDownValue; }), {
+           ...
+       });
+   ```
 
-Add the property to your Blade ViewModel:
+   Instead of using either of the previous two samples, switch to the new AMD Dropdown, by performing the following steps.
 
-```typescript
-    /**
-    * ViewModel for the drop down control.
-    */
-    public dropDown: DropDown.ViewModel<string>; 
-```
+   1. Add the import that is in the following code. 
 
-And finally switch over to: 
+        ```typescript
+            // Add this import @ the top of the file
+            import * as DropDown from "Fx/Controls/DropDown";
+        ```
 
-```typescript
-    this.dropDown = new DropDown.ViewModel(container, this, "multiSelectDropDownValue" {
-    	label: ClientResources.multiSelectDropDownSingleSelectLabel,
-    	infoBalloonContent: ko.observable(ClientResources.multiSelectDropDownInfoBalloon),
-    	items: items,
-    });
-```
+    1. Add the property to the `ViewModel` of the blade.
 
-Or if you're using the EditScopeAccessor:
+        ```typescript
+            /**
+            * ViewModel for the drop down control.
+            */
+            public dropDown: DropDown.ViewModel<string>; 
+        ```
 
-```typescript
-    this.dropDown = new DropDown.ViewModel(container, this, this.createEditScopeAccessor<string>((data) => { return data.multiSelectDropDownValue; }) {
-    	label: ClientResources.multiSelectDropDownSingleSelectLabel,
-    	infoBalloonContent: ko.observable(ClientResources.multiSelectDropDownInfoBalloon),
-    	items: items,
-    });
-```
+    1. And finally switch to the following code.
 
+        ```typescript
+            this.dropDown = new DropDown.ViewModel(container, this, "multiSelectDropDownValue" {
+                label: ClientResources.multiSelectDropDownSingleSelectLabel,
+                infoBalloonContent: ko.observable(ClientResources.multiSelectDropDownInfoBalloon),
+                items: items,
+            });
+        ```
 
-Now, follow the rest of the instructions below, which shows how to add multiselect and filtering to your new DropDown.
+        Or, switch to the following code if the extension uses the `EditScopeAccessor`.
 
------------------------------------------------------------------
+        ```typescript
+            this.dropDown = new DropDown.ViewModel(container, this, this.createEditScopeAccessor<string>((data) => { return data.multiSelectDropDownValue; }) {
+                label: ClientResources.multiSelectDropDownSingleSelectLabel,
+                infoBalloonContent: ko.observable(ClientResources.multiSelectDropDownInfoBalloon),
+                items: items,
+            });
+        ```
 
-### How to convert to a new DropDown _if you do not bind your MultiSelectDropDown to an EditScope observable_
+    1. Follow the instructions in the section named [Add multi-select functionality](#add-multi-select-functionality) to add multiselect and filtering to the new DropDown in your extension.
+</details>
 
-If your MultiSelectDropDown doesn’t make use of an EditScope, then you’ll convert to a DropDown using new form field APIs that were designed to be EditScope-less.  Beyond this MultiSelectDropDown->DropDown scenario, we recommend these new EditScope-less form field APIs _when developing entirely new Blades_.
+<details>
 
-Your MultiSelectDropDown would look something like this:
+   <summary>MultiSelectDropDown was not bound to an EditScope observable</summary>
+
+   If the `MultiSelectDropDown` in the extension does not use an `EditScope`, it can be converted to an AMD DropDown using the new form field APIs that are EditScope-less. 
+
+   For more information about the EditScope-less form field APIs  that are recommended for developing new blades, see [portalfx-editscopeless-forms.md](portalfx-editscopeless-forms.md).
+
+   The previous scenario for the MultiSelectDropDown->DropDown resembled the following code.
+   
 ```typescript
     /**
     * ViewModel for the multiselect drop down control.
@@ -113,7 +121,7 @@ Your MultiSelectDropDown would look something like this:
     });
 ```
 
-You'll modify your code to look something like:
+1. To convert to the AMD Dropdown, modify the code to resemble the following example.
 
 New import:
 ```typescript
@@ -121,7 +129,7 @@ New import:
     import * as DropDown from "Fx/Controls/DropDown";
 ```
 
-Add the property to your Blade ViewModel:
+1. Add the property to your Blade ViewModel:
 ```typescript
     /**
     * ViewModel for the drop down control.
@@ -129,7 +137,7 @@ Add the property to your Blade ViewModel:
     public dropDown: DropDown.Contract<string>;
 ```
 
-Then inside your constructor: 
+1. Then inside your constructor: 
    
 ```typescript
      const items = [ 
@@ -147,8 +155,11 @@ Then inside your constructor:
     });
 ```
 
------------------------------------------------------------------
-### Add multi-select functionality to your new DropDown
+
+</details>
+
+### Add multi-select functionality
+
 
 Just add `multiselect: true` to your options in the create call like this:
 
@@ -162,6 +173,7 @@ Just add `multiselect: true` to your options in the create call like this:
 ```
 
 -----------------------------------------------------------------
+
 ### Add filtering functionality to your new DropDown
 
 Just add `filter: true` to your options in the create call like this:
