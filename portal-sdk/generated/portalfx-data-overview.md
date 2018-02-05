@@ -2,7 +2,7 @@
 <a name="overview"></a>
 ## Overview
 
-The design of the Azure Portal UX provides unique data access challenges. Many blades and parts may be displayed at the same time, each of which instantiates a new ViewModel instance. Each ViewModel often needs access to the same or related data. To optimize for these interesting data-access patterns, Azure Portal extensions follow a specific design pattern that consists of data management and code organization.
+The design of the Azure Portal UX provides unique data access challenges. Many blades and parts may be displayed at the same time, each of which instantiates a new `ViewModel` instance. Each `ViewModel` often needs access to the same or related data. To optimize for these interesting data-access patterns, Azure Portal extensions follow a specific design pattern that consists of data management and code organization.
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
@@ -128,7 +128,7 @@ The `DataContext` class does not specify the use of any single FX base class or 
 <a name="overview-data-caches"></a>
 ### Data caches
  
-  The `DataCache` classes are afull-featured and convenient way to load and cache data required by blade and part `ViewModels`. `DataCache` classes are specified in [portalfx-data-caching.md](portalfx-data-caching.md). 
+  The `DataCache` classes are a full-featured and convenient way to load and cache data required by blade and part `ViewModels`. `DataCache` classes are specified in [portalfx-data-caching.md](portalfx-data-caching.md). 
 
 * **CRUD methods**
 
@@ -181,7 +181,7 @@ public onInputsSet(inputs: Def.BrowseMasterListViewModel.InputsContract): MsPort
 
 ```-->
   
-For a more information about employing these concepts, see [portalfx-data-masterdetailsbrowse.md](portalfx-data-masterdetailsbrowse.md).
+For more information about employing these concepts, see [portalfx-data-masterdetailsbrowse.md](portalfx-data-masterdetailsbrowse.md).
 
 <a name="overview-data-views"></a>
 ### Data views
@@ -192,10 +192,4 @@ Each `DataCache` instance manages a set of [cache entries](portalfx-extensions-g
 
 When a `ViewModel` calls the `fetch()` method for its `DataView`, this `fetch()` call implicitly forms a ref-count to a `DataCache` cache entry, thereby pinning the entry in the DataCache as long as the blade/part `ViewModel` has not been  disposed by the FX. When all blade or part `ViewModels` that hold ref-counts to the same cache entry are disposed (indirectly, via DataView),  the DataCache can elect to evict or discard the cache entry. In this way, the DataCache can manage its size automatically, without explicit extension code. 
 
-<a name="overview-summary"></a>
-### Summary
-
-For more information on using the data APIs in the portal framework, see [portalfx-data.md](portalfx-data.md).
-
-Next Steps: Learn about [DataCaches](portalfx-data-configuringdatacache.md).
 

@@ -1,4 +1,3 @@
-<!-- TODO:  deprecate this document by removing it.  It has been  replaced by top-extensions-data.md   --> 
 
 <a name="working-with-data"></a>
 # Working with data

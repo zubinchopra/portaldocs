@@ -28,7 +28,7 @@ The portal uses an `Area` to hold the cache and other data objects that are shar
 gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailArea.ts", "section": "data#websitesQueryCache"}
 -->
 
-This file contains the `DataContext` class, which is the class that will be sent to all the `ViewModels` associated with the area.  The `DataContext` also contains an `EditScopeCache` which is used in the master detail edit scenario that is located at . This code is also included in the following example.
+This file contains the `DataContext` class, which is the class that will be sent to all the `ViewModels` associated with the area.  The `DataContext` also contains an `EditScopeCache` which is used in the master detail edit scenario that is located at [](). This code is also included in the following example.
 
  <!--TODO:  Locate the gitHub copies of the samples. -->
 
@@ -65,7 +65,7 @@ Area="V1/MasterDetail">
 
     The `ViewModel` for the list of websites is located in `<dir>\Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\MasterViewModels.ts`. 
 
-1. Create a view on the QueryCache, as in the following example.
+1. Create a view on the `QueryCache`, as in the following example.
 
     <!-- ```typescript
 
@@ -136,15 +136,15 @@ In the subscription, the extension performs the following actions.
 1. Request the new data by calling the `fetch()` method on the data view with new parameters.
 1. When the `fetch()` method completes, take the grid out of loading mode.
 
-There's no need to try to get the results of the fetch and replace the items in the grid because we've pointed the grid's items array to the items array of the view. The view will update its items array as soon as the fetch is complete.
+There is no need to try to get the results of the fetch and replace the items in the grid because the grid's `items` array has been pointed to the `items` array of the view. The view will update its `items` array as soon as the fetch is complete.
 
-If you look through the rest of the code you'll see we've configured the grid to activate any of the websites when they're clicked on. We'll pass the 'id' of the website that is activated to the details blade as an input.
+The rest of the code demonstrates that the grid has been configured to activate any of the websites when they are clicked. The 'id' of the website that is activated is sent to the details blade as an input.
 
 ### Implementing the detail view
 
 The detail view uses the `EntityCache` that was associated with the  `QueryCache` from the `DataContext` to display the details of a website. Once you understand what's going on in the master blade you should have a pretty good handle of what's going on here.
 
-The blade starts by creating an view on the EntityCache:
+The blade starts by creating an view on the `EntityCache`:
 
 ```typescript
 
@@ -152,7 +152,7 @@ this._websiteEntityView = dataContext.websiteEntities.createView(container);
 
 ```
 
-Then in the `onInputsSet` we call `fetch` passing the ID of the website we want the data for:
+Then in the `onInputsSet` we call `fetch` method, and send the ID of the website we want the data for:
 
 ```typescript
 
@@ -165,4 +165,4 @@ public onInputsSet(inputs: Def.BrowseDetailViewModel.InputsContract): MsPortalFx
 
 ```
 
-When the fetch is completed the data will be available in the view's `item` property. This blade uses the `text` data-binding in it's HTML template to show the name, id and running status of the website but obviously you could do whatever you want with the item.
+When the fetch is completed the data will be available in the view's `item` property. This blade uses the `text` data-binding in its HTML template to show the name, id and running status of the website but obviously you could do whatever you want with the item.

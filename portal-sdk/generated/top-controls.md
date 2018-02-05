@@ -61,7 +61,7 @@ The following tables include information about Portal controls, including the lo
 | Drop Down | Document | Sample | Experience |
 | --------- | -------- | ------ | ---------- |
 | Drop Down | [portalfx-controls-dropdown.md](portalfx-controls-dropdown.md) | `<dir>\Client\V2\Controls\ DropDown\DropDownBlade.ts` | |
-| Console   | [portalfx-controls-console.md]([portalfx-controls-console.md]) | `<dir>\Client\V2\Controls\ Console\ConsoleBlade.ts` | |
+| Console   | [portalfx-controls-console.md](portalfx-controls-console.md) | `<dir>\Client\V2\Controls\ Console\ConsoleBlade.ts` | |
 
 <a name="extension-controls-editors"></a>
 ## Editors
