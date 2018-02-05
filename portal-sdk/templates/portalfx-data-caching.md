@@ -8,6 +8,8 @@ The `DataCache` objects all share the same class within the API.
 
 They are a full-featured way of loading and caching data used by blade and part `ViewModels`.
 
+ `QueryCache` queries for a collection of data, whereas  `EntityCache` loads an individual entity. QueryCache takes a generic parameter for the type of object stored in its cache, and a type for the object that defines the query, as in the `WebsiteQuery` example. 
+ 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>` is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
 ## Configuring the data cache
@@ -21,11 +23,11 @@ Multiple parts or services in an extension will rely on the same set of data. Fo
 These are all features that `MsPortalFx.Data.QueryCache` and `MsPortalFx.Data.EntityCache` provide. 
 
 <!--TODO: Remove the following placeholder sentence when it is explained in more detail. -->
-Because this discussion includes AJAX, TypeScript, and template classes, it does not not strictly specify  an object-property method model.
+Because this discussion includes AJAX, TypeScript, and template classes, it does not strictly specify an object-property-method model.
 
 ### QueryCache
 
-The `QueryCache` object is used to query for a collection of data. The `QueryCache` can be used to cache a list of items. It takes a generic parameter for the type of object stored in its cache, and a type for the object that defines the query.  In the example below, the type for the object that defines the query is  `WebsiteQuery`.
+The `QueryCache` object is used to query for a collection of data. The `QueryCache` can be used to cache a list of items. It takes a generic parameter for the type of object stored in its cache, and a type for the object that defines the query, as in the `WebsiteQuery` example.  
 
 The `QueryCache` parameters are as follows.
 
@@ -67,34 +69,28 @@ public websitesQuery = new MsPortalFx.Data.QueryCache<DataModels.WebsiteModel, W
 });
 ```
 
-
 ### EntityCache
-
+ 
 <!-- Determine whether a template class can be specified as an object in the content.  Otherwise, find a more definitive term. -->
 
-The `EntityCache` object can be used to cache a single item. It loads data of type `T` according to some extension-specified `TId` type. `EntityCache` is useful for loading data into property views and single-record views. One SDK edition of an example of its use is located at `<dir>Client/V1/MasterDetail/MasterDetailArea.ts`. This code is also included in the following example.
+The `EntityCache` object can be used to cache a single item. 
+<!--TODO: Determine whether these parameters can be described as "
+a generic parameter for the type of object stored in its cache, "
+--> 
+It loads data of type `T` according to some extension-specified `TId` type. `EntityCache` is useful for loading data into property views and single-record views. One SDK edition of an example of its use is located at `<dir>Client/V1/MasterDetail/MasterDetailArea.ts`. This code is also included in the following example.
+
+<!-- TODO:  Determine whether EntityCache can be the "type for the object that defines the query, as in the `WebsiteQuery` example". -->
 
 <!-- {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailArea.ts", "section": "data#websitesEntityCache"} -->
 
 When an EntityCache is instantiated, three elements are specified.
 
-1. The name of the entityType 
+1. The **entityTypeName** that provides the name of the metadata type. The EntityCache needs to know the shape of the data contained in it, in order to reason over the data.
 
-   The cache requires this so that it can reason over the data.
+1. The **sourceUri** that provides the endpoint that will accept the HTTP request. This function returns the URI that the cache uses to get the data. It is sent a set of parameters that are sent to a `fetch` call. In this instance, the  `MsPortalFx.Data.uriFormatter()` helper method is used. It fills one or more parameters into the URI provided to it. In this instance there is only  one parameter, the `id` parameter, which is filled into the part of the URI containing `{id}`.
 
-1. The `sourceUri` property. 
-
-    This function that, given the parameters from a `fetch()` call, will return the URI that the cache uses to get the data. In this instance, the  `MsPortalFx.Data.uriFormatter()` helper method is used. It fills one or more parameters into the URI provided to it. In this instance there is only  one parameter, the `id` parameter, which is filled into the part of the URI containing `{id}`.
-
-1. The `findCachedEntity` property. 
-
-<!-- TODO:  Determine whether this is a method instead of a property. -->
-
-   Optional.  Allows the lookup of an entity from the `QueryCache`, instead of retrieving the data a second time from the server, which creates a second copy of the data on the client. 
+1. The **findCachedEntity** property.  Optional. Allows the lookup of an entity from the `QueryCache`, instead of retrieving the data a second time from the server, which creates a second copy of the data on the client. The **findCachedEntity** also serves as a method, whose two properties are: 1) the `QueryCache` to use and 2) a function that, given an item from the QueryCache, will specify whether this is the object that was requested by the parameters to the `fetch()` call.
     
-   The two properties of the `findCachedEntity` property are the `QueryCache` to use and a function that, given a item from the QueryCache, will specify whether this is the object that was requested by the parameters to the `fetch()` call.
-
-
 ### EditScopeCache
 
 The `EditScopeCache` class is less commonly used. It loads and manages instances of `EditScope`, which is a change-tracked, editable model for use in Forms, as specified in [portalfx-legacy-editscopes.md](portalfx-legacy-editscopes.md).  

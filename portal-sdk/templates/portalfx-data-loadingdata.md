@@ -5,15 +5,13 @@ In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  
 
 ### Controlling the AJAX call with `supplyData`
 
-In the simple case, the QueryCache is given a simple `sourceUri` attribute which it uses to form a request. This request is sent via a `GET`, with a default set of headers. In some cases, developers may wish to manually make the request.  This can be useful for a few scenarios:
+In the simple case, the `QueryCache` is sent a simple `sourceUri` attribute which it uses to form a request. This request is sent via a `GET`, with a default set of headers. In some cases, developers may wish to manually make the request.  This can be useful for some scenarios, including the following.
 
-- The request needs to be a `POST` instead of `GET`
-- You need to send custom HTTP headers with the request
-- The data needs to be processed on the client before placing it inside of the cache
+* The request needs to be a `POST` instead of `GET`
+* Custom HTTP headers should be sent with the request
+* The data needs to be processed on the client before placing it inside of the cache
 
-To override the code that makes the request, use the `supplyData` method:
-
-`<dir>\Client\V1\Data\SupplyData\SupplyData.ts`
+The sample located at `<dir>\Client\V1\Data\SupplyData\SupplyData.ts`  overrides the code that makes the request by using the `supplyData` method. This code is also included in the following example.
 
 ```ts
 public websitesQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModels.WebsiteModel, any>({
@@ -45,9 +43,12 @@ public websitesQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModel
 
 ### Optimize number CORS preflight requests to ARM using invokeApi
 
-If you use CORS to call ARM directly from your extension, you will notice that the browser actually makes two network calls for every one Ajax call in your client code. Here is a before and after example:
+When CORS is used to call ARM directly from the extension, the browser actually makes two network calls for every one **AJAX** call in the client code. The following examples describe the state before and after invoking API.
 
-#### Before using invokeApi:
+<details>
+<summary> Before using invokeApi</summary>
+
+The following code illustrates one preflight per request.
 
 ```ts
     public resourceEntities = new MsPortalFx.Data.EntityCache<DataModels.RootResource, string>({
@@ -70,7 +71,7 @@ If you use CORS to call ARM directly from your extension, you will notice that t
 
 ```
 
-This results in a CORS preflight request for each unique uri.  For example, if the user were to browse to two separate resource `aresource` and `otherresource` it would result in the following requests
+This results in a CORS preflight request for each unique uri.  For example, if the user were to browse to two separate resources `aresource` and `otherresource`, it would result in the following requests.
 
 ```
 Preflight 
@@ -108,16 +109,19 @@ Actual CORS request to resource
         ...some otherresource data..
 ```
 
-As you can see this is making one preflight request per each MsPortalFx.Base.Net.ajax request. In the extreme case, if network latency were the dominant factor this would be a 50% overhead.
+This is making one preflight request for each `MsPortalFx.Base.Net.ajax` request. In the extreme case, if network latency were the dominant factor this would be a 50% overhead.
 
-#### After applying the invokeApi optimization
+</details>
+<details>
+<summary> After applying the invokeApi optimization</summary>
 
-To apply the invokeApi optimization ensure you:
+To apply the `invokeApi` optimization, perform the following two steps.
 
-1. supply the invokeApi option directly to your MsPortalFx.Base.Net.ajax({...}) option.  This allows us to use a fixed endpoint https://management.azure.com/api/invoke to issue all the requests to. The actual path and query string are actually passed as a header "x-ms-path-query". At the "api/invoke" endpoint, ARM reconstructs the original URL on the server side and processes the request in its original form. 
-1. remove cache:false.  This avoids emitting a unique timestamp (e.g &_=1447122511837) on every request which would invalidate the single uri benefit invokeApi provides.
+1. Supply the invokeApi option directly to the `MsPortalFx.Base.Net.ajax({...})` option. This allows the extension to use the fixed endpoint `https://management.azure.com/api/invoke` to which to issue all the requests. The actual path and query string are actually passed as a header `x-ms-path-query`. At the `api/invoke` endpoint, ARM reconstructs the original URL on the server side and processes the request in its original form. 
 
-The following demonstrates the application of this optimization
+1. Remove `cache:false`.  This avoids emitting a unique timestamp (i.e., &_=1447122511837) on every request, which invalidates the single-uri benefit that is provided by the `invokeApi`.
+
+The following code demonstrates the application of this optimization.
 
 ```ts
     public resourceEntities = new MsPortalFx.Data.EntityCache<DataModels.RootResource, string>({
@@ -139,7 +143,7 @@ The following demonstrates the application of this optimization
     });    
 ```
 
-and results in the following requests:
+This code results in the following requests.
 
 ```
 Preflight 
@@ -174,17 +178,22 @@ Actual Ajax Request
         HTTP/1.1 200 OK
         ...some otherresource data..
 ```
+
 In the above you will note that:
 
-1. the preflight request is cached for an hour
-1. the request is now always for a single resource https://management.azure.com/api/invoke. Because all requests now go through this single endpoint it results in a single preflight request that is used for all subsequent requests - a great improvement on the previous approach that illustrated one preflight per request.
-1. the x-ms-path-query preserves the request for the original path segments, query string and hash from the query cache
+1. The preflight request is cached for an hour.
+1. The request is now always for a single resource `https://management.azure.com/api/invoke`. Because all requests now go through this single endpoint, it results in a single preflight request that is used for all subsequent requests, which is a great improvement on the previous example.
+1. The `x-ms-path-query` preserves the request for the original path segments, the query string and the hash from the query cache.
 
-Within the Portal implementation itself, we have applied this optimization to the Hubs extension and have observed about 15% gains for the scenarios we tested (resources and resource-groups data load) with normal network latency. As latencies get higher, the benefits should be greater.
+Within the Portal implementation itself, this optimization has been applied to the Hubs extension.
 
-### Reusing loaded/cached data with `findCachedEntity`
+<!-- TODO:  Determine whether the following sentence came from best practices and usabililty studies. -->
+ We have observed about 15% gains for the scenarios we tested (resources and resource-groups data load) with normal network latency. As latencies get higher, the benefits should be greater.
+</details>
 
-Browsing resources is a very common activity in the new Azure Portal.  Here, columns in the resource list should be loaded using a `QueryCache<TEntity, ...>`.  When the user activates a resource list item, the details shown in the resource Blade should be loaded using an `EntityCache<TEntity, ...>`, where `TEntity` is often shared between these two data caches.  To show details of a resource, rather than issue an AJAX call to load the resource details model into `EntityCache`, use the `findCachedEntity` option to locate this already loaded entity in some other `QueryCache` (or nested in some other `EntityCache`):
+### Reusing loaded or cached data with `findCachedEntity`
+
+Browsing resources is a very common activity in the new Azure Portal.  Columns in the resource list should be loaded using a `QueryCache<TEntity, ...>`.  When the user activates a resource list item, the details that are displayed in the resource blade should be loaded using an `EntityCache<TEntity, ...>`, where `TEntity` is often shared between the two data caches.  To display details of a resource, rather than issue an **AJAX** call to load the resource details model into `EntityCache`, use the `findCachedEntity` option to locate this entity that was previously loaded in some other `QueryCache` or that was nested in some other `EntityCache`.
 
 ```ts
 this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataModels.WebsiteModel, number>({
@@ -202,17 +211,19 @@ this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataMode
 
 ### Ignore redundant data with `cachedAjax()`
 
-If the call to `MsPortalFx.Base.Net.ajax()` is replaced with `MsPortalFx.Base.Net.cachedAjax()` then a hash is generated on the server providing change detection.  This not only saves network bandwidth it also saves client side processing.
+If the call to `MsPortalFx.Base.Net.ajax()` is replaced with `MsPortalFx.Base.Net.cachedAjax()`, then a hash is generated on the server to provide change detection.  This not only saves network bandwidth, but it also saves client-side processing.
 
-This capability is built into the SDK as a server side filter that will be switched on when the header `x-ms-cache-tag` is present.  This value is a SHA256 hash of the return data plus the query information.  Please note that if using a backend server that is not utilizing the SDK then this filter may not be available by default and the calculation may need to be implemented by the service provider.
+This capability is built into the SDK as a server-side filter that is activated when the header `x-ms-cache-tag` is present.  This value is a SHA256 hash of the return data plus the query information.  
 
-The calculation should ensure uniqueness of the query and result, logically speaking:
+**NOTE**: If the extension uses a backend server that does not utilize the SDK, then this filter may not be available by default and therefore the calculation may need to be implemented by the service provider.
+
+The hash calculation should ensure uniqueness of the query and result, as in the following example.  
 
 `x-ms-cache-tag = sha256(method + URL + query string + query body + result)`
 
-If the `RequestHeader.x-ms-cache-tag` == `ResponseHeader.x-ms-cache-tag` then do not return any data and instead return the status `304` `NOT MODIFIED`.
+If the `RequestHeader.x-ms-cache-tag` is equivalent to the  `ResponseHeader.x-ms-cache-tag` then do not return any data and instead return the status `304` `NOT MODIFIED`.
 
-When using `cachedAjax()` the return data is always wrapped in the following interface:
+When using `cachedAjax()`, the return data is wrapped in the following interface.
 
 ```ts
 export interface AjaxCachedResult<T> {
@@ -224,15 +235,19 @@ export interface AjaxCachedResult<T> {
 }
 ```
 
-The parameters are:
+The parameters are as follows.
 
-- `cachedAjax` serves as a signature to let the `dataLoader` know that this return result was from `cachedAjax()` instead of `ajax()`.
-- `data` contains the returned data or `null` if the data was not modified.
-- `modified` indicates that this is a different result from the previous query and that the `data` attribute represents the current value.
-- `textStatus` is a human readable success status indicator.
-- `jqXHR` is the ajax result object containing further details for the call.
+* **cachedAjax**: Serves as a signature to inform the `dataLoader` that this return result was from `cachedAjax()` instead of `ajax()`.
 
-The following example shows the same `supplyData` override using `cachedAjax()`:
+* **data**: Contains the returned data or `null` if the data was not modified.
+
+* **modified**:  Indicates that this is a different result from the previous query and that the `data` attribute represents the current value.
+
+* **textStatus**: A human readable success status indicator.
+
+* **jqXHR**: The **AJAX** result object that contains more details for the call.
+
+The following example shows the same `supplyData` override using the `cachedAjax()` method.
 
 ```ts
 public websitesQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModels.WebsiteModel, any>({
@@ -260,13 +275,20 @@ public websitesQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModel
 });
 ```
 
-In this example when `response.modified` is equal to false then no merge operation is performed.
+When `response.modified` is equal to false, then no merge operation is performed.
 
 ### Making authenticated AJAX calls
 
-For most services, developers will make Ajax calls from the client to the server. Often the server will act as a proxy, making another call to a back end API (such as ARM) which requires authentication. When bootstrapping extensions, the portal will pass a JWT token to the extension. That same token can be included in the HTTP headers of a request to ARM, providing end to end authentication. To help make those authenticated calls, the portal includes an API which performs Ajax requests similar to the jQuery `$.ajax()` library named `MsPortalFx.Base.Net.ajax()`. If the extension uses a `DataCache` object,  this class is used by default. However, it can also be used independently, as specified in the following example.
-<!-- TODO:  Determine whether LoaderSampleData.ts is still used or has been replaced.  It is no longer in <SDK>\\Extensions\SamplesExtension\Extension -->
-`\Client\Data\Loader\LoaderSampleData.ts`
+For most services, developers will make Ajax calls from the client to the server. Often the server acts as a proxy, and makes another call to a server-side API which requires authentication. 
+
+**NOTE**: One server-side API is ARM.
+
+When bootstrapping extensions, the portal will send a [JWT token](portalfx-extensions-glossary-data.md) to the extension. That same token can be included in the HTTP headers of a request to ARM, in order to provide end-to-end authentication. To help make those authenticated calls, the portal includes an API which performs Ajax requests, similar to the jQuery `$.ajax()` library named `MsPortalFx.Base.Net.ajax()`. If the extension uses a `DataCache` object,  this class is used by default. However, it can also be used independently, as specified in the example located at 
+<!-- TODO:  Determine whether LoaderSampleData.ts is still used or has been replaced.  It is no longer in <SDK>\\Extensions\SamplesExtension\Extension.  The closest match is  Client\V1\Data\SupplyData\Templates\SupplyDataInstructions.html -->
+`\Client\Data\Loader\LoaderSampleData.ts`.
+
+ This code is also included in the following example.
+
 
 ```ts
 var promise = MsPortalFx.Base.Net.ajax({

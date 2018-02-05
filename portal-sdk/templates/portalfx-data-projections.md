@@ -5,9 +5,11 @@ In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  
 
 ### Understanding observable map() and mapInto()
 
-When working with data in a QueryCache the most common operation you'll want to do is reshape all the items in the cache into a format that is better for displaying in the UI. Let's look at example that shows how knockout observable versions of `map()` and `mapInto()` can be used to accomplish this and some pitfalls to watch out for.
+When working with data in a QueryCache, the most common operation is to reshape all the items in the cache into a format that is better for displaying in the UI. For example, **Knockout** observable versions of the `map()` and `mapInto()` methods can be used to accomplish this.
 
-The sample we'll look at will take a QueryCache of `Robot` objects. The data model for a `Robot` looks like:
+ and some pitfalls to watch out for.
+
+In the following generated data model will accept a QueryCache of `Robot` objects as a parameter. 
 
 <!-- this is generated so I couldn't put comments in to do an include-section -->
 ```ts
@@ -21,17 +23,20 @@ interface Robot {
 }
 ```
 
-What we want to do is put each robot in a grid with three columns. The two columns (name and status) will be the same data as that of the model but the third column will be a combination of properties from the model object in the QueryCache. We'll combine the model and manufacturer observables into a single property. The interface for the data to show in the grid is then:
+Each robot will be entered into a grid with three columns. The `name` column and the `status` column are the same data as that of the model, but the third column is a combination of properties from the model object in the `QueryCache`.  The model and manufacturer observables are combined into a single property. The interface for the data to display in the grid is located at `<dir>\Client\V1\Data\Projection\ViewModels\MapAndMapIntoViewModels.ts`. This code is also included in the following example.
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#robotDetailsModel"}
 
-A naive implementation of this might go something like this (ignore the lines about `projectionId` and `_logMapFunctionRunning()` for now. They're used for logging in the sample we'll get to in a sec):
+An initial implementation of this might resemble the section named "data#buggyMapProjection". The logging portion of the code that includes  `projectionId` and `_logMapFunctionRunning()` are discussed in [](). 
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#buggyMapProjection"}
 
-Without knowing too much about map() this looks like a fairly reasonable implementation. We know `robot.name()` has the name of the robot and `robot.model()` and `robot.manufacturer()` will give us the model and manufacturer values. The `RobotDetails` interface we're using to model the data in the grid requires observables for it's `name` and `modelAndMfg` properties so we'll throw the strings we get from the QueryCache model into a pair of observables and call it done.
+Without knowing too much about map() this looks like a fairly reasonable implementation. We know `robot.name()` has the name of the robot and `robot.model()` and `robot.manufacturer()` will give us the model and manufacturer values. The `RobotDetails` interface that is used to model the data in the grid requires observables for the  `name` and `modelAndMfg` properties, therefore the strings that are received from the `QueryCache` model are put into a pair of observables.
 
-Well, not quite. Let's open up a sample and see why this causes problems. In samples extension search for the __Understanding map() and mapInto()__ sample. When the blade opens up click on the __Buggy Map__ button to load the grid with a data projection code shown above. You should see something like the following show up in the __log stream__ control at the bottom of the blade:
+The reason that this implementation is somewhat buggy is the following.
+ In the sample located at `<dir>\Client/V1/Data/Projection/Templates/UnderstandingMapAndMapInto.html`
+<!-- TODO: Locate working sample; this html -->
+ When the blade opens up click on the __Buggy Map__ button to load the grid with a data projection code shown above. You should see something like the following show up in the __log stream__ control at the bottom of the blade:
 
 ```
 Creating buggy map() projection
