@@ -18,7 +18,7 @@ The AMD dropdown supports the following functionality.
 * [isPopUpOpen](#isPopUpOpen)
 * [Multiselect](#multiselect)
 * [Multiselect and Filtering](#multiselect-and-filtering) 
-* [Objects as the value](#Objects-as-the-value)
+* [Objects as the value](#objects-as-the-value)
 * [Placeholder](#placeholder)
 * [Rich Templating](#rich-templating)
 

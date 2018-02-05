@@ -1,48 +1,45 @@
 <a name="essentials-control"></a>
 ## Essentials control
 
-The essentials control is used for showing resource information with multiple properties.
-First 5 items in left pane of the essentials are obtained by calling Azure Resource Manager APIs with given resource id.
-More items can be specified in constructor or can be added dynamically later in both left and right panes.
-It has flexibility to customize layout of properties in a column, to show properties for non-ARM resources, to responsively redistribute properties into 1 or 3+ columns when the Blade width shrinks or expands.
-When there are more than 5 items in any panes, only first 5 items in each panes will be shown and rest of the items can be revealed when **See more** is clicked.
+The essentials control is used for displaying resource information with multiple properties.
+It has the flexibility to customize the layout of properties in a column, to display properties for non-ARM resources, and to responsively redistribute properties into one column or more than three columns, depending on the width of the blade that contains it, as in the following example.
 
-![Essentials][essentials-sample]
+![alt-text](../media/portalfx-controls/essentials.png "Essentials" )
 
-<a name="essentialsOptions"></a>
+The first five items in the left pane of the essentials are obtained by calling Azure Resource Manager APIs with the specified resource id.
+More items can be specified in the constructor, or can be added dynamically in both the left and right panes.
+
+When there are more than five items in any pane, only the first five items in each pane are displayed. The rest of the items are revealed when **See more** is clicked.
+
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
+
 <a name="essentials-control-options"></a>
 ### Options
-- [Default](#defaultEssentials) (Most common use case)
-- [Custom Layout](#customLayoutEssentials)
-- [Non-Resource](#nonResourceEssentials)
+- [Default Layout](#default-layout) 
+- [Custom Layout](#custom-layout) 
+- [Non-Resource](#non-resource)
 
-<a name="essentialsTypes"></a>
+
 <a name="essentials-control-types"></a>
 ### Types
 - [Properties](#essentialsProperties)
 - [Items](#essentialsItems)
 
-<a name="essentialsFeatures"></a>
 <a name="essentials-control-features"></a>
 ### Features
 - [Resource Blade Open/Close Callbacks](#essentialsCallbacks)
 - [Add Dynamic Properties](#essentialsDynamicProps)
 - [Responsive Columns](#responsiveEssentials)
 
-<br><br>
-
----
-
-<br>
 
 <a name="essentialsProperties"></a>
 <a name="essentials-control-types"></a>
 ### Types
 
-<a name="essentials-control-types-type-of-properties"></a>
-#### Type of Properties
+<a name="essentials-control-types-types-of-properties"></a>
+#### Types of Properties
 
-<a name="essentials-control-types-type-of-properties-text"></a>
+<a name="essentials-control-types-types-of-properties-text"></a>
 ##### Text
 ```typescript
 {
@@ -50,7 +47,7 @@ When there are more than 5 items in any panes, only first 5 items in each panes 
     value: "Sample Value"
 }
 ```
-<a name="essentials-control-types-type-of-properties-link"></a>
+<a name="essentials-control-types-types-of-properties-link"></a>
 ##### Link
 ```typescript
 {
@@ -59,7 +56,7 @@ When there are more than 5 items in any panes, only first 5 items in each panes 
     onClick: new ClickableLink(ko.observable("http://www.bing.com"))
 }
 ```
-<a name="essentials-control-types-type-of-properties-customlink"></a>
+<a name="essentials-control-types-types-of-properties-customlink"></a>
 ##### CustomLink
 ```typescript
 {
@@ -70,11 +67,6 @@ When there are more than 5 items in any panes, only first 5 items in each panes 
     }
 }
 ```
-
-<a name="essentials-control-types-type-of-properties-built-in-builtinproperties"></a>
-##### <a href="#builtInProperties">Built-In</a>
-<br>
-<a name="builtInProperties"></a>
 <a name="essentials-control-types-built-in-properties"></a>
 #### Built-In Properties
 
@@ -143,18 +135,15 @@ A label with multiple [properties](#essentialsProperties)
 
 <a name="essentials-control-options"></a>
 ### Options
-<a name="defaultEssentials"></a>
-<a name="essentials-control-options-default"></a>
-#### Default
 
-To use the essentials, compose a template blade that hosts the essentials control, then use it from your extension.
+<a name="essentials-control-options-default-layout"></a>
+#### Default Layout
 
-You can control the behavior of the essentials via initialization [options](#essentialsOptions) and provided [feature](#essentialsFeatures) functions.
+The defaults are the most common use case. The extension will control the behavior of the `Essentials` control by using initialization options and provided feature functions.
 
-**Step 1**: Setup `Settings` interface for preserving `expanded` state for Essentials. `Decorator`s for set `TemplateBlade` and access to the blade settings.
+To use the default `Essentials` control, compose a template blade that contains it. The  `Essentials` control can be included in an HTML template by using a 'pcControl' binding, as in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`. This code is also included in the following example.
 
-`\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`
-
+<!-- 
 ```typescript
 
 export interface Settings {
@@ -173,13 +162,15 @@ htmlTemplate: `<div data-bind="pcControl: essentials"></div>`
 @TemplateBlade.Configurable.Decorator()
 export class EssentialsDefaultBlade {
 
-```
+```  -->
+<!-- TODO: Determine how to include the samples in gitHub. Otherwise, the reader can use the annotated code that was shipped with the SDK.  It contains all of the bookmarks for the snippets  -->
 
-**Step 2**: Configurations for Read/Write `expanded` state in the blade settings and initialize the essentials control.
+1. Import the module to use the `Essentials` control. Set up the `Settings` interface to persist the `expanded` property that contains the state of the `Essentials` control. Include a `Decorator` object that sets the `TemplateBlade` and provides access to the blade settings. 
 
-`\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`
+1. Use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel. 
 
-```typescript
+    <!--
+    ```typescript
 
 public title = ClientResources.essentialsDefaultEssentials;
 public subtitle = ClientResources.controls;
@@ -237,7 +228,11 @@ public onInitialize(): Q.Promise<void> {
                     case "text":
                         return {
                             label: data.label,
-                            value: data.value
+                            value: data.value,
+                            icon: {
+                                image: MsPortalFx.Base.Images.SmileyHappy(),
+                                position: Essentials.IconPosition.Right
+                            }
                         };
                     case "url":
                         return {
@@ -267,77 +262,17 @@ public onInitialize(): Q.Promise<void> {
     //essentials#addDynamicProps
 }
 
-```
+``` -->
 
-**Step 3**: Define the `_initializeControl` that initializes the essentials control.
+1. Define the `_initializeControl` method that initializes the control.
 
-`\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`
-
-```typescript
-
-/**
- * Initializes the Essentials control.
- */
-private _initializeControl(): void {
-    this.essentials =  Essentials.create(this.context.container, {
-        resourceId: "/subscriptions/sub123/resourcegroups/snowtraxpsx/providers/Microsoft.Test/snowmobiles/snowtraxpsx600",
-        additionalRight: [{
-            label: ClientResources.essentialsItem,
-            value: ClientResources.essentialsSampleString
-        }, {
-            label: ClientResources.essentialsItem,
-            value: "Bing.com",
-            onClick: new ClickableLink(ko.observable("http://www.bing.com"))
-        }, {
-            label: ClientResources.essentialsMultiLineItem,
-            lines: [{
-                value: ClientResources.essentialsSampleString
-            }, {
-                value: "Bing.com",
-                onClick: new ClickableLink(ko.observable("http://www.bing.com"))
-            }]
-        }],
-        //essentials#bladeCallbacks
-        onBladeOpen: (origin: Essentials.BuiltInType) => {
-            switch (origin) {
-                case Essentials.BuiltInType.ResourceGroup:
-                    this.essentials.modifyStatus(ClientResources.essentialsResourceGroupOpened);
-                    break;
-                case Essentials.BuiltInType.SubscriptionName:
-                    this.essentials.modifyStatus(ClientResources.essentialsSubscriptionOpened);
-                    break;
-            }
-        },
-        onBladeClose: (origin: Essentials.BuiltInType) => {
-            switch (origin) {
-                case Essentials.BuiltInType.ResourceGroup:
-                    this.essentials.modifyStatus(ClientResources.essentialsResourceGroupClosed);
-                    break;
-                case Essentials.BuiltInType.SubscriptionName:
-                    this.essentials.modifyStatus(ClientResources.essentialsSubscriptionClosed);
-                    break;
-            }
-        }
-        //essentials#bladeCallbacks
-    });
-}
-
-```
-
-<a name="customLayoutEssentials"></a>
-<a name="essentials-control-options-custom-layout"></a>
 #### Custom Layout
 
-To use the essentials, compose a template blade that hosts the essentials control, then use it from your extension.
+The custom layout allows the extension to change freely the layout order of built-in and other properties. The extension will control the behavior of the `Essentials` control by using initialization options and provided feature functions.
 
-Custom layout essentials allows you to change layout orders of built-in properties and any other properties freely.
+To use the custom layout `essentials` control, compose a template blade that contains it.   The  `Essentials` control can be included in an HTML template by using a 'pcControl' binding, as in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsCustomLayoutBlade.ts`. This code is also included in the following example. 
 
-You can control the behavior of the essentials via initialization [options](#essentialsOptions) and provided [feature](#essentialsFeatures) functions.
-
-**Step 1**: Setup `Settings` interface for preserving `expanded` state for Essentials. `Decorator`s for set `TemplateBlade` and access to the blade settings.
-
-`\Client\V2\Controls\Essentials\EssentialsCustomLayoutBlade.ts`
-
+<!--
 ```typescript
 
 export interface Settings {
@@ -355,12 +290,13 @@ htmlTemplate: `<div data-bind="pcControl: essentials"></div>`
 @TemplateBlade.Configurable.Decorator()
 export class EssentialsCustomLayoutBlade {
 
-```
+``` -->
 
-**Step 2**: Configurations for Read/Write `expanded` state in the blade settings and initialize the essentials control.
+1. Import the module to use the `Essentials` control. Set up the `Settings` interface to persist the `expanded` property that contains the state of the `Essentials` control. Include a `Decorator` object that sets the `TemplateBlade` and provides access to the blade settings. 
 
-`\Client\V2\Controls\Essentials\EssentialsCustomLayoutBlade.ts`
+1. Use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel. 
 
+<!--
 ```typescript
 
 public title = ClientResources.essentialsCustomLayoutEssentials;
@@ -402,12 +338,11 @@ public onInitialize(): Q.Promise<void> {
     return Q();
 }
 
-```
+```  -->
 
-**Step 3**: Define the `_initializeControl` that initializes the essentials control.
+1. Define the `_initializeControl` that initializes the control.
 
-`\Client\V2\Controls\Essentials\EssentialsCustomLayoutBlade.ts`
-
+<!--
 ```typescript
 
 /**
@@ -469,22 +404,17 @@ private _initializeControl(): void {
     });
 }
 
-```
+``` -->
 
-<a name="nonResourceEssentials"></a>
-<a name="essentials-control-options-non-resource"></a>
 #### Non-Resource
 
-To use the essentials, compose a template blade that hosts the essentials control, then use it from your extension.
+Non-resource essentials allow an extension to use the essentials without a resource id. It can change layout orders of all properties freely. The extension will control the behavior of the `Essentials` control by using initialization options and provided feature functions.
 
-Non-resource essentials allows you to use the essentials without a resource id. You change layout orders of all properties freely.
+To use the Non-resource `essentials` control, compose a template blade that contains it.   The  `Essentials` control can be included in an HTML template by using a 'pcControl' binding, as in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsNonResourceBlade.ts`. This code is also included in the following example. 
 
-You can control the behavior of the essentials via initialization [options](#essentialsOptions) and provided [feature](#essentialsFeatures) functions.
+1. Import the module to use the `Essentials` control. Set up the `Settings` interface to persist the `expanded` property that contains the state of the `Essentials` control. Include a `Decorator` object that sets the `TemplateBlade` and provides access to the blade settings. 
 
-**Step 1**: Setup `Settings` interface for preserving `expanded` state for Essentials. `Decorator`s for set `TemplateBlade` and access to the blade settings.
-
-`\Client\V2\Controls\Essentials\EssentialsNonResourceBlade.ts`
-
+<!--
 ```typescript
 
 export interface Settings {
@@ -502,12 +432,11 @@ htmlTemplate: `<div data-bind="pcControl: essentials"></div>`
 @TemplateBlade.Configurable.Decorator()
 export class EssentialsNonResourceBlade {
 
-```
+``` -->
 
-**Step 2**: Configurations for Read/Write `expanded` state in the blade settings and initialize the essentials control.
+1. Use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel.
 
-`\Client\V2\Controls\Essentials\EssentialsNonResourceBlade.ts`
-
+<!--
 ```typescript
 
 public title = ClientResources.essentialsNonResourceEssentials;
@@ -554,12 +483,11 @@ public onInitialize(): Q.Promise<void> {
     return Q();
 }
 
-```
+``` -->
 
-**Step 3**: Define the `_initializeControl` that initializes the essentials control.
+1. Define the `_initializeControl` that initializes the control.
 
-`\Client\V2\Controls\Essentials\EssentialsNonResourceBlade.ts`
-
+<!--
 ```typescript
 
 /**
@@ -621,13 +549,11 @@ private _initializeControl(): void {
     });
 }
 
-```
+``` -->
 
-<a name="essentials-control-features"></a>
 ### Features
 
 <a name="essentialsCallbacks"></a>
-<a name="essentials-control-features-resource-blade-open-close-callbacks"></a>
 #### Resource Blade Open/Close Callbacks
 
 Resource blade open/close callback functions are provided and can be used for logging telemetry or some other needed tasks.
@@ -636,6 +562,7 @@ Note that this feature is not available in `NonResource` essentials.
 
 `\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`
 
+<!--
 ```typescript
 
 onBladeOpen: (origin: Essentials.BuiltInType) => {
@@ -659,14 +586,14 @@ onBladeClose: (origin: Essentials.BuiltInType) => {
     }
 }
 
-```
+``` -->
 
 <a name="essentialsDynamicProps"></a>
-<a name="essentials-control-features-add-dynamic-properties"></a>
 #### Add Dynamic Properties
 
 `\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`
 
+<!--
 ```typescript
 
 // Sample AJAX Action
@@ -688,7 +615,11 @@ return sampleAJAXFunction()
                 case "text":
                     return {
                         label: data.label,
-                        value: data.value
+                        value: data.value,
+                        icon: {
+                            image: MsPortalFx.Base.Images.SmileyHappy(),
+                            position: Essentials.IconPosition.Right
+                        }
                     };
                 case "url":
                     return {
@@ -716,16 +647,16 @@ return sampleAJAXFunction()
         );
     });
 
-```
+``` -->
 
 As the above code shows, the sample AJAX response contains 4 properties. First 2 items are added to left pane and last 2 items are added to right pane.
 
 <a name="responsiveEssentials"></a>
-<a name="essentials-control-features-responsive-columns"></a>
 #### Responsive Columns
 
 `\Client\V2\Controls\Essentials\EssentialsResponsiveBlade.ts`
 
+<!--
 ```typescript
 
 this.essentials =  Essentials.create(this.context.container, {
@@ -769,10 +700,8 @@ this.essentials =  Essentials.create(this.context.container, {
     }
 });
 
-```
+``` -->
 
 The optional `boolean` property `responsiveColumns` can be specified to `true` to use responsive columns feature.
 
 `Small` sized blade will contain single column and full screen will contain multiple number of columns depends on the blade's width.
-
-[essentials-sample]: ../media/portalfx-controls/essentials.png
