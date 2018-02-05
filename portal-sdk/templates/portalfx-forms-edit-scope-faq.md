@@ -1,4 +1,4 @@
-
+<!-- TODO:  deprecate this document by removing it.  It has been  replaced by portalfx-extensions-faq-edit-scope.md   -->
 ## Frequently asked questions
 
 For an end-to-end overview of EditScope and how it is used in the Azure Portal FX, see the "Forms: Working with Edit Scopes" video and accompanying PowerPoint presentation located at [portalfx-forms-working-with-edit-scopes.md](portalfx-forms-working-with-edit-scopes.md).

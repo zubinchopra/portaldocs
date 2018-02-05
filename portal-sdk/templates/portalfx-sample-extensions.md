@@ -1,5 +1,5 @@
 ## Samples extension
-
+<!-- TODO:  deprecate this document by removing it.  It has been  replaced by portalfx-extensions-samples-overview.md   -->
 The samples extension provides an individual sample for each feature available in the framework.
 
 [Samples extension](../media/samples.png)

@@ -25,7 +25,7 @@ Learn how the framework is structured and how it is designed to run in multiple 
 * [Multi-Column for Essentials Controls]() - *Better use of screen real estate*
 * [TreeView improvements]() - *Checkboxes, commands, and Load More / Virtualization*
 
-## [Development guide](top-development-guide.md)
+## [Development guide](./generated/top-development-guide.md)
 Azure portal extension development is supported on the Microsoft Windows 8, Windows Server 2012 R2, and Windows 10.
 1. Install the SDK(./generated/top-extensions-install-software.md)
 * [How to use the MSI Installer](downloads.md)
@@ -52,11 +52,11 @@ If you want your experience to have a presence on Azure dashboards then you will
 
 ### Building UI with HTML templates and Fx controls
 Any template based UI in the portal (e.g. [template blades]() or [template parts]()) can make use of a rich controls library maintained by the Ibiza team.
-* [Controls overview](top-controls.md)
+* [Controls overview](./generated/top-controls.md)
 * [Controls playground]()
 [Ask a controls related question on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls)
 
-### [Styling and Theming](top-extensions-style.md)
+### [Styling and Theming](./generated/top-extensions-style.md)
 When using HTML and framework controls you have some control over styling. These documents walk through the relevant topics.
 * [CSS Style sanitization]()
 * [Adding Custom CSS]()
@@ -72,7 +72,7 @@ Many experiences require the user to fill out a form. The Ibiza controls library
 [Ask a forms related question on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms)
 
 ### Common scenarios and integration points
-* [Blades that __create__ or provision resources and services](portalfx-create.md)
+* [Blades that __create__ or provision resources and services](./generated/portalfx-create.md)
 * [Adding your resource or service into the __browse__ menu]()
 * [Common UX for Azure Resource Manager (ARM) based services]()
 [Ask about browse integration on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse)
@@ -154,9 +154,9 @@ Learn how to deploy your extension to the various clouds and environments.
 
 [Ask a deployment question on Stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)
 
-### Deployment using the Ibiza hosting service
+### [Deployment using the Ibiza hosting service](./generated/top-hosting-service.md)
 The Ibiza team provides and operates a common extension hosting service that makes it easy to get your bits into a globally distributed system without having to manage your own infrastructure.
-* [Hosting service overview](./generated/portalfx-extensions-hosting-service.md)
+* [Hosting service overview](./generated/top-hosting-service-overview.md)
 * [Onboarding your extension to hosting service]()
 * [Validating extension registeration with hosting service](./generated/portalfx-extensions-hosting-service-procedures.md)
 * [Versioning your extension](./generated/portalfx-extensions-versioning.md)

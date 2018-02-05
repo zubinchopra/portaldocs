@@ -29,7 +29,9 @@ The `DateTimePicker` control provides an easy way select date and time, for exam
 
 By default, this control displays the date according to the user's local time zone offset, as specified in [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTimezoneOffset](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTimezoneOffset). If the `showTimezoneDropdown` option has a value of `true`, users can choose a `timezoneOffset` using the Timezone Dropdown. The ViewModel's `value` property will always normalize the date/time value to the user's local `timezoneOffset`. Typically, servers return [UTC](portalfx-extensions-glossary-controls.md) dates that are converted by the `DateTimePicker` control to display the user's locale in the ViewModel `value` property.
 
-Be aware that the offset for the timezone is not the timezone. If the extension needs to use timezones to ensure constant scheduling time, it should set `showTimezoneDropdown` to `false`, and use a separate dropdown control that it populates with the timezones for the server.  There are several Web sites that provide international time zones; the IANA timezones can be located in  [https://www.iana.org/time-zones](https://www.iana.org/time-zones). For more information about timezone offsets and timezone names, see [http://tantek.com/2015/218/b1/use-timezone-offsets](http://tantek.com/2015/218/b1/use-timezone-offsets).
+Be aware that the offset for the timezone is not the timezone. If the extension needs to use timezones to ensure constant scheduling time, it should set `showTimezoneDropdown` to `false`, and use a separate dropdown control that it populates with the timezones for the server.  There are several Web sites that provide international time zones; the [IANA](portalfx-extensions-glossary-controls.md) timezones are located at  [https://www.iana.org/time-zones](https://www.iana.org/time-zones). 
+
+For more information about timezone offsets and timezone names, see [http://tantek.com/2015/218/b1/use-timezone-offsets](http://tantek.com/2015/218/b1/use-timezone-offsets).
 
 ## Migrating from `DateTimeCombo` or `DateTimeComboBox`
 
@@ -59,7 +61,7 @@ If the extension previously combined two `DateTimeComboBoxes` together to select
     ```
     </details>
 
-2. If the `DateTimeComboBox.formatString` was set, it should be removed from the extension. The new `DateTimePicker` does not support formatting the datetime value. The value are presented in the general long date/time pattern by default, for example, " 6/7/2017 4:20:00 PM". An example of the code that should be removed is as follows.
+1. If the `DateTimeComboBox.formatString` was set, it should be removed from the extension. The new `DateTimePicker` does not support formatting the datetime value. The values are presented in the general long date/time pattern by default, for example, " 6/7/2017 4:20:00 PM". An example of the code that should be removed is as follows.
 
 ```
 dateTimeVM.formatString("G");
