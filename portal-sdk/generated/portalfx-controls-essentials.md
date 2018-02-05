@@ -4,7 +4,7 @@
 The essentials control is used for displaying resource information with multiple properties.
 It has the flexibility to customize the layout of properties in a column, to display properties for non-ARM resources, and to responsively redistribute properties into one column or more than three columns, depending on the width of the blade that contains it, as in the following example.
 
-![alt-text](../media/portalfx-controls/essentials.png "Essentials" )
+![alt-text](../media/portalfx-controls/essentials2.png "Essentials")
 
 The first five items in the left pane of the essentials are obtained by calling Azure Resource Manager APIs with the specified resource id.
 More items can be specified in the constructor, or can be added dynamically in both the left and right panes.
