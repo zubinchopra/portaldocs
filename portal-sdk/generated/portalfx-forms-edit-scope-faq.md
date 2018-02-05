@@ -1,4 +1,4 @@
-
+<!-- TODO:  deprecate this document by removing it.  It has been  replaced by portalfx-extensions-faq-edit-scope.md   -->
 <a name="frequently-asked-questions"></a>
 ## Frequently asked questions
 

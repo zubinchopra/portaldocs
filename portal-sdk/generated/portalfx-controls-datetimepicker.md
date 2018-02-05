@@ -63,7 +63,7 @@ If the extension previously combined two `DateTimeComboBoxes` together to select
     ```
     </details>
 
-2. If the `DateTimeComboBox.formatString` was set, it should be removed from the extension. The new `DateTimePicker` does not support formatting the datetime value. The value are presented in the general long date/time pattern by default, for example, " 6/7/2017 4:20:00 PM". An example of the code that should be removed is as follows.
+1. If the `DateTimeComboBox.formatString` was set, it should be removed from the extension. The new `DateTimePicker` does not support formatting the datetime value. The values are presented in the general long date/time pattern by default, for example, " 6/7/2017 4:20:00 PM". An example of the code that should be removed is as follows.
 
 ```
 dateTimeVM.formatString("G");

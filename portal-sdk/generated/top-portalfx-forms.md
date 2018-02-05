@@ -323,7 +323,7 @@ Edit scopes provide a standard way of managing edits over a collection of input 
   * Persist unsaved changes from the form to the cloud
   * Simplify merging changes from the server into the current edit
 
-In some instances, development approaches that do not use `editScopes` are preferred.  For more information about forms without editScopes, see  [portalfx-editscopeless-forms.md](portalfx-editscopeless-forms.md) and [portalfx-controls-dropdown-migration.md](portalfx-controls-dropdown-migration.md).
+In some instances, development approaches that do not use `editScopes` are preferred.  For more information about forms without editScopes, see  [portalfx-editscopeless-forms.md](portalfx-editscopeless-forms.md) and [portalfx-controls-dropdown.md#migration-to the-new-dropdown](portalfx-controls-dropdown.md#migration-to the-new-dropdown).
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>` is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK. 
 

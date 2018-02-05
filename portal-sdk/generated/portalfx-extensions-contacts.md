@@ -3,7 +3,7 @@
    
 For assistance with the prerequisites for onboarding Management UI, contact the following people.  
 
-If the following table is not current, please send a pull request to update the the contact list. For more information on how to send a pull request, see [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
+If the following table is not current, please send a pull request to update the contact list. For more information on how to send a pull request, see [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
 
 | Function                                      | Azure Team Stakeholder   | Azure  Stakeholder                       | Contact                                                             |
 | ------------------------------|--------------- | -----------------------------------------  | ----------------------------------------------------------------------------- |

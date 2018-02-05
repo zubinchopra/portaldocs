@@ -1,12 +1,26 @@
-<a name="style-guide"></a>
-# Style Guide
 
-The portal includes a built in list of CSS classes that may be used inside of your templates.
+<a name="styling-an-extension"></a>
+# Styling an Extension
 
-Browse the following topics to learn about portal styling:
+<!--  required section -->
+
+<a name="styling-an-extension-overview"></a>
+## Overview
+
+The portal includes a built in list of CSS classes that may be used in templates.
+
+Browse the following topics to learn about portal styling.
+
+| Topic  | Document | 
+| -----  | -------- |
+| Custom CSS | [portalfx-style-guide-custom-css-file.md](portalfx-style-guide-custom-css-file.md) | 
+| Sanitizing HTML | [portalfx-style-guide-style-sanitization.md](portalfx-style-guide-style-sanitization.md) |
+| Themes for Color Classes | [portalfx-style-guide-themed-color-classes.md](portalfx-style-guide-themed-color-classes.md) |
+| Utilities | [portalfx-style-guide-utility-classes.md](portalfx-style-guide-utility-classes.md) |
+| Color Palette | [portalfx-style-guide-color-palette.md](portalfx-style-guide-color-palette.md) |
 
 
-<a name="style-guide-custom-css-files"></a>
+<a name="styling-an-extension-custom-css-files"></a>
 ## Custom CSS files
 
 Extension developers can combine commonly used classes into a CSS file. CSS styles that are defined in stylesheets are [sanitized](portalfx-extensions-glossary-style-guide.md) using the same rules as the style attribute (see below). All custom class names begin with the `.ext-` prefix that identifies them as classes that are owned by the extension. 
@@ -50,7 +64,8 @@ The styles that are included in the CSS file can now be used inside HTML templat
 ```
 
 
-<a name="style-guide-style-sanitization"></a>
+
+<a name="styling-an-extension-style-sanitization"></a>
 ## Style sanitization
 
 Custom Style Sheets (CSS) are analyzed at runtime to filter out disallowed properties or values.
@@ -90,12 +105,13 @@ Some properties behave inconsistently across browsers, or require vendor prefixe
    
    Use Framework class `msportalfx-unselectable`
 
-<a name="style-guide-themed-color-classes"></a>
+
+<a name="styling-an-extension-themed-color-classes"></a>
 ## Themed color classes
 
 Base colors within the Portal have been outfitted to change based on user-chosen themes. Because the actual hexadecimal values of these colors are determined by the theme definitions, acceptable levels of contrast between elements are maintained by the Framework. The following classes have been made available to extension authors, so that their extensions can react to theme changes and maintain readability.
 
-<a name="style-guide-themed-color-classes-text-color-classes"></a>
+<a name="styling-an-extension-themed-color-classes-text-color-classes"></a>
 ### Text color classes
 ```css
 // Suited for main text, will render with the highest contrast
@@ -111,12 +127,13 @@ msportalfx-link-primary
 msportalfx-highlight
 ```
 
-<a name="style-guide-utility-classes"></a>
+
+<a name="styling-an-extension-utility-classes"></a>
 ## Utility classes
 
 There are several built-in classes that make working with the Portal easier.
 
-<a name="style-guide-utility-classes-code-formatting"></a>
+<a name="styling-an-extension-utility-classes-code-formatting"></a>
 ### Code Formatting
 
 ```html
@@ -129,7 +146,7 @@ In addition to using the `msportalfx-code` class, text blocks may be set to use 
 <div class="msportalfx-font-monospace">msportalfx-font-monospace</div>
 ```
 
-<a name="style-guide-utility-classes-utility-classes"></a>
+<a name="styling-an-extension-utility-classes-utility-classes"></a>
 ### Utility Classes
 
 The following utility classes standardize some basic or initial page formatting.
@@ -154,7 +171,8 @@ The following utility classes standardize some basic or initial page formatting.
 
 **msportalfx-gridcolumn-statusicon**: Applied as the CSS class name for a grid column that displays a status SVG icon.
 
-<a name="style-guide-color-palette"></a>
+
+<a name="styling-an-extension-color-palette"></a>
 ## Color palette
 <!-- TODO:  Add a style sheet to this document so that the Framework class behaviors are displayed. -->
 The Portal offers a built-in set of classes that are based on a core color palette. These classes ensure a consistent experience for all users. This is especially important when the color conveys meaning, or differentiates data. The purposes are discussed in the following list.
@@ -165,7 +183,7 @@ The Portal offers a built-in set of classes that are based on a core color palet
 
 1. [Color SVG](#color-svg)
 
-<a name="style-guide-convey-status"></a>
+<a name="styling-an-extension-convey-status"></a>
 ## Convey status
 
 These classes can be applied to specific UI elements  in an extension to convey status. These classes ensure any future changes to the status colors will automatically be applied to the content of the extension. The names of the class prefixes are as follows.
@@ -219,7 +237,7 @@ Error
 </div>
 </div>
 
-<a name="style-guide-differentiate-data"></a>
+<a name="styling-an-extension-differentiate-data"></a>
 ## Differentiate data
 
 Differentiating data with color is a common representation technique, for example, when drawing lines in a chart, or coloring pie chart sections. The following sets of classes are provided to specify background colors for elements. They also define a contrasted color for the text. They do not change appearance between themes.
@@ -329,7 +347,7 @@ Tint 3
 </div>
 </div>
 
-<a name="style-guide-color-svg"></a>
+<a name="styling-an-extension-color-svg"></a>
 ## Color SVG
 Certain types of custom SVG content should adhere to the color palette. This is mostly for custom controls that use color to differentiate data, like charts. Iconography does not have this requirement, and instead you should refer to the [Icons](portalfx-icons.md) documentation to color those.
 
@@ -755,7 +773,12 @@ To use the palette within SVG content, use the same class names as the one for [
   }
 </style>
 ```
-<a name="style-guide-glossary"></a>
+
+
+
+
+
+<a name="styling-an-extension-glossary"></a>
 ## Glossary
 
  This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
@@ -767,4 +790,7 @@ To use the palette within SVG content, use the same class names as the one for [
 | Scalable Vector Graphics | An XML-based vector image format for two-dimensional Web graphics. |
 | SVG | Scalable Vector Graphics |
 | whitelist | The practice of specifying an index of approved software elements  that are permitted to be present and active on a Web page. The goal of whitelisting is to protect computers and networks from potentially harmful applications.  |
+
+
+
 

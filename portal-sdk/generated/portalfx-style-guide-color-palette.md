@@ -1,6 +1,6 @@
 <a name="color-palette"></a>
 ## Color palette
-
+<!-- TODO:  Add a style sheet to this document so that the Framework class behaviors are displayed. -->
 The Portal offers a built-in set of classes that are based on a core color palette. These classes ensure a consistent experience for all users. This is especially important when the color conveys meaning, or differentiates data. The purposes are discussed in the following list.
 
 1. [Convey status](#convey-status)
@@ -20,6 +20,7 @@ These classes can be applied to specific UI elements  in an extension to convey 
 * `msportalfx-fill-*` changes the SVG fill color.
 
 The classes can be combined to update multiple aspects simultaneously.
+
 In the following example, each class prefix is applied to a box.  The "info" box on the left presents data, and the "dirty" box on the right indicates that the data has been updated.
 
 <div id="statuspalette">
@@ -178,13 +179,15 @@ Certain types of custom SVG content should adhere to the color palette. This is 
 
 To use the palette within SVG content, use the same class names as the one for [data differentiation](#bgcolortext). The classes affect both the "`stroke`" and "`fill`" properties. The CSS rules assume the target element is within an "`g`" element contained in an "`svg`" element. The following sample shows proper usage:
 
+```html
     <svg>
         <g>
             <rect class="msportafx-bgcolor-i0t2"/>
         </g>
     </svg>
+```
 
-
+```cs
 <style type="text/css">
   #statuspalette .statuscontainer {
     display: inline-flex;
@@ -595,3 +598,4 @@ To use the palette within SVG content, use the same class names as the one for [
     color: #ffffff;
   }
 </style>
+```
