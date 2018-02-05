@@ -5,9 +5,19 @@ This document  contains all Best Practices that have been added to Azure Portal 
 ## Debugging
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-debugging.md"}
-## Extensions Onboarding
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-onboarding.md"}
+## Extensions onboarding
 
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-onboarding2.md"}
 
+## Loading and managing data
 
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-data.md"}
+
+## Sideloading
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-sideloading.md"}
+
+## Testing in Production 
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-testing-in-production.md"}

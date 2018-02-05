@@ -1,5 +1,7 @@
 ## Publishing your portal extension
 
+### Publicly available extensions
+
 When an extension development team decides to make the extension publicly available, the Portal's configuration files are updated so that users other than the team can view the extension in the various Portal production and pre-production environments. 
 
 The Portal is deployed in four different environments: `dev`, `Dogfood`, `MPAC`, and `PROD`. The deployments are from four branches in the Portal repository. Pull requests are used to cherry-pick extension configurations from one branch to the next one by updating the configuration files that govern each environment. This document assumes that the extension has been completely developed and tested, and is ready to be moved to the next branch, as specified in [portalfx-extensions-branches.md](portalfx-extensions-branches.md). This document encompasses extension configuration files in the Portal repository; the source code for the extension is out of the scope of this document.
@@ -76,3 +78,14 @@ All the pull requests should be sent first to the dev branch. To add or update o
 1. The Ibiza team will review the pull request to ensure that the changes you have made are correct and will not cause any live-site issues.  If the pull request successfully passes the review, they will complete it.  A list of Ibiza team contacts to select as reviewers is located at [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md).  
 
 When the changes are successfully deployed in any environment, the developer will receive an email.
+
+### Extensions for the C# test framework
+
+These instructions can be used to submit pull requests for C# Test Framework improvements, with the following additions.
+
+1. The Test Framework uses a different `<repoRoot>`
+1. The Test Framework is not associated with the production extension branches
+1. You may or may not want to set up a new local git repository specifically for test framework improvements 
+1. The configuration files must be modified to match the test framework environment
+
+For more information about submitting improvements to the C# Test Framework, see [portalfx-extensions-c#-test-framework-overview.md](portalfx-extensions-c#-test-framework-overview.md).
