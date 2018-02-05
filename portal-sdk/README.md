@@ -86,7 +86,7 @@ Many experiences require the user to fill out a form. The Ibiza controls library
 * [Blade opening and communication between blades]()
 
 ### Loading and managing data
-Since your extension is just web code, you can make AJAX calls to various backend services to load data into your UI. The framework provides a data library you can use to manage this data.
+Since your extension is just web code, you can make **AJAX** calls to various services to load data into your UI. The framework provides a data library you can use to manage this data.
 * [Making authenticated calls to Azure Resource Manager (ARM)](portalfx-data.md#making-authenticated-ajax-calls)
 * [Data Context, data views, and data caches](portalfx-data.md)
 * [Auto-refreshing client data](portalfx-data-refreshingdata.md#auto-refreshing-client-side-data-aka-polling)
@@ -101,7 +101,7 @@ Since your extension is just web code, you can make AJAX calls to various backen
 * [Custom domains (e.g. aad.portal.azure.com)]()
 * [Sharing blades and parts across extensions]()
 
-## Debugging
+## [Debugging](./generated/top-debugging.md)
 * [Using developer mode](./generated/portalfx-extensions-debugging-tool.md)
 * [Debugging extension load failures](./generated/portalfx-extensions-debugging-load-failures.md)
 * [Debugging console errors](./generated/portalfx-extensions-debugging-console-errors.md)
@@ -156,12 +156,12 @@ Learn how to deploy your extension to the various clouds and environments.
 
 ### [Deployment using the Ibiza hosting service](./generated/top-hosting-service.md)
 The Ibiza team provides and operates a common extension hosting service that makes it easy to get your bits into a globally distributed system without having to manage your own infrastructure.
-* [Hosting service overview](./generated/top-hosting-service-overview.md)
+* [Hosting service overview](./generated/portalfx-extensions-hosting-service-overview.md)
 * [Onboarding your extension to hosting service]()
 * [Validating extension registeration with hosting service](./generated/portalfx-extensions-hosting-service-procedures.md)
 * [Versioning your extension](./generated/portalfx-extensions-versioning.md)
 * [Deploying your extension using Express V2 + Hosting Service](./generated/portalfx-extensions-hosting-service-advanced.md)
-* [SLA for registering extension with hosting service]()
+* [SLA for registering extension with hosting service](./generated/portalfx-extensions-svc-lvl-agreements.md)
 
 ### Custom extension deployment infrastructure
 You should strive to use the Ibiza hosting service. If for some reason this is not possible then [learn how to build a custom extension deployment infrastructure]().
@@ -180,7 +180,9 @@ These features are supported, but have had no recent investment. No additional i
 * [EditScope](./generated/portalfx-legacy-editscopes.md)
 
 ## Frequently asked questions
-* TBD
-*
+The documents are combinations from all the previous topics. Consequently, there may be some repetition.
+* [Best Practices](./generated/portalfx-extensions-bp.md)
+* [Frequently asked questions](./generated/portalfx-extensions-faq.md)
+* [Glossary](./generated/portalfx-extensions-glossary.md)
 *
 *
