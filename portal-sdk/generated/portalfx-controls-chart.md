@@ -1,12 +1,13 @@
 <a name="charts"></a>
 ## Charts
-Insert chart controls in your experience to allow your users to visualize and analyze their data.
 
-[Chart](../media/portalfx-ui-concepts/chart.png)
+Chart controls in the extension UI allow users to visualize and analyze their data. A  chart is included in the following example.
 
-In most cases, you will probably want to use the chart [intrinsic part](portalfx-parts-intrinsic.md). The intrinsic part is maintained by the framework and will provide you with consistent layout with the rest of the portal.
+![alt-text](../media/portalfx-ui-concepts/chart.png "Extensions can host multiple areas")
 
-If you are using a custom part template, charts can be added with the following html:
+The chart can be used as an intrinsic part, as specified in [portalfx-parts-intrinsic.md](portalfx-parts-intrinsic.md). The intrinsic part is maintained by the Framework and provides a layout that is consistent with the rest of the portal.
+
+If the extension uses a custom part template instead, charts can be added with the following html:
 
 ```xml
 <div data-bind='pcChart: chartVM' style='height:500px'></div>
@@ -32,11 +33,10 @@ var barChartView = new MsPortalFx.ViewModels.Controls.Visualization.Chart.BarCha
 this.chartVM.views([barChartView]);
 ```
 
-A sample chart viewmodel with a single chart view type can be found here:
-`\Client\Controls\Chart\ViewModels\BarChartViewModels.ts`
+A ViewModel that includes a single chart view type is located at `<dir>\Client\V1\Controls\Chart\ViewModels\BarChartViewModels.ts`.
 
-A sample chart viewmodel with multiple chart view types can be found here:
-`\Client\Controls\Chart\ViewModels\OverlayedViewChartViewModel.ts`
+A ViewModel that includes  multiple chart view types is located at 
+`<dir>\Client\V1\Controls\Chart\ViewModels\OverlayedViewChartViewModel.ts`.
 
 **Series views** are visualizations of individual data series. Series views allow you to modify the color, display name, and interaction behavior of a particular series.
 

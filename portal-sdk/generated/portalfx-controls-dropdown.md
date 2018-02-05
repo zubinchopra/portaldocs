@@ -5,7 +5,7 @@ The AMD dropdown contains all the features of the previous dropdowns.
 
 Previously, adding a feature meant porting the code to a different control, or was not possible depending on the combination of features. Now, extensions can turn on filtering or add grouping to a multiselect dropdown.
 
-For more information about migrating to this control, see [#migration-to the-new-dropdown](#migration-to the-new-dropdown).
+For more information about migrating to this control, see [#migration-to the-new-dropdown](#migration-to-the-new-dropdown).
 
 <a name="dropdown-features"></a>
 ### Features
