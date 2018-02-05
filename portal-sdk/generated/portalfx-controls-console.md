@@ -20,7 +20,7 @@ constructor(container: MsPortalFx.ViewModels.PartContainerContract,
 			initialState: any,
 			dataContext: ControlsArea.DataContext) {
 
-    // Initialize the console view model.
+    // Initialize the console ViewModel.
     this.consoleViewModel = new MsPortalFx.ViewModels.Controls.Console.ViewModel();
 
     // To get input from the user, subscribe to the command observable.
