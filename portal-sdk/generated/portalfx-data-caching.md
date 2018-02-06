@@ -9,12 +9,12 @@ The `DataCache` objects all share the same class within the API.
 
 They are a full-featured way of loading and caching data used by blade and part `ViewModels`.
 
- `QueryCache` queries for a collection of data, whereas  `EntityCache` loads an individual entity. QueryCache takes a generic parameter for the type of object stored in its cache, and a type for the object that defines the query, as in the `WebsiteQuery` example. 
+ `QueryCache` queries for a collection of data, whereas  `EntityCache` loads an individual entity. QueryCache takes a generic parameter for the type of object stored in its cache, and a type for the object that defines the query, as in the `WebsiteQuery` example located at `<dir>Client\V1\Data\MasterDetailBrowse\MasterDetailBrowseData.ts`.
  
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>` is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
-<a name="configuring-the-data-cache"></a>
-## Configuring the data cache
+<a name="the-datacache-class-configuring-the-data-cache"></a>
+### Configuring the data cache
 
 Multiple parts or services in an extension will rely on the same set of data. For queries, this may be a list of results, whereas for a details blade, it may be a single entity. In either case, it is critical to ensure that all parts that use a given set of data perform the following actions.
 
@@ -27,7 +27,7 @@ These are all features that `MsPortalFx.Data.QueryCache` and `MsPortalFx.Data.En
 <!--TODO: Remove the following placeholder sentence when it is explained in more detail. -->
 Because this discussion includes AJAX, TypeScript, and template classes, it does not strictly specify an object-property-method model.
 
-<a name="configuring-the-data-cache-querycache"></a>
+<a name="the-datacache-class-querycache"></a>
 ### QueryCache
 
 The `QueryCache` object is used to query for a collection of data. The `QueryCache` can be used to cache a list of items. It takes a generic parameter for the type of object stored in its cache, and a type for the object that defines the query, as in the `WebsiteQuery` example.  
@@ -72,7 +72,7 @@ public websitesQuery = new MsPortalFx.Data.QueryCache<DataModels.WebsiteModel, W
 });
 ```
 
-<a name="configuring-the-data-cache-entitycache"></a>
+<a name="the-datacache-class-entitycache"></a>
 ### EntityCache
  
 <!-- Determine whether a template class can be specified as an object in the content.  Otherwise, find a more definitive term. -->
@@ -116,7 +116,7 @@ When an EntityCache is instantiated, three elements are specified.
 
 1. The **findCachedEntity** property.  Optional. Allows the lookup of an entity from the `QueryCache`, instead of retrieving the data a second time from the server, which creates a second copy of the data on the client. The **findCachedEntity** also serves as a method, whose two properties are: 1) the `QueryCache` to use and 2) a function that, given an item from the QueryCache, will specify whether this is the object that was requested by the parameters to the `fetch()` call.
     
-<a name="configuring-the-data-cache-editscopecache"></a>
+<a name="the-datacache-class-editscopecache"></a>
 ### EditScopeCache
 
 The `EditScopeCache` class is less commonly used. It loads and manages instances of `EditScope`, which is a change-tracked, editable model for use in Forms, as specified in [portalfx-legacy-editscopes.md](portalfx-legacy-editscopes.md).  

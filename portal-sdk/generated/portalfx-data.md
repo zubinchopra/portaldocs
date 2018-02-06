@@ -8,25 +8,23 @@
 <a name="working-with-data-overview"></a>
 ## Overview
 
-The design of the Azure Portal UX provides unique data access challenges. Many blades and parts may be displayed at the same time, each of which instantiates a new `ViewModel` instance. Each `ViewModel` often needs access to the same or related data. To optimize for these interesting data-access patterns, Azure Portal extensions follow a specific design pattern that consists of data management and code organization.
-
-In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
+The design of the Azure Portal UX provides unique data access challenges. Many blades and parts may be displayed at the same time, each of which instantiates a new `ViewModel` instance. Each `ViewModel` often needs access to the same or related data. To optimize for these interesting data-access patterns, Azure Portal extensions follow specific design patterns that consist of data management and code organization, as in the following sections.
 
 * **Data management**
 
-    Shared data access using [data contexts](#data-contexts)
+    * Shared data access using [data contexts](#data-contexts)
 
-    Using [data caches](#data-caches) to load and cache data
+    * Using [data caches](#data-caches) to load and cache data
 
-    Memory management with [data views](#data-views)
+    * Memory management with [data views](#data-views)
 
 * **Code organization**
 
-    Organizing the extension source code into [areas](#areas)
+    * Organizing the extension source code into [areas](#areas)
 
-<a name="working-with-data-overview-a-bird-s-eye-view-of-data"></a>
-### A bird&#39;s-eye view of Data
-  
+
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
+
 It can be difficult to piece together how the various data concepts collectively achieve the goals of efficient data-loading/updating and effective memory-management for an extension. [Data architecture PowerPoint](https://auxdocs.blob.core.windows.net/media/DataArchitecture.pptx)  is a quick, animated walk-through that describes how the pieces fit together and how this design relates to the Azure Portal's adaptation of the conventional MVVM pattern for extension blades and parts.
 
 The following sections discuss the next level of detail behind these concepts and how to apply them to an Azure Portal extension.
@@ -36,7 +34,7 @@ The following sections discuss the next level of detail behind these concepts an
 
 For each area in an extension, there is a singleton `DataContext` instance that supports access to shared data for the blades and parts implemented in that area. Access to shared data means data loading, caching, refreshing and updating. Whenever multiple blades and parts make use of common server data, the `DataContext` is an ideal place to locate data loading/updating logic for an extension [area](portalfx-extensions-glossary-data).
 
-When a blade or part ViewModel is instantiated, its constructor is sent a reference to the `DataContext` singleton instance for the associated extension area.  In the blade or part ViewModel constructor, the ViewModel accesses the data required by that blade or part, as in the code located at `<dir>/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/MasterViewModels.ts`.
+When a blade or part `ViewModel` is instantiated, its constructor is sent a reference to the `DataContext` singleton instance for the associated extension area.  In the blade or part `ViewModel` constructor, the `ViewModel` accesses the data required by that blade or part, as in the code located at `<dir>/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/MasterViewModels.ts`.
 
 <!--
 ```typescript
@@ -52,43 +50,32 @@ constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: an
 ```
 -->
 
-The benefits of centralizing data access in a singleton `DataContext` include:  
-* **Caching and Sharing** 
+The benefits of centralizing data access in a singleton `DataContext` include the following.
+<details>
+<summary>Caching and Sharing</summary>
 
-  The `DataContext` singleton instance will live as long as the extension is loaded in the browser. Consequently, when a blade is opened, and therefore a new blade `ViewModel` is instantiated, data required by the new blade will often already be loaded and cached in the `DataContext`, as required by some previously opened blade or rendered part.
+  The `DataContext` singleton instance will exist for the entire amount of time that the extension is loaded in the browser. Consequently, when a blade is opened, and therefore a new blade `ViewModel` is instantiated, data required by the new blade will often already be loaded and cached in the `DataContext`, as required by some previously opened blade or rendered part.
   
   Not only will this cached data be available immediately,  which optimizes rendering performance and improves perceived responsiveness, but also no new **AJAX** calls are necessary to load the data for the newly-opened blade, which reduces server load and Cost of Goods Sold (COGS).
+</details>
+<details>
+<summary>Consistency</summary>
 
-* **Consistency**
+  It is very common for multiple blades and parts to render the same data in levels of different detail, or with different presentation. Moreover, there are situations where such blades or parts are displayed on the screen at the same time, or separated in time only by a single user navigation. 
 
-  It is very common for multiple blades and parts to render the same data in different detail or with different presentation. Moreover, there are situations where such blades or parts can be seen on the screen at the same time, or separated in time only by a single user navigation. 
+  In such cases, the user expects to see all the blades and parts depicting the exact same state of the user's data. An effective way to achieve this consistency is to load only a single copy of the data, which is what `DataContext` is designed to do.
+</details>
+<details>
+<summary>Fresh data</summary>
 
-  In such cases, the user will expect to see all their blades and parts depicting the exact same state of the user's data. An effective way to achieve this consistency is to load only a single copy of the data, which is what `DataContext` is designed to do.
-
-* **Fresh data**
-
-  Users expect to see data in blades and parts that always reflects the state of their data in the cloud, which is neither  stale nor out-of-date. Another benefit of loading and caching data in a single location is that the cached data can be regularly updated to accurately reflect the state of server data. 
+  Users expect to see data that always reflects the current state of their data in the cloud, which is neither stale nor out-of-date. Another benefit of loading and caching data in a single location is that the cached data can be regularly updated to accurately reflect the state of server data. 
 
   For more information on refreshing data, see [portalfx-data-refreshingdata.md](portalfx-data-refreshingdata.md).
 
-<a name="working-with-data-overview-areas"></a>
-### Areas
+</details>
 
-From a code organization standpoint, an area can be defined as a project-level folder. It becomes quite important when data operations are segmented within the extension.
-
-`Areas` are a scheme for organizing and partitioning of extension source code, making it easier to develop an extension with a sizable team. They impact how `DataContexts` are used in an extension. In the same way that extensions employ areas in a way that collects related blades and parts, each area also maintains the data that is required by these blades and parts. Every extension area gets a distinct `DataContext` singleton, and the `DataContext` typically loads/caches/updates the data of a few model types necessary to support the area's blades and parts.  
-
-An area is defined in the extension by using the following steps.
-
-  1. Create a folder in the `Client\` directory of the project that contains the extension. The name of that folder is the name of the area.
-  1. In the root of that folder, create a `DataContext` named `<AreaName>Area.ts`, where `<AreaName>` is the name of the folder that was just created, as specified in [#developing-a-datacontext-for-an-area](#developing-a-datacontext-for-an-area). For example, the `DataContext` for the `Security` area in the sample is located at `\Client\Security\SecurityArea.ts`.  
-
-A typical extension resembles the following image.
-
-![alt-text](../media/portalfx-data-context/area.png "Extensions can host multiple areas")
-
-<a name="working-with-data-overview-developing-a-datacontext-for-an-area"></a>
-### Developing a DataContext for an area
+<a name="working-with-data-overview-data-contexts-developing-a-datacontext-for-an-area"></a>
+#### Developing a DataContext for an area
 
 Typically, the `DataContext` associated with a particular area is instantiated from the `initialize()` method of `<dir>\Client\Program.ts`, which is the entry point of the extension.
 
@@ -129,7 +116,7 @@ export class DataContext {
 ```
 -->
 
-The `DataContext` class does not specify the use of any single FX base class or interface. In practice, the members of a DataContext class typically include the following.
+The `DataContext` class does not specify the use of any single FX base class or interface. In practice, the members of a DataContext class typically include [data caches](#data-caches) and [data views](#data-views).
 
 <a name="working-with-data-overview-data-caches"></a>
 ### Data caches
@@ -146,7 +133,7 @@ The `DataContext` class does not specify the use of any single FX base class or 
 
 The `DataCache` classes all share the same API. The usage pattern is as follows.
 
-1.  In a `DataContext`, the extension creates and configures `DataCache` instances, as specified in [portalfx-data-configuringdatacache.md](portalfx-data-configuringdatacache.md). Configuration includes the following.  
+1.  In a `DataContext`, the extension creates and configures `DataCache` instances, as specified in [portalfx-data-caching.md](portalfx-data-caching.md). Configuration includes the following.  
 
     * How to load data when it is missing from the cache
     * How to implicitly refresh cached data, to keep it consistent with server state
@@ -193,10 +180,25 @@ For more information about employing these concepts, see [portalfx-data-masterde
 
 Memory management is very important in the Azure Portal, because   overuse by many different extensions has been found to impact the user-perceived responsiveness of the Azure Portal.
 
-Each `DataCache` instance manages a set of [cache entries](portalfx-extensions-glossary-data.md), and the `DataCache` includes automatic mechanisms to manage the number of cache entries present at a given time. This is important because `DataCaches` in the `DataContext` of an `area` will live as long as an extension is loaded, and consequently may support many blades and parts that come and go as the user navigates in the Azure Portal.  
+Each `DataCache` instance manages a set of [cache entries](portalfx-extensions-glossary-data.md), and the `DataCache` includes automatic mechanisms to manage the number of cache entries present at a given time. This is important because `DataCaches` in the `DataContext` of an `area` will exist in memory for as long as an extension is loaded, and consequently may support blades and parts that come and go as the user navigates in the Azure Portal.  
 
-When a `ViewModel` calls the `fetch()` method for its `DataView`, this `fetch()` call implicitly forms a ref-count to a `DataCache` cache entry, thereby pinning the entry in the DataCache as long as the blade/part `ViewModel` has not been  disposed by the FX. When all blade or part `ViewModels` that hold ref-counts to the same cache entry are disposed (indirectly, via DataView),  the DataCache can elect to evict or discard the cache entry. In this way, the DataCache can manage its size automatically, without explicit extension code. 
+When a `ViewModel` calls the `fetch()` method for its `DataView`, this `fetch()` call implicitly forms a ref-count to a `DataCache` cache entry, thereby pinning the entry in the DataCache as long as the blade/part `ViewModel` has not been  disposed by the extension. When all blade or part `ViewModels` that hold ref-counts to the same cache entry are disposed indirectly by using via DataView,  the DataCache can elect to evict or discard the cache entry. In this way, the `DataCache` can manage its size automatically, without explicit extension code. 
 
+
+### Areas
+
+From a code organization standpoint, an area can be defined as a project-level folder. It becomes quite important when data operations are segmented within the extension.
+
+`Areas` are a scheme for organizing and partitioning of extension source code, making it easier to develop an extension with a sizable team. They impact how `DataContexts` are used in an extension. In the same way that extensions employ areas in a way that collects related blades and parts, each area also maintains the data that is required by these blades and parts. Every extension area gets a distinct `DataContext` singleton, and the `DataContext` typically loads/caches/updates the data of a few model types necessary to support the area's blades and parts.  
+
+An area is defined in the extension by using the following steps.
+
+  1. Create a folder in the `Client\` directory of the project that contains the extension. The name of that folder is the name of the area.
+  1. In the root of that folder, create a `DataContext` named `<AreaName>Area.ts`, where `<AreaName>` is the name of the folder that was just created, as specified in [#developing-a-datacontext-for-an-area](#developing-a-datacontext-for-an-area). For example, the `DataContext` for the `Security` area in the sample is located at `\Client\Security\SecurityArea.ts`.  
+
+A typical extension resembles the following image.
+
+![alt-text](../media/portalfx-data-context/area.png "Extensions can host multiple areas")
 
 
 
@@ -210,11 +212,11 @@ The `DataCache` objects all share the same class within the API.
 
 They are a full-featured way of loading and caching data used by blade and part `ViewModels`.
 
- `QueryCache` queries for a collection of data, whereas  `EntityCache` loads an individual entity. QueryCache takes a generic parameter for the type of object stored in its cache, and a type for the object that defines the query, as in the `WebsiteQuery` example. 
+ `QueryCache` queries for a collection of data, whereas  `EntityCache` loads an individual entity. QueryCache takes a generic parameter for the type of object stored in its cache, and a type for the object that defines the query, as in the `WebsiteQuery` example located at `<dir>Client\V1\Data\MasterDetailBrowse\MasterDetailBrowseData.ts`.
  
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>` is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
-## Configuring the data cache
+### Configuring the data cache
 
 Multiple parts or services in an extension will rely on the same set of data. For queries, this may be a list of results, whereas for a details blade, it may be a single entity. In either case, it is critical to ensure that all parts that use a given set of data perform the following actions.
 
@@ -324,33 +326,40 @@ The `EditScopeCache` class is less commonly used. It loads and manages instances
 <a name="working-with-data-master-details-browse"></a>
 ## Master details browse
 
-In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
+This scenario describes how to share data across the parent blade and the child blades. In this scenario, the extension retrieves information from the server and displays this data across multiple blades. There are other scenarios in which the one-to-many relationship, or the summary-detail relationship, uses grids to display information from `QueryCache`-`EntityCache` cache objects
+in parent-child blades.
 
- In this example, there is a parent blade that shows a list of resources and a child blade that shows details about an individual resource. This example specifies how to share data across the parent blade and the child blades.
+In the example code, the information to display in the parent blade is a list of websites. It displays this information in a grid. When the user activates a website, a child blade is opened, and displays detailed information about the activated website. The child blade  is also dependent on the parent blade for specific resources.
 
-The code for this example comes from the 'master detail browse' sample. The code is located at:
+In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK. The code for this example is located at:
 `<dir>\Client\V1\MasterDetail\MasterDetailArea.ts`
 `<dir>\Client\V1\MasterDetail\MasterDetailBrowse\MasterDetailBrowse.pdl`
 `<dir>\Client\V1\Data\MasterDetailBrowse\MasterDetailBrowseData.ts`
 `<dir>\Client\V1\asterDetail\MasterDetailBrowse\ViewModels\DetailViewModels.ts`
 `<dir>\Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\MasterViewModels.ts`
 
-The `QueryCache` and the `EntityCache` are the two caches that are used in this scenario. The `QueryCache` caches a list of items as specified in [#querycache](#querycache). The `EntityCache` caches a single item, as specified in [portalfx-data-caching.md#entitycache](portalfx-data-caching.md#entitycache).
+The `QueryCache` and the `EntityCache` are the two caches that are used in this scenario. The `QueryCache` caches a list of items as specified in [portalfx-data-caching.md#querycache](portalfx-data-caching.md#querycache). The `EntityCache` caches a single item, as specified in [portalfx-data-caching.md#entitycache](portalfx-data-caching.md#entitycache).
 
-In this scenario, the extension retrieves information from the server and displays this data across multiple blades. The information is a list of websites. The server data is cached using one of the previously-mentioned caches, and then uses that cache to display the websites across two blades. The first blade displays the list of websites in a grid. When the user activates one of those websites, a second blade is opened, and displays more details about the activated website. The data for both blades is located in the cache, therefore the server is not queried again when it is time to open the second blade. When the data in the cache is updated, that update is displayed across all blades at the same time. Consequently, the Portal always presents a consistent view of the data.
+The server data is cached using one of the two caches, and then uses that cache to display the websites across the two blades.  The data for both blades is located in the cache, therefore the server is not queried again when it is time to open the second blade. When the data in the cache is updated, that update is displayed across all blades at the same time. Consequently, the Portal always presents a consistent view of the data.
+
+How the extension code uses the sample code is specified in [#the-masterdetail-area-and-datacontext](#the-masterdetail-area-and-datacontext). 
+The two primary pieces of code are the following.
+* [Implementing the master view](#implementing-the-master-view)
+* [Implementing the detail view](#implementing-the-detail-view)
+
 
 <a name="working-with-data-master-details-browse-the-masterdetail-area-and-datacontext"></a>
 ### The MasterDetail Area and DataContext
 
-The portal uses an `Area` to hold the cache and other data objects that are shared across multiple blades. The code for the area is located in its own folder, as specified in [portalfx-data-overview.md#areas](portalfx-data-overview.md#areas). In this example the area folder is named `MasterDetail` and it is located in the `Client` folder of the extension. 
+The Portal uses an `Area` to hold the cache and other data objects that are shared across multiple blades. The code for the area is located in its own folder, as specified in [portalfx-data-overview.md#areas](portalfx-data-overview.md#areas). In this example, the area folder is named `MasterDetail` and it is located in the `Client` folder of the extension. 
 
- Inside the folder, there is a typescript file whose name is a combination of the name of the area and the word 'Area'. For this example, the file is named  `MasterDetailArea.ts` and is located at `<dir>Client/V1/MasterDetail/MasterDetailArea.ts`.  This code is also included in the following example.
+ Inside the folder, there is a TypeSscript file whose name is a combination of the name of the area and the word 'Area'. The file is named  `MasterDetailArea.ts` and is located at `<dir>Client/V1/MasterDetail/MasterDetailArea.ts`. This code is also included in the following example.
 
 <!-- 
 gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailArea.ts", "section": "data#websitesQueryCache"}
 -->
 
-This file contains the `DataContext` class, which is the class that will be sent to all the `ViewModels` associated with the area.  The `DataContext` also contains an `EditScopeCache` which is used in the master detail edit scenario that is located at [](). This code is also included in the following example.
+This file contains the `DataContext` class, which is the class that will be sent to all the `ViewModels` associated with the area.  The `DataContext` also contains an `EditScopeCache` which is used in the master detail edit scenario that is located at [portalfx-forms-construction.md](portalfx-forms-construction.md). This code is also included in the following example.
 
  <!--TODO:  Locate the gitHub copies of the samples. -->
 
@@ -358,25 +367,12 @@ This file contains the `DataContext` class, which is the class that will be sent
 
 If this is a new area for the extension, edit the  `Program.ts` file to create the `DataContext` when the extension is loaded. The SDK edition of the `Program.ts` file is located at `<dir>\Client\Program.ts`. For the extension that is being built, find the `initializeDataContexts` method and then use the `setDataContextFactory` method to set the `DataContext`.
 
-<a name="working-with-data-master-details-browse-querycache"></a>
-### QueryCache
-
-When the `QueryCache` that contains the websites is created, two elements are specified.
-
-1. The **entityTypeName** that provides the name of the metadata type. The QueryCache needs to know the shape of the data contained in it, in order to handle the data appropriately. That information is specified with the entity type.
-
-1. The **sourceUri** that provides the endpoint that will accept the HTTP request. This function returns the URI to populate the cache. It is sent a set of parameters that are sent to a `fetch` call. In this case, `runningStatus` is the only parameter. Based on the presence of the `runningStatus` parameter, the URI is modified to query for the correct data.
-
-<!-- TODO: Determine whether "presence" can be changed to "value". Did they mean true if present and false if absent, with false as the default value?  This sentence needs more information. -->
-
-When all of these items are complete, the `QueryCache` is configured. It will be populated while Views are being created over the cache, and the `fetch()` method is called. 
-
 <a name="working-with-data-master-details-browse-implementing-the-master-view"></a>
 ### Implementing the master view
 
 The master view is used to display the data in the caches. The advantage of using views is that they allow the `QueryCache` to handle the caching, refreshing, and evicting of data.
 
-1. Make sure that the PDL that defines the blades specifies the  `Area` so the `ViewModels` receive the `DataContext`. In the `<Definition>` tag at the top of the PDL file, include an `Area` attribute whose value corresponds to the name of the area that is being built, as in the example located at `<dir>Client/V1/MasterDetail/MasterDetailBrowse/MasterDetailBrowse.pdl`. This code is also included in the following example.
+1. Make sure that the PDL that defines the blades specifies the  `Area` so that the `ViewModels` receive the `DataContext`. In the `<Definition>` tag at the top of the PDL file, include an `Area` attribute whose value corresponds to the name of the area that is being built, as in the example located at `<dir>Client/V1/MasterDetail/MasterDetailBrowse/MasterDetailBrowse.pdl`. This code is also included in the following example.
 
     <!--```xml
 
@@ -397,16 +393,16 @@ this._websitesQueryView = dataContext.websitesQuery.createView(container);
 
    The view is the `fetch()` method that is called to populate the `QueryCache`, and allows the items that are returned by the fetch call to be viewed. 
 
-   **NOTE**:  There may be multiple views over the same `QueryCache`. This happens when there are multiple blades on the screen at the same time, all of which are displaying data from the same cache. 
+   **NOTE**:  There may be multiple views over the same `QueryCache`. This  occurs when multiple blades are displayed on the screen at the same time, all of which are using data from the same cache. 
 
    There are two controls on this blade, both of which use the view that was just created: a grid and the `OptionGroup` control.  
 
-   * The grid displays the data in the `QueryCache`, as specified in [portalfx-data-dataviews.md#using-dataViews](portalfx-data-dataviews.md#using-dataViews).
+   * The grid displays the data in the `QueryCache`, as specified in [portalfx-data-dataviews.md](portalfx-data-dataviews.md) and in [#fetching-data-for-the-grid](#fetching-data-for-the-grid).
 
-   * The `OptionGroup` control allows the user to select whether to display websites that are in a running state, websites in a stopped state or display both types of sites. The  display created by the `OptionGroup` control is specified in []().
+   * The `OptionGroup` control allows the user to select whether to display websites that are in a running state, websites in a stopped state or display both types of sites. The display created by the `OptionGroup` control is specified in [#the-optiongroup-control](#the-optiongroup-control).
 
-<a name="working-with-data-master-details-browse-implementing-the-master-view-querycache"></a>
-#### QueryCache
+<a name="working-with-data-master-details-browse-implementing-the-master-view-fetching-data-for-the-grid"></a>
+#### Fetching data for the grid
 
 The observable `items` array of the view is sent to the grid constructor as the `items` parameter, as in the following example.
 
@@ -418,7 +414,7 @@ this.grid = new Grid.ViewModel<WebsiteModel, number>(this._lifetime, this._websi
 ```
 -->
 
-The `fetch()` command has not yet been issued on the QueryCache, because it is asynchronous. When it is issued, the view's `items` array will be observably updated, which populates the grid with the results. This occurs by calling the  `fetch()` method on the blade's `onInputsSet()`, which returns the promise shown in the following example.
+The `fetch()` command has not yet been issued on the QueryCache. When the command is issued, the view's `items` array will be observably updated, which populates the grid with the results. This occurs by calling the  `fetch()` method on the blade's `onInputsSet()`, which returns the promise shown in the following example.
 
 <!--
 ```typescript
@@ -458,15 +454,15 @@ In the subscription, the extension performs the following actions.
 1. Request the new data by calling the `fetch()` method on the data view with new parameters.
 1. When the `fetch()` method completes, take the grid out of loading mode.
 
-There is no need to try to get the results of the fetch and replace the items in the grid because the grid's `items` array has been pointed to the `items` array of the view. The view will update its `items` array as soon as the fetch is complete.
+There is no need to get the results of the fetch and replace the items in the grid because the grid's `items` array has been pointed to the `items` array of the view. The view will update its `items` array as soon as the fetch is complete.
 
-The rest of the code demonstrates that the grid has been configured to activate any of the websites when they are clicked. The 'id' of the website that is activated is sent to the details blade as an input.
+The rest of the code demonstrates that the grid has been configured to activate any of the websites when they are clicked. The `id` of the website that is activated is sent to the details child blade as an input.  For more information about the details child blade, see [#implementing-the-detail-view](#implementing-the-detail-view).
 
 ### Implementing the detail view
 
-The detail view uses the `EntityCache` that was associated with the  `QueryCache` from the `DataContext` to display the details of a website. Once you understand what's going on in the master blade you should have a pretty good handle of what's going on here.
+The detail view uses the `EntityCache` that was associated with the  `QueryCache` from the `DataContext` to display the details of a website. 
 
-The blade starts by creating an view on the `EntityCache`:
+1. The child blade creates a view on the `EntityCache`, as in the following code.
 
 ```typescript
 
@@ -474,7 +470,7 @@ this._websiteEntityView = dataContext.websiteEntities.createView(container);
 
 ```
 
-Then in the `onInputsSet` we call `fetch` method, and send the ID of the website we want the data for:
+1.  In the `onInputsSet` method, the `fetch` method is called, with the ID of the website to display as a parameter, as in the following example. 
 
 ```typescript
 
@@ -487,7 +483,7 @@ public onInputsSet(inputs: Def.BrowseDetailViewModel.InputsContract): MsPortalFx
 
 ```
 
-When the fetch is completed the data will be available in the view's `item` property. This blade uses the `text` data-binding in its HTML template to show the name, id and running status of the website but obviously you could do whatever you want with the item.
+1. When the fetch is completed, the data is available in the view's `item` property. This blade uses the `text` data-binding in its HTML template to show the name, id and running status of the website. 
 
     ## Lifetime Manager
 
@@ -845,13 +841,11 @@ var promise = MsPortalFx.Base.Net.ajax({
 ```
 
 
-    ## Consuming data
-## Using DataViews
+    ## Using DataViews
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
-The `QueryView` and `EntityView` cache objects both present data from the cache to the `ViewModel`, and provide reference counting. A `DataView` is created from the `createView` method of the cache object that was used, as in the following example.
- located at `<dir>Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\MasterViewModels.ts` demonstrates a `SaveItemCommand` class that uses the binding between a part and a command. This code is also included in the following example.
+The `QueryView` and `EntityView` cache objects both present data from the cache to the `ViewModel`, and provide reference counting. A `DataView` is created from the `createView` method of the cache object that was used, as in the example located at `<dir>Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\MasterViewModels.ts`. This example demonstrates a `SaveItemCommand` class that uses the binding between a part and a command. This code is also included in the following example.
 
 ```ts
 this._websitesQueryView = dataContext.masterDetailBrowseSample.websitesQuery.createView(container);
@@ -862,19 +856,18 @@ In the previous code, the `container` object acts as a lifetime object. Lifetime
 * Adjust polling interval when the part is not on the screen
 * Automatically dispose of data when the blade containing the part is closed
 
-Creating a `DataView` does not result in a data load operation from the server. The server is only queried when the `fetch` operation of the view is invoked, as in the following example.
+Creating a `DataView` does not result in a data load operation from the server. The server is only queried when the `fetch` operation of the view is invoked, as in the code located at 
+`<dir>Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\MasterViewModels.ts` and  in the following example.
 
-
-`<dir>Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\MasterViewModels.ts`
 ```ts
 public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
     return this._websitesQueryView.fetch({ runningStatus: inputs.filterRunningStatus.value });
 }
 ```
 
-The `runningStatus` is a filter which will be applied to the query. This allows several views to be created over a single cache, each presenting a potentially different data set.
+The `runningStatus` is a filter which will be applied to the query. This allows several views to be created over a single cache, each of which presents a potentially different data set.
 
-## Observable map & filter
+### Observable map & filter
 
 In many cases, the developer may want to shape the extension data to fit the view to which it will be bound. Some cases where this is useful are as follows.
 
@@ -882,9 +875,9 @@ In many cases, the developer may want to shape the extension data to fit the vie
 * Adding a computed property to a model object
 * Filtering data on the client based on a property
 
-The recommended approach to these cases is to use the `map` and `filter` methods found in the <a href="https://github.com/stevesanderson/knockout-projections" target="_blank">Knockout projections</a> library, included in the SDK.
+The recommended approach to these cases is to use the `map` and `filter` methods from the library that is located at [https://github.com/stevesanderson/knockout-projections](https://github.com/stevesanderson/knockout-projections).
 
-See [Shaping and filtering your data](./portalfx-data-projections.md) for more details.
+For more information about shaping and filtering your data, see [portalfx-data-projections.md](portalfx-data-projections.md).
 
 <!--TODO:  Determine the meaning of the following comment. -->
 <!--
