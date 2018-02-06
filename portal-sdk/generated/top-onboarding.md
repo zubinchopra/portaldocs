@@ -4,152 +4,146 @@
 <a name="portal-extensions-introduction"></a>
 ## Introduction
 
-
 If you are working on an Azure service and want to expose UI to your customers in the Azure portal then this is the right starting point. The portal has an extension model where each team that builds UI creates and deploys an extension. This process requires a relationship to be established between your team and the central portal team. This document walks you through the process of onboarding your team and starting that relationship. 
    
-<a name="portal-extensions-process-overview"></a>
-## Process overview
+<a name="portal-extensions-step-by-step-process-overview"></a>
+## Step by Step Process overview
 
 Onboarding a service, or developing a Portal extension, has three phases: onboarding, development, and deployment. The process is specified in the following image.
 
 ![alt-text](../media/portalfx-extensions-onboarding/azure-onboarding.png "Azure Onboarding Process")
- 
-<a name="portal-development-phase-1"></a>
-# Portal development phase 1
 
-<a name="portal-development-phase-1-onboarding"></a>
-## Onboarding
+<a name="phase-1-onboarding"></a>
+# Phase 1 - Onboarding
+
+<a name="phase-1-onboarding-kickoff-meeting"></a>
+## Kickoff Meeting
+ 
+There are lots of docs here. We recommend you send mail to <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">ibiza-onboarding-kick@microsoft.com /a> and request a kickoff meeting. Someone from our team will spend 30 minutes walking through the process at a high level. We can point you in the right direction regarding the latest patterns and practices. We can also answer any questions you have. Finally, we can talk about how the relationship between our teams is managed.
+
+<a name="phase-1-onboarding-onboard-with-related-teams"></a>
+## Onboard with related teams
+
+ Onboarding to Azure is a big task that spans many teams that you will work with to get your entire service up and running. These include, but are not limited to the following teams.
+
+1. Azure Resource Manager team
+
+     Reach out to <a href="mailto:vladj@microsoft.com?subject=Extension Onboarding">Vlad Joanovic</a> to onboard your resource provider.
+    <!--TODO: Locate distribution list for this purpose.  -->
+1. Azure Marketing Team
+
+   To ensure that the business goals of the new extension or service are aligned with Azure's business strategy, please reach out to the Integrated Marketing Team or the L&R - Operations - GD&F team at [ibiza-bmr@microsoft.com](mailto:ibiza-bmr@microsoft.com?subject=Azure%20Business%20model%20review). Brian Hillger’s team and Stacey Ellingson’s team will guide you through the business model review process. The extension or service is not ready to be onboarded to Azure until its business model has received approval from those teams. Do not proceed with the next step until the business model has received approval.
+
+1. Support team 
+
+   For integrating with the support system and UX integration.
+
+1. Azure.com team 
    
-The items that are being developed extend functionality to an Azure Portal, and therefore are named extensions.  Perform the following tasks to become part of Azure Portal extension developer community.
+   For a presence on the marketing site.
 
-1. [Schedule Kickoff Meetings](portalfx-extensions-onboarding1-kickoffs.md)
+1. Billing team
+   
+   To register meters and other billing related activities.
+   
+1. AAD onboarding
 
-1. [Onboard with related teams](portalfx-extensions-onboarding1-relatedTeams.md)
+   Reach out to AAD onboarding if the new extension service needs special permissions besides just calling your own resource provider servers.  If the extension requires additional built-in support for standard Graph or ARM APIs, submit a partner request at the site located at [https://aka.ms/portalfx/uservoice](https://aka.ms/portalfx/uservoice). 
 
-1. [Join DLs and request permissions](portalfx-extensions-onboarding1-permissions.md) 
+1. Azure fundamentals and compliance
 
-1. [Get the developers started](top-extensions-getting-started.md)
+1. Security and privacy reviews
+
+1. Start the CSS onboarding process with the CSS team at least three months previous to public preview. This process may coincide with the following step. For more information about development phases, see [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md).
+
+1. Schedule a UX feasibility review with the Ibiza team UX contact by emailing [mailto:ibiza-onboarding@microsoft.com?subject=Extension%20Feasibility%20Review](mailto:ibiza-onboarding@microsoft.com?subject=Extension%20Feasibility%20Review).  Many extensions have been made more successful by setting up early design reviews with the Azure Portal team. Taking the time to review the design gives extension owners an opportunity to understand how they can leverage Azure Portal design patterns, and ensure that the desired outcome is feasible. 
+
+While the portal team cannot help directly with all of these factors, see [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md) for a list of items with which we can assist you.
+
+For less common scenarios, you might need to do a custom deployment. For example, if the extension needs to reach server services using certificate based authentication, then there should be controller code on the server that our hosting service does not support. You should be very sure that  a custom hosting solution is the correct solution previous to developing one.
+
+<a name="phase-1-onboarding-join-dls-and-request-permissions"></a>
+## Join DLs and request permissions
+
+Request the following permissions to stay current on product roadmaps, get news on latest features, and read workshop announcements.
+
+* PMs and Developer Leads need to join the `ibizapartners PM`  group by clicking on this link: [http://igroup/join/ibizapartners-pm](http://igroup/join/ibizapartners-pm). 
+
+* Developers should join the  `ibizapartners DEV` group by clicking on this  link:  [http://igroup/join/ibizapartners-dev](http://igroup/join/ibizapartners-dev). 
+
+* Developers should join the appropriate group listed on [http://aka.ms/standardaccess](http://aka.ms/standardaccess) to get access to portal telemetry. All groups on this page receive access. 
+
+* Developers should join the  `Azure Portal Core Team - 15003(15003)` group by using this link: [http://ramweb](http://ramweb).
+
+* PMs, Developers, and Developer Leads should subscribe to the partner request process by joining the ```Uservoice ``` group at this link:  [https://aka.ms/portalfx/uservoice](https://aka.ms/portalfx/uservoice). For more information about the partner request process, see [portalfx-extension-partner-request-process.md](portalfx-extension-partner-request-process.md).
+
+* PMs, Developers, and Developer Leads should receive notifications on breaking changes by joining the ```ibizabreak ``` group at  this  link:  [http://igroup/join/ibizabreak](http://igroup/join/ibizabreak).
+
+* PMs, Developers, and Developer Leads  should join Stackoverflow Forums that are located at [https://stackoverflow.microsoft.com](https://stackoverflow.microsoft.com)  to let us know if you have any questions. Remember to tag questions with ```ibiza``` or related tag.
+
+* Developers who want to contribute to the Azure documentation or test framework should join groups from the site located at [http://aka.ms/azuregithub](http://aka.ms/azuregithub).
+
+Ask an onboarding question on [Stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
+
+<a name="phase-1-onboarding-get-the-sdk-docs-and-samples-to-your-developers"></a>
+## Get the SDK, docs, and samples to your developers
+
+ The [development guide](#top-extensions-getting-started.md) located in the main documentation index has all the right pointers.
+
+<a name="phase-2-development"></a>
+# Phase 2 - Development
+
+<a name="phase-2-development-develop-your-extension"></a>
+## Develop your extension
+
+ The [development guide](#top-extensions-getting-started.md) located in the main documentation index has all the right pointers.
+
+<a name="phase-2-development-learn-about-the-hosting-service-plan-your-deployment-strategy"></a>
+## Learn about the hosting service / plan your deployment strategy
+
+The Ibiza team provides and operates a common extension hosting service that makes it easy to get your extension into a globally distributed system without having to manage your own infrastructure.
+
+<a name="phase-2-development-deployment-using-the-ibiza-hosting-service-portalfx-extensions-hosting-service-overview-md"></a>
+## <a href="portalfx-extensions-hosting-service-overview.md">Deployment using the Ibiza hosting service</a>
+
+For less common scenarios, you might need to do a custom deployment.
+
+For example, if you need to talk to backend services using certificate based authentication then you'll need controller code on the server. This is not supported with our hosting service. You should be very sure you require a custom hosting solution before going down this path. 
+
+Note that you can configure your deployment in such a way that the client portion of your extension uses the hosting service while your custom controller code can be deployed separately.
+
+<a name="phase-2-development-custom-extension-deployment-infrastructure-portalfx-deployment-md-legacy-diy-deployments"></a>
+## <a href="portalfx-deployment.md#legacy-diy-deployments">Custom extension deployment infrastructure</a>
+
+<a name="phase-2-development-register-the-extension-with-the-portal-product-configuration"></a>
+## Register the extension with the portal product configuration
+
+Once the name of your extension is finalized, it's time to register your extension in all environments. This requires a portal deployment and can take time. Our Service Level Agreements are located at [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md).  Please plan accordingly.
+
+* For internal partners, the request to register an extension is a pull request, as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
  
+* External teams can submit their requests by reaching out to the <a href="mailto:ibizafxpm@microsoft.com?subject=Onboarding Request: Add <extensionName> to the Portal&body=Extension Name:  <br><br>Company:  <br><br>Brand or Suite:  <br><br>Product or Component:  <br><br> URLs: <br><br>Production: main.<extensionName>.ext.<company>.com<br><br>  Contact info: <br><br>Business Contacts <br><br> Dev leads: <br><br> PROD on-call email for live site incidents: <br><br>">ibizafxpm team</a> with an onboarding request.
+
+* **NOTE**: Extension names must use standard extension name format, as in the example located at [portalfx-extensions-configuration-overview.md#name](portalfx-extensions-configuration-overview.md#name).
+
+* **NOTE**:  Extension URLs adhere to the naming requirements located in [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md).
+
+* You should enable your extension in all environments. 
+
+<a name="phase-3-deployment"></a>
+# Phase 3 - Deployment
+
+<a name="phase-3-deployment-release-kind"></a>
+## Release kind
+
+There are three typical release kinds. Private preview, public preview, and GA. For the purposes of deployment public preview and GA are the same. The only difference is that your UI may show preview labels and disclaimers where appropriate. For more information about the three kinds of releases, see  [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md).
+
+<a name="phase-3-deployment-deployment-procedure-portalfx-extensions-onboarding3-deployment-procedure-md"></a>
+## <a href="portalfx-extensions-onboarding3-deployment-procedure.md">Deployment procedure</a>
+
 You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
 
-  
-<a name="portal-development-phase-2"></a>
-# Portal development phase 2
-  
-<a name="portal-development-phase-2-development"></a>
-## Development
-
-Perform the following tasks to develop an Azure extension.
-
-1. [Develop the extension](portalfx-extensions-onboarding2-develop.md)
-
-    The development guide that is located at [top-extensions-getting-started.md](top-extensions-getting-started.md) has all the right pointers.
-
-1. [Learn about the hosting service](portalfx-extensions-hosting-service-overview.md)
-
-1. [Register the extension](portalfx-extensions-onboarding2-registration.md)
-
-You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
-
-
-<a name="portal-development-phase-3"></a>
-# Portal development phase 3
-
-<a name="portal-development-phase-3-deployment"></a>
-## Deployment
-
-1. [Types of Releases](portalfx-extensions-developmentPhases.md)
- 
-1. [Deployment procedure](portalfx-extensions-onboarding3-deployment-procedure.md)
-
-You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
-
-
-<a name="portal-development-phase-3-best-practices"></a>
-## Best Practices
-   
-Portal development patterns or architectures that are recommended based on customer feedback and usability studies are located in the topic for the blade that is being developed. For more information, see [portalfx-blades-best-practices.md](portalfx-blades-best-practices.md).
-
-<a name="portal-development-phase-3-best-practices-performance"></a>
-### Performance
-
-There are practices that can improve the performance of the extension.  For more information, see [portalfx-performance-bestpractices.md](portalfx-performance-bestpractices.md).
-
-
-<a name="portal-development-phase-3-best-practices-productivity-tip"></a>
-### Productivity Tip
-
-Install Chrome that is located at [http://google.com/dir](http://google.com/dir) to leverage the debugger tools while developing an extension.
-
-<a name="portal-development-phase-3-frequently-asked-questions"></a>
-## Frequently asked questions
-
-<a name="portal-development-phase-3-frequently-asked-questions-onboarding-faq"></a>
-### Onboarding FAQ
-
-***Where are the onboarding FAQs for Sparta (ARM/CSM-RP)?***
-
-The SharePoint Sparta Onboarding FAQ is located at [http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx](http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx).
-
-* * *
-
-<a name="portal-development-phase-3-frequently-asked-questions-ssl-certs"></a>
-### SSL Certs
-   
-   <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
-   
-***How do I use SSL certs?***
- 
- SSL Certs are relevant only for teams that host their own extensions.  Azure Portal ONLY supports loading extensions from HTTPS URLs. Use a wildcard SSL cert for each environment to simplify maintenance, for example,   ``` *.<extensionName>.onecloud-ext.azure-test.net  ``` or  ``` *.<extensionName>.ext.azure.com) ``` .    To simplify overall management when your team is building separate, independent extensions, you can also use  ``` <extensionName>.<team>.ext.azure.com ``` and create a wildcard SSL cert for  ``` *.<team>.ext.azure.com ```. Internal teams can create SSL certs for the DogFood environment using the SSL Administration Web page that is located at [http://ssladmin](http://ssladmin). 
- 
-  Production certs must follow your organization’s PROD cert process. 
-
- **NOTE** Do not use the SSL Admin site for production certs.
-
- * * *
-
- ### Compile on Save
-
-**What is Compile on Save ?**
-
-Compile on Save is a **TypeScript** option that   . To use it, make sure that **TypeScript** 2.0.3 was installed on your machine. The version can be verified by executing the following  command:
-
-```bash
-$>tsc -version
-```
-Then, verify that when a **TypeScript** file is saved, that the following text is displayed in the bottom left corner of your the **Visual Studio** application.
-
-![alt-text](../media/portalfx-ide-setup/ide-setup.png "CompileOnSaveVisualStudio")
-
- * * *
-
-<a name="portal-development-phase-3-frequently-asked-questions-other-onboarding-questions"></a>
-### Other onboarding questions
-
-***How can I ask questions about onboarding ?***
-
-You can ask questions on Stackoverflow with the tag [onboarding](https://stackoverflow.microsoft.com/questions/tagged/onboarding).
-
-
-
-<a name="portal-development-phase-3-for-more-information"></a>
-## For More Information
-   
-For more information about development phases, see [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md).
-
-For more information about the Microsoft Azure Trust Center, see [http://azure.microsoft.com/en-us/support/trust-center/](http://azure.microsoft.com/en-us/support/trust-center/).
-
-For more information about exit criteria, see [top-exit-criteria.md](top-exit-criteria.md).
-
- For more information about quality metrics, see the One Compliance System Web site that is located at [https://microsoft.sharepoint.com/teams/1CS/SitePages/Home.aspx](https://microsoft.sharepoint.com/teams/1CS/SitePages/Home.aspx).
-
-For more information about internationalization requirements, see [http://aka.ms/azureintlrequirements](http://aka.ms/azureintlrequirements). 
-
-For more information about localization requirements, see [portalfx-localization.md](portalfx-localization.md). 
-
-For more information about azure.com onboarding, see [http://acomdocs.azurewebsites.net](http://acomdocs.azurewebsites.net).
-
-<a name="portal-development-phase-3-glossary"></a>
+<a name="phase-3-deployment-glossary"></a>
 ## Glossary
     
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
