@@ -25,7 +25,7 @@ Learn how the framework is structured and how it is designed to run in multiple 
 * [Multi-Column for Essentials Controls]() - *Better use of screen real estate*
 * [TreeView improvements]() - *Checkboxes, commands, and Load More / Virtualization*
 
-## [Development guide](./generated/top-development-guide.md)
+## Development guide
 Azure portal extension development is supported on the Microsoft Windows 8, Windows Server 2012 R2, and Windows 10.
 1. Install the SDK(./generated/top-extensions-install-software.md)
 * [How to use the MSI Installer](downloads.md)
