@@ -16,12 +16,12 @@ Onboarding a service, or developing a Portal extension, has three phases: onboar
 <a name="phase-1-onboarding-kickoff-meeting"></a>
 ## Kickoff Meeting
  
-There are lots of docs here. We recommend you send mail to <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">ibiza-onboarding-kick@microsoft.com /a> and request a kickoff meeting. Someone from our team will spend 30 minutes walking through the process at a high level. We can point you in the right direction regarding the latest patterns and practices. We can also answer any questions you have. Finally, we can talk about how the relationship between our teams is managed.
+There are lots of docs here. We recommend you send mail to <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">ibiza-onboarding-kick@microsoft.com </a> and request a kickoff meeting. Someone from our team will spend 30 minutes walking through the process at a high level. We can point you in the right direction regarding the latest patterns and practices. We can also answer any questions you have. Finally, we can talk about how the relationship between our teams is managed.
 
 <a name="phase-1-onboarding-onboard-with-related-teams"></a>
 ## Onboard with related teams
 
- Onboarding to Azure is a big task that spans many teams that you will work with to get your entire service up and running. These include, but are not limited to the following teams.
+Onboarding to Azure all up is a big task that spans many teams. The doc you are reading will help you onboard to the portal, but there are many other teams you will need to work with to get your entire service up and running. These include, but are not limited to the following teams:
 
 1. Azure Resource Manager team
 
