@@ -6,7 +6,7 @@
 
 The following procedure specifies how to set up a developer computer for Azure extension development.
    
-1.  Your computer should have the most recent editions of operating systems and other software installed, as specified in [portalfx-software-install-minimum.md](portalfx-software-install-minimum.md).
+1. Your computer should have the most recent editions of operating systems and other software installed, as specified in [top-extensions-install-software.md](top-extensions-install-software.mdd).
 
 1. Build an empty extension, as specified in [portalfx-extensions-create-blank-procedure.md](portalfx-extensions-create-blank-procedure.md).
 
