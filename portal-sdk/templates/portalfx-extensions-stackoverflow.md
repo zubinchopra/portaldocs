@@ -1,6 +1,7 @@
 ---
-redirect_from: "index-portalfx-extension-QnA.md"
+redirect_from: "./generated/index-portalfx-extension-QnA.md"
 ---   
+
 
 ## Stackoverflow Forums
 
