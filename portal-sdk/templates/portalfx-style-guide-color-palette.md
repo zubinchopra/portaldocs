@@ -1,4 +1,7 @@
+<!--TODO:  This document has been deprecated.  It has been replaced by portalfx-style-guide-overview.md -->
+
 ## Color palette
+
 <!-- TODO:  Add a style sheet to this document so that the Framework class behaviors are displayed. -->
 The Portal offers a built-in set of classes that are based on a core color palette. These classes ensure a consistent experience for all users. This is especially important when the color conveys meaning, or differentiates data. The purposes are discussed in the following list.
 
@@ -594,4 +597,4 @@ To use the palette within SVG content, use the same class names as the one for [
     color: #ffffff;
   }
 </style>
-```
+````

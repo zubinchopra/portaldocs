@@ -1,3 +1,5 @@
+<!--TODO:  This document has been deprecated.  It has been replaced by portalfx-style-guide-overview.md -->
+
 ## Utility classes
 
 There are several built-in classes that make working with the Portal easier.
