@@ -1,3 +1,8 @@
+<!-- TODO:  deprecate this document by removing it.  It has been  replaced by videos.md   -->
+
+The page you requested has moved to [https://github.com/Azure/portaldocs/blob/v-yvric/dev/portal-sdk/generated/videos.md](https://github.com/Azure/portaldocs/blob/v-yvric/dev/portal-sdk/generated/videos.md). 
+
+<!--Original content 
 * [Videos](#videos)
     * [Dev/Test Side Loading Gallery Packages in Prod](#videos-dev-test-side-loading-gallery-packages-in-prod)
     * [Working with EditScope](#videos-working-with-editscope)
@@ -39,3 +44,4 @@ Watch this tutorial to understand, implement debug forms using EditScope
 
 [Learn More](portalfx-performance.md)
 [PowerPoint](https://auxdocs.blob.core.windows.net/videos/PerfBrownbag_8_26_2015.pptx)
+-->
