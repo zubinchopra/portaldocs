@@ -2,7 +2,7 @@
    
 Sideloading an extension is useful when developing an extension, in addition to private preview and some forms of usability testing. It is also useful when testing multiple versions of an extension, or determining which features should remain in later editions.
 
-During standard Portal use, the Portal web application loads the UI extension from a URL that is part of the Portal's configuration.  When developing and testing the UI extension, the developer can instruct the Portal to load the extension from the specified URL.  For more information, see [portalfx-extensions.architecture.md](portalfx-extensions.architecture.md).
+During standard Portal use, the Portal web application loads the UI extension from a URL that is part of the Portal's configuration.  When developing and testing the UI extension, the developer can instruct the Portal to load the extension from the specified URL.  For more information, see [top-extensions-architecture.md](top-extensions-architecture.md).
 
 Two mechanisms that can be used to sideload an extension are as follows.
 

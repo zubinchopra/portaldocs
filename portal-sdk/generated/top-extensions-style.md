@@ -11,25 +11,26 @@ The portal includes a built in list of CSS classes that may be used in templates
 
 Browse the following topics to learn about portal styling.
 
-| Topic  | Document | 
-| -----  | -------- |
-| Custom CSS | [portalfx-style-guide-custom-css-file.md](portalfx-style-guide-custom-css-file.md) | 
-| Sanitizing HTML | [portalfx-style-guide-style-sanitization.md](portalfx-style-guide-style-sanitization.md) |
-| Themes for Color Classes | [portalfx-style-guide-themed-color-classes.md](portalfx-style-guide-themed-color-classes.md) |
-| Utilities | [portalfx-style-guide-utility-classes.md](portalfx-style-guide-utility-classes.md) |
-| Color Palette | [portalfx-style-guide-color-palette.md](portalfx-style-guide-color-palette.md) |
+* [Custom CSS files](#custom-css-files)
 
+* [Style sanitization](#style-sanitization)
+
+* [Themed Color Classes](#themed-color-classes)
+
+* [Utility classes](#utility-classes)
+
+* [Color Palette](#color-palette)
 
 <a name="styling-an-extension-custom-css-files"></a>
 ## Custom CSS files
 
-Extension developers can combine commonly used classes into a CSS file. CSS styles that are defined in stylesheets are [sanitized](portalfx-extensions-glossary-style-guide.md) using the same rules as the style attribute (see below). All custom class names begin with the `.ext-` prefix that identifies them as classes that are owned by the extension. 
+Extension developers can combine commonly used classes into a CSS file. CSS styles that are defined in stylesheets are [sanitized](portalfx-extensions-glossary-style-guide.md) using the same rules as the `style` attribute (see below). All custom class names begin with the `.ext-` prefix that identifies them as classes that are owned by the extension. 
 
 All developers who install the Portal Framework SDK that is located at [http://aka.ms/portalfx/download](http://aka.ms/portalfx/download) also install the samples on their computers during the installation process. The source for the samples is located in the `Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension` folder.
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>` is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
-To specify custom styles, add a new CSS file to your extension, as in the sample located at `<dir>\Client\V1\Parts\Custom\Styles\ExampleStyles.css`. This code is also included in the following example.
+ Add a new CSS file to your extension to specify custom styles, as in the sample located at `<dir>\Client\V1\Parts\Custom\Styles\ExampleStyles.css`. This code is also included in the following example.
 
 ```css
 .ext-too-many-clicks-box {
@@ -40,7 +41,7 @@ To specify custom styles, add a new CSS file to your extension, as in the sample
 }
 ```
 
-CSS files can then be referenced from any PDL file, inside of the `Definition` element, as in the  sample located at `<dir>\Client\V1\Parts\Custom\CustomParts.pdl`. This code is also included in the following example.
+CSS files can then be referenced from any PDL file inside  the `Definition` element, as in the  sample located at `<dir>\Client\V1\Parts\Custom\CustomParts.pdl`. This code is also included in the following example.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -63,17 +64,15 @@ The styles that are included in the CSS file can now be used inside HTML templat
 </div>
 ```
 
-
-
 <a name="styling-an-extension-style-sanitization"></a>
 ## Style sanitization
 
 Custom Style Sheets (CSS) are analyzed at runtime to filter out disallowed properties or values.
 This filtering  ensures a consistent and sandboxed experience in the Portal. A typical example of a disallowed style is `position: fixed;`, which allows developers to move content outside of the borders of the part that is being manipulated.
 
-All CSS properties are allowed, with a few exceptions that are documented at the end of this article. Because the analysis is based on a [whitelist](portalfx-extensions-glossary-style-guide.md), situations may be encountered where CSS properties are erroneously filtered out. When this occurs, developers can report the issue using the `ibiza` tag on [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza).              
+All CSS properties are allowed, with a few exceptions. Because the analysis is based on a [whitelist](portalfx-extensions-glossary-style-guide.md), situations may be encountered where CSS properties are erroneously filtered out. When this occurs, developers can report the issue using the `ibiza` tag on [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza).
 
-The following properties only allow the specified values.
+These properties do not allow any values other than the ones in the following lists.
 
 1. `position`
 
@@ -105,11 +104,10 @@ Some properties behave inconsistently across browsers, or require vendor prefixe
    
    Use Framework class `msportalfx-unselectable`
 
-
 <a name="styling-an-extension-themed-color-classes"></a>
 ## Themed color classes
 
-Base colors within the Portal have been outfitted to change based on user-chosen themes. Because the actual hexadecimal values of these colors are determined by the theme definitions, acceptable levels of contrast between elements are maintained by the Framework. The following classes have been made available to extension authors, so that their extensions can react to theme changes and maintain readability.
+Base colors within the Portal have been outfitted to change based on user-chosen themes. Because the actual hexadecimal values of these colors are determined by the theme definitions, acceptable levels of contrast between elements are maintained by the Framework. The following classes have been made available to extension developers, so that their extensions can react to theme changes and maintain readability.
 
 <a name="styling-an-extension-themed-color-classes-text-color-classes"></a>
 ### Text color classes
@@ -127,7 +125,6 @@ msportalfx-link-primary
 msportalfx-highlight
 ```
 
-
 <a name="styling-an-extension-utility-classes"></a>
 ## Utility classes
 
@@ -140,7 +137,7 @@ There are several built-in classes that make working with the Portal easier.
 <pre class="msportalfx-code"><code>// this is code</code></pre>
 ```
 
-In addition to using the `msportalfx-code` class, text blocks may be set to use a monospace style font:
+In addition to using the `msportalfx-code` class, text blocks may be set to use a monospace style font, as in the following example.
 
 ```html
 <div class="msportalfx-font-monospace">msportalfx-font-monospace</div>
@@ -149,21 +146,9 @@ In addition to using the `msportalfx-code` class, text blocks may be set to use 
 <a name="styling-an-extension-utility-classes-utility-classes"></a>
 ### Utility Classes
 
-The following utility classes standardize some basic or initial page formatting.
-
-**msportalfx-removeTableBorders**: Removes all borders from a TABLE element.
+The following utility classes standardize basic or initial page formatting.
 
 **msportalfx-boxsizing-borderbox**: Changes layout to include padding and borders in its width and height.
-
-**msportalfx-removeDefaultListStyle**: Remove bullets from a `ul` or `ol` element.
-
-**msportalfx-lineheight-reset**: Reset the line height back to the default of the current font size.
-
-**msportalfx-removepartpadding**: Remove default padding on a part template.
-
-**msportalfx-removepartpaddingside**: Remove padding on the side only of a part template.
-
-**msportalfx-partdivider**: Sets up a horizontal side-to-side divider within the part.
 
 **msportalfx-clearfix**: Applied to a container that contains floated elements. Ensures the container gets a size and that the DOM element following the container flows the document normally with no overlap.
 
@@ -171,9 +156,21 @@ The following utility classes standardize some basic or initial page formatting.
 
 **msportalfx-gridcolumn-statusicon**: Applied as the CSS class name for a grid column that displays a status SVG icon.
 
+**msportalfx-lineheight-reset**: Reset the line height back to the default of the current font size.
+
+**msportalfx-partdivider**: Sets up a horizontal side-to-side divider within the part.
+
+**msportalfx-removeDefaultListStyle**: Remove bullets from a `ul` or `ol` element.
+
+**msportalfx-removeTableBorders**: Removes all borders from a TABLE element.
+
+**msportalfx-removepartpadding**: Remove default padding on a part template.
+
+**msportalfx-removepartpaddingside**: Remove padding on the side only of a part template.
 
 <a name="styling-an-extension-color-palette"></a>
 ## Color palette
+
 <!-- TODO:  Add a style sheet to this document so that the Framework class behaviors are displayed. -->
 The Portal offers a built-in set of classes that are based on a core color palette. These classes ensure a consistent experience for all users. This is especially important when the color conveys meaning, or differentiates data. The purposes are discussed in the following list.
 
@@ -183,15 +180,18 @@ The Portal offers a built-in set of classes that are based on a core color palet
 
 1. [Color SVG](#color-svg)
 
-<a name="styling-an-extension-convey-status"></a>
-## Convey status
+<a name="styling-an-extension-color-palette-convey-status"></a>
+### Convey status
 
-These classes can be applied to specific UI elements  in an extension to convey status. These classes ensure any future changes to the status colors will automatically be applied to the content of the extension. The names of the class prefixes are as follows.
+CSS classes can be applied to specific UI elements in an extension to convey status. These classes ensure any future changes to the status colors will automatically be applied to the content of the extension. The names of the class prefixes are as follows.
 
-* `msportalfx-bg-*` changes the background color.
-* `msportalfx-text-*` changes the foreground color. The foreground color will be the same for the text and for the border.
-* `msportalfx-br-*` changes the border color.
-* `msportalfx-fill-*` changes the SVG fill color.
+**msportalfx-bg-**: changes the background color.
+
+**msportalfx-text-**: changes the foreground color. The foreground color will be the same for the text and for the border.
+
+**msportalfx-br-**: changes the border color.
+
+**msportalfx-fill-**: changes the SVG fill color.
 
 The classes can be combined to update multiple aspects simultaneously.
 
@@ -237,8 +237,8 @@ Error
 </div>
 </div>
 
-<a name="styling-an-extension-differentiate-data"></a>
-## Differentiate data
+<a name="styling-an-extension-color-palette-differentiate-data"></a>
+### Differentiate data
 
 Differentiating data with color is a common representation technique, for example, when drawing lines in a chart, or coloring pie chart sections. The following sets of classes are provided to specify background colors for elements. They also define a contrasted color for the text. They do not change appearance between themes.
 
@@ -347,8 +347,8 @@ Tint 3
 </div>
 </div>
 
-<a name="styling-an-extension-color-svg"></a>
-## Color SVG
+<a name="styling-an-extension-color-palette-color-svg"></a>
+### Color SVG
 Certain types of custom SVG content should adhere to the color palette. This is mostly for custom controls that use color to differentiate data, like charts. Iconography does not have this requirement, and instead you should refer to the [Icons](portalfx-icons.md) documentation to color those.
 
 To use the palette within SVG content, use the same class names as the one for [data differentiation](#bgcolortext). The classes affect both the "`stroke`" and "`fill`" properties. The CSS rules assume the target element is within an "`g`" element contained in an "`svg`" element. The following sample shows proper usage:
@@ -772,7 +772,7 @@ To use the palette within SVG content, use the same class names as the one for [
     color: #ffffff;
   }
 </style>
-```
+````
 
 
 
@@ -790,7 +790,4 @@ To use the palette within SVG content, use the same class names as the one for [
 | Scalable Vector Graphics | An XML-based vector image format for two-dimensional Web graphics. |
 | SVG | Scalable Vector Graphics |
 | whitelist | The practice of specifying an index of approved software elements  that are permitted to be present and active on a Web page. The goal of whitelisting is to protect computers and networks from potentially harmful applications.  |
-
-
-
 
