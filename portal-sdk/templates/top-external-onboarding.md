@@ -9,3 +9,6 @@
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-onboarding-communication.md"}
 
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-onboarding-fyi.md"}
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-onboarding.md"}
