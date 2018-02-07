@@ -5,6 +5,7 @@ The portal includes a built in list of CSS classes that may be used inside of yo
 
 Browse the following topics to learn about portal styling:
 
+<!--TODO:  This document has been deprecated.  It has been replaced by portalfx-style-guide-overview.md -->
 
 <a name="style-guide-custom-css-files"></a>
 ## Custom CSS files
@@ -49,6 +50,7 @@ The styles that are included in the CSS file can now be used inside HTML templat
 </div>
 ```
 
+<!--TODO:  This document has been deprecated.  It has been replaced by portalfx-style-guide-overview.md -->
 
 <a name="style-guide-style-sanitization"></a>
 ## Style sanitization
@@ -90,6 +92,7 @@ Some properties behave inconsistently across browsers, or require vendor prefixe
    
    Use Framework class `msportalfx-unselectable`
 
+<!--TODO:  This document has been deprecated.  It has been replaced by portalfx-style-guide-overview.md -->
 <a name="style-guide-themed-color-classes"></a>
 ## Themed color classes
 
@@ -110,6 +113,8 @@ msportalfx-link-primary
 // Suited for highlighting searched text
 msportalfx-highlight
 ```
+
+<!--TODO:  This document has been deprecated.  It has been replaced by portalfx-style-guide-overview.md -->
 
 <a name="style-guide-utility-classes"></a>
 ## Utility classes
@@ -154,8 +159,11 @@ The following utility classes standardize some basic or initial page formatting.
 
 **msportalfx-gridcolumn-statusicon**: Applied as the CSS class name for a grid column that displays a status SVG icon.
 
+<!--TODO:  This document has been deprecated.  It has been replaced by portalfx-style-guide-overview.md -->
+
 <a name="style-guide-color-palette"></a>
 ## Color palette
+
 <!-- TODO:  Add a style sheet to this document so that the Framework class behaviors are displayed. -->
 The Portal offers a built-in set of classes that are based on a core color palette. These classes ensure a consistent experience for all users. This is especially important when the color conveys meaning, or differentiates data. The purposes are discussed in the following list.
 
@@ -754,7 +762,7 @@ To use the palette within SVG content, use the same class names as the one for [
     color: #ffffff;
   }
 </style>
-```
+````
 <a name="style-guide-glossary"></a>
 ## Glossary
 

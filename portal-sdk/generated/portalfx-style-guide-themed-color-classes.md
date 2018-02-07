@@ -1,3 +1,4 @@
+<!--TODO:  This document has been deprecated.  It has been replaced by portalfx-style-guide-overview.md -->
 <a name="themed-color-classes"></a>
 ## Themed color classes
 

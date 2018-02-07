@@ -1,3 +1,4 @@
+<!--TODO:  This document has been deprecated.  It has been replaced by portalfx-style-guide-overview.md -->
 
 <a name="custom-css-files"></a>
 ## Custom CSS files
