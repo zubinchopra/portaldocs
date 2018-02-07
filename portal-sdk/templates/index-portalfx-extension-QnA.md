@@ -1,4 +1,5 @@
-{redirect target="https://github.com/Azure/portaldocs/blob/v-yvric/dev/portal-sdk/generated/portalfx-extensions-stackoverflow.md"} 
+{"gitdown": "redirect:", "target": "https://github.com/Azure/portaldocs/blob/v-yvric/dev/portal-sdk/generated/portalfx-extensions-stackoverflow.md"} 
+
 <!-- TODO:  deprecate this document by removing it.  It has been  replaced by portalfx-extensions-stackoverflow.md -->
 
 <!-- TODO:  Validate that the following w3.org url is the correct address for a redirect. -->
