@@ -100,6 +100,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 
 <a name="azure-portal-glossary-extensions-onboarding"></a>
 ## Extensions Onboarding
+<!--TODO:  Determine which glossary terms are included in other bp documents previous to deleting this one -->
 <a name="azure-portal-glossary-glossary"></a>
 ## Glossary
     

@@ -29,6 +29,7 @@ Also, **Typescript** files should be set up to Compile on Save.
 <a name="azure-portal-best-practices-extensions-onboarding"></a>
 ## Extensions onboarding
 
+<!--TODO:  Determine which best practices are included in other bp documents previous to deleting this one -->
 
 <a name="azure-portal-best-practices-best-practices"></a>
 ## Best Practices
