@@ -85,7 +85,7 @@ Ask an onboarding question on [Stackoverflow](https://stackoverflow.microsoft.co
 <a name="phase-1-onboarding-get-the-sdk-docs-and-samples-to-your-developers"></a>
 ## Get the SDK, docs, and samples to your developers
 
- The [development guide](#top-extensions-getting-started.md) located in the main documentation index has all the right pointers.
+ The [development guide](top-extensions-getting-started.md) located in the main documentation index has all the right pointers.
 
 <a name="phase-2-development"></a>
 # Phase 2 - Development
@@ -93,7 +93,7 @@ Ask an onboarding question on [Stackoverflow](https://stackoverflow.microsoft.co
 <a name="phase-2-development-develop-your-extension"></a>
 ## Develop your extension
 
- The [development guide](#top-extensions-getting-started.md) located in the main documentation index has all the right pointers.
+ The [development guide](top-extensions-getting-started.md) located in the main documentation index has all the right pointers.
 
 <a name="phase-2-development-learn-about-the-hosting-service-plan-your-deployment-strategy"></a>
 ## Learn about the hosting service / plan your deployment strategy
