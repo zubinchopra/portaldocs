@@ -8,6 +8,7 @@ This document  contains all Best Practices that have been added to Azure Portal 
 
 ## Extensions onboarding
 
+<!--TODO:  Determine which best practices are included in other bp documents previous to deleting this one -->
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-onboarding2.md"}
 
 ## Loading and managing data

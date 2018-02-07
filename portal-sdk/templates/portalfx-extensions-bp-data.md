@@ -21,7 +21,7 @@ As users navigate through the Ibiza UX, they will frequently revisit often-used 
 They might visit their favorite Website Blade, browse to see their Subscription details, and then return to configure/monitor their
 favorite Website. In such scenarios, ideally, the user would not have to wait through loading indicators while Website data reloads.
 
-To optimize for this scenario, use the `extendEntryLifetimes` option common to QueryCache and EntityCache.
+To optimize for this scenario, use the `extendEntryLifetimes` option that is available on the `QueryCache` object and the `EntityCache` object.
 
 ```ts
 
@@ -36,17 +36,12 @@ public websitesQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModel
 
 ```
 
-QueryCache/EntityCache contain numerous cache entries, each of which are ref-counted based on not-disposed instances of
-QueryView/EntityView. When a user closes a Blade, typically a cache entry in the corresponding QueryCache/EntityCache will be removed,
-since all QueryView/EntityView instances will have been disposed. In the scenario where the user *revisits* their Website Blade,
-the corresponding cache entry will have to be reloaded via an ajax call, and the user will be subjected to loading indicators on
-the Blade and its Parts.
+The cache objects contain numerous cache entries, each of which are ref-counted based on not-disposed instances of QueryView/EntityView. When a user closes a blade, typically a cache entry in the corresponding cache object will be removed, because all QueryView/EntityView instances will have been disposed. In the scenario where the user revisits the Website blade, the corresponding cache entry will have to be reloaded via an **AJAX** call, and the user will be subjected to loading indicators on
+the blade and its parts.
 
-With `extendEntryLifetimes`, unreferenced cache entries will be *retained for some amount of time*, so when a corresponding Blade
-is reopened, data for the Blade and its Parts will already be loaded and cached.  Here, calls to `this._view.fetch()` from a Blade
-or Part view model will return a resolved Promise, and the user will not see long-running loading indicators.
+With `extendEntryLifetimes`, unreferenced cache entries will be retained for some amount of time, so when a corresponding blade is reopened, data for the blade and its parts will already be loaded and cached.  Here, calls to `this._view.fetch()` from a blade or part `ViewModel` will return a resolved Promise, and the user will not see long-running loading indicators.
 
-(Note - The time that unreferenced cache entries are retained in QueryCache/EntityCache is controlled centrally by the FX
+**NOTE**:  The time that unreferenced cache entries are retained in QueryCache/EntityCache is controlled centrally by the FX
  and the timeout will be tuned based on telemetry to maximize cache efficiency across extensions.)
 
 For your scenario to make use of `extendEntryLifetimes`, it is **very important** that you take steps to keep your client-side

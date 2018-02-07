@@ -27,6 +27,7 @@ FAQ's that are associated with configurations for extensions.
 
 FAQ's for developers that are new to the Azure Portal Extension development process.
 
+<!--TODO:  Determine which best practices are included in other faq documents previous to deleting this one -->
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-onboarding2.md"}
 
 ## Forms

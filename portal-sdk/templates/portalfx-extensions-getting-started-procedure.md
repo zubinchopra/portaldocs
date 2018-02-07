@@ -1,3 +1,4 @@
+# Development Guide
 
 ## Getting Started
 
@@ -23,7 +24,7 @@ For more information about building extensions with TypeScript decorators, watch
 
 1. Address the exit criteria to meet previous to moving the extension to the next development phase. The exit criteria are located at [top-exit-criteria.md](top-exit-criteria.md).
 
-1. Create configuration files for the extension as speci
+1. Create configuration files for the extension as specified in [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
 
 ### Deploy the extension
 
@@ -40,6 +41,8 @@ For more information about building extensions with TypeScript decorators, watch
     * Make the service be "Active" in ServiceTree
     * Complete metadata in ServiceTree to enable the automation for various Service360 Action Items
     * Complete the Action Items identified in Service360, which is located at [http://aka.ms/s360](http://aka.ms/s360)
+
+1.  Request to deploy the extension to the Production environment, as specified in [portalfx-extensions-publishing](portalfx-extensions-publishing).
 
 1. Integrate the extension into the Marketplace. 
 
