@@ -47,7 +47,7 @@
 </tr>
 <tr>
     <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls">ibiza-controls</a> </td>
-    <td> </td>
+    <td>An Ibiza monitored tag for questions related to Ibiza controls</td>
     <td> shresh </td>
 </tr>
 <tr>
@@ -67,12 +67,12 @@
 </tr>
 <tr>
     <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching">ibiza-data-caching</a> </td>
-    <td> </td>
+    <td>Questions related to loading and caching data for use in your extension's Blades, Parts, etc. This includes topics like issuing AJAX calls from your extension, the QueryCache/EntityCache caching components, etc.</td>
     <td> brado </td>
 </tr>
 <tr>
     <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-localization-global">ibiza-localization-global</a> </td>
-    <td> </td>
+    <td> Questions related to Localization or globalization within the portal. Guidence on what is or not supported and current languages that portal supports.</td>
     <td> paparsad </td>
 </tr>
 <tr>   
@@ -97,17 +97,17 @@
 </tr>
 <tr>
     <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms">ibiza-forms</a> </td>
-    <td> </td>
+    <td>An Ibiza monitored tag for questions related to Ibiza-forms </td>
     <td> shresh </td>
 </tr>
 <tr>
     <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls-grid">ibiza-controls-grid</a> </td>
-    <td> </td>
+    <td>An Ibiza monitored tag for questions related to Ibiza Grid Control. </td>
     <td> shresh </td>
 </tr>
 <tr>
     <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-accessibility">ibiza-accessibility</a></td>
-    <td> </td>
+    <td> Questions regarding accessibility onboarding, best practices, supported accessible controls, etc. Also, questions regarding the accessibility bug process and exception process. </td>
     <td> paparsad </td>
 </tr>
 </table>
