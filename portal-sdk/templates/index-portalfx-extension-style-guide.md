@@ -1,6 +1,6 @@
 <!-- TODO:  deprecate this document by removing it.  It has been  replaced by top-extensions-style.md   -->
 
-The page you requested has moved to [https://github.com/Azure/portaldocs/blob/v-yvric/dev/portal-sdk/generated/top-extensions-style.md ](https://github.com/Azure/portaldocs/blob/v-yvric/dev/portal-sdk/generated/top-extensions-style.md ). 
+The page you requested has moved to [./top-extensions-style.md](./top-extensions-style.md). 
 
 <!--Original content 
   gitdown": "contents", "maxLevel": 2}
