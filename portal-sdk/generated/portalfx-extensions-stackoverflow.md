@@ -1,8 +1,3 @@
----
-redirect_from: "./generated/index-portalfx-extension-QnA.md"
----   
-
-
 <a name="stackoverflow-forums"></a>
 ## Stackoverflow Forums
 
