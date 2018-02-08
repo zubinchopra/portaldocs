@@ -7,7 +7,7 @@ If the following table is not current, please send a pull request to update the 
 | Function                                      | Azure Team Stakeholder   | Azure  Stakeholder                       | Contact                                                             |
 | ------------------------------|--------------- | -----------------------------------------  | ----------------------------------------------------------------------------- |
 | Accessibility	                                | Paymon Parsadmehr | Erica Mohler            |  <a href="mailto:ibiza-accessibility@microsoft.com?subject=Accessibility">ibiza-accessibility@microsoft.com</a> |
-| Activity logs	                                | Marck Robinson    |                         | [ibiza-activity-logs@microsoft.com](mailto:ibiza-activity-logs@microsoft.com)  |
+| Activity logs	                                | Anna Pfoertsch, Marck Robinson    |                         | [ibiza-activity-logs@microsoft.com](mailto:ibiza-activity-logs@microsoft.com)  |
 | The ARM Team                                  |     |                                       | [aux-arm-leads@microsoft.com](mailto:aux-arm-leads@microsoft.com)  |
 | Azure.com	                                    | | Elena Salaks; Guy Burstein                 | [ibiza-azure@microsoft.com](mailto:ibiza-azure@microsoft.com)  |
 | Azure Compliance                              | Azure Compliance team  |                    | [azcompl@microsoft.com](mailto:azcompl@microsoft.com)  |
