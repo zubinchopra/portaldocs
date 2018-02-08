@@ -22,7 +22,7 @@ For more information about building extensions with TypeScript decorators, watch
 
 1. Complete the development and unit testing of the extension. For more information on debugging, see [portalfx-debugging.md](portalfx-debugging.md) and [portalfx-extensions-testing-in-production.md](portalfx-extensions-testing-in-production.md).
 
-1. Address the exit criteria to meet previous to moving the extension to the next development phase. The exit criteria are located at [top-extensions-production-ready-metrics.md](top-extensions-production-ready-metrics.md).
+1. Address the production-ready metrics criteria to meet previous to moving the extension to the next development phase. The production-ready metrics are located at [top-extensions-production-ready-metrics.md](top-extensions-production-ready-metrics.md).
 
 1. Create configuration files for the extension as specified in [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
 
@@ -30,7 +30,7 @@ For more information about building extensions with TypeScript decorators, watch
 
 <!--TODO:  Determine how much of this section was previously included in portalfx-extensions-publishing.md -->
 
-1. Review the development phases that are located at [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md) to understand how development is related to exit criteria.
+1. Review the development phases that are located at [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md) to understand how development is related to production-ready metrics criteria.
 
 1. Review the environments that are specified in [portalfx-extensions-branches.md](portalfx-extensions-branches.md) to understand the environments in which the developer can test an extension.
 
