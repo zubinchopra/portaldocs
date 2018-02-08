@@ -44,7 +44,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 ## Developing your user interface UI
 
-The next few sections walk through the different types of UI that can be built using the framework. There are [samples](./generated/portalfx-extensions-samples.md) that show how to do many common development tasks. 
+The next few sections walk through the different types of UI that can be built using the framework. There are [samples](./generated/top-extensions-samples.md) that show how to do many common development tasks. 
 
 ### Blades
 

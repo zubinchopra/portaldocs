@@ -10,7 +10,7 @@ Click the F5 key to start debugging the sample extensions. This rebuilds the pro
 
 Sideload the extension. When it loads, click on the `More Services` option in the menu, as in the following example.
 
- ![alt-text](../media/portalfx-extensions-samples/samples-services.png  "Portal Extensions Services")
+ ![alt-text](../media/top-extensions-samples/samples-services.png  "Portal Extensions Services")
 
 In the filter box, search for "Azure Portal SDK". You can use `Shift + Space` to mark it as a favorite site.
 

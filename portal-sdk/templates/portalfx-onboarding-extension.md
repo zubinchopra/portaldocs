@@ -1,4 +1,5 @@
 # Azure Onboarding
+<!-- TODO:  deprecate this document by removing it.  It has been  replaced by portalfx-onboarding-azure.md, whic in turn is being replaced by various portalfx-extensions-* documents  -->
 
 Welcome to the Azure portal! We're excited to have you to join the family. Most services that onboard Azure have to onboard the following 3 components:
 
@@ -18,10 +19,14 @@ issues caused by anti-patterns and inconsistencies that block usability, perform
 
 * For business model review of yhour service:
   Reach out to [Brian Hillger’s team, Stacey Ellingson](mailto:ibiza-bmr@microsoft.com?subject=Azure%20Business%20model%20review))
+  <!-- TODO:  deprecate the previous   section of this document by removing it.  It has been  replaced by portalfx-extensions-forProgramManagers-overview.md and portalfx-extensions-contacts.md  -->
+
 
 ## **Management APIs in ARM/Graph**
-
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-requirements.md  -->
 All services using Azure Billing must be exposed via Azure Resource Manager (ARM), the replacement for RDFE (Red Dog Front End). Other services can use either ARM or Microsoft Graph. Typically, services that integrate deeply with Office 365 use Graph. All others are encouraged to use ARM.
+
+<!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by portalfx-extensions-requirements.md  -->
 
 * For onboarding Azure Resource Manager (ARM):
   Reach out to [Ryan Jones](mailto:ibiza-arm@microsoft.com)
@@ -102,7 +107,7 @@ requirement are implemented at the controls that Framework distributed.  Same f
 extension authentication to ARM, postMessage/RPC layer and UserSettings, etc. are handled by Framework. To minimize
 the duplicate efforts on those items Fx provides some level of "blueprint" documentation you can use as a reference
 for compliance procedures. You are still responsible to go through the tools and submit the results for approval
-before shipping your extension. Contact [Amit Modi](mailto:ibiza-onboading-kick@microsoft.com)
+before shipping your extension. Contact Adam Abdelhamed](mailto:ibiza-onboading-kick@microsoft.com)
 for any questions about Fx coverage.
 
 | Policy | Fx coverage |
@@ -115,14 +120,14 @@ for any questions about Fx coverage.
 ## **Localization**
 
 * For onboarding localization:
-  Reach out to [Lynne Dong](mailto:ibiza-interntnl@microsoft.com)
+  Reach out to [Bruno Lewin](mailto:ibiza-interntnl@microsoft.com)
 
 Nearly 70% of Azure users are from outside of the United States. Therefore, it is important to make Azure a globalized product.
 There are a few requirements under the "Internationalization" criteria that your service is required to support.  This is the same set of languages that are supported by Azure Portal for GA. Learn more about [internationalization requirements](http://aka.ms/azureintlrequirements).
 
 ## **Azure portal onboarding kickoff**
 
-* For onboarding a **first-party extension** i.e. an extension  in Azure Portal, please email with following information to: (Stakeholders: [Leon Welicki, Adam Abdelhamed, Amit Modi](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding))
+* For onboarding a **first-party extension** i.e. an extension  in Azure Portal, please email with following information to: (Stakeholders: [Leon Welicki, Adam Abdelhamed](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding))
     * Is your service targeting public Azure, on-prem, or both?
     * Service name
     * VP, PM, and engineering owners
@@ -164,7 +169,7 @@ Ready to write your first Azure portal extension? Here are a few resources to g
    Join the community in https://stackoverflow.microsoft.com and let us know if you have any questions. (Don't forget to
    tag questions with "ibiza" or related tag.)
 
-7. **[Side-load your extension for local testing](/portal-sdk/generated/index-portalfx-extension-development.md#debugging-testing-in-production)**
+7. **[Side-load your extension for local testing](portalfx-testinprod.md)**
 
    Side-loading allows you to test and debug your extension locally against any environment. This is the preferred method of testing.
 

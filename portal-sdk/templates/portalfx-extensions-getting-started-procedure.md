@@ -10,7 +10,7 @@ The following procedure specifies how to set up a developer computer for Azure e
 
 1. Build a Hello World extension, as specified in [portalfx-extensions-helloWorld.md](portalfx-extensions-helloWorld.md).
 
-1. Samples are part of the downloaded SDK, and the  DOGFOOD (DF) environment displays working copies of the samples. Browse through the samples that are located at [portalfx-extensions-samples.md](portalfx-extensions-samples.md) to explore live examples of APIs.
+1. Samples are part of the downloaded SDK, and the  DOGFOOD (DF) environment displays working copies of the samples. Browse through the samples that are located at [top-extensions-samples.md](top-extensions-samples.md) to explore live examples of APIs.
 
 For more information about key components of an extension, see [portalfx-extensions-key-components.md](portalfx-extensions-key-components.md).
 

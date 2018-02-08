@@ -78,7 +78,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * Open Context pane from your Hello World Extension 
 -->
 <!--TODO: Determine where the following documents would fit within this section
-* [Samples Extension](portalfx-extensions-samples.md)
+* [Samples Extension](top-extensions-samples.md)
 -->
 
 
