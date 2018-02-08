@@ -1,50 +1,77 @@
+
+<!-- TODO:  deprecate this document by removing it.  It has been  replaced by portalfx-extensions-forDevelopers.md, portalfx-extensions-forProgramManagers.md, and other  portalfx-extensions-* documents  -->
+
+
 <a name="azure-onboarding"></a>
 # Azure Onboarding
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-forProgramManagers-intro.md  -->
 
 Welcome to the Azure portal! We're excited to have you to join the family. Most services that onboard Azure have to onboard the following 3 components:
 
 * Marketing content on [azure.com](https://azure.microsoft.com) or other website
 * Management APIs exposed via Azure Resource Manager (ARM) or Microsoft Graph
 * Management UI in the Azure portal and/or other tools/websites, like Visual Studio
-
+<!-- TODO:  deprecate the preceding section of this document by removing it.  It has been  replaced by portalfx-extensions-forProgramManagers-intro.md  -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts.md  -->
 > :star: **Tip:** Our team i.e. Azure Portal UI (Ibiza, Portal Framework) can only help you with onboarding Management UI in the Azure portal. We have put together next section of documentation to help you identify the right people for pre-requisite steps to onboarding Management UI. If you identify that the list is not be upto date then please send a pull request to help next set of extension developers by upadting the documentation.
+
+<!-- TODO:  deprecate the previous section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts.md  -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-forProgramManagers-overview.md  -->
 
 The Azure onboarding process is streamlined to optimize the delivery of high quality experiences based on hundreds of
 hours of usability testing that meet Microsoft Common Engineering Criteria (CEC) and compliance requirements. **Do not
 start designing UI or management APIs until after you've started the onboarding process** to ensure you're following the
 latest patterns and practices. This will better optimize your time and avoid throw-away work by avoiding usability
 issues caused by anti-patterns and inconsistencies that block usability, performance, etc.
+<!-- TODO:  deprecate the previous section of this document by removing it.  It has been  replaced by portalfx-extensions-forProgramManagers-overview.md  -->
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts.md  -->
 
 <a name="azure-onboarding-business-model-review"></a>
 ## <strong>Business model review</strong>
 
 * For business model review of yhour service:
   Reach out to [Brian Hillger’s team, Stacey Ellingson](mailto:ibiza-bmr@microsoft.com?subject=Azure%20Business%20model%20review))
+<!-- TODO:  deprecate the previous section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts.md  -->
 
 <a name="azure-onboarding-management-apis-in-arm-graph"></a>
 ## <strong>Management APIs in ARM/Graph</strong>
 
-All services using Azure Billing must be exposed via Azure Resource Manager (ARM), the replacement for RDFE (Red Dog Front End). Other services can use either ARM or Microsoft Graph. Typically, services that integrate deeply with Office 365 use Graph. All others are encouraged to use ARM.
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-requirements.md  -->
 
+All services using Azure Billing must be exposed via Azure Resource Manager (ARM), the replacement for RDFE (Red Dog Front End). Other services can use either ARM or Microsoft Graph. Typically, services that integrate deeply with Office 365 use Graph. All others are encouraged to use ARM.
+<!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by portalfx-extensions-requirements.md  -->
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts.md  -->
 * For onboarding Azure Resource Manager (ARM):
   Reach out to [Ryan Jones](mailto:ibiza-arm@microsoft.com)
 
 * External teams should [email the ARM team](mailto:aux-arm-leads@microsoft.com?subject=[Onboarding%20Request]%20to%20register%20&lt;RP%20Name&gt;)
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts.md  -->
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-faq-forDevelopers.md  -->
 
 *Internal Only Resources*
 
 * [Onboarding FAQ](http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx)
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-faq-forDevelopers.md  -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-key-components-browse.md  -->
 
 * [ARM wiki](http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Wiki.aspx)
+<!-- TODO:  deprecate the previous section of this document by removing it.  It has been  replaced by portalfx-extensions-key-components-browse.md  -->
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by top-extensions-developmentPhases.md -->
 
 <a name="azure-onboarding-css-support"></a>
 ## <strong>CSS (Support)</strong>
 
 Start CSS [onboarding](http://spot/intake) at least 3 months before you plan to public preview your service to your customers so that they can use Azure support.
-
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by top-extensions-developmentPhases.md -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts.md  -->
 * For onboarding CSS (Support):
   Reach out to [Wes Penner, CEGRM](mailto:ibiza-css@microsoft.com?subject=CSS%20intake%20questions)
-
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts.md  -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  removed from the document or replaced by portalfx-extensions-contacts.md  -->
 <a name="azure-onboarding-azure-com"></a>
 ## <strong>Azure.com</strong>
 
@@ -56,13 +83,16 @@ are  will require the stakeholders to sign off.
 
 By aligning the category under which your new services is listed in  azure.com Products menu, portal Services menu, and the
 Azure Marketplace you can easily drive more traffic on your service. 
-
+<!-- TODO:  deprecate the previous section of this document by removing it.  It has been  removed from the document or replaced by portalfx-extensions-contacts.md  -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts.md  -->
 * Check out [azure.com](https://azure.microsoft.com)
 
 * For onboarding Azure.com:
   Reach out to [Elena Salaks, Guy Burstein](mailto:ibiza-azure@microsoft.com?subject=Azure.com%20questions)
 
 * For more information about azure.com onboarding, check [ACOM Docs](http://acomdocs.azurewebsites.net)
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts.md  -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-overview.md -->
 
 
 <a name="azure-onboarding-azure-fundamentals"></a>
@@ -70,6 +100,8 @@ Azure Marketplace you can easily drive more traffic on your service.
 
 The Azure Fundamentals are a set of Tenets each Azure service is expected to adhere to. The Azure Fundamentals program
 is described in this document [Azure Fundamentals](https://microsoft.sharepoint.com/teams/WAG/EngSys/Shared%20Documents/Argon/Azure%20Fundamentals%20Proposal/Azure%20Fundamentals%20Proposal.docx?d=wf5b821bc31c44042adb55ebf4d8b408d). The document also identifies the Stakeholders and contacts for each of the Tenets.
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-overview.md -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-forDevelopers-procedures.md -->
 
 Execute the following process so the specific work required for the tenets appears in Service360:
     
@@ -80,14 +112,20 @@ Execute the following process so the specific work required for the tenets appea
     3. Complete metadata in ServiceTree to enable the automation for various Service360 Action Items
     
     4. Complete the Action Items identified in Service360 (http://aka.ms/s360)
-
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-forDevelopers-procedures.md -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts.md  -->
 <a name="azure-onboarding-azure-compliance"></a>
 ## <strong>Azure Compliance</strong>
 
 * For onboarding Azure.com:
   Reach out to [Azure Compliance team](mailto:ibiza-azure@microsoft.com?subject=Azure.com%20questions)
 
-Compliance criteria and practices are defined in [Quality Essentials](https://microsoft.sharepoint.com/teams/QualityEssentials/SitePages/GettingStarted.aspx) throughout our development cycle. These ensure services meet the Trusted Cloud commitments outlined in the [Microsoft Azure Trust Center](http://azure.microsoft.com/en-us/support/trust-center/)    for our customers. There are mandatory procedures as Preview and GA requirement, and to be revisited for every release cycle. QE provides the UI access to manage the release policies and procedures for each compliance. The tool can be installed from [QE](http://qe).
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts.md  -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensionsoverview.md -->
+Compliance criteria and practices are defined in [Quality Essentials](https://microsoft.sharepoint.com/teams/QualityEssentials/SitePages/GettingStarted.aspx) throughout our development cycle. These ensure services meet the Trusted Cloud commitments outlined in the [Microsoft Azure Trust Center](http://azure.microsoft.com/en-us/support/trust-center/)    for our customers. There are mandatory procedures as Preview and GA requirement, and to be revisited for every release cycle. 
+<!-- TODO:  deprecate the previous section of this document by removing it.  It has been  replaced by portalfx-extensions-overview.md -->
+<!-- TODO:  deprecate the following section of this document by removing it.  It has been  replaced by portalfx-extensions-qualityEssentials.md -->
+QE provides the UI access to manage the release policies and procedures for each compliance. The tool can be installed from [QE](http://qe).
 
 QE tracks the following:
     - Accessibility
@@ -109,7 +147,8 @@ requirement are implemented at the controls that Framework distributed.  Same f
 extension authentication to ARM, postMessage/RPC layer and UserSettings, etc. are handled by Framework. To minimize
 the duplicate efforts on those items Fx provides some level of "blueprint" documentation you can use as a reference
 for compliance procedures. You are still responsible to go through the tools and submit the results for approval
-before shipping your extension. Contact [Amit Modi](mailto:ibiza-onboading-kick@microsoft.com)
+before shipping your extension. 
+Contact [Adam Abdelhamed](mailto:ibiza-onboading-kick@microsoft.com)
 for any questions about Fx coverage.
 
 | Policy | Fx coverage |
@@ -119,30 +158,43 @@ for any questions about Fx coverage.
 | Privacy | User settings data handling, encryption, and authentication |
 | SDL | Threat modeling |
 
+<!-- TODO:  deprecate the previous section of this document by removing it.  It has been  replaced by portalfx-extensions-qualityEssentials.md -->
+
 <a name="azure-onboarding-localization"></a>
 ## <strong>Localization</strong>
-
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts.md  -->
 * For onboarding localization:
-  Reach out to [Lynne Dong](mailto:ibiza-interntnl@microsoft.com)
-
+  Reach out to [Bruno Lewin](mailto:ibiza-interntnl@microsoft.com)
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts.md  -->
+<!-- TODO:  deprecate the following section of this document by removing it.  It has been  replaced by portalfx-extensions-overview.md -->
 Nearly 70% of Azure users are from outside of the United States. Therefore, it is important to make Azure a globalized product.
 There are a few requirements under the "Internationalization" criteria that your service is required to support.  This is the same set of languages that are supported by Azure Portal for GA. Learn more about [internationalization requirements](http://aka.ms/azureintlrequirements).
-
+<!-- TODO:  deprecate the previous section of this document by removing it.  It has been  replaced by portalfx-extensions-overview.md -->
 <a name="azure-onboarding-azure-portal-onboarding-kickoff"></a>
 ## <strong>Azure portal onboarding kickoff</strong>
-
-* For onboarding a **first-party extension** i.e. an extension  in Azure Portal, please email with following information to: (Stakeholders: [Leon Welicki, Adam Abdelhamed, Amit Modi](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding))
+<!-- TODO:  deprecate the following section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts.md  -->
+* For onboarding a **first-party extension** i.e. an extension  in Azure Portal, please email with following information to: (Stakeholders: [Leon Welicki, Adam Abdelhamed](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding))
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts.md  -->
+<!-- TODO:  deprecate the following   section of this document by removing it.  It has been  replaced by 
+portalfx-extensions-forProgramManagers-managingDevelopment.md -->
     * Is your service targeting public Azure, on-prem, or both?
     * Service name
     * VP, PM, and engineering owners
     * Timelines (preview, GA)
     * Summary of the service and target scenarios
-
+  <!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by 
+portalfx-extensions-forProgramManagers-managingDevelopment.md -->
+<!-- TODO:  deprecate the following section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts.md  -->
 * For onboarding a **third-party extension** i.e. you are an external partner, please email with following information to: (Stakeholders: [Leon Welicki, Adam Abdelhamed](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding))
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts.md  -->
+<!-- TODO:  deprecate the following section of this document by removing it.  It has been  replaced by portalfx-extensions-contacts.md  -->
     * Is your service targeting public Azure, on-prem, or both?
     * Service name
     * Summary of the service and target scenarios
-
+  <!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by 
+portalfx-extensions-forProgramManagers-managingDevelopment.md -->
+  <!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by 
+portalfx-extensions-developerInit-procedure.md -->
 <a name="azure-onboarding-build-your-extension-for-azure-portal"></a>
 ## <strong>Build your extension for Azure Portal</strong>
 
@@ -152,33 +204,44 @@ There are a few requirements under the "Internationalization" criteria that your
 ## Portal extension
 
 Ready to write your first Azure portal extension? Here are a few resources to get you started:
- 
-1. **[Download the SDK](http://aka.ms/portalfx/download)**
+  <!-- TODO:  deprecate the preceding section of this document by removing it.  It has been  replaced by 
+portalfx-extensions-developerInit-procedure.md -->
+<!-- TODO:  deprecate the following section of this document by removing it.  It has been  replaced by  portalfx-extensions-forDevelopers-procedures.md  -->
 
+1. **[Download the SDK](http://aka.ms/portalfx/download)**
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by  portalfx-extensions-forDevelopers-procedures.md  -->
+<!-- TODO:   deprecate the following section of this document by removing it.  The docs do not need to refer to the doc set. -->
 1. **[Read the docs](http://aka.ms/portalfx/documents)**
 
    Our doc site provides the technical details while you are building your extension. The
    [Getting Started](/portal-sdk/generated/index-portalfx-extension-development.md#getting-started)
    section will guide you through how it works, build the extension, as well as the debugging tips during your code development.
-
+   <!-- TODO:   deprecate the following section of this document by removing it.  The docs do not need to refer to the doc set. -->
+  <!-- TODO:  deprecate the following   section of this document by removing it.  It has been  replaced by  portalfx-extensions-developerInit-overview.md  -->
 3. **[View the samples](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKBlade)**
 
    The Fx team runs a battery of tests using samples that are available as part of the downloaded SDK as well as available from the DOGFOOD (DF) environment. Browse through the samples to explore live examples of APIs.
-
+       <!-- TODO:  deprecate the previous   section of this document by removing it.  It has been  replaced by  portalfx-extensions-developerInit-overview.md  -->
+<!-- TODO:  deprecate the following section of this document by removing it.  It has been  replaced by  portalfx-extensions-forDevelopers-procedures.md  -->
 4. **<a href="mailto:ibiza-onboading-kickoff?subject=Extension feasibility review">Setup a UX feasibility review</a>**
 
    Before starting to build your extension, please setup time to review your design and ensure your desired outcome is
    feasible.
 
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by  portalfx-extensions-forDevelopers-procedures.md  -->
+<!-- TODO:  deprecate the following section of this document by removing it.  It has been  replaced by portalfx-extensions-stackoverflow.md  -->
 1. **[Ask questions on //stackoverflow](https://stackoverflow.microsoft.com)**
 
    Join the community in https://stackoverflow.microsoft.com and let us know if you have any questions. (Don't forget to
    tag questions with "ibiza" or related tag.)
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-stackoverflow.md  -->
+<!-- TODO:  deprecate the following section of this document by removing it.  It has been  replaced by portalfx-extensions-testing-in-production.md -->
 
 7. **[Side-load your extension for local testing](/portal-sdk/generated/index-portalfx-extension-development.md#debugging-testing-in-production)**
 
    Side-loading allows you to test and debug your extension locally against any environment. This is the preferred method of testing.
-
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-testing-in-production.md  -->
+<!-- TODO:  deprecate the following section of this document by removing it.  It has been  replaced by portalfx-onboarding, which is also being deprecated.  -->
 9. **Marketplace integration**
 
    At a high level, each icon you see in the Azure Portal Marketplace is referred to as a Gallery item. Gallery items
@@ -251,7 +314,8 @@ Ready to write your first Azure portal extension? Here are a few resources to g
 
      See also:
      - [RP schema documentation](http://aka.ms/rpschema)
-
+     <!-- TODO:  deprecate the previous section of this document by removing it.  It has been  replaced by portalfx-onboarding, which is also being deprecated.  -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-forDevelopers-procedures.md  -->
 0. **Register your extension**
 
    Once your service name is finalized, request to have your extension registered in all environments. Once deployed to
@@ -263,6 +327,9 @@ Ready to write your first Azure portal extension? Here are a few resources to g
    follows:
 
    `<Extension Name="Company_BrandOrSuite_ProductOrComponent" Preview="true">`
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-forDevelopers-procedures.md  -->
+	
+<!--  TODO:  Deprecate the following  section of this document by removing it and replacing it with a link to portalfx-extensions-cnames.md  -->
 
    Extension URLs must use a standard CNAME pattern. Create CNAMEs using
    [Microsoft's DNS](http://msinterface/form.aspx?ID=4260) (use any Azure property as the identity).
@@ -275,12 +342,15 @@ Ready to write your first Azure portal extension? Here are a few resources to g
    | **FAIRFAX**     | `main.{extension}.ext.azure.us` |
    | **MOONCAKE**    | `main.{extension}.ext.azure.cn` |
 
+<!--  TODO:  Deprecate the previous  section of this document by removing it and replacing it with a link to portalfx-extensions-cnames.md  -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-faq-forDevelopers.md  -->
    Use a wildcard SSL cert for each environment to simplify maintenance (e.g. `*.{extension}.onecloud-ext.azure-test.net`
    or `*.{extension}.ext.azure.com`). If your team is building separate, independent extensions, you can also use
    `{extension}.{team}.ext.azure.com` and create a wildcard SSL cert for `*.{team}.ext.azure.com` to simplify overall
    management. Internal teams can create SSL certs for DF using [http://ssladmin](http://ssladmin). Production certs
    must follow your organizations PROD cert process -- **do not use SSL Admin for production certs**.
-
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-faq-forDevelopers.md  -->
+<!-- TODO:  deprecate the following section of this document by removing it.  It has been  replaced by portalfx-extensions-forDevelopers-procedures.md  -->
    **NOTE** : Registering an extension in Portal requires deployment so it can take almost 10 days. Please plan accordingly.
 
    [Request to register your extension (internal only)](https://aka.ms/portalfx/newextension) and email the work item id
@@ -291,5 +361,8 @@ Ready to write your first Azure portal extension? Here are a few resources to g
 1. **[Exit criteria + quality metrics](portalfx-onboarding-exitcriteria.md)**
 
    Every extension must meet required exit criteria / quality metrics before it will be enabled.
-
+   portalfx-extensions-exitCriteria.md
+   <!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-forDevelopers-procedures.md  -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-stackoverflow.md  -->
 For any other questions, don’t hesitate to ask us on [https://stackoverflow.microsoft.com](https://stackoverflow.microsoft.com).
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-stackoverflow.md  -->

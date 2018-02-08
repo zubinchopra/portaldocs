@@ -1,14 +1,16 @@
    
+<a name="development-phases"></a>
 ## Development Phases
 
 Typically, there are three typical types of releases for an extension: private preview, public preview, and Global Availability(GA).  For the purposes of deployment, public preview and GA are the same, except that the UI may show preview labels and disclaimers where appropriate.
 
+<a name="development-phases-private-preview"></a>
 ### Private Preview
 
 The extension is in private preview stage when it has been registered into the Azure Portal configuration. 
 The goal is to hide the extension from the general public, but show it to a limited audience. After registration the new extension can be discovered on the browse page, also known as the `All services` menu, as in the following image.
 
-![alt-text](../media/portalfx-extensions-developmentPhases/browseMenu.png "Browse Menu")
+![alt-text](../media/top-extensions-developmentPhases/browseMenu.png "Browse Menu")
 
 It is still in hidden/ disabled state, and the preview tag in the the `extension.pdl` file is set to `Preview="true"`.  In this state the extension is not visible to all the customers of Azure Portal; instead, the developer and their team have acquired a small team of reviewers with which to collaborate on the development and testing of the extension. 
 
@@ -22,6 +24,7 @@ When all requirements are met, CSS will release the extension from private previ
 
 This process is separate from onboarding to Azure.
 
+<a name="development-phases-public-preview"></a>
 ### Public Preview
 
 The public preview state assumes that the extension met the exit criteria for the private preview phase, and that the private preview phase validated the business model of the service. This includes new user experiences, or entry points, within an existing extension.
@@ -38,6 +41,7 @@ The icon to the right of the extension indicates whether the extension is in the
 
 * **NOTE**: Any user that receives this URL will be able to see the new extension. Any users who receives a deep link to blades within the extension will be able to see the new experience.
 
+<a name="development-phases-global-availability"></a>
 ### Global Availability
 
 The global availability state assumes that the extension met the exit criteria for the public preview phase, and that the public  preview phase validated the business model of the service.

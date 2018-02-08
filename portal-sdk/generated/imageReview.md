@@ -484,10 +484,10 @@ Update the following image for fictitious names.
 
 ![alt-text](../media/portalfx-extensions-branches/extensionEnvironments.png "portalfx-extensions-branches/extensionEnvironments.png ")
 
-<a name="all-images-in-the-media-library-portalfx-extensions-developmentphases"></a>
-## portalfx-extensions-developmentPhases
+<a name="all-images-in-the-media-library-top-extensions-developmentphases"></a>
+## top-extensions-developmentPhases
 
-![alt-text](../media/portalfx-extensions-developmentPhases/browseMenu.png "portalfx-extensions-developmentPhases/browseMenu.png ")
+![alt-text](../media/top-extensions-developmentPhases/browseMenu.png "top-extensions-developmentPhases/browseMenu.png ")
 
 <a name="all-images-in-the-media-library-portalfx-extensions-helloworld"></a>
 ## portalfx-extensions-helloWorld

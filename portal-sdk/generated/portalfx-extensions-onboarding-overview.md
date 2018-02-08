@@ -51,7 +51,7 @@ Onboarding to Azure all up is a big task that spans many teams. The doc you are 
 
 1. Security and privacy reviews
 
-1. Start the CSS onboarding process with the CSS team at least three months previous to public preview. This process may coincide with the following step. For more information about development phases, see [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md).
+1. Start the CSS onboarding process with the CSS team at least three months previous to public preview. This process may coincide with the following step. For more information about development phases, see [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
 
 1. Schedule a UX feasibility review with the Ibiza team UX contact by emailing [mailto:ibiza-onboarding@microsoft.com?subject=Extension%20Feasibility%20Review](mailto:ibiza-onboarding@microsoft.com?subject=Extension%20Feasibility%20Review).  Many extensions have been made more successful by setting up early design reviews with the Azure Portal team. Taking the time to review the design gives extension owners an opportunity to understand how they can leverage Azure Portal design patterns, and ensure that the desired outcome is feasible. 
 
@@ -133,7 +133,7 @@ Once the name of your extension is finalized, it's time to register your extensi
 <a name="phase-3-deployment-release-kind"></a>
 ## Release kind
 
-There are three typical release kinds. Private preview, public preview, and GA. For the purposes of deployment public preview and GA are the same. The only difference is that your UI may show preview labels and disclaimers where appropriate. For more information about the three kinds of releases, see  [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md).
+There are three typical release kinds. Private preview, public preview, and GA. For the purposes of deployment public preview and GA are the same. The only difference is that your UI may show preview labels and disclaimers where appropriate. For more information about the three kinds of releases, see  [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
 
 <a name="phase-3-deployment-deployment-procedure-portalfx-extensions-onboarding3-deployment-procedure-md"></a>
 ## <a href="portalfx-extensions-onboarding3-deployment-procedure.md">Deployment procedure</a>

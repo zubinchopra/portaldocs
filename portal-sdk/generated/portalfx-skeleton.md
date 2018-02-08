@@ -3,7 +3,7 @@
 <!-- topic name is a level 1 header at the beginning of the doc-->
 
 This document contains the skeleton for authoring Azure documents that are stored in gitHub. The skeleton will be used by gitHub to generate the document for the entire topic.  This information is contained in this document as gitHub commands so that an author can fill them in when the subtopics are written, and then generate the topic document.
-This is the only document wtihin the topic that contains an H1-level header.
+This is the only document within the topic that contains an H1-level header.
 
 1. Documents are organized by  major areas.  Some major areas are as follows:
 
@@ -27,7 +27,7 @@ This is the only document wtihin the topic that contains an H1-level header.
    * portalfx-extensions-branches.md
    * portalfx-extensions-cnames.md
    * portalfx-extensions-contacts.md
-   * portalfx-extensions-developmentPhases.md
+   * top-extensions-developmentPhases.md
    * top-exit-criteria.md
    * portalfx-extensions-publishing.md
    * portalfx-extensions-qualityEssentials.md

@@ -203,7 +203,7 @@ All new extensions should always be added to the Portal configuration in disable
 <a name="portal-extensions-configuration-configuration-scenarios-managing-the-configuration-of-the-extension"></a>
 ### Managing the configuration of the extension
 
-All extensions are registered into the Portal in the disabled state, therefore they are disabled by default.  This hides the extension from users, and it will not be displayed in the Portal. The extension remains in hidden mode until it is ready for public preview or GA. Partners use this capability to test the extension, or to host it for private preview. For more information about previews and Global Availability, see [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md).
+All extensions are registered into the Portal in the disabled state, therefore they are disabled by default.  This hides the extension from users, and it will not be displayed in the Portal. The extension remains in hidden mode until it is ready for public preview or GA. Partners use this capability to test the extension, or to host it for private preview. For more information about previews and Global Availability, see [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
 
 To temporarily enable a disabled extension in private preview for this test session only, change the configuration by adding an extension override in the Portal URL, as in the following example.
 
