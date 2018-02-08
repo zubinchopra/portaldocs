@@ -18,7 +18,7 @@ If the following table is not current, please send a pull request to update the 
 | CSS Support                                   | | Wes Penner; CEGRM                          | [ibiza-css@microsoft.com](mailto:ibiza-css@microsoft.com)  |
 | External Partner Contact         |              |                                            | [ibizafxpm@microsoft.com](mailto:ibizafxpm@microsoft.com)  |
 | Fx Coverage 	                                | Adam Abdelhamed;  Santhosh Somayajula      |  | [ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com)  |
-| Localization                                  | | Bruno Lewin                                | [ibiza-interntnl@microsoft.com](mailto:ibiza-interntnl@microsoft.com)  |
+| Localization                                  | Paymon Parsadmehr | Bruno Lewin            | [ibiza-interntnl@microsoft.com](mailto:ibiza-interntnl@microsoft.com)  |
 | Onboarding kickoff                            | Leon Welicki; Adam Abdelhamed; Santhosh Somayajula  | | [ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com) |
 | Third Party Applications (External partners)  | Leon Welicki; Adam Abdelhamed; Santhosh Somayajula | | [ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com) |
 | Performance                                   | Sean Watson  |                               | [ibiza-perf@microsoft.com](mailto:ibiza-perf@microsoft.com) |
@@ -26,6 +26,6 @@ If the following table is not current, please send a pull request to update the 
 | Registration for internal extensions    |      |                                            | [ibizafxpm@microsoft.com](mailto:ibizafxpm@microsoft.com) | 
 | Quality Essentials               |             |                                            | [Get1CS@microsoft.com​](mailto:Get1CS@microsoft.com) |
 | Reliability                                   | Sean Watson                       |          | [ibiza-reliability@microsoft.com](mailto:ibiza-reliability@microsoft.com) |
-| Resource Move                                 | Edison Park                |                | [ibiza-resourceMove@microsoft.com](mailto:ibiza-resourceMove@microsoft.com) |
+| Resource Move                                 | Balbir Singh                |                | [ibiza-resourceMove@microsoft.com](mailto:ibiza-resourceMove@microsoft.com) |
 | Usability	  |                                   | Joe Hallock; Mariah Jackson                | [ibiza-usability@microsoft.com](mailto:ibiza-usability@microsoft.com) |
 | UX feasibility review                         | Santhosh Somayajula          |               | [ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com) | 

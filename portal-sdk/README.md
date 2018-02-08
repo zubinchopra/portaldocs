@@ -16,7 +16,7 @@ Kickoff the onboarding experience by sending mail to <a href="mailto:ibiza-onboa
 ## Azure portal architecture
 
 Learn how the framework is structured and how it is designed to run in multiple clouds / environments.
-* [Architecture overview](http://top-level/architecture.md)
+* [Architecture overview](./generated/top-extensions-architecture.md)
 
 ## What's new
 
