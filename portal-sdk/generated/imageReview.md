@@ -547,16 +547,16 @@ The following image has already been validated as using   fictitious names.
 
 ![alt-text](../media/portalfx-extensions-publishing/pull-request.png "portalfx-extensions-publishing/pull-request.png ")
 
-<a name="all-images-in-the-media-library-portalfx-extensions-samples"></a>
-## portalfx-extensions-samples
+<a name="all-images-in-the-media-library-top-extensions-samples"></a>
+## top-extensions-samples
 
-![alt-text](../media/portalfx-extensions-samples/samples.png "portalfx-extensions-samples/samples.png")
-
-
-![alt-text](../media/portalfx-extensions-samples/samples-services.png "portalfx-extensions-samples/samples-services.png ")
+![alt-text](../media/top-extensions-samples/samples.png "top-extensions-samples/samples.png")
 
 
-![alt-text](../media/portalfx-extensions-samples/v1-and-v2.png "portalfx-extensions-samples/v1-and-v2.png")
+![alt-text](../media/top-extensions-samples/samples-services.png "top-extensions-samples/samples-services.png ")
+
+
+![alt-text](../media/top-extensions-samples/v1-and-v2.png "top-extensions-samples/v1-and-v2.png")
 
 <a name="all-images-in-the-media-library-portalfx-forms"></a>
 ## portalfx-forms

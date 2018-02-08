@@ -14,7 +14,7 @@ First-party extension developers, i.e. Microsoft employees, have access to the D
 
 The samples extension provides an individual sample for each feature available in the framework, as described in the following image.
 
- ![alt-text](../media/portalfx-extensions-samples/samples.png  "Samples Extension Solution")
+ ![alt-text](../media/top-extensions-samples/samples.png  "Samples Extension Solution")
 
 After installing the Portal Framework SDK, the local instance of the Portal will open with the samples extension pre-registered.  You can open the `SamplesExtension` solution file to experiment with samples in the IDE.
 
@@ -40,7 +40,7 @@ The alternative is to let the list default to the contents of the SamplesExtensi
 
 The samples are structured into two directories, **V1** and **V2**, as in the following example. 
 
- ![alt-text](../media/portalfx-extensions-samples/v1-and-v2.png  "V1 and V2 Directories")
+ ![alt-text](../media/top-extensions-samples/v1-and-v2.png  "V1 and V2 Directories")
 
 <!--TODO: Can "meant" be changed to "will"  or "intended" ? -->
 
@@ -199,7 +199,7 @@ Click the F5 key to start debugging the sample extensions. This rebuilds the pro
 
 Sideload the extension. When it loads, click on the `More Services` option in the menu, as in the following example.
 
- ![alt-text](../media/portalfx-extensions-samples/samples-services.png  "Portal Extensions Services")
+ ![alt-text](../media/top-extensions-samples/samples-services.png  "Portal Extensions Services")
 
 In the filter box, search for "Azure Portal SDK". You can use `Shift + Space` to mark it as a favorite site.
 
