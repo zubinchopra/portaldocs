@@ -465,9 +465,9 @@ Update the following image for fictitious names.
 
 ![alt-text](../media/portalfx-extensions-branches/extensionEnvironments.png "portalfx-extensions-branches/extensionEnvironments.png ")
 
-## portalfx-extensions-developmentPhases
+## top-extensions-developmentPhases
 
-![alt-text](../media/portalfx-extensions-developmentPhases/browseMenu.png "portalfx-extensions-developmentPhases/browseMenu.png ")
+![alt-text](../media/top-extensions-developmentPhases/browseMenu.png "top-extensions-developmentPhases/browseMenu.png ")
 
 ## portalfx-extensions-helloWorld
 

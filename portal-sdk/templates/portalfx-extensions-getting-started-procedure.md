@@ -30,7 +30,7 @@ For more information about building extensions with TypeScript decorators, watch
 
 <!--TODO:  Determine how much of this section was previously included in portalfx-extensions-publishing.md -->
 
-1. Review the development phases that are located at [portalfx-extensions-developmentPhases.md](portalfx-extensions-developmentPhases.md) to understand how development is related to exit criteria.
+1. Review the development phases that are located at [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md) to understand how development is related to exit criteria.
 
 1. Review the environments that are specified in [portalfx-extensions-branches.md](portalfx-extensions-branches.md) to understand the environments in which the developer can test an extension.
 
