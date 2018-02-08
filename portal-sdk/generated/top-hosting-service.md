@@ -826,7 +826,6 @@ The versions available in the hosting service are located at the following URLs.
 | PROD        | https://hosting.portal.azure.net/api/diagnostics        |
 
 
-   
 <a name="stackoverflow-forums"></a>
 ## Stackoverflow Forums
 
