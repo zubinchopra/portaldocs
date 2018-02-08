@@ -1,4 +1,12 @@
-# Release Notes since 10/7/2017
+# Release Notes since 10/8/2017
+
+## 5.0.302.984
+0 Breaking Changes, 0 Features added and 0 Bugs Fixed
+<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
+
+## 5.0.302.982
+0 Breaking Changes, 1 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1905330'>1905330</a></td><td>Feature</td><td>Prod portal config change to make Billing extension prod (Global) to use hosting service url </td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1630338'>1630338</a></td><td>Bug Fix</td><td>[Grid1] expander doesn't work when portal language is set to Italian</td></tr></table>
 
 ## 5.0.302.981
 0 Breaking Changes, 0 Features added and 1 Bugs Fixed
