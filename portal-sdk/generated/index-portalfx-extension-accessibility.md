@@ -1,14 +1,12 @@
-* [Accessibility](#accessibility)
+<!-- TODO:  deprecate this document by removing it.  It has been  replaced by portalfx-accessibility.md -->
 
+The page you requested has moved to [./portalfx-accessibility.mdd](./portalfx-accessibility.md). 
+
+<!--Original content 
+ gitdown": "contents", "maxLevel": 2}
 
 <a name="accessibility"></a>
 # Accessibility
-* [Accessibility](portalfx-accessibility.md#accessibility)
-    * [What the framework provides](portalfx-accessibility.md#what-the-framework-provides)
-    * [Troubleshooting issues:](portalfx-accessibility.md#troubleshooting-issues)
-    * [Testing for accessibility](portalfx-accessibility.md#testing-for-accessibility)
-    * [Basic accessibility checklist:](portalfx-accessibility.md#basic-accessibility-checklist)
-    * [Best Practices](portalfx-accessibility.md#best-practices)
-    * [References](portalfx-accessibility.md#references)
-
+gitdown": "include-headings", "file": "../templates/portalfx-accessibility.md"}
+-->
 

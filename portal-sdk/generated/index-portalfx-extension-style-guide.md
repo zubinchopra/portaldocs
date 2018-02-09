@@ -1,25 +1,21 @@
-* [Style Guide](#style-guide)
+<!-- TODO:  deprecate this document by removing it.  It has been  replaced by top-extensions-style.md   -->
 
+The page you requested has moved to [./top-extensions-style.md](./top-extensions-style.md). 
+
+<!--Original content 
+  gitdown": "contents", "maxLevel": 2}
 
 <a name="style-guide"></a>
 # Style Guide
 
-The portal includes a built in list of CSS classes that may be used inside of your templates.
+The Portal includes a built-in list of CSS classes that may be used inside of your templates.
 
-Browse the following topics to learn about portal styling:
+Browse the following topics to learn about Portal styling:
 
-* [Style Guide: Custom CSS Files](portalfx-style-guide-custom-css-file.md#style-guide-custom-css-files)
-
-* [Style Guide: Style Sanitization](portalfx-style-guide-style-sanitization.md#style-guide-style-sanitization)
-
-* [Style Guide: Themed Color Classes](portalfx-style-guide-themed-color-classes.md#style-guide-themed-color-classes)
-
-* [Style Guide: Utility Classes](portalfx-style-guide-utility-classes.md#style-guide-utility-classes)
-
-* [Style Guide: Color Palette](portalfx-style-guide-color-palette.md#style-guide-color-palette)
-* [<a name="statuscolortext"></a>Coloring to convey status](portalfx-style-guide-color-palette.md#a-name-statuscolortext-a-coloring-to-convey-status)
-* [<a name="bgcolortext"></a>Coloring to differentiate data](portalfx-style-guide-color-palette.md#a-name-bgcolortext-a-coloring-to-differentiate-data)
-* [<a name="svgcolortext"></a>Coloring SVG](portalfx-style-guide-color-palette.md#a-name-svgcolortext-a-coloring-svg)
-
-
+  gitdown": "include-headings", "file": "../templates/portalfx-style-guide-custom-css-file.md"}
+  gitdown": "include-headings", "file": "../templates/portalfx-style-guide-style-sanitization.md"}
+  gitdown": "include-headings", "file": "../templates/portalfx-style-guide-themed-color-classes.md"}
+  gitdown": "include-headings", "file": "../templates/portalfx-style-guide-utility-classes.md"}
+  gitdown": "include-headings", "file": "../templates/portalfx-style-guide-color-palette.md"}
+-->
 

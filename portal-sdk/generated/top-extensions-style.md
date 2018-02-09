@@ -776,8 +776,6 @@ To use the palette within SVG content, use the same class names as the one for [
 
 
 
-
-
 <a name="styling-an-extension-glossary"></a>
 ## Glossary
 
