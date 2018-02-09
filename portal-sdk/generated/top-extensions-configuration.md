@@ -6,11 +6,11 @@
 <a name="portal-extensions-configuration-introduction"></a>
 ## Introduction
 
-It is important to read this guide carefully, as we rely on you to manage the extension registration / configuration management process  in the Portal repository. External partners should also read this guide to understand the capabilities that Portal can provide for  extensions by using configuration. However, external partner requests should be submitted by sending an email to ```ibizafxpm@microsoft.com ``` instead of using the internal sites that are in this document. 
+It is important to read this guide carefully, as we rely on you to manage the extension registration / configuration management process  in the Portal repository. External partners should also read this guide to understand the capabilities that Portal can provide for  extensions by using configuration. However, external partner requests should be submitted by sending an email to <a href="mailto:ibizafxpm@microsoft.com?subject=<Onboarding Request ID> Add <extensionName> extension to the Portal&body=Extension name: <Company>_<BrandOrSuite>_<ProductOrComponent> <br><br> URLs: <br><br> PROD:  main.<extensionName>.ext.contoso.com <br><br> Contact info: <br><br> Business Contacts:<br><br> Dev leads: <br><br> PROD on-call email: <br><br>">ibizafxpm@microsoft.com</a> instead of using the internal sites that are in this document. 
 
 The subject of the email should contain the following.
 
-``` <Onboarding Request ID> Add <extensionName> extension to the Portal  ```
+**\<Onboarding Request ID> Add <extensionName> extension to the Portal**
 
 where 
 
@@ -34,8 +34,10 @@ The email may also contain the extension config file, as specified in [portalfx-
 
 
 
+<a name="portal-extensions-configuration-overview"></a>
 ## Overview
 
+<a name="portal-extensions-configuration-overview-understanding-the-extension-configuration-in-portal"></a>
 ### Understanding the extension configuration in Portal
 
  The extension configuration file contains  information for all extensions registered in the Azure Portal. It is located in the Portal repository in the  `src/RDPackages/OneCloud/` directory that is located at [https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx?version=GBdev](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx?version=GBdev). For more information about loading extension stamps, see [portalfx-extensions-testing-in-production-overview.md#registering-a-custom-extension](portalfx-extensions-testing-in-production-overview.md#registering-a-custom-extension).
@@ -157,10 +159,12 @@ Its options are as follows.
  
  * **scriptoptimze**: Leverage the performance optimizations in the base controller. A value of `true`  , whereas a value of `false` .
 
+<a name="portal-extensions-configuration-overview-understanding-which-extension-configuration-to-modify"></a>
 ### Understanding which extension configuration to modify
 
 The Azure Portal uses five different extension configuration files to manage the extension configuration. The description of mapping of the Portal environment to the extension configuration is located at [portalfx-extensions-branches.md](portalfx-extensions-branches.md).
 
+<a name="portal-extensions-configuration-overview-extension-stamps"></a>
 ### Extension Stamps
 
 Because the hosting service provides a mechanism for deploying extensions using safe deployment practices, the Portal will load the version of the extension that is based on the region from where the customer is accessing the Portal. For more details, see the Hosting Service documentation located at [portalfx-extensions-hosting-service.md](portalfx-extensions-hosting-service.md).

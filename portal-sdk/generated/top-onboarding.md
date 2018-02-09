@@ -19,48 +19,7 @@ Onboarding a service, or developing a Portal extension, has three phases: onboar
 <a name="phase-1-onboarding-kickoff-meeting"></a>
 ## Kickoff Meeting
  
-There are lots of docs here. We recommend you send mail to <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">ibiza-onboarding-kick@microsoft.com </a> and request a kickoff meeting. Someone from our team will spend 30 minutes walking through the process at a high level. We can point you in the right direction regarding the latest patterns and practices. We can also answer any questions you have. Finally, we can talk about how the relationship between our teams is managed.
-
-<a name="phase-1-onboarding-onboard-with-related-teams"></a>
-## Onboard with related teams
-
-Onboarding to Azure all up is a big task that spans many teams. The doc you are reading will help you onboard to the portal, but there are many other teams you will need to work with to get your entire service up and running. These include, but are not limited to the following teams:
-
-1. Azure Resource Manager team
-
-     Reach out to <a href="mailto:vladj@microsoft.com?subject=Extension Onboarding">Vlad Joanovic</a> to onboard your resource provider.
-    <!--TODO: Locate distribution list for this purpose.  -->
-1. Azure Marketing Team
-
-   To ensure that the business goals of the new extension or service are aligned with Azure's business strategy, please reach out to the Integrated Marketing Team or the L&R - Operations - GD&F team at [ibiza-bmr@microsoft.com](mailto:ibiza-bmr@microsoft.com?subject=Azure%20Business%20model%20review). Brian Hillger’s team and Stacey Ellingson’s team will guide you through the business model review process. The extension or service is not ready to be onboarded to Azure until its business model has received approval from those teams. Do not proceed with the next step until the business model has received approval.
-
-1. Support team 
-
-   For integrating with the support system and UX integration.
-
-1. Azure.com team 
-   
-   For a presence on the marketing site.
-
-1. Billing team
-   
-   To register meters and other billing related activities.
-   
-1. AAD onboarding
-
-   Reach out to AAD onboarding if the new extension service needs special permissions besides just calling your own resource provider servers.  If the extension requires additional built-in support for standard Graph or ARM APIs, submit a partner request at the site located at [https://aka.ms/portalfx/uservoice](https://aka.ms/portalfx/uservoice). 
-
-1. Azure fundamentals and compliance
-
-1. Security and privacy reviews
-
-1. Start the CSS onboarding process with the CSS team at least three months previous to public preview. This process may coincide with the following step. For more information about development phases, see [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
-
-1. Schedule a UX feasibility review with the Ibiza team UX contact by emailing [mailto:ibiza-onboarding@microsoft.com?subject=Extension%20Feasibility%20Review](mailto:ibiza-onboarding@microsoft.com?subject=Extension%20Feasibility%20Review).  Many extensions have been made more successful by setting up early design reviews with the Azure Portal team. Taking the time to review the design gives extension owners an opportunity to understand how they can leverage Azure Portal design patterns, and ensure that the desired outcome is feasible. 
-
-While the portal team cannot help directly with all of these factors, see [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md) for a list of items with which we can assist you.
-
-For less common scenarios, you might need to do a custom deployment. For example, if the extension needs to reach server services using certificate based authentication, then there should be controller code on the server that our hosting service does not support. You should be very sure that  a custom hosting solution is the correct solution previous to developing one.
+There are lots of docs here. We recommend you send mail to <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">ibiza-onboarding-kick@microsoft.com</a> and request a kickoff meeting. Someone from our team will spend 30 minutes walking through the process at a high level. We can point you in the right direction regarding the latest patterns and practices. We can also answer any questions you have. Finally, we can talk about how the relationship between our teams is managed.
 
 <a name="phase-1-onboarding-join-dls-and-request-permissions"></a>
 ## Join DLs and request permissions
@@ -116,7 +75,7 @@ For more information, see [portalfx-extensions-custom-extension-deployment.md](p
 <a name="phase-2-development-register-the-extension-with-the-portal-product-configuration"></a>
 ## Register the extension with the portal product configuration
 
-Once the name of your extension is finalized, it's time to register your extension in all environments. This requires a portal deployment and can take time. Our Service Level Agreements are located at [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md).  Please plan accordingly.
+Once the name of the extension is finalized, it is time to register the extension in all environments. This requires a portal deployment and can take time. Our Service Level Agreements are located at [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md).  Please plan accordingly.
 
 * For internal partners, the request to register an extension is a pull request, as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
  
@@ -126,7 +85,7 @@ Once the name of your extension is finalized, it's time to register your extensi
 
 * **NOTE**:  Extension URLs adhere to the naming requirements located in [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md).
 
-* You should enable your extension in all environments. 
+* Enable the extension in all environments. 
 
 <a name="phase-3-deployment"></a>
 # Phase 3 - Deployment
@@ -134,7 +93,7 @@ Once the name of your extension is finalized, it's time to register your extensi
 <a name="phase-3-deployment-release-kind"></a>
 ## Release kind
 
-There are three typical release kinds. Private preview, public preview, and GA. For the purposes of deployment public preview and GA are the same. The only difference is that your UI may show preview labels and disclaimers where appropriate. For more information about the three kinds of releases, see  [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
+There are three typical release kinds. Private preview, public preview, and GA. For the purposes of deployment public preview and GA are the same. The only difference is that the UI may show preview labels and disclaimers where appropriate. For more information about the three kinds of releases, see  [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
 
 <a name="phase-3-deployment-deploy-the-extension"></a>
 ## Deploy the extension
@@ -147,7 +106,7 @@ There are three typical release kinds. Private preview, public preview, and GA. 
 
 1. If the extension requires additional built-in support for standard Graph or ARM APIs, submit a partner request at the site located at [https://aka.ms/portalfx/uservoice](https://aka.ms/portalfx/uservoice).  For information about other components that the new service needs, see [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md).
 
-1. When you are confident that the development of the extension is complete, you should execute the following process so the specific work required for the Azure Fundamental tenets appears in Service360, as specified in [Azure Fundamentals](https://microsoft.sharepoint.com/teams/WAG/EngSys/Shared%20Documents/Argon/Azure%20Fundamentals%20Proposal/Azure%20Fundamentals%20Proposal.docx?d=wf5b821bc31c44042adb55ebf4d8b408d). 
+1. When you are confident that the development of the extension is complete, execute the following process so that the specific work required for the Azure Fundamental tenets appears in Service360, as specified in [Azure Fundamentals](https://microsoft.sharepoint.com/teams/WAG/EngSys/Shared%20Documents/Argon/Azure%20Fundamentals%20Proposal/Azure%20Fundamentals%20Proposal.docx?d=wf5b821bc31c44042adb55ebf4d8b408d). 
 
     * Add the service to ServiceTree, which is located at [https://servicetree.msftcloudes.com](https://servicetree.msftcloudes.com)
     * Make the service be "Active" in ServiceTree
