@@ -57,7 +57,7 @@ For less common scenarios, you might need to do a custom deployment.
 For example, if you need to talk to backend services using certificate-based authentication then you'll need controller code on the server. This is not supported with our hosting service. You should be very sure you require a custom hosting solution before going down this path. 
 
 **NOTE**: The deployment can be configured in such a way that the client portion of the extension uses the hosting service while the custom controller code can be deployed separately.
-For more information, see [portalfx-extensions-custom-extension-deployment.md](portalfx-extensions-custom-extension-deployment.md).
+For more information, see [portalfx-extensions-custom-deployment.md](portalfx-extensions-custom-deployment.md).
 
 ## Register the extension with the portal product configuration
 
