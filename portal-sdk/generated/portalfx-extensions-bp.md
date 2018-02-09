@@ -132,7 +132,7 @@ These best practices are in addition to the techniques that are documented in to
 <a name="azure-portal-best-practices-best-practices-onebox-stb-is-not-available"></a>
 ### Onebox-stb is not available
 
-Onebox-stb has been deprecated. Please do not use it. Instead, migrate extensions to sideloading. For help on migration, send an email to  ibiza-onboarding@microsoft.com.
+Onebox-stb has been deprecated. Please do not use it. Instead, migrate extensions to sideloading. For help on migration, send an email to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Help on Migration">ibiza-onboarding@microsoft.com</a>.
 
 * * * 
 

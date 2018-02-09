@@ -1,4 +1,5 @@
 
+<a name="custom-extension-deployment-infrastructure"></a>
 ## Custom extension deployment infrastructure
 
 Developers that intend to deploy extensions by using legacy or Do-It-Yourself (DIY) deployments need to be aware that they are responsible for the following.
@@ -20,6 +21,7 @@ We also recommend that extensions deploy broadly across all regions in an active
 
 For more information about using Azure CDN with extensions, see [Configuring CDN and understanding Extension Versioning](portalfx-cdn.md).
 
+<a name="resiliency-and-failover"></a>
 ## Resiliency and failover
 
 Having a presence in all geographies is important for good performance.

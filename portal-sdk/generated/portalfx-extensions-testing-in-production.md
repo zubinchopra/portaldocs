@@ -226,7 +226,7 @@ For more information about obsolete bundles and obsolete script bundles, see [po
 <a name="testing-in-production-best-practices-onebox-stb-is-not-available"></a>
 ### Onebox-stb is not available
 
-Onebox-stb has been deprecated. Please do not use it. Instead, migrate extensions to sideloading. For help on migration, send an email to  ibiza-onboarding@microsoft.com.
+Onebox-stb has been deprecated. Please do not use it. Instead, migrate extensions to sideloading. For help on migration, send an email to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Help on Migration">ibiza-onboarding@microsoft.com</a>.
 
 * * * 
 
@@ -320,9 +320,15 @@ You can ask questions on Stackoverflow with the tag [ibiza-test](https://stackov
 <a name="testing-in-production-faqs-for-debugging-extensions-ssl-certificates"></a>
 ### SSL certificates
 
+   <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
+   
 ***How do I use SSL certs?***
+ 
+SSL Certs are relevant only for teams that host their own extensions.  Azure Portal ONLY supports loading extensions from HTTPS URLs. Use a wildcard SSL cert for each environment to simplify maintenance, for example,   ``` *.<extensionName>.onecloud-ext.azure-test.net  ``` or  ``` *.<extensionName>.ext.azure.com) ``` .    To simplify overall management when your team is building separate, independent extensions, you can also use  ``` <extensionName>.<team>.ext.azure.com ``` and create a wildcard SSL cert for  ``` *.<team>.ext.azure.com ```. Internal teams can create SSL certs for the DogFood environment using the SSL Administration Web page that is located at [http://ssladmin](http://ssladmin). 
+ 
+ Production certs must follow your organization’s PROD cert process. 
 
-[portalfx-extensions-faq-onboarding2.md#sslCerts](portalfx-extensions-faq-onboarding2.md#sslCerts)
+ **NOTE** Do not use the SSL Admin site for production certs.
 
 * * *
 
@@ -355,6 +361,30 @@ Understanding which extension configuration to modify is located at [portalfx-ex
 
 * * *
 
+<a name="testing-in-production-faqs-for-debugging-extensions-onboarding-faq"></a>
+### Onboarding FAQ
+
+***Where are the onboarding FAQs for Sparta (ARM/CSM-RP)?***
+
+The SharePoint Sparta Onboarding FAQ is located at [http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx](http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx).
+
+* * *
+
+ ### Compile on Save
+
+**What is Compile on Save ?**
+
+Compile on Save is a **TypeScript** option that   . To use it, make sure that **TypeScript** 2.0.3 was installed on your machine. The version can be verified by executing the following  command:
+
+```bash
+$>tsc -version
+```
+Then, verify that when a **TypeScript** file is saved, that the following text is displayed in the bottom left corner of your the **Visual Studio** application.
+
+![alt-text](../media/portalfx-ide-setup/ide-setup.png "CompileOnSaveVisualStudio")
+
+ * * *
+ 
 <a name="testing-in-production-faqs-for-debugging-extensions-other-debugging-questions"></a>
 ### Other debugging questions
 

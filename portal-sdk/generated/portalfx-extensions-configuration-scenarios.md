@@ -31,7 +31,7 @@ As part of permanently enabling the extension, the developer should update the e
 <a name="configuration-scenarios-enabling-an-extension"></a>
 ### Enabling an extension
 
-The extension can only be enabled in production after all exit criteria have been met. After all the stakeholders that are included in the exit criteria have signed off  on the extension, attach their emails to the workitem that is used for sending the pull request, as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
+The extension can only be enabled in production after all production-ready metrics criteria have been met. After all the stakeholders that are included in the production-ready metrics have signed off  on the extension, attach their emails to the workitem that is used for sending the pull request, as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
 
 Enabling an extension requires two changes:
 1. To enable the extension, remove the `disables` attribute from the config.
