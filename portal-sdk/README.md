@@ -9,7 +9,7 @@ Couldn't find what you needed? [Ask about the docs on StackOverflow](https://sta
 * [Overview / Getting Started](./generated/top-onboarding.md)
 * [Steps that do not involve the Ibiza team](./generated/top-external-onboarding.md)
 * [Manage cloud/environment specific configuration](./generated/top-extensions-configuration.md)
-* [Exit criteria](./generated/top-exit-criteria.md)
+* [Exit criteria](./generated/top-extensions-production-ready-metrics.md)
 
 Kickoff the onboarding experience by sending mail to <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">Azure Onboarding Team</a>.
 
