@@ -152,7 +152,7 @@ public getMenuConfig(resourceInfo: MsPortalFx.Assets.ResourceInformation): MsPor
 }
 ```
 
-The following object is populated and passed in, if you would like to see more properties added here feel free to reach out to [ibiza Menu Blade](mailto:ibiza-menu-blade@microsoft.com).
+The following object is populated and passed in, if you would like to see more properties added here feel free to reach out to <a href="mailto:ibiza-menu-blade@microsoft.com?subject=Resource Sample Needs More Properties ">Ibiza Menu Blade</a>.
 
 ```ts
 /**
@@ -204,7 +204,7 @@ interface ResourceMenuConfig {
 
 The following options are available:
 
-| Option                        | Exit criter | Enabled by default | Scenario |
+| Option                        | Production-ready metrics | Enabled by default | Scenario |
 |-------------------------------|-------------|--------------------|----------|
 | `enableAlerts`                | No  | No | Create, view, and update alert rules. |
 | `enableAppInsights`           | No  | No | View Application Insights monitoring. |
@@ -619,8 +619,7 @@ Yes, this is going to be tracked in the weekly status email.
 
 You can file a bug directly on Sean Watson using the link below, it will be triaged asap.
 [Resource menu bug](http://aka.ms/portalfx/resourcemenubug)
-Or if you don't have access to that template, email [ibiza Menu Blade](mailto:ibiza-menu-blade@microsoft.com) 
-
+Or if you don't have access to that template, email <a href="mailto:ibiza-menu-blade@microsoft.com?subject=Resource menu bug">Ibiza Menu Blade</a>.
 
 * [Migrate any of your current resources to use the resource menu][resourcemenuadoption]
 # Resource menu adoption
@@ -786,10 +785,10 @@ Next Steps:
 * Adopt the resource menu for all your resources
 * See the [frequently asked questions][resourcemenufaq]
 * There are samples of resources using this in the Samples Extension see the Client\ResourceTypes\Desktop\ folder, particularly the AssetViewModels\DesktopViewModel.ts
-* If there are any issues please reach out to [ibiza Menu Blade](mailto:ibiza-menu-blade@microsoft.com) 
+* If there are any issues please reach out to <a href="mailto:ibiza-menu-blade@microsoft.com?subject=Issues with Azure Sample Resources">Ibiza Menu Blade</a>.
 
 [resourcemenuapis](portalfx-resourcemenu-api.md)
 [resourcemenufaq](portalfx-resourcemenu-faq.md)
 
-* If there are any issues please reach out to [ibiza Menu Blade](mailto:ibiza-menu-blade@microsoft.com) 
+* If there are any issues please reach out to <a href="mailto:ibiza-menu-blade@microsoft.com?subject=Issues with Resource Samples">Ibiza Menu Blade</a>.
 

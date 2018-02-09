@@ -163,7 +163,7 @@ Next Steps:
 * Adopt the resource menu for all your resources
 * See the [frequently asked questions][resourcemenufaq]
 * There are samples of resources using this in the Samples Extension see the Client\ResourceTypes\Desktop\ folder, particularly the AssetViewModels\DesktopViewModel.ts
-* If there are any issues please reach out to [ibiza Menu Blade](mailto:ibiza-menu-blade@microsoft.com) 
+* If there are any issues please reach out to <a href="mailto:ibiza-menu-blade@microsoft.com?subject=Issues with Azure Sample Resources">Ibiza Menu Blade</a>.
 
 [resourcemenuapis](portalfx-resourcemenu-api.md)
 [resourcemenufaq](portalfx-resourcemenu-faq.md)

@@ -22,4 +22,4 @@ Install-Package Microsoft.Portal.Extensions.Billing -Source https://msazure.pkgs
 <a name="consumption"></a>
 ## Consumption
 
-- No docs have been provided to auxdocs that detail consumption. In the interim please reach out to [Mayur Oberoi](mailto:mayuro@microsoft.com) or [Ruchi Chopra](mailto:ruchic@microsoft.com) for consumption guidelines.
+- No docs have been provided to auxdocs that detail consumption. In the interim please reach out to <a href="mailto:mayuro@microsoft.com?subject=Auxdocs Consumption Guidelines">Mayur Oberoi</a> or <a href="mailto:ruchic@microsoft.com?subject=Auxdocs Consumption Guidelines">Ruchi Chopra</a> for consumption guidelines.
