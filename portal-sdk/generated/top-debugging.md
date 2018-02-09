@@ -10,7 +10,7 @@
 
 Occasionally, difficulties may be encountered while developing an extension. When that happens, the debug tool that is contained in the Portal can help remove obstacles.  
 
-Other samples and tools are also available to assist in the debugging process.  Any that are not included in the context of the discussion are  included in [portalfx-extensions-samples.md](portalfx-extensions-samples.md).    
+Other samples and tools are also available to assist in the debugging process.  Any that are not included in the context of the discussion are  included in [top-extensions-samples.md](top-extensions-samples.md).    
 
 Here are a few tips that help get extension development back on track. If you still have questions, reach out to Ibiza team in by using the Stackoverflow tags as specified in [StackOverFlow Forums](portalfx-extensions-stackoverflow.md).
 
@@ -277,12 +277,9 @@ $>tsc -version
 Also, **Typescript** files should be set up to Compile on Save.
 
 
-   
 ## Stackoverflow Forums
 
-The Ibiza team strives to answer the questions that are tagged with Ibiza tags on the Microsoft [Stackoverflow](https://stackoverflow.microsoft.com) Web site within 24 hours. If you do not receive a response within 24 hours, please email the owner associated with the tag. Third-party developers that have Stackoverflow questions should work with their primary contact.  If you do not yet have a primary contact, please reach out to our onboarding team at [mailto:ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com).
-
-To help the Azure UI team answer your questions, the submissions are categorized into various topics that are marked with tags. 
+The Ibiza team strives to answer the questions that are tagged with Ibiza tags on the Microsoft [Stackoverflow](https://stackoverflow.microsoft.com) Web site within 24 hours. If you do not receive a response within 24 hours, please email the owner associated with the tag. Third-party developers that have Stackoverflow questions should work with their primary contact.  If you do not yet have a primary contact, please reach out to our onboarding team at <a href="mailto:ibiza-onboarding@microsoft.com?subject=Azure Primary Contact&body=I have questions and did not find the answers on StackOverflow.">ibiza-onboarding@microsoft.com</a>. To help the Azure UI team answer your questions, the submissions are categorized into various topics that are marked with tags. 
 To read forum submissions, enter the following in the address bar of your browser:
 
 ```https://stackoverflow.microsoft.com/questions/tagged/<ibizaTag>```
@@ -302,49 +299,52 @@ ibiza-quotas
 ibiza-samples-docs
 -->
 
-| Tag        | Purpose | Owner               | Contact |
-| ---------- | ------- | ------------------- | ------- |
-| [azure-gallery](https://stackoverflow.microsoft.com/questions/tagged/azure-gallery)                   |     |                | |
-| [ibiza](https://stackoverflow.microsoft.com/questions/tagged/ibiza)                                   | Generic tag, for use in conjunction with a more specific tag, or when the topic is unknown                                                  | Adam Abdelhamed         | |
-| [ibiza-accessibility](https://stackoverflow.microsoft.com/questions/tagged/ibiza-accessibility)       | | Paymon Parsadmehr   | <a href="mailto:ibiza-accessibility@microsoft.com?subject=Stackoverflow: Accessibility">mailto:ibiza-accessibility@microsoft.com </a>| 
+| Tag                                                                                                   | Purpose                                                                                       | Owner               | Contact |
+| ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ------------------- | ------- |
+| [azure-gallery](https://stackoverflow.microsoft.com/questions/tagged/azure-gallery)                   |                                                                                               |                     |         |
+| [ibiza](https://stackoverflow.microsoft.com/questions/tagged/ibiza)                                   | Generic tag, for use in conjunction with a more specific tag, or when the topic is unknown    | Adam Abdelhamed     |         |
+| [ibiza-accessibility](https://stackoverflow.microsoft.com/questions/tagged/ibiza-accessibility)       |                                                                                               | Paymon Parsadmehr   | <a href="mailto:ibiza-accessibility@microsoft.com?subject=Stackoverflow: Accessibility">mailto:ibiza-accessibility@microsoft.com </a> | 
 | [ibiza-bad-samples-docs](https://stackoverflow.microsoft.com/questions/tagged/ibiza-bad-samples-docs) | Topics that are not included in [https://aka.ms/portalfx/docs](https://aka.ms/portalfx/docs), are incomplete, or are difficult to understand  |  Adam Abdelhamed  | |
-| [ibiza-blades-parts](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts)         | | Sean Watson         | |
-| [ibiza-breaking-changes](https://stackoverflow.microsoft.com/questions/tagged/ibiza-breaking-changes) | Breaking changes that are not included in the [https://aka.ms/portalfx/breaking](https://aka.ms/portalfx/breaking) topic              | Madhur Joshi          | |
-| [ibiza-browse](https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse)                     | | Sean Watson         | |
-| [ibiza-controls](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls)                 | | Shrey Shirwaikar    | |
-| [ibiza-controls-grid](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls-grid)       | | Shrey Shirwaikar    | |
-| [ibiza-create](https://stackoverflow.microsoft.com/questions/tagged/ibiza-create)                     | | Balbir Singh        | |
-| [ibiza-data-caching](https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching)         | | Brad Olenik           | |
-| [ibiza-deployment](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)             | Deployment and onboarding of an extension  | Umair Aftab         | |
-| [ibiza-forms](https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms)                       | | Shrey Shirwaikar    | |
-| [ibiza-forms-create]()         | Deprecated tag.  Use #ibiza-forms for forms questions and #ibiza-create for Create questions. | Paymon Parsadmehr; Shrey Shirwaikar | |
-| [ibiza-hosting-service](https://stackoverflow.microsoft.com/questions/tagged/ibiza-hosting-service)   | Extension hosting service onboarding, **ContentUnbundler** and runtime   | Umair Aftab         | |
-| [ibiza-kusto](https://stackoverflow.microsoft.com/questions/tagged/ibiza-kusto)                       | | |
-| [ibiza-localization-global](https://stackoverflow.microsoft.com/questions/tagged/ibiza-localization-global)  |  | Paymon Parsadmehr   | |
+| [ibiza-blades-parts](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts)         |                                                                                               | Sean Watson         | |
+| [ibiza-breaking-changes](https://stackoverflow.microsoft.com/questions/tagged/ibiza-breaking-changes) | Breaking changes that are not included in the [https://aka.ms/portalfx/breaking](https://aka.ms/portalfx/breaking) topic | Madhur Joshi          | |
+| [ibiza-browse](https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse)                     |                                                                                               | Sean Watson         | |
+| [ibiza-controls](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls)                 |                                                                                               | Shrey Shirwaikar    | |
+| [ibiza-controls-grid](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls-grid)       |                                                                                               | Shrey Shirwaikar    | |
+| [ibiza-create](https://stackoverflow.microsoft.com/questions/tagged/ibiza-create)                     |                                                                                               | Balbir Singh        | |
+| [ibiza-data-caching](https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching)         |                                                                                               | Brad Olenik         | |
+| [ibiza-deployment](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)             | Deployment and onboarding of an extension                                                     | Umair Aftab         | |
+| [ibiza-forms](https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms)                       |                                                                                               | Shrey Shirwaikar    | |
+| [ibiza-forms-create]()                                                                                | Deprecated tag.  Use #ibiza-forms for forms questions and #ibiza-create for Create questions. | Paymon Parsadmehr; Shrey Shirwaikar | |
+| [ibiza-hosting-service](https://stackoverflow.microsoft.com/questions/tagged/ibiza-hosting-service)   | Extension hosting service onboarding, **ContentUnbundler** and runtime                        | Umair Aftab         | |
+| [ibiza-kusto](https://stackoverflow.microsoft.com/questions/tagged/ibiza-kusto)                       |                                                                                               |                     | |
+| [ibiza-localization-global](https://stackoverflow.microsoft.com/questions/tagged/ibiza-localization-global) |                                                                                         | Paymon Parsadmehr   | |
 | [ibiza-missing-docs](https://stackoverflow.microsoft.com/questions/tagged/ibiza-missing-docs)         | Topics that are not included in [https://aka.ms/portalfx/docs](https://aka.ms/portalfx/docs), are incomplete, or are difficult to understand  | Adam  Abdelhamed            | |
-| [ibiza-monitoringux](https://stackoverflow.microsoft.com/questions/tagged/ibiza-monitoringux)         | |                     | |
-| [ibiza-performance](https://stackoverflow.microsoft.com/questions/tagged/ibiza-performance)           | | Sean Watson         | |
-| [ibiza-reliability](https://stackoverflow.microsoft.com/questions/tagged/ibiza-reliability)           | | Sean Watson         | |
-| [ibiza-resources](https://stackoverflow.microsoft.com/questions/tagged/ibiza-resources)               | | Balbir Singh        | |
+| [ibiza-monitoringux](https://stackoverflow.microsoft.com/questions/tagged/ibiza-monitoringux)         |                                                                                               |                     | |
+| [ibiza-performance](https://stackoverflow.microsoft.com/questions/tagged/ibiza-performance)           |                                                                                               | Sean Watson         | |
+| [ibiza-reliability](https://stackoverflow.microsoft.com/questions/tagged/ibiza-reliability)           |                                                                                               | Sean Watson         | |
+| [ibiza-resources](https://stackoverflow.microsoft.com/questions/tagged/ibiza-resources)               |                                                                                               | Balbir Singh        | |
 | [ibiza-sdkupdate](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)               | Issues encountered during updating from one version of the ibiza sdk to another, for example,  **NuGet**, **MSI**, **PowerShell**, or **VSIX** project template-related issues   | Umair Aftab         | |
-| [ibiza-security-auth](https://stackoverflow.microsoft.com/questions/tagged/ibiza-security-auth)       | | Santhosh Somayajula | |
-| [ibiza-telemetry](https://stackoverflow.microsoft.com/questions/tagged/ibiza-telemetry)               | | Sean Watson         | |
-| [ibiza-test](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test)                         | The CSharp test framework `Microsoft.Portal.TestFramework` and the nodejs test framework `msportalfx-test`                        | Umair Aftab              | |
+| [ibiza-security-auth](https://stackoverflow.microsoft.com/questions/tagged/ibiza-security-auth)       |                                                                                               | Santhosh Somayajula | |
+| [ibiza-telemetry](https://stackoverflow.microsoft.com/questions/tagged/ibiza-telemetry)               |                                                                                               | Sean Watson         | |
+| [ibiza-test](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test)                         | The CSharp test framework `Microsoft.Portal.TestFramework` and the nodejs test framework `msportalfx-test` | Umair Aftab | |
 
 
-<a name="debugging-an-extension-faqs-for-debugging-extensions"></a>
 ## FAQs for Debugging Extensions
 
-<a name="debugging-an-extension-faqs-for-debugging-extensions-ssl-certificates"></a>
 ### SSL certificates
 
+   <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
+   
 ***How do I use SSL certs?***
+ 
+SSL Certs are relevant only for teams that host their own extensions.  Azure Portal ONLY supports loading extensions from HTTPS URLs. Use a wildcard SSL cert for each environment to simplify maintenance, for example,   ``` *.<extensionName>.onecloud-ext.azure-test.net  ``` or  ``` *.<extensionName>.ext.azure.com) ``` .    To simplify overall management when your team is building separate, independent extensions, you can also use  ``` <extensionName>.<team>.ext.azure.com ``` and create a wildcard SSL cert for  ``` *.<team>.ext.azure.com ```. Internal teams can create SSL certs for the DogFood environment using the SSL Administration Web page that is located at [http://ssladmin](http://ssladmin). 
+ 
+ Production certs must follow your organization’s PROD cert process. 
 
-[portalfx-extensions-faq-onboarding2.md#sslCerts](portalfx-extensions-faq-onboarding2.md#sslCerts)
+ **NOTE** Do not use the SSL Admin site for production certs.
 
 * * *
 
-<a name="debugging-an-extension-faqs-for-debugging-extensions-loading-different-versions-of-an-extension"></a>
 ### Loading different versions of an extension
 
 ***How do I load different versions of an extension?***
@@ -353,7 +353,6 @@ Understanding which extension configuration to modify is located at [portalfx-ex
 
 * * * 
 
-<a name="debugging-an-extension-faqs-for-debugging-extensions-checking-the-version-of-a-loaded-extension"></a>
 ### Checking the version of a loaded extension
 
 ***I have set ApplicationContext.Version for my extension, how do I check what version of my extension is currently loaded in shell ?***
@@ -373,7 +372,30 @@ Understanding which extension configuration to modify is located at [portalfx-ex
 
 * * *
 
-<a name="debugging-an-extension-faqs-for-debugging-extensions-other-debugging-questions"></a>
+### Onboarding FAQ
+
+***Where are the onboarding FAQs for Sparta (ARM/CSM-RP)?***
+
+The SharePoint Sparta Onboarding FAQ is located at [http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx](http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Onboarding%20FAQ.aspx).
+
+* * *
+
+ ### Compile on Save
+
+**What is Compile on Save ?**
+
+Compile on Save is a **TypeScript** option that   . To use it, make sure that **TypeScript** 2.0.3 was installed on your machine. The version can be verified by executing the following  command:
+
+```bash
+$>tsc -version
+```
+Then, verify that when a **TypeScript** file is saved, that the following text is displayed in the bottom left corner of your the **Visual Studio** application.
+
+![alt-text](../media/portalfx-ide-setup/ide-setup.png "CompileOnSaveVisualStudio")
+
+ * * *
+ 
+<a name="debugging-an-extension-debugging-extensions-that-use-knockout-other-debugging-questions"></a>
 ### Other debugging questions
 
 ***How can I ask questions about debugging ?***

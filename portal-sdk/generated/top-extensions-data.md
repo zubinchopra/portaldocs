@@ -31,7 +31,7 @@ The following sections discuss the next level of detail behind these concepts an
 <a name="working-with-data-overview-data-contexts"></a>
 ### Data contexts
 
-For each area in an extension, there is a singleton `DataContext` instance that supports access to shared data for the blades and parts implemented in that area. Access to shared data means data loading, caching, refreshing and updating. Whenever multiple blades and parts make use of common server data, the `DataContext` is an ideal place to locate data loading/updating logic for an extension [area](portalfx-extensions-glossary-data).
+For each area in an extension, there is a singleton `DataContext` instance that supports access to shared data for the blades and parts implemented in that area. Access to shared data means data loading, caching, refreshing and updating. Whenever multiple blades and parts make use of common server data, the `DataContext` is an ideal place to locate data loading/updating logic for an extension [area](portalfx-extensions-glossary-data.md).
 
 When a blade or part `ViewModel` is instantiated, its constructor is sent a reference to the `DataContext` singleton instance for the associated extension area.  In the blade or part `ViewModel` constructor, the `ViewModel` accesses the data required by that blade or part, as in the code located at `<dir>/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/MasterViewModels.ts`.
 
@@ -175,15 +175,14 @@ public onInputsSet(inputs: Def.BrowseMasterListViewModel.InputsContract): MsPort
   
 For more information about employing these concepts, see [portalfx-data-masterdetailsbrowse.md](portalfx-data-masterdetailsbrowse.md).
 
-### Data views 
+### Data views
 
-Memory management is very important in the Azure Portal, because   overuse by many different extensions has been found to impact the user-perceived responsiveness of the Azure Portal.
+Memory management is very important in the Azure Portal, because overuse by many different extensions has been found to impact the user-perceived responsiveness of the Azure Portal.
 
 Each `DataCache` instance manages a set of [cache entries](portalfx-extensions-glossary-data.md), and the `DataCache` includes automatic mechanisms to manage the number of cache entries present at a given time. This is important because `DataCaches` in the `DataContext` of an `area` will exist in memory for as long as an extension is loaded, and consequently may support blades and parts that come and go as the user navigates in the Azure Portal.  
 
-When a `ViewModel` calls the `fetch()` method for its `DataView`, this `fetch()` call implicitly forms a ref-count to a `DataCache` cache entry, thereby pinning the entry in the DataCache as long as the blade/part `ViewModel` has not been  disposed by the extension. When all blade or part `ViewModels` that hold ref-counts to the same cache entry are disposed indirectly by using via DataView,  the DataCache can elect to evict or discard the cache entry. In this way, the `DataCache` can manage its size automatically, without explicit extension code. 
-
-
+When a `ViewModel` calls the `fetch()` method for its `DataView`, this `fetch()` call implicitly forms a ref-count to a `DataCache` cache entry, thereby pinning the entry in the DataCache as long as the blade/part `ViewModel` has not been  disposed by the extension. When all blade or part `ViewModels` that hold ref-counts to the same cache entry are disposed indirectly by using via DataView,  the DataCache can elect to evict or discard the cache entry. In this way, the `DataCache` can manage its size automatically, without explicit extension code.
+ 
 ### Areas
 
 From a code organization standpoint, an area can be defined as a project-level folder. It becomes quite important when data operations are segmented within the extension.
@@ -488,20 +487,19 @@ public onInputsSet(inputs: Def.BrowseDetailViewModel.InputsContract): MsPortalFx
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
-The `lifetime manager`  makes sure that any resources that are specifically associated with a blade are disposed of when the blade is closed. Each blade has its own lifetime manager. Controls, knockout projections and APIs that use a lifetime manager will be disposed when the lifetime manager is disposed. That means, for the most part, extensions in the portal will implicity perform efficient memory management.
+The `lifetime manager` ensures that any resources that are specifically associated with a blade are disposed of when the blade is closed. Each blade has its own lifetime manager. Controls, **Knockout** projections and APIs that use a `lifetime manager` will be disposed when the `lifetime manager` is disposed. That means, for the most part, extensions in the Portal implicitly perform efficient memory management.
 
-<!-- TODO: Determine whether a reactor is an object. If not, delete it. -->
-There are some scenarios that call for more fine-grained memory management. The most common case is the `map()` or `mapInto()` function, especially when it is used with a reactor or control in the callback that generates individual items. These items can be destroyed previous to the closing of the blade by being removed from the source array. When dealing with large amounts of data, especially virtualized data, memory leaks can quickly add up and lead to poor performance. 
+There are some scenarios that call for more fine-grained memory management. The most common case is the `map()` or `mapInto()` function, especially when it is used with a reactor or control in the callback that generates individual items. These items can be destroyed previous to the closing of the blade by being removed from the source array. When dealing with large amounts of data, especially virtualized data, memory leaks can quickly add up and result in poor extension performance. 
 
-**NOTE**: The  `pureComputed()` method does not use a lifetime manager because it already uses memory as efficiently as possible.  This is by design, therefore it is good practice to use it. Generally, any computed the extension creates in a `map()` should be a `pureComputed()` method, instead of a `ko.reactor` method.
+**NOTE**: The  `pureComputed()` method does not use a lifetime manager because it already uses memory as efficiently as possible.  This is by design, therefore it is good practice to use it. Generally, any `computed` the extension creates in a `map()` should be a `pureComputed()` method, instead of a `ko.reactor` method.
 
 For more information on pureComputeds, see [portalfx-blade-viewmodel.md#data-pureComputed](portalfx-blade-viewmodel.md#data-pureComputed).
 
 ### Child lifetime managers 
 
-Child lifetime managers exist for the amount of time that is at most the lifetime of their parent.  However, child lifetime managers can be disposed before their parent is disposed. When you know you have resources whose lifetime is shorter than that of the blade you create a child lifetime manager with the  `container.createChildLifetimeManager()` command, and send that in to `ViewModel` constructors or anywhere else a lifetime manager object is needed. When you know you are done with those resources you can explictly call `dispose()` on the child lifetime manager. If you forget, the child lifetime manager will be disposed when its parent is disposed to prevent memory leaks.
+Child lifetime managers exist for the amount of time that is, at most, the lifetime of their parent.  However, child lifetime managers can be disposed before their parent is disposed. When the developer is aware that extension child resources will have lifetimes that are shorter than that of the blade, a child lifetime manager can be created with the  `container.createChildLifetimeManager()` command, and sent to `ViewModel` constructors or anywhere else a lifetime manager object is needed. When the extension completes using those resources, the `dispose()` method can be explicitly called on the child lifetime manager. If the `dispose()` method is not called, the child lifetime manager will be disposed when its parent is disposed to prevent memory leaks.
 
-In this example, a data cache contains data. Each item should be displayed as a row in a grid. A button is displayed separately in a section located below the grid. The `mapInto()` function is used to map the data cache items to the grid items, and in the map function create a button and add it to the section.
+In this example, a data cache contains data. Each item is displayed as a row in a grid. A button is displayed separately in a section located below the grid. The `mapInto()` function is used to map the data cache items to the grid items, and to create a button and add it to the section.
 
 ```ts
 let gridItems = this._view.items.mapInto(container, (itemLifetime, item) => {
@@ -514,13 +512,13 @@ let gridItems = this._view.items.mapInto(container, (itemLifetime, item) => {
 });
 ```
 
-A few things to note here. 
+In this example, whereever the value of an observable is read in the mapping function, it is  wrapped in a `ko.pureComputed`. This is important and the reasons why are discussed in [portalfx-data-projections.md#data-shaping](portalfx-data-projections.md#data-shaping).
 
-1. Everywhere we read the value an observable in the mapping function, we wrapped it in a `ko.pureComputed`. This is important and the reasons why are discussed in [portalfx-data-projections.md#data-shaping](portalfx-data-projections.md#data-shaping).
+In addition, the `itemLifetime` child lifetime manager that was automatically created by the `mapInto()` function was sent to the mapping function as a parameter, instead of sending the  `container` into the button constructor.
 
-1. Rather than sending `container` into the button constructor, we sent `itemLifetime` which the mapping function receives as a parameter. This is a "child" lifetime manager that was automatically created by the `mapInto` function. 
+In the case of `map()` and `mapInto()`, the item lifetime manager will be disposed when the associated object is removed from the source array. In the previous example, this means the button `ViewModel` will be disposed at the correct time, but the now disposed button `ViewModel` will still be in the Section. The button has not been removed from the section's `children()` array. 
 
-In the case of `map()` and `mapInto()`, the item lifetime manager will be disposed when the associated object is removed from the source array. In the previous example, this means the button `ViewModel` will be disposed at the correct time, but the now disposed button `ViewModel` will still be in the Section. The button has not been removed from the section's `children()` array. Fortunately, extension authors can register callbacks with the lifetime manager that are used when it is disposed using the `registerForDispose` command. To fix up the previous sample we can use the following code.
+Fortunately, callbacks can be registered with the lifetime manager to use when it is disposed by using the `registerForDispose` command, as in the following example.
 
 ```ts
 let gridItems = this._view.items.mapInto(container, (itemLifetime, item) => {
@@ -534,7 +532,7 @@ let gridItems = this._view.items.mapInto(container, (itemLifetime, item) => {
 });
 ```
 
-Now the `mapInto` function is working as expected.
+Consequently, the `mapInto` function is working as expected, by using the child lifetime manager and the `registerForDispose` command.
 
     
 ## Loading Data 
@@ -543,7 +541,7 @@ In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  
 
 ### Controlling the AJAX call with `supplyData`
 
-In the simple case, the `QueryCache` is sent a simple `sourceUri` attribute which it uses to form a request. This request is sent via a `GET`, with a default set of headers. In some cases, developers may wish to manually make the request.  This can be useful for some scenarios, including the following.
+In this case, the `QueryCache` is sent a `sourceUri` attribute which it uses to form a request. This request is sent by using  a `GET` method, with a default set of headers. In some cases, developers may wish to manually make the request.  This can be useful for some scenarios, including the following.
 
 * The request needs to be a `POST` instead of `GET`
 * Custom HTTP headers should be sent with the request
@@ -579,9 +577,15 @@ public websitesQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModel
 });
 ```
 
-### Optimize number CORS preflight requests to ARM using invokeApi
+### Optimize CORS preflight requests to ARM by using invokeApi
 
-When CORS is used to call ARM directly from the extension, the browser actually makes two network calls for every one **AJAX** call in the client code. The following examples describe the state before and after invoking API.
+The `invokeAPI` method is a great improvement to the preflight request process.
+
+When [CORS](portalfx-extensions-glossary.data.md) is used to call ARM directly from the extension, the browser actually makes two network calls for every one **AJAX** call in the client code.
+
+The `invokeApi` method uses a fixed endpoint and a different type of caching to reduce the number of calls to the server.  Consequently, the extension performance is optimized by using a  single URI.
+
+ The following examples describe the state of the     before and after using `invokeAPI`.
 
 <details>
 <summary> Before using invokeApi</summary>
@@ -609,7 +613,7 @@ The following code illustrates one preflight per request.
 
 ```
 
-This results in a CORS preflight request for each unique uri.  For example, if the user were to browse to two separate resources `aresource` and `otherresource`, it would result in the following requests.
+This code results in one CORS preflight request for each unique uri.  For example, if the user were to browse to two separate resources `aresource` and `otherresource`, it would result in the following requests.
 
 ```
 Preflight 
@@ -647,7 +651,7 @@ Actual CORS request to resource
         ...some otherresource data..
 ```
 
-This is making one preflight request for each `MsPortalFx.Base.Net.ajax` request. In the extreme case, if network latency were the dominant factor this would be a 50% overhead.
+This code makes one preflight request for each `MsPortalFx.Base.Net.ajax` request. In the extreme case, if network latency were the dominant factor, this would be a 50% overhead.
 
 </details>
 <details>
@@ -655,7 +659,9 @@ This is making one preflight request for each `MsPortalFx.Base.Net.ajax` request
 
 To apply the `invokeApi` optimization, perform the following two steps.
 
-1. Supply the invokeApi option directly to the `MsPortalFx.Base.Net.ajax({...})` option. This allows the extension to use the fixed endpoint `https://management.azure.com/api/invoke` to which to issue all the requests. The actual path and query string are actually passed as a header `x-ms-path-query`. At the `api/invoke` endpoint, ARM reconstructs the original URL on the server side and processes the request in its original form. 
+1. Supply the invokeApi option directly to the `MsPortalFx.Base.Net.ajax({...})` option. This allows the extension to use the fixed endpoint `https://management.azure.com/api/invoke` to which to issue all the requests. The actual path and query string are actually sent as an `x-ms-path-query` header. At the `api/invoke` endpoint, ARM reconstructs the original URL on the server side and processes the request in its original form. 
+
+<!-- TODO: Determine whether cache:false creates the unique timestamp, or the absence of cache:false creates the unique timestamp  -->
 
 1. Remove `cache:false`.  This avoids emitting a unique timestamp (i.e., &_=1447122511837) on every request, which invalidates the single-uri benefit that is provided by the `invokeApi`.
 
@@ -720,7 +726,8 @@ Actual Ajax Request
 In the above you will note that:
 
 1. The preflight request is cached for an hour.
-1. The request is now always for a single resource `https://management.azure.com/api/invoke`. Because all requests now go through this single endpoint, it results in a single preflight request that is used for all subsequent requests, which is a great improvement on the previous example.
+1. The request is now always for a single resource `https://management.azure.com/api/invoke`. All requests now go through this single endpoint, therefore a single preflight request is used for all subsequent requests.
+
 1. The `x-ms-path-query` preserves the request for the original path segments, the query string and the hash from the query cache.
 
 Within the Portal implementation itself, this optimization has been applied to the Hubs extension.
@@ -731,7 +738,7 @@ Within the Portal implementation itself, this optimization has been applied to t
 
 ### Reusing loaded or cached data with `findCachedEntity`
 
-Browsing resources is a very common activity in the new Azure Portal.  Columns in the resource list should be loaded using a `QueryCache<TEntity, ...>`.  When the user activates a resource list item, the details that are displayed in the resource blade should be loaded using an `EntityCache<TEntity, ...>`, where `TEntity` is often shared between the two data caches.  To display details of a resource, rather than issue an **AJAX** call to load the resource details model into `EntityCache`, use the `findCachedEntity` option to locate this entity that was previously loaded in some other `QueryCache` or that was nested in some other `EntityCache`.
+Browsing resources is a very common activity in the Portal.  Columns in the resource list should be loaded using a `QueryCache<TEntity, ...>`.  When the user activates a resource list item, the details that are displayed in the resource blade should be loaded using an `EntityCache<TEntity, ...>`, where `TEntity` is often shared between the two data caches.  To display details of a resource, rather than issue an **AJAX** call to load the resource details model into `EntityCache`, use the `findCachedEntity` option to locate this entity that was previously loaded in some other `QueryCache` or that was nested in some other `EntityCache`.
 
 ```ts
 this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataModels.WebsiteModel, number>({
@@ -1184,11 +1191,11 @@ There are two significant problems with `subscribe` used here:
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
-### Refresh implicitrefresh
+### The implicit refresh 
 
-## Auto-refreshing client-side data (a.k.a. 'polling')  
+### Polling
 
-In many scenarios, users expect to see their rendered data update implicitly as server data changes. This can be accomplished by configuring your cache object to include 'polling', as  in the following example.
+In many scenarios, users expect to see their rendered data update implicitly when server data changes. The auto-refreshing of client-side data, also known as  'polling', can be accomplished by configuring the cache object to include 'polling', as in the example located at `<dir>\Client\V1\Hubs\RobotData.ts`. This code is also included in the following example.
 
 ```typescript
 
@@ -1200,26 +1207,27 @@ public robotsQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModels.
 
 ```
 
-Additionally, the extension can customize the polling interval by using the '`pollingInterval`' option. By default, the polling interval is 60 seconds. It can be customized down to a minimum of 10 seconds. The minimum is enforced to avoid server load that might result from some accidental, overly aggressive change to '`pollingInterval`' by an extension developer. (There have been cases where even this 10 second minumum has caused customer impact due to increased server load.)
+Additionally, the extension can customize the polling interval by using the `pollingInterval` option. By default, the polling interval is 60 seconds. It can be customized to a minimum of 10 seconds. The minimum is enforced to avoid the server load that can result from inaccurate changes.  However, there have been instances when this 10-second minimum has caused negative customer impact because of the increased server load.
 
-## Data merging  
+## Data merging
 
-For Azure Portal UI to be responsive, it is often important - when data changes - to avoid rerendering entire Blades and Parts. Rather, in most cases, it is better to make *granular* data changes so that FX controls and Knockout HTML templates can rerender *only small portions* of Blade/Part UI. In many common cases of refreshing data, the newly-loaded server data *precisely matches* already-cached data, and in this case *no UI rerendering happens*.
+For the Azure Portal UI to be responsive, it is important to avoid re-rendering entire blades and parts when data changes. Instead, it is better to make granular data changes so that FX controls and **Knockout** HTML templates can re-render small portions of the Blade/Part UI. In many cases when data is refreshed, the newly-loaded server data precisely matches previously-cached data, and therefore there is no need to re-render the UI.
 
-When cache object data is refreshed - either implicitly as specified in[#refresh-implicitrefresh](#refresh-implicitrefresh),  or explicitly as specified in  [#refresh-explicitrefresh](#refresh-explicitrefresh) - newly-loaded server data is added to already-cached, client-side data through a process called "data merging":
+When cache object data is refreshed - either implicitly as specified in [#the-implicit-refresh](#the-implicit-refresh),  or explicitly as specified in  [#the-explicit-refresh](#the-explicit-refresh) - the newly-loaded server data is added to previously-cached, client-side data through a process called "data merging". The data merging process is as follows.
 
-* The newly-loaded server data is compared to already-cached data
-* Differences between newly-loaded and already-cached data are detected. For instance, "property <X> on object <Y> changed value" and "the Nth item in array <Z> was removed".
-* The differences are applied to the already-cached data, via changes to Knockout observables.
+1. The newly-loaded server data is compared to previously-cached data
+1. Differences between newly-loaded and previously-cached data are detected. For instance, "property <X> on object <Y> changed value" and "the Nth item in array <Z> was removed".
+1. The differences are applied to the previously-cached data, via changes to Knockout observables.
 
-For many scenarios, "data merging" requires no configuration and is simply an implementation detail of ['polling'](#refresh-implicitrefresh) and [explicitly requested '`refresh`'](#refresh-explicitrefresh). In some scenarios, there are gotcha's to look out for...  
+### Data merging caveats 
 
-### Data merging **caveats**  
+For many scenarios, data merging requires no configuration because it is an implementation detail of implicit and explicit refreshed. However, in some scenarios, there are gotcha's to look out for.
 
 #### Supply type metadata for arrays  
 
-When detecting changes between items in an already-loaded array and a newly-loaded array, the "data merging" algorithm requires some per-array configuration. Specifically, the "data merging" algorithm - without configuration - doesn't know how to match items between the old and new arrays. Without configuration, the algorithm considers each already-cached array item as 'removed' (since it matches no item in the newly-loaded array) and every newly-loaded array item as 'added' (since it matches no item in the already-cached array). This effectively replaces *the entire cached array's contents*, even in those cases where the server data hasn't changed. This can often be the cause of performance problems in your Blade/Part (poor responsiveness, hanging), even while users - sadly - see no pixel-level UI problems.  
-
+When detecting changes between items in an previously-loaded array and a newly-loaded array, the "data merging" algorithm requires some per-array configuration. Specifically, the data merging algorithm that is not configured does not know how to match items between the old and new arrays. Without configuration, the algorithm considers each previously-cached array item as 'removed' because it matches no item in the newly-loaded array. Consequently, every newly-loaded array item is considered to be added because  it matches no item in the previously-cached array. This effectively replaces the entire contenst of the cached array, even in those cases where the server data is unchanged. This is often the cause of performance problems in the extension, like your Blade/Part (poor responsiveness, hanging).
+, even while users - sadly - see no pixel-level UI problems.  
+<!-- Determine whether "" is an acceptable translation for "(poor responsiveness, hanging)". -->
 To proactively warn you of these potential performance problems, the "data merge" algorithm will log warnings to the console that resemble:
 
 ```
@@ -1227,11 +1235,11 @@ Base.Diagnostics.js:351 [Microsoft_Azure_FooBar]  18:55:54
 MsPortalFx/Data/Data.DataSet Data.DataSet: Data of type [No type specified] is being merged without identity because the type has no metadata. Please supply metadata for this type.
 ```
 
-Any array cached in your cache object is configured for "data merging" by using [type metadata](portalfx-data-typemetadata.md). Specifically, for each `Array<T>`, the extension has to supply type metadata for type `T` that describes the "id" properties for that type (see examples of this [here](portalfx-data-typemetadata.md)). With this "id" metadata, the "data merging" algorithm can match already-cached and newly-loaded array items and can merge these *in-place* (with no per-item array remove/add). With this, when the server data doesn't change, each cached array item will match a newly-loaded server item, each will merge in-place with no detected chagnes, and the merge will be a no-op for the purposes of UI rerendering.
+Any array cached in your cache object is configured for "data merging" by using [type metadata](portalfx-data-typemetadata.md). Specifically, for each `Array<T>`, the extension has to supply type metadata for type `T` that describes the "id" properties for that type (see examples of this [here](portalfx-data-typemetadata.md)). With this "id" metadata, the "data merging" algorithm can match previously-cached and newly-loaded array items and can merge these *in-place* (with no per-item array remove/add). With this, when the server data doesn't change, each cached array item will match a newly-loaded server item, each will merge in-place with no detected chagnes, and the merge will be a no-op for the purposes of UI rerendering.
 
 #### Data merge failures
 
-As "data merging" proceeds, differences are applied to the already-cached data via Knockout observable changes. When these observables are changed, Knockout subscriptions are notified and Knockout `reactors` and `computeds` are reevaluated. Any associated (often extension-authored) callback here **can throw an exception** and this will halt/preempt the current "data merge" cycle. When this happens, the "data merging" algorithm issues an error resembling:
+As "data merging" proceeds, differences are applied to the previously-cached data via Knockout observable changes. When these observables are changed, Knockout subscriptions are notified and Knockout `reactors` and `computeds` are reevaluated. Any associated (often extension-authored) callback here **can throw an exception** and this will halt/preempt the current "data merge" cycle. When this happens, the "data merging" algorithm issues an error resembling:
 
 ```
 Data merge failed for data set 'FooBarDataSet'. The error message was: ...
@@ -1241,7 +1249,7 @@ Importantly, this error is not due to bugs in the data-merging algorithm. Rather
 
 #### EntityView `item` observable doesn't change on refresh?  
 
-Situation:  The EntityView `item` observable does not change, and therefore does not notify subscribers, when the cache object is refreshed. The refreshing is performed either [implicitly](#refresh-implicitrefresh) or [explicitly](#refresh-explicitrefresh).  When the observable does not change, code like the following does not work as expected.
+Situation:  The EntityView `item` observable does not change, and therefore does not notify subscribers, when the cache object is refreshed. The refreshing is performed either [implicitly](#the-implicit-refresh) or [explicitly](#the-explicit-refresh).  When the observable does not change, code like the following does not work as expected.
 
 ```ts
 entityView.item.subscribe(lifetime, () => {
@@ -1252,7 +1260,7 @@ entityView.item.subscribe(lifetime, () => {
     }
 });
 ```
-Explanation:  The The EntityView `item` observable does not change because the "data merge" algorithm does not replace objects that are already cached, unless such objects are  array items. Instead, objects are merged in-place, which optimizes for limited/no UI re-rendering when data changes, as specified in  [#data-merging](#data-merging).  
+Explanation:  The The EntityView `item` observable does not change because the "data merge" algorithm does not replace objects that are previously cached, unless such objects are  array items. Instead, objects are merged in-place, which optimizes for limited/no UI re-rendering when data changes, as specified in  [#data-merging](#data-merging).  
 
 Solution: A better coding pattern is to use `ko.reactor` and `ko.computed` as follows.  
 
@@ -1268,7 +1276,8 @@ ko.reactor(lifetime, () => {
 
 In this example, the supplied callback will be called both when the `item` observable changes, (when the data first loads) and when any properties on the entity change (like `customerName` above).
 
-<a name="refresh-explicitrefresh"></a>
+### The explicit refresh
+
 ## Explicitly/proactively reflecting server data changes on the client
 
 As server data changes, there are scenarios where the extension should take explicit steps to keep their cache object data consistent with the server. In terms of UX, explicit refreshing of a cache object is necessary in scenarios like the following. 
@@ -1513,9 +1522,9 @@ At the cache object level, in response to the QueryView/EntityView '`refresh`' c
 
 #### QueryView/EntityView '`refresh`' **caveat**  
 
-There is one subtety to the '`refresh`' method available on QueryView/EntityView that sometimes trips up extension developers. You will notice that '`refresh`' accepts no parameters. This is because '`refresh`' was designed to refresh *already-loaded data*. An initial call to QueryView/EntityView's '`fetch`' method establishes a cache entry in the corresponding cache object that includes the URL information with which to issue an AJAX call when '`refresh`' is later called.  
+There is one subtety to the '`refresh`' method available on QueryView/EntityView that sometimes trips up extension developers. You will notice that '`refresh`' accepts no parameters. This is because '`refresh`' was designed to refresh *previously-loaded data*. An initial call to QueryView/EntityView's '`fetch`' method establishes a cache entry in the corresponding cache object that includes the URL information with which to issue an AJAX call when '`refresh`' is later called.  
 
-Sometimes, extensions developers feel it is important - when a Blade opens or a Part is first displayed - to implicitly refresh the Blade's/Part's data (in cases where the data may have already been loaded/cached for use in some previously viewed Blade/Part). To make this so, they'll sometimes call QueryView/EntityView's '`fetch`' and '`refresh`' methods in succession. This is a minor anti-pattern that should probably be avoided. This "refresh my data on Blade open" pattern trains the user to open Blades to fix stale data (even close and then immediately reopen the same Blade) and can often be a symptom of a missing 'Refresh' command or [auto-refreshing data](#refresh-implicitrefresh) that's configured with too long a polling interval.  
+Sometimes, extensions developers feel it is important - when a Blade opens or a Part is first displayed - to implicitly refresh the Blade's/Part's data (in cases where the data may have previously been loaded/cached for use in some previously viewed Blade/Part). To make this so, they'll sometimes call QueryView/EntityView's '`fetch`' and '`refresh`' methods in succession. This is a minor anti-pattern that should probably be avoided. This "refresh my data on Blade open" pattern trains the user to open Blades to fix stale data (even close and then immediately reopen the same Blade) and can often be a symptom of a missing 'Refresh' command or [auto-refreshing data](#the-implicit-refresh) that's configured with too long a polling interval.  
 
 
     
@@ -1981,4 +1990,5 @@ See [Reflecting server data changes on the client](portalfx-data-configuringdata
 | JSON Web Token |  JSON-based token that asserts information between the server and the client.  For example, a JWT could assert that the client user has the claim "logged in as admin".  | 
 | JWT token | JSON Web Token |
 | lifetime | The amount of time an object exists in memory between instantiation and destruction.  It may be automatically destroyed by when a parent object is deallocated, or its existence may be managed by a lifetime manager object or a child lifetime manager object. |
+| polling | The process that determines which client-side data should be automatically refreshed. |
 | reactor | |
