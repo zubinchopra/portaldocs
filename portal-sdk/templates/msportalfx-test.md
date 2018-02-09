@@ -113,7 +113,7 @@ MsPortalFx-Test is an end-to-end test framework that runs tests against the Micr
 
 - Strive for zero breaking changes to partner team CI
 - Develop tests in the same language as the extension
-- Focus on partner needs rather than internal portal needs
+- Focus on partner needs rather than internal Portal needs
 - Distributed independently from the SDK
 - Uses an open source contribution model
 - Performant
@@ -139,7 +139,7 @@ MsPortalFx-Test is an end-to-end test framework that runs tests against the Micr
     
 - Controls layer 
 
-    - The basic controls used in the portal (eg blades, checkboxes, textboxes, etc).  Little to no retry logic.  Should be used mainly for composing the actions and tests layers.
+    - The basic controls used in the Portal (eg blades, checkboxes, textboxes, etc).  Little to no retry logic.  Should be used mainly for composing the actions and tests layers.
     - Should be used for writing test and action layers.  Should not be used directly by tests in most cases.
     - Built upon webdriver primitives
     - EG: part, checkbox, etc  
@@ -347,11 +347,11 @@ We'll write a test that verifies that the Browse experience for our extension ha
 
 **To prepare the target extension and resource:**
 
-1. Create a new Portal extension in Visual Studio following [these steps](https://auxdocs.azurewebsites.net/en-us/documentation/articles/portalfx-creating-extensions) and then hit CTRL+F5 to get it up and running. For the purpose of this example we named the extension 'LocalExtension' and we made it run in the default [https://localhost:44300](https://localhost:44300) address. 
+1. Create a new Portal extension in Visual Studio following [these steps](https://auxdocs.azurewebsites.net/en-us/documentation/articles/portalfx-creating-extensions) and then click CTRL+F5 to get it up and running. For the purpose of this example we named the extension 'LocalExtension' and we made it run in the default [https://localhost:44300](https://localhost:44300) address. 
 
 1. That should have taken you to the Portal, so sign in and then go to New --> Marketplace --> Local Development --> LocalExtension --> Create.
 
-1. In the **My Resource** blade, enter **theresource** as the resource name, complete the required fields and hit Create.
+1. In the **My Resource** blade, enter **theresource** as the resource name, complete the required fields and click the  Create button.
 
 1. Wait for the resource to get created.
 
@@ -808,7 +808,7 @@ FromLocalPackage
 <a name="msportalfx-test-scenarios-create-opening-the-create-blade-from-a-local-gallery-package"></a>
 #### Opening the create blade from a local gallery package
 
-To open/navigate to the create blade a local gallery package that has been side loaded into the portal along with your extension you can use `portal.openGalleryCreateBladeFromLocalPackage`.  The returned promise will resolve with the CreateBlade defined by that gallery package. 
+To open/navigate to the create blade a local gallery package that has been side loaded into the Portal along with your extension you can use `portal.openGalleryCreateBladeFromLocalPackage`.  The returned promise will resolve with the CreateBlade defined by that gallery package. 
 
 ```ts 
 import TestFx = require('MsPortalFx-Test');
@@ -1326,7 +1326,7 @@ class SummaryBlade extends Blade {
 <a name="msportalfx-test-scenarios-blades-common-portal-blades-move-resource-blade"></a>
 ##### Move Resource Blade
 
-The `MoveResourcesBlade` represents the portals blade used to move resources from a resource group to a new resource group `portal.startMoveResource` provides a simple abstraction that will iniate the move of an existing resource to a new resource group.  The following example demonstrates how to initiate the move and then wait on successful notification of completion.
+The `MoveResourcesBlade` represents the Portals blade used to move resources from a resource group to a new resource group `portal.startMoveResource` provides a simple abstraction that will iniate the move of an existing resource to a new resource group.  The following example demonstrates how to initiate the move and then wait on successful notification of completion.
   
 ```ts
 import testFx = require('MsPortalFx-Test');
@@ -1921,7 +1921,7 @@ For more detail on [AAD Applications and Service Principals] see (https://azure.
 
 1. The account that corresponds to the specified credentials should have at least contributor access to the subscription specified in the **config.json** file. The account must be a Live Id account. It cannot be an account that requires two factor authentication (like most @microsoft.com accounts). 
 
-1. Install the Portal SDK from [Aux Docs](https://auxdocs.azurewebsites.net/en-us/downloads), then open Visual Studio and create a new Portal Extension from File --> New Project --> Azure Portal --> Azure Portal Extension. Name this project **LocalExtension** so that the extension itself is named LocalExtension, which is what many of the tests expect. Then hit CTRL+F5 to host the extension in IIS Express.
+1. Install the Portal SDK from [Aux Docs](https://auxdocs.azurewebsites.net/en-us/downloads), then open Visual Studio and create a new Portal Extension from File --> New Project --> Azure Portal --> Azure Portal Extension. Name this project **LocalExtension** so that the extension itself is named LocalExtension, which is what many of the tests expect. Then click CTRL+F5 to host the extension in IIS Express.
 
 1. The *Can Find Grid Row* and the *Can Choose A Spec* tests require special configuration described in the tests themselves.
 
@@ -1981,12 +1981,13 @@ the output of the composed TEMPLATE.md will be written to ./README.md and the ge
 #### To submit your contribution
 Submit a pull request to the repo [http://aka.ms/msportalfx-test](http://aka.ms/msportalfx-test)
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or reach out to 
+<a href="mailto:opencode@microsoft.com?subject=Code of Conduct">opencode@microsoft.com</a> with  any additional questions or comments.
 
 <a name="msportalfx-test-scenarios-to-run-the-tests-questions"></a>
 #### Questions?
 
-Send an email to ibizadiscuss@microsoft.com
+Send an email to <a href="mailto:ibizadiscuss@microsoft.com">ibizadiscuss@microsoft.com</a>.
 
 <a name="msportalfx-test-scenarios-api-reference"></a>
 ### API Reference

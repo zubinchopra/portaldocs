@@ -12,4 +12,4 @@ Install-Package Microsoft.Portal.Extensions.Insights -Source https://msazure.pkg
 
 ## Consumption 
 
-- ETA for the consumption docs is 8/12/2016. In the interim please reach out to [Ibiza Activity Logs](mailto:ibiza-activity-logs@microsoft.com) for consumption guidelines.
+- ETA for the consumption docs is 8/12/2016. In the interim please reach out to <a href="mailto:ibiza-activity-logs@microsoft.com?subject=Consumption Guidelines">Ibiza Activity Logs</a> for consumption guidelines.

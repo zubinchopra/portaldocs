@@ -39,7 +39,7 @@ Developers should not introduce breaking changes into the server code. For examp
 
 When all users have switched to the newer version of the code, probably by refreshing the portal, the previous version can be deleted. This is  accomplished by making new controllers and methods instead of making breaking changes to existing ones. 
 
-When breaking changes occur, the browser will probably display a broken experience until the portal is reloaded. You can contact the portal team  at [mailto:ibiza-onboarding@microsoft.com?subject=[Breaking Change] ](mailto:ibiza-onboarding@microsoft.com?subject=[Breaking Change])  to find a way to resolve or circumvent this issue.
+When breaking changes occur, the browser will probably display a broken experience until the portal is reloaded. You can contact the portal team  at <a href="mailto:ibiza-onboarding@microsoft.com?subject=Breaking Change">ibiza-onboarding@microsoft.com</a> to find a way to resolve or circumvent this issue.
 
 ### PDL Versioning
 

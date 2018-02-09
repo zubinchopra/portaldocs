@@ -21,7 +21,7 @@ All developers who install the Portal Framework SDK that is located at [http://a
 <!-- TODO: Determine whether the environment that is being described is Dogfood, or whether a different environment would be more appropriate. -->
 First-party extension developers, i.e. Microsoft employees, can view the interfaces with jsdoc comments that are located at [https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx?path=%2Fsrc%2FSDK%2FFramework.Client%2FTypeScript%2FFx%2FComposition&version=GBdev&_a=content](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx?path=%2Fsrc%2FSDK%2FFramework.Client%2FTypeScript%2FFx%2FComposition&version=GBdev&_a=content).
 
-External partners may need to contact  [ibizafxpm@microsoft.com](mailto:ibizafxpm@microsoft.com) or [ibiza-onboarding@microsoft.com](mailto:ibiza-onboarding@microsoft.com) instead of using the internal sites that are in this document. 
+External partners may need to contact <a href="mailto:ibizafxpm@microsoft.com?subject=TypeScript">ibizafxpm@microsoft.com</a> or <a href="mailto:ibiza-onboarding@microsoft.com?subject=TypeScript">ibiza-onboarding@microsoft.com</a> instead of using the internal sites that are in this document. 
 
 We will eventually export the jsdocs for the SDK to a public location.  That effort is in progress.
 <!-- TODO: The effort that is in progress should not be included in the doc until there is an actuality that can be published.  -->

@@ -138,7 +138,7 @@ public getMenuConfig(resourceInfo: MsPortalFx.Assets.ResourceInformation): MsPor
 }
 ```
 
-The following object is populated and passed in, if you would like to see more properties added here feel free to reach out to [ibiza Menu Blade](mailto:ibiza-menu-blade@microsoft.com).
+The following object is populated and passed in, if you would like to see more properties added here feel free to reach out to <a href="mailto:ibiza-menu-blade@microsoft.com?subject=Resource Sample Needs More Properties ">Ibiza Menu Blade</a>.
 
 ```ts
 /**
@@ -190,7 +190,7 @@ interface ResourceMenuConfig {
 
 The following options are available:
 
-| Option                        | Exit criter | Enabled by default | Scenario |
+| Option                        | Production-ready metrics | Enabled by default | Scenario |
 |-------------------------------|-------------|--------------------|----------|
 | `enableAlerts`                | No  | No | Create, view, and update alert rules. |
 | `enableAppInsights`           | No  | No | View Application Insights monitoring. |
@@ -364,5 +364,5 @@ Next Steps:
 * [Migrate any of your current resources to use the resource menu][resourcemenuadoption]
 {"gitdown": "include-file", "file": "../templates/portalfx-resourcemenu-adoption.md"}
 
-* If there are any issues please reach out to [ibiza Menu Blade](mailto:ibiza-menu-blade@microsoft.com) 
+* If there are any issues please reach out to <a href="mailto:ibiza-menu-blade@microsoft.com?subject=Issues with Resource Samples">Ibiza Menu Blade</a>.
 

@@ -65,4 +65,5 @@ Constraints:
 
 - You need to review the changes after running the tool and make sure that they are valid because of the above constraint.
 - If using the AutoRemove option, you need to open up the RESX files in VisualStudio to regenerate the Designer.cs files.
-- If you find any more scenarios that the tool incorrectly identifies as unused please report to [Ibiza Fx PM](mailto:ibizafxpm@microsoft.com)
+- If you find any more scenarios that the tool incorrectly identifies as unused please report to 
+<a href="mailto:ibizafxpm@microsoft.com?subject=Scenario still in use">ibizafxpm@microsoft.com</a>.
