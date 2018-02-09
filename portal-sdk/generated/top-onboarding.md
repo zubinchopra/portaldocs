@@ -101,19 +101,17 @@ Ask an onboarding question on [Stackoverflow](https://stackoverflow.microsoft.co
 <a name="phase-2-development-learn-about-the-hosting-service-plan-your-deployment-strategy"></a>
 ## Learn about the hosting service / plan your deployment strategy
 
-The Ibiza team provides and operates a common extension hosting service that makes it easy to get your extension into a globally distributed system without having to manage your own infrastructure.
+The Ibiza team provides and operates a common extension hosting service that makes it easy to get your extension into a globally distributed system without having to manage your own infrastructure. For more information see [top-extensions-hosting-service.md](top-extensions-hosting-service.md).
 
-<a name="phase-2-development-deployment-using-the-ibiza-hosting-service-portalfx-extensions-hosting-service-overview-md"></a>
-## <a href="portalfx-extensions-hosting-service-overview.md">Deployment using the Ibiza hosting service</a>
+<a name="phase-2-development-deployment-using-the-ibiza-hosting-service"></a>
+## Deployment using the Ibiza hosting service
 
 For less common scenarios, you might need to do a custom deployment.
 
-For example, if you need to talk to backend services using certificate based authentication then you'll need controller code on the server. This is not supported with our hosting service. You should be very sure you require a custom hosting solution before going down this path. 
+For example, if you need to talk to backend services using certificate-based authentication then you'll need controller code on the server. This is not supported with our hosting service. You should be very sure you require a custom hosting solution before going down this path. 
 
-Note that you can configure your deployment in such a way that the client portion of your extension uses the hosting service while your custom controller code can be deployed separately.
-
-<a name="phase-2-development-custom-extension-deployment-infrastructure-portalfx-deployment-md-legacy-diy-deployments"></a>
-## <a href="portalfx-deployment.md#legacy-diy-deployments">Custom extension deployment infrastructure</a>
+**NOTE**: The deployment can be configured in such a way that the client portion of the extension uses the hosting service while the custom controller code can be deployed separately.
+For more information, see [portalfx-extensions-custom-extension-deployment.md](portalfx-extensions-custom-extension-deployment.md).
 
 <a name="phase-2-development-register-the-extension-with-the-portal-product-configuration"></a>
 ## Register the extension with the portal product configuration
@@ -138,8 +136,41 @@ Once the name of your extension is finalized, it's time to register your extensi
 
 There are three typical release kinds. Private preview, public preview, and GA. For the purposes of deployment public preview and GA are the same. The only difference is that your UI may show preview labels and disclaimers where appropriate. For more information about the three kinds of releases, see  [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
 
-<a name="phase-3-deployment-deployment-procedure-portalfx-extensions-onboarding3-deployment-procedure-md"></a>
-## <a href="portalfx-extensions-onboarding3-deployment-procedure.md">Deployment procedure</a>
+<a name="phase-3-deployment-deploy-the-extension"></a>
+## Deploy the extension
+
+1. Review the development phases that are located at [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md) to understand how development is related to production-ready metrics criteria.
+
+1. Review the environments that are specified in [portalfx-extensions-branches.md](portalfx-extensions-branches.md) to understand the environments in which the developer can test an extension.
+
+1. Review the production-ready metrics that are specified in [top-extensions-production-ready-metrics.md](top-extensions-production-ready-metrics.md) to validate that the extension is ready for deployment.
+
+1. If the extension requires additional built-in support for standard Graph or ARM APIs, submit a partner request at the site located at [https://aka.ms/portalfx/uservoice](https://aka.ms/portalfx/uservoice).  For information about other components that the new service needs, see [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md).
+
+1. When you are confident that the development of the extension is complete, you should execute the following process so the specific work required for the Azure Fundamental tenets appears in Service360, as specified in [Azure Fundamentals](https://microsoft.sharepoint.com/teams/WAG/EngSys/Shared%20Documents/Argon/Azure%20Fundamentals%20Proposal/Azure%20Fundamentals%20Proposal.docx?d=wf5b821bc31c44042adb55ebf4d8b408d). 
+
+    * Add the service to ServiceTree, which is located at [https://servicetree.msftcloudes.com](https://servicetree.msftcloudes.com)
+    * Make the service be "Active" in ServiceTree
+    * Complete metadata in ServiceTree to enable the automation for various Service360 Action Items
+    * Complete the Action Items identified in Service360, which is located at [http://aka.ms/s360](http://aka.ms/s360)
+
+1.  Request to deploy the extension to the Production environment, as specified in [portalfx-extensions-publishing](portalfx-extensions-publishing).
+
+1. Integrate the extension into the Marketplace. 
+
+    In the following images, each icon in the Azure Portal Marketplace is referred to as a Gallery item. Gallery items take the form of a file with the .azpkg extension. This is a  zip file which contains all assets for the gallery item: icons, screenshots, descriptions.
+
+    ![alt-text](../media/portalfx-extensions-onboarding/azurePortalMarketPlace.png "Azure Portal Marketplace")
+
+    * **PROD:** The Marketplace team accepts fully finished .azkpg files from your team and uploads them to Production to onboard the gallery package. Reach out to <a href="mailto:1store@microsoft.com?subject=Marketplace Onboarding Request&body=Hello, I would like to onboard the attached package to the production environment. The .azkpg package is named <packageName>. ">1store</a> with the zip file to have them install it.
+    
+    * **DOGFOOD:** Use AzureGallery.exe to upload items to DOGFOOD using the following command:
+
+      ```AzureGallery.exe upload -p ..\path\to\package.azpkg -h [optional hide key]```
+
+    In order to use the gallery loader, there are some values to set in the AzureGallery.exe.config file. For more information, see the Gallery Item Specifications document that is located at      [https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-item-specificiations](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-item-specificiations).  
+
+    For more dev/test scenarios, see [https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-package-development-and-debugging-testing-in-production](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-package-development-and-debugging-testing-in-production).
 
 You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
 
