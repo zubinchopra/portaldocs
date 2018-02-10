@@ -54,6 +54,6 @@ Azure support for friendly names became available in SDK release 5.0.302.834.
 
 You can ask questions on Stackoverflow with the tag [ibiza](https://stackoverflow.microsoft.com/questions/tagged/ibiza).
 
-The Stackoverflow FAQ item should be included in every topic that contains an FAQ subtopic. For a list of Stackoverflow tags, see [portalfx-extensions-stackoverflow](portalfx-extensions-stackoverflow).
+The Stackoverflow FAQ item should be included in every topic that contains an FAQ subtopic. For a list of Stackoverflow tags, see [top-extensions-stackoverflow.md](top-extensions-stackoverflow.md).
 
 * * *

@@ -11,7 +11,7 @@
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-hosting-service-scenarios.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-stackoverflow.md"}
+{"gitdown": "include-file", "file": "../templates/top-extensions-stackoverflow.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-hosting-service.md"}
 

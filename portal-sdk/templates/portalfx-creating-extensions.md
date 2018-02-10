@@ -229,10 +229,10 @@ Next Steps: To debug issues loading an extension in the portal, go through the [
 
 <!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  portalfx-extensions-blade-helloWorld-references.md -->
 
-<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-stackoverflow.md -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  top-extensions-stackoverflow.md -->
 
 ### Questions?
 
 Ask questions on: [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).
 
-<!-- TODO:  deprecate the preceding   section of this document by removing it.  It has been  replaced by  portalfx-extensions-stackoverflow.md -->
+<!-- TODO:  deprecate the preceding   section of this document by removing it.  It has been  replaced by  top-extensions-stackoverflow.md -->

@@ -85,13 +85,13 @@ Both First-party and Third-party extension developers can install and run sample
 
      All services should use the menu blade instead of the Settings blade. ARM resources should opt in to the resource
      menu for a simpler, streamlined menu.
-<!-- TODO:  deprecate the following   section of this document by removing it.  It has been  replaced by  portalfx-extensions-stackoverflow.md -->
+<!-- TODO:  deprecate the following   section of this document by removing it.  It has been  replaced by  top-extensions-stackoverflow.md -->
      See also:
      - [#ibiza-blades-parts on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts) for menu blade questions
      - [#ibiza-resources on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-resources) for resource menu questions
      - [Ask a menu blade question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-blades-parts)
      - [Ask a resource menu question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-resources)
-<!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  portalfx-extensions-stackoverflow.md -->
+<!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  top-extensions-stackoverflow.md -->
    - **Activity logs** (Stakeholder: [Rajesh Ramabathiran](mailto:ibiza-activity-logs@microsoft.com))
 
       Activity/event/operation/audit logs should be available from the menu for all services. Subscription-based
@@ -111,10 +111,10 @@ Both First-party and Third-party extension developers can install and run sample
 
      See also:
      - [Create documentation](/portal-sdk/generated/index-portalfx-extension-development.md#common-scenarios-building-create-experiences)
-     <!-- TODO:  deprecate the following   section of this document by removing it.  It has been  replaced by  portalfx-extensions-stackoverflow.md --
+     <!-- TODO:  deprecate the following   section of this document by removing it.  It has been  replaced by  top-extensions-stackoverflow.md --
      - [#ibiza-create on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-create)
      - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-create)
-     <!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  portalfx-extensions-stackoverflow.md --
+     <!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  top-extensions-stackoverflow.md --
 
    - **Browse (resource list) blades**
 
@@ -143,7 +143,7 @@ Both First-party and Third-party extension developers can install and run sample
 
    Once your service name is finalized, request to have your extension registered in all environments. Once deployed to
    DOGFOOD (aka DF), contact the Fx team to request that it be enabled (if applicable). Your extension will be enabled
-   in production once all exit criteria have been met.
+   in production once all production-ready metrics have been met.
   <!-- TODO:  deprecate the preceding    section of this document by removing it.  It has been  replaced by portalfx-extensions-forDevelopers-procedures.md  -->
   
   <!-- TODO:  deprecate the following   section of this document by removing it.  It has been  replaced by      portalfx-extensions-configuration-overview.md  -->
@@ -186,12 +186,12 @@ Both First-party and Third-party extension developers can install and run sample
 
 <!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-onboarding-criteria in the portalfx-extensions-onboarding.md document.   -->
 
-1. **[Exit criteria + quality metrics](portalfx-onboarding-exitcriteria.md)**
+1. **[Production-ready metrics  + quality metrics](portalfx-onboarding-exitcriteria.md)**
 <!-- TODO:  deprecate the preceding   section of this document by removing it.  It has been  replaced by portalfx-extensions-onboarding-criteria in the portalfx-extensions-onboarding.md document.   -->
 
 
 <!-- TODO:  deprecate the following    section of this document by removing it.  It has been  replaced by portalfx-extensions-faq-forDevelopers.md  -->
-   Every extension must meet required exit criteria / quality metrics before it will be enabled.
+   Every extension must meet required production-ready metrics / quality metrics before it will be enabled.
 
 For any other questions, don’t hesitate to ask us on [https://stackoverflow.microsoft.com](https://stackoverflow.microsoft.com).
 <!-- TODO:  deprecate the preceding   section of this document by removing it.  It has been  replaced by portalfx-extensions-faq-forDevelopers.md  -->

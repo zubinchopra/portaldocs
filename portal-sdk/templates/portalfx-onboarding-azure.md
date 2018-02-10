@@ -218,12 +218,12 @@ portalfx-extensions-developerInit-procedure.md -->
    feasible.
 
 <!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by  portalfx-extensions-forDevelopers-procedures.md  -->
-<!-- TODO:  deprecate the following section of this document by removing it.  It has been  replaced by portalfx-extensions-stackoverflow.md  -->
+<!-- TODO:  deprecate the following section of this document by removing it.  It has been  replaced by top-extensions-stackoverflow.md  -->
 1. **[Ask questions on //stackoverflow](https://stackoverflow.microsoft.com)**
 
    Join the community in https://stackoverflow.microsoft.com and let us know if you have any questions. (Don't forget to
    tag questions with "ibiza" or related tag.)
-<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-stackoverflow.md  -->
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by top-extensions-stackoverflow.md  -->
 <!-- TODO:  deprecate the following section of this document by removing it.  It has been  replaced by portalfx-extensions-testing-in-production.md -->
 
 7. **[Side-load your extension for local testing](/portal-sdk/generated/index-portalfx-extension-development.md#debugging-testing-in-production)**
@@ -352,6 +352,6 @@ portalfx-extensions-developerInit-procedure.md -->
    Every extension must meet required exit criteria / quality metrics before it will be enabled.
    portalfx-extensions-exitCriteria.md
    <!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-forDevelopers-procedures.md  -->
-<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-stackoverflow.md  -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by top-extensions-stackoverflow.md  -->
 For any other questions, don’t hesitate to ask us on [https://stackoverflow.microsoft.com](https://stackoverflow.microsoft.com).
-<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by portalfx-extensions-stackoverflow.md  -->
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by top-extensions-stackoverflow.md  -->
