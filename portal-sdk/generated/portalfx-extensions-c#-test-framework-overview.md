@@ -42,4 +42,4 @@ If issues are encountered while developing the improvement, please search the in
 
  If you are unable to find an answer, reach out to the Ibiza team at  [Stackoverflow Ibiza Test](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza-test). 
 
- For a list of topics and stackoverflow tags, see [portalfx-extensions-stackoverflow.md](portalfx-extensions-stackoverflow.md).
+ For a list of topics and stackoverflow tags, see [top-extensions-stackoverflow.md](top-extensions-stackoverflow.md).

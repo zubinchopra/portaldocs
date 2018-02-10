@@ -31,7 +31,7 @@ This is the only document within the topic that contains an H1-level header.
    * top-extensions-production-ready-metrics.md
    * portalfx-extensions-publishing.md
    * portalfx-extensions-qualityEssentials.md
-   * portalfx-extensions-stackoverflow.md
+   * top-extensions-stackoverflow.md
    * portalfx-extensions-status-codes.md
 
 1. Subtopics that occur within topics, like overviews or procedures, will always use that word as the last node within the filename.  Subtopics that are specific to a topic are self-naming, in one or two words. The last node of the file is the name of the subtopic, and is used to sort subtopics within the topic. Some filenames are `portalfx-telemetry-alerting-overview.md`, `portalfx-data-overview.md`, `portalfx-telemetry-alerting-performance.md` or `portalfx-style-guide-utility-classes.md`. 
@@ -237,7 +237,7 @@ Azure support for friendly names became available in SDK release 5.0.302.834.
 
 You can ask questions on Stackoverflow with the tag [ibiza](https://stackoverflow.microsoft.com/questions/tagged/ibiza).
 
-The Stackoverflow FAQ item should be included in every topic that contains an FAQ subtopic. For a list of Stackoverflow tags, see [portalfx-extensions-stackoverflow](portalfx-extensions-stackoverflow).
+The Stackoverflow FAQ item should be included in every topic that contains an FAQ subtopic. For a list of Stackoverflow tags, see [top-extensions-stackoverflow.md](top-extensions-stackoverflow.md).
 
 * * *
    

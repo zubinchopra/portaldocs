@@ -1,3 +1,5 @@
+
+<!-- TODO:  deprecate this document.  It has been  replaced  as specified in the TODO comments.  -->
 * [Getting started with the Portal SDK](#getting-started-with-the-portal-sdk)
     * [Prerequisites](#getting-started-with-the-portal-sdk-prerequisites)
     * [Creating an Extension](#getting-started-with-the-portal-sdk-creating-an-extension)
@@ -13,6 +15,7 @@
 <a name="getting-started-with-the-portal-sdk"></a>
 ## Getting started with the Portal SDK
 
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-developerInit-overview.md -->
 <a name="getting-started-with-the-portal-sdk-prerequisites"></a>
 ### Prerequisites
 
@@ -20,6 +23,8 @@
 - Visual Studio 2013 Update 4
 - Latest version of the <a href="http://www.typescriptlang.org/#Download" target="_blank">TypeScript plugin for Visual Studio</a>
 - Latest version of the <a href="../generated/downloads.md" target="_blank">Azure Portal SDK</a>
+<!-- TODO:  deprecate the preceding   section of this document by removing it.  It has been  replaced by  portalfx-extensions-developerInit-overview.md -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-developerInit-procedure.md  -->
 
 <a name="getting-started-with-the-portal-sdk-creating-an-extension"></a>
 ### Creating an Extension
@@ -29,7 +34,7 @@ To start, launch Visual Studio and navigate to File -> New -> Project.  In the n
 
 ![New project template](../media/portalfx-overview/new-project-template.png)
 
-- Next, hit F5 to compile, and run your extension in IIS Express.   
+- Next, click F5 to compile, and run your extension in IIS Express.   
 - On first run you should see a request to install a certificate for localhost for IIS express Accept the certificate to continue
 
   ![Accept https certificate](../media/portalfx-overview/enablehttps.png)
@@ -43,12 +48,19 @@ Your extension will now be side loaded into the production portal.  The portal w
 ![Untrusted Extensions](../media/portalfx-overview/untrusted-extensions.png)
 
 Congratulations!  You've just created your first extension.
+<!-- TODO:  deprecate the preceding section of this document by removing it.  It has been  replaced by  portalfx-extensions-developerInit-procedure.md  -->
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-key-components-overview.md -->
 
 You will find that the project template has implemented many of the key components of an extension.  
 
 - Marketplace Gallery Integration (How people create your resources)
 - Browse (How people browse resources they have created)
 - Resource Menu Blade (How people use and manage resources they have created)
+
+<!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  portalfx-extensions-key-components-overview.md -->
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-key-components-mgCreate.md -->
 
 <a name="getting-started-with-the-portal-sdk-marketplace-gallery-integration-and-create-experience"></a>
 ### Marketplace Gallery Integration and Create Experience
@@ -85,7 +97,11 @@ The code that implements the create blade is located in __Client/Resource/Create
 
 Fill out the create form and click create to actually create a resource.
 
-For more information on creating gallery packages and create forms see the [gallery documentation](/gallery-sdk/generated/index-gallery.md#Marketplace-Gallery-Integration-and-Create-Experience).
+For more information on creating gallery packages and create forms see the gallery documentation that is located at [/gallery-sdk/generated/index-gallery.md#Marketplace-Gallery-Integration-and-Create-Experience](/gallery-sdk/generated/index-gallery.md#Marketplace-Gallery-Integration-and-Create-Experience).
+
+<!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  portalfx-extensions-key-components-mgCreate.md -->
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by    portalfx-extensions-key-components-browse.md -->
 
 <a name="getting-started-with-the-portal-sdk-browse"></a>
 ### Browse
@@ -108,6 +124,13 @@ The code for the browse implementation is located in __Client/Browse__.  You can
 
 For more information on the browse experience see the [Browse documentation](#getting-started-with-the-portal-sdk-browse).
 
+
+<!-- TODO:  deprecate the previous   section of this document by removing it.  It has been  replaced by  portalfx-extensions-key-components-browse.md -->
+
+
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-key-components-resourceMenuBlade.md -->
+
 <a name="getting-started-with-the-portal-sdk-resource-menu-blade"></a>
 ### Resource Menu Blade
 
@@ -125,6 +148,8 @@ The code for the resource menu blade is located in __Browse/ViewModels/AssetType
 
 For more information on the resource menu blade see the [Resource menu blade documentation](/gallery-sdk/generated/index-gallery.md#resource-management-resource-menu).
 
+<!-- TODO:  deprecate the previous   section of this document by removing it.  It has been  replaced by  portalfx-extensions-key-components-resourceMenuBlade.md -->
+<!-- TODO:  deprecate the following section of this document by removing it.  It has been  replaced by  top-extensions-samples-overview.md -->
 <a name="getting-started-with-the-portal-sdk-v1-versus-v2-in-the-samples-extension"></a>
 ### V1 versus V2 in the samples extension
 
@@ -139,7 +164,7 @@ So far, V2 covers these API areas, and we're adding more:
 - New Blade variations -- TemplateBlade, FrameBlade, MenuBlade importantly
 - Blade-opening/closing -- 'container.openBlade, et al'
 - no-PDL TypeScript decorators -- to define all recommended Blade/Part variations
-- Forms -- No V1 EditScope concept
+- Forms -- without the V1 `EditScope` concept
 
 As for V1 concepts, these are concepts we're asking extensions to avoid where there are V2 APIs that can be used:
 - __PDL__
@@ -151,6 +176,8 @@ As for V1 concepts, these are concepts we're asking extensions to avoid where th
 - __V1 Forms__ -- using EditScope
 
 Bear in mind that we don't have the V2 space entirely built out. In the meantime, you will have to use V1 APIs in places, even the V1 concepts listed above.
+<!-- TODO:  deprecate the preceding   section of this document by removing it.  It has been  replaced by  top-extensions-samples-overview.md -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-blade-helloWorld.md -->
 
 <a name="getting-started-with-the-portal-sdk-hello-world-for-blades"></a>
 ### Hello World for blades
@@ -208,6 +235,10 @@ That's it. After you compile your blade you can test it out by deep linking usin
 
 `<PORTAL URI>#blade/<YOUR EXTENSION NAME>/<YOUR BLADE NAME>`
 
+<!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  portalfx-extensions-blade-helloWorld.md -->
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-blade-helloWorld-references.md -->
+
 <a name="getting-started-with-the-portal-sdk-next-steps"></a>
 ### Next Steps
 
@@ -215,7 +246,13 @@ Read more about [testing in production](portalfx-testinprod.md).
 
 Next Steps: To debug issues loading an extension in the portal, go through the [Debugging extension failures](portalfx-debugging-extension-load-failures.md) guide.
 
+<!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  portalfx-extensions-blade-helloWorld-references.md -->
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  top-extensions-stackoverflow.md -->
+
 <a name="getting-started-with-the-portal-sdk-questions"></a>
 ### Questions?
 
 Ask questions on: [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).
+
+<!-- TODO:  deprecate the preceding   section of this document by removing it.  It has been  replaced by  top-extensions-stackoverflow.md -->
