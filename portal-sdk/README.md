@@ -7,7 +7,7 @@ Couldn't find what you needed? [Ask about the docs on StackOverflow](https://sta
 ## Onboarding a new extension
 
 * [Overview / Getting Started](./generated/top-onboarding.md)
-* [Steps that do not involve the Ibiza team](./generated/top-external-onboarding.md)
+* [Steps that do not involve the Ibiza team](./generated/portalfx-extensions-onboarding-with-related-teams.md)
 * [Manage cloud/environment specific configuration](./generated/top-extensions-configuration.md)
 * [Exit criteria](./generated/top-extensions-production-ready-metrics.md)
 
@@ -32,9 +32,9 @@ Learn how the framework is structured and how it is designed to run in multiple 
 ## Development guide
 
 Azure portal extension development is supported on the Microsoft Windows 8, Windows Server 2012 R2, and Windows 10.
-  [Development guide](./generated/top-extensions-getting-started.md)
+  <!--[Development guide](./generated/top-extensions-getting-started.md)-->
 1. [Install the SDK](./generated/top-extensions-install-software.md)
-* [How to use the MSI Installer](downloads.md)
+* [How to use the MSI Installer](./generated/downloads.md)
 * [How to update portal Nuget packages](./generated/top-extensions-nuget.md)
 2. Configure your IDE - *Typescript version / Compile on save*
 * [Visual Studio](portalfx-ide-setup.md) *(with Extension project template)*
@@ -49,6 +49,7 @@ The next few sections walk through the different types of UI that can be built u
 ### Blades
 
 The primary UI building block is a called a blade. A blade is like a page. It generally takes up the full screen, has a presence in the portal breadcrumb, and has an 'X' button to close it.
+
 [Developing blades](portalfx-blades.md#blades)
 
 [Ask a question about blades on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts)
@@ -56,20 +57,26 @@ The primary UI building block is a called a blade. A blade is like a page. It ge
 ### Parts
 
 If you want your experience to have a presence on Azure dashboards then you will want to build parts (a.k.a. tiles).
+
 [Developing parts](portalfx-blades.md#blades)
 
 [Ask a question about parts on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts)
 
 ### Building UI with HTML templates and Fx controls
 
-Any template based UI in the portal (e.g. [template blades]() or [template parts]()) can make use of a rich controls library maintained by the Ibiza team.
-* [Controls overview](./generated/top-controls.md)
+Any template based UI in the portal (e.g. [template blades]() or [template parts]() can make use of a rich controls library maintained by the Ibiza team.
+
+* [Controls overview](./generated/top-extensions-controls.md)
 * [Controls playground]()
+
 [Ask a controls related question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls)
 
 ### [Styling and Theming](./generated/top-extensions-style.md)
 
 When using HTML and framework controls you have some control over styling. These documents walk through the relevant topics.
+
+ [Styling and Theming](./generated/top-extensions-style.md)
+
 * [CSS Style sanitization]()
 * [Adding Custom CSS]()
 * [Layout classes]()
