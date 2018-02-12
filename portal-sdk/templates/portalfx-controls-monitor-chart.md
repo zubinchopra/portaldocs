@@ -1,23 +1,37 @@
 ## Monitor Chart
-The Monitor Chart control allows you to plot the metrics for your resource in Azure. It is part of the Ibiza framework, and it inherently knows how to fetch data for your resource.
 
-The Monitor Chart control is available in SDK version **5.0.302.731** and above.
+The Monitor Chart control allows the plotting of metrics for an Azure resource. It is part of the Ibiza framework, and it inherently knows how to fetch data for a resource.
 
-### Benefits
-- **Performance** - The charts are built to render quickly and make efficient network calls for data
-- **First class integration with Azure Monitor** - When you click on a chart, it will take you to the metrics experience in Azure Monitor
-- **Automatic responsive behavior** - You can pass in an array of charts to display and the control takes care of css responsiveness
+The Monitor Chart control is available in SDK version **5.0.302.731** and above. For more information about SDK versions, see [../downloads.md](../downloads.md).
 
-### Pre-requisites: Onboard to Monitor config
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
-If you are onboarding to Azure Monitor for the first time, please reach out to the <a href="mailto:ibizamon@microsoft.com?subject=Azure Monitor Onboarding">Monitoring team</a>.
+Some of the benefits of using the Monitor Chart are as follows.
 
-The Monitoring team will add your resource type to a config which allows the Monitor Control to know how to fetch metrics for your resources.
+* **Performance** 
 
+    The charts are built to render quickly and make efficient network calls for data
 
-<a name="controlUsage"></a>
+* **First class integration with Azure Monitor** 
 
-### Using the control
+    When a chart is clicked, the metrics experience in Azure Monitor will be displayed
+
+* **Automatic responsive behavior**
+
+    An array of charts can be displayed responsively in  the control
+
+If you are onboarding to Azure Monitor for the first time, please reach out to the <a href="mailto:ibizamon@microsoft.com?subject=Azure Monitor Onboarding">Monitoring team</a>. The Monitoring team will add your resource type to a configuration which allows the Monitor Control to fetch metrics for your resources.
+
+### The monitor chart control
+
+Developers can add the monitor chart control to their extensions by using the following procedure.
+
+1. Import the MonitorChart module, as in the following code.
+
+1. Create the MonitorChart options.
+
+1. Then, create the ViewModel.
+
 ```typescript
 import * as MonitorChart from "Fx/Controls/MonitorChart";
 
@@ -46,19 +60,23 @@ const monitorChartOptions: MonitorChart.Options = {
 const monitorChartViewModel = MonitorChart.create(bladeOrPartContainer, monitorChartOptions);
 ```
 
-> You can plot more than one chart while referencing the control. Also, you can plot multiple metrics for each chart.
+The code can plot more than one chart while referencing the control. Also, it can plot multiple metrics for each chart.
 
-> To see a complete list of the options you can pass to the control, look at the `Fx/Controls/MonitorChart` module in Fx.d.ts, or you can [view the interfaces directly in the PortalFx repo][6].
+For a complete list of the options that can be sent to the control, see  `Fx/Controls/MonitorChart` module in the  `Fx.d.ts` file of the project.  You can also view the interfaces directly in the PortalFx repository, as in the example located at [https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FFramework.Client%2FTypeScript%2FFx%2FControls%2FMonitorChart.ts&version=GBproduction&_a=contents](https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FFramework.Client%2FTypeScript%2FFx%2FControls%2FMonitorChart.ts&version=GBproduction&_a=contents).
 
+### Legacy Blade Usage
 
-<a name="legacyBladeUsage"></a>
+**Using the MonitorChart control on a locked/unlocked blade**
 
-### [LEGACY BLADES] Using the control on a locked/unlocked blade
-If you are not using a template blade, you can reference the `MonitorChartPart` from the `HubsExtension` in your blade's pdl.
+If you are not using a template blade, you can reference the `MonitorChartPart` from the `HubsExtension` in the pdl file associated with the extension.
 
-> Ensure that you have the HubsExtension.pde added to your extension. You can get the HubsExtension.pde and the MonitorChartPart.d.ts file from Microsoft.Portal.Extensions.Hubs.<<Build#>>.nupkg
+Ensure that the `HubsExtension.pde` file has been added to the extension. The `HubsExtension.pde` file and the `MonitorChartPart.d.ts` file are made available to the project when the `Microsoft.Portal.Extensions.Hubs.<<Build#>>.nupkg` package is installed.  For more information about NuGet and making packages available to Visual Studio, see [top-extensions-nuget.md](top-extensions-nuget.md) and [portalfx-extensions-create-blank-procedure.md](portalfx-extensions-create-blank-procedure.md).
 
-**Example Blade PDL:**
+#### Legacy Blade PDL
+
+<!--TODO:  Add some content as to why this and the following 2 sections are legacy, and how they would be used today. -->
+The following is a pdl file for a legacy blade that uses the `MonitorChartPart`.
+
 ```xml
 <Definition xmlns="http://schemas.microsoft.com/aux/2013/pdl"
             xmlns:azurefx="http://schemas.microsoft.com/aux/2013/pdl/azurefx"
@@ -97,7 +115,8 @@ If you are not using a template blade, you can reference the `MonitorChartPart` 
 </Definition>
 ```
 
-**Example Blade ViewModel:**
+#### Legacy Blade ViewModel
+
 ```typescript
 import * as Blade from "Fx/Composition/Pdl/Blade";
 
@@ -111,7 +130,8 @@ export class MonitorChartTestBladeViewModel {
 }
 ```
 
-**Example Adapted part ViewModel:**
+#### Legacy Adapted part ViewModel
+
 ```typescript
 /// <reference path="../../_extensions/Hubs/Definitions/MonitorChartPart.d.ts />
 import AggregationType = HubsExtension.MonitorChartPart.AggregationType;
@@ -147,14 +167,16 @@ export class MonitorChartPartAdapter {
 }
 ```
 
-> To see a complete list of the options you can pass to the MonitorChartPart, look at the `MonitorChartPart.d.ts` file either in the Hubs Nuget package, or [directly in the Hubs repo][7].
+**NOTE**: For a complete list of the options that can be sent to the `MonitorChartPart`, see the `MonitorChartPart.d.ts` file either in the Hubs Nuget package, or directly in the Hubs repository, as in the example located at [https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FExtensions%2FHubsExtension%2FTypeScript%2FHubsExtension%2FForExport%2FMonitorChartPart.d.ts&_a=contents](https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FExtensions%2FHubsExtension%2FTypeScript%2FHubsExtension%2FForExport%2FMonitorChartPart.d.ts&_a=contents).
 
-### Try it out in samples extension
-You can try out the monitor chart control in the [Samples Extension][1], or view the code directly in the Samples Extension at:
+### Monitor chart control samples
 
-`\Client\V2\Preview\MonitorChart\MonitorChartBlade.ts`
+ The monitor chart control sample is located at `<dir>\Client\V2\Preview\MonitorChart\MonitorChartBlade.ts`. This code is also included in the working copy located at [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/monitorchart](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/monitorchart).
 
-To plot a single chart with "dummy data", try the following input for `Chart Input JSON`:
+#### Plotting single charts with dummy data
+
+ Use the following input `Chart Input JSON` file to plot single charts with dummy data.
+
 ```json
 [
     {
@@ -172,9 +194,15 @@ To plot a single chart with "dummy data", try the following input for `Chart Inp
     }
 ]
 ```
-![Metrics chart control single input][2]
 
-To plot multiple charts with "dummy data", try the following input for `Chart Input JSON`:
+The results of the code are included in the following image.
+
+![alt-text](../media/portalfx-controls-monitor-chart/monitor-chart-control-single-input.png "Metrics chart control single input")
+
+#### Plotting multiple charts with dummy data
+
+ Use the following input `Chart Input JSON` file to plot multiple charts with dummy data.
+
 ```json
 [
     {
@@ -244,44 +272,21 @@ To plot multiple charts with "dummy data", try the following input for `Chart In
     }
 ]
 ```
-![Metrics chart control multiple inputs][3]
 
-### End-to-end flow for users
+The results of the code are included in the following image.
 
-#### Overview blade
-Once you reference the monitor chart control in your overview blade, it will look similar to the following screenshot:
+![alt-text](../media/portalfx-controls-monitor-chart/monitor-chart-control-multiple-inputs.png "Metrics chart control multiple inputs")
 
-![Monitor chart control overview blade][4]
+### Overview blade
 
-#### Integration with Azure Monitor
+After the monitor chart control is referenced from the overview blade, it will look similar to the following screenshot.
 
-When a user clicks one of the charts, it will load the Azure Monitor metrics blade:
+![alt-text](../media/portalfx-controls-monitor-chart/monitor-chart-control-overview-blade.png "Monitor chart control overview blade")
 
-![Monitor chart control azure monitor][5]
+### Integration with Azure Monitor
 
-From here, users can explore other metrics, pin charts to dashboard, create an alert or set the export options via diagnostics settings.
+When a user clicks one of the charts, the extensions will load the Azure Monitor metrics blade, as in the following image.
 
-### FAQs
+![alt-text](../media/portalfx-controls-monitor-chart/monitor-chart-control-azure-monitor.png "Monitor chart control azure monitor")
 
-- ***My extension is still using legacy blades (locked or unlocked). Is this still applicable to me? If yes, do I get the benefits mentioned above?***
-
-    Yes, even if you are not using template blades you can [reference the MonitorChartPart](#legacyBladeUsage) from the Hubs extension.
-
-    If you already have an Insights/Monitoring Metrics part on your blade, instead of referencing the metrics part from Insights/Monitoring extension, you can reference the part from Hubs extension. Since the Hubs extension is always loaded when you load the portal, it will already be loaded by the time user loads your extension blade. Hence, you will not load an additional extension and get significant perf benefits.
-
-    However, for the best performance, we strongly recommend that you move towards template blades and [consume the MonitorChart control](#controlUsage) directly.
-
-- ***Can the users change the metrics/time range/chart type of the charts shown in the overview blade?***
-
-    No, users cannot customize what is shown in the overview blade. For any customizations, users can click on the chart, go to Azure Monitor, tweak the chart if needed and then pin to the dashboard. The dashboard will contain all the charts that users want to customize and view.
-
-    This keeps our story consistent: view the metrics in overview blade, explore them in Azure Monitor and track/monitor them in Azure Dashboard. Removing customizations from blades also provides more reliable blade performance.
-
-<!-- References -->
-[1]: https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/monitorchart
-[2]: ../media/portalfx-controls-monitor-chart/monitor-chart-control-single-input.png
-[3]: ../media/portalfx-controls-monitor-chart/monitor-chart-control-multiple-inputs.png
-[4]: ../media/portalfx-controls-monitor-chart/monitor-chart-control-overview-blade.png
-[5]: ../media/portalfx-controls-monitor-chart/monitor-chart-control-azure-monitor.png
-[6]: https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FFramework.Client%2FTypeScript%2FFx%2FControls%2FMonitorChart.ts&version=GBproduction&_a=contents
-[7]: https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FExtensions%2FHubsExtension%2FTypeScript%2FHubsExtension%2FForExport%2FMonitorChartPart.d.ts&_a=contents
+Users can explore other metrics, pin charts to dashboard, create an alert, or set the export options by using diagnostics settings.

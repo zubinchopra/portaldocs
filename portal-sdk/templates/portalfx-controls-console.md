@@ -6,6 +6,9 @@ The console control provides a REPL-like experience which provides an environmen
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
+
+The `console` control is displayed in the following image.
+
 ![alt-text](../media/portalfx-controls/console-large.png "Console")
 
 1. The `console` control is used by importing the module, as in the following code.  Insert the `console` control as a member of a Section, or include it in an HTML template by using a 'pcControl' binding. The sample is located at 

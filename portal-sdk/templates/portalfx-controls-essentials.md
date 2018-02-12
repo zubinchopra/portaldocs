@@ -61,8 +61,8 @@ To use the custom layout `essentials` control, compose a template blade that con
 
 1. Use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel. 
 
-<!--
-{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsCustomLayoutBlade.ts","section":"essentials#startBladeCustomLayout"}  -->
+    <!--
+    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsCustomLayoutBlade.ts","section":"essentials#startBladeCustomLayout"}  -->
 
 1. Define the `_initializeControl` that initializes the control.
 
@@ -96,6 +96,8 @@ To use the Non-resource `essentials` control, compose a template blade that cont
 ### Types
 
 ### Properties
+
+<!-- TODO: Determine whether this section should be more verbose, and if so, what the descriptive content should be. -->
 
 #### Built-In Properties
 

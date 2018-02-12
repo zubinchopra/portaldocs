@@ -2,21 +2,36 @@
 
 ## Graph
 
-Applications that need a stand alone graph control can use the Microsoft.Portal.Controls.Graph package. This package is published on MSNuget and should not be shared externally at this time. It contains all the Javascript and CSS files needed to render the control as well as all the definitions needed to consume it in Typescript.
+Applications that need a stand-alone graph control can use the `Microsoft.Portal.Controls.Graph` package. This package is published on **MSNuget** and should not be shared externally. It contains all the **Javascript** and **CSS** files needed to render the control, in addition to the definitions needed to use it in **Typescript**.
 
-Requirements:
-Your web page must statically include the following scripts before your require data-main:
-1. jquery
-1. knockout.js 3.2.0
-1. Q (version 1)
-1. hammerjs (1.1.3 has been tested. If you don't include hammer, you won't get multi-touch, but everything else should work correctly.)
+<!--TODO: Determine whether the above paragraph includes the Viva.Controls directory -->
 
-You then must use requirejs to load the graph control. Specify your program entry in data-main. There are 3 modules you should ever need to explicitly bring in as dependencies. 
-Viva.Controls/Controls/Visualization/Graph/GraphWidget (contains the widget)
-Viva.Controls/Controls/Visualization/Graph/GraphViewModel (the ViewModel backing the widget)
-Viva.Controls/Controls/Visualization/Graph/GraphEntityViewModel (defines graph node and edges classes)
+### Requirements
 
-An example module that consumes the control:
+The web page must statically include the following scripts previous to the required data-main paragraph.
+
+1. **jquery**
+1. **knockout.js** version 3.2.0
+1. **Q** version 1
+1. **hammerjs**
+
+**NOTE**: **hammerjs** version 1.1.3 has been tested. If **hammer** is not included, the extension will not get multi-touch, but everything else should work correctly.
+
+The **requirejs** is used to load the graph control, with the program entry that is specified in data-main. There are 3 modules that should be explicitly brought in as dependencies. 
+
+* Viva.Controls/Controls/Visualization/Graph/GraphWidget 
+
+    Contains the widget
+
+* Viva.Controls/Controls/Visualization/Graph/GraphViewModel 
+
+    Contains the ViewModel that supports the widget
+
+* Viva.Controls/Controls/Visualization/Graph/GraphEntityViewModel 
+
+    Defines graph node and edges classes
+
+A module that uses the control is in the following example.
 
 ```ts
 import Widget = require("./Viva.Controls/Controls/Visualization/Graph/GraphWidget");
