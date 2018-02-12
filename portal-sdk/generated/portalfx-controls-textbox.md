@@ -29,6 +29,8 @@ The `Textbox` control provides an easy way to allow users to input data.
 
 The `MsPortalFx.ViewModels.Controls.Forms.TextBox` control is being deprecated. When the Ibiza SDK is updated to a newer version,  compile-time errors will reflect this.
 
+<!--TODO:  Determine what namespace contains the new one, if the old one is named MsPortalFx.ViewModels.Controls.Forms.TextBox -->
+
 Use the following steps to replace the deprecated control with the new `TextBox` control in the `Fx/Controls/TextBox` module.
 
 1. Update the `Textbox` with the new namespace.
@@ -76,6 +78,7 @@ Use the following steps to replace the deprecated control with the new `TextBox`
     <details>
     <summary>Old code</summary>
     <!--TODO:  Determine whether  enterPresseded is a typographical error. -->
+    
     ```cs
     textBoxVM.events.enterPressed = (value: string): void => {
         // Functions goes here...

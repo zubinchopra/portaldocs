@@ -26,9 +26,7 @@ Toolbars are comprised of toolbar items. Most toolbar items are buttons. Toolbar
 * Open a dialog
 * Toggle on and off
 
-`<dir>Client\V1\Controls\Toolbar`
-
-All toolbar buttons have icons and labels, as in the following example.
+All toolbar buttons have icons and labels, as in the example located at `<dir>Client\V1\Controls\Toolbar`. This code is also included in the following working example.
 
 ```ts
 var commandButtonViewModel: FxToolbars.CommandButton<string> = new FxToolbars.CommandButton<string>();
@@ -36,14 +34,14 @@ commandButtonViewModel.label(ClientResources.toolbarCommitCommand);
 commandButtonViewModel.icon(Image.Commit());
 ```
 
-A simple command button also requires a command context and a command.
+A simple command button also requires a command context and a command, as in the following code.
 
-```ts               
+```ts
 commandButtonViewModel.commandContext(ClientResources.toolbarCommitCommand);
 commandButtonViewModel.command = new TestCommand({ resultTextBox: this.textBoxVM, itemViewModel: commandViewModel });
 ```
 
-Items can then be bulk added to the toolbar.
+Items can then be bulk added to the toolbar, as in the following code.
 
 ```ts
 var items: FxToolbars.ToolbarItemContract[] = [];
