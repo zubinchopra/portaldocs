@@ -1,6 +1,6 @@
 ## Charts
 
-Chart controls in the extension UI allow users to visualize and analyze their data. A  chart is included in the following example.
+Chart controls allow users to visualize and analyze their data. A  chart is included in the following example.
 
 ![alt-text](../media/portalfx-ui-concepts/chart.png "Extensions can host multiple areas")
 
@@ -12,9 +12,8 @@ If the extension uses a custom part template instead, charts can be added with t
 <div data-bind='pcChart: chartVM' style='height:500px'></div>
 ```
 
-### Chart views and series views
 
-Our charts include the following **chart view** types which can be used separately or in tandem:
+Our charts include the following **chart view** types which can be used separately or in tandem.
 
 * Line
 * Grouped bar
@@ -23,7 +22,9 @@ Our charts include the following **chart view** types which can be used separate
 * Area
 * Stacked area 
 
-Chart views are the high-level view type for your chart.
+### Chart views
+
+Chart views are the high-level view type for the chart.
 
 ```ts
 // Initialize the view.  This is the code that makes this chart a bar chart.
@@ -31,22 +32,25 @@ var barChartView = new MsPortalFx.ViewModels.Controls.Visualization.Chart.BarCha
 this.chartVM.views([barChartView]);
 ```
 
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. 
+
 A ViewModel that includes a single chart view type is located at `<dir>\Client\V1\Controls\Chart\ViewModels\BarChartViewModels.ts`.
 
-A ViewModel that includes  multiple chart view types is located at 
-`<dir>\Client\V1\Controls\Chart\ViewModels\OverlayedViewChartViewModel.ts`.
+A ViewModel that includes  multiple chart view types is located at `<dir>\Client\V1\Controls\Chart\ViewModels\OverlayedViewChartViewModel.ts`.
 
-**Series views** are visualizations of individual data series. Series views allow you to modify the color, display name, and interaction behavior of a particular series.
+### Series views
 
-By default, series views will be generated for each of the chart views and each of the data series you add to your chart. For example, let's say you added three data series, seriesA, seriesB, and seriesC to a chart that has two chart views, a bar chart view and a line chart view. Your chart would have 6 series views, a bar chart series view and a line chart series view for each series. This default behavior is ideal for simple charts, especially those with one chart view type.
+Series views are visualizations of individual data series. Series views allow developers to modify the color, display name, and interaction behavior of a specific series.
 
-In some cases you may want to do some more interesting things with series views. Perhaps instead you want seriesA and seriesB to be visualized as bars and seriesC to be visualized as a line. To achieve this behavior you will need to turn off the auto-generate behavior.
+By default, series views will be generated for each of the chart views and each data series that is added to the chart. For example, there are  three data series respectively named seriesA, seriesB, and seriesC. There is also a chart that has two chart views, a bar chart view and a line chart view. The chart would have 6 series views, specifically one  bar chart view and one line chart view for each series. This default behavior is ideal for simple charts, especially those with one chart view type.
+
+Series views allow developers to create more interesting views. For example, seriesA and seriesB should be visualized as bars, and seriesC should be visualized as a line. To achieve this behavior, turn off the auto-generate behavior, as in the following code.
 
 ```ts
 this.chartVM.autogenerateSeriesViews(false);
 ```
 
-You can then create and specialize your series views however you'd like.
+Then, create and specialize the series views in accordance with the extension design, or as in the following code.
 
 ```ts
 var lineSeriesView = new MsPortalFx.ViewModels.Controls.Visualization.Chart.LineChartSeriesView<string, number>();
@@ -60,19 +64,24 @@ lineChartView.seriesView([lineSeriesView]);
 barChartView.seriesView([barSeriesView]);
 ```
 
-A good example of using the chart's auto-generated series views functionality is:
-`\Client\Controls\Chart\ViewModels\LineChartDateBasedViewModels.ts`
+<!-- TODO: Determine the whereabouts of this sample, because it no longer ships with the SDK under the following name. -->
+Another example of using the auto-generated series views functionality is located at 
+`\Client\Controls\Chart\ViewModels\LineChartDateBasedViewModels.ts`.
 
-To see a more advanced sample where series views are created explicitly by the extension see
-`\Client\Controls\Chart\ViewModels\OverlayedViewChartViewModels.ts`
+For an example that demonstrates how series views are created explicitly by the extension, see 
+`<dir>\Client\V1\Controls\Chart\ViewModels\OverlayedViewChartViewModels.ts`.
 
 ### Metrics
-Metrics are the big data call-outs that pair with our chart controls to give the user interactive peeks into their data. Metrics can be configured manually by handling chart events, calculating values, and passing information to the metrics controls or by setting up metrics rules. 
 
-![Chart metrics](../media/portalfx-ui-concepts/chartMetrics.png)
+Metrics are the [big data](portalfx-extensions-glossary-controls.md) call-outs that pair with chart controls to provide  interactive insights into data patterns and trends, as in the following image.
+
+![alt-text](../media/portalfx-ui-concepts/chartMetrics.png "Chart metrics")
+
+Metrics can be configured manually by handling chart events, calculating values, and sending information to the metrics controls, or by setting up metrics rules.
 
 ### Metrics rules
-Metrics rules are a rule-based system that automatically hooks up metric values to different user interactions. For instance, by default (when the user is not interacting with the chart area) you may want your chart metrics to show the average value of each data series. This rule can be configured like so:
+
+Metrics rules are a rule-based system that automatically hooks up metric values to different user interactions. For instance, when the user is not interacting with the chart area, the chart metrics might display the average value of each data series. This default behavior is configured with the following rule. 
 
 ```ts
 metricRule1.scope(Chart.MetricRuleScope.Default);
@@ -80,7 +89,7 @@ metricRule1_metric1.aggregationScope(Chart.MetricRuleAggregationScope.AllSeparat
 metricRule1_metric1.aggregationType(Chart.MetricRuleAggregationType.AverageY);
 ```
 
-With this rule configured, when the user is not interacting with the chart area they will see one metric representing the average value of each data series on the chart.
+This rule displays one metric that represents the average value of each data series on the chart.
 
-See the following file for a full example of the metrics rules implementation:
-`\Client\Controls\Chart\ViewModels\LineChartDateTimeViewModels.ts`
+<!-- TODO: Determine the whereabouts of this sample, because it no longer ships with the SDK under the following name. -->
+For a full example of the metrics rules implementation, see `\Client\Controls\Chart\ViewModels\LineChartDateTimeViewModels.ts`.

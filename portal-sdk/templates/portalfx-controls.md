@@ -1,5 +1,6 @@
+<!-- TODO:  deprecate this document by removing it.  It has been  replaced by portalfx-controls-overview.md -->
 
-## Overview 
+# Controls
 
 Controls are the building blocks of the Azure extension experience. They allow users to view, edit, and analyze data.
 
@@ -16,19 +17,12 @@ The Azure components of the experience are documented several ways.
 
 The following tables include information about Portal controls, including the location of samples that are shipped with the SDK and working copies in the Dogfood environment.
 
-##  Controls that are used by other controls
-
-<!-- TODO:  Determine whether there are samples and experiences that do not need to be documented in separate documents.  If so, determine whether it is appropriate for them to be combined into the following separate table.-->
-
-| Control        | Sample | Experience |
-| -------------- | --------- | -------------- |
-| Copyable Label | `<dir>\Client\V2\Controls\ CopyableLabel\CopyableLabelBlade.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/CopyableLabelBlade |
-
 ## Basic Screen Controls
 
 | Control |  Document | Sample | Experience |
 | ------- | -------- | ------ | ---------- |
 | Button  | | |  http://aka.ms/portalfx/samples#blade/SamplesExtension/SimpleButtonBlade |
+| Copyable Label | |  `<dir>\Client\V2\Controls\ CopyableLabel\CopyableLabelBlade.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/CopyableLabelBlade |
 | File Download Button |  | `<dir>\Client\V1\Controls\FileDownloadButton\ViewModels\ FileDownloadButtonViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/FileDownloadButtonInstructions/selectedItem/FileDownloadButtonInstructions/selectedValue/FileDownloadButtonInstructions |  
 | File Upload (async) |  | `<dir>\Client\V1\Controls\AsyncFileUpload\ViewModels\ AsyncFileUploadViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/AsyncFileUploadInstructions/selectedItem/AsyncFileUploadInstructions/selectedValue/AsyncFileUploadInstructions |
 | Markdown Control | |`<dir>\Client\V1\Controls\Markdown\ViewModels\ MarkdownViewModels.ts`| http://aka.ms/portalfx/samples#blade/SamplesExtension/MarkdownInstructions/selectedItem/MarkdownInstructions/selectedValue/MarkdownInstructions |
@@ -43,11 +37,10 @@ The following tables include information about Portal controls, including the lo
 ## Date and Time
 
 | Date/time Object | Document | Sample | Experience |
-| ---------------- | -------- | ------ | ---------- |
-| Essentials Control | [portalfx-controls-essentials.md](portalfx-controls-essentials.md)  |   `<dir>\Client\V2\Controls\ Essentials/EssentialsDefaultBlade.ts`  |     |
+| ------- | -------- | ------ | ---------- |
 |  Date Picker  |  | `<dir>\Client\V2\Controls\ DatePicker\DatePickerBlade.ts` |   (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/DatePickerInstructions/selectedItem/DatePickerInstructions/selectedValue/DatePickerInstructions |
 | Date/Time Picker   |  [portalfx-controls-datetimepicker.md](portalfx-controls-datetimepicker.md)  |  `<dir>\Client\V2\Controls\ DateTimePicker\DateTimePickerBlade.ts`   | (experience does not work) <br>  http://aka.ms/portalfx/samples#blade/SamplesExtension/DateTimePickerInstructions/selectedItem/DateTimePickerInstructions/selectedValue/DateTimePickerInstructions |
-| Date/Time Range Picker  | [portalfx-controls-datetimerangepicker.md](portalfx-controls-datetimerangepicker.md)  |   `<dir>\Client\V2\Controls\ DateTimeRangePicker\DateTimeRangePickerBlade.ts` | (experience does not work) <br>  http://aka.ms/portalfx/samples#blade/SamplesExtension/DateTimeRangePickerInstructions/selectedItem/DateTimeRangePickerInstructions/selectedValue/DateTimeRangePickerInstructions |
+| Date/Time Range Picker  |  |   `<dir>\Client\V2\Controls\ DateTimeRangePicker\DateTimeRangePickerBlade.ts` | (experience does not work) <br>  http://aka.ms/portalfx/samples#blade/SamplesExtension/DateTimeRangePickerInstructions/selectedItem/DateTimeRangePickerInstructions/selectedValue/DateTimeRangePickerInstructions |
 | Date Polyfills |  | `<dir>\Client\V1\Controls\DatePolyFills\ViewModels\ DatePolyFillsViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/DatePolyFillsInstructions/selectedItem/DatePolyFillsInstructions/selectedValue/DatePolyFillsInstructions |
 | Day Picker (does not work) |  | `<dir>\Client\V2\Controls\ DayPicker\DayPickerBlade.ts`   |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/DayPickerInstructions/selectedItem/DayPickerInstructions/selectedValue/DayPickerInstructions |
 | Duration Picker |  | `<dir>\Client\V1\Controls\DurationPicker\ViewModels\ DurationPickerViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/DurationPickerInstructions/selectedItem/DurationPickerInstructions/selectedValue/DurationPickerInstructions |
@@ -58,7 +51,7 @@ The following tables include information about Portal controls, including the lo
 | Drop Down | Document | Sample | Experience |
 | --------- | -------- | ------ | ---------- |
 | Drop Down | [portalfx-controls-dropdown.md](portalfx-controls-dropdown.md) | `<dir>\Client\V2\Controls\ DropDown\DropDownBlade.ts` | |
-| Console   | [portalfx-controls-console.md](portalfx-controls-console.md) | `<dir>\Client\V2\Controls\ Console\ConsoleBlade.ts` | |
+| Console   | [portalfx-controls-console.md]([portalfx-controls-console.md]) | `<dir>\Client\V2\Controls\ Console\ConsoleBlade.ts` | |
 
 ## Editors
 
@@ -110,14 +103,13 @@ The following tables include information about Portal controls, including the lo
 | ------------- | -------- | ------ | ---------- |
 | | | Aggregates  | |
 | Chart         | [portalfx-controls-chart.md](portalfx-controls-chart.md) | | |
-| Monitor Chart | [portalfx-controls-monitor-chart.md](portalfx-controls-monitor-chart.md) | | |
 | Donut         | [portalfx-controls-donut.md](portalfx-controls-donut.md) | `<dir>\Client\V2\Controls\Donut\DonutBlade.ts`  | |
 |       | |  Gauges | |
 | Quota Gauge   | | |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/QuotaGaugeBlade |
 | Single Value Gauge | | |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/SingleValueGaugeBlade |
 | Step Gauge | | |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/StepGaugeBlade |
 | | | Graphs   | | |
-| Standard Graph  | [portalfx-controls-graph-nuget.md](portalfx-controls-graph-nuget.md)| | http://aka.ms/portalfx/samples#blade/SamplesExtension/graphInstructions |
+| Standard Graph  | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/graphInstructions |
 | Custom Html Nodes | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/graphCustomNodeInstructions
 | Metrics | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/MetricsInstructions/selectedItem/MetricsInstructions/selectedValue/MetricsInstructions | 
 | | | Maps  | |
@@ -132,10 +124,11 @@ The following tables include information about Portal controls, including the lo
 | Video | | |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/VideoInstructions/selectedItem/VideoInstructions/selectedValue/VideoInstructions |
 | Terminal Emulator | | |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/TerminalEmulatorInstructionsBlade/selectedItem/TerminalEmulatorInstructionsBlade/selectedValue/TerminalEmulatorInstructionsBlade |
 
+
 ## Deprecated controls
 
 The following controls have been deprecated.  They have been replaced with more performant controls, or  with best practices that reduce issues in usability testing and improve the Create success rate. However, they are included in the following list for backward compatibility.
 
-| Control  | Document | Sample | Experience |
-| -------- | -------- | ------ | ---------- |
-| Selector |  |  `<dir>\Client\V1\Controls\Selector\ViewModels\ SelectorViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/SelectorInstructions/selectedItem/SelectorInstructions/selectedValue/SelectorInstructions | 
+| Control  | Image | Document | Sample | Experience |
+| -------- | ----- | -------- | ------ | ---------- |
+| Selector | ![alt-text](../media/portalfx-ux-create-forms/creator_selector.jpg "creator_selector") | |  `<dir>\Client\V1\Controls\Selector\ViewModels\ SelectorViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/SelectorInstructions/selectedItem/SelectorInstructions/selectedValue/SelectorInstructions | 
