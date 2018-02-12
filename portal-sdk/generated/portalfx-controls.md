@@ -1,3 +1,4 @@
+<!-- TODO:  deprecate this document by removing it.  It has been  replaced by portalfx-controls-overview.md -->
 
 <a name="controls"></a>
 # Controls

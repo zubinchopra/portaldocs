@@ -50,28 +50,32 @@ constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: an
 -->
 
 The benefits of centralizing data access in a singleton `DataContext` include the following.
-<details>
-<summary>Caching and Sharing</summary>
+* [Caching and Sharing](#caching-and-sharing)
+
+* [Consistency](#consistency)
+
+* [Fresh data](#fresh-data)
+
+<a name="working-with-data-overview-data-contexts-caching-and-sharing"></a>
+##### Caching and Sharing
 
   The `DataContext` singleton instance will exist for the entire amount of time that the extension is loaded in the browser. Consequently, when a blade is opened, and therefore a new blade `ViewModel` is instantiated, data required by the new blade will often already be loaded and cached in the `DataContext`, as required by some previously opened blade or rendered part.
   
   Not only will this cached data be available immediately,  which optimizes rendering performance and improves perceived responsiveness, but also no new **AJAX** calls are necessary to load the data for the newly-opened blade, which reduces server load and Cost of Goods Sold (COGS).
-</details>
-<details>
-<summary>Consistency</summary>
+
+<a name="working-with-data-overview-data-contexts-consistency"></a>
+##### Consistency
 
   It is very common for multiple blades and parts to render the same data in levels of different detail, or with different presentation. Moreover, there are situations where such blades or parts are displayed on the screen at the same time, or separated in time only by a single user navigation. 
 
   In such cases, the user expects to see all the blades and parts depicting the exact same state of the user's data. An effective way to achieve this consistency is to load only a single copy of the data, which is what `DataContext` is designed to do.
-</details>
-<details>
-<summary>Fresh data</summary>
+
+<a name="working-with-data-overview-data-contexts-fresh-data"></a>
+##### Fresh data
 
   Users expect to see data that always reflects the current state of their data in the cloud, which is neither stale nor out-of-date. Another benefit of loading and caching data in a single location is that the cached data can be regularly updated to accurately reflect the state of server data. 
 
   For more information on refreshing data, see [portalfx-data-refreshingdata.md](portalfx-data-refreshingdata.md).
-
-</details>
 
 <a name="working-with-data-overview-data-contexts-developing-a-datacontext-for-an-area"></a>
 #### Developing a DataContext for an area

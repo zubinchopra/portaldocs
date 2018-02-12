@@ -23,13 +23,21 @@ The Azure components of the experience are documented several ways.
 
 The following tables include information about Portal controls, including the location of samples that are shipped with the SDK and working copies in the Dogfood environment.
 
+<a name="extension-controls-controls-that-are-used-by-other-controls"></a>
+## Controls that are used by other controls
+
+<!-- TODO:  Determine whether there are samples and experiences that do not need to be documented in separate documents.  If so, determine whether it is appropriate for them to be combined into the following separate table.-->
+
+| Control        | Sample | Experience |
+| -------------- | --------- | -------------- |
+| Copyable Label | `<dir>\Client\V2\Controls\ CopyableLabel\CopyableLabelBlade.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/CopyableLabelBlade |
+
 <a name="extension-controls-basic-screen-controls"></a>
 ## Basic Screen Controls
 
 | Control |  Document | Sample | Experience |
 | ------- | -------- | ------ | ---------- |
 | Button  | | |  http://aka.ms/portalfx/samples#blade/SamplesExtension/SimpleButtonBlade |
-| Copyable Label | |  `<dir>\Client\V2\Controls\ CopyableLabel\CopyableLabelBlade.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/CopyableLabelBlade |
 | File Download Button |  | `<dir>\Client\V1\Controls\FileDownloadButton\ViewModels\ FileDownloadButtonViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/FileDownloadButtonInstructions/selectedItem/FileDownloadButtonInstructions/selectedValue/FileDownloadButtonInstructions |  
 | File Upload (async) |  | `<dir>\Client\V1\Controls\AsyncFileUpload\ViewModels\ AsyncFileUploadViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/AsyncFileUploadInstructions/selectedItem/AsyncFileUploadInstructions/selectedValue/AsyncFileUploadInstructions |
 | Markdown Control | |`<dir>\Client\V1\Controls\Markdown\ViewModels\ MarkdownViewModels.ts`| http://aka.ms/portalfx/samples#blade/SamplesExtension/MarkdownInstructions/selectedItem/MarkdownInstructions/selectedValue/MarkdownInstructions |
@@ -45,7 +53,7 @@ The following tables include information about Portal controls, including the lo
 ## Date and Time
 
 | Date/time Object | Document | Sample | Experience |
-| ------- | -------- | ------ | ---------- |
+| ---------------- | -------- | ------ | ---------- |
 | Essentials Control | [portalfx-controls-essentials.md](portalfx-controls-essentials.md)  |   `<dir>\Client\V2\Controls\ Essentials/EssentialsDefaultBlade.ts`  |     |
 |  Date Picker  |  | `<dir>\Client\V2\Controls\ DatePicker\DatePickerBlade.ts` |   (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/DatePickerInstructions/selectedItem/DatePickerInstructions/selectedValue/DatePickerInstructions |
 | Date/Time Picker   |  [portalfx-controls-datetimepicker.md](portalfx-controls-datetimepicker.md)  |  `<dir>\Client\V2\Controls\ DateTimePicker\DateTimePickerBlade.ts`   | (experience does not work) <br>  http://aka.ms/portalfx/samples#blade/SamplesExtension/DateTimePickerInstructions/selectedItem/DateTimePickerInstructions/selectedValue/DateTimePickerInstructions |
@@ -118,13 +126,14 @@ The following tables include information about Portal controls, including the lo
 | ------------- | -------- | ------ | ---------- |
 | | | Aggregates  | |
 | Chart         | [portalfx-controls-chart.md](portalfx-controls-chart.md) | | |
+| Monitor Chart | [portalfx-controls-monitor-chart.md](portalfx-controls-monitor-chart.md) | | |
 | Donut         | [portalfx-controls-donut.md](portalfx-controls-donut.md) | `<dir>\Client\V2\Controls\Donut\DonutBlade.ts`  | |
 |       | |  Gauges | |
 | Quota Gauge   | | |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/QuotaGaugeBlade |
 | Single Value Gauge | | |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/SingleValueGaugeBlade |
 | Step Gauge | | |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/StepGaugeBlade |
 | | | Graphs   | | |
-| Standard Graph  | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/graphInstructions |
+| Standard Graph  | [portalfx-controls-graph-nuget.md](portalfx-controls-graph-nuget.md)| | http://aka.ms/portalfx/samples#blade/SamplesExtension/graphInstructions |
 | Custom Html Nodes | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/graphCustomNodeInstructions
 | Metrics | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/MetricsInstructions/selectedItem/MetricsInstructions/selectedValue/MetricsInstructions | 
 | | | Maps  | |
@@ -160,6 +169,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
  
 | Term             | Meaning |
 | ---              | --- |
+| big data | Data sets that are  very large or very diverse,  including  structured, semi-structured and unstructured datathat may be located in  different sources. The variation in sizes or types of data stores is beyond the ability of traditional databases to capture, manage, and process the data with low-latency.  | 
 | IANA | Internet Assigned Numbers Authority | 
 | timezone         | The local time of a region or a country, based on factors like time zone maps and Daylight Savings Time. | 
 | timezone offset  | The difference, in minutes, between UTC time and the current time in the current locale.|

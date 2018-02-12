@@ -1,6 +1,9 @@
 
 <a name="getting-started"></a>
-# Getting Started
+## Getting Started
+
+<!-- TODO: deprecate the link to portalfx-howitworks.md  and replace it with portalfx a link to -extensions-architecture.md -->
+
 * [Understanding the Azure Portal Architecture](portalfx-howitworks.md#understanding-the-azure-portal-architecture)
 * [Understanding the Azure Portal Extension Architecture](portalfx-howitworks.md#understanding-the-azure-portal-extension-architecture)
 
@@ -27,17 +30,17 @@
 
 * [Blades](portalfx-blades.md#blades)
 
-* [Developing Forms](portalfx-forms.md#developing-forms)
-    * [FAQ](portalfx-forms.md#faq)
-
+undefined
 * [Controls](portalfx-controls.md#controls)
+    * [Basic Screen Controls](portalfx-controls.md#basic-screen-controls)
     * [Date and Time](portalfx-controls.md#date-and-time)
     * [Drop downs](portalfx-controls.md#drop-downs)
     * [Editors](portalfx-controls.md#editors)
     * [Forms](portalfx-controls.md#forms)
     * [Lists](portalfx-controls.md#lists)
     * [Helpers and Indicators](portalfx-controls.md#helpers-and-indicators)
-    * [Visualizing Data](portalfx-controls.md#visualizing-data)
+    * [Data Visualization Objects](portalfx-controls.md#data-visualization-objects)
+    * [Deprecated controls](portalfx-controls.md#deprecated-controls)
 
 * [Monitor Chart](portalfx-controls-monitor-chart.md#monitor-chart)
 
@@ -52,6 +55,7 @@
 * [Calling alternate resources](portalfx-authentication.md#calling-alternate-resources)
 
 * [Working with data](portalfx-data.md#working-with-data)
+* [Advanced data topics](portalfx-data.md#advanced-data-topics)
 
 * [Introduction to Parameter Collection](portalfx-parameter-collection-overview.md#introduction-to-parameter-collection)
     * [Roles](portalfx-parameter-collection-overview.md#roles)
@@ -101,6 +105,6 @@
 * [Understanding the blade view model](portalfx-blade-viewmodel.md#understanding-the-blade-view-model)
     * [Blade initialization](portalfx-blade-viewmodel.md#blade-initialization)
 
-* [How to expose config settings for consumption in the client](portalfx-load-configuration.md#how-to-expose-config-settings-for-consumption-in-the-client)
+* [Exposing configuration settings for the client](portalfx-load-configuration.md#exposing-configuration-settings-for-the-client)
 * [Step by step walkthrough](portalfx-load-configuration.md#step-by-step-walkthrough)
 
