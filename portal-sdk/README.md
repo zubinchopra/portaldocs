@@ -34,7 +34,8 @@ Learn how the framework is structured and how it is designed to run in multiple 
 ## Development guide
 
 Azure portal extension development is supported on the Microsoft Windows 8, Windows Server 2012 R2, and Windows 10.
-  <!--[Development guide](./generated/top-extensions-getting-started.md)-->
+ [Development guide](./generated/top-extensions-getting-started.md)
+
 1. [Install the SDK](./generated/top-extensions-install-software.md)
 * [How to use the MSI Installer](./generated/downloads.md)
 * [How to update portal Nuget packages](./generated/top-extensions-nuget.md)
@@ -73,14 +74,14 @@ Any template based UI in the portal (e.g. [template blades]() or [template parts
 
 [Ask a controls related question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls)
 
-### [Styling and Theming](./generated/top-extensions-style.md)
+### Styling and Theming
 
 When using HTML and framework controls you have some control over styling. These documents walk through the relevant topics.
 
  [Styling and Theming](./generated/top-extensions-style.md)
 
-* [CSS Style sanitization]()
-* [Adding Custom CSS]()
+* [CSS Style sanitization](./generated/portalfx-style-guide-style-sanitization.md)
+* [Adding Custom CSS](./generated/portalfx-style-guide-custom-css-file.md)
 * [Layout classes]()
 * [Typography]()
 * [Iconography]()
@@ -89,13 +90,13 @@ When using HTML and framework controls you have some control over styling. These
 ### Forms
 
 Many experiences require the user to fill out a form. The Ibiza controls library provides support for forms. It also provides a TypeScript based section model that lets you build your form in code without expressing all the fields in an html template.
-* [Developing forms](./generated/top-portalfx-forms.md)
+* [Developing forms](./generated/top-extensions-forms.md)
 
 [Ask a forms related question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms)
 
 ### Common scenarios and integration points
 
-* [Blades that __create__ or provision resources and services](./generated/portalfx-create.md)
+* [Blades that __create__ or provision resources and services]()
 * [Adding your resource or service into the __browse__ menu]()
 * [Common UX for Azure Resource Manager (ARM) based services]()
 
@@ -114,12 +115,12 @@ Many experiences require the user to fill out a form. The Ibiza controls library
 
 Since your extension is just web code, you can make **AJAX** calls to various services to load data into your UI. The framework provides a data library you can use to manage this data.
 * [Making authenticated calls to Azure Resource Manager (ARM)](portalfx-data.md#making-authenticated-ajax-calls)
-* [Data Context, data views, and data caches](portalfx-data.md)
+* [Data Context, data views, and data caches](./generated/portalfx-data-caching.md)
 * [Auto-refreshing client data](portalfx-data-refreshingdata.md#auto-refreshing-client-side-data-aka-polling)
 * [Shaping and filtering data](portalfx-data-projections.md) 
 * [Adressing Data Merge Failures](portalfx-data.md#data-merging)
 * [Legacy accessing C# model objects](portalfx-data-typemetadata.md#type-metadata)
-* [Legacy Data Atomization](portalfx-data-atomization.md#data-atomization)
+* [Legacy Data Atomization](portalfx-data-atomization.md)
 
 [Ask about data management on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching)
 
@@ -129,7 +130,9 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 * [Custom domains (e.g. aad.portal.azure.com)]()
 * [Sharing blades and parts across extensions]()
 
-## [Debugging](./generated/top-debugging.md)
+## Debugging
+
+ [Debugging](./generated/top-debugging.md)
 
 * [Using developer mode](./generated/portalfx-extensions-debugging-tool.md)
 * [Debugging extension load failures](./generated/portalfx-extensions-debugging-load-failures.md)
@@ -183,24 +186,26 @@ The Azure portal strives to meet high accessibility standards to ensure the prod
 ## Deploying your extension
 
 Learn how to deploy your extension to the various clouds and environments.
-* [Extension registration, environments (e.g. dogfood, prod), clouds (e.g. Mooncake, BlackForest, Fairfax) and Ibiza team SLAs](./generated/portalfx-extensions-publishing.md)
+* [Extension registration, environments (e.g. dogfood, prod), clouds (e.g. Mooncake, BlackForest, Fairfax) and Ibiza team SLAs](./generated/top-extensions-publishing.md)
 * [Extension Development Phases](./generated/top-extensions-developmentPhases.md)
 
 [Ask a deployment question on Stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)
 
-### [Deployment using the Ibiza hosting service](./generated/top-hosting-service.md)
+### Deployment using the Ibiza hosting service
+
+[Deployment using the Ibiza hosting service](./generated/top-hosting-service.md)
 
 The Ibiza team provides and operates a common extension hosting service that makes it easy to get your bits into a globally distributed system without having to manage your own infrastructure.
 * [Hosting service overview](./generated/portalfx-extensions-hosting-service-overview.md)
-* [Onboarding your extension to hosting service]()
-* [Validating extension registeration with hosting service](./generated/portalfx-extensions-hosting-service-procedures.md)
+* [Onboarding your extension to hosting service](./generated/portalfx-extensions-hosting-service-procedures.md)
+* [Validating extension registration with hosting service]()
 * [Versioning your extension](./generated/portalfx-extensions-versioning.md)
 * [Deploying your extension using Express V2 + Hosting Service](./generated/portalfx-extensions-hosting-service-advanced.md)
 * [SLA for registering extension with hosting service](./generated/portalfx-extensions-svc-lvl-agreements.md)
 
 ### Custom extension deployment infrastructure
 
-You should strive to use the Ibiza hosting service. If for some reason this is not possible then [learn how to build a custom extension deployment infrastructure]().
+You should strive to use the Ibiza hosting service. If for some reason this is not possible then [learn how to build a custom extension deployment infrastructure](./generated/portalfx-extensions-custom-deployment.md).
 
 ## Upgrading the Ibiza SDK
 
