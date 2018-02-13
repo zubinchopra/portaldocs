@@ -1,4 +1,4 @@
-# Release Notes since 10/12/2017
+# Release Notes since 10/13/2017
 
 ## 5.0.302.984
 0 Breaking Changes, 0 Features added and 0 Bugs Fixed
@@ -171,27 +171,3 @@
 ## 5.0.302.878
 0 Breaking Changes, 2 Features added and 0 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1570341'>1570341</a></td><td>Feature</td><td>[MonitorChart] Enable batching everywhere</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1554451'>1554451</a></td><td>Feature</td><td>Enable Coadmins feature flag in Ibiza FF and MC - config changes</td></tr></table>
-
-## 5.0.302.877
-0 Breaking Changes, 1 Features added and 0 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1583704'>1583704</a></td><td>Feature</td><td>[Branding] Update azure logo (splash screen and favicon)</td></tr></table>
-
-## 5.0.302.876
-0 Breaking Changes, 0 Features added and 0 Bugs Fixed
-<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
-
-## 5.0.302.874
-0 Breaking Changes, 0 Features added and 3 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1598168'>1598168</a></td><td>Bug Fix</td><td>Disable AdditionalSearchLocation in pdc</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1511552'>1511552</a></td><td>Bug Fix</td><td>[Partner Request] - Update extension configuration for Microsoft_Intune_DeviceSettings in FairFax Portal</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10221758'>10221758</a></td><td>Bug Fix</td><td>Blackforest certificates need to be rolled</td></tr></table>
-
-## 5.0.302.872
-0 Breaking Changes, 0 Features added and 0 Bugs Fixed
-<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
-
-## 5.0.302.871
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1511545'>1511545</a></td><td>Bug Fix</td><td>[Partner Request] - Update extension configuration for Microsoft_Intune_Apps in FairFax Portal</td></tr></table>
-
-## 5.0.302.869
-0 Breaking Changes, 1 Features added and 3 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9835151'>9835151</a></td><td>Bug Fix</td><td>remove dead feature flags</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1554819'>1554819</a></td><td>Bug Fix</td><td>hide function apps from national clouds</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1547719'>1547719</a></td><td>Feature</td><td>[MenuBlade] Expose a 'tooltip' property on menu items</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10331399'>10331399</a></td><td>Bug Fix</td><td>[Partner Request] - Azure Batch extension onboarding to AAD in national clouds</td></tr></table>
