@@ -2,8 +2,6 @@
 
 <!-- document headers are in the individual documents -->
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-configuration-intro.md"}
-
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-configuration-overview.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-configuration-scenarios.md"}
