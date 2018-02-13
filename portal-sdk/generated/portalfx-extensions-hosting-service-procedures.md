@@ -2,6 +2,12 @@
 <a name="checklist-for-onboarding-hosting-service"></a>
 ## Checklist for onboarding hosting service
 
+There are two different ways to onboard an extension to a hosting service. If your extension has never been hosted, and it should be onboarded to the hosting service, use the procedures named [initial onboarding to the hosting service](#initial-onboarding-to-the-hosting-service).
+If your extension was previously hosted, and is being migrated from DIY legacy deployment to a hosting service, use the procedure named [converting from DIY deployment to a hosting service](#converting-from-diy-deployment-to-a-hosting-service).
+
+<a name="checklist-for-onboarding-hosting-service-initial-onboarding-to-the-hosting-service"></a>
+### Initial onboarding to the hosting service
+
 The procedure for onboarding to the hosting service is as follows. Click on the link for an in-depth discussion of each step.
 1. [Update IsDevelopmentMode](#update-isdevelopmentmode-flag) 
 1. [Install ContentUnbundler](#install-contentunbundler) 
@@ -293,7 +299,69 @@ Extensions should publish the extracted deployment artifacts that are generated 
 
     * **Prod storage account**: The public read-only endpoint that serves zip files for the production environment.
 
-<a name="service-level-agreement-for-hosting-service"></a>
-## Service level agreement for hosting service
 
-The SLA for onboarding the extension to the hosting service is located at [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md).
+<a name="provide-environment-specific-configuration-files-converting-from-diy-deployment-to-a-hosting-service"></a>
+### Converting from DIY deployment to a hosting service
+
+<!-- TODO: Determine whether they meant "rollback" instead of "regression", which is a term that is typically used while testing. -->
+
+To minimize the probability of regression, use the following procedure to migrate an extension from DIY deployment to a hosting service.
+
+<details>
+
+  <summary>1. Change the uri format to use a hosting service in the PROD environment</summary>
+
+   An example of a pull request for modifying the `uriFormat` parameter is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/c22b81463cab1d0c6b2c1abc803bc25fb2836aad?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/c22b81463cab1d0c6b2c1abc803bc25fb2836aad?refName=refs%2Fheads%2Fdev).
+</details>
+
+<details>
+  <summary>2. Flight changes in MPAC</summary>
+
+  An example of a pull request for a flighting extension in MPAC is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
+
+</details>
+
+<details>
+  
+  <summary>3. Enable 100% traffic in MPAC and PROD</summary>
+  
+  An example of a pull request that enables 100% traffic without flighting for `MicrosoftAzureClassicStorageExtension`, and 100% traffic with flighting for `Microsoft_Azure_Storage` is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/b81b415411f54ad83f93d43d37bcad097949a4e3?refName=refs%2Fheads%2Fdev&discussionId=-1&_a=summary&fullScreen=false](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/b81b415411f54ad83f93d43d37bcad097949a4e3?refName=refs%2Fheads%2Fdev&discussionId=-1&_a=summary&fullScreen=false). 
+</details>
+
+<details>
+
+  <summary>4. Enable flighting in MPAC</summary>
+
+  The Azure Portal provides the ability to flight the MPAC customers to multiple stamps. Traffic will be equally distributed between all registered stamps.  An example of a pull request is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
+    
+  * Hosting service `extension.pdl` file
+
+    To flight traffic to multiple stamps, register other stamps in `flightUri`. For example, the friendly name `MPACFlight` is used to flight traffic to another stamp, as in the following example.
+
+    ``` 
+    { 
+      name: "Microsoft_Azure_Demo", 
+      uri: "//demo.hosting.portal.azure.net/demo", 
+      uriFormat: "//demo.hosting.portal.azure.net/demo/{0}", 
+      feedbackEmail: "azureux-demo@microsoft.com", 
+      flightUris: [
+        "//demo.hosting.portal.azure.net/demo/MPACFlight",
+      ],
+    }
+    ```
+  * Legacy deployment `extension.pdl` file
+
+    DIY deployment can also flight traffic to multiple stamps, as in the following example.
+
+    ``` 
+    {
+        name: "Microsoft_Azure_Demo",
+        uri: "//main.demo.ext.azure.com",
+        uriFormat: "//{0}.demo.ext.azure.com",
+        feedbackEmail: "azureux-demo@microsoft.com",
+        flightUris: [
+            "//flight.demo.ext.azure.com",
+        ],
+      }
+    ``` 
+</details>

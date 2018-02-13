@@ -3,19 +3,36 @@
 <a name="onboarding-outside-of-ibiza-compliance-marketplace-integration-and-others"></a>
 ## Compliance, Marketplace Integration, and others
 
+<a name="onboarding-outside-of-ibiza-introduction"></a>
+## Introduction
 
-<a name="onboarding-outside-of-ibiza-requirements-for-azure-services"></a>
-## Requirements for Azure Services
-   
-All services using Azure Billing must be exposed by using the Azure Resource Manager (ARM). Services that do not use Azure Billing can use either ARM or Microsoft Graph. Usually, services that integrate deeply with Office 365 use Graph, while all others are encouraged to use ARM. 
- 
-For more information about ARM API, see Azure Resource Manager (ARM) API Reference, located at [https://docs.microsoft.com/en-us/dynamics365/customer-engagement/customer-insights/ref/armapiref](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/customer-insights/ref/armapiref), and also see Resource Manager REST APIs, located at [https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-rest-api](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-rest-api).
+It is important to read this guide carefully, as we rely on you to manage the extension registration / configuration management process  in the Portal repository. External partners should also read this guide to understand the capabilities that Portal can provide for  extensions by using configuration. However, external partner requests should be submitted by sending an email to <a href="mailto:ibizafxpm@microsoft.com?subject=<Onboarding Request ID> Add <extensionName> extension to the Portal&body=Extension name: <Company>_<BrandOrSuite>_<ProductOrComponent> <br><br> URLs: <br><br> PROD:  main.<extensionName>.ext.contoso.com <br><br> Contact info: <br><br> Business Contacts:<br><br> Dev leads: <br><br> PROD on-call email: <br><br>">ibizafxpm@microsoft.com</a> instead of using the internal sites that are in this document. 
 
-For more information about onboarding with Microsoft Graph, see [https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/azure_ad_overview](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/azure_ad_overview).
+The subject of the email should contain the following.
 
-The Azure Portal SDK doesn't require any specific back-end, but does provide extra support for ARM-based resources. 
+**\<Onboarding Request ID> Add <extensionName> extension to the Portal**
 
-All new services should be listed in the Azure Web site that is located at [https://azure.microsoft.com](https://azure.microsoft.com). This isn't a requirement for onboarding the Portal, but service categorization is the same between the azure.com Products menu, Portal Services menu, and the Azure Marketplace. The service should not be listed in the Portal unless it is also on azure.microsoft.com.
+where 
+
+**Onboarding Request**: the unique identifier for the request, without the angle brackets
+
+**extensionName**: the name of the extension
+
+ The body of the email should contain the following information.
+
+```json
+Extension name: <Company>_<BrandOrSuite>_<ProductOrComponent>  
+URLs:  (must adhere to pattern)
+PROD:  main.<extensionName>.ext.contoso.com
+Contact info:_________
+Business Contacts:_________
+Dev leads: _________
+PROD on-call email: _________
+```
+
+The email may also contain the extension config file, as specified in [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
+
+
 
 
 <a name="onboarding-outside-of-ibiza-quality-essentials"></a>

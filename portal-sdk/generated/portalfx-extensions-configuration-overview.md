@@ -1,14 +1,15 @@
 <a name="overview"></a>
 ## Overview
 
-<a name="overview-understanding-the-extension-configuration-in-portal"></a>
-### Understanding the extension configuration in Portal
+You must register and configure your extension with the portal team for your extension to be available in the portal. We rely on you to manage your own configurationin the Portal repository. For internal partners this is done via pull requests. The process is explained in [top-external-onboarding.md](top-external-onboarding.md).
 
- The extension configuration file contains  information for all extensions registered in the Azure Portal. It is located in the Portal repository in the  `src/RDPackages/OneCloud/` directory that is located at [https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx?version=GBdev](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx?version=GBdev). For more information about loading extension stamps, see [portalfx-extensions-testing-in-production-overview.md#registering-a-custom-extension](portalfx-extensions-testing-in-production-overview.md#registering-a-custom-extension).
+<a name="overview-instructions-for-external-partners"></a>
+### Instructions for external partners
 
-For information on how developers can leverage secondary stamps, see [portalfx-extensions-configuration-overview.md#extension-stamps](./portalfx-extensions-configuration-overview.md#extension-stamps).
+ The extension configuration file contains information for all extensions registered in the Azure Portal. It is located in the Portal repository in the `src/RDPackages/OneCloud/` directory that is located at [https://aka.ms/portalfx/onecloud](https://aka.ms/portalfx/onecloud). 
  
- The configuration file name is based on the environment name, as in the following code.  
+ 
+There is a configuration file for each environment that the Portal supports, in the following format.  
  
  `Extensions.<EnvironmentName>.json`
  
@@ -23,7 +24,7 @@ For information on how developers can leverage secondary stamps, see [portalfx-e
      uriFormat: "//demo.hosting.portal.azure.net/demo/{0}",
      feedbackEmail: "azureux-demo@microsoft.com",
      cacheability: "manifest",
-     disabled: true,
+     disabled: false,
 }
 ```
 
@@ -62,9 +63,9 @@ Its options are as follows.
 
       In the preceding example,  ```demo.hosting.portal.azure.net``` is the address of the provider and the second occurrence of ```demo``` is the directory or path that contains the extension.
    
-   * DIY Hosting uri
+   * Custom Deployment Hosting uri
 
-      The following example contains the ```uri``` for an extension that is still using the DIY deployment.
+      The following example contains the ```uri``` for teams who own their own custom deployments.
     
       ```json
       uri: "//main.demo.ext.azure.com",
@@ -72,9 +73,9 @@ Its options are as follows.
 
       In the preceding example, ```main.demo.ext.azure.com```  is the address of the provider of the extension.
 
-      **NOTE**: For extensions that are not using a hosting service, we recommend that the `uri` follow the standard CNAME pattern, as specified in [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md). 
+      **NOTE**: For extensions that are not using the hosting service, we recommend that the `uri` follow the standard CNAME pattern, as specified in [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md). 
 
-  When the user loads the extension in the Portal, it is loaded from the `uri` specified in the extension configuration. To update the ```uri```, send a pull request as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md). Additional extension stamps can be loaded by specifying the stamp name in the  `uri` and specifying the feature flag `feature.canmodifystamps=true`. For more information about feature flags, see [portalfx-extensions-feature-flags.md](portalfx-extensions-feature-flags.md).
+  When the user loads the extension in the Portal, it is loaded from the `uri` specified in the extension configuration. To update the ```uri```, send a pull request as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md). Additional extension configurations can be loaded by specifying the configuration name in the  `uri` and specifying the feature flag `feature.canmodifystamps=true`. For more information about feature flags, see [portalfx-extensions-feature-flags.md](portalfx-extensions-feature-flags.md).
 
 * **uriFormat**: Required. The `uri` for the extension, followed by a forward slash, followed by a parameter marker that allows modification of the extension stamp.
     
@@ -88,7 +89,7 @@ Its options are as follows.
 
     In the preceding example,  ```demo.hosting.portal.azure.net``` is the address of the extension, ```demo``` is the name of the directory or path that contains the extension, and ``` {0} ``` is the parameter marker that will contain the value to substitute into the name string. The substitution specifies the environment from which to load the extension.
 
-  * DIY Hosting uriFormat
+  * Custom deployment Hosting uriFormat
 
     The following code describes the ```uriFormat``` parameter for extensions that have not yet onboarded a hosting service.
 
@@ -123,6 +124,9 @@ Its options are as follows.
  
  * **scriptoptimze**: Leverage the performance optimizations in the base controller. A value of `true`  , whereas a value of `false` .
 
+
+ For more information about loading extension configuration files, see [portalfx-extensions-testing-in-production-overview.md#loading-customized-extensions](portalfx-extensions-testing-in-production-overview.md#loading-customized-extensions).
+
 <a name="overview-understanding-which-extension-configuration-to-modify"></a>
 ### Understanding which extension configuration to modify
 
@@ -133,7 +137,7 @@ The Azure Portal uses five different extension configuration files to manage the
 
 Because the hosting service provides a mechanism for deploying extensions using safe deployment practices, the Portal will load the version of the extension that is based on the region from where the customer is accessing the Portal. For more details, see the Hosting Service documentation located at [portalfx-extensions-hosting-service.md](portalfx-extensions-hosting-service.md).
 
-If the Legacy DIY deployment registration format is used, then the Portal will always serve the stamp that is registered in the ```uri```. In the preceding  examples, the Portal will always serve main stamp of the extension.
+If the Legacy DIY deployment registration format is used, then the Portal will always serve the stamp that is registered in the ```uri```. In the preceding examples, the Portal will always serve main stamp of the extension.
 
 Additional stamps can be accessed by using the ```uriFormat``` parameter that is specified in the extension config file.
 
