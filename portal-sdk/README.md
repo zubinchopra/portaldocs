@@ -20,6 +20,8 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 ## What's new
 
+* [What's new](./generated/top-extensions-whats-new.md)
+
 * [No-PDL Blades and Parts](http://top-whats-new#no-pdl.md) - *Reduces the number of files and concepts to build UI*
 * [Forms without edit scope](http://top-forms.md) - *More intuitive APIs for building forms*
 * [Editable Grid V2](http://top-level/editable-grid.md) - *Improved APIs designed to work with new forms*
