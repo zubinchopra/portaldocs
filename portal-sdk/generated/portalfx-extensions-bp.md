@@ -14,6 +14,8 @@ Methodologies exist that assist developers in improving the product while it is 
 
 A number of textbooks are devoted to the arts of software testing and maintenance.  Items that have been documented here do not preclude industry-standard practices.
 
+Portal development patterns or architectures that are recommended based on customer feedback and usability studies are located in the topic for the blade that is being developed. For more information, see [portalfx-blades-best-practices.md](portalfx-blades-best-practices.md).
+
 <a name="azure-portal-best-practices-best-practices-bulb-productivity-tip"></a>
 ### :bulb: Productivity Tip
 
@@ -26,16 +28,6 @@ $>tsc -version
 Also, **Typescript** files should be set up to Compile on Save.
 
 
-<a name="azure-portal-best-practices-extensions-onboarding"></a>
-## Extensions onboarding
-
-<!--TODO:  Determine which best practices are included in other bp documents previous to deleting this one -->
-
-<a name="azure-portal-best-practices-best-practices"></a>
-## Best Practices
-   
-Portal development patterns or architectures that are recommended based on customer feedback and usability studies are located in the topic for the blade that is being developed. For more information, see [portalfx-blades-best-practices.md](portalfx-blades-best-practices.md).
-
 <a name="azure-portal-best-practices-best-practices-performance"></a>
 ### Performance
 
@@ -46,6 +38,13 @@ There are practices that can improve the performance of the extension.  For more
 ### Productivity Tip
 
 Install Chrome that is located at [http://google.com/dir](http://google.com/dir) to leverage the debugger tools while developing an extension.
+
+
+<a name="azure-portal-best-practices-extensions-onboarding"></a>
+## Extensions onboarding
+
+<!--TODO:  Determine which best practices are included in other bp documents previous to deleting this one -->
+
 
 <a name="azure-portal-best-practices-loading-and-managing-data"></a>
 ## Loading and managing data
