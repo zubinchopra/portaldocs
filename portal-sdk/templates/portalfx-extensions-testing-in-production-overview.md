@@ -1,6 +1,6 @@
 ## Introduction
 
-This document describes the various components of testing an extension in production, including status codes and testing procedures.  For information about regular testing and debugging, see [portalfx-test.md](portalfx-test.md) and [portalfx-debugging.md](portalfx-debugging.md).
+This document describes the various components of testing an extension in production, including status codes and testing procedures.  For information about regular testing and debugging, see [portalfx-test.md](portalfx-test.md) and [top-extensions-debugging.md](top-extensions-debugging.md).
 
 ## Overview
 
@@ -153,7 +153,7 @@ For more information on loading, see [portalfx-testing-ui-test-cases.md](portalf
 
 ## Completing the extension test
 
-When all steps are complete, the developer can submit a pull request to enable the extension, as specified in [portalfx-extensions-publishing](portalfx-extensions-publishing). When the extension is enabled, users will be able to access it in all environments, as specified in [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
+When all steps are complete, the developer can submit a pull request to enable the extension, as specified in [top-extensions-publishing.md](top-extensions-publishing.md). When the extension is enabled, users will be able to access it in all environments, as specified in [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
 
 ## Deploying test extensions using the hosting service 
  
