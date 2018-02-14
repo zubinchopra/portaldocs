@@ -6,7 +6,7 @@
 
 * For onboarding a **first-party extension** i.e. an extension  in Azure Portal, please email with following information to:
 
-Stakeholders: [Leon Welicki, Adam Abdelhamed, Amit Modi](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding)
+Stakeholders: [Leon Welicki, Adam Abdelhamed](mailto:ibiza-onboarding-kick@microsoft.com?subject=Azure%20portal%20onboarding)
 
     * Is your service targeting public Azure, on-prem, or both?
     * Service name
@@ -16,7 +16,7 @@ Stakeholders: [Leon Welicki, Adam Abdelhamed, Amit Modi](mailto:ibiza-onboading-
 
 * For onboarding a **third-party extension** i.e. you are an external partner, please email with following information to:
 
-Stakeholders: [Leon Welicki, Adam Abdelhamed](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding)
+Stakeholders: [Leon Welicki, Adam Abdelhamed](mailto:ibiza-onboarding-kick@microsoft.com?subject=Azure%20portal%20onboarding)
 
     * Is your service targeting public Azure, on-prem, or both?
     * Service name
