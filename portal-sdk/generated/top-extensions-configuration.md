@@ -121,7 +121,15 @@ Its options are as follows.
     
   For more information about caching, see [portalfx-extension-homepage-caching.md](portalfx-extension-homepage-caching.md).
 
-* **disabled**: Optional. Registers the extension configuration into the Portal in hidden mode.  A value of  `true` disables an extension, and a value of `false` enables the extension for display. The default value is `false`. For more information about enabling and disabling extensions, see [portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension](portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension).
+* **disabled**: Optional. Registers the extension configuration into the Portal in hidden mode.  A value of  `true` disables an extension, and a value of `false` enables the extension for display. The default value is `false`. For more information about enabling and disabling extensions, see [portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension](portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension).  Ideally you would not disable your extension. Even if you want to hide your UX for a private preview or testing then there are ways to do this from within the own extension. 
+		To temporarily enable a disabled extension in private preview for this test session only, add an extension override in the Portal URL, as in the following example.
+    ```
+		https://portal.azure.com?Microsoft_Azure_Demo=true
+    ```
+		where
+		Microsoft_Azure_Demo
+		is the name of the extension as registered with the Portal.
+Conversely, the extension can temporarily be disabled for a session by changing this configuration attribute to a value of false. The extension cannot be temporarily enabled or disabled in the production environment.**NOTE**: If you disable your extension, you will need to add a future pull request to enable it later.  To get those changes deployed in a timely fashion and plan accordingly, see the [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md).
  
 * **flightUris**: Optional.  The uri concatenated to a friendly name in order to flight traffic to another stamp, as in the following example:  `//demo.hosting.portal.azure.net/demo/MPACFlight`.
  
@@ -140,7 +148,7 @@ The Azure Portal uses five different extension configuration files to manage the
 <a name="portal-extension-configuration-overview-extension-stamps"></a>
 ### Extension Stamps
 
-Because the hosting service provides a mechanism for deploying extensions using safe deployment practices, the Portal will load the version of the extension that is based on the region from where the customer is accessing the Portal. For more details, see the Hosting Service documentation located at [portalfx-extensions-hosting-service.md](portalfx-extensions-hosting-service.md).
+Because the hosting service provides a mechanism for deploying extensions using safe deployment practices, the Portal will load the version of the extension that is based on the region from where the customer is accessing the Portal. For more details, see the Hosting Service documentation located at [top-extensions-hosting-service.md](top-extensions-hosting-service.md).
 
 If the Legacy DIY deployment registration format is used, then the Portal will always serve the stamp that is registered in the ```uri```. In the preceding examples, the Portal will always serve main stamp of the extension.
 
@@ -180,7 +188,7 @@ All new extensions should always be added to the Portal configuration in disable
 <a name="portal-extension-configuration-configuration-scenarios-managing-the-configuration-of-the-extension"></a>
 ### Managing the configuration of the extension
 
-All extensions are registered into the Portal in the disabled state, therefore they are disabled by default.  This hides the extension from users, and it will not be displayed in the Portal. The extension remains in hidden mode until it is ready for public preview or GA. Partners use this capability to test the extension, or to host it for private preview. For more information about previews and Global Availability, see [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
+All extensions are registered into the Portal in the disabled state, therefore they are disabled by default.  This hides the extension from users, and it will not be displayed in the Portal. The extension remains in hidden mode until it is ready for public preview or GA. Partners use this capability to test the extension, or to host it for private preview.
 
 To temporarily enable a disabled extension in private preview for this test session only, change the configuration by adding an extension override in the Portal URL, as in the following example.
 
@@ -196,6 +204,9 @@ Conversely, the extension can temporarily be disabled for a session by changing 
 
 As part of permanently enabling the extension, the developer should update the extension test count in the `%ROOT%\src\StbPortal\Website.Server.Tests\DeploymentSettingsTests.cs` file. Otherwise, the **disabled** property in the `config` file(s) can remain set to `false`. 
 
+For more information about previews and Global Availability, see [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
+
+
 <a name="portal-extension-configuration-configuration-scenarios-enabling-an-extension"></a>
 ### Enabling an extension
 
@@ -206,23 +217,6 @@ Enabling an extension requires two changes:
 1. Update the enabled extension test count.
 
     An example of a pull request that enables the `HDInsight` extension in the Mooncake environment and increases the extension test is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev).
-
-<a name="portal-extension-configuration-configuration-scenarios-manifest-caching"></a>
-### Manifest caching
-The performance of an extension can be improved  by changing  how the extension uses caches.
-
-**>> Work In Progress <<**
-
-<!--TODO:  locate the work that is in progress, and add it to the document.  Should this have been Best Practices? -->
-
-For more information about extension caching, see [portalfx-extension-homepage-caching.md](portalfx-extension-homepage-caching.md).
-
-<a name="portal-extension-configuration-configuration-scenarios-pcv1-and-pcv2-removal"></a>
-### PCV1 and PCV2 removal
-Removing PCV1 and PCV2 code from an extension can improve performance.
-<!--TODO:  locate the work that is in progress, and add it to the document -->
-
-**>> Work In Progress <<**
 
 <a name="portal-extension-configuration-configuration-scenarios-updating-the-feedback-email"></a>
 ### Updating the feedback email
@@ -237,7 +231,7 @@ To update the feedback email, send a pull request as specified in [top-extension
 
 As per the safe deployment mandate, all the configuration changes are treated as code changes. Consequently, they use similar deployment processes.
 
-All changes that are checked in to the dev branch will be deployed in the following order: **Dogfood** -> **RC** -> **MPAC** -> **PROD** -> National Clouds (**BlackForest**, **FairFax**, and **Mooncake**).  The following table in [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md) specifies the amount of time allowed to complete the deployment.
+All changes that are checked in to the dev branch will be deployed in the following order: **Dogfood** -> **RC** -> **MPAC** -> **PROD** -> National Clouds (**BlackForest**, **FairFax**, and **Mooncake**).  The table in [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md) specifies the amount of time allowed to complete the deployment.
 
 <a name="portal-extension-configuration-expediting-deployment"></a>
 ## Expediting deployment
@@ -248,14 +242,8 @@ Typically, all pull requests are for the Dev branch. When a pull request for an 
 
 If the pull request is not sent in the specified order, or if the commit message is changed, then unit test failure may occur. In this case, the changes that are associated with the extension will be reverted without notice.
 
-The SLA for deploying configuration changes to all regions in the Production Environment is in the following table.
+The SLA for deploying configuration changes to all regions in the Production Environment is in the table specified in [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md).
 
-| Environment | Service Level Agreement |
-| ----------- | ------- |
-| PROD	      | 7 days  |
-| BLACKFOREST | 10 days |
-| FAIRFAX	  | 10 days |
-| MOONCAKE    |	10 days |
 
 As per the safe deployment mandate, deployment to production environment is performed in stages, where each stage is a logical grouping of regions. There are five stages in the production environment. There is a 24-hour wait period between promoting the build from one batch to another. This implies that the minimum time to deploy a change in all regions in Production branch is five days. For more information about staging, see    .
 
