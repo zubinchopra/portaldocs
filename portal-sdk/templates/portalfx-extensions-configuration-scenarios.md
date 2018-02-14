@@ -4,7 +4,7 @@
 
 <!--TODO:  Determine whether existing extensions should be changed to disabled mode, and if so, under what circumstances -->
 
-All new extensions should always be added to the Portal configuration in disabled mode. To add an extension to the Portal, send a pull request, as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md). The following is an example of a pull request for registering a `Scheduler` extension in the Fairfax environment.
+All new extensions should always be added to the Portal configuration in disabled mode. To add an extension to the Portal, send a pull request, as specified in [top-extensions-publishing.md](top-extensions-publishing.md). The following is an example of a pull request for registering a `Scheduler` extension in the Fairfax environment.
 [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/459608f61d5c36864affafe6eb9d230655f67a29?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/459608f61d5c36864affafe6eb9d230655f67a29?refName=refs%2Fheads%2Fdev).
 
 ### Managing the configuration of the extension
@@ -27,78 +27,13 @@ As part of permanently enabling the extension, the developer should update the e
 
 ### Enabling an extension
 
-The extension can only be enabled in production after all production-ready metrics criteria have been met. After all the stakeholders that are included in the production-ready metrics have signed off  on the extension, attach their emails to the workitem that is used for sending the pull request, as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
+The extension can only be enabled in production after all production-ready metrics criteria have been met. After all the stakeholders that are included in the production-ready metrics have signed off  on the extension, attach their emails to the workitem that is used for sending the pull request, as specified in [top-extensions-publishing.md](top-extensions-publishing.md).
 
 Enabling an extension requires two changes:
 1. To enable the extension, remove the `disables` attribute from the config.
 1. Update the enabled extension test count.
 
     An example of a pull request that enables the `HDInsight` extension in the Mooncake environment and increases the extension test is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev).
-
-### Converting from DIY deployment to a hosting service
-
-<!-- TODO: Determine whether they meant "rollback" instead of "regression", which is a term that is typically used while testing. -->
-
-To minimize the probability of regression, use the following procedure to migrate an extension from DIY deployment to a hosting service.
-
-<details>
-
-  <summary>1. Change the uri format to use a hosting service in the PROD environment</summary>
-
-   An example of a pull request for modifying the `uriFormat` parameter is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/c22b81463cab1d0c6b2c1abc803bc25fb2836aad?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/c22b81463cab1d0c6b2c1abc803bc25fb2836aad?refName=refs%2Fheads%2Fdev).
-</details>
-
-<details>
-  <summary>2. Flight changes in MPAC</summary>
-
-  An example of a pull request for a flighting extension in MPAC is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
-
-</details>
-
-<details>
-  
-  <summary>3. Enable 100% traffic in MPAC and PROD</summary>
-  
-  An example of a pull request that enables 100% traffic without flighting for `MicrosoftAzureClassicStorageExtension`, and 100% traffic with flighting for `Microsoft_Azure_Storage` is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/b81b415411f54ad83f93d43d37bcad097949a4e3?refName=refs%2Fheads%2Fdev&discussionId=-1&_a=summary&fullScreen=false](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/b81b415411f54ad83f93d43d37bcad097949a4e3?refName=refs%2Fheads%2Fdev&discussionId=-1&_a=summary&fullScreen=false). 
-</details>
-
-<details>
-
-  <summary>4. Enable flighting in MPAC</summary>
-
-  The Azure Portal provides the ability to flight the MPAC customers to multiple stamps. Traffic will be equally distributed between all registered stamps.  An example of a pull request is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
-    
-  * Hosting service `extension.pdl` file
-
-    To flight traffic to multiple stamps, register other stamps in `flightUri`. For example, the friendly name `MPACFlight` is used to flight traffic to another stamp, as in the following example.
-
-    ``` 
-    { 
-      name: "Microsoft_Azure_Demo", 
-      uri: "//demo.hosting.portal.azure.net/demo", 
-      uriFormat: "//demo.hosting.portal.azure.net/demo/{0}", 
-      feedbackEmail: "azureux-demo@microsoft.com", 
-      flightUris: [
-        "//demo.hosting.portal.azure.net/demo/MPACFlight",
-      ],
-    }
-    ```
-  * Legacy deployment `extension.pdl` file
-
-    DIY deployment can also flight traffic to multiple stamps, as in the following example.
-
-    ``` 
-    {
-        name: "Microsoft_Azure_Demo",
-        uri: "//main.demo.ext.azure.com",
-        uriFormat: "//{0}.demo.ext.azure.com",
-        feedbackEmail: "azureux-demo@microsoft.com",
-        flightUris: [
-            "//flight.demo.ext.azure.com",
-        ],
-      }
-    ``` 
-</details>
 
 ### Manifest caching
 The performance of an extension can be improved  by changing  how the extension uses caches.
@@ -120,7 +55,7 @@ Removing PCV1 and PCV2 code from an extension can improve performance.
 
 **>> Work In Progress <<**
 
-To update the feedback email, send a pull request as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
+To update the feedback email, send a pull request as specified in [top-extensions-publishing.md](top-extensions-publishing.md).
 
 ## Service Level Agreements for deployment
 
@@ -130,7 +65,7 @@ All changes that are checked in to the dev branch will be deployed in the follow
 
 ## Expediting deployment
 
-To deploy expedited changes, developers can send a pull request for each branch in the Portal repository, i.e., Dogfood, MPAC and Production. How to send the pull request is specified in  [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
+To deploy expedited changes, developers can send a pull request for each branch in the Portal repository, i.e., Dogfood, MPAC and Production. How to send the pull request is specified in  [top-extensions-publishing.md](top-extensions-publishing.md).
 
 Typically, all pull requests are for the Dev branch. When a pull request for an environment is marked as complete, the specified commit can be cherry-picked from that environment and included in a pull request for the next branch. The dev branch is followed by the **Dogfood** branch, which in turn is followed by the **MPAC** branch and finally the production branch.
 

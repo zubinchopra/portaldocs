@@ -1,7 +1,7 @@
 
 ## Contributing to C# Test Framework
 
-Contributions that improve the Test Framework are welcome, because they keep the code base healthy.  When you have improvements to contribute back to the Test Framework, use the following steps to enlist into the list of contributors and submit a pull request. The pull request instructions are located at [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md), with the following additions.
+Contributions that improve the Test Framework are welcome, because they keep the code base healthy.  When you have improvements to contribute back to the Test Framework, use the following steps to enlist into the list of contributors and submit a pull request. The pull request instructions are located at [top-extensions-publishing.md](top-extensions-publishing.md), with the following additions.
 
 1. The Test Framework uses a different `<repoRoot>`
 1. The Test Framework is not associated with the production extension branches

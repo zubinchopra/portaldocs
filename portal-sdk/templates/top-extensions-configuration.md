@@ -1,4 +1,4 @@
-# Portal Extensions Configuration
+# Portal Extension Configuration
 
 <!-- document headers are in the individual documents -->
 
