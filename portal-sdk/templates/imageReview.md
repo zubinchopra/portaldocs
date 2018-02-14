@@ -521,7 +521,7 @@ Deprecate the following image.
 
 The following image has already been validated as using   fictitious names. 
 
-![alt-text](../media/portalfx-extensions-publishing/pull-request.png "portalfx-extensions-publishing/pull-request.png ")
+![alt-text](../media/top-extensions-publishing/pull-request.png "portalfx-extensions-publishing/pull-request.png ")
 
 ## top-extensions-samples
 
