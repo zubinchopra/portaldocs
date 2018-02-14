@@ -7,5 +7,5 @@ The page you requested has moved to [./top-onboarding.md](./top-onboarding.md).
 
 # Onboarding
   gitdown": "include-headings", "file": "../templates/portalfx-onboarding.md"}
-  gitdown": "include-headings", "file": "../templates/top-exit-criteria.md"}
+  gitdown": "include-headings", "file": "../templates/top-extensions-production-ready-metrics.md"}
 -->

@@ -29,7 +29,7 @@ This is the only document within the topic that contains an H1-level header.
    * portalfx-extensions-contacts.md
    * top-extensions-developmentPhases.md
    * top-extensions-production-ready-metrics.md
-   * portalfx-extensions-publishing.md
+   * top-extensions-publishing.md
    * portalfx-extensions-qualityEssentials.md
    * top-extensions-stackoverflow.md
    * portalfx-extensions-status-codes.md

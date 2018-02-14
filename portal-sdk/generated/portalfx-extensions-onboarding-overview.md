@@ -74,7 +74,7 @@ For more information, see [portalfx-extensions-custom-deployment.md](portalfx-ex
 
 Once the name of the extension is finalized, it is time to register the extension in all environments. This requires a portal deployment and can take time. Our Service Level Agreements are located at [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md).  Please plan accordingly.
 
-* For internal partners, the request to register an extension is a pull request, as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
+* For internal partners, the request to register an extension is a pull request, as specified in [top-extensions-publishing.md](top-extensions-publishing.md).
  
 * External teams can submit their requests by reaching out to the <a href="mailto:ibizafxpm@microsoft.com?subject=Onboarding Request: Add <extensionName> to the Portal&body=Extension Name:  <br><br>Company:  <br><br>Brand or Suite:  <br><br>Product or Component:  <br><br> URLs: <br><br>Production: main.<extensionName>.ext.<company>.com<br><br>  Contact info: <br><br>Business Contacts <br><br> Dev leads: <br><br> PROD on-call email for live site incidents: <br><br>">ibizafxpm team</a> with an onboarding request.
 
@@ -110,7 +110,7 @@ There are three typical release kinds. Private preview, public preview, and GA. 
     * Complete metadata in ServiceTree to enable the automation for various Service360 Action Items
     * Complete the Action Items identified in Service360, which is located at [http://aka.ms/s360](http://aka.ms/s360)
 
-1.  Request to deploy the extension to the Production environment, as specified in [portalfx-extensions-publishing](portalfx-extensions-publishing).
+1.  Request to deploy the extension to the Production environment, as specified in [top-extensions-publishing.md](top-extensions-publishing.md).
 
 1. Integrate the extension into the Marketplace. 
 

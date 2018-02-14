@@ -1,14 +1,14 @@
-<a name="portal-extensions-configuration"></a>
-# Portal Extensions Configuration
+<a name="portal-extension-configuration"></a>
+# Portal Extension Configuration
 
 <!-- document headers are in the individual documents -->
 
-<a name="portal-extensions-configuration-overview"></a>
+<a name="portal-extension-configuration-overview"></a>
 ## Overview
 
 You must register and configure your extension with the portal team for your extension to be available in the portal. We rely on you to manage your own configurationin the Portal repository. For internal partners this is done via pull requests. The process is explained in [top-external-onboarding.md](top-external-onboarding.md).
 
-<a name="portal-extensions-configuration-overview-instructions-for-external-partners"></a>
+<a name="portal-extension-configuration-overview-instructions-for-external-partners"></a>
 ### Instructions for external partners
 
  The extension configuration file contains information for all extensions registered in the Azure Portal. It is located in the Portal repository in the `src/RDPackages/OneCloud/` directory that is located at [https://aka.ms/portalfx/onecloud](https://aka.ms/portalfx/onecloud). 
@@ -80,7 +80,7 @@ Its options are as follows.
 
       **NOTE**: For extensions that are not using the hosting service, we recommend that the `uri` follow the standard CNAME pattern, as specified in [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md). 
 
-  When the user loads the extension in the Portal, it is loaded from the `uri` specified in the extension configuration. To update the ```uri```, send a pull request as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md). Additional extension configurations can be loaded by specifying the configuration name in the  `uri` and specifying the feature flag `feature.canmodifystamps=true`. For more information about feature flags, see [portalfx-extensions-feature-flags.md](portalfx-extensions-feature-flags.md).
+  When the user loads the extension in the Portal, it is loaded from the `uri` specified in the extension configuration. To update the ```uri```, send a pull request as specified in [top-extensions-publishing.md](top-extensions-publishing.md). Additional extension configurations can be loaded by specifying the configuration name in the  `uri` and specifying the feature flag `feature.canmodifystamps=true`. For more information about feature flags, see [portalfx-extensions-feature-flags.md](portalfx-extensions-feature-flags.md).
 
 * **uriFormat**: Required. The `uri` for the extension, followed by a forward slash, followed by a parameter marker that allows modification of the extension stamp.
     
@@ -107,17 +107,17 @@ Its options are as follows.
 
       **NOTE**: We recommend that the `uriFormat` follow  the standard CNAME pattern, as specified in  [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md). 
 
-  To update the `uriFormat`, send a pull request as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
+  To update the `uriFormat`, send a pull request as specified in [top-extensions-publishing.md](top-extensions-publishing.md).
     
 * **feedbackEmail**: Required. The email id to which to send all feedback about the extension. 
 
-  To update the feedback email, send a pull request as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
+  To update the feedback email, send a pull request as specified in [top-extensions-publishing.md](top-extensions-publishing.md).
 
 * **cacheability**: Required. Enables caching of the extension on your extension server or on the client. The default value is "manifest".
       
   If legacy DIY deployment is being used, then you will need to do some work before the value of the `cacheability` attribute can be set to ```manifest```. Otherwise, the extension will reduce the performance of Azure Portal.
 
-  **NOTE**: Setting the value of the `cacheability` attribute to `manifest` is a requirement for registering the extension into the Portal.  For assistance with caching, send a pull request as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
+  **NOTE**: Setting the value of the `cacheability` attribute to `manifest` is a requirement for registering the extension into the Portal.  For assistance with caching, send a pull request as specified in [top-extensions-publishing.md](top-extensions-publishing.md).
     
   For more information about caching, see [portalfx-extension-homepage-caching.md](portalfx-extension-homepage-caching.md).
 
@@ -132,12 +132,12 @@ Its options are as follows.
 
  For more information about loading extension configuration files, see [portalfx-extensions-testing-in-production-overview.md#loading-customized-extensions](portalfx-extensions-testing-in-production-overview.md#loading-customized-extensions).
 
-<a name="portal-extensions-configuration-overview-understanding-which-extension-configuration-to-modify"></a>
+<a name="portal-extension-configuration-overview-understanding-which-extension-configuration-to-modify"></a>
 ### Understanding which extension configuration to modify
 
 The Azure Portal uses five different extension configuration files to manage the extension configuration. The description of mapping of the Portal environment to the extension configuration is located at [portalfx-extensions-branches.md](portalfx-extensions-branches.md).
 
-<a name="portal-extensions-configuration-overview-extension-stamps"></a>
+<a name="portal-extension-configuration-overview-extension-stamps"></a>
 ### Extension Stamps
 
 Because the hosting service provides a mechanism for deploying extensions using safe deployment practices, the Portal will load the version of the extension that is based on the region from where the customer is accessing the Portal. For more details, see the Hosting Service documentation located at [portalfx-extensions-hosting-service.md](portalfx-extensions-hosting-service.md).
@@ -166,18 +166,18 @@ To override the stamp, specify the flag ```feature.canmodifystamps=true ```.  To
  **NOTE**: The dots in the build number are replaced with the letter "d".
  
 
-<a name="portal-extensions-configuration-configuration-scenarios"></a>
+<a name="portal-extension-configuration-configuration-scenarios"></a>
 ## Configuration Scenarios
 
-<a name="portal-extensions-configuration-configuration-scenarios-onboarding-a-new-or-existing-extension"></a>
+<a name="portal-extension-configuration-configuration-scenarios-onboarding-a-new-or-existing-extension"></a>
 ### Onboarding a new or existing extension
 
 <!--TODO:  Determine whether existing extensions should be changed to disabled mode, and if so, under what circumstances -->
 
-All new extensions should always be added to the Portal configuration in disabled mode. To add an extension to the Portal, send a pull request, as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md). The following is an example of a pull request for registering a `Scheduler` extension in the Fairfax environment.
+All new extensions should always be added to the Portal configuration in disabled mode. To add an extension to the Portal, send a pull request, as specified in [top-extensions-publishing.md](top-extensions-publishing.md). The following is an example of a pull request for registering a `Scheduler` extension in the Fairfax environment.
 [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/459608f61d5c36864affafe6eb9d230655f67a29?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/459608f61d5c36864affafe6eb9d230655f67a29?refName=refs%2Fheads%2Fdev).
 
-<a name="portal-extensions-configuration-configuration-scenarios-managing-the-configuration-of-the-extension"></a>
+<a name="portal-extension-configuration-configuration-scenarios-managing-the-configuration-of-the-extension"></a>
 ### Managing the configuration of the extension
 
 All extensions are registered into the Portal in the disabled state, therefore they are disabled by default.  This hides the extension from users, and it will not be displayed in the Portal. The extension remains in hidden mode until it is ready for public preview or GA. Partners use this capability to test the extension, or to host it for private preview. For more information about previews and Global Availability, see [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
@@ -196,10 +196,10 @@ Conversely, the extension can temporarily be disabled for a session by changing 
 
 As part of permanently enabling the extension, the developer should update the extension test count in the `%ROOT%\src\StbPortal\Website.Server.Tests\DeploymentSettingsTests.cs` file. Otherwise, the **disabled** property in the `config` file(s) can remain set to `false`. 
 
-<a name="portal-extensions-configuration-configuration-scenarios-enabling-an-extension"></a>
+<a name="portal-extension-configuration-configuration-scenarios-enabling-an-extension"></a>
 ### Enabling an extension
 
-The extension can only be enabled in production after all production-ready metrics criteria have been met. After all the stakeholders that are included in the production-ready metrics have signed off  on the extension, attach their emails to the workitem that is used for sending the pull request, as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
+The extension can only be enabled in production after all production-ready metrics criteria have been met. After all the stakeholders that are included in the production-ready metrics have signed off  on the extension, attach their emails to the workitem that is used for sending the pull request, as specified in [top-extensions-publishing.md](top-extensions-publishing.md).
 
 Enabling an extension requires two changes:
 1. To enable the extension, remove the `disables` attribute from the config.
@@ -207,73 +207,7 @@ Enabling an extension requires two changes:
 
     An example of a pull request that enables the `HDInsight` extension in the Mooncake environment and increases the extension test is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev).
 
-<a name="portal-extensions-configuration-configuration-scenarios-converting-from-diy-deployment-to-a-hosting-service"></a>
-### Converting from DIY deployment to a hosting service
-
-<!-- TODO: Determine whether they meant "rollback" instead of "regression", which is a term that is typically used while testing. -->
-
-To minimize the probability of regression, use the following procedure to migrate an extension from DIY deployment to a hosting service.
-
-<details>
-
-  <summary>1. Change the uri format to use a hosting service in the PROD environment</summary>
-
-   An example of a pull request for modifying the `uriFormat` parameter is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/c22b81463cab1d0c6b2c1abc803bc25fb2836aad?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/c22b81463cab1d0c6b2c1abc803bc25fb2836aad?refName=refs%2Fheads%2Fdev).
-</details>
-
-<details>
-  <summary>2. Flight changes in MPAC</summary>
-
-  An example of a pull request for a flighting extension in MPAC is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
-
-</details>
-
-<details>
-  
-  <summary>3. Enable 100% traffic in MPAC and PROD</summary>
-  
-  An example of a pull request that enables 100% traffic without flighting for `MicrosoftAzureClassicStorageExtension`, and 100% traffic with flighting for `Microsoft_Azure_Storage` is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/b81b415411f54ad83f93d43d37bcad097949a4e3?refName=refs%2Fheads%2Fdev&discussionId=-1&_a=summary&fullScreen=false](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/b81b415411f54ad83f93d43d37bcad097949a4e3?refName=refs%2Fheads%2Fdev&discussionId=-1&_a=summary&fullScreen=false). 
-</details>
-
-<details>
-
-  <summary>4. Enable flighting in MPAC</summary>
-
-  The Azure Portal provides the ability to flight the MPAC customers to multiple stamps. Traffic will be equally distributed between all registered stamps.  An example of a pull request is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
-    
-  * Hosting service `extension.pdl` file
-
-    To flight traffic to multiple stamps, register other stamps in `flightUri`. For example, the friendly name `MPACFlight` is used to flight traffic to another stamp, as in the following example.
-
-    ``` 
-    { 
-      name: "Microsoft_Azure_Demo", 
-      uri: "//demo.hosting.portal.azure.net/demo", 
-      uriFormat: "//demo.hosting.portal.azure.net/demo/{0}", 
-      feedbackEmail: "azureux-demo@microsoft.com", 
-      flightUris: [
-        "//demo.hosting.portal.azure.net/demo/MPACFlight",
-      ],
-    }
-    ```
-  * Legacy deployment `extension.pdl` file
-
-    DIY deployment can also flight traffic to multiple stamps, as in the following example.
-
-    ``` 
-    {
-        name: "Microsoft_Azure_Demo",
-        uri: "//main.demo.ext.azure.com",
-        uriFormat: "//{0}.demo.ext.azure.com",
-        feedbackEmail: "azureux-demo@microsoft.com",
-        flightUris: [
-            "//flight.demo.ext.azure.com",
-        ],
-      }
-    ``` 
-</details>
-
-<a name="portal-extensions-configuration-configuration-scenarios-manifest-caching"></a>
+<a name="portal-extension-configuration-configuration-scenarios-manifest-caching"></a>
 ### Manifest caching
 The performance of an extension can be improved  by changing  how the extension uses caches.
 
@@ -283,32 +217,32 @@ The performance of an extension can be improved  by changing  how the extension 
 
 For more information about extension caching, see [portalfx-extension-homepage-caching.md](portalfx-extension-homepage-caching.md).
 
-<a name="portal-extensions-configuration-configuration-scenarios-pcv1-and-pcv2-removal"></a>
+<a name="portal-extension-configuration-configuration-scenarios-pcv1-and-pcv2-removal"></a>
 ### PCV1 and PCV2 removal
 Removing PCV1 and PCV2 code from an extension can improve performance.
 <!--TODO:  locate the work that is in progress, and add it to the document -->
 
 **>> Work In Progress <<**
 
-<a name="portal-extensions-configuration-configuration-scenarios-updating-the-feedback-email"></a>
+<a name="portal-extension-configuration-configuration-scenarios-updating-the-feedback-email"></a>
 ### Updating the feedback email
 <!--TODO:  locate the work that is in progress, and add it to the document -->
 
 **>> Work In Progress <<**
 
-To update the feedback email, send a pull request as specified in [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
+To update the feedback email, send a pull request as specified in [top-extensions-publishing.md](top-extensions-publishing.md).
 
-<a name="portal-extensions-configuration-service-level-agreements-for-deployment"></a>
+<a name="portal-extension-configuration-service-level-agreements-for-deployment"></a>
 ## Service Level Agreements for deployment
 
 As per the safe deployment mandate, all the configuration changes are treated as code changes. Consequently, they use similar deployment processes.
 
 All changes that are checked in to the dev branch will be deployed in the following order: **Dogfood** -> **RC** -> **MPAC** -> **PROD** -> National Clouds (**BlackForest**, **FairFax**, and **Mooncake**).  The following table in [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md) specifies the amount of time allowed to complete the deployment.
 
-<a name="portal-extensions-configuration-expediting-deployment"></a>
+<a name="portal-extension-configuration-expediting-deployment"></a>
 ## Expediting deployment
 
-To deploy expedited changes, developers can send a pull request for each branch in the Portal repository, i.e., Dogfood, MPAC and Production. How to send the pull request is specified in  [portalfx-extensions-publishing.md](portalfx-extensions-publishing.md).
+To deploy expedited changes, developers can send a pull request for each branch in the Portal repository, i.e., Dogfood, MPAC and Production. How to send the pull request is specified in  [top-extensions-publishing.md](top-extensions-publishing.md).
 
 Typically, all pull requests are for the Dev branch. When a pull request for an environment is marked as complete, the specified commit can be cherry-picked from that environment and included in a pull request for the next branch. The dev branch is followed by the **Dogfood** branch, which in turn is followed by the **MPAC** branch and finally the production branch.
 
@@ -325,17 +259,17 @@ The SLA for deploying configuration changes to all regions in the Production Env
 
 As per the safe deployment mandate, deployment to production environment is performed in stages, where each stage is a logical grouping of regions. There are five stages in the production environment. There is a 24-hour wait period between promoting the build from one batch to another. This implies that the minimum time to deploy a change in all regions in Production branch is five days. For more information about staging, see    .
 
-<a name="portal-extensions-configuration-receiving-notification-when-changes-are-deployed"></a>
+<a name="portal-extension-configuration-receiving-notification-when-changes-are-deployed"></a>
 ## Receiving notification when changes are deployed
 
 After the commit has been associated with a workitem, the developer will receive a notification when the config change is deployed to each region.
 
 When the development team wants to subscribe to these changes, ask them to make a comment on the workitem. After they have made changes, they will start receiving the notifications.
 
-<a name="portal-extensions-configuration-frequently-asked-questions"></a>
+<a name="portal-extension-configuration-frequently-asked-questions"></a>
 ## Frequently asked questions
 
-<a name="portal-extensions-configuration-frequently-asked-questions-ssl-certs"></a>
+<a name="portal-extension-configuration-frequently-asked-questions-ssl-certs"></a>
 ### SSL certs
 
 ***How do I use SSL certs?***
@@ -344,7 +278,7 @@ When the development team wants to subscribe to these changes, ask them to make 
 
 * * *
 
-<a name="portal-extensions-configuration-frequently-asked-questions-loading-different-versions-of-an-extension"></a>
+<a name="portal-extension-configuration-frequently-asked-questions-loading-different-versions-of-an-extension"></a>
 ### Loading different versions of an extension
 
 ***How do I load different versions of an extension?***
@@ -354,7 +288,7 @@ Understanding which extension configuration to modify is located at [portalfx-ex
 
 
 
-<a name="portal-extensions-configuration-glossary"></a>
+<a name="portal-extension-configuration-glossary"></a>
 ## Glossary
 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
