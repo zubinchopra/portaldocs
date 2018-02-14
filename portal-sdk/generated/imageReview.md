@@ -539,13 +539,12 @@ Deprecate the following image.
 
 ![alt-text](../media/portalfx-extensions-onboarding/vmMachines.png "portalfx-extensions-onboarding/vmMachines.png ")
 
-<a name="all-images-in-the-media-library-portalfx-extensions-publishing"></a>
-## portalfx-extensions-publishing
-
+<a name="all-images-in-the-media-library-top-extensions-publishing"></a>
+## top-extensions-publishing
 
 The following image has already been validated as using   fictitious names. 
 
-![alt-text](../media/top-extensions-publishing/pull-request.png "portalfx-extensions-publishing/pull-request.png ")
+![alt-text](../media/top-extensions-publishing/pull-request.png "top-extensions-publishing/pull-request.png ")
 
 <a name="all-images-in-the-media-library-top-extensions-samples"></a>
 ## top-extensions-samples

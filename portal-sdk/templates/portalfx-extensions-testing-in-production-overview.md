@@ -157,7 +157,7 @@ When all steps are complete, the developer can submit a pull request to enable t
 
 ## Deploying test extensions using the hosting service 
  
- For more information about common hosting scenarios, see  [portalfx-extensions-hosting-service-scenarios.md#sideloading](portalfx-extensions-hosting-service-scenarios.md#sideloading).  For information about debugging switches or feature flags that are used in hosting, see  [portalfx-extensions-flags.md](portalfx-extensions-flags.md).  For more information about alternatives to the local host environment, see [portalfx-extensions-hosting-service.md](portalfx-extensions-hosting-service.md). 
+ For more information about common hosting scenarios, see  [portalfx-extensions-hosting-service-scenarios.md#sideloading](portalfx-extensions-hosting-service-scenarios.md#sideloading).  For information about debugging switches or feature flags that are used in hosting, see  [portalfx-extensions-flags.md](portalfx-extensions-flags.md).  For more information about alternatives to the local host environment, see [top-extensions-hosting-service.md](top-extensions-hosting-service.md). 
 
 ## Common use cases for custom stamps
 

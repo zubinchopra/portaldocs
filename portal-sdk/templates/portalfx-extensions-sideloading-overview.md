@@ -11,7 +11,7 @@ Two mechanisms that can be used to sideload an extension are as follows.
 
 ## Load from development computer
 
-To load an extension from the development machine or the localhost, extension developers need to register it.  For more information, see [portalfx-extensions-testing-in-production-overview.md#Registering-a-customized-extension](portalfx-extensions-testing-in-production-overview.md#registering-a-customized-extension). For more information about alternatives to the local host environment, see [portalfx-extensions-hosting-service.md](portalfx-extensions-hosting-service). 
+To load an extension from the development machine or the localhost, extension developers need to register it.  For more information, see [portalfx-extensions-testing-in-production-overview.md#Registering-a-customized-extension](portalfx-extensions-testing-in-production-overview.md#registering-a-customized-extension). For more information about alternatives to the local host environment, see [top-extensions-hosting-service.md](top-extensions-hosting-service). 
 For more information about feature flags that are used in hosting, see [portalfx-extensions-flags.md](portalfx-extensions-flags.md).
 
 ## Load from test environment
