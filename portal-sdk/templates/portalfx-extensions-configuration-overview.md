@@ -1,20 +1,27 @@
 ## Overview
 
-You must register and configure your extension with the Ibiza team for your extension to be available in the Portal. We rely on you to manage your own configuration in the Portal repository. For internal partners, this is done via pull requests, as specified in [top-extensions-publishing.md](top-extensions-publishing.md). External partners use the procedures that are located in [top-external-onboarding.md](top-external-onboarding.md).
+ The extension configuration file contains information for all extensions registered in the Azure Portal. It is located in the Portal repository in the `src/RDPackages/OneCloud/` directory that is located at [https://aka.ms/portalfx/onecloud](https://aka.ms/portalfx/onecloud). 
+ 
+ You must register and configure your extension with the Ibiza team for your extension to be available in the Portal. We rely on you to manage your own configuration in the Portal repository. For internal partners, this is done via pull requests, as specified in [top-extensions-publishing.md](top-extensions-publishing.md). External partners use the procedures that are located in [top-external-onboarding.md](top-external-onboarding.md).
 
 As per the safe deployment mandate, all configuration changes are treated as code changes. Consequently, they use similar deployment processes. Changes that are checked in to the dev branch will be deployed in the following order: **Dogfood** -> **RC** -> **MPAC** -> **PROD** -> National Clouds (**BlackForest**, **FairFax**, and **Mooncake**).  The table in [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md) specifies the amount of time allowed to complete the deployment.
 
+The following links describe what a configuration file is and how to use it in different situations.
+
+[Extension Configuration Files](#extension-configuration-files)
+[Instructions for use](#instructions-for-use)
+
 ### Extension Configuration Files
 
- The extension configuration file contains information for all extensions registered in the Azure Portal. It is located in the Portal repository in the `src/RDPackages/OneCloud/` directory that is located at [https://aka.ms/portalfx/onecloud](https://aka.ms/portalfx/onecloud). 
- 
-There is a configuration file for each environment that the Portal supports, in the following format.
+The configuration file for each environment that the Portal supports is in the following format.
  
  `Extensions.<EnvironmentName>.json`
  
- For example, ```Extensions.Prod.json``` contains the configuration for all extensions in the Production environment, and  `Extensions.dogfood.json` contains the configuration for all extensions in the Dogfood environment.
+where 
 
- The following file contains a typical configuration for an extension.
+**EnvironmentName**: the name of the environment in which the extension configuration file will be located.  For example, ```Extensions.Prod.json``` contains the configuration for all extensions in the Production environment, and  `Extensions.dogfood.json` contains the configuration for all extensions in the Dogfood environment.
+
+The following file contains a typical configuration for an extension.
 
 ```json
 {
@@ -54,7 +61,7 @@ Its options are as follows.
    
    * Hosting service uri
  
-      The following example contains the ```uri``` for an extension  that is hosted by an extension hosting service.
+      The following example contains the ```uri``` for an extension that is hosted by an extension hosting service.
     
       ```json
       uri: "//demo.hosting.portal.azure.net/demo",
