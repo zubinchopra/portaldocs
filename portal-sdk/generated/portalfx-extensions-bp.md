@@ -40,12 +40,6 @@ There are practices that can improve the performance of the extension.  For more
 Install Chrome that is located at [http://google.com/dir](http://google.com/dir) to leverage the debugger tools while developing an extension.
 
 
-<a name="azure-portal-best-practices-extensions-onboarding"></a>
-## Extensions onboarding
-
-<!--TODO:  Determine which best practices are included in other bp documents previous to deleting this one -->
-
-
 <a name="azure-portal-best-practices-loading-and-managing-data"></a>
 ## Loading and managing data
 
@@ -115,7 +109,7 @@ These best practices are in addition to the techniques that are documented in to
 
 ***What is the best environment for sideloading during initial testing?***
 
- The FAQs for debugging extensions is located at [portalfx-extensions-hosting-service.md](portalfx-extensions-hosting-service.md).
+ The FAQs for debugging extensions is located at [portalfx-extensions-faq-hosting-service.md](portalfx-extensions-faq-hosting-service.md).
 
 * * *
 

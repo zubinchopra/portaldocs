@@ -57,12 +57,13 @@ This section contains a glossary of terms and acronyms that are used in this doc
 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
 
-<!-- TODO:  Determine the difference between a branch, a region, and an environment. They are not  completely interchangeable, then we can standardize usage. -->
+<!-- TODO:  Determine the difference between a branch, a region, and an environment. If they are not  completely interchangeable, then we can standardize usage. -->
 
 | Term                     | Meaning |
 | ---                      | --- |
 | BF                       | Black Forest |
-| branch | |
+| branch | A collection of code in a content management system. |
+| branch | The five Azure environments  in which extensions are run.  They are: Blackforest, Dogfood, FairFax, Mooncake, and the Production Release Candidate(s). |
 | build verification test  | A subset of regression testing, this is a set of non-exhaustive tests that verify whether the most important application functions work. Its results are used to determine whether a build is stable enough to proceed with further testing. |
 | BVT                      | Build Verification Test |
 | cherry-pick              | Apply the changes introduced by an existing GitHub commit. |
