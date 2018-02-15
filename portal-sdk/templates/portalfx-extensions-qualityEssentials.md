@@ -1,7 +1,13 @@
 
 ## Quality Essentials
   
-Quality Essentials  and 1CS provide access to manage the release policies and procedures for each compliance. QE tracks the following policies.
+Compliance criteria and practices are defined in Quality Essentials throughout the development cycle. These ensure that services meet the Trusted Cloud commitments outlined in the Microsoft Azure Trust Center for our customers. These are required procedures for preview and Global Availability, and are to be revisited for every release cycle.
+
+Nearly 70% of Azure users are from outside of the United States. Therefore, it is important to make Azure a globalized product. There are a few internationalization requirements that the extension or service is required to support. This is the same set of languages that are supported by Azure Portal for GA.
+
+The customer has a different set of expectations for the extension in each phase. To meet customer expectations, we have compiled production-ready metrics for each phase. The development of an extension  can proceed to the next step when it meets the production-ready metrics for the current step. To meet customer expectations and continue to increase customer satisfaction, several quality metrics are tracked for every extension by the Get1CS team. An overview of Quality Essentials is located at [https://aka.ms/qualityessentials](https://aka.ms/qualityessentials). 
+
+ The Azure team only tracks the production-ready metrics and localization requirements. There may be tools to install from the QE and 1CS sites that are part of the Quality Essentials process. Quality Essentials and 1CS provide access to manage the release policies and procedures for each extension. QE tracks the following policies.
 * Accessibility
 * Global readiness
 * Global trade compliance
@@ -21,5 +27,7 @@ These requirements apply to both the Portal fx and extensions. Since Fx provides
 | Global Readiness  | [portalfx-globalization.md](portalfx-globalization.md) and [portalfx-localization.md](portalfx-localization.md) | Localizability, regional format, text support, China GB standard |
 | Privacy           |  [portalfx-authentication.md](portalfx-authentication.md) | User settings data handling, encryption, and authentication |
 | SDL               |  [https://microsoft.sharepoint.com/ teams/QualityEssentials/SitePages/ SDL_SecurityDevelopmentLifecycleOverview.aspx](https://microsoft.sharepoint.com/teams/QualityEssentials/SitePages/SDL_SecurityDevelopmentLifecycleOverview.aspx)         | Security Development Lifecycle Threat modeling |
+
+
 
 For more information and any questions about Fx coverage, reach out to the Fx Coverage contact that is located in [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md).

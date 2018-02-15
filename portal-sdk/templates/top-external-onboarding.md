@@ -5,8 +5,6 @@
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-qualityEssentials.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-onboarding-fundamentals.md"}
-
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-onboarding-communication.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-onboarding-fyi.md"}
