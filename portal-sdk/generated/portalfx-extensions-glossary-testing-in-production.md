@@ -8,7 +8,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | Developer Tools Console | | 
 | diagnostic switch | | 
 | endpoint             | A device that is connected to a LAN and accepts or transmits communications across a network. In terms of directories or Web pages, there may be several endpoints that are defined on the same device.  |
-| extension stamps | |
+| extension stamp | An instance of a service in a region. Every extension can deploy one or more extension editions based on testing requirements. The main extension is used for production and is the only one that the Portal will load by default. Also known as configuration or configuration file.   | 
 | hotfix | |
 | localhost            | A hostname that means this computer or this host.  |
 | obsolete script      | A script that makes certain parts of the Portal act as legacy code, in order to limit the performance costs of the old functionality to only extensions that are using them. | 

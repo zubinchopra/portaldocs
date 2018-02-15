@@ -245,7 +245,7 @@ The zip file generated during the build should be named `<BUILD_VERSION>.zip`, w
 <a name="provide-environment-specific-configuration-files"></a>
 ## Provide environment-specific configuration files
 
-<!-- TODO:  If the production file can contain all 3 stamps, determine whether this example can  include all 3 names -->
+<!-- TODO:  If the production file can contain all extension editions, determine whether this example can include all 3 names -->
 
 Environment configuration files serve two purposes.
 
@@ -306,15 +306,15 @@ The following are examples for each environment.
 
 1. Production
 
-    The production environment uses three stamps, as in the following table.
+    The production environment uses three extension configurations, as in the following table.
 
-    | Environment | Stamp               |
+    | Environment | Cofiguration        |
     | ---         | ---                 |
     | RC          | rc.portal.azure.com |
     | MPAC        | ms.portal.azure.com |
     | PROD        | portal.azure.com    |
 
-    One single configuration file contains all three stamps.  The configuration file is named  `*.portal.azure.com.json`, as in the following example.
+    One single configuration file contains all three configurations.  The configuration file is named  `*.portal.azure.com.json`, as in the following example.
 
     ```xml
     <EmbeddedResource Include="Content\Config\portal.azure.com.json" />
@@ -486,11 +486,11 @@ To minimize the probability of regression, use the following procedure to migrat
 
   <summary>4. Enable flighting in MPAC</summary>
 
-  The Azure Portal provides the ability to flight the MPAC customers to multiple stamps. Traffic will be equally distributed between all registered stamps.  An example of a pull request is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
+  The Azure Portal provides the ability to flight the MPAC customers to multiple editions of an extension. Traffic will be equally distributed between all registered configurations, or stamps.  An example of a pull request is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
     
   * Hosting service `extension.pdl` file
 
-    To flight traffic to multiple stamps, register other stamps in `flightUri`. For example, the friendly name `MPACFlight` is used to flight traffic to another stamp, as in the following example.
+    To flight traffic to multiple stamps, register other stamps in `flightUri`. For example, the friendly name `MPACFlight` is used to flight traffic to another edition of an extension, as in the following example.
 
     ``` 
     { 
@@ -505,7 +505,7 @@ To minimize the probability of regression, use the following procedure to migrat
     ```
   * Legacy deployment `extension.pdl` file
 
-    DIY deployment can also flight traffic to multiple stamps, as in the following example.
+    DIY deployment can also flight traffic to multiple extension editions, as in the following example.
 
     ``` 
     {
@@ -905,7 +905,7 @@ ibiza-samples-docs
 | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ------------------- | ------- |
 | [azure-gallery](https://stackoverflow.microsoft.com/questions/tagged/azure-gallery)                   |                                                                                               |                     |         |
 | [ibiza](https://stackoverflow.microsoft.com/questions/tagged/ibiza)                                   | Generic tag, for use in conjunction with a more specific tag, or when the topic is unknown    | Adam Abdelhamed     |         |
-| [ibiza-accessibility](https://stackoverflow.microsoft.com/questions/tagged/ibiza-accessibility)       |                                                                                               | Paymon Parsadmehr   | <a href="mailto:ibiza-accessibility@microsoft.com?subject=Stackoverflow: Accessibility">mailto:ibiza-accessibility@microsoft.com </a> | 
+| [ibiza-accessibility](https://stackoverflow.microsoft.com/questions/tagged/ibiza-accessibility)       | Questions regarding accessibility onboarding, best practices, supported accessible controls, etc. Also, questions regarding the accessibility bug process and exception process.                                                                                             | Paymon Parsadmehr   | <a href="mailto:ibiza-accessibility@microsoft.com?subject=Stackoverflow: Accessibility">ibiza-accessibility@microsoft.com </a> | 
 | [ibiza-bad-samples-docs](https://stackoverflow.microsoft.com/questions/tagged/ibiza-bad-samples-docs) | Topics that are not included in [https://aka.ms/portalfx/docs](https://aka.ms/portalfx/docs), are incomplete, or are difficult to understand  |  Adam Abdelhamed  | |
 | [ibiza-blades-parts](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts)         |                                                                                               | Sean Watson         | |
 | [ibiza-breaking-changes](https://stackoverflow.microsoft.com/questions/tagged/ibiza-breaking-changes) | Breaking changes that are not included in the [https://aka.ms/portalfx/breaking](https://aka.ms/portalfx/breaking) topic | Madhur Joshi          | |
@@ -915,7 +915,7 @@ ibiza-samples-docs
 | [ibiza-create](https://stackoverflow.microsoft.com/questions/tagged/ibiza-create)                     |                                                                                               | Balbir Singh        | |
 | [ibiza-data-caching](https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching)         |                                                                                               | Brad Olenik         | |
 | [ibiza-deployment](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)             | Deployment and onboarding of an extension                                                     | Umair Aftab         | |
-| [ibiza-forms](https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms)                       |                                                                                               | Shrey Shirwaikar    | |
+| [ibiza-forms](https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms)                       | An Ibiza monitored tag for questions related to Azure Portal forms                                                                                      | Shrey Shirwaikar    | |
 | [ibiza-forms-create]()                                                                                | Deprecated tag.  Use #ibiza-forms for forms questions and #ibiza-create for Create questions. | Paymon Parsadmehr; Shrey Shirwaikar | |
 | [ibiza-hosting-service](https://stackoverflow.microsoft.com/questions/tagged/ibiza-hosting-service)   | Extension hosting service onboarding, **ContentUnbundler** and runtime                        | Umair Aftab         | |
 | [ibiza-kusto](https://stackoverflow.microsoft.com/questions/tagged/ibiza-kusto)                       |                                                                                               |                     | |

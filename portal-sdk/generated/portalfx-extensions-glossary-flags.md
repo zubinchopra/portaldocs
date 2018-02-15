@@ -8,7 +8,6 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | API contract | An agreement between two pieces of code as to how to pass parameters between them, and how those parameters are processed. |
 | CDN                 | Content delivery network | 
 | CI infrastructure   | | 
-| configuration stamp | | 
 | curation            | The process of categorizing content around a specific topic or area of interest. Curated items often formed into various types of collections and are displayed together according to theme or purpose. | 
 | diagnostic switch  | |
 | DOM                | Document Object Model |

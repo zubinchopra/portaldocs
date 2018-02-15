@@ -91,7 +91,7 @@ The zip file generated during the build should be named `<BUILD_VERSION>.zip`, w
 <a name="provide-environment-specific-configuration-files"></a>
 ## Provide environment-specific configuration files
 
-<!-- TODO:  If the production file can contain all 3 stamps, determine whether this example can  include all 3 names -->
+<!-- TODO:  If the production file can contain all extension editions, determine whether this example can include all 3 names -->
 
 Environment configuration files serve two purposes.
 
@@ -152,15 +152,15 @@ The following are examples for each environment.
 
 1. Production
 
-    The production environment uses three stamps, as in the following table.
+    The production environment uses three extension configurations, as in the following table.
 
-    | Environment | Stamp               |
+    | Environment | Cofiguration        |
     | ---         | ---                 |
     | RC          | rc.portal.azure.com |
     | MPAC        | ms.portal.azure.com |
     | PROD        | portal.azure.com    |
 
-    One single configuration file contains all three stamps.  The configuration file is named  `*.portal.azure.com.json`, as in the following example.
+    One single configuration file contains all three configurations.  The configuration file is named  `*.portal.azure.com.json`, as in the following example.
 
     ```xml
     <EmbeddedResource Include="Content\Config\portal.azure.com.json" />
@@ -332,11 +332,11 @@ To minimize the probability of regression, use the following procedure to migrat
 
   <summary>4. Enable flighting in MPAC</summary>
 
-  The Azure Portal provides the ability to flight the MPAC customers to multiple stamps. Traffic will be equally distributed between all registered stamps.  An example of a pull request is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
+  The Azure Portal provides the ability to flight the MPAC customers to multiple editions of an extension. Traffic will be equally distributed between all registered configurations, or stamps.  An example of a pull request is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
     
   * Hosting service `extension.pdl` file
 
-    To flight traffic to multiple stamps, register other stamps in `flightUri`. For example, the friendly name `MPACFlight` is used to flight traffic to another stamp, as in the following example.
+    To flight traffic to multiple stamps, register other stamps in `flightUri`. For example, the friendly name `MPACFlight` is used to flight traffic to another edition of an extension, as in the following example.
 
     ``` 
     { 
@@ -351,7 +351,7 @@ To minimize the probability of regression, use the following procedure to migrat
     ```
   * Legacy deployment `extension.pdl` file
 
-    DIY deployment can also flight traffic to multiple stamps, as in the following example.
+    DIY deployment can also flight traffic to multiple extension editions, as in the following example.
 
     ``` 
     {

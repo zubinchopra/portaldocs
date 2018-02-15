@@ -16,7 +16,7 @@ The keyboard shortcut CTRL+ALT+D toggles the visibility of the debug tool, as sp
 
 The name of the extension can be used as a feature flag. The extension name can contain any character in the ranges between [a-z] or [0-9]. The portal query string can handle multiple extensions simultaneously.
 <!--TODO: Determine whether all uses of the extensionName flag require the 'canmodifystamps` flag. -->
- This flag is used to enable or disable an extension, use different configuration stamps, and provide other run-time functionality.  A value of `true` will temporarily enable a disabled extension, and allows the use of other flags. A value of `false` will temporarily disable the extension and leave it in hidden mode. The syntax for the extensionName flag is `https://portal.azure.com?Microsoft_Azure_DevTestLab=true`. It requires the `canmodifystamps` flag to contain a value of `true` in order to be in effect.  For more information, see [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
+ This flag is used to enable or disable an extension, use a different configuration file for an extension, and provide other run-time functionality.  A value of `true` will temporarily enable a disabled extension, and allows the use of other flags. A value of `false` will temporarily disable the extension and leave it in hidden mode. The syntax for the extensionName flag is `https://portal.azure.com?Microsoft_Azure_DevTestLab=true`. It requires the `canmodifystamps` flag to contain a value of `true` in order to be in effect.  For more information, see [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
 
 The name of the extension can be used in the query string to access various Shell flags. These are flags that are independent of the **canmodifystamps** flag.
 `   &<extensionName>=true,[<otherShellFlags>]`.  How to use the flags that are within the extension is specified in [portalfx-extensions-feature-flags-developer.md](portalfx-extensions-feature-flags-developer.md);  The Shell flags that require `&<extensionName>=true` are in the following table.
@@ -36,7 +36,7 @@ The **canmodifystamps** flag is used in conjunction with the **extensionName** p
 
 * Create custom deployment environments, as specified in [portalfx-deployment.md](portalfx-deployment.md).
 
-* Use a secondary test stamp, as specified in [portalfx-extensions-configuration-overview.md#extension-stamps](portalfx-extensions-configuration-overview.md#extension-stamps). If the developer is using a secondary test stamp, enter one of the following into the query string immediately after the **canmodifystamps** flag.
+* Use a secondary test configuration, as specified in [portalfx-extensions-configuration-overview.md#instructions-for-use](portalfx-extensions-configuration-overview.md#instructions-for-use). If the developer is using a secondary test configuration, enter one of the following into the query string immediately after the **canmodifystamps** flag.
  ```js
    &<extensionName>=<stageName>
    &<extensionName>=<buildNumber>

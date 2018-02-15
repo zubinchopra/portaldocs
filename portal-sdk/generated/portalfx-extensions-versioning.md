@@ -8,18 +8,18 @@
 <a name="versioning-for-extensions-overview"></a>
 ## Overview
 
-The portal shell relies on environment versioning for making runtime decisions. Consequently, the version of the extension can be stamped at compile time while being moved to the environment. Some examples are as follows.
+The Portal shell relies on environment versioning for making runtime decisions. Consequently, an edition of the extension can be stamped at compile time while being moved to the environment. Some examples are as follows.
 
 * Invalidating cached manifests
 * Invalidating static content that is served indirectly via CDN, or directly from an extension
 
-By default, the value of the version      is populated based on the version attributes that are located in the extension assembly.
+By default, the value of the version is populated based on the version attributes that are located in the extension assembly.
 
 First the runtime tries to find the `AssemblyInformationalVersionAttribute` attribute to retrieve the value. If this attribute is not defined in the assembly, then the runtime searches for the `AssemblyFileVersion` attribute and gets the value from this attribute.
 
 The version of the extension can be checked by typing `window.fx.environment.version` in the browser console from the extension frame.
 
-Developers  should ensure that the version number is correctly stamped and updated on every build during the assembly process. The assembly version is added to the assembly by specifying the assembly level attribute as in the following example. 
+Developers should ensure that the version number is correctly updated on every build during the assembly process. The assembly version is added to the assembly by specifying the assembly level attribute as in the following example. 
 
 ```cs
 [assembly: System.Reflection.AssemblyFileVersion("5.0.0.56")]
@@ -47,12 +47,12 @@ Developers should not introduce breaking changes into the server code. For examp
 
 When all users have switched to the newer version of the code, probably by refreshing the portal, the previous version can be deleted. This is  accomplished by making new controllers and methods instead of making breaking changes to existing ones. 
 
-When breaking changes occur, the browser will probably display a broken experience until the portal is reloaded. You can contact the portal team  at [mailto:ibiza-onboarding@microsoft.com?subject=[Breaking Change] ](mailto:ibiza-onboarding@microsoft.com?subject=[Breaking Change])  to find a way to resolve or circumvent this issue.
+When breaking changes occur, the browser will probably display a broken experience until the portal is reloaded. You can contact the portal team  at <a href="mailto:ibiza-onboarding@microsoft.com?subject=Breaking Change">ibiza-onboarding@microsoft.com</a> to find a way to resolve or circumvent this issue.
 
 <a name="versioning-for-extensions-overview-pdl-versioning"></a>
 ### PDL Versioning
 
-Two build settings have been added to allow the extension version to be stamped at build time.   They are `ExtensionVersion` and `ExtensionDescription`.
+Two build settings have been added to allow a specific edition of the extension  to be stamped at build time. They are `ExtensionVersion` and `ExtensionDescription`.
 
 The following is a `*.csproj` file that uses the two build settings for an extension.
 
