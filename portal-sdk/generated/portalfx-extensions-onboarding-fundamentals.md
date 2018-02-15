@@ -1,9 +1,4 @@
 
-<a name="azure-fundamentals"></a>
-## Azure Fundamentals
-
-The Azure Fundamentals are a set of tenets to which each Azure service is expected to adhere. The Azure Fundamentals program is described in the document located at [https://aka.ms/azurefundamentals](https://aka.ms/azurefundamentals). The document also identifies the stakeholders and contacts for each of the tenets.
-
 <a name="quality-essentials"></a>
 ## Quality Essentials
 

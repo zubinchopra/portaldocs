@@ -1,15 +1,16 @@
 <a name="overview"></a>
 ## Overview
 
-You must register and configure your extension with the portal team for your extension to be available in the portal. We rely on you to manage your own configurationin the Portal repository. For internal partners this is done via pull requests. The process is explained in [top-external-onboarding.md](top-external-onboarding.md).
+You must register and configure your extension with the Ibiza team for your extension to be available in the Portal. We rely on you to manage your own configuration in the Portal repository. For internal partners, this is done via pull requests, as specified in [top-extensions-publishing.md](top-extensions-publishing.md). External partners use the procedures that are located in [top-external-onboarding.md](top-external-onboarding.md).
 
-<a name="overview-instructions-for-external-partners"></a>
-### Instructions for external partners
+As per the safe deployment mandate, all configuration changes are treated as code changes. Consequently, they use similar deployment processes. Changes that are checked in to the dev branch will be deployed in the following order: **Dogfood** -> **RC** -> **MPAC** -> **PROD** -> National Clouds (**BlackForest**, **FairFax**, and **Mooncake**).  The table in [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md) specifies the amount of time allowed to complete the deployment.
+
+<a name="overview-extension-configuration-files"></a>
+### Extension Configuration Files
 
  The extension configuration file contains information for all extensions registered in the Azure Portal. It is located in the Portal repository in the `src/RDPackages/OneCloud/` directory that is located at [https://aka.ms/portalfx/onecloud](https://aka.ms/portalfx/onecloud). 
  
- 
-There is a configuration file for each environment that the Portal supports, in the following format.  
+There is a configuration file for each environment that the Portal supports, in the following format.
  
  `Extensions.<EnvironmentName>.json`
  
@@ -116,7 +117,15 @@ Its options are as follows.
     
   For more information about caching, see [portalfx-extension-homepage-caching.md](portalfx-extension-homepage-caching.md).
 
-* **disabled**: Optional. Registers the extension configuration into the Portal in hidden mode.  A value of  `true` disables an extension, and a value of `false` enables the extension for display. The default value is `false`. For more information about enabling and disabling extensions, see [portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension](portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension).
+* **disabled**: Optional. Registers the extension configuration into the Portal in hidden mode.  A value of  `true` disables an extension, and a value of `false` enables the extension for display. The default value is `false`. For more information about enabling and disabling extensions, see [portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension](portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension).  Ideally you would not disable your extension. Even if you want to hide your UX for a private preview or testing then there are ways to do this from within the own extension. 
+		To temporarily enable a disabled extension in private preview for this test session only, add an extension override in the Portal URL, as in the following example.
+    ```
+		https://portal.azure.com?Microsoft_Azure_Demo=true
+    ```
+		where
+		Microsoft_Azure_Demo
+		is the name of the extension as registered with the Portal.
+Conversely, the extension can temporarily be disabled for a session by changing this configuration attribute to a value of false. The extension cannot be temporarily enabled or disabled in the production environment.**NOTE**: If you disable your extension, you will need to add a future pull request to enable it later.  To get those changes deployed in a timely fashion and plan accordingly, see the [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md).
  
 * **flightUris**: Optional.  The uri concatenated to a friendly name in order to flight traffic to another stamp, as in the following example:  `//demo.hosting.portal.azure.net/demo/MPACFlight`.
  
@@ -127,21 +136,25 @@ Its options are as follows.
 
  For more information about loading extension configuration files, see [portalfx-extensions-testing-in-production-overview.md#loading-customized-extensions](portalfx-extensions-testing-in-production-overview.md#loading-customized-extensions).
 
+<a name="overview-instructions"></a>
+### Instructions
 <a name="overview-understanding-which-extension-configuration-to-modify"></a>
 ### Understanding which extension configuration to modify
 
-The Azure Portal uses five different extension configuration files to manage the extension configuration. The description of mapping of the Portal environment to the extension configuration is located at [portalfx-extensions-branches.md](portalfx-extensions-branches.md).
+The Azure Portal uses five different extension configuration files to manage the extension configuration. 
 
-<a name="overview-extension-stamps"></a>
-### Extension Stamps
+For more informaton about mapping the Portal environment to extension configurations, see [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md).
 
-Because the hosting service provides a mechanism for deploying extensions using safe deployment practices, the Portal will load the version of the extension that is based on the region from where the customer is accessing the Portal. For more details, see the Hosting Service documentation located at [portalfx-extensions-hosting-service.md](portalfx-extensions-hosting-service.md).
+<a name="overview-extension-hosting-in-regions"></a>
+### Extension Hosting in Regions
+
+Because the hosting service provides a mechanism for deploying extensions using safe deployment practices, the Portal will load the version of the extension that is based on the region from where the customer is accessing the Portal. For more details, see the Hosting Service documentation located at [top-extensions-hosting-service.md](top-extensions-hosting-service.md).
 
 If the Legacy DIY deployment registration format is used, then the Portal will always serve the stamp that is registered in the ```uri```. In the preceding examples, the Portal will always serve main stamp of the extension.
 
-Additional stamps can be accessed by using the ```uriFormat``` parameter that is specified in the extension config file.
+Additional configurations can be accessed by using the ```uriFormat``` parameter that is specified in the extension config file.
 
-To use a secondary test stamp, specify the `feature.canmodifystamps` flag, and add a parameter that matches the name of the  extension as registered in the Portal, as in the following example.
+To use a secondary configuration, specify the `feature.canmodifystamps` flag, and add a parameter that matches the name of the extension as registered in the Portal, as in the following example.
 
 ```json
 name: "Microsoft_Azure_Demo",

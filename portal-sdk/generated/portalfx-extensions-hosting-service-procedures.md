@@ -305,7 +305,7 @@ Extensions should publish the extracted deployment artifacts that are generated 
 
 <!-- TODO: Determine whether they meant "rollback" instead of "regression", which is a term that is typically used while testing. -->
 
-To minimize the probability of regression, use the following procedure to migrate an extension from DIY deployment to a hosting service.
+To minimize the probability of regression, use the following procedure to migrate an extension from DIY deployment to a hosting service. For more information about how the uriFormat parameter is used in hosting, see  .
 
 <details>
 

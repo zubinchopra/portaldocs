@@ -21,28 +21,12 @@ We also recommend that extensions deploy broadly across all regions in an active
 
 For more information about using Azure CDN with extensions, see [Configuring CDN and understanding Extension Versioning](portalfx-cdn.md).
 
-<a name="resiliency-and-failover"></a>
-## Resiliency and failover
+<a name="glossary"></a>
+## Glossary
 
-Having a presence in all geographies is important for good performance.
-Extensions experience much higher latencies and reliability issues when servers are not geo-located with their users. For more information, see [portalfx-performance.md](portalfx-performance.md).
+ This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
 
-Use the following steps to deploy an extension to all regions.
-
-1. Use the Extension Hosting Service as specified in [top-extensions-hosting-service.md](top-extensions-hosting-service.md) to deploy the UI
-
-1. Deploy controllers to all regions
-
-If the extension uses controllers that are located in the extension server, resiliency and failover depend on how the servers are used.
-
-Usually messages across long distances suffer more from latency than throughput. This means if there is a steady stream of data, such as uploading a file, the distance is not as noticeable as when there are many messages, such as individual calls to request status on many storage accounts.
-
-In the following image, the upload step is more of a "delay expected" moment that is infrequent where the status messages are needed right away and very often.
-In the first case, the extension can probably use fewer servers, but in the second case geo-locating the extension server and the user  will be very important.
-
-![alt-text](../media/portalfx-custom-extensions-deployment/deployment.png "deployment-architecture")
-
-<!-- TODO:  add "hotfix" info here for when developers need to walk their code into the 4 environments instead of waiting for the automated processes.-->
-
-
-<!-- TODO: Determine whether the following section belongs in a DIY, or if there should be a different doc.-->
+| Term              | Meaning |
+| ---               | --- |
+| CDN               | Content Delivery Network   |
+| Custom Deployment | Do-it-Yourself or legacy extension deployment that does not use an Azure Hosting Service. This is not the same as custom configuration of a blade or part. |
