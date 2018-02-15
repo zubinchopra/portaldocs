@@ -19,8 +19,6 @@ The following is an example of a pull request for registering a `Scheduler` exte
 
 ### Managing extension configuration
 
-All extensions are registered into the Portal in the disabled state, therefore they are disabled by default.  This hides the extension from users, and it will not be displayed in the Portal. The extension remains in hidden mode until it is ready for public preview or GA. Partners use this capability to test the extension, or to host it for private preview.
-
 To temporarily enable a disabled extension in private preview for this test session only, change the configuration by adding an extension override in the Portal URL, as in the following example.
 
 `https://portal.azure.com?Microsoft_Azure_Demo=true`
