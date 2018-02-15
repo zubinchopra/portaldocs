@@ -107,9 +107,9 @@ When testing is completed, the developer can run the `unregisterTestExtension` m
 
 ## Loading customized extensions
 
-Custom extension stamps that are used for testing can be loaded into the Portal by using feature flags. The `uriFormat` parameter, in conjunction with the `uri` parameter, can increase the number of extension stamps that can be loaded in various Portal environments. These parameters are located in the `extensions.<EnvironmentName>.json` file, in conjunction with the `Client\extension.pdl` file. Changing the `uri` and `uriFormat` parameters instead of using the **endpoint** and **portNumber** in the query string, will change the extension stamp. For more information about extension configuration, see [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
+Custom extensions that are used for testing can be loaded into the Portal by using feature flags. The `uriFormat` parameter, in conjunction with the `uri` parameter, can increase the number of extension editions that can be loaded in various Portal environments. These parameters are located in the `extensions.<EnvironmentName>.json` file, in conjunction with the `Client\extension.pdl` file. The edition of the extension that is loaded can be changed by modifying the `uri` and `uriFormat` parameters instead of using  **endpoint** and **portNumber** in the query string. For more information about extension configuration, see [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
 
-To register a customized extension, or register a different extension stamp, use the following parameters in the Portal extension query string.
+To register a customized extension, or register a different extension edition, use the following parameters in the Portal extension query string.
  
 ```<protocol>://<environment>/?feature.canmodifyextensions=true#?testExtensions={"<extensionName>":"<protocol>://<uri>/"}```
 
@@ -159,9 +159,9 @@ When all steps are complete, the developer can submit a pull request to enable t
  
  For more information about common hosting scenarios, see  [portalfx-extensions-hosting-service-scenarios.md#sideloading](portalfx-extensions-hosting-service-scenarios.md#sideloading).  For information about debugging switches or feature flags that are used in hosting, see  [portalfx-extensions-flags.md](portalfx-extensions-flags.md).  For more information about alternatives to the local host environment, see [top-extensions-hosting-service.md](top-extensions-hosting-service.md). 
 
-## Common use cases for custom stamps
+## Common use cases for custom extensions
 
-There are several scenarios in which a developer may use custom stamps to test various aspects of an extension. Some of them are as follows. 
+There are several scenarios in which a developer test various aspects of an extension with different editions of the same extension. Some of them are as follows. 
 
 <details>
 
@@ -180,7 +180,7 @@ This setting excludes test traffic from our reports.
 <summary>Running regression tests</summary>
 
 Regression tests and build verification tests are    .
-<!-- TODO: Determine how extension stamps are used to run partial tests. -->
+<!-- TODO: Determine how extension editions are used to run partial tests. -->
 </details>
 <details>
 <summary>Obsolete script bundles</summary>

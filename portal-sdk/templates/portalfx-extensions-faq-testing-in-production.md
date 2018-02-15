@@ -54,7 +54,7 @@ SOLUTION:  Some troubleshooting steps are located at [https://stackoverflow.micr
 
 ***Sideloading friendly names is not working in the Dogfood environment***
 
-In order for Portal to load  a test version of an extension, i.e., load without using the PROD stamp, developers can append the feature flag `feature.canmodifystamps`. The following example uses the sideload url to load the "test" version of extension.
+In order for Portal to load a test version of an extension, i.e., load without using the PROD configuration, developers can append the feature flag `feature.canmodifystamps`. The following example uses the sideload url to load the "test" version of extension.
 
 `https://portal.azure.com?feature.canmodifystamps=true&<extensionName>=test`
 

@@ -37,7 +37,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | smoke test               | see build verification test  |
 | SSL                      | Secure Socket Layer |
 | stakeholder              | A person, group or organization that has interest or concern in an organization. Stakeholders can affect or be affected by the organization's actions, objectives and policies. |
-| stamp                    | An instance of a service in a region. Every extension can deploy one or more stamps based on testing requirements. The main stamp is used for production and is the only one that the Portal will load by default.    | 
+| stamp                    | An instance of a service in a region. Every extension can deploy one or more extension editions based on testing requirements. The main extension is used for production and is the only one that the Portal will load by default. Also known as configuration or configuration file.   | 
 | URI                      | Universal Resource Identifier  | 
 | URL                      | Uniform Resource Locator |
 

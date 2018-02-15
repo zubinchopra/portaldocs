@@ -62,7 +62,7 @@ To permanently enable an extension (e.g. if it's ready for general use), please 
 
 ### Extension "stamps"
 
-Every extension can deploy one or more "stamps" based on their testing requirements.  For more information about extension stamps, see [portalfx-extensions-configuration-overview.md#extension-stamps] (portalfx-extensions-configuration-overview.md#extension-stamps). 
+Every extension can deploy one or more "stamps" based on their testing requirements.  For more information about extension stamps, see [portalfx-extensions-configuration-overview.md#instructions-for-use](portalfx-extensions-configuration-overview.md#instructions-for-use). 
 <!-- TODO:  Remove  the following  section, because it has been replaced by portalfx-extensions-configuration-overview.md    
 -->
 

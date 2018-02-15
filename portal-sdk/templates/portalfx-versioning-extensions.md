@@ -1,4 +1,6 @@
 
+<!-- TODO:  deprecate this document by removing it.  It has been  replaced by portalfx-extensions-versioning.md  documents  --> 
+
 ### Updating extensions
 
 The portal shell relies on environment version for making runtime decisions, e.g.:
@@ -11,7 +13,7 @@ First the runtime tries to find the `AssemblyInformationalVersionAttribute` attr
 If this attribute isn't defined in the assembly, the runtime searches for the `AssemblyFileVersion` attribute and gets the value from this attribute.
 You can check the version of your extensions by typing in `window.fx.environment.version` in the browser console from the extension frame.
 
-You should ensure that while building your extension assembly, the version number is correctly stamped and updated on every build. The assembly version is added to your assembly by specifying the assembly level attribute as shown below.
+You should ensure that while building your extension assembly, the version number is correctly updated on every build. The assembly version is added to your assembly by specifying the assembly level attribute as shown below.
 
 ```cs
 [assembly: System.Reflection.AssemblyFileVersion("5.0.0.56")]

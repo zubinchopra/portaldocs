@@ -86,7 +86,7 @@ Its options are as follows.
 
   When the user loads the extension in the Portal, it is loaded from the `uri` specified in the extension configuration. To update the ```uri```, send a pull request as specified in [top-extensions-publishing.md](top-extensions-publishing.md). Additional extension configurations can be loaded by specifying the configuration name in the  `uri` and specifying the feature flag `feature.canmodifystamps=true`. For more information about feature flags, see [portalfx-extensions-feature-flags.md](portalfx-extensions-feature-flags.md).
 
-* **uriFormat**: Required. The `uri` for the extension, followed by a forward slash, followed by a parameter marker that allows modification of the extension stamp.
+* **uriFormat**: Required. The `uri` for the extension, followed by a forward slash, followed by a parameter marker that specifies the environment from which to load the extension.
     
   * Hosting service uriFormat
 
