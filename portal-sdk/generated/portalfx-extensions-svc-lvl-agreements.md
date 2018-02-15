@@ -17,6 +17,17 @@ All changes that are checked in to the dev branch will be deployed in the follow
 | MOONCAKE    |	1 month | 
 
 
+<a name="service-level-agreement-for-expedited-deployment"></a>
+## Service level agreement for expedited deployment
+
+| Environment | Service Level Agreement |
+| ----------- | ------- |
+| PROD	      | 7 days  |
+| BLACKFOREST | 10 days |
+| FAIRFAX	  | 10 days |
+| MOONCAKE    |	10 days |
+
+
 <a name="service-level-agreement-for-hosting-service"></a>
 ## Service level agreement for hosting service
 

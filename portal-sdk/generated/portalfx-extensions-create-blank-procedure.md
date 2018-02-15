@@ -2,7 +2,7 @@
 <a name="create-a-blank-extension"></a>
 ## Create a blank extension
 
-This process validates that your development environment is set up correctly to develop extensions and blades, by creating an empty extension.  It also validates that the local extension can be loaded in the Azure Portal. The empty extension that is created by this process can be modified later for actual development. For more information about developing and testing extensions, see [portalfx-extensions-debugging.md](portalfx-extensions-debugging.md).
+This process validates that your development environment is set up correctly to develop extensions and blades, by creating an empty extension.  It also validates that the local extension can be loaded in the Azure Portal. The empty extension that is created by this process can be modified later for actual development. For more information about developing and testing extensions, see [top-extensions-debugging.md](top-extensions-debugging.md).
 
 1. Launch **Visual Studio 2015** and navigate to `File -> New -> Project`. In the new project dialog, select `Installed -> Visual C# -> Azure Portal`. Select the `Azure Portal Extension` project type, and give it a unique name.  The name of the project typically matches the solution name. The location can be the same as any other **Visual Studio** project directory.  Then, click the checkbox next to ```Create directory for solution```.  Then, click the ```OK``` button, as described in the following image.
 

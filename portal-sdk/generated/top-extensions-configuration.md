@@ -17,6 +17,7 @@ As per the safe deployment mandate, all configuration changes are treated as cod
 The following links describe what a configuration file is and how to use it in different situations.
 
 [Extension Configuration Files](#extension-configuration-files)
+
 [Instructions for use](#instructions-for-use)
 
 <a name="portal-extension-configuration-overview-extension-configuration-files"></a>
@@ -150,8 +151,8 @@ Conversely, the extension can temporarily be disabled for a session by changing 
 
  For more information about loading extension configuration files, see [portalfx-extensions-testing-in-production-overview.md#loading-customized-extensions](portalfx-extensions-testing-in-production-overview.md#loading-customized-extensions).
 
-<a name="portal-extension-configuration-overview-instructions"></a>
-### Instructions
+<a name="portal-extension-configuration-overview-instructions-for-use"></a>
+### Instructions for use
 <a name="portal-extension-configuration-overview-understanding-which-extension-configuration-to-modify"></a>
 ### Understanding which extension configuration to modify
 
