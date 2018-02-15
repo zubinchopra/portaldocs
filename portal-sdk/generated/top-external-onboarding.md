@@ -62,11 +62,6 @@ These requirements apply to both the Portal fx and extensions. Since Fx provides
 For more information and any questions about Fx coverage, reach out to the Fx Coverage contact that is located in [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md).
 
 
-<a name="onboarding-outside-of-ibiza-azure-fundamentals"></a>
-## Azure Fundamentals
-
-The Azure Fundamentals are a set of tenets to which each Azure service is expected to adhere. The Azure Fundamentals program is described in the document located at [https://aka.ms/azurefundamentals](https://aka.ms/azurefundamentals). The document also identifies the stakeholders and contacts for each of the tenets.
-
 <a name="onboarding-outside-of-ibiza-quality-essentials"></a>
 ## Quality Essentials
 

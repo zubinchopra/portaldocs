@@ -6,15 +6,16 @@
 <a name="portal-extension-configuration-overview"></a>
 ## Overview
 
-You must register and configure your extension with the portal team for your extension to be available in the portal. We rely on you to manage your own configurationin the Portal repository. For internal partners this is done via pull requests. The process is explained in [top-external-onboarding.md](top-external-onboarding.md).
+You must register and configure your extension with the Ibiza team for your extension to be available in the Portal. We rely on you to manage your own configuration in the Portal repository. For internal partners, this is done via pull requests, as specified in [top-extensions-publishing.md](top-extensions-publishing.md). External partners use the procedures that are located in [top-external-onboarding.md](top-external-onboarding.md).
 
-<a name="portal-extension-configuration-overview-instructions-for-external-partners"></a>
-### Instructions for external partners
+As per the safe deployment mandate, all configuration changes are treated as code changes. Consequently, they use similar deployment processes. Changes that are checked in to the dev branch will be deployed in the following order: **Dogfood** -> **RC** -> **MPAC** -> **PROD** -> National Clouds (**BlackForest**, **FairFax**, and **Mooncake**).  The table in [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md) specifies the amount of time allowed to complete the deployment.
+
+<a name="portal-extension-configuration-overview-extension-configuration-files"></a>
+### Extension Configuration Files
 
  The extension configuration file contains information for all extensions registered in the Azure Portal. It is located in the Portal repository in the `src/RDPackages/OneCloud/` directory that is located at [https://aka.ms/portalfx/onecloud](https://aka.ms/portalfx/onecloud). 
  
- 
-There is a configuration file for each environment that the Portal supports, in the following format.  
+There is a configuration file for each environment that the Portal supports, in the following format.
  
  `Extensions.<EnvironmentName>.json`
  
@@ -140,21 +141,25 @@ Conversely, the extension can temporarily be disabled for a session by changing 
 
  For more information about loading extension configuration files, see [portalfx-extensions-testing-in-production-overview.md#loading-customized-extensions](portalfx-extensions-testing-in-production-overview.md#loading-customized-extensions).
 
+<a name="portal-extension-configuration-overview-instructions"></a>
+### Instructions
 <a name="portal-extension-configuration-overview-understanding-which-extension-configuration-to-modify"></a>
 ### Understanding which extension configuration to modify
 
-The Azure Portal uses five different extension configuration files to manage the extension configuration. The description of mapping of the Portal environment to the extension configuration is located at [portalfx-extensions-branches.md](portalfx-extensions-branches.md).
+The Azure Portal uses five different extension configuration files to manage the extension configuration. 
 
-<a name="portal-extension-configuration-overview-extension-stamps"></a>
-### Extension Stamps
+For more informaton about mapping the Portal environment to extension configurations, see [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md).
+
+<a name="portal-extension-configuration-overview-extension-hosting-in-regions"></a>
+### Extension Hosting in Regions
 
 Because the hosting service provides a mechanism for deploying extensions using safe deployment practices, the Portal will load the version of the extension that is based on the region from where the customer is accessing the Portal. For more details, see the Hosting Service documentation located at [top-extensions-hosting-service.md](top-extensions-hosting-service.md).
 
 If the Legacy DIY deployment registration format is used, then the Portal will always serve the stamp that is registered in the ```uri```. In the preceding examples, the Portal will always serve main stamp of the extension.
 
-Additional stamps can be accessed by using the ```uriFormat``` parameter that is specified in the extension config file.
+Additional configurations can be accessed by using the ```uriFormat``` parameter that is specified in the extension config file.
 
-To use a secondary test stamp, specify the `feature.canmodifystamps` flag, and add a parameter that matches the name of the  extension as registered in the Portal, as in the following example.
+To use a secondary configuration, specify the `feature.canmodifystamps` flag, and add a parameter that matches the name of the extension as registered in the Portal, as in the following example.
 
 ```json
 name: "Microsoft_Azure_Demo",
@@ -177,16 +182,26 @@ To override the stamp, specify the flag ```feature.canmodifystamps=true ```.  To
 <a name="portal-extension-configuration-configuration-scenarios"></a>
 ## Configuration Scenarios
 
+The following is a series of procedures that assist in configuring extensions for  different purposes or environments.
+
+[Onboarding a new or existing extension](#onboarding-a-new-or-existing-extension)
+[Managing extension configuration](#managing-extension-configuration)
+[Enabling an extension](#enabling-an-extension)
+[Expediting extension deployment](#expediting-extension-deployment)
+[Receiving notification of deployment](#receiving-notification-of-deployment)
+
 <a name="portal-extension-configuration-configuration-scenarios-onboarding-a-new-or-existing-extension"></a>
 ### Onboarding a new or existing extension
 
 <!--TODO:  Determine whether existing extensions should be changed to disabled mode, and if so, under what circumstances -->
 
-All new extensions should always be added to the Portal configuration in disabled mode. To add an extension to the Portal, send a pull request, as specified in [top-extensions-publishing.md](top-extensions-publishing.md). The following is an example of a pull request for registering a `Scheduler` extension in the Fairfax environment.
+All new extensions should always be added to the Portal configuration in disabled mode. To add an extension to the Portal, send a pull request, as specified in [top-extensions-publishing.md](top-extensions-publishing.md). 
+
+The following is an example of a pull request for registering a `Scheduler` extension in the Fairfax environment.
 [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/459608f61d5c36864affafe6eb9d230655f67a29?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/459608f61d5c36864affafe6eb9d230655f67a29?refName=refs%2Fheads%2Fdev).
 
-<a name="portal-extension-configuration-configuration-scenarios-managing-the-configuration-of-the-extension"></a>
-### Managing the configuration of the extension
+<a name="portal-extension-configuration-configuration-scenarios-managing-extension-configuration"></a>
+### Managing extension configuration
 
 All extensions are registered into the Portal in the disabled state, therefore they are disabled by default.  This hides the extension from users, and it will not be displayed in the Portal. The extension remains in hidden mode until it is ready for public preview or GA. Partners use this capability to test the extension, or to host it for private preview.
 
@@ -206,7 +221,6 @@ As part of permanently enabling the extension, the developer should update the e
 
 For more information about previews and Global Availability, see [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
 
-
 <a name="portal-extension-configuration-configuration-scenarios-enabling-an-extension"></a>
 ### Enabling an extension
 
@@ -218,23 +232,16 @@ Enabling an extension requires two changes:
 
     An example of a pull request that enables the `HDInsight` extension in the Mooncake environment and increases the extension test is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev).
 
-<a name="portal-extension-configuration-configuration-scenarios-updating-the-feedback-email"></a>
-### Updating the feedback email
+<a name="portal-extension-configuration-configuration-scenarios-enabling-an-extension-updating-the-feedback-email"></a>
+#### Updating the feedback email
 <!--TODO:  locate the work that is in progress, and add it to the document -->
 
 **>> Work In Progress <<**
 
 To update the feedback email, send a pull request as specified in [top-extensions-publishing.md](top-extensions-publishing.md).
 
-<a name="portal-extension-configuration-service-level-agreements-for-deployment"></a>
-## Service Level Agreements for deployment
-
-As per the safe deployment mandate, all the configuration changes are treated as code changes. Consequently, they use similar deployment processes.
-
-All changes that are checked in to the dev branch will be deployed in the following order: **Dogfood** -> **RC** -> **MPAC** -> **PROD** -> National Clouds (**BlackForest**, **FairFax**, and **Mooncake**).  The table in [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md) specifies the amount of time allowed to complete the deployment.
-
-<a name="portal-extension-configuration-expediting-deployment"></a>
-## Expediting deployment
+<a name="portal-extension-configuration-configuration-scenarios-expediting-extension-deployment"></a>
+### Expediting extension deployment
 
 To deploy expedited changes, developers can send a pull request for each branch in the Portal repository, i.e., Dogfood, MPAC and Production. How to send the pull request is specified in  [top-extensions-publishing.md](top-extensions-publishing.md).
 
@@ -244,11 +251,10 @@ If the pull request is not sent in the specified order, or if the commit message
 
 The SLA for deploying configuration changes to all regions in the Production Environment is in the table specified in [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md).
 
-
 As per the safe deployment mandate, deployment to production environment is performed in stages, where each stage is a logical grouping of regions. There are five stages in the production environment. There is a 24-hour wait period between promoting the build from one batch to another. This implies that the minimum time to deploy a change in all regions in Production branch is five days. For more information about staging, see    .
 
-<a name="portal-extension-configuration-receiving-notification-when-changes-are-deployed"></a>
-## Receiving notification when changes are deployed
+<a name="portal-extension-configuration-configuration-scenarios-receiving-notification-of-deployment"></a>
+### Receiving notification of deployment
 
 After the commit has been associated with a workitem, the developer will receive a notification when the config change is deployed to each region.
 
@@ -281,12 +287,13 @@ Understanding which extension configuration to modify is located at [portalfx-ex
 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
 
-<!-- TODO:  Determine the difference between a branch, a region, and an environment. They are not  completely interchangeable, then we can standardize usage. -->
+<!-- TODO:  Determine the difference between a branch, a region, and an environment. If they are not  completely interchangeable, then we can standardize usage. -->
 
 | Term                     | Meaning |
 | ---                      | --- |
 | BF                       | Black Forest |
-| branch | |
+| branch | A collection of code in a content management system. |
+| branch | The five Azure environments  in which extensions are run.  They are: Blackforest, Dogfood, FairFax, Mooncake, and the Production Release Candidate(s). |
 | build verification test  | A subset of regression testing, this is a set of non-exhaustive tests that verify whether the most important application functions work. Its results are used to determine whether a build is stable enough to proceed with further testing. |
 | BVT                      | Build Verification Test |
 | cherry-pick              | Apply the changes introduced by an existing GitHub commit. |
