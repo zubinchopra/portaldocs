@@ -6,60 +6,72 @@ The Azure Portal uses a decentralized model of deployment that consists of sever
 provide the end-to-end experience, each deployed to separate endpoints:
 
 - **Portal** \- web application that hosts the shell
-- **Extensions** \- each extension is a web application that is loaded by the portal
-- **ARM** \- public API for Azure that accepts calls from the portal, Azure SDK, and command line
+- **Extensions** \- each extension is a web application that is loaded by the Portal
+- **ARM** \- public API for Azure that accepts calls from the Portal, Azure SDK, and command line
 - **Resource providers** \- provide resource-specific APIs for management operations (e.g. read, write, delete)
 
 ![Portal / Extension architecture][deployment-architecture]
 
 ### Portal
 
-The portal is deployed to all [public Azure regions](http://azure.microsoft.com/regions) and uses geographical
+The Portal is deployed to all [public Azure regions](http://azure.microsoft.com/regions) and uses geographical
 load-balancing via Azure Traffic Manager (using the "Performance" profile).
 (For more information about Azure Traffic Manager, see their
 [introduction](https://azure.microsoft.com/en-us/documentation/articles/traffic-manager-overview/).)
 
 Deploying in this fashion means that users can take advantage of a server closer to them, reducing latency and improving
-the overall experience of using the portal.
+the overall experience of using the Portal.
 
-The portal also takes advantage of the [Azure CDN](https://azure.microsoft.com/en-us/documentation/articles/cdn-overview/)
+The Portal also takes advantage of the [Azure CDN](https://azure.microsoft.com/en-us/documentation/articles/cdn-overview/)
 for static resources (images, scripts, etc.). This shifts the location of the most-downloaded files even closer to the user.
 
 ### Portal deployment schedule
 
-The portal is deployed continuously. On any given day, multiple bug fixes, new features, and API changes may be deployed
-to production. When a new version of the portal is deployed to production, the corresponding version of the SDK is
+The Portal is deployed continuously. On any given day, multiple bug fixes, new features, and API changes may be deployed
+to production. When a new version of the Portal is deployed to production, the corresponding version of the SDK is
 automatically released to the [download center](downloads.md). The download center contains the change log for the given
 release, including bug fixes, new features, and a log of breaking changes.
 
 ## Before deploying extension
 
-1. For extensions onboarding Ibiza: Enable/disable extensions
+1. Enable or disable extensions onboarding Ibiza
 1. Extension "stamps"
 1. Understand extension runtime compatibility
 
-### 1. For extensions onboarding Ibiza: Enable/disable extensions
+### Enable or disable extensions onboarding Ibiza
+<!-- TODO:  Remove  the following section, because it has been replaced by portalfx-extensions-configuration-overview.md    
+-->
 
-New extensions are disabled by default. This will hide the extension from users (it won't show up in the portal at all)
+New extensions are disabled by default. This will hide the extension from users (it won't show up in the Portal at all)
 until it's ready for general use.
 
-To temporarily enable a disabled extension (for your session only), add an extension override in the portal URL:
+To temporarily enable a disabled extension (for your session only), add an extension override in the Portal URL:
 `https://portal.azure.com?Microsoft_Azure_DevTestLab=true` (where `Microsoft_Azure_DevTestLab` is the name of the
-extension as registered with the portal). Conversely, you can temporarily disable an extension by setting it to `false`.
-
+extension as registered with the Portal). Conversely, you can temporarily disable an extension by setting it to `false`.
+<!-- TODO:  Remove  the preceding section, because it has been replaced by portalfx-extensions-configuration-overview.md    
+-->
+<!-- TODO:  Remove  the following  section, because it has been replaced by portalfx-extensions-feature-flags-shell.md    
+-->
 You can use temporary enablement in conjunction with a Gallery Item Hidekey (if you have one) to also temporarily show
 your item in the "Create New" experience while your extension is enabled. Just combine the parameters. Following the
 previous example, if your hidekey is `DevTestLabHidden`, then you can combine it with the above to produce a single URL
 to enable both the extension and the Gallery item:
 `https://portal.azure.com?Microsoft_Azure_DevTestLab=true&microsoft_azure_marketplace_ItemHideKey=DevTestLabHidden`.
+<!-- TODO:  Remove  the previous section, because it has been replaced by portalfx-extensions-feature-flags-shell.md    -->
+To permanently enable an extension (e.g. if it's ready for general use), please contact the Portal team.
 
-To permanently enable an extension (e.g. if it's ready for general use), please contact the portal team.
+### Extension "stamps"
 
-### 2. Extension "stamps"
+Every extension can deploy one or more "stamps" based on their testing requirements.  For more information about extension stamps, see [portalfx-extensions-configuration-overview.md#extension-stamps] (portalfx-extensions-configuration-overview.md#extension-stamps). 
+<!-- TODO:  Remove  the following  section, because it has been replaced by portalfx-extensions-configuration-overview.md    
+-->
 
-Every extension can deploy one or more "stamps" based on their testing requirements. In Azure parlance, a "stamp" is an
-instance of a service in a region. The "main" stamp is used for production and is the only one the portal will be
-configured for. Additional stamps can be accessed using a URI format specified in extension config.
+In Azure parlance, a "stamp" is an
+instance of a service in a region. The "main" stamp is used for production and is the only one the Portal will be
+configured for. 
+
+
+Additional stamps can be accessed using a URI format specified in extension config.
 
 For example, this might be an extension configuration:
 
@@ -71,17 +83,19 @@ For example, this might be an extension configuration:
 }
 ```
 
-When users go to the portal, it will load the `Microsoft_Azure_DevTestLab` extension from the URL
-`https://main.devtest.ext.azure.com` (the portal always uses HTTPS).
+When users go to the Portal, it will load the `Microsoft_Azure_DevTestLab` extension from the URL
+`https://main.devtest.ext.azure.com` (the Portal always uses HTTPS).
 
 To use a secondary, test stamp, specify the `feature.canmodifystamps` flag in addition to a parameter matching the name
-of your extension as registered in the portal. For instance,
+of your extension as registered in the Portal. For instance,
 `https://portal.azure.com?feature.canmodifystamps=true&Microsoft_Azure_DevTestLab=perf` would replace the `{0}` in the
 `uriFormat` string with `perf` and attempt to load the extension from there (making the extension URL
 `https://perf.devtest.ext.azure.com`). Note that you must specify the flag `feature.canmodifystamps=true` in order to
 override the stamp.
+<!-- TODO:  Remove  the preceding  section, because it has been replaced by portalfx-extensions-configuration-overview.md    
+-->
 
-### 3. Understand extension runtime compatibility
+### Understand extension runtime compatibility
 
 Extensions do not need to be recompiled and redeployed with every release of the SDK.
 
@@ -114,6 +128,8 @@ experience, especially if the extension communicates with an RP that is also dep
 is deployed in every region, this means that that traffic for a user will stay entirely within one region, reducing
 latency.)
 
+<!-- TODO:  deprecate the following section of this document by removing it.  It has been replaced by portalfx-extensions-custom-deployment.md -->
+
 ## Legacy/DIY deployments
 
 If you choose to deploy extension UI through legacy / DIY deployments, make sure you understand that
@@ -131,6 +147,7 @@ In general, it is best to set up servers in every region. That said, there is so
 We recommend that extensions deploy  broadly across all regions in an active-active configuration and use a technology, such as [Azure Traffic Manager](https://azure.microsoft.com/en-us/documentation/articles/traffic-manager-overview/) with a "Performance" profile, to direct the user to the server closest to them. This will give users the best experience, especially if the extension communicates with an RP that is also deployed broadly across regions. (Since ARM is deployed in every region, this means that that traffic for a user will stay entirely within one region, reducing latency.)
 
 We also recommend that extensions use a CDN, such as Azure CDN, to move the most commonly-downloaded resources as close to the end user as possible. For more information about using Azure CDN with extensions, see [Configuring CDN and understanding Extension Versioning](portalfx-cdn.md).
+<!-- TODO:  deprecate the previous section of this document by removing it.  It has been replaced by portalfx-extensions-custom-deployment.md -->
 
 ## Resiliency and failover
 
@@ -154,3 +171,7 @@ In this example the upload step would be more of a "delay expected" moment that 
 In the first case, you can probably get away with fewer servers, but in the second case geo-locating them will be very important.
 
 [deployment-architecture]: ../media/portalfx-deployment/deployment.png
+<!-- TODO:  add "hotfix" info here for when developers need to walk their code into the 4 environments instead of waiting for the automated processes.-->
+
+<!-- TODO: add "portalfx-extension-onboarding-developer-guide.md#making-your-extension-visible--enabled-in-portal-on-a-specific-time" here -->
+

@@ -29,6 +29,8 @@ Onboarding to Azure all up is a big task that spans many teams. The doc you are 
 
 1. Azure fundamentals and compliance
 
+    The Azure Fundamentals are a set of tenets to which each Azure service is expected to adhere. The Azure Fundamentals program is described in the document located at [https://aka.ms/azurefundamentals](https://aka.ms/azurefundamentals). The document also identifies the stakeholders and contacts for each of the tenets.
+
 1. Security and privacy reviews
 
 1. Start the CSS onboarding process with the CSS team at least three months previous to public preview. This process may coincide with the following step. For more information about development phases, see [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
