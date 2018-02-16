@@ -32,7 +32,7 @@ const initialDataObservable = ko.observable<SpecPicker.InitialData>({
         }
     ]
 });
-this.specDropDown = new Specs.DropDown(container, {
+this.specDropDown = new SpecsDropDown(container, {
     form: this,
     accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
         return data.spec;
@@ -41,7 +41,7 @@ this.specDropDown = new Specs.DropDown(container, {
     // This extender should be the same extender view model used for the spec picker blade.
     // You may need to extend your data context or share your data context between your
     // create area and you spec picker area to use the extender with the current datacontext.
-    specPickerExtender: new BillingSpecPickerExtender.BillingSpecPickerV3Extender(container, initialDataObservable(), dataContext),
+    specPickerExtender: new BillingSpecPickerV3Extender(container, initialDataObservable(), dataContext),
     pricingBlade: {
         detailBlade: "BillingSpecPickerV3",
         detailBladeInputs: {},

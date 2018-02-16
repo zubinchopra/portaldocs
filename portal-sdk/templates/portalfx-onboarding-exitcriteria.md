@@ -16,9 +16,9 @@ are tracked for every extension:
 
 ### Performance (Stakeholder: [Sean Watson](mailto:ibiza-perf@microsoft.com))
 
-**All blades must meet the required blade reveal time of < 4 seconds for the 80th percentile** before being enabled in
-PROD. Extensions must be enabled in MPAC to start tracking performance. Resource and Create blades are tracked
-explicitly. All blades are rolled up into **Weighted Experience Score (WxP), which must be > 80**. WxP
+**All blades must meet the required blade reveal time of < 4 seconds for the 80th percentile and < 8 seconds for the 95th percentile** before being enabled in PROD. Extensions must be enabled in MPAC (the internal environment) to start tracking performance. 
+Resource and Create blades are tracked explicitly. 
+All blades are rolled up into **Weighted Experience Score (WxP), which must be > 80**. WxP
 determines the percentage of blade usage that meets the performance bar.
 
 Blade reveal time is the time it takes for all the parts above to fold to call revealContent() (load 1st level data)
@@ -28,12 +28,23 @@ MPAC and PROD performance is included in weekly status emails and each team is e
 
 > Meeting the performance bar is a requirement for public preview or GA.
 
-**We require roughly 100+ loads of your experience (extension/blade/tiles) to get a signal, if you are unable to generate that traffic genuinely in your desired timeframe please hold a bug bash to drive up the traffic.**
+**We require roughly 100+ loads of your experience (extension/blade/tiles) to get a signal, if you are unable to generate that traffic genuinely in your desired timeframe please hold a bug bash to drive up the traffic. Ensure your URL does not include feature.canmodifyextensions**
+
+To calculate your performance/reliability use [the following query:](https://aka.ms/portalfx/perfsignoff)
+
+```
+// First parameter startDate
+// Second parameter timeSpan
+// Third parameter includeTestTraffic - set this to `false` if you are already in public preview
+GetExtensionPerfReliability(now(),7d,true) 
+| where extension == "YOUR_EXTENSION_NAME"
+```
+
+If any of your performance numbers are below the bar please investigate and resolve the related issues.
 
 See also:
 - [Dashboard - latest geninue traffic only](http://aka.ms/portalfx/dashboard/extensionperf)
     - [Telemetry Access](http://aka.ms/portalfx/docs/telemetryaccess) for access
-    - [Query - including test/dev traffic](https://aka.ms/portalfx/perfsignoff)
 - [Checklist](/portal-sdk/generated/index-portalfx-extension-monitor.md#performance-checklist)
 - [Portal COP](/portal-sdk/generated/index-portalfx-extension-monitor.md#portalcop)
 - [Best pracitces](/portal-sdk/generated/index-portalfx-extension-monitor.md#performance-best-practices)
@@ -43,7 +54,7 @@ See also:
 
 ### Reliability (Stakeholder: [Sean Watson](mailto:ibiza-reliability@microsoft.com))
 
-Every extension, blade, and part must meet the **reliability SLA**. Extension, resource blade, and Create blade
+Every extension, blade, and part must meet the **reliability SLA (> 99.9)**. Extension, resource blade, and Create blade
 reliability metrics must be met before your extension will be enabled in PROD. Extensions must be enabled in MPAC to
 start tracking reliability.
 
@@ -51,12 +62,23 @@ MPAC and PROD reliability is included in weekly status emails and each team is e
 
 > Meeting the reliability bar is a requirement for public preview or GA.
 
-**We require roughly 100+ loads of your experience (extension/blade/tiles) to get a signal, if you are unable to generate that traffic genuinely in your desired timeframe please hold a bug bash to drive up the traffic.**
+**We require roughly 100+ loads of your experience (extension/blade/tiles) to get a signal, if you are unable to generate that traffic genuinely in your desired timeframe please hold a bug bash to drive up the traffic. Ensure your URL does not include feature.canmodifyextensions**
+
+To calculate your performance/reliability use [the following query:](https://aka.ms/portalfx/perfsignoff)
+
+```
+// First parameter startDate
+// Second parameter timeSpan
+// Third parameter includeTestTraffic - set this to `false` if you are already in public preview
+GetExtensionPerfReliability(now(),7d,true) 
+| where extension == "YOUR_EXTENSION_NAME"
+```
+
+If any of your reliability numbers are below the bar please investigate and resolve the related issues.
 
 See also:
 - [Dashboard - latest geninue traffic only](http://aka.ms/portalfx/dashboard/extensionperf)
     - [Telemetry Access](http://aka.ms/portalfx/docs/telemetryaccess) for access
-    - [Query - including test/dev traffic](https://aka.ms/portalfx/perfsignoff)
 - [#ibiza-reliability on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-reliability)
 - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-reliability)
 

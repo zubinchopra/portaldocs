@@ -27,7 +27,7 @@ Suppose you created a portal extension called "MyExtension" the following steps 
 
 1. Add a new property called "PageSize"
 
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Configuration/ArmConfiguration.cs", "section": "config#configurationsettings"}
+{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension.Server/Configuration/ArmConfiguration.cs", "section": "config#configurationsettings"}
 
 1. Save the file
 
