@@ -1,38 +1,36 @@
 
 ## EditScopeless Forms
 
-### Difference between editscope backed forms and editscope-less forms
+Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide common functions that would otherwise be difficult to orchestrate, like tracking  changes in field values across a form, or simplifying the merge  of form changes from the server into the current edit. In contrast, editscope-less forms are compatible with new controls and consequently, EditScopes are becoming obsolete. It is recommended that extensions be developed without edit scopes.
 
-### Initial Value and Dirty State
+<!-- TODO: Determine which API's are referred to by the following statement.  -->
 
-New Controls APIs support creating forms without initializing their editscope. This makes the initialization of the Controls light-weight (i.e. extension developers do need to worry about coupling the right editscope accessor).
-Since the editscope is not tied to each control anymore, there is no state associated with the controls. 
+The EditScopeless form controls are located in the `Fx/Controls` namespace. They support creating forms without initializing their `editscope`. There is less  association with the `editscope` accessors, which makes the initialization of the controls easier. The  `editScope` is no longer tied to each control, and the controls become stateless. This means two things.
 
-From the extension developer's point of view this means two things:
+1. There is no initial value for these controls.  The value of a control is initialized by setting it.
 
-1. There is no concept of initial value for these controls. If you want to initialize the value of a control then you just need to set the value.
+    ```ts
+    textboxViewModel.value("Some Initial Value");
+    ```  
 
-```ts
-textboxViewModel.value("Some Initial Value");
-```  
+1. Extension developers have the the state of the control after its data has been changed by setting the `dirty` value, as in the following code.
 
-2. Extension developers have the freedom to control dirty state of control. 
-
-```ts
-textboxViewModel.dirty(true);
-```  
+    ```ts
+    textboxViewModel.dirty(true);
+    ```  
  
 
 ### Controls Namespace
 
-All the new controls are located in the "Fx/Controls" namespace.
+The new controls can be used in extensions by importing them, as in the following code.
 
 ```ts
 import * as Section from "Fx/Controls/Section";
 import * as TextBox from "Fx/Controls/TextBox";
 ``` 
 
-List of all the new controls that are available in "Fx/Controls":
+<!-- TODO: Determine whether there is a document to link to, and if so, link to it. -->
+The folloiwng is a list of all the new controls that are available in "Fx/Controls".
 
 1. Button
 1. CheckBox
@@ -59,30 +57,24 @@ List of all the new controls that are available in "Fx/Controls":
 
 ### Initializing Controls
 
-The controls are initialized through a factory method called `create()`. This function returns an interface. 
-
-For example,
-
-invoking the `create()` method to create a TextBox with specific label, subLabel and a collection of validations.
+The controls are initialized through a factory method called `create()`. This function returns an interface. The following example invokes the `create()` method to create a TextBox with specific label, subLabel and a collection of validations.
 
 ```ts
 import * as TextBox from "Fx/Controls/TextBox";
 
 const firstNameViewModel = TextBox.create(container, {
-            label: "First Name",
-            subLabel: "Try: John",
-            validations: [
-                new Validations.Required(ClientResources.emptyFirstName),
-                new Validations.RegExMatch("^[a-zA-Z]+", `${ClientResources.startsWithLetterValidationMessage} <a href="https://www.bing.com/search?q=Personal+names+around+the+world" target="_blank">${ClientResources.clickForMoreInfo}</a>`)
-            ]
-        });
+    label: "First Name",
+    subLabel: "Try: John",
+    validations: [
+        new Validations.Required(ClientResources.emptyFirstName),
+        new Validations.RegExMatch("^[a-zA-Z]+", `${ClientResources.startsWithLetterValidationMessage} <a href="https://www.bing.com/search?q=Personal+names+around+the+world" target="_blank">${ClientResources.clickForMoreInfo}</a>`)
+    ]
+});
 ```
 
-### Using the loading indicator for dropdown
+### Dropdown loading indicator
 
-Ibiza SDK now supports showing loading indicator when the data is asynchronously loaded by an AJAX call that takes time to populate the dropdown.
-
-Here is an example of a dropdown that implements a loading indicator
+The Ibiza SDK now supports displaying the loading indicator when data is loaded by an asynchronous **AJAX** call that  populates the dropdown. The following code implements a loading indicator that uses a dropdown.
 
 ```ts
 
@@ -91,71 +83,70 @@ import * as DropDown from "Fx/Controls/DropDown";
 
 // Initialize control with no data. Set loading indicator to true
 const dropDownViewModel = DropDown.create<string>(container, {
-            label: ClientResources.spouse,
-            validations: [ new Validations.Required(ClientResources.emptySpouse) ],
-            loading: true  // ...and dynamically switch to 'false' once the dropdown items are loaded.
-        });
+    label: ClientResources.spouse,
+    validations: [ new Validations.Required(ClientResources.emptySpouse) ],
+    loading: true  // ...and dynamically switch to 'false' once the dropdown items are loaded.
+});
 
 // fetch data asynchronously and remove loading indicator on data load
 const dropdownDataPromise = Q(model.people.fetch("", container)).then((people) => {
-            const dropDownItems = people.data.mapInto(container, (childLifetime: MsPortalFx.Base.LifetimeManager, person: SamplesExtension.DataModels.Person) => {
-                return {
-                    text: person.name(),
-                    value: person.name()
-                };
-            }, dropDownViewModel.items);
-            dropDownViewModel.loading(false);
-        });
+    const dropDownItems = people.data.mapInto(container, (childLifetime: MsPortalFx.Base.LifetimeManager, person: SamplesExtension.DataModels.Person) => {
+        return {
+            text: person.name(),
+            value: person.name()
+        };
+    }, dropDownViewModel.items);
+    dropDownViewModel.loading(false);
+});
 ```
 
-### Customizing Alert on Form Close
+### Customizing Alerts
 
-SDK Provides two ways to configure the behavior of Alert i.e. the pop-up that shows up when user tries to close a form with unsaved edits. 
+The SDK provides two ways to configure the behavior of an alert, which is the pop-up that is displayed when the  user tries to close a form that contains unsaved edits. 
 
-For example, 
 
-In this scenario we have suppressed the alert by setting the value to `FxViewModels.AlertLevel.None`
+1. The alert can be suppressed the alert by setting the value to `FxViewModels.AlertLevel.None`, as in the following code.
 
-```ts
-form.configureAlertOnClose(FxViewModels.AlertLevel.None);
-```
+    ```ts
+    form.configureAlertOnClose(FxViewModels.AlertLevel.None);
+    ```
 
-The other overload of this function can be used for more complex scenarios say when an extension developer chooses to compute the value of Alert's behavior and message function overload.
-
-For example, in this scenario extension developer is dynamically setting the behavior of alert and message based on the checkbox and textBox.
+1. The value of the alert's behavior can be computed and returned to the `Message` function by using an overloaded definition, which is appropriate for more complex scenarios. The behavior of the alert and message are dynamically set, based on the checkbox and textBox, as in the following code.
 
 ```ts
 
 this._container.form.configureAlertOnClose(ko.computed(container, () => {
-                        return {
-                            showAlert: configureCheckBox.value(),
-                            message: configureMessageTextBox.value()
-                        }
-                    }));
+    return {
+        showAlert: configureCheckBox.value(),
+        message: configureMessageTextBox.value()
+    }
+}));
 
 ```
 
-#### Other CSS classes that can be useful
+#### Other CSS classes
 
-1. msportalfx-docking-header
-1. msportalfx-docking-body
-1. msportalfx-docking-footer
-1. msportalfx-padding
+Other CSS classes are in the following list.
 
-As the name suggests msportalfx-docking-* classes are helpful when you need to dock elements at the header, body or footer of the blade. 
-msportalfx-padding class is useful to add 10 x 10 padding to the blade.
+* msportalfx-docking-header
+* msportalfx-docking-body
+* msportalfx-docking-footer
+* msportalfx-padding
 
-Managing the styling of blade through these css classes gives extension developers flexibility to use Blades as a canvas.
-Unlike previous version of SDK, No-PDL blades do not add any padding / docking content behavior by default. Thus making it easy for extension developers to manage the styling.
+ The `msportalfx-docking-*` classes are used when elements will be docked at the header, body or footer of the blade. 
+
+<!-- TODO: Determine whether 10 x 10 is px or some other unit of measurement. -->
+The `msportalfx-padding` class adds 10 x 10 padding to the blade.
+
+These blade styling css classes  allow the blade to be used as a canvas.
+
+**NOTE**: Unlike previous version of SDK, No-PDL blades do not add padding or docking content behavior by default. This  makes style management easier.
 
 ### Replacing Action Bar with Button
 
-#### Implement custom styling 
+Out-of-the-box CSS classes can be used to dock a button at the bottom of blade and make it look like an Action Bar.
 
-Extension developers can use out-of-the-box CSS classes to dock a button at the bottom of blade and make it look like Action Bar.
-
-This sample shows how to replace the action bar by docking a button and errorInfo box at the bottom of blade using `msportalfx-docking-footer` css class.
-`msportalfx-padding` is used to add 10 x 10 padding to the docked footer
+The following sample demonstrates how to replace the action bar by docking a button and errorInfo box at the bottom of the blade by using the `msportalfx-docking-footer` css class. The `msportalfx-padding` class  adds 10 x 10 padding to the docked footer.
 
 ```html
 
@@ -166,7 +157,9 @@ This sample shows how to replace the action bar by docking a button and errorInf
 
 ```
 
-#### Implementing blade close behavior
+### Closing the blade
+
+The following code closes the blade.
 
 ```ts
 
