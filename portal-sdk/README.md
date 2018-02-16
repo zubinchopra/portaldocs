@@ -23,7 +23,7 @@ Learn how the framework is structured and how it is designed to run in multiple 
 * [What's new](./generated/top-extensions-whats-new.md)
 
 * [No-PDL Blades and Parts](http://top-whats-new#no-pdl.md) - *Reduces the number of files and concepts to build UI*
-* [Forms without edit scope](portalfx-editscopeless-forms.md) - *More intuitive APIs for building forms*
+* [Forms without edit scope](./generated/portalfx-editscopeless-forms.md) - *More intuitive APIs for building forms*
 * [Editable Grid V2](http://top-level/editable-grid.md) - *Improved APIs designed to work with new forms*
 * [Extension Availability Alerts](http://top-level/availibility-alerts.md) - *Get notified if your extension goes down*
 * [Actionable Notifications](http://top-level/availibility-alerts.md) - *Point users to well known next steps*
