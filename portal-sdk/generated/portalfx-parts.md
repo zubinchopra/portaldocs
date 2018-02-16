@@ -83,14 +83,14 @@ export class ButtonPartViewModel extends MsPortalFx.ViewModels.ButtonPart {
    /**
     * Initialize the part.
     */
-   constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState: any, dataContext: PartsArea.DataContext) {
+   constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState: any, dataContext: DataContext) {
        super();
        this.title(ClientResources.AssetTypeNames.Robot.singular);
        this.shortTitle(ClientResources.AssetTypeNames.Robot.singular);
        this.description(ClientResources.robotDescription);
-       this.icon(SvgLogo.Content.SamplesExtension.Images.robot);
+       this.icon(CommonImages.robot);
 
-       container.assetName(ClientResources.robotManafacturerBotsAreUs);
+       container.assetName(ClientResources.robotManufacturerBotsAreUs);
    }
 }
 
@@ -185,8 +185,8 @@ export class ExampleCustomPartViewModel {
        }
    ]);
 
-   public buttonClickHandler = function () {
-       this.clicked(this.clicked() + 1);
+   public buttonClickHandler = () => {
+       this.numberOfClicks(this.numberOfClicks() + 1);
    };
 }
 
@@ -479,7 +479,7 @@ export class GeneralGalleryPart implements Def.Contract {
             ClientResources.generalGalleryPartBladeLocation;
 
         // Data-driven styling for the Part.
-        this.css = ko.computed(container, (lifetime) => {
+        this.css = ko.computed(container, () => {
             const colorSetting = this._colorSetting();
             const fontSetting = this._fontSetting();
             return {

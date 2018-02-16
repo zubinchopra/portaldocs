@@ -277,6 +277,7 @@ var self = module.exports = {
                 "&#109;", // html encoding for mailto: some reason there are multiple encodings
                 "\\\\products\\public\\PRODUCTS\\Developers\\Visual Studio 2015\\Enterprise 2015.3", // internal network share
                 "idwebelements", // internal
+                "qe" //internal
             ];
             
             var count = 0;

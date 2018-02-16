@@ -218,9 +218,9 @@ The following options are available:
 | `enableRbac`                  | Yes | All ARM resource types | Manage user/role assignments for this resource. |
 | `enableSupportEventLogs`      | Yes | Resources, resource groups, subscriptions | View all operations and events |
 | `enableSupportHelpRequest`    | Yes | All ARM resource types | Create a support request for this resource, resource group, or subscription. |
-| `enableSupportResourceHealth` | Yes | No | Check resource for common health issues (e.g. connectivity) and recommend fixes. |
+| `enableSupportResourceHealth` | Yes | No, to onboard please contact AzSFAdoption@microsoft.com  | Check resource for common health issues (e.g. connectivity) and recommend fixes. |
 | `enableSupportTroubleshoot`   | No  | No | **Deprecated. Do not use.** Legacy support only. Moved to a new design with improved usability scores. |
-| `enableSupportTroubleshootV2` | Yes | No | Troubleshoot possible availability/reliability issues (e.g. connectivity). |
+| `enableSupportTroubleshootV2` | Yes | No, to on board please contact AzSFAdoption@microsoft.com | Troubleshoot possible availability/reliability issues (e.g. connectivity). |
 | `enableTags`                  | Yes | Resources, resource groups, subscriptions | Tag resource with key/value pairs to group/organize related resources. RP must support PATCH operations to update tags. Does not support classic resources. |
 | `showAppInsightsFirst`        | No  | No | View Application Insights monitoring. `enableAppInsights` must be set to `true`. |
 

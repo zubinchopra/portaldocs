@@ -141,7 +141,7 @@ You can verify the behavior of different caching modes in your extension by laun
 
 ```
 https://portal.azure.com/
-    ?Your_Extension=cacheability-manifest
+    ?Your_Extension-cacheability=manifest
     &feature.canmodifyextensions=true
 ```
 

@@ -60,7 +60,7 @@ read the data from the server & `saveEditScopeChanges` will write it back:
 
 ```typescript
 
-let editScopeCache = EditScopeCache.createNew<WebsiteModel, number>({
+const editScopeCache = EditScopeCache.createNew<WebsiteModel, number>({
     supplyExistingData: (websiteId, lifetime) => {
         return FxBaseNet.ajax({
             uri: Util.appendSessionId(MsPortalFx.Base.Resources.getAppRelativeUri("/api/Websites/" + websiteId)), // this particular endpoint requires sessionId to be in query string
@@ -80,11 +80,11 @@ let editScopeCache = EditScopeCache.createNew<WebsiteModel, number>({
     },
     saveEditScopeChanges: (websiteId, editScope, edits, lifetime, dataToUpdate) => {
         // get the website from the edit scope
-        let website = editScope.root;
+        const website = editScope.root;
 
         // if you need to do conversion on the data before posting to server you can do that
         // all we need to do here is turn the knockout object into json
-        let serializableWebsite = ko.toJSON(website);
+        const serializableWebsite = ko.toJSON(website);
 
         this._saving(true);
         return FxBaseNet.ajax({
@@ -100,7 +100,7 @@ let editScopeCache = EditScopeCache.createNew<WebsiteModel, number>({
             // ('AcceptClientChanges' is the default behavior.  This promise could also be resolved with 'null' or 'undefined'.)
             return {
                 action: Data.AcceptEditScopeChangesAction.AcceptClientChanges
-            }
+            };
         }).finally(() => {
             this._saving(false);
         });
@@ -126,7 +126,7 @@ reference to the edit scope:
 
 ```typescript
 
-this._form = new Form.ViewModel<WebsiteModel>(this._lifetime);
+this._form = new Form.ViewModel<WebsiteModel>(this._ltm);
 this._form.editScope = this._editScopeView.editScope;
 
 ```
@@ -136,8 +136,8 @@ website:
 
 ```typescript
 
-let websiteName = new TextBox.ViewModel(
-    this._lifetime,
+const websiteName = new TextBox.ViewModel(
+    this._ltm,
     this._form,
     this._form.createEditScopeAccessor(data => data.name),
     {
@@ -149,7 +149,7 @@ let websiteName = new TextBox.ViewModel(
     });
 
 // Section
-this.section = new Section.ViewModel(this._lifetime, {
+this.section = new Section.ViewModel(this._ltm, {
     children: ko.observableArray<any>([
         websiteName
     ])
@@ -170,39 +170,39 @@ that the part maintains:
 ```typescript
 
 // set up save command
-let saveCommand = new Toolbars.CommandButton();
+const saveCommand = new Toolbars.CommandButton();
 saveCommand.label(ClientResources.saveText);
 saveCommand.icon(FxBase.Images.Save());
 saveCommand.command = {
     canExecute: ko.pureComputed(() => {
         // user can save when edit scope is dirty and we're not in the middle of a save operation
-        let editScope = this._editScopeView.editScope();
-        let editScopeDirty = !!editScope ? editScope.dirty() : false;
+        const editScope = this._editScopeView.editScope();
+        const editScopeDirty = !!editScope ? editScope.dirty() : false;
         return !this._saving() && editScopeDirty;
     }),
     execute: (context: any): FxBase.Promise => {
         return this._editScopeView.editScope().saveChanges();
     }
-}
+};
 
 // set up discard command
-let discardCommand = new Toolbars.CommandButton();
+const discardCommand = new Toolbars.CommandButton();
 discardCommand.label(ClientResources.discardText);
 discardCommand.icon(MsPortalFx.Base.Images.Delete());
 discardCommand.command = {
     canExecute: ko.pureComputed(() => {
         // user can save when edit scope is dirty and we're not in the middle of a save operation
-        let editScope = this._editScopeView.editScope();
-        let editScopeDirty = !!editScope ? editScope.dirty() : false;
+        const editScope = this._editScopeView.editScope();
+        const editScopeDirty = !!editScope ? editScope.dirty() : false;
         return !this._saving() && editScopeDirty;
     }),
     execute: (context: any): FxBase.Promise => {
         this._editScopeView.editScope().revertAll();
         return null;
     }
-}
+};
 
-this.commandBar = new Toolbars.Toolbar(this._lifetime);
+this.commandBar = new Toolbars.Toolbar(this._ltm);
 this.commandBar.setItems([saveCommand, discardCommand]);
 
 ```

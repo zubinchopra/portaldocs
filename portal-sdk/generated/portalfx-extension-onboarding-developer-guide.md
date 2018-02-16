@@ -389,6 +389,101 @@ Since you have assosciated your commit with a workitem, you will recieve the not
 
 In case other people, in your team want to suscribe to these changes, please ask them to make a comment on the workitem. Once they have made a change they will start recieving the notifications.
 
+<a name="making-your-extension-visible-enabled-in-portal-on-a-specific-time"></a>
+## Making your extension visible / enabled in portal on a specific time
+
+Extensions now have the capability to enable their extension based on their schedule for announcement. We recommend you start this process asap. Once you have all pre-requisites in place you will be able to enable your extension on a specific time.
+
+Since you are reading this article to enable your extension at a specific time. It is safe to assume that your extension's config has disabled attribute set to true.
+
+For this section of documentation, I will assume we want to enable Microsoft_Azure_DemoExtension at 9:00am on 10th October 2020.
+
+```json
+  {
+      "name": "Microsoft_Azure_DemoExtension",
+      "uri": "//demo.hosting.portal.azure.net/demo",
+      "uriFormat": "//demo-ms.hosting.portal.azure.net/demo/{0}",
+      "feedbackEmail": "myextension@microsoft.com",
+      "disabled": true,
+  }
+```
+
+1. In your extension's code, an AssetType PDL is declared that specifies the entry point for your extension in Browse Menu in Azure Portal.
+
+A typical AssetType information in the extension looks like the following:
+
+```xml
+  <AssetType Name="DemoAsset"
+             PartName="DemoPartViewModel"
+             BladeName="DemoOverviewBlade"
+             ViewModel="{ViewModel Name=DemoAssetTypeViewModel, Module=./Browse/ViewModels/DemoAssetTypeViewModel}"
+             PluralDisplayName="{Resource Provisioning.Resource.plural, Module=ClientResources}"
+             SingularDisplayName="{Resource Provisioning.Resource.singular, Module=ClientResources}"
+             LowerPluralDisplayName="{Resource Provisioning.Resource.lowerPlural, Module=ClientResources}"
+             LowerSingularDisplayName="{Resource Provisioning.Resource.lowerSingular, Module=ClientResources}"
+             Icon="{Resource Content.SVG.DPS.dps, Module=../_generated/Svg}"
+             MarketplaceItemId="Microsoft.Demo"
+             UseResourceMenu="true">
+    <Browse Type="ResourceType"/>
+    <ResourceType ResourceTypeName="Microsoft.Demo/Demos" ApiVersion="2017-08-21" />
+  </AssetType>
+```
+
+Update the **Browse** in AssetType to include Private="True". By adding this attribute your extension is specifying that this particular asset should never be visible in Browse Menu.
+
+The updated PDL would look like following:
+
+```xml
+  <AssetType Name="DemoAsset"
+             PartName="DemoPartViewModel"
+             BladeName="DemoOverviewBlade"
+             ViewModel="{ViewModel Name=DemoAssetTypeViewModel, Module=./Browse/ViewModels/DemoAssetTypeViewModel}"
+             PluralDisplayName="{Resource Provisioning.Resource.plural, Module=ClientResources}"
+             SingularDisplayName="{Resource Provisioning.Resource.singular, Module=ClientResources}"
+             LowerPluralDisplayName="{Resource Provisioning.Resource.lowerPlural, Module=ClientResources}"
+             LowerSingularDisplayName="{Resource Provisioning.Resource.lowerSingular, Module=ClientResources}"
+             Icon="{Resource Content.SVG.DPS.dps, Module=../_generated/Svg}"
+             MarketplaceItemId="Microsoft.Demo"
+             UseResourceMenu="true">
+    <Browse Type="ResourceType" Private="true"/>
+    <ResourceType ResourceTypeName="Microsoft.Demo/Demos" ApiVersion="2017-08-21" />
+  </AssetType>
+```
+
+1. Side-load and test your extension:
+
+Add the following feature flag to the url for portal to show the resource in Browse Menu:
+
+```
+  ?feature.showassettypes=<ExtensionName>_<AssetName>
+```
+
+For example,
+```
+  ?feature.showassettypes=Microsoft_Azure_DemoExtension_DemoAsset
+```
+
+In case of Demo Extension, we can load the resource in Browse menu using side-loading url:
+
+```
+https://portal.azure.com/?feature.canmodifyextensions=true&feature.showassettypes=Microsoft_Azure_DemoExtension_DemoAsset#?testExtensions={"DemoExtension":"https://localhost:44300/"}
+```
+
+If you have multiple private assetTypes you canside-load all of them by providing a comma-seperated list.
+
+1. Once you have tested your extension, deploy the updated code of your extension to all regions
+
+1. Once the updated Code is deployed to all regions. Follow the instructions to [enable your extension](portalfx-extension-onboarding-developer-guide.md#2-enabling-an-extension-in-the-portal)
+
+1.Please read the [SLA for deploying extension configuration changes](portalfx-extension-onboarding-developer-guide.md#sla-for-deploying-the-configuration-changes) and process to [expedite deploying the extension configuration changes](portalfx-extension-onboarding-developer-guide.md#expediting-the-deployment-of-configuration-changes)
+
+1. You now have all the power to enable your extension based on your schedule. Whenever you are ready to launch the Public preview of your extension, just **remove** the following from the Browse of your extension's AssetType pdl:
+
+```xml
+Private="true"
+``` 
+
+1. After deploying the updated code to all regions you will see your extension in portal.
 
 <a name="frequently-asked-questions"></a>
 ## Frequently asked questions
