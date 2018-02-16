@@ -29,7 +29,7 @@ To build your improvement, initialize your CloudVault environment by using the i
 
 ### Testing the improvement
 
-After the build completes successfully, the NuGet package `Microsoft.Portal.TestFramework.CSharp` will be available under the <repoRoot>\out\debug-AMD64\.  You can copy the binaries to your local test suites and then run your tests to verify the fix. After the improvement passes all your unit tests, you can submit the pull request.
+After the build completes successfully, the NuGet package `Microsoft.Portal.TestFramework.CSharp` will be available under the `<repoRoot>\out\debug-AMD64\`.  You can copy the binaries to your local test suites and then run your tests to verify the fix. After the improvement passes all your unit tests, you can submit the pull request.
 
 ### Troubleshooting
 

@@ -32,7 +32,7 @@ All the pull requests should be sent first to the dev branch. To add or update o
     
     When these commands complete successfully, the developer has a clone of the Portal configuration directories.
 
-1.  The developer may need to modify the configuration file(s) to enable the extension, as specified in [portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension](portalfx-extensions-configuration-scenarios.md#managing-the-configuration-of-the-extension). The modified configuration files would then be staged, committed, and pushed to the developer's remote repository.
+1.  The developer may need to modify the configuration file(s) to enable the extension, as specified in [portalfx-extensions-configuration-procedure.md#managing-the-configuration-of-the-extension](portalfx-extensions-configuration-procedure.md#managing-the-configuration-of-the-extension). The modified configuration files would then be staged, committed, and pushed to the developer's remote repository.
 
     **NOTE**: There should be one config file for every environment that will be affected by the pull request for this extension.
 
