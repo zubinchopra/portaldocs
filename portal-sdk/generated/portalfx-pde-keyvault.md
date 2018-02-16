@@ -162,6 +162,7 @@ The following is an example of the PDL changes needed to use the blade.
 	export interface KeyPickerConfig {
 	    vaultId: string; // the resource id of the vault to display keys from (Optional if the id of the vault was supplied in the KeyPickerInputsOutputs)
 	    showCreateNew?: boolean; // Whether the picker will give the option to create a new key.
+	    requiredKeyOperations?: string[]; // Required key operations for selected keys. Supported key_ops are "sign", "verify", "wrapKey", "unwrapKey", "encrypt" & "decrypt". When a key doesn't have all required key_ops, it is readonly and cannot be selected.
 	}
 <a name="key-secret-pickers-constructor"></a>
 ### Constructor

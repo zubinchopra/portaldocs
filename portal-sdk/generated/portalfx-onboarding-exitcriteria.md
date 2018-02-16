@@ -38,7 +38,7 @@ MPAC and PROD performance is included in weekly status emails and each team is e
 
 > Meeting the performance bar is a requirement for public preview or GA.
 
-**We require roughly 100+ loads of your experience (extension/blade/tiles) to get a signal, if you are unable to generate that traffic genuinely in your desired timeframe please hold a bug bash to drive up the traffic.**
+**We require roughly 100+ loads of your experience (extension/blade/tiles) to get a signal, if you are unable to generate that traffic genuinely in your desired timeframe please hold a bug bash to drive up the traffic. Ensure your URL does not include feature.canmodifyextensions**
 
 To calculate your performance/reliability use [the following query:](https://aka.ms/portalfx/perfsignoff)
 
@@ -73,7 +73,7 @@ MPAC and PROD reliability is included in weekly status emails and each team is e
 
 > Meeting the reliability bar is a requirement for public preview or GA.
 
-**We require roughly 100+ loads of your experience (extension/blade/tiles) to get a signal, if you are unable to generate that traffic genuinely in your desired timeframe please hold a bug bash to drive up the traffic.**
+**We require roughly 100+ loads of your experience (extension/blade/tiles) to get a signal, if you are unable to generate that traffic genuinely in your desired timeframe please hold a bug bash to drive up the traffic. Ensure your URL does not include feature.canmodifyextensions**
 
 To calculate your performance/reliability use [the following query:](https://aka.ms/portalfx/perfsignoff)
 
