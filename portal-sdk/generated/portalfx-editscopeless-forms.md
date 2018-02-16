@@ -2,9 +2,9 @@
 <a name="editscopeless-forms"></a>
 ## EditScopeless Forms
 
-Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide common functions that would otherwise be difficult to orchestrate, like tracking  changes in field values across a form, or simplifying the merge  of form changes from the server into the current edit. In contrast, editscope-less forms are compatible with new controls and consequently, EditScopes are becoming obsolete. It is recommended that extensions be developed without edit scopes.
+Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide common functions that would otherwise be difficult to orchestrate, like tracking changes in field values across a form, or simplifying the merge  of form changes from the server into the current edit. In contrast, editscope-less forms are compatible with new controls and consequently, EditScopes are becoming obsolete. It is recommended that extensions be developed without edit scopes.
 
-<!-- TODO: Determine which API's are referred to by the following statement.  -->
+<!-- TODO: Determine whether controls like OptionsGroup, that are not located in Fx/Controls, are considered part of the EditScopeless pattern.   -->
 
 The EditScopeless form controls are located in the `Fx/Controls` namespace. They support creating forms without initializing their `editscope`. There is less  association with the `editscope` accessors, which makes the initialization of the controls easier. The  `editScope` is no longer tied to each control, and the controls become stateless. This means two things.
 
@@ -31,31 +31,33 @@ import * as Section from "Fx/Controls/Section";
 import * as TextBox from "Fx/Controls/TextBox";
 ``` 
 
-<!-- TODO: Determine whether there is a document to link to, and if so, link to it. -->
-The folloiwng is a list of all the new controls that are available in "Fx/Controls".
+<!-- TODO: Determine whether controls outside of "Fx/Controls" should be included in the table.  -->
 
-1. Button
-1. CheckBox
-1. CustomHtml
-1. DatePicker
-1. DateTimePicker
-1. DateTimeRangePicker
-1. DayPicker
-1. DropDown
-1. DurationPicker
-1. FileUpload
-1. MultiLineTextBox
-1. NumericTextBox
-1. OptionsGroup
-1. PasswordBox
-1. RadioButton
-1. RangeSlider
-1. Section
-1. Slider
-1. TabControl
-1. TextBox
-1. TimePicker
-1. TriStateCheckBox
+The folloiwng is a list of all the new controls that are available in "Fx/Controls", in addition to  a list of documents that discuss the control in more detail. For samples and experiences that are associated with editscope-less form controls, see [portalfx-extensions-samples-overview.md](portalfx-extensions-samples-overview.md).
+
+| Control                 | Document                                                                             | 
+| ----------------------- | ------------------------------------------------------------------------------------ |  
+| Button                  |                                                                                      | 
+| CheckBox                |                                                                                      | 
+| CustomHtml              | [portalfx-forms-sections.md](portalfx-forms-sections.md)                             | 
+| DateTimePicker          | [portalfx-controls-datetimepicker.md](portalfx-controls-datetimepicker.md)           |  
+| DateTimeRangePicker     | [portalfx-controls-datetimerangepicker.md](portalfx-controls-datetimerangepicker.md) | 
+| DayPicker               |                                                                                      | 
+| DropDown                | [portalfx-controls-dropdown.md](portalfx-controls-dropdown.md)                       | 
+| DurationPicker          |                                                                                      | 
+| FileUpload              |                                                                                      | 
+| MultiLineTextBox        |                                                                                      | 
+| NumericTextBox          |                                                                                      | 
+| OptionsGroup            |                                                                                      | 
+| PasswordBox             |                                                                                      | 
+| RadioButton             |                                                                                      | 
+| RangeSlider             |                                                                                      | 
+| Section (Form Sections) | [portalfx-forms-sections.md](portalfx-forms-sections.md)                             | 
+| Slider                  |                                                                                      | 
+| TabControl              |                                                                                      | 
+| TextBox                 | [portalfx-controls-textbox.md](portalfx-controls-textbox.md)                         |
+| TimePicker              | [portalfx-controls-datetimepicker.md](portalfx-controls-datetimepicker.md)           | 
+| TriStateCheckBox        |                                                                                      | 
 
 <a name="editscopeless-forms-initializing-controls"></a>
 ### Initializing Controls
