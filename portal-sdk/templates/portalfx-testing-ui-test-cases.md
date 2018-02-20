@@ -20,7 +20,7 @@ To navigate to the Portal, you first must supply the Portal's uri.  We recommend
 
 {"gitdown": "include-section", "file": "../samples/SampleCSTestsFiles/NavigateToPortalTest.cs", "section": "config#navigateToPortal"}
 
-Please note that multi factor authentication (MFA) is not supported, you must use an account that does not require MFA.  If you are part of the Microsoft Azure organization please see (Azure Security Guidelines)[https://microsoft.sharepoint.com/teams/azure2fa/SitePages/FAQ%20on%20Use%20of%20MSA%20on%20Azure%20Subsriptions.aspx] for details on how to request an exception for an MSA/OrgID account.  You can not use a service account to login to the Azure Portal.
+Please note that multi factor authentication (MFA) is not supported, you must use an account that does not require MFA.  If you are part of the Microsoft Azure organization please see [Azure Security Guidelines](https://microsoft.sharepoint.com/teams/azure2fa/SitePages/FAQ%20on%20Use%20of%20MSA%20on%20Azure%20Subsriptions.aspx) for details on how to request an exception for an MSA/OrgID account.  You can not use a service account to login to the Azure Portal.
 
 ### Side Loading An Extension via Test Framework
 The Portal provides options for side loading your extension for testing.  If you wish to side load your extension (either a localhost or deployed one) you can set the appropriate query strings and execute the registerTestExtension function for deployed extensions.  For a localhost extension you can just set a query string.  See (Testing in Production)[#Testing in production] for details.
@@ -33,7 +33,7 @@ Finally, you should dispose the WebDriver to cleanup:
 
 ### Managing authentication credentials (unsupported)
 While the test framework does not provide any support for managing login credentials, there are some recommendations:
-1.  If you are in the Azure org, please see (Azure Security guidelines)[https://microsoft.sharepoint.com/teams/azure2fa/SitePages/FAQ%20on%20Use%20of%20MSA%20on%20Azure%20Subsriptions.aspx]
+1.  If you are in the Azure org, please see [Azure Security guidelines](https://microsoft.sharepoint.com/teams/azure2fa/SitePages/FAQ%20on%20Use%20of%20MSA%20on%20Azure%20Subsriptions.aspx)
 1.  Do not store your credentials in the test code.
 1.  Do not check in your credentials into your repository.
 1.  Some possibilities for storing login credentials include:
