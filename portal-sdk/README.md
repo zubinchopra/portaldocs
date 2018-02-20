@@ -228,5 +228,17 @@ The documents are combinations from all the previous topics. Consequently, there
 * [Best Practices](./generated/portalfx-extensions-bp.md)
 * [Frequently asked questions](./generated/portalfx-extensions-faq.md)
 * [Glossary](./generated/portalfx-extensions-glossary.md)
-*
-*
+
+# Marketplace/Gallery Developer Resources
+
+1. [Gallery Overview](/gallery-sdk/generated/index-gallery.md#gallery-overview)
+1. [Gallery Item Specificiations](/gallery-sdk/generated/index-gallery.md#gallery-item-specificiations)
+1. [Gallery Item Metadata](/gallery-sdk/generated/index-gallery.md#gallery-item-metadata)
+1. [Gallery Item Field to UI Element Mappings](/gallery-sdk/generated/index-gallery.md#gallery-item-field-to-ui-element-mappings)
+1. [Gallery Package Development and Debugging](/gallery-sdk/generated/index-gallery.md#gallery-package-development-and-debugging)
+1. [Legacy OneBox Development approach](/gallery-sdk/generated/index-gallery.md#legacy-onebox-development-approach)
+1. [Using the Add to Resource Blade](/gallery-sdk/generated/index-gallery.md#using-the-add-to-resource-blade)
+1. [Your icon tile for the Azure Store](/gallery-sdk/generated/index-gallery.md#your-icon-tile-for-the-azure-store)
+1. [Developer tooling and productivity](/gallery-sdk/generated/index-gallery.md#developer-tooling-and-productivity)
+1. [Gallery Frequently Asked Questions](/gallery-sdk/generated/index-gallery.md#gallery-frequently-asked-questions)
+
