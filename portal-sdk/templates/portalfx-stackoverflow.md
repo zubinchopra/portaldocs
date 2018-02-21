@@ -54,7 +54,7 @@ http://aka.ms/portalfx/browse.</td>
  </tr>
  <tr>   
     <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-security-auth">ibiza-security-auth</a> </td>
-    <td> </td>
+    <td> questions related to Portal Authentication, Security model, AAD onboarding, Ibiza extension onboarding. Please provide details on your extension name and requirements/scenarios. </td>
     <td> sansom </td>
 </tr>
 <tr>
