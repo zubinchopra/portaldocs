@@ -92,7 +92,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | smoke test               | see build verification test  |
 | SSL                      | Secure Socket Layer |
 | stakeholder              | A person, group or organization that has interest or concern in an organization. Stakeholders can affect or be affected by the organization's actions, objectives and policies. |
-| stamp                    | An instance of a service in a region. Every extension can deploy one or more stamps based on testing requirements. The main stamp is used for production and is the only one that the Portal will load by default.    | 
+| stamp                    | An instance of a service in a region. Every extension can deploy one or more extension editions based on testing requirements. The main extension is used for production and is the only one that the Portal will load by default. Also known as configuration or configuration file.   | 
 | URI                      | Universal Resource Identifier  | 
 | URL                      | Uniform Resource Locator |
 
@@ -113,7 +113,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | 1CS                       | One Compliance System  | 
 | API                       | Application Programming Interface  |
 | ARM                       | Azure Resource Manager |
-| blade reveal time         | The time it takes for all the parts above the fold to call ```revealContent()```, to load first-level data, or to resolve ```onInputSet()``` promises, whichever is earlier. |
+| BladeFullReady            | The time it takes a blade to fully load. | 
 | C+E                       | Cloud + Enterprise | 
 | CEC                       | Common Engineering Criteria  | 
 | CEGRM                     | CSS Release management team | 
@@ -173,7 +173,6 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | API contract | An agreement between two pieces of code as to how to pass parameters between them, and how those parameters are processed. |
 | CDN                 | Content delivery network | 
 | CI infrastructure   | | 
-| configuration stamp | | 
 | curation            | The process of categorizing content around a specific topic or area of interest. Curated items often formed into various types of collections and are displayed together according to theme or purpose. | 
 | diagnostic switch  | |
 | DOM                | Document Object Model |
@@ -283,7 +282,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | Developer Tools Console | | 
 | diagnostic switch | | 
 | endpoint             | A device that is connected to a LAN and accepts or transmits communications across a network. In terms of directories or Web pages, there may be several endpoints that are defined on the same device.  |
-| extension stamps | |
+| extension stamp | An instance of a service in a region. Every extension can deploy one or more extension editions based on testing requirements. The main extension is used for production and is the only one that the Portal will load by default. Also known as configuration or configuration file.   | 
 | hotfix | |
 | localhost            | A hostname that means this computer or this host.  |
 | obsolete script      | A script that makes certain parts of the Portal act as legacy code, in order to limit the performance costs of the old functionality to only extensions that are using them. | 
