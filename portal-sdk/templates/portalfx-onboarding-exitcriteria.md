@@ -83,7 +83,7 @@ See also:
 - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-reliability)
 
 
-### Usability (Stakeholder: [Angela Moulden](ibiza-usability@microsoft.com))
+### Usability (Stakeholder: [Mariah Jackson](ibiza-usability@microsoft.com))
 
 Each service must define the critical, P0 scenarios for their business. These scenarios must be usability tested to
 ensure 80% success rate and an 80% experience score (based on a short survey). Usability must be measured by testing
@@ -122,7 +122,7 @@ See also:
 - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-create)
 
 
-### Resource move (Stakeholder: [Edison Park](mailto:ibiza-resourceMove@microsoft.com))
+### Resource move (Stakeholder: [Balbir Singh](mailto:ibiza-resourceMove@microsoft.com))
 
 ARM-based services must allow customers to move resources between subscriptions and resource groups.
 
