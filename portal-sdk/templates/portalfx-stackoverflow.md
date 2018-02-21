@@ -74,7 +74,7 @@ http://aka.ms/portalfx/browse.</td>
 </tr>
 <tr>   
     <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-telemetry">ibiza-telemetry</a> </td>
-    <td>All questions regarding Ibiza-Telemetry/td>
+    <td>All questions regarding Ibiza-Telemetry</td>
     <td> sewatson </td>
 </tr>
 <tr>
