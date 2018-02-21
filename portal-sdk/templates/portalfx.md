@@ -1,34 +1,37 @@
-
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-architecture-intro.md -->
 # Home 
 
-Azure Portal is a single page web application. The parts of the page in the portal are loaded by referencing web applications, known as extensions, that are dynamically accessed based on a customer’s action on the portal. For example, when a customer clicks on virtual machine icon then the portal will automatically load Virtual Machine management extension. 
+Azure Portal is a single page web application. The parts of the page in the Portal are loaded by referencing web applications, known as extensions, that are dynamically accessed based on a customer’s action on the Portal. For example, when a customer clicks on virtual machine icon then the Portal will automatically load Virtual Machine management extension. 
 
-Partners can instantaneously gain access to Azure portal’s large customer base by developing and registering extensions that provide unified and consistent look and feel.  
+Partners can instantaneously gain access to Azure Portal’s large customer base by developing and registering extensions that provide unified and consistent look and feel.  
 
-The success of Azure portal is dependent on the success of our partners. For our partners to succeed we provide them access to necessary tools and an ecosystem where they can seek help and collaborate. 
+The success of Azure Portal is dependent on the success of our partners. For our partners to succeed we provide them access to necessary tools and an ecosystem where they can seek help and collaborate. 
 
-**Extension developers** can leverage Azure Portal SDK and extension hosting service to rapidly develop and ship extensions. Also, Azure portal has a strong developer community to help you build the extensions. 
+**Extension developers** can leverage Azure Portal SDK and extension hosting service to rapidly develop and ship extensions. Also, Azure Portal has a strong developer community to help you build the extensions. 
 
 **Program / Product Managers** can gather deeper understanding of extension’s health and customer behavior using the Power BI reports and Kusto telemetry. 
 
 Ready to grow your business?
 
+# Home 
 ## [Onboard Ibiza](/portal-sdk/generated/index-portalfx-extension-onboarding.md)
+[portalfx-extensions-onboarding.md](portalfx-extensions-onboarding.md)
+<!-- TODO:  deprecate the previous section of this document by removing it.  It has been  replaced by portalfx-extensions-architecture-intro.md -->
 
 # Extension Developer Resources 
 
 1. [Downloads](/portal-sdk/generated/downloads.md), [Release Notes](/portal-sdk/generated/release-notes.md), [Breaking Changes](/portal-sdk/generated/breaking-changes.md)
-1. [Development](/portal-sdk/generated/index-portalfx-extension-development.md)
-1. [Style Guide](/portal-sdk/generated/index-portalfx-extension-style-guide.md)
-1. [Test](/portal-sdk/generated/index-portalfx-extension-test.md)
-1. [Telemetry / Performance / Reliability](/portal-sdk/generated/index-portalfx-extension-monitor.md) 
-1. [Deploy](/portal-sdk/generated/index-portalfx-extension-deployment.md)
-1. [Localization / Globalization](/portal-sdk/generated/index-portalfx-extension-localization-globalization.md)
-1. [Accessibility](/portal-sdk/generated/index-portalfx-extension-accessibility.md)
-1. [Sharing PDE](/portal-sdk/generated/index-portalfx-extension-sharing-pde.md)
-1. [Notifying your customers what's new](/portal-sdk/generated/portalfx-extension-posting-whats-new-notification.md)
+1. [Development](portalfx-extension-development.md)
+1. [Style Guide](portalfx-style-guide.md)
+1. [Test](portalfx-extension-test.md)
+1. [Telemetry / Performance / Reliability](portalfx-extension-monitor.md) 
+1. [Deploy](portalfx-extension-deployment.md)
+1. [Localization / Globalization](portalfx-extension-localization-globalization.md)
+1. [Accessibility](portalfx-extension-accessibility.md)
+1. [Sharing PDE](portalfx-extension-sharing-pde.md)
+1. [Notifying your customers what's new](portalfx-extension-posting-whats-new-notification.md)
 
-Feeling Lost? Reach out to Community: [Stackoverflow](/portal-sdk/generated/index-portalfx-extension-QnA.md)
+Feeling Lost? Reach out to Community: [Stackoverflow](portalfx-stackoverflow.md)
 
 # Marketplace/Gallery Developer Resources 
 
@@ -43,7 +46,9 @@ Feeling Lost? Reach out to Community: [Stackoverflow](/portal-sdk/generated/inde
 1. [Developer tooling and productivity](/gallery-sdk/generated/index-gallery.md#developer-tooling-and-productivity)
 1. [Gallery Frequently Asked Questions](/gallery-sdk/generated/index-gallery.md#gallery-frequently-asked-questions)
 
-
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by readme.md -->
 # Code of Conduct
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+<!-- TODO:  deprecate the previous  section of this document by removing it.  It has been  replaced by readme.md -->

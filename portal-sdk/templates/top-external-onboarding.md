@@ -1,7 +1,7 @@
 # Onboarding outside of Ibiza
 ## Compliance, Marketplace Integration, and others
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-configuration-intro.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-external-onboarding-intro.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-qualityEssentials.md"}
 
