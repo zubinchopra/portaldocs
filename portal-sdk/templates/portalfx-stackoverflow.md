@@ -48,8 +48,9 @@
 </tr>
 <tr>
     <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse">ibiza-browse</a></td>
-    <td> </td>
-    <td> edpark </td>
+    <td>Browse is the primary navigation path in the Azure Portal. Browse consists of the Browse/Services menu, the resource list blade, and pinned part. Browse supports ARM subscription resources, ARM tenant resources, as well as custom data or simply launching your own blade. Learn more at 
+http://aka.ms/portalfx/browse.</td>
+    <td> sewatson </td>
  </tr>
  <tr>   
     <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-security-auth">ibiza-security-auth</a> </td>
@@ -58,7 +59,7 @@
 </tr>
 <tr>
     <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts">ibiza-blades-parts</a> </td>
-    <td> </td>
+    <td>A tag for all questions related to Ibiza Blades, Parts (Tiles), Commands</td>
     <td> sewatson </td>
 </tr>
 <tr>
@@ -73,12 +74,12 @@
 </tr>
 <tr>   
     <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-telemetry">ibiza-telemetry</a> </td>
-    <td> </td>
+    <td>All questions regarding Ibiza-Telemetry/td>
     <td> sewatson </td>
 </tr>
 <tr>
     <td> <a href="https://stackoverflow.microsoft.com/questions/tagged/ibiza-performance">ibiza-performance</a> </td>
-    <td> </td>
+    <td>A tag for all questions related to Ibiza performance. </td>
     <td> sewatson </td>
 </tr>
 <tr>
