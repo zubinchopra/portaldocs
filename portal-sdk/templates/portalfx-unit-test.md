@@ -99,7 +99,7 @@ To generate this script and all other dependencies it requires to be able to suc
     "gulp": "3.9.1",
     "nconf": "0.10.0",
     "mocha": "2.2.5",
-    "msportalfx-ut": "file://../../packages/Microsoft.Portal.TestFramework.UnitTest.5.0.302.979/msportalfx-ut-5.302.979.tgz",
+    "msportalfx-ut": "file:../../packages/Microsoft.Portal.TestFramework.UnitTest.5.0.302.979/msportalfx-ut-5.302.979.tgz",
     "sinon": "4.2.1",
     "typescript": "2.3.3"
   }
