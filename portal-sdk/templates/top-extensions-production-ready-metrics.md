@@ -24,7 +24,7 @@ BladePerformanceIncludingNetwork(ago(1d), now())
 | where Extension == "Microsoft_Azure_Compute"
 ```
 
-There is also a Power BI Dashboard located at   [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf).
+There is also a Power BI Dashboard located at [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf).
 
 For more information about performance and reliability, see the following resources: 
 
@@ -65,7 +65,6 @@ Use the following query to calculate the performance and reliability of your ext
 If any of the reliability numbers of the extension are below the bar, please investigate and resolve the related issues.
 
 ###	Usability
-
 
 Each service or extension defines the critical P0 scenarios for their business. The extension is tested using these usability scenarios, with at least ten participants. A success rate of 80% and an experience score of 80% are required for a passing usability score.
 
