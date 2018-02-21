@@ -99,7 +99,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | 1CS                       | One Compliance System  | 
 | API                       | Application Programming Interface  |
 | ARM                       | Azure Resource Manager |
-| blade reveal time         | The time it takes for all the parts above the fold to call ```revealContent()```, to load first-level data, or to resolve ```onInputSet()``` promises, whichever is earlier. |
+| BladeFullReady            | The time it takes a blade to fully load. | 
 | C+E                       | Cloud + Enterprise | 
 | CEC                       | Common Engineering Criteria  | 
 | CEGRM                     | CSS Release management team | 

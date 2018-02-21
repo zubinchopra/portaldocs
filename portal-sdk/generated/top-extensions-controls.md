@@ -10,14 +10,14 @@
 
 Controls are the building blocks of the Azure extension experience. They allow users to view, edit, and analyze data.
 
-The Azure Portal team ships sample code that extension developers can leverage. All developers who install the Portal Framework SDK that is located at [http://aka.ms/portalfx/download](http://aka.ms/portalfx/download) also install the samples on their computers during the installation process. The source for the samples is located in the `Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension` folder.
+The Azure Portal team ships sample code that extension developers can leverage. All developers who install the Portal Framework SDK that is located at [http://aka.ms/portalfx/download](http://aka.ms/portalfx/download) also install the samples on their computers during the installation process. The source for the samples is located in the `Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension` folder. The source specifies the namespace in which the control is located.
 
 First-party extension developers, i.e. Microsoft employees, have access to the Dogfood environment, therefore they can view the samples that are located at [https://aka.ms/portalfx/viewSamples](https://aka.ms/portalfx/viewSamples).
 
 The Azure components of the experience are documented several ways. 
 *  There may be a document that provides guidance about the component, in terms of what it is, what it does, or how it is used. 
 * The location of the sample code is included  so that the developer can view the source for the component, or modify it as appropriate for the extensions they develop.  
-* A completed version of the component can be viewed in the Dogfood environment; in some instances, links are provided to the API reference for the component.
+* A working copy of the component can be viewed in the Dogfood environment; in some instances, links are provided to the API reference for the component.
 
 **NOTE**: In the following tables, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it can be experienced by using the link in the table.
 
@@ -26,7 +26,7 @@ The following tables include information about Portal controls, including the lo
 <a name="extension-controls-controls-that-are-used-by-other-controls"></a>
 ## Controls that are used by other controls
 
-<!-- TODO:  Determine whether there are samples and experiences that do not need to be documented in separate documents.  If so, determine whether it is appropriate for them to be combined into the following separate table.-->
+<!-- TODO:  Determine whether there are samples and experiences that are best documented inside an existing document instead of being  documented in separate documents.  If so, determine whether it is appropriate for them to be combined into the following separate table.-->
 
 | Control        | Sample | Experience |
 | -------------- | --------- | -------------- |
@@ -158,7 +158,9 @@ The following controls have been deprecated.  They have been replaced with more 
 | Selector |  |  `<dir>\Client\V1\Controls\Selector\ViewModels\ SelectorViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/SelectorInstructions/selectedItem/SelectorInstructions/selectedValue/SelectorInstructions | 
 
 
-
+<!--
+ gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-controls.md"}
+ -->
 
 <a name="extension-controls-faqs-for-extension-controls"></a>
 ## FAQs for Extension Controls
