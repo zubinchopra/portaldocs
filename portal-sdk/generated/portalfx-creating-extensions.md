@@ -248,11 +248,11 @@ Next Steps: To debug issues loading an extension in the portal, go through the [
 
 <!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  portalfx-extensions-blade-helloWorld-references.md -->
 
-<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  top-extensions-stackoverflow.md -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-stackoverflow.md -->
 
 <a name="getting-started-with-the-portal-sdk-questions"></a>
 ### Questions?
 
 Ask questions on: [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).
 
-<!-- TODO:  deprecate the preceding   section of this document by removing it.  It has been  replaced by  top-extensions-stackoverflow.md -->
+<!-- TODO:  deprecate the preceding   section of this document by removing it.  It has been  replaced by  portalfx-stackoverflow.md -->

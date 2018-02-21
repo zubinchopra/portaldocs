@@ -69,7 +69,7 @@ barChartView.seriesView([barSeriesView]);
 
 <!-- TODO: Determine the whereabouts of this sample, because it no longer ships with the SDK under the following name. -->
 Another example of using the auto-generated series views functionality is located at 
-`\Client\Controls\Chart\ViewModels\LineChartDateBasedViewModels.ts`.
+`\Client\V1\Controls\Chart\ViewModels\LineChartDateBasedViewModels.ts`.
 
 For an example that demonstrates how series views are created explicitly by the extension, see 
 `<dir>\Client\V1\Controls\Chart\ViewModels\OverlayedViewChartViewModels.ts`.
