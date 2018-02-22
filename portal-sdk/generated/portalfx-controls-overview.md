@@ -71,29 +71,18 @@ The following tables include information about Portal controls, including the lo
 | Slider |  | `<dir>\Client\V2\Controls\Slider\ SliderBlade.ts` |  |
 | Storage |  | `<dir>\Client\V2\Controls\Storage\ FileShareDropDownBlade.ts` |  |
 | Video |  | `<dir>\Client\V2\Controls\Video\VideoBlade.ts` |  |
-| ControlIndexBlade |  | `<dir>\Client\V1\Controls\ControlIndexBlade .ts` |  |
-| DiffEditor  |  | `<dir>\Client\V1\Controls\DiffEditor  .ts` |  |
-| DockedBalloon |  | `<dir>\Client\V1\Controls\DockedBalloon .ts` |  |
-| Gallery |  | `<dir>\Client\V1\Controls\Gallery .ts` |  |
-| Graph |  | `<dir>\Client\V1\Controls\Graph .ts` |  |
-| HotSpot |  | `<dir>\Client\V1\Controls\HotSpot .ts` |  |
-| IFrame |  | `<dir>\Client\V1\Controls\IFrame .ts` |  |
-| JSONEditor |  | `<dir>\Client\V1\Controls\JSONEditor .ts` |  |
-| Legend |  | `<dir>\Client\V1\Controls\Legend.ts` |  |
-| ListView |  | `<dir>\Client\V1\Controls\ListView.ts` |  |
-|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
-|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
-|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
-|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
-|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
-|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
-|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
-|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
-|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
-|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
-|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
-|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
-|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
+| DockedBalloon | Also see Infoballoon. | `<dir>\Client\V1\Controls\DockedBalloon\ViewModels\DockedBalloonViewModels.ts` |  |
+| Graph |  | `<dir>\Client\V1\Controls\Graph\ViewModels\ GraphCustomNodesViewModels.ts` <br> `<dir>\Client\V1\Controls\Graph\ViewModels\ GraphIndexViewModels.ts` <br> `<dir>\Client\V1\Controls\Graph\ViewModels\ GraphViewModels.ts` |  |
+| JSONEditor |  | `<dir>\Client\V1\Controls\JSONEditor\ViewModels\JSONEditorViewModels.ts` |  |
+| Legend |  | `<dir>\Client\V1\Controls\Legend\ViewModels\LegendViewModels.ts` |  |
+| ListView |  |  `<dir>\Client\V1\Controls\ListView\ViewModels\BasicListViewViewModels.ts` <br>  `<dir>\Client\V1\Controls\ListView\ViewModels\CustomListViewViewModels.ts` <br>  `<dir>\Client\V1\Controls\ListView\ViewModels\IndexViewModels.ts` <br>  `<dir>\Client\V1\Controls\ListView\ViewModels\ListViewChildBladeViewModels.ts` |  |
+| LogStream |  | `<dir>\Client\V1\Controls\LogStream\ViewModels\LogStreamViewModel.ts` |  |
+
+| Metrics |  | `<dir>\Client\V1\Controls\Metrics\ViewModels\MetricsViewModels.ts` |  |
+| Preview |  | `<dir>\Client\V1\Controls\Preview\Menu\ViewModels\MenuViewModels.ts` |  |
+| ProgressBar |  | `<dir>\Client\V1\Controls\ProgressBar\ViewModels\ProgressBarViewModels.ts` |  |
+| Tree |  | `<dir>\Client\V1\Controls\Tree\TreeBlade.ts`  `<dir>\Client\V1\Controls\Tree\TreeItemBlade.ts` |  |
+
 
 <a name="drop-downs"></a>
 ## Drop downs
@@ -109,7 +98,6 @@ The following tables include information about Portal controls, including the lo
 | Editor      | Document | Sample | Experience |
 | ----------- | -------- | ------ | ---------- |
 | Code editor | [portalfx-controls-editor.md](portalfx-controls-editor.md) | | 
-| Diff editor |  |  |http://aka.ms/portalfx/samples#blade/SamplesExtension/DiffEditorInstructions/selectedItem/DiffEditorInstructions/selectedValue/DiffEditorInstructions | 
 
 <a name="forms"></a>
 ## Forms
@@ -129,6 +117,8 @@ The following tables include information about Portal controls, including the lo
 | Custom Value Slider |   |   |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/SlidersInstructions/selectedItem/SlidersInstructions/selectedValue/SlidersInstructions |
 | Range Slider |   |   |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/RangeSliderInstructions/selectedItem/RangeSliderInstructions/selectedValue/RangeSliderInstructions  |
 | Custom Range Slider |   |   |   (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/RangeSliderInstructions/selectedItem/CustomRangeSliderInstructions/selectedValue/CustomRangeSliderInstructions  |
+| ControlIndexBlade | This is a blade in the samples that shows a list of controls, instead of being a control. | `<dir>\Client\V1\Controls\ControlIndexBlade\ViewModels\ControlIndexViewModel.ts` |  |
+| UnsupportedIndexBlade | This is a blade in the samples that shows a list of controls, instead of being a control. | `<dir>\Client\V1\Controls\UnsupportedIndexBlade\ViewModels\UnsupportedIndexViewModel.ts` | .  |
 
 <a name="lists"></a>
 ## Lists
@@ -188,7 +178,16 @@ The following controls have been deprecated.  They have been replaced with more 
 | Control  | Document | Sample | Experience |
 | -------- | -------- | ------ | ---------- |
 | AzureMediaPlayer | Unsupported | Reserved for Azure media services team  |
-| DiffEditor  | Obsolete. Use  editor instead | |
+| DiffEditor  | Obsolete. Use  Code editor instead. | `<dir>\Client\V1\Controls\DiffEditor\ViewModels\DiffEditorViewModels.ts` |  http://aka.ms/portalfx/samples#blade/SamplesExtension/DiffEditorInstructions/selectedItem/DiffEditorInstructions/selectedValue/DiffEditorInstructions | 
 | Drop Down  | Obsolete.  Use V2 control instead.  | `<dir>\Client\V1\Controls\ DropDown\ViewModels\DropDownViewModels.ts`  | |
 | Essentials Control | Obsolete.  Use V2 control instead.  | `<dir>\Client\V1\Controls\Essentials\ViewModels\DefaultEssentialsViewModel.ts`  <br> `<dir>\Client\V1\Controls\Essentials\ViewModels\IndexViewModels.ts`  | |
-| Selector |  |  `<dir>\Client\V1\Controls\Selector\ViewModels\ SelectorViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/SelectorInstructions/selectedItem/SelectorInstructions/selectedValue/SelectorInstructions | 
+| Gallery | Obsolete. | `<dir>\Client\V1\Controls\Gallery\ViewModels\GalleryViewModels.ts` |  |
+| HotSpot | Obsolete. Use fx click instead. | `<dir>\Client\V1\Controls\HotSpot\ViewModels\HotSpotViewModels.ts` |  |
+| IFrame |  Obsolete. | `<dir>\Client\V1\Controls\IFrame\ViewModels\IFrameViewModels.ts` |  |
+| Map | Obsolete.  | `<dir>\Client\V1\Controls\Map\ViewModels\BaseMapViewModels.ts` <br> `<dir>\Client\V1\Controls\Map\ViewModels\HexagonLayoutViewModels.ts` <br> `<dir>\Client\V1\Controls\Map\ViewModels\IndexViewModels.ts`  |  |
+| PairedTimeline |  Unsupported | Reserved for partner use. <!-- TODO:  Locate one partner team that still uses this. --> | `<dir>\Client\V1\Controls\PairedTimeline\ViewModels\PairedTimelineViewModels.ts` |  |
+| QueryBuilder | Obsolete.  Use pill control instead, or build a custom control for complicated queries.  | `<dir>\Client\V1\Controls\QueryBuilder\ViewModels\QueryBuilderViewModels.ts` |  |
+| Selector | Obsolete. Use single blade experiences and fx clicks to launch blades | `<dir>\Client\V1\Controls\Selector\ViewModels\SelectorViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/SelectorInstructions/selectedItem/SelectorInstructions/selectedValue/SelectorInstructions |
+| SpecComparisonTable | Obsolete.   | `<dir>\Client\V1\Controls\SpecComparisonTable\ViewModels\SpecComparisonTableViewModels.ts` |  |
+| StringList |   Obsolete.  Use pill control instead, or build a custom control for complicated queries. | `<dir>\Client\V1\Controls\StringList\ViewModels\StringListViewModels.ts` |  |
+| TokenComboBox |  Obsolete. Use the  V2 Dropdown box instead. | `<dir>\Client\V1\Controls\TokenComboBox\ViewModels\TokenComboBoxViewModels.ts` |  |
