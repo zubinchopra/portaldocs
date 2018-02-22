@@ -1,6 +1,9 @@
 
-<a name="loading-editing-and-saving-data"></a>
-## Loading, editing and saving data
+<a name="forms-construction"></a>
+## Forms Construction
+
+<a name="forms-construction-loading-editing-and-saving-data"></a>
+### Loading, editing and saving data
 
 This sample reads and writes data to the server directly via `ajax()` calls. It loads and saves data by creating an `EditScopeCache` object and defining two functions. The `supplyExistingData` function reads the data from the server, and the `saveEditScopeChanges` function writes it back.
 

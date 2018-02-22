@@ -91,13 +91,57 @@ You can ask questions on Stackoverflow with the tag [ibiza](https://stackoverflo
 
 
 
-<a name="edit-scopes"></a>
-## Edit Scopes
+<a name="extension-configurations"></a>
+## Extension Configurations
 
-FAQ's that are associated with edit scopes that are still on forms. 
+FAQ's that are associated with configurations for extensions.
 
 <a name="frequently-asked-questions"></a>
 ## Frequently asked questions
+
+<a name="frequently-asked-questions-ssl-certs"></a>
+### SSL certs
+
+***How do I use SSL certs?***
+
+[portalfx-extensions-faq-debugging.md#sslCerts](portalfx-extensions-faq-debugging.md#sslCerts)
+
+* * *
+
+<a name="frequently-asked-questions-loading-different-versions-of-an-extension"></a>
+### Loading different versions of an extension
+
+***How do I load different versions of an extension?***
+
+Understanding which extension configuration to modify is located at [portalfx-extensions-configuration-overview.md#understanding-which-extension-configuration-to-modify](portalfx-extensions-configuration-overview.md#understanding-which-extension-configuration-to-modify).
+
+
+
+
+<a name="forms"></a>
+## Forms
+
+FAQ's for forms.
+
+<a name="frequently-asked-questions"></a>
+## Frequently asked questions
+
+<a name="frequently-asked-questions-should-i-use-an-action-bar-or-a-commands-toolbar-on-my-form"></a>
+### Should I use an action bar or a commands toolbar on my form?
+
+It depends on the scenario that drives the UX. If the form will capture some data from the user and expect the blade to be closed after submitting the changes, then use an action bar, as specified in [portalfx-ux-create-forms.md#action-bar-+-blue-buttons](portalfx-ux-create-forms.md#action-bar-+-blue-buttons).  However, if the form will edit or update some data, and expect the user to make multiple changes before the blade is closed, then use commands, as specified in [portalfx-commands.md](portalfx-commands.md). 
+
+* Action Bar
+
+  The action bar will have one button whose label is something like "OK", "Create", or "Submit". The blade should automatically close immediately after the action bar button is clicked. Users can abandon the form by clicking the Close button that is located at the top right of the application bar. Developers can use a `ParameterProvider` to simplify the code, because it provisions the `editScope` and implicitly closes the blade based on clicking on the action bar. 
+
+  Alternatively, the action bar can contain two buttons, like "OK" and "Cancel", but that requires further configuration. The two-button method is not recommended because the "Cancel" button is made redundant by the Close button.
+
+* Commands
+  
+  Typically, the two commands at the top of the blade are the "Save" command and the "Discard" command. The user can make edits and click "Save" to commit the changes. The blade should show the appropriate UX for saving the data, and will stay on the screen after the data has been saved. The user can make further changes and click "Save" again. The user can also discard their changes by clicking "Discard". Once the user is satisfied with the changes, they can close the blade manually.
+  
+* * * 
 
 <a name="frequently-asked-questions-discard-change-pop-up-always-displayed"></a>
 ### Discard change pop-up always displayed
@@ -136,193 +180,22 @@ SOLUTION: This varies according to the UX design. Developers can choose between 
 
 ***Q: Form fields have two constructor overloads, which should I use? What is an EditScopeAccessor?*** 
 
-SOLUTION: For more information about EditScopeAccessors, see [portalfx-forms-working-with-edit-scopes.md#editscopeaccessor](portalfx-forms-working-with-edit-scopes.md#editscopeaccessor).
+SOLUTION: For more information about EditScopeAccessors, see [portalfx-legacy-editscopes.md#editscopeaccessor](portalfx-legacy-editscopes.md#editscopeaccessor).
 
 * * * 
 
-<a name="frequently-asked-questions-type-metadata"></a>
-### Type metadata
-<!-- TODO:  Move this back to the TypeScript  document -->
-***Q: When do I need to worry about type metadata for my EditScope?***
-
-SOLUTION: For many of the most common, simple Form scenarios, there is no need to describe the EditScope/Form model in terms of type metadata. Generally speaking, supplying type metadata is the way to turn on advanced FX behavior, in much the same way that - in .NET - developers apply custom attributes to their .NET types to tailor .NET FX behavior for the types.
-
-For more information about type metadata, see [portalfx-data-typemetadata.md](portalfx-data-typemetadata.md).
-
- For EditScope and Forms, extensions supply [type metadata] for the following scenarios: 
-<a name="frequently-asked-questions-type-metadata-editable-grid"></a>
-#### Editable grid
-<a name="frequently-asked-questions-type-metadata-entity-type"></a>
-#### Entity-type
-
-* **Editable grid** - Today's editable grid was developed to work exclusively with EditScope 'entity' arrays. An EditScope 'entity' array is one where created/updated/deleted array items are tracked individually by EditScope. To grant this special treatment to an array in the EditScope/Form model, supply type metadata for the type of the array items (for the `T` in `KnockoutObservableArray<T>`). The type is marked as an "entity type" and, the property/properties that constitute the entity's 'id' are specified in the following examples. 
-
-In TypeScript:
-
-```typescript
-
-MsPortalFx.Data.Metadata.setTypeMetadata("GridItem", {
-properties: {
-    key: null,
-    option: null,
-    value: null
-},
-entityType: true,
-idProperties: [ "key" ]
-});
-
-```
-
-In C#:
-
-```csharp
-
-[TypeMetadataModel(typeof(Person), "SamplesExtension.DataModels")]
-[EntityType]
-public class Person
-{
-    /// <summary>
-    /// Gets or sets the SSN of the person.
-    /// The "Id" attribute will be serialized to TypeScript/JavaScript as part of type metadata, and will be used
-    /// by MsPortalFx.Data.DataSet in its "merge" method to merge data by identity.
-    /// </summary>
-    [Id]
-    public int SsnId { get; set; }
-    
-```
-  
-<a name="frequently-asked-questions-type-metadata-track-edits"></a>
-#### Track edits
-
-* **Opting out of edit tracking** - There are Form scenarios where some properties on the EditScope/Form model are not meant for editing but are - possibly - for presentation only. In this situation, the extension can instruct EditScope to *not track* user edits for such EditScope/Form model properties, like so:
-
-In TypeScript:  
-
-    MsPortalFx.Data.Metadata.setTypeMetadata("Employee", {
-        properties: {
-            accruedVacationDays: { trackEdits: false },
-            ...
-        },
-        ...
-    });  
-
-In C#:  
-
-    [TypeMetadataModel(typeof(Employee))]
-    public class Employee
-    {
-        [TrackEdits(false)]
-        public int AccruedVacationDays { get; set; }
-
-        ...
-    }  
-
-Extensions can supply type metadata to configure their EditScope as follows:  
-
-* When using ParameterProvider, supply the '`editScopeMetadataType`' option to the ParameterProvider constructor.
-* When using EditScopeCache, supply the '`entityTypeName`' option to '`MsPortalFx.Data.EditScopeCache.createNew`'.
-
-To either of these, extensions pass the type name used when registering the type metadata via '`MsPortalFx.Data.Metadata.setTypeMetadata`'.  
-  
-* * * 
-
-<a name="frequently-asked-questions-missing-rows-from-editable-grid"></a>
-### Missing rows from editable grid
-<!-- TODO:  Move this to the EditScope document -->
-***Q: The user added/removed rows from my editable grid, but I don't see the corresponding adds/removes in my EditScope array.  What gives?***
-
-SOLUTION: EditScope 'entity' arrays were designed with a few requirements in mind:
-* The user's edits need to be serialized so that Journey-switching works with unsaved Form edits. For editing large arrays, the FX should not serialize array edits by persisting two full copies of the (could-be-large) array.
-* In the UI, the FX will want to render an indication of what array items were created/updated/deleted. In some cases, array removes need to be rendered with strike-through styling.
-* Array adds/remove need to be revertable for some scenarios.
-
-The resulting EditScope design was to make EditScope 'entity' arrays behave differently than regular JavaScript arrays.  Importantly:
-* 'Creates' are kept out-of-band
-* 'Deletes' are non-destructive
-
-To conveniently see the *actual* state of an EditScope 'entity' array, use the '`getEntityArrayWithEdits`' EditScope method. This returns:
-* An array that includes 'created' entities and doesn't include 'deleted' entities
-* Discrete arrays that individually capture 'created', 'updated' and 'deleted' entities  
-
-This '`getEntityArrayWithEdits`' is particularly useful in ParameterProvider's '`mapOutgoingDataForCollector`' callback when returning an edited array to some ParameterCollector:
-
-```typescript
-
-this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModels.ServerConfig[], KnockoutObservableArray<DataModels.ServerConfig>>(container, {
-    editScopeMetadataType: DataModels.ServerConfigType,
-    mapIncomingDataForEditScope: (incoming) => {
-        return ko.observableArray(incoming);  // Editable grid can only bind to an observable array.
-    },
-    mapOutgoingDataForCollector: (outgoing) => {
-        const editScope = this.parameterProvider.editScope();
-
-        // Use EditScope's 'getEntityArrayWithEdits' to return an array with all created/updated/deleted items.
-        return editScope.getEntityArrayWithEdits<DataModels.ServerConfig>(outgoing).arrayWithEdits;
-    }
-});
-
-```
-
-<a name="frequently-asked-questions-missing-rows-from-editable-grid-apply-array-as-edits"></a>
-#### Apply array as edits
-
-And there is a corresponding '`applyArrayAsEdits`' EditScope method that simplifies applying edits to an existing EditScope 'entity' array. This is often done in a ParameterCollector's '`receiveResult`' callback, as in the following example.
-
-```typescript
-
-this.itemsCollector = new MsPortalFx.ViewModels.ParameterCollector<DataModels.ServerConfig[]>(container, {
-    selectable: this.itemsSelector.selectable,
-    supplyInitialData: () => {
-        const editScope = this._editScopeView.editScope();
-
-        // Use EditScope's 'getEntityArrayWithEdits' to develop an array with all created/updated/deleted items
-        // in this entity array.
-        return editScope.getEntityArrayWithEdits<DataModels.ServerConfig>(editScope.root.serverConfigs).arrayWithEdits;
-    },
-    receiveResult: (result: DataModels.ServerConfig[]) => {
-        const editScope = this._editScopeView.editScope();
-
-        // Use EditScope's 'applyArrayWithEdits' to examine the array returned from the Provider Blade
-        // and apply any differences to our EditScope entity array in terms of created/updated/deleted entities.
-        editScope.applyArrayAsEdits(result, editScope.root.serverConfigs);
-    }
-});
-
-```
-
-This pair of EditScope methods significantly simplifies working with EditScope 'entity' arrays.  
-  
-* * *
 
 <a name="frequently-asked-questions-keeping-editscope-from-tracking-changes"></a>
 ### Keeping EditScope from tracking changes
 
 ***Q: Some of my Form data is not editable. How do I keep EditScope from tracking changes for this data?***
 
-SOLUTION: For more information about configuring an EditScope by using type metadata, see [portalfx-extensions-faq-edit-scope.md#track-edits](portalfx-extensions-faq-edit-scope.md#track-edits).
+SOLUTION: For more information about configuring an EditScope by using type metadata, see [portalfx-extensions-faq-forms.md#track-edits](portalfx-extensions-faq-forms.md#track-edits).
   
 * * *
 
-<a name="frequently-asked-questions-key-value-pairs"></a>
-### Key-value pairs
-<!-- TODO:  Move this to the EditScope or edit grid document -->
-***Q: My Form data is just key/value-pairs. How do I model a Dictionary/StringMap in EditScope? Why can't I just use a JavaScript object like a property bag?***
 
-SOLUTION: Like all models and view models treated by the Azure Portal FX, after the object/array is instantiated and returned to the FX in the process of rendering the UI, any subsequent mutation of that object/array should be done by changing/mutating **Knockout** observables. Portal controls and Knockout HTML template rendering both subscribe to these observables and re-render only when these observables change value.  
-
-This poses a challenge to the common JavaScript programming technique of treating a JavaScript object as a property bag of key-value-pairs. If an extension only adds or removes keys from a model or ViewModel object, the FX will not be aware of these changes. EditScope will not recognize these changes as user edits and therefore such key adds/removes will put EditScope edit-tracking in an inconsistent state.  
-
-So, how does an extension model a Dictionary/StringMap/property bag when using the Portal FX and EditScope?  
-
-The pattern is to develop the Dictionary/StringMap/property bag as an observable array of key/value-pairs, like `KnockoutObservableArray<{ key: string; value: TValue; }>`.  
-
-Often, additionally, it is important to let users edit the Dictionary/StringMap/property bag using *an editable grid*. In such cases, it is important to describe the array of key/value-pairs as an 'entity' array since editable grid can only be bound to an EditScope 'entity' array. See [above](#editable-grid) re: how to develop type metadata to use the array with editable grid.  
-
-Here's a sample that does something similar, converting - in this case - an array of strings into an 'entity' array for consumption by editable grid.  
-
-* * *
-
-<a name="frequently-asked-questions-key-value-pairs-modeling-your-data-as-an-entity-array"></a>
+<a name="frequently-asked-questions-keeping-editscope-from-tracking-changes-modeling-your-data-as-an-entity-array"></a>
 #### Modeling your data as an &#39;entity&#39; array
 
 SOLUTION: 
@@ -345,7 +218,7 @@ value: KnockoutObservable<string>;
 
 * * *
 
-<a name="frequently-asked-questions-key-value-pairs-converting-your-data-to-an-entity-array-for-consumption-by-editable-grid"></a>
+<a name="frequently-asked-questions-keeping-editscope-from-tracking-changes-converting-your-data-to-an-entity-array-for-consumption-by-editable-grid"></a>
 #### Converting your data to an &#39;entity&#39; array for consumption by editable grid
 
 SOLUTION: 
@@ -414,7 +287,7 @@ EditScope data follows a particular data model. In short, the EditScope is a hie
 * the EditScope includes an array of 'entity' objects
 * some EditScope object includes a property that is 'entity'-typed  
 
-An object is treated by EditScope as an 'entity' when type metadata associated with the object is marked as an 'entity' type (see [here](#entity-type) and the EditScope video/PPT [here](portalfx-forms-working-with-edit-scopes.md) for more details).
+An object is treated by EditScope as an 'entity' when type metadata associated with the object is marked as an 'entity' type (see [here](#entity-type) and the EditScope video located at [here](portalfx-legacy-editscopes.md) for more details).
 
 Every 'entity' object is tracked by the EditScope as being created/updated/deleted. Extension developers define 'entities' at a granularity that suit their scenario, making it easy to determine what in their larger EditScope/Form data model has been user-edited.  
 
@@ -443,61 +316,9 @@ Often, extensions encounter this "Entity-typed object/array is not known to this
 ***"Encountered a property 'foo' on an editable object that is not present on the original object..."***
 
 SOLUTION: 
-As discussed in [portalfx-extensions-faq-edit-scope.md#key-value-pairs](portalfx-extensions-faq-edit-scope.md#key-value-pairs), the extension should mutate the EditScope/Form model by making observable changes and by calling EditScope APIs. For any object residing in the `EditScope`, merely adding and removing keys cannot be detected by `EditScope` or by the FX at large and, consequently, edits cannot be tracked. When an extension attempts to add or remove keys from an `EditScope` object, this puts the `EditScope` edit-tracking in an inconsistent state. When the `EditScope` detects such an inconsistency, it issues the `Encountered a property...` error to encourage the extension developer to use only observable changes and `EditScope` APIs to mutate/change the EditScope/Form model.  
+As discussed in [portalfx-extensions-faq-forms.md#key-value-pairs](portalfx-extensions-faq-forms.md#key-value-pairs), the extension should mutate the EditScope/Form model by making observable changes and by calling EditScope APIs. For any object residing in the `EditScope`, merely adding and removing keys cannot be detected by `EditScope` or by the FX at large and, consequently, edits cannot be tracked. When an extension attempts to add or remove keys from an `EditScope` object, this puts the `EditScope` edit-tracking in an inconsistent state. When the `EditScope` detects such an inconsistency, it issues the `Encountered a property...` error to encourage the extension developer to use only observable changes and `EditScope` APIs to mutate/change the EditScope/Form model.  
 
 * * *
-
-<a name="extension-configurations"></a>
-## Extension Configurations
-
-FAQ's that are associated with configurations for extensions.
-
-<a name="frequently-asked-questions"></a>
-## Frequently asked questions
-
-<a name="frequently-asked-questions-ssl-certs"></a>
-### SSL certs
-
-***How do I use SSL certs?***
-
-[portalfx-extensions-faq-debugging.md#sslCerts](portalfx-extensions-faq-debugging.md#sslCerts)
-
-* * *
-
-<a name="frequently-asked-questions-loading-different-versions-of-an-extension"></a>
-### Loading different versions of an extension
-
-***How do I load different versions of an extension?***
-
-Understanding which extension configuration to modify is located at [portalfx-extensions-configuration-overview.md#understanding-which-extension-configuration-to-modify](portalfx-extensions-configuration-overview.md#understanding-which-extension-configuration-to-modify).
-
-
-
-
-<a name="forms"></a>
-## Forms
-
-FAQ's for forms.
-
-<a name="frequently-asked-questions"></a>
-## Frequently asked questions
-
-<a name="frequently-asked-questions-should-i-use-an-action-bar-or-a-commands-toolbar-on-my-form"></a>
-### Should I use an action bar or a commands toolbar on my form?
-
-It depends on the scenario that drives the UX. If the form will capture some data from the user and expect the blade to be closed after submitting the changes, then use an action bar, as specified in [portalfx-ux-create-forms.md#action-bar-+-blue-buttons](portalfx-ux-create-forms.md#action-bar-+-blue-buttons).  However, if the form will edit or update some data, and expect the user to make multiple changes before the blade is closed, then use commands, as specified in [portalfx-commands.md](portalfx-commands.md). 
-
-* Action Bar
-
-  The action bar will have one button whose label is something like "OK", "Create", or "Submit". The blade should automatically close immediately after the action bar button is clicked. Users can abandon the form by clicking the Close button that is located at the top right of the application bar. Developers can use a `ParameterProvider` to simplify the code, because it provisions the `editScope` and implicitly closes the blade based on clicking on the action bar. 
-
-  Alternatively, the action bar can contain two buttons, like "OK" and "Cancel", but that requires further configuration. The two-button method is not recommended because the "Cancel" button is made redundant by the Close button.
-
-* Commands
-  
-  Typically, the two commands at the top of the blade are the "Save" command and the "Discard" command. The user can make edits and click "Save" to commit the changes. The blade should show the appropriate UX for saving the data, and will stay on the screen after the data has been saved. The user can make further changes and click "Save" again. The user can also discard their changes by clicking "Discard". Once the user is satisfied with the changes, they can close the blade manually.
-
-
 
 <a name="hosting-service"></a>
 ## Hosting Service
@@ -807,7 +628,7 @@ SOLUTION:  Some troubleshooting steps are located at [https://stackoverflow.micr
 
 ***Sideloading friendly names is not working in the Dogfood environment***
 
-In order for Portal to load  a test version of an extension, i.e., load without using the PROD stamp, developers can append the feature flag `feature.canmodifystamps`. The following example uses the sideload url to load the "test" version of extension.
+In order for Portal to load a test version of an extension, i.e., load without using the PROD configuration, developers can append the feature flag `feature.canmodifystamps`. The following example uses the sideload url to load the "test" version of extension.
 
 `https://portal.azure.com?feature.canmodifystamps=true&<extensionName>=test`
 
