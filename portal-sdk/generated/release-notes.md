@@ -172,6 +172,18 @@
 0 Breaking Changes, 2 Features added and 0 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1570341'>1570341</a></td><td>Feature</td><td>[MonitorChart] Enable batching everywhere</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1554451'>1554451</a></td><td>Feature</td><td>Enable Coadmins feature flag in Ibiza FF and MC - config changes</td></tr></table>
 
+## 5.0.302.1016
+0 Breaking Changes, 1 Features added and 5 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2146411'>2146411</a></td><td>Bug Fix</td><td>Use LocalizationProject property in V2 targets</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2144512'>2144512</a></td><td>Bug Fix</td><td>Enable improved sidebar/flyout in national clouds</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2045720'>2045720</a></td><td>Bug Fix</td><td>Extra horizontal scroll bar in collapsed browse blade because of filter content.</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1891321'>1891321</a></td><td>Bug Fix</td><td>Cleanup content package test</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1891303'>1891303</a></td><td>Bug Fix</td><td>[CloudBuild] Include MSBuild ItemList None to content package</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1878101'>1878101</a></td><td>Feature</td><td>[Browse] Update hidden types checkbox label</td></tr></table>
+
+## 5.0.302.1015
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2143684'>2143684</a></td><td>Bug Fix</td><td>SDK Version comparison should use compareto</td></tr></table>
+
+## 5.0.302.1014
+0 Breaking Changes, 2 Features added and 3 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2079027'>2079027</a></td><td>Feature</td><td>Remove NewRelic from the portal</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2052782'>2052782</a></td><td>Bug Fix</td><td>Commit generated client resource d.ts files</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1927138'>1927138</a></td><td>Feature</td><td>[Microsoft_Intune_Edu] Updating help/support link in prod environment</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1893314'>1893314</a></td><td>Bug Fix</td><td>Split PerformanceExtension to client/server projects</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1893030'>1893030</a></td><td>Bug Fix</td><td>Migrate PerformanceExtension to use V2 targets</td></tr></table>
+
 ## 5.0.302.1013
 0 Breaking Changes, 0 Features added and 2 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2104476'>2104476</a></td><td>Bug Fix</td><td>[ICM] PublishSettings certificate is not compatible with Powershell azure commands</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2069386'>2069386</a></td><td>Bug Fix</td><td>Remove SOS ManifestCache from all environments</td></tr></table>
