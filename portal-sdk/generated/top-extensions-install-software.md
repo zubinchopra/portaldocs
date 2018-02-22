@@ -31,7 +31,7 @@ Install the following software. Your team should be aware of the most current do
 
 1. Node tools that are located at [https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1](https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1)
 
-1. Nuget package loading instructions are located at [top-portalfx-extensions-nuget.md](top-portalfx-extensions-nuget.md) and at [portalfx-extensions-getting-started-procedure.md](portalfx-extensions-getting-started-procedure.md).
+1. Nuget package loading instructions are located at [top-extensions-nuget.md](top-extensions-nuget.md) and at [portalfx-extensions-getting-started-procedure.md](portalfx-extensions-getting-started-procedure.md).
 
 1. Set up the source code management system on your computer. Teams use **GitHub**, **VSO**, and other content management systems. Which one is used by your team is team-dependent.
 

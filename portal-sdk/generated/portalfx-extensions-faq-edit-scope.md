@@ -38,7 +38,7 @@ SOLUTION: This varies according to the UX design. Developers can choose between 
 
 ***Q: Form fields have two constructor overloads, which should I use? What is an EditScopeAccessor?*** 
 
-SOLUTION: For more information about EditScopeAccessors, see [portalfx-forms-working-with-edit-scopes.md#editscopeaccessor](portalfx-forms-working-with-edit-scopes.md#editscopeaccessor).
+SOLUTION: For more information about EditScopeAccessors, see [portalfx-legacy-editscopes.md#editscopeaccessor](portalfx-legacy-editscopes.md#editscopeaccessor).
 
 * * * 
 
@@ -216,9 +216,9 @@ This poses a challenge to the common JavaScript programming technique of treatin
 
 So, how does an extension model a Dictionary/StringMap/property bag when using the Portal FX and EditScope?  
 
-The pattern is to develop the Dictionary/StringMap/property bag as an observable array of key/value-pairs, like `KnockoutObservableArray<{ key: string; value: TValue; }>`.  
+The pattern is to develop the Dictionary/StringMap/property bag as an observable array of key/value-pairs, like `KnockoutObservableArray<{ key: string; value: TValue; }>`. 
 
-Often, additionally, it is important to let users edit the Dictionary/StringMap/property bag using *an editable grid*. In such cases, it is important to describe the array of key/value-pairs as an 'entity' array since editable grid can only be bound to an EditScope 'entity' array. See [above](#editable-grid) re: how to develop type metadata to use the array with editable grid.  
+Often, additionally, it is important to let users edit the Dictionary/StringMap/property bag using *an editable grid*. In such cases, it is important to describe the array of key/value-pairs as an 'entity' array since editable grid can only be bound to an EditScope 'entity' array. For more information about how to develop type metadata to use the array with editable grid, see [#editable-grid](#editable-grid).
 
 Here's a sample that does something similar, converting - in this case - an array of strings into an 'entity' array for consumption by editable grid.  
 
@@ -316,7 +316,7 @@ EditScope data follows a particular data model. In short, the EditScope is a hie
 * the EditScope includes an array of 'entity' objects
 * some EditScope object includes a property that is 'entity'-typed  
 
-An object is treated by EditScope as an 'entity' when type metadata associated with the object is marked as an 'entity' type (see [here](#entity-type) and the EditScope video/PPT [here](portalfx-forms-working-with-edit-scopes.md) for more details).
+An object is treated by EditScope as an 'entity' when type metadata associated with the object is marked as an 'entity' type (see [here](#entity-type) and the EditScope video located at [here](portalfx-legacy-editscopes.md) for more details).
 
 Every 'entity' object is tracked by the EditScope as being created/updated/deleted. Extension developers define 'entities' at a granularity that suit their scenario, making it easy to determine what in their larger EditScope/Form data model has been user-edited.  
 
