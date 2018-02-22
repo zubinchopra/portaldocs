@@ -81,4 +81,34 @@ Once the name of the extension is finalized, it is time to register the extensio
 
 There are three typical release kinds. Private preview, public preview, and GA. For the purposes of deployment public preview and GA are the same. The only difference is that the UI may show preview labels and disclaimers where appropriate. For more information about the three kinds of releases, see  [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
 
+## Private preview
+
+For a private preview, the goal is to hide your experience to the general public, but show it to a limited audience. This procedure assumes that the discoverable entry point in the product is the All Services menu, also known as the Browse menu.
+
+Hiding or showing items in the all services menu is controlled by the extension configuration that gets deployed with your extension. The following  example shows how to set it up. 
+<!--
+TODO - Example here - Add after the feature is ready (ETA is 4-8 weeks) -->
+
+When in the hidden state, users will not be able to browse to or search for the entry point of the extension. However, you can distribute a special link like the following one that enables the entry point by using a feature flag.
+
+<!-- 
+TODO - Example here - Add after the feature is ready (ETA is 4-8 weeks)
+-->
+
+A few notes about this path:
+* Any user that receives this URL will be able to see your entry point.
+* Any users who receives a deep link to blades within your extension will be able to see that experience even without the feature flag
+* If the extension is integrated into the Marketplace, then that team has its own way of hiding Marketplace items. Contact <a href="mailto:1store@microsoft.com?subject=Integrating a New Extension into the Marketplace">1store@microsoft.com </a> for more details.
+
+## Public preview or GA
+
+You are required to check the quality of your extension. We have standardized ways of measuring reliability and performance at key areas. If you have a private preview then we have already collected this data for you. For more information about the quality checks and the tools that the portal team provides, see [portalfx-extensions-qualityEssentials.md](portalfx-extensions-qualityEssentials.md).
+
+There is no blocking exit criteria, which means you do not have to prove that the extension's performance and reliability are in the required range. However, once you ship, the Portal team will monitor the quality of the extension. Extensions that do not meet the required quality bar will be flagged in executive reviews and will be asked to improve their quality as soon as possible.
+
+When you are ready for all users to see your experience you need to do everything mentioned above, except you will enable your entry point as shown in the following example and then deploy your extension.
+<!--
+TODO - Example here - Add after the feature is ready (ETA is 4-8 weeks)
+-->
+
 You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
