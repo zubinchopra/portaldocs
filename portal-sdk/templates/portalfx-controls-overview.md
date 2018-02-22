@@ -29,22 +29,43 @@ The following tables include information about Portal controls, including the lo
 | Control |  Document | Sample | Experience |
 | ------- | -------- | ------ | ---------- |
 | Button  | | |  http://aka.ms/portalfx/samples#blade/SamplesExtension/SimpleButtonBlade |
+| Checkbox |  | `<dir>\Client\V2\Controls\Checkbox\ConsoleBlade .ts` |  |
 | File Download Button |  | `<dir>\Client\V1\Controls\FileDownloadButton\ViewModels\ FileDownloadButtonViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/FileDownloadButtonInstructions/selectedItem/FileDownloadButtonInstructions/selectedValue/FileDownloadButtonInstructions |  
 | File Upload (async) |  | `<dir>\Client\V1\Controls\AsyncFileUpload\ViewModels\ AsyncFileUploadViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/AsyncFileUploadInstructions/selectedItem/AsyncFileUploadInstructions/selectedValue/AsyncFileUploadInstructions |
 | Markdown Control | |`<dir>\Client\V1\Controls\Markdown\ViewModels\ MarkdownViewModels.ts`| http://aka.ms/portalfx/samples#blade/SamplesExtension/MarkdownInstructions/selectedItem/MarkdownInstructions/selectedValue/MarkdownInstructions |
 | OAuth Button  | | `<dir>\Client\V2\Controls\ OAuthButton\OAuthButtonBlade.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/OAuthButtonBlade | 
 | Settings | | `<dir>\Client\V1\Controls\Settings\ViewModels\ SettingsViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/SettingsInstructions/selectedItem/SettingsInstructions/selectedValue/SettingsInstructions | 
+| SimpleButton |  | `<dir>\Client\V2\Controls\SimpleButton\ SimpleButtonBlade.ts` |  |
 | Single Setting |   | `<dir>\Client\V1\Controls\SingleSetting\ViewModels\ SingleSettingViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/SingleSettingInstructions/selectedItem/SingleSettingInstructions/selectedValue/SingleSettingInstructions | 
 | Splitter | | `<dir>\Client\V2\Controls\ Splitter\SplitterBlade.ts` |  http://aka.ms/portalfx/samples#blade/SamplesExtension/SplitterBlade | 
 | Text Block  |  | `<dir>\Client\V1\Controls\TextBlock\ViewModels\ TextBlockViewModels.ts` | https://df.onecloud.azure-test.net/?samplesExtension=true#blade/SamplesExtension/TextBlockInstructions/selectedItem/TextBlockInstructions/selectedValue/TextBlockInstructions | 
-| Text Box |  [portalfx-controls-textbox.md](portalfx-controls-textbox.md)  | `<dir>\Client\V2\Controls\TextBox\TextBoxBlade.ts` | [http://aka.ms/portalfx/samples#blade/SamplesExtension/Textboxblade](http://aka.ms/portalfx/samples#blade/SamplesExtension/Textboxblade) | 
 | Toolbar   | [portalfx-controls-toolbar.md](portalfx-controls-toolbar.md)  |  `<dir>\Client\V1\Controls\Toolbar\ViewModels\ ToolbarViewModels.ts` | (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/ToolbarInstructions/selectedItem/ToolbarInstructions/selectedValue/ToolbarInstructions |
+
+## Advanced Screen Controls
+
+| Control | Document | Sample | Experience |
+| ------- | -------- | ------ | ---------- |
+| Essentials Control | [portalfx-controls-essentials.md](portalfx-controls-essentials.md)  |   `<dir>\Client\V2\Controls\ Essentials/EssentialsDefaultBlade.ts`  |   |
+| Accordion |  | `<dir>\Client\V2\Controls\Accordion\AccordionBlade.ts` |  |
+| EditableGrid |  | `<dir>\Client\V2\Controls\EditableGrid\ EditableGrid.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridCustomValidation.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridDependentDropDowns.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridDynamicCellTypes.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridMaxEntries.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridOperations.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridValidation.ts` |  |
+| Infobox |  | `<dir>\Client\V2\Controls\Infobox\InfoboxBlade.ts` |  |
+| Pill |  | `<dir>\Client\V2\Controls\Pill\ PillBlade.ts` |  |
+| SearchBox |  | `<dir>\Client\V2\Controls\SearchBox\SearchBoxBlade.ts` |  |
+| Storage |  | `<dir>\Client\V2\Controls\Storage\ FileShareDropDownBlade.ts` |  |
+| Video |  | `<dir>\Client\V2\Controls\Video\VideoBlade.ts` |  |
+| Graph |  | `<dir>\Client\V1\Controls\Graph\ViewModels\ GraphCustomNodesViewModels.ts` <br> `<dir>\Client\V1\Controls\Graph\ViewModels\ GraphIndexViewModels.ts` <br> `<dir>\Client\V1\Controls\Graph\ViewModels\ GraphViewModels.ts` |  |
+| Legend |  | `<dir>\Client\V1\Controls\Legend\ViewModels\LegendViewModels.ts` |  |
+| LogStream |  | `<dir>\Client\V1\Controls\LogStream\ViewModels\LogStreamViewModel.ts` |  |
+| Metrics |  | `<dir>\Client\V1\Controls\Metrics\ViewModels\MetricsViewModels.ts` |  |
+| Preview |  | `<dir>\Client\V1\Controls\Preview\Menu\ViewModels\MenuViewModels.ts` |  |
+| ProgressBar |  | `<dir>\Client\V1\Controls\ProgressBar\ViewModels\ProgressBarViewModels.ts` |  |
+
+
 
 ## Date and Time
 
 | Date/time Object | Document | Sample | Experience |
 | ---------------- | -------- | ------ | ---------- |
-| Essentials Control | [portalfx-controls-essentials.md](portalfx-controls-essentials.md)  |   `<dir>\Client\V2\Controls\ Essentials/ntialsDefaultBlade.ts`  |     |
 |  Date Picker  |  | `<dir>\Client\V2\Controls\ DatePicker\DatePickerBlade.ts` |   (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/DatePickerInstructions/selectedItem/DatePickerInstructions/selectedValue/DatePickerInstructions |
 | Date/Time Picker   |  [portalfx-controls-datetimepicker.md](portalfx-controls-datetimepicker.md)  |  `<dir>\Client\V2\Controls\ DateTimePicker\DateTimePickerBlade.ts`   | (experience does not work) <br>  http://aka.ms/portalfx/samples#blade/SamplesExtension/DateTimePickerInstructions/selectedItem/DateTimePickerInstructions/selectedValue/DateTimePickerInstructions |
 | Date/Time Range Picker  | [portalfx-controls-datetimerangepicker.md](portalfx-controls-datetimerangepicker.md)  |   `<dir>\Client\V2\Controls\ DateTimeRangePicker\DateTimeRangePickerBlade.ts` | (experience does not work) <br>  http://aka.ms/portalfx/samples#blade/SamplesExtension/DateTimeRangePickerInstructions/selectedItem/DateTimeRangePickerInstructions/selectedValue/DateTimeRangePickerInstructions |
@@ -52,32 +73,6 @@ The following tables include information about Portal controls, including the lo
 | Day Picker (does not work) |  | `<dir>\Client\V2\Controls\ DayPicker\DayPickerBlade.ts`   |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/DayPickerInstructions/selectedItem/DayPickerInstructions/selectedValue/DayPickerInstructions |
 | Duration Picker |  | `<dir>\Client\V1\Controls\DurationPicker\ViewModels\ DurationPickerViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/DurationPickerInstructions/selectedItem/DurationPickerInstructions/selectedValue/DurationPickerInstructions |
 | Time Picker |  | `<dir>\Client\V1\Controls\TimePicker\ViewModels\ TimePickerViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/TimePickerInstructions/selectedItem/TimePickerInstructions/selectedValue/TimePickerInstructions |
-| Accordion |  | `<dir>\Client\V2\Controls\Accordion\AccordionBlade.ts` |  |
-| Checkbox |  | `<dir>\Client\V2\Controls\Checkbox\ConsoleBlade .ts` |  |
-| EditableGrid |  | `<dir>\Client\V2\Controls\EditableGrid\ EditableGrid.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridCustomValidation.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridDependentDropDowns.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridDynamicCellTypes.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridMaxEntries.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridOperations.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridValidation.ts` |  |
-| Grid |  | `<dir>\Client\V2\Controls\Grid\ItemsWithDynamicCommandsBlade.ts` |  |
-| Infobox |  | `<dir>\Client\V2\Controls\Infobox\InfoboxBlade.ts` |  |
-| MultiLineTextBox |  | `<dir>\Client\V2\Controls\MultiLineTextBox\MultiLineTextBoxBlade.ts` |  |
-| NumericTextBox |  | `<dir>\Client\V2\Controls\NumericTextBox\NumericTextBoxBlade.ts` |  |
-| OptionPicker |  | `<dir>\Client\V2\Controls\OptionPicker\OptionPickerBlade.ts` |  |
-| Password |  | `<dir>\Client\V2\Controls\Password\PasswordBoxBlade.ts` |  |
-| Pill |  | `<dir>\Client\V2\Controls\Pill\ PillBlade.ts` |  |
-| SearchBox |  | `<dir>\Client\V2\Controls\SearchBox\SearchBoxBlade.ts` |  |
-| SimpleButton |  | `<dir>\Client\V2\Controls\SimpleButton\ SimpleButtonBlade.ts` |  |
-| Slider |  | `<dir>\Client\V2\Controls\Slider\ SliderBlade.ts` |  |
-| Storage |  | `<dir>\Client\V2\Controls\Storage\ FileShareDropDownBlade.ts` |  |
-| Video |  | `<dir>\Client\V2\Controls\Video\VideoBlade.ts` |  |
-| DockedBalloon | Also see Infoballoon. | `<dir>\Client\V1\Controls\DockedBalloon\ViewModels\DockedBalloonViewModels.ts` |  |
-| Graph |  | `<dir>\Client\V1\Controls\Graph\ViewModels\ GraphCustomNodesViewModels.ts` <br> `<dir>\Client\V1\Controls\Graph\ViewModels\ GraphIndexViewModels.ts` <br> `<dir>\Client\V1\Controls\Graph\ViewModels\ GraphViewModels.ts` |  |
-| JSONEditor |  | `<dir>\Client\V1\Controls\JSONEditor\ViewModels\JSONEditorViewModels.ts` |  |
-| Legend |  | `<dir>\Client\V1\Controls\Legend\ViewModels\LegendViewModels.ts` |  |
-| ListView |  |  `<dir>\Client\V1\Controls\ListView\ViewModels\BasicListViewViewModels.ts` <br>  `<dir>\Client\V1\Controls\ListView\ViewModels\CustomListViewViewModels.ts` <br>  `<dir>\Client\V1\Controls\ListView\ViewModels\IndexViewModels.ts` <br>  `<dir>\Client\V1\Controls\ListView\ViewModels\ListViewChildBladeViewModels.ts` |  |
-| LogStream |  | `<dir>\Client\V1\Controls\LogStream\ViewModels\LogStreamViewModel.ts` |  |
-
-| Metrics |  | `<dir>\Client\V1\Controls\Metrics\ViewModels\MetricsViewModels.ts` |  |
-| Preview |  | `<dir>\Client\V1\Controls\Preview\Menu\ViewModels\MenuViewModels.ts` |  |
-| ProgressBar |  | `<dir>\Client\V1\Controls\ProgressBar\ViewModels\ProgressBarViewModels.ts` |  |
-| Tree |  | `<dir>\Client\V1\Controls\Tree\TreeBlade.ts`  `<dir>\Client\V1\Controls\Tree\TreeItemBlade.ts` |  |
 
 
 ## Drop downs
@@ -92,21 +87,22 @@ The following tables include information about Portal controls, including the lo
 | Editor      | Document | Sample | Experience |
 | ----------- | -------- | ------ | ---------- |
 | Code editor | [portalfx-controls-editor.md](portalfx-controls-editor.md) | | 
+| JSONEditor |  | `<dir>\Client\V1\Controls\JSONEditor\ViewModels\JSONEditorViewModels.ts` |  |
 
 ## Forms
 
 | Forms | Document | Sample | Experience |
 | --------- | -------- | ------ | ---------- |
 | Standard Check Box  |   |   |  (experience does not work) <br>  http://aka.ms/portalfx/samples#blade/SamplesExtension/CheckBoxInstruction |
-| Tri State Check Box  |   |   |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/TriStateCheckBoxInstructions  |
+| Tri State Check Box |   |   |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/TriStateCheckBoxInstructions  |
 | Custom HTML |   |   | http://aka.ms/portalfx/samples#blade/SamplesExtension/CustomFormFieldsBlade  |
-| MultiLine Text Box  |   |   |  (experience does not work) <br>  http://aka.ms/portalfx/samples#blade/SamplesExtension/MultiLineTextBoxInstructions/selectedItem/MultiLineTextBoxInstructions/selectedValue/MultiLineTextBoxInstructions |
-| Numeric Text Box  |   |   |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/NumericTextBoxInstructions/selectedItem/NumericTextBoxInstructions/selectedValue/NumericTextBoxInstructions  |
-| Text Box  |   |   |   (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/TextBoxInstructions/selectedItem/TextBoxInstructions/selectedValue/TextBoxInstructions |
-| Option Picker  |   |   |   (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/OptionPickerInstructions/selectedItem/OptionPickerInstructions/selectedValue/OptionPickerInstructions |
-| Password Box   |   |   |   (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/PasswordInstructions/selectedItem/PasswordInstructions/selectedValue/PasswordInstructions |
+| MultiLine Text Box  |   |  `<dir>\Client\V2\Controls\MultiLineTextBox\MultiLineTextBoxBlade.ts` |  (experience does not work) <br>  http://aka.ms/portalfx/samples#blade/SamplesExtension/MultiLineTextBoxInstructions/selectedItem/MultiLineTextBoxInstructions/selectedValue/MultiLineTextBoxInstructions |
+| Numeric Text Box  |   |  `<dir>\Client\V2\Controls\NumericTextBox\NumericTextBoxBlade.ts` |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/NumericTextBoxInstructions/selectedItem/NumericTextBoxInstructions/selectedValue/NumericTextBoxInstructions  |
+| Text Box  |  [portalfx-controls-textbox.md](portalfx-controls-textbox.md)   | `<dir>\Client\V2\Controls\TextBox\TextBoxBlade.ts`  |   (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/TextBoxInstructions/selectedItem/TextBoxInstructions/selectedValue/TextBoxInstructions <br>  (experience does work) [http://aka.ms/portalfx/samples#blade/SamplesExtension/Textboxblade](http://aka.ms/portalfx/samples#blade/SamplesExtension/Textboxblade) | 
+| Option Picker  |   | `<dir>\Client\V2\Controls\OptionPicker\OptionPickerBlade.ts`   |   (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/OptionPickerInstructions/selectedItem/OptionPickerInstructions/selectedValue/OptionPickerInstructions |
+| Password Box   |   |  `<dir>\Client\V2\Controls\Password\PasswordBoxBlade.ts`   |   (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/PasswordInstructions/selectedItem/PasswordInstructions/selectedValue/PasswordInstructions |
 | Search Box |   |   |  http://aka.ms/portalfx/samples#blade/SamplesExtension/SearchBoxBlade/selectedItem/SearchBoxBlade/selectedValue/SearchBoxBlade |
-| Standard Slider |   |   |   (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/SliderInstructions/selectedItem/SliderInstructions/selectedValue/SliderInstructions |
+|  Standard Slider |  | `<dir>\Client\V2\Controls\Slider\ SliderBlade.ts` |   (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/SliderInstructions/selectedItem/SliderInstructions/selectedValue/SliderInstructions |
 | Custom Value Slider |   |   |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/SlidersInstructions/selectedItem/SlidersInstructions/selectedValue/SlidersInstructions |
 | Range Slider |   |   |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/RangeSliderInstructions/selectedItem/RangeSliderInstructions/selectedValue/RangeSliderInstructions  |
 | Custom Range Slider |   |   |   (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/RangeSliderInstructions/selectedItem/CustomRangeSliderInstructions/selectedValue/CustomRangeSliderInstructions  |
@@ -117,18 +113,16 @@ The following tables include information about Portal controls, including the lo
 
 | Gallery | Document | Sample | Experience |
 | ------- | -------- | ------ | ---------- |
-| Gallery | | |http://aka.ms/portalfx/samples#blade/SamplesExtension/GalleryInstructions/selectedItem/GalleryInstructions/selectedValue/GalleryInstructions |
-| List View | | |http://aka.ms/portalfx/samples#blade/SamplesExtension/ListViewInstructions/selectedItem/ListViewInstructions/selectedValue/ListViewInstructions
-| Tree View | | |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/TreeViewInstructions/selectedItem/TreeViewInstructions/selectedValue/TreeViewInstructions
+| ListView |  |  `<dir>\Client\V1\Controls\ListView\ViewModels\BasicListViewViewModels.ts` <br>  `<dir>\Client\V1\Controls\ListView\ViewModels\CustomListViewViewModels.ts` <br>  `<dir>\Client\V1\Controls\ListView\ViewModels\IndexViewModels.ts` <br>  `<dir>\Client\V1\Controls\ListView\ViewModels\ListViewChildBladeViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/ListViewInstructions/selectedItem/ListViewInstructions/selectedValue/ListViewInstructions |
+| Tree View|  | `<dir>\Client\V1\Controls\Tree\TreeBlade.ts`  `<dir>\Client\V1\Controls\Tree\TreeItemBlade.ts`  |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/TreeViewInstructions/selectedItem/TreeViewInstructions/selectedValue/TreeViewInstructions
 | String List | | |http://aka.ms/portalfx/samples#blade/SamplesExtension/StringListInstructions/selectedItem/StringListInstructions/selectedValue/StringListInstructions
-| Query Builder | | |http://aka.ms/portalfx/samples#blade/SamplesExtension/QueryBuilderInstructions/selectedItem/QueryBuilderInstructions/selectedValue/QueryBuilderInstructions
-| Grid |  [portalfx-controls-grid.md](portalfx-controls-grid.md) | | | 
+| Grid |  [portalfx-controls-grid.md](portalfx-controls-grid.md) | `<dir>\Client\V2\Controls\Grid\ItemsWithDynamicCommandsBlade.ts` |  |
 
 ## Helpers and Indicators
 
 | Helpers | Document | Sample | Experience |
 | ------- | -------- | ------ | ---------- |
-| Docked Balloon | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/DockedBalloonInstructions/selectedItem/DockedBalloonInstructions/selectedValue/DockedBalloonInstructions | 
+| Docked Balloon | Also see Infoballoon. | `<dir>\Client\V1\Controls\DockedBalloon\ViewModels\DockedBalloonViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/DockedBalloonInstructions/selectedItem/DockedBalloonInstructions/selectedValue/DockedBalloonInstructions  |
 | Info Box | | |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/InfoBoxInstructions/selectedItem/InfoBoxInstructions/selectedValue/InfoBoxInstructions |
 | Progress Bar | | |http://aka.ms/portalfx/samples#blade/SamplesExtension/ProgressBarInstructions/selectedItem/ProgressBarInstructions/selectedValue/ProgressBarInstructions |
 
@@ -175,7 +169,7 @@ The following controls have been deprecated.  They have been replaced with more 
 | IFrame |  Obsolete. | `<dir>\Client\V1\Controls\IFrame\ViewModels\IFrameViewModels.ts` |  |
 | Map | Obsolete.  | `<dir>\Client\V1\Controls\Map\ViewModels\BaseMapViewModels.ts` <br> `<dir>\Client\V1\Controls\Map\ViewModels\HexagonLayoutViewModels.ts` <br> `<dir>\Client\V1\Controls\Map\ViewModels\IndexViewModels.ts`  |  |
 | PairedTimeline |  Unsupported | Reserved for partner use. <!-- TODO:  Locate one partner team that still uses this. --> | `<dir>\Client\V1\Controls\PairedTimeline\ViewModels\PairedTimelineViewModels.ts` |  |
-| QueryBuilder | Obsolete.  Use pill control instead, or build a custom control for complicated queries.  | `<dir>\Client\V1\Controls\QueryBuilder\ViewModels\QueryBuilderViewModels.ts` |  |
+| QueryBuilder | Obsolete.  Use pill control instead, or build a custom control for complicated queries.  | `<dir>\Client\V1\Controls\QueryBuilder\ViewModels\QueryBuilderViewModels.ts` |  http://aka.ms/portalfx/samples#blade/SamplesExtension/QueryBuilderInstructions/selectedItem/QueryBuilderInstructions/selectedValue/QueryBuilderInstructions |
 | Selector | Obsolete. Use single blade experiences and fx clicks to launch blades | `<dir>\Client\V1\Controls\Selector\ViewModels\SelectorViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/SelectorInstructions/selectedItem/SelectorInstructions/selectedValue/SelectorInstructions |
 | SpecComparisonTable | Obsolete.   | `<dir>\Client\V1\Controls\SpecComparisonTable\ViewModels\SpecComparisonTableViewModels.ts` |  |
 | StringList |   Obsolete.  Use pill control instead, or build a custom control for complicated queries. | `<dir>\Client\V1\Controls\StringList\ViewModels\StringListViewModels.ts` |  |
