@@ -1,5 +1,5 @@
 
-## Designing and Arranging the UI
+## Designing and Arranging the Form
 
 ### The section viewModel
 
