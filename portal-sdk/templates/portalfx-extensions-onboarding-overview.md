@@ -87,12 +87,12 @@ For a private preview, the goal is to hide your experience to the general public
 
 Hiding or showing items in the all services menu is controlled by the extension configuration that gets deployed with your extension. The following  example shows how to set it up. 
 <!--
-TODO - Example here - Add after the feature is ready (ETA is 4-8 weeks) -->
+TODO - Example here - Add after the feature is ready (ETA is March or April) -->
 
 When in the hidden state, users will not be able to browse to or search for the entry point of the extension. However, you can distribute a special link like the following one that enables the entry point by using a feature flag.
 
 <!-- 
-TODO - Example here - Add after the feature is ready (ETA is 4-8 weeks)
+TODO - Example here - Add after the feature is ready (ETA is March or April)
 -->
 
 A few notes about this path:
@@ -108,7 +108,7 @@ There is no blocking exit criteria, which means you do not have to prove that th
 
 When you are ready for all users to see your experience you need to do everything mentioned above, except you will enable your entry point as shown in the following example and then deploy your extension.
 <!--
-TODO - Example here - Add after the feature is ready (ETA is 4-8 weeks)
+TODO - Add an example after the feature is ready (ETA is March or April )
 -->
 
 You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
