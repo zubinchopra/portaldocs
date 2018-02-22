@@ -76,7 +76,7 @@ const firstNameViewModel = TextBox.create(container, {
 
 ### Dropdown loading indicator
 
-The Ibiza SDK now supports displaying the loading indicator when data is loaded by an asynchronous **AJAX** call that  populates the dropdown. The following code implements a loading indicator that uses a dropdown.
+The Ibiza SDK now supports displaying the loading indicator when data is loaded by an asynchronous **AJAX** call that populates the dropdown. The following code implements a loading indicator that uses a dropdown.
 
 ```ts
 

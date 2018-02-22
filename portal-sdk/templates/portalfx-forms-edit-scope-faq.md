@@ -180,7 +180,7 @@ EditScope data follows a particular data model. In short, the EditScope is a hie
 * the EditScope includes an array of 'entity' objects
 * some EditScope object includes a property that is 'entity'-typed  
 
-An object is treated by EditScope as an 'entity' when type metadata associated with the object is marked as an 'entity' type (see [here](#entity-type) and the EditScope video/PPT [here](portalfx-forms-working-with-edit-scopes.md) for more details).
+An object is treated by EditScope as an 'entity' when type metadata associated with the object is marked as an 'entity' type, as specified in [#entity-type](#entity-type). For more information, see  the EditScope video/PPT located at [https://aka.ms/portalfx/editscopes](https://aka.ms/portalfx/editscopes).
 
 Every 'entity' object is tracked by the EditScope as being created/updated/deleted. Extension developers define 'entities' at a granularity that suit their scenario, making it easy to determine what in their larger EditScope/Form data model has been user-edited.  
 
