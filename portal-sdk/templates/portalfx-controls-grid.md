@@ -1,57 +1,62 @@
 ﻿
 ## Grid
 
-The grid control in SDK provides a rich set of features to build experiences that visualize tabular, structured data.
+The grid control in the SDK provides a rich set of features to build experiences that visualize tabular, structured data.
 
 ![alt-text](../media/portalfx-controls/grid-intro.png "Grid")
 
 The grid control can be configured with different options such as multiple selection, custom formatters, grouping, filtering, sorting, paging and virtualization. This flexibility provides experiences that range from simple visualization of basic lists, to advanced scenarios such as virtualized hierarchical data.
 
-### Getting Started
-
-The Grid API is in the MsPortalFx.ViewModels.Controls.Lists.Grid namespace.
-To create a grid you will need to provide data, column definitions, plugins, and options. Some of the basic implementations are located at #grid-further-resources.
-
-[Grid Samples](http://aka.ms/portalfx/samples#blade/SamplesExtension/GridInstructions/selectedItem/GridInstructions/selectedValue/GridInstructions)
-
-### Plugins
-There are many plugins for the grid control to add behaviors.
-Grid plugins are called "extensions" in the API.
-The "extension" terminology can be confusing to portal "extension" authors.
-So, in this document the grid extensions will be referred to as plugins.
-
-- [SelectableRow](#grid-selection-and-activation) - Plugin to have selectable rows.
-- ResizableColumn (Docs coming soon)              - Plugin to have resizable columns.
-- [SortableColumn](#grid-sorting)                 - Plugin to have sortable columns.
-- [Filterable](#grid-filtering)                   - Plugin to have filterable rows.
-- [ContextMenuShortcut](#grid-context-menus)      - Plugin to have a shortcut to the item context menu displayed in the row.
-- [Pageable](#grid-paging)                        - Plugin to handle and display large items in sequential pages.
-- [Scrollable](#grid-scrolling)                   - Plugin to display items with virtual scrolling.
-- [Groupable](#grid-grouping)                     - Plugin to group rows by column value.
-- [Hierarchical](#grid-hierarchical)              - Plugin to display hierarchical items.
-- [EditableRow](#grid-editing)                    - Plugin to have editable rows.
-- [ReorderRow](#grid-reordering)                  - Plugin to have reorder rows.
-- RightClickableRow (Docs coming soon)            - Plugin to have right-clickable row.
-- Hoverable (Docs coming soon)                    - Plugin to enable hover index communication with other parts.
+These behaviors are added to the grid control by using plugins. Grid plugins are also known as "API extensions". This terminology can be confusing to Portal extension developers, therefore, for the purposes of discussion, grid extensions are referred to as plugins.
 
 Plugins are enabled in three ways.
-* with bit flags passed to the ViewModel constructor.
-* by default.
-* as a dependency of an enabled plugin.
+1. With bit flags that are sent to the ViewModel constructor
+1. As a dependency of an enabled plugin
+1. By default
+
+### Getting Started
+
+The Grid API is in the `MsPortalFx.ViewModels.Controls.Lists.Grid` namespace.
+To create a grid you will need to provide data, column definitions, plugins, and options. 
+Some basic implementations are located in the following table.
+
+| Name | Purpose | Location | 
+| ---- | ----- | -- |
+| All Controls in a Grid | | does not work <br>[http://aka.ms/portalfx/samples#blade/SamplesExtension/AllControlsGridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/AllControlsGridInstructions) |
+| All Grid Samples | | [http://aka.ms/portalfx/samples#blade/SamplesExtension/GridInstructions/selectedItem/GridInstructions/selectedValue/GridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/GridInstructions/selectedItem/GridInstructions/selectedValue/GridInstructions)  | 
+| Basic Grid | | [http://aka.ms/portalfx/samples#blade/SamplesExtension/BasicGridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/BasicGridInstructions) | 
+| Context Menu Shortcut Grid | Contains shortcuts to item context menus that are displayed in each row. | does not work <br>[http://aka.ms/portalfx/samples#blade/SamplesExtension/ContextMenuShortcutGridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/ContextMenuShortcutGridInstructions) |
+| Editable Grid |  Contains editable rows | [http://aka.ms/portalfx/samples#blade/SamplesExtension/EditableGridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/EditableGridInstructions) |
+| Filterable Grid | Contains filterable rows | [http://aka.ms/portalfx/samples#blade/SamplesExtension/FilterableGridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/FilterableGridInstructions) |
+| Formatted Grid | | [http://aka.ms/portalfx/samples#blade/SamplesExtension/FormattedGridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/FormattedGridInstructions) | 
+| Grouped Grid | Groups rows by column value | [http://aka.ms/portalfx/samples#blade/SamplesExtension/GroupedGridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/GroupedGridInstructions) |
+| Hierarchical Grid | Displays hierarchical items | [http://aka.ms/portalfx/samples#blade/SamplesExtension/HierarchicalGridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/HierarchicalGridInstructions) |
+| Pageable Grid | Handles and displays large items in sequential pages | [http://aka.ms/portalfx/samples#blade/SamplesExtension/PageableGridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/PageableGridInstructions) | 
+| Reorder Grid | Reorders rows |[http://aka.ms/portalfx/samples#blade/SamplesExtension/ReorderGridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/ReorderGridInstructions) |
+| Resizeable Column Grid | Contains have resizable columns |  [http://aka.ms/portalfx/samples#blade/SamplesExtension/ResizableColumnGridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/ResizableColumnGridInstructions) |
+| Scrollable Grid | Displays items with virtual scrolling | [http://aka.ms/portalfx/samples#blade/SamplesExtension/ScrollableGridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/ScrollableGridInstructions) |
+| Selectable Grid | Contains selectable rows | [http://aka.ms/portalfx/samples#blade/SamplesExtension/SelectableGridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/SelectableGridInstructions) | 
+| Sortable Column Grid | Contains sortable columns | [http://aka.ms/portalfx/samples#blade/SamplesExtension/SortableColumnGridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/SortableColumnGridInstructions) |
+
+### Enabling Plugins
 
 To enable a plugin you need to do two things.
-First, you must set the appropriate bit flag when you construct the grid.
-It is important that you combine the bit flags with the "|" or "+" operator. 
-*A common pitfall is to use "&" which results in no plugins.*
-Second, you must provide plugin options.
+1.  Set the appropriate bit flag when the grid is constructed. Bit flags are combined by using the  "|" or the  "+" operator.  The "&" operator cannot be used.  If it is used, a plugin will not be created.
+1. Provide plugin options.
 
-The following sample shows a simple method of enabling the plugins:
-
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Controls/Grid/ViewModels/ScrollableGridWithFilteringAndSorting.ts", "section": "grid#enablingplugins"}
-
-Plugin compatibility:
+The following chart specifies which plugins can be combined. 
 
 ![alt-text](../media/portalfx-controls/gridchart.png "No-code Browse grid")
+
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. 
+
+The sample located at `<dir>\Client/V1/Controls/Grid/ViewModels/ScrollableGridWithFilteringAndSorting.ts` contains a simple method of enabling the plugins.
+
+<!--
+{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Controls/Grid/ViewModels/ScrollableGridWithFilteringAndSorting.ts", "section": "grid#enablingplugins"}
+-->
+
+
 
 ### Providing Data
 
@@ -66,6 +71,7 @@ Navigators can support two data retrieval patterns.
 [Data Documentation](portalfx-data.md)
 
 ### Defining Columns
+
 Columns are defined by setting the columns property on the grid ViewModel.
 The header text of the column is declared with the name property.
 Cell values for the column are determined by the itemKey property.
@@ -76,6 +82,7 @@ There are many other column options that specify the formatting of the value or 
 {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Controls/Grid/ViewModels/BasicGridViewModel.ts", "section": "grid#columndefinitions"}
 
 ### Formatting
+
 Columns are formatted using three key properties.
   - ``itemKey``: The property of your data item to display.  
   - ``format``: Optional format type from the Format enumeration. 
@@ -88,6 +95,7 @@ If you have an object or need more specific formatting for a date or number ther
 [Formatted Grid Sample][FormattedSample]
 
 ### Formatting Dates
+
 Dates are formatted using the International API using the current locale set by the user.
 The data value of the date can be a number, string, or date.
 The formatters will convert to date and then use the Intl API to convert to text.
@@ -104,7 +112,7 @@ The following formatters can be used for formatting dates:
 
 You can create your on Intl option or use one of the predefined options from the ``Globalization.Intl`` namespace.
 
-[Intl API DateTime][IntlAPIDateTime]
+[Intl API DateTime](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat)
 
 ### Formatting Numbers
 
@@ -114,7 +122,7 @@ It is capable of formatting numbers in many ways including currency.
 
 {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Controls/Grid/ViewModels/FormattedGridViewModel.ts", "section": "grid#numberformatter"}
 
-[Intl API Number][IntlAPINumber]
+[Intl API Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat)
 
 ### Formatting Images
 
@@ -265,12 +273,12 @@ For virtualization is common to create a custom data navigator that implements t
 This is because the navigator will be outputting data items that exclude collapsed children.
 Is is also important for virtual hierarchies to update the navigator ``metatdata totalItemCount`` on every expand/collapse to return the total items excluding collapsed children.
 Updating the count lets the grid know the virtualization needs updating.
+The hierarchical grid implementations are located in the following table.
 
-[Hierarchical Grid Sample (simplistic hierarchy that repeats)][HierarchicalSample]
-
-[Pageable Hierarchical Grid Sample (also shows demand loading)][PageableHierarchicalSample]
-
-[Scrollable Hierarchical Grid Sample (complicated structure and stream approach)][WorkitemScenarioSample]
+| Name | Location | 
+| ---- | -------- |
+| Pageable Hierarchical Grid Sample | [http://aka.ms/portalfx/samples#blade/SamplesExtension/PageableHierarchicalGridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/PageableHierarchicalGridInstructions) |
+| WorkitemScenarioSample | [http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/scenariosworkitem](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/scenariosworkitem) |
 
 ### Context Menus
 
@@ -300,8 +308,8 @@ For non-virtualized grids you do not supply a data navigator and just set the gr
 
 ### Reordering
 
-The grid reorder row plugin allows users to reorder the items in the grid with drag drop.
-The reordering can be automatic or handled by the extension using the ``reorderRow`` event.
+The grid reorder row plugin allows users to reorder the items in the grid with drag and drop.
+The reordering can be automatic or handled by the extension using the ``reorderRow`` event, as in the following sample.
 
 [Reorderable Grid Sample][ReorderSample]
 
@@ -317,40 +325,9 @@ There are several options for dynamic definition of a grid.
 4. CustomHtml control has an updatable inner viewmodel.
 5. htmlTemplate binding allows you to dynamically specify both the ViewModel and the template `<div data-bind="htmlTemplate: { data: viewModel, html: template }"></div>`
 
-### Further Resources
 
-- [All Grid Samples][GridSamples]
-- [Basic Grid Sample][BasicSample]
-- [Formatted Grid Sample][FormattedSample]
-- [Selectable Grid Sample][SelectableSample]
-- [Context Menu Shortcut Grid Sample][ContextMenuSample]
-- [Grouped Grid Sample][GroupedSample]
-- [Filterable Grid Sample][FilterableSample]
-- [Pageable Grid Sample][pageableSample]
-- [Hierarchical Grid Sample][HierarchicalSample]
-- [Scrollable Grid Sample][ScrollableSample]
-- [Sortable Column Grid Sample][SortableSample]
-- [Reorder Grid Sample][reorderSample]
-- [Resizeable Column Grid Sample][resizableSample]
-- [Editable Grid Sample][EditableSample]
-- [All Controls in a Grid Sample][AllControlsSample]
+### Plugins
 
-[GridSamples]: 
-[BasicSample]: http://aka.ms/portalfx/samples#blade/SamplesExtension/BasicGridInstructions
-[FormattedSample]: http://aka.ms/portalfx/samples#blade/SamplesExtension/FormattedGridInstructions
-[SelectableSample]: http://aka.ms/portalfx/samples#blade/SamplesExtension/SelectableGridInstructions
-[ContextMenuSample]: http://aka.ms/portalfx/samples#blade/SamplesExtension/ContextMenuShortcutGridInstructions
-[GroupedSample]: http://aka.ms/portalfx/samples#blade/SamplesExtension/GroupedGridInstructions
-[FilterableSample]: http://aka.ms/portalfx/samples#blade/SamplesExtension/FilterableGridInstructions
-[PageableSample]: http://aka.ms/portalfx/samples#blade/SamplesExtension/PageableGridInstructions
-[HierarchicalSample]: http://aka.ms/portalfx/samples#blade/SamplesExtension/HierarchicalGridInstructions
-[ScrollableSample]: http://aka.ms/portalfx/samples#blade/SamplesExtension/ScrollableGridInstructions
-[SortableSample]: http://aka.ms/portalfx/samples#blade/SamplesExtension/SortableColumnGridInstructions
-[ReorderSample]: http://aka.ms/portalfx/samples#blade/SamplesExtension/ReorderGridInstructions
-[ResizeableSample]: http://aka.ms/portalfx/samples#blade/SamplesExtension/ResizableColumnGridInstructions
-[EditableSample]: http://aka.ms/portalfx/samples#blade/SamplesExtension/EditableGridInstructions
-[AllControlsSample]: http://aka.ms/portalfx/samples#blade/SamplesExtension/AllControlsGridInstructions
-[PageableHierarchicalSample]: http://aka.ms/portalfx/samples#blade/SamplesExtension/PageableHierarchicalGridInstructions
-[WorkitemScenarioSample]: http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/scenariosworkitem
-[IntlAPIDateTime] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat
-[IntlAPINumber] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat
+
+- RightClickableRow (Docs coming soon)            - Plugin to have right-clickable row.
+- Hoverable (Docs coming soon)                    - Plugin to enable hover index communication with other parts.
