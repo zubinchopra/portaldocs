@@ -48,7 +48,7 @@ The following tables include information about Portal controls, including the lo
 
 | Date/time Object | Document | Sample | Experience |
 | ---------------- | -------- | ------ | ---------- |
-| Essentials Control | [portalfx-controls-essentials.md](portalfx-controls-essentials.md)  |   `<dir>\Client\V2\Controls\ Essentials/EssentialsDefaultBlade.ts`  |     |
+| Essentials Control | [portalfx-controls-essentials.md](portalfx-controls-essentials.md)  |   `<dir>\Client\V2\Controls\ Essentials/ntialsDefaultBlade.ts`  |     |
 |  Date Picker  |  | `<dir>\Client\V2\Controls\ DatePicker\DatePickerBlade.ts` |   (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/DatePickerInstructions/selectedItem/DatePickerInstructions/selectedValue/DatePickerInstructions |
 | Date/Time Picker   |  [portalfx-controls-datetimepicker.md](portalfx-controls-datetimepicker.md)  |  `<dir>\Client\V2\Controls\ DateTimePicker\DateTimePickerBlade.ts`   | (experience does not work) <br>  http://aka.ms/portalfx/samples#blade/SamplesExtension/DateTimePickerInstructions/selectedItem/DateTimePickerInstructions/selectedValue/DateTimePickerInstructions |
 | Date/Time Range Picker  | [portalfx-controls-datetimerangepicker.md](portalfx-controls-datetimerangepicker.md)  |   `<dir>\Client\V2\Controls\ DateTimeRangePicker\DateTimeRangePickerBlade.ts` | (experience does not work) <br>  http://aka.ms/portalfx/samples#blade/SamplesExtension/DateTimeRangePickerInstructions/selectedItem/DateTimeRangePickerInstructions/selectedValue/DateTimeRangePickerInstructions |
@@ -56,6 +56,44 @@ The following tables include information about Portal controls, including the lo
 | Day Picker (does not work) |  | `<dir>\Client\V2\Controls\ DayPicker\DayPickerBlade.ts`   |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/DayPickerInstructions/selectedItem/DayPickerInstructions/selectedValue/DayPickerInstructions |
 | Duration Picker |  | `<dir>\Client\V1\Controls\DurationPicker\ViewModels\ DurationPickerViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/DurationPickerInstructions/selectedItem/DurationPickerInstructions/selectedValue/DurationPickerInstructions |
 | Time Picker |  | `<dir>\Client\V1\Controls\TimePicker\ViewModels\ TimePickerViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/TimePickerInstructions/selectedItem/TimePickerInstructions/selectedValue/TimePickerInstructions |
+| Accordion |  | `<dir>\Client\V2\Controls\Accordion\AccordionBlade.ts` |  |
+| Checkbox |  | `<dir>\Client\V2\Controls\Checkbox\ConsoleBlade .ts` |  |
+| EditableGrid |  | `<dir>\Client\V2\Controls\EditableGrid\ EditableGrid.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridCustomValidation.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridDependentDropDowns.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridDynamicCellTypes.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridMaxEntries.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridOperations.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridValidation.ts` |  |
+| Grid |  | `<dir>\Client\V2\Controls\Grid\ItemsWithDynamicCommandsBlade.ts` |  |
+| Infobox |  | `<dir>\Client\V2\Controls\Infobox\InfoboxBlade.ts` |  |
+| MultiLineTextBox |  | `<dir>\Client\V2\Controls\MultiLineTextBox\MultiLineTextBoxBlade.ts` |  |
+| NumericTextBox |  | `<dir>\Client\V2\Controls\NumericTextBox\NumericTextBoxBlade.ts` |  |
+| OptionPicker |  | `<dir>\Client\V2\Controls\OptionPicker\OptionPickerBlade.ts` |  |
+| Password |  | `<dir>\Client\V2\Controls\Password\PasswordBoxBlade.ts` |  |
+| Pill |  | `<dir>\Client\V2\Controls\Pill\ PillBlade.ts` |  |
+| SearchBox |  | `<dir>\Client\V2\Controls\SearchBox\SearchBoxBlade.ts` |  |
+| SimpleButton |  | `<dir>\Client\V2\Controls\SimpleButton\ SimpleButtonBlade.ts` |  |
+| Slider |  | `<dir>\Client\V2\Controls\Slider\ SliderBlade.ts` |  |
+| Storage |  | `<dir>\Client\V2\Controls\Storage\ FileShareDropDownBlade.ts` |  |
+| Video |  | `<dir>\Client\V2\Controls\Video\VideoBlade.ts` |  |
+| ControlIndexBlade |  | `<dir>\Client\V1\Controls\ControlIndexBlade .ts` |  |
+| DiffEditor  |  | `<dir>\Client\V1\Controls\DiffEditor  .ts` |  |
+| DockedBalloon |  | `<dir>\Client\V1\Controls\DockedBalloon .ts` |  |
+| Gallery |  | `<dir>\Client\V1\Controls\Gallery .ts` |  |
+| Graph |  | `<dir>\Client\V1\Controls\Graph .ts` |  |
+| HotSpot |  | `<dir>\Client\V1\Controls\HotSpot .ts` |  |
+| IFrame |  | `<dir>\Client\V1\Controls\IFrame .ts` |  |
+| JSONEditor |  | `<dir>\Client\V1\Controls\JSONEditor .ts` |  |
+| Legend |  | `<dir>\Client\V1\Controls\Legend.ts` |  |
+| ListView |  | `<dir>\Client\V1\Controls\ListView.ts` |  |
+|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
+|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
+|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
+|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
+|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
+|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
+|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
+|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
+|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
+|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
+|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
+|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
+|  |  | `<dir>\Client\V1\Controls\ .ts` |  |
 
 <a name="drop-downs"></a>
 ## Drop downs
@@ -149,4 +187,8 @@ The following controls have been deprecated.  They have been replaced with more 
 
 | Control  | Document | Sample | Experience |
 | -------- | -------- | ------ | ---------- |
+| AzureMediaPlayer | Unsupported | Reserved for Azure media services team  |
+| DiffEditor  | Obsolete. Use  editor instead | |
+| Drop Down  | Obsolete.  Use V2 control instead.  | `<dir>\Client\V1\Controls\ DropDown\ViewModels\DropDownViewModels.ts`  | |
+| Essentials Control | Obsolete.  Use V2 control instead.  | `<dir>\Client\V1\Controls\Essentials\ViewModels\DefaultEssentialsViewModel.ts`  <br> `<dir>\Client\V1\Controls\Essentials\ViewModels\IndexViewModels.ts`  | |
 | Selector |  |  `<dir>\Client\V1\Controls\Selector\ViewModels\ SelectorViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/SelectorInstructions/selectedItem/SelectorInstructions/selectedValue/SelectorInstructions | 
