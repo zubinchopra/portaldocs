@@ -52,8 +52,6 @@ Ask an onboarding question on [Stackoverflow](https://stackoverflow.microsoft.co
 
 The Ibiza team provides and operates a common extension hosting service that makes it easy to get your extension into a globally distributed system without having to manage your own infrastructure. For more information see [top-extensions-hosting-service.md](top-extensions-hosting-service.md).
 
-## Deployment using the Ibiza hosting service
-
 For less common scenarios, you might need to do a custom deployment.
 
 For example, if you need to talk to backend services using certificate-based authentication then you'll need controller code on the server. This is not supported with our hosting service. You should be very sure you require a custom hosting solution before going down this path. 
@@ -79,7 +77,7 @@ Once the name of the extension is finalized, it is time to register the extensio
 
 ## Release kind
 
-There are three typical release kinds. Private preview, public preview, and GA. For the purposes of deployment public preview and GA are the same. The only difference is that the UI may show preview labels and disclaimers where appropriate. For more information about the three kinds of releases, see  [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
+There are three typical release kinds: private preview, public preview, and Global Availability (GA). For the purposes of deployment public preview and GA are the same. The only difference is that the UI may show preview labels and disclaimers where appropriate. For more information about the three kinds of releases, see  [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
 
 ## Private preview
 
@@ -106,7 +104,7 @@ You are required to check the quality of your extension. We have standardized wa
 
 There is no blocking exit criteria, which means you do not have to prove that the extension's performance and reliability are in the required range. However, once you ship, the Portal team will monitor the quality of the extension. Extensions that do not meet the required quality bar will be flagged in executive reviews and will be asked to improve their quality as soon as possible.
 
-When you are ready for all users to see your experience you need to do everything mentioned above, except you will enable your entry point as shown in the following example and then deploy your extension.
+When you are ready for all users to see your experience, you will enable your entry point as shown in the following example and then deploy your extension.
 <!--
 TODO - Add an example after the feature is ready (ETA is March or April )
 -->
