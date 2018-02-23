@@ -9,7 +9,7 @@ First-party extension developers, i.e. Microsoft employees, have access to the D
 
 The Azure components of the experience are documented several ways. 
 *  There may be a document that provides guidance about the component, in terms of what it is, what it does, or how it is used. 
-* The location of the sample code is included  so that the developer can view the source for the component, or modify it as appropriate for the extensions they develop.  
+* The location of the sample code is included so that the developer can view the source for the component, or modify it as appropriate for the extensions they develop.  
 * A working copy of the component can be viewed in the Dogfood environment; in some instances, links are provided to the API reference for the component.
 
 **NOTE**: In the following tables, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it can be experienced by using the link in the table.
@@ -30,6 +30,7 @@ The following tables include information about Portal controls, including the lo
 | ------- | -------- | ------ | ---------- |
 | Button  | | |  http://aka.ms/portalfx/samples#blade/SamplesExtension/SimpleButtonBlade |
 | Checkbox |  | `<dir>\Client\V2\Controls\Checkbox\ConsoleBlade .ts` |  |
+| CustomHtml <br> Section (Form Sections) | [portalfx-forms-sections.md](portalfx-forms-sections.md)  | `<dir>\Client\V2\Controls\Checkbox\ConsoleBlade .ts` |  |
 | File Download Button |  | `<dir>\Client\V1\Controls\FileDownloadButton\ViewModels\ FileDownloadButtonViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/FileDownloadButtonInstructions/selectedItem/FileDownloadButtonInstructions/selectedValue/FileDownloadButtonInstructions |  
 | File Upload (async) |  | `<dir>\Client\V1\Controls\AsyncFileUpload\ViewModels\ AsyncFileUploadViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/AsyncFileUploadInstructions/selectedItem/AsyncFileUploadInstructions/selectedValue/AsyncFileUploadInstructions |
 | Markdown Control | |`<dir>\Client\V1\Controls\Markdown\ViewModels\ MarkdownViewModels.ts`| http://aka.ms/portalfx/samples#blade/SamplesExtension/MarkdownInstructions/selectedItem/MarkdownInstructions/selectedValue/MarkdownInstructions |
@@ -99,8 +100,11 @@ The following tables include information about Portal controls, including the lo
 | MultiLine Text Box  |   |  `<dir>\Client\V2\Controls\MultiLineTextBox\MultiLineTextBoxBlade.ts` |  (experience does not work) <br>  http://aka.ms/portalfx/samples#blade/SamplesExtension/MultiLineTextBoxInstructions/selectedItem/MultiLineTextBoxInstructions/selectedValue/MultiLineTextBoxInstructions |
 | Numeric Text Box  |   |  `<dir>\Client\V2\Controls\NumericTextBox\NumericTextBoxBlade.ts` |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/NumericTextBoxInstructions/selectedItem/NumericTextBoxInstructions/selectedValue/NumericTextBoxInstructions  |
 | Text Box  |  [portalfx-controls-textbox.md](portalfx-controls-textbox.md)   | `<dir>\Client\V2\Controls\TextBox\TextBoxBlade.ts`  |   (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/TextBoxInstructions/selectedItem/TextBoxInstructions/selectedValue/TextBoxInstructions <br>  (experience does work) [http://aka.ms/portalfx/samples#blade/SamplesExtension/Textboxblade](http://aka.ms/portalfx/samples#blade/SamplesExtension/Textboxblade) | 
+| Options Group  |   |    |    |
 | Option Picker  |   | `<dir>\Client\V2\Controls\OptionPicker\OptionPickerBlade.ts`   |   (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/OptionPickerInstructions/selectedItem/OptionPickerInstructions/selectedValue/OptionPickerInstructions |
 | Password Box   |   |  `<dir>\Client\V2\Controls\Password\PasswordBoxBlade.ts`   |   (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/PasswordInstructions/selectedItem/PasswordInstructions/selectedValue/PasswordInstructions |
+| RadioButton             |                                                                                      | 
+| TabControl              |                                                                                      | 
 | Search Box |   |   |  http://aka.ms/portalfx/samples#blade/SamplesExtension/SearchBoxBlade/selectedItem/SearchBoxBlade/selectedValue/SearchBoxBlade |
 |  Standard Slider |  | `<dir>\Client\V2\Controls\Slider\ SliderBlade.ts` |   (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/SliderInstructions/selectedItem/SliderInstructions/selectedValue/SliderInstructions |
 | Custom Value Slider |   |   |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/SlidersInstructions/selectedItem/SlidersInstructions/selectedValue/SlidersInstructions |

@@ -1,26 +1,27 @@
 
-## EditScopeless Forms
+## EditScope-less Forms
 
-Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide common functions that would otherwise be difficult to orchestrate, like tracking changes in field values across a form, or simplifying the merge  of form changes from the server into the current edit. In contrast, editscope-less forms are compatible with new controls and consequently, EditScopes are becoming obsolete. It is recommended that extensions be developed without edit scopes.
+Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide common functions that would otherwise be difficult to orchestrate, like tracking changes in field values across a form, or simplifying the merge  of form changes from the server into the current edit. In contrast, editscope-less forms are compatible with new controls and consequently, EditScopes are becoming obsolete. It is recommended that extensions be developed without editScopes.
 
 <!-- TODO: Determine whether controls like OptionsGroup, that are not located in Fx/Controls, are considered part of the EditScopeless pattern.   -->
 
-The EditScopeless form controls are located in the `Fx/Controls` namespace. They support creating forms without initializing their `editscope`. There is less  association with the `editscope` accessors, which makes the initialization of the controls easier. The  `editScope` is no longer tied to each control, and the controls become stateless. This means two things.
+The EditScope-less controls are located in the `Fx/Controls` namespace. They support creating forms without initializing their `editscope`. The controls and a list of documents that discusses them in more detail are listed in  [portalfx-controls-overview.md](portalfx-controls-overview.md).  For samples and experiences that are associated with editscope-less form controls, see [portalfx-extensions-samples-overview.md](portalfx-extensions-samples-overview.md).
 
-1. There is no initial value for these controls.  The value of a control is initialized by setting it.
+ Less association with `editscope` accessors  makes the initialization of the controls easier. The  `editScope` is no longer tied to each control, and the controls become stateless. This means two things.
+
+1. There is no initial value for these controls.  The value of a control is initialized by setting it, as in the following example.
 
     ```ts
     textboxViewModel.value("Some Initial Value");
     ```  
 
-1. Extension developers have the the state of the control after its data has been changed by setting the `dirty` value, as in the following code.
+1. Extensions can persist the state of the control after its data has been changed by setting the `dirty` property, as in the following code.
 
     ```ts
     textboxViewModel.dirty(true);
     ```  
- 
 
-### Controls Namespace
+ ### Controls Namespace
 
 The new controls can be used in extensions by importing them, as in the following code.
 
@@ -28,36 +29,6 @@ The new controls can be used in extensions by importing them, as in the followin
 import * as Section from "Fx/Controls/Section";
 import * as TextBox from "Fx/Controls/TextBox";
 ``` 
-
-<!-- TODO: Determine whether controls outside of "Fx/Controls" should be included in the table.  -->
-
-The folloiwng is a list of all the new controls that are available in "Fx/Controls", in addition to  a list of documents that discuss the control in more detail. For samples and experiences that are associated with editscope-less form controls, see [portalfx-extensions-samples-overview.md](portalfx-extensions-samples-overview.md).
-
-| Control                 | Document                                                                             | 
-| ----------------------- | ------------------------------------------------------------------------------------ |  
-| Button                  |                                                                                      | 
-| CheckBox                |                                                                                      | 
-| CustomHtml              | [portalfx-forms-sections.md](portalfx-forms-sections.md)                             | 
-| DateTimePicker          | [portalfx-controls-datetimepicker.md](portalfx-controls-datetimepicker.md)           |  
-| DateTimeRangePicker     | [portalfx-controls-datetimerangepicker.md](portalfx-controls-datetimerangepicker.md) | 
-| DayPicker               |                                                                                      | 
-| DropDown                | [portalfx-controls-dropdown.md](portalfx-controls-dropdown.md)                       | 
-| DurationPicker          |                                                                                      | 
-| FileUpload              |                                                                                      | 
-| MultiLineTextBox        |                                                                                      | 
-| NumericTextBox          |                                                                                      | 
-| OptionsGroup            |                                                                                      | 
-| PasswordBox             |                                                                                      | 
-| RadioButton             |                                                                                      | 
-| RangeSlider             |                                                                                      | 
-| Section (Form Sections) | [portalfx-forms-sections.md](portalfx-forms-sections.md)                             | 
-| Slider                  |                                                                                      | 
-| TabControl              |                                                                                      | 
-| TextBox                 | [portalfx-controls-textbox.md](portalfx-controls-textbox.md)                         |
-| TimePicker              | [portalfx-controls-datetimepicker.md](portalfx-controls-datetimepicker.md)           | 
-| TriStateCheckBox        |                                                                                      | 
-
-### Initializing Controls
 
 The controls are initialized through a factory method called `create()`. This function returns an interface. The following example invokes the `create()` method to create a TextBox with specific label, subLabel and a collection of validations.
 
