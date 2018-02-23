@@ -11,12 +11,6 @@ FAQ's that are associated with ordinary extension testing.
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-debugging.md"}
 
-## Edit Scopes
-
-FAQ's that are associated with edit scopes that are still on forms. 
-
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-edit-scope.md"}
-
 ## Extension Configurations 
 
 FAQ's that are associated with configurations for extensions.

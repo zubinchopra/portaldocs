@@ -52,11 +52,19 @@ For more information about type metadata, see [portalfx-data-typemetadata.md](po
 
 * **Editable grid** - Today's editable grid was developed to work exclusively with EditScope 'entity' arrays. An EditScope 'entity' array is one where created/updated/deleted array items are tracked individually by EditScope. To grant this special treatment to an array in the EditScope/Form model, supply type metadata for the type of the array items (for the `T` in `KnockoutObservableArray<T>`). The type is marked as an "entity type" and, the property/properties that constitute the entity's 'id' are specified in the following examples. 
 
-In TypeScript:
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK.
+ 
+* In TypeScript:
+
+The TypeScript sample is located at 
+`<dir>\Client\V1\Forms\Scenarios\ChangeTracking\Models\EditableFormData.ts`. This code is also included in the following working copy.
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/ChangeTracking/Models/EditableFormData.ts", "section": "formsEditScopeFaq#entityTypeMetadata"}
 
-In C#:
+* In C#:
+
+The C# sample is located at 
+`<dirParent>\SamplesExtension.DataModels/Person.cs`. This code is also included in the following working copy.
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/SamplesExtension.DataModels/Person.cs", "section": "formsEditScopeFaq#entityTypeMetadataCsharp"}
   
@@ -94,26 +102,7 @@ To either of these, extensions pass the type name used when registering the type
   
 * * * 
 
-### Missing rows from editable grid
-<!-- TODO:  Move this to the EditScope document -->
-***Q: The user added/removed rows from my editable grid, but I don't see the corresponding adds/removes in my EditScope array.  What gives?***
 
-SOLUTION: EditScope 'entity' arrays were designed with a few requirements in mind:
-* The user's edits need to be serialized so that Journey-switching works with unsaved Form edits. For editing large arrays, the FX should not serialize array edits by persisting two full copies of the (could-be-large) array.
-* In the UI, the FX will want to render an indication of what array items were created/updated/deleted. In some cases, array removes need to be rendered with strike-through styling.
-* Array adds/remove need to be revertable for some scenarios.
-
-The resulting EditScope design was to make EditScope 'entity' arrays behave differently than regular JavaScript arrays.  Importantly:
-* 'Creates' are kept out-of-band
-* 'Deletes' are non-destructive
-
-To conveniently see the *actual* state of an EditScope 'entity' array, use the '`getEntityArrayWithEdits`' EditScope method. This returns:
-* An array that includes 'created' entities and doesn't include 'deleted' entities
-* Discrete arrays that individually capture 'created', 'updated' and 'deleted' entities  
-
-This '`getEntityArrayWithEdits`' is particularly useful in ParameterProvider's '`mapOutgoingDataForCollector`' callback when returning an edited array to some ParameterCollector:
-
-{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/ParameterCollection/ParameterProviders/ViewModels/ProviderViewModels.ts", "section": "formsEditScopeFaq#getEntityArrayWithEdits"}
 
 #### Apply array as edits
 
@@ -149,20 +138,6 @@ Often, additionally, it is important to let users edit the Dictionary/StringMap/
 
 Here's a sample that does something similar, converting - in this case - an array of strings into an 'entity' array for consumption by editable grid.  
 
-* * *
-
-#### Modeling your data as an 'entity' array
-
-SOLUTION: 
-{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/ParameterCollection/ParameterProviders/ViewModels/ProviderViewModels.ts", "section": "formsEditScopeFaq#makeEntityForEditableGrid"}  
-
-* * *
-
-#### Converting your data to an 'entity' array for consumption by editable grid
-
-SOLUTION: 
-{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/ParameterCollection/ParameterProviders/ViewModels/ProviderViewModels.ts", "section": "formsEditScopeFaq#makeEntityForEditableGrid2"}  
-  
 * * *
 
 ### Q: What should be returned from 'saveEditScopeChanges'? I don't understand the different values of the `AcceptEditScopeChangesAction` enum.
