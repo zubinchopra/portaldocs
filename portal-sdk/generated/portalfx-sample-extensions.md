@@ -1,9 +1,9 @@
 <a name="samples-extension"></a>
 ## Samples extension
+<!-- TODO:  deprecate this document by removing it.  It has been  replaced by top-extensions-samples-overview.md   -->
+The samples extension provides an individual sample for each feature available in the framework, as in the following image.
 
-The samples extension provides an individual sample for each feature available in the framework.
-
-[Samples extension](../media/samples.png)
+![alt-text](../media/samples.png "Samples extension")
 
 After installing the MSI, the local instance of the portal will open with the samples extension pre-registered.  You can open the solution file for the extension to view how specific parts of the API behave:
 
