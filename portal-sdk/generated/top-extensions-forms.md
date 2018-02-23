@@ -16,9 +16,9 @@ The Azure SDK includes extensive support for displaying and managing user input.
  
 To develop extensions that use forms, review the following topics:
 
-* [Designing and arranging the UI](portalfx-forms-sections.md)
+* [Designing and arranging the Form](portalfx-forms-sections.md)
 * [Loading, editing and saving data](portalfx-forms-construction.md)
-* [Field Validation](portalfx-forms-field-validation.md)
+* [Form Field Validation](portalfx-forms-field-validation.md)
 * [Working with Edit Scopes](portalfx-legacy-editscopes.md)
 * [Integrating Forms with Commands](portalfx-forms-integrating-with-commands.md)
 
@@ -329,7 +329,7 @@ Edit scopes provide a standard way of managing edits over a collection of input 
   * Persist unsaved changes from the form to the cloud
   * Simplify merging changes from the server into the current edit
 
-In some instances, development approaches that do not use `editScopes` are preferred.  For more information about forms without editScopes, see  [portalfx-editscopeless-forms.md](portalfx-editscopeless-forms.md) and [portalfx-controls-dropdown.md#migration-to the-new-dropdown](portalfx-controls-dropdown.md#migration-to the-new-dropdown).
+In some instances, development approaches that do not use `editScopes` are preferred.  For more information about forms without editScopes, see  [portalfx-editscopeless-forms.md](portalfx-editscopeless-forms.md) and [portalfx-controls-dropdown.md#migration-to the-new-dropdown.md](portalfx-controls-dropdown.md#migration-to the-new-dropdown.md).
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>` is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK. 
 
@@ -592,9 +592,9 @@ This pair of EditScope methods significantly simplifies working with EditScope '
 
 ***Q: My Form data is just key/value-pairs. How do I model a Dictionary/StringMap in EditScope? Why can't I just use a JavaScript object like a property bag?***
 
-Like all models and view models treated by the Azure Portal FX, after the object/array is instantiated and returned to the FX in the process of rendering the UI, any subsequent mutation of that object/array should be done by changing/mutating **Knockout** observables. Portal controls and Knockout HTML template rendering both subscribe to these observables and re-render only when these observables change value.  
+Like all models and view models treated by the Azure Portal FX, after the object/array is instantiated and returned to the FX in the process of rendering the UI, any subsequent mutation of that object/array should be done by changing/mutating **Knockout** observables. Portal controls and Knockout HTML template rendering both subscribe to these observables and re-render only when these observables change value.
 
-This poses a challenge to the common JavaScript programming technique of treating a JavaScript object as a property bag of key-value-pairs. If an extension only adds or removes keys from a model or ViewModel object, the FX will not be aware of these changes. EditScope will not recognize these changes as user edits and therefore such key adds/removes will put EditScope edit-tracking in an inconsistent state.  
+This poses a challenge to the common JavaScript programming technique of treating a JavaScript object as a property bag of key-value-pairs. If an extension only adds or removes keys from a model or ViewModel object, the FX will not be aware of these changes. EditScope will not recognize these changes as user edits and therefore such key adds/removes will put EditScope edit-tracking in an inconsistent state.
 
 So, how does an extension model a Dictionary/StringMap/property bag when using the Portal FX and EditScope?  
 
@@ -848,5 +848,11 @@ As discussed in [portalfx-extensions-faq-forms.md#key-value-pairs](portalfx-exte
 
 | Term                 | Meaning |
 | ---                  | --- |
+| Compile-time verified lambda | |
+| Dirty | The contents of a textbox or similar object have been changed from the time that they were originally displayed or instantiated. Related to the most recent value of a variable or observable. |
 | DOM              | Document Object Model   |
-
+| Journey | |
+| observable array | |
+| property bag | A container that contains different types of objects. |
+| promise | An object that is returned from asynchronous processing which binds together the results of multiple asynchronous operations.  This is in accordance with a contract that async operation(s) will either complete successfully or will have been rejected. | 
+| Validation |  The process of ensuring that form or field contents are within the specified constraints for an application.  This includes items like field length or numeric checks. |
