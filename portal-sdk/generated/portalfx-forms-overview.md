@@ -16,6 +16,5 @@ To develop extensions that use forms, review the following topics:
 * [Designing and arranging the Form](portalfx-forms-sections.md)
 * [Loading, editing and saving data](portalfx-forms-construction.md)
 * [Form Field Validation](portalfx-forms-field-validation.md)
-* [Working with Edit Scopes](portalfx-legacy-editscopes.md)
 * [Integrating Forms with Commands](portalfx-forms-integrating-with-commands.md)
 
