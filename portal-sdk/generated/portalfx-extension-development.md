@@ -3,6 +3,7 @@
 ## Getting Started
 
 <!-- TODO: deprecate the link to portalfx-howitworks.md  and replace it with portalfx a link to -extensions-architecture.md -->
+<!-- TODO:  Remove links to documents that are located in the master index or are otherwise known.  -->
 
 * [Understanding the Azure Portal Architecture](portalfx-howitworks.md#understanding-the-azure-portal-architecture)
 * [Understanding the Azure Portal Extension Architecture](portalfx-howitworks.md#understanding-the-azure-portal-extension-architecture)
@@ -30,7 +31,6 @@
 
 * [Blades](portalfx-blades.md#blades)
 
-undefined
 * [Controls](portalfx-controls.md#controls)
     * [Basic Screen Controls](portalfx-controls.md#basic-screen-controls)
     * [Date and Time](portalfx-controls.md#date-and-time)
@@ -43,10 +43,6 @@ undefined
     * [Deprecated controls](portalfx-controls.md#deprecated-controls)
 
 * [Monitor Chart](portalfx-controls-monitor-chart.md#monitor-chart)
-
-* [EditScopeless Forms](portalfx-editscopeless-forms.md#editscopeless-forms)
-
-* [Using Fx/Controls in EditScope backed forms](portalfx-fxcontrols-editscope-forms.md#using-fx-controls-in-editscope-backed-forms)
 
 
 <a name="authentication"></a>
@@ -90,9 +86,7 @@ undefined
 
 <a name="debugging"></a>
 # Debugging
-* [Debugging](portalfx-debugging.md#debugging)
 
-* [Debugging extension load failures](portalfx-debugging-extension-load-failures.md#debugging-extension-load-failures)
 
 * [Testing in production](portalfx-testinprod.md#testing-in-production)
 * [Marking automated tests as test/synthetic traffic](portalfx-testinprod.md#marking-automated-tests-as-test-synthetic-traffic)

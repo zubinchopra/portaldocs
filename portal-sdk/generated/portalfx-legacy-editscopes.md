@@ -2,7 +2,7 @@
 <a name="legacy-edit-scopes"></a>
 ## Legacy Edit Scopes
 
-**NOTE**:  EditScopes are becoming obsolete.   It is recommended that extensions be developed without edit scopes, as specified in [portalfx-editscopeless-forms.md](portalfx-editscopeless-forms.md).
+**NOTE**:  EditScopes are becoming obsolete.   It is recommended that extensions be developed without edit scopes, as specified in [portalfx-forms-editscopeless.md](portalfx-forms-editscopeless.md).
 
 <a name="legacy-edit-scopes-working-with-edit-scopes"></a>
 ### Working with Edit Scopes
@@ -15,7 +15,7 @@ Edit scopes provide a standard way of managing edits over a collection of input 
   * Persist unsaved changes from the form to the cloud
   * Simplify merging changes from the server into the current edit
 
-In some instances, development approaches that do not use `editScopes` are preferred.  For more information about forms without editScopes, see  [portalfx-editscopeless-forms.md](portalfx-editscopeless-forms.md) and [portalfx-controls-dropdown.md#migration-to the-new-dropdown](portalfx-controls-dropdown.md#migration-to the-new-dropdown).
+In some instances, development approaches that do not use `editScopes` are preferred.  For more information about forms without editScopes, see  [portalfx-forms-editscopeless.md](portalfx-forms-editscopeless.md) and [portalfx-controls-dropdown.md#migration-to the-new-dropdown.md](portalfx-controls-dropdown.md#migration-to the-new-dropdown.md).
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>` is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK. 
 
@@ -203,6 +203,8 @@ In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  
 
   <!--gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts", "section": "formsEditScopeFaq#editScopePath"} -->
 
+<!-- TODO:  The following content seems to belong with editscopes instead of the form documents.  However, it is not properly formatted.  -->
+
 <a name="legacy-edit-scopes-editable-entity-arrays"></a>
 ### Editable entity arrays
 
@@ -278,9 +280,9 @@ This pair of EditScope methods significantly simplifies working with EditScope '
 
 ***Q: My Form data is just key/value-pairs. How do I model a Dictionary/StringMap in EditScope? Why can't I just use a JavaScript object like a property bag?***
 
-Like all models and view models treated by the Azure Portal FX, after the object/array is instantiated and returned to the FX in the process of rendering the UI, any subsequent mutation of that object/array should be done by changing/mutating **Knockout** observables. Portal controls and Knockout HTML template rendering both subscribe to these observables and re-render only when these observables change value.  
+Like all models and view models treated by the Azure Portal FX, after the object/array is instantiated and returned to the FX in the process of rendering the UI, any subsequent mutation of that object/array should be done by changing/mutating **Knockout** observables. Portal controls and Knockout HTML template rendering both subscribe to these observables and re-render only when these observables change value.
 
-This poses a challenge to the common JavaScript programming technique of treating a JavaScript object as a property bag of key-value-pairs. If an extension only adds or removes keys from a model or ViewModel object, the FX will not be aware of these changes. EditScope will not recognize these changes as user edits and therefore such key adds/removes will put EditScope edit-tracking in an inconsistent state.  
+This poses a challenge to the common JavaScript programming technique of treating a JavaScript object as a property bag of key-value-pairs. If an extension only adds or removes keys from a model or ViewModel object, the FX will not be aware of these changes. EditScope will not recognize these changes as user edits and therefore such key adds/removes will put EditScope edit-tracking in an inconsistent state.
 
 So, how does an extension model a Dictionary/StringMap/property bag when using the Portal FX and EditScope?  
 

@@ -55,7 +55,7 @@ The **V2** samples address the following API areas.
 
 * no-PDL TypeScript decorators that define all recommended Blade/Part variations
 
-* Forms that do not use **V1** EditScope. For more information about EditScope, see [portalfx-forms-edit-scope-faq.md](portalfx-forms-edit-scope-faq.md).
+* Forms that do not use **V1** EditScope. For more information about EditScope, see [portalfx-legacy-editscopes.md](portalfx-legacy-editscopes.md).
 
 <a name="v1-versus-v2-v1"></a>
 ### V1
@@ -112,9 +112,10 @@ Sample source code is included in topics that discuss the various Azure SDK API 
 
     | API Topic             | Document                                                                                             | Sample                                                            | Experience |
     | ------------------------------ | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | ---------- |
-    | Create ARM Resource Experience | [portalfx-create-engine-sample.md](portalfx-create-engine-sample.md)                                 |                                                                   | [https://aka.ms/portalfx/sampleCreateEngine](https://aka.ms/portalfx/sampleCreateEngine)  |
-    | Create Custom Experience       | [portalfx-create-robot-sample.md](portalfx-create-robot-sample.md)                                   |                                                                   | |
-    | Forms with EditScopes          | [portalfx-legacy-editscopes.md](portalfx-legacy-editscopes.md)             | `<diriewModels.ts`    | |`<dir>\Client\V1\MasterDetail\MasterDetailEdit\ViewModels\MasterDetailEditData.ts`  | Forms Without EditScopes       | [portalfx-editscopeless-forms.md](portalfx-editscopeless-forms.md)                                   |                                                                   | |
+    | Create ARM Resource Experience | [portalfx-create-engine-sample.md](portalfx-create-engine-sample.md)                 |  | [https://aka.ms/portalfx/sampleCreateEngine](https://aka.ms/portalfx/sampleCreateEngine)  |
+    | Create Custom Experience       | [portalfx-create-robot-sample.md](portalfx-create-robot-sample.md)                   |     | |
+    | Forms with EditScopes          | [portalfx-legacy-editscopes.md](portalfx-legacy-editscopes.md)             | `<diriewModels.ts`    | |`<dir>\Client\V1\MasterDetail\MasterDetailEdit\ViewModels\MasterDetailEditData.ts`  | 
+    | Forms Without EditScopes       | [portalfx-forms-editscopeless.md](portalfx-forms-editscopeless.md)      |   | |
     | Getting Started                | [portalfx-parameter-collection-getting-started.md](portalfx-parameter-collection-getting-started.md) | `<dir>\Client\V1\ParameterCollection\ ParameterCollectionArea.ts` | |
  
   * Scenarios 

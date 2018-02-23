@@ -313,10 +313,14 @@ var nameTextboxOptions  = <MsPortalFx.ViewModels.Forms.TextBox.Options>{
 ```
 
 
+
+
+
+
 <a name="developing-forms-legacy-edit-scopes"></a>
 ## Legacy Edit Scopes
 
-**NOTE**:  EditScopes are becoming obsolete.   It is recommended that extensions be developed without edit scopes, as specified in [portalfx-editscopeless-forms.md](portalfx-editscopeless-forms.md).
+**NOTE**:  EditScopes are becoming obsolete.   It is recommended that extensions be developed without edit scopes, as specified in [portalfx-forms-editscopeless.md](portalfx-forms-editscopeless.md).
 
 <a name="developing-forms-legacy-edit-scopes-working-with-edit-scopes"></a>
 ### Working with Edit Scopes
@@ -329,7 +333,7 @@ Edit scopes provide a standard way of managing edits over a collection of input 
   * Persist unsaved changes from the form to the cloud
   * Simplify merging changes from the server into the current edit
 
-In some instances, development approaches that do not use `editScopes` are preferred.  For more information about forms without editScopes, see  [portalfx-editscopeless-forms.md](portalfx-editscopeless-forms.md) and [portalfx-controls-dropdown.md#migration-to the-new-dropdown.md](portalfx-controls-dropdown.md#migration-to the-new-dropdown.md).
+In some instances, development approaches that do not use `editScopes` are preferred.  For more information about forms without editScopes, see  [portalfx-forms-editscopeless.md](portalfx-forms-editscopeless.md) and [portalfx-controls-dropdown.md#migration-to the-new-dropdown.md](portalfx-controls-dropdown.md#migration-to the-new-dropdown.md).
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>` is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK. 
 
@@ -516,6 +520,8 @@ In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  
     `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`
 
   <!--gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts", "section": "formsEditScopeFaq#editScopePath"} -->
+
+<!-- TODO:  The following content seems to belong with editscopes instead of the form documents.  However, it is not properly formatted.  -->
 
 <a name="developing-forms-legacy-edit-scopes-editable-entity-arrays"></a>
 ### Editable entity arrays
@@ -848,11 +854,13 @@ As discussed in [portalfx-extensions-faq-forms.md#key-value-pairs](portalfx-exte
 
 | Term                 | Meaning |
 | ---                  | --- |
-| Compile-time verified lambda | |
-| Dirty | The contents of a textbox or similar object have been changed from the time that they were originally displayed or instantiated. Related to the most recent value of a variable or observable. |
+| compile-time verified lambda | A lambda expression that is verified at compile time.  |
+| eirty | The contents of a textbox or similar object have been changed from the time that they were originally displayed or instantiated. Related to the most recent value of a variable or observable. |
 | DOM              | Document Object Model   |
-| Journey | |
-| observable array | |
-| property bag | A container that contains different types of objects. |
+| journey  | A user-defined collection of Azure blades to which the user has navigated in order to accomplish a specific goal or task. A set of experiences, each of which has its own goals, that combine to result in a greater level of competency or knowledge. |
+| lambda expression | An anonymous function that is used to create delegates or expression tree types. |
+| observable | Special Knockout or JavaScript objects that can notify subscribers or other code about changes, and can automatically detect dependencies.  |
+| observable array | An observable that allows code to to detect and respond to changes on  a collection of things.   |
 | promise | An object that is returned from asynchronous processing which binds together the results of multiple asynchronous operations.  This is in accordance with a contract that async operation(s) will either complete successfully or will have been rejected. | 
-| Validation |  The process of ensuring that form or field contents are within the specified constraints for an application.  This includes items like field length or numeric checks. |
+| property bag | A container that contains different types of object properties. Allows the   addition of properties without modifying the server side object, and with minimal changes to the client code.|
+| validation |  The process of ensuring that form or field contents are within the specified constraints for an application.  This includes items like field length or numeric checks. |
