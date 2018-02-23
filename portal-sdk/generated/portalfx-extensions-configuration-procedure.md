@@ -5,7 +5,7 @@ To add an extension to the Portal, send a pull request, as specified in [top-ext
 
 <!-- TODO - We need an example of a pull request that puts the extension in the enabled state immediately.
 -->
-An example of a pull request that puts the extension immediately into the enabled state located at []().
+An example of a pull request that puts the extension immediately into the enabled state is located at []().
 
 An example of a pull request that enables the `HDInsight` extension in the Mooncake environment and increases the extension test is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev).
 
