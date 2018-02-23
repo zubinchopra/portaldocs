@@ -1,7 +1,7 @@
 
 ## Legacy Edit Scopes
 
-**NOTE**:  EditScopes are becoming obsolete.   It is recommended that extensions be developed without edit scopes, as specified in [portalfx-editscopeless-forms.md](portalfx-editscopeless-forms.md).
+**NOTE**:  EditScopes are becoming obsolete.   It is recommended that extensions be developed without edit scopes, as specified in [portalfx-forms-editscopeless.md](portalfx-forms-editscopeless.md).
 
 ### Working with Edit Scopes
 
@@ -13,7 +13,7 @@ Edit scopes provide a standard way of managing edits over a collection of input 
   * Persist unsaved changes from the form to the cloud
   * Simplify merging changes from the server into the current edit
 
-In some instances, development approaches that do not use `editScopes` are preferred.  For more information about forms without editScopes, see  [portalfx-editscopeless-forms.md](portalfx-editscopeless-forms.md) and [portalfx-controls-dropdown.md#migration-to the-new-dropdown.md](portalfx-controls-dropdown.md#migration-to the-new-dropdown.md).
+In some instances, development approaches that do not use `editScopes` are preferred.  For more information about forms without editScopes, see  [portalfx-forms-editscopeless.md](portalfx-forms-editscopeless.md) and [portalfx-controls-dropdown.md#migration-to the-new-dropdown.md](portalfx-controls-dropdown.md#migration-to the-new-dropdown.md).
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>` is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK. 
 
@@ -195,6 +195,8 @@ In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  
     `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`
 
   <!--gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts", "section": "formsEditScopeFaq#editScopePath"} -->
+
+<!-- TODO:  The following content seems to belong with editscopes instead of the form documents.  However, it is not properly formatted.  -->
 
 ### Editable entity arrays
 

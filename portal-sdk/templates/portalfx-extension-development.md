@@ -1,7 +1,8 @@
 
-# Getting Started
+##  Getting Started
 
 <!-- TODO: deprecate the link to portalfx-howitworks.md  and replace it with portalfx a link to -extensions-architecture.md -->
+<!-- TODO:  Remove links to documents that are located in the master index or are otherwise known.  -->
 
 {"gitdown": "include-headings", "file": "../templates/portalfx-howitworks.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-creating-extensions.md"}
@@ -16,11 +17,8 @@
 {"gitdown": "include-headings", "file": "../templates/portalfx-no-pdl-programming.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-parts.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-blades.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-forms.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-controls.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-controls-monitor-chart.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-editscopeless-forms.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-fxcontrols-editscope-forms.md"}
 
 # Authentication
 {"gitdown": "include-headings", "file": "../templates/portalfx-authentication.md"}
