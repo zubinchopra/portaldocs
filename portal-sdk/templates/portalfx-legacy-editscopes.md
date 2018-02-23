@@ -1,7 +1,9 @@
 
-## Working with Edit Scopes
+## Legacy Edit Scopes
 
 **NOTE**:  EditScopes are becoming obsolete.   It is recommended that extensions be developed without edit scopes, as specified in [portalfx-editscopeless-forms.md](portalfx-editscopeless-forms.md).
+
+### Working with Edit Scopes
 
 Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide many common functions that would otherwise be difficult to orchestrate, like the following:
 
@@ -11,11 +13,14 @@ Edit scopes provide a standard way of managing edits over a collection of input 
   * Persist unsaved changes from the form to the cloud
   * Simplify merging changes from the server into the current edit
 
-In some instances, development approaches that do not use `editScopes` are preferred.  For more information about forms without editScopes, see  [portalfx-editscopeless-forms.md](portalfx-editscopeless-forms.md) and [portalfx-controls-dropdown.md#migration-to the-new-dropdown](portalfx-controls-dropdown.md#migration-to the-new-dropdown).
+In some instances, development approaches that do not use `editScopes` are preferred.  For more information about forms without editScopes, see  [portalfx-editscopeless-forms.md](portalfx-editscopeless-forms.md) and [portalfx-controls-dropdown.md#migration-to the-new-dropdown.md](portalfx-controls-dropdown.md#migration-to the-new-dropdown.md).
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>` is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK. 
 
 Any edits that were made by the user and collected in an `EditScope` are saved in the storage for the browser session. This is managed by the shell. Parts or blades may request an `EditScope`, but the most common usage is in a blade. A blade defines a `BladeParameter` with a `Type` of `NewEditScope`. This informs the shell that a blade is asking for a new `editScope` object. Within the rest of the blade, that parameter can be attached to an `editScopeId` property on any part. Using this method, many parts and commands on the blade can all read from the same editScopeId. This is common when a command needs to save information about a part. After sending the `editScopeId` to the part as a property, the `viewModel`  loads the `editScope` from the cloud. 
+
+For more information about edit scopes and  managing unsaved edits, watch the video located at 
+[https://aka.ms/portalfx/editscopes](https://aka.ms/portalfx/editscopes).
 
 ### Request an editscope from pdl
 
@@ -190,3 +195,54 @@ In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  
     `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`
 
   <!--gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts", "section": "formsEditScopeFaq#editScopePath"} -->
+
+### Editable entity arrays
+
+***Q: The user added/removed rows from my editable grid, but I don't see the corresponding adds/removes in my EditScope array.  What gives?***
+
+SOLUTION: EditScope 'entity' arrays were designed with a few requirements in mind:
+* The user's edits need to be serialized so that Journey-switching works with unsaved Form edits. For editing large arrays, the FX should not serialize array edits by persisting two full copies of the potentially very large array.
+* In the UI, the FX will want to render an indication of what array items were created/updated/deleted. In some cases, array removes need to be rendered with strike-through styling.
+* Array adds/remove need to be revertable for some scenarios.
+
+The resulting design made EditScope 'entity' arrays behave differently than regular JavaScript arrays.  Importantly:
+* 'Creates' are kept out-of-band
+* 'Deletes' are non-destructive
+
+To conveniently see the *actual* state of an EditScope 'entity' array, use the '`getEntityArrayWithEdits`' EditScope method. This returns:
+* An array that includes 'created' entities and doesn't include 'deleted' entities
+* Discrete arrays that individually capture 'created', 'updated' and 'deleted' entities  
+
+This '`getEntityArrayWithEdits`' is particularly useful in ParameterProvider's '`mapOutgoingDataForCollector`' callback when returning an edited array to some ParameterCollector, as in the following code.
+
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/ParameterCollection/ParameterProviders/ViewModels/ProviderViewModels.ts", "section": "formsEditScopeFaq#getEntityArrayWithEdits"}
+
+#### Apply array as edits
+
+And there is a corresponding '`applyArrayAsEdits`' EditScope method that simplifies applying edits to an existing EditScope 'entity' array. This is often done in a ParameterCollector's '`receiveResult`' callback, as in the following example.
+
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/ParameterCollection/FormWithCollectors/ViewModels/FormWithCollectorsBladeViewModel.ts", "section": "formsEditScopeFaq#applyArrayAsEdits"}
+
+This pair of EditScope methods significantly simplifies working with EditScope 'entity' arrays.  
+  
+* * *
+
+### Key-value pairs
+
+<!-- TODO: Determine whether this section remains here, or should be moved to the edit grid document -->
+
+***Q: My Form data is just key/value-pairs. How do I model a Dictionary/StringMap in EditScope? Why can't I just use a JavaScript object like a property bag?***
+
+Like all models and view models treated by the Azure Portal FX, after the object/array is instantiated and returned to the FX in the process of rendering the UI, any subsequent mutation of that object/array should be done by changing/mutating **Knockout** observables. Portal controls and Knockout HTML template rendering both subscribe to these observables and re-render only when these observables change value.
+
+This poses a challenge to the common JavaScript programming technique of treating a JavaScript object as a property bag of key-value-pairs. If an extension only adds or removes keys from a model or ViewModel object, the FX will not be aware of these changes. EditScope will not recognize these changes as user edits and therefore such key adds/removes will put EditScope edit-tracking in an inconsistent state.
+
+So, how does an extension model a Dictionary/StringMap/property bag when using the Portal FX and EditScope?  
+
+The pattern is to develop the Dictionary/StringMap/property bag as an observable array of key/value-pairs, like `KnockoutObservableArray<{ key: string; value: TValue; }>`. 
+
+Often, additionally, it is important to let users edit the Dictionary/StringMap/property bag using *an editable grid*. In such cases, it is important to describe the array of key/value-pairs as an 'entity' array since editable grid can only be bound to an EditScope 'entity' array. For more information about how to develop type metadata to use the array with editable grid, see [#editable-grid](#editable-grid).
+
+Here's a sample that does something similar, converting - in this case - an array of strings into an 'entity' array for consumption by editable grid.  
+
+* * *
