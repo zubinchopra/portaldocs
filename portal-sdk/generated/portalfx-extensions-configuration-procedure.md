@@ -1,64 +1,26 @@
-<a name="configuration-scenarios"></a>
-## Configuration Scenarios
+<a name="process-details"></a>
+## Process Details
 
-The following is a series of procedures that assist in configuring extensions for different purposes or environments.
+To add an extension to the Portal, send a pull request, as specified in [top-extensions-publishing.md](top-extensions-publishing.md). 
 
-[Onboarding a new or existing extension](#onboarding-a-new-or-existing-extension)
-[Managing extension configuration](#managing-extension-configuration)
-[Enabling an extension](#enabling-an-extension)
-[Expediting extension deployment](#expediting-extension-deployment)
-[Receiving notification of deployment](#receiving-notification-of-deployment)
+<!-- TODO - We need an example of a pull request that puts the extension in the enabled state immediately.
+-->
+An example of a pull request that puts the extension immediately into the enabled state located at []().
 
-<a name="configuration-scenarios-onboarding-a-new-or-existing-extension"></a>
-### Onboarding a new or existing extension
-
-<!--TODO:  Determine whether existing extensions should be changed to disabled mode, and if so, under what circumstances -->
-
-All new extensions should always be added to the Portal configuration in disabled mode. To add an extension to the Portal, send a pull request, as specified in [top-extensions-publishing.md](top-extensions-publishing.md). 
+An example of a pull request that enables the `HDInsight` extension in the Mooncake environment and increases the extension test is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev).
 
 The following is an example of a pull request for registering a `Scheduler` extension in the Fairfax environment.
 [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/459608f61d5c36864affafe6eb9d230655f67a29?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/459608f61d5c36864affafe6eb9d230655f67a29?refName=refs%2Fheads%2Fdev).
 
-<a name="configuration-scenarios-managing-extension-configuration"></a>
-### Managing extension configuration
+<a name="process-details-service-level-agreements-for-deployment"></a>
+### Service Level Agreements for deployment
 
-To temporarily enable a disabled extension in private preview for this test session only, change the configuration by adding an extension override in the Portal URL, as in the following example.
+As per the safe deployment mandate, all the configuration changes are treated as code changes. Consequently, they use similar deployment processes.
 
-`https://portal.azure.com?Microsoft_Azure_Demo=true`
+All changes that are checked in to the dev branch will be deployed in the following order: Dogfood -> RC -> MPAC -> PROD-> National Clouds (BlackForest, FairFax, and Mooncake). The table located at in [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md) specifies the amount of time allowed to complete the deployment.
 
-where
-
-`Microsoft_Azure_Demo`
-
-is the name of the extension as registered with the Portal.
-
-Conversely, the extension can temporarily be disabled for a session by changing this configuration attribute to a value of `false`. The extension cannot be temporarily enabled or disabled in the production environment.
-
-As part of permanently enabling the extension, the developer should update the extension test count in the `%ROOT%\src\StbPortal\Website.Server.Tests\DeploymentSettingsTests.cs` file. Otherwise, the **disabled** property in the `config` file(s) can remain set to `false`. 
-
-For more information about previews and Global Availability, see [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
-
-<a name="configuration-scenarios-enabling-an-extension"></a>
-### Enabling an extension
-
-The extension can only be enabled in production after all production-ready metrics criteria have been met. After all the stakeholders that are included in the production-ready metrics have signed off  on the extension, attach their emails to the workitem that is used for sending the pull request, as specified in [top-extensions-publishing.md](top-extensions-publishing.md).
-
-Enabling an extension requires two changes:
-1. To enable the extension, remove the `disables` attribute from the config.
-1. Update the enabled extension test count.
-
-    An example of a pull request that enables the `HDInsight` extension in the Mooncake environment and increases the extension test is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev).
-
-<a name="configuration-scenarios-enabling-an-extension-updating-the-feedback-email"></a>
-#### Updating the feedback email
-<!--TODO:  locate the work that is in progress, and add it to the document -->
-
-**>> Work In Progress <<**
-
-To update the feedback email, send a pull request as specified in [top-extensions-publishing.md](top-extensions-publishing.md).
-
-<a name="configuration-scenarios-expediting-extension-deployment"></a>
-### Expediting extension deployment
+<a name="process-details-expediting-deployment"></a>
+### Expediting deployment
 
 To deploy expedited changes, developers can send a pull request for each branch in the Portal repository, i.e., Dogfood, MPAC and Production. How to send the pull request is specified in  [top-extensions-publishing.md](top-extensions-publishing.md).
 
@@ -68,10 +30,10 @@ If the pull request is not sent in the specified order, or if the commit message
 
 The SLA for deploying configuration changes to all regions in the Production Environment is in the table specified in [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md).
 
-As per the safe deployment mandate, deployment to production environment is performed in stages, where each stage is a logical grouping of regions. There are five stages in the production environment. There is a 24-hour wait period between promoting the build from one batch to another. This implies that the minimum time to deploy a change in all regions in Production branch is five days. For more information about staging, see    .
+As per the safe deployment mandate, deployment to production environment is performed in stages, where each stage is a logical grouping of regions. There are five stages in the production environment. There is a 24-hour wait period between promoting the build from one batch to another. This implies that the minimum time to deploy a change in all regions in Production branch is five days. 
 
-<a name="configuration-scenarios-receiving-notification-of-deployment"></a>
-### Receiving notification of deployment
+<a name="process-details-receiving-notifications-when-changes-are-deployed"></a>
+### Receiving notifications when changes are deployed
 
 After the commit has been associated with a workitem, the developer will receive a notification when the config change is deployed to each region.
 

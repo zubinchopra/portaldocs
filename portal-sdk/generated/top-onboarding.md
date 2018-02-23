@@ -165,7 +165,7 @@ You are required to check the quality of your extension. We have standardized wa
 
 There is no blocking exit criteria, which means you do not have to prove that the extension's performance and reliability are in the required range. However, once you ship, the Portal team will monitor the quality of the extension. Extensions that do not meet the required quality bar will be flagged in executive reviews and will be asked to improve their quality as soon as possible.
 
-When you are ready for all users to see your experience you need to do everything mentioned above, except you will enable your entry point as shown in the following example and then deploy your extension.
+When you are ready for all users to see your experience, you will enable your entry point as shown in the following example and then deploy your extension.
 <!--
 TODO - Add an example after the feature is ready (ETA is March or April )
 -->
