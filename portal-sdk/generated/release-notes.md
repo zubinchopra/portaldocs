@@ -1,4 +1,4 @@
-# Release Notes since 10/23/2017
+# Release Notes since 10/24/2017
 
 ## 5.0.302.984
 0 Breaking Changes, 0 Features added and 0 Bugs Fixed
@@ -171,6 +171,14 @@
 ## 5.0.302.878
 0 Breaking Changes, 2 Features added and 0 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1570341'>1570341</a></td><td>Feature</td><td>[MonitorChart] Enable batching everywhere</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1554451'>1554451</a></td><td>Feature</td><td>Enable Coadmins feature flag in Ibiza FF and MC - config changes</td></tr></table>
+
+## 5.0.302.1018
+0 Breaking Changes, 1 Features added and 0 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1581492'>1581492</a></td><td>Feature</td><td>Create tool for automating extraction of control APIs and documentation</td></tr></table>
+
+## 5.0.302.1017
+0 Breaking Changes, 2 Features added and 3 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2161381'>2161381</a></td><td>Feature</td><td>[Perf] Optimize jQuery's XSS security fix</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2160204'>2160204</a></td><td>Bug Fix</td><td>Turn on batch command name in all environments</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2147878'>2147878</a></td><td>Feature</td><td>Change m365 to devicemanagement</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2118052'>2118052</a></td><td>Bug Fix</td><td>Add more Intune workloads to M365.ts</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1975825'>1975825</a></td><td>Bug Fix</td><td>[Perf] do not load dashboard when switching blades from sidebar</td></tr></table>
 
 ## 5.0.302.1016
 0 Breaking Changes, 1 Features added and 5 Bugs Fixed
