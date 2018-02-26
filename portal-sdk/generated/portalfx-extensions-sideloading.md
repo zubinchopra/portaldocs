@@ -17,7 +17,7 @@ Two mechanisms that can be used to sideload an extension are as follows.
 <a name="sideloading-an-extension-load-from-development-computer"></a>
 ## Load from development computer
 
-To load an extension from the development machine or the localhost, extension developers need to register it.  For more information, see [portalfx-extensions-testing-in-production-overview.md#Registering-a-customized-extension](portalfx-extensions-testing-in-production-overview.md#registering-a-customized-extension). For more information about alternatives to the local host environment, see [portalfx-extensions-hosting-service.md](portalfx-extensions-hosting-service). 
+To load an extension from the development machine or the localhost, extension developers need to register it.  For more information, see [portalfx-extensions-testing-in-production-overview.md#Registering-a-customized-extension](portalfx-extensions-testing-in-production-overview.md#registering-a-customized-extension). For more information about alternatives to the local host environment, see [top-extensions-hosting-service.md](top-extensions-hosting-service). 
 For more information about feature flags that are used in hosting, see [portalfx-extensions-flags.md](portalfx-extensions-flags.md).
 
 <a name="sideloading-an-extension-load-from-test-environment"></a>
@@ -75,7 +75,7 @@ When testing is completed, the developer can run the `unregisterTestExtension` m
   MsPortalImpl.Extension.unregisterTestExtension("<extensionName>");
 ```
 
-When all steps are complete, the developer can submit a pull request to enable the extension, as specified in [portalfx-extensions-publishing](portalfx-extensions-publishing). When the extension is enabled, users will be able to access it in all environments, as specified in [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
+When all steps are complete, the developer can submit a pull request to enable the extension, as specified in [top-extensions-publishing.md](top-extensions-publishing.md). When the extension is enabled, users will be able to access it in all environments, as specified in [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
    
 
 <a name="sideloading-an-extension-best-practices"></a>
@@ -86,7 +86,7 @@ These best practices are in addition to the techniques that are documented in to
 
 ***What is the best environment for sideloading during initial testing?***
 
- The FAQs for debugging extensions is located at [portalfx-extensions-hosting-service.md](portalfx-extensions-hosting-service.md).
+ The FAQs for debugging extensions is located at [portalfx-extensions-faq-hosting-service.md](portalfx-extensions-faq-hosting-service.md).
 
 * * *
 
@@ -119,3 +119,14 @@ You need to allow the Azure Portal to frame your extension URL. For more informa
 
 
 
+<a name="sideloading-an-extension-glossary"></a>
+## Glossary
+   
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+ 
+| Term                         | Meaning |
+| ---                          | --- |
+| localhost         | A hostname that means this computer or this host.  |
+| query string |  `uri` used for accessing the Azure Portal |
+| sideloading  | Loading an extension for a specific user session from any source other than the uri` that is registered in the Portal.  The process of transferring data between two local devices, or between the development platform and the local host. Also side load, side-load. |   
+| untrusted extension | An extension that is not accompanied by an SSL certificate. |

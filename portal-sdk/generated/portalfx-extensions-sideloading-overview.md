@@ -13,7 +13,7 @@ Two mechanisms that can be used to sideload an extension are as follows.
 <a name="load-from-development-computer"></a>
 ## Load from development computer
 
-To load an extension from the development machine or the localhost, extension developers need to register it.  For more information, see [portalfx-extensions-testing-in-production-overview.md#Registering-a-customized-extension](portalfx-extensions-testing-in-production-overview.md#registering-a-customized-extension). For more information about alternatives to the local host environment, see [portalfx-extensions-hosting-service.md](portalfx-extensions-hosting-service). 
+To load an extension from the development machine or the localhost, extension developers need to register it.  For more information, see [portalfx-extensions-testing-in-production-overview.md#Registering-a-customized-extension](portalfx-extensions-testing-in-production-overview.md#registering-a-customized-extension). For more information about alternatives to the local host environment, see [top-extensions-hosting-service.md](top-extensions-hosting-service). 
 For more information about feature flags that are used in hosting, see [portalfx-extensions-flags.md](portalfx-extensions-flags.md).
 
 <a name="load-from-test-environment"></a>
@@ -71,4 +71,4 @@ When testing is completed, the developer can run the `unregisterTestExtension` m
   MsPortalImpl.Extension.unregisterTestExtension("<extensionName>");
 ```
 
-When all steps are complete, the developer can submit a pull request to enable the extension, as specified in [portalfx-extensions-publishing](portalfx-extensions-publishing). When the extension is enabled, users will be able to access it in all environments, as specified in [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
+When all steps are complete, the developer can submit a pull request to enable the extension, as specified in [top-extensions-publishing.md](top-extensions-publishing.md). When the extension is enabled, users will be able to access it in all environments, as specified in [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
