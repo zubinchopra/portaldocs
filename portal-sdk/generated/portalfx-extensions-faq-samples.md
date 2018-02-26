@@ -1,12 +1,15 @@
 <a name="frequently-asked-questions"></a>
 ## Frequently asked questions
 
-<a name="frequently-asked-questions-samples"></a>
-### Samples
 
-***Samples will not compile. How do I fix this?***
+<!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
+<a name="frequently-asked-questions-samples-will-not-compile"></a>
+### Samples will not compile
 
- Right out of the box, the samples are not aware of whether V1 or V2 is being used, or whether the IDE options match the version. There may be an error message TS1219.  Error may also occur based on the version of the SDK.
+***How do I fix this?***
+
+ Description:
+ Right out of the box, the samples are not aware of whether V1 or V2 is being used, or whether the IDE options match the version. There may be an error message TS1219.  Errors may also occur based on the version of the SDK.
 
  SOLUTION:  Add a `tsconfig.json` file to the project that specifies that decorators are experimental, as in the following code.
 
@@ -30,14 +33,14 @@
 
  * * *
 
- ---------------------------
-Microsoft Visual Studio
----------------------------
-Unable to launch the IIS Express Web server.
+<a name="frequently-asked-questions-cannot-launch-iis"></a>
+### Cannot launch IIS
 
+*** Unable to launch the Microsoft Visual Studio IIS Express Web server***
+
+Description:
 Failed to register URL "https://localhost:44306/" for site "SamplesExtension" application "/". Error description: Cannot create a file when that file already exists. (0x800700b7)
 
-
-SOLUTION:  terminate iis express processes in Task Manager and f5 again.
+SOLUTION:  Terminate IIS express processes in Task Manager and click F5 again.
 
 * * *

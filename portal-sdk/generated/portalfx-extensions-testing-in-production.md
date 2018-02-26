@@ -4,7 +4,7 @@
 <a name="testing-in-production-introduction"></a>
 ## Introduction
 
-This document describes the various components of testing an extension in production, including status codes and testing procedures.  For information about regular testing and debugging, see [portalfx-test.md](portalfx-test.md) and [portalfx-debugging.md](portalfx-debugging.md).
+This document describes the various components of testing an extension in production, including status codes and testing procedures.  For information about regular testing and debugging, see [portalfx-test.md](portalfx-test.md) and [top-extensions-debugging.md](top-extensions-debugging.md).
 
 <a name="testing-in-production-overview"></a>
 ## Overview
@@ -113,9 +113,9 @@ When testing is completed, the developer can run the `unregisterTestExtension` m
 
 ## Loading customized extensions
 
-Custom extension stamps that are used for testing can be loaded into the Portal by using feature flags. The `uriFormat` parameter, in conjunction with the `uri` parameter, can increase the number of extension stamps that can be loaded in various Portal environments. These parameters are located in the `extensions.<EnvironmentName>.json` file, in conjunction with the `Client\extension.pdl` file. Changing the `uri` and `uriFormat` parameters instead of using the **endpoint** and **portNumber** in the query string, will change the extension stamp. For more information about extension configuration, see [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
+Custom extensions that are used for testing can be loaded into the Portal by using feature flags. The `uriFormat` parameter, in conjunction with the `uri` parameter, can increase the number of extension editions that can be loaded in various Portal environments. These parameters are located in the `extensions.<EnvironmentName>.json` file, in conjunction with the `Client\extension.pdl` file. The edition of the extension that is loaded can be changed by modifying the `uri` and `uriFormat` parameters instead of using  **endpoint** and **portNumber** in the query string. For more information about extension configuration, see [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
 
-To register a customized extension, or register a different extension stamp, use the following parameters in the Portal extension query string.
+To register a customized extension, or register a different extension edition, use the following parameters in the Portal extension query string.
  
 ```<protocol>://<environment>/?feature.canmodifyextensions=true#?testExtensions={"<extensionName>":"<protocol>://<uri>/"}```
 
@@ -160,17 +160,17 @@ For more information on loading, see [portalfx-testing-ui-test-cases.md](portalf
 <a name="testing-in-production-completing-the-extension-test"></a>
 ## Completing the extension test
 
-When all steps are complete, the developer can submit a pull request to enable the extension, as specified in [portalfx-extensions-publishing](portalfx-extensions-publishing). When the extension is enabled, users will be able to access it in all environments, as specified in [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
+When all steps are complete, the developer can submit a pull request to enable the extension, as specified in [top-extensions-publishing.md](top-extensions-publishing.md). When the extension is enabled, users will be able to access it in all environments, as specified in [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
 
 <a name="testing-in-production-deploying-test-extensions-using-the-hosting-service"></a>
 ## Deploying test extensions using the hosting service
  
- For more information about common hosting scenarios, see  [portalfx-extensions-hosting-service-scenarios.md#sideloading](portalfx-extensions-hosting-service-scenarios.md#sideloading).  For information about debugging switches or feature flags that are used in hosting, see  [portalfx-extensions-flags.md](portalfx-extensions-flags.md).  For more information about alternatives to the local host environment, see [portalfx-extensions-hosting-service.md](portalfx-extensions-hosting-service.md). 
+ For more information about common hosting scenarios, see  [portalfx-extensions-hosting-service-scenarios.md#sideloading](portalfx-extensions-hosting-service-scenarios.md#sideloading).  For information about debugging switches or feature flags that are used in hosting, see  [portalfx-extensions-flags.md](portalfx-extensions-flags.md).  For more information about alternatives to the local host environment, see [top-extensions-hosting-service.md](top-extensions-hosting-service.md). 
 
-<a name="testing-in-production-common-use-cases-for-custom-stamps"></a>
-## Common use cases for custom stamps
+<a name="testing-in-production-common-use-cases-for-custom-extensions"></a>
+## Common use cases for custom extensions
 
-There are several scenarios in which a developer may use custom stamps to test various aspects of an extension. Some of them are as follows. 
+There are several scenarios in which a developer test various aspects of an extension with different editions of the same extension. Some of them are as follows. 
 
 <details>
 
@@ -189,7 +189,7 @@ This setting excludes test traffic from our reports.
 <summary>Running regression tests</summary>
 
 Regression tests and build verification tests are    .
-<!-- TODO: Determine how extension stamps are used to run partial tests. -->
+<!-- TODO: Determine how extension editions are used to run partial tests. -->
 </details>
 <details>
 <summary>Obsolete script bundles</summary>
@@ -213,7 +213,7 @@ The current list of obsoleted bundles is in the following table.
 
 For example, if parameter collector V1/V2 is used, then the `obsoleteBundlesBitmask` flag should have a value of  1. If the extension uses both parameter collector V1/V2 and CsmTopology control, specify 3 (1 + 2).
 
-**NOTE**:  If the extension uses obsolete bundles, there may be a performance penalty when it is loaded.  Its performance can be  improved by migrating away from these dependencies, i.e. PCV1, PCV2 and  `CsmTopology` control. For more information about improving extension performance, see [portalfx-extensions-configuration-scenarios.md#pcv1-and-pcv2-removal](portalfx-extensions-configuration-scenarios.md#pcv1-and-pcv2-removal).
+**NOTE**:  If the extension uses obsolete bundles, there may be a performance penalty when it is loaded.  Its performance can be  improved by migrating away from these dependencies, i.e. PCV1, PCV2 and  `CsmTopology` control. For more information about improving extension performance, see [portalfx-extensions-configuration-procedure.md#pcv1-and-pcv2-removal](portalfx-extensions-configuration-procedure.md#pcv1-and-pcv2-removal).
 
 For more information about obsolete bundles and obsolete script bundles, see [portalfx-extension-reference-obsolete-bundle.md](portalfx-extension-reference-obsolete-bundle.md).
 </details>
@@ -295,7 +295,7 @@ SOLUTION:  Some troubleshooting steps are located at [https://stackoverflow.micr
 
 ***Sideloading friendly names is not working in the Dogfood environment***
 
-In order for Portal to load  a test version of an extension, i.e., load without using the PROD stamp, developers can append the feature flag `feature.canmodifystamps`. The following example uses the sideload url to load the "test" version of extension.
+In order for Portal to load a test version of an extension, i.e., load without using the PROD configuration, developers can append the feature flag `feature.canmodifystamps`. The following example uses the sideload url to load the "test" version of extension.
 
 `https://portal.azure.com?feature.canmodifystamps=true&<extensionName>=test`
 
@@ -576,7 +576,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | Developer Tools Console | | 
 | diagnostic switch | | 
 | endpoint             | A device that is connected to a LAN and accepts or transmits communications across a network. In terms of directories or Web pages, there may be several endpoints that are defined on the same device.  |
-| extension stamps | |
+| extension stamp | An instance of a service in a region. Every extension can deploy one or more extension editions based on testing requirements. The main extension is used for production and is the only one that the Portal will load by default. Also known as configuration or configuration file.   | 
 | hotfix | |
 | localhost            | A hostname that means this computer or this host.  |
 | obsolete script      | A script that makes certain parts of the Portal act as legacy code, in order to limit the performance costs of the old functionality to only extensions that are using them. | 
