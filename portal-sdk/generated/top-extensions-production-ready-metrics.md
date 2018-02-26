@@ -11,6 +11,7 @@ The metrics are reported as part of an executive summary every Friday. Extension
 * [Accessibility](#accessibility)
 * [Localization](#localization)
 * [Create Success Rate](#create-success-rate)
+* [Resource move](#resource-move)
 
 <a name="production-ready-metrics-and-quality-metrics-performance"></a>
 ### Performance
