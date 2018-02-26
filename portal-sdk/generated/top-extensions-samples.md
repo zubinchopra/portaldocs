@@ -85,8 +85,8 @@ Sample source code is included in topics that discuss the various Azure SDK API 
 
   | API Topic            | Document | Sample | 
   | --------------------------  | ----------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------   | 
-  | Bundling and Configuration  | [portalfx-extensions-migrate-existing-to-extensioncontrollerbase.md](portalfx-extensions-migrate-existing-to-extensioncontrollerbase.md)  |                                                                               | 
-  | Commands  | [portalfx-commands.md](portalfx-commands.md)  |   `\Client\V1\Commands\SimpleBladeCommand\ViewModels\SimpleBladeCommandViewModels.ts` <br>   `\Client\V1\Commands\Dialogs\ViewModels\CommandDialogsViewModels.ts` <br> `\Client\V1\Commands\UrlCommand\ViewModels\UrlCommandViewModels.ts` <br>    `\Client\V1\Commands\OpenBladeCommand\ViewModels\OpenBladeCommandViewModels.ts`  |      | 
+  | Bundling and Configuration  | [portalfx-extensions-migrate-existing-to-extensioncontrollerbase.md](portalfx-extensions-migrate-existing-to-extensioncontrollerbase.md)  |       | 
+  | Commands  | [portalfx-commands.md](portalfx-commands.md)  |   `<dir>\Client\V1\Commands\SimpleBladeCommand\ViewModels\SimpleBladeCommandViewModels.ts` <br>   `<dir>\Client\V1\Commands\Dialogs\ViewModels\CommandDialogsViewModels.ts` <br> `<dir>\Client\V1\Commands\UrlCommand\ViewModels\UrlCommandViewModels.ts` <br>    `<dir>\Client\V1\Commands\OpenBladeCommand\ViewModels\OpenBladeCommandViewModels.ts`  |      | 
   | Configuration Settings      | [portalfx-load-configuration.md](portalfx-load-configuration.md)                                                                          | `<dir>\Configuration\ArmConfiguration.cs`                                     |
   | Content Delivery Network    | [portalfx-cdn.md](portalfx-cdn.md)                                                                                                        |  `<dir>\Configuration\CustomApplicationContext.cs`                            | 
   | Localizing your extension |  [portalfx-localization.md](portalfx-localization.md) | `<dir>\Client\ClientResources.resx` | |
@@ -116,7 +116,7 @@ Sample source code is included in topics that discuss the various Azure SDK API 
     | ------------------------------ | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | ---------- |
     | Create ARM Resource Experience | [portalfx-create-engine-sample.md](portalfx-create-engine-sample.md)                 |  | [https://aka.ms/portalfx/sampleCreateEngine](https://aka.ms/portalfx/sampleCreateEngine)  |
     | Create Custom Experience       | [portalfx-create-robot-sample.md](portalfx-create-robot-sample.md)                   |     | |
-    | Forms with EditScopes          | [portalfx-legacy-editscopes.md](portalfx-legacy-editscopes.md)             | `<diriewModels.ts`    | |`<dir>\Client\V1\MasterDetail\MasterDetailEdit\ViewModels\MasterDetailEditData.ts`  | 
+    | Forms with EditScopes          | [portalfx-legacy-editscopes.md](portalfx-legacy-editscopes.md)             | `<dir>\Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\DetailViewModels.ts`.     | |`<dir>\Client\V1\MasterDetail\MasterDetailEdit\ViewModels\MasterDetailEditData.ts`  | 
     | Forms Without EditScopes       | [portalfx-forms-editscopeless.md](portalfx-forms-editscopeless.md)      |   | |
     | Getting Started                | [portalfx-parameter-collection-getting-started.md](portalfx-parameter-collection-getting-started.md) | `<dir>\Client\V1\ParameterCollection\ ParameterCollectionArea.ts` | |
  

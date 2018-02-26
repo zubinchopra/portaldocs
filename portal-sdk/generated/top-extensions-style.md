@@ -774,7 +774,9 @@ To use the palette within SVG content, use the same class names as the one for [
 </style>
 ````
 
-
+<!--
+ gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-style-guide.md"}
+-->
 
 <a name="styling-an-extension-glossary"></a>
 ## Glossary
