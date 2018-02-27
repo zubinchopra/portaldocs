@@ -4,7 +4,7 @@
 
 For those who want to jump right into using TypeScript decorators to develop Blades and Parts, here are some quick and easy resources to consider:  
 
-* Getting started [video](https://ibizareflectorprod.blob.core.windows.net/public/video.html)
+* Getting started [https://aka.ms/portalfx/typescriptdecorators](https://aka.ms/portalfx/typescriptdecorators)
 * no-PDL [FAQ](#no-pdl-faq)
 
 ### Introduction  
@@ -15,7 +15,7 @@ In the latest versions of the Ibiza SDK, extension teams can develop Blades and 
 
 PDL is still supported for back compat reasons, but using Blade/Part TypeScript decorators is the recommended pattern for new Blades/Parts and for teams who elect to port old PDL Blades/Parts.
 
-The next few sections provide an overview on how to use these decorators.  Additionally, there is an [Introduction video](https://ibizareflectorprod.blob.core.windows.net/public/video.html) that walks through these concepts.
+The next few sections provide an overview on how to use these decorators.  Additionally, there is an [Introduction video](https://aka.ms/portalfx/typescriptdecorators) that walks through these concepts.
 
 ### Current TypeScript decorator support
 
@@ -214,7 +214,7 @@ So, once you've applied a TypeScript decorator to your Blade/Part class, TypeScr
 - add a missing property  
 - determine the property's type or the return type of your added method.  
 
-If you iteratively refine your class based on Intellisense errors, once these are gone, you should be able to compile and run your new Blade / Part.  This technique is demonstrated in the intro [video](https://ibizareflectorprod.blob.core.windows.net/public/video.html).
+If you iteratively refine your class based on Intellisense errors, once these are gone, you should be able to compile and run your new Blade / Part.  This technique is demonstrated in the intro [video](https://aka.ms/portalfx/typescriptdecorators).
 
 #### How do I know what types to return from the `onInitialize` method?  
 
@@ -277,14 +277,14 @@ this.icon(MsPortalFx.Base.Images.Logos.MicrosoftSquares());  // For instance
 With no-PDL decorators, developers are confused as to why this API isn't available in no-PDL.  
 
 To answer here, first, how *does* one add an icon to a no-PDL Blade?  You do this in two steps:  
-1. Associate the icon with your `<AssetType>`
+1. Associate the icon with the  `<AssetType>`
 ```
 <AssetType
     Name='Carrots'
     Icon='MsPortalFx.Base.Images.Logos.MicrosoftSquares()'
     ...
 ```
-2. Associate your no-PDL Blade with your AssetType
+2. Associate the TypeScript Blade with the AssetType
 ```
 import { AssetTypes, AssetTypeNames } from "../_generated/ExtensionDefinition";
 
@@ -317,7 +317,7 @@ If yours is a scenario where your Blade/Part should show the loading indicators 
 #### When should I use the 'operations' API to control the Blade/Part's loading indicator?  
 There are scenarios like 'User clicks "Save" on my Blade/Part' where the extension wants to show loading indicators at the Blade/Part level.  What's distinct about this scenario is that the Blade/Part has already completed its initialization and, now, the user is interacting with the Blade/Part UI.  This is precisely the kind of scenario for the 'operations' API.  
 
-For no-PDL Blades/Parts, the 'operations' API is `this.context.container.operations`, and the API's use is described [here](portalfx-blades-templateBlade-advanced.md#showing-a-shield-loading-status-in-your-blade).  There is a sample to consult [here](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).
+For no-PDL Blades/Parts, the 'operations' API is `this.context.container.operations`, and the API's use is described [here](portalfx-extensions-blades-advanced.md#showing-a-shield-loading-status-in-your-blade).  There is a sample to consult [here](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).
 
 #### How can I save some state for my no-PDL Blade?  
 There is a decorator - @TemplateBlade.Configurable.Decorator for example, available on all Blade variations - that adds a `this.context.configuration` API that can be used to load/save Blade "settings".  See a sample [here](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).

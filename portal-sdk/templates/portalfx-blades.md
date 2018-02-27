@@ -1,3 +1,7 @@
+<!-- TODO:  deprecate this document by removing it.  It has been  replaced by portalfx-blades-overview.md.  -->
+
+[./portalfx-extensions-blades-overview.md](./ portalfx-extensions-blades-overview.md.).
+
 {"gitdown": "contents"}
 
 ## Blades
@@ -17,7 +21,7 @@ Type | Description | Use For...
 
  {"gitdown": "include-file", "file": "../templates/portalfx-blades-templateBlade.md"}
  {"gitdown": "include-file", "file": "../templates/portalfx-blades-templateBlade-reference.md"}
- {"gitdown": "include-file", "file": "../templates/portalfx-blades-templateBlade-advanced.md"}
+ {"gitdown": "include-file", "file": "../templates/portalfx-extensions-blades-advanced.md"}
  {"gitdown": "include-file", "file": "../templates/portalfx-blades-menublade.md"}
  
  {"gitdown": "include-file", "file": "../templates/portalfx-blades-bladeKinds.md"}
