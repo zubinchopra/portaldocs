@@ -1,11 +1,11 @@
 
-# Sideloading an Extension 
+# Blades and Template Blades
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-blades-overview.md"}
    
- {"gitdown": "include-file", "file": "../templates/portalfx-blades-templateBlade.md"}
+ {"gitdown": "include-file", "file": "../templates/portalfx-extensions-blades-procedure.md"}
 
- {"gitdown": "include-file", "file": "../templates/portalfx-blades-templateBlade-advanced.md"}
+ {"gitdown": "include-file", "file": "../templates/portalfx-extensions-blades-advanced.md"}
 
  {"gitdown": "include-file", "file": "../templates/portalfx-blades-menublade.md"}
  
