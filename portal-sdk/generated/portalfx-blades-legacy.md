@@ -408,14 +408,14 @@ The cases above are trivial, in that no information is passed from the part or t
 </CustomPart>
 ```
 
-The sample above instructs the portal to open the `InputBindingsDifferentBladesChildBlade` blade, while passing a parameter named `currentNumber` to the blade.  The `selectedItem` property of the `InputBindingsDifferentBladesParentPartViewModel` view model will be used as the source of the argument passed to the blade.  To piece this all together:
+The sample above instructs the Portal to open the `InputBindingsDifferentBladesChildBlade` blade, while passing a parameter named `currentNumber` to the blade.  The `selectedItem` property of the `InputBindingsDifferentBladesParentPartViewModel` view model will be used as the source of the argument passed to the blade.  To piece this all together:
 
 * Blade - name of the blade to open
 * Parameter - name of the blade parameter (argument) the `InputBindingsDifferentBladesChildBlade` is expecting to receive.
 * Source - public observable property on the `InputBindingsDifferentBladesParentPartViewModel` view model which contains the information to pass to the new blade.
 * content.* - this notes that the `selectedItem` property exists on the view model.  You may potentially also use container.*, which allows binding to properties available on the container object passed into the view model constructor.
 
-The view model for the part which launches the blade defines the `selectedItem` property which is used for the source:
+The ViewModel for the part which launches the blade defines the `selectedItem` property which is used for the source:
 
 `\SamplesExtension\Extension\Client\Bindings\InputBindingsDifferentBlades\ViewModels\InputBindingsDifferentBladesViewModels.ts`
 
@@ -635,7 +635,7 @@ To launch the blade referenced by the PDE file, use a `<BladeAction>` as usual, 
 '\Client\ResourceTypes\ResourceTypes.pdl'
 
 ```xml
-<BladeAction Blade="{BladeReference ResourceMapBlade, ExtensionName=HubsExtension}">
+<BladeAction Blade="{BladeReference ResourceMapBlade, extensionName=HubsExtension}">
   <BladeInput
       Source="assetOwner"
       Parameter="assetOwner" />
@@ -875,7 +875,7 @@ Supplemental parameters provide no special function, and are not a key, but are 
 <a name="blade-opening-and-closing-importing-the-pde-file-blade-properties"></a>
 ### Blade Properties
 
-Blades use blade view models to manage the display information. This includes information like the title, subtitle, icon, and status. To acquire this data, often your extension will load an object by Id. Information passed into the blade as a `BladeParamter` can be passed to the blade view model via a `<Property>` element. For an example, refer to this file in the samples:
+Blades use blade view models to manage the display information. This includes information like the title, subtitle, icon, and status. To acquire this data, often the extension will load an object by Id. Information passed into the blade as a `BladeParameter` can be passed to the blade view model via a `<Property>` element. For an example, refer to this file in the samples:
 
 ```
 \Client\Hubs\Browse\Browse.pdl
@@ -1096,14 +1096,14 @@ To prevent a blade from being pinned, set `Pinnable="False"` in the blade defini
 
 * Closing blades
 
-<a name="closing-blades-programatically"></a>
-# Closing blades programatically
+<a name="blade-opening-and-closing-closing-blades-programatically"></a>
+## Closing blades programatically
 
 This snippet shows how to close the current blade.  This can be called from either a blade or part container.  You can optionally return untyped data to the parent blade when you close your own blade.
 
 Check out the [blade opening sample](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/openbladeapi) and you'll notice that the 'Close' button on the child blades that open is implemented using the new blade closing APIs.
  
-The following metnods are now available on your template blade container.
+The following metnods are now available on the  template blade container.
 
 ```typescript
 
@@ -1117,7 +1117,7 @@ closeChildBlade(): Promise<boolean>;
 closeContextBlade(): Promise<boolean>; 
 ```
 
-The following methods are now available on your part container contract.
+The following methods are now available on the  part container contract.
 
 ```typescript
 // closes the current child blade now, if one is present
@@ -1128,10 +1128,10 @@ closeContextBlade(): Promise<boolean>;
 
 Each of these methods returns a promise that generally returns true.  If there is a blade on the screen that has unsaved edits to a form, the framework will prompt the user, giving them the option to keep the unsaved blade open.  If the user chooses to continue working on their unsaved edits then the blade closing promise will return false.
 
-<a name="closing-blades-programatically-writing-code-that-reacts-to-a-blade-being-closed"></a>
+<a name="blade-opening-and-closing-writing-code-that-reacts-to-a-blade-being-closed"></a>
 ## Writing code that reacts to a blade being closed
 
-When opening a child blade, you can register the optional onClosed callback to be notified when the blade you've opened closes.  The child blade can send you untyped data that you can use in your callback.  Here is an example:
+When opening a child blade, you can register the optional onClosed callback to be notified when the blade you've opened closes.  The child blade can send untyped data that can be used in the  callback.  Here is an example:
  
 ```typescript
 import { BladeClosedReason } from "Fx/Composition";

@@ -1,10 +1,12 @@
 
+<!-- TODO:  deprecate this document by removing it.  It has been  replaced by portalfx-blades-templateBlade.md.  -->
+
 <a name="templateblade-reference"></a>
 ### TemplateBlade Reference
 
-TemplateBlade is the **recommended** way of authoring blades in Ibiza (which are equivalent to windows or pages in other systems) in Ibiza.
+TemplateBlade is the recommended way of authoring blades in Ibiza. The TemplateBlade is the equivalent to windows or pages in other systems.
 
-Authoring template blades require you to provide a blade definition in PDL, an HTML template, and a ViewModel. In this article we will go through the details of the PDL definition and the capabilities in the ViewModel
+Authoring template blades requires a blade definition in PDL, an HTML template, and a ViewModel. In this article we will go through the details of the PDL definition and the capabilities in the ViewModel
 
 You can learn the basics of authoring your first template blade in [this article](portalfx-blades-templateBlade.md)
 

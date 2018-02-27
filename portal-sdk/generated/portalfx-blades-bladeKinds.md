@@ -515,7 +515,7 @@ export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.Settin
 <a name="introduction-to-blade-kinds-setting-list-blade-framework-settings"></a>
 #### Framework settings
 
-One of the goals of the Azure portal is standardizing key interaction patterns across different types of resources so customers can learn them once and apply them everywhere. There a few setting items which are consistent across most resources, to make that process easier the framework will automatically add certain settings but also allow optting in for any which we don't automatically add. All the Framework added settings can always be opted out, by specifying the opt in option as "false". Currently their are only two settings, RBAC and Audit logs (Events), which are added automatically. They are only added if a valid resource id has been specified within the "resourceId()" property on the settingsList viewmodel. The best way to set this is from within the onInputsSet call.
+One of the goals of the Azure Portal is standardizing key interaction patterns across different types of resources so customers can learn them once and apply them everywhere. There a few setting items which are consistent across most resources, to make that process easier the framework will automatically add certain settings but also allow optting in for any which we don't automatically add. All the Framework added settings can always be opted out, by specifying the opt in option as "false". Currently their are only two settings, RBAC and Audit logs (Events), which are added automatically. They are only added if a valid resource id has been specified within the "resourceId()" property on the settingsList viewmodel. The best way to set this is from within the onInputsSet call.
 
 ```ts
 export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.SettingList.ViewModelV2 {
@@ -572,9 +572,9 @@ export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.Settin
 
 Then to test it use the following extension side feature flags, depending on which settings you are testing, **please ensure your extension name is in lower case.**
 
-* ?<extensionname>_troubleshootsettingsenabled=true
-* ?<extensionname>_healthsettingsenabled=true
-* ?<extensionname>_requestsettingsenabled=true
+* ?<extensionName>_troubleshootsettingsenabled=true
+* ?<extensionName>_healthsettingsenabled=true
+* ?<extensionName>_requestsettingsenabled=true
 
 *Example: ?microsoft_azure_classic_compute_requestsettingsenabled=true*
 

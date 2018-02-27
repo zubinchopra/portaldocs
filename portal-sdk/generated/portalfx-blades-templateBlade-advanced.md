@@ -1,89 +1,33 @@
 
-<a name="templateblade-advanced-options"></a>
-### TemplateBlade Advanced Options
+<a name="advanced-topics"></a>
+### Advanced Topics
+
+
+The following sections discuss more advanced topics in template blade development.
+
+* [Deep linking](#deep-linking)
+
+* [Displaying notifications](Displaying notifications)
+<a name="pinning-the-blade"></a>
+### Pinning the blade
+<a name="storing-settings"></a>
+### Storing settings
+
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
 <a name="deep-linking"></a>
 ### Deep linking
 
-"Deep linking" is the feature where the portal URL is updated when a blade is opened (giving the user a URL to directly navigate to the new blade).
-By design only certain blades are deep linkable. Blades that aren't deep linkable are those that can't be opened independent of some parent 
-blade or part, like blades that return values to their caller. Think of these non-deep linkable blades as web pages in the middle of an website's
-check-out experience.
+**Deep linking** is the feature that gives the user a URL that directly navigates to the new blade when a blade is opened and the portal URL is updated. By design, only certain blades can be deep linked. Blades that cannot be deep linked are the ones that cannot be opened independent of some parent blade or part, like blades that return values to a calling module. An example of blades that cannot be deep-linked is a Web page in the middle of an website's check-out experience.
 
-One of the easiest ways to make your blade deep linkable is to mark your TemplateBlade as pinnable. See more information about pinning [here](#pinning-your-blade).
+One of the easiest ways to make your blade deep linkable is to mark your TemplateBlade as pinnable. For more information about pinning blades, see [#pinning-the-blade](#pinning-the-blade).
 
-<a name="showing-a-shield-loading-status-in-your-blade"></a>
-### Showing a shield / loading status in your blade
+<a name="displaying-notifications"></a>
+### Displaying notifications
 
-Sometimes you may want to prevent interaction with your blade while initializing it. In those cases, you can add a shield. The shield can be fully transparent or opaque. In all cases, a loading indicator UX is displayed in the blade. 
+A status bar can be displayed at the top of a blade that contains both text and coloration that can be used to convey information and status to users. For example, when validation fails in a form, a red bar with a message can be displayed at the top of the blade. This area is clickable and can either open a new blade or an external url.
 
-The code snippet below shows an extreme example where a filter is applied on a timer and it changes from opaque to transparent).
-
-```typescript
-
-export class TemplateBladeWithShieldViewModel
-extends Blade
-implements Def.TemplateBladeWithShieldViewModel.Contract
-{
-/**
- * The blade's title.
- */
-public title: KnockoutObservable<string>;
-
-/**
- * TextBox form field.
- */
-public myTextBox: TextBox.ViewModel;
-
-private _timerHandle: number;
-
-constructor(container: FxCompositionBlade.Container, initialState: any, dataContext: BladesArea.DataContext) {
-    super();
-
-    this.title(ClientResources.templateBladeWithShield);
-
-    const translucent = MsPortalFx.ViewModels.ShieldType.Translucent;
-    const opaque = MsPortalFx.ViewModels.ShieldType.Opaque;
-    var isTranslucent = true;
-
-    var op = () => {
-        var operation = Q.defer<any>();
-        var shieldType = isTranslucent ? translucent : opaque;
-        container.operations.add(operation.promise, { blockUi: true, shieldType: shieldType });
-
-        isTranslucent = !isTranslucent;
-        window.setTimeout(() => { operation.resolve(); }, 3000);
-    };
-
-    op();
-
-    window.setInterval(op, 5000);
-
-    // TextBox
-    var textBoxOptions = <TextBox.Options>{
-        label: ko.observable(ClientResources.formsSampleBasicTextBox)
-    };
-    this.myTextBox = new TextBox.ViewModel(container, textBoxOptions);
-}
-
-/**
- * Clean up any resources.
- */
-public dispose(): void {
-    window.clearInterval(this._timerHandle);
-}
-}
-
-```
-
-<a name="showing-a-notification-in-your-blade"></a>
-### Showing a notification in your blade
-
-Blades can display a status bar at their top that contains both text and a background color that can be used to convey information and status to users. For example, when validation fails in a form a red bar with a message can be displayed at the top of the blade.
-
-This area is clickable and can either open a new blade or an external url.
-
-This capability is exposed through the **statusBar** member in the Blade base class (using `this.statusBar(myStatus)` in your blade view-model).
+This capability is exposed through the **statusBar** member in the Blade base class by using `this.statusBar(myStatus)` in your blade view-model, as in the following code.
 
 ```typescript
 
@@ -100,22 +44,17 @@ this.statusBar(statusBar);
 
 ```
 
-<a name="pinning-your-blade"></a>
-<a name="pinning-your-blade"></a>
-### Pinning your blade
+<a name="pinning-the-blade"></a>
+### Pinning the blade
 
-You can mark your blades as able to be pinned to the dashboard by setting `Pinnable="true"` in the TemplateBlade's PDL definition.
+Blades can be marked as able to be pinned to the dashboard by setting `Pinnable="true"` in the TemplateBlade's PDL definition file. By default, blades are pinned as button parts to the dashboard. If a different represention should be used, it should be specified in the PDL. 
 
-By default blades are pinned as button parts to the dashboard.
+<a name="storing-settings"></a>
+### Storing settings
 
-If you desire to provide a different part represention you need to indicate that in the PDL definition of your blade.
+Settings that are associated with a blade  can be stored. Those settings need to be declared both in the PDL definition file and in the ViewMmodel that is associated with the blade.
 
-<a name="storing-settings-for-your-blade"></a>
-### Storing settings for your blade
-
-You can store settings associated with a blade. Those settings need to be declared both in the PDL definition of your blade and in the view-model.
-
-The code below shows how to define the settings in PDL using the `TemplateBlade.Settings` element.
+The following code demonstrates how to define the settings in the PDL file using the `TemplateBlade.Settings` element.
 
 ```xml
 
@@ -130,7 +69,7 @@ The code below shows how to define the settings in PDL using the `TemplateBlade.
 
 ```
 
-Once the settings are declared, you need to define them in your view-model too.
+After the settings are declared, they should also be specified in the ViewModel, as in the following example.
 
 ```typescript
 
@@ -172,7 +111,7 @@ this.configureHotSpot = new HotSpotViewModel(container, {
 
 ```
 
-The settings are also passed to onInputsSet.
+The settings are also sent to the `onInputsSet` method.
 
 ```typescript
 
@@ -187,8 +126,8 @@ public onInputsSet(inputs: Def.TemplateBladeWithSettingsViewModel.InputsContract
 
 ```
 
-<a name="showing-unauthorized-ui-in-your-blade"></a>
-### Showing Unauthorized UI in your blade
+<a name="displaying-unauthorized-ui"></a>
+### Displaying Unauthorized UI
 
 You can set your blade to Unauthorized UI using the **unauthorized** member of the blade container.
 
@@ -212,8 +151,8 @@ constructor(container: MsPortalFx.ViewModels.ContainerContract,
 
 ```
 
-<a name="showing-notice-ui-dynamically-in-your-blade"></a>
-### Showing Notice UI dynamically in your blade
+<a name="dynamically-displaying-notice-ui"></a>
+### Dynamically displaying Notice UI
 
 You can set your blade to Notice UI using **enableNotice** member of the blade container.
 
