@@ -1,7 +1,7 @@
 
 ### Blade Properties
 
-Blades use blade view models to manage the display information. This includes information like the title, subtitle, icon, and status. To acquire this data, often your extension will load an object by Id. Information passed into the blade as a `BladeParamter` can be passed to the blade view model via a `<Property>` element. For an example, refer to this file in the samples:
+Blades use blade view models to manage the display information. This includes information like the title, subtitle, icon, and status. To acquire this data, often the extension will load an object by Id. Information passed into the blade as a `BladeParameter` can be passed to the blade view model via a `<Property>` element. For an example, refer to this file in the samples:
 
 ```
 \Client\Hubs\Browse\Browse.pdl

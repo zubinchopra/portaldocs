@@ -1,11 +1,11 @@
 
-# Closing blades programatically
+## Closing blades programatically
 
 This snippet shows how to close the current blade.  This can be called from either a blade or part container.  You can optionally return untyped data to the parent blade when you close your own blade.
 
 Check out the [blade opening sample](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/openbladeapi) and you'll notice that the 'Close' button on the child blades that open is implemented using the new blade closing APIs.
  
-The following metnods are now available on your template blade container.
+The following metnods are now available on the  template blade container.
 
 ```typescript
 
@@ -19,7 +19,7 @@ closeChildBlade(): Promise<boolean>;
 closeContextBlade(): Promise<boolean>; 
 ```
 
-The following methods are now available on your part container contract.
+The following methods are now available on the  part container contract.
 
 ```typescript
 // closes the current child blade now, if one is present
@@ -32,7 +32,7 @@ Each of these methods returns a promise that generally returns true.  If there 
 
 ## Writing code that reacts to a blade being closed
 
-When opening a child blade, you can register the optional onClosed callback to be notified when the blade you've opened closes.  The child blade can send you untyped data that you can use in your callback.  Here is an example:
+When opening a child blade, you can register the optional onClosed callback to be notified when the blade you've opened closes.  The child blade can send untyped data that can be used in the  callback.  Here is an example:
  
 ```typescript
 import { BladeClosedReason } from "Fx/Composition";

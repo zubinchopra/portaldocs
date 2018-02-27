@@ -2,17 +2,17 @@
 
 ## Blades
 
-Blades are the main UI container in the portal equivalent to "Windows" or "Pages" in other UX frameworks.
+Blades are the main UI container in the Portal equivalent to "Windows" or "Pages" in other UX frameworks.
 
 There are different types of blades that you can use:
 
 Type | Description | Use For...
 --- | --- | ---
-**TemplateBlade** | This is the main and **recommended** authoring model for UI in the portal. The basic idea is that you provide an HTML template with your UI and a ViewModel with the logic that binds to that HTML template.<br/> [TemplateBlade walkthough](portalfx-blades-templateBlade.md) <br/>[Learn more about TemplateBlade](portalfx-blades-templateBlade-reference.md) | Creating any portal blade!
+**TemplateBlade** | This is the main and **recommended** authoring model for UI in the Portal. The basic idea is that you provide an HTML template with the UI and a ViewModel with the logic that binds to that HTML template.<br/> [TemplateBlade walkthough](portalfx-blades-templateBlade.md) <br/>[Learn more about TemplateBlade](portalfx-blades-templateBlade-reference.md) | Creating any Portal blade!
 **MenuBlade** | Show a menu at the left of a blade. This blade gets combined by the Shell with the blade that its opened at its right.<br/> [Learn more about MenuBlade](portalfx-blades-menublade.md) | Left side vertical menu
 **Fx Blades** | The framework provides a limited set of built-in blades that encapsulate common patterns (like properties, quick start, create forms, etc.). <br/> [Learn more about FxBlades](portalfx-blades-bladeKinds.md) | Properties, Quickstart, Coming Soon, Create  
-**AppBlade** | This type of blade provides you an IFrame to host your UI enabling full flexibility and control. In this case you **won't** be able to use Ibiza Fx controls and will be fully responsible for accessibility, theming, and consistency.<br/> [Learn more about AppBlade](portalfx-blades-appblades.md) | Rehost an existing experience or create a UI not supported by the Fx
-**Blade with tiles** | This is our **legacy** authoring model. In this case you author your blades as a combination of lenses and parts. Given the complexity associated with this model, we are discouraging extension authors from using it.<br>[Learn more about legacy blades](portalfx-blades-legacy.md) | Legacy
+**AppBlade** | This type of blade provides you an IFrame to host the UI enabling full flexibility and control. In this case you **won't** be able to use Ibiza Fx controls and will be fully responsible for accessibility, theming, and consistency.<br/> [Learn more about AppBlade](portalfx-blades-appblades.md) | Rehost an existing experience or create a UI not supported by the Fx
+**Blade with tiles** | This is our **legacy** authoring model. In this case you author the  blades as a combination of lenses and parts. Given the complexity associated with this model, we are discouraging extension authors from using it.<br>[Learn more about legacy blades](portalfx-blades-legacy.md) | Legacy
 
 
  {"gitdown": "include-file", "file": "../templates/portalfx-blades-templateBlade.md"}

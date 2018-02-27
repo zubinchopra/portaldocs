@@ -192,14 +192,14 @@ The cases above are trivial, in that no information is passed from the part or t
 </CustomPart>
 ```
 
-The sample above instructs the portal to open the `InputBindingsDifferentBladesChildBlade` blade, while passing a parameter named `currentNumber` to the blade.  The `selectedItem` property of the `InputBindingsDifferentBladesParentPartViewModel` view model will be used as the source of the argument passed to the blade.  To piece this all together:
+The sample above instructs the Portal to open the `InputBindingsDifferentBladesChildBlade` blade, while passing a parameter named `currentNumber` to the blade.  The `selectedItem` property of the `InputBindingsDifferentBladesParentPartViewModel` view model will be used as the source of the argument passed to the blade.  To piece this all together:
 
 * Blade - name of the blade to open
 * Parameter - name of the blade parameter (argument) the `InputBindingsDifferentBladesChildBlade` is expecting to receive.
 * Source - public observable property on the `InputBindingsDifferentBladesParentPartViewModel` view model which contains the information to pass to the new blade.
 * content.* - this notes that the `selectedItem` property exists on the view model.  You may potentially also use container.*, which allows binding to properties available on the container object passed into the view model constructor.
 
-The view model for the part which launches the blade defines the `selectedItem` property which is used for the source:
+The ViewModel for the part which launches the blade defines the `selectedItem` property which is used for the source:
 
 `\SamplesExtension\Extension\Client\Bindings\InputBindingsDifferentBlades\ViewModels\InputBindingsDifferentBladesViewModels.ts`
 
@@ -364,7 +364,7 @@ To launch the blade referenced by the PDE file, use a `<BladeAction>` as usual, 
 '\Client\ResourceTypes\ResourceTypes.pdl'
 
 ```xml
-<BladeAction Blade="{BladeReference ResourceMapBlade, ExtensionName=HubsExtension}">
+<BladeAction Blade="{BladeReference ResourceMapBlade, extensionName=HubsExtension}">
   <BladeInput
       Source="assetOwner"
       Parameter="assetOwner" />
