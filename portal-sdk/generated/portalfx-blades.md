@@ -1,24 +1,18 @@
+<!-- TODO:  deprecate this document by removing it.  It has been  replaced by portalfx-blades-overview.md.  -->
+
+[./portalfx-extensions-blades-overview.md](./ portalfx-extensions-blades-overview.md.).
+
 * [Blades](#blades)
-* [Introduction](#introduction)
-    * [Creating the TemplateBlade](#introduction-creating-the-templateblade)
-    * [Adding controls](#introduction-adding-controls)
-    * [Sending parameters](#introduction-sending-parameters)
-    * [Adding commands](#introduction-adding-commands)
-    * [Adding buttons](#introduction-adding-buttons)
-    * [Displaying a full-screen blade](#introduction-displaying-a-full-screen-blade)
-    * [Displaying a loading indicator UX](#introduction-displaying-a-loading-indicator-ux)
-    * [TemplateBlade Reference](#introduction-templateblade-reference)
-    * [Constructor](#introduction-constructor)
-    * [OnInputSet](#introduction-oninputset)
-    * [Advanced Topics](#introduction-advanced-topics)
-    * [Pinning the blade](#introduction-pinning-the-blade)
-    * [Storing settings](#introduction-storing-settings)
-    * [Deep linking](#introduction-deep-linking)
-    * [Displaying notifications](#introduction-displaying-notifications)
-    * [Pinning the blade](#introduction-pinning-the-blade)
-    * [Storing settings](#introduction-storing-settings)
-    * [Displaying Unauthorized UI](#introduction-displaying-unauthorized-ui)
-    * [Dynamically displaying Notice UI](#introduction-dynamically-displaying-notice-ui)
+    * [TemplateBlade Reference](#blades-templateblade-reference)
+    * [Constructor](#blades-constructor)
+    * [OnInputSet](#blades-oninputset)
+    * [Advanced Topics](#blades-advanced-topics)
+    * [Deep linking](#blades-deep-linking)
+    * [Displaying notifications](#blades-displaying-notifications)
+    * [Pinning the blade](#blades-pinning-the-blade)
+    * [Storing settings](#blades-storing-settings)
+    * [Displaying Unauthorized UI](#blades-displaying-unauthorized-ui)
+    * [Dynamically displaying Notice UI](#blades-dynamically-displaying-notice-ui)
 * [Introduction to Blade Kinds](#introduction-to-blade-kinds)
     * [QuickStart Blade](#introduction-to-blade-kinds-quickstart-blade)
     * [Properties Blade](#introduction-to-blade-kinds-properties-blade)
@@ -65,404 +59,21 @@ Type | Description | Use For...
 
 
  
-<a name="introduction"></a>
-## Introduction
-
-The TemplateBlade is the recommended way of authoring blades in Ibiza. It is the equivalent to windows or pages in other systems.
-
-You can think of a TemplateBlade as an HTML page. Authoring template blades requires a blade definition in PDL, an HTML template, a ViewModel, and optionally a CSS file. The following sections discuss the details of the PDL definition and the blade capabilities in the ViewModel.
-
-**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
-
-* [Creating the TemplateBlade](#creating-the-templateblade)
-
-* [Adding Controls](#adding-controls)
-
-* [Sending parameters](#sending-parameters)
-
-* [Adding commands](#adding-commands)
-
-* [Adding buttons](#adding-buttons)
-
-* [Displaying a full-screen blade](#displaying-a-full-screen-blade)
-
-* [Displaying a loading indicator UX](#displaying-a-loading-indicator-ux)
-
-<a name="introduction-creating-the-templateblade"></a>
-### Creating the TemplateBlade
-
-Use the following steps to create a template blade.
-
-1. Add the **blade definition** to your PDL file
-
-    ```xml
-    <TemplateBlade
-                Name="MyTemplateBlade"
-                ViewModel="{ ViewModel Name=MyTemplateBladeViewModel, Module=./ViewModels/MyTemplateBladeViewModel }"
-                InitialDisplayState="Maximized"
-                Template="{ Html Source='Templates\\MyTemplateBlade.html' }">
-    </TemplateBlade>
-    ```
-    The PDL file can contain several options. The following is a list of the most relevant parameters.
-
-    **Name**: Name of the blade. This name is used later to refer to this blade. 
-
-    **ViewModel**: Required field.  The ViewModel that is associated with this blade. 
-
-    **Template**: Required field.  The HTML template for the blade. 
-
-    **Size**: Optional field. The width of the blade. The default value is `Medium`. 
-
-    **InitialDisplayState**: Optional field.  Specifies whether the blade is opened maximized or not. The default value is `Normal`. 
-
-    **Style**: Optional field. Visual style for the blade. The default value is `Basic`. 
-    **Pinnable**: Optional field. Flag that specifies whether the blade can be pinned or not. The default value is `false`.
-
-    **ParameterProvider**: Optional field. Flag that specifies whether the blade is a parameter-provider. The default value is  `false`.
-
-    **Export**: Optional field.  Flag that specifies whether this blade is exported in your extension and therefore can be opened by other extensions. As a result, a strongly typed blade reference is created. 
-
-1. Create a **ViewModel** TypeScript class. The following code snippet shows the Viewmodel that is associated with the blade that was defined in the PDL file. This model exposes two observable properties, but more complex behavior can be added for your extension as appropriate.
-
-    ```js
-    export class MyTemplateBladeViewModel extends MsPortalFx.ViewModels.Blade {
-
-        public text: KnockoutObservable<string>;
-        public url: KnockoutObservable<string>;
-
-        constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: any) {
-            super();
-            this.title("InfoBox");
-            this.subtitle("InfoBox Playground");
-
-            this.text = ko.observable<string>("Go to the Azure Portal");
-            this.url = ko.observable<string>("http://portal.azure.com");
-        }
-
-        public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
-            return null;
-        }
-    }
-
-    ```
-
-1. Create a template for the blade using regular HTML and **Knockout**. The **Knockout** bindings are bound to the public properties in the ViewModel in the previous step. 
-
-    ```html
-    <div>This is an example template blade that shows a link.</div>
-
-    <a data-bind="text: text, attr: { href: url }" target="_blank"></a>
-    ```
-
-For more information about Knockout, see [knockout.js](http://knockoutjs.com/).
-
-<a name="introduction-adding-controls"></a>
-### Adding controls
-
-The example in the previous section uses ordinary HTML in its template. Ibiza provides an extensive controls library that you can use in the HTML template. The following example uses the `InfoBox` control instead of a regular HTML link.
-
-<!-- TODO:  Determine whether the code in this file is in a sample that ships with the SDK. -->
-
-1. Change the link element in the HTML template to a control container.
-
-    ```html
-    <div>This is an example template blade that shows a link.</div>
-
-    <div data-bind="pcControl:infoBox"></div>
-    ```
-
-1. Update the blade ViewModel to expose and instantiate the control ViewModel, as in the following code.
-
-    ```javascript
-    export class MyTemplateBladeViewModel extends MsPortalFx.ViewModels.Blade {
-
-        // view-model for the infoBox control
-        public infoBox: MsPortalFx.ViewModels.Controls.InfoBox.BaseViewModel;
-
-        constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: any) {
-            super();
-            this.title("InfoBox");
-            this.subtitle("InfoBox Playground");
-
-            // initialization of the InfoBox view-model
-            this.infoBox = new MsPortalFx.ViewModels.Controls.InfoBox.LinkViewModel(container, {
-                text: ko.observable<string>('Go to the Azure Portal'),
-                image: ko.observable(MsPortalFx.Base.Images.Info()),
-                clickableLink: ko.observable(MsPortalFx.ViewModels.Part.createClickableLinkViewModel(ko.observable<string>('http://portal.azure.com'))
-            });
-        }
-
-        public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
-            return null;
-        }
-    }
-    ```
-
-<a name="introduction-sending-parameters"></a>
-### Sending parameters
-
-Blades can receive input parameters that are defined as part of the signature for the blade. The following code adds an "id" input parameter to the template blade.
-
-1. Include the parameters in the signature of the blade in the PDL definition.
-
-    ```xml
-    <TemplateBlade
-                Name="MyTemplateBlade"
-                ViewModel="{ ViewModel Name=MyTemplateBladeViewModel, Module=./ViewModels/MyTemplateBladeViewModel }"
-                Template="{ Html Source='Templates\\MyTemplateBlade.html' }">
-        <TemplateBlade.Parameters>
-            <Parameter Name="id" />
-        </TemplateBlade.Parameters>
-    </TemplateBlade>
-    ```
-
-1. Define the signature in the ViewModel.
-
-    ```javascript
-    import Def = ExtensionDefinition.ViewModels.Resource.MyTemplateBladeViewModel;
-
-    export class MyTemplateBladeViewModel extends MsPortalFx.ViewModels.Blade {
-
-        // this property is part of the blade signature and is passed into onInputSet
-        public id: KnockoutObservable<string>;
-
-        public infoBox: MsPortalFx.ViewModels.Controls.InfoBox.BaseViewModel;
-
-        constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: any) {
-            super();
-            this.title("InfoBox");
-            this.subtitle("InfoBox Playground");
-
-            this.infoBox = new MsPortalFx.ViewModels.Controls.InfoBox.LinkViewModel(container, {
-                text: ko.observable<string>('Go to the Azure Portal'),
-                image: ko.observable(MsPortalFx.Base.Images.Info()),
-                clickableLink: ko.observable(MsPortalFx.ViewModels.Part.createClickableLinkViewModel(ko.observable<string>('http://portal.azure.com'))
-            });
-        }
-
-        public onInputsSet(inputs: Def.InputsContract): MsPortalFx.Base.Promise {
-            // write the input property to the console
-            console.log(inputs.id);
-            return null;
-        }
-    }
-    ```
-
-<a name="introduction-adding-commands"></a>
-### Adding commands
-
-Template blades can display commands at the top. To add the commands,  add a toolbar to the TemplateBlade, and then define its contents in the TemplateBlade's `ViewModel`.
-
-1. Add a **CommmandBar** element to your PDL template
-    ```xml
-    <TemplateBlade
-                Name="MyTemplateBlade"
-                ViewModel="{ ViewModel Name=MyTemplateBladeViewModel, Module=./ViewModels/MyTemplateBladeViewModel }"
-                Template="{ Html Source='Templates\\MyTemplateBlade.html' }">
-        <TemplateBlade.Parameters>
-            <Parameter Name="id" />
-        </TemplateBlade.Parameters>
-        <CommandBar />
-    </TemplateBlade>
-    ```
-
-1. Instantiate the `CommandBar` in the ViewModel, as in the following code.
-
-```javascript
-import Def = ExtensionDefinition.ViewModels.Resource.MyTemplateBladeViewModel;
-
-export class MyTemplateBladeViewModel extends MsPortalFx.ViewModels.Blade {
-
-    public id: KnockoutObservable<string>;
-    public infoBox: MsPortalFx.ViewModels.Controls.InfoBox.BaseViewModel;
-
-    // toolbar view-model
-    public commandBar: MsPortalFx.ViewModels.ToolbarContract;
-
-    constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: any) {
-        super();
-        this.title("InfoBox");
-        this.subtitle("InfoBox Playground");
-
-        this.infoBox = new MsPortalFx.ViewModels.Controls.InfoBox.LinkViewModel(container, {
-            text: ko.observable<string>('Go to the Azure Portal'),
-            image: ko.observable(MsPortalFx.Base.Images.Info()),
-            clickableLink: ko.observable(MsPortalFx.ViewModels.Part.createClickableLinkViewModel(ko.observable<string>('http://portal.azure.com'))
-        });
-
-        // initialize the toolbar
-        var button = new Toolbars.OpenLinkButton("http://azure.com");
-        button.label("azure.com");
-        button.icon(MsPortalFx.Base.Images.Hyperlink());
-        this.commandBar = new Toolbars.Toolbar(container);
-        this.commandBar.setItems( [ button ] );
-    }
-
-    public onInputsSet(inputs: Def.InputsContract): MsPortalFx.Base.Promise {
-        return null;
-    }
-}
-```
-
-<a name="introduction-adding-buttons"></a>
-### Adding buttons
-
-Blades can display buttons that are docked at to the base of the blade.  The following code demonstrates how to add buttons to the blade.
-
-1. Add an `ActionBar` element in your PDL template. The ActionBar  is docked to the bottom of the blade and contains buttons, as in the following example.
-
-    ```xml
-    <TemplateBlade
-                Name="MyTemplateBlade"
-                ViewModel="{ ViewModel Name=MyTemplateBladeViewModel, Module=./ViewModels/MyTemplateBladeViewModel }"
-                Template="{ Html Source='Templates\\MyTemplateBlade.html' }">
-        <TemplateBlade.Parameters>
-            <Parameter Name="id" />
-        </TemplateBlade.Parameters>
-        <ActionBar ActionBarKind="Generic" />
-    </TemplateBlade>
-    ```
-
-1. Instantiate the `ActionBar` in the ViewModel.
-
-    ```javascript
-        export class MyTemplateBladeViewModel extends MsPortalFx.ViewModels.Blade {
-
-            public id: KnockoutObservable<string>;
-            public infoBox: MsPortalFx.ViewModels.Controls.InfoBox.BaseViewModel;
-
-            // define the actionBar view-demol
-            public actionBar: MsPortalFx.ViewModels.ActionBars.GenericActionBar.ViewModel;
-
-            constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: any) {
-                super();
-                this.title("InfoBox");
-                this.subtitle("InfoBox Playground");
-
-                this.infoBox = new MsPortalFx.ViewModels.Controls.InfoBox.LinkViewModel(container, {
-                    text: this.text,
-                    image: ko.observable(MsPortalFx.Base.Images.Info()),
-                    clickableLink: ko.observable(MsPortalFx.ViewModels.Part.createClickableLinkViewModel(this.url))
-                });
-
-          // initialize the ActionBar
-
-                this.actionBar = new MsPortalFx.ViewModels.ActionBars.GenericActionBar.ViewModel(container);   
-                this.actionBar.actionButtonClick = () => {
-                    console.log("Clicked!!!");
-                };
-            }
-
-            public onInputsSet(inputs: Def.InputsContract): MsPortalFx.Base.Promise {
-                return null;
-            }
-        }
-    ```
-
-<a name="introduction-displaying-a-full-screen-blade"></a>
-### Displaying a full-screen blade
-
-If you want the blade to open using the full screen, just add `InitialState="Maximized"` to the PDL definition of the blade, as in the following code.
-
-```xml
-<TemplateBlade
-            Name="MyTemplateBlade"
-            ViewModel="{ ViewModel Name=MyTemplateBladeViewModel, Module=./ViewModels/MyTemplateBladeViewModel }"
-            InitialDisplayState="Maximized"
-            Template="{ Html Source='Templates\\MyTemplateBlade.html' }">
-</TemplateBlade>
-```
-
-<a name="introduction-displaying-a-loading-indicator-ux"></a>
-### Displaying a loading indicator UX
-
-Sometimes interaction with a blade should be prevented while it is initializing. In those cases, a shield that contains a loading indicator UX is displayed in the blade to block the display. The shield can be fully transparent or opaque. The following code demonstrates how to set an opaque filter in the blade.
-
-```javascript
-constructor(container: FxCompositionBlade.Container, initialState: any, dataContext: BladesArea.DataContext) {
-    super();
-
-    var operation = Q.defer<any>();
-
-    // show the shield while the operation promise is not resolved
-    container.operations.add(operation.promise, { blockUi: true, shieldType: MsPortalFx.ViewModels.ShieldType.Opaque });
-
-    // wait for 3 seconds and resolved the promise (which will remove the shield)
-    window.setTimeout(() => { operation.resolve(); }, 3000);
-}
-```
-
-The following code snippet demonstrates how to apply a filter on a timer.  The filter slowly changes from opaque to transparent. The sample is also located at `<dir>\Client\V1\Blades/Template/ViewModels/TemplateBladeViewModels.ts`.
-
-```typescript
-
-export class TemplateBladeWithShieldViewModel
-extends Blade
-implements Def.TemplateBladeWithShieldViewModel.Contract
-{
-/**
- * The blade's title.
- */
-public title: KnockoutObservable<string>;
-
-/**
- * TextBox form field.
- */
-public myTextBox: TextBox.ViewModel;
-
-private _timerHandle: number;
-
-constructor(container: FxCompositionBlade.Container, initialState: any, dataContext: BladesArea.DataContext) {
-    super();
-
-    this.title(ClientResources.templateBladeWithShield);
-
-    const translucent = MsPortalFx.ViewModels.ShieldType.Translucent;
-    const opaque = MsPortalFx.ViewModels.ShieldType.Opaque;
-    var isTranslucent = true;
-
-    var op = () => {
-        var operation = Q.defer<any>();
-        var shieldType = isTranslucent ? translucent : opaque;
-        container.operations.add(operation.promise, { blockUi: true, shieldType: shieldType });
-
-        isTranslucent = !isTranslucent;
-        window.setTimeout(() => { operation.resolve(); }, 3000);
-    };
-
-    op();
-
-    window.setInterval(op, 5000);
-
-    // TextBox
-    var textBoxOptions = <TextBox.Options>{
-        label: ko.observable(ClientResources.formsSampleBasicTextBox)
-    };
-    this.myTextBox = new TextBox.ViewModel(container, textBoxOptions);
-}
-
-/**
- * Clean up any resources.
- */
-public dispose(): void {
-    window.clearInterval(this._timerHandle);
-}
-}
-
-```
  
-<!-- TODO:  deprecate this document by removing it.  It has been  replaced by portalfx-blades-templateBlade.md.  -->
+<!-- TODO:  deprecate this document by removing it.  It has been  replaced by portalfx-blades-procedure.md.  -->
 
-<a name="introduction-templateblade-reference"></a>
+The page you requested has moved to [./portalfx-extensions-blades-procedure.md](./ portalfx-extensions-blades-procedure.md.).
+
+<a name="blades-templateblade-reference"></a>
 ### TemplateBlade Reference
 
 TemplateBlade is the recommended way of authoring blades in Ibiza. The TemplateBlade is the equivalent to windows or pages in other systems.
 
 Authoring template blades requires a blade definition in PDL, an HTML template, and a ViewModel. In this article we will go through the details of the PDL definition and the capabilities in the ViewModel
 
-You can learn the basics of authoring your first template blade in [this article](portalfx-blades-templateBlade.md)
+You can learn the basics of authoring your first template blade in[./portalfx-extensions-blades-procedure.md](./ portalfx-extensions-blades-procedure.md.).
 
-<a name="introduction-templateblade-reference-pdl"></a>
+<a name="blades-templateblade-reference-pdl"></a>
 #### PDL
 
 The snippet below shows a simple PDL definition for a basic template blade.
@@ -491,12 +102,12 @@ ParameterProvider | Flag that determines if the blade is a parameter-provider. D
 Export | Flag that indicates if this blade is exported in your extension and therefore can be opened by other extensions. As a result, a strongly typed blade reference is created.
 
 
-<a name="introduction-templateblade-reference-viewmodel"></a>
+<a name="blades-templateblade-reference-viewmodel"></a>
 #### ViewModel
 
 All TemplateBlades require a view-model. The sections below explain some of the key aspect to build that view-model.
 
-<a name="introduction-templateblade-reference-viewmodel-base-class"></a>
+<a name="blades-templateblade-reference-viewmodel-base-class"></a>
 ##### Base class
 
 All TemplateBlade extend the base class **MsPortalFx.ViewModels.Blade**.
@@ -507,7 +118,7 @@ export class MyTemplateBladesBladeViewModel extends MsPortalFx.ViewModels.Blade
 
 The base class provides access to basic functionality of the blade like setting the title, subtitle, and icon.
 
-<a name="introduction-constructor"></a>
+<a name="blades-constructor"></a>
 ### Constructor
 
 The TemplateBlade constructor receives 3 parameters:
@@ -529,7 +140,7 @@ constructor(container: FxViewModels.ContainerContract, initialState: any, dataCo
 
 ```
 
-<a name="introduction-oninputset"></a>
+<a name="blades-oninputset"></a>
 ### OnInputSet
 
 OnInputSet gets invoked when all the inputs of your blade are set and it returns a promise that is handled by the shell.
@@ -566,7 +177,7 @@ public onInputsSet(inputs: Def.ClientSideSortFilterGridPartViewModel.InputsContr
 
 ```
 
-<a name="introduction-oninputset-defining-the-signature-of-your-blade-inputs-and-outputs"></a>
+<a name="blades-oninputset-defining-the-signature-of-your-blade-inputs-and-outputs"></a>
 #### Defining the signature of your blade (inputs and outputs)
 
 You can define the signature of your blade as a set of input and output parameters.
@@ -577,7 +188,7 @@ The parameters are passed to your ViewModel via **onInputSet** (which is describ
 
 To learn more about blade parameters, [read this article](portalfx-blades-parameters.md)
 
-<a name="introduction-oninputset-using-commandbar"></a>
+<a name="blades-oninputset-using-commandbar"></a>
 #### Using CommandBar
 
 The CommandBar is the container for the commands (clickable toolbar above the content area in the blade) in your TemplateBlade. 
@@ -631,41 +242,47 @@ constructor(container: FxCompositionBlade.Container, initialState: any, dataCont
 
 ```
 
-<a name="introduction-oninputset-advanced-topics"></a>
+<a name="blades-oninputset-advanced-topics"></a>
 #### Advanced topics
 
 Template blades can store settings, define how they behave when pinned to the dashboard, and display status, among other advanced capabilities.
 
  
-<a name="introduction-advanced-topics"></a>
+<a name="blades-advanced-topics"></a>
 ### Advanced Topics
 
-
-The following sections discuss more advanced topics in template blade development.
+The following sections discuss advanced topics in template blade development.
 
 * [Deep linking](#deep-linking)
 
-* [Displaying notifications](Displaying notifications)
-<a name="introduction-pinning-the-blade"></a>
-### Pinning the blade
-<a name="introduction-storing-settings"></a>
-### Storing settings
+* [Displaying notifications](#displaying-notifications)
+
+* [Pinning the blade](#pinning-the-blade)
+
+* [Storing settings](#storing-settings)
+
+* [Displaying Unauthorized UI](#displaying-unauthorized-ui)
+
+* [Dynamically displaying Notice UI](#dynamically-displaying-notice-ui)
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
-<a name="introduction-deep-linking"></a>
+* * *
+
+<a name="blades-deep-linking"></a>
 ### Deep linking
 
-**Deep linking** is the feature that gives the user a URL that directly navigates to the new blade when a blade is opened and the portal URL is updated. By design, only certain blades can be deep linked. Blades that cannot be deep linked are the ones that cannot be opened independent of some parent blade or part, like blades that return values to a calling module. An example of blades that cannot be deep-linked is a Web page in the middle of an website's check-out experience.
+Deep linking is the feature that gives the user a URL that directly navigates to the new blade when a blade is opened and the portal URL is updated. By design, only certain blades can be deep linked. Blades that cannot be deep linked are the ones that cannot be opened independent of some parent blade or part, like blades that return values to a calling module. An example of blades that cannot be deep-linked is a Web page in the middle of an website's check-out experience.
 
 One of the easiest ways to make your blade deep linkable is to mark your TemplateBlade as pinnable. For more information about pinning blades, see [#pinning-the-blade](#pinning-the-blade).
 
-<a name="introduction-displaying-notifications"></a>
+<a name="blades-displaying-notifications"></a>
 ### Displaying notifications
 
 A status bar can be displayed at the top of a blade that contains both text and coloration that can be used to convey information and status to users. For example, when validation fails in a form, a red bar with a message can be displayed at the top of the blade. This area is clickable and can either open a new blade or an external url.
 
-This capability is exposed through the **statusBar** member in the Blade base class by using `this.statusBar(myStatus)` in your blade view-model, as in the following code.
+This capability is exposed through the **statusBar** member in the Blade base class by using `this.statusBar(myStatus)` in your blade view-model, as in the code located at `<dir>Client/V1/Blades/ContentState/ViewModels/ContentStateViewModels.ts`.
+It is also included in the following code.
 
 ```typescript
 
@@ -682,19 +299,21 @@ this.statusBar(statusBar);
 
 ```
 
-<a name="introduction-pinning-the-blade"></a>
+<a name="blades-pinning-the-blade"></a>
 ### Pinning the blade
 
 Blades can be marked as able to be pinned to the dashboard by setting `Pinnable="true"` in the TemplateBlade's PDL definition file. By default, blades are pinned as button parts to the dashboard. If a different represention should be used, it should be specified in the PDL. 
 
-<a name="introduction-storing-settings"></a>
+<a name="blades-storing-settings"></a>
 ### Storing settings
 
-Settings that are associated with a blade  can be stored. Those settings need to be declared both in the PDL definition file and in the ViewMmodel that is associated with the blade.
+Settings that are associated with a blade can be stored. Those settings need to be declared both in the PDL definition file and in the ViewMmodel that is associated with the blade.  The code that describes how to store settings is located at  `<dir>Client/V1/Blades/Template/Template.pdl` and  `<dir>Client/V1/Blades/Template/ViewModels/TemplateBladeViewModels.ts`.
 
-The following code demonstrates how to define the settings in the PDL file using the `TemplateBlade.Settings` element.
+The process is as follows.
 
-```xml
+1. Specify the settings in the PDL file using the `TemplateBlade.Settings` element.
+
+    ```xml
 
 <TemplateBlade Name="PdlTemplateBladeWithSettings"
                ViewModel="{ViewModel Name=TemplateBladeWithSettingsViewModel, Module=./Template/ViewModels/TemplateBladeViewModels}"
@@ -707,9 +326,9 @@ The following code demonstrates how to define the settings in the PDL file using
 
 ```
 
-After the settings are declared, they should also be specified in the ViewModel, as in the following example.
+1. After the settings are declared, they should also be specified in the ViewModel, as in the following example.
 
-```typescript
+    ```typescript
 
 // These are required by the portal presently.  Re: Part Settings, the Part below works exclusively in terms of
 // 'configuration.updateValues' to update settings values and 'onInputsSet(..., settings)' to receive settings values.
@@ -718,9 +337,9 @@ public fontSettingValue = ko.observable<FontStyle>();
 
 ```
 
-The settings are retrieved through the blade container.
+1. Retrieve the settings by using the blade container.
 
-```typescript
+    ```typescript
 
 const configuration = container.activateConfiguration<Settings>();
 this.configureHotSpot = new HotSpotViewModel(container, {
@@ -749,9 +368,9 @@ this.configureHotSpot = new HotSpotViewModel(container, {
 
 ```
 
-The settings are also sent to the `onInputsSet` method.
+1.  Also send the settings to the `onInputsSet` method.
 
-```typescript
+    ```typescript
 
 public onInputsSet(inputs: Def.TemplateBladeWithSettingsViewModel.InputsContract, settings: Def.TemplateBladeWithSettingsViewModel.SettingsContract): MsPortalFx.Base.Promise {
     // Any changes to the  Configuration values (see 'updateValues' above) will cause 'onInputsSet' to be called with the
@@ -764,12 +383,12 @@ public onInputsSet(inputs: Def.TemplateBladeWithSettingsViewModel.InputsContract
 
 ```
 
-<a name="introduction-displaying-unauthorized-ui"></a>
+<a name="blades-displaying-unauthorized-ui"></a>
 ### Displaying Unauthorized UI
 
-You can set your blade to Unauthorized UI using the **unauthorized** member of the blade container.
+You can set the blade to Unauthorized UI using the `unauthorized` member of the blade container. The code that describes how to set the blade is located at  `<dir>/Client/V1/Blades/Unauthorized/ViewModels/UnauthorizedBladeViewModel.ts`.
 
-The code below does this statically, but it can also be done dynamically (e.g. based on a condition after data is loaded).
+The following code does this statically, but it can also be done dynamically, based  on a condition after data is loaded.
 
 ```typescript
 
@@ -789,12 +408,12 @@ constructor(container: MsPortalFx.ViewModels.ContainerContract,
 
 ```
 
-<a name="introduction-dynamically-displaying-notice-ui"></a>
+<a name="blades-dynamically-displaying-notice-ui"></a>
 ### Dynamically displaying Notice UI
 
-You can set your blade to Notice UI using **enableNotice** member of the blade container.
+You can set the blade to the Notice UI using `enableNotice` member of the blade container. The code that describes how to set the blade is located at  `<dir>Client/V1/Blades/DynamicNotice/ViewModels/DynamicNoticeViewModels.ts`.
 
-This can be done statically (e.g. in the constructor) or dynamically. In the example below, the blade is set to Notice UI if the **id** input parameter has a given value.
+Enabling the blade can be done statically with the constructor, or it can be done dynamically. In the following example, the blade is set to Notice UI if the **id** input parameter has a specific value.
 
 ```typescript
 

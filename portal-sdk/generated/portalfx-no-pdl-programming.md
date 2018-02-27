@@ -12,7 +12,7 @@
 
 For those who want to jump right into using TypeScript decorators to develop Blades and Parts, here are some quick and easy resources to consider:  
 
-* Getting started [video](https://ibizareflectorprod.blob.core.windows.net/public/video.html)
+* Getting started [https://aka.ms/portalfx/typescriptdecorators](https://aka.ms/portalfx/typescriptdecorators)
 * no-PDL [FAQ](#no-pdl-faq)
 
 <a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-introduction"></a>
@@ -24,7 +24,7 @@ In the latest versions of the Ibiza SDK, extension teams can develop Blades and 
 
 PDL is still supported for back compat reasons, but using Blade/Part TypeScript decorators is the recommended pattern for new Blades/Parts and for teams who elect to port old PDL Blades/Parts.
 
-The next few sections provide an overview on how to use these decorators.  Additionally, there is an [Introduction video](https://ibizareflectorprod.blob.core.windows.net/public/video.html) that walks through these concepts.
+The next few sections provide an overview on how to use these decorators.  Additionally, there is an [Introduction video](https://aka.ms/portalfx/typescriptdecorators) that walks through these concepts.
 
 <a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-current-typescript-decorator-support"></a>
 ### Current TypeScript decorator support
@@ -62,34 +62,28 @@ Here is an example of a very simple template blade, represented by a single TpeS
 ```typescript
 
 /// <reference path="../../../TypeReferences.d.ts" />
-import * as BladesArea from "../BladesArea";
 import * as ClientResources from "ClientResources";
 import * as TemplateBlade from "Fx/Composition/TemplateBlade";
-
-export = Main;
-
-module Main {
-"use strict";
+import * as BladesArea from "../BladesArea";
 
 //docs#DecoratorReference
 @TemplateBlade.Decorator({
-    htmlTemplate: "" +
-        "<div class='msportalfx-padding'>" +
-        "  <div>This is a Template Blade.</div>" +
-        "</div>",
+htmlTemplate: "" +
+    "<div class='msportalfx-padding'>" +
+    "  <div>This is a Template Blade.</div>" +
+    "</div>",
 })
 //docs#DecoratorReference
 export class SimpleTemplateBlade {
-    public title = ClientResources.simpleTemplateBlade;
-    public subtitle: string;
+public title = ClientResources.simpleTemplateBlade;
+public subtitle: string;
 
 //docs#Context
-    public context: TemplateBlade.Context<void, BladesArea.DataContext>;
+public context: TemplateBlade.Context<void, BladesArea.DataContext>;
 //docs#Context
 
-    public onInitialize() {
-        return Q();  // This sample loads no data.
-    }
+public onInitialize() {
+    return Q();  // This sample loads no data.
 }
 }
 
@@ -100,10 +94,10 @@ This is the decorator code.  There are several options that can be specified as 
 ```typescript
 
 @TemplateBlade.Decorator({
-    htmlTemplate: "" +
-        "<div class='msportalfx-padding'>" +
-        "  <div>This is a Template Blade.</div>" +
-        "</div>",
+htmlTemplate: "" +
+    "<div class='msportalfx-padding'>" +
+    "  <div>This is a Template Blade.</div>" +
+    "</div>",
 })
 
 ```
@@ -281,7 +275,7 @@ So, once you've applied a TypeScript decorator to your Blade/Part class, TypeScr
 - add a missing property  
 - determine the property's type or the return type of your added method.  
 
-If you iteratively refine your class based on Intellisense errors, once these are gone, you should be able to compile and run your new Blade / Part.  This technique is demonstrated in the intro [video](https://ibizareflectorprod.blob.core.windows.net/public/video.html).
+If you iteratively refine your class based on Intellisense errors, once these are gone, you should be able to compile and run your new Blade / Part.  This technique is demonstrated in the intro [video](https://aka.ms/portalfx/typescriptdecorators).
 
 <a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-no-pdl-faq-how-do-i-know-what-types-to-return-from-the-oninitialize-method"></a>
 #### How do I know what types to return from the <code>onInitialize</code> method?
@@ -348,14 +342,14 @@ this.icon(MsPortalFx.Base.Images.Logos.MicrosoftSquares());  // For instance
 With no-PDL decorators, developers are confused as to why this API isn't available in no-PDL.  
 
 To answer here, first, how *does* one add an icon to a no-PDL Blade?  You do this in two steps:  
-1. Associate the icon with your `<AssetType>`
+1. Associate the icon with the  `<AssetType>`
 ```
 <AssetType
     Name='Carrots'
     Icon='MsPortalFx.Base.Images.Logos.MicrosoftSquares()'
     ...
 ```
-2. Associate your no-PDL Blade with your AssetType
+2. Associate the TypeScript Blade with the AssetType
 ```
 import { AssetTypes, AssetTypeNames } from "../_generated/ExtensionDefinition";
 
@@ -390,7 +384,7 @@ If yours is a scenario where your Blade/Part should show the loading indicators 
 #### When should I use the &#39;operations&#39; API to control the Blade/Part&#39;s loading indicator?
 There are scenarios like 'User clicks "Save" on my Blade/Part' where the extension wants to show loading indicators at the Blade/Part level.  What's distinct about this scenario is that the Blade/Part has already completed its initialization and, now, the user is interacting with the Blade/Part UI.  This is precisely the kind of scenario for the 'operations' API.  
 
-For no-PDL Blades/Parts, the 'operations' API is `this.context.container.operations`, and the API's use is described [here](portalfx-blades-templateBlade-advanced.md#showing-a-shield-loading-status-in-your-blade).  There is a sample to consult [here](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).
+For no-PDL Blades/Parts, the 'operations' API is `this.context.container.operations`, and the API's use is described [here](portalfx-extensions-blades-advanced.md#showing-a-shield-loading-status-in-your-blade).  There is a sample to consult [here](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).
 
 <a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-no-pdl-faq-how-can-i-save-some-state-for-my-no-pdl-blade"></a>
 #### How can I save some state for my no-PDL Blade?
