@@ -1,5 +1,9 @@
 <!-- TODO:  deprecate this document by removing it.  It has been  replaced by top-extensions-data.md   --> 
 
+<!--
+The page you requested has moved to [./top-extensions-data.md](./top-extensions-data.md). 
+-->
+
 # Working with data
 
 <!-- required Overview document.  -->
@@ -27,14 +31,8 @@
     
     {"gitdown": "include-file", "file": "../templates/portalfx-data-atomization.md"}
 
-<!-- optional Best Practices document -->
-<!-- gitdown": "include-file", "file": "../templates/portalfx-<major-area>-bp-<topic>.md"  -->
    {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-data.md"}
 
-<!-- optional FAQ document -->
-<!-- gitdown": "include-file", "file": "../templates/portalfx-<major-area>-faq-<topic>.md"  -->
    {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-data.md"}
    
-<!-- required Glossary document. -->
-<!-- gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-<major-area>.md"  -->
    {"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-data.md"}

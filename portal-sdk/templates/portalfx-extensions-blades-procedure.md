@@ -1,5 +1,5 @@
 
-## Introduction 
+## TemplateBlades
 
 The TemplateBlade is the recommended way of authoring blades in Ibiza. It is the equivalent to windows or pages in other systems.
 
@@ -181,6 +181,8 @@ Blades can receive input parameters that are defined as part of the signature fo
 ### Adding commands
 
 Template blades can display commands at the top. To add the commands,  add a toolbar to the TemplateBlade, and then define its contents in the TemplateBlade's `ViewModel`.
+The working copy of the sample in the Dogfood environment is located at  [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/bladewithtoolbar](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/bladewithtoolbar).
+
 
 1. Add a **CommmandBar** element to your PDL template
     ```xml

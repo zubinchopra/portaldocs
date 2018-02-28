@@ -81,7 +81,7 @@ It loads data of type `T` according to some extension-specified `TId` type. `Ent
 
 <!-- TODO:  Determine whether EntityCache can be the "type for the object that defines the query, as in the `WebsiteQuery` example". -->
 
-<!-- {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailArea.ts", "section": "data#websitesEntityCache"} -->
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailArea.ts", "section": "data#websitesEntityCache"}
 
 When an EntityCache is instantiated, three elements are specified.
 

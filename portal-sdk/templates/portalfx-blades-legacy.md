@@ -29,6 +29,8 @@ Blades use view models to drive dynamic content include titles, icons, and statu
 * [Blade Kinds](portalfx-blades-bladeKinds.md)
 * [Closing blades](portalfx-blades-closing.md)
 
+* * * 
+
 * Controlling blade UI
  {"gitdown": "include-file", "file": "../templates/portalfx-blades-ui.md"}
 

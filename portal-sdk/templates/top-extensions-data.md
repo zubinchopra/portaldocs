@@ -26,14 +26,8 @@
     
     {"gitdown": "include-file", "file": "../templates/portalfx-data-atomization.md"}
 
-<!-- optional Best Practices document -->
-<!-- gitdown": "include-file", "file": "../templates/portalfx-<major-area>-bp-<topic>.md"  -->
    {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-data.md"}
 
-<!-- optional FAQ document -->
-<!-- gitdown": "include-file", "file": "../templates/portalfx-<major-area>-faq-<topic>.md"  -->
    {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-data.md"}
    
-<!-- required Glossary document. -->
-<!-- gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-<major-area>.md"  -->
    {"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-data.md"}

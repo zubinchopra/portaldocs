@@ -52,11 +52,7 @@ The following chart specifies which plugins can be combined.
 
 The sample located at `<dir>\Client/V1/Controls/Grid/ViewModels/ScrollableGridWithFilteringAndSorting.ts` contains a simple method of enabling the plugins.
 
-<!--
 {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Controls/Grid/ViewModels/ScrollableGridWithFilteringAndSorting.ts", "section": "grid#enablingplugins"}
--->
-
-
 
 ### Providing Data
 
