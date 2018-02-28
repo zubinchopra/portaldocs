@@ -53,7 +53,7 @@ The following tables include information about Portal controls, including the lo
 | Pill |  | `<dir>\Client\V2\Controls\Pill\ PillBlade.ts` |  |
 | SearchBox |  | `<dir>\Client\V2\Controls\SearchBox\SearchBoxBlade.ts` |  |
 | Storage |  | `<dir>\Client\V2\Controls\Storage\ FileShareDropDownBlade.ts` |  |
-| Video |  | `<dir>\Client\V2\Controls\Video\VideoBlade.ts` |  |
+| Video |  | `<dir>\Client\V2\Controls\Video\VideoBlade.ts` | [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/styleguidevideotitle](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/styleguidevideotitle) |
 | Graph |  | `<dir>\Client\V1\Controls\Graph\ViewModels\ GraphCustomNodesViewModels.ts` <br> `<dir>\Client\V1\Controls\Graph\ViewModels\ GraphIndexViewModels.ts` <br> `<dir>\Client\V1\Controls\Graph\ViewModels\ GraphViewModels.ts` |  |
 | Legend |  | `<dir>\Client\V1\Controls\Legend\ViewModels\LegendViewModels.ts` |  |
 | LogStream |  | `<dir>\Client\V1\Controls\LogStream\ViewModels\LogStreamViewModel.ts` |  |
@@ -155,7 +155,7 @@ The following tables include information about Portal controls, including the lo
 | Video Control | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/VideoInstructions/selectedItem/VideoInstructions/selectedValue/VideoInstructions |
 | Legend | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/Legend/selectedItem/Legend/selectedValue/Legend  | 
 | HotSpot | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/HotSpotInstructions/selectedItem/HotSpotInstructions/selectedValue/HotSpotInstructions |
-| Video | | |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/VideoInstructions/selectedItem/VideoInstructions/selectedValue/VideoInstructions |
+| Video | | |  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/styleguidevideotitle](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/styleguidevideotitle) |
 | Terminal Emulator | | |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/TerminalEmulatorInstructionsBlade/selectedItem/TerminalEmulatorInstructionsBlade/selectedValue/TerminalEmulatorInstructionsBlade |
 
 ## Deprecated controls
