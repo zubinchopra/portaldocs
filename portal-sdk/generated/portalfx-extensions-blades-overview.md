@@ -1,6 +1,6 @@
 
-<a name="blades"></a>
-## Blades
+<a name="overview"></a>
+## Overview
 
 Blades are the main UI container in the Portal. They are equivalent to `windows` or `pages` in other UX frameworks.   A blade typically generally takes up the full screen, has a presence in the portal breadcrumb, and has an 'X' button to close it.
  The following is a list of different types of blades.

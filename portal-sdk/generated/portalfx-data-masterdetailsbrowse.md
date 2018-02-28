@@ -31,9 +31,29 @@ The Portal uses an `Area` to hold the cache and other data objects that are shar
 
  Inside the folder, there is a TypeSscript file whose name is a combination of the name of the area and the word 'Area'. The file is named  `MasterDetailArea.ts` and is located at `<dir>Client/V1/MasterDetail/MasterDetailArea.ts`. This code is also included in the following example.
 
-<!-- 
-gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailArea.ts", "section": "data#websitesQueryCache"}
--->
+```typescript
+
+this.websitesQuery = new QueryCache<WebsiteModel, WebsiteQueryParams>({
+    entityTypeName: SamplesExtension.DataModels.WebsiteModelType,
+
+    // when fetch() is called on the cache the params will be passed to this function and it 
+    // should return the right URI for getting the data
+    sourceUri: (params: WebsiteQueryParams): string => {
+        let uri = MsPortalFx.Base.Resources.getAppRelativeUri("/api/Websites");
+
+        // if runningStatus is null we should get all websites
+        // if a value was provided we should get only websites with that running status
+        if (params.runningStatus !== null) {
+            uri += "?$filter=Running eq " + params.runningStatus;
+        }
+
+        // this particular controller expects a sessionId as well but this is not the common case.
+        // Unless your controller also requires a sessionId this can be omitted
+        return Util.appendSessionId(uri);
+    }
+});
+
+```
 
 This file contains the `DataContext` class, which is the class that will be sent to all the `ViewModels` associated with the area.  The `DataContext` also contains an `EditScopeCache` which is used in the master detail edit scenario that is located at [portalfx-forms-construction.md](portalfx-forms-construction.md). This code is also included in the following example.
 
@@ -50,22 +70,22 @@ The master view is used to display the data in the caches. The advantage of usin
 
 1. Make sure that the PDL that defines the blades specifies the  `Area` so that the `ViewModels` receive the `DataContext`. In the `<Definition>` tag at the top of the PDL file, include an `Area` attribute whose value corresponds to the name of the area that is being built, as in the example located at `<dir>Client/V1/MasterDetail/MasterDetailBrowse/MasterDetailBrowse.pdl`. This code is also included in the following example.
 
-    <!--```xml
+   ```xml
 
 <Definition xmlns="http://schemas.microsoft.com/aux/2013/pdl"
 Area="V1/MasterDetail">
 
-``` -->
+``` 
 
     The `ViewModel` for the list of websites is located in `<dir>\Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\MasterViewModels.ts`. 
 
 1. Create a view on the `QueryCache`, as in the following example.
 
-    <!-- ```typescript
+     ```typescript
 
 this._websitesQueryView = dataContext.websitesQuery.createView(container);
 
-``` -->
+``` 
 
    The view is the `fetch()` method that is called to populate the `QueryCache`, and allows the items that are returned by the fetch call to be viewed. 
 
@@ -82,17 +102,14 @@ this._websitesQueryView = dataContext.websitesQuery.createView(container);
 
 The observable `items` array of the view is sent to the grid constructor as the `items` parameter, as in the following example.
 
-<!--
 ```typescript
 
 this.grid = new Grid.ViewModel<WebsiteModel, number>(this._lifetime, this._websitesQueryView.items, extensions, extensionsOptions);
 
 ```
--->
 
 The `fetch()` command has not yet been issued on the QueryCache. When the command is issued, the view's `items` array will be observably updated, which populates the grid with the results. This occurs by calling the  `fetch()` method on the blade's `onInputsSet()`, which returns the promise shown in the following example.
 
-<!--
 ```typescript
 
 /**
@@ -103,7 +120,6 @@ public onInputsSet(inputs: Def.BrowseMasterListViewModel.InputsContract): MsPort
 }
 
 ```
--->
 
 This will populate the `QueryCache` with items from the server and display them in the grid.
 
@@ -112,7 +128,7 @@ This will populate the `QueryCache` with items from the server and display them 
 
 The  control is initialized, and the extension then subscribes to its value property, as in the following example.
 
-<!-- ```typescript
+```typescript
 
 this.runningStatus.value.subscribe(this._lifetime, (newValue) => {
     this.grid.loading(true);
@@ -122,7 +138,7 @@ this.runningStatus.value.subscribe(this._lifetime, (newValue) => {
         });
 });
 
-``` -->
+```
 
 In the subscription, the extension performs the following actions.
 
@@ -134,6 +150,7 @@ There is no need to get the results of the fetch and replace the items in the gr
 
 The rest of the code demonstrates that the grid has been configured to activate any of the websites when they are clicked. The `id` of the website that is activated is sent to the details child blade as an input.  For more information about the details child blade, see [#implementing-the-detail-view](#implementing-the-detail-view).
 
+<a name="master-details-browse-implementing-the-detail-view"></a>
 ### Implementing the detail view
 
 The detail view uses the `EntityCache` that was associated with the  `QueryCache` from the `DataContext` to display the details of a website. 

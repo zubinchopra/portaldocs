@@ -55,7 +55,6 @@ The following chart specifies which plugins can be combined.
 
 The sample located at `<dir>\Client/V1/Controls/Grid/ViewModels/ScrollableGridWithFilteringAndSorting.ts` contains a simple method of enabling the plugins.
 
-<!--
 ```typescript
 
 // Define the grid plugins and options.
@@ -76,9 +75,6 @@ this.grid = new Grid.ViewModel<WorkItem, WorkItem>(
     });
 
 ```
--->
-
-
 
 <a name="grid-providing-data"></a>
 ### Providing Data

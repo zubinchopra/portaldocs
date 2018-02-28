@@ -1,6 +1,6 @@
 
-<a name="introduction"></a>
-## Introduction
+<a name="templateblades"></a>
+## TemplateBlades
 
 The TemplateBlade is the recommended way of authoring blades in Ibiza. It is the equivalent to windows or pages in other systems.
 
@@ -22,7 +22,7 @@ You can think of a TemplateBlade as an HTML page. Authoring template blades requ
 
 * [Displaying a loading indicator UX](#displaying-a-loading-indicator-ux)
 
-<a name="introduction-creating-the-templateblade"></a>
+<a name="templateblades-creating-the-templateblade"></a>
 ### Creating the TemplateBlade
 
 Use the following steps to create a template blade.
@@ -90,7 +90,7 @@ Use the following steps to create a template blade.
 
 For more information about Knockout, see [knockout.js](http://knockoutjs.com/).
 
-<a name="introduction-adding-controls"></a>
+<a name="templateblades-adding-controls"></a>
 ### Adding controls
 
 The example in the previous section uses ordinary HTML in its template. Ibiza provides an extensive controls library that you can use in the HTML template. The following example uses the `InfoBox` control instead of a regular HTML link.
@@ -132,7 +132,7 @@ The example in the previous section uses ordinary HTML in its template. Ibiza pr
     }
     ```
 
-<a name="introduction-sending-parameters"></a>
+<a name="templateblades-sending-parameters"></a>
 ### Sending parameters
 
 Blades can receive input parameters that are defined as part of the signature for the blade. The following code adds an "id" input parameter to the template blade.
@@ -182,10 +182,12 @@ Blades can receive input parameters that are defined as part of the signature fo
     }
     ```
 
-<a name="introduction-adding-commands"></a>
+<a name="templateblades-adding-commands"></a>
 ### Adding commands
 
 Template blades can display commands at the top. To add the commands,  add a toolbar to the TemplateBlade, and then define its contents in the TemplateBlade's `ViewModel`.
+The working copy of the sample in the Dogfood environment is located at  [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/bladewithtoolbar](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/bladewithtoolbar).
+
 
 1. Add a **CommmandBar** element to your PDL template
     ```xml
@@ -238,7 +240,7 @@ export class MyTemplateBladeViewModel extends MsPortalFx.ViewModels.Blade {
 }
 ```
 
-<a name="introduction-adding-buttons"></a>
+<a name="templateblades-adding-buttons"></a>
 ### Adding buttons
 
 Blades can display buttons that are docked at to the base of the blade.  The following code demonstrates how to add buttons to the blade.
@@ -293,7 +295,7 @@ Blades can display buttons that are docked at to the base of the blade.  The fol
         }
     ```
 
-<a name="introduction-displaying-a-full-screen-blade"></a>
+<a name="templateblades-displaying-a-full-screen-blade"></a>
 ### Displaying a full-screen blade
 
 If you want the blade to open using the full screen, just add `InitialState="Maximized"` to the PDL definition of the blade, as in the following code.
@@ -307,7 +309,7 @@ If you want the blade to open using the full screen, just add `InitialState="Max
 </TemplateBlade>
 ```
 
-<a name="introduction-displaying-a-loading-indicator-ux"></a>
+<a name="templateblades-displaying-a-loading-indicator-ux"></a>
 ### Displaying a loading indicator UX
 
 Sometimes interaction with a blade should be prevented while it is initializing. In those cases, a shield that contains a loading indicator UX is displayed in the blade to block the display. The shield can be fully transparent or opaque. The following code demonstrates how to set an opaque filter in the blade.

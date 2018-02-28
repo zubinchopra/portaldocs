@@ -85,7 +85,7 @@ It loads data of type `T` according to some extension-specified `TId` type. `Ent
 
 <!-- TODO:  Determine whether EntityCache can be the "type for the object that defines the query, as in the `WebsiteQuery` example". -->
 
-<!-- ```typescript
+```typescript
 
 this.websiteEntities = new EntityCache<WebsiteModel, number>({
     entityTypeName: SamplesExtension.DataModels.WebsiteModelType,
@@ -106,7 +106,7 @@ this.websiteEntities = new EntityCache<WebsiteModel, number>({
     }
 });
 
-``` -->
+```
 
 When an EntityCache is instantiated, three elements are specified.
 

@@ -2,7 +2,7 @@
 <a name="legacy-edit-scopes"></a>
 ## Legacy Edit Scopes
 
-**NOTE**:  EditScopes are becoming obsolete.   It is recommended that extensions be developed without edit scopes, as specified in [portalfx-forms-editscopeless.md](portalfx-forms-editscopeless.md).
+**NOTE**:  EditScopes are becoming obsolete.   It is recommended that extensions be developed without edit scopes, as specified in [portalfx-editscopeless-procedure.md](portalfx-editscopeless-procedure.md).
 
 <a name="legacy-edit-scopes-working-with-edit-scopes"></a>
 ### Working with Edit Scopes
@@ -15,7 +15,7 @@ Edit scopes provide a standard way of managing edits over a collection of input 
   * Persist unsaved changes from the form to the cloud
   * Simplify merging changes from the server into the current edit
 
-In some instances, development approaches that do not use `editScopes` are preferred.  For more information about forms without editScopes, see  [portalfx-forms-editscopeless.md](portalfx-forms-editscopeless.md) and [portalfx-controls-dropdown.md#migration-to the-new-dropdown.md](portalfx-controls-dropdown.md#migration-to the-new-dropdown.md).
+In some instances, development approaches that do not use `editScopes` are preferred.  For more information about forms without editScopes, see  [portalfx-editscopeless-overview.md](portalfx-editscopeless-overview.md) and [portalfx-controls-dropdown.md#migration-to the-new-dropdown.md](portalfx-controls-dropdown.md#migration-to the-new-dropdown.md).
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>` is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK. 
 
@@ -24,10 +24,16 @@ Any edits that were made by the user and collected in an `EditScope` are saved i
 For more information about edit scopes and  managing unsaved edits, watch the video located at 
 [https://aka.ms/portalfx/editscopes](https://aka.ms/portalfx/editscopes).
 
+1. Request an editscope from pdl
+1. Load an edit scope
+1. Load an edit scope from a data context
+1. EditScopeAccessor
+1. Create new objects and bind them to the editScope 
+
 <a name="legacy-edit-scopes-request-an-editscope-from-pdl"></a>
 ### Request an editscope from pdl
 
-For an example of requesting an `editScope` from PDL, view the following code.  The sample is also located at `<dir>\Client\V1\MasterDetail\MasterDetailEdit\MasterDetailEdit.pdl`.  The `valid` is using the `section` object of the form to determine if the form is currently valid.  This is not directly related to the edit scope, but will be relevant in the section named []().
+The following sample code demonstrates requesting an `editScope` from PDL.  The sample is also located at `<dir>\Client\V1\MasterDetail\MasterDetailEdit\MasterDetailEdit.pdl`.  The `valid` is using the `section` object of the form to determine if the form is currently valid.  This is not directly related to the edit scope, but will be relevant in the section named []().
 
 
 ```xml
@@ -124,8 +130,65 @@ this.editScopeCache = MsPortalFx.Data.EditScopeCache.create<DataModels.WebsiteMo
 });
 ```
 
-<a name="legacy-edit-scopes-create-new-objects-and-bind-them-to-the-editscope"></a>
-### Create new objects and bind them to the editScope
+<a name="legacy-edit-scopes-editscopeaccessor"></a>
+### EditScopeAccessor
+
+Form fields require a binding to one or more `EditScope` observables. Consequently, they have two constructor overloads.  Extension developers can configure this binding by supplying a path from the root of the EditScope/Form model down to the observable to which the form field should bind. They can do this by selecting one of the two form field constructor variations. 
+
+In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
+
+1. **EditScopeAccessor** This is the preferred, compile-time verified methodology. The form field ViewModel constructor accepts an EditScopeAccessor, wraps a compile-time verified lambda, and returns the EditScope observable to which the Form field should bind, as in the following code.
+
+    `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`
+
+    ```typescript
+
+this.textBoxSimpleAccessor = new MsPortalFx.ViewModels.Forms.TextBox.ViewModel(
+    container,
+    this,
+    this.createEditScopeAccessor<string>((data) => { return data.state; }),
+    textBoxSimpleAccessorOptions);
+
+``` 
+
+    The EditScopeAccessor methodology is preferred for the following reasons.
+
+    * The supplied lambda will be compile-time verified. This code is more maintainable, for example, when the property names on the Form model types are changed.
+    * There are advanced variations of `EditScopeAccessor` that enable less-common scenarios like binding multiple `EditScope` observables to a single form field or translating form model data for presentation to the user, as in the following code.
+
+      `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`
+  
+    ```typescript
+
+this.textBoxReadWriteAccessor = new MsPortalFx.ViewModels.Forms.TextBox.ViewModel(
+    container,
+    this,
+    this.createEditScopeAccessor<string>(<MsPortalFx.ViewModels.Forms.EditScopeAccessors.Options<FormIntegratedFormData.FormIntegratedFormData, string>>{
+        readFromEditScope: (data: FormIntegratedFormData.FormIntegratedFormData): string => {
+            return data.state2().toUpperCase();
+        },
+        writeToEditScope: (data: FormIntegratedFormData.FormIntegratedFormData, newValue: string): void => {
+            data.state2(newValue);
+        }
+    }),
+    textBoxReadWriteAccessorOptions);
+
+```
+
+1. **String-typed path** This methodology is discouraged because it is not compile-time verified. The form field ViewModel constructor accepts a string-typed path that contains the location of the EditScope observable to which the Form field should bind, as in the following code.
+
+    `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`
+
+  ```typescript
+
+this.textBoxViewModel = new MsPortalFx.ViewModels.Forms.TextBox.ViewModel(container, this, "name", textBoxOptions);
+
+``` 
+
+<!-- TODO:  The following content seems to belong with editscopes instead of the form documents.  However, it is not properly formatted.  -->
+
+
+### Create new objects and bind them to the editScope 
 
 The following code creates a new set of form field objects and binds them to the `editScope`. The sample is also located at  `<dir>\Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\DetailViewModels.ts`.  
 
@@ -176,56 +239,26 @@ private _initializeForm(): void {
 
 For more information about form fields, see [portalfx-controls.md#forms](portalfx-controls.md#forms).
 
-<a name="legacy-edit-scopes-editscopeaccessor"></a>
-### EditScopeAccessor
-
-Form fields require a binding to one or more `EditScope` observables. Consequently, they have two constructor overloads.  Extension developers can configure this binding by supplying a path from the root of the EditScope/Form model down to the observable to which the form field should bind. They can do this by selecting one of the two form field constructor variations. 
-
-In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
-
-1. **EditScopeAccessor** This is the preferred, compile-time verified methodology. The form field ViewModel constructor accepts an EditScopeAccessor, wraps a compile-time verified lambda, and returns the EditScope observable to which the Form field should bind, as in the following code.
-
-    `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`
-
-    <!--gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts", "section": "formsEditScopeFaq#editScopeAccessor"} -->
-    The EditScopeAccessor methodology is preferred for the following reasons.
-
-    * The supplied lambda will be compile-time verified. This code is more maintainable, for example, when the property names on the Form model types are changed.
-    * There are advanced variations of `EditScopeAccessor` that enable less-common scenarios like binding multiple `EditScope` observables to a single form field or translating form model data for presentation to the user, as in the following code.
-
-      `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`
-  
-    <!-- gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts", "section": "formsEditScopeFaq#editScopeAccessorAdvanced"} -->
-
-1. **String-typed path** This methodology is discouraged because it is not compile-time verified. The form field ViewModel constructor accepts a string-typed path that contains the location of the EditScope observable to which the Form field should bind, as in the following code.
-
-    `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`
-
-  <!--gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts", "section": "formsEditScopeFaq#editScopePath"} -->
-
-<!-- TODO:  The following content seems to belong with editscopes instead of the form documents.  However, it is not properly formatted.  -->
-
-<a name="legacy-edit-scopes-editable-entity-arrays"></a>
 ### Editable entity arrays
 
-***Q: The user added/removed rows from my editable grid, but I don't see the corresponding adds/removes in my EditScope array.  What gives?***
+EditScope `EntityArray` objects were designed with a few requirements in mind.
+* The UI edits are serialized so that Journey-switching works with unsaved Form edits. For editing large arrays, the FX should not serialize array edits by persisting two full copies of the potentially very large array.
+* In the UI, the FX renders an indication of what array items were created/updated/deleted. In some cases, array removes are rendered with strike-through styling.
+* Array adds/removes are revertable for some scenarios.
 
-SOLUTION: EditScope 'entity' arrays were designed with a few requirements in mind:
-* The user's edits need to be serialized so that Journey-switching works with unsaved Form edits. For editing large arrays, the FX should not serialize array edits by persisting two full copies of the potentially very large array.
-* In the UI, the FX will want to render an indication of what array items were created/updated/deleted. In some cases, array removes need to be rendered with strike-through styling.
-* Array adds/remove need to be revertable for some scenarios.
+These factors made EditScope `EntityArrays` behave differently than regular JavaScript arrays, as follows.
+* `Creates` are kept out-of-band
+* `Deletes` are non-destructive
 
-The resulting design made EditScope 'entity' arrays behave differently than regular JavaScript arrays.  Importantly:
-* 'Creates' are kept out-of-band
-* 'Deletes' are non-destructive
-
-To conveniently see the *actual* state of an EditScope 'entity' array, use the '`getEntityArrayWithEdits`' EditScope method. This returns:
-* An array that includes 'created' entities and doesn't include 'deleted' entities
+Rows can be added or removed from an editable grid, but the corresponding adds/removes may not be immediately viewable from the EditScope array. To conveniently see the actual state of an EditScope `EntityArray`, use the `getEntityArrayWithEdits` EditScope method. This returns the following types of arrays.
+* An array that includes 'created' entities and does not include 'deleted' entities
 * Discrete arrays that individually capture 'created', 'updated' and 'deleted' entities  
 
-This '`getEntityArrayWithEdits`' is particularly useful in ParameterProvider's '`mapOutgoingDataForCollector`' callback when returning an edited array to some ParameterCollector, as in the following code.
+A pair of EditScope methods significantly simplifies working with EditScope `EntityArrays`.  
 
-```typescript
+* The `getEntityArrayWithEdits` method is particularly useful in the `mapOutgoingDataForCollector` callback of the `ParameterProvider` when returning an edited array to some ParameterCollector, as in the following code.
+
+    ```typescript
 
 this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModels.ServerConfig[], KnockoutObservableArray<DataModels.ServerConfig>>(container, {
     editScopeMetadataType: DataModels.ServerConfigType,
@@ -242,16 +275,9 @@ this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModels.
 
 ```
 
-<a name="legacy-edit-scopes-editable-entity-arrays-converting-your-data-to-an-entity-array-for-consumption-by-editable-grid"></a>
-#### Converting your data to an &#39;entity&#39; array for consumption by editable grid
-<a name="legacy-edit-scopes-editable-entity-arrays-modeling-your-data-as-an-entity-array"></a>
-#### Modeling your data as an &#39;entity&#39; array
-<a name="legacy-edit-scopes-editable-entity-arrays-apply-array-as-edits"></a>
-#### Apply array as edits
+* There is a corresponding `applyArrayAsEdits` EditScope method that simplifies applying edits to an existing EditScope `EntityArray`. This is often done in a ParameterCollector's `receiveResult` callback, as in the following example.
 
-And there is a corresponding '`applyArrayAsEdits`' EditScope method that simplifies applying edits to an existing EditScope 'entity' array. This is often done in a ParameterCollector's '`receiveResult`' callback, as in the following example.
-
-```typescript
+    ```typescript
 
 this.itemsCollector = new MsPortalFx.ViewModels.ParameterCollector<DataModels.ServerConfig[]>(container, {
     selectable: this.itemsSelector.selectable,
@@ -273,8 +299,6 @@ this.itemsCollector = new MsPortalFx.ViewModels.ParameterCollector<DataModels.Se
 
 ```
 
-This pair of EditScope methods significantly simplifies working with EditScope 'entity' arrays.  
-  
 * * *
 
 <a name="legacy-edit-scopes-key-value-pairs"></a>

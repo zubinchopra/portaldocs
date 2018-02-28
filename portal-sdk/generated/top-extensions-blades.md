@@ -3,8 +3,8 @@
 # Blades and Template Blades
 
 
-<a name="blades-and-template-blades-blades"></a>
-## Blades
+<a name="blades-and-template-blades-overview"></a>
+## Overview
 
 Blades are the main UI container in the Portal. They are equivalent to `windows` or `pages` in other UX frameworks.   A blade typically generally takes up the full screen, has a presence in the portal breadcrumb, and has an 'X' button to close it.
  The following is a list of different types of blades.
@@ -19,8 +19,8 @@ Blades are the main UI container in the Portal. They are equivalent to `windows`
 
    
  
-<a name="blades-and-template-blades-introduction"></a>
-## Introduction
+<a name="blades-and-template-blades-templateblades"></a>
+## TemplateBlades
 
 The TemplateBlade is the recommended way of authoring blades in Ibiza. It is the equivalent to windows or pages in other systems.
 
@@ -42,7 +42,7 @@ You can think of a TemplateBlade as an HTML page. Authoring template blades requ
 
 * [Displaying a loading indicator UX](#displaying-a-loading-indicator-ux)
 
-<a name="blades-and-template-blades-introduction-creating-the-templateblade"></a>
+<a name="blades-and-template-blades-templateblades-creating-the-templateblade"></a>
 ### Creating the TemplateBlade
 
 Use the following steps to create a template blade.
@@ -110,7 +110,7 @@ Use the following steps to create a template blade.
 
 For more information about Knockout, see [knockout.js](http://knockoutjs.com/).
 
-<a name="blades-and-template-blades-introduction-adding-controls"></a>
+<a name="blades-and-template-blades-templateblades-adding-controls"></a>
 ### Adding controls
 
 The example in the previous section uses ordinary HTML in its template. Ibiza provides an extensive controls library that you can use in the HTML template. The following example uses the `InfoBox` control instead of a regular HTML link.
@@ -152,7 +152,7 @@ The example in the previous section uses ordinary HTML in its template. Ibiza pr
     }
     ```
 
-<a name="blades-and-template-blades-introduction-sending-parameters"></a>
+<a name="blades-and-template-blades-templateblades-sending-parameters"></a>
 ### Sending parameters
 
 Blades can receive input parameters that are defined as part of the signature for the blade. The following code adds an "id" input parameter to the template blade.
@@ -202,10 +202,12 @@ Blades can receive input parameters that are defined as part of the signature fo
     }
     ```
 
-<a name="blades-and-template-blades-introduction-adding-commands"></a>
+<a name="blades-and-template-blades-templateblades-adding-commands"></a>
 ### Adding commands
 
 Template blades can display commands at the top. To add the commands,  add a toolbar to the TemplateBlade, and then define its contents in the TemplateBlade's `ViewModel`.
+The working copy of the sample in the Dogfood environment is located at  [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/bladewithtoolbar](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/bladewithtoolbar).
+
 
 1. Add a **CommmandBar** element to your PDL template
     ```xml
@@ -258,7 +260,7 @@ export class MyTemplateBladeViewModel extends MsPortalFx.ViewModels.Blade {
 }
 ```
 
-<a name="blades-and-template-blades-introduction-adding-buttons"></a>
+<a name="blades-and-template-blades-templateblades-adding-buttons"></a>
 ### Adding buttons
 
 Blades can display buttons that are docked at to the base of the blade.  The following code demonstrates how to add buttons to the blade.
@@ -313,7 +315,7 @@ Blades can display buttons that are docked at to the base of the blade.  The fol
         }
     ```
 
-<a name="blades-and-template-blades-introduction-displaying-a-full-screen-blade"></a>
+<a name="blades-and-template-blades-templateblades-displaying-a-full-screen-blade"></a>
 ### Displaying a full-screen blade
 
 If you want the blade to open using the full screen, just add `InitialState="Maximized"` to the PDL definition of the blade, as in the following code.
@@ -327,7 +329,7 @@ If you want the blade to open using the full screen, just add `InitialState="Max
 </TemplateBlade>
 ```
 
-<a name="blades-and-template-blades-introduction-displaying-a-loading-indicator-ux"></a>
+<a name="blades-and-template-blades-templateblades-displaying-a-loading-indicator-ux"></a>
 ### Displaying a loading indicator UX
 
 Sometimes interaction with a blade should be prevented while it is initializing. In those cases, a shield that contains a loading indicator UX is displayed in the blade to block the display. The shield can be fully transparent or opaque. The following code demonstrates how to set an opaque filter in the blade.
@@ -405,8 +407,11 @@ public dispose(): void {
 
 ```
 
+<a name="advanced-template-blade-topics"></a>
+# Advanced template blade topics
+
  
-<a name="blades-and-template-blades-introduction-advanced-topics"></a>
+<a name="advanced-template-blade-topics-advanced-topics"></a>
 ### Advanced Topics
 
 The following sections discuss advanced topics in template blade development.
@@ -427,14 +432,14 @@ The following sections discuss advanced topics in template blade development.
 
 * * *
 
-<a name="blades-and-template-blades-introduction-deep-linking"></a>
+<a name="advanced-template-blade-topics-deep-linking"></a>
 ### Deep linking
 
 Deep linking is the feature that gives the user a URL that directly navigates to the new blade when a blade is opened and the portal URL is updated. By design, only certain blades can be deep linked. Blades that cannot be deep linked are the ones that cannot be opened independent of some parent blade or part, like blades that return values to a calling module. An example of blades that cannot be deep-linked is a Web page in the middle of an website's check-out experience.
 
 One of the easiest ways to make your blade deep linkable is to mark your TemplateBlade as pinnable. For more information about pinning blades, see [#pinning-the-blade](#pinning-the-blade).
 
-<a name="blades-and-template-blades-introduction-displaying-notifications"></a>
+<a name="advanced-template-blade-topics-displaying-notifications"></a>
 ### Displaying notifications
 
 A status bar can be displayed at the top of a blade that contains both text and coloration that can be used to convey information and status to users. For example, when validation fails in a form, a red bar with a message can be displayed at the top of the blade. This area is clickable and can either open a new blade or an external url.
@@ -457,12 +462,12 @@ this.statusBar(statusBar);
 
 ```
 
-<a name="blades-and-template-blades-introduction-pinning-the-blade"></a>
+<a name="advanced-template-blade-topics-pinning-the-blade"></a>
 ### Pinning the blade
 
 Blades can be marked as able to be pinned to the dashboard by setting `Pinnable="true"` in the TemplateBlade's PDL definition file. By default, blades are pinned as button parts to the dashboard. If a different represention should be used, it should be specified in the PDL. 
 
-<a name="blades-and-template-blades-introduction-storing-settings"></a>
+<a name="advanced-template-blade-topics-storing-settings"></a>
 ### Storing settings
 
 Settings that are associated with a blade can be stored. Those settings need to be declared both in the PDL definition file and in the ViewMmodel that is associated with the blade.  The code that describes how to store settings is located at  `<dir>Client/V1/Blades/Template/Template.pdl` and  `<dir>Client/V1/Blades/Template/ViewModels/TemplateBladeViewModels.ts`.
@@ -541,7 +546,7 @@ public onInputsSet(inputs: Def.TemplateBladeWithSettingsViewModel.InputsContract
 
 ```
 
-<a name="blades-and-template-blades-introduction-displaying-unauthorized-ui"></a>
+<a name="advanced-template-blade-topics-displaying-unauthorized-ui"></a>
 ### Displaying Unauthorized UI
 
 You can set the blade to Unauthorized UI using the `unauthorized` member of the blade container. The code that describes how to set the blade is located at  `<dir>/Client/V1/Blades/Unauthorized/ViewModels/UnauthorizedBladeViewModel.ts`.
@@ -566,7 +571,7 @@ constructor(container: MsPortalFx.ViewModels.ContainerContract,
 
 ```
 
-<a name="blades-and-template-blades-introduction-dynamically-displaying-notice-ui"></a>
+<a name="advanced-template-blade-topics-dynamically-displaying-notice-ui"></a>
 ### Dynamically displaying Notice UI
 
 You can set the blade to the Notice UI using `enableNotice` member of the blade container. The code that describes how to set the blade is located at  `<dir>Client/V1/Blades/DynamicNotice/ViewModels/DynamicNoticeViewModels.ts`.
@@ -599,15 +604,17 @@ public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
 
  ## Menu Blade
 
-Menu blade are rendered as a menu on the left side. Each item that is referenced from the menu is rendered using the same header than the menu, resulting in the two blades showing as one (similar to what resource menu blade does).
+Menu blades are rendered as a menu on the left side of the screen. Each item that is referenced from the menu is rendered using the same header as the menu, resulting in the two blades being displayed as one blade.  This is similar to what the resource menu blade does.
 
-In summary:
+The process is as follows.
 
-* Menu blade is displayed as a menu (list of items), where each items opens a blade when clicked
-* The menu blade is rendered to the left of the screen
-* The blades opened from the menu share the chrome with the menu blade (so both blades look as one)
+1. Menu blade is displayed as a menu (list of items), where each items opens a blade when clicked
+1. The menu blade is rendered to the left of the screen
+1. The blades opened from the menu share the chrome with the menu blade 
 
-Menu blades are defined in PDL as shown below:
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
+
+Menu blades are defined in the PDL file in the following code.  The code is also located at `<dir>\Client/V1/Blades/MenuBlade/MenuBlade.pdl`.
 
 ```xml
 
@@ -617,7 +624,7 @@ Menu blades are defined in PDL as shown below:
 
 ```
 
-The code below shows how to define a menu blade view-model to open 4 different items:
+The following code demonstrates how to define a menu blade ViewModel to open four different items.
 
 ```typescript
 
@@ -725,21 +732,24 @@ export class SampleMenuBlade extends FxMenuBlade.ViewModel {
 
 ```
 
-A few things to notice in the code above:
+There are a few things to notice in the preceding code.
 
-* Menu can have different groups. In the code above there are two groups
-* Each menu item opens a blade and all necessary parameters are provided
-* Menu items can integrate with EditScope and ParameterProvider (shown in "createengine" item)
-* At the end of the constructor, options for the menu are set. The option set in this case defines the id of the default item.
+* Menus can have different groups. In this code there are two groups
+* Each menu item opens a blade, and all necessary parameters are provided
+* Menu items can integrate with `EditScope` and `ParameterProvider`, as displayed in the `createengine` item
+* At the end of the constructor, options for the menu are set. The option set defines the `id` of the default item.
 
-You can see MenuBlade in action in our SampleExtension [here](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SampleMenuBlade/bladeWithSummary)
+You can view a working copy of the MenuBlade  in the Dogfood environment sample located at [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SampleMenuBlade/bladeWithSummary](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SampleMenuBlade/bladeWithSummary).
  
  
-<a name="blades-and-template-blades-introduction-to-blade-kinds"></a>
-## Introduction to Blade Kinds
+<a name="advanced-template-blade-topics-introduction"></a>
+## Introduction
+
 Blade Kinds are common implementations of Blade experience which offer consistent UI and are easily implemented. Blade Kinds provide a simplified programming model with a closed UI. 
 
-All you need to provide is the ViewModel. Advantages you receive beyond is simplicity; when the Blade Kinds are updated, you can use the updates and the layout without having to change your implementation.
+All you need to provide is the ViewModel. The main advantage of blade kinds is simplicity. When the Blade Kinds for an extension are updated, developers can use the updates and the layout without having to change extension implementations.
+
+![alt-text](../media/portalfx-bladeKinds/BladeKindsIntro.png "part")
 
 Defining a Blade using a Blade Kind in PDL is a simplified version of the typical Blade PDL. All you need is to define multiple view models, typically a view model for the blade and a view model for the part.
 
@@ -749,171 +759,179 @@ Defining a Blade using a Blade Kind in PDL is a simplified version of the typica
 
 To learn more about each of the Blade Kinds, start with the following topics:
 
-- [QuickStart Blade](#introduction-to-blade-kinds-quickstart-blade)
-- [Properties Blade](#introduction-to-blade-kinds-properties-blade)
-- [Notice Blade](#introduction-to-blade-kinds-notice-blade)
-- [Setting List Blade](#introduction-to-blade-kinds-setting-list-blade)
+- [QuickStart Blade](#quickstart-blade)
+- [Properties Blade](#properties-blade)
+- [Notice Blade](#notice-blade)
+- [Setting List Blade](#setting-list-blade)
 
-<a name="blades-and-template-blades-introduction-to-blade-kinds-quickstart-blade"></a>
+* * * 
+
+<a name="advanced-template-blade-topics-introduction-quickstart-blade"></a>
 ### QuickStart Blade
-The QuickStart blade that provides a Blade which gives users a convenient way to learn how to use your service. Every services should have a QuickStart Blade.
 
-![Demo](../media/portalfx-bladeKinds/QuickStartBlade.PNG)
+The QuickStart blade provides users a convenient way to learn how to use your service. 
+<!-- TODO: Determine whether the following sentence is advertising, or an actuality for services. -->
+
+Every service should have a QuickStart Blade.
+
+![alt-text](../media/portalfx-bladeKinds/QuickStartBlade.PNG "Demo")
 
 Defining a QuickStart Blade requires only a view model to define the blade and a view model to define the part.
 
-The PDL to define a QuickStart Blade:
+Use the following steps to create a QuickStart Blade.
 
-`\Client\Blades\BladeKind\BladeKinds.pdl`
+1. The PDL to define a QuickStart Blade.
 
-```xml
-<azurefx:QuickStartBlade Name="QuickStartBlade"
-                        ViewModel="{ViewModel Name=QuickStartBladeViewModel, Module=./BladeKind/ViewModels/BladeKindsViewModels}"
-                        PartViewModel="{ViewModel Name=InfoListPartViewModel, Module=./BladeKind/ViewModels/InfoListPartViewModel}"
-                        Parameter="info"/>
-```
-The TypeScript view model to define the Blade view model:
+    `\Client\Blades\BladeKind\BladeKinds.pdl`
 
-`\Client\Blades\BladeKind\ViewModels\BladeKindsViewModels.ts`
+    ```xml
+    <azurefx:QuickStartBlade Name="QuickStartBlade"
+                            ViewModel="{ViewModel Name=QuickStartBladeViewModel, Module=./BladeKind/ViewModels/BladeKindsViewModels}"
+                            PartViewModel="{ViewModel Name=InfoListPartViewModel, Module=./BladeKind/ViewModels/InfoListPartViewModel}"
+                            Parameter="info"/>
+    ```
 
-```ts
-/**
- * The quick start blade view model for blade kinds.
- */
-export class QuickStartBladeViewModel extends MsPortalFx.ViewModels.Blade {
+1. Define the TypeScript view model that contains the blade, as in the following example.
+
+    `\Client\Blades\BladeKind\ViewModels\BladeKindsViewModels.ts`
+
+    ```ts
     /**
-     * Blade view model constructor.
-     *
-     * @param container Object representing the blade in the shell.
-     * @param initialState Bag of properties saved to user settings via viewState.
-     * @param dataContext Long lived data access object passed into all view models in the current area.
-     */
-    constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: BladesArea.DataContext) {
-        super();
-        this.title(ClientResources.quickStartBladeTitle);
-        this.subtitle(ClientResources.bladesLensTitle);
-        this.icon(MsPortalFx.Base.Images.Polychromatic.Info());
+    * The quick start blade view model for blade kinds.
+    */
+    export class QuickStartBladeViewModel extends MsPortalFx.ViewModels.Blade {
+        /**
+        * Blade view model constructor.
+        *
+        * @param container Object representing the blade in the shell.
+        * @param initialState Bag of properties saved to user settings via viewState.
+        * @param dataContext Long lived data access object passed into all view models in the current area.
+        */
+        constructor(container MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: BladesArea.DataContext) {
+            super();
+            this.title(ClientResources.quickStartBladeTitle);
+            this.subtitle(ClientResources.bladesLensTitle);
+            this.icon(MsPortalFx.Base.Images.Polychromatic.Info());
+        }
+
+        /**
+        * Invoked when the Part's inputs change.
+        */
+        public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
+            this.subtitle(inputs.info.text);
+            return null; // No need to load anything
+        }
     }
+    ```
 
+1. Define the TypeScript view model that defines the part.
+
+    `\Client\Blades\BladeKind\ViewModels\InfoListPartViewModel.ts`
+
+
+    ```ts
     /**
-     * Invoked when the Part's inputs change.
-     */
-    public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
-        this.subtitle(inputs.info.text);
-        return null; // No need to load anything
-    }
-}
-```
+    * This sample uses the base class implementation. You can also implement the
+    * interface MsPortalFx.ViewModels.Parts.InfoList.ViewModel.
+    */
+    export class InfoListPartViewModel extends MsPortalFx.ViewModels.Parts.InfoList.ViewModel {
+        private _text: KnockoutObservableBase<string>;
+        private _bladeWithInputs: KnockoutObservableBase<MsPortalFx.ViewModels.DynamicBladeSelection>;
 
-The TypeScript view model to define the part view model:
+        /**
+        * Initialize the part.
+        */
+        constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState: any, dataContext: BladesArea.DataContext) {
+            super(initialState);
 
+            this._text = ko.observable<string>("");
 
-`\Client\Blades\BladeKind\ViewModels\InfoListPartViewModel.ts`
+            var thirdBladeDisplayValue = ko.pureComputed(() => {
+                return "{0} {1}".format(ExtensionDefinition.BladeNames.thirdBlade + ClientResources.sendingValue, this._text());
+            });
 
+            var infoListDesc1 = ko.pureComputed(() => {
+                return "{0} - {1}".format(this._text(), ClientResources.infoListDesc1);
+            });
 
-```ts
-/**
- * This sample uses the base class implementation. You can also implement the
- * interface MsPortalFx.ViewModels.Parts.InfoList.ViewModel.
- */
-export class InfoListPartViewModel extends MsPortalFx.ViewModels.Parts.InfoList.ViewModel {
-    private _text: KnockoutObservableBase<string>;
-    private _bladeWithInputs: KnockoutObservableBase<MsPortalFx.ViewModels.DynamicBladeSelection>;
-
-    /**
-     * Initialize the part.
-     */
-    constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState: any, dataContext: BladesArea.DataContext) {
-        super(initialState);
-
-        this._text = ko.observable<string>("");
-
-        var thirdBladeDisplayValue = ko.pureComputed(() => {
-            return "{0} {1}".format(ExtensionDefinition.BladeNames.thirdBlade + ClientResources.sendingValue, this._text());
-        });
-
-        var infoListDesc1 = ko.pureComputed(() => {
-            return "{0} - {1}".format(this._text(), ClientResources.infoListDesc1);
-        });
-
-        this._bladeWithInputs = ko.observable<MsPortalFx.ViewModels.DynamicBladeSelection>({
-            detailBlade: ExtensionDefinition.BladeNames.thirdBlade,
-            detailBladeInputs: {}
-        });
-
-        // add a section to open an external webpage.
-        this.addSection(
-            this._text,
-            infoListDesc1,
-            ClientResources.htmlSiteMSDNAddress,
-            MsPortalFx.Base.Images.HeartPulse());
-
-        // add a section to open a blade.
-        this.addSection(
-            ExtensionDefinition.BladeNames.firstBlade,
-            ClientResources.infoListDesc3, {
-                detailBlade: ExtensionDefinition.BladeNames.firstBlade,
+            this._bladeWithInputs = ko.observable<MsPortalFx.ViewModels.DynamicBladeSelection>({
+                detailBlade: ExtensionDefinition.BladeNames.thirdBlade,
                 detailBladeInputs: {}
-            }, MsPortalFx.Base.Images.Polychromatic.Browser());
+            });
 
-        // add a secion that can have a list of links.
-        this.addSection(
-            ClientResources.infoListTitle2,
-            ClientResources.infoListDesc2,
-            [
-                new Vm.Parts.InfoList.Link(
-                    ClientResources.htmlSiteMicrosoftName,
-                    ClientResources.htmlSiteMicrosoftAddress
-                    ),
-                new Vm.Parts.InfoList.Link(
-                    ClientResources.targetBlade2Title,
-                    {
-                        detailBlade: ExtensionDefinition.BladeNames.secondBlade,
-                        detailBladeInputs: {}
-                    }
-                    ),
-                new Vm.Parts.InfoList.Link(
-                    ClientResources.htmlSiteBingName,
-                    ClientResources.htmlSiteBingAddress
-                    ),
-                new Vm.Parts.InfoList.Link(
-                    thirdBladeDisplayValue,
-                    this._bladeWithInputs
-                    )
-            ]);
+            // add a section to open an external webpage.
+            this.addSection(
+                this._text,
+                infoListDesc1,
+                ClientResources.htmlSiteMSDNAddress,
+                MsPortalFx.Base.Images.HeartPulse());
+
+            // add a section to open a blade.
+            this.addSection(
+                ExtensionDefinition.BladeNames.firstBlade,
+                ClientResources.infoListDesc3, {
+                    detailBlade: ExtensionDefinition.BladeNames.firstBlade,
+                    detailBladeInputs: {}
+                }, MsPortalFx.Base.Images.Polychromatic.Browser());
+
+            // add a secion that can have a list of links.
+            this.addSection(
+                ClientResources.infoListTitle2,
+                ClientResources.infoListDesc2,
+                [
+                    new Vm.Parts.InfoList.Link(
+                        ClientResources.htmlSiteMicrosoftName,
+                        ClientResources.htmlSiteMicrosoftAddress
+                        ),
+                    new Vm.Parts.InfoList.Link(
+                        ClientResources.targetBlade2Title,
+                        {
+                            detailBlade: ExtensionDefinition.BladeNames.secondBlade,
+                            detailBladeInputs: {}
+                        }
+                        ),
+                    new Vm.Parts.InfoList.Link(
+                        ClientResources.htmlSiteBingName,
+                        ClientResources.htmlSiteBingAddress
+                        ),
+                    new Vm.Parts.InfoList.Link(
+                        thirdBladeDisplayValue,
+                        this._bladeWithInputs
+                        )
+                ]);
+        }
+
+        /**
+        * All sections should be added in the constructor, and should be updated via observables.
+        */
+        public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
+            var text = inputs.info.text;
+
+            this._text(text);
+
+            // update the blade binding with inputs value
+            this._bladeWithInputs({
+                detailBlade: ExtensionDefinition.BladeNames.thirdBlade,
+                detailBladeInputs: {
+                    id: text
+                }
+            });
+
+
+            return null; // No need to load anything
+        }
     }
-
-    /**
-     * All sections should be added in the constructor, and should be updated via observables.
-     */
-    public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
-        var text = inputs.info.text;
-
-        this._text(text);
-
-        // update the blade binding with inputs value
-        this._bladeWithInputs({
-            detailBlade: ExtensionDefinition.BladeNames.thirdBlade,
-            detailBladeInputs: {
-                id: text
-            }
-        });
-
-
-        return null; // No need to load anything
-    }
-}
-```
+    ```
 
  
-<a name="blades-and-template-blades-introduction-to-blade-kinds-properties-blade"></a>
+<a name="advanced-template-blade-topics-introduction-properties-blade"></a>
 ### Properties Blade
 
-The Properties blade that provides a Blade which gives users a convenient way access the properties of your service. 
+The Properties blade that provides users a convenient way access the properties of your service. 
 
-![Demo](../media/portalfx-bladeKinds/PropertiesBlade.PNG)
+![alt-text](../media/portalfx-bladeKinds/PropertiesBlade.PNG "Demo")
 
-Defining a Properties Blade requires only a view model to define the blade and a view model to define the part.
+Defining a Properties Blade requires a view model to define the blade and a view model to define the part.
 
 The PDL to define a Properties Blade:
 
@@ -1057,11 +1075,12 @@ export class PropertiesPartViewModel extends MsPortalFx.ViewModels.Parts.Propert
 
 ```
 
-<a name="blades-and-template-blades-introduction-to-blade-kinds-notice-blade"></a>
+<a name="advanced-template-blade-topics-introduction-notice-blade"></a>
 ### Notice Blade
-The Notice blade that provides a Blade which gives you a convenient way to display a announcements to your users, such as coming soon features. 
 
-![Demo](../media/portalfx-bladeKinds/NoticeBlade.PNG)
+The Notice blade that provides a convenient way to display announcements to your users, such as coming soon features. 
+
+![alt-text](../media/portalfx-bladeKinds/NoticeBlade.PNG "Notice Blade")
 
 Defining a notice Blade requires only a view model to define the blade and a view model to define the part.
 
@@ -1150,12 +1169,12 @@ export class NoticePartViewModel extends MsPortalFx.ViewModels.Controls.Notice.V
 ```
 
  
-<a name="blades-and-template-blades-introduction-to-blade-kinds-setting-list-blade"></a>
+<a name="advanced-template-blade-topics-introduction-setting-list-blade"></a>
 ### Setting List Blade
 
-The Setting List Blade that provides a Blade which gives you a convenient way to display give your users access to a list of your service's settings.
+The Setting List Blade provides a convenient way to give users access to a list of your service's settings.
 
-![Demo](../media/portalfx-bladeKinds/SettingListBlade.PNG)
+![alt-text](../media/portalfx-bladeKinds/SettingListBlade.PNG "Setting List")
 
 Defining a Settings Blade requires only a view model to define the blade and a view model to define the part.
 
@@ -1248,10 +1267,12 @@ export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.Settin
 }
 ```
 
-<a name="blades-and-template-blades-introduction-to-blade-kinds-setting-list-blade-framework-settings"></a>
-#### Framework settings
+<a name="advanced-template-blade-topics-introduction-framework-settings"></a>
+### Framework settings
 
-One of the goals of the Azure Portal is standardizing key interaction patterns across different types of resources so customers can learn them once and apply them everywhere. There a few setting items which are consistent across most resources, to make that process easier the framework will automatically add certain settings but also allow optting in for any which we don't automatically add. All the Framework added settings can always be opted out, by specifying the opt in option as "false". Currently their are only two settings, RBAC and Audit logs (Events), which are added automatically. They are only added if a valid resource id has been specified within the "resourceId()" property on the settingsList viewmodel. The best way to set this is from within the onInputsSet call.
+One goal of the Azure Portal is to standardize key interaction patterns across different types of resources, so that customers can learn them once and apply them everywhere. There a few setting items which are consistent across most resources. To make that process easier, the Framework will automatically add specific settings, but also allow extensions to opt in for any settings that the Framework does not automatically add. All the settings that are added by the Framework can always be opted out, by specifying the `opt in` option as `false`. 
+
+Only two settings are added automatically: RBAC and Audit logs (Events). They are only added if a valid resource id was specified within the `resourceId()` property on the settingsList viewmodel. The best way to set this property is to use the `onInputsSet` call, as in the following code.
 
 ```ts
 export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.SettingList.ViewModelV2 {
@@ -1266,7 +1287,7 @@ export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.Settin
 }
 ```
 
-<a name="blades-and-template-blades-introduction-to-blade-kinds-setting-list-blade-tags-rbac"></a>
+<a name="advanced-template-blade-topics-introduction-framework-settings-tags-rbac"></a>
 #### Tags/RBAC
 
 [Tags] [/documentation/articles/portalfx-tags/] and RBAC (Users) are the most common settings although we don't automatically add Tags, its extremely easy to opt in. We are looking to automatically add Tags in the future, for now if your resource supports tagging please opt in. To opt in set the following in the options parameter of the super call to the SettingsList viewmodel.
@@ -1284,7 +1305,7 @@ export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.Settin
 }
 ```
 
-<a name="blades-and-template-blades-introduction-to-blade-kinds-setting-list-blade-support-settings"></a>
+<a name="advanced-template-blade-topics-introduction-framework-settings-support-settings"></a>
 #### Support settings
 
 Troubleshooting and support are one of these key experiences. We'd like to provide customers with a consistent gesture so for every resource they can assess its health, check the audit logs, get troubleshooting information, or open a support ticket. Every resource should on-board with Support and opt in to the support settings, see the [on-boarding process] [supportOnboarding]. For any questions regarding the process please reach out to the support adoption alias <AzSFAdoption@microsoft.com>
@@ -1320,10 +1341,9 @@ Next steps:
 
 
 
-[part]: ../media/portalfx-bladeKinds/BladeKindsIntro.png
 
  
-<a name="blades-and-template-blades-introduction-to-blade-kinds-introduction-to-appblades"></a>
+<a name="advanced-template-blade-topics-introduction-introduction-to-appblades"></a>
 ### Introduction to AppBlades
 
 AppBlade provides you with an IFrame where you can render your content, resulting in maximum flexibility at the expense of additional developer responsibilities.
@@ -1341,7 +1361,7 @@ When using AppBlade you are responsible for:
 * **Consistent Look & feel**: you are responsible for coming up with a visual design that is consistent with the rest of Ibiza
 * **Controls**: since you can't use Ibiza Fx controls you need to build your own controls or use available alternatives 
 
-<a name="blades-and-template-blades-introduction-to-blade-kinds-introduction-to-appblades-creating-your-first-appblade"></a>
+<a name="advanced-template-blade-topics-introduction-introduction-to-appblades-creating-your-first-appblade"></a>
 #### Creating your first AppBlade
 
 1. Add the **blade definition** to your PDL file
@@ -1370,7 +1390,7 @@ When using AppBlade you are responsible for:
 
 The source location for the contents of the IFrame is passed to the container using the **source** property in the **FxBlade.Options** (second parameter in the code snippet above).
 
-<a name="blades-and-template-blades-introduction-to-blade-kinds-introduction-to-appblades-using-the-ibiza-command-bar-in-your-appblade"></a>
+<a name="advanced-template-blade-topics-introduction-introduction-to-appblades-using-the-ibiza-command-bar-in-your-appblade"></a>
 #### Using the Ibiza command bar in your AppBlade
 
 You can use the Ibiza command bar in your AppBlade and leverage the framework support while getting some consistency in the experience. In this case, you need to add a **CommandBar** to your PDL and configure it in your **ViewModel**. This is **optional**.
@@ -1399,7 +1419,7 @@ private _openLinkButton(): Toolbars.OpenLinkButton {
 ```
 
 
-<a name="blades-and-template-blades-introduction-to-blade-kinds-introduction-to-appblades-exchanging-messages-between-your-iframe-and-the-ibiza-fx"></a>
+<a name="advanced-template-blade-topics-introduction-introduction-to-appblades-exchanging-messages-between-your-iframe-and-the-ibiza-fx"></a>
 #### Exchanging messages between your IFrame and the Ibiza Fx
 
 The AppBlade ViewModel is hosted in the same hidden IFrame where your extension is loaded. The contents of the AppBlade are hosted in another IFrame that is visible in the screen.
@@ -1408,10 +1428,10 @@ Both IFrames (your UI and your Ibiza extension) can communicate via **postMessag
 
 The following sections demonstrate how to exchange messages between both IFrames
 
-<a name="blades-and-template-blades-introduction-to-blade-kinds-introduction-to-appblades-sending-and-receiving-messages-from-ibiza"></a>
+<a name="advanced-template-blade-topics-introduction-introduction-to-appblades-sending-and-receiving-messages-from-ibiza"></a>
 #### Sending and Receiving messages from Ibiza
 
-<a name="blades-and-template-blades-introduction-to-blade-kinds-introduction-to-appblades-sending-and-receiving-messages-from-ibiza-listen-to-a-message"></a>
+<a name="advanced-template-blade-topics-introduction-introduction-to-appblades-sending-and-receiving-messages-from-ibiza-listen-to-a-message"></a>
 ##### Listen to a message
 
 You can listen to messages using the **on** method in the **AppBlade** view-model.
@@ -1433,7 +1453,7 @@ this.on("getAuthToken", () => {
 
 ```
 
-<a name="blades-and-template-blades-introduction-to-blade-kinds-introduction-to-appblades-post-a-message"></a>
+<a name="advanced-template-blade-topics-introduction-introduction-to-appblades-post-a-message"></a>
 #### Post a message
 
 You can post messages to you IFrame using the **postMessage** method in the **AppBlade** view-model.
@@ -1447,7 +1467,7 @@ this.postMessage(new FxAppBlade.Message("favoriteAnimal", "porcupine"));
 
 ```
 
-<a name="blades-and-template-blades-introduction-to-blade-kinds-introduction-to-appblades-post-theming-information"></a>
+<a name="advanced-template-blade-topics-introduction-introduction-to-appblades-post-theming-information"></a>
 #### Post theming information
 
 When using a template blade, you are responsible for implementing theming in your IFrame. The code snippet below demonstrates how to pass the current selected theme by the user to your IFrame using **postMessage** (which is the same technique used in the section above).
@@ -1464,10 +1484,10 @@ MsPortalFx.Services.getSettings().then(settings => {
 
 ```
 
-<a name="blades-and-template-blades-introduction-to-blade-kinds-introduction-to-appblades-sending-and-receiving-messages-from-your-iframe"></a>
+<a name="advanced-template-blade-topics-introduction-introduction-to-appblades-sending-and-receiving-messages-from-your-iframe"></a>
 #### Sending and Receiving messages from your IFrame
 
-<a name="blades-and-template-blades-introduction-to-blade-kinds-introduction-to-appblades-sending-and-receiving-messages-from-your-iframe-listen-to-a-message"></a>
+<a name="advanced-template-blade-topics-introduction-introduction-to-appblades-sending-and-receiving-messages-from-your-iframe-listen-to-a-message"></a>
 ##### Listen to a message
 
 You can listen to incoming messages by adding an event listener to your window, as shown in the snippet below:
@@ -1529,7 +1549,7 @@ function receiveMessage(event) {
 
 ```
 
-<a name="blades-and-template-blades-introduction-to-blade-kinds-introduction-to-appblades-sending-and-receiving-messages-from-your-iframe-post-a-message"></a>
+<a name="advanced-template-blade-topics-introduction-introduction-to-appblades-sending-and-receiving-messages-from-your-iframe-post-a-message"></a>
 ##### Post a message
 
 You can post messages back to the portal using **postMessage**. There is a required message that your IFrame needs to send back to the portal to indicate that it is ready to receive messages.
@@ -1556,7 +1576,7 @@ if (window.parent !== window) {
 
 
  
-<a name="blades-and-template-blades-introduction-to-blade-kinds-introduction-to-blades"></a>
+<a name="advanced-template-blade-topics-introduction-introduction-to-blades"></a>
 ### Introduction to Blades
 
 A blade is the vertical container that acts as the starting point for any journey. You can define multiple blades, each containing their own collection of statically defined lenses and parts.
@@ -1587,17 +1607,19 @@ Blades use view models to drive dynamic content include titles, icons, and statu
 * [Blade Kinds](portalfx-blades-bladeKinds.md)
 * [Closing blades](portalfx-blades-closing.md)
 
+* * * 
+
 * Controlling blade UI
  
-<a name="blades-and-template-blades-blade-ui"></a>
+<a name="advanced-template-blade-topics-blade-ui"></a>
 ## Blade UI
 
-<a name="blades-and-template-blades-blade-ui-controlling-blade-ui"></a>
+<a name="advanced-template-blade-topics-blade-ui-controlling-blade-ui"></a>
 ### Controlling blade UI
 
 Blades support a variety of APIs which make it easy to customize their behavior and experience.
 
-<a name="blades-and-template-blades-blade-ui-controlling-blade-ui-title-icon"></a>
+<a name="advanced-template-blade-topics-blade-ui-controlling-blade-ui-title-icon"></a>
 #### Title &amp; Icon
 
 The title, subtitle, and icon of a blade can be customized with a View Model. This allows making real time changes to the title and icon based on the status of the asset. The View Model for a blade is a simple interface:
@@ -1632,7 +1654,7 @@ In this case, the information in the view model will be hard coded. Finally, you
   Blade Content State
 -->
 
-<a name="blades-and-template-blades-blade-ui-controlling-blade-ui-blade-content-state"></a>
+<a name="advanced-template-blade-topics-blade-ui-controlling-blade-ui-blade-content-state"></a>
 #### Blade Content State
 
 Blades have the ability to display a status at the top of the UI:
@@ -1659,7 +1681,7 @@ this.contentStateDisplayText("Success!");
   Locking
 -->
 
-<a name="blades-and-template-blades-blade-ui-controlling-blade-ui-locking"></a>
+<a name="advanced-template-blade-topics-blade-ui-controlling-blade-ui-locking"></a>
 #### Locking
 
 Locking a blade will prevent users from pinning its parts to the start board, moving parts around, or resizing parts. It's particularly useful when building a list control, an input form, or a create experience.  If you need a locked blade you should use `<TemplateBlade />` as opposed to the classic `<Blade Locked="True" />`.  TemplateBlade has been designed to significantly simplify the locked blade programming model, specifically allows you to use: 
@@ -1705,7 +1727,7 @@ For complete examples of TemplateBlades see SamplesExtension `Client\Blades\Temp
   Width
 -->
 
-<a name="blades-and-template-blades-blade-ui-controlling-blade-ui-width"></a>
+<a name="advanced-template-blade-topics-blade-ui-controlling-blade-ui-width"></a>
 #### Width
 
 When creating blades, you can choose from multiple widths. The default is 'Medium':
@@ -1735,7 +1757,7 @@ This is defined statically on the blade, and cannot be changed by the user. Smal
   Initial Display State
 -->
 
-<a name="blades-and-template-blades-blade-ui-controlling-blade-ui-initial-display-state"></a>
+<a name="advanced-template-blade-topics-blade-ui-controlling-blade-ui-initial-display-state"></a>
 #### Initial Display State
 
 When the user opens a blade, you can choose to have it open in the normal state, or in a maximized state:

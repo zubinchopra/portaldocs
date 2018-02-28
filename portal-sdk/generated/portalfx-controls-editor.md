@@ -19,7 +19,6 @@ You can control the behavior and features of the editor via initialization `opti
 
 1. Create a ViewModel to which to bind the control. The sample located at `<dir>\Client\V1\Controls\Editor\ViewModels\EditorViewModels.ts` implements the viewmodel for the editor. The  control is also included in the following code.
 
-    <!--
     ```typescript
 
 /**
@@ -105,11 +104,11 @@ export class EditorInstructionsPartViewModel
    }
 }
 
-``` -->
+``` 
 
 1. Now the part can be consumed from an extension by referencing it in the PDL, as in the sample located at `<dir>\Client\V1\Controls\Editor\Editor.pdl` and in the following code.
 
-<!-- ```xml
+ ```xml
 
 <CustomPart Name="b_EditorInstructions_part1"
             ViewModel="{ViewModel Name=EditorInstructionsPartViewModel, Module=./Editor/ViewModels/EditorViewModels}"
@@ -125,7 +124,6 @@ export class EditorInstructionsPartViewModel
 </PartReference>
 
 ```
--->
 
 <a name="editor-editor-with-custom-language"></a>
 ### Editor with Custom Language
