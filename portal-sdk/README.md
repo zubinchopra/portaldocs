@@ -9,7 +9,7 @@ Couldn't find what you needed? [Ask about the docs on StackOverflow](https://sta
 * [Overview / Getting Started](./generated/top-onboarding.md)
 * [Steps that do not involve the Ibiza team](./generated/portalfx-extensions-onboarding-with-related-teams.md)
 * [Manage cloud/environment specific configuration](./generated/top-extensions-configuration.md)
-* [Exit criteria](./generated/top-extensions-production-ready-metrics.md)
+* [Production-ready metrics](./generated/top-extensions-production-ready-metrics.md)
 
 Kickoff the onboarding experience by sending mail to <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">Azure Onboarding Team</a>.
 
@@ -51,7 +51,7 @@ The next few sections walk through the different types of UI that can be built u
 
 The primary UI building block is a called a blade. A blade is like a page. It generally takes up the full screen, has a presence in the portal breadcrumb, and has an 'X' button to close it.
 
-[Developing blades](portalfx-blades.md#blades)
+[Developing blades](./generated/top-extensions-blades.md)
 
 [Ask a question about blades on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts)
 
