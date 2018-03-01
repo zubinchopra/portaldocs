@@ -335,4 +335,4 @@ Next steps: [Deploying your extension](portalfx-deployment.md)
 
 Example For One Extension: https://portal.azure.com?feature.canmodifystamps=true&Microsoft_Azure_Compute=true
 
-Example For Multipl Extensions: https://portal.azure.com?feature.canmodifystamps=true&Microsoft_Azure_Compute=true&Microsoft_Azure_Storage=true
+Example For Multiple Extensions: https://portal.azure.com?feature.canmodifystamps=true&Microsoft_Azure_Compute=true&Microsoft_Azure_Storage=true
