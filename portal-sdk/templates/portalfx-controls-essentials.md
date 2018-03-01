@@ -34,55 +34,51 @@ Lastly, the extension defines the `_initializeControl` method that initializes t
 
 The defaults are the most common use case.  The default `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`. This code is also included in the following example. To use the default `Essentials` control, compose a template blade that contains it.
 
-{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section":"essentials#setupBladeDefault"}
+{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section": "essentials#setupBladeDefault"}
 
 1. Set up the `Settings` interface. 
 
 1. Use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel, as in the following example.
 
-    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section":"essentials#startBladeDefault"}
-
-
-    {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#robotDetailsModel"}
-
+    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section": "essentials#startBladeDefault"}
 
 1. Define the `_initializeControl` method that initializes the control, as in the following example.
 
-    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section":"essentials#initControlDefault"}
+    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section": "essentials#initControlDefault"}
 
 #### Custom Layout
 
 The custom layout allows the extension to change freely the layout order of built-in and other properties. The `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsCustomLayoutBlade.ts`. This code is also included in the following example. To use the custom layout `essentials` control, compose a template blade that contains it.
 
-{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsCustomLayoutBlade.ts","section":"essentials#setupBladeCustomLayout"} 
+{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsCustomLayoutBlade.ts","section": "essentials#setupBladeCustomLayout"} 
 
 1. Set up the `Settings` interface to persist the `expanded` property that contains the state of the `Essentials` control.
 
 1. Use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel, as in the following example.
 
-    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsCustomLayoutBlade.ts","section":"essentials#startBladeCustomLayout"} 
+    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsCustomLayoutBlade.ts","section": "essentials#startBladeCustomLayout"} 
 
 1. Define the `_initializeControl` that initializes the control, as in the following example.
 
-    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsCustomLayoutBlade.ts","section":"essentials#initControlCustomLayout"}
+    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsCustomLayoutBlade.ts","section": "essentials#initControlCustomLayout"}
 
 #### Non-Resource Layout
 
 Non-resource essentials allow an extension to use the `Essentials` control without a resource id. It can change layout orders of all properties freely. To use the non-resource `essentials` control, compose a template blade that contains it.  The non-resource `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsNonResourceBlade.ts`. This code is also included in the following example. 
 
-{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsNonResourceBlade.ts","section":"essentials#setupBladeNonResource"} 
+{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsNonResourceBlade.ts","section": "essentials#setupBladeNonResource"} 
 
 1. Set up the `Settings` interface. 
 
-    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsNonResourceBlade.ts","section":"essentials#setupBladeNonResource"} 
+    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsNonResourceBlade.ts","section": "essentials#setupBladeNonResource"} 
 
 1. Use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel, as in the following example.
 
-    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsNonResourceBlade.ts","section":"essentials#startBladeNonResource"} 
+    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsNonResourceBlade.ts","section": "essentials#startBladeNonResource"} 
 
 1. Define the `_initializeControl` that initializes the control, as in the following example.
 
-    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsNonResourceBlade.ts","section":"essentials#initControlNonResource"} 
+    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsNonResourceBlade.ts","section": "essentials#initControlNonResource"} 
 
 #### Responsive Layout
 
@@ -90,7 +86,7 @@ The `responsive essentials` control customizes the display based on the size and
 
 1. Define the `_initializeControl` that initializes the control, as in the following example.
 
-    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsResponsiveBlade.ts","section":"essentials#responsive"} 
+    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsResponsiveBlade.ts","section": "essentials#responsive"} 
 
 ### Types
 
@@ -207,16 +203,16 @@ Resource blade `open` and `close` callback functions are provided and can be use
 
 The `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`. This code is also included in the following example.
 
-{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section":"essentials#bladeCallbacks"}
+{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section": "essentials#bladeCallbacks"}
 
 #### Dynamic Properties
 
 In the following code, the sample **AJAX** response contains four properties. The first two items are dynamically added to the left pane, and the last two  items are added to the right pane, as in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`. 
 
-{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section":"essentials#addDynamicProps"} 
+{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section": "essentials#addDynamicProps"} 
 
 #### Responsive Columns
 
 In the following code, the optional `boolean` property named `responsiveColumns` can be set to `true` to use the responsive columns feature. The sample is located at `<dir>\Client\V2\Controls\Essentials\EssentialsResponsiveBlade.ts`. The blade whose property is set to `Small` contains a single column, and the full-screen blade contains several columns depending on the width of the blade. This code is also included in the following example.
 
-{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsResponsiveBlade.ts","section":"essentials#responsive"} 
+{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsResponsiveBlade.ts","section": "essentials#responsive"} 
