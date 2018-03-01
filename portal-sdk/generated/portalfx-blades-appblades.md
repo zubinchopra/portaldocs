@@ -86,21 +86,18 @@ private _openLinkButton(): Toolbars.OpenLinkButton {
 <a name="introduction-to-appblades-exchanging-messages-between-the-iframe-and-ibiza-fx"></a>
 ### Exchanging messages between the IFrame and Ibiza Fx
 
-The AppBlade ViewModel is hosted in the same hidden IFrame in which the extension is loaded. The contents of the AppBlade are hosted in another IFrame that is visible on the screen.
+The AppBlade ViewModel is hosted in the hidden IFrame in which the extension is loaded. The contents of the AppBlade are hosted in different IFrame that is visible on the screen. The Ibiza extension IFrame and the UI IFrame communicate by sending and receiving messages. The following sections demonstrate how to exchange messages between the two IFrames.
 
-The UI IFrame and the Ibiza extension IFrame can communicate via the **postMessage** method.
+<a name="introduction-to-appblades-exchanging-messages-between-the-iframe-and-ibiza-fx-ibiza-extension-iframe-messaging"></a>
+#### Ibiza extension IFrame messaging
 
-The following sections demonstrate how to exchange messages between the two IFrames.
+* Listen to a message
 
-*  Sending and Receiving messages from the Ibiza extension IFrame
+    You can listen to messages using the **on** method in the **AppBlade** view-model.
 
-    * Listen to a message
+    The following code snippet demonstrates how to listen to a message from the UI IFrame in the Ibiza extension ViewModel.
 
-        You can listen to messages using the **on** method in the **AppBlade** view-model.
-
-        The following code snippet demonstrates how to listen to a message from the UI IFrame in the Ibiza extension ViewModel.
-
-        ```typescript
+    ```typescript
 
 // This is an example of how to listen for messages from your iframe.
 this.on("getAuthToken", () => {
@@ -115,35 +112,35 @@ this.on("getAuthToken", () => {
 
 ```
 
-   *  Post a message
+*  Post a message
 
-        The extension can post messages to the UI IFrame by using the **postMessage** method in the AppBlade ViewModel.
+    The extension can post messages to the UI IFrame by using the **postMessage** method in the AppBlade ViewModel.
 
-        The following code snippet demonstrates how to send a message from the Ibiza extension ViewModel to the IFrame ViewModel.
+    The following code snippet demonstrates how to send a message from the Ibiza extension ViewModel to the IFrame ViewModel.
 
-        ```typescript
+    ```typescript
 
 // This is another example of how to post a message back to your iframe.
 this.postMessage(new FxAppBlade.Message("favoriteAnimal", "porcupine"));
 
 ```
 
+<a name="introduction-to-appblades-exchanging-messages-between-the-iframe-and-ibiza-fx-ui-iframe-messaging"></a>
+#### UI IFrame messaging
 
-* Sending and Receiving messages from the UI IFrame
+* Listen to a message
 
-    * Listen to a message
+    The extension can listen for incoming messages by adding an event listener to the application window, as shown in the following code.
 
-        The extension can listen for incoming messages by adding an event listener to the application window, as shown in the following code.
-
-        ```xml
+    ```xml
 
 window.addEventListener("message", receiveMessage, false);
 
 ```
 
-        The extension should also provide a handler for the incoming message. In the following example below, the **receiveMessage** method handles three different incoming message types, and reacts to theming changes in the Portal.
+    The extension should also provide a handler for the incoming message. In the following example below, the **receiveMessage** method handles three different incoming message types, and reacts to theming changes in the Portal.
 
-        ```xml
+    ```xml
 
 // The message format is { signature: "pcIframe", data: "your data here" }
 function receiveMessage(event) {
@@ -192,13 +189,13 @@ function receiveMessage(event) {
 
 ```
 
-    *  Post a message
+*  Post a message
 
-        You can post messages back to the portal using **postMessage**. There is a required message that your IFrame needs to send back to the portal to indicate that it is ready to receive messages.
+    You can post messages back to the Portal using the **postMessage**. There is a required message that your IFrame needs to send back to the portal to indicate that it is ready to receive messages.
 
-        The code snippet below shows how to post that first required message and also how to send another additional message.
+    The code snippet below shows how to post that first required message and also how to send another additional message.
 
-        ```xml
+```xml
 
 if (window.parent !== window) {
     // This is a required message. It tells the shell that your iframe is ready to receive messages.
@@ -216,6 +213,7 @@ if (window.parent !== window) {
 
 ```
 
+<a name="introduction-to-appblades-post-theming-information"></a>
 ### Post theming information
 
 When using a template blade, extension developers can implement themes. Typically, the user selects a theme, which in turn is sent to the UI IFrame. The following code snippet demonstrates how to pass the selected theme to the UI IFrame using the **postMessage** method,  as specified in the section named [Exchanging messages between the IFrame and Ibiza Fx](#exchanging-messages-between-the-iframe-and-ibiza-fx).
