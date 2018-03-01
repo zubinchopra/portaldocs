@@ -10,10 +10,3 @@ The Azure SDK includes extensive support for displaying and managing user input.
   * Form reset
   * Persisting edits across journeys and browser sessions
  
-To develop extensions that use forms, review the following topics:
-
-* [Designing and arranging the Form](portalfx-forms-sections.md)
-* [Loading, editing and saving data](portalfx-forms-construction.md)
-* [Form Field Validation](portalfx-forms-field-validation.md)
-* [Integrating Forms with Commands](portalfx-forms-integrating-with-commands.md)
-
