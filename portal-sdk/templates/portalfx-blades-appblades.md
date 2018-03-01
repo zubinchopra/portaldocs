@@ -1,24 +1,35 @@
 
-### Introduction to AppBlades
+## Introduction to AppBlades
 
-AppBlade provides you with an IFrame where you can render your content, resulting in maximum flexibility at the expense of additional developer responsibilities.
+AppBlade provides an IFrame where an extension can render content, which results in maximum flexibility and reduces additional developer responsibilities.
 
-We recommend consider using AppBlade when:
+We recommend using AppBlades under the following conditions.
 
-* You have an existing experience that you want to bring to Ibiza without having to re-implement it
-* You want to implement user interactions and/or experiences that are not supported by the components in Ibiza framework
-* You have an experience that needs to be re-hosted in several environments
+* An existing experience that should be migrated to Ibiza without needing to be re-implemented 
+* Developers want to implement user interactions and/or experiences that are not supported by the components in Ibiza framework
+*  An existing experience needs to be re-hosted in several environments
 
-When using AppBlade you are responsible for:
+When using AppBlade, developers are responsible for the following.
 
-* **Accessibility**: you are reponsible for making your blade accessible up to Microsoft standards
-* **Theming**: you are responsible for responding to theming behavior
-* **Consistent Look & feel**: you are responsible for coming up with a visual design that is consistent with the rest of Ibiza
-* **Controls**: since you can't use Ibiza Fx controls you need to build your own controls or use available alternatives 
+* Accessibility
 
-#### Creating your first AppBlade
+    Making the blade accessible up to Microsoft standards
 
-1. Add the **blade definition** to your PDL file
+* Theming
+
+    The extension should respond to theming behavior
+
+* Consistent Look & feel
+
+    Designing a visual experience that is consistent with the rest of Ibiza
+
+* Controls
+
+    Build your own controls, or use available alternatives to Ibiza Fx controls
+
+### Creating an AppBlade
+
+1. Add the blade definition to your PDL file, as in the following example.
 
     ```xml
     <AppBlade Name="MicrosoftDocs"
@@ -27,7 +38,7 @@ When using AppBlade you are responsible for:
     </AppBlade>
     ```
 
-1. Create a **ViewModel** TypeScript class. The code snippet below shows the view-model for the template blade defined above. In this case, it is showing the docs.microsoft.azure.com into an AppBlade in Ibiza portal.
+1. Create a ViewModel TypeScript class. The following code snippet displays the ViewModel for the template blade defined in the previous step. In this case, it is showing the docs.microsoft.azure.com by using  an AppBlade in the Portal.
 
     ```javascript
     export class MicrosoftDocsBladeViewModel extends MsPortalFx.ViewModels.AppBlade.ViewModel {
@@ -42,67 +53,65 @@ When using AppBlade you are responsible for:
     }
     ```
 
-The source location for the contents of the IFrame is passed to the container using the **source** property in the **FxBlade.Options** (second parameter in the code snippet above).
+**NOTE**: The source location for the contents of the IFrame is sent to the container by using the `source` property.
 
-#### Using the Ibiza command bar in your AppBlade
+### The Ibiza command bar
 
-You can use the Ibiza command bar in your AppBlade and leverage the framework support while getting some consistency in the experience. In this case, you need to add a **CommandBar** to your PDL and configure it in your **ViewModel**. This is **optional**.
-
-Using the CommandBar is the same than in any other existing scenarios. The code snippet below shows an example of setting a CommandBar in your AppBlade view-model.
+The Ibiza command bar can optionally be used in an AppBlade to leverage  Framework support and making Azure navigation a more consistent  experience. To use a command bar, add it to the PDL file for the extension PDL and configure it in the AppBlade ViewModel, as in the following example.
 
 {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/AppBlade/ViewModels/AppBladeViewModel.ts", "section": "appBlade#commandBar"}
 
 {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/AppBlade/ViewModels/AppBladeViewModel.ts", "section": "appBlade#commandBarButton"}
 
+### Exchanging messages between the IFrame and Ibiza Fx
 
-#### Exchanging messages between your IFrame and the Ibiza Fx
+The AppBlade ViewModel is hosted in the same hidden IFrame in which the extension is loaded. The contents of the AppBlade are hosted in another IFrame that is visible on the screen.
 
-The AppBlade ViewModel is hosted in the same hidden IFrame where your extension is loaded. The contents of the AppBlade are hosted in another IFrame that is visible in the screen.
+The UI IFrame and the Ibiza extension IFrame can communicate via the **postMessage** method.
 
-Both IFrames (your UI and your Ibiza extension) can communicate via **postMessage**.
+The following sections demonstrate how to exchange messages between the two IFrames.
 
-The following sections demonstrate how to exchange messages between both IFrames
+*  Sending and Receiving messages from the Ibiza extension IFrame
 
-#### Sending and Receiving messages from Ibiza
+    * Listen to a message
 
-##### Listen to a message
+        You can listen to messages using the **on** method in the **AppBlade** view-model.
 
-You can listen to messages using the **on** method in the **AppBlade** view-model.
+        The following code snippet demonstrates how to listen to a message from the UI IFrame in the Ibiza extension ViewModel.
 
-The code snippet below demonstrates how to listen to a message from your IFrame in your Ibiza extension view-model.
+        {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/AppBlade/ViewModels/AppBladeViewModel.ts", "section": "appBlade#listenForMessageFromIFrame"}
 
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/AppBlade/ViewModels/AppBladeViewModel.ts", "section": "appBlade#listenForMessageFromIFrame"}
+   *  Post a message
 
-#### Post a message
+        The extension can post messages to the UI IFrame by using the **postMessage** method in the AppBlade ViewModel.
 
-You can post messages to you IFrame using the **postMessage** method in the **AppBlade** view-model.
+        The following code snippet demonstrates how to send a message from the Ibiza extension ViewModel to the IFrame ViewModel.
 
-The code snippet below demonstrates how to send a message from your Ibiza extension view-model to your IFrame.
+        {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/AppBlade/ViewModels/AppBladeViewModel.ts", "section": "appBlade#postMessageToIFrame"}
 
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/AppBlade/ViewModels/AppBladeViewModel.ts", "section": "appBlade#postMessageToIFrame"}
 
-#### Post theming information
+* Sending and Receiving messages from the UI IFrame
 
-When using a template blade, you are responsible for implementing theming in your IFrame. The code snippet below demonstrates how to pass the current selected theme by the user to your IFrame using **postMessage** (which is the same technique used in the section above).
+    * Listen to a message
+
+        The extension can listen for incoming messages by adding an event listener to the application window, as shown in the following code.
+
+        {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Content/SamplesExtension/appBladeSampleIFrame.html", "section": "appBlade#listenMessageFromPortal"}
+
+        The extension should also provide a handler for the incoming message. In the following example below, the **receiveMessage** method handles three different incoming message types, and reacts to theming changes in the Portal.
+
+        {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Content/SamplesExtension/appBladeSampleIFrame.html", "section": "appBlade#listenMessageFromPortalHandler"}
+
+    *  Post a message
+
+        You can post messages back to the portal using **postMessage**. There is a required message that your IFrame needs to send back to the portal to indicate that it is ready to receive messages.
+
+        The code snippet below shows how to post that first required message and also how to send another additional message.
+
+        {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Content/SamplesExtension/appBladeSampleIFrame.html", "section": "appBlade#postMessageToPortal"}
+
+### Post theming information
+
+When using a template blade, extension developers can implement themes. Typically, the user selects a theme, which in turn is sent to the UI IFrame. The following code snippet demonstrates how to pass the selected theme to the UI IFrame using the **postMessage** method,  as specified in the section named [Exchanging messages between the IFrame and Ibiza Fx](#exchanging-messages-between-the-iframe-and-ibiza-fx).
 
 {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/AppBlade/ViewModels/AppBladeViewModel.ts", "section": "appBlade#postThemingInfo"}
-
-#### Sending and Receiving messages from your IFrame
-
-##### Listen to a message
-
-You can listen to incoming messages by adding an event listener to your window, as shown in the snippet below:
-
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Content/SamplesExtension/appBladeSampleIFrame.html", "section": "appBlade#listenMessageFromPortal"}
-
-Then, provide a handler for the incoming message. In the example below, the **receiveMessage** method handles three different incoming message types (including reacting to theming changes in the portal) 
-
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Content/SamplesExtension/appBladeSampleIFrame.html", "section": "appBlade#listenMessageFromPortalHandler"}
-
-##### Post a message
-
-You can post messages back to the portal using **postMessage**. There is a required message that your IFrame needs to send back to the portal to indicate that it is ready to receive messages.
-
-The code snippet below shows how to post that first required message and also how to send another additional message.
-
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Content/SamplesExtension/appBladeSampleIFrame.html", "section": "appBlade#postMessageToPortal"}
