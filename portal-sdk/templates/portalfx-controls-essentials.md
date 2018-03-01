@@ -28,7 +28,7 @@ To use the appropriate `Essentials` control, the extension can include it in an 
 
 After that, the extension should use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel.
 
-Lastly, the extennsion defines the `_initializeControl` method that initializes the control.
+Lastly, the extension defines the `_initializeControl` method that initializes the control.
 
 #### Default Layout
 
