@@ -5,7 +5,7 @@ Methodologies exist that assist developers in improving the product while it is 
 
 A number of textbooks are devoted to the arts of software testing and maintenance.  Items that have been documented here do not preclude industry-standard practices.
 
-Portal development patterns or architectures that are recommended based on customer feedback and usability studies are located in the topic for the blade that is being developed. For more information, see [portalfx-blades-best-practices.md](portalfx-blades-best-practices.md).
+Portal development patterns or architectures that are recommended based on customer feedback and usability studies are located in the topic for the blade that is being developed. For more information, see [portalfx-extensions-bp-blades.md](portalfx-extensions-bp-blades.md).
 
 ### :bulb: Productivity Tip
 

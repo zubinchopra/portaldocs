@@ -1,0 +1,30 @@
+
+## Best Practices
+
+Portal development patterns or architectures that are recommended based on customer feedback and usability studies are categorized by the type of blade.
+
+**NOTE**: These patterns are recommended for every extension, but they are not required.
+
+### Resource List blades
+
+  Resource List blades are also known as browse blades.
+
+  All Browse blades should contain an "Add" command to help customers create new resources quickly, and Context menu commands in the "..." menu for each row.
+
+  In addition, they should show all resource properties in the column chooser.
+
+  For more information, see the Asset documentation located at [portalfx-assets.md](portalfx-assets.md).
+
+### Menu blades
+
+All services should use the menu blade instead of the Settings blade. ARM resources should opt in to the resource menu for a simpler, streamlined menu.
+
+### Create blades
+
+Best practices for create blades cover common scenarios that will save time and avoid deployment failures.
+
+* All Create blades should be a single blade. Instead of wizards or picker blades, extensions should use form sections and dropdowns.
+
+* The subscription, resource group, and location picker blades have been deprecated.  Subscription-based resources should use the built-in subscription, resource group, location, and pricing dropdowns instead.
+
+* Every service should expose a way to get scripts to automate provisioning. Automation options should include CLI, PowerShell, .NET, Java, Node, Python, Ruby, PHP, and REST, in that order. ARM-based services that use template deployment are opted in by default.
