@@ -4,6 +4,10 @@
 
  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-samples-forms.md"}
 
+ {"gitdown": "include-file", "file": "../templates/portalfx-extensions-samples-blades.md"}
+
+ {"gitdown": "include-file", "file": "../templates/portalfx-extensions-samples-commands.md"}
+
  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-samples-controls.md"}
 
  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-samples-controls-deprecated.md"}
