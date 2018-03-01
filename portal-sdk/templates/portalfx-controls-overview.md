@@ -49,7 +49,6 @@ The following tables include information about Portal controls, including the lo
 | Essentials Control | [portalfx-controls-essentials.md](portalfx-controls-essentials.md)  |   `<dir>\Client\V2\Controls\ Essentials/EssentialsDefaultBlade.ts`  |   |
 | Accordion |  | `<dir>\Client\V2\Controls\Accordion\AccordionBlade.ts` |  |
 | EditableGrid |  | `<dir>\Client\V2\Controls\EditableGrid\ EditableGrid.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridCustomValidation.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridDependentDropDowns.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridDynamicCellTypes.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridMaxEntries.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridOperations.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridValidation.ts` |  |
-| Infobox |  | `<dir>\Client\V2\Controls\Infobox\InfoboxBlade.ts` |  |
 | Pill |  | `<dir>\Client\V2\Controls\Pill\ PillBlade.ts` |  |
 | SearchBox |  | `<dir>\Client\V2\Controls\SearchBox\SearchBoxBlade.ts` |  |
 | Storage |  | `<dir>\Client\V2\Controls\Storage\ FileShareDropDownBlade.ts` |  |
@@ -127,7 +126,7 @@ The following tables include information about Portal controls, including the lo
 | Helpers | Document | Sample | Experience |
 | ------- | -------- | ------ | ---------- |
 | Docked Balloon | Also see Infoballoon. | `<dir>\Client\V1\Controls\DockedBalloon\ViewModels\DockedBalloonViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/DockedBalloonInstructions/selectedItem/DockedBalloonInstructions/selectedValue/DockedBalloonInstructions  |
-| Info Box | | |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/InfoBoxInstructions/selectedItem/InfoBoxInstructions/selectedValue/InfoBoxInstructions |
+| Info Box |  | `<dir>\Client\V2\Controls\Infobox\InfoboxBlade.ts` | [https://df.onecloud.azure-test.net/#blade/SamplesExtension/InfoBoxBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/InfoBoxBlade) |
 | Progress Bar | | |http://aka.ms/portalfx/samples#blade/SamplesExtension/ProgressBarInstructions/selectedItem/ProgressBarInstructions/selectedValue/ProgressBarInstructions |
 
 ## Data Visualization Objects
@@ -139,9 +138,8 @@ The following tables include information about Portal controls, including the lo
 | Monitor Chart | [portalfx-controls-monitor-chart.md](portalfx-controls-monitor-chart.md) | | |
 | Donut         | [portalfx-controls-donut.md](portalfx-controls-donut.md) | `<dir>\Client\V2\Controls\Donut\DonutBlade.ts`  | |
 |       | |  Gauges | |
-| Quota Gauge   | | |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/QuotaGaugeBlade |
-| Single Value Gauge | | |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/SingleValueGaugeBlade |
-| Step Gauge | | |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/StepGaugeBlade |
+| Quota Gauge   | | |  see link to playground  |
+| Single Value Gauge | | |  see link to playground  |
 | | | Graphs   | | |
 | Standard Graph  | [portalfx-controls-graph-nuget.md](portalfx-controls-graph-nuget.md)| | http://aka.ms/portalfx/samples#blade/SamplesExtension/graphInstructions |
 | Custom Html Nodes | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/graphCustomNodeInstructions
@@ -156,25 +154,4 @@ The following tables include information about Portal controls, including the lo
 | Legend | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/Legend/selectedItem/Legend/selectedValue/Legend  | 
 | HotSpot | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/HotSpotInstructions/selectedItem/HotSpotInstructions/selectedValue/HotSpotInstructions |
 | Video | | |  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/styleguidevideotitle](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/styleguidevideotitle) |
-| Terminal Emulator | | |  (experience does not work) <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/TerminalEmulatorInstructionsBlade/selectedItem/TerminalEmulatorInstructionsBlade/selectedValue/TerminalEmulatorInstructionsBlade |
 
-## Deprecated controls
-
-The following controls have been deprecated.  They have been replaced with more performant controls, or  with best practices that reduce issues in usability testing and improve the Create success rate. However, they are included in the following list for backward compatibility.
-
-| Control  | Document | Sample | Experience |
-| -------- | -------- | ------ | ---------- |
-| AzureMediaPlayer | Unsupported | Reserved for Azure media services team  |
-| DiffEditor  | Obsolete. Use  Code editor instead. | `<dir>\Client\V1\Controls\DiffEditor\ViewModels\DiffEditorViewModels.ts` |  http://aka.ms/portalfx/samples#blade/SamplesExtension/DiffEditorInstructions/selectedItem/DiffEditorInstructions/selectedValue/DiffEditorInstructions | 
-| Drop Down  | Obsolete.  Use V2 control instead.  | `<dir>\Client\V1\Controls\ DropDown\ViewModels\DropDownViewModels.ts`  | |
-| Essentials Control | Obsolete.  Use V2 control instead.  | `<dir>\Client\V1\Controls\Essentials\ViewModels\DefaultEssentialsViewModel.ts`  <br> `<dir>\Client\V1\Controls\Essentials\ViewModels\IndexViewModels.ts`  | |
-| Gallery | Obsolete. | `<dir>\Client\V1\Controls\Gallery\ViewModels\GalleryViewModels.ts` |  |
-| HotSpot | Obsolete. Use fx click instead. | `<dir>\Client\V1\Controls\HotSpot\ViewModels\HotSpotViewModels.ts` |  |
-| IFrame |  Obsolete. | `<dir>\Client\V1\Controls\IFrame\ViewModels\IFrameViewModels.ts` |  |
-| Map | Obsolete.  | `<dir>\Client\V1\Controls\Map\ViewModels\BaseMapViewModels.ts` <br> `<dir>\Client\V1\Controls\Map\ViewModels\HexagonLayoutViewModels.ts` <br> `<dir>\Client\V1\Controls\Map\ViewModels\IndexViewModels.ts`  |  |
-| PairedTimeline |  Unsupported | Reserved for partner use. <!-- TODO:  Locate one partner team that still uses this. --> | `<dir>\Client\V1\Controls\PairedTimeline\ViewModels\PairedTimelineViewModels.ts` |  |
-| QueryBuilder | Obsolete.  Use pill control instead, or build a custom control for complicated queries.  | `<dir>\Client\V1\Controls\QueryBuilder\ViewModels\QueryBuilderViewModels.ts` |  http://aka.ms/portalfx/samples#blade/SamplesExtension/QueryBuilderInstructions/selectedItem/QueryBuilderInstructions/selectedValue/QueryBuilderInstructions |
-| Selector | Obsolete. Use single blade experiences and fx clicks to launch blades | `<dir>\Client\V1\Controls\Selector\ViewModels\SelectorViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/SelectorInstructions/selectedItem/SelectorInstructions/selectedValue/SelectorInstructions |
-| SpecComparisonTable | Obsolete.   | `<dir>\Client\V1\Controls\SpecComparisonTable\ViewModels\SpecComparisonTableViewModels.ts` |  |
-| StringList |   Obsolete.  Use pill control instead, or build a custom control for complicated queries. | `<dir>\Client\V1\Controls\StringList\ViewModels\StringListViewModels.ts` |  |
-| TokenComboBox |  Obsolete. Use the  V2 Dropdown box instead. | `<dir>\Client\V1\Controls\TokenComboBox\ViewModels\TokenComboBoxViewModels.ts` |  |
