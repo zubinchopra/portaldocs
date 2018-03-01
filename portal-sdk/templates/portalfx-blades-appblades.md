@@ -65,50 +65,45 @@ The Ibiza command bar can optionally be used in an AppBlade to leverage  Framewo
 
 ### Exchanging messages between the IFrame and Ibiza Fx
 
-The AppBlade ViewModel is hosted in the same hidden IFrame in which the extension is loaded. The contents of the AppBlade are hosted in another IFrame that is visible on the screen.
+The AppBlade ViewModel is hosted in the hidden IFrame in which the extension is loaded. The contents of the AppBlade are hosted in different IFrame that is visible on the screen. The Ibiza extension IFrame and the UI IFrame communicate by sending and receiving messages. The following sections demonstrate how to exchange messages between the two IFrames.
 
-The UI IFrame and the Ibiza extension IFrame can communicate via the **postMessage** method.
+#### Ibiza extension IFrame messaging
 
-The following sections demonstrate how to exchange messages between the two IFrames.
+* Listen to a message
 
-*  Sending and Receiving messages from the Ibiza extension IFrame
+    You can listen to messages using the **on** method in the **AppBlade** view-model.
 
-    * Listen to a message
+    The following code snippet demonstrates how to listen to a message from the UI IFrame in the Ibiza extension ViewModel.
 
-        You can listen to messages using the **on** method in the **AppBlade** view-model.
+    {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/AppBlade/ViewModels/AppBladeViewModel.ts", "section": "appBlade#listenForMessageFromIFrame"}
 
-        The following code snippet demonstrates how to listen to a message from the UI IFrame in the Ibiza extension ViewModel.
+*  Post a message
 
-        {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/AppBlade/ViewModels/AppBladeViewModel.ts", "section": "appBlade#listenForMessageFromIFrame"}
+    The extension can post messages to the UI IFrame by using the **postMessage** method in the AppBlade ViewModel.
 
-   *  Post a message
+    The following code snippet demonstrates how to send a message from the Ibiza extension ViewModel to the IFrame ViewModel.
 
-        The extension can post messages to the UI IFrame by using the **postMessage** method in the AppBlade ViewModel.
+    {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/AppBlade/ViewModels/AppBladeViewModel.ts", "section": "appBlade#postMessageToIFrame"}
 
-        The following code snippet demonstrates how to send a message from the Ibiza extension ViewModel to the IFrame ViewModel.
+#### UI IFrame messaging
 
-        {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/AppBlade/ViewModels/AppBladeViewModel.ts", "section": "appBlade#postMessageToIFrame"}
+* Listen to a message
 
+    The extension can listen for incoming messages by adding an event listener to the application window, as shown in the following code.
 
-* Sending and Receiving messages from the UI IFrame
+    {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Content/SamplesExtension/appBladeSampleIFrame.html", "section": "appBlade#listenMessageFromPortal"}
 
-    * Listen to a message
+    The extension should also provide a handler for the incoming message. In the following example below, the **receiveMessage** method handles three different incoming message types, and reacts to theming changes in the Portal.
 
-        The extension can listen for incoming messages by adding an event listener to the application window, as shown in the following code.
+    {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Content/SamplesExtension/appBladeSampleIFrame.html", "section": "appBlade#listenMessageFromPortalHandler"}
 
-        {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Content/SamplesExtension/appBladeSampleIFrame.html", "section": "appBlade#listenMessageFromPortal"}
+*  Post a message
 
-        The extension should also provide a handler for the incoming message. In the following example below, the **receiveMessage** method handles three different incoming message types, and reacts to theming changes in the Portal.
+    You can post messages back to the Portal using the **postMessage**. There is a required message that your IFrame needs to send back to the portal to indicate that it is ready to receive messages.
 
-        {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Content/SamplesExtension/appBladeSampleIFrame.html", "section": "appBlade#listenMessageFromPortalHandler"}
+    The code snippet below shows how to post that first required message and also how to send another additional message.
 
-    *  Post a message
-
-        You can post messages back to the portal using **postMessage**. There is a required message that your IFrame needs to send back to the portal to indicate that it is ready to receive messages.
-
-        The code snippet below shows how to post that first required message and also how to send another additional message.
-
-        {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Content/SamplesExtension/appBladeSampleIFrame.html", "section": "appBlade#postMessageToPortal"}
+{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Content/SamplesExtension/appBladeSampleIFrame.html", "section": "appBlade#postMessageToPortal"}
 
 ### Post theming information
 
