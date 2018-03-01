@@ -14,13 +14,6 @@ The Azure SDK includes extensive support for displaying and managing user input.
   * Form reset
   * Persisting edits across journeys and browser sessions
  
-To develop extensions that use forms, review the following topics:
-
-* [Designing and arranging the Form](portalfx-forms-sections.md)
-* [Loading, editing and saving data](portalfx-forms-construction.md)
-* [Form Field Validation](portalfx-forms-field-validation.md)
-* [Integrating Forms with Commands](portalfx-forms-integrating-with-commands.md)
-
 
 
 
@@ -263,6 +256,43 @@ Because the `EditScope` is being used, the save/discard commands can just call t
 For more information, see [http://knockoutjs.com/documentation/computed-writable.html](http://knockoutjs.com/documentation/computed-writable.html).
 
 
+<a name="developing-forms-integrating-forms-with-commands"></a>
+## Integrating Forms with Commands
+
+In most cases, editable forms are accompanied by commands which act upon those forms. There are two ways that form data can be made available to the command:
+
+  * **Part property bindings**: a value from a part ViewModel on a blade may be bound into the command ViewModel
+  * **Edit scope loading**: the editScopeId requested by the blade can be bound to a part and a command. By sharing an Id, they can act on the same object.
+
+The most common use of part-to-command binding is sharing the `dirty` or `valid` properties of a form with a command ViewModel. The command ViewModel can enable or disable a save button based on validity, or enable or disable a discard button when edits are made. For example, when `EditScopeId` and `currentItemId` are acquired, the command can be enabled if the editscope is dirty and the form is valid, which implies that the form contains valid data.
+
+In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>` is the `SamplesExtension\` directory. Links to the Dogfood environment will display working copies of the samples that were made available with the SDK.
+
+The sample  located at  `<dir>\Client\V1\MasterDetail\MasterDetailEdit\ViewModels\DetailViewModels.ts` demonstrates a `SaveItemCommand` class that uses the binding between a part and a command. This code is also included in the following example.
+
+<!--TODO:  Determine whether the code matches the sample that ships. This task should be performed for all code samples. --> 
+
+```ts
+this._editScopeView = dataContext.masterDetailEditSample.editScopeCache.createView(container);
+this.enabled = ko.computed((): boolean => {
+    // EditScopeId and currentItemId have to be already acquired, editscope dirty and the form valid to
+    // command be enabled.
+    return !this._editScopeView.loading() &&
+        this._editScopeView.editScope() &&
+        this._editScopeView.editScope().dirty() &&
+        !this._editScopeView.editScope().saving() &&
+        this._formValid();
+});
+```
+
+In the previous snippet, the `enabled` property of the command is toggled based on the validity of the form. Inputs to this command include:
+
+  * **editScopeId**: loaded by using a `NewEditScope` blade parameter
+  * **currentItemId**: loaded by using a `Key` blade parameter
+  * **formValid**: loaded by using the part that contains a form on the blade
+
+
+
 <a name="developing-forms-form-field-validation"></a>
 ## Form Field Validation
 
@@ -311,54 +341,15 @@ var nameTextboxOptions  = <MsPortalFx.ViewModels.Forms.TextBox.Options>{
       this._container, this, "requiredFieldValue", nameTextboxOptions );
 ```
 
-
-<a name="developing-forms-integrating-forms-with-commands"></a>
-## Integrating Forms with Commands
-
-In most cases, editable forms are accompanied by commands which act upon those forms. There are two ways that form data can be made available to the command:
-
-  * **Part property bindings**: a value from a part ViewModel on a blade may be bound into the command ViewModel
-  * **Edit scope loading**: the editScopeId requested by the blade can be bound to a part and a command. By sharing an Id, they can act on the same object.
-
-The most common use of part-to-command binding is sharing the `dirty` or `valid` properties of a form with a command ViewModel. The command ViewModel can enable or disable a save button based on validity, or enable or disable a discard button when edits are made. For example, when `EditScopeId` and `currentItemId` are acquired, the command can be enabled if the editscope is dirty and the form is valid, which implies that the form contains valid data.
-
-In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>` is the `SamplesExtension\` directory. Links to the Dogfood environment will display working copies of the samples that were made available with the SDK.
-
-The sample  located at  `<dir>\Client\V1\MasterDetail\MasterDetailEdit\ViewModels\DetailViewModels.ts` demonstrates a `SaveItemCommand` class that uses the binding between a part and a command. This code is also included in the following example.
-
-<!--TODO:  Determine whether the code matches the sample that ships. This task should be performed for all code samples. --> 
-
-```ts
-this._editScopeView = dataContext.masterDetailEditSample.editScopeCache.createView(container);
-this.enabled = ko.computed((): boolean => {
-    // EditScopeId and currentItemId have to be already acquired, editscope dirty and the form valid to
-    // command be enabled.
-    return !this._editScopeView.loading() &&
-        this._editScopeView.editScope() &&
-        this._editScopeView.editScope().dirty() &&
-        !this._editScopeView.editScope().saving() &&
-        this._formValid();
-});
-```
-
-In the previous snippet, the `enabled` property of the command is toggled based on the validity of the form. Inputs to this command include:
-
-  * **editScopeId**: loaded by using a `NewEditScope` blade parameter
-  * **currentItemId**: loaded by using a `Key` blade parameter
-  * **formValid**: loaded by using the part that contains a form on the blade
-
-
-<a name="developing-forms-integrating-forms-with-commands-samples-forms"></a>
+<a name="developing-forms-form-field-validation-samples-forms"></a>
 ### Samples Forms
 
   | API Topic                             | Document                                                                 | Sample                                                           | Experience |
   | ----------------------------------------------  | ------------------------------------------------------------------------ | ---------------------------------------------------------------- | ---------- |
-  | Basic Form                 | [portalfx-forms-sections.md](portalfx-forms-sections.md) | `<dir>\Client\V1\Forms\Samples\Basic\ ViewModels\Parts\FormsSampleBasicBlades.ts` | [http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/formsallup](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/formsallup) |
-  | Basic Form Create          | [portalfx-forms-sections.md](portalfx-forms-sections.md)                             | `<dir>\Client\V1\Forms\Samples\BasicCreate\ ViewModels\Parts\FormsSampleBasicCreatePart.ts` | 
+  | Basic Form and Form Sections    | [portalfx-forms-designing.md](portalfx-forms-designing.md) | `<dir>\Client\V1\Forms\Samples\Basic\ ViewModels\Parts\FormsSampleBasicBlades.ts` <br> `<dir>\Client\V1\Forms\Samples\BasicCreate\ ViewModels\Parts\FormsSampleBasicCreatePart.ts` <br> `<dir>\Client\V1\Forms\Samples\Validations\ ViewModels\FormValidationsViewModels.ts` | [http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/formsallup](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/formsallup) |
   | Create Form                | [portalfx-create.md](portalfx-create.md)                                             | `<dir>\Client\V1\Create\EngineV3\ ViewModels\CreateEngineBladeViewModel.ts`      | |
   | Form Construction          | [portalfx-forms-construction.md](portalfx-forms-construction.md)                     | `<dir>\Client\V1\Forms\Samples\Basic\ ViewModels\FormsSampleBasicBlade.ts` | |
   | Form Field Validation      | [portalfx-forms-field-validation.md](portalfx-forms-field-validation.md)             | `<dir>\Client\V1\Forms\Samples\Validations\ ViewModels\FormValidationsViewModels.ts` | |
-  | Form Sections                  | [portalfx-forms-sections.md](portalfx-forms-sections.md)                         | `<dir>\Client\V1\Forms\Samples\Validations\ ViewModels\FormValidationsViewModels.ts` | |
   | Testing Forms               | [portalfx-testing-filling-forms.md](portalfx-testing-filling-forms.md)                                       | `<dir>`              | 
 
 <a name="developing-forms-frequently-asked-questions"></a>
