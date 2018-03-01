@@ -34,8 +34,7 @@ The following tables include information about Portal controls, including the lo
 | Single Setting |   | `<dir>\Client\V1\Controls\SingleSetting\ViewModels\ SingleSettingViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/SingleSettingInstructions/selectedItem/SingleSettingInstructions/selectedValue/SingleSettingInstructions | 
 | Splitter | | `<dir>\Client\V2\Controls\ Splitter\SplitterBlade.ts` |  http://aka.ms/portalfx/samples#blade/SamplesExtension/SplitterBlade | 
 | Text Block  |  | `<dir>\Client\V1\Controls\TextBlock\ViewModels\ TextBlockViewModels.ts` | https://df.onecloud.azure-test.net/?samplesExtension=true#blade/SamplesExtension/TextBlockInstructions/selectedItem/TextBlockInstructions/selectedValue/TextBlockInstructions | 
-| Toolbar   | [portalfx-controls-toolbar.md](portalfx-controls-toolbar.md) <br> [portalfx-extensions-blades-procedures.md](portalfx-extensions-blades-procedures.md)  |  `<dir>\Client\V1\Controls\Toolbar\ViewModels\ ToolbarViewModels.ts` <br>
-`<dir>\Client\V1\Blades\Toolbar\BladeWithToolbarViewModels.ts` | [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/controls](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/controls) |
+| Toolbar   | [portalfx-controls-toolbar.md](portalfx-controls-toolbar.md) <br> [portalfx-extensions-blades-procedures.md](portalfx-extensions-blades-procedures.md)  |  `<dir>\Client\V1\Controls\Toolbar\ViewModels\ ToolbarViewModels.ts` <br> `<dir>\Client\V1\Blades\Toolbar\BladeWithToolbarViewModels.ts` | [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/controls](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/controls) |
 
 <a name="advanced-screen-controls"></a>
 ## Advanced Screen Controls
@@ -107,8 +106,6 @@ The following tables include information about Portal controls, including the lo
 | Custom Value Slider |   |   |  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SliderBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SliderBlade) |
 | Range Slider |   |   |  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SliderBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SliderBlade)  |
 | Custom Range Slider |   |   |  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SliderBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SliderBlade) |
-| ControlIndexBlade | This is a blade in the samples that shows a list of controls, instead of being a control. | `<dir>\Client\V1\Controls\ControlIndexBlade\ViewModels\ControlIndexViewModel.ts` |  |
-| UnsupportedIndexBlade | This is a blade in the samples that shows a list of controls, instead of being a control. | `<dir>\Client\V1\Controls\UnsupportedIndexBlade\ViewModels\UnsupportedIndexViewModel.ts` | .  |
 
 <a name="lists"></a>
 ## Lists
