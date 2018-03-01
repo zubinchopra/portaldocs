@@ -152,6 +152,8 @@ Samples are primarily categorized into forms, controls, and other factors.
   | Form Field Validation      | [portalfx-forms-field-validation.md](portalfx-forms-field-validation.md)             | `<dir>\Client\V1\Forms\Samples\Validations\ ViewModels\FormValidationsViewModels.ts` | |
   | Testing Forms               | [portalfx-testing-filling-forms.md](portalfx-testing-filling-forms.md)                                       | `<dir>`              | 
 
+  
+
  ### Samples Blades
 
 | API Topic                             | Document                                                                 | Sample                                                           | Experience |
