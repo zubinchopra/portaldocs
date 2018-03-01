@@ -2,7 +2,6 @@
 <a name="extension-controls"></a>
 # Extension Controls
 
-<!--  required section -->
 
 
 <a name="extension-controls-overview"></a>
@@ -19,6 +18,11 @@ The Azure components of the experience are documented several ways.
 * The location of the sample code is included so that the developer can view the source for the component, or modify it as appropriate for the extensions they develop.  
 * A working copy of the component can be viewed in the Dogfood environment; in some instances, links are provided to the API reference for the component.
 
+
+<a name="extension-controls-overview-samples-controls"></a>
+### Samples Controls
+
+
 **NOTE**: In the following tables, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it can be experienced by using the link in the table.
 
 The following tables include information about Portal controls, including the location of samples that are shipped with the SDK and working copies in the Dogfood environment.
@@ -31,12 +35,13 @@ The following tables include information about Portal controls, including the lo
 | Control        | Sample | Experience |
 | -------------- | --------- | -------------- |
 | Copyable Label | `<dir>\Client\V2\Controls\ CopyableLabel\CopyableLabelBlade.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/CopyableLabelBlade |
-
+  
 <a name="extension-controls-basic-screen-controls"></a>
 ## Basic Screen Controls
 
 | Control |  Document | Sample | Experience |
 | ------- | -------- | ------ | ---------- |
+| Controls                              | [portalfx-controls.md](portalfx-controls.md)     |      | [http://aka.ms/portalfx/controls](http://aka.ms/portalfx/controls) |
 | Button  | | |  http://aka.ms/portalfx/samples#blade/SamplesExtension/SimpleButtonBlade |
 | Checkbox |  | `<dir>\Client\V2\Controls\Checkbox\ConsoleBlade .ts` |  |
 | CustomHtml <br> Section (Form Sections) | [portalfx-forms-sections.md](portalfx-forms-sections.md)  | `<dir>\Client\V2\Controls\Checkbox\ConsoleBlade .ts` |  |
@@ -49,14 +54,15 @@ The following tables include information about Portal controls, including the lo
 | Single Setting |   | `<dir>\Client\V1\Controls\SingleSetting\ViewModels\ SingleSettingViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/SingleSettingInstructions/selectedItem/SingleSettingInstructions/selectedValue/SingleSettingInstructions | 
 | Splitter | | `<dir>\Client\V2\Controls\ Splitter\SplitterBlade.ts` |  http://aka.ms/portalfx/samples#blade/SamplesExtension/SplitterBlade | 
 | Text Block  |  | `<dir>\Client\V1\Controls\TextBlock\ViewModels\ TextBlockViewModels.ts` | https://df.onecloud.azure-test.net/?samplesExtension=true#blade/SamplesExtension/TextBlockInstructions/selectedItem/TextBlockInstructions/selectedValue/TextBlockInstructions | 
-| Toolbar   | [portalfx-controls-toolbar.md](portalfx-controls-toolbar.md)  |  `<dir>\Client\V1\Controls\Toolbar\ViewModels\ ToolbarViewModels.ts` | [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/controls](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/controls) |
+| Toolbar   | [portalfx-controls-toolbar.md](portalfx-controls-toolbar.md) <br> [portalfx-extensions-blades-procedures.md](portalfx-extensions-blades-procedures.md)  |  `<dir>\Client\V1\Controls\Toolbar\ViewModels\ ToolbarViewModels.ts` <br>
+`<dir>\Client\V1\Blades\Toolbar\BladeWithToolbarViewModels.ts` | [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/controls](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/controls) |
 
 <a name="extension-controls-advanced-screen-controls"></a>
 ## Advanced Screen Controls
 
 | Control | Document | Sample | Experience |
 | ------- | -------- | ------ | ---------- |
-| Essentials Control | [portalfx-controls-essentials.md](portalfx-controls-essentials.md)  |   `<dir>\Client\V2\Controls\ Essentials/EssentialsDefaultBlade.ts`  |   |
+| Essentials Control | [portalfx-controls-essentials.md](portalfx-controls-essentials.md)    | `<dir>\Client\V2\Controls\Essentials\ EssentialsDefaultBlade.ts` <br>  `<dir>\Client\V2\Controls\Essentials\ EssentialsCustomLayoutBlade.ts` <br>   `<dir>\Client\V2\Controls\Essentials\EssentialsNonResourceBlade.ts` <br> `<dir>\Client\V2\Controls\Essentials\EssentialsResponsiveBlade.ts` | |
 | Accordion |  | `<dir>\Client\V2\Controls\Accordion\AccordionBlade.ts` |  |
 | EditableGrid |  | `<dir>\Client\V2\Controls\EditableGrid\ EditableGrid.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridCustomValidation.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridDependentDropDowns.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridDynamicCellTypes.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridMaxEntries.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridOperations.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridValidation.ts` |  |
 | Pill |  | `<dir>\Client\V2\Controls\Pill\ PillBlade.ts` |  |
@@ -69,8 +75,6 @@ The following tables include information about Portal controls, including the lo
 | Metrics |  | `<dir>\Client\V1\Controls\Metrics\ViewModels\MetricsViewModels.ts` |  |
 | Preview |  | `<dir>\Client\V1\Controls\Preview\Menu\ViewModels\MenuViewModels.ts` |  |
 | ProgressBar |  | `<dir>\Client\V1\Controls\ProgressBar\ViewModels\ProgressBarViewModels.ts` |  |
-
-
 
 <a name="extension-controls-date-and-time"></a>
 ## Date and Time
@@ -92,14 +96,14 @@ The following tables include information about Portal controls, including the lo
 | Drop Down | Document | Sample | Experience |
 | --------- | -------- | ------ | ---------- |
 | Drop Down | [portalfx-controls-dropdown.md](portalfx-controls-dropdown.md) | `<dir>\Client\V2\Controls\ DropDown\DropDownBlade.ts` | |
-| Console   | [portalfx-controls-console.md](portalfx-controls-console.md) | `<dir>\Client\V2\Controls\ Console\ConsoleBlade.ts` | |
+| Console   | [portalfx-controls-console.md](portalfx-controls-console.md) | `<dir>\Client\V2\Controls\ Console\ConsoleBlade.ts` <br>  `<dir>\Client\V1\Controls\Console2\ ViewModels\Console2ViewModels.ts` |  |
 
 <a name="extension-controls-editors"></a>
 ## Editors
 
 | Editor      | Document | Sample | Experience |
 | ----------- | -------- | ------ | ---------- |
-| Code editor | [portalfx-controls-editor.md](portalfx-controls-editor.md) | | 
+| Code Editor | [portalfx-controls-editor.md](portalfx-controls-editor.md)    | `<dir>\Client\V1\Controls\Editor\ ViewModels\EditorViewModels.ts` <br> `<dir>\Client\V1\Controls\Editor\ ViewModels\CustomLanguageEditorViewModels.ts`      | |
 | JSONEditor |  | `<dir>\Client\V1\Controls\JSONEditor\ViewModels\JSONEditorViewModels.ts` |  |
 
 <a name="extension-controls-forms"></a>
@@ -112,7 +116,7 @@ The following tables include information about Portal controls, including the lo
 | Custom HTML |   |   | http://aka.ms/portalfx/samples#blade/SamplesExtension/CustomFormFieldsBlade  |
 | MultiLine Text Box  |   |  `<dir>\Client\V2\Controls\MultiLineTextBox\MultiLineTextBoxBlade.ts` |   [https://df.onecloud.azure-test.net/#blade/SamplesExtension/MultiLineTextBoxBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/MultiLineTextBoxBlade)  |
 | Numeric Text Box  |   |  `<dir>\Client\V2\Controls\NumericTextBox\NumericTextBoxBlade.ts` |   [https://df.onecloud.azure-test.net/#blade/SamplesExtension/NumericTextBoxBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/NumericTextBoxBlade) |
-| Text Box  |  [portalfx-controls-textbox.md](portalfx-controls-textbox.md)   | `<dir>\Client\V2\Controls\TextBox\TextBoxBlade.ts`  |   [https://df.onecloud.azure-test.net/#blade/SamplesExtension/TextBoxBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TextBoxBlade) | 
+| Text Box  |  [portalfx-controls-textbox.md](portalfx-controls-textbox.md)   | `<dir>\Client\V2\Controls\TextBox\TextBoxBlade.ts`  |   [https://df.onecloud.azure-test.net/#blade/SamplesExtension/TextBoxBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TextBoxBlade) <br>  [https://aka.ms/portalfx/sampleTextBox](https://aka.ms/portalfx/sampleTextBox) |
 | Options Group  |   |    |    |
 | Option Picker  |   | `<dir>\Client\V2\Controls\OptionPicker\OptionPickerBlade.ts`   |  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/OptionPickerBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/OptionPickerBlade) |
 | Password Box  |  | `<dir>\Client\V2\Controls\Password\PasswordBoxBlade.ts`   | 	[https://df.onecloud.azure-test.net/#blade/SamplesExtension/PasswordBoxBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/PasswordBoxBlade) |
@@ -151,8 +155,8 @@ The following tables include information about Portal controls, including the lo
 | Screen Objects  | Document | Sample | Experience |
 | ------------- | -------- | ------ | ---------- |
 | | | Aggregates  | |
-| Chart         | [portalfx-controls-chart.md](portalfx-controls-chart.md) | | |
-| Monitor Chart | [portalfx-controls-monitor-chart.md](portalfx-controls-monitor-chart.md) | | |
+| Controls Chart    | [portalfx-controls-chart.md](portalfx-controls-chart.md)     |  `<dir>\Client\V1\Controls\Chart\ViewModels\BarChartViewModels.ts` <br>     `<dir>\Client\V1\Controls\Chart\ViewModels\OverlayedViewChartViewModel.ts` `\Client\Controls\Chart\ViewModels\LineChartDateBasedViewModels.ts` |  |
+| Plotting Metrics  (Monitor Chart)       | [portalfx-controls-monitor-chart.md](portalfx-controls-monitor-chart.md) | `<dir>\Client\V2\Preview\MonitorChart\ MonitorChartBlade.ts`     | [https://aka.ms/portalfx/sampleMonitorChart](https://aka.ms/portalfx/sampleMonitorChart) |
 | Donut         | [portalfx-controls-donut.md](portalfx-controls-donut.md) | `<dir>\Client\V2\Controls\Donut\DonutBlade.ts`  | |
 |       | |  Gauges | |
 | Quota Gauge   | | |  see link to playground  |
@@ -171,8 +175,6 @@ The following tables include information about Portal controls, including the lo
 | Legend | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/Legend/selectedItem/Legend/selectedValue/Legend  | 
 | HotSpot | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/HotSpotInstructions/selectedItem/HotSpotInstructions/selectedValue/HotSpotInstructions |
 | Video | | |  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/styleguidevideotitle](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/styleguidevideotitle) |
-
-
 
 <!--
  gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-controls.md"}
