@@ -11,13 +11,13 @@ Blades are the main UI container in the Portal. They are equivalent to `windows`
 The following is a list of different types of blades.
 
 | Type                          | Document                                                       | Description |
-| ----------------------------- | -------------------------------------------------------------- | ----------- | 
-| TemplateBlade                 | [portalfx-blades-procedure.md](portalfx-blades-procedure.md)   | Creating any Portal blade. This is the main and recommended authoring model for UI in the Portal. | 
+| ----------------------------- | TemplateBlade                 | [portalfx-blades-procedure.md](portalfx-blades-procedure.md)   | Creating any Portal blade. This is the main and recommended authoring model for UI in the Portal. | 
 | Advanced TemplateBlade Topics | [portalfx-blades-advanced.md](portalfx-blades-advanced.md)     | Advanced topics in template blade development.                                                    | 
 | MenuBlade                     | [portalfx-blades-menublade.md](portalfx-blades-menublade.md)   | Displays a vertical menu at the left of a blade.                                                  |  
 | Blade Kinds                   | [portalfx-blades-bladeKinds.md](portalfx-blades-bladeKinds.md) | A set of built-in blades that encapsulate common patterns.                                        | 
 | AppBlade                      | [portalfx-blades-appblades.md](portalfx-blades-appblades.md)   | Provides an IFrame to host the UI.                                                                | 
-| Blade with tiles              | [portalfx-blades-legacy.md](portalfx-blades-legacy.md)         |  Legacy authoring model. Given its complexity, you may want to use TemplateBlades instead. | 
+| Blade with tiles              | [portalfx-blades-legacy.md](portalfx-blades-legacy.md)         |  Legacy authoring model. Given its complexity, you may want to use TemplateBlades instead. | | -------------------------------------------------------------- | ----------- | 
+
 
    
  
@@ -226,41 +226,41 @@ The working copy of the sample in the Dogfood environment is located at  [https:
 
 1. Instantiate the `CommandBar` in the ViewModel, as in the following code.
 
-```javascript
-import Def = ExtensionDefinition.ViewModels.Resource.MyTemplateBladeViewModel;
+    ```javascript
+    import Def = ExtensionDefinition.ViewModels.Resource.MyTemplateBladeViewModel;
 
-export class MyTemplateBladeViewModel extends MsPortalFx.ViewModels.Blade {
+    export class MyTemplateBladeViewModel extends MsPortalFx.ViewModels.Blade {
 
-    public id: KnockoutObservable<string>;
-    public infoBox: MsPortalFx.ViewModels.Controls.InfoBox.BaseViewModel;
+        public id: KnockoutObservable<string>;
+        public infoBox: MsPortalFx.ViewModels.Controls.InfoBox.BaseViewModel;
 
-    // toolbar view-model
-    public commandBar: MsPortalFx.ViewModels.ToolbarContract;
+        // toolbar view-model
+        public commandBar: MsPortalFx.ViewModels.ToolbarContract;
 
-    constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: any) {
-        super();
-        this.title("InfoBox");
-        this.subtitle("InfoBox Playground");
+        constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: any) {
+            super();
+            this.title("InfoBox");
+            this.subtitle("InfoBox Playground");
 
-        this.infoBox = new MsPortalFx.ViewModels.Controls.InfoBox.LinkViewModel(container, {
-            text: ko.observable<string>('Go to the Azure Portal'),
-            image: ko.observable(MsPortalFx.Base.Images.Info()),
-            clickableLink: ko.observable(MsPortalFx.ViewModels.Part.createClickableLinkViewModel(ko.observable<string>('http://portal.azure.com'))
-        });
+            this.infoBox = new MsPortalFx.ViewModels.Controls.InfoBox.LinkViewModel(container, {
+                text: ko.observable<string>('Go to the Azure Portal'),
+                image: ko.observable(MsPortalFx.Base.Images.Info()),
+                clickableLink: ko.observable(MsPortalFx.ViewModels.Part.createClickableLinkViewModel(ko.observable<string>('http://portal.azure.com'))
+            });
 
-        // initialize the toolbar
-        var button = new Toolbars.OpenLinkButton("http://azure.com");
-        button.label("azure.com");
-        button.icon(MsPortalFx.Base.Images.Hyperlink());
-        this.commandBar = new Toolbars.Toolbar(container);
-        this.commandBar.setItems( [ button ] );
+            // initialize the toolbar
+            var button = new Toolbars.OpenLinkButton("http://azure.com");
+            button.label("azure.com");
+            button.icon(MsPortalFx.Base.Images.Hyperlink());
+            this.commandBar = new Toolbars.Toolbar(container);
+            this.commandBar.setItems( [ button ] );
+        }
+
+        public onInputsSet(inputs: Def.InputsContract): MsPortalFx.Base.Promise {
+            return null;
+        }
     }
-
-    public onInputsSet(inputs: Def.InputsContract): MsPortalFx.Base.Promise {
-        return null;
-    }
-}
-```
+    ```
 
 <a name="blades-and-template-blades-templateblades-adding-buttons"></a>
 ### Adding buttons
@@ -475,7 +475,7 @@ The process is as follows.
 
 1. Specify the settings in the PDL file using the `TemplateBlade.Settings` element.
 
-    ```xml
+   ```xml
 
 <TemplateBlade Name="PdlTemplateBladeWithSettings"
                ViewModel="{ViewModel Name=TemplateBladeWithSettingsViewModel, Module=./Template/ViewModels/TemplateBladeViewModels}"
@@ -490,7 +490,7 @@ The process is as follows.
 
 1. After the settings are declared, they should also be specified in the ViewModel, as in the following example.
 
-    ```typescript
+   ```typescript
 
 // These are required by the portal presently.  Re: Part Settings, the Part below works exclusively in terms of
 // 'configuration.updateValues' to update settings values and 'onInputsSet(..., settings)' to receive settings values.
@@ -501,7 +501,7 @@ public fontSettingValue = ko.observable<FontStyle>();
 
 1. Retrieve the settings by using the blade container.
 
-    ```typescript
+   ```typescript
 
 const configuration = container.activateConfiguration<Settings>();
 this.configureHotSpot = new HotSpotViewModel(container, {
@@ -532,7 +532,7 @@ this.configureHotSpot = new HotSpotViewModel(container, {
 
 1.  Also send the settings to the `onInputsSet` method.
 
-    ```typescript
+   ```typescript
 
 public onInputsSet(inputs: Def.TemplateBladeWithSettingsViewModel.InputsContract, settings: Def.TemplateBladeWithSettingsViewModel.SettingsContract): MsPortalFx.Base.Promise {
     // Any changes to the  Configuration values (see 'updateValues' above) will cause 'onInputsSet' to be called with the
