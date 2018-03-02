@@ -1,6 +1,6 @@
 
 <a name="legacy-blades"></a>
-### Legacy Blades
+## Legacy Blades
 
 A blade is the vertical container that acts as the starting point for any journey. You can define multiple blades, each containing their own collection of statically defined lenses and parts.
 

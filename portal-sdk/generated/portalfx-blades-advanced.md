@@ -1,6 +1,6 @@
 
 <a name="advanced-topics"></a>
-### Advanced Topics
+## Advanced Topics
 
 The following sections discuss advanced topics in template blade development.
 
@@ -20,14 +20,14 @@ The following sections discuss advanced topics in template blade development.
 
 * * *
 
-<a name="deep-linking"></a>
+<a name="advanced-topics-deep-linking"></a>
 ### Deep linking
 
 Deep linking is the feature that gives the user a URL that directly navigates to the new blade when a blade is opened and the portal URL is updated. By design, only certain blades can be deep linked. Blades that cannot be deep linked are the ones that cannot be opened independent of some parent blade or part, like blades that return values to a calling module. An example of blades that cannot be deep-linked is a Web page in the middle of an website's check-out experience.
 
 One of the easiest ways to make your blade deep linkable is to mark your TemplateBlade as pinnable. For more information about pinning blades, see [#pinning-the-blade](#pinning-the-blade).
 
-<a name="displaying-notifications"></a>
+<a name="advanced-topics-displaying-notifications"></a>
 ### Displaying notifications
 
 A status bar can be displayed at the top of a blade that contains both text and coloration that can be used to convey information and status to users. For example, when validation fails in a form, a red bar with a message can be displayed at the top of the blade. This area is clickable and can either open a new blade or an external url.
@@ -50,12 +50,12 @@ this.statusBar(statusBar);
 
 ```
 
-<a name="pinning-the-blade"></a>
+<a name="advanced-topics-pinning-the-blade"></a>
 ### Pinning the blade
 
 Blades can be marked as able to be pinned to the dashboard by setting `Pinnable="true"` in the TemplateBlade's PDL definition file. By default, blades are pinned as button parts to the dashboard. If a different represention should be used, it should be specified in the PDL file. 
 
-<a name="storing-settings"></a>
+<a name="advanced-topics-storing-settings"></a>
 ### Storing settings
 
 Settings that are associated with a blade can be stored. Those settings need to be declared both in the PDL definition file and in the ViewMmodel that is associated with the blade.  The code that describes how to store settings is located at  `<dir>Client/V1/Blades/Template/Template.pdl` and  `<dir>Client/V1/Blades/Template/ViewModels/TemplateBladeViewModels.ts`.
@@ -134,7 +134,7 @@ public onInputsSet(inputs: Def.TemplateBladeWithSettingsViewModel.InputsContract
 
 ```
 
-<a name="displaying-unauthorized-ui"></a>
+<a name="advanced-topics-displaying-unauthorized-ui"></a>
 ### Displaying Unauthorized UI
 
 You can set the blade to Unauthorized UI using the `unauthorized` member of the blade container. The code that describes how to set the blade is located at  `<dir>/Client/V1/Blades/Unauthorized/ViewModels/UnauthorizedBladeViewModel.ts`.
@@ -159,7 +159,7 @@ constructor(container: MsPortalFx.ViewModels.ContainerContract,
 
 ```
 
-<a name="dynamically-displaying-notice-ui"></a>
+<a name="advanced-topics-dynamically-displaying-notice-ui"></a>
 ### Dynamically displaying Notice UI
 
 You can set the blade to the Notice UI using `enableNotice` member of the blade container. The code that describes how to set the blade is located at  `<dir>Client/V1/Blades/DynamicNotice/ViewModels/DynamicNoticeViewModels.ts`.

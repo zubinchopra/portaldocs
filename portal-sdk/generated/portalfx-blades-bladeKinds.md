@@ -1,9 +1,8 @@
 
-<a name="introduction"></a>
-## Introduction
+<a name="blade-kinds"></a>
+## Blade Kinds
 
- A set of built-in blades that encapsulate common patterns, like properties, quick start, or create forms.
-Blade Kinds are implementations of blades that offer a consistent UI and are easily implemented. Blade Kinds provide a simplified programming model with a closed UI.  The main advantage of blade kinds is simplicity. When the Blade Kinds for an extension are updated, developers can use the updates and the layout without having to change extension implementations. One type of blade kind, the Quick start blade kind, is depicted in the following image.
+Blade Kinds are a set of built-in blades that encapsulate common patterns. These implementations offer a consistent UI and are easily implemented, because they provide a simplified programming model with a closed UI.  The main advantage of blade kinds is simplicity. When the Blade Kinds for an extension are updated, developers can use the updates and the layout without changing extension implementations. For example, one type of blade kind, the Quick start, is depicted in the following image.
 
 ![alt-text](../media/portalfx-bladeKinds/BladeKindsIntro.png "part")
 
@@ -26,7 +25,7 @@ To learn more about each of the Blade Kinds, start with the following topics:
 
 * * * 
 
-<a name="introduction-quickstart-blade"></a>
+<a name="blade-kinds-quickstart-blade"></a>
 ### QuickStart Blade
 
 The QuickStart blade provides users a convenient way to learn how to use your service. 
@@ -179,7 +178,7 @@ Use the following steps to create a QuickStart Blade.
         }
     }
     ```
-<a name="introduction-properties-blade"></a>
+<a name="blade-kinds-properties-blade"></a>
 ### Properties Blade
 
 The Properties blade that provides users a convenient way access the properties of your service. 
@@ -326,7 +325,7 @@ export class PropertiesPartViewModel extends MsPortalFx.ViewModels.Parts.Propert
 
 ```
 
-<a name="introduction-notice-blade"></a>
+<a name="blade-kinds-notice-blade"></a>
 ### Notice Blade
 
 The Notice blade that provides a convenient way to display announcements to your users, such as coming soon features. 
@@ -416,7 +415,7 @@ export class NoticePartViewModel extends MsPortalFx.ViewModels.Controls.Notice.V
 ```
 
  
-<a name="introduction-setting-list-blade"></a>
+<a name="blade-kinds-setting-list-blade"></a>
 ### Setting List Blade
 
 The Setting List Blade provides a convenient way to give users access to a list of your service's settings.
@@ -511,7 +510,7 @@ export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.Settin
 }
 ```
 
-<a name="introduction-framework-settings"></a>
+<a name="blade-kinds-framework-settings"></a>
 ### Framework settings
 
 One goal of the Azure Portal is to standardize key interaction patterns across resources, so that customers can learn them once and apply them everywhere. There a few setting items which are consistent across most resources. To make that process easier, the Framework will automatically add specific settings, but also allow extensions to opt in for any settings that the Framework does not automatically add. All the settings that are added by the Framework can always be opted out, by setting  the appropriate enabling option to `false`. 
@@ -531,7 +530,7 @@ export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.Settin
 }
 ```
 
-<a name="introduction-framework-settings-tags-and-rbac"></a>
+<a name="blade-kinds-framework-settings-tags-and-rbac"></a>
 #### Tags and RBAC
 
 Tags and role-based access (RBAC) for users are the most common settings 
@@ -552,7 +551,7 @@ export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.Settin
 }
 ```
 
-<a name="introduction-framework-settings-support-settings"></a>
+<a name="blade-kinds-framework-settings-support-settings"></a>
 #### Support settings
 
 Troubleshooting and support are one of these key experiences. We'd like to provide customers with a consistent gesture so for every resource they can assess its health, check the audit logs, get troubleshooting information, or open a support ticket. Every resource should on-board with Support and opt in to the support settings, see the [on-boarding process] [supportOnboarding]. For any questions regarding the process please reach out to the support adoption alias <AzSFAdoption@microsoft.com>
