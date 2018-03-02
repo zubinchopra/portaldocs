@@ -1,6 +1,6 @@
 
-<a name="settings"></a>
-### Settings
+<a name="blade-settings"></a>
+### Blade Settings
 
 One goal of the Azure Portal is to standardize key interaction patterns across resources, so that customers can learn them once and apply them everywhere. There a few setting items which are consistent across most resources. To make that process easier, the Framework will automatically add specific settings, but also allow extensions to opt in for any settings that the Framework does not automatically add. All the settings that are added by the Framework can always be opted out, by setting  the appropriate enabling option to `false`. 
 
@@ -19,13 +19,10 @@ export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.Settin
 }
 ```
 
-<a name="settings-tags-and-rbac"></a>
+<a name="blade-settings-tags-and-rbac"></a>
 #### Tags and RBAC
 
-Tags and role-based access (RBAC) for users are the most common settings 
-Although the Portal does not automatically add Tags, it is extremely easy to opt in if your resource supports tagging. To opt in set the following in the options parameter of the super call to the SettingsList viewmodel.
-
-For more information about tags, see [./portalfx-tags](./portalfx-tags) and [https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-using-tags](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-using-tags).
+Tags and role-based access (RBAC) for users are the most common settings. Although the Portal does not automatically add Tags, it is extremely easy to opt in if your resource supports tagging. To opt in for tags, set the following in the **options** parameter of the **super** method of the **SettingsList** ViewModel, as in the following example.
 
 ```ts
 export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.SettingList.ViewModelV2 {
@@ -40,12 +37,16 @@ export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.Settin
 }
 ```
 
-<a name="settings-support-settings"></a>
+For more information about tags, see [./portalfx-tags](./portalfx-tags) and [https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-using-tags](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-using-tags).
+
+<a name="blade-settings-support-settings"></a>
 #### Support settings
 
-Troubleshooting and support are one of these key experiences. We'd like to provide customers with a consistent gesture so for every resource they can assess its health, check the audit logs, get troubleshooting information, or open a support ticket. Every resource should on-board with Support and opt in to the support settings, see the [on-boarding process] [supportOnboarding]. For any questions regarding the process please reach out to the support adoption alias <AzSFAdoption@microsoft.com>
+<!-- TODO:  Determine whether this mailto address is accurate. -->
 
-Enabling the support settings takes slightly more effort due to coordination and validation required with the support extension. For each of the settings you first need to opt in following the same pattern as before through the options parameter within the super call to the SettingsList ViewModel.
+One key experience is Troubleshooting and Support. Azure provides customers with a consistent UI so that they can assess the health of every resource, check its audit logs, get troubleshooting information, or open a support ticket. Every extension should reach out to the <a href="mailto:AzSFAdoption@microsoft.com?subject=Onboarding with the Support team&body=Hello, I have a new extension that needs to opt in to to the features that Troubleshooting and Support provides.">Support Team at AzSFAdoption@microsoft.com</a> to opt in to the support system and UX integration.
+
+Enabling the coordination between your extension and the support extension takes a little more effort. For each setting, the extension should opt in by using the **options** parameter of the **super** method of the **SettingsList** ViewModel, as in the following example.
 
 ```ts
 export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.SettingList.ViewModelV2 {
@@ -62,14 +63,14 @@ export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.Settin
 }
 ```
 
-Then to test it use the following extension side feature flags, depending on which settings you are testing, **please ensure your extension name is in lower case.**
+To test the coordination, use the following feature flags, depending on which settings you are testing.  **NOTE**: Your extension name is in lower case.
 
 * ?<extensionName>_troubleshootsettingsenabled=true
 * ?<extensionName>_healthsettingsenabled=true
 * ?<extensionName>_requestsettingsenabled=true
 
-*Example: ?microsoft_azure_classic_compute_requestsettingsenabled=true*
+For example, the following query string would enable TroubleShooting and Support for an extension named `microsoft_azure_classic_compute`.
 
-Next steps:
+`?microsoft_azure_classic_compute_requestsettingsenabled=true`
 
-* [Onboard to support](https://microsoft.sharepoint.com/teams/WAG/EngSys/Supportability/_layouts/15/WopiFrame.aspx?sourcedoc={7210704b-64db-489b-9143-093e020e75b4}&action=edit&wd=target%28%2F%2FCustomerEnablement.one%7Cf42af409-12ab-4ae0-ba49-af361116063b%2FAt%20How-to%20for%20PGs%7C92cd2c56-c400-4a6d-a455-63ef92290ae9%2F%29)
+For more information about onboarding to support for Product Teams, see [http://aka.ms/portalfx/productteamsupport](http://aka.ms/portalfx/productteamsupport).
