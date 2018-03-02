@@ -17,6 +17,8 @@
 
  {"gitdown": "include-file", "file": "../templates/portalfx-blades-legacy.md"}
 
+ {"gitdown": "include-file", "file": "../templates/portalfx-extensions-samples-blades.md"}
+
  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-blades.md"}
 
  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-blades.md"}
