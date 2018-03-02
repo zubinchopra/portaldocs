@@ -1591,7 +1591,7 @@ Blades use ViewModels to drive dynamic content, including titles, icons, and sta
 | Closing blades       | [portalfx-blades-closing.md](portalfx-blades-closing.md)       | How to close the current blade that was called from a blade or a part container.  |
 
 
- ### Samples Blades
+ ## Samples Blades
 
 | API Topic                             | Document                                                                 | Sample                                                           | Experience |
 | ----------------------------------------------  | ------------------------------------------------------------------------ | ---------------------------------------------------------------- | ---------- |
@@ -1604,8 +1604,8 @@ Blades use ViewModels to drive dynamic content, including titles, icons, and sta
 | Pricing Tier Blade             | [portalfx-extension-pricing-tier.md](portalfx-extension-pricing-tier.md)                 | `<dir>\Client\V1\Create\EngineV3\ ViewModels\CreateEngineBladeViewModel.ts` | |
 | Testing Parts and Blades    | [portalfx-testing-parts-and-blades.md](portalfx-testing-parts-and-blades.md)   |   `<dir>\Client\Blades\BladeKind\ViewModels\BladeKindsViewModels.ts` <br>  `<dir>\Client\Blades\BladeKind\ViewModels\InfoListPartViewModel.ts`  <br> `<dir>\Client\Blades\BladeKind\ViewModels\PropertiesPartViewModel.ts`  <br> `<dir>\Client\Blades\BladeKind\ViewModels\NoticePartViewModel.ts`  <br> `<dir>\Client\Blades\BladeKind\ViewModels\SettingListPartViewModel.ts`     |
 
-<a name="blades-and-template-blades-index-blades"></a>
-## Index Blades
+<a name="blades-and-template-blades-samples-index-blades"></a>
+## Samples Index Blades
 
 The following table contains blades  that display lists of controls.  These objects are not inherently controls.
 

@@ -154,7 +154,7 @@ Samples are primarily categorized into forms, controls, and other factors.
 
   
 
- ### Samples Blades
+ ## Samples Blades
 
 | API Topic                             | Document                                                                 | Sample                                                           | Experience |
 | ----------------------------------------------  | ------------------------------------------------------------------------ | ---------------------------------------------------------------- | ---------- |
@@ -167,8 +167,8 @@ Samples are primarily categorized into forms, controls, and other factors.
 | Pricing Tier Blade             | [portalfx-extension-pricing-tier.md](portalfx-extension-pricing-tier.md)                 | `<dir>\Client\V1\Create\EngineV3\ ViewModels\CreateEngineBladeViewModel.ts` | |
 | Testing Parts and Blades    | [portalfx-testing-parts-and-blades.md](portalfx-testing-parts-and-blades.md)   |   `<dir>\Client\Blades\BladeKind\ViewModels\BladeKindsViewModels.ts` <br>  `<dir>\Client\Blades\BladeKind\ViewModels\InfoListPartViewModel.ts`  <br> `<dir>\Client\Blades\BladeKind\ViewModels\PropertiesPartViewModel.ts`  <br> `<dir>\Client\Blades\BladeKind\ViewModels\NoticePartViewModel.ts`  <br> `<dir>\Client\Blades\BladeKind\ViewModels\SettingListPartViewModel.ts`     |
 
-<a name="portal-extension-samples-index-blades"></a>
-## Index Blades
+<a name="portal-extension-samples-samples-index-blades"></a>
+## Samples Index Blades
 
 The following table contains blades  that display lists of controls.  These objects are not inherently controls.
 
@@ -208,20 +208,19 @@ The following tables include information about Portal controls, including the lo
 <a name="portal-extension-samples-basic-screen-controls"></a>
 ## Basic Screen Controls
 
+Controls that do not have a link to a unique experience can be located from  the selection list at [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/controls](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/controls).
+
 | Control |  Document | Sample | Experience |
 | ------- | -------- | ------ | ---------- |
-| Button  | | |  http://aka.ms/portalfx/samples#blade/SamplesExtension/SimpleButtonBlade |
-| Checkbox |  | `<dir>\Client\V2\Controls\Checkbox\ConsoleBlade .ts` |  |
-| CustomHtml <br> Section (Form Sections) | [portalfx-forms-sections.md](portalfx-forms-sections.md)  | `<dir>\Client\V2\Controls\Checkbox\ConsoleBlade .ts` |  |
+| Button and SimpleButton | |  `<dir>\Client\V2\Controls\SimpleButton\ SimpleButtonBlade.ts` |  http://aka.ms/portalfx/samples#blade/SamplesExtension/SimpleButtonBlade |
 | File Download Button |  | `<dir>\Client\V1\Controls\FileDownloadButton\ViewModels\ FileDownloadButtonViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/FileDownloadButtonInstructions/selectedItem/FileDownloadButtonInstructions/selectedValue/FileDownloadButtonInstructions |  
 | File Upload (async) |  | `<dir>\Client\V1\Controls\AsyncFileUpload\ViewModels\ AsyncFileUploadViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/AsyncFileUploadInstructions/selectedItem/AsyncFileUploadInstructions/selectedValue/AsyncFileUploadInstructions |
 | OAuth Button  | | `<dir>\Client\V2\Controls\ OAuthButton\OAuthButtonBlade.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/OAuthButtonBlade | 
 | Settings | | `<dir>\Client\V1\Controls\Settings\ViewModels\ SettingsViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/SettingsInstructions/selectedItem/SettingsInstructions/selectedValue/SettingsInstructions | 
-| SimpleButton |  | `<dir>\Client\V2\Controls\SimpleButton\ SimpleButtonBlade.ts` |  |
 | Single Setting |   | `<dir>\Client\V1\Controls\SingleSetting\ViewModels\ SingleSettingViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/SingleSettingInstructions/selectedItem/SingleSettingInstructions/selectedValue/SingleSettingInstructions | 
 | Splitter | | `<dir>\Client\V2\Controls\ Splitter\SplitterBlade.ts` |  http://aka.ms/portalfx/samples#blade/SamplesExtension/SplitterBlade | 
 | Text Block  |  | `<dir>\Client\V1\Controls\TextBlock\ViewModels\ TextBlockViewModels.ts` | https://df.onecloud.azure-test.net/?samplesExtension=true#blade/SamplesExtension/TextBlockInstructions/selectedItem/TextBlockInstructions/selectedValue/TextBlockInstructions | 
-| Toolbar   | [portalfx-controls-toolbar.md](portalfx-controls-toolbar.md) <br> [portalfx-extensions-blades-procedure.md](portalfx-extensions-blades-procedure.md)  |  `<dir>\Client\V1\Controls\Toolbar\ViewModels\ ToolbarViewModels.ts` <br> `<dir>\Client\V1\Blades\Toolbar\BladeWithToolbarViewModels.ts` | [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/controls](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/controls) |
+| Toolbar   | [portalfx-controls-toolbar.md](portalfx-controls-toolbar.md) <br> [portalfx-blades-procedure.md](portalfx-blades-procedure.md)  |  `<dir>\Client\V1\Controls\Toolbar\ViewModels\ ToolbarViewModels.ts` <br> `<dir>\Client\V1\Blades\Toolbar\BladeWithToolbarViewModels.ts` | [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/controls](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/controls) |
 
 <a name="portal-extension-samples-advanced-screen-controls"></a>
 ## Advanced Screen Controls
@@ -229,7 +228,6 @@ The following tables include information about Portal controls, including the lo
 | Control | Document | Sample | Experience |
 | ------- | -------- | ------ | ---------- |
 | Accordion |  | `<dir>\Client\V2\Controls\Accordion\AccordionBlade.ts` |  |
-| EditableGrid |  | `<dir>\Client\V2\Controls\EditableGrid\ EditableGrid.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridCustomValidation.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridDependentDropDowns.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridDynamicCellTypes.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridMaxEntries.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridOperations.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridValidation.ts` |  |
 | Essentials Control | [portalfx-controls-essentials.md](portalfx-controls-essentials.md)    | `<dir>\Client\V2\Controls\Essentials\ EssentialsDefaultBlade.ts` <br>  `<dir>\Client\V2\Controls\Essentials\ EssentialsCustomLayoutBlade.ts` <br>   `<dir>\Client\V2\Controls\Essentials\EssentialsNonResourceBlade.ts` <br> `<dir>\Client\V2\Controls\Essentials\EssentialsResponsiveBlade.ts` |  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/EssentialsIndexBlade/Default/selectedItem/EssentialsIndexBlade/selectedValue/EssentialsIndexBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/EssentialsIndexBlade/Default/selectedItem/EssentialsIndexBlade/selectedValue/EssentialsIndexBlade) |
 | Graph |  | `<dir>\Client\V1\Controls\Graph\ViewModels\ GraphCustomNodesViewModels.ts` <br> `<dir>\Client\V1\Controls\Graph\ViewModels\ GraphIndexViewModels.ts` <br> `<dir>\Client\V1\Controls\Graph\ViewModels\ GraphViewModels.ts` |  |
 | Legend |  | `<dir>\Client\V1\Controls\Legend\ViewModels\LegendViewModels.ts` |  |
@@ -279,31 +277,26 @@ The following tables include information about Portal controls, including the lo
 | --------- | -------- | ------ | ---------- |
 | Standard Check Box  |   |   |  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/CheckBoxBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/CheckBoxBlade) |
 | Tri State Check Box |   |   |  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/TriStateCheckBoxBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TriStateCheckBoxBlade) |
-| Custom HTML |   |   | http://aka.ms/portalfx/samples#blade/SamplesExtension/CustomFormFieldsBlade  |
+|  CustomHtml <br> (Form Sections) |  [portalfx-forms-sections.md](portalfx-forms-sections.md)  |   | http://aka.ms/portalfx/samples#blade/SamplesExtension/CustomFormFieldsBlade  <br>  [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/formsallup](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/formsallup) |
 | Text Box  |  [portalfx-controls-textbox.md](portalfx-controls-textbox.md)   | `<dir>\Client\V2\Controls\TextBox\TextBoxBlade.ts`  |   [https://df.onecloud.azure-test.net/#blade/SamplesExtension/TextBoxBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TextBoxBlade) <br>  [https://aka.ms/portalfx/sampleTextBox](https://aka.ms/portalfx/sampleTextBox) |
 | MultiLine Text Box  |   |  `<dir>\Client\V2\Controls\MultiLineTextBox\MultiLineTextBoxBlade.ts` |   [https://df.onecloud.azure-test.net/#blade/SamplesExtension/MultiLineTextBoxBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/MultiLineTextBoxBlade)  |
 | Numeric Text Box  |   |  `<dir>\Client\V2\Controls\NumericTextBox\NumericTextBoxBlade.ts` |   [https://df.onecloud.azure-test.net/#blade/SamplesExtension/NumericTextBoxBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/NumericTextBoxBlade) |
 | Options Group  |   |    |    |
-| Option Picker  |   | `<dir>\Client\V2\Controls\OptionPicker\OptionPickerBlade.ts`   |  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/OptionPickerBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/OptionPickerBlade) |
+| Option Picker (includes RadioButton) |   | `<dir>\Client\V2\Controls\OptionPicker\OptionPickerBlade.ts`   |  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/OptionPickerBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/OptionPickerBlade) |
 | Password Box  |  | `<dir>\Client\V2\Controls\Password\PasswordBoxBlade.ts`   | 	[https://df.onecloud.azure-test.net/#blade/SamplesExtension/PasswordBoxBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/PasswordBoxBlade) |
-| RadioButton             |                                                                                      | 
-| TabControl              |                                                                                      | 
+| TabControl |   |  | |
 | Search Box |   |   |  http://aka.ms/portalfx/samples#blade/SamplesExtension/SearchBoxBlade/selectedItem/SearchBoxBlade/selectedValue/SearchBoxBlade |
-|  Standard Slider |  | `<dir>\Client\V2\Controls\Slider\ SliderBlade.ts` | [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SliderBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SliderBlade)   |
-| Custom Value Slider |   |   |  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SliderBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SliderBlade) |
-| Range Slider |   |   |  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SliderBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SliderBlade)  |
-| Custom Range Slider |   |   |  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SliderBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SliderBlade) |
+|  Slider (includes Custom Value Slider, Range Slider, and Custom Range Slider) |  | `<dir>\Client\V2\Controls\Slider\SliderBlade.ts` | [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SliderBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SliderBlade)   | 
 
 <a name="portal-extension-samples-list-controls"></a>
 ## List controls
 
 | Gallery | Document | Sample | Experience |
 | ------- | -------- | ------ | ---------- |
-| Grid |  [portalfx-controls-grid.md](portalfx-controls-grid.md) | `<dir>\Client\V2\Controls\Grid\ItemsWithDynamicCommandsBlade.ts` |  |
+| Grid and EditableGrid |  [portalfx-controls-grid.md](portalfx-controls-grid.md) | `<dir>\Client\V2\Controls\Grid\ItemsWithDynamicCommandsBlade.ts` <br>   `<dir>\Client\V2\Controls\EditableGrid\ EditableGrid.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridCustomValidation.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridDependentDropDowns.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridDynamicCellTypes.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridMaxEntries.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridOperations.ts` <br> `<dir>\Client\V2\Controls\EditableGrid\ EditableGridValidation.ts` | https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/BasicGridInstructions <br> http://aka.ms/portalfx/samples#blade/SamplesExtension/EditableGridInstructions |
 | ListView |  |  `<dir>\Client\V1\Controls\ListView\ViewModels\BasicListViewViewModels.ts` <br>  `<dir>\Client\V1\Controls\ListView\ViewModels\CustomListViewViewModels.ts` <br>  `<dir>\Client\V1\Controls\ListView\ViewModels\IndexViewModels.ts` <br>  `<dir>\Client\V1\Controls\ListView\ViewModels\ListViewChildBladeViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/ListViewInstructions/selectedItem/ListViewInstructions/selectedValue/ListViewInstructions |
 | Tree View|  | `<dir>\Client\V1\Controls\Tree\TreeBlade.ts`  `<dir>\Client\V1\Controls\Tree\TreeItemBlade.ts`  |   [http://aka.ms/portalfx/samples#blade/SamplesExtension/TreeBlade](http://aka.ms/portalfx/samples#blade/SamplesExtension/TreeBlade)
 | String List | | |http://aka.ms/portalfx/samples#blade/SamplesExtension/StringListInstructions/selectedItem/StringListInstructions/selectedValue/StringListInstructions
-
 
 <a name="portal-extension-samples-helpers-and-indicators"></a>
 ## Helpers and Indicators
@@ -319,17 +312,17 @@ The following tables include information about Portal controls, including the lo
 
 | Screen Objects  | Document | Sample | Experience |
 | ------------- | -------- | ------ | ---------- |
-| | | Aggregates  | |
+| | |  <p align="center">Aggregates</p> | |
 | Controls Chart    | [portalfx-controls-chart.md](portalfx-controls-chart.md)     |  `<dir>\Client\V1\Controls\Chart\ViewModels\BarChartViewModels.ts` <br>     `<dir>\Client\V1\Controls\Chart\ViewModels\OverlayedViewChartViewModel.ts` `\Client\Controls\Chart\ViewModels\LineChartDateBasedViewModels.ts` |  |
 | Plotting Metrics  (Monitor Chart)       | [portalfx-controls-monitor-chart.md](portalfx-controls-monitor-chart.md) | `<dir>\Client\V2\Preview\MonitorChart\ MonitorChartBlade.ts`     | [https://aka.ms/portalfx/sampleMonitorChart](https://aka.ms/portalfx/sampleMonitorChart) |
 | Donut         | [portalfx-controls-donut.md](portalfx-controls-donut.md) | `<dir>\Client\V2\Controls\Donut\DonutBlade.ts`  | |
-|       | |  Gauges | |
+|       | | <p align="center">Gauges</p>   | |
 | Quota Gauge   | | see link to playground  |   |
 | Single Value Gauge | | see link to playground  |  |
-| | | Graphs   | | |
+| | |<p align="center">Graphs</p>    | | |
 | Custom Html Nodes | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/graphCustomNodeInstructions |
 | Standard Graph  | [portalfx-controls-graph-nuget.md](portalfx-controls-graph-nuget.md)| | http://aka.ms/portalfx/samples#blade/SamplesExtension/graphInstructions |
-| | | Maps  | |
+| | | <p align="center">Maps</p>  | |
 | Base Map | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/BaseMapInstructions |
 | Hexagon Layout Map | | |http://aka.ms/portalfx/samples#blade/SamplesExtension/HexagonMapInstructions |
 | HotSpot | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/HotSpotInstructions/selectedItem/HotSpotInstructions/selectedValue/HotSpotInstructions |
