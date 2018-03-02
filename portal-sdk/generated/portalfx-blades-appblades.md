@@ -126,17 +126,17 @@ this.postMessage(new FxAppBlade.Message("favoriteAnimal", "porcupine"));
 
 * Listen to a message
 
-    The extension can listen for messages that are sent from the Ibiza extension ViewModel to the UI Frame by adding an event listener to the application window, as shown in the following code.
+  The extension can listen for messages that are sent from the Ibiza extension ViewModel to the UI Frame by adding an event listener to the application window, as shown in the following code.
 
-```xml
+  ```xml
 
 window.addEventListener("message", receiveMessage, false);
 
 ```
 
-    The extension should also provide a handler for the incoming message. In the following example, the **receiveMessage** method handles three different incoming message types, and reacts to theming changes in the Portal.
+  The extension should also provide a handler for the incoming message. In the following example, the **receiveMessage** method handles three different incoming message types, and reacts to theming changes in the Portal.
 
-```xml
+  ```xml
 
 // The message format is { signature: "pcIframe", data: "your data here" }
 function receiveMessage(event) {
@@ -187,11 +187,11 @@ function receiveMessage(event) {
 
 *  Post a message
 
-    The  UI IFrame can post messages back to the Portal using the **postMessage** method. There is a required message that the  IFrame sends to the Portal to indicate that it is ready to receive messages.
+  The  UI IFrame can post messages back to the Portal using the **postMessage** method. There is a required message that the  IFrame sends to the Portal to indicate that it is ready to receive messages.
 
-    The following code snippet demonstrates how to post the  required message, in addition to posting other messages.
+  The following code snippet demonstrates how to post the  required message, in addition to posting other messages.
 
-    ```xml
+  ```xml
 
 if (window.parent !== window) {
     // This is a required message. It tells the shell that your iframe is ready to receive messages.
