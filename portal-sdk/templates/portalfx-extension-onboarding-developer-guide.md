@@ -167,7 +167,7 @@ Here is a table that explains mapping of portal environment to extension configu
 
 
    
-The above table implies that to manage extension configuraiton in Dogfood, BlackForest, FairFax and MoonCake the extension developer will need to send the pull request tfor modifying Extensions.test.json, Extensions.bf.json, Extensions.ff.json and Extensions.mc.json.
+The above table implies that to manage extension configuraiton in Dogfood, BlackForest, FairFax and MoonCake the extension developer will need to send the pull request for modifying Extensions.test.json, Extensions.bf.json, Extensions.ff.json and Extensions.mc.json.
 However, the extension configuration for RC, MPAC, Preview and PROD is managed by the same file Extensions.prod.json. ** Therefore, extension can not host different stamps for these environments.**
 
 ## Understanding scenarios for config change
@@ -310,10 +310,9 @@ Dogfood -> RC -> MPAC -> PROD -> National Clouds (BF, FF and MC).
 
 ## Expediting the deployment of configuration changes
 
-In order to expedite the deployment of changes, you will need to send the pull request for each branch in portal repository i.e. Dogfood, MPAC and Production.
+In order to expedite the deployment of changes, you will need to send the pull request for each branch in portal repository i.e. MPAC and Production.
 
-** All the pull requests should be sent for Dev branch. Once the Pull request is marked as complete then you can cherry-pick the same commit from dev branch and send the pull request for Dogfood branch.
-Once the Dogfood Pull request is marked complete then you can cherry-pick the same commit from dogfood branch and send the pull request for for MPAC branch. 
+** All the pull requests should be sent for Dev branch. Once the Pull request is marked as complete then you can cherry-pick the same commit from dev branch and send the pull request for MPAC branch. 
 Once the MPAC Pull request is marked complete then you can cherry-pick the same commit from MPAC branch and send the pull request for for production branch. **
 
 If the pull request is not sent in the above specified order or the commit message is chanegd then it will lead to unit Test failure. In case of test failure your changes will be reverted without any notice.
