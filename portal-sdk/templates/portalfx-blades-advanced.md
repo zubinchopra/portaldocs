@@ -46,19 +46,19 @@ The process is as follows.
 
 1. Specify the settings in the PDL file using the `TemplateBlade.Settings` element.
 
-    {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Template/Template.pdl", "section": "templateBlade#settingsPDL"}
+   {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Template/Template.pdl", "section": "templateBlade#settingsPDL"}
 
 1. After the settings are declared, they should also be specified in the ViewModel, as in the following example.
 
-    {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Template/ViewModels/TemplateBladeViewModels.ts", "section": "templateBlade#settingsVMDef"}
+   {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Template/ViewModels/TemplateBladeViewModels.ts", "section": "templateBlade#settingsVMDef"}
 
 1. Retrieve the settings by using the blade container.
 
-    {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Template/ViewModels/TemplateBladeViewModels.ts", "section": "templateBlade#settingsVMUse"}
+   {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Template/ViewModels/TemplateBladeViewModels.ts", "section": "templateBlade#settingsVMUse"}
 
 1.  Also send the settings to the `onInputsSet` method.
 
-    {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Template/ViewModels/TemplateBladeViewModels.ts", "section": "templateBlade#settingsVMois"}
+   {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Template/ViewModels/TemplateBladeViewModels.ts", "section": "templateBlade#settingsVMois"}
 
 ### Displaying Unauthorized UI
 

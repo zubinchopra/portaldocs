@@ -199,41 +199,41 @@ The working copy of the sample in the Dogfood environment is located at  [https:
 
 1. Instantiate the `CommandBar` in the ViewModel, as in the following code.
 
-```javascript
-import Def = ExtensionDefinition.ViewModels.Resource.MyTemplateBladeViewModel;
+    ```javascript
+    import Def = ExtensionDefinition.ViewModels.Resource.MyTemplateBladeViewModel;
 
-export class MyTemplateBladeViewModel extends MsPortalFx.ViewModels.Blade {
+    export class MyTemplateBladeViewModel extends MsPortalFx.ViewModels.Blade {
 
-    public id: KnockoutObservable<string>;
-    public infoBox: MsPortalFx.ViewModels.Controls.InfoBox.BaseViewModel;
+        public id: KnockoutObservable<string>;
+        public infoBox: MsPortalFx.ViewModels.Controls.InfoBox.BaseViewModel;
 
-    // toolbar view-model
-    public commandBar: MsPortalFx.ViewModels.ToolbarContract;
+        // toolbar view-model
+        public commandBar: MsPortalFx.ViewModels.ToolbarContract;
 
-    constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: any) {
-        super();
-        this.title("InfoBox");
-        this.subtitle("InfoBox Playground");
+        constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: any) {
+            super();
+            this.title("InfoBox");
+            this.subtitle("InfoBox Playground");
 
-        this.infoBox = new MsPortalFx.ViewModels.Controls.InfoBox.LinkViewModel(container, {
-            text: ko.observable<string>('Go to the Azure Portal'),
-            image: ko.observable(MsPortalFx.Base.Images.Info()),
-            clickableLink: ko.observable(MsPortalFx.ViewModels.Part.createClickableLinkViewModel(ko.observable<string>('http://portal.azure.com'))
-        });
+            this.infoBox = new MsPortalFx.ViewModels.Controls.InfoBox.LinkViewModel(container, {
+                text: ko.observable<string>('Go to the Azure Portal'),
+                image: ko.observable(MsPortalFx.Base.Images.Info()),
+                clickableLink: ko.observable(MsPortalFx.ViewModels.Part.createClickableLinkViewModel(ko.observable<string>('http://portal.azure.com'))
+            });
 
-        // initialize the toolbar
-        var button = new Toolbars.OpenLinkButton("http://azure.com");
-        button.label("azure.com");
-        button.icon(MsPortalFx.Base.Images.Hyperlink());
-        this.commandBar = new Toolbars.Toolbar(container);
-        this.commandBar.setItems( [ button ] );
+            // initialize the toolbar
+            var button = new Toolbars.OpenLinkButton("http://azure.com");
+            button.label("azure.com");
+            button.icon(MsPortalFx.Base.Images.Hyperlink());
+            this.commandBar = new Toolbars.Toolbar(container);
+            this.commandBar.setItems( [ button ] );
+        }
+
+        public onInputsSet(inputs: Def.InputsContract): MsPortalFx.Base.Promise {
+            return null;
+        }
     }
-
-    public onInputsSet(inputs: Def.InputsContract): MsPortalFx.Base.Promise {
-        return null;
-    }
-}
-```
+    ```
 
 ### Adding buttons 
 
