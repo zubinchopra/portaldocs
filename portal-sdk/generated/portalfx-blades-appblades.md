@@ -83,19 +83,19 @@ private _openLinkButton(): Toolbars.OpenLinkButton {
 
 ```
 
-<a name="exchanging-messages-between-the-iframe-and-ibiza-fx"></a>
-## Exchanging messages between the IFrame and Ibiza Fx
+<a name="sending-messages-between-the-iframe-and-ibiza-fx"></a>
+## Sending messages between the IFrame and Ibiza Fx
 
-The AppBlade ViewModel is hosted in the hidden IFrame in which the extension is loaded. However, the contents of the AppBlade are hosted in different IFrame that is visible on the screen. The Ibiza extension IFrame and the UI IFrame communicate by sending and receiving messages. The following sections demonstrate how to exchange messages between the two IFrames.
+The AppBlade ViewModel is hosted in the hidden IFrame in which the extension is loaded. However, the contents of the AppBlade are hosted in different IFrame that is visible on the screen. The Ibiza extension IFrame and the UI IFrame communicate by sending and receiving messages. The following sections demonstrate how to exchange messages between the two IFrames and to the Portal.
 
-<a name="exchanging-messages-between-the-iframe-and-ibiza-fx-ibiza-extension-iframe-messaging"></a>
-### Ibiza extension IFrame messaging
+<a name="ibiza-extension-iframe-messaging"></a>
+## Ibiza extension IFrame messaging
 
 * Listen to a message
 
     The extension can listen to messages that are sent from the UI IFrame to the Ibiza extension ViewModel by using the **on** method in the **AppBlade** ViewModel, as in the following example.
 
-    ```typescript
+```typescript
 
 // This is an example of how to listen for messages from your iframe.
 this.on("getAuthToken", () => {
@@ -114,21 +114,21 @@ this.on("getAuthToken", () => {
 
     The Ibiza extension ViewModel can post messages to the UI IFrame by using the **postMessage** method in the AppBlade ViewModel, as in the following example.
 
-    ```typescript
+```typescript
 
 // This is another example of how to post a message back to your iframe.
 this.postMessage(new FxAppBlade.Message("favoriteAnimal", "porcupine"));
 
 ```
 
-<a name="exchanging-messages-between-the-iframe-and-ibiza-fx-ui-iframe-messaging"></a>
-### UI IFrame messaging
+<a name="ui-iframe-messaging"></a>
+## UI IFrame messaging
 
 * Listen to a message
 
     The extension can listen for messages that are sent from the Ibiza extension ViewModel to the UI Frame by adding an event listener to the application window, as shown in the following code.
 
-    ```xml
+```xml
 
 window.addEventListener("message", receiveMessage, false);
 
@@ -136,7 +136,7 @@ window.addEventListener("message", receiveMessage, false);
 
     The extension should also provide a handler for the incoming message. In the following example, the **receiveMessage** method handles three different incoming message types, and reacts to theming changes in the Portal.
 
-    ```xml
+```xml
 
 // The message format is { signature: "pcIframe", data: "your data here" }
 function receiveMessage(event) {
