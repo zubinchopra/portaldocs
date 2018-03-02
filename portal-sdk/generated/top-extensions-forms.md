@@ -22,10 +22,10 @@ There are a number of subtopics in the forms topic.  Sample source code is inclu
 
 | API Topic             | Document              | 
 | --------------------- | --------------------- | 
-| Designing  | [portalfx-forms-designing.md](portalfx-forms-designing.md)                 |  
+| Designing and Arranging the Form | [portalfx-forms-designing.md](portalfx-forms-designing.md)                 |  
 | Forms Construction        | [portalfx-forms-construction.md](portalfx-forms-construction.md)      |  
 | Integrating Forms with Commands          | [portalfx-forms-integrating-with-commands.md](portalfx-forms-integrating-with-commands.md)        | 
-| Field Validation       | [portalfx-forms-field-validation.md](portalfx-forms-field-validation.md)      |  
+| Form Field Validation       | [portalfx-forms-field-validation.md](portalfx-forms-field-validation.md)      |  
 
 
 

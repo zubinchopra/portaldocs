@@ -6,17 +6,18 @@
 <a name="blades-and-template-blades-overview"></a>
 ## Overview
 
-Blades are the main UI container in the Portal. They are equivalent to `windows` or `pages` in other UX frameworks.   A blade typically generally takes up the full screen, has a presence in the portal breadcrumb, and has an 'X' button to close it.
- The following is a list of different types of blades.
+Blades are the main UI container in the Portal. They are equivalent to `windows` or `pages` in other UX frameworks.   A blade typically takes up the full screen, has a presence in the Portal breadcrumb, and has an 'X' button to close it. The TemplateBlade is the recommended development model, which typically contains an import statement, an HTML template for the UI, and  ViewModel that contains the logic that binds to the HTML template. However, previous development models are still supported.
 
-| Type | Document    | Description |
-| ---- | ----------- | ----------- | 
-| TemplateBlade | [portalfx-extensions-blades-procedure.md](portalfx-extensions-blades-procedure.md) | Creating any Portal blade. This is the main and recommended authoring model for UI in the Portal. It uses an HTML template for the UI, and a ViewModel with the logic that binds to that HTML template. | 
-| Advanced TemplateBlade Topics | [portalfx-extensions-blades-advanced.md](portalfx-extensions-blades-advanced.md) | Creating any Portal blade. This is the main and recommended authoring model for UI in the Portal. It uses an HTML template for the UI, and a ViewModel with the logic that binds to that HTML template. | 
-| MenuBlade | [portalfx-blades-menublade.md](portalfx-blades-menublade.md) | Left side vertical menu. Displays a menu at the left of a blade. This blade gets combined by the Shell with the blade that its opened at its right.|  
-| Fx Blades |  [portalfx-blades-bladeKinds.md](portalfx-blades-bladeKinds.md) | A limited set of built-in blades that encapsulate common patterns, like properties, quick start, or create forms. | 
-| AppBlade | [portalfx-blades-appblades.md](portalfx-blades-appblades.md) | Rehosts an existing experience, or creates a UI that is  not supported by the Fx. It provides an IFrame to host the UI in order to enable full flexibility and control. Does not use Ibiza Fx controls, and extension developers are fully responsible for accessibility, theming, and consistency. | 
-| Blade with tiles |[portalfx-blades-legacy.md](portalfx-blades-legacy.md) |  Legacy authoring model that uses a combination of lenses and parts. Given the complexity associated with this model, we are encouraging authors to use TemplateBlades instead. | 
+The following is a list of different types of blades.
+
+| Type                          | Document                                                       | Description |
+| ----------------------------- | -------------------------------------------------------------- | ----------- | 
+| TemplateBlade                 | [portalfx-blades-procedure.md](portalfx-blades-procedure.md)   | Creating any Portal blade. This is the main and recommended authoring model for UI in the Portal. | 
+| Advanced TemplateBlade Topics | [portalfx-blades-advanced.md](portalfx-blades-advanced.md)     | Advanced topics in template blade development.                                                    | 
+| MenuBlade                     | [portalfx-blades-menublade.md](portalfx-blades-menublade.md)   | Displays a vertical menu at the left of a blade.                                                  |  
+| Blade Kinds                   | [portalfx-blades-bladeKinds.md](portalfx-blades-bladeKinds.md) | A set of built-in blades that encapsulate common patterns.                                        | 
+| AppBlade                      | [portalfx-blades-appblades.md](portalfx-blades-appblades.md)   | Provides an IFrame to host the UI.                                                                | 
+| Blade with tiles              | [portalfx-blades-legacy.md](portalfx-blades-legacy.md)         |  Legacy authoring model. Given its complexity, you may want to use TemplateBlades instead. | 
 
    
  
@@ -24,7 +25,7 @@ Blades are the main UI container in the Portal. They are equivalent to `windows`
 ## TemplateBlades
 
 The TemplateBlade is the recommended way of authoring blades in Ibiza. It is the equivalent to windows or pages in other systems.
-
+It uses an HTML template for the UI, and a ViewModel with the logic that binds to that HTML template. 
 You can think of a TemplateBlade as an HTML page. Authoring template blades requires a blade definition in PDL, an HTML template, a ViewModel, and optionally a CSS file. The following sections discuss the details of the PDL definition and the blade capabilities in the ViewModel.
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
@@ -466,7 +467,7 @@ this.statusBar(statusBar);
 <a name="advanced-template-blade-topics-pinning-the-blade"></a>
 ### Pinning the blade
 
-Blades can be marked as able to be pinned to the dashboard by setting `Pinnable="true"` in the TemplateBlade's PDL definition file. By default, blades are pinned as button parts to the dashboard. If a different represention should be used, it should be specified in the PDL. 
+Blades can be marked as able to be pinned to the dashboard by setting `Pinnable="true"` in the TemplateBlade's PDL definition file. By default, blades are pinned as button parts to the dashboard. If a different represention should be used, it should be specified in the PDL file. 
 
 <a name="advanced-template-blade-topics-storing-settings"></a>
 ### Storing settings
@@ -605,17 +606,17 @@ public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
 
  ## Menu Blade
 
-Menu blades are rendered as a menu on the left side of the screen. Each item that is referenced from the menu is rendered using the same header as the menu, resulting in the two blades being displayed as one blade.  This is similar to what the resource menu blade does.
+Menu blades are rendered as a menu on the left side of the screen. This blade gets combined by the Shell with the blade that its opened at its right. Each item that is referenced from the left menu is rendered using the same header as the blade menu, resulting in the two blades being displayed as one blade.  This is similar to the way that the resource menu blade operates.
 
 The process is as follows.
 
-1. Menu blade is displayed as a menu (list of items), where each items opens a blade when clicked
+1. Menu blade is displayed as a menu (list of items), where each item opens a blade when clicked
 1. The menu blade is rendered to the left of the screen
-1. The blades opened from the menu share the chrome with the menu blade 
+1. The blades that are opened from the menu share the chrome with the menu blade 
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
-Menu blades are defined in the PDL file in the following code.  The code is also located at `<dir>\Client/V1/Blades/MenuBlade/MenuBlade.pdl`.
+Menu blades are defined in the PDL file in the following code. The code is also located at `<dir>\Client/V1/Blades/MenuBlade/MenuBlade.pdl`.
 
 ```xml
 
@@ -735,9 +736,9 @@ export class SampleMenuBlade extends FxMenuBlade.ViewModel {
 
 There are a few things to notice in the preceding code.
 
-* Menus can have different groups. In this code there are two groups
-* Each menu item opens a blade, and all necessary parameters are provided
-* Menu items can integrate with `EditScope` and `ParameterProvider`, as displayed in the `createengine` item
+* Menus can have different groups. In this code there are two groups.
+* Each menu item opens a blade, and all necessary parameters are provided.
+* Menu items can integrate with `EditScope` and `ParameterProvider`, as displayed in the `createengine` item.
 * At the end of the constructor, options for the menu are set. The option set defines the `id` of the default item.
 
 You can view a working copy of the MenuBlade  in the Dogfood environment sample located at [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/PdlSampleMenuBlade/browserelated](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/PdlSampleMenuBlade/browserelated).
@@ -746,6 +747,7 @@ You can view a working copy of the MenuBlade  in the Dogfood environment sample 
 <a name="advanced-template-blade-topics-introduction"></a>
 ## Introduction
 
+ A set of built-in blades that encapsulate common patterns, like properties, quick start, or create forms.
 Blade Kinds are implementations of blades that offer a consistent UI and are easily implemented. Blade Kinds provide a simplified programming model with a closed UI.  The main advantage of blade kinds is simplicity. When the Blade Kinds for an extension are updated, developers can use the updates and the layout without having to change extension implementations. One type of blade kind, the Quick start blade kind, is depicted in the following image.
 
 ![alt-text](../media/portalfx-bladeKinds/BladeKindsIntro.png "part")
@@ -922,8 +924,6 @@ Use the following steps to create a QuickStart Blade.
         }
     }
     ```
-
- 
 <a name="advanced-template-blade-topics-introduction-properties-blade"></a>
 ### Properties Blade
 
@@ -939,6 +939,7 @@ The PDL to define a Properties Blade is located at `<dir>\Client\V1\Blades\Blade
                            PartViewModel="{ViewModel Name=PropertiesPartViewModel, Module=./BladeKind/ViewModels/PropertiesPartViewModel}"
                            Parameter="info"/>
 ```
+
 The TypeScript view model to define the Blade view model:
 
 `<dir>\Client\V1\Blades\BladeKind\ViewModels\BladeKindsViewModels.ts`
@@ -1331,7 +1332,7 @@ Next steps:
 * [Onboard to support](https://microsoft.sharepoint.com/teams/WAG/EngSys/Supportability/_layouts/15/WopiFrame.aspx?sourcedoc={7210704b-64db-489b-9143-093e020e75b4}&action=edit&wd=target%28%2F%2FCustomerEnablement.one%7Cf42af409-12ab-4ae0-ba49-af361116063b%2FAt%20How-to%20for%20PGs%7C92cd2c56-c400-4a6d-a455-63ef92290ae9%2F%29)
 
 
- 
+ Rehosts an existing experience, or creates a UI that is not supported by the Fx. It provides an IFrame to host the UI in order to enable full flexibility and control. Does not use Ibiza Fx controls, and extension developers are fully responsible for accessibility, theming, and consistency.
 <a name="advanced-template-blade-topics-appblades"></a>
 ## AppBlades
 
@@ -1564,12 +1565,14 @@ MsPortalFx.Services.getSettings().then(settings => {
 ```
 
  
-<a name="advanced-template-blade-topics-changing-ui-themes-introduction-to-blades"></a>
-### Introduction to Blades
+<a name="advanced-template-blade-topics-changing-ui-themes-legacy-blades"></a>
+### Legacy Blades
 
 A blade is the vertical container that acts as the starting point for any journey. You can define multiple blades, each containing their own collection of statically defined lenses and parts.
 
-**NOTE**: Given the complexity associated with this model, we are encouraging authors to use TemplateBlades instead, as specified in [portalfx-extensions-blades-overview.md](portalfx-extensions-blades-overview.md).
+**NOTE**: Given the complexity associated with this model, extension authors are encouraged to use TemplateBlades instead, as specified in [portalfx-blades-overview.md](portalfx-blades-overview.md).
+
+The following image depicts a legacy blade.
 
 ![alt-text](../media/portalfx-extensions-helloWorld/helloWorldExtensionAlohaBlade.png "Blade")
 
@@ -1594,7 +1597,6 @@ Blades use ViewModels to drive dynamic content, including titles, icons, and sta
 * [Blade properties](portalfx-blades-properties.md)
 * [Blade outputs](portalfx-blades-outputs.md)
 * [Pinning blades](portalfx-blades-pinning.md)
-* [Blade Kinds](portalfx-blades-bladeKinds.md)
 * [Closing blades](portalfx-blades-closing.md)
 
 * * * 
