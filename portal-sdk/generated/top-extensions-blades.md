@@ -1460,7 +1460,7 @@ this.postMessage(new FxAppBlade.Message("favoriteAnimal", "porcupine"));
 
   The extension can listen for messages that are sent from the Ibiza extension ViewModel to the UI Frame by adding an event listener to the application window, as shown in the following code.
 
-  ```xml
+```xml
 
 window.addEventListener("message", receiveMessage, false);
 
@@ -1468,7 +1468,7 @@ window.addEventListener("message", receiveMessage, false);
 
   The extension should also provide a handler for the incoming message. In the following example, the **receiveMessage** method handles three different incoming message types, and reacts to theming changes in the Portal.
 
-  ```xml
+```xml
 
 // The message format is { signature: "pcIframe", data: "your data here" }
 function receiveMessage(event) {
