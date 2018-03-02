@@ -22,38 +22,14 @@ Blades can be created in any PDL file, and they will be aggregated at compile ti
 </Blade>
 ```
 
-Blades use ViewModels to drive dynamic content, including titles, icons, and status.  To learn more about blades, start with the following topics:
+Blades use ViewModels to drive dynamic content, including titles, icons, and status.  The following is a list of legacy blade subtopics.
 
-* [Controlling blade UI](portalfx-blades-ui.md)
-* [Opening blades](portalfx-blades-opening.md)
-* [Blade parameters](portalfx-blades-parameters.md)
-* [Blade properties](portalfx-blades-properties.md)
-* [Blade outputs](portalfx-blades-outputs.md)
-* [Pinning blades](portalfx-blades-pinning.md)
-* [Closing blades](portalfx-blades-closing.md)
-
-* * * 
-
-* Controlling blade UI
- {"gitdown": "include-file", "file": "../templates/portalfx-blades-ui.md"}
-
-* Opening blades
- {"gitdown": "include-file", "file": "../templates/portalfx-blades-opening.md"}
-
-* Blade parameters
- {"gitdown": "include-file", "file": "../templates/portalfx-blades-parameters.md"}
-
-* Blade properties
- {"gitdown": "include-file", "file": "../templates/portalfx-blades-properties.md"}
-
-* Blade outputs
- {"gitdown": "include-file", "file": "../templates/portalfx-blades-outputs.md"}
-
-* Pinning blades 
-{"gitdown": "include-file", "file": "../templates/portalfx-blades-pinning.md"}
-
-* Closing blades
-{"gitdown": "include-file", "file": "../templates/portalfx-blades-closing.md"}
-
-
-
+| Type                 | Document                                                       | Description |
+| -------------------- | -------------------------------------------------------------- | ----------- |
+| Controlling blade UI | [portalfx-blades-ui.md](portalfx-blades-ui.md)                 | Customizing blade behavior and experience | 
+| Opening blades       | [portalfx-blades-opening.md](portalfx-blades-opening.md)       | How to open blades using the new container APIs or the legacy declarative APIs. | 
+| Blade parameters     | [portalfx-blades-parameters.md](portalfx-blades-parameters.md) | Explicit declaration for parameters that blades are required to receive.    |  
+| Blade properties     | [portalfx-blades-properties.md](portalfx-blades-properties.md) | Information sent to the blade as a `BladeParameter` is also sent to the blade ViewModel by using  a `<Property>` element. | 
+| Blade outputs        | [portalfx-blades-outputs.md](portalfx-blades-outputs.md)       | A list of output properties that return data from a child blade back to the calling blade. | 
+| Pinning blades       | [portalfx-blades-pinning.md](portalfx-blades-pinning.md)       | Pinning a blade creates a part on the currently active dashboard.    | 
+| Closing blades       | [portalfx-blades-closing.md](portalfx-blades-closing.md)       | How to close the current blade that was called from a blade or a part container.  |
