@@ -1,11 +1,14 @@
-Rehosts an existing experience, or creates a UI that is not supported by the Fx. It provides an IFrame to host the UI in order to enable full flexibility and control. Does not use Ibiza Fx controls, and extension developers are fully responsible for accessibility, theming, and consistency.
 ## AppBlades
 
-AppBlade provides an IFrame where an extension can render content, which results in maximum flexibility and reduces additional developer responsibilities. We recommend using AppBlades under the following conditions.
+AppBlades provide an IFrame where an extension can render content.  The extension IFrame is associated with an IFrame that hosts the UI, in order to enable the flexibility and control of the Model-View-View-Model methodology.
+
+AppBlades can rehost an existing experience, and allow developers to create a UI that is not supported by the Fx. Because it does not use Ibiza Fx controls, extension developers are fully responsible for accessibility, theming, and consistency.
+
+This programming model results in maximum flexibility and reduces additional developer responsibilities. We recommend using AppBlades under the following conditions.
 
 * An existing extension that should be migrated to Ibiza without needing to be re-implemented 
 * Developers want to implement user interactions and experiences that are not supported by Ibiza Framework components
-*  An existing extension needs to be re-hosted in several environments
+* An existing extension needs to be re-hosted in several environments
 
 When using AppBlade, developers are responsible for the following.
 

@@ -1,8 +1,7 @@
 
-## Introduction
+## Blade Kinds
 
- A set of built-in blades that encapsulate common patterns, like properties, quick start, or create forms.
-Blade Kinds are implementations of blades that offer a consistent UI and are easily implemented. Blade Kinds provide a simplified programming model with a closed UI.  The main advantage of blade kinds is simplicity. When the Blade Kinds for an extension are updated, developers can use the updates and the layout without having to change extension implementations. One type of blade kind, the Quick start blade kind, is depicted in the following image.
+Blade Kinds are a set of built-in blades that encapsulate common patterns. These implementations offer a consistent UI and are easily implemented, because they provide a simplified programming model with a closed UI.  The main advantage of blade kinds is simplicity. When the Blade Kinds for an extension are updated, developers can use the updates and the layout without changing extension implementations. For example, one type of blade kind, the Quick start, is depicted in the following image.
 
 ![alt-text](../media/portalfx-bladeKinds/BladeKindsIntro.png "part")
 

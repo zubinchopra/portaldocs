@@ -5,8 +5,6 @@
    
  {"gitdown": "include-file", "file": "../templates/portalfx-blades-procedure.md"}
 
-# Advanced template blade topics
-
  {"gitdown": "include-file", "file": "../templates/portalfx-blades-advanced.md"}
 
  {"gitdown": "include-file", "file": "../templates/portalfx-blades-menublade.md"}

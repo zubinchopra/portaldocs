@@ -1,5 +1,5 @@
 
-### Advanced Topics
+## Advanced Topics
 
 The following sections discuss advanced topics in template blade development.
 
