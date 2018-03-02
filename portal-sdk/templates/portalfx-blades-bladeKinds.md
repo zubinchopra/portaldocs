@@ -1,17 +1,20 @@
 
 ## Introduction
 
-Blade Kinds are common implementations of Blade experience which offer consistent UI and are easily implemented. Blade Kinds provide a simplified programming model with a closed UI. 
-
-All you need to provide is the ViewModel. The main advantage of blade kinds is simplicity. When the Blade Kinds for an extension are updated, developers can use the updates and the layout without having to change extension implementations.
+ A set of built-in blades that encapsulate common patterns, like properties, quick start, or create forms.
+Blade Kinds are implementations of blades that offer a consistent UI and are easily implemented. Blade Kinds provide a simplified programming model with a closed UI.  The main advantage of blade kinds is simplicity. When the Blade Kinds for an extension are updated, developers can use the updates and the layout without having to change extension implementations. One type of blade kind, the Quick start blade kind, is depicted in the following image.
 
 ![alt-text](../media/portalfx-bladeKinds/BladeKindsIntro.png "part")
 
-Defining a Blade using a Blade Kind in PDL is a simplified version of the typical Blade PDL. All you need is to define multiple view models, typically a view model for the blade and a view model for the part.
+When developing an extension that uses blade kinds, the developer should provide the ViewModel for the blade and another ViewModel for the part, regardless of the blade kind that is being developed.
+
+The blade kind that is specified in the PDL file is a simplified version of a typical blade, as in the following code.
 
 ```xml
 <azurefx:QuickStartBlade ViewModel="" PartViewModel=""/>
 ```
+
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
 To learn more about each of the Blade Kinds, start with the following topics:
 
@@ -25,19 +28,16 @@ To learn more about each of the Blade Kinds, start with the following topics:
 ### QuickStart Blade
 
 The QuickStart blade provides users a convenient way to learn how to use your service. 
+
 <!-- TODO: Determine whether the following sentence is advertising, or an actuality for services. -->
 
 Every service should have a QuickStart Blade.
 
-![alt-text](../media/portalfx-bladeKinds/QuickStartBlade.PNG "Demo")
-
-Defining a QuickStart Blade requires only a view model to define the blade and a view model to define the part.
+![alt-text](../media/portalfx-bladeKinds/QuickStartBlade.PNG "QuickStart Blade")
 
 Use the following steps to create a QuickStart Blade.
 
-1. The PDL to define a QuickStart Blade.
-
-    `\Client\Blades\BladeKind\BladeKinds.pdl`
+1. The PDL to define a QuickStart Blade is located at     `<dir>\Client\V1\Blades\BladeKind\BladeKinds.pdl`.
 
     ```xml
     <azurefx:QuickStartBlade Name="QuickStartBlade"
@@ -48,7 +48,7 @@ Use the following steps to create a QuickStart Blade.
 
 1. Define the TypeScript view model that contains the blade, as in the following example.
 
-    `\Client\Blades\BladeKind\ViewModels\BladeKindsViewModels.ts`
+    `<dir>\Client\V1\Blades\BladeKind\ViewModels\BladeKindsViewModels.ts`
 
     ```ts
     /**
@@ -81,7 +81,7 @@ Use the following steps to create a QuickStart Blade.
 
 1. Define the TypeScript view model that defines the part.
 
-    `\Client\Blades\BladeKind\ViewModels\InfoListPartViewModel.ts`
+    `<dir>\Client\V1\Blades\BladeKind\ViewModels\InfoListPartViewModel.ts`
 
 
     ```ts
@@ -177,19 +177,13 @@ Use the following steps to create a QuickStart Blade.
         }
     }
     ```
-
- 
 ### Properties Blade
 
 The Properties blade that provides users a convenient way access the properties of your service. 
 
 ![alt-text](../media/portalfx-bladeKinds/PropertiesBlade.PNG "Demo")
 
-Defining a Properties Blade requires a view model to define the blade and a view model to define the part.
-
-The PDL to define a Properties Blade:
-
-`\Client\Blades\BladeKind\BladeKinds.pdl`
+The PDL to define a Properties Blade is located at `<dir>\Client\V1\Blades\BladeKind\BladeKinds.pdl`.
 
 ```xml
   <azurefx:PropertiesBlade Name="PropertiesBlade"
@@ -197,9 +191,10 @@ The PDL to define a Properties Blade:
                            PartViewModel="{ViewModel Name=PropertiesPartViewModel, Module=./BladeKind/ViewModels/PropertiesPartViewModel}"
                            Parameter="info"/>
 ```
+
 The TypeScript view model to define the Blade view model:
 
-`\Client\Blades\BladeKind\ViewModels\BladeKindsViewModels.ts`
+`<dir>\Client\V1\Blades\BladeKind\ViewModels\BladeKindsViewModels.ts`
 
 ```ts
 /**
@@ -232,8 +227,7 @@ export class PropertiesBladeViewModel extends MsPortalFx.ViewModels.Blade {
 The TypeScript view model to define the part view model:
 
 
-`\Client\Blades\BladeKind\ViewModels\PropertiesPartViewModel.ts`
-
+`<dir>\Client\V1\Blades\BladeKind\ViewModels\PropertiesPartViewModel.ts`
 
 ```ts
 /**
@@ -335,11 +329,7 @@ The Notice blade that provides a convenient way to display announcements to your
 
 ![alt-text](../media/portalfx-bladeKinds/NoticeBlade.PNG "Notice Blade")
 
-Defining a notice Blade requires only a view model to define the blade and a view model to define the part.
-
-The PDL to define a Properties Blade:
-
-`\Client\Blades\BladeKind\BladeKinds.pdl`
+The PDL to define a Properties Blade is located at `<dir>\Client\V1\Blades\BladeKind\BladeKinds.pdl`.
 
 ```xml
   <azurefx:NoticeBlade Name="NoticeBlade"
@@ -349,7 +339,7 @@ The PDL to define a Properties Blade:
 ```
 The TypeScript view model to define the Blade view model:
 
-`\Client\Blades\BladeKind\ViewModels\BladeKindsViewModels.ts`
+`<dir>\Client\V1\Blades\BladeKind\ViewModels\BladeKindsViewModels.ts`
 
 ```ts
 /**
@@ -380,7 +370,7 @@ export class NoticeBladeViewModel extends MsPortalFx.ViewModels.Blade {
 
 The TypeScript view model to define the part view model:
 
-`\Client\Blades\BladeKind\ViewModels\NoticePartViewModel.ts`
+`<dir>\Client\V1\Blades\BladeKind\ViewModels\NoticePartViewModel.ts`
 
 ```ts
 /**
@@ -428,11 +418,8 @@ The Setting List Blade provides a convenient way to give users access to a list 
 
 ![alt-text](../media/portalfx-bladeKinds/SettingListBlade.PNG "Setting List")
 
-Defining a Settings Blade requires only a view model to define the blade and a view model to define the part.
 
-The PDL to define a Settings Blade:
-
-`\Client\Blades\BladeKind\BladeKinds.pdl`
+The PDL to define a Settings Blade is located at `<dir>\Client\V1\Blades\BladeKind\BladeKinds.pdl`.
 
 ```xml
   <azurefx:SettingListV2Blade Name="SettingListBlade"
@@ -443,7 +430,7 @@ The PDL to define a Settings Blade:
 
 The TypeScript view model to define the Blade view model:
 
-`\Client\Blades\BladeKind\ViewModels\BladeKindsViewModels.ts`
+`<dir>\Client\V1\Blades\BladeKind\ViewModels\BladeKindsViewModels.ts`
 
 ```ts
 /**
@@ -471,7 +458,7 @@ export class SettingListBladeViewModel extends MsPortalFx.ViewModels.Blade {
 
 The TypeScript view model to define the part view model:
 
-`\Client\Blades\BladeKind\ViewModels\SettingListPartViewModel.ts`
+`<dir>\Client\V1\Blades\BladeKind\ViewModels\SettingListPartViewModel.ts`
 
 ```ts
 /**
@@ -521,9 +508,9 @@ export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.Settin
 
 ### Framework settings
 
-One goal of the Azure Portal is to standardize key interaction patterns across different types of resources, so that customers can learn them once and apply them everywhere. There a few setting items which are consistent across most resources. To make that process easier, the Framework will automatically add specific settings, but also allow extensions to opt in for any settings that the Framework does not automatically add. All the settings that are added by the Framework can always be opted out, by specifying the `opt in` option as `false`. 
+One goal of the Azure Portal is to standardize key interaction patterns across resources, so that customers can learn them once and apply them everywhere. There a few setting items which are consistent across most resources. To make that process easier, the Framework will automatically add specific settings, but also allow extensions to opt in for any settings that the Framework does not automatically add. All the settings that are added by the Framework can always be opted out, by setting  the appropriate enabling option to `false`. 
 
-Only two settings are added automatically: RBAC and Audit logs (Events). They are only added if a valid resource id was specified within the `resourceId()` property on the settingsList viewmodel. The best way to set this property is to use the `onInputsSet` call, as in the following code.
+Only two settings are added automatically: RBAC and Audit logs, or events. They are only added if a valid resource id was specified within the `resourceId()` property on the settingsList viewmodel. The best way to set this property is to use the `onInputsSet` call, as in the following code.
 
 ```ts
 export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.SettingList.ViewModelV2 {
@@ -538,9 +525,12 @@ export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.Settin
 }
 ```
 
-#### Tags/RBAC
+#### Tags and RBAC
 
-[Tags] [/documentation/articles/portalfx-tags/] and RBAC (Users) are the most common settings although we don't automatically add Tags, its extremely easy to opt in. We are looking to automatically add Tags in the future, for now if your resource supports tagging please opt in. To opt in set the following in the options parameter of the super call to the SettingsList viewmodel.
+Tags and role-based access (RBAC) for users are the most common settings 
+Although the Portal does not automatically add Tags, it is extremely easy to opt in if your resource supports tagging. To opt in set the following in the options parameter of the super call to the SettingsList viewmodel.
+
+For more information about tags, see [./portalfx-tags](./portalfx-tags) and [https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-using-tags](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-using-tags).
 
 ```ts
 export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.SettingList.ViewModelV2 {
@@ -587,5 +577,3 @@ Then to test it use the following extension side feature flags, depending on whi
 Next steps:
 
 * [Onboard to support](https://microsoft.sharepoint.com/teams/WAG/EngSys/Supportability/_layouts/15/WopiFrame.aspx?sourcedoc={7210704b-64db-489b-9143-093e020e75b4}&action=edit&wd=target%28%2F%2FCustomerEnablement.one%7Cf42af409-12ab-4ae0-ba49-af361116063b%2FAt%20How-to%20for%20PGs%7C92cd2c56-c400-4a6d-a455-63ef92290ae9%2F%29)
-
-

@@ -1,16 +1,16 @@
 ## Menu Blade
 
-Menu blades are rendered as a menu on the left side of the screen. Each item that is referenced from the menu is rendered using the same header as the menu, resulting in the two blades being displayed as one blade.  This is similar to what the resource menu blade does.
+Menu blades are rendered as a menu on the left side of the screen. This blade gets combined by the Shell with the blade that its opened at its right. Each item that is referenced from the left menu is rendered using the same header as the blade menu, resulting in the two blades being displayed as one blade.  This is similar to the way that the resource menu blade operates.
 
 The process is as follows.
 
-1. Menu blade is displayed as a menu (list of items), where each items opens a blade when clicked
+1. Menu blade is displayed as a menu (list of items), where each item opens a blade when clicked
 1. The menu blade is rendered to the left of the screen
-1. The blades opened from the menu share the chrome with the menu blade 
+1. The blades that are opened from the menu share the chrome with the menu blade 
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
-Menu blades are defined in the PDL file in the following code.  The code is also located at `<dir>\Client/V1/Blades/MenuBlade/MenuBlade.pdl`.
+Menu blades are defined in the PDL file in the following code. The code is also located at `<dir>\Client/V1/Blades/MenuBlade/MenuBlade.pdl`.
 
 {"gitdown": "include-section",  "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/MenuBlade/MenuBlade.pdl", "section": "menuBlade#pdlDef"}
 
@@ -20,9 +20,9 @@ The following code demonstrates how to define a menu blade ViewModel to open fou
 
 There are a few things to notice in the preceding code.
 
-* Menus can have different groups. In this code there are two groups
-* Each menu item opens a blade, and all necessary parameters are provided
-* Menu items can integrate with `EditScope` and `ParameterProvider`, as displayed in the `createengine` item
+* Menus can have different groups. In this code there are two groups.
+* Each menu item opens a blade, and all necessary parameters are provided.
+* Menu items can integrate with `EditScope` and `ParameterProvider`, as displayed in the `createengine` item.
 * At the end of the constructor, options for the menu are set. The option set defines the `id` of the default item.
 
-You can view a working copy of the MenuBlade  in the Dogfood environment sample located at [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SampleMenuBlade/bladeWithSummary](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SampleMenuBlade/bladeWithSummary).
+You can view a working copy of the MenuBlade  in the Dogfood environment sample located at [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/PdlSampleMenuBlade/browserelated](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/PdlSampleMenuBlade/browserelated).
