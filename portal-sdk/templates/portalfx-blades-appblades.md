@@ -87,11 +87,11 @@ The AppBlade ViewModel is hosted in the hidden IFrame in which the extension is 
 
   The extension can listen for messages that are sent from the Ibiza extension ViewModel to the UI Frame by adding an event listener to the application window, as shown in the following code.
 
-  {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Content/SamplesExtension/appBladeSampleIFrame.html", "section": "appBlade#listenMessageFromPortal"}
+{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Content/SamplesExtension/appBladeSampleIFrame.html", "section": "appBlade#listenMessageFromPortal"}
 
   The extension should also provide a handler for the incoming message. In the following example, the **receiveMessage** method handles three different incoming message types, and reacts to theming changes in the Portal.
 
-  {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Content/SamplesExtension/appBladeSampleIFrame.html", "section": "appBlade#listenMessageFromPortalHandler"}
+{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Content/SamplesExtension/appBladeSampleIFrame.html", "section": "appBlade#listenMessageFromPortalHandler"}
 
 *  Post a message
 
