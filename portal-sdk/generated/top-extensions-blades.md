@@ -12,6 +12,7 @@ Blades are the main UI container in the Portal. They are equivalent to `windows`
 | Type | Document    | Description |
 | ---- | ----------- | ----------- | 
 | TemplateBlade | [portalfx-extensions-blades-procedure.md](portalfx-extensions-blades-procedure.md) | Creating any Portal blade. This is the main and recommended authoring model for UI in the Portal. It uses an HTML template for the UI, and a ViewModel with the logic that binds to that HTML template. | 
+| Advanced TemplateBlade Topics | [portalfx-extensions-blades-advanced.md](portalfx-extensions-blades-advanced.md) | Creating any Portal blade. This is the main and recommended authoring model for UI in the Portal. It uses an HTML template for the UI, and a ViewModel with the logic that binds to that HTML template. | 
 | MenuBlade | [portalfx-blades-menublade.md](portalfx-blades-menublade.md) | Left side vertical menu. Displays a menu at the left of a blade. This blade gets combined by the Shell with the blade that its opened at its right.|  
 | Fx Blades |  [portalfx-blades-bladeKinds.md](portalfx-blades-bladeKinds.md) | A limited set of built-in blades that encapsulate common patterns, like properties, quick start, or create forms. | 
 | AppBlade | [portalfx-blades-appblades.md](portalfx-blades-appblades.md) | Rehosts an existing experience, or creates a UI that is  not supported by the Fx. It provides an IFrame to host the UI in order to enable full flexibility and control. Does not use Ibiza Fx controls, and extension developers are fully responsible for accessibility, theming, and consistency. | 
@@ -1423,9 +1424,10 @@ The AppBlade ViewModel is hosted in the hidden IFrame in which the extension is 
 <a name="advanced-template-blade-topics-ibiza-extension-iframe-messaging"></a>
 ## Ibiza extension IFrame messaging
 
-* Listen to a message
+<a name="advanced-template-blade-topics-ibiza-extension-iframe-messaging-listen-to-a-message"></a>
+### Listen to a message
 
-    The extension can listen to messages that are sent from the UI IFrame to the Ibiza extension ViewModel by using the **on** method in the **AppBlade** ViewModel, as in the following example.
+The extension can listen to messages that are sent from the UI IFrame to the Ibiza extension ViewModel by using the **on** method in the **AppBlade** ViewModel, as in the following example.
 
 ```typescript
 
@@ -1442,9 +1444,10 @@ this.on("getAuthToken", () => {
 
 ```
 
-*  Post a message
+<a name="advanced-template-blade-topics-ibiza-extension-iframe-messaging-post-a-message"></a>
+### Post a message
 
-    The Ibiza extension ViewModel can post messages to the UI IFrame by using the **postMessage** method in the AppBlade ViewModel, as in the following example.
+The Ibiza extension ViewModel can post messages to the UI IFrame by using the **postMessage** method in the AppBlade ViewModel, as in the following example.
 
 ```typescript
 
@@ -1456,9 +1459,10 @@ this.postMessage(new FxAppBlade.Message("favoriteAnimal", "porcupine"));
 <a name="advanced-template-blade-topics-ui-iframe-messaging"></a>
 ## UI IFrame messaging
 
-* Listen to a message
+<a name="advanced-template-blade-topics-ui-iframe-messaging-listen-to-a-message"></a>
+### Listen to a message
 
-  The extension can listen for messages that are sent from the Ibiza extension ViewModel to the UI Frame by adding an event listener to the application window, as shown in the following code.
+The extension can listen for messages that are sent from the Ibiza extension ViewModel to the UI Frame by adding an event listener to the application window, as shown in the following code.
 
 ```xml
 
@@ -1466,7 +1470,7 @@ window.addEventListener("message", receiveMessage, false);
 
 ```
 
-  The extension should also provide a handler for the incoming message. In the following example, the **receiveMessage** method handles three different incoming message types, and reacts to theming changes in the Portal.
+The extension should also provide a handler for the incoming message. In the following example, the **receiveMessage** method handles three different incoming message types, and reacts to theming changes in the Portal.
 
 ```xml
 
@@ -1517,13 +1521,14 @@ function receiveMessage(event) {
 
 ```
 
-*  Post a message
+<a name="advanced-template-blade-topics-ui-iframe-messaging-post-a-message"></a>
+### Post a message
 
-  The  UI IFrame can post messages back to the Portal using the **postMessage** method. There is a required message that the  IFrame sends to the Portal to indicate that it is ready to receive messages.
+The  UI IFrame can post messages back to the Portal using the **postMessage** method. There is a required message that the  IFrame sends to the Portal to indicate that it is ready to receive messages.
 
-  The following code snippet demonstrates how to post the  required message, in addition to posting other messages.
+The following code snippet demonstrates how to post the  required message, in addition to posting other messages.
 
-  ```xml
+```xml
 
 if (window.parent !== window) {
     // This is a required message. It tells the shell that your iframe is ready to receive messages.
@@ -1541,9 +1546,10 @@ if (window.parent !== window) {
 
 ```
 
+<a name="advanced-template-blade-topics-changing-ui-themes"></a>
 ## Changing UI themes
 
-When using a template blade, extension developers can implement themes. Typically, the user selects a theme, which in turn is sent to the UI IFrame. The following code snippet demonstrates how to pass the selected theme to the UI IFrame using the **postMessage** method,  as specified in the section named [Exchanging messages between the IFrame and Ibiza Fx](#exchanging-messages-between-the-iframe-and-ibiza-fx).
+When using a template blade, extension developers can implement themes. Typically, the user selects a theme, which in turn is sent to the UI IFrame. The following code snippet demonstrates how to pass the selected theme to the UI IFrame using the **postMessage** method,  as specified in the section named [Sending messages between the IFrame and Ibiza Fx](#sending-messages-between-the-iframe-and-ibiza-fx).
 
 ```typescript
 
@@ -1558,6 +1564,7 @@ MsPortalFx.Services.getSettings().then(settings => {
 ```
 
  
+<a name="advanced-template-blade-topics-changing-ui-themes-introduction-to-blades"></a>
 ### Introduction to Blades
 
 A blade is the vertical container that acts as the starting point for any journey. You can define multiple blades, each containing their own collection of statically defined lenses and parts.
@@ -1594,13 +1601,16 @@ Blades use ViewModels to drive dynamic content, including titles, icons, and sta
 
 * Controlling blade UI
  
+<a name="advanced-template-blade-topics-blade-ui"></a>
 ## Blade UI
 
+<a name="advanced-template-blade-topics-blade-ui-controlling-blade-ui"></a>
 ### Controlling blade UI
 
 Blades support a variety of APIs which make it easy to customize their behavior and experience.
 
-#### Title & Icon
+<a name="advanced-template-blade-topics-blade-ui-controlling-blade-ui-title-icon"></a>
+#### Title &amp; Icon
 
 The title, subtitle, and icon of a blade can be customized with a View Model. This allows making real time changes to the title and icon based on the status of the asset. The View Model for a blade is a simple interface:
 
@@ -1634,6 +1644,7 @@ In this case, the information in the view model will be hard coded. Finally, you
   Blade Content State
 -->
 
+<a name="advanced-template-blade-topics-blade-ui-controlling-blade-ui-blade-content-state"></a>
 #### Blade Content State
 
 Blades have the ability to display a status at the top of the UI:
@@ -1660,6 +1671,7 @@ this.contentStateDisplayText("Success!");
   Locking
 -->
 
+<a name="advanced-template-blade-topics-blade-ui-controlling-blade-ui-locking"></a>
 #### Locking
 
 Locking a blade will prevent users from pinning its parts to the start board, moving parts around, or resizing parts. It's particularly useful when building a list control, an input form, or a create experience.  If you need a locked blade you should use `<TemplateBlade />` as opposed to the classic `<Blade Locked="True" />`.  TemplateBlade has been designed to significantly simplify the locked blade programming model, specifically allows you to use: 
@@ -1705,6 +1717,7 @@ For complete examples of TemplateBlades see SamplesExtension `Client\Blades\Temp
   Width
 -->
 
+<a name="advanced-template-blade-topics-blade-ui-controlling-blade-ui-width"></a>
 #### Width
 
 When creating blades, you can choose from multiple widths. The default is 'Medium':
@@ -1734,6 +1747,7 @@ This is defined statically on the blade, and cannot be changed by the user. Smal
   Initial Display State
 -->
 
+<a name="advanced-template-blade-topics-blade-ui-controlling-blade-ui-initial-display-state"></a>
 #### Initial Display State
 
 When the user opens a blade, you can choose to have it open in the normal state, or in a maximized state:
@@ -1757,12 +1771,14 @@ Users may always choose to restore the blade to its normal supported width. This
 
 * Opening blades
  
-#Blade opening and closing
+<a name="blade-opening-and-closing"></a>
+# Blade opening and closing
 
 This section describes how to open blades using the new (and recommended) container APIs as well as the older (not recommended) declarative APIs.
 
 There is also a [live sample](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/openbladeapi) available.
 
+<a name="blade-opening-and-closing-strongly-typed-blade-reference-classes"></a>
 ## Strongly typed blade reference classes
 
 When you compile your extension, a strongly typed blade reference class will be auto-generated for each blade in your system.  For example, if you have a blade called 'MyBlade', then a TypeScript class called 'MyBladeReference' will be generated in the _generated folder.  These blade reference classes can be used to open blades programmatically.
@@ -1789,6 +1805,7 @@ import { LocationPickerV3BladeReference } from "../../_generated/HubsExtension/B
 
 Blade references for parameter providers have a different signature that is nearly identical to the options that you provide to the ParameterCollector class.
 
+<a name="blade-opening-and-closing-opening-blades-recommended-pattern"></a>
 ## Opening blades (Recommended pattern)
 
 These methods are now available on your template blade container.
@@ -1807,6 +1824,7 @@ These methods are now available on your template blade container.
     openContextBladeAsync(promiseToDetermineBladeToOpen: Promise<BladeReference>): Promise<boolean>; 
 ```
 
+<a name="blade-opening-and-closing-opening-blades-recommended-pattern-opening-blades-within-the-menu"></a>
 ### Opening blades within the menu
 
 When your template blade is in context of a menu blade (i.e. the child of a menu blade), these methods are available on the `menu` object within the `container` (PDL) or the `context` (no-PDL) object. 
@@ -1843,10 +1861,12 @@ Each of these methods returns a promise that generally returns true.  If there 
 
 For the Async methods, your code provides a promise.  If that promise fails (is rejected) then the promise returned from this API returns false.
 
+<a name="blade-opening-and-closing-click-callbacks"></a>
 ## Click callbacks
 
 In many cases, blade opening will be the result of a user interaction such as a click.  To support those scenarios many of our controls now support click callbacks.  You can use the blade opening APIs described above within these callbacks.  If the control you’re using supports highlighting the item that was clicked, such as the grid, then the highlight will be added to the click target automatically.  The highlight will be automatically cleared when the child blade closes.  Here are some examples:
  
+<a name="blade-opening-and-closing-click-callbacks-button"></a>
 ### Button
 
 Opens a blade when a button is clicked
@@ -1860,6 +1880,7 @@ var button = new SimpleButton.ViewModel({
 });
 ```
 
+<a name="blade-opening-and-closing-click-callbacks-grid"></a>
 ### Grid
 
 Opens a blade when a row on a grid is clicked
@@ -1872,6 +1893,7 @@ var grid= new Grid.ViewModel<Website, WebsiteId>({
 });
 ```
 
+<a name="blade-opening-and-closing-click-callbacks-custom-html"></a>
 ### Custom HTML
 
 To open a blade when the user clicks on an HTML element, use the `fxclick` Knockout data-binding, like so:
@@ -1888,10 +1910,12 @@ public myOnClick(): void {
 
 In doing so, here are some best practices to follow:
 
+<a name="blade-opening-and-closing-click-callbacks-custom-html-do"></a>
 ##### DO
 
 - Use standard `<a href="#">` tags when adding `fxclick` to open child blades. With this, your links will be accessible.
 
+<a name="blade-opening-and-closing-click-callbacks-custom-html-do-not"></a>
 ##### DO NOT
 
 - Use `<div>` tags when adding `fxClick` to open child Blades. If you do this, you'll have to (unnecessarily) learn and apply additional HTML attributes to make your links accessible.
@@ -1901,10 +1925,12 @@ In doing so, here are some best practices to follow:
 If you call any of the container.open* methods from within an fxclick handler then the `ext-msportalfx-activated` class will be automatically added to the html element that was clicked.
 The class will be automatically removed when the child blade is closed.
 
+<a name="blade-opening-and-closing-click-callbacks-declarative-ways-to-open-blades-not-recommended-for-new-scenarios"></a>
 ### Declarative ways to open blades (Not recommended for new scenarios)
 
 ![Blade][blade]
 
+<a name="blade-opening-and-closing-click-callbacks-declarative-ways-to-open-blades-not-recommended-for-new-scenarios-simple-blade-action-not-recommended-for-new-scenarios"></a>
 #### Simple Blade Action (Not recommended for new scenarios)
 
 The `<BladeAction>` tag provides the API required for opening a blade.  In the simplest of cases, the only required information is the name of the blade to launch:
@@ -1932,6 +1958,7 @@ In the code snippet above, clicking on the part will launch the **SamplesExtensi
 </Command>
 ```
 
+<a name="blade-opening-and-closing-click-callbacks-declarative-ways-to-open-blades-not-recommended-for-new-scenarios-passing-parameters-with-bladeinput-not-recommended-for-new-scenarios"></a>
 #### Passing parameters with BladeInput (Not recommended for new scenarios)
 
 The cases above are trivial, in that no information is passed from the part or the command to the opened blade.  This will actually be an uncommon occurrence.  Usually, at the very least an {id} will be passed from the part to the blade. To pass information while launching a blade, a `<BladeInput>` is used:
@@ -1991,6 +2018,7 @@ export class InputBindingsDifferentBladesParentPartViewModel {
 }
 ```
 
+<a name="blade-opening-and-closing-click-callbacks-declarative-ways-to-open-blades-not-recommended-for-new-scenarios-blade-parameters-not-recommended-for-new-scenarios"></a>
 #### Blade Parameters (Not recommended for new scenarios)
 
 Blades must explicitly declare which parameters they are required to receive.  Think of this as a function signature. There are [multiple types of parameters](portalfx-blades-parameters.md), each of which can serve a special purpose. In the examples above, a `<BladeInput>` defined a `Parameter` property - that parameter must match the name of a parameter available on the launched blade.  To learn more about blade parameters, check out the [full documentation](portalfx-blades-parameters.md).
@@ -2014,6 +2042,7 @@ Blades must explicitly declare which parameters they are required to receive.  T
 
 The parameters passed to a blade can then be bound to parts, commands, or even the blade view model.  To learn more, visit [blade propertiess](portalfx-blades-properties.md).
 
+<a name="blade-opening-and-closing-click-callbacks-declarative-ways-to-open-blades-not-recommended-for-new-scenarios-receiving-data-with-bladeoutput-not-recommended-for-new-scenarios"></a>
 #### Receiving data with BladeOutput (Not recommended for new scenarios)
 
 In some cases, you may want to pass information from the current blade back to the parent blade. Blades can define a list of output properties that flow back to the calling blade. A common use for this binding is to return data from a child blade back to a part on its parent blade.
@@ -2047,7 +2076,8 @@ In the code above, the `onInputsSet` method of the `OutputBindingsParentPartView
 
 Learn more about [blade outputs](portalfx-blades-outputs.md).
 
-#### Grids, CollectionParts, and ListViews 
+<a name="blade-opening-and-closing-click-callbacks-declarative-ways-to-open-blades-not-recommended-for-new-scenarios-grids-collectionparts-and-listviews"></a>
+#### Grids, CollectionParts, and ListViews
 
 Controls which are bound to a collection of elements (like the grid) can make the selection model a little more nuanced.  In most cases, the control will pass blade inputs which are defined by a property on the model object bound to the control:
 
@@ -2082,6 +2112,7 @@ var extensions = MsPortalFx.ViewModels.Controls.Lists.Grid.Extensions.Selectable
     super(this._websitesQueryView.items, extensions, <any>extensionsOptions);
 ```
 
+<a name="blade-opening-and-closing-click-callbacks-declarative-ways-to-open-blades-not-recommended-for-new-scenarios-supporting-nested-selectables-not-recommended-for-new-scenarios"></a>
 #### Supporting nested selectables (Not recommended for new scenarios)
 
 In rare cases, your part may be select both by clicking the part, and by clicking on an item within the part.  The classic example of this interaction is the `CollectionPart`:
@@ -2109,10 +2140,12 @@ In rare cases, your part may be select both by clicking the part, and by clickin
 
 There are two separate `<BladeAction>` elements defined for this part.  The `CollectionDetailsBlade` is launched when the part is clicked, passing only a simple parameter which is available from the view model.  The `ItemDetailsBlade` is launched when clicking on a row in the collection part.  The `SelectableSource` defines the direct path to the selectable object on the Collection Part view model.
 
+<a name="blade-opening-and-closing-click-callbacks-declarative-ways-to-open-blades-not-recommended-for-new-scenarios-launching-blades-from-another-extension-not-recommended-for-new-scenarios"></a>
 #### Launching blades from another extension (Not recommended for new scenarios)
 
 When using `<BladeAction>`, you're generally going to be launching blades from your own extension.  In some cases, you may [import a part from another extension](portalfx-extension-sharing-pde.md).  Using this technique, the source of the shared part will control launching of the blade.  However - in some cases you may want to launch a blade from another extension using a part from the current extension.  This is where `BladeReference` is useful.
 
+<a name="blade-opening-and-closing-the-pde-file"></a>
 ## The PDE File
 
 You may not have noticed, but every time you build your project you're generating a .PDE file inside of the `\Client\_generated` directory. The PDE file contains a list of the parts which are exposed in the global scope, along with a few other pieces of metadata:
@@ -2151,6 +2184,7 @@ You may not have noticed, but every time you build your project you're generatin
 
 To share parts, blades, or asset types with another extension, **both extensions must be running in the same portal**. The sharing of parts occurs at runtime, which requires that both extensions be present within the shell for this technique to work.
 
+<a name="blade-opening-and-closing-importing-the-pde-file"></a>
 ## Importing the PDE file
 
 After you've generated the PDE file, it needs to be added to the project of the extension that wishes to consume your parts. First, add the file to your project. Next, you need to make a manual change to your .csproj file. Instead of using the `<Content>` compile action, you need to change it to `<ExtensionReference>`. Right click on your project file, and choose 'Unload Project'. Next, right click the project file again, and choose 'Edit'. Find the PDE file reference, and change the compile action:
@@ -2162,6 +2196,7 @@ After you've generated the PDE file, it needs to be added to the project of the 
 Save the file, right click on your project file, and choose 'Reload Project'.
 
 
+<a name="blade-opening-and-closing-importing-the-pde-file-consuming-the-blade-not-recommended-for-new-scenarios"></a>
 ##### Consuming the blade (Not recommended for new scenarios)
 
 To launch the blade referenced by the PDE file, use a `<BladeAction>` as usual, but specifying the extension:
@@ -2182,6 +2217,7 @@ To launch the blade referenced by the PDE file, use a `<BladeAction>` as usual, 
 </BladeAction>
 ```
 
+<a name="blade-opening-and-closing-importing-the-pde-file-dynamic-blade-action-not-recommended-for-new-scenarios"></a>
 #### Dynamic Blade Action (Not recommended for new scenarios)
 
 In the examples above, the target blade to be launched is known at design time.  In some cases, the blade to launch may not be known until runtime.  To define the blade at runtime, use `<DynamicBladeAction>`:
@@ -2222,6 +2258,7 @@ The code above can be executed anytime the target blade will change.  This will 
 
 This method can also be used to launch a blade from another extension, using the 'extension' property of `DynamicBladeSelection`.
 
+<a name="blade-opening-and-closing-importing-the-pde-file-hotspots-not-recommended-for-new-scenarios"></a>
 #### Hotspots (Not recommended for new scenarios)
 
 When building [custom parts](portalfx-parts.md#parts-a-k-a-tiles-how-to-create-a-custom-part-where-you-define-the-look-and-feel-as-well-as-the-data-loading), you may want to launch a blade from a div, button, or `<a>` tag. To launch a blade, start with a `pcHotSpot` binding in your HTML template:
@@ -2264,6 +2301,7 @@ The selectable object must be referenced from your PDL, hooking up the blade act
 <BladeAction Blade="ParameterProviderFormBlade" SelectableSource="hotSpotSelectable" />
 ```
 
+<a name="blade-opening-and-closing-importing-the-pde-file-advanced-selection-not-recommended-for-new-scenarios"></a>
 #### Advanced selection (Not recommended for new scenarios)
 
 In some cases, you may have scenarios where the list of selectable items are not known up front.  Generally, you can point at a single selectble control or selectable set control.  Some cases are a little problematic:
@@ -2320,10 +2358,12 @@ The same API can be applied to grids, list views, buttons, or any control that e
 
 * Blade parameters
  
+<a name="blade-opening-and-closing-importing-the-pde-file-blade-parameters"></a>
 ### Blade Parameters
 
 Blades must explicitly declare which parameters they are required to receive.  Think of this as a function signature. There are multiple types of parameters, each of which can serve a special purpose.
 
+<a name="blade-opening-and-closing-importing-the-pde-file-blade-parameters-key-parameters"></a>
 #### Key Parameters
 
 Key parameters define properties which act as the primary key for the blade. A common example may be "Website Id: 42" for a given blade. Often, a blade will have a single input which defines this identifier. Key properties are used as a key in the shell to save user settings like the layout of the blade, part sizes, part state, etc.
@@ -2343,6 +2383,7 @@ Key parameters define properties which act as the primary key for the blade. A c
 </Blade>
 ```
 
+<a name="blade-opening-and-closing-importing-the-pde-file-blade-parameters-neweditscope-parameters"></a>
 #### NewEditScope Parameters
 
 For parts which provide form editing capabilities, they often need to request an editScopeId. Previously, developers were required to provide a name for this input, and go through some trials to access the Id. It is now provided as a simple input which can be accessed view the `editScopeId` BladeParameter.
@@ -2360,6 +2401,7 @@ For parts which provide form editing capabilities, they often need to request an
 </Blade>
 ```
 
+<a name="blade-opening-and-closing-importing-the-pde-file-blade-parameters-output-parameters"></a>
 #### Output Parameters
 
 Output parameters provide the ability to receive an input from a child blade. Functionally little has changed with output bindings, but now they are a special defined type of input:
@@ -2376,6 +2418,7 @@ Output parameters provide the ability to receive an input from a child blade. Fu
 </Blade>
 ```
 
+<a name="blade-opening-and-closing-importing-the-pde-file-blade-parameters-supplemental-parameters"></a>
 #### Supplemental Parameters
 
 Supplemental parameters provide no special function, and are not a key, but are used as additional data required by the part.
@@ -2398,6 +2441,7 @@ Supplemental parameters provide no special function, and are not a key, but are 
 
 * Blade properties
  
+<a name="blade-opening-and-closing-importing-the-pde-file-blade-properties"></a>
 ### Blade Properties
 
 Blades use blade view models to manage the display information. This includes information like the title, subtitle, icon, and status. To acquire this data, often the extension will load an object by Id. Information passed into the blade as a `BladeParameter` can be passed to the blade view model via a `<Property>` element. For an example, refer to this file in the samples:
@@ -2460,6 +2504,7 @@ module SamplesExtension.Hubs {
 
 When changes are made to the `name` property on the view model, the `title` is updated on the blade.
 
+<a name="blade-opening-and-closing-importing-the-pde-file-blade-property-bindings"></a>
 ### Blade Property Bindings
 
 In most cases, parts will bind to `{BladeParameter}` values passed into the blade. In some cases, you may want to bind directly to a value on a blade view model. The most common use of this binding is to transform a value from a `{BladeParameter}` into some other form.
@@ -2526,6 +2571,7 @@ The view model accepts an input of temperature in fahrenheit, and projects a new
 
 * Blade outputs
  
+<a name="blade-opening-and-closing-importing-the-pde-file-blade-outputs"></a>
 ### Blade Outputs
 
 In some cases, you may want to pass information from the current blade back to the parent blade. Blades can define a list of output properties that flow back to the calling blade. A common use for this binding is to return data from a child blade back to a part.
@@ -2557,12 +2603,14 @@ In the snippet above, `OutputBindingsChildBlade` will be opened with a `currentN
 
 * Pinning blades 
 
+<a name="blade-opening-and-closing-importing-the-pde-file-pinning-blades"></a>
 ### Pinning blades
 
 By default, all blades and parts are 'pinnable'.  Pinning a blade creates a part on the currently active dashboard.
 
 Every blade in the portal has a default representation. The default part for a blade uses a [button part](portalfx-parts-intrinsic.md).  The title, subtitle, and icon provided in the blade view model provide the data needed to create the default view.
 
+<a name="blade-opening-and-closing-importing-the-pde-file-pinning-blades-creating-a-custom-pinned-part"></a>
 #### Creating a custom pinned part
 
 While the default pinned part is often sufficient, there are a few places where you may want to show a custom part representation.  
@@ -2594,6 +2642,7 @@ To use a custom pinned part, it's as easy as
 
 In the simple example above, the part in the catalog does not require inputs.  In the event that the part does require an input, the inputs must match the properties passed into the blade view model.  To learn more, check out [building pinnable parts](portalfx-parts-pinning.md).
 
+<a name="blade-opening-and-closing-importing-the-pde-file-pinning-blades-preventing-pinning"></a>
 #### Preventing pinning
 
 There are some cases where a blade should not be pinned.  Those generally include:
@@ -2616,6 +2665,7 @@ To prevent a blade from being pinned, set `Pinnable="False"` in the blade defini
 
 * Closing blades
 
+<a name="blade-opening-and-closing-closing-blades-programatically"></a>
 ## Closing blades programatically
 
 This snippet shows how to close the current blade.  This can be called from either a blade or part container.  You can optionally return untyped data to the parent blade when you close your own blade.
@@ -2647,6 +2697,7 @@ closeContextBlade(): Promise<boolean>;
 
 Each of these methods returns a promise that generally returns true.  If there is a blade on the screen that has unsaved edits to a form, the framework will prompt the user, giving them the option to keep the unsaved blade open.  If the user chooses to continue working on their unsaved edits then the blade closing promise will return false.
 
+<a name="blade-opening-and-closing-writing-code-that-reacts-to-a-blade-being-closed"></a>
 ## Writing code that reacts to a blade being closed
 
 When opening a child blade, you can register the optional onClosed callback to be notified when the blade you've opened closes.  The child blade can send untyped data that can be used in the  callback.  Here is an example:
@@ -2667,14 +2718,14 @@ container.openBlade(new SomeBladeReference({ … }, (reason: BladeClosedReason, 
 
 
  
-<a name="advanced-template-blade-topics-best-practices"></a>
+<a name="blade-opening-and-closing-best-practices"></a>
 ## Best Practices
 
 Portal development patterns or architectures that are recommended based on customer feedback and usability studies are categorized by the type of blade.
 
 **NOTE**: These patterns are recommended for every extension, but they are not required.
 
-<a name="advanced-template-blade-topics-best-practices-resource-list-blades"></a>
+<a name="blade-opening-and-closing-best-practices-resource-list-blades"></a>
 ### Resource List blades
 
   Resource List blades are also known as browse blades.
@@ -2685,12 +2736,12 @@ Portal development patterns or architectures that are recommended based on custo
 
   For more information, see the Asset documentation located at [portalfx-assets.md](portalfx-assets.md).
 
-<a name="advanced-template-blade-topics-best-practices-menu-blades"></a>
+<a name="blade-opening-and-closing-best-practices-menu-blades"></a>
 ### Menu blades
 
 All services should use the menu blade instead of the Settings blade. ARM resources should opt in to the resource menu for a simpler, streamlined menu.
 
-<a name="advanced-template-blade-topics-best-practices-create-blades"></a>
+<a name="blade-opening-and-closing-best-practices-create-blades"></a>
 ### Create blades
 
 Best practices for create blades cover common scenarios that will save time and avoid deployment failures.
