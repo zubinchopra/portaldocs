@@ -3,6 +3,7 @@ The Monitor Chart control allows you to plot the metrics for your resource in Az
 
 The Monitor Chart control is available in SDK version **5.0.302.731** and above.
 
+Look here for a new version of this control -[MonitorChartV2 Control](portalfx-controls-monitor-chart-v2.md)
 ### Benefits
 - **Performance** - The charts are built to render quickly and make efficient network calls for data
 - **First class integration with Azure Monitor** - When you click on a chart, it will take you to the metrics experience in Azure Monitor
