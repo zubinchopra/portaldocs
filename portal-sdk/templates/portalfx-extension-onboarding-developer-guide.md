@@ -34,7 +34,6 @@ This is typical configuraiton for an extension:
      uri: "//demo.hosting.portal.azure.net/demo",
      uriFormat: "//demo.hosting.portal.azure.net/demo/{0}",
      feedbackEmail: "azureux-demo@microsoft.com",
-     cacheability: "none",
      disabled: true,
 }
 ```
@@ -131,14 +130,8 @@ cacheability: "manifest",
 ```
    
 If you using the legacy DIY deployment, then you will need to do some work before you can set the cacheability to manifest or your extension will slow down the performance of Azure Portal.
-Please read about [Client-Side caching](https://aka.ms/cacheability) to improve the performance of your extension  before setting the value to none.
+Please read about [Client-Side caching](https://aka.ms/cacheability) to improve the performance of your extension before setting the value to none.
 NOTE: Setting cacheability to **manifest** is a pre-requisite for Public Preview / GA. 
-
-For private preview, you can mark the cacheability to 
-
-```
-cacheability: "none",
-```
 
 ### 5. disabled: 
    
