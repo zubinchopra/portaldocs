@@ -1,4 +1,4 @@
-# Release Notes since 11/3/2017
+# Release Notes since 11/4/2017
 
 ## 5.0.302.984
 0 Breaking Changes, 0 Features added and 0 Bugs Fixed
@@ -151,10 +151,6 @@
 ## 5.0.302.903
 0 Breaking Changes, 3 Features added and 0 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1639144'>1639144</a></td><td>Feature</td><td>Add targeting support to the openDialog API</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1503867'>1503867</a></td><td>Feature</td><td>[Perf] Remove expensive selectors from shell & controls code</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10626694'>10626694</a></td><td>Feature</td><td>[ExtensionConfiguration] <Onboarding CPIM portal extension to Mooncake environment> for extension <Microsoft_AAD_B2CAdmin></td></tr></table>
-
-## 5.0.302.902
-0 Breaking Changes, 4 Features added and 6 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9983944'>9983944</a></td><td>Bug Fix</td><td>From no-PDL Parts, expose Dashboard-filtering APIs to Shell</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9895306'>9895306</a></td><td>Bug Fix</td><td>Add API and tooling support for @Filterable decorator</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1673199'>1673199</a></td><td>Feature</td><td>[DashboardFiltering] Add 'logTelemetry' boolean to dynamic filter definitions</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1604007'>1604007</a></td><td>Feature</td><td>openDialog API - revision 2</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1581556'>1581556</a></td><td>Feature</td><td>new openDialog API</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1507901'>1507901</a></td><td>Feature</td><td>[Filtering] Dialog Pill Skeleton</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1503741'>1503741</a></td><td>Bug Fix</td><td>[DashboardFilters] Add dashboard filters</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10111124'>10111124</a></td><td>Bug Fix</td><td>no-PDL Parts can add/update Dashboard-level filters via their 'updateFilters' API</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10068953'>10068953</a></td><td>Bug Fix</td><td>no-PDL Parts receive added/updated/deleted Dashboard filters in their 'onRebind'</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10037795'>10037795</a></td><td>Bug Fix</td><td>no-PDL Parts receive Dashboard filters in their 'onInitialize'</td></tr></table>
 
 ## 5.0.302.1018
 0 Breaking Changes, 1 Features added and 0 Bugs Fixed
