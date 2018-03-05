@@ -19,7 +19,9 @@
 {"gitdown": "include-headings", "file": "../templates/portalfx-ui-concepts.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-no-pdl-programming.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-parts.md"}
+<!--
 {"gitdown": "include-headings", "file": "../templates/portalfx-blades.md"}
+-->
 
 <!--
   gitdown": "include-headings", "file": "../templates/top-extensions-forms.md"}

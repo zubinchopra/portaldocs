@@ -19,7 +19,7 @@ This is the only document within the topic that contains an H1-level header.
    * telemetry
    * ux
 
-1. Within these major areas, documents are organized by topic. Some topics are object names or specific features. For example, some filenames are `portalfx-blades-outputs.md`, `portalfx-controls-editor.md`, and `portalfx-forms-sections.md`.
+1. Within these major areas, documents are organized by topic. Some topics are object names or specific principles. For example, some filenames are `portalfx-blades-outputs.md`, `portalfx-controls-editor.md`, and `portalfx-forms-designing.md`.
 
 1. There are some topics that do not have a major area. They are not specific to one topic, and consequently, may be linked to within several topics. A partial list is as follows.
 

@@ -5,26 +5,26 @@
 
 #### Q: I want to create a new extension. How do I start?
 
-A: To contribute an extension to the portal, you don't need to clone our repository; extensions can be built in their own source code trees.
-You can write an extension using the [Ibiza SDK](http://aka.ms/portalfx/docs), deploy it to your own machine, and load it into the portal at runtime.
+A: To contribute an extension to the Portal, you don't need to clone our repository; extensions can be built in their own source code trees.
+You can write an extension using the [Ibiza SDK](http://aka.ms/portalfx/docs), deploy it to your own machine, and load it into the Portal at runtime.
 When you're ready to register your extension in the preview or production environments, reach out to Ibiza team on: [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).
 
-<!-- TODO: deprecate the link to portalfx-howitworks.md  and replace it with a link to portalfx-extensions-architecture.md -->
+<!-- TODO: deprecate the link to portalfx-howitworks.md  and replace it with a link to top-extensions-architecture.md -->
 
-See also: [How the portal works](portalfx-howitworks.md)
+For more information about Portal architecture, see [top-extensions-architecture.md](top-extensions-architecture.md).
 
 #### Q: I'm stuck. Where can I find help?
 
 A: There are a few ways to get help:
 
 * Read the [documentation](https://auxdocs.azurewebsites.net/)
-* Read or experiment with the samples that come with the SDK. You can find them under `\My Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension`
-* Read the [debugging guide](portalfx-debugging.md)
+* Read or experiment with the samples that come with the SDK. They are located at `\My Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension`
+* Read the [debugging guide](top-extensions-debugging.md)
 * Reach out to Ibiza team on: [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).
 
 #### Q: Which browsers are supported?
 
-A: Currently the portal supports:
+A: Currently the Portal supports:
 
 * Internet Explorer -> Version 11
 * Edge -> Latest version
@@ -39,7 +39,7 @@ A: Currently the portal supports:
 A: This is not possible with PDL-based Commands, but is possible with TypeScript-based commands.
 The "Toolbar" APIs demonstrate this today; call `commandBar.setItems([...])` to supply the list of commands at run-time.
 
-See also: `SamplesExtension\Extension\Client\Blades\Toolbar\Toolbar.pdl`
+See also: `SamplesExtension\Extension\Client\V1\Blades\Toolbar\Toolbar.pdl`
 
 ### Common Issues
 

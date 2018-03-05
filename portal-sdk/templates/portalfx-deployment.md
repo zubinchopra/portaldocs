@@ -170,7 +170,7 @@ This means if you have a steady stream of data, such as uploading a file, the di
 In this example the upload step would be more of a "delay expected" moment that is infrequent where the status messages are needed right away and very often.
 In the first case, you can probably get away with fewer servers, but in the second case geo-locating them will be very important.
 
-[deployment-architecture]: ../media/portalfx-deployment/deployment.png
+[deployment-architecture]: ../media/portalfx-custom-extensions-deployment/deployment.png
 <!-- TODO:  add "hotfix" info here for when developers need to walk their code into the 4 environments instead of waiting for the automated processes.-->
 
 <!-- TODO: add "portalfx-extension-onboarding-developer-guide.md#making-your-extension-visible--enabled-in-portal-on-a-specific-time" here -->

@@ -432,7 +432,7 @@ Update the following image for fictitious names.
 
 ## portalfx-deployment
 
-![alt-text](../media/portalfx-deployment/deployment.png "portalfx-deployment/deployment.png ")
+![alt-text](../media/portalfx-custom-extensions-deployment/deployment.png "portalfx-custom-extensions-deployment/deployment.png ")
 
 ## portalfx-essentials
 
@@ -540,9 +540,9 @@ The following image has already been validated as using   fictitious names.
 
 ![alt-text](../media/portalfx-forms-field-validation/formValidation.png "portalfx-forms-field-validation/formValidation.png ")
 
-## portalfx-forms-sections
+## portalfx-forms-designing
 
-![alt-text](../media/portalfx-forms-sections/forms-sections.png "portalfx-forms-sections/forms-sections.png ")
+![alt-text](../media/portalfx-forms-designing/forms-sections.png "portalfx-forms-designing/forms-sections.png ")
 
 ## portalfx-icons
 

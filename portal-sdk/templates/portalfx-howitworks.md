@@ -1,4 +1,4 @@
-<!-- TODO: deprecate this document and replace it with portalfx-extensions-architecture.md -->
+<!-- TODO: deprecate this document and replace it with top-extensions-architecture.md -->
 
 ## Understanding the Azure Portal Architecture
 
@@ -9,8 +9,8 @@ The IFRAMEs loaded by the portal are entirely hidden. The scripts loaded by thes
 When a user visits the Azure portal, extensions will be loaded based on the users subscription. Extensions can be loaded asynchronously, and even deactivated when it's not currently in use.
 
 **Azure portal architecture block diagram**
-
-[Portal extension architecture](../media/portalfx-deployment/deployment.png)
+ 
+![alt-text](../media/portalfx-custom-extensions-deployment/deployment.png "Portal extension architecture")
 
 ## Understanding the Azure Portal Extension Architecture
 

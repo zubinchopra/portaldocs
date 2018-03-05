@@ -4,6 +4,10 @@
 
 The Azure Portal is a single page application which can dynamically load a collection of extensions. Extensions are simply web applications written using the Azure Portal SDK. These extensions are loaded in the Azure Portal via an IFrame. This allows extensions to load content securely in an isolated context.
 
+The IFRAMEs loaded by the portal are entirely hidden. The scripts loaded by these IFRAMEs interact with the portal using Azure Portal SDK APIs. Using the Azure portal SDK APis allows the extensions to provide a consistent, and predictable experience for Azure portal users.
+
+When a user visits the Azure portal, extensions will be loaded based on the users subscription. Extensions can be loaded asynchronously, and even deactivated when not currently in use.
+
 The iFrames are loaded based on customer actions in the Portal. For example, when a customer clicks on the `virtual machine` icon then the Portal will automatically load the Virtual Machine management extension. 
 
 Partners can instantaneously gain access to Azure Portal’s large customer base by developing and registering extensions that provide a unified and consistent look and feel.  

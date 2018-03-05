@@ -37,7 +37,7 @@ The folloiwng is a list of all the new controls that are available in "Fx/Contro
 | ----------------------- | ------------------------------------------------------------------------------------ |  
 | Button                  |                                                                                      | 
 | CheckBox                |                                                                                      | 
-| CustomHtml              | [portalfx-forms-sections.md](portalfx-forms-sections.md)                             | 
+| CustomHtml              | [portalfx-forms-designing.md](portalfx-forms-designing.md)                             | 
 | DateTimePicker          | [portalfx-controls-datetimepicker.md](portalfx-controls-datetimepicker.md)           |  
 | DateTimeRangePicker     | [portalfx-controls-datetimerangepicker.md](portalfx-controls-datetimerangepicker.md) | 
 | DayPicker               |                                                                                      | 
@@ -50,7 +50,7 @@ The folloiwng is a list of all the new controls that are available in "Fx/Contro
 | PasswordBox             |                                                                                      | 
 | RadioButton             |                                                                                      | 
 | RangeSlider             |                                                                                      | 
-| Section (Form Sections) | [portalfx-forms-sections.md](portalfx-forms-sections.md)                             | 
+| Section (Form Sections) | [portalfx-forms-designing.md](portalfx-forms-designing.md)                             | 
 | Slider                  |                                                                                      | 
 | TabControl              |                                                                                      | 
 | TextBox                 | [portalfx-controls-textbox.md](portalfx-controls-textbox.md)                         |
