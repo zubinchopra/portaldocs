@@ -449,7 +449,7 @@ Update the following image for fictitious names.
 <a name="all-images-in-the-media-library-portalfx-deployment"></a>
 ## portalfx-deployment
 
-![alt-text](../media/portalfx-deployment/deployment.png "portalfx-deployment/deployment.png ")
+![alt-text](../media/portalfx-custom-extensions-deployment/deployment.png "portalfx-custom-extensions-deployment/deployment.png ")
 
 <a name="all-images-in-the-media-library-portalfx-essentials"></a>
 ## portalfx-essentials
@@ -567,10 +567,10 @@ The following image has already been validated as using   fictitious names.
 
 ![alt-text](../media/portalfx-forms-field-validation/formValidation.png "portalfx-forms-field-validation/formValidation.png ")
 
-<a name="all-images-in-the-media-library-portalfx-forms-sections"></a>
-## portalfx-forms-sections
+<a name="all-images-in-the-media-library-portalfx-forms-designing"></a>
+## portalfx-forms-designing
 
-![alt-text](../media/portalfx-forms-sections/forms-sections.png "portalfx-forms-sections/forms-sections.png ")
+![alt-text](../media/portalfx-forms-designing/forms-sections.png "portalfx-forms-designing/forms-sections.png ")
 
 <a name="all-images-in-the-media-library-portalfx-icons"></a>
 ## portalfx-icons

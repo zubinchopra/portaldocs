@@ -1,12 +1,18 @@
 <a name="azure-portal-extensions-architecture"></a>
 # Azure Portal Extensions Architecture
 
-
-
-<a name="azure-portal-extensions-architecture-introduction"></a>
-## Introduction
+<a name="azure-portal-extensions-architecture-overview"></a>
+## Overview
 
 The Azure Portal is a single page application which can dynamically load a collection of extensions. Extensions are simply web applications written using the Azure Portal SDK. These extensions are loaded in the Azure Portal via an IFrame. This allows extensions to load content securely in an isolated context.
+
+The IFRAMEs loaded by the portal are entirely hidden. The scripts loaded by these IFRAMEs interact with the portal using Azure Portal SDK APIs. Using the Azure portal SDK APis allows the extensions to provide a consistent, and predictable experience for Azure portal users.
+
+When a user visits the Azure portal, extensions will be loaded based on the users subscription. Extensions can be loaded asynchronously, and even deactivated when not currently in use.
+
+The Azure Portal architecture is displayed in the following image.
+
+ ![alt-text](../media/portalfx-custom-extensions-deployment/deployment.png  "Portal Extension Architecture")
 
 The iFrames are loaded based on customer actions in the Portal. For example, when a customer clicks on the `virtual machine` icon then the Portal will automatically load the Virtual Machine management extension. 
 
@@ -18,22 +24,8 @@ The success of Azure Portal is dependent on the success of our partners. For our
 
 **Program / Product Managers** can gather deeper understanding of extension’s health and customer behavior using the Power BI reports and Kusto telemetry. 
 
-<a name="azure-portal-extensions-architecture-overview"></a>
-## Overview
-
-<a name="azure-portal-extensions-architecture-overview-understanding-the-azure-portal-architecture"></a>
-### Understanding the Azure Portal Architecture
-
-The IFRAMEs loaded by the Portal are entirely hidden. The scripts loaded by these IFRAMEs interact with the Portal using Azure Portal SDK APIs. This allows the extensions to provide a consistent, and predictable, experience for Azure Portal users.
-
-When a user visits the Azure Portal, extensions will be loaded based on the users subscription. Extensions can be loaded asynchronously, and even deactivated when they are not currently in use.
-
-The Azure Portal architecture is displayed in the following image.
-
- ![alt-text](../media/portalfx-deployment/deployment.png  "Portal Extension Architecture")
-
-<a name="azure-portal-extensions-architecture-overview-understanding-the-extension-architecture"></a>
-### Understanding the Extension Architecture
+<a name="azure-portal-extensions-architecture-overview-the-extension-architecture"></a>
+### The Extension Architecture
 
 1.	Typically an extension is an ASP.NET Web API project, which is modified to include content specific to the Portal.
 1.	The client APIs use **TypeScript** to provide a productive experience for building JavaScript.
@@ -42,14 +34,10 @@ The Azure Portal architecture is displayed in the following image.
 1.	View models make heavy use of Knockout for binding data to the client.
 1.	Building custom UI is enabled using standard web technologies like HTML and CSS.
 1.	Extension developers can provide a consistent experience to customers of the  service across all clients, i.e. UI, powershell or CLI, by implementing business logic in APIs exposed through ARM.
-1.	Azure Portal creates, or mints, tokens on behalf of extensions. This allows extensions to invoke ARM APIs out of the box. In case the extension needs to invoke services such as Graph then we recommend reviewing the Authentication guide to check if you need help from our team. 
-The Authentication guide is located at  .
-<!-- TODO:  find the authentication guide. -->
+1.	Azure Portal creates, or mints, tokens on behalf of extensions. This allows extensions to invoke ARM APIs out of the box. If the extension needs to invoke services such as Graph then we recommend reviewing the Authentication guide located at [portalfx-authentication.md](portalfx-authentication.md) to check if you need help from our team. 
 1.	Extension developers can leverage the extension hosting service to deploy the extension's UI in all Azure data centers.
 
-
-
-This section contains links to documents that describe Azure Portal Architecture.
+This section contains links to documents that describe concepts used in the Azure Portal Architecture.
 
 * Asynchronous Module Loader (AMD) 
 
@@ -87,13 +75,13 @@ This section contains links to documents that describe Azure Portal Architecture
 
     [http://requirejs.org/](http://requirejs.org/) 
 
-* Typescript   
+* Typescript
 
     [http://www.typescriptlang.org/](http://www.typescriptlang.org/)
 
 * UI elements 
 
-    [https://github.com/Azure/portaldocs/blob/dev/portal-sdk/templates/portalfx-ui-concepts.md](https://github.com/Azure/portaldocs/blob/dev/portal-sdk/templates/portalfx-ui-concepts.md)
+    [portalfx-ui-concepts.md](portalfx-ui-concepts.md)
 
 <a name="azure-portal-extensions-architecture-glossary"></a>
 ## Glossary

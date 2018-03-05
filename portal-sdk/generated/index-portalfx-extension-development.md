@@ -7,19 +7,21 @@
     * [Debugging](#development-debugging)
     * [Other](#development-other)
 
-
+<!--When documents are deprecated,they are commented out of this index. -->
 <a name="development"></a>
 # Development
 
+<!--
 <a name="development-getting-started"></a>
 ## Getting Started
-* [Understanding the Azure Portal Architecture](portalfx-howitworks.md#understanding-the-azure-portal-architecture)
-* [Understanding the Azure Portal Extension Architecture](portalfx-howitworks.md#understanding-the-azure-portal-extension-architecture)
+
+  gitdown": "include-headings", "file": "../templates/portalfx-howitworks.md"}
 
 * [Getting started with the Portal SDK](portalfx-creating-extensions.md#getting-started-with-the-portal-sdk)
 
 * [Samples extension](portalfx-sample-extensions.md#samples-extension)
 
+-->
 
 <a name="development-common-scenarios"></a>
 ## Common scenarios
@@ -37,20 +39,15 @@
 
 * [Parts (a.k.a. tiles)](portalfx-parts.md#parts-a-k-a-tiles)
 
-* [Blades](portalfx-blades.md#blades)
+<!--
 
-* [Developing Forms](portalfx-forms.md#developing-forms)
-    * [FAQ](portalfx-forms.md#faq)
+-->
 
-* [Controls](portalfx-controls.md#controls)
-    * [Date and Time](portalfx-controls.md#date-and-time)
-    * [Drop downs](portalfx-controls.md#drop-downs)
-    * [Editors](portalfx-controls.md#editors)
-    * [Forms](portalfx-controls.md#forms)
-    * [Lists](portalfx-controls.md#lists)
-    * [Helpers and Indicators](portalfx-controls.md#helpers-and-indicators)
-    * [Visualizing Data](portalfx-controls.md#visualizing-data)
+<!--
+  gitdown": "include-headings", "file": "../templates/top-extensions-forms.md"}
 
+  gitdown": "include-headings", "file": "../templates/portalfx-controls.md"}
+-->
 
 <a name="development-authentication"></a>
 ## Authentication
@@ -58,6 +55,7 @@
 * [Calling alternate resources](portalfx-authentication.md#calling-alternate-resources)
 
 * [Working with data](portalfx-data.md#working-with-data)
+* [Advanced data topics](portalfx-data.md#advanced-data-topics)
 
 * [Introduction to Parameter Collection](portalfx-parameter-collection-overview.md#introduction-to-parameter-collection)
     * [Roles](portalfx-parameter-collection-overview.md#roles)
@@ -92,9 +90,8 @@
 
 <a name="development-debugging"></a>
 ## Debugging
-* [Debugging](portalfx-debugging.md#debugging)
+* [Debugging an Extension](top-extensions-debugging.md#debugging-an-extension)
 
-* [Debugging extension load failures](portalfx-debugging-extension-load-failures.md#debugging-extension-load-failures)
 
 * [Testing in production](portalfx-testinprod.md#testing-in-production)
 * [Marking automated tests as test/synthetic traffic](portalfx-testinprod.md#marking-automated-tests-as-test-synthetic-traffic)
@@ -107,7 +104,7 @@
 * [Understanding the blade view model](portalfx-blade-viewmodel.md#understanding-the-blade-view-model)
     * [Blade initialization](portalfx-blade-viewmodel.md#blade-initialization)
 
-* [How to expose config settings for consumption in the client](portalfx-load-configuration.md#how-to-expose-config-settings-for-consumption-in-the-client)
+* [Exposing configuration settings for the client](portalfx-load-configuration.md#exposing-configuration-settings-for-the-client)
 * [Step by step walkthrough](portalfx-load-configuration.md#step-by-step-walkthrough)
 
 

@@ -1,15 +1,17 @@
+<!-- TODO: deprecate this document and replace it with top-extensions-architecture.md -->
+
 <a name="understanding-the-azure-portal-architecture"></a>
 ## Understanding the Azure Portal Architecture
 
 The [Azure portal](http://portal.azure.com) is a [single page application](http://en.wikipedia.org/wiki/Single-page_application) which can dynamically load a collection of extensions. Extensions are simply web applications written using the Azure Portal SDK. These extensions are loaded in the azure portal via an IFrame. This allows extensions to load content securely in a isloated context.
 
-The IFRAMEs loaded by the portal are entirely hidden. The scripts loaded by these IFRAME interact with the portal using Azure Portal SDK APIs. Using the Azure portal SDK APis allows the extensions to provide a consistent, and predictable experience for Azure portal users.
+The IFRAMEs loaded by the portal are entirely hidden. The scripts loaded by these IFRAMEs interact with the portal using Azure Portal SDK APIs. Using the Azure portal SDK APis allows the extensions to provide a consistent, and predictable experience for Azure portal users.
 
 When a user visits the Azure portal, extensions will be loaded based on the users subscription. Extensions can be loaded asynchronously, and even deactivated when it's not currently in use.
 
 **Azure portal architecture block diagram**
-
-[Portal extension architecture](../media/portalfx-deployment/deployment.png)
+ 
+![alt-text](../media/portalfx-custom-extensions-deployment/deployment.png "Portal extension architecture")
 
 <a name="understanding-the-azure-portal-extension-architecture"></a>
 ## Understanding the Azure Portal Extension Architecture
