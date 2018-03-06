@@ -1,9 +1,9 @@
 <a name="azure-portal-a-composed-web-application"></a>
 ## Azure Portal -- A composed web application
 
-The Azure Portal web application is based on a UI composition system whose primary design goal is to enable the integration of UI built by 100's of teams into a single, robust single-page web application.
+The Azure Portal web application is based on a UI composition system whose primary design goal is to enable the integration of UI built by hundreds of teams into a single, robust single-page web application.
 
-With this system, a team develops a UI extension to plug into and extend the UI of the Azure Portal.  Teams develop and refine UI iteratively and can choose a deployment cadence that suits their team schedule and their customer needs.  They can safely link from their UI to UI constructed by other teams, resulting in a Portal application that -- to the Azure user -- appears to have been built by a single team.  Any bug in a team's UI has only a local impact on that team's UI and does not impact the availability/reliability of the larger Azure Portal UX or that of any other UI extension.
+With this system, a team develops a UI extension to plug into and extend the UI of the Azure Portal.  Teams develop and refine UI iteratively and can choose a deployment cadence that suits their team schedule and their customer needs.  They can safely link from their UI to UI's constructed by other teams, resulting in a Portal application that -- to the Azure user -- appears to have been built by a single team.  Any bug in a team's UI has only a local impact on that team's UI and does not impact the availability/reliability of the larger Azure Portal UX or that of any other UI extension.
 
 [The Portal "Shell"](#the-portal-shell)
 
@@ -26,7 +26,7 @@ With this system, a team develops a UI extension to plug into and extend the UI 
 <a name="azure-portal-a-composed-web-application-the-portal-shell"></a>
 ### The Portal &quot;Shell&quot;
 
-The Azure Portal web application is designed to the [single-page application pattern](portalfx-extensions-glossary-architecture.md), where UI is generated via client-side-evaluated JavaScript and dynamic HTML.  The Azure Portal "Shell" is the client-side JavaScript that controls the overall rendering of UI in the browser.  The Shell is responsible for rendering the "chrome" of the Azure Portal (the navigation menu on the left and bar at the top).  Any team- or service-specific UI is developed in UI extensions as Blades (pages or windows) and Parts (tiles).  Based on user interaction with the Azure Portal UI, the Shell determines which Blades/Parts are to be displayed and it delegates the rendering of these Blades/Parts to the appropriate extension(s).
+The Azure Portal web application is designed to the [single-page application pattern](portalfx-extensions-glossary-architecture.md), where UI is generated via client-side-evaluated JavaScript and dynamic HTML.  The Azure Portal "Shell" is the client-side JavaScript that controls the overall rendering of UI in the browser.  The Shell is responsible for rendering the [chrome](portalfx-extensions-glossary-architecture.md) of the Azure Portal (the navigation menu on the left and bar at the top).  Any team- or service-specific UI is developed in UI extensions as Blades (pages or windows) and Parts (tiles).  Based on user interaction with the Azure Portal UI, the Shell determines which Blades/Parts are to be displayed and it delegates the rendering of these Blades/Parts to the appropriate extension(s).
 
 `<Insert diagram here>`
 
@@ -52,20 +52,20 @@ In 2013, when the Azure Portal was designed, the only browser facility suitable 
 
 UI extensions develop their Blades and Parts following the [MVVM](portalfx-extensions-glossary-architecture.md) pattern.  
 * The "view" is defined as a Blade/Part-specific HTML template.  The HTML template typically arranges uses of FX controls in the Blade/Part content area.
-*  The HTML template and FX controls are bound to a UI-extension-developed "view model" TypeScript class, which is where the UI extension business logic is isolated from the JavaScript of the larger Portal application and from other UI extensions.
-* The "view model" frequently includes "model" data loaded via AJAX from the cloud, though most often it is loaded from the Azure Resource Manager or from the team's/service's [Resource Provider](portalfx-extensions-glossary-architecture.md).
+*  The HTML template and FX controls are bound to a UI-extension-developed [ViewModel](portalfx-extensions-glossary-architecture.md) TypeScript class, which is where the UI extension business logic is isolated from the JavaScript of the larger Portal application and from other UI extensions.
+* The `ViewModel` frequently includes "model" data loaded via AJAX from the cloud, though most often it is loaded from the Azure Resource Manager or from the team's/service's [Resource Provider](portalfx-extensions-glossary-architecture.md).
 
 UI extensions develop a Blade or Part to this pattern by developing a TypeScript class adorned with a TypeScript decorator, as in the following code.
 
 `<insert code snippet>`
 
-**NOTE**: Blades and Parts were previously developed by authoring XAML that describes the mapping from a Blade / Part name to its corresponding "view model" TypeScript class and its associated "view" HTML template.  This XAML API (named "PDL" for Portal Definition Language) was found to be developer-unfriendly in that it required that all three artifacts -- the XAML file, the TypeScript class file and the HTML template file -- be managed separately and kept in sync.  The new "no-PDL" TypeScript decorator APIs allow for a Blade or Part to be developed in a single TypeScript file.
+**NOTE**: Blades and Parts were previously developed by authoring XAML that describes the mapping from a Blade / Part name to its corresponding `ViewModel` TypeScript class and its associated "view" HTML template.  This XAML API (named "PDL" for Portal Definition Language) was found to be developer-unfriendly in that it required that all three artifacts -- the XAML file, the TypeScript class file and the HTML template file -- be managed separately and kept in sync.  The new "no-PDL" TypeScript decorator APIs allow for a Blade or Part to be developed in a single TypeScript file.
 
-Now, when a UI extension's Blade or Part is to be displayed, the Shell instantiates in that UI extension's IFrame an instance of the Blade / Part TypeScript class, also known as the "view model".  To "project" this Blade/Part UI into the Shell-managed visible IFrame that the user sees, the Shell makes use of a simple object-remoting API.  Here, the Blade / Part "view" and "view model" are copied and sent via the HTML `postMessage` API to the visible IFrame managed by the Shell.  It is in the Shell-managed, visible IFrame that the "view" and "view model" are two-way bound,  using the Knockout.js OSS library that is located at [http://knockoutjs.com/](http://knockoutjs.com/).
+Now, when a UI extension's Blade or Part is to be displayed, the Shell instantiates in that UI extension's IFrame an instance of the Blade / Part TypeScript class, also known as the `ViewModel`.  To "project" this Blade/Part UI into the Shell-managed visible IFrame that the user sees, the Shell makes use of a simple object-remoting API.  Here, the Blade / Part "view" and `ViewModel` are copied and sent via the HTML `postMessage` API to the visible IFrame managed by the Shell.  It is in the Shell-managed, visible IFrame that the "view" and `ViewModel` are two-way bound,  using the Knockout.js OSS library that is located at [http://knockoutjs.com/](http://knockoutjs.com/).
 
 `<insert diagram>`
 
-Because most UI is dynamic, like Forms that the user updates or like Grids/Lists that are refreshed to reflect new/updated server data, changes to the "view model" are kept consistent between the Shell and UI extension IFrames.  The object-remoting system detects changes to [Knockout.js](http://knockoutjs.com/) observables  that are embedded in the "view model", computes diffs between the two "view model" copies and uses "postMessage" to send diff-grams between the two "view model" copies.  Beyond the conventional use of the Knockout.js library by the UI extension and its "view model" class, complexities of the object-remoting system are hidden from the UI extension developer.
+Because most UI is dynamic, like Forms that the user updates or like Grids/Lists that are refreshed to reflect new/updated server data, changes to the `ViewModel` are kept consistent between the Shell and UI extension IFrames.  The object-remoting system detects changes to [Knockout.js](http://knockoutjs.com/) observables  that are embedded in the `ViewModel`, computes diffs between the two `ViewModel` copies and uses `postMessage` to send diff-grams between the two `ViewModel` copies.  Beyond the conventional use of the Knockout.js library by the UI extension and its `ViewModel` class, complexities of the object-remoting system are hidden from the UI extension developer.
 
 <a name="azure-portal-a-composed-web-application-secure-per-service-ui"></a>
 ### Secure per-service UI
