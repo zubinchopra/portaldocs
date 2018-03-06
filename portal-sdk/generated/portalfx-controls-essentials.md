@@ -65,7 +65,7 @@ Set up the `Settings` interface.
 
 Use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel, as in the following example.
 
-    ```typescript
+```typescript
 
 public title = ClientResources.essentialsDefaultEssentials;
 public subtitle = ClientResources.controls;
@@ -161,7 +161,7 @@ public onInitialize(): Q.Promise<void> {
 
 Define the `_initializeControl` method that initializes the control, as in the following example.
 
-    ```typescript
+```typescript
 
 /**
  * Initializes the Essentials control.
