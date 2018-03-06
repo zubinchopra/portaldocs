@@ -120,7 +120,7 @@ export class EditorInstructionsPartViewModel
 
 ``` 
 
-1. Now the part can be consumed from an extension by referencing it in the PDL, as in the following code.
+3. Now the part can be consumed from an extension by referencing it in the PDL, as in the following code.
 
 ```xml
 
