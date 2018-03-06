@@ -2,23 +2,23 @@
 
 The Monitor Chart control allows the plotting of metrics for an Azure resource. It is part of the Ibiza framework, and it inherently knows how to fetch data for a resource.
 
-The Monitor Chart control is available in SDK version **5.0.302.731** and above. For more information about SDK versions, see [../downloads.md](../downloads.md).
+The Monitor Chart control is available in SDK version **5.0.302.731** and above. For more information about SDK versions, see [downloads.md](downloads.md).
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
 Some of the benefits of using the Monitor Chart are as follows.
 
-* **Performance** 
+* Performance
 
     The charts are built to render quickly and make efficient network calls for data
 
-* **First class integration with Azure Monitor** 
+* First class integration with Azure Monitor 
 
     When a chart is clicked, the metrics experience in Azure Monitor will be displayed
 
-* **Automatic responsive behavior**
+* Automatic responsive behavior
 
-    An array of charts can be displayed responsively in  the control
+    An array of charts can be displayed responsively in the control
 
 If you are onboarding to Azure Monitor for the first time, please reach out to the <a href="mailto:ibizamon@microsoft.com?subject=Azure Monitor Onboarding">Monitoring team</a>. The Monitoring team will add your resource type to a configuration which allows the Monitor Control to fetch metrics for your resources.
 
@@ -26,39 +26,38 @@ If you are onboarding to Azure Monitor for the first time, please reach out to t
 
 Developers can add the monitor chart control to their extensions by using the following procedure.
 
-1. Import the MonitorChart module, as in the following code.
+1. Import the MonitorChart module.
 
 1. Create the MonitorChart options.
 
 1. Then, create the ViewModel.
 
-```typescript
-import * as MonitorChart from "Fx/Controls/MonitorChart";
+    ```typescript
+    import * as MonitorChart from "Fx/Controls/MonitorChart";
+    ...
 
-...
+    // Create the MonitorChart options
+    const timespan: MonitorChart.Timespan = {
+        relative: {
+            durationMs: 1 * 60 * 60 * 1000 // 1 hour
+        }
+    };
+    const chartDefinition: MonitorChart.ChartDefinition = {
+        metrics: [
+            {
+                name: "testMetric1",
+                resourceMetadata: { resourceId: "test/resource/id" }
+            }
+        ]
+    };
+    const monitorChartOptions: MonitorChart.Options = {
+        charts: [ chartDefinition ],
+        timespan: timespan
+    };
 
-// Create the MonitorChart options
-const timespan: MonitorChart.Timespan = {
-    relative: {
-        durationMs: 1 * 60 * 60 * 1000 // 1 hour
-    }
-};
-const chartDefinition: MonitorChart.ChartDefinition = {
-    metrics: [
-        {
-            name: "testMetric1",
-            resourceMetadata: { resourceId: "test/resource/id" }
-        }
-    ]
-};
-const monitorChartOptions: MonitorChart.Options = {
-    charts: [ chartDefinition ],
-    timespan: timespan
-};
-
-// Create the MonitorChart viewmodel
-const monitorChartViewModel = MonitorChart.create(bladeOrPartContainer, monitorChartOptions);
-```
+    // Create the MonitorChart viewmodel
+    const monitorChartViewModel = MonitorChart.create(bladeOrPartContainer, monitorChartOptions);
+    ```
 
 The code can plot more than one chart while referencing the control. Also, it can plot multiple metrics for each chart.
 
