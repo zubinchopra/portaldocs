@@ -34,55 +34,51 @@ Lastly, the extension defines the `_initializeControl` method that initializes t
 
 ### Default Layout
 
-The defaults are the most common use case.  The default `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`. This code is also included in the following example.
+The defaults are the most common use case.  The default `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`. 
 
-To use the default `Essentials` control, compose a template blade that contains it.
+To use the default `Essentials` control, compose a template blade that contains it. The first step is to set up the `Settings` interface, as in the following example.
 
 {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section": "essentials#setupBladeDefault"}
 
-Set up the `Settings` interface. 
-
-Use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel, as in the following example.
+The second step is to use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel, as in the following example.
 
 {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section": "essentials#startBladeDefault"}
 
-Define the `_initializeControl` method that initializes the control, as in the following example.
+The third step is to define the `_initializeControl` method that initializes the control, as in the following example.
 
 {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section": "essentials#initControlDefault"}
 
 ### Custom Layout
 
-The custom layout allows the extension to change freely the layout order of built-in and other properties. The `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsCustomLayoutBlade.ts`. This code is also included in the following example. To use the custom layout `essentials` control, compose a template blade that contains it.
+The custom layout allows the extension to change freely the layout order of built-in and other properties. The `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsCustomLayoutBlade.ts`.
+
+To use the custom layout `essentials` control, compose a template blade that contains it. The first step is to set up the `Settings` interface to persist the `expanded` property that contains the state of the `Essentials` control, as in the following example.
 
 {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsCustomLayoutBlade.ts","section": "essentials#setupBladeCustomLayout"} 
 
-1. Set up the `Settings` interface to persist the `expanded` property that contains the state of the `Essentials` control.
+The second step is to use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel, as in the following example.
 
-1. Use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel, as in the following example.
+{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsCustomLayoutBlade.ts","section": "essentials#startBladeCustomLayout"} 
 
-    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsCustomLayoutBlade.ts","section": "essentials#startBladeCustomLayout"} 
+The third step is to define the `_initializeControl` that initializes the control, as in the following example.
 
-1. Define the `_initializeControl` that initializes the control, as in the following example.
-
-    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsCustomLayoutBlade.ts","section": "essentials#initControlCustomLayout"}
+{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsCustomLayoutBlade.ts","section": "essentials#initControlCustomLayout"}
 
 ### Non-Resource Layout
 
-Non-resource essentials allow an extension to use the `Essentials` control without a resource id. It can change layout orders of all properties freely. To use the non-resource `essentials` control, compose a template blade that contains it.  The non-resource `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsNonResourceBlade.ts`. This code is also included in the following example. 
+Non-resource essentials allow an extension to use the `Essentials` control without a resource id. It can change layout orders of all properties freely. The non-resource `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsNonResourceBlade.ts`. 
+  
+To use the non-resource `essentials` control, compose a template blade that contains it.  The first step is to set up the `Settings` interface, as in the following example.
 
 {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsNonResourceBlade.ts","section": "essentials#setupBladeNonResource"} 
 
-1. Set up the `Settings` interface. 
+The second step is to use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel, as in the following example.
 
-    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsNonResourceBlade.ts","section": "essentials#setupBladeNonResource"} 
+{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsNonResourceBlade.ts","section": "essentials#startBladeNonResource"} 
 
-1. Use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel, as in the following example.
+The third step is to define the `_initializeControl` that initializes the control, as in the following example.
 
-    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsNonResourceBlade.ts","section": "essentials#startBladeNonResource"} 
-
-1. Define the `_initializeControl` that initializes the control, as in the following example.
-
-    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsNonResourceBlade.ts","section": "essentials#initControlNonResource"} 
+{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsNonResourceBlade.ts","section": "essentials#initControlNonResource"} 
 
 ### Responsive Layout
 
