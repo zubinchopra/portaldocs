@@ -4,45 +4,63 @@ The Azure Portal web application is based on a UI composition system whose prima
 
 With this system, a team develops a UI extension to plug into and extend the UI of the Azure Portal.  Teams develop and refine UI iteratively and can choose a deployment cadence that suits their team schedule and their customer needs.  They can safely link from their UI to UI constructed by other teams, resulting in a Portal application that -- to the Azure user -- appears to have been built by a single team.  Any bug in a team's UI has only a local impact on that team's UI and does not impact the availability/reliability of the larger Azure Portal UX or that of any other UI extension.
 
+[The Portal "Shell"](#the-portal-shell)
+
+[UI extensions](#ui-extensions)
+
+[UI extension isolation](#ui-extension-isolation)
+
+[Projecting Blade/Part UI](#projecting-blade-part-ui)
+
+[Secure per-service UI](#secure-per-service-ui)
+
+[Linking and navigating within the Portal](#linking-and-navigating-within-the-portal)
+
+[Blade and Part API versioning](#blade-and-part-api-versioning)
+
+[Common Portal UX -- Marketplace and Browse](#common-portal-ux----marketplace-and-browse)
+
+* * * 
+
 ### The Portal "Shell"
 
-The Azure Portal web application is designed to the single-page application pattern (https://en.wikipedia.org/wiki/Single-page_application), where UI is generated via client-side-evaluated JavaScript and dynamic HTML.  The Azure Portal "Shell" is the client-side JavaScript that controls the overall rendering of UI in the browser.  The Shell is responsible for rendering the "chrome" of the Azure Portal (the navigation menu on the left and bar at the top).  Any team- or service-specific UI is developed in UI extensions as Blades (pages or windows) and Parts (tiles).  Based on user interaction with the Azure Portal UI, the Shell determines which Blades/Parts are to do be displayed and it delegates the rendering of these Blades/Parts to the appropriate extension(s).
+The Azure Portal web application is designed to the [single-page application pattern](portalfx-extensions-glossary-architecture.md), where UI is generated via client-side-evaluated JavaScript and dynamic HTML.  The Azure Portal "Shell" is the client-side JavaScript that controls the overall rendering of UI in the browser.  The Shell is responsible for rendering the "chrome" of the Azure Portal (the navigation menu on the left and bar at the top).  Any team- or service-specific UI is developed in UI extensions as Blades (pages or windows) and Parts (tiles).  Based on user interaction with the Azure Portal UI, the Shell determines which Blades/Parts are to be displayed and it delegates the rendering of these Blades/Parts to the appropriate extension(s).
 
 <Insert diagram here>
 
 ### UI extensions
 
-UI extensions are simple, static web applications.  By static, I mean that UI extensions do no server-side UI-generation.  UI extensions are developed as client-side-evaluated TypeScript (compiled to JavaScript), as HTML templates, and as LESS stylesheets (compiled to CSS).  When the Shell determines that it needs to display a Blade or Part from UI extension "A", it JIT loads an HTML page that collects the extension JavaScript/HTML/CSS for that extension.  The Shell loads the HTML page from an endpoint URL registered centrally as part of the Azure Portal's configuration.  The Shell then directs the extension (and its client-side JavaScript) to render the required Blade or Part.  When the user navigates in such a way that no Blades/Parts from extension "A" are in use, the Shell can unload the UI extension from the browser, allowing the larger Azure Portal app to reclaim browser memory and network connections.
+UI extensions are simple, static web applications. Static  means that UI extensions do no server-side UI-generation.  UI extensions are developed as client-side-evaluated TypeScript that compiles to JavaScript, as HTML templates, and as LESS stylesheets that compile to CSS.  When the Shell determines that it needs to display a Blade or Part from UI extension "A", the JIT loads an HTML page that collects the extension JavaScript/HTML/CSS for that extension.  The Shell loads the HTML page from an endpoint URL registered centrally as part of the Azure Portal's configuration.  The Shell then directs the extension and its client-side JavaScript to render the required Blade or Part.  When the user navigates in such a way that no Blades/Parts from extension "A" are in use, the Shell can unload the UI extension from the browser, allowing the larger Azure Portal app to reclaim browser memory and network connections.
 
 ### UI extension isolation
 
 The business logic and UI generation accomplished by UI extensions is isolated from the Azure Portal "chrome" and from the UI of other UI extensions.  This is important for three reasons:
-	- Security - UI extension HTTP access can be restricted to specific origins/endpoints. UI extension JavaScript can be isolated to their own JavaScript heap.
-	- Reliability - UI extension isolation limits the user impact of UI extension bugs
-	- Scale - Separating UI extension JavaScript allows the UI extension to be "unloaded" from the browser
+* Security - UI extension HTTP access can be restricted to specific origins/endpoints. UI extension JavaScript can be isolated to their own JavaScript heap
+* Reliability - UI extension isolation limits the user impact of UI extension bugs
+* Scale - Separating UI extension JavaScript allows the UI extension to be "unloaded" from the browser
 
-In 2013, when the Azure Portal was designed, the only browser facility suitable for client-side JavaScript/DOM isolation was the <IFRAME> element.  Unfortunately, browsers circa 2013 did not scale performance-wise to the number of IFrames required by the many Parts (tiles) suggested by the 2013 Azure Portal UX design.  For this reason, UI extensions are loaded into the browser into non-visible IFrames.  Rather than using dynamic HTML techniques that require direct DOM access by the UI extension JavaScript, UI extensions "project" UI using Ibiza FX Controls and HTML templates.  Such "projected" UI is rendered in the single, visible IFrame that is managed by the Shell.
+In 2013, when the Azure Portal was designed, the only browser facility suitable for client-side JavaScript/DOM isolation was the `<IFRAME>` element.  Unfortunately, browsers circa 2013 did not scale performance-wise to the number of IFrames required by the many Parts (tiles) suggested by the 2013 Azure Portal UX design.  For this reason, UI extensions are loaded into the browser into non-visible IFrames.  Rather than using dynamic HTML techniques that require direct DOM access by the UI extension JavaScript, UI extensions "project" UI using Ibiza FX controls and HTML templates.  Such "projected" UI is rendered in the single, visible IFrame that is managed by the Shell.
 
-(Note: Since browsers circa 2018 scale better re: IFrames and since the Ibiza UX design is pivoting towards full-screen Blades, the Ibiza team continues to invest in a more conventional use of IFrames, where UI extensions can access the DOM directly and can craft their UI generation following stander web development patterns and OSS libraries.)
+**NOTE**: Since browsers circa 2018 scale better IFrames and since the Ibiza UX design is pivoting towards full-screen Blades, the Ibiza team continues to invest in a more conventional use of IFrames, where UI extensions can access the DOM directly and can craft their UI generation following standard web development patterns and OSS libraries.
 
-### Projecting Blade/Part UI
+### Projecting Blade and Part UI
 
-UI extensions develop their Blades and Parts following the MVVM pattern (see https://en.wikipedia.org/wiki/Model–view–viewmodel).  Here:
-	- The "view" is defined as a Blade/Part-specific HTML template.  The HTML template typically arranges uses of FX controls in the Blade/Part content area.
-	- The HTML template and FX controls are bound to a UI-extension-developed "view model" TypeScript class, which is where the UI extension business logic is isolated from the JavaScript of the larger Portal application and from other UI extensions.
-	- The "view model" frequently includes "model" data loaded via AJAX from the cloud (though most often from the Azure Resource Manager or from the team's/service's Resource Provider).
+UI extensions develop their Blades and Parts following the [MVVM](portalfx-extensions-glossary-architecture.md) pattern.  
+* The "view" is defined as a Blade/Part-specific HTML template.  The HTML template typically arranges uses of FX controls in the Blade/Part content area.
+*  The HTML template and FX controls are bound to a UI-extension-developed "view model" TypeScript class, which is where the UI extension business logic is isolated from the JavaScript of the larger Portal application and from other UI extensions.
+* The "view model" frequently includes "model" data loaded via AJAX from the cloud, though most often it is loaded from the Azure Resource Manager or from the team's/service's Resource Provider.
 
-UI extensions develop a Blade or Part to this pattern by developing a TypeScript class adorned with a TypeScript decorator:
+UI extensions develop a Blade or Part to this pattern by developing a TypeScript class adorned with a TypeScript decorator, as in the following code.
 
 <insert code snippet>
 
-(Note: Blades and Parts were previously developed by authoring XAML that describes the mapping from a Blade / Part name to its corresponding "view model" TypeScript class and its associated "view" HTML template.  This XAML API (named "PDL" for Portal Definition Language) was found to be developer-unfriendly in that it required that all three artifacts -- the XAML file, the TypeScript class file and the HTML template file -- be managed separately and kept in sync.  The new "no-PDL" TypeScript decorator APIs allow for a Blade or Part to be developed in as little as a single TypeScript file).
+**NOTE**: Blades and Parts were previously developed by authoring XAML that describes the mapping from a Blade / Part name to its corresponding "view model" TypeScript class and its associated "view" HTML template.  This XAML API (named "PDL" for Portal Definition Language) was found to be developer-unfriendly in that it required that all three artifacts -- the XAML file, the TypeScript class file and the HTML template file -- be managed separately and kept in sync.  The new "no-PDL" TypeScript decorator APIs allow for a Blade or Part to be developed in a single TypeScript file.
 
-Now, when a UI extension's Blade or Part is to be displayed, the Shell instantiates in that UI extension's IFrame an instance of the Blade / Part TypeScript class (the "view model").  To "project" this Blade/Part UI into the Shell-managed visible IFrame that the user sees, the Shell makes use of a simple object-remoting API.  Here, the Blade / Part "view" and "view model" are copied and sent via the HTML "postMessage" API to the visible IFrame managed by the Shell.  It's in the Shell-managed, visible IFrame that the "view" and "view model" are two-way bound (using the Knockout.js OSS library at http://knockoutjs.com/).
+Now, when a UI extension's Blade or Part is to be displayed, the Shell instantiates in that UI extension's IFrame an instance of the Blade / Part TypeScript class, also known as the "view model".  To "project" this Blade/Part UI into the Shell-managed visible IFrame that the user sees, the Shell makes use of a simple object-remoting API.  Here, the Blade / Part "view" and "view model" are copied and sent via the HTML `postMessage` API to the visible IFrame managed by the Shell.  It is in the Shell-managed, visible IFrame that the "view" and "view model" are two-way bound,  using the Knockout.js OSS library that is located at [http://knockoutjs.com/](http://knockoutjs.com/).
 
 <insert diagram>
 
-As most UI is dynamic (like Forms that the user updates or like Grids/Lists that are refreshed to reflect new/updated server data), changes to the "view model" are kept consistent between the Shell and UI extension IFrames.  The object-remoting system detects changes to Knockout.js observables (see http://knockoutjs.com/) embedded in the "view model", computes diffs between the two "view model" copies and using "postMessage" to send diff-grams between the two "view model" copies.  Beyond the conventional use of the Knockout.js library by the UI extension and its "view model" class, complexities of the object-remoting system are hidden from the UI extension developer.
+Because most UI is dynamic, like Forms that the user updates or like Grids/Lists that are refreshed to reflect new/updated server data, changes to the "view model" are kept consistent between the Shell and UI extension IFrames.  The object-remoting system detects changes to [Knockout.js](http://knockoutjs.com/) observables  that are embedded in the "view model", computes diffs between the two "view model" copies and uses "postMessage" to send diff-grams between the two "view model" copies.  Beyond the conventional use of the Knockout.js library by the UI extension and its "view model" class, complexities of the object-remoting system are hidden from the UI extension developer.
 
 ### Secure per-service UI
 
@@ -53,7 +71,7 @@ In practice, HTTPS calls from UI extensions are made from the client to load "mo
 	- Less common, not recommended -- Using same-origin, to HTTP endpoints (to "extension controllers") dedicated to the operation of the UI extension.
 In any of these cases, the HTTPS call includes an AAD token authorizing the UI extension to act on behalf of the user against those Azure resource types that the UI extension supports.  The AAD token is obtained during AAD single-sign-on authentication that precedes the loading of the Portal Shell.  When a UI extension is loaded into its client-side IFrame and asked to render a Blade or a Part, the UI extension typically calls an FX API with which it can acquire an AAD token scoped to that UI extension.  To load "model" data, the UI extension then issues HTTP calls carrying this token to ARM, to its RP or to its "extension controller".
 
-### Linking/navigating within the Portal
+### Linking and navigating within the Portal
 
 Frequently, user interactions with the Portal "chrome" and within Blade/Part UI will cause in-Portal navigation to a new Blade.  This navigation is accomplished via FX APIs, like so:
 
@@ -70,7 +88,7 @@ These APIs and associated code-generation are critical to integrating UI and UX 
 	- A PDE (portal definition exports) file emitted as part of extension "A"'s build
 	- A TypeScript definition file for those API types used in the construction of extension "A"'s exported Blades and Parts
 
-### Blade/Part API versioning
+### Blade and Part API versioning
 
 Each UI-extension-developed Blade and Part includes TypeScript types that describe the set of "parameters" with which that Blade/Part can be invoked:
 
