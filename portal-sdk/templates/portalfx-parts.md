@@ -1,4 +1,5 @@
 {"gitdown": "contents"}
+<!-- TODO:  deprecate this document by removing it.  It has been  replaced by top-extensions-parts.md -->
 
 ## Parts (a.k.a. tiles) 
 

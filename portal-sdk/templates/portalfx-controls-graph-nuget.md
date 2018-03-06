@@ -8,7 +8,7 @@ Applications that need a stand-alone graph control can use the `Microsoft.Portal
 
 ### Requirements
 
-The web page must statically include the following scripts previous to the required data-main paragraph.
+The web page must statically include the following scripts previous to the `data-main` paragraph.
 
 1. **jquery**
 1. **knockout.js** version 3.2.0
@@ -17,17 +17,19 @@ The web page must statically include the following scripts previous to the requi
 
 **NOTE**: **hammerjs** version 1.1.3 has been tested. If **hammer** is not included, the extension will not get multi-touch, but everything else should work correctly.
 
-The **requirejs** is used to load the graph control, with the program entry that is specified in data-main. There are 3 modules that should be explicitly brought in as dependencies. 
+The **requirejs** is used to load the graph control, with the program entry that is specified in `data-main`. There are three modules that should be explicitly brought in as dependencies. 
 
-* Viva.Controls/Controls/Visualization/Graph/GraphWidget 
+<!-- TODO: Determine whether there is a sample for this. -->
+
+* `Viva.Controls/Controls/Visualization/Graph/GraphWidget` 
 
     Contains the widget
 
-* Viva.Controls/Controls/Visualization/Graph/GraphViewModel 
+*` Viva.Controls/Controls/Visualization/Graph/GraphViewModel`
 
     Contains the ViewModel that supports the widget
 
-* Viva.Controls/Controls/Visualization/Graph/GraphEntityViewModel 
+* `Viva.Controls/Controls/Visualization/Graph/GraphEntityViewModel` 
 
     Defines graph node and edges classes
 

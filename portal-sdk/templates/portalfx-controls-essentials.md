@@ -20,7 +20,9 @@ The `Essentials` control is basically divided into the following three categorie
 
 * [Features](#features)
 
-### Options
+* * *
+
+## Options
 
 There are four options in the `Essentials` control: the default, the custom, the non-resource, and the responsive options. They all allow an extension to control the behavior of the `Essentials` control by using initialization options and provided feature functions. They are all used in approximately the same way, although the instructions for use differ slightly by the type of option that is being developed.
 
@@ -30,7 +32,7 @@ After that, the extension should use a `Configurable` decorator to persist the R
 
 Lastly, the extension defines the `_initializeControl` method that initializes the control.
 
-#### Default Layout
+### Default Layout
 
 The defaults are the most common use case.  The default `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`. This code is also included in the following example. To use the default `Essentials` control, compose a template blade that contains it.
 
@@ -46,7 +48,7 @@ The defaults are the most common use case.  The default `Essentials` control is 
 
     {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section": "essentials#initControlDefault"}
 
-#### Custom Layout
+### Custom Layout
 
 The custom layout allows the extension to change freely the layout order of built-in and other properties. The `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsCustomLayoutBlade.ts`. This code is also included in the following example. To use the custom layout `essentials` control, compose a template blade that contains it.
 
@@ -62,7 +64,7 @@ The custom layout allows the extension to change freely the layout order of buil
 
     {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsCustomLayoutBlade.ts","section": "essentials#initControlCustomLayout"}
 
-#### Non-Resource Layout
+### Non-Resource Layout
 
 Non-resource essentials allow an extension to use the `Essentials` control without a resource id. It can change layout orders of all properties freely. To use the non-resource `essentials` control, compose a template blade that contains it.  The non-resource `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsNonResourceBlade.ts`. This code is also included in the following example. 
 
@@ -80,7 +82,7 @@ Non-resource essentials allow an extension to use the `Essentials` control witho
 
     {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsNonResourceBlade.ts","section": "essentials#initControlNonResource"} 
 
-#### Responsive Layout
+### Responsive Layout
 
 The `responsive essentials` control customizes the display based on the size and orientation of the screen. The maximum number of columns is based on the width of the parent blade. It is similar to the default sample, in that it sets up the HTML and uses the `Settings` interface and the `Configurable` decorator. The major difference is in the control initialization, as in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsResponsiveBlade.ts` and in  the following code. 
 
@@ -88,11 +90,11 @@ The `responsive essentials` control customizes the display based on the size and
 
     {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsResponsiveBlade.ts","section": "essentials#responsive"} 
 
-### Types
+## Types
 
 There are two types: [properties](#properties) and [items](#items).
 
-#### Properties
+### Properties
 
 <!-- TODO: Determine whether this section should be more verbose, and if so, what the descriptive content should be. -->
 
@@ -161,7 +163,7 @@ Built-in properties can be obtained from resource data. Other properties are for
     }
     ```
 
-#### Items
+### Items
 
 Items may contain single values, or they may contain multiple values on separate lines, as in the following examples.
 
@@ -192,10 +194,10 @@ Items may contain single values, or they may contain multiple values on separate
     }
     ```
 
-### Features
+## Features
 
 
-#### Callbacks
+### Callbacks
 
 Resource blade `open` and `close` callback functions are provided and can be used for logging, telemetry and  other needed tasks.
 
@@ -205,13 +207,13 @@ The `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\E
 
 {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section": "essentials#bladeCallbacks"}
 
-#### Dynamic Properties
+### Dynamic Properties
 
 In the following code, the sample **AJAX** response contains four properties. The first two items are dynamically added to the left pane, and the last two  items are added to the right pane, as in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`. 
 
 {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section": "essentials#addDynamicProps"} 
 
-#### Responsive Columns
+### Responsive Columns
 
 In the following code, the optional `boolean` property named `responsiveColumns` can be set to `true` to use the responsive columns feature. The sample is located at `<dir>\Client\V2\Controls\Essentials\EssentialsResponsiveBlade.ts`. The blade whose property is set to `Small` contains a single column, and the full-screen blade contains several columns depending on the width of the blade. This code is also included in the following example.
 
