@@ -37,6 +37,7 @@
 
 * [Defining Blades and Parts using TypeScript decorators (a.k.a. 'no-PDL')](portalfx-no-pdl-programming.md#defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl)
 
+<!-->
 * [Parts (a.k.a. tiles)](portalfx-parts.md#parts-a-k-a-tiles)
 
 <!--

@@ -83,14 +83,14 @@ export class ButtonPartViewModel extends MsPortalFx.ViewModels.ButtonPart {
    /**
     * Initialize the part.
     */
-   constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState: any, dataContext: PartsArea.DataContext) {
+   constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState: any, dataContext: DataContext) {
        super();
        this.title(ClientResources.AssetTypeNames.Robot.singular);
        this.shortTitle(ClientResources.AssetTypeNames.Robot.singular);
        this.description(ClientResources.robotDescription);
-       this.icon(SvgLogo.Content.SamplesExtension.Images.robot);
+       this.icon(CommonImages.robot);
 
-       container.assetName(ClientResources.robotManafacturerBotsAreUs);
+       container.assetName(ClientResources.robotManufacturerBotsAreUs);
    }
 }
 

@@ -63,7 +63,7 @@ Design each tile to work in at least 3 different sizes so they can be easily cus
 
 ![Part][part]
 
-[Learn more](portalfx-parts.md)
+[Learn more](top-extensions-parts.md)
 
 <a name="ui-concepts-top-bar"></a>
 ### Top bar
