@@ -44,11 +44,11 @@ Set up the `Settings` interface.
 
 Use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel, as in the following example.
 
-    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section": "essentials#startBladeDefault"}
+{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section": "essentials#startBladeDefault"}
 
 Define the `_initializeControl` method that initializes the control, as in the following example.
 
-    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section": "essentials#initControlDefault"}
+{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section": "essentials#initControlDefault"}
 
 ### Custom Layout
 
