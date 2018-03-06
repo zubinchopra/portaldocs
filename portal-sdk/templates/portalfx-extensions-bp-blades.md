@@ -5,6 +5,14 @@ Portal development patterns or architectures that are recommended based on custo
 
 **NOTE**: These patterns are recommended for every extension, but they are not required.
 
+Typically, extensions follow these best practices.
+	
+* Never change the name of a Blade or a Part
+
+* Limit their `parameters` updates to the addition of parameters that are marked in TypeScript as optional
+
+* Never remove parameters from their `Parameters` type
+
 ### Resource List blades
 
   Resource List blades are also known as browse blades.

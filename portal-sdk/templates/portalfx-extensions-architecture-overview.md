@@ -52,7 +52,21 @@ UI extensions develop their Blades and Parts following the [MVVM](portalfx-exten
 
 UI extensions develop a Blade or Part to this pattern by developing a TypeScript class adorned with a TypeScript decorator, as in the following code.
 
-`<insert code snippet>`
+```
+@TemplateBlade.Decorator({
+    htmlTemplate: "./WebsiteDetails.html"
+})
+export class WebsiteDetailsTemplateBlade {
+    public title = "Website details";
+    public subtitle: string;
+
+    public context: TemplateBlade.Context<void, WebsitesArea.DataContext>;
+
+    public onInitialize() {
+        return this._loadWebsiteDetails();
+    }
+}
+```
 
 **NOTE**: Blades and Parts were previously developed by authoring XAML that describes the mapping from a Blade / Part name to its corresponding `ViewModel` TypeScript class and its associated "view" HTML template.  This XAML API (named "PDL" for Portal Definition Language) was found to be developer-unfriendly in that it required that all three artifacts -- the XAML file, the TypeScript class file and the HTML template file -- be managed separately and kept in sync.  The new "no-PDL" TypeScript decorator APIs allow for a Blade or Part to be developed in a single TypeScript file.
 
@@ -78,7 +92,15 @@ In any of these cases, the HTTPS call includes an [AAD](portalfx-extensions-glos
 
 Frequently, user interactions with the Portal chrome and within Blade/Part UI will cause in-Portal navigation to a new Blade.  This navigation is accomplished via FX APIs, as in the following example.
 
-`<insert code snippet>`
+```
+public onClick() {
+    const { container, parameters } = this.context;
+
+    container.openBlade(new WebsiteDetailsBladeReference({
+        resourceId: parameters.resourceId
+    }));
+}
+```
 
 There are two important concepts regarding navigation that are demonstrated here.  First, in-Portal navigation is accomplished by using an FX TypeScript API available to UI-extension-authored Blades and Parts instead of by using URL.  Second, the API requires the following uses of a code-generated BladeReference.
 
@@ -88,7 +110,19 @@ There are two important concepts regarding navigation that are demonstrated here
 
 For every Blade and Part developed in a UI extension, Ibiza tooling will code-generate a corresponding `BladeReference` or `PartReference` that can be utilized with FX APIs to open a Blade and to pin a Part respectively, as in the following example.
 
-`<insert pin part snippet>`
+```
+import * as PartPinner from "Fx/Pinner";
+
+public onPinButtonClick() {
+    const { parameters } = this.context;
+    
+    PartPinner.pin([
+        new WebsitePartReference({
+            resourceId: parameters.resourceId
+        })
+    ]);
+}
+```
 
 These APIs and associated code-generation are critical to integrating UI and UX across Azure services.  The same `BladeReference` and `PartReference` classes useful to extension "A" for navigating among its Blades/Parts can be employed by extension "B" to link to Blades from "A".  All that is necessary is for extension "A" to redistribute a code package containing the following.
 
@@ -100,7 +134,21 @@ These APIs and associated code-generation are critical to integrating UI and UX 
 
 Each UI-extension-developed Blade and Part includes TypeScript types that describe the set of parameters with which that Blade/Part can be invoked, as in the following example.
 
-`<insert code snippet>`
+```
+export interface WebsiteDetailsBladeParameters {
+    resourceId: string;
+}
+
+public onClick() {
+    const { container, parameters } = this.context;
+    const bladeParameters: WebsiteDetailsBladeParameters = {
+          resourceId: parameters.resourceId
+    };
+    
+    container.openBlade(new WebsiteDetailsBladeReference(bladeParameters));
+}
+
+```
 
 These form the APIs for the Blades and Parts exported by extension "A" to those teams who wish to link to extension "A" UI.  Like any other API that is produced by one team for the consumption of others, these APIs should be updated only in a backwards-compatible manner.  The TypeScript implementation of a Blade in extension "A" continues to support all versions of the `parameters` type ever published/exported to consuming teams.  Typically, extensions follow these best practices.
 	

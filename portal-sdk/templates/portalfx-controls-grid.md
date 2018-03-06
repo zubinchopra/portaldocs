@@ -1,7 +1,7 @@
 ﻿
 ## Grid
 
-The grid control in the SDK provides a rich set of features to build experiences that visualize tabular, structured data.
+The grid control in the SDK provides a rich set of features to build experiences that display tabular, structured data.
 
 ![alt-text](../media/portalfx-controls/grid-intro.png "Grid")
 
@@ -22,10 +22,9 @@ Some basic implementations are located in the following table.
 
 | Name | Purpose | Location | 
 | ---- | ----- | -- |
-| All Controls in a Grid | | does not work <br>[http://aka.ms/portalfx/samples#blade/SamplesExtension/AllControlsGridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/AllControlsGridInstructions) |
 | All Grid Samples | | [http://aka.ms/portalfx/samples#blade/SamplesExtension/GridInstructions/selectedItem/GridInstructions/selectedValue/GridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/GridInstructions/selectedItem/GridInstructions/selectedValue/GridInstructions)  | 
 | Basic Grid | | [http://aka.ms/portalfx/samples#blade/SamplesExtension/BasicGridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/BasicGridInstructions) | 
-| Context Menu Shortcut Grid | Contains shortcuts to item context menus that are displayed in each row. | does not work <br>[http://aka.ms/portalfx/samples#blade/SamplesExtension/ContextMenuShortcutGridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/ContextMenuShortcutGridInstructions) |
+| Context Menu Shortcut Grid | Contains shortcuts to item context menus that are displayed in each row. | [http://aka.ms/portalfx/samples#blade/SamplesExtension/ItemsWithDynamicCommandsBlade](http://aka.ms/portalfx/samples#blade/SamplesExtension/ItemsWithDynamicCommandsBlade) |
 | Editable Grid |  Contains editable rows | [http://aka.ms/portalfx/samples#blade/SamplesExtension/EditableGridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/EditableGridInstructions) |
 | Filterable Grid | Contains filterable rows | [http://aka.ms/portalfx/samples#blade/SamplesExtension/FilterableGridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/FilterableGridInstructions) |
 | Formatted Grid | | [http://aka.ms/portalfx/samples#blade/SamplesExtension/FormattedGridInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/FormattedGridInstructions) | 

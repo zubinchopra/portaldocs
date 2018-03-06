@@ -39,9 +39,7 @@ If the extension previously combined two `DateTimeComboBoxes` together to select
 
 1. Update the namespace with DateTimePicker.
 
-    <details>
-
-    <summary>Old code</summary>
+    * Old code
 
     ```
     var dateTimeVM = new MsPortalFx.ViewModels.Obsolete.Forms.DateTimeCombo.ViewModel(container, {...});
@@ -50,19 +48,18 @@ If the extension previously combined two `DateTimeComboBoxes` together to select
     var dateTimeVM = new MsPortalFx.ViewModels.Obsolete.Forms.DateTimeComboBox.ViewModel(container, {...});
     ```
 
-    </details>
+ 
 
-    <details>
-    <summary>New code</summary>
+   * New code
 
     ```
     import * as DateTimePicker from "Fx/Controls/DateTimePicker";
     var dateTimeVM = DateTimePicker.create(container, {...});
     ```
-    </details>
+ 
 
 1. If the `DateTimeComboBox.formatString` was set, it should be removed from the extension. The new `DateTimePicker` does not support formatting the datetime value. The values are presented in the general long date/time pattern by default, for example, " 6/7/2017 4:20:00 PM". An example of the code that should be removed is as follows.
 
-```
-dateTimeVM.formatString("G");
-```
+    ```
+    dateTimeVM.formatString("G");
+    ```
