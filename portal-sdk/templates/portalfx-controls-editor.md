@@ -33,7 +33,7 @@ You can control the behavior and features of the editor via initialization optio
 
 {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/Controls/Editor/ViewModels/EditorViewModels.ts","section":"editor#sampleEditorViewModel"} 
 
-1. Now the part can be consumed from an extension by referencing it in the PDL, as in the following code.
+3. Now the part can be consumed from an extension by referencing it in the PDL, as in the following code.
 
 {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/Controls/Editor/Editor.pdl","section":"editor#custompart"}
 
