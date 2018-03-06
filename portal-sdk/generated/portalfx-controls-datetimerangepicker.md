@@ -32,19 +32,15 @@ The `DateTimeRangePicker` control is the recommended control for date/time range
 
 1. Update the namespace with DateTimeRangePicker
 
-    <details>
-
-    <summary>Old code</summary>
+     * Old code
 
         ```
         var startDateTimeViewModel = new MsPortalFx.ViewModels.Obsolete.Forms.DateTimeComboBox.ViewModel(container, {...});
         var endDateTimeViewModel = new MsPortalFx.ViewModels.Obsolete.Forms.DateTimeComboBox.ViewModel(container, {...});
 
         ```
-    </details>
-
-    <details>
-    <summary>New code</summary>
+  
+     * New code
 
         ```
         import * as DateTimeRangePicker from "Fx/Controls/DateTimeRangePicker";
@@ -63,12 +59,11 @@ The `DateTimeRangePicker` control is the recommended control for date/time range
             ],
         });
         ```
-    </details>
 
 1. If the `DateTimeComboBox.formatString` was set, it should be removed from the extension. The new `DateTimePicker` does not support formatting the datetime value now. The values are presented in general long date/time pattern  by default, for example, "6/7/2017 4:20:00 PM". An example of the code that should be removed is as follows.
 
-```
-  startDateTimeViewModel.formatString("G");
-  endDateTimeViewModel.formatString("G");
-```
+    ```
+    startDateTimeViewModel.formatString("G");
+    endDateTimeViewModel.formatString("G");
+    ```
 

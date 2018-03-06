@@ -98,4 +98,4 @@ This rule displays one metric that represents the average value of each data ser
 
 <!-- TODO: Determine the whereabouts of this sample, because it no longer ships with the SDK under the following name. Might it be Client\V1\Controls\Metrics\ViewModels\MetricsViewModels.ts -->
 
-For a full example of the metrics rules implementation, see `\Client\Controls\Chart\ViewModels\LineChartDateTimeViewModels.ts`.
+For a full example of the metrics rules implementation, see `<dir>\Client\Controls\Chart\ViewModels\LineChartDateTimeViewModels.ts`.

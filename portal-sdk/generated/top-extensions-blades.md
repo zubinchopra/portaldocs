@@ -1622,6 +1622,14 @@ Portal development patterns or architectures that are recommended based on custo
 
 **NOTE**: These patterns are recommended for every extension, but they are not required.
 
+Typically, extensions follow these best practices.
+	
+* Never change the name of a Blade or a Part
+
+* Limit their `parameters` updates to the addition of parameters that are marked in TypeScript as optional
+
+* Never remove parameters from their `Parameters` type
+
 <a name="blades-and-template-blades-best-practices-resource-list-blades"></a>
 ### Resource List blades
 
@@ -1650,7 +1658,12 @@ Best practices for create blades cover common scenarios that will save time and 
 * Every service should expose a way to get scripts to automate provisioning. Automation options should include CLI, PowerShell, .NET, Java, Node, Python, Ruby, PHP, and REST, in that order. ARM-based services that use template deployment are opted in by default.
 
 
- 
+ ## Frequently asked questions
+
+<a name="blades-and-template-blades-best-practices-"></a>
+### 
+
+* * * 
 
  ## Glossary
 
