@@ -39,7 +39,7 @@ Use the following steps to replace the deprecated control with the new `TextBox`
     const textBoxVM = new MsPortalFx.ViewModels.Controls.Forms.TextBox.ViewModel(lifetimeManager, {...// Options goes here});
     ```
 
-  * New code
+   * New code
   
     ```cs
     import * as TextBox from "Fx/Controls/TextBox";
@@ -55,7 +55,7 @@ Use the following steps to replace the deprecated control with the new `TextBox`
     textBoxVM.placeHolder("PlaceHolder text goes here");
     ```
  
-   * New code
+    * New code
 
     ```cs
     const textBoxVM = TextBox.create(lifetimeManager, {
@@ -70,8 +70,7 @@ Use the following steps to replace the deprecated control with the new `TextBox`
 
 1. Move the `TextBox.ViewModel.events.enterPressed` method  to the `TextBox.ViewModel.onEnterPressed` method.
 
- 
-  * Old code
+   * Old code
     <!--TODO:  Determine whether  enterPresseded is a typographical error. -->
     
     ```cs
