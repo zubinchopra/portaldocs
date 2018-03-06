@@ -37,9 +37,9 @@ Lastly, the extension defines the `_initializeControl` method that initializes t
 <a name="options-default-layout"></a>
 ### Default Layout
 
-The defaults are the most common use case.  The default `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`. This code is also included in the following example.
+The defaults are the most common use case.  The default `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`. 
 
-To use the default `Essentials` control, compose a template blade that contains it.
+To use the default `Essentials` control, compose a template blade that contains it. The first step is to set up the `Settings` interface, as in the following example.
 
 ```typescript
 
@@ -61,9 +61,7 @@ export class EssentialsDefaultBlade {
 
 ```
 
-Set up the `Settings` interface. 
-
-Use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel, as in the following example.
+The second step is to use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel, as in the following example.
 
 ```typescript
 
@@ -159,7 +157,7 @@ public onInitialize(): Q.Promise<void> {
 
 ```
 
-Define the `_initializeControl` method that initializes the control, as in the following example.
+The third step is to define the `_initializeControl` method that initializes the control, as in the following example.
 
 ```typescript
 
@@ -223,7 +221,9 @@ private _initializeControl(): void {
 <a name="options-custom-layout"></a>
 ### Custom Layout
 
-The custom layout allows the extension to change freely the layout order of built-in and other properties. The `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsCustomLayoutBlade.ts`. This code is also included in the following example. To use the custom layout `essentials` control, compose a template blade that contains it.
+The custom layout allows the extension to change freely the layout order of built-in and other properties. The `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsCustomLayoutBlade.ts`.
+
+To use the custom layout `essentials` control, compose a template blade that contains it. The first step is to set up the `Settings` interface to persist the `expanded` property that contains the state of the `Essentials` control, as in the following example.
 
 ```typescript
 
@@ -244,11 +244,9 @@ export class EssentialsCustomLayoutBlade {
 
 ``` 
 
-1. Set up the `Settings` interface to persist the `expanded` property that contains the state of the `Essentials` control.
+The second step is to use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel, as in the following example.
 
-1. Use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel, as in the following example.
-
-    ```typescript
+```typescript
 
 public title = ClientResources.essentialsCustomLayoutEssentials;
 public subtitle = ClientResources.controls;
@@ -291,9 +289,9 @@ public onInitialize(): Q.Promise<void> {
 
 ``` 
 
-1. Define the `_initializeControl` that initializes the control, as in the following example.
+The third step is to define the `_initializeControl` that initializes the control, as in the following example.
 
-    ```typescript
+```typescript
 
 /**
  * Initializes the Essentials control.
@@ -359,7 +357,9 @@ private _initializeControl(): void {
 <a name="options-non-resource-layout"></a>
 ### Non-Resource Layout
 
-Non-resource essentials allow an extension to use the `Essentials` control without a resource id. It can change layout orders of all properties freely. To use the non-resource `essentials` control, compose a template blade that contains it.  The non-resource `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsNonResourceBlade.ts`. This code is also included in the following example. 
+Non-resource essentials allow an extension to use the `Essentials` control without a resource id. It can change layout orders of all properties freely. The non-resource `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsNonResourceBlade.ts`. 
+  
+To use the non-resource `essentials` control, compose a template blade that contains it.  The first step is to set up the `Settings` interface, as in the following example.
 
 ```typescript
 
@@ -380,30 +380,9 @@ export class EssentialsNonResourceBlade {
 
 ``` 
 
-1. Set up the `Settings` interface. 
+The second step is to use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel, as in the following example.
 
-    ```typescript
-
-export interface Settings {
-expanded: boolean;
-}
-
-/*
- * Essentials sample without a resourceId.
- * Since there is no resource items, all items should be provided by the author.
- */
-@TemplateBlade.Decorator({
-htmlTemplate: `<div data-bind="pcControl: essentials"></div>`
-})
-// The 'Configurable' decorator is applied here so the Blade can persist the 'expanded' property of the essentials control.
-@TemplateBlade.Configurable.Decorator()
-export class EssentialsNonResourceBlade {
-
-``` 
-
-1. Use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel, as in the following example.
-
-    ```typescript
+```typescript
 
 public title = ClientResources.essentialsNonResourceEssentials;
 public subtitle = ClientResources.controls;
@@ -451,9 +430,9 @@ public onInitialize(): Q.Promise<void> {
 
 ``` 
 
-1. Define the `_initializeControl` that initializes the control, as in the following example.
+The third step is to define the `_initializeControl` that initializes the control, as in the following example.
 
-    ```typescript
+```typescript
 
 /**
  * Initializes the Essentials control.
@@ -516,6 +495,7 @@ private _initializeControl(): void {
 
 ``` 
 
+<a name="options-responsive-layout"></a>
 ### Responsive Layout
 
 The `responsive essentials` control customizes the display based on the size and orientation of the screen. The maximum number of columns is based on the width of the parent blade. It is similar to the default sample, in that it sets up the HTML and uses the `Settings` interface and the `Configurable` decorator. The major difference is in the control initialization, as in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsResponsiveBlade.ts` and in  the following code. 
@@ -567,12 +547,10 @@ this.essentials =  Essentials.create(this.context.container, {
 
 ``` 
 
-<a name="types"></a>
 ## Types
 
 There are two types: [properties](#properties) and [items](#items).
 
-<a name="types-properties"></a>
 ### Properties
 
 <!-- TODO: Determine whether this section should be more verbose, and if so, what the descriptive content should be. -->
@@ -642,7 +620,6 @@ Built-in properties can be obtained from resource data. Other properties are for
     }
     ```
 
-<a name="types-items"></a>
 ### Items
 
 Items may contain single values, or they may contain multiple values on separate lines, as in the following examples.
@@ -674,11 +651,9 @@ Items may contain single values, or they may contain multiple values on separate
     }
     ```
 
-<a name="features"></a>
 ## Features
 
 
-<a name="features-callbacks"></a>
 ### Callbacks
 
 Resource blade `open` and `close` callback functions are provided and can be used for logging, telemetry and  other needed tasks.
@@ -712,7 +687,6 @@ onBladeClose: (origin: Essentials.BuiltInType) => {
 
 ```
 
-<a name="features-dynamic-properties"></a>
 ### Dynamic Properties
 
 In the following code, the sample **AJAX** response contains four properties. The first two items are dynamically added to the left pane, and the last two  items are added to the right pane, as in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`. 
@@ -772,7 +746,6 @@ return sampleAJAXFunction()
 
 ``` 
 
-<a name="features-responsive-columns"></a>
 ### Responsive Columns
 
 In the following code, the optional `boolean` property named `responsiveColumns` can be set to `true` to use the responsive columns feature. The sample is located at `<dir>\Client\V2\Controls\Essentials\EssentialsResponsiveBlade.ts`. The blade whose property is set to `Small` contains a single column, and the full-screen blade contains several columns depending on the width of the blade. This code is also included in the following example.
