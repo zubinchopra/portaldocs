@@ -221,7 +221,7 @@ Custom language can be used by declaring an inherited Editor control ViewModel w
             };
         }
 
-        /**
+        /**   
         * updates the markers according to the text content
         */
         private updateMarkers(value: string): void {
