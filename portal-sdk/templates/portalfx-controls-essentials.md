@@ -84,7 +84,7 @@ The third step is to define the `_initializeControl` that initializes the contro
 
 The `responsive essentials` control customizes the display based on the size and orientation of the screen. The maximum number of columns is based on the width of the parent blade. It is similar to the default sample, in that it sets up the HTML and uses the `Settings` interface and the `Configurable` decorator. The major difference is in the control initialization, as in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsResponsiveBlade.ts`.  To use the control, define the `_initializeControl` method, as in the following example.
 
-    {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsResponsiveBlade.ts","section": "essentials#responsive"} 
+{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsResponsiveBlade.ts","section": "essentials#responsive"} 
 
 ## Types
 
