@@ -31,7 +31,7 @@ With this system, a team develops a UI extension to plug into and extend the UI 
 
 The Azure Portal web application is designed to the [single-page application pattern](portalfx-extensions-glossary-architecture.md), where UI is generated via client-side-evaluated JavaScript and dynamic HTML.  The Azure Portal "Shell" is the client-side JavaScript that controls the overall rendering of UI in the browser.  The Shell is responsible for rendering the "chrome" of the Azure Portal (the navigation menu on the left and bar at the top).  Any team- or service-specific UI is developed in UI extensions as Blades (pages or windows) and Parts (tiles).  Based on user interaction with the Azure Portal UI, the Shell determines which Blades/Parts are to be displayed and it delegates the rendering of these Blades/Parts to the appropriate extension(s).
 
-<Insert diagram here>
+`<Insert diagram here>`
 
 <a name="azure-portal-extensions-architecture-azure-portal-a-composed-web-application-ui-extensions"></a>
 ### UI extensions
@@ -56,76 +56,94 @@ In 2013, when the Azure Portal was designed, the only browser facility suitable 
 UI extensions develop their Blades and Parts following the [MVVM](portalfx-extensions-glossary-architecture.md) pattern.  
 * The "view" is defined as a Blade/Part-specific HTML template.  The HTML template typically arranges uses of FX controls in the Blade/Part content area.
 *  The HTML template and FX controls are bound to a UI-extension-developed "view model" TypeScript class, which is where the UI extension business logic is isolated from the JavaScript of the larger Portal application and from other UI extensions.
-* The "view model" frequently includes "model" data loaded via AJAX from the cloud, though most often it is loaded from the Azure Resource Manager or from the team's/service's Resource Provider.
+* The "view model" frequently includes "model" data loaded via AJAX from the cloud, though most often it is loaded from the Azure Resource Manager or from the team's/service's [Resource Provider](portalfx-extensions-glossary-architecture.md).
 
 UI extensions develop a Blade or Part to this pattern by developing a TypeScript class adorned with a TypeScript decorator, as in the following code.
 
-<insert code snippet>
+`<insert code snippet>`
 
 **NOTE**: Blades and Parts were previously developed by authoring XAML that describes the mapping from a Blade / Part name to its corresponding "view model" TypeScript class and its associated "view" HTML template.  This XAML API (named "PDL" for Portal Definition Language) was found to be developer-unfriendly in that it required that all three artifacts -- the XAML file, the TypeScript class file and the HTML template file -- be managed separately and kept in sync.  The new "no-PDL" TypeScript decorator APIs allow for a Blade or Part to be developed in a single TypeScript file.
 
 Now, when a UI extension's Blade or Part is to be displayed, the Shell instantiates in that UI extension's IFrame an instance of the Blade / Part TypeScript class, also known as the "view model".  To "project" this Blade/Part UI into the Shell-managed visible IFrame that the user sees, the Shell makes use of a simple object-remoting API.  Here, the Blade / Part "view" and "view model" are copied and sent via the HTML `postMessage` API to the visible IFrame managed by the Shell.  It is in the Shell-managed, visible IFrame that the "view" and "view model" are two-way bound,  using the Knockout.js OSS library that is located at [http://knockoutjs.com/](http://knockoutjs.com/).
 
-<insert diagram>
+`<insert diagram>`
 
 Because most UI is dynamic, like Forms that the user updates or like Grids/Lists that are refreshed to reflect new/updated server data, changes to the "view model" are kept consistent between the Shell and UI extension IFrames.  The object-remoting system detects changes to [Knockout.js](http://knockoutjs.com/) observables  that are embedded in the "view model", computes diffs between the two "view model" copies and uses "postMessage" to send diff-grams between the two "view model" copies.  Beyond the conventional use of the Knockout.js library by the UI extension and its "view model" class, complexities of the object-remoting system are hidden from the UI extension developer.
 
 <a name="azure-portal-extensions-architecture-azure-portal-a-composed-web-application-secure-per-service-ui"></a>
 ### Secure per-service UI
 
-The security model for UI extensions builds upon the standard same-origin policy that supported by all browsers and is the basis for today's web applications.  A UI extension's homepage URL is typically located on an origin specific to that UI extension and its Resource Provider.  This HTML page can only issue HTTPS calls to its origin domain and any origins that allow CORs (see https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) calls from the UI extension's origin.
+The security model for UI extensions builds upon the standard [same-origin policy](portalfx-extensions-glossary-architecture.md) that supported by all browsers and is the basis for today's web applications.  A UI extension's homepage URL is typically located on an origin specific to that UI extension and its resource provider.  This HTML page can only issue HTTPS calls to its origin domain and any origins that allow [COR](portalfx-extensions-glossary-architecture.md) calls from the UI extension's origin.
 
-In practice, HTTPS calls from UI extensions are made from the client to load "model" data, and the HTTPS calls are typically directed to these locations:
-	- Using CORs, to the Azure Resource Manager (ARM) and/or to the service's Resource Provider (RP);
-	- Less common, not recommended -- Using same-origin, to HTTP endpoints (to "extension controllers") dedicated to the operation of the UI extension.
-In any of these cases, the HTTPS call includes an AAD token authorizing the UI extension to act on behalf of the user against those Azure resource types that the UI extension supports.  The AAD token is obtained during AAD single-sign-on authentication that precedes the loading of the Portal Shell.  When a UI extension is loaded into its client-side IFrame and asked to render a Blade or a Part, the UI extension typically calls an FX API with which it can acquire an AAD token scoped to that UI extension.  To load "model" data, the UI extension then issues HTTP calls carrying this token to ARM, to its RP or to its "extension controller".
+In practice, HTTPS calls from UI extensions are made from the client to load "model" data, and the HTTPS calls are typically directed to the following locations.
+
+* Using CORs, to the Azure Resource Manager (ARM) and/or to the service's Resource Provider (RP);
+
+* Less common, not recommended -- Using same-origin, to HTTP endpoints that are  extension controllers that are  dedicated to the operation of the UI extension.
+
+In any of these cases, the HTTPS call includes an [AAD](portalfx-extensions-glossary-architecture.md) token that authorizes the UI extension to act on behalf of the user against those Azure resource types that the UI extension supports.  The AAD token is obtained during AAD single-sign-on authentication that precedes the loading of the Portal Shell.  When a UI extension is loaded into its client-side IFrame and asked to render a Blade or a Part, the UI extension typically calls an FX API with which it can acquire an AAD token that is scoped to that UI extension.  To load "model" data, the UI extension then issues HTTP calls carrying this token to ARM, to its RP or to its extension controller.
 
 <a name="azure-portal-extensions-architecture-azure-portal-a-composed-web-application-linking-and-navigating-within-the-portal"></a>
 ### Linking and navigating within the Portal
 
-Frequently, user interactions with the Portal "chrome" and within Blade/Part UI will cause in-Portal navigation to a new Blade.  This navigation is accomplished via FX APIs, like so:
+Frequently, user interactions with the Portal chrome and within Blade/Part UI will cause in-Portal navigation to a new Blade.  This navigation is accomplished via FX APIs, as in the following example.
 
-<insert code snippet>
+`<insert code snippet>`
 
-There are two important concepts re: navigation that are demonstrated here.  First, in-Portal navigation is not accomplished via URL but, rather, through a FX TypeScript API available to UI-extension-authored Blades and Parts.  Second, the API requires use of a code-generated BladeReference used:
-	- to identify the target Blade in question and 
-	- to provide a compiler-verified API for the Blade's parameters.
-For every Blade and Part developed in a UI extension, Ibiza tooling will code generate a corresponding BladeReference or PartReference that can be utilized with FX APIs to "open a Blade" and to "pin a Part" respectively.
+There are two important concepts regarding navigation that are demonstrated here.  First, in-Portal navigation is accomplished by using an FX TypeScript API available to UI-extension-authored Blades and Parts instead of by using URL.  Second, the API requires the following uses of a code-generated BladeReference.
 
-<insert pin part snippet>
+* To identify the target Blade in question 
 
-These APIs and associated code-generation are critical to integrating UI and UX across Azure services.  The same BladeReference and PartReference classes useful to extension "A" for navigating among its Blades/Parts can be employed by extension "B" to link to Blades from "A".  All that is necessary is for extension "A" to redistribute a code package containing:
-	- A PDE (portal definition exports) file emitted as part of extension "A"'s build
-	- A TypeScript definition file for those API types used in the construction of extension "A"'s exported Blades and Parts
+* To provide a compiler-verified API for the Blade's parameters
+
+For every Blade and Part developed in a UI extension, Ibiza tooling will code-generate a corresponding `BladeReference` or `PartReference` that can be utilized with FX APIs to open a Blade and to pin a Part respectively, as in the following example.
+
+`<insert pin part snippet>`
+
+These APIs and associated code-generation are critical to integrating UI and UX across Azure services.  The same `BladeReference` and `PartReference` classes useful to extension "A" for navigating among its Blades/Parts can be employed by extension "B" to link to Blades from "A".  All that is necessary is for extension "A" to redistribute a code package containing the following.
+
+* A [PDE](portalfx-extensions-glossary-architecture.md) file emitted as part of extension "A"'s build
+
+* A TypeScript definition file for those API types used in the construction of extension "A"'s exported Blades and Parts
 
 <a name="azure-portal-extensions-architecture-azure-portal-a-composed-web-application-blade-and-part-api-versioning"></a>
 ### Blade and Part API versioning
 
-Each UI-extension-developed Blade and Part includes TypeScript types that describe the set of "parameters" with which that Blade/Part can be invoked:
+Each UI-extension-developed Blade and Part includes TypeScript types that describe the set of parameters with which that Blade/Part can be invoked, as in the following example.
 
-<insert code snippet>
+`<insert code snippet>`
 
-These form the APIs for the Blades and Parts exported by extension "A" to those teams who wish to link to extension "A" UI.  Like any other API that is produced by one team for the consumption of others, these APIs should be updated only in a backwards-compatible manner.  The TypeScript implementation of a Blade in extension "A" must continue to support all versions of the "parameters" type ever published/exported to consuming teams.  Typically, extensions follow the best practices of:
-	- Never changing the name of a Blade or a Part
-	- Limiting their "parameters" updates to the addition of parameters that are marked (in TypeScript) as optional
-	- Never removing parameters from their "Parameters" type
+These form the APIs for the Blades and Parts exported by extension "A" to those teams who wish to link to extension "A" UI.  Like any other API that is produced by one team for the consumption of others, these APIs should be updated only in a backwards-compatible manner.  The TypeScript implementation of a Blade in extension "A" continues to support all versions of the `parameters` type ever published/exported to consuming teams.  Typically, extensions follow these best practices.
+	
+* Never change the name of a Blade or a Part
 
-With this, extensions preserve the flexibility to evolve their sets of Blades and Parts and their APIs (independent of the Portal team and of team's reusing their UI) and to deploy changes at their own cadence (including backward-compatible API changes).
+* Limit their `parameters` updates to the addition of parameters that are marked in TypeScript as optional
 
-Additionally, the Ibiza SDK contains APIs that allow for the wholesale replacement of one Blade or Part for new equivalent Blades/Parts.  It also has APIs that allow for the safe migration of Blades and Part between UI extensions, as responsibilities for certain UI transfers between teams (for instance).
+* Never remove parameters from their `Parameters` type
+
+With this, extensions preserve the flexibility to evolve their sets of Blades and Parts and their APIs, independent of the Portal team and of team's reusing their UI, and to deploy changes at their own cadence, including backward-compatible API changes.
+
+Additionally, the Ibiza SDK contains APIs that allow for the wholesale replacement of one Blade or Part with new equivalent Blades/Parts.  It also has APIs that allow for the safe migration of Blades and Part between UI extensions, for example, when responsibilities for specific UIs transfer between teams.
 
 <a name="azure-portal-extensions-architecture-azure-portal-a-composed-web-application-common-portal-ux-marketplace-and-browse"></a>
 ### Common Portal UX -- Marketplace and Browse
 
-Beyond Blades and Parts, UI extensions can benefit from other UI integration with the Azure Portal, mentioned briefly here.
+Beyond Blades and Parts, UI extensions can benefit from other UI integration with the Azure Portal.
+<!--  mentioned briefly here. -->
 
-First, a UI extension team can develop "Marketplace packages".  Each of these packages describes an entry that will be displayed in the Azure Portal "Marketplace" UI.  A package includes:
-	- Metadata that specifies the UI for the item in the marketplace (icons, text, etc);
-	- Metadata that locates the Blade that will be invoked once that item is selected by the user in the Marketplace.  This Blade is a stylized Form that includes logic that knows how to provision Azure resources;
-	- ARM templates that describe how a resource will be provisioned via ARM.
-A UI extension team publishes their N>0 packages to a service, where all such packages/items are available in queryable form to the Azure Portal and to the Marketplace UI (which, incidentally, is itself implemented as Blades in the "Azure Marketplace" UI extension).
+First, a UI extension team can develop "Marketplace packages".  Each of these packages describes an entry that will be displayed in the Azure Portal "Marketplace" UI.  A package includes the following.
 
-Second, for a given UI extension / ARM resource type to be represented in the standard Azure Portal "Browse" UI, UI extensions develop UI metadata for the resource types their UI extension supports.  At time of writing, this is done with the PDL <AssetType> tag.  No-PDL variants of <AssetType> are currently in development.  An "asset type" is expressed as metadata so that standard Azure Portal UI (like "Browse" Blades and Parts) can display resources without the need to involve UI extension business log (potentially a performance problem when spanning N resources types).
+* Metadata that specifies the UI for the item in the marketplace (icons, text, etc)
+
+* Metadata that locates the Blade that will be invoked once that item is selected by the user in the Marketplace.  This Blade is a stylized Form that includes logic that knows how to provision Azure resources
+
+* ARM templates that describe how a resource will be provisioned via ARM.
+
+A UI extension team publishes their N>0 packages to a service, where all such packages/items are available in queryable form to the Azure Portal and to the Marketplace UI. The Marketplace UI is itself implemented as Blades in the "Azure Marketplace" UI extension.
+
+<!-- TODO: Determine the meaning of "N>0". -->
+
+Second, for a given UI extension / ARM resource type to be represented in the standard Azure Portal "Browse" UI, UI extensions develop UI metadata for the resource types that their UI extension supports.  This is accomplished with the PDL `<AssetType>` tag.  No-PDL variants of `<AssetType>` are currently in development.  An "asset type" is expressed as metadata so that standard Azure Portal UI, like "Browse" Blades and Parts, can display resources without the need to involve UI extension business log, which is potentially a performance problem when spanning N resource types.
 
 
 <a name="azure-portal-extensions-architecture-glossary"></a>
@@ -135,17 +153,21 @@ This section contains a glossary of terms and acronyms that are used in this doc
 
 | Term                              | Meaning |
 | ---                               | --- |
+| AAD                               |  |
 | AMD                               | Asynchronous Module Definition |
 | API                               | Application Programmer Interface |
 | ARM                               | Azure Resource Manager | 
 | asynchronous module definition    | A JavaScript API that specifies a mechanism that defines code modules and their dependencies in order to load them asynchronously. |
+| chrome | | 
 | CLI                               | Command Line Interface |
 |  COR | Cross-origin resource. A mechanism that defines a way in which a browser and server can interact to determine whether or not it is safe to allow the cross-origin requests to be served.  For example, restricted resources, like  fonts,  may be requested from domains outside the domain from other resources are served. It may use additional HTTP headers to allow users to gain permission to access selected resources from a server on a different origin. | 
 | extension                         | A Web application that was developed using the Azure Portal SDK and is made available to users through the Azure Portal. |
 | MVVM                 | Model-View-View-Model methodology.  A  method of software organization that separates the view from the data storage model, but depends on intelligence in the view or in the data objects so that there is no controller module that needs to process or transfer information.  The controller's function is handled instead by the device operating system or by the server that is communicating with the application. This methodology allows the application to multitask, call other functions that are located on the device, or switch between orientations without losing data or damaging the view. |
-| live tile                         | An object that displays information that are useful at a glance without opening an app. |
-| PDL | Program Definition Language |
-| SDK                               | Software Development Kit |
+| live tile                         | An object that displays at-a-glance information without opening an app. |
+| PDE | Portal Definition Exports | 
+| PDL | Program Definition Language or Portal Definition Language |
+| resource provider   | A service that supplies the resources that can be deployed and managed by using Resource Manager. Some common resource providers are `Microsoft.Compute`, which supplies the virtual machine resource, `Microsoft.Storage`, which supplies the storage account resource, and `Microsoft.Web`, which supplies resources related to web apps.  |
+| same-origin policy | A security policy that allows scripts that are contained in one web page can access data in another web page, but only if both pages share the same URI scheme, host name, and port number.  |
 | single page application           | A web application or web site that interacts with the user by dynamically rewriting the current page rather than loading entire new pages from a server. | 
 | UI                                | User Interface |
 | UX                                | User Experience |
