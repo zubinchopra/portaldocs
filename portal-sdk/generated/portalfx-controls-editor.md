@@ -33,7 +33,7 @@ You can control the behavior and features of the editor via initialization optio
 
 1. Create a ViewModel to which to bind the control. The ViewModel for the editor control is included in the following code.
 
-     ```typescript
+```typescript
 
 /**
 * ViewModel class for the editor sample.
@@ -122,7 +122,7 @@ export class EditorInstructionsPartViewModel
 
 1. Now the part can be consumed from an extension by referencing it in the PDL, as in the following code.
 
-     ```xml
+```xml
 
 <CustomPart Name="b_EditorInstructions_part1"
             ViewModel="{ViewModel Name=EditorInstructionsPartViewModel, Module=./Editor/ViewModels/EditorViewModels}"
