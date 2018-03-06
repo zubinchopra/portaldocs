@@ -34,17 +34,19 @@ Lastly, the extension defines the `_initializeControl` method that initializes t
 
 ### Default Layout
 
-The defaults are the most common use case.  The default `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`. This code is also included in the following example. To use the default `Essentials` control, compose a template blade that contains it.
+The defaults are the most common use case.  The default `Essentials` control is in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`. This code is also included in the following example.
+
+To use the default `Essentials` control, compose a template blade that contains it.
 
 {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section": "essentials#setupBladeDefault"}
 
-1. Set up the `Settings` interface. 
+Set up the `Settings` interface. 
 
-1. Use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel, as in the following example.
+Use a `Configurable` decorator to persist the Read/Write `expanded` state in the blade settings and create the ViewModel, as in the following example.
 
     {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section": "essentials#startBladeDefault"}
 
-1. Define the `_initializeControl` method that initializes the control, as in the following example.
+Define the `_initializeControl` method that initializes the control, as in the following example.
 
     {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Essentials/EssentialsDefaultBlade.ts","section": "essentials#initControlDefault"}
 
