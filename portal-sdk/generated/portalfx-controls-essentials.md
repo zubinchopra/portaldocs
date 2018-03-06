@@ -500,7 +500,7 @@ private _initializeControl(): void {
 
 The `responsive essentials` control customizes the display based on the size and orientation of the screen. The maximum number of columns is based on the width of the parent blade. It is similar to the default sample, in that it sets up the HTML and uses the `Settings` interface and the `Configurable` decorator. The major difference is in the control initialization, as in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsResponsiveBlade.ts`.  To use the control, define the `_initializeControl` method, as in the following example.
 
-    ```typescript
+```typescript
 
 this.essentials =  Essentials.create(this.context.container, {
     responsiveColumns: true,
@@ -545,10 +545,12 @@ this.essentials =  Essentials.create(this.context.container, {
 
 ``` 
 
+<a name="types"></a>
 ## Types
 
 There are two types: [properties](#properties) and [items](#items).
 
+<a name="types-properties"></a>
 ### Properties
 
 <!-- TODO: Determine whether this section should be more verbose, and if so, what the descriptive content should be. -->
@@ -618,6 +620,7 @@ Built-in properties can be obtained from resource data. Other properties are for
     }
     ```
 
+<a name="types-items"></a>
 ### Items
 
 Items may contain single values, or they may contain multiple values on separate lines, as in the following examples.
@@ -649,9 +652,11 @@ Items may contain single values, or they may contain multiple values on separate
     }
     ```
 
+<a name="features"></a>
 ## Features
 
 
+<a name="features-callbacks"></a>
 ### Callbacks
 
 Resource blade `open` and `close` callback functions are provided and can be used for logging, telemetry and  other needed tasks.
@@ -685,6 +690,7 @@ onBladeClose: (origin: Essentials.BuiltInType) => {
 
 ```
 
+<a name="features-dynamic-properties"></a>
 ### Dynamic Properties
 
 In the following code, the sample **AJAX** response contains four properties. The first two items are dynamically added to the left pane, and the last two  items are added to the right pane, as in the sample located at `<dir>\Client\V2\Controls\Essentials\EssentialsDefaultBlade.ts`. 
@@ -744,6 +750,7 @@ return sampleAJAXFunction()
 
 ``` 
 
+<a name="features-responsive-columns"></a>
 ### Responsive Columns
 
 In the following code, the optional `boolean` property named `responsiveColumns` can be set to `true` to use the responsive columns feature. The sample is located at `<dir>\Client\V2\Controls\Essentials\EssentialsResponsiveBlade.ts`. The blade whose property is set to `Small` contains a single column, and the full-screen blade contains several columns depending on the width of the blade. This code is also included in the following example.
