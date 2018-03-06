@@ -13,13 +13,24 @@ To use the editor, compose a part that hosts the editor control, then use it fro
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. 
 
-You can control the behavior and features of the editor via initialization `options`.
+This example uses the following code.
 
-1. Define the Html template for the part, as in the example located at     `<dir>\Client\V1\Controls\Editor\Templates\EditorInstructions.html`.
+* `<dir>\Client\V1\Controls\Editor\Templates\EditorInstructions.html`
+  Contains the Html template for the part
 
-1. Create a ViewModel to which to bind the control. The sample located at `<dir>\Client\V1\Controls\Editor\ViewModels\EditorViewModels.ts` implements the viewmodel for the editor. The  control is also included in the following code.
+* `<dir>\Client\V1\Controls\Editor\ViewModels\EditorViewModels.ts` 
+  Contains the ViewModel to which to bind the control
 
-    ```typescript
+* `<dir>\Client\V1\Controls\Editor\Editor.pdl`
+  Connects the part to the extension by referencing it in the PDL
+
+You can control the behavior and features of the editor via initialization options.
+
+1. Define the Html template for the part.
+
+1. Create a ViewModel to which to bind the control. The ViewModel for the editor control is included in the following code.
+
+ ```typescript
 
 /**
 * ViewModel class for the editor sample.
@@ -106,7 +117,7 @@ export class EditorInstructionsPartViewModel
 
 ``` 
 
-1. Now the part can be consumed from an extension by referencing it in the PDL, as in the sample located at `<dir>\Client\V1\Controls\Editor\Editor.pdl` and in the following code.
+1. Now the part can be consumed from an extension by referencing it in the PDL, as in the following code.
 
  ```xml
 
@@ -128,11 +139,20 @@ export class EditorInstructionsPartViewModel
 <a name="editor-editor-with-custom-language"></a>
 ### Editor with Custom Language
 
-Custom language can be used by declaring an inherited Editor control ViewModel with rules and suggestions.
+Custom language can be used by declaring an inherited Editor control ViewModel with rules and suggestions. This example uses the following code.
 
-1. Define the Html template for the part, as in the code located at `<dir>\Client\V1\Controls\Editor\Templates\CustomLanguageEditor.html`
+* `<dir>\Client\V1\Controls\Editor\Templates\CustomLanguageEditor.html`
+  Contains the Html template for the part
 
-1. Create a ViewModel to which to bind the control, as in the code located at `<dir>\Client\V1\Controls\Editor\ViewModels\CustomLanguageEditorViewModels.ts.` The code is also in the following example.
+* `<dir>\Client\V1\Controls\Editor\ViewModels\CustomLanguageEditorViewModels.ts`
+  Contains the ViewModel to which to bind the control
+
+* `<dir>\Client\V1\Controls\Editor\Editor.pdl`
+  Connects the part to the extension by referencing it in the PDL
+
+1. Define the Html template for the part.
+
+1. Create a ViewModel to which to bind the control, as in the following example.
 
     ```cs
     /**
@@ -230,7 +250,7 @@ Custom language can be used by declaring an inherited Editor control ViewModel w
     }
     ```
 
-1. Now the part can be consumed from the extension by referencing it in the PDL, as in the example located at `<dir>\Client\V1\Controls\Editor\Editor.pdl` and in the following code.
+1. Now the part can be consumed from the extension by referencing it in the PDL, as in the following code.
 
     ```xml
     <CustomPart Name="b_EditorInstructions_part1"
