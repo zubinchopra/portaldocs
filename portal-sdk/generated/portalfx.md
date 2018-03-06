@@ -1,4 +1,4 @@
-<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-architecture-intro.md -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-architecture-overview.md -->
 <a name="home"></a>
 # Home
 
@@ -19,7 +19,7 @@ Ready to grow your business?
 <a name="home-onboard-ibiza-portal-sdk-generated-index-portalfx-extension-onboarding-md"></a>
 ## <a href="/portal-sdk/generated/index-portalfx-extension-onboarding.md">Onboard Ibiza</a>
 [portalfx-extensions-onboarding.md](portalfx-extensions-onboarding.md)
-<!-- TODO:  deprecate the previous section of this document by removing it.  It has been  replaced by portalfx-extensions-architecture-intro.md -->
+<!-- TODO:  deprecate the previous section of this document by removing it.  It has been  replaced by portalfx-extensions-architecture-overview.md -->
 
 <a name="extension-developer-resources"></a>
 # Extension Developer Resources

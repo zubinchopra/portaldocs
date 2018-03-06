@@ -1,20 +1,20 @@
-<!--TODO:  This document has been deprecated.  It has been replaced by portalfx-extensions-bp-performance.md -->
 
-<!-- THIS FILE IS REFERENCED IN THE portalfx-performance SECTION PLEASE START ALL HEADINGS WITH H3S -->
+<a name="best-practices"></a>
+## Best Practices
 
-<a name="writing-fast-extensions"></a>
+<a name="best-practices-writing-fast-extensions"></a>
 ### Writing fast extensions
 
 When writing extensions, there are a few patterns you can follow to make sure you're getting the most performance out
 the browser and the portal.
 
-<a name="writing-fast-extensions-use-amd"></a>
+<a name="best-practices-writing-fast-extensions-use-amd"></a>
 #### Use AMD
 
 In the early days of the Azure Portal SDK, it was common to write extensions that bundled all scripts into a single file at
 compilation time. This generally happens if you use reference statements in your classes:
 
-<a name="writing-fast-extensions-use-amd-deprecated-synatx"></a>
+<a name="best-practices-writing-fast-extensions-use-amd-deprecated-synatx"></a>
 ##### [DEPRECATED SYNATX]
 
 ```ts
@@ -42,7 +42,7 @@ project the current UI onto the screen. This makes it faster to unload and reloa
 performance in the browser.  In this case, by using AMD, the following files will only be loaded at runtime as they're required
 (instead of one large bundle):
 
-<a name="writing-fast-extensions-use-amd-correct-synatx"></a>
+<a name="best-practices-writing-fast-extensions-use-amd-correct-synatx"></a>
 ##### [CORRECT SYNATX]
 
 ```ts
@@ -63,7 +63,7 @@ system in the [official language specification](http://www.typescriptlang.org/do
 <!--TODO: Deprecate the following section. It has been replaced by portalfx-extensions-bp-data.md -->
 <!-- TODO:  If this section is not to be deprecated, add a link to it-->
 
-<a name="writing-fast-extensions-use-querycache-and-entitycache"></a>
+<a name="best-practices-writing-fast-extensions-use-querycache-and-entitycache"></a>
 #### Use QueryCache and EntityCache
 
 When performing data access from your view models, it may be tempting to make data calls directly from the `onInputsSet` function. By using the `QueryCache` and `EntityCache` objects from the `DataCache` class, you can control access to data through a single component. A single ref-counted cache can hold data across your entire extension.  This has the following benefits.
@@ -77,7 +77,7 @@ When performing data access from your view models, it may be tempting to make da
 
 To learn more, visit [portalfx-data-caching.md#configuring-the-data-cache](portalfx-data-caching.md#configuring-the-data-cache).
 
-<a name="writing-fast-extensions-avoid-unnecessary-data-reloading"></a>
+<a name="best-practices-writing-fast-extensions-avoid-unnecessary-data-reloading"></a>
 #### Avoid unnecessary data reloading
 
 As users navigate through the Ibiza UX, they will frequently revisit often-used resources within a short period of time.
@@ -116,7 +116,7 @@ See [Reflecting server data changes on the client](portalfx-data-configuringdata
 <!--TODO: Deprecate the previous section. It has been replaced by portalfx-extensions-bp-data.md -->
 
 
-<a name="writing-fast-extensions-use-paging-for-large-data-sets"></a>
+<a name="best-practices-writing-fast-extensions-use-paging-for-large-data-sets"></a>
 #### Use paging for large data sets
 
 When working with a large data set, extension authors should use the paging features of the grid.
@@ -126,7 +126,7 @@ you can check out the samples:
 
 `\Client\Controls\Grid\ViewModels\PageableGridViewModel.ts`
 
-<a name="writing-fast-extensions-use-map-and-filter-to-reduce-size-of-rendered-data"></a>
+<a name="best-practices-writing-fast-extensions-use-map-and-filter-to-reduce-size-of-rendered-data"></a>
 #### Use &quot;map&quot; and &quot;filter&quot; to reduce size of rendered data
 
 Often, it is useful to use the [Knockout projections](https://github.com/stevesanderson/knockout-projections) to shape and filter model data loaded using QueryView and EntityView (see [Shaping and filtering data](portalfx-data-projections.md)).
@@ -156,7 +156,7 @@ container.registerForDispose(projectedItems.subscribe(personItems));
 
 In this example, `map` is used to project new model objects containing only those properties required to fill the columns of the grid.  Additionally, `filter` is used to reduce the size of the array to just those items that will be rendered as grid rows.
 
-<a name="writing-fast-extensions-benefits-to-ui-rendering-performance"></a>
+<a name="best-practices-writing-fast-extensions-benefits-to-ui-rendering-performance"></a>
 #### Benefits to UI-rendering performance
 
 Using the selectable grid SDK sample we can see the benefits to using `map` to project objects with only those properties required by a grid row:
