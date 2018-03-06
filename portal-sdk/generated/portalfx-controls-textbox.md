@@ -22,7 +22,7 @@ The `Textbox` control provides an easy way to allow users to input data.
     });
     ```
 
-1. Insert the `Textbox` control as a member of a Section, or include it in an HTML template by using a 'pcControl' binding. The sample is located at `\Client\V2\Controls\TextBox\TextBoxBlade.ts`. This code is also included in the working copy located at [http://aka.ms/portalfx/samples#blade/SamplesExtension/Textboxblade](http://aka.ms/portalfx/samples#blade/SamplesExtension/Textboxblade).
+1. Insert the `Textbox` control as a member of a Section, or include it in an HTML template by using a 'pcControl' binding. The sample is located at `<dir>\Client\V2\Controls\TextBox\TextBoxBlade.ts`. This code is also included in the working copy located at [http://aka.ms/portalfx/samples#blade/SamplesExtension/Textboxblade](http://aka.ms/portalfx/samples#blade/SamplesExtension/Textboxblade).
 
 <a name="migrating-from-textbox"></a>
 ## Migrating from  <code>TextBox</code>
@@ -35,32 +35,29 @@ Use the following steps to replace the deprecated control with the new `TextBox`
 
 1. Update the `Textbox` with the new namespace.
 
-    <details>
-    <summary>Old code</summary>
-
+    * Old code
+    
     ```cs
     const textBoxVM = new MsPortalFx.ViewModels.Controls.Forms.TextBox.ViewModel(lifetimeManager, {...// Options goes here});
     ```
-    </details>
-    <details>
-    <summary>New code</summary>
 
+  * New code
+  
     ```cs
     import * as TextBox from "Fx/Controls/TextBox";
     const textBoxVM = TextBox.create(lifetimeManager, {...// Options goes here});
     ```
-    </details>
+ 
 
 1. Update the properties, especially `TextBox.ViewModel.placeholder` and `TextBox.ViewModel.events.enterPressed`, for `TextBox.ViewModel.placeholder`.
-    <details>
-    <summary>Old code</summary>
+
+    * Old code
 
     ```cs
     textBoxVM.placeHolder("PlaceHolder text goes here");
     ```
-    </details>
-    <details>
-    <summary>New code</summary>
+ 
+   * New code
 
     ```cs
     const textBoxVM = TextBox.create(lifetimeManager, {
@@ -72,11 +69,11 @@ Use the following steps to replace the deprecated control with the new `TextBox`
 
     textBoxVM.placeHolderText("PlaceHolder text goes here");
     ```
-    </details>
+
 1. Move the `TextBox.ViewModel.events.enterPressed` method  to the `TextBox.ViewModel.onEnterPressed` method.
 
-    <details>
-    <summary>Old code</summary>
+ 
+  * Old code
     <!--TODO:  Determine whether  enterPresseded is a typographical error. -->
     
     ```cs
@@ -85,9 +82,8 @@ Use the following steps to replace the deprecated control with the new `TextBox`
         let enterPresseded: boolean = true;
     };
     ```
-    </details>
-    <details>
-    <summary>New code</summary>
+
+   * New code
     
     ```cs
     const textBoxVM = TextBox.create(lifetimeManager, {
@@ -97,4 +93,3 @@ Use the following steps to replace the deprecated control with the new `TextBox`
         }
     });
     ```
-    </details>
