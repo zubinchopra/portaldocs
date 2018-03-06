@@ -1,6 +1,5 @@
-<!--TODO:  This document has been deprecated.  It has been replaced by portalfx-extensions-bp-performance.md -->
 
-<!-- THIS FILE IS REFERENCED IN THE portalfx-performance SECTION PLEASE START ALL HEADINGS WITH H3S -->
+## Best Practices
 
 ### Writing fast extensions
 

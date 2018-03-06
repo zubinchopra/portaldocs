@@ -1,4 +1,4 @@
-<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-architecture-intro.md -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-architecture-overview.md -->
 # Home 
 
 Azure Portal is a single page web application. The parts of the page in the Portal are loaded by referencing web applications, known as extensions, that are dynamically accessed based on a customer’s action on the Portal. For example, when a customer clicks on virtual machine icon then the Portal will automatically load Virtual Machine management extension. 
@@ -16,7 +16,7 @@ Ready to grow your business?
 # Home 
 ## [Onboard Ibiza](/portal-sdk/generated/index-portalfx-extension-onboarding.md)
 [portalfx-extensions-onboarding.md](portalfx-extensions-onboarding.md)
-<!-- TODO:  deprecate the previous section of this document by removing it.  It has been  replaced by portalfx-extensions-architecture-intro.md -->
+<!-- TODO:  deprecate the previous section of this document by removing it.  It has been  replaced by portalfx-extensions-architecture-overview.md -->
 
 # Extension Developer Resources 
 
