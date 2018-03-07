@@ -46,20 +46,20 @@ export class BladeViewModel extends MsPortalFx.ViewModels.Blade {
 For more information about the TypeScript module loading
 system, see the official language specification located at [http://www.typescriptlang.org/docs/handbook/modules.html](http://www.typescriptlang.org/docs/handbook/modules.html).
 
-### Use paging for large data sets
+### Use pageableGrids for large data sets
 
 When working with large data sets, developers should use grids and their paging features.
 Paging allows deferred loading of rows, so even with large datasets, responsiveness is maintained.
 
 Paging implies that many rows might not need to be loaded at all. For more information about paging with grids, see [portalfx-control-grid.md](portalfx-controls-grid.md)  and the sample located at `<dir>\Client\V1\Controls\Grid\ViewModels\PageableGridViewModel.ts`.
 
-#### Use "map" and "filter" to reduce size of rendered data
+### Filtering data for the selectableGrid 
 
-Often, it is useful to use the [Knockout projections](https://github.com/stevesanderson/knockout-projections) to shape and filter model data loaded using QueryView and EntityView (see [Shaping and filtering data](portalfx-data-projections.md)).
+Significant performance improvements can be achieved by reducing the number of data models that are bound to controls like grids, lists, or charts.
 
-Significant performance improvements can achieved by reducing the number and size of the model objects bound to controls like grids, lists, charts:
+Use the Knockout projections that are located at [https://github.com/stevesanderson/knockout-projections](https://github.com/stevesanderson/knockout-projections) to shape and filter model data.  They work in context with  with the  `QueryView` and `EntityView` objects that are discussed in [portalfx-data-projections.md#using-knockout-projections](portalfx-data-projections.md#using-knockout-projections).
 
-    `\Client\Controls\Grid\ViewModels\SelectableGridViewModel.ts`
+The code located at   `<dir>\Client\V1\Controls\Grid\ViewModels\SelectableGridViewModel.ts` improves extension performance by connecting the reduced model data to a ViewModel that uses grids.  It is also in the following example.
 
 ```ts
 
@@ -76,18 +76,17 @@ var projectedItems = this._view.items
 
 var personItems = ko.observableArray<MappedPerson>([]);
 container.registerForDispose(projectedItems.subscribe(personItems));
-
-
 ```
 
-In this example, `map` is used to project new model objects containing only those properties required to fill the columns of the grid.  Additionally, `filter` is used to reduce the size of the array to just those items that will be rendered as grid rows.
+In the preceding example, the `map` function uses a data model that contains only the properties necessary to fill the columns of the grid in the ViewModel. The `filter` function reduces the size of the array by returning only the  items that will be rendered as grid rows.
 
-#### Benefits to UI-rendering performance
+### Benefits to UI-rendering performance
 
-Using the selectable grid SDK sample we can see the benefits to using `map` to project objects with only those properties required by a grid row:
+The following image uses the selectableGrid `map` function to display only the data that is associated the properties that are required by the grid row.
 
-![Using knockout projections to map an array][mapping]
-[mapping]: ../media/portalfx-performance/mapping.png
+![alt-text](../media/portalfx-performance/mapping.png "Using knockout projections to map an array")
 
-There is almost a 50% reduction in time with these optimizations, but also note that at 300 items it is still over 1.5s. Mapping to just the 2 columns in that selectable grid sample reduces the message size by 2/3 by using the technique described above. This reduces the time needed to transfer the view model as well as reducing memory usage.
-
+* The data contains 300 items, and the time to load is over 1.5s. 
+* The optimization of mapping to just the two columns in the selectable grid reduces the message size by 2/3. 
+* The size reduction decreases the time needed to transfer the view model by about 50% for this sample data.
+* The decrease in size and transfer time also reduces  memory usage.
