@@ -1,3 +1,5 @@
+<!--TODO:  This document has been deprecated.  It has been replaced by portalfx-performance-overview.md -->
+
 {"gitdown": "contents"}
 
 # Overview
