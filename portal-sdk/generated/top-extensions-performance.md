@@ -36,16 +36,16 @@ All extensions need to meet the minimum performance required to be  at the 80th 
 <a name="performance-extension-performance"></a>
 ## Extension performance
 
-Extension performance is impacted by both Blade and Part performance, when the extension is loaded, when it is unloaded, and when it is required.
+Extension performance is impacted by both Blade and Part performance, when the extension is loaded, when it is unloaded, and when it is required by another extension.
 
-When a user visits a resource blade for the first time, the Portal  loads the extension and then requests the ViewModel.  This makes the Blade/Part performance happen.
+When a user visits a resource blade for the first time, the Portal  loads the extension and then requests the ViewModel.  This adds to the counts and times for the Blade and Part performance.
 
-If the user were to browse away from the UI experience and browse back previous to the unloading of the  extension, the second visit is faster because the UI does not have to re-load all of the extension.
+In addition, if the user were to browse away from the UI experience and browse back previous to the unloading of the extension, the load times for the second visit are faster because the UI does not have to re-load the entire extension.
 
 <a name="performance-blade-performance"></a>
 ## Blade performance
 
-Blade performance is centered around specific areas that are encapsulated under the `BladeRevealed` action. They are as follows.
+Blade performance is measured  around specific areas that are encapsulated under the `BladeRevealed` action. They are as follows.
 
 
 1. The constructor
@@ -56,7 +56,7 @@ Blade performance is centered around specific areas that are encapsulated under 
 <a name="performance-part-performance"></a>
 ## Part performance
 
-Part performance is centered around specific areas that are encapsulated under the `PartRevealed` action. They are as follows.
+Part performance is measured  around specific areas that are encapsulated under the `PartRevealed` action. They are as follows.
 
 1. The constructor
 1. The call to the `OnInputsSet` method
@@ -96,11 +96,7 @@ The model gives a negative score to  the  views that do not meet the bar.
 <a name="performance-assessing-blade-performance"></a>
 ## Assessing blade performance
 
-There are two methods that are used to assess the performance of an extension. 
-
-1. Visit the PowerBi dashboard that is located at [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf).
-
-1. Run local Kusto queries to determine the numbers that are associated with extension performance.
+There are two methods that are used to assess the performance of an extension. The PowerBi dashboard that is located at [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf) measures blade, part, and extension performance, or you may run local Kusto queries to determine the numbers that are associated with extension performance.
 
 The PowerBi dashboard is maintained on a regular basis by the Fx team. If you choose to run local queries, make sure that you use the Fx provided Kusto functions to calculate the assessment.
 
@@ -117,8 +113,92 @@ The following table contains documents that are related to improving the perfoma
 |  Identify and resolve common performance issues | [portalfx-performance-portalcop.md](portalfx-performance-portalcop.md) |
 | Optimize CORS preflight requests | [portalfx-data-loadingdata.md#loading-data-optimize-number-cors-preflight-requests-to-arm-using-invokeapi.md](portalfx-data-loadingdata.md#loading-data-optimize-number-cors-preflight-requests-to-arm-using-invokeapi.md)  |
 | Improve part responsiveness with revealContent | [portalfx-parts-revealContent.md](portalfx-parts-revealContent.md) |
-   
+
+<a name="performance-portalcop"></a>
+## PortalCop
+
+The Portal Framework team has a tool named **PortalCop** that helps reduce code size and remove redundant RESX entries.
+
+<a name="performance-portalcop-installing-portalcop"></a>
+### Installing PortalCop
+
+The tool should be installed when the developer installs Visual Studio, as specified in  [portalfx-extensions-nuget-overview.md](portalfx-extensions-nuget-overview.md).
+If not, the tool can be installed by running the following command in the NuGet Package Manager Console.
+
+```
+Install-Package PortalFx.PortalCop -Source https://msazure.pkgs.visualstudio.com/DefaultCollection/_packaging/Official/nuget/v3/index.json -Version 1.0.0.339
+```
+
+The tool can also be installed by running the following command in  a Windows command prompt.
+
+```
+nuget install PortalFx.PortalCop -Source https://msazure.pkgs.visualstudio.com/DefaultCollection/_packaging/Official/nuget/v3/index.json -Version 1.0.0.339
+```
+
+<a name="performance-portalcop-running-portalcop"></a>
+### Running PortalCop
+
+<a name="performance-portalcop-running-portalcop-namespace-mode"></a>
+#### Namespace mode
+
+The **PortalCop** tool has a namespace mode that is used in code minification. 
  
+```
+   portalcop Namespace
+```
+
+**NOTE**: Do not run this mode in your codebase if If you do not use AMD.
+
+If there are nested namespaces in the code, for example A.B.C.D, the minifier only reduces the top level name, and leaves all the remaining names uncompressed.
+
+For example, if the code uses `MsPortalFx.Base.Utilities.SomeFunction();` it will be minified as `a.Base.Utilities.SomeFunction();`.
+
+While implementing an extension with the Framework, namespaces that are imported can achieve better minification.  For example, the following namespace is imported into code
+```
+   import FxUtilities = MsPortalFx.Base.Utilities;
+```
+
+It yields a better minified version, as in the following example.
+```
+   FxUtilities.SomeFunction(); -> a.SomeFunction();
+```
+
+In the Namespace mode, the **PortalCop** tool normalizes imports to the Fx naming convention. It will not collide with any predefined names you defined. This tool can achieve as much as a 10% code reduction in most of the Shell codebase.
+
+**NOTE**: Review the changes to minification after running the tool.  The tool does string mapping instead of syntax-based replacement, so you may want to be wary of string content changes.
+
+<a name="performance-portalcop-running-portalcop-resx-mode"></a>
+#### Resx mode
+
+The **PortalCop** tool has a resx mode that is used to reduce code size and save on localization costs by finding unused/redundant `resx` strings. To list unused strings, use the following command.
+```
+   portalcop Resx
+```
+   
+To list and clean *.resx files, use the following command.
+```
+    portalcop Resx AutoRemove
+```
+
+Constraints on using the resx mode are as follows.
+
+* The tool may incorrectly flag resources as being unused if the extension uses strings in unexpected formats.  For example, if the extension tries to dynamically read from resx based on string values, as in the following code.
+
+```
+Utils.getResourceString(ClientResources.DeploymentSlots, slot)));
+export function getResourceString(resources: any, value: string): string {
+        var key = value && value.length ? value.substr(0, 1).toLowerCase() + value.substr(1) : value;
+        return resources[key] || value;
+}
+```
+
+* You should review the changes after running the tool and make sure that they are valid.
+* If using the AutoRemove option, you need to use  **VisualStudio** to regenerate the `Designer.cs` files by opening the RESX files.
+* If there are scenarios that the tool incorrectly identifies as unused, please report them to 
+<a href="mailto:ibizafxpm@microsoft.com?subject=PortalCop incorrectly identifies Scenario as unused">ibizafxpm@microsoft.com</a>.
+
+
+
 <a name="performance-best-practices"></a>
 ## Best Practices
 
@@ -217,9 +297,10 @@ The following image uses the selectableGrid `map` function to display only the d
 * The decrease in size and transfer time also reduces  memory usage.
 
 
- ## Frequently asked questions
+<a name="performance-frequently-asked-questions"></a>
+## Frequently asked questions
 
-<a name="performance-best-practices-extension-scores-are-above-the-bar"></a>
+<a name="performance-frequently-asked-questions-extension-scores-are-above-the-bar"></a>
 ### Extension scores are above the bar
 
 ***How can I refactor my code to improve performance?***
@@ -250,7 +331,7 @@ SOLUTION:
 
 * * *
 
-<a name="performance-best-practices-my-wxp-score-is-below-the-bar"></a>
+<a name="performance-frequently-asked-questions-my-wxp-score-is-below-the-bar"></a>
 ### My WxP score is below the bar
 ***How do I identify which pieces of the extension are not performant?***
 
@@ -273,7 +354,8 @@ If the extension is drastically under the bar, it is  likely that a high-usage b
 
 
 
- ## Glossary
+<a name="performance-glossary"></a>
+## Glossary
 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
 
