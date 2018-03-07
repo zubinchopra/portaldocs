@@ -149,22 +149,22 @@ export class BladeViewModel extends MsPortalFx.ViewModels.Blade {
 For more information about the TypeScript module loading
 system, see the official language specification located at [http://www.typescriptlang.org/docs/handbook/modules.html](http://www.typescriptlang.org/docs/handbook/modules.html).
 
-<a name="performance-best-practices-use-paging-for-large-data-sets"></a>
-### Use paging for large data sets
+<a name="performance-best-practices-use-pageablegrids-for-large-data-sets"></a>
+### Use pageableGrids for large data sets
 
 When working with large data sets, developers should use grids and their paging features.
 Paging allows deferred loading of rows, so even with large datasets, responsiveness is maintained.
 
 Paging implies that many rows might not need to be loaded at all. For more information about paging with grids, see [portalfx-control-grid.md](portalfx-controls-grid.md)  and the sample located at `<dir>\Client\V1\Controls\Grid\ViewModels\PageableGridViewModel.ts`.
 
-<a name="performance-best-practices-use-paging-for-large-data-sets-use-map-and-filter-to-reduce-size-of-rendered-data"></a>
-#### Use &quot;map&quot; and &quot;filter&quot; to reduce size of rendered data
+<a name="performance-best-practices-filtering-data-for-the-selectablegrid"></a>
+### Filtering data for the selectableGrid
 
-Often, it is useful to use the [Knockout projections](https://github.com/stevesanderson/knockout-projections) to shape and filter model data loaded using QueryView and EntityView (see [Shaping and filtering data](portalfx-data-projections.md)).
+Significant performance improvements can be achieved by reducing the number of data models that are bound to controls like grids, lists, or charts.
 
-Significant performance improvements can achieved by reducing the number and size of the model objects bound to controls like grids, lists, charts:
+Use the Knockout projections that are located at [https://github.com/stevesanderson/knockout-projections](https://github.com/stevesanderson/knockout-projections) to shape and filter model data.  They work in context with  with the  `QueryView` and `EntityView` objects that are discussed in [portalfx-data-projections.md#using-knockout-projections](portalfx-data-projections.md#using-knockout-projections).
 
-    `\Client\Controls\Grid\ViewModels\SelectableGridViewModel.ts`
+The code located at   `<dir>\Client\V1\Controls\Grid\ViewModels\SelectableGridViewModel.ts` improves extension performance by connecting the reduced model data to a ViewModel that uses grids.  It is also in the following example.
 
 ```ts
 
@@ -181,70 +181,77 @@ var projectedItems = this._view.items
 
 var personItems = ko.observableArray<MappedPerson>([]);
 container.registerForDispose(projectedItems.subscribe(personItems));
-
-
 ```
 
-In this example, `map` is used to project new model objects containing only those properties required to fill the columns of the grid.  Additionally, `filter` is used to reduce the size of the array to just those items that will be rendered as grid rows.
+In the preceding example, the `map` function uses a data model that contains only the properties necessary to fill the columns of the grid in the ViewModel. The `filter` function reduces the size of the array by returning only the  items that will be rendered as grid rows.
 
-<a name="performance-best-practices-use-paging-for-large-data-sets-benefits-to-ui-rendering-performance"></a>
-#### Benefits to UI-rendering performance
+<a name="performance-best-practices-benefits-to-ui-rendering-performance"></a>
+### Benefits to UI-rendering performance
 
-Using the selectable grid SDK sample we can see the benefits to using `map` to project objects with only those properties required by a grid row:
+The following image uses the selectableGrid `map` function to display only the data that is associated the properties that are required by the grid row.
 
-![Using knockout projections to map an array][mapping]
-[mapping]: ../media/portalfx-performance/mapping.png
+![alt-text](../media/portalfx-performance/mapping.png "Using knockout projections to map an array")
 
-There is almost a 50% reduction in time with these optimizations, but also note that at 300 items it is still over 1.5s. Mapping to just the 2 columns in that selectable grid sample reduces the message size by 2/3 by using the technique described above. This reduces the time needed to transfer the view model as well as reducing memory usage.
-
+* The data contains 300 items, and the time to load is over 1.5s. 
+* The optimization of mapping to just the two columns in the selectable grid reduces the message size by 2/3. 
+* The size reduction decreases the time needed to transfer the view model by about 50% for this sample data.
+* The decrease in size and transfer time also reduces  memory usage.
 
 
  ## Frequently asked questions
 
-<a name="performance-best-practices-"></a>
-### 
+<a name="performance-best-practices-extension-scores-are-above-the-bar"></a>
+### Extension scores are above the bar
+
+***How can I refactor my code to improve performance?***
+
+
+DESCRIPTION:
+
+The PowerBi dashboard that is located at [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf) displays various performance statistics for several extensions.
+You can select your Extension and Blade on the filters.
+The scores for the individual pieces of an extension are related, so it is possible that improving the scores for a part will also bring the scores for the blade or the extension into alignment with performance expectations.
+
+SOLUTION: 
+
+1. Decrease Part 'Revealed' scores
+
+    * Optimize the Blades's `constructor` and `OnInputsSet` methods of the part.
+    * Wrap any **AJAX** calls with custom telemetry to ensure that they are not waiting on the result of the call.
+    * If the part receives partial data previous to the completion of the `OnInputsSet` method, then the part can reveal the information early and display the partial data.  The part should also  load the UI for the individual components.
+
+1. Decrease Blade 'Revealed' scores.
+
+    * Optimize the quantity and quality of parts on the blade.
+        * If there is only one part, or if the part is not a `<TemplateBlade>`, then migrate the part to use the new template as specified in  [portalfx-blades-procedure.md](portalfx-blades-procedure.md).
+        * If there are more than three parts, consider refactoring or removing some of them so that fewer parts need to be displayed.
+    * Optimize the Blades's `constructor` and `OnInputsSet` methods of the blade.
+   * Wrap any **AJAX** calls with custom telemetry to ensure that they are not waiting on the result of the call.
+    * Reduce the revealed times for parts on the blade.
+
+* * *
+
+<a name="performance-best-practices-my-wxp-score-is-below-the-bar"></a>
+### My WxP score is below the bar
+***How do I identify which pieces of the extension are not performant?***
+
+DESCRIPTION: 
+
+The PowerBi dashboard that is located at [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf) displays the WxP impact for each individual blade. It may not display information at the level of granularity that immediately points to the problem.
+
+SOLUTION:
+
+If the extension is drastically under the bar, it is  likely that a high-usage blade is not meeting the performance bar.  If the extension is nearly meeting the  bar, then it is likely that a low-usage blade is the one that is not meeting the bar.
 
 * * * 
-<!--### My Extension 'InitialExtensionResponse' is above the bar, what should I do
 
-TODO
+<!--###  Extension 'InitialExtensionResponse' is above the bar
 
-<a name="performance-best-practices-my-extension-manifestload-is-above-the-bar-what-should-i-do"></a>
-### My Extension &#39;ManifestLoad&#39; is above the bar, what should I do
+ 'ManifestLoad' is above the bar, what should I do
 
-TODO
+ 'InitializeExtensions' is above the bar, what should I do
+ -->
 
-<a name="performance-best-practices-my-extension-initializeextensions-is-above-the-bar-what-should-i-do"></a>
-### My Extension &#39;InitializeExtensions&#39; is above the bar, what should I do
-
-TODO -->
-
-
-<a name="performance-my-blade-revealed-is-above-the-bar-what-should-i-do"></a>
-## My Blade &#39;Revealed&#39; is above the bar, what should I do
-
-1. Assess what is happening in your Blades's constructor and OnInputsSet.
-1. Can that be optimized?
-1. If there are any AJAX calls, wrap them with custom telemetry and ensure they you aren't spending a large amount of time waiting on the result.
-1. Check the Part's on the Blade revealed times using [Extension performance/reliability report][Ext-Perf/Rel-Report], select your Extension and Blade on the filters.
-1. How many parts are on the blade?
-    - If there's only a single part, if you're not using a `<TemplateBlade>` migrate your current blade over.
-    - If there's a high number of parts (> 3), consider removing some of the parts
-
-<a name="performance-my-part-revealed-is-above-the-bar-what-should-i-do"></a>
-## My Part &#39;Revealed&#39; is above the bar, what should I do
-
-1. Assess what is happening in your Part's constructor and OnInputsSet.
-1. Can that be optimized?
-1. If there are any AJAX calls, wrap them with custom telemetry and ensure they you aren't spending a large amount of time waiting on the result.
-1. Do you have partial data before the OnInputsSet is fully resolved? If yes, then you can reveal early, display the partial data and handle loading UI for the individual components 
-
-<a name="performance-my-wxp-score-is-below-the-bar-what-should-i-do"></a>
-## My WxP score is below the bar, what should I do
-
-Using the [Extension performance/reliability report][Ext-Perf/Rel-Report] you can see the WxP impact for each individual blade. Although given the Wxp calculation,
-if you are drastically under the bar its likely a high usage blade is not meeting the performance bar, if you are just under the bar then it's likely it's a low usage
-blade which is not meeting the bar.
 
 
  ## Glossary
