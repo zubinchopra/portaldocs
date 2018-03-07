@@ -2,15 +2,28 @@
 <a name="overview"></a>
 ## Overview
 
-Portal performance is defined as all experiences throughout the product. 
-All extensions need to meet the performance bar at a minimum.
 
-| Area      | Sub-Area                   | 80th Percentile Bar | Telemetry Action         | How is it measured? |
-| --------- | -------------------------- | ------------------- | ------------------------ | ------------------- |
-| Blade     | Revealed                   | See Power BI        | BladeRevealed            | Time it takes for the blade's OnInputsSet to resolve and all the parts on the blade and above the fold to reveal |
-| Blade     | FullRevealed               | N/A                 | BladeFullRevealed        | Same as Revealed but all the parts on the blade to reveal |
-| Part      | Revealed                   | See Power BI        | PartRevealed             | Time it takes for the part to be rendered and then the part's OnInputsSet to resolve or earlyReveal to be called |
-| WxP       | N/A                        | See Power BI        | N/A                      | An overall experience score, calculated by weighting blade usage and the blade revealed time |
+The PowerBi dashboard that is located at [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf) displays various performance statistics for several extensions.
+You can select your extension, blade, and part(s) from the filters, as in the following image.
+
+![alt-text](../media/portalfx-performance/extensionPerfQuery.png "PowerBi Query")
+
+In the following example, the AppInsightsExtension has been selected for further examination. Its blades and parts are described, and its scores are below the list of parts.
+
+![alt-text](../media/portalfx-performance/extensionPerfQuerySelection.png "PowerBi Extension Query")
+
+Portal performance is defined as the sum of the performance of all the experiences in the product or extension.  For example, the blades and parts associated with the extension in the previous image are displayed in the following image.
+
+![alt-text](../media/portalfx-performance/extensionPerfQueryBladesParts.png "PowerBi Extension Query")
+
+All extensions need to meet the minimum performance required to be  at the 80th percentile, as  in the following table.
+
+| Area      | Sub-Area                   |  Telemetry Action         | How is it measured? |
+| --------- | -------------------------- | ------------------------ | ------------------- |
+| Blade     | [Revealed](portalfx-extensions-glossary-performance.md)                   | BladeRevealed            | Time it takes for the  `OnInputsSet` method of the blade to resolve.  All the parts on the blade that are [above the fold](portalfx-extensions-glossary-performance.md) to display the data they have received. |
+| Blade     | [FullRevealed](portalfx-extensions-glossary-performance.md)               | BladeFullRevealed        | Time it takes for the  `OnInputsSet` method of the blade to display all of the data they have requested.  |
+| Part      | Revealed                   |  PartRevealed             | Time it takes for the part to be rendered and then call the `OnInputsSet` method  or the `earlyReveal` method to resolve the data with the viewmodel and therefore the view |
+| WxP       | N/A                        |  N/A                      | The overall experience score, that uses the blade revealed time and weighted blade usages.|
 
 <!--| Extension | Initial Extension Response | TODO                | InitialExtensionResponse | TODO |
 | Extension | Manifest Load              | TODO                | ManifestLoad             | TODO |
@@ -47,11 +60,13 @@ Part performance is centered around specific areas that are encapsulated under t
 <a name="wxp-score"></a>
 ## WxP score
 
-The WxP score is a per-extension Weight eXPerience score (WxP). It is calculated as follows:
+The WxP score is a per-extension Weight eXPerience score (WxP). It is expressed as a percentage and calculated as follows.
 
 ```txt
 
-WxP = (BladeViewsMeetingTheBar * 80thPercentileBar) / ((BladeViewsMeetingTheBar * 80thPercentileBar) + ∑(BladeViewsNotMeetingTheBar * ActualLoadTimePerBlade))
+WxP = (BladeViewsMeetingTheBar * 80thPercentileBar) /
+     ((BladeViewsMeetingTheBar * 80thPercentileBar) + 
+     ∑(BladeViewsNotMeetingTheBar * ActualLoadTimePerBlade))
 
 ```
 
@@ -63,7 +78,11 @@ WxP = (BladeViewsMeetingTheBar * 80thPercentileBar) / ((BladeViewsMeetingTheBar 
 
 ```txt
 
-WxP = (BladeViewsMeetingTheBar * 80thPercentileBar) / ((BladeViewsMeetingTheBar * 80thPercentileBar) + ∑(BladeViewsNotMeetingTheBar * ActualLoadTimePerBlade)) %    = (4 * 1000) / ((4 * 1000) + ((5 * 500) + (6 * 400))) %
+WxP = (BladeViewsMeetingTheBar * 80thPercentileBar) /
+     ((BladeViewsMeetingTheBar * 80thPercentileBar) +
+     ∑(BladeViewsNotMeetingTheBar * ActualLoadTimePerBlade)) %   
+      
+   = (4 * 1000) / ((4 * 1000) + ((5 * 500) + (6 * 400))) %
     = 44.94%
 
 ```
@@ -86,11 +105,11 @@ The PowerBi dashboard is maintained on a regular basis by the Fx team. If you ch
 
 The following table contains documents that are related to improving the perfomance of an extension.
 
-| Name | Purpose | 
-| ---- | ----- | 
-| [portalfx-cdn.md](portalfx-cdn.md) | Content Delivery Network   | 
-| [portalfx-extension-homepage-caching.md](portalfx-extension-homepage-caching.md) | Caching  |
-| [portalfx-extension-persistent-caching-of-scripts.md](portalfx-extension-persistent-caching-of-scripts.md)  |  Persistent Caching of scripts across extension updates |
-| [portalfx-performance-portalcop.md](portalfx-performance-portalcop.md) |  Identify and resolve common performance issues |
-| [portalfx-data-loadingdata.md#loading-data-optimize-number-cors-preflight-requests-to-arm-using-invokeapi.md](portalfx-data-loadingdata.md#loading-data-optimize-number-cors-preflight-requests-to-arm-using-invokeapi.md)  | Optimize CORS preflight requests |
-| [portalfx-parts-revealContent.md](portalfx-parts-revealContent.md) | Improve part responsiveness with revealContent |
+| Purpose | Name |  
+| ------- | ---- | 
+| Content Delivery Network | [portalfx-cdn.md](portalfx-cdn.md)  | 
+| Caching  | [portalfx-extension-homepage-caching.md](portalfx-extension-homepage-caching.md)|
+|  Persistent Caching of scripts across extension updates | [portalfx-extension-persistent-caching-of-scripts.md](portalfx-extension-persistent-caching-of-scripts.md)   |
+|  Identify and resolve common performance issues | [portalfx-performance-portalcop.md](portalfx-performance-portalcop.md) |
+| Optimize CORS preflight requests | [portalfx-data-loadingdata.md#loading-data-optimize-number-cors-preflight-requests-to-arm-using-invokeapi.md](portalfx-data-loadingdata.md#loading-data-optimize-number-cors-preflight-requests-to-arm-using-invokeapi.md)  |
+| Improve part responsiveness with revealContent | [portalfx-parts-revealContent.md](portalfx-parts-revealContent.md) |

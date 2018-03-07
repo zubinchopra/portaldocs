@@ -1,3 +1,5 @@
+<!--TODO:  This document has been deprecated.  It has been replaced by portalfx-performance-overview.md -->
+
 * [Overview](#overview)
     * [Extension performance](#overview-extension-performance)
     * [Blade performance](#overview-blade-performance)
@@ -31,7 +33,7 @@
         * [Implications of client side caching](#performance-best-practices-extension-homepage-caching-implications-of-client-side-caching)
         * [How this works](#performance-best-practices-extension-homepage-caching-how-this-works)
         * [How to test your changes](#performance-best-practices-extension-homepage-caching-how-to-test-your-changes)
-        * [Co-ordinating these changes with the portal](#performance-best-practices-extension-homepage-caching-co-ordinating-these-changes-with-the-portal)
+        * [Co-ordinating these changes with the Portal](#performance-best-practices-extension-homepage-caching-co-ordinating-these-changes-with-the-portal)
     * [Persistent Caching of scripts across extension updates](#performance-best-practices-persistent-caching-of-scripts-across-extension-updates)
         * [Making sure that scripts are available across extension updates](#performance-best-practices-persistent-caching-of-scripts-across-extension-updates-making-sure-that-scripts-are-available-across-extension-updates)
         * [Example implementation as done in HubsExtension](#performance-best-practices-persistent-caching-of-scripts-across-extension-updates-example-implementation-as-done-in-hubsextension)
@@ -178,6 +180,7 @@ blade which is not meeting the bar.
 <a name="performance-best-practices"></a>
 # Performance best practices
 
+<!--TODO:  This document has been deprecated.  It has been replaced by portalfx-extensions-bp-performance.md -->
 
 <!-- THIS FILE IS REFERENCED IN THE portalfx-performance SECTION PLEASE START ALL HEADINGS WITH H3S -->
 
@@ -239,23 +242,22 @@ export class BladeViewModel extends MsPortalFx.ViewModels.Blade {
 This leads to faster load time, and less memory consumption in the browser. You can learn more about the TypeScript module loading
 system in the [official language specification](http://www.typescriptlang.org/docs/handbook/modules.html).
 
+<!--TODO: Deprecate the following section. It has been replaced by portalfx-extensions-bp-data.md -->
+<!-- TODO:  If this section is not to be deprecated, add a link to it-->
+
 <a name="performance-best-practices-writing-fast-extensions-use-querycache-and-entitycache"></a>
 #### Use QueryCache and EntityCache
 
-When performing data access from your view models, it may be tempting to make data calls directly from the `onInputsSet` function.
-By using the QueryCache and EntityCache, you can control access to data through a single component.
-A single ref-counted cache can hold data across your entire extension.  This has the benefits of:
+When performing data access from your view models, it may be tempting to make data calls directly from the `onInputsSet` function. By using the `QueryCache` and `EntityCache` objects from the `DataCache` class, you can control access to data through a single component. A single ref-counted cache can hold data across your entire extension.  This has the following benefits.
 
-- Reduced memory consumption
-- Lazy loading of data
-- Less calls out to the network
-- Consistent UX for views over the same data.
+* Reduced memory consumption
+* Lazy loading of data
+* Less calls out to the network
+* Consistent UX for views over the same data.
 
-> Developers should use QueryCache and EntityCache for data access.
-These classes provide advanced caching and ref-counting.
-Internally, these make use of Data.Loader and Data.DataSet (which will be made FX-internal in the future).
+**NOTE**: Developers should use the `DataCache` objects `QueryCache` and `EntityCache` for data access. These classes provide advanced caching and ref-counting. Internally, these make use of Data.Loader and Data.DataSet (which will be made FX-internal in the future).
 
-To learn more, visit [Querying for data](portalfx-data-configuringdatacache.md).
+To learn more, visit [portalfx-data-caching.md#configuring-the-data-cache](portalfx-data-caching.md#configuring-the-data-cache).
 
 <a name="performance-best-practices-writing-fast-extensions-avoid-unnecessary-data-reloading"></a>
 #### Avoid unnecessary data reloading
@@ -263,7 +265,7 @@ To learn more, visit [Querying for data](portalfx-data-configuringdatacache.md).
 As users navigate through the Ibiza UX, they will frequently revisit often-used resources within a short period of time.
 They might visit their favorite Website Blade, browse to see their Subscription details, and then return to configure/monitor their
 favorite Website. In such scenarios, ideally, the user would not have to wait through loading indicators while Website data reloads.
-
+<>
 To optimize for this scenario, use the `extendEntryLifetimes` option common to QueryCache and EntityCache.
 
 ```ts
@@ -279,8 +281,7 @@ public websitesQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModel
 
 ```
 
-QueryCache/EntityCache contain numerous cache entries, each of which are ref-counted based on not-disposed instances of
-QueryView/EntityView. When a user closes a Blade, typically a cache entry in the corresponding QueryCache/EntityCache will be removed,
+Cache objects contain numerous cache entries, each of which are ref-counted based on not-disposed instances of QueryView/EntityView. When a user closes a Blade, typically a cache entry in the corresponding cache object  will be removed,
 since all QueryView/EntityView instances will have been disposed. In the scenario where the user *revisits* their Website Blade,
 the corresponding cache entry will have to be reloaded via an ajax call, and the user will be subjected to loading indicators on
 the Blade and its Parts.
@@ -292,9 +293,9 @@ or Part view model will return a resolved Promise, and the user will not see lon
 (Note - The time that unreferenced cache entries are retained in QueryCache/EntityCache is controlled centrally by the FX
  and the timeout will be tuned based on telemetry to maximize cache efficiency across extensions.)
 
-For your scenario to make use of `extendEntryLifetimes`, it is **very important** that you take steps to keep your client-side
-QueryCache/EntityCache data caches **consistent with server data**.
+For your scenario to make use of `extendEntryLifetimes`, it is **very important** that you take steps to keep the client-side cache objects data caches **consistent with server data**.
 See [Reflecting server data changes on the client](portalfx-data-configuringdatacache.md) for details.
+<!--TODO: Deprecate the previous section. It has been replaced by portalfx-extensions-bp-data.md -->
 
 
 <a name="performance-best-practices-writing-fast-extensions-use-paging-for-large-data-sets"></a>
@@ -494,6 +495,8 @@ When you release to ensure that users are served the latest static content, as o
 ### Configuring versioning of your Extensioon
 
 
+<!-- TODO:  deprecate this document by removing it.  It has been  replaced by portalfx-extensions-versioning.md  documents  --> 
+
 <a name="performance-best-practices-configuring-cdn-updating-extensions"></a>
 ### Updating extensions
 
@@ -507,7 +510,7 @@ First the runtime tries to find the `AssemblyInformationalVersionAttribute` attr
 If this attribute isn't defined in the assembly, the runtime searches for the `AssemblyFileVersion` attribute and gets the value from this attribute.
 You can check the version of your extensions by typing in `window.fx.environment.version` in the browser console from the extension frame.
 
-You should ensure that while building your extension assembly, the version number is correctly stamped and updated on every build. The assembly version is added to your assembly by specifying the assembly level attribute as shown below.
+You should ensure that while building your extension assembly, the version number is correctly updated on every build. The assembly version is added to your assembly by specifying the assembly level attribute as shown below.
 
 ```cs
 [assembly: System.Reflection.AssemblyFileVersion("5.0.0.56")]
@@ -547,7 +550,7 @@ You will need to contact the portal team in order to find a way to get past this
 
 With the (5.0.302.85 or later) version of the SDK  extension home pages can be cached (to different levels).
 This should help get slightly better load time especially from browsers that have high latency.
-Below are two example URLs from the portal running in production:
+Below are two example URLs from the Portal running in production:
 
 ```
 https://yourextension.contoso.com/
@@ -597,6 +600,9 @@ The above version of the feature only enables server side caching.
 But there could be even more benefits if we could somehow cache on the client (avoid the network call altogether).
 
 So we have added support for caching extension home pages in the browser itself.
+
+The performance of an extension can be improved  by changing  how the extension uses caches.
+
 This can allow your extension to load with *ZERO* network calls from the browser (for a returning user).
 We believe that this should give us further performance and reliability improvements (fewer network calls => fewer network related errors).
 
@@ -625,7 +631,7 @@ To enable this, here are the steps you need to take:
     }
     ```
 
-1.  <a href="mailto:ibizafxpm@microsoft.com?subject=[Manifest Caching] on &lt;ExtensionName&gt; &body=Hi, we have enabled manifest caching on &lt;ExtensionName&gt; please make the appropriate portal change">Contact the Portal team</a>
+1.  <a href="mailto:ibizafxpm@microsoft.com?subject=[Manifest Caching] on &lt;extensionName&gt; &body=Hi, we have enabled manifest caching on &lt;extensionName&gt; please make the appropriate Portal change.">Contact the Portal team</a>
      or submit a [Work Item Request](https://aka.ms/cachemanifest) so we can update the value from our side.  
     Sorry about this step.
     We added it to ensure backward compatibility.
@@ -649,11 +655,11 @@ We believe that the benefits of caching and fast load time generally outweigh th
 
 We periodically load your extensions (from our servers) to get their manifests.
 We call this "manifest cache". The cache is updated every few minutes.
-This allows us to start up the portal without loading every extension to find out very basic information about it (like its name and its browse entry/entries, etc.)
+This allows us to start up the Portal without loading every extension to find out very basic information about it (like its name and its browse entry/entries, etc.)
 When the extension is actually interacted with, we still load the latest version of its code, so the details of the extension should always be correct (not the cached values).
 So this works out as a reasonable optimization.
 With the newer versions of the SDK, we include the value of GetPageVersion() of your extension in its manifest.
-We then use this value when loading your extension into the portal (see the pageVersion part of the query string below).
+We then use this value when loading your extension into the Portal (see the pageVersion part of the query string below).
 So your extension URL might end up being something like:
 
 ```
@@ -680,7 +686,7 @@ This is just there to provide a mechanism to bust extension caches if we needed 
 <a name="performance-best-practices-extension-homepage-caching-how-to-test-your-changes"></a>
 ### How to test your changes
 
-You can verify the behavior of different caching modes in your extension by launching the portal with the following query string:
+You can verify the behavior of different caching modes in your extension by launching the Portal with the following query string:
 
 ```
 https://portal.azure.com/
@@ -689,19 +695,19 @@ https://portal.azure.com/
 ```
 
 This will cause the extension named "Your_Extension" to load with "manifest" level caching (instead of its default setting on the server.
-You also need to add "feature.canmodifyextensions=true" so that we know that the portal is running in test mode.  
+You also need to add "feature.canmodifyextensions=true" so that we know that the Portal is running in test mode.  
 
 To verify that the browser serves your extension entirely from cache on subsequent requests:
 
 - Open F12 developer tools, switch to the network tab, filter the requests to only show "documents" (not JS, XHR or others).
 - Then navigate to your extension by opening one of its blades, you should see it load once from the server.
 - You will see the home page of your extension show up in the list of responses (along with the load time and size).
-- Then F5 to refresh the portal and navigate back to your extension. This time when your extension is served up, you should see the response served with no network activity. The response will show "(from cache)".  If you see this manifest caching is working as expected.
+- Then F5 to refresh the Portal and navigate back to your extension. This time when your extension is served up, you should see the response served with no network activity. The response will show "(from cache)".  If you see this manifest caching is working as expected.
 
 <a name="performance-best-practices-extension-homepage-caching-co-ordinating-these-changes-with-the-portal"></a>
-### Co-ordinating these changes with the portal
+### Co-ordinating these changes with the Portal
 
-Again, if you do make some of these changes, you still need to coordinate with the portal team to make sure that we make corresponding changes on our side too.
+Again, if you do make some of these changes, you still need to coordinate with the Portal team to make sure that we make corresponding changes on our side too.
 Basically that will tell us to stop sending your extension the sessionId part of the query string in the URL (otherwise caching does not help at all).
 Sorry about this part, we had to do it in order to stay entirely backward compatible/safe.
 
@@ -903,7 +909,8 @@ Constraints:
 
 - You need to review the changes after running the tool and make sure that they are valid because of the above constraint.
 - If using the AutoRemove option, you need to open up the RESX files in VisualStudio to regenerate the Designer.cs files.
-- If you find any more scenarios that the tool incorrectly identifies as unused please report to [Ibiza Fx PM](mailto:ibizafxpm@microsoft.com)
+- If you find any more scenarios that the tool incorrectly identifies as unused please report to 
+<a href="mailto:ibizafxpm@microsoft.com?subject=Scenario still in use">ibizafxpm@microsoft.com</a>.
 
 
 <a name="performance-best-practices-optimize-number-cors-preflight-requests-to-arm-using-invokeapi"></a>
