@@ -35,9 +35,8 @@
         * [How to test your changes](#performance-best-practices-extension-homepage-caching-how-to-test-your-changes)
         * [Co-ordinating these changes with the Portal](#performance-best-practices-extension-homepage-caching-co-ordinating-these-changes-with-the-portal)
     * [Persistent Caching of scripts across extension updates](#performance-best-practices-persistent-caching-of-scripts-across-extension-updates)
-        * [Making sure that scripts are available across extension updates](#performance-best-practices-persistent-caching-of-scripts-across-extension-updates-making-sure-that-scripts-are-available-across-extension-updates)
-        * [Example implementation as done in HubsExtension](#performance-best-practices-persistent-caching-of-scripts-across-extension-updates-example-implementation-as-done-in-hubsextension)
-        * [Verfiying that persistent caching is working](#performance-best-practices-persistent-caching-of-scripts-across-extension-updates-verfiying-that-persistent-caching-is-working)
+        * [Persistent caching for scripts](#performance-best-practices-persistent-caching-of-scripts-across-extension-updates-persistent-caching-for-scripts)
+        * [Velidating that persistent caching is working](#performance-best-practices-persistent-caching-of-scripts-across-extension-updates-velidating-that-persistent-caching-is-working)
     * [Run portalcop to identify and resolve common performance issues](#performance-best-practices-run-portalcop-to-identify-and-resolve-common-performance-issues)
     * [PortalCop](#performance-best-practices-portalcop)
         * [Installing PortalCop](#performance-best-practices-portalcop-installing-portalcop)
@@ -548,9 +547,7 @@ You will need to contact the portal team in order to find a way to get past this
 <a name="performance-best-practices-extension-homepage-caching-server-side-caching-of-extension-home-pages"></a>
 ### Server side caching of extension home pages
 
-With the (5.0.302.85 or later) version of the SDK  extension home pages can be cached (to different levels).
-This should help get slightly better load time especially from browsers that have high latency.
-Below are two example URLs from the Portal running in production:
+As of SDK version 5.0.302.85, extension home pages can be cached to different levels on the server.  This results in better load time, especially from browsers that have high latency. The following is an example of a Portal URL in the production environment.
 
 ```
 https://yourextension.contoso.com/
@@ -563,9 +560,10 @@ https://yourextension.contoso.com/
     #ece19d8501fb4d2cbe10db84b844c55b
 ```
 
-You will notice that for the extension, the sessionId is passed in the query string part of the URL.
-This makes the extension essentially un-cacheable (because even if it was, we would generate a unique URL on each access essentially busting any cache – browser or server).
-If you enable server side caching of extension home pages, the URL will become:
+You will notice that for the extension, the sessionId is sent in the query string part of the URL.
+This makes the extension essentially un-cacheable, because a unique URL is generated on each access. This essentially breaks any caching, whether it occurs on the client browser or on the extension server.
+
+If server-side caching of extension home pages is enabled, the URL becomes the following.
 
 ```
 https://yourextension.contoso.com/
@@ -577,40 +575,33 @@ https://yourextension.contoso.com/
     #ece19d8501fb4d2cbe10db84b844c55b
 ```
 
-Notice that the sessionId is no longer present in the query string (only in the fragment).
-This allows the extension server to serve up the same version of the page to a returning browser (HTTP 304).
+Notice that the sessionId is no longer present in the query string. This allows the extension server to serve the same version of the page to a returning browser (HTTP 304).
 
-You need to do some work to enable caching on your extension server.
+To enable homepage caching on the extension server, examine the 
+implementation of the `Microsoft.Portal.Framework.ExtensionDefinition` class.  
+In the implementation of the `Microsoft.Portal.Framework.ExtensionDefinition` class, there is a property named `Cacheability`. By default its value is `ExtensionIFrameCacheability.None`, but the implementation should set it to `ExtensionIFrameCacheability.Server`.
 
-1.  There is a property `Cacheability` on your implementation of the `Microsoft.Portal.Framework.ExtensionDefinition` class.
+Making this change assumes that the way the home page is rendered dynamically does not change, because there is 
+ different output for different requests. 
+It assumes that when the output changes, it also increments the value of `Microsoft.Portal.Framework.ApplicationContext.Version`.
 
-1.  By default its value is `ExtensionIFrameCacheability.None`
-
-1.  At the very least you should be able to set it to `ExtensionIFrameCacheability.Server`
-
-Making this change assumes that you do not change the way your home page is rendered dynamically (different output for different requests).
-It assumes that if you do change the output, you only do so by also incrementing the value of Microsoft.Portal.Framework.ApplicationContext.Version.
-Note: In this mode, if you make live updates to your extension without bumping the version, some chunk of your customers may not see those for a while because of caching.
-
+**NOTE**: In this mode, if  live updates are made to the  extension without incrementing the version, some subset  of  customers may not see the changes for some time because of what was previously cached.
 
 <a name="performance-best-practices-extension-homepage-caching-client-side-caching-of-extension-home-pages"></a>
 ### Client-side caching of extension home pages
 
 The above version of the feature only enables server side caching.
-But there could be even more benefits if we could somehow cache on the client (avoid the network call altogether).
+More  benefits are derived from caching if an extension can  cache on the client, and omit another network call.
 
-So we have added support for caching extension home pages in the browser itself.
+Consequently, the Azure team has added support for caching extension home pages in the browser itself. The performance of an extension can be improved  by changing  how the extension uses caches. This allows the extension to load with as few as  *ZERO* network calls from the browser for a returning user.
 
-The performance of an extension can be improved  by changing  how the extension uses caches.
+It also serves as a basis for further performance and reliability improvements, because fewer network calls also results in fewer network related errors.
 
-This can allow your extension to load with *ZERO* network calls from the browser (for a returning user).
-We believe that this should give us further performance and reliability improvements (fewer network calls => fewer network related errors).
-
-To enable this, here are the steps you need to take:
+Perform the following steps to enable this.
 
 1.  Move to a version of the SDK newer than 5.0.302.121.
 
-1.  Implement [persistent caching of your scripts](portalfx-extension-persistent-caching-of-scripts.md).
+1.  Implement [persistent caching of your scripts](portalfx-performance-caching-scripts.md).
     You should do this any way to improve extension reliability.
     If you do not do this, you will see higher impact on reliability as a result of home page caching.
 
@@ -715,54 +706,45 @@ Sorry about this part, we had to do it in order to stay entirely backward compat
 <a name="performance-best-practices-persistent-caching-of-scripts-across-extension-updates"></a>
 ## Persistent Caching of scripts across extension updates
 
-<properties
-    title=""
-    pageTitle="Performance - Persistent Caching of scripts across extension updates" 
-    description=""
-    authors="madjos" />
 
-<a name="performance-best-practices-persistent-caching-of-scripts-across-extension-updates-making-sure-that-scripts-are-available-across-extension-updates"></a>
-### Making sure that scripts are available across extension updates
+<a name="performance-best-practices-persistent-caching-of-scripts-across-extension-updates-persistent-caching-for-scripts"></a>
+### Persistent caching for scripts
 
-One problem that can impact reliability of extensions is scripts failing to load.
-And one corner case where this problem can occur is when update your extensions.
+One problem that affects extension reliability is that scripts may fail to load, especially after extensions have been updated.
 
-Suppose you have V1 of your extension deployed to production and it references a script file /Content/Script_A_SHA1.js We add the SHA1 to ensure maximum cacheability of the script.
-Now a user visits the portal and starts interacting with your V1 extension.
-They haven’t yet started loading Script_A_SHA1.js perhaps because it is only used by a different blade.
-At this time you update the extension server to V2.
-The update includes a change to Script_A so now its URL becomes /Content/Script_A_SHA2.js.
-Now when the user does visit that blade, Script_A_SHA1.js is no longer on your server and the request to fetch it from the browser will most likely result in a 404.
-The use of a CDN might reduce the probability of this occurring. And you should use a CDN.
-But these user actions can occur over several hours and the CDN does not guarantee keeping data around (for any duration let alone hours).
-So this problem can/does still occur.
+For example, version 1 of an extension uses a script file named `/Content/Script_A_SHA1.js`. A user visits the Portal and interacts with the extension. The script named `Script_A_SHA1.js` is not loaded because the user has not visited the blade that uses it.
 
-To avoid this issue, you can implement a class that derives from `Microsoft.Portal.Framework.IPersistentContentCache`
+**NOTE**: The `SHA` suffix was added to ensure maximum cacheability of the script.
 
-On your extension server. The simplest way to do this is to derive from `Microsoft.Portal.Framework.BlobStorageBackedPersistentContentCache` 
+Then, the extension is updated on the server, and the version 2 changes Script_A so that its URL becomes `/Content/Script_A_SHA2.js`.
 
-And MEF export your implementation. That is decorate it with:
+Now, when the user visits the blade that uses the script, Script_A_SHA1.js is no longer on the server. Requests for it will probably  result in a 404 "Not found" error.
+
+The use of a Content Delivery Network(CDN) might reduce the probability of encountering a 404.  However, user actions can occur over several hours, and the CDN does not guarantee keeping data available for any duration, therefore this problem might still occur.
+
+This issue can be avoided or reduced by implementing a persistent content cache. To facilitate extension upgrades, Azure Portal provides a cache that can be used to store the contents of the `.../Content/` folder. All of the JavaScript, CSS, scripts, and image files for the extension are stored in this cache to make upgrades smoother. The extension requires a connection string that specifies the storage account that contains this cache.  This allows caching to be performed in the following layers.
+
+1. Layer 1 is Content Delivery Network.
+1. Layer 2 is the memory in the extension server.
+1. Layer 3 is the storage account.
+
+The Layer 3 cache should get hit somewhat rarely and after it is read, the retrieved content will temporarily be located in the higher layers.
+
+<!-- TODO: Based on hosting and extension configuration, determine whether the following sentence is accurate. 
+So we don't think you need to geo-distribute this layer.
+-->
+
+If Azure determines that Layer 3 is getting hit too often, the Ibiza team may change the geo-distribution strategy.
+
+The storage account should be the same across all upgrades of the extension, which includes geo-distribution across regions when the extension is deployed. For more information about extension configuration and geo-distribution, see [portalfx-extension-hosting-service-advanced.md](portalfx-extension-hosting-service-advanced.md).
+
+An extension can make sure that scripts are available across extension updates by using a class that derives from `Microsoft.Portal.Framework.IPersistentContentCache` on the extension server. To do this, derive a class from `Microsoft.Portal.Framework.BlobStorageBackedPersistentContentCache` and [MEF](portalfx-extensions-glossary-performance.md)-export your implementation. If one account per region is used to handle the geo-distribution strategy, they can be synchronized by using a custom implementation of the `Microsoft.Portal.Framework.IPersistentContentCache` interface, similar to the one in the following code.
 
 ```cs 
 [Export(typeof(Microsoft.Portal.Framework.IPersistentContentCache))]
 ```
 
-You just need to provide it a storage account connection string that can be used to store the scripts.
-Keep the storage account the same across upgrades of your extension.
-
-We save all your JavaScript, CSS, and image files (basically anything under /Content/...) in this cache to make upgrades smoother.
-
-The storage account is a third layer cache.
-Layer 1 is CDN.
-Layer 2 is in memory in your extension server.
-So it should get hit very rarely and once read, it should warm up the other layers.
-So we don't think you need to geo-distribute this layer.
-If we detect that it is getting hit too often, we will come up with a geo-distribution strategy.
-If you do use one account per region to handle this, you will need to find a way to synchronize them.
-You could do this by using a custom implementation of the `Microsoft.Portal.Framework.IPersistentContentCache` interface.
-
-<a name="performance-best-practices-persistent-caching-of-scripts-across-extension-updates-example-implementation-as-done-in-hubsextension"></a>
-### Example implementation as done in HubsExtension
+The class itself resembles the following implementation as developed in **HubsExtension**.
 
 ```cs 
 
@@ -816,7 +798,7 @@ namespace <your.extension.namespace>
 
 ```
 
-web.config
+The `web.config` file includes the following information.
 
 ```xml
 
@@ -824,33 +806,37 @@ web.config
 
 ```
 
-<a name="performance-best-practices-persistent-caching-of-scripts-across-extension-updates-verfiying-that-persistent-caching-is-working"></a>
-### Verfiying that persistent caching is working
+<a name="performance-best-practices-persistent-caching-of-scripts-across-extension-updates-velidating-that-persistent-caching-is-working"></a>
+### Velidating that persistent caching is working
 
-- Deploy a version of your extension. Examine the scripts it loads, they will be of the form `prefix<sha hash>suffix.js`
-- Use a blob explorer of your preference and verify that the scripts have been written to blob storage.
-- Then make changes to TS files in your solution, build and deploy a new version of your extension.
-- Look for scripts that have the same prefix and suffix but a different hash.
-- For those scripts try to request the original URL (from step 1) from your extension server (not via the cdn).
-- The script should still get served, but this time it is coming from the persistent cache.
+To validate that  persistent caching is working, perform the following steps.
+
+1. Deploy a version of your extension. Make a list of the scripts that it loads, whose names are of the form `<prefix><sha hash><suffix>.js`.
+1. Use any blob explorer or editor to validate that the scripts have been written to blob storage.
+1. Make changes to the TS files in the solution, then build and deploy a new version of the extension.
+1. Look for scripts that have the same prefix and suffix but a different hash.
+1. For each of those scripts, try to request the original URL from step 1 to validate whether it loads from the extension server instead of the CDN.
+1. The script should still get served, but this time should load from the persistent cache.
 
 <a name="performance-best-practices-run-portalcop-to-identify-and-resolve-common-performance-issues"></a>
 ## Run portalcop to identify and resolve common performance issues
 
 <a name="performance-best-practices-portalcop"></a>
 ## PortalCop
-The Portal Framework team has built a tool called PortalCop that can help reduce code size and remove redundant RESX entries.
+
+The Portal Framework team has a tool named **PortalCop** that helps reduce code size and remove redundant RESX entries.
 
 <a name="performance-best-practices-portalcop-installing-portalcop"></a>
 ### Installing PortalCop
 
-Run the following command in the NuGet Package Manager Console.
+The tool should be installed when the developer installs Visual Studio, as specified in  [portalfx-extensions-nuget-overview.md](portalfx-extensions-nuget-overview.md).
+If not, the tool can be installed by running the following command in the NuGet Package Manager Console.
 
 ```
 Install-Package PortalFx.PortalCop -Source https://msazure.pkgs.visualstudio.com/DefaultCollection/_packaging/Official/nuget/v3/index.json -Version 1.0.0.339
 ```
 
-Or run the following in a Windows command prompt.
+The tool can also be installed by running the following command in  a Windows command prompt.
 
 ```
 nuget install PortalFx.PortalCop -Source https://msazure.pkgs.visualstudio.com/DefaultCollection/_packaging/Official/nuget/v3/index.json -Version 1.0.0.339
@@ -860,57 +846,63 @@ nuget install PortalFx.PortalCop -Source https://msazure.pkgs.visualstudio.com/D
 ### Running PortalCop
 
 <a name="performance-best-practices-portalcop-running-portalcop-namespace-mode"></a>
-#### Namespace Mode
+#### Namespace mode
 
-NOTE: If you do not use AMD, please do not run this mode in your codebase.
-
-If there are nested namespaces in code (for example A.B.C.D) the minifier will only reduce the top level (A) name, leaving all remaining names uncompressed.
-
-Example of uncompressible code and minified version
-        MsPortalFx.Base.Utilities.SomeFunction(); -> a.Base.Utilities.SomeFunction();
-
-As you implement your extension using our Framework, you may have done some namespacing import to help achieve better minification, like this:
-        Import FxUtilities = MsPortalFx.Base.Utilities;
-
-which yields a better minified version
-        FxUtilities.SomeFunction(); -> a.SomeFunction();
-
-In the Namespace mode, the PortalCop tool will normalize imports to the Fx naming convention. It won’t collide with any predefined names you defined. Using this tool, we achieved up to 10% code reduction in most of the Shell codebase.
-
-Review the changes after running the tool. Especially, be wary of string content changes. The tool does string mapping, not syntax based replacement.
+The **PortalCop** tool has a namespace mode that is used in code minification. 
  
 ```
    portalcop Namespace
 ```
 
-<a name="performance-best-practices-portalcop-running-portalcop-resx"></a>
-#### Resx
+**NOTE**: Do not run this mode in your codebase if If you do not use AMD.
 
-To reduce code size and save on localization costs, you can use the PortalCop RESX mode to find unused/redundant resx strings. 
+If there are nested namespaces in the code, for example A.B.C.D, the minifier only reduces the top level name, and leaves all the remaining names uncompressed.
 
+For example, if the code uses `MsPortalFx.Base.Utilities.SomeFunction();` it will be minified as `a.Base.Utilities.SomeFunction();`.
+
+While implementing an extension with the Framework, namespaces that are imported can achieve better minification.  For example, the following namespace is imported into code
 ```
-To list unused strings:
+   import FxUtilities = MsPortalFx.Base.Utilities;
+```
+
+It yields a better minified version, as in the following example.
+```
+   FxUtilities.SomeFunction(); -> a.SomeFunction();
+```
+
+In the Namespace mode, the **PortalCop** tool normalizes imports to the Fx naming convention. It will not collide with any predefined names you defined. This tool can achieve as much as a 10% code reduction in most of the Shell codebase.
+
+**NOTE**: Review the changes to minification after running the tool.  The tool does string mapping instead of syntax-based replacement, so you may want to be wary of string content changes.
+
+<a name="performance-best-practices-portalcop-running-portalcop-resx-mode"></a>
+#### Resx mode
+
+The **PortalCop** tool has a resx mode that is used to reduce code size and save on localization costs by finding unused/redundant `resx` strings. To list unused strings, use the following command.
+```
    portalcop Resx
+```
    
-To list and clean *.resx files:
+To list and clean *.resx files, use the following command.
+```
     portalcop Resx AutoRemove
 ```
 
-Constraints:
+Constraints on using the resx mode are as follows.
 
-- The tool may incorrectly flag resources as being un-used if your extension uses strings in unexpected formats. 
-  For example, if you try to dynamically read from resx based on string values.
-    
-  Utils.getResourceString(ClientResources.DeploymentSlots, slot)));
-  export function getResourceString(resources: any, value: string): string {
+* The tool may incorrectly flag resources as being unused if the extension uses strings in unexpected formats.  For example, if the extension tries to dynamically read from resx based on string values, as in the following code.
+
+```
+Utils.getResourceString(ClientResources.DeploymentSlots, slot)));
+export function getResourceString(resources: any, value: string): string {
         var key = value && value.length ? value.substr(0, 1).toLowerCase() + value.substr(1) : value;
         return resources[key] || value;
-   }
+}
+```
 
-- You need to review the changes after running the tool and make sure that they are valid because of the above constraint.
-- If using the AutoRemove option, you need to open up the RESX files in VisualStudio to regenerate the Designer.cs files.
-- If you find any more scenarios that the tool incorrectly identifies as unused please report to 
-<a href="mailto:ibizafxpm@microsoft.com?subject=Scenario still in use">ibizafxpm@microsoft.com</a>.
+* You should review the changes after running the tool and make sure that they are valid.
+* If using the AutoRemove option, you need to use  **VisualStudio** to regenerate the `Designer.cs` files by opening the RESX files.
+* If there are scenarios that the tool incorrectly identifies as unused, please report them to 
+<a href="mailto:ibizafxpm@microsoft.com?subject=PortalCop incorrectly identifies Scenario as unused">ibizafxpm@microsoft.com</a>.
 
 
 <a name="performance-best-practices-optimize-number-cors-preflight-requests-to-arm-using-invokeapi"></a>

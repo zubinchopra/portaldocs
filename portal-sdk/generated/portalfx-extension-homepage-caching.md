@@ -2,9 +2,7 @@
 <a name="server-side-caching-of-extension-home-pages"></a>
 ### Server side caching of extension home pages
 
-With the (5.0.302.85 or later) version of the SDK  extension home pages can be cached (to different levels).
-This should help get slightly better load time especially from browsers that have high latency.
-Below are two example URLs from the portal running in production:
+As of SDK version 5.0.302.85, extension home pages can be cached to different levels on the server.  This results in better load time, especially from browsers that have high latency. The following is an example of a Portal URL in the production environment.
 
 ```
 https://yourextension.contoso.com/
@@ -17,9 +15,10 @@ https://yourextension.contoso.com/
     #ece19d8501fb4d2cbe10db84b844c55b
 ```
 
-You will notice that for the extension, the sessionId is passed in the query string part of the URL.
-This makes the extension essentially un-cacheable (because even if it was, we would generate a unique URL on each access essentially busting any cache – browser or server).
-If you enable server side caching of extension home pages, the URL will become:
+You will notice that for the extension, the sessionId is sent in the query string part of the URL.
+This makes the extension essentially un-cacheable, because a unique URL is generated on each access. This essentially breaks any caching, whether it occurs on the client browser or on the extension server.
+
+If server-side caching of extension home pages is enabled, the URL becomes the following.
 
 ```
 https://yourextension.contoso.com/
@@ -31,37 +30,33 @@ https://yourextension.contoso.com/
     #ece19d8501fb4d2cbe10db84b844c55b
 ```
 
-Notice that the sessionId is no longer present in the query string (only in the fragment).
-This allows the extension server to serve up the same version of the page to a returning browser (HTTP 304).
+Notice that the sessionId is no longer present in the query string. This allows the extension server to serve the same version of the page to a returning browser (HTTP 304).
 
-You need to do some work to enable caching on your extension server.
+To enable homepage caching on the extension server, examine the 
+implementation of the `Microsoft.Portal.Framework.ExtensionDefinition` class.  
+In the implementation of the `Microsoft.Portal.Framework.ExtensionDefinition` class, there is a property named `Cacheability`. By default its value is `ExtensionIFrameCacheability.None`, but the implementation should set it to `ExtensionIFrameCacheability.Server`.
 
-1.  There is a property `Cacheability` on your implementation of the `Microsoft.Portal.Framework.ExtensionDefinition` class.
+Making this change assumes that the way the home page is rendered dynamically does not change, because there is 
+ different output for different requests. 
+It assumes that when the output changes, it also increments the value of `Microsoft.Portal.Framework.ApplicationContext.Version`.
 
-1.  By default its value is `ExtensionIFrameCacheability.None`
-
-1.  At the very least you should be able to set it to `ExtensionIFrameCacheability.Server`
-
-Making this change assumes that you do not change the way your home page is rendered dynamically (different output for different requests).
-It assumes that if you do change the output, you only do so by also incrementing the value of Microsoft.Portal.Framework.ApplicationContext.Version.
-Note: In this mode, if you make live updates to your extension without bumping the version, some chunk of your customers may not see those for a while because of caching.
-
+**NOTE**: In this mode, if  live updates are made to the  extension without incrementing the version, some subset  of  customers may not see the changes for some time because of what was previously cached.
 
 <a name="client-side-caching-of-extension-home-pages"></a>
 ### Client-side caching of extension home pages
 
 The above version of the feature only enables server side caching.
-But there could be even more benefits if we could somehow cache on the client (avoid the network call altogether).
+More  benefits are derived from caching if an extension can  cache on the client, and omit another network call.
 
-So we have added support for caching extension home pages in the browser itself.
-This can allow your extension to load with *ZERO* network calls from the browser (for a returning user).
-We believe that this should give us further performance and reliability improvements (fewer network calls => fewer network related errors).
+Consequently, the Azure team has added support for caching extension home pages in the browser itself. The performance of an extension can be improved  by changing  how the extension uses caches. This allows the extension to load with as few as  *ZERO* network calls from the browser for a returning user.
 
-To enable this, here are the steps you need to take:
+It also serves as a basis for further performance and reliability improvements, because fewer network calls also results in fewer network related errors.
+
+Perform the following steps to enable this.
 
 1.  Move to a version of the SDK newer than 5.0.302.121.
 
-1.  Implement [persistent caching of your scripts](portalfx-extension-persistent-caching-of-scripts.md).
+1.  Implement [persistent caching of your scripts](portalfx-performance-caching-scripts.md).
     You should do this any way to improve extension reliability.
     If you do not do this, you will see higher impact on reliability as a result of home page caching.
 
@@ -82,7 +77,7 @@ To enable this, here are the steps you need to take:
     }
     ```
 
-1.  <a href="mailto:ibizafxpm@microsoft.com?subject=[Manifest Caching] on &lt;ExtensionName&gt; &body=Hi, we have enabled manifest caching on &lt;ExtensionName&gt; please make the appropriate portal change">Contact the Portal team</a>
+1.  <a href="mailto:ibizafxpm@microsoft.com?subject=[Manifest Caching] on &lt;extensionName&gt; &body=Hi, we have enabled manifest caching on &lt;extensionName&gt; please make the appropriate Portal change.">Contact the Portal team</a>
      or submit a [Work Item Request](https://aka.ms/cachemanifest) so we can update the value from our side.  
     Sorry about this step.
     We added it to ensure backward compatibility.
@@ -106,11 +101,11 @@ We believe that the benefits of caching and fast load time generally outweigh th
 
 We periodically load your extensions (from our servers) to get their manifests.
 We call this "manifest cache". The cache is updated every few minutes.
-This allows us to start up the portal without loading every extension to find out very basic information about it (like its name and its browse entry/entries, etc.)
+This allows us to start up the Portal without loading every extension to find out very basic information about it (like its name and its browse entry/entries, etc.)
 When the extension is actually interacted with, we still load the latest version of its code, so the details of the extension should always be correct (not the cached values).
 So this works out as a reasonable optimization.
 With the newer versions of the SDK, we include the value of GetPageVersion() of your extension in its manifest.
-We then use this value when loading your extension into the portal (see the pageVersion part of the query string below).
+We then use this value when loading your extension into the Portal (see the pageVersion part of the query string below).
 So your extension URL might end up being something like:
 
 ```
@@ -137,7 +132,7 @@ This is just there to provide a mechanism to bust extension caches if we needed 
 <a name="how-to-test-your-changes"></a>
 ### How to test your changes
 
-You can verify the behavior of different caching modes in your extension by launching the portal with the following query string:
+You can verify the behavior of different caching modes in your extension by launching the Portal with the following query string:
 
 ```
 https://portal.azure.com/
@@ -146,18 +141,18 @@ https://portal.azure.com/
 ```
 
 This will cause the extension named "Your_Extension" to load with "manifest" level caching (instead of its default setting on the server.
-You also need to add "feature.canmodifyextensions=true" so that we know that the portal is running in test mode.  
+You also need to add "feature.canmodifyextensions=true" so that we know that the Portal is running in test mode.  
 
 To verify that the browser serves your extension entirely from cache on subsequent requests:
 
 - Open F12 developer tools, switch to the network tab, filter the requests to only show "documents" (not JS, XHR or others).
 - Then navigate to your extension by opening one of its blades, you should see it load once from the server.
 - You will see the home page of your extension show up in the list of responses (along with the load time and size).
-- Then F5 to refresh the portal and navigate back to your extension. This time when your extension is served up, you should see the response served with no network activity. The response will show "(from cache)".  If you see this manifest caching is working as expected.
+- Then F5 to refresh the Portal and navigate back to your extension. This time when your extension is served up, you should see the response served with no network activity. The response will show "(from cache)".  If you see this manifest caching is working as expected.
 
 <a name="co-ordinating-these-changes-with-the-portal"></a>
-### Co-ordinating these changes with the portal
+### Co-ordinating these changes with the Portal
 
-Again, if you do make some of these changes, you still need to coordinate with the portal team to make sure that we make corresponding changes on our side too.
+Again, if you do make some of these changes, you still need to coordinate with the Portal team to make sure that we make corresponding changes on our side too.
 Basically that will tell us to stop sending your extension the sessionId part of the query string in the URL (otherwise caching does not help at all).
 Sorry about this part, we had to do it in order to stay entirely backward compatible/safe.
