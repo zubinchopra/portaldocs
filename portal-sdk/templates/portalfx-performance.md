@@ -134,7 +134,7 @@ blade which is not meeting the bar.
 
 ## Persistent Caching of scripts across extension updates
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extension-persistent-caching-of-scripts.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-performance-caching-scripts.md"}
 
 ## Run portalcop to identify and resolve common performance issues
 

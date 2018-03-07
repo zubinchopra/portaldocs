@@ -30,15 +30,15 @@ All extensions need to meet the minimum performance required to be  at the 80th 
 
 ## Extension performance
 
-Extension performance is impacted by both Blade and Part performance, when the extension is loaded, when it is unloaded, and when it is required.
+Extension performance is impacted by both Blade and Part performance, when the extension is loaded, when it is unloaded, and when it is required by another extension.
 
-When a user visits a resource blade for the first time, the Portal  loads the extension and then requests the ViewModel.  This makes the Blade/Part performance happen.
+When a user visits a resource blade for the first time, the Portal  loads the extension and then requests the ViewModel.  This adds to the counts and times for the Blade and Part performance.
 
-If the user were to browse away from the UI experience and browse back previous to the unloading of the  extension, the second visit is faster because the UI does not have to re-load all of the extension.
+In addition, if the user were to browse away from the UI experience and browse back previous to the unloading of the extension, the load times for the second visit are faster because the UI does not have to re-load the entire extension.
 
 ## Blade performance
 
-Blade performance is centered around specific areas that are encapsulated under the `BladeRevealed` action. They are as follows.
+Blade performance is measured  around specific areas that are encapsulated under the `BladeRevealed` action. They are as follows.
 
 
 1. The constructor
@@ -48,7 +48,7 @@ Blade performance is centered around specific areas that are encapsulated under 
 
 ## Part performance
 
-Part performance is centered around specific areas that are encapsulated under the `PartRevealed` action. They are as follows.
+Part performance is measured  around specific areas that are encapsulated under the `PartRevealed` action. They are as follows.
 
 1. The constructor
 1. The call to the `OnInputsSet` method
@@ -86,11 +86,7 @@ The model gives a negative score to  the  views that do not meet the bar.
 
 ## Assessing blade performance
 
-There are two methods that are used to assess the performance of an extension. 
-
-1. Visit the PowerBi dashboard that is located at [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf).
-
-1. Run local Kusto queries to determine the numbers that are associated with extension performance.
+There are two methods that are used to assess the performance of an extension. The PowerBi dashboard that is located at [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf) measures blade, part, and extension performance, or you may run local Kusto queries to determine the numbers that are associated with extension performance.
 
 The PowerBi dashboard is maintained on a regular basis by the Fx team. If you choose to run local queries, make sure that you use the Fx provided Kusto functions to calculate the assessment.
 
@@ -102,7 +98,7 @@ The following table contains documents that are related to improving the perfoma
 | ------- | ---- | 
 | Content Delivery Network | [portalfx-cdn.md](portalfx-cdn.md)  | 
 | Caching  | [portalfx-extension-homepage-caching.md](portalfx-extension-homepage-caching.md)|
-|  Persistent Caching of scripts across extension updates | [portalfx-extension-persistent-caching-of-scripts.md](portalfx-extension-persistent-caching-of-scripts.md)   |
+|  Persistent Caching of scripts across extension updates | [portalfx-performance-caching-scripts.md](portalfx-performance-caching-scripts.md)   |
 |  Identify and resolve common performance issues | [portalfx-performance-portalcop.md](portalfx-performance-portalcop.md) |
 | Optimize CORS preflight requests | [portalfx-data-loadingdata.md#loading-data-optimize-number-cors-preflight-requests-to-arm-using-invokeapi.md](portalfx-data-loadingdata.md#loading-data-optimize-number-cors-preflight-requests-to-arm-using-invokeapi.md)  |
 | Improve part responsiveness with revealContent | [portalfx-parts-revealContent.md](portalfx-parts-revealContent.md) |
