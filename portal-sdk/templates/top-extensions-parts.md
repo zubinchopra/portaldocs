@@ -7,7 +7,7 @@
  
  {"gitdown": "include-file", "file": "../templates/portalfx-parts-discontinuing.md"}
   
- {"gitdown": "include-file", "file": "../templates/portalfx-parts-how-to-remove-from-blade.md"}
+ {"gitdown": "include-file", "file":   "../templates/portalfx-parts-how-to-remove-from-blade.md"}
 
  {"gitdown": "include-file", "file": "../templates/portalfx-parts-revealContent.md"}
 
