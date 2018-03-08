@@ -1,6 +1,6 @@
 
 <a name="persistent-caching-for-scripts"></a>
-### Persistent caching for scripts
+## Persistent caching for scripts
 
 One problem that affects extension reliability is that scripts may fail to load, especially after extensions have been updated.
 
@@ -98,7 +98,7 @@ The `web.config` file includes the following information.
 
 ```
 
-<a name="velidating-that-persistent-caching-is-working"></a>
+<a name="persistent-caching-for-scripts-velidating-that-persistent-caching-is-working"></a>
 ### Velidating that persistent caching is working
 
 To validate that  persistent caching is working, perform the following steps.
