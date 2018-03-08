@@ -3,7 +3,7 @@
 
 {"gitdown": "include-file", "file": "../templates/portalfx-performance-overview.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-performance-caching-homepage-caching.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-performance-caching-homepage.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-performance-caching-scripts.md"}
 
