@@ -1,5 +1,5 @@
 
-### Persistent caching for scripts 
+## Persistent caching for scripts 
 
 One problem that affects extension reliability is that scripts may fail to load, especially after extensions have been updated.
 
