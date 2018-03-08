@@ -5,7 +5,7 @@ In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  
 
 ### Controlling the AJAX call with `supplyData`
 
-In the simple case, the `QueryCache` is sent a simple `sourceUri` attribute which it uses to form a request. This request is sent via a `GET`, with a default set of headers. In some cases, developers may wish to manually make the request.  This can be useful for some scenarios, including the following.
+In this case, the `QueryCache` is sent a `sourceUri` attribute which it uses to form a request. This request is sent by using  a `GET` method, with a default set of headers. In some cases, developers may wish to manually make the request.  This can be useful for some scenarios, including the following.
 
 * The request needs to be a `POST` instead of `GET`
 * Custom HTTP headers should be sent with the request
@@ -41,12 +41,17 @@ public websitesQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModel
 });
 ```
 
-### Optimize number CORS preflight requests to ARM using invokeApi
+### Optimize CORS preflight requests
 
-When CORS is used to call ARM directly from the extension, the browser actually makes two network calls for every one **AJAX** call in the client code. The following examples describe the state before and after invoking API.
+The `invokeAPI` method is a great improvement to the preflight request process.
 
-<details>
-<summary> Before using invokeApi</summary>
+When [CORS](portalfx-extensions-glossary.data.md) is used to call ARM directly from the extension, the browser actually makes two network calls for every one **AJAX** call in the client code.
+
+The `invokeApi` method uses a fixed endpoint and a different type of caching to reduce the number of calls to the server.  Consequently, the extension performance is optimized by using a single URI.
+
+ The following examples describe the state of the     before and after using `invokeAPI`.
+
+* Before using invokeApi
 
 The following code illustrates one preflight per request.
 
@@ -71,7 +76,7 @@ The following code illustrates one preflight per request.
 
 ```
 
-This results in a CORS preflight request for each unique uri.  For example, if the user were to browse to two separate resources `aresource` and `otherresource`, it would result in the following requests.
+This code results in one CORS preflight request for each unique uri.  For example, if the user were to browse to two separate resources `aresource` and `otherresource`, it would result in the following requests.
 
 ```
 Preflight 
@@ -109,15 +114,15 @@ Actual CORS request to resource
         ...some otherresource data..
 ```
 
-This is making one preflight request for each `MsPortalFx.Base.Net.ajax` request. In the extreme case, if network latency were the dominant factor this would be a 50% overhead.
+This code makes one preflight request for each `MsPortalFx.Base.Net.ajax` request. In the extreme case, if network latency were the dominant factor, this would be a 50% overhead.
 
-</details>
-<details>
-<summary> After applying the invokeApi optimization</summary>
+* After applying the invokeApi optimization
 
 To apply the `invokeApi` optimization, perform the following two steps.
 
-1. Supply the invokeApi option directly to the `MsPortalFx.Base.Net.ajax({...})` option. This allows the extension to use the fixed endpoint `https://management.azure.com/api/invoke` to which to issue all the requests. The actual path and query string are actually passed as a header `x-ms-path-query`. At the `api/invoke` endpoint, ARM reconstructs the original URL on the server side and processes the request in its original form. 
+1. Supply the invokeApi option directly to the `MsPortalFx.Base.Net.ajax({...})` option. This allows the extension to use the fixed endpoint `https://management.azure.com/api/invoke` to which to issue all the requests. The actual path and query string are actually sent as an `x-ms-path-query` header. At the `api/invoke` endpoint, ARM reconstructs the original URL on the server side and processes the request in its original form. 
+
+<!-- TODO: Determine whether cache:false creates the unique timestamp, or the absence of cache:false creates the unique timestamp  -->
 
 1. Remove `cache:false`.  This avoids emitting a unique timestamp (i.e., &_=1447122511837) on every request, which invalidates the single-uri benefit that is provided by the `invokeApi`.
 
@@ -182,18 +187,19 @@ Actual Ajax Request
 In the above you will note that:
 
 1. The preflight request is cached for an hour.
-1. The request is now always for a single resource `https://management.azure.com/api/invoke`. Because all requests now go through this single endpoint, it results in a single preflight request that is used for all subsequent requests, which is a great improvement on the previous example.
+1. The request is now always for a single resource `https://management.azure.com/api/invoke`. All requests now go through this single endpoint, therefore a single preflight request is used for all subsequent requests.
+
 1. The `x-ms-path-query` preserves the request for the original path segments, the query string and the hash from the query cache.
 
 Within the Portal implementation itself, this optimization has been applied to the Hubs extension.
 
 <!-- TODO:  Determine whether the following sentence came from best practices and usabililty studies. -->
  We have observed about 15% gains for the scenarios we tested (resources and resource-groups data load) with normal network latency. As latencies get higher, the benefits should be greater.
-</details>
+
 
 ### Reusing loaded or cached data with `findCachedEntity`
 
-Browsing resources is a very common activity in the new Azure Portal.  Columns in the resource list should be loaded using a `QueryCache<TEntity, ...>`.  When the user activates a resource list item, the details that are displayed in the resource blade should be loaded using an `EntityCache<TEntity, ...>`, where `TEntity` is often shared between the two data caches.  To display details of a resource, rather than issue an **AJAX** call to load the resource details model into `EntityCache`, use the `findCachedEntity` option to locate this entity that was previously loaded in some other `QueryCache` or that was nested in some other `EntityCache`.
+Browsing resources is a very common activity in the Portal.  Columns in the resource list should be loaded using a `QueryCache<TEntity, ...>`.  When the user activates a resource list item, the details that are displayed in the resource blade should be loaded using an `EntityCache<TEntity, ...>`, where `TEntity` is often shared between the two data caches.  To display details of a resource, rather than issue an **AJAX** call to load the resource details model into `EntityCache`, use the `findCachedEntity` option to locate this entity that was previously loaded in some other `QueryCache` or that was nested in some other `EntityCache`.
 
 ```ts
 this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataModels.WebsiteModel, number>({
