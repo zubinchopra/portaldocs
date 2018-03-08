@@ -2,10 +2,22 @@
 <a name="loading-data"></a>
 ## Loading Data
 
+Loading data is more easily accomplished with the following methods from the `QueryCache` and `EntityCache` objects. The following table includes some performant uses for these methods, but they may be applicable in other ways.
+
+| Method | Purpose | Sample |
+| ------ | ------- | ------ |   
+| `supplyData` | [Controlling AJAX calls](#controlling-ajax-calls) | `<dir>\Client\V1\Data\SupplyData\SupplyData.ts` |
+| `invokeAPI`  | [Optimize CORS preflight requests](#optimize-cors-preflight-requests) | `<dir>\Client\V1\ResourceTypes\Engine\EngineData.ts` |
+| `findCachedEntity` | [Reusing loaded or cached data](#reusing-loaded-or-cached-data) | `<dir>\Client\V1\ResourceTypes\Engine\EngineData.ts` |
+| `cachedAjax()` | [Ignore redundant data](#ignore-redundant-data)  |  `<dir>\Client\V1\Data\SupplyData\SupplyData.ts` |
+| `DataCache` object | [Making authenticated AJAX calls](#making-authenticated-ajax-calls) | `\Client\Data\Loader\LoaderSampleData.ts` |
+
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
-<a name="loading-data-controlling-the-ajax-call-with-supplydata"></a>
-### Controlling the AJAX call with <code>supplyData</code>
+* * *
+
+<a name="loading-data-controlling-ajax-calls"></a>
+### Controlling AJAX calls
 
 In this case, the `QueryCache` is sent a `sourceUri` attribute which it uses to form a request. This request is sent by using  a `GET` method, with a default set of headers. In some cases, developers may wish to manually make the request.  This can be useful for some scenarios, including the following.
 
@@ -54,153 +66,154 @@ The `invokeApi` method uses a fixed endpoint and a different type of caching to 
 
  The following examples describe the state of the code before and after using `invokeAPI`.
 
-* Before using invokeApi
+<a name="loading-data-optimize-cors-preflight-requests-before-using-invokeapi"></a>
+#### Before using invokeApi
 
-    The following code illustrates one preflight per request.
+The following code illustrates one preflight per request.
 
-    ```ts
-        public resourceEntities = new MsPortalFx.Data.EntityCache<DataModels.RootResource, string>({
-            entityTypeName: ExtensionTemplate.DataModels.RootResourceType,
-            sourceUri: MsPortalFx.Data.uriFormatter(endpoint + "{id}?" + this._armVersion, false),
-            supplyData: (httpMethod: string, uri: string, headers?: StringMap<any>, data?: any, params?: any) => {
-                return MsPortalFx.Base.Net.ajax({
-                    uri: uri,
-                    type: httpMethod || "GET",
-                    dataType: "json",
-                    traditional: true,
-                    headers: headers,
-                    contentType: "application/json",
-                    setAuthorizationHeader: true,
-                    cache: false,
-                    data: data
-                })
-            }
-        });
+```ts
+    public resourceEntities = new MsPortalFx.Data.EntityCache<DataModels.RootResource, string>({
+        entityTypeName: ExtensionTemplate.DataModels.RootResourceType,
+        sourceUri: MsPortalFx.Data.uriFormatter(endpoint + "{id}?" + this._armVersion, false),
+        supplyData: (httpMethod: string, uri: string, headers?: StringMap<any>, data?: any, params?: any) => {
+            return MsPortalFx.Base.Net.ajax({
+                uri: uri,
+                type: httpMethod || "GET",
+                dataType: "json",
+                traditional: true,
+                headers: headers,
+                contentType: "application/json",
+                setAuthorizationHeader: true,
+                cache: false,
+                data: data
+            })
+        }
+    });
 
-    ```
+```
 
-    This code results in one CORS preflight request for each unique uri.  For example, if the user were to browse to two separate resources `aresource` and `otherresource`, it would result in the following requests.
+This code results in one CORS preflight request for each unique uri.  For example, if the user were to browse to two separate resources `aresource` and `otherresource`, it would result in the following requests.
 
-    ```
-    Preflight 
-        Request
-            URL:https://management.azure.com/subscriptions/74b34cf3-8c42-46d8-ac89-f18c83815ea3/resourceGroups/testresourcemove/providers/Microsoft.PortalSdk/rootResources/aresource?api-version=2014-04-01&_=1447122511837 
-            Method:OPTIONS
-            Accept: */*
-        Response
-            HTTP/1.1 200 OK
-            Access-Control-Allow-Methods: GET,POST,PUT,DELETE,PATCH,OPTIONS,HEAD
-            Access-Control-Allow-Origin: *
-            Access-Control-Max-Age: 3600
-        Request
-            URL:https://management.azure.com/subscriptions/74b34cf3-8c42-46d8-ac89-f18c83815ea3/resourceGroups/somerg/providers/Microsoft.PortalSdk/rootResources/otherresource?api-version=2014-04-01&_=1447122511837 
-            Method:OPTIONS
-            Accept: */*
-        Response
-            HTTP/1.1 200 OK
-            Access-Control-Allow-Methods: GET,POST,PUT,DELETE,PATCH,OPTIONS,HEAD
-            Access-Control-Allow-Origin: *
-            Access-Control-Max-Age: 3600
+```
+Preflight 
+    Request
+        URL:https://management.azure.com/subscriptions/74b34cf3-8c42-46d8-ac89-f18c83815ea3/resourceGroups/testresourcemove/providers/Microsoft.PortalSdk/rootResources/aresource?api-version=2014-04-01&_=1447122511837 
+        Method:OPTIONS
+        Accept: */*
+    Response
+        HTTP/1.1 200 OK
+        Access-Control-Allow-Methods: GET,POST,PUT,DELETE,PATCH,OPTIONS,HEAD
+        Access-Control-Allow-Origin: *
+        Access-Control-Max-Age: 3600
+    Request
+        URL:https://management.azure.com/subscriptions/74b34cf3-8c42-46d8-ac89-f18c83815ea3/resourceGroups/somerg/providers/Microsoft.PortalSdk/rootResources/otherresource?api-version=2014-04-01&_=1447122511837 
+        Method:OPTIONS
+        Accept: */*
+    Response
+        HTTP/1.1 200 OK
+        Access-Control-Allow-Methods: GET,POST,PUT,DELETE,PATCH,OPTIONS,HEAD
+        Access-Control-Allow-Origin: *
+        Access-Control-Max-Age: 3600
 
-    Actual CORS request to resource
-        Request
-            https://management.azure.com/subscriptions/74b34cf3-8c42-46d8-ac89-f18c83815ea3/resourceGroups/somerg/providers/Microsoft.PortalSdk/rootResources/aresource?api-version=2014-04-01&_=1447122511837  HTTP/1.1
-            Method:GET
-        Response
-            HTTP/1.1 200 OK
-            ...some resource data..
-        Request
-            https://management.azure.com/subscriptions/74b34cf3-8c42-46d8-ac89-f18c83815ea3/resourceGroups/somerg/providers/Microsoft.PortalSdk/rootResources/otherresource?api-version=2014-04-01&_=1447122511837  HTTP/1.1
-            Method:GET
-        Response
-            HTTP/1.1 200 OK
-            ...some otherresource data..
-    ```
+Actual CORS request to resource
+    Request
+        https://management.azure.com/subscriptions/74b34cf3-8c42-46d8-ac89-f18c83815ea3/resourceGroups/somerg/providers/Microsoft.PortalSdk/rootResources/aresource?api-version=2014-04-01&_=1447122511837  HTTP/1.1
+        Method:GET
+    Response
+        HTTP/1.1 200 OK
+        ...some resource data..
+    Request
+        https://management.azure.com/subscriptions/74b34cf3-8c42-46d8-ac89-f18c83815ea3/resourceGroups/somerg/providers/Microsoft.PortalSdk/rootResources/otherresource?api-version=2014-04-01&_=1447122511837  HTTP/1.1
+        Method:GET
+    Response
+        HTTP/1.1 200 OK
+        ...some otherresource data..
+```
 
-    This code makes one preflight request for each `MsPortalFx.Base.Net.ajax` request. In the extreme case, if network latency were the dominant factor, this code results in 50% overhead.
+This code makes one preflight request for each `MsPortalFx.Base.Net.ajax` request. In the extreme case, if network latency were the dominant factor, this code results in 50% overhead.
 
-* After applying the invokeApi optimization
+<a name="loading-data-optimize-cors-preflight-requests-after-applying-the-invokeapi-optimization"></a>
+#### After applying the invokeApi optimization
 
-    To apply the `invokeApi` optimization, perform the following two steps.
+To apply the `invokeApi` optimization, perform the following two steps.
 
-    1. Supply the invokeApi option directly to the `MsPortalFx.Base.Net.ajax({...})` option. This allows the extension to use the fixed endpoint `https://management.azure.com/api/invoke` to which to issue all the requests. The actual path and query string are actually sent as an `x-ms-path-query` header. At the `api/invoke` endpoint, ARM reconstructs the original URL on the server side and processes the request in its original form. 
+1. Supply the invokeApi option directly to the `MsPortalFx.Base.Net.ajax({...})` option. This allows the extension to use the fixed endpoint `https://management.azure.com/api/invoke` to which to issue all the requests. The actual path and query string are actually sent as an `x-ms-path-query` header. At the `api/invoke` endpoint, ARM reconstructs the original URL on the server side and processes the request in its original form. 
 
-    <!-- TODO: Determine whether cache:false creates the unique timestamp, or the absence of cache:false creates the unique timestamp  -->
+<!-- TODO: Determine whether cache:false creates the unique timestamp, or the absence of cache:false creates the unique timestamp  -->
 
-    1. Remove `cache:false`.  This avoids emitting a unique timestamp (i.e., &_=1447122511837) on every request, which invalidates the single-uri benefit that is provided by the `invokeApi`.
+1. Remove `cache:false`.  This avoids emitting a unique timestamp (i.e., &_=1447122511837) on every request, which invalidates the single-uri benefit that is provided by the `invokeApi`.
 
-    The following code demonstrates the application of this optimization.
+The sample located at `<dir>\Client\V1\ResourceTypes\Engine\EngineData.ts`  uses the  `invokeApi: "api/invoke"` line of code to supply the invokeApi option directly to the `MsPortalFx.Base.Net.ajax({...})` option. This is similar to the following code, which  also demonstrates the application of this optimization.
 
-    ```ts
-        public resourceEntities = new MsPortalFx.Data.EntityCache<DataModels.RootResource, string>({
-            entityTypeName: ExtensionTemplate.DataModels.RootResourceType,
-            sourceUri: MsPortalFx.Data.uriFormatter(endpoint + "{id}?" + this._armVersion, false),
-            supplyData: (httpMethod: string, uri: string, headers?: StringMap<any>, data?: any, params?: any) => {
-                return MsPortalFx.Base.Net.ajax({
-                    uri: uri,
-                    type: httpMethod || "GET",
-                    dataType: "json",
-                    traditional: true,
-                    headers: headers,
-                    contentType: "application/json",
-                    setAuthorizationHeader: true,
-                    invokeApi: "api/invoke",
-                    data: data
-                })
-            }
-        });    
-    ```
+```ts
+    public resourceEntities = new MsPortalFx.Data.EntityCache<DataModels.RootResource, string>({
+        entityTypeName: ExtensionTemplate.DataModels.RootResourceType,
+        sourceUri: MsPortalFx.Data.uriFormatter(endpoint + "{id}?" + this._armVersion, false),
+        supplyData: (httpMethod: string, uri: string, headers?: StringMap<any>, data?: any, params?: any) => {
+            return MsPortalFx.Base.Net.ajax({
+                uri: uri,
+                type: httpMethod || "GET",
+                dataType: "json",
+                traditional: true,
+                headers: headers,
+                contentType: "application/json",
+                setAuthorizationHeader: true,
+                invokeApi: "api/invoke",
+                data: data
+            })
+        }
+    });    
+```
 
-    This code results in the following requests.
+This code results in the following requests.
 
-    ```
-    Preflight 
-        Request
-            URL: https://management.azure.com/api/invoke HTTP/1.1
-            Method:OPTIONS
-            Accept: */*
-            Access-Control-Request-Headers: accept, accept-language, authorization, content-type, x-ms-client-request-id, x-ms-client-session-id, x-ms-effective-locale, x-ms-path-query
-            Access-Control-Request-Method: GET
+```
+Preflight 
+    Request
+        URL: https://management.azure.com/api/invoke HTTP/1.1
+        Method:OPTIONS
+        Accept: */*
+        Access-Control-Request-Headers: accept, accept-language, authorization, content-type, x-ms-client-request-id, x-ms-client-session-id, x-ms-effective-locale, x-ms-path-query
+        Access-Control-Request-Method: GET
 
-        Response
-            HTTP/1.1 200 OK
-            Cache-Control: no-cache, no-store
-            Access-Control-Max-Age: 3600
-            Access-Control-Allow-Origin: *
-            Access-Control-Allow-Methods: GET,POST,PUT,DELETE,PATCH,OPTIONS,HEAD
-            Access-Control-Allow-Headers: accept, accept-language, authorization, content-type, x-ms-client-request-id, x-ms-client-session-id, x-ms-effective-locale, x-ms-path-query
+    Response
+        HTTP/1.1 200 OK
+        Cache-Control: no-cache, no-store
+        Access-Control-Max-Age: 3600
+        Access-Control-Allow-Origin: *
+        Access-Control-Allow-Methods: GET,POST,PUT,DELETE,PATCH,OPTIONS,HEAD
+        Access-Control-Allow-Headers: accept, accept-language, authorization, content-type, x-ms-client-request-id, x-ms-client-session-id, x-ms-effective-locale, x-ms-path-query
 
-    Actual Ajax Request
-        Request
-            URL: https://management.azure.com/api/invoke
-            x-ms-path-query: /subscriptions/74b34cf3-8c42-46d8-ac89-f18c83815ea3/resourceGroups/somerg/providers/Microsoft.PortalSdk/rootResources/aresource?api-version=2014-04-01
-            Method:GET      
-        Response
-            HTTP/1.1 200 OK
-            ...some aresource data..
-        Request
-            URL: https://management.azure.com/api/invoke
-            x-ms-path-query: /subscriptions/74b34cf3-8c42-46d8-ac89-f18c83815ea3/resourceGroups/somerg/providers/Microsoft.PortalSdk/rootResources/otherresource?api-version=2014-04-01
-            Method:GET
-        Response
-            HTTP/1.1 200 OK
-            ...some otherresource data..
-    ```
+Actual Ajax Request
+    Request
+        URL: https://management.azure.com/api/invoke
+        x-ms-path-query: /subscriptions/74b34cf3-8c42-46d8-ac89-f18c83815ea3/resourceGroups/somerg/providers/Microsoft.PortalSdk/rootResources/aresource?api-version=2014-04-01
+        Method:GET      
+    Response
+        HTTP/1.1 200 OK
+        ...some aresource data..
+    Request
+        URL: https://management.azure.com/api/invoke
+        x-ms-path-query: /subscriptions/74b34cf3-8c42-46d8-ac89-f18c83815ea3/resourceGroups/somerg/providers/Microsoft.PortalSdk/rootResources/otherresource?api-version=2014-04-01
+        Method:GET
+    Response
+        HTTP/1.1 200 OK
+        ...some otherresource data..
+```
 
-    In the above you will note that:
+In the above you will note that:
 
-   * The preflight request is cached for an hour.
-   * The request is now always for a single resource `https://management.azure.com/api/invoke`. All requests now go through this single endpoint, therefore a single preflight request is used for all subsequent requests.
-   * The `x-ms-path-query` preserves the request for the original path segments, the query string and the hash from the query cache.
+* The preflight request is cached for an hour.
+* The request is now always for a single resource `https://management.azure.com/api/invoke`. All requests now go through this single endpoint, therefore a single preflight request is used for all subsequent requests.
+* The `x-ms-path-query` preserves the request for the original path segments, the query string and the hash from the query cache.
 
 Within the Portal implementation itself, this optimization has been applied to the Hubs extension.
 
 <!-- TODO:  Determine whether the following sentence came from best practices and usabililty studies. -->
 Azure has observed about 15% gains for the scenarios we tested (resources and resource-groups data load) with normal network latency. As latencies get higher, the benefits should be greater.
 
-
-<a name="loading-data-reusing-loaded-or-cached-data-with-findcachedentity"></a>
-### Reusing loaded or cached data with <code>findCachedEntity</code>
+<a name="loading-data-reusing-loaded-or-cached-data"></a>
+### Reusing loaded or cached data
 
 Browsing resources is a very common activity in the Portal.  Columns in the resource list should be loaded using a `QueryCache<TEntity, ...>`.  When the user activates a resource list item, the details that are displayed in the resource blade should be loaded using an `EntityCache<TEntity, ...>`, where `TEntity` is often shared between the two data caches.  To display details of a resource, rather than issue an **AJAX** call to load the resource details model into `EntityCache`, use the `findCachedEntity` option to locate this entity that was previously loaded in some other `QueryCache` or that was nested in some other `EntityCache`.
 
@@ -218,8 +231,8 @@ this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataMode
 
 ``` 
 
-<a name="loading-data-ignore-redundant-data-with-cachedajax"></a>
-### Ignore redundant data with <code>cachedAjax()</code>
+<a name="loading-data-ignore-redundant-data"></a>
+### Ignore redundant data
 
 If the call to `MsPortalFx.Base.Net.ajax()` is replaced with `MsPortalFx.Base.Net.cachedAjax()`, then a hash is generated on the server to provide change detection.  This not only saves network bandwidth, but it also saves client-side processing.
 
@@ -294,12 +307,11 @@ For most services, developers will make Ajax calls from the client to the server
 
 **NOTE**: One server-side API is ARM.
 
-When bootstrapping extensions, the portal will send a [JWT token](portalfx-extensions-glossary-data.md) to the extension. That same token can be included in the HTTP headers of a request to ARM, in order to provide end-to-end authentication. To help make those authenticated calls, the portal includes an API which performs Ajax requests, similar to the jQuery `$.ajax()` library named `MsPortalFx.Base.Net.ajax()`. If the extension uses a `DataCache` object,  this class is used by default. However, it can also be used independently, as specified in the example located at 
+When bootstrapping extensions, the portal will send a [JWT token](portalfx-extensions-glossary-data.md) to the extension. That same token can be included in the HTTP headers of a request to ARM, in order to provide end-to-end authentication. To help make those authenticated calls, the portal includes an API which performs Ajax requests, similar to the jQuery `$.ajax()` library named `MsPortalFx.Base.Net.ajax()`. If the extension uses a `DataCache` object,  this class is used by default. However, it can also be used independently, as in the example located at 
 <!-- TODO:  Determine whether LoaderSampleData.ts is still used or has been replaced.  It is no longer in <SDK>\\Extensions\SamplesExtension\Extension.  The closest match is  Client\V1\Data\SupplyData\Templates\SupplyDataInstructions.html -->
 `\Client\Data\Loader\LoaderSampleData.ts`.
 
  This code is also included in the following example.
-
 
 ```ts
 var promise = MsPortalFx.Base.Net.ajax({
