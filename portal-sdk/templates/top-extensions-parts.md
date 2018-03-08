@@ -1,12 +1,12 @@
 
 # Parts
 
-{"gitdown": "include-file", "file": "../templates/portalfx-parts-overview.md"}
+ {"gitdown": "include-file", "file": "../templates/portalfx-parts-overview.md"}
    
  {"gitdown": "include-file", "file": "../templates/portalfx-parts-versioning.md"}
  
  {"gitdown": "include-file", "file": "../templates/portalfx-parts-discontinuing.md"}
- 
+  
  {"gitdown": "include-file", "file": "../templates/portalfx-parts-how-to-remove-from-blade.md"}
 
  {"gitdown": "include-file", "file": "../templates/portalfx-parts-revealContent.md"}

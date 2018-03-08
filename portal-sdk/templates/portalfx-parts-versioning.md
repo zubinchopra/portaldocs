@@ -59,7 +59,7 @@ Globally-defined parts can not specify constant bindings, but the flow is mostly
 </CustomPart>
 ```
 
-  The following ViewModel code demonstrates how to process explicitly-versioned inputs, in addition to the version of the parts that existed previous to the addition of explicit versioning support.
+  The following code demonstrates how to process explicitly-versioned inputs, in addition to the version of the parts that existed previous to the addition of explicit versioning support.
 
 ```javascript
 public onInputsSet(inputs: Def.InputsContract, settings: Def.SettingsContract): MsPortalFx.Base.Promise {

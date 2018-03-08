@@ -1,30 +1,29 @@
 
-### Using the CDN
-Extension authors may choose to use a CDN to serve static images, scripts, and stylesheets. The Azure Portal SDK does not require the use of a CDN, or the use of a particular CDN. However, extensions served from Azure can take advantage of the built-in CDN capabilities in the SDK.
+### Using the Content Delivery Network
+
+Extension authors may choose to use a Content Delivery Network(CDN) to serve static images, scripts, and stylesheets. The Azure Portal SDK does not require the use of a CDN, or the use of a specific  CDN. However, extensions that are served from Azure can take advantage of the built-in CDN capabilities in the SDK.
 
 ### Creating the CDN account
-Follow this guide to set up your CDN account:
 
-<a href="http://www.windowsazure.com/en-us/documentation/articles/cdn-how-to-use/" target="_blank">http://www.windowsazure.com/en-us/documentation/articles/cdn-how-to-use/</a>
+Follow the guide located at [http://aka.ms/portalfx/cdn](http://aka.ms/portalfx/cdn)  to set up your CDN account.
 
-### Configuring your CDN service
 After creating your CDN, there are a few options that need to be set.
-- Make sure HTTP and HTTPS are enabled by clicking the "Enable HTTPS" command.
-- Make sure query string status is enabled by clicking the "Enable Query String" command.
+
+* Click the "Enable HTTPS" command to enable HTTP and HTTPS.
+
+* Click the "Enable Query String" to enable query string status.
 
 ### Configuring your extension
-To take advantage of the CDN capabilities in the Portal SDK, there are a few pieces that must be configured.
 
-### Configuring the Prefix
-After setting up your CDN, you will receive a url which can be used to access your content. It will be in the form:
+To take advantage of the CDN capabilities in the Portal SDK, there are a few pieces that must be configured. After setting up your CDN, you will receive a URL with which to access your content. It will be in the form:
 
-    //<MyCDNNamespace>.vo.msecnd.net/
+    //<CDNNamespace>.vo.msecnd.net/
 
 This is the prefix for your CDN service. Your production service should be configured to use this prefix. In your local web.config, can set this with the following `appSetting`:
 
 ```xml
 <add key="Microsoft.Portal.Extensions.SamplesExtension.ApplicationConfiguration.CdnPrefix" 
-     value="//<MyCDNNamespace>.vo.msecnd.net/" />
+     value="//<CDNNamespace>.vo.msecnd.net/" />
 ```
 
 Notice that neither `http` nor `https` are used in the url. This is important. It allows your page to request content based on the current protocol of the request. Oftentimes, this setting will be blank in web.config, and instead configured in a `cscfg` for a cloud service.
