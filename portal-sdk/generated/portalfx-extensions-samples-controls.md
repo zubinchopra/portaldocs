@@ -128,8 +128,8 @@ Controls that do not have a link to a unique experience can be located from  the
 | Plotting Metrics  (Monitor Chart)       | [portalfx-controls-monitor-chart.md](portalfx-controls-monitor-chart.md) | `<dir>\Client\V2\Preview\MonitorChart\ MonitorChartBlade.ts`     | [https://aka.ms/portalfx/sampleMonitorChart](https://aka.ms/portalfx/sampleMonitorChart) |
 | Donut         | [portalfx-controls-donut.md](portalfx-controls-donut.md) | `<dir>\Client\V2\Controls\Donut\DonutBlade.ts`  | |
 |       | | <p align="center">Gauges</p>   | |
-| Quota Gauge   | | [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground)  |   |
-| Single Value Gauge | | [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground)  |  |
+| Quota Gauge   | | | [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground)  |   
+| Single Value Gauge | |  | [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground)  |  
 | | |<p align="center">Graphs</p>    | | |
 | CustomHtml | | | http://aka.ms/portalfx/samples#blade/SamplesExtension/graphCustomNodeInstructions |
 | Standard Graph  | [portalfx-controls-graph-nuget.md](portalfx-controls-graph-nuget.md)| | http://aka.ms/portalfx/samples#blade/SamplesExtension/graphInstructions |
