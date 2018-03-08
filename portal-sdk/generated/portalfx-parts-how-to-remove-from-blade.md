@@ -6,13 +6,13 @@ Your unlocked blade's default layout should be reflective of tiles you think pro
 
 If you find yourself in that position this is what you should do.
 
-If your part was defined inline as a `<Part/>` or `<CustomPart>` element within a `<Blade/>` and `<Lens/>` then you have the pre-step of moving that part out of the blade and into your extension's global part catalog (Best practice is to use no-pdl parts).
+If the part was defined inline as a `<Part/>` or `<CustomPart>` element within a `<Blade/>` and `<Lens/>` then you have the pre-step of moving that part out of the blade and into your extension's global part catalog (Best practice is to use no-pdl parts).
 
-Else if your part is already defined in the global part catalog or is defined in another extension then you currently have a `<PartReference/>` tag in your blade rather than a `<Part/>` tag.
+Otherwise, if the  part is already defined in the global part catalog or is defined in another extension then you currently have a `<PartReference/>` tag in your blade rather than a `<Part/>` tag.
 
 Next, you should remove your `<Part/>` or `<PartReference/>` tag and define globally within your extension a `<RedirectPart/>` tag.
 
-At this point we need to keep in mind that our goal is to remove the part from the default layout, but we still want to continue supporting instances of the part that users have pinned to their startboards.  You may also choose to allow new users to  find the part in the tile gallery.  If your goal was to permanently retire a part, including removing support for pinned instances and the tile gallery then read [Discontinuing portal parts](portalfx-parts-discontinuing.md).
+At this point we need to keep in mind that our goal is to remove the part from the default layout, but we still want to continue supporting instances of the part that users have pinned to their startboards.  You may also choose to allow new users to  find the part in the tile gallery.  If your goal was to permanently discontinue a part, including removing support for pinned instances and the tile gallery then read [Discontinuing portal parts](portalfx-parts-discontinuing.md).
 
 ```xml
 <RedirectPart Name="SAME EXACT PART NAME THAT IS BEING REDIRECTED FROM" 

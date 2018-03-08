@@ -3,13 +3,24 @@
 
 The Azure Content Delivery Network (CDN) is designed to send audio, video, images, and other files faster and more reliably to customers using servers that are closest to the users. This dramatically increases speed and availability, resulting in significant user experience improvements.
 
->**The benefits of using the CDN to cache web site assets include:**
->- Better performance and user experience for end users, especially when using applications where multiple round-trips are required to load content.
->- Large scaling to better handle instantaneous high load, like at the start of a product launch event.
->- Less traffic is sent to the origin by distributing user requests and serving content from edge servers.
+Extension authors may choose to use a Content Delivery Network(CDN) to serve static images, scripts, and stylesheets. The Azure Portal SDK does not require the use of a CDN, or the use of a specific  CDN. However, extensions that are served from Azure can take advantage of the built-in CDN capabilities in the SDK.
 
-CdnIntegrationBlade allows customers to create and manage CDN endpoints for their existing Azure resources.
-![Cdn integration blade](../media/portalfx-pde/CdnIntegrationBlade.png)
+The benefits of using the CDN to cache web site assets include the following.
+
+* Better performance and user experience for end users
+
+    This is  especially true for applications that require multiple round-trips to load content.
+
+* Large scaling to better handle single-event high loads
+    
+    For example, the start of a product launch event will cause a spike in user access that is not predictable annually
+
+* Less traffic is sent to the origin
+    User requests are distributed, and edge servers serve content
+
+The `CdnIntegrationBlade` allows customers to create and manage CDN endpoints for their existing Azure resources, as in the following example.
+
+![alt-text](../media/portalfx-pde/CdnIntegrationBlade.png "Cdn integration blade")
 
 Through the simple integration explained in this document, your customers can enable CDN on their Azure resources within your extension without having to leave and go to the CDN extension. The CDN integration blade can be embedded in your own extension if you follow the below steps.
 
@@ -124,6 +135,5 @@ You shouldn't need to add any extra telemetry on your side.
 <a name="getting-started-with-azure-cdn-4-telemetry-and-monitoring-contact-us"></a>
 ### Contact Us
 You can start development today! Create a code review and add  and "cdneng" as reviewers.
-Azure CDN Engineering team
 
 Don't hesitate to contact us for any questions, concerns, or bug reports.

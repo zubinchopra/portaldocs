@@ -1,35 +1,32 @@
 
-<a name="using-the-cdn"></a>
-### Using the CDN
-Extension authors may choose to use a CDN to serve static images, scripts, and stylesheets. The Azure Portal SDK does not require the use of a CDN, or the use of a particular CDN. However, extensions served from Azure can take advantage of the built-in CDN capabilities in the SDK.
+<a name="using-the-content-delivery-network"></a>
+### Using the Content Delivery Network
+
+Extension authors may choose to use a Content Delivery Network(CDN) to serve static images, scripts, and stylesheets. The Azure Portal SDK does not require the use of a CDN, or the use of a specific  CDN. However, extensions that are served from Azure can take advantage of the built-in CDN capabilities in the SDK.
 
 <a name="creating-the-cdn-account"></a>
 ### Creating the CDN account
-Follow this guide to set up your CDN account:
 
-<a href="http://www.windowsazure.com/en-us/documentation/articles/cdn-how-to-use/" target="_blank">http://www.windowsazure.com/en-us/documentation/articles/cdn-how-to-use/</a>
+Follow the guide located at [http://aka.ms/portalfx/cdn](http://aka.ms/portalfx/cdn)  to set up your CDN account.
 
-<a name="configuring-your-cdn-service"></a>
-### Configuring your CDN service
 After creating your CDN, there are a few options that need to be set.
-- Make sure HTTP and HTTPS are enabled by clicking the "Enable HTTPS" command.
-- Make sure query string status is enabled by clicking the "Enable Query String" command.
+
+* Click the "Enable HTTPS" command to enable HTTP and HTTPS.
+
+* Click the "Enable Query String" to enable query string status.
 
 <a name="configuring-your-extension"></a>
 ### Configuring your extension
-To take advantage of the CDN capabilities in the Portal SDK, there are a few pieces that must be configured.
 
-<a name="configuring-the-prefix"></a>
-### Configuring the Prefix
-After setting up your CDN, you will receive a url which can be used to access your content. It will be in the form:
+To take advantage of the CDN capabilities in the Portal SDK, there are a few pieces that must be configured. After setting up your CDN, you will receive a URL with which to access your content. It will be in the form:
 
-    //<MyCDNNamespace>.vo.msecnd.net/
+    //<CDNNamespace>.vo.msecnd.net/
 
 This is the prefix for your CDN service. Your production service should be configured to use this prefix. In your local web.config, can set this with the following `appSetting`:
 
 ```xml
 <add key="Microsoft.Portal.Extensions.SamplesExtension.ApplicationConfiguration.CdnPrefix" 
-     value="//<MyCDNNamespace>.vo.msecnd.net/" />
+     value="//<CDNNamespace>.vo.msecnd.net/" />
 ```
 
 Notice that neither `http` nor `https` are used in the url. This is important. It allows your page to request content based on the current protocol of the request. Oftentimes, this setting will be blank in web.config, and instead configured in a `cscfg` for a cloud service.
@@ -140,6 +137,8 @@ When you release to ensure that users are served the latest static content, as o
 ### Configuring versioning of your Extensioon
 
 
+<!-- TODO:  deprecate this document by removing it.  It has been  replaced by portalfx-extensions-versioning.md  documents  --> 
+
 <a name="updating-extensions"></a>
 ### Updating extensions
 
@@ -153,7 +152,7 @@ First the runtime tries to find the `AssemblyInformationalVersionAttribute` attr
 If this attribute isn't defined in the assembly, the runtime searches for the `AssemblyFileVersion` attribute and gets the value from this attribute.
 You can check the version of your extensions by typing in `window.fx.environment.version` in the browser console from the extension frame.
 
-You should ensure that while building your extension assembly, the version number is correctly stamped and updated on every build. The assembly version is added to your assembly by specifying the assembly level attribute as shown below.
+You should ensure that while building your extension assembly, the version number is correctly updated on every build. The assembly version is added to your assembly by specifying the assembly level attribute as shown below.
 
 ```cs
 [assembly: System.Reflection.AssemblyFileVersion("5.0.0.56")]
