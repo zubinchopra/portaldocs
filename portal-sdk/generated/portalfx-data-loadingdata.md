@@ -139,7 +139,7 @@ To apply the `invokeApi` optimization, perform the following two steps.
 
 1. Supply the invokeApi option directly to the `MsPortalFx.Base.Net.ajax({...})` option. This allows the extension to use the fixed endpoint `https://management.azure.com/api/invoke` to which to issue all the requests. The actual path and query string are actually sent as an `x-ms-path-query` header. At the `api/invoke` endpoint, ARM reconstructs the original URL on the server side and processes the request in its original form. 
 
-<!-- TODO: Determine whether cache:false creates the unique timestamp, or the absence of cache:false creates the unique timestamp  -->
+    <!-- TODO: Determine whether cache:false creates the unique timestamp, or the absence of cache:false creates the unique timestamp  -->
 
 1. Remove `cache:false`.  This avoids emitting a unique timestamp (i.e., &_=1447122511837) on every request, which invalidates the single-uri benefit that is provided by the `invokeApi`.
 
@@ -201,21 +201,24 @@ Actual Ajax Request
         ...some otherresource data..
 ```
 
-In the above you will note that:
+**NOTE**:
 
 * The preflight request is cached for an hour.
-* The request is now always for a single resource `https://management.azure.com/api/invoke`. All requests now go through this single endpoint, therefore a single preflight request is used for all subsequent requests.
+* The request is always for a single resource named `https://management.azure.com/api/invoke`. All requests now go through this single endpoint, therefore a single preflight request is used for all subsequent requests.
 * The `x-ms-path-query` preserves the request for the original path segments, the query string and the hash from the query cache.
 
 Within the Portal implementation itself, this optimization has been applied to the Hubs extension.
 
 <!-- TODO:  Determine whether the following sentence came from best practices and usabililty studies. -->
-Azure has observed about 15% gains for the scenarios we tested (resources and resource-groups data load) with normal network latency. As latencies get higher, the benefits should be greater.
+
+The Azure team observed about 15% gains for the scenarios tested, which were  resources and resource-groups data loads with normal network latency. The benefits should be greater as latencies increase.
 
 <a name="loading-data-reusing-loaded-or-cached-data"></a>
 ### Reusing loaded or cached data
 
-Browsing resources is a very common activity in the Portal.  Columns in the resource list should be loaded using a `QueryCache<TEntity, ...>`.  When the user activates a resource list item, the details that are displayed in the resource blade should be loaded using an `EntityCache<TEntity, ...>`, where `TEntity` is often shared between the two data caches.  To display details of a resource, rather than issue an **AJAX** call to load the resource details model into `EntityCache`, use the `findCachedEntity` option to locate this entity that was previously loaded in some other `QueryCache` or that was nested in some other `EntityCache`.
+Browsing resources is a very common activity in the Portal.  Columns in the resource list should be loaded using a `QueryCache<TEntity, ...>`.  When the user activates a resource list item, the details that are displayed in the resource blade should be loaded using an `EntityCache<TEntity, ...>`, where `TEntity` is often shared between the two data caches.
+
+To display details of a resource, use the `findCachedEntity` option to locate an entity that was previously loaded in some other `QueryCache`, or that was nested in some other `EntityCache`. This is preferred instead of issuing an **AJAX** call to load the resource details model into `EntityCache`. The preferred method is in the following code.
 
 ```ts
 this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataModels.WebsiteModel, number>({
@@ -229,7 +232,7 @@ this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataMode
     }
 });
 
-``` 
+```
 
 <a name="loading-data-ignore-redundant-data"></a>
 ### Ignore redundant data
@@ -238,7 +241,7 @@ If the call to `MsPortalFx.Base.Net.ajax()` is replaced with `MsPortalFx.Base.Ne
 
 This capability is built into the SDK as a server-side filter that is activated when the header `x-ms-cache-tag` is present.  This value is a SHA256 hash of the return data plus the query information.  
 
-**NOTE**: If the extension uses a backend server that does not utilize the SDK, then this filter may not be available by default and therefore the calculation may need to be implemented by the service provider.
+**NOTE**: If the extension uses a server that does not utilize the SDK, then this filter may not be available by default and therefore the calculation may need to be implemented by the service provider.
 
 The hash calculation should ensure uniqueness of the query and result, as in the following example.  
 
