@@ -92,13 +92,13 @@ The PowerBi dashboard is maintained on a regular basis by the Fx team. If you ch
 
 ## Topics that Improve Blade Performance
 
-The following table contains documents that are related to improving the perfomance of an extension.
+The following table contains documents that are related to improving extension perfomance.
 
 | Purpose | Name |  
 | ------- | ---- | 
 | Content Delivery Network | [portalfx-cdn.md](portalfx-cdn.md)  | 
-| Caching  | [portalfx-extension-homepage-caching.md](portalfx-extension-homepage-caching.md)|
-|  Persistent Caching of scripts across extension updates | [portalfx-performance-caching-scripts.md](portalfx-performance-caching-scripts.md)   |
+| Caching  | [portalfx-performance-caching-homepage.md](portalfx-performance-caching-homepage.md)|
+| Persistent Caching of scripts across extension updates | [portalfx-performance-caching-scripts.md](portalfx-performance-caching-scripts.md)   |
 |  Identify and resolve common performance issues | [portalfx-performance-portalcop.md](portalfx-performance-portalcop.md) |
 | Optimize CORS preflight requests | [portalfx-data-loadingdata.md#loading-data-optimize-number-cors-preflight-requests-to-arm-using-invokeapi.md](portalfx-data-loadingdata.md#loading-data-optimize-number-cors-preflight-requests-to-arm-using-invokeapi.md)  |
 | Improve part responsiveness with revealContent | [portalfx-parts-revealContent.md](portalfx-parts-revealContent.md) |

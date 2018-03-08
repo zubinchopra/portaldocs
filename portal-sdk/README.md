@@ -154,7 +154,7 @@ The Ibiza team collects standard telemetry for __generic actions__ like blade op
 * [Portal telemetry overview]()
 * [Getting access to raw portal telemetry data]()
 * [Consuming telemetry via pre-build Power BI Dashboards]()
-* [Performance and reliability monitoring / alerting](./generated/top-extensions-performance.md))
+* [Performance and reliability monitoring / alerting](./generated/top-extensions-performance.md)
 * [Collecting feedback from your users]()
 * [Set up and verify telemetry logging from your extension]()
 
