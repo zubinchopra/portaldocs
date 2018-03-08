@@ -1,14 +1,11 @@
 
-### Improving Part responsiveness
+## Improving Part Performance
 
-#### Overview
+When a Part loads, the user is presented with the default **blocking loading** indicator that is in the following image.
 
-As a Part loads, by default, the user is presented with a *blocking* loading indicator:
+![alt-text](../media/portalfx-parts/portalfx-parts-opaquespinner.png "Part with blocking loading indicator") 
 
-![Part with blocking loading indicator][opaque]
-[opaque]: ../media/portalfx-parts-opaquespinner.png
-
-By default, the lifetime of this *blocking* loading indicator is controlled by the promise returned from the Part's `onInputsSet` method:
+By default, the lifetime of this indicator is controlled by the promise that is returned from the `onInputsSet` method of the part, as in the following example.
 
 ```ts
 public onInputsSet(inputs: Def.InputsContract): MsPortalFx.Base.Promise {
@@ -17,29 +14,26 @@ public onInputsSet(inputs: Def.InputsContract): MsPortalFx.Base.Promise {
 }
 ```
 
-Now, it is quite common that a Part's content can be revealed (that is, the *blocking* loading indicator can be removed) earlier, allowing the user to interact with the Part while its data continues to load.  An example of this looks like:
+With large amounts of data, it is good practice to reveal content while the data continues to load.  When this occurs, the **blocking loading** indicator can be removed previous to the completion of the data loading process. This allows the user to interact with the part and the data that is currently accessible.
 
-![Part with non-blocking loading indicator][translucent]
-[translucent]: ../media/portalfx-parts-translucentspinner.png
+Essential content can be displayed while the non-essential content continues to load in the background, as signified by the  **status** marker on the bottom  left side of the tile.
 
-Here, essential content - like the "Accounts" SQL Database name - is displayed to the user while non-essential "status" (bottom left) loads in the background.
-While "status" loads, a *non-blocking* loading indicator is displayed at the top of the Part.  Crucially, the user can activate the Part (can interact with the Part) while the Part is in this *non-blocking* loading state.
+A **non-blocking loading** indicator is displayed at the top of the part.  the user can activate or interact with the part while it is in this state. A part that contains the status marker and the **non-blocking loading** indicator is in the following image.
 
-To optimize your Part to behave in this more responsive way, you'll use the `container.revealContent()` API from within your Part's view model.  A call to this API will:
+![alt-text](../media/portalfx-parts/portalfx-parts-translucentspinner.png "Part with non-blocking loading indicator") 
 
-* remove the *blocking* loading indicator
-* reveal the Part's content
-* apply the *non-blocking* loading indicator
-* allow the user to interact with your Part
+The `container.revealContent()` API that is located in the ViewModel can add this optimization to the part that is being developed. This method performs the following.
 
-Depending on the nature of your Part, you will call `container.revealContent()`:
+* Remove the **blocking loading** indicator
+* Reveal content on the part
+* Display the **non-blocking** loading indicator
+* Allow the user to interact with the part
 
-* from your Part view model's `constructor` *or*
-* from your Part view model's `onInputsSet` function:
-    * in a '.then(() => ...)' callback, once *essential data* has loaded
-    * in 'onInputsSet' directly, before initiating data-loading    
+The `container.revealContent()` method can be called from either the ViewModel's `constructor` method or the ViewModel's `onInputsSet` function. These calls are located either in a `.then(() => ...)` callback, after the essential data has loaded, or they are located in the `onInputsSet` method, previous to the code that initiates data loading.
 
-You'll call `container.revealContent()` from your view model's `constructor` in scenarios where the Part has interesting content to display *even before any data is loaded*.  An example of this would be a chart that can show its X and Y-axis immediately:
+### Calling from the constructor
+
+If the part contains interesting content to display previous to loading any data, the extension should call the `container.revealContent()` method from the ViewModel's `constructor` .  The following example demonstrates  a chart that immediately displays the X-axis and the Y-axis.
 
 ```ts
 export class BarChartPartViewModel implements Def.BarChartPartViewModel.Contract {
@@ -57,7 +51,12 @@ export class BarChartPartViewModel implements Def.BarChartPartViewModel.Contract
 	}
 }
 ```
-More often, you'll call `container.revealContent()` once some essential, fast-loading data is loaded:
+
+### Calling from onInputsSet
+
+ Calling the `onInputsSet` method to return a promise behaves consistently, whether or not the part makes use of the  `container.revealContent()` method. Consequently, the  `container.revealContent()`method can optimize the behavior of the part that is being developed. There are two methodologies that are used to call the `container.revealContent()` method.
+ 
+It is common to call the  `container.revealContent()` method after some essential, fast-loading data is loaded, as in the following example.
 
 ```ts
 public onInputsSet(inputs: MyPartInputs): Promise {
@@ -72,7 +71,8 @@ public onInputsSet(inputs: MyPartInputs): Promise {
     ]);
 }
 ```
-Less commonly, you'll call `container.revealContent()` when the essential data you'll display can be computed synchronously from the Part/Blade inputs:
+
+It is less common to call the `container.revealContent()` method when the essential data to display can be computed synchronously from other inputs, as in the following example.
 
 ```ts
 public onInputsSet(inputs: MyPartInputs): Promise {
@@ -87,30 +87,12 @@ public onInputsSet(inputs: MyPartInputs): Promise {
     return this._dataView.fetch(inputs.resourceId);
 }
 ```
-In all cases above, the promise returned from `onInputsSet` still determines the visibility/presence of loading indicators.  Once the promise returned from `onInputsSet` is resolved, all loading indicators are removed:
 
-![Fully loaded Part with no loading indicator][nospinner]
-[nospinner]: ../media/portalfx-parts-nospinner.png
+The promise returned from `onInputsSet` still determines the visibility of the loading indicators.  After the promise is resolved, all loading indicators are removed, as in the following image.
 
-Also, if the promise returned from `onInputsSet` is rejected (due to the rejection of either the fast- or slow-loading data promise), the Part will transition to show the default error UX (a "sad cloud").
-This treatment of the promise returned from `onInputsSet` behaves consistently, whether or not the Part makes use of `container.revealContent()`.  In this way, `container.revealContent()` is a *simple, additive* change you should use to optimize your Part's behavior.
+![alt-text](../media/portalfx-parts/portalfx-parts-nospinner.png "Fully loaded part with no loading indicator")
 
-#### Anti-patterns
+Also, if the promise that was returned from `onInputsSet` is rejected, the part displays the default error UX.  The promise that was returned from `onInputsSet` could be rejected if either the fast-loading data promise or the slow-loading data promise was rejected. The customizable error UX is in the following image.
 
-It is important that loading indicators are consistently applied across the Parts/Blades of all extensions.  To achieve this:
+![alt-text](../media/portalfx-parts/default-error-UX.png "Default error UX")
 
-**Do** call `container.revealContent()` to limit the time where the user sees *blocking* loading indicators.
-
-**Do** return a Promise from `onInputsSet` that **reflects all data-loading** for your Part (or for your Blade, if the Blade is locked or `<TemplateBlade>`).
-
-**Do not** return a Promise from `onInputsSet` that removes loading indicators *before all Part data is loaded*.  While your Part data loads, if the user sees no loading indicator, your Part will appear broken and/or unresponsive.  For instance,
-
-```ts
-public onInputsSet(inputs: MyPartInputs): Promise {
-    this._view.fetch(inputs.resourceId);
-    
-    // DO NOT DO THIS!  Removes all loading indicators.
-    // Your Part will look broken while the `fetch` above completes.
-    return Q();
-}
-```
