@@ -20,14 +20,12 @@ Update the following image to a more current blade and associated website.
 
 ![alt-text](../media/portalfx-parts/part-sharing.png "portalfx-parts/part-sharing.png")
 
+![alt-text](../media/portalfx-parts/portalfx-parts-nospinner.png "media/portalfx-parts/portalfx-parts-nospinner.png ")
 
-![alt-text](../media/portalfx-parts-nospinner.png "media/portalfx-parts-nospinner.png ")
-
-
-![alt-text](../media/portalfx-parts-opaquespinner.png "media/portalfx-parts-opaquespinner.png")
+![alt-text](../media/portalfx-parts/portalfx-parts-opaquespinner.png "media/portalfx-parts/portalfx-parts-opaquespinner.png")
 
 
-![alt-text](../media/portalfx-parts-translucentspinner.png "media/portalfx-parts-translucentspinner.png")
+![alt-text](../media/portalfx-parts/portalfx-parts-translucentspinner.png "media/portalfx-parts/portalfx-parts-translucentspinner.png")
 
 
 ![alt-text](../media/samples.png "samples.png")
