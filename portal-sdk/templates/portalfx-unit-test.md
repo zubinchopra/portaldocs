@@ -317,7 +317,7 @@ This error indicates that it cannot find the expanded NuGet package for the Unit
 
     Add the folowing to your `<packages>`:
 
-    ``xml
+    ```xml
     <package id="Microsoft.Portal.TestFramework.UnitTest" version="5.0.302.1016" targetFramework="net45" />
     ```
 
