@@ -74,7 +74,7 @@ The following NuGet packages have been deprecated. Do not use these packages whe
 | Microsoft.Portal.Azure.Website | Contains the Authenticated Developer Portal Website with Hubs and Billing Extensions. | 
 | Microsoft.Portal.Azure.WebsiteNoAuth | Contains the Unauthenticated Developer Portal Website. | 
 | Microsoft.Portal.Framework.Scripts | Deprecated, use Microsoft.Portal.TestFramework.UnitTest instead, as specified in  [portalfx-unit-test.md](portalfx-unit-test.md).  | 
-| Microsoft.Portal.Tools.Etw | Provides the **EtwRelatedFilesUtility.exe** tool and sample configurations for developers who are self-hosting extensions. The recommended practice is to use the extension hosting service as specified in [top-extensions-hosting.md](top-extensions-hosting.md) instead of custom deployment, as specified in [portalfx-extensions-custom-deployment.md](portalfx-extensions-custom-deployment.md).  | 
+| Microsoft.Portal.Tools.Etw | Provides the **EtwRelatedFilesUtility.exe** tool and sample configurations for developers who are self-hosting extensions. The recommended practice is to use the extension hosting service as specified in [top-extensions-hosting-service.md](top-extensions-hosting-service.md) instead of custom deployment, as specified in [portalfx-extensions-custom-deployment.md](portalfx-extensions-custom-deployment.md).  | 
 
 <a name="nuget-packages-invoking-other-extensions-at-runtime"></a>
 ## Invoking other extensions at runtime
