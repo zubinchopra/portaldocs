@@ -42,7 +42,7 @@ A ViewModel that includes  multiple chart view types is located at `<dir>\Client
 
 Series views are visualizations of individual data series. Series views allow developers to modify the color, display name, and interaction behavior of a specific series.
 
-By default, series views will be generated for each of the chart views and each data series that is added to the chart. For example, there are  three data series respectively named seriesA, seriesB, and seriesC. There is also a chart that has two chart views, a bar chart view and a line chart view. The resulting chart would have 6 series views, specifically one  bar chart view and one line chart view for each series. This default behavior is ideal for simple charts, especially those with one chart view type.
+By default, series views will be generated for each of the chart views and each data series that is added to the chart. For example, there are  three data series respectively named seriesA, seriesB, and seriesC. There is also a chart that has two chart views, a bar chart view and a line chart view. The resulting chart would have six series views, specifically one  bar chart view and one line chart view for each series. This default behavior is ideal for simple charts, especially those with one chart view type.
 
 Series views allow developers to create more interesting views. For example, seriesA and seriesB should be visualized as bars, and seriesC should be visualized as a line. To achieve this behavior, turn off the auto-generate behavior, as in the following code.
 
