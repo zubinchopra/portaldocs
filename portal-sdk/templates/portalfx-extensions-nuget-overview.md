@@ -1,6 +1,6 @@
 # NuGet Packages
 
-The Azure Portal SDK ships framework assemblies, tools, test framework and extension [PDE](portalfx-extensions-onboarding-glossary.md) files as NuGet packages. It also provides the capability to ship extensions as NuGet packages. This allows extensions to invoke blades and parts from other extensions at runtime. For more information about sharing  extensions as NuGet packages, see [portalfx-pde-publish.md](portalfx-pde-publish.md).
+The Azure Portal SDK ships framework assemblies, tools, test framework and extension [PDE](portalfx-extensions-glossary-onboarding.md) files as NuGet packages. It also provides the capability to ship extensions as NuGet packages. This allows extensions to invoke blades and parts from other extensions at runtime. For more information about sharing  extensions as NuGet packages, see [portalfx-pde-publish.md](portalfx-pde-publish.md).
 
 ## Download NuGet packages
 
@@ -20,7 +20,7 @@ In order to download the NuGet packages as part of an extension, developers can 
         />
         ```
 
-        **NOTE**: This is the recommended approach for [first-party extensions](portalfx-extensions-onboarding-glossary.md). 
+        **NOTE**: This is the recommended approach for [first-party extensions](portalfx-extensions-glossary-onboarding.md). 
 
     * Non-CoreXT extensions
 
@@ -30,7 +30,7 @@ In order to download the NuGet packages as part of an extension, developers can 
 
     External partners can download and install the NuGet packages when they install and use **Visual Studio 2015**. For more information, see [portalfx-extensions-getting-started-procedure.md](portalfx-extensions-getting-started-procedure.md). The packages that are installed are located in the `C:\Program Files (x86)\Microsoft SDKs\PortalSDK\Packages` directory.
 
-    **NOTE**: This is the recommended approach for [third-party extensions](portalfx-extensions-onboarding-glossary.md).
+    **NOTE**: This is the recommended approach for [third-party extensions](portalfx-extensions-glossary-onboarding.md).
 
 
 ## Package categories
@@ -53,7 +53,7 @@ After installation, NuGet packages that are used for development are listed in t
 | Microsoft.Portal.Framework | Contains framework assemblies Microsoft.Portal.Azure.dll, Microsoft.Portal.Core.dll,Microsoft.Portal.Framework.dll, Microsoft.WindowsAzure.ServiceRuntime.dll and WindowsAzureEventSource.dll.  |
 | Microsoft.Portal.Security.AadCore | Contains AAD module used for auth Microsoft.Portal.AadCore.dll | 
 | Microsoft.Portal.TypeMetadata  | Contains both runtime and compile time components that drive reflection-style features for the Azure Portal SDK.  This includes the compile time generation of C# model interfaces into TypeScript interfaces, and the injection of type information into the portal at runtime. | 
-| Microsoft.Portal.Tools | Contains PDC, Target files (.target) , [Definition files](portalfx-extensions-onboarding-glossary.md) and TypeScript 2.0.3 compiler. | 
+| Microsoft.Portal.Tools | Contains PDC, Target files (.target) , [Definition files](portalfx-extensions-glossary-onboarding.md) and TypeScript 2.0.3 compiler. | 
 | Microsoft.Portal.Tools.ContentUnbundler | Contains the tool that packages an extension UI into a zip file which can be served by the hosting service. | 
 
 ### Publishing in the marketplace
