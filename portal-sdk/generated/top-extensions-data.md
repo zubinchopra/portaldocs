@@ -2041,7 +2041,12 @@ QueryCache/EntityCache data caches **consistent with server data**.
 See [Reflecting server data changes on the client](portalfx-data-configuringdatacache.md) for details.
 
 
-   
+   ## Frequently asked questions
+
+<a name="advanced-data-topics-data-atomization-"></a>
+### 
+
+* * * 
    
    ## Glossary
 
