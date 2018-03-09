@@ -33,7 +33,6 @@ NuGet packages are separated into the following categories.
 * [Publishing in the marketplace](#publishing-in-the-marketplace)
 * [Testing](#testing)
 * [Deprecated packages](#deprecated-packages)
-* [Extension NuGet Packages](#extension-nuGet-packages)
 
 The following sections describe the various NuGet packages by category.
 
