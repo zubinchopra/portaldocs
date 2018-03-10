@@ -1,4 +1,4 @@
-# Release Notes since 11/9/2017
+# Release Notes since 11/10/2017
 
 ## 5.0.302.984
 0 Breaking Changes, 0 Features added and 0 Bugs Fixed
@@ -151,6 +151,10 @@
 ## 5.0.302.903
 0 Breaking Changes, 3 Features added and 0 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1639144'>1639144</a></td><td>Feature</td><td>Add targeting support to the openDialog API</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1503867'>1503867</a></td><td>Feature</td><td>[Perf] Remove expensive selectors from shell & controls code</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10626694'>10626694</a></td><td>Feature</td><td>[ExtensionConfiguration] <Onboarding CPIM portal extension to Mooncake environment> for extension <Microsoft_AAD_B2CAdmin></td></tr></table>
+
+## 5.0.302.1034
+0 Breaking Changes, 1 Features added and 4 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2214513'>2214513</a></td><td>Bug Fix</td><td>Make playground deployable without staging</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2192060'>2192060</a></td><td>Feature</td><td>MSI sometimes doesnt include all dependent nupkg</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2184693'>2184693</a></td><td>Bug Fix</td><td>Provide highcontrast mode ext-* classes for extension to react to</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2165370'>2165370</a></td><td>Bug Fix</td><td>[Telemetry] Context is not logged for 'MenuBlade' events</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2157588'>2157588</a></td><td>Bug Fix</td><td>Call revealContent early in DeploymentsListBlade</td></tr></table>
 
 ## 5.0.302.1033
 0 Breaking Changes, 1 Features added and 8 Bugs Fixed
