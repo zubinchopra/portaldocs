@@ -26,7 +26,7 @@ The `runningStatus` is a filter which will be applied to the query. This allows 
 
 ### Observable map & filter
 
-In many cases, the developer may want to shape the extension data to fit the view to which it will be bound. Some cases where this is useful are as follows.
+In many cases, the developer may want to shape the extension data to fit the view to which it will be bound. Some cases where this is useful are as follows.   
 
 * Shaping data to match the contract of a control, like data points of a chart
 * Adding a computed property to a model object
