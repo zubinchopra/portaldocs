@@ -9,7 +9,7 @@ Portal development patterns or architectures that are recommended based on custo
 
 ### :bulb: Productivity Tip
 
-**Typescript** 2.0.3 should be installed on your machine. The   version can be verified by executing the following command:
+**Typescript** 2.0.3 should be installed on your machine. The version can be verified by executing the following command:
 
 ```bash
 $>tsc -version
@@ -20,7 +20,7 @@ Also, **Typescript** files should be set up to Compile on Save.
 
 ### Performance
 
-There are practices that can improve the performance of the extension.  For more information, see [portalfx-performance-bestpractices.md](portalfx-performance-bestpractices.md).
+There are practices that can improve the performance of the extension.  For more information, see [portalfx-extensions-bp-performance.md](portalfx-extensions-bp-performance.md).
 
 
 ### Productivity Tip
