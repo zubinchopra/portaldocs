@@ -454,12 +454,12 @@ Extensions should publish the extracted deployment artifacts that are generated 
     * **Prod storage account**: The public read-only endpoint that serves zip files for the production environment.
 
 
-<a name="provide-environment-specific-configuration-files-converting-from-diy-deployment-to-a-hosting-service"></a>
-### Converting from DIY deployment to a hosting service
+<a name="provide-environment-specific-configuration-files-converting-from-custom-deployment-to-a-hosting-service"></a>
+### Converting from custom  deployment to a hosting service
 
 <!-- TODO: Determine whether they meant "rollback" instead of "regression", which is a term that is typically used while testing. -->
 
-To minimize the probability of regression, use the following procedure to migrate an extension from DIY deployment to a hosting service. For more information about how the uriFormat parameter is used in hosting, see  .
+To minimize the probability of regression, use the following procedure to migrate an extension from custom  deployment to a hosting service. For more information about how the uriFormat parameter is used in hosting, see  . For more information about custom deployment, see [portalfx-extensions-custom-deployment.md](portalfx-extensions-custom-deployment.md).
 
 <details>
 
@@ -650,37 +650,37 @@ The above configuration will result in a build output as required by Ev2 and the
 
 * As of version 5.0.302.834
 
-```
-out\retail-amd64\ServiceGroupRoot
-                \HostingSvc\1.2.1.0.zip
-                \Parameters\*.json
-                \buildver.txt
-                \RolloutSpec.6h.json
-                \RolloutSpec.24h.json
-                \production.ServiceModel.6h.json
-                \production.ServiceModel.24h.json
-                \production.friendlyname_1.json
-                \production.friendlyname_2.json
-                \production.friendlyname_3.json
+  ```
+  out\retail-amd64\ServiceGroupRoot
+                  \HostingSvc\1.2.1.0.zip
+                  \Parameters\*.json
+                  \buildver.txt
+                  \RolloutSpec.6h.json
+                  \RolloutSpec.24h.json
+                  \production.ServiceModel.6h.json
+                  \production.ServiceModel.24h.json
+                  \production.friendlyname_1.json
+                  \production.friendlyname_2.json
+                  \production.friendlyname_3.json
 
-```
+  ```
 
 * As of version 5.0.302.837
 
 
-```
-out\retail-amd64\ServiceGroupRoot
-                \HostingSvc\1.2.1.0.zip
-                \Production.Parameters\*.json
-                \buildver.txt
-                \Production.RolloutSpec.6h.json
-                \Production.RolloutSpec.24h.json
-                \Production.ServiceModel.6h.json
-                \Production.ServiceModel.1D.json
-                \Production.friendlyname_1.json
-                \Production.friendlyname_2.json
-                \Production.friendlyname_3.json
-```
+  ```
+  out\retail-amd64\ServiceGroupRoot
+                  \HostingSvc\1.2.1.0.zip
+                  \Production.Parameters\*.json
+                  \buildver.txt
+                  \Production.RolloutSpec.6h.json
+                  \Production.RolloutSpec.24h.json
+                  \Production.ServiceModel.6h.json
+                  \Production.ServiceModel.1D.json
+                  \Production.friendlyname_1.json
+                  \Production.friendlyname_2.json
+                  \Production.friendlyname_3.json
+  ```
 
 <a name="advanced-hosting-service-procedures-specify-contentunbundler-bake-time"></a>
 ### Specify ContentUnbundler bake time
@@ -692,22 +692,22 @@ to:
 
 The monitor duration can be specified by updating the  `ServiceGroupRootReplacements.json` file to include a new array called "MonitorDuration", as in the following example.
 
-```
-"Test": {
-    "AzureSubscriptionId": "0531c8c8-df32-4254-a717-b6e983273e5f",
-    "CertKeyVaultUri": "https://stzhao0resourcedf.vault.azure.net/secrets/PortalHostingServiceDeploymentCertificate",
-    "TargetStorageConStringKeyVaultUri": "https://stzhao0resourcedf.vault.azure.net/secrets/PortalHostingServiceStorageConnectionString",
-    "TargetContainerName": "hostingservicedf",
-    "ContactEmail": "rowong@microsoft.com",
-    "PortalExtensionName": "Microsoft_Azure_Resources",
-    "FriendlyNames": [
-      "friendlyname1"
-    ],
-    "MonitorDuration": [
-        "PT1H",
-        "PT30M"
-    ]
-```
+  ```
+  "Test": {
+      "AzureSubscriptionId": "0531c8c8-df32-4254-a717-b6e983273e5f",
+      "CertKeyVaultUri": "https://stzhao0resourcedf.vault.azure.net/secrets/PortalHostingServiceDeploymentCertificate",
+      "TargetStorageConStringKeyVaultUri": "https://stzhao0resourcedf.vault.azure.net/secrets/PortalHostingServiceStorageConnectionString",
+      "TargetContainerName": "hostingservicedf",
+      "ContactEmail": "rowong@microsoft.com",
+      "PortalExtensionName": "Microsoft_Azure_Resources",
+      "FriendlyNames": [
+        "friendlyname1"
+      ],
+      "MonitorDuration": [
+          "PT1H",
+          "PT30M"
+      ]
+  ```
 
 If no monitor durations are specified, then the **ContentUnbundler** EV2 generation will default to 6 hours (PT6H) and 1 day (P1D).
 
@@ -717,21 +717,21 @@ If no monitor durations are specified, then the **ContentUnbundler** EV2 generat
 **ContentUnbundler** EV2 templates now support generating deployment files that do not include a delay between stages.  This can be enabled by adding the key/value pair 
 `"SkipSafeDeployment": "true" ` in the corresponding environment in the `ServiceGroupRootReplacements.json` file.  The following example adds the SkipSafeDeployment key/value pair to the extension named `Microsoft_MyExtension` in the **MOONCAKE** environment.
 
-```
-"Mooncake": {
-    "AzureSubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "certKeyVaultUri": "https://mykeyvault-.vault.azure.net/secrets/MyCertificate",
-    "targetStorageConStringKeyVaultUri": "https://mykeyvault-df.vault.azure.net/secrets/MyConnectionString",
-    "targetContainerName": "myService",
-    "contactEmail": "myEmail@myCompany.com",
-    "portalExtensionName": "Microsoft_MyExtension",
-    "friendlyNames": [
-      "Name1",
-      "F2"
-    ],
-    "SkipSafeDeployment": "true"
-  },
-```
+  ```
+  "Mooncake": {
+      "AzureSubscriptionId": "00000000-0000-0000-0000-000000000000",
+      "certKeyVaultUri": "https://mykeyvault-.vault.azure.net/secrets/MyCertificate",
+      "targetStorageConStringKeyVaultUri": "https://mykeyvault-df.vault.azure.net/secrets/MyConnectionString",
+      "targetContainerName": "myService",
+      "contactEmail": "myEmail@myCompany.com",
+      "portalExtensionName": "Microsoft_MyExtension",
+      "friendlyNames": [
+        "Name1",
+        "F2"
+      ],
+      "SkipSafeDeployment": "true"
+    },
+  ```
 
 <a name="advanced-hosting-service-procedures-friendly-name-removal"></a>
 ### Friendly name removal
@@ -1023,7 +1023,7 @@ The hosting service takes about 5 minutes to publish the latest version to all d
 
 ***Can I provide a SAS token instead of keyvault for EV2 to access the storage account ?***
 
-The current rolloutspec generated by **ContentUnbundler** only provides support for using keyvault. If you would like to use SAS tokens, please submit a request on [user voice](https:\\aka.ms\portalfx\uservoice)
+The current rolloutspec generated by **ContentUnbundler** only provides support for using keyvault. If you would like to use SAS tokens, please submit a request on [UserVoice](https://aka.ms/portalfx/uservoice)
 
 * * *
 

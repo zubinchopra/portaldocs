@@ -300,12 +300,12 @@ Extensions should publish the extracted deployment artifacts that are generated 
     * **Prod storage account**: The public read-only endpoint that serves zip files for the production environment.
 
 
-<a name="provide-environment-specific-configuration-files-converting-from-diy-deployment-to-a-hosting-service"></a>
-### Converting from DIY deployment to a hosting service
+<a name="provide-environment-specific-configuration-files-converting-from-custom-deployment-to-a-hosting-service"></a>
+### Converting from custom  deployment to a hosting service
 
 <!-- TODO: Determine whether they meant "rollback" instead of "regression", which is a term that is typically used while testing. -->
 
-To minimize the probability of regression, use the following procedure to migrate an extension from DIY deployment to a hosting service. For more information about how the uriFormat parameter is used in hosting, see  .
+To minimize the probability of regression, use the following procedure to migrate an extension from custom  deployment to a hosting service. For more information about how the uriFormat parameter is used in hosting, see  . For more information about custom deployment, see [portalfx-extensions-custom-deployment.md](portalfx-extensions-custom-deployment.md).
 
 <details>
 
