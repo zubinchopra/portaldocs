@@ -26,7 +26,7 @@ With this system, a team develops a UI extension to plug into and extend the UI 
 
 The Azure Portal web application is designed to the [single-page application pattern](portalfx-extensions-glossary-architecture.md), where UI is generated via client-side-evaluated JavaScript and dynamic HTML.  The Azure Portal "Shell" is the client-side JavaScript that controls the overall rendering of UI in the browser.  The Shell is responsible for rendering the [chrome](portalfx-extensions-glossary-architecture.md) of the Azure Portal (the navigation menu on the left and bar at the top).  Any team- or service-specific UI is developed in UI extensions as Blades (pages or windows) and Parts (tiles).  Based on user interaction with the Azure Portal UI, the Shell determines which Blades/Parts are to be displayed and it delegates the rendering of these Blades/Parts to the appropriate extension(s).
 
-`<Insert diagram here>`
+![alt-text](../media/top-extensions-architecture/placeholder-image.png "Azure Portal Shell")
 
 ### UI extensions
 
@@ -72,7 +72,7 @@ export class WebsiteDetailsTemplateBlade {
 
 Now, when a UI extension's Blade or Part is to be displayed, the Shell instantiates in that UI extension's IFrame an instance of the Blade / Part TypeScript class, also known as the `ViewModel`.  To "project" this Blade/Part UI into the Shell-managed visible IFrame that the user sees, the Shell makes use of a simple object-remoting API.  Here, the Blade / Part "view" and `ViewModel` are copied and sent via the HTML `postMessage` API to the visible IFrame managed by the Shell.  It is in the Shell-managed, visible IFrame that the "view" and `ViewModel` are two-way bound,  using the Knockout.js OSS library that is located at [http://knockoutjs.com/](http://knockoutjs.com/).
 
-`<insert diagram>`
+![alt-text](../media/top-extensions-architecture/placeholder-image.png "Instantiating an instance of the  TypeScript class")
 
 Because most UI is dynamic, like Forms that the user updates or like Grids/Lists that are refreshed to reflect new/updated server data, changes to the `ViewModel` are kept consistent between the Shell and UI extension IFrames.  The object-remoting system detects changes to [Knockout.js](http://knockoutjs.com/) observables  that are embedded in the `ViewModel`, computes diffs between the two `ViewModel` copies and uses `postMessage` to send diff-grams between the two `ViewModel` copies.  Beyond the conventional use of the Knockout.js library by the UI extension and its `ViewModel` class, complexities of the object-remoting system are hidden from the UI extension developer.
 
