@@ -1,7 +1,10 @@
 
+<!-- TODO:  deprecate this document by removing it.  It has been  replaced by    portalfx-extensions-csharp-test-framework-overview.md -->
+
 ## Contributing to C# Test Framework
 
 Contributions that improve the Test Framework are welcome as they keep the code base healthy.  If you have improvements you wish to contribute back to the Test Framework, see below for steps on enlisting and submitting a pull request.  Please note that this is currently only available to Microsft employees.
+
 
 ### Enlisting
 The repo uses a build environment called CoreXt.  Please be sure to follow the Cloud Engineering Service’s instructions for [Enlisting into an Existing repo](https://microsoft.sharepoint.com/teams/WAG/EngSys/Implement/OneBranch/Home.aspx) if this is your first time using CoreXt5.

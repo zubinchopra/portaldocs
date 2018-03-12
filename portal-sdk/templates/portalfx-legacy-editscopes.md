@@ -3,6 +3,9 @@
 
 **NOTE**:  EditScopes are becoming obsolete.   It is recommended that extensions be developed without edit scopes, as specified in [portalfx-editscopeless-procedure.md](portalfx-editscopeless-procedure.md).
 
+<!-- TODO:  Compare document with the pieces of the portalfx-editscopes*.md document -->
+<!-- TODO:  These documents and the portalfx-editscopeless*.md documents are still in work -->
+
 ### Working with Edit Scopes
 
 Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide many common functions that would otherwise be difficult to orchestrate, like the following:

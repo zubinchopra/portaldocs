@@ -14,6 +14,7 @@ Browse the following topics to learn about portal styling.
 
 * [Color Palette](#color-palette)
 
+
 ## Custom CSS files
 
 Extension developers can combine commonly used classes into a CSS file. CSS styles that are defined in stylesheets are [sanitized](portalfx-extensions-glossary-style-guide.md) using the same rules as the `style` attribute (see below). All custom class names begin with the `.ext-` prefix that identifies them as classes that are owned by the extension. 

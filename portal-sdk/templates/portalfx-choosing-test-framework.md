@@ -6,7 +6,7 @@ The Ibiza team supports two different end to end test frameworks; a C# based tes
 
 1. C# Test Framework (portalfx-test)
 
-C# based test-fx is fully supported by the Ibiza team. The C# is internally used for testing the Azure Portal (Shell). The C# test framework is available for partners to view the code contribute features and bug fixes. 
+C# based test-fx is fully supported by the Ibiza team. The C# is internally used for testing the Azure Portal (Shell). The C# test framework is available for partners to view the code contribute features and bug fixes. For more information, see [portalfx-extensions-csharp-test-framework-overview.md](portalfx-extensions-csharp-test-framework-overview.md).
 
 [Link to documentation](portalfx-test.md)
 

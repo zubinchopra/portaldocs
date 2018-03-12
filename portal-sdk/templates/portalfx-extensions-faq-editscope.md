@@ -118,7 +118,7 @@ This pair of EditScope methods significantly simplifies working with EditScope '
 
 ***Q: Some of my Form data is not editable. How do I keep EditScope from tracking changes for this data?***
 
-SOLUTION: For more information about configuring an EditScope by using type metadata, see [portalfx-extensions-faq-edit-scope.md#track-edits](portalfx-extensions-faq-edit-scope.md#track-edits).
+SOLUTION: For more information about configuring an EditScope by using type metadata, see [portalfx-extensions-faq-editscope.md#track-edits](portalfx-extensions-faq-editscope.md#track-edits).
   
 * * *
 
@@ -199,6 +199,6 @@ Often, extensions encounter this "Entity-typed object/array is not known to this
 ***"Encountered a property 'foo' on an editable object that is not present on the original object..."***
 
 SOLUTION: 
-As discussed in [portalfx-extensions-faq-edit-scope.md#key-value-pairs](portalfx-extensions-faq-edit-scope.md#key-value-pairs), the extension should mutate the EditScope/Form model by making observable changes and by calling EditScope APIs. For any object residing in the `EditScope`, merely adding and removing keys cannot be detected by `EditScope` or by the FX at large and, consequently, edits cannot be tracked. When an extension attempts to add or remove keys from an `EditScope` object, this puts the `EditScope` edit-tracking in an inconsistent state. When the `EditScope` detects such an inconsistency, it issues the `Encountered a property...` error to encourage the extension developer to use only observable changes and `EditScope` APIs to mutate/change the EditScope/Form model.  
+As discussed in [portalfx-extensions-faq-editscope.md#key-value-pairs](portalfx-extensions-faq-editscope.md#key-value-pairs), the extension should mutate the EditScope/Form model by making observable changes and by calling EditScope APIs. For any object residing in the `EditScope`, merely adding and removing keys cannot be detected by `EditScope` or by the FX at large and, consequently, edits cannot be tracked. When an extension attempts to add or remove keys from an `EditScope` object, this puts the `EditScope` edit-tracking in an inconsistent state. When the `EditScope` detects such an inconsistency, it issues the `Encountered a property...` error to encourage the extension developer to use only observable changes and `EditScope` APIs to mutate/change the EditScope/Form model.  
 
 * * *

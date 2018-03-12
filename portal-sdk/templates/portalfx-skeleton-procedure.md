@@ -33,7 +33,7 @@ The following is a sample procedure. It specifies how to author a document in th
 
 1. Make a copy all of the `skeleton` files in the template directory.  
 
-1. Rename each file with the major area and the topic, for example, `portalfx-extension-style-guide*.md`, in which case, the overarching document is the `portalfx-extension-style-guide.md` file. 
+1. Rename each file with the major area and the topic, for example, `portalfx-controls-*.md`, in which case, the overarching document is the `top-extensions-controls.md` file. 
 
 1. Author the topic by placing the appropriate content in each file. Ensure that each topic or subtopic is complete and accurate.
 

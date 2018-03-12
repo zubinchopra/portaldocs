@@ -1,12 +1,7 @@
 # Style Guide
 
-The portal includes a built in list of CSS classes that may be used inside of your templates.
+<!-- TODO:  deprecate this document by removing it.  It has been  replaced by top-extensions-style.md documents  --> 
 
-Browse the following topics to learn about portal styling:
+{"gitdown": "include-file", "file": "../templates/portalfx-style-guide.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-style-guide-custom-css-file.md"}
-{"gitdown": "include-file", "file": "../templates/portalfx-style-guide-style-sanitization.md"}
-{"gitdown": "include-file", "file": "../templates/portalfx-style-guide-themed-color-classes.md"}
-{"gitdown": "include-file", "file": "../templates/portalfx-style-guide-utility-classes.md"}
-{"gitdown": "include-file", "file": "../templates/portalfx-style-guide-color-palette.md"}
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-style-guide.md"}
+The page you requested has moved to [top-extensions-style.md](top-extensions-style.md). 

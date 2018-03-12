@@ -1,8 +1,6 @@
 
 # Debugging an Extension 
 
-<!--  required section -->
-
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-debugging-overview.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-debugging-tool.md"}
@@ -24,5 +22,3 @@
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-debugging.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-debugging.md"}
-
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-debugging-fyi.md"}
