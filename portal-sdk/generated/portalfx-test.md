@@ -30,12 +30,6 @@
         * [Clear user settings before starting a test](#c-portal-test-framework-testing-best-practices-clear-user-settings-before-starting-a-test)
         * [Use FindElements to verify the absence of elements](#c-portal-test-framework-testing-best-practices-use-findelements-to-verify-the-absence-of-elements)
         * [Prefer CssSelector to Xpath](#c-portal-test-framework-testing-best-practices-prefer-cssselector-to-xpath)
-    * [Contributing to C# Test Framework](#c-portal-test-framework-contributing-to-c-test-framework)
-        * [Enlisting](#c-portal-test-framework-contributing-to-c-test-framework-enlisting)
-        * [Building](#c-portal-test-framework-contributing-to-c-test-framework-building)
-        * [Testing](#c-portal-test-framework-contributing-to-c-test-framework-testing)
-        * [Submitting](#c-portal-test-framework-contributing-to-c-test-framework-submitting)
-        * [Troubleshooting](#c-portal-test-framework-contributing-to-c-test-framework-troubleshooting)
 
 
 <a name="c-portal-test-framework"></a>
@@ -918,6 +912,8 @@ namespace SamplesExtensionTests
 ```
 
 
+<!-- deprecate this document.  It has been replaced by portalfx-extensions-flags-shell.md -->
+
 <a name="c-portal-test-framework-loading-a-subset-of-extensions"></a>
 ## Loading a Subset of Extensions
 There are some instances during test where you may want to only load your extension or a subset of extensions within the portal. You can do this using the feature.DisableExtensions feature flag. 
@@ -1044,34 +1040,8 @@ grid.FindElements(By.CssSelector("[aria-selected=true]"))
 
 If you think the element you found would be a useful abstraction, feel free to contribute it back to the test framework!
 
+<!--
+  gitdown": "include-file", "file": "../templates/portalfx-testing-contributing.md"}
+-->
 
 
-<a name="c-portal-test-framework-contributing-to-c-test-framework"></a>
-## Contributing to C# Test Framework
-
-Contributions that improve the Test Framework are welcome as they keep the code base healthy.  If you have improvements you wish to contribute back to the Test Framework, see below for steps on enlisting and submitting a pull request.  Please note that this is currently only available to Microsft employees.
-
-<a name="c-portal-test-framework-contributing-to-c-test-framework-enlisting"></a>
-### Enlisting
-The repo uses a build environment called CoreXt.  Please be sure to follow the Cloud Engineering Service’s instructions for [Enlisting into an Existing repo](https://microsoft.sharepoint.com/teams/WAG/EngSys/Implement/OneBranch/Home.aspx) if this is your first time using CoreXt5.
-
-The git repository is available at the following URL (Microsoft employees only):
-https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFx-CSTestFx
-
-The code can be viewed via the solution file <repoRoot>\src\TestFramework\TestFramework.sln.
-
-<a name="c-portal-test-framework-contributing-to-c-test-framework-building"></a>
-### Building
-In order to build, you will need to [initialize the CoreXt environment for the repository](https://microsoft.sharepoint.com/teams/WAG/EngSys/Implement/OneBranch/Open%20Development%20Environment.aspx).  Once that is complete, you can call "build" at the repository root.  The build output will be available under <repoRoot>\out.
-
-<a name="c-portal-test-framework-contributing-to-c-test-framework-testing"></a>
-### Testing
-Once you have a build, the nuget package Microsoft.Portal.TestFramework.CSharp will be available under the <repoRoot>\out\debug-AMD64\.  You can copy the binaries to your local test suites and then run your tests to verify the fix.
-
-<a name="c-portal-test-framework-contributing-to-c-test-framework-submitting"></a>
-### Submitting
-To contribute back to the Test Framework, please submit a [pull request](https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFx-CSTestFx/pullrequestcreate).  Note that we may test your code changes with our internal repository's test suites before accepting your pull request.
-
-<a name="c-portal-test-framework-contributing-to-c-test-framework-troubleshooting"></a>
-### Troubleshooting
-If you run into issues, please search the [internal Microsoft stack overflow](http://stackoverflow.microsoft.com) first.  If you are unable to find an answer, ask a new question and tag it with "ibiza-test".

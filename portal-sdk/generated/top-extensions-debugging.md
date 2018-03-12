@@ -2,8 +2,6 @@
 <a name="debugging-an-extension"></a>
 # Debugging an Extension
 
-<!--  required section -->
-
 
 <a name="debugging-an-extension-overview"></a>
 ## Overview
@@ -14,7 +12,9 @@ Other samples and tools are also available to assist in the debugging process.  
 
 Here are a few tips that help get extension development back on track. If you still have questions, reach out to Ibiza team in by using the Stackoverflow tags as specified in [StackOverFlow Forums](portalfx-stackoverflow.md).
 
-To debug and test your local extension against the production portal, see [portalfx-extensions-testing-in-production.md](portalfx-extensions-testing-in-production.md).  
+To debug and test your local extension against the production portal, see [portalfx-extensions-testing-in-production.md](portalfx-extensions-testing-in-production.md) and   [portalfx-testinprod.md](portalfx-testinprod.md).  
+
+For more information about deploying the extension, see [portalfx-deployment.md](portalfx-deployment.md).
 
 <a name="debugging-an-extension-the-debug-tool"></a>
 ## The debug tool
@@ -270,7 +270,7 @@ Portal development patterns or architectures that are recommended based on custo
 
 ### :bulb: Productivity Tip
 
-**Typescript** 2.0.3 should be installed on your machine. The   version can be verified by executing the following command:
+**Typescript** 2.0.3 should be installed on your machine. The version can be verified by executing the following command:
 
 ```bash
 $>tsc -version
@@ -281,7 +281,7 @@ Also, **Typescript** files should be set up to Compile on Save.
 
 ### Performance
 
-There are practices that can improve the performance of the extension.  For more information, see [portalfx-performance-bestpractices.md](portalfx-performance-bestpractices.md).
+There are practices that can improve the performance of the extension.  For more information, see [portalfx-extensions-bp-performance.md](portalfx-extensions-bp-performance.md).
 
 
 ### Productivity Tip
@@ -361,7 +361,7 @@ SSL Certs are relevant only for teams that host their own extensions.  Azure Por
 
 ***How do I load different versions of an extension?***
 
-Understanding which extension configuration to modify is located at [portalfx-extensions-configuration-overview.md#understanding-which-extension-configuration-to-modify](portalfx-extensions-configuration-overview.md#understanding-which-extension-configuration-to-modify).
+Understanding which extension configuration to modify is located at [portalfx-extensions-configuration-overview.md#(#configuration-file-locations-and-structure](portalfx-extensions-configuration-overview.md#(#configuration-file-locations-and-structure).
 
 * * * 
 
@@ -438,79 +438,3 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | ViewModel                    | Holds all the data associated with the screen. Allows user data to be separated from context pane data and to persist through configuration changes. Also view model, View-Model. |
 
 
-
-<a name="debugging-an-extension-for-more-information"></a>
-## For More Information
-
-The following links point to references that may assist in debugging the extension.
-
-<a name="debugging-an-extension-for-more-information-azure"></a>
-### Azure
-   
-1. Deploying the extension
-
-    [portalfx-deployment.md](portalfx-deployment.md)
-    
-1. Testing in production
-
-    [portalfx-extensions-testing-in-production.md](portalfx-extensions-testing-in-production.md)
-
-    [portalfx-testinprod.md](portalfx-testinprod.md)
-
-
-<a name="debugging-an-extension-for-more-information-chrome"></a>
-### Chrome
-
-***Chrome DevTools Overview***
-
-   [https://developer.chrome.com/devtools](https://developer.chrome.com/devtools)
-     
-***Debugging tools for the Web***
-
-   [https://vimeo.com/157292748](https://vimeo.com/157292748)
-
-<a name="debugging-an-extension-for-more-information-edge-f12-developer-tools"></a>
-### Edge F12 Developer Tools
-    
-   [https://docs.microsoft.com/en-us/microsoft-edge/f12-devtools-guide/debugger](https://docs.microsoft.com/en-us/microsoft-edge/f12-devtools-guide/debugger)
-
-<a name="debugging-an-extension-for-more-information-javascript"></a>
-### JavaScript
-
-***How to step through your code***
-
-   [https://developers.google.com/web/tools/chrome-devtools/javascript/step-code](https://developers.google.com/web/tools/chrome-devtools/javascript/step-code)
-
-<a name="debugging-an-extension-for-more-information-knockout"></a>
-### Knockout
-
-***Knockout.js Troubleshooting Strategies***
-    [http://www.knockmeout.net/2013/06/knockout-debugging-strategies-plugin.html](http://www.knockmeout.net/2013/06/knockout-debugging-strategies-plugin.html)
-
-
-***Essential Knockout and JavaScript Tips***
-    [https://app.pluralsight.com/library/courses/knockout-tips/table-of-contents](https://app.pluralsight.com/library/courses/knockout-tips/table-of-contents)
-
- ***Knockout debugging videos***
-
-* ***Using ko.dataFor to get the view model of an element***
-  [https://auxdocs.blob.core.windows.net/videos/koDataFor.mp4](https://auxdocs.blob.core.windows.net/videos/koDataFor.mp4)
-
-* ***Using subscribe to figure out what causes observable changes to  view model properties***
-  [https://auxdocs.blob.core.windows.net/videos/kosubscribe.mp4](https://auxdocs.blob.core.windows.net/videos/kosubscribe.mp4)
-
-*  ***How to get call stacks from across iframes***
-    [https://auxdocs.blob.core.windows.net/videos/messageContext.mp4](https://auxdocs.blob.core.windows.net/videos/messageContext.mp4)
-
-<a name="debugging-an-extension-for-more-information-mozilla"></a>
-### Mozilla
-
-***Firefox Debugger***
-    [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger)
-
-<a name="debugging-an-extension-for-more-information-npm"></a>
-### NPM
-
-***Proxy Observable***
-
-  [https://www.npmjs.com/package/proxy-observable](https://www.npmjs.com/package/proxy-observable)

@@ -187,6 +187,7 @@ The classes can be combined to update multiple aspects simultaneously.
 
 In the following example, each class prefix is applied to a box.  The "info" box on the left presents data, and the "dirty" box on the right indicates that the data has been updated.
 
+<div>
 <div id="statuspalette">
 <div class="statuscontainer">
 Info
@@ -224,6 +225,7 @@ Error
   <div class="msportalfx-text-error">msportalfx-text-error</div>
   <div class="msportalfx-br-error">msportalfx-br-error</div>
   <div class="msportalfx-fill-error">msportalfx-fill-error <svg><rect height="10" width="10"/></svg></div>
+</div>
 </div>
 </div>
 

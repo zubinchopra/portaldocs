@@ -15,6 +15,7 @@ Browse the following topics to learn about portal styling.
 
 * [Color Palette](#color-palette)
 
+
 <a name="custom-css-files"></a>
 ## Custom CSS files
 

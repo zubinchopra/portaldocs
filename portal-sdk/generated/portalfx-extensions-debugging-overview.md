@@ -8,4 +8,6 @@ Other samples and tools are also available to assist in the debugging process.  
 
 Here are a few tips that help get extension development back on track. If you still have questions, reach out to Ibiza team in by using the Stackoverflow tags as specified in [StackOverFlow Forums](portalfx-stackoverflow.md).
 
-To debug and test your local extension against the production portal, see [portalfx-extensions-testing-in-production.md](portalfx-extensions-testing-in-production.md).  
+To debug and test your local extension against the production portal, see [portalfx-extensions-testing-in-production.md](portalfx-extensions-testing-in-production.md) and   [portalfx-testinprod.md](portalfx-testinprod.md).  
+
+For more information about deploying the extension, see [portalfx-deployment.md](portalfx-deployment.md).

@@ -4,6 +4,9 @@
 
 **NOTE**:  EditScopes are becoming obsolete.   It is recommended that extensions be developed without edit scopes, as specified in [portalfx-editscopeless-procedure.md](portalfx-editscopeless-procedure.md).
 
+<!-- TODO:  Compare document with the pieces of the portalfx-editscopes*.md document -->
+<!-- TODO:  These documents and the portalfx-editscopeless*.md documents are still in work -->
+
 <a name="legacy-edit-scopes-working-with-edit-scopes"></a>
 ### Working with Edit Scopes
 
