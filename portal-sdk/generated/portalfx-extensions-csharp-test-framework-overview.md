@@ -1,4 +1,5 @@
 
+<a name="contributing-to-c-test-framework"></a>
 ## Contributing to C# Test Framework
 
 Contributions that improve the Test Framework are welcome, because they keep the code base healthy.  When you have improvements to contribute back to the Test Framework, use the following steps to enlist into the list of contributors and submit a pull request. The pull request instructions are located at [top-extensions-publishing.md](top-extensions-publishing.md), with the following additions.
@@ -13,6 +14,7 @@ Contributions that improve the Test Framework are welcome, because they keep the
 
 **NOTE**: Please note that the opportunity to contribute to the  test framework is only available to first-party extension developers, i.e., Microsoft employees.
 
+<a name="contributing-to-c-test-framework-enlisting-into-the-list-of-contributors"></a>
 ### Enlisting into the list of contributors
 
 The repo uses a build environment named **CoreXt5**.  The instructions for enlisting into an existing repo are located at [https://aka.ms/portalfx/onebranch](https://aka.ms/portalfx/onebranch).
@@ -21,16 +23,19 @@ The git repository for first-party developers is located at  [https://aka.ms/por
 
 The code can be viewed by using the solution file `<repoRoot>\src\TestFramework\TestFramework.sln` solution file.
 
+<a name="contributing-to-c-test-framework-building-the-improvement"></a>
 ### Building the improvement
 
 <!-- TODO:  Verify that the build instructions are correct, including the location of the <repoRoot\out> -->
 
 To build your improvement, initialize your CloudVault environment by using the instructions located at [https://aka.ms/portalfx/opendevelopment](https://aka.ms/portalfx/opendevelopment). After that is complete, you can call "build" at the repository root.  The build output will be available under <repoRoot>\out.
 
+<a name="contributing-to-c-test-framework-testing-the-improvement"></a>
 ### Testing the improvement
 
 After the build completes successfully, the NuGet package `Microsoft.Portal.TestFramework.CSharp` will be available under the `<repoRoot>\out\debug-AMD64\`.  You can copy the binaries to your local test suites and then run your tests to verify the fix. After the improvement passes all your unit tests, you can submit the pull request.
 
+<a name="contributing-to-c-test-framework-troubleshooting"></a>
 ### Troubleshooting
 
 If issues are encountered while developing the improvement, please search the internal StackOverflow that is located at [http://stackoverflow.microsoft.com](http://stackoverflow.microsoft.com) first.
