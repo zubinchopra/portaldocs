@@ -1,11 +1,15 @@
 # Azure Portal Onboarding
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-contacts.md -->
 
 ## Start Onboarding
 
 * For onboarding a **first-party extension** i.e. an extension  in Azure Portal, please email with following information to:
 
-Stakeholders: [Leon Welicki, Adam Abdelhamed, Amit Modi](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding)
+Stakeholders: [Leon Welicki, Adam Abdelhamed](mailto:ibiza-onboading-kick@microsoft.com?subject=Azure%20portal%20onboarding)
 
+<!-- TODO:  deprecate the preceding section of this document by removing it.  It has been  replaced by  portalfx-extensions-contacts.md -->
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-forDevelopers-procedures.md -->
     * Is your service targeting public Azure, on-prem, or both?
     * Service name
     * VP, PM, and engineering owners
@@ -20,9 +24,11 @@ Stakeholders: [Leon Welicki, Adam Abdelhamed](mailto:ibiza-onboading-kick@micros
     * Service name
     * Summary of the service and target scenarios
 
+
 Most extensions have been successful by setting up early design review with Azure portal team. This gives extension owners an opportunity to understand how they can leverage Azure portal's design patterns in their extension.
 
 feasible.
+
 ## Subscribe to announcements
 
 Extension developers and program managers can stay upto date on product roadmap , latest features and workshop announcements by subscribing  to follwing DLs:
@@ -31,10 +37,12 @@ Extension developers and program managers can stay upto date on product roadmap 
 * Devs should join [ibizapartners-dev](http://igroup/join/ibizapartners-dev)
 * To learn about upcoming breaking changes, join [ibizabreak](http://igroup/join/ibizabreak)
 
+
 ## Ask questions on [Stackoverflow@MS](https://stackoverflow.microsoft.com)
 
 Join the extension developer community on [Stackoverflow@MS](https://stackoverflow.microsoft.com)  and let us know if you have any questions. Don't forget to tag questions with "ibiza" or [related](portalfx-stackoverflow.md) tags.
-
+<!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  portalfx-extensions-forDevelopers-procedures.md -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  top-extensions-samples.md -->
 ## Learn from Samples
 
 1. Explore samples in Dogfood environment:
@@ -44,12 +52,13 @@ We understand that the best way to learn extension development is by looking at 
 First-party extension developers i.e. Microsoft employees have access to Dogfood environment so they can browse thorugh the [samples](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKBlade) in DOGFOOD environment.
 
 Both First-party and Third-party extension developers can install and run samples extension on their local machine.
-
+<!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  top-extensions-samples.md -->
+<!-- TODO:  deprecate the following   section of this document by removing it.  It has been  replaced by  portalfx-extensions-testing-in-production-overview.md -->
 
 7. **[Side-load your extension for local testing](/portal-sdk/generated/index-portalfx-extension-development.md#debugging-testing-in-production)**
-
    Side-loading allows you to test and debug your extension locally against any environment. This is the preferred method of testing.
-
+<!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  portalfx-extensions-testing-in-production-overview.md -->
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-onboarding-procedures.md -->
 9. **Marketplace integration**
 
    At a high level, each icon you see in the Azure Portal Marketplace is referred to as a Gallery item. Gallery items
@@ -64,6 +73,10 @@ Both First-party and Third-party extension developers can install and run sample
 
    In order to use the gallery loader you will need to set some values in the AzureGallery.exe.config file for details see [AzureGallery.exe docs](../../gallery-sdk/generated/index-gallery.md#gallery-item-specificiations). For dev/test scenarios see [Test In Prod](../../gallery-sdk/generated/index-gallery.md##gallery-package-development-and-debugging-testing-in-production)
 
+<!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  portalfx-extensions-onboarding-procedures.md -->
+
+<!-- TODO:  deprecate the following   section of this document by removing it.  It has been  replaced by  portalfx-extensions-bp-blades.md -->
+
 1. **Recommended patterns**
 
    The following patterns are recommended for every extension based on customer feedback and usability studies, but are
@@ -73,19 +86,21 @@ Both First-party and Third-party extension developers can install and run sample
 
      All services should use the menu blade instead of the Settings blade. ARM resources should opt in to the resource
      menu for a simpler, streamlined menu.
-
+     <!-- TODO:  deprecate the preceding section of this document by removing it.  It has been  replaced by  portalfx-extensions-bp-blades.md -->
+<!-- TODO:  deprecate the following   section of this document by removing it.  It has been  replaced by  portalfx-stackoverflow.md -->
      See also:
      - [#ibiza-blades-parts on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts) for menu blade questions
      - [#ibiza-resources on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-resources) for resource menu questions
      - [Ask a menu blade question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-blades-parts)
      - [Ask a resource menu question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-resources)
-
+<!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  portalfx-stackoverflow.md -->
    - **Activity logs** (Stakeholder: [Rajesh Ramabathiran](mailto:ibiza-activity-logs@microsoft.com))
 
       Activity/event/operation/audit logs should be available from the menu for all services. Subscription-based
       resources (not just tracked resources) get this for free when implementing the resource menu. All other services
       should add the equivalent experience for their service.
 
+     <!-- TODO:  deprecate the following section of this document by removing it.  It has been  replaced by  portalfx-extensions-bp-blades.md -->
    - **Create blades**
 
      All Create blades should be a single blade. **Do not use wizards or picker blades.** Use form sections and
@@ -99,9 +114,12 @@ Both First-party and Third-party extension developers can install and run sample
 
      See also:
      - [Create documentation](/portal-sdk/generated/index-portalfx-extension-development.md#common-scenarios-building-create-experiences)
+          <!-- TODO:  deprecate the preceding section of this document by removing it.  It has been  replaced by  portalfx-extensions-bp-blades.md -->
+     <!-- TODO:  deprecate the following   section of this document by removing it.  It has been  replaced by  portalfx-stackoverflow.md --
      - [#ibiza-create on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-create)
      - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-create)
-
+     <!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  portalfx-stackoverflow.md --
+        <!-- TODO:  deprecate the following section of this document by removing it.  It has been  replaced by  portalfx-extensions-bp-blades.md -->
    - **Browse (resource list) blades**
 
       All Browse blades should have:
@@ -115,6 +133,7 @@ Both First-party and Third-party extension developers can install and run sample
       - [#ibiza-browse on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse)
       - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-browse)
 
+        <!-- TODO:  deprecate the preceding section of this document by removing it.  It has been  replaced by  portalfx-extensions-bp-blades.md -->
    - **Export template / RP schema**
 
      ARM RPs must provide a schema for all tracked and nested resource types to ensure they support the export template
@@ -123,18 +142,25 @@ Both First-party and Third-party extension developers can install and run sample
      See also:
      - [RP schema documentation](http://aka.ms/rpschema)
 
+     <!-- TODO:  deprecate the following   section of this document by removing it.  It has been  replaced by portalfx-extensions-forDevelopers-procedures.md  -->
+     
 0. **Register your extension**
 
    Once your service name is finalized, request to have your extension registered in all environments. Once deployed to
    DOGFOOD (aka DF), contact the Fx team to request that it be enabled (if applicable). Your extension will be enabled
-   in production once all exit criteria have been met.
+   in production once all production-ready metrics have been met.
+  <!-- TODO:  deprecate the preceding    section of this document by removing it.  It has been  replaced by portalfx-extensions-forDevelopers-procedures.md  -->
+  
+  <!-- TODO:  deprecate the following   section of this document by removing it.  It has been  replaced by      portalfx-extensions-configuration-overview.md  -->
 
    Extension names must use standard extension name format: `Company_BrandOrSuite_ProductOrComponent` 
    (e.g. `Contoso_Azure_{extension}` or `Microsoft_Azure_{extension}`). Set the extension name in `extension.pdl` as
    follows:
 
    `<Extension Name="Company_BrandOrSuite_ProductOrComponent" Preview="true">`
+  <!-- TODO:  deprecate the preceding    section of this document by removing it.  It has been  replaced by      portalfx-extensions-configuration-overview.md  -->
 
+<!--  TODO:  Deprecate the following section of this document by removing it and replacing it with a link to portalfx-extensions-cnames.md  -->
    Extension URLs must use a standard CNAME pattern. Create CNAMEs using
    [Microsoft's DNS](http://msinterface/form.aspx?ID=4260) (use any Azure property as the identity).
 
@@ -146,21 +172,31 @@ Both First-party and Third-party extension developers can install and run sample
    | **FAIRFAX**     | `main.{extension}.ext.azure.us` |
    | **MOONCAKE**    | `main.{extension}.ext.azure.cn` |
 
+<!--  TODO:  Deprecate the previous  section of this document by removing it and replacing it with a link to portalfx-extensions-cnames.md  -->
+
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-faq-forDevelopers.md  -->
    Use a wildcard SSL cert for each environment to simplify maintenance (e.g. `*.{extension}.onecloud-ext.azure-test.net`
    or `*.{extension}.ext.azure.com`). If your team is building separate, independent extensions, you can also use
    `{extension}.{team}.ext.azure.com` and create a wildcard SSL cert for `*.{team}.ext.azure.com` to simplify overall
    management. Internal teams can create SSL certs for DF using [http://ssladmin](http://ssladmin). Production certs
    must follow your organizations PROD cert process -- **do not use SSL Admin for production certs**.
-
    **NOTE** : Registering an extension in Portal requires deployment so it can take almost 10 days. Please plan accordingly.
+
 
    [Request to register your extension (internal only)](https://aka.ms/portalfx/newextension) and email the work item id
    to [ibizafxpm](mailto:ibizafxpm@microsoft.com?subject=Register%20extension). You'll automatically be notified when the
    configuration change is pushed to PROD. External teams can
    <a href="mailto:ibizafxpm@microsoft.com?subject=[Onboarding Request] Add &lt;Name&gt; extension to the portal&body=Extension name:  Company_[BrandOrSuite_]ProductOrComponent (e.g. Contoso_SomeSku_SomeProduct or Contoso_SomeProduct)%0A%0AURLs  (must adhere to pattern)%0APROD-- main.&lt;extension&gt;.ext.contoso.com%0A%0AContact info%0ABusiness Contacts:_________%0ADev leads: _________%0APROD on-call email: _________%0A">submit their request via email</a>.
+<!-- TODO:  deprecate the preceding   section of this document by removing it.  It has been  replaced by portalfx-extensions-faq-forDevelopers.md  -->
 
-1. **[Exit criteria + quality metrics](portalfx-onboarding-exitcriteria.md)**
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-onboarding-criteria in the portalfx-extensions-onboarding.md document.   -->
 
-   Every extension must meet required exit criteria / quality metrics before it will be enabled.
+1. **[Production-ready metrics  + quality metrics](portalfx-onboarding-exitcriteria.md)**
+<!-- TODO:  deprecate the preceding   section of this document by removing it.  It has been  replaced by portalfx-extensions-onboarding-criteria in the portalfx-extensions-onboarding.md document.   -->
+
+
+<!-- TODO:  deprecate the following    section of this document by removing it.  It has been  replaced by portalfx-extensions-faq-forDevelopers.md  -->
+   Every extension must meet required production-ready metrics / quality metrics before it will be enabled.
 
 For any other questions, don’t hesitate to ask us on [https://stackoverflow.microsoft.com](https://stackoverflow.microsoft.com).
+<!-- TODO:  deprecate the preceding   section of this document by removing it.  It has been  replaced by portalfx-extensions-faq-forDevelopers.md  -->
