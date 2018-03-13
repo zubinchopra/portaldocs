@@ -4,13 +4,13 @@
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
-<a name="refreshing-cached-data-refresh-implicitrefresh"></a>
-### Refresh implicitrefresh
+<a name="refreshing-cached-data-the-implicit-refresh"></a>
+### The implicit refresh
 
-<a name="auto-refreshing-client-side-data-a-k-a-polling"></a>
-## Auto-refreshing client-side data (a.k.a. &#39;polling&#39;)
+<a name="refreshing-cached-data-polling"></a>
+### Polling
 
-In many scenarios, users expect to see their rendered data update implicitly as server data changes. This can be accomplished by configuring your cache object to include 'polling', as  in the following example.
+In many scenarios, users expect to see their rendered data update implicitly when server data changes. The auto-refreshing of client-side data, also known as  'polling', can be accomplished by configuring the cache object to include 'polling', as in the example located at `<dir>\Client\V1\Hubs\RobotData.ts`. This code is also included in the following example.
 
 ```typescript
 
@@ -22,29 +22,30 @@ public robotsQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModels.
 
 ```
 
-Additionally, the extension can customize the polling interval by using the '`pollingInterval`' option. By default, the polling interval is 60 seconds. It can be customized down to a minimum of 10 seconds. The minimum is enforced to avoid server load that might result from some accidental, overly aggressive change to '`pollingInterval`' by an extension developer. (There have been cases where even this 10 second minumum has caused customer impact due to increased server load.)
+Additionally, the extension can customize the polling interval by using the `pollingInterval` option. By default, the polling interval is 60 seconds. It can be customized to a minimum of 10 seconds. The minimum is enforced to avoid the server load that can result from inaccurate changes.  However, there have been instances when this 10-second minimum has caused negative customer impact because of the increased server load.
 
 <a name="data-merging"></a>
 ## Data merging
 
-For Azure Portal UI to be responsive, it is often important - when data changes - to avoid rerendering entire Blades and Parts. Rather, in most cases, it is better to make *granular* data changes so that FX controls and Knockout HTML templates can rerender *only small portions* of Blade/Part UI. In many common cases of refreshing data, the newly-loaded server data *precisely matches* already-cached data, and in this case *no UI rerendering happens*.
+For the Azure Portal UI to be responsive, it is important to avoid re-rendering entire blades and parts when data changes. Instead, it is better to make granular data changes so that FX controls and **Knockout** HTML templates can re-render small portions of the Blade/Part UI. In many cases when data is refreshed, the newly-loaded server data precisely matches previously-cached data, and therefore there is no need to re-render the UI.
 
-When cache object data is refreshed - either implicitly as specified in[#refresh-implicitrefresh](#refresh-implicitrefresh),  or explicitly as specified in  [#refresh-explicitrefresh](#refresh-explicitrefresh) - newly-loaded server data is added to already-cached, client-side data through a process called "data merging":
+When cache object data is refreshed - either implicitly as specified in [#the-implicit-refresh](#the-implicit-refresh),  or explicitly as specified in  [#the-explicit-refresh](#the-explicit-refresh) - the newly-loaded server data is added to previously-cached, client-side data through a process called "data merging". The data merging process is as follows.
 
-* The newly-loaded server data is compared to already-cached data
-* Differences between newly-loaded and already-cached data are detected. For instance, "property <X> on object <Y> changed value" and "the Nth item in array <Z> was removed".
-* The differences are applied to the already-cached data, via changes to Knockout observables.
-
-For many scenarios, "data merging" requires no configuration and is simply an implementation detail of ['polling'](#refresh-implicitrefresh) and [explicitly requested '`refresh`'](#refresh-explicitrefresh). In some scenarios, there are gotcha's to look out for...  
+1. The newly-loaded server data is compared to previously-cached data
+1. Differences between newly-loaded and previously-cached data are detected. For instance, "property <X> on object <Y> changed value" and "the Nth item in array <Z> was removed".
+1. The differences are applied to the previously-cached data, via changes to Knockout observables.
 
 <a name="data-merging-data-merging-caveats"></a>
-### Data merging <strong>caveats</strong>
+### Data merging caveats
+
+For many scenarios, data merging requires no configuration because it is an implementation detail of implicit and explicit refreshed. However, in some scenarios, there are gotcha's to look out for.
 
 <a name="data-merging-data-merging-caveats-supply-type-metadata-for-arrays"></a>
 #### Supply type metadata for arrays
 
-When detecting changes between items in an already-loaded array and a newly-loaded array, the "data merging" algorithm requires some per-array configuration. Specifically, the "data merging" algorithm - without configuration - doesn't know how to match items between the old and new arrays. Without configuration, the algorithm considers each already-cached array item as 'removed' (since it matches no item in the newly-loaded array) and every newly-loaded array item as 'added' (since it matches no item in the already-cached array). This effectively replaces *the entire cached array's contents*, even in those cases where the server data hasn't changed. This can often be the cause of performance problems in your Blade/Part (poor responsiveness, hanging), even while users - sadly - see no pixel-level UI problems.  
-
+When detecting changes between items in an previously-loaded array and a newly-loaded array, the "data merging" algorithm requires some per-array configuration. Specifically, the data merging algorithm that is not configured does not know how to match items between the old and new arrays. Without configuration, the algorithm considers each previously-cached array item as 'removed' because it matches no item in the newly-loaded array. Consequently, every newly-loaded array item is considered to be added because  it matches no item in the previously-cached array. This effectively replaces the entire contenst of the cached array, even in those cases where the server data is unchanged. This is often the cause of performance problems in the extension, like your Blade/Part (poor responsiveness, hanging).
+, even while users - sadly - see no pixel-level UI problems.  
+<!-- Determine whether "" is an acceptable translation for "(poor responsiveness, hanging)". -->
 To proactively warn you of these potential performance problems, the "data merge" algorithm will log warnings to the console that resemble:
 
 ```
@@ -52,12 +53,12 @@ Base.Diagnostics.js:351 [Microsoft_Azure_FooBar]  18:55:54
 MsPortalFx/Data/Data.DataSet Data.DataSet: Data of type [No type specified] is being merged without identity because the type has no metadata. Please supply metadata for this type.
 ```
 
-Any array cached in your cache object is configured for "data merging" by using [type metadata](portalfx-data-typemetadata.md). Specifically, for each `Array<T>`, the extension has to supply type metadata for type `T` that describes the "id" properties for that type (see examples of this [here](portalfx-data-typemetadata.md)). With this "id" metadata, the "data merging" algorithm can match already-cached and newly-loaded array items and can merge these *in-place* (with no per-item array remove/add). With this, when the server data doesn't change, each cached array item will match a newly-loaded server item, each will merge in-place with no detected chagnes, and the merge will be a no-op for the purposes of UI rerendering.
+Any array cached in your cache object is configured for "data merging" by using [type metadata](portalfx-data-typemetadata.md). Specifically, for each `Array<T>`, the extension has to supply type metadata for type `T` that describes the "id" properties for that type (see examples of this [here](portalfx-data-typemetadata.md)). With this "id" metadata, the "data merging" algorithm can match previously-cached and newly-loaded array items and can merge these *in-place* (with no per-item array remove/add). With this, when the server data doesn't change, each cached array item will match a newly-loaded server item, each will merge in-place with no detected chagnes, and the merge will be a no-op for the purposes of UI rerendering.
 
 <a name="data-merging-data-merging-caveats-data-merge-failures"></a>
 #### Data merge failures
 
-As "data merging" proceeds, differences are applied to the already-cached data via Knockout observable changes. When these observables are changed, Knockout subscriptions are notified and Knockout `reactors` and `computeds` are reevaluated. Any associated (often extension-authored) callback here **can throw an exception** and this will halt/preempt the current "data merge" cycle. When this happens, the "data merging" algorithm issues an error resembling:
+As "data merging" proceeds, differences are applied to the previously-cached data via Knockout observable changes. When these observables are changed, Knockout subscriptions are notified and Knockout `reactors` and `computeds` are reevaluated. Any associated (often extension-authored) callback here **can throw an exception** and this will halt/preempt the current "data merge" cycle. When this happens, the "data merging" algorithm issues an error resembling:
 
 ```
 Data merge failed for data set 'FooBarDataSet'. The error message was: ...
@@ -68,7 +69,7 @@ Importantly, this error is not due to bugs in the data-merging algorithm. Rather
 <a name="data-merging-data-merging-caveats-entityview-item-observable-doesn-t-change-on-refresh"></a>
 #### EntityView <code>item</code> observable doesn&#39;t change on refresh?
 
-Situation:  The EntityView `item` observable does not change, and therefore does not notify subscribers, when the cache object is refreshed. The refreshing is performed either [implicitly](#refresh-implicitrefresh) or [explicitly](#refresh-explicitrefresh).  When the observable does not change, code like the following does not work as expected.
+Situation:  The EntityView `item` observable does not change, and therefore does not notify subscribers, when the cache object is refreshed. The refreshing is performed either [implicitly](#the-implicit-refresh) or [explicitly](#the-explicit-refresh).  When the observable does not change, code like the following does not work as expected.
 
 ```ts
 entityView.item.subscribe(lifetime, () => {
@@ -79,7 +80,7 @@ entityView.item.subscribe(lifetime, () => {
     }
 });
 ```
-Explanation:  The The EntityView `item` observable does not change because the "data merge" algorithm does not replace objects that are already cached, unless such objects are  array items. Instead, objects are merged in-place, which optimizes for limited/no UI re-rendering when data changes, as specified in  [#data-merging](#data-merging).  
+Explanation:  The The EntityView `item` observable does not change because the "data merge" algorithm does not replace objects that are previously cached, unless such objects are  array items. Instead, objects are merged in-place, which optimizes for limited/no UI re-rendering when data changes, as specified in  [#data-merging](#data-merging).  
 
 Solution: A better coding pattern is to use `ko.reactor` and `ko.computed` as follows.  
 
@@ -95,7 +96,9 @@ ko.reactor(lifetime, () => {
 
 In this example, the supplied callback will be called both when the `item` observable changes, (when the data first loads) and when any properties on the entity change (like `customerName` above).
 
-<a name="refresh-explicitrefresh"></a>
+<a name="data-merging-the-explicit-refresh"></a>
+### The explicit refresh
+
 <a name="explicitly-proactively-reflecting-server-data-changes-on-the-client"></a>
 ## Explicitly/proactively reflecting server data changes on the client
 
@@ -348,6 +351,6 @@ At the cache object level, in response to the QueryView/EntityView '`refresh`' c
 <a name="explicitly-proactively-reflecting-server-data-changes-on-the-client-refreshing-a-queryview-entityview-queryview-entityview-refresh-caveat"></a>
 #### QueryView/EntityView &#39;<code>refresh</code>&#39; <strong>caveat</strong>
 
-There is one subtety to the '`refresh`' method available on QueryView/EntityView that sometimes trips up extension developers. You will notice that '`refresh`' accepts no parameters. This is because '`refresh`' was designed to refresh *already-loaded data*. An initial call to QueryView/EntityView's '`fetch`' method establishes a cache entry in the corresponding cache object that includes the URL information with which to issue an AJAX call when '`refresh`' is later called.  
+There is one subtety to the '`refresh`' method available on QueryView/EntityView that sometimes trips up extension developers. You will notice that '`refresh`' accepts no parameters. This is because '`refresh`' was designed to refresh *previously-loaded data*. An initial call to QueryView/EntityView's '`fetch`' method establishes a cache entry in the corresponding cache object that includes the URL information with which to issue an AJAX call when '`refresh`' is later called.  
 
-Sometimes, extensions developers feel it is important - when a Blade opens or a Part is first displayed - to implicitly refresh the Blade's/Part's data (in cases where the data may have already been loaded/cached for use in some previously viewed Blade/Part). To make this so, they'll sometimes call QueryView/EntityView's '`fetch`' and '`refresh`' methods in succession. This is a minor anti-pattern that should probably be avoided. This "refresh my data on Blade open" pattern trains the user to open Blades to fix stale data (even close and then immediately reopen the same Blade) and can often be a symptom of a missing 'Refresh' command or [auto-refreshing data](#refresh-implicitrefresh) that's configured with too long a polling interval.  
+Sometimes, extensions developers feel it is important - when a Blade opens or a Part is first displayed - to implicitly refresh the Blade's/Part's data (in cases where the data may have previously been loaded/cached for use in some previously viewed Blade/Part). To make this so, they'll sometimes call QueryView/EntityView's '`fetch`' and '`refresh`' methods in succession. This is a minor anti-pattern that should probably be avoided. This "refresh my data on Blade open" pattern trains the user to open Blades to fix stale data (even close and then immediately reopen the same Blade) and can often be a symptom of a missing 'Refresh' command or [auto-refreshing data](#the-implicit-refresh) that's configured with too long a polling interval.  
