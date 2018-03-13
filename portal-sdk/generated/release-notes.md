@@ -1,4 +1,4 @@
-# Release Notes since 11/12/2017
+# Release Notes since 11/13/2017
 
 ## 5.0.302.984
 0 Breaking Changes, 0 Features added and 0 Bugs Fixed
@@ -139,18 +139,6 @@
 ## 5.0.302.906
 0 Breaking Changes, 2 Features added and 0 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1719159'>1719159</a></td><td>Feature</td><td>Enable databricks extensoin</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10571845'>10571845</a></td><td>Feature</td><td>[Extension Config]Enabled Azure Policy Extension</td></tr></table>
-
-## 5.0.302.905
-0 Breaking Changes, 1 Features added and 2 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1634689'>1634689</a></td><td>Bug Fix</td><td>[Parity Bug bash] Sub dropdown not dismissing when clicking away</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1633336'>1633336</a></td><td>Bug Fix</td><td>[Parity Bug bash][Ibiza][IE11] It will show bad UI in individual VM image(classic) when collapsing the ‘Recommended virtual machine size’ dropdown list</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10561404'>10561404</a></td><td>Feature</td><td>[ExtensionConfiguration] Update configuration for extension Microsoft_Azure_InformationProtection</td></tr></table>
-
-## 5.0.302.904
-0 Breaking Changes, 2 Features added and 3 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9804297'>9804297</a></td><td>Bug Fix</td><td>Update the extension configuration for WebsitesExtension in DF and PROD</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9446502'>9446502</a></td><td>Feature</td><td>[Perf] Native-promises-polyfilled Q</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1692396'>1692396</a></td><td>Bug Fix</td><td>Opening an RG blade from a failed deployment closes it immediately</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1666489'>1666489</a></td><td>Bug Fix</td><td>Send browser id as the client request id when redirecting to AAD</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1655669'>1655669</a></td><td>Feature</td><td>Set the MDS retention period for Ibiza Portal, HostingService, Relex, and vClassic logs to 30 days.</td></tr></table>
-
-## 5.0.302.903
-0 Breaking Changes, 3 Features added and 0 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1639144'>1639144</a></td><td>Feature</td><td>Add targeting support to the openDialog API</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1503867'>1503867</a></td><td>Feature</td><td>[Perf] Remove expensive selectors from shell & controls code</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10626694'>10626694</a></td><td>Feature</td><td>[ExtensionConfiguration] <Onboarding CPIM portal extension to Mooncake environment> for extension <Microsoft_AAD_B2CAdmin></td></tr></table>
 
 ## 5.0.302.1034
 0 Breaking Changes, 1 Features added and 4 Bugs Fixed
