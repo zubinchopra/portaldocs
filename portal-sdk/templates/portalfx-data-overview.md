@@ -1,7 +1,9 @@
 
 ## Overview
 
-The design of the Azure Portal UX provides unique data access challenges. Many blades and parts may be displayed at the same time, each of which instantiates a new `ViewModel` instance. Each `ViewModel` often needs access to the same or related data. To optimize for these interesting data-access patterns, Azure Portal extensions follow specific design patterns that consist of data management and code organization, as in the following sections.
+The Azure Portal UX provides unique data access challenges. Many blades and parts may be displayed at the same time, each of which instantiates a new `ViewModel` instance. Each `ViewModel` often needs access to the same or related data. To optimize for these interesting data-access patterns, extensions follow specific patterns that consist of data management and code organization.
+
+The following sections discuss these concepts and how to apply them to an extension.
 
 * **Data management**
 
@@ -15,12 +17,9 @@ The design of the Azure Portal UX provides unique data access challenges. Many b
 
     * Organizing the extension source code into [areas](#areas)
 
+All of these data concepts are used to achieve the goals of loading and updating extension data, in addition to efficient  memory  management. For more information about how the pieces fit together and how the resulting construct relates to the conventional MVVM pattern, see the [Data Architecture](https://auxdocs.blob.core.windows.net/media/DataArchitecture.pptx) video that discusses extension blades and parts.
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
-
-It can be difficult to piece together how the various data concepts collectively achieve the goals of efficient data-loading/updating and effective memory-management for an extension. [Data architecture PowerPoint](https://auxdocs.blob.core.windows.net/media/DataArchitecture.pptx)  is a quick, animated walk-through that describes how the pieces fit together and how this design relates to the Azure Portal's adaptation of the conventional MVVM pattern for extension blades and parts.
-
-The following sections discuss the next level of detail behind these concepts and how to apply them to an Azure Portal extension.
 
 ### Data contexts
 
