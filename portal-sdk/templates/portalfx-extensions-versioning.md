@@ -3,7 +3,7 @@
 
 <!-- required overview document. -->
 
-  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-versioning-overview.md"} -->
+  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-versioning-overview.md"} 
    
 <!-- required Glossary document. -->
 
