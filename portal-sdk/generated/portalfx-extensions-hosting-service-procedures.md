@@ -154,7 +154,7 @@ The following are examples for each environment.
 
     The production environment uses three extension configurations, as in the following table.
 
-    | Environment | Cofiguration        |
+    | Environment | Configuration        |
     | ---         | ---                 |
     | RC          | rc.portal.azure.com |
     | MPAC        | ms.portal.azure.com |

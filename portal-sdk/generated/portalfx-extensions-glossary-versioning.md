@@ -6,4 +6,5 @@
 | Term            | Meaning |
 | ---             | --- |
 | CDN             | Content Delivery Network   |
+| MEF-export      | |
 | trusted host    | |
