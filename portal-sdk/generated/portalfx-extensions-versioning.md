@@ -86,7 +86,7 @@ Each `web.config` that is associated with an extension includes an `AllowedParen
 
 // test 
 <add key="Microsoft.Portal.Framework.FrameworkConfiguration.AllowedParentFrame" value="['*']" />
-``` -->
+``` 
    
 <!-- required Glossary document. -->
 
