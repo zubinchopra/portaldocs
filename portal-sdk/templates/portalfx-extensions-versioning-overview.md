@@ -70,9 +70,9 @@ The following example displays a .
 Each `web.config` that is associated with an extension includes an `AllowedParentFrame` app setting that specifies the list of trusted hosts that can load the extension iframe. In production, this should be set to `['portal.azure.com']` explicitly; however, for debugging purposes, it  can also be set to `['*']` to allow other clients, as in the following example.
 
 ```xml
-<!-- production -->
+// production 
 <add key="Microsoft.Portal.Framework.FrameworkConfiguration.AllowedParentFrame" value="['portal.azure.com']" />
 
-<!-- test -->
+// test 
 <add key="Microsoft.Portal.Framework.FrameworkConfiguration.AllowedParentFrame" value="['*']" />
 ```
