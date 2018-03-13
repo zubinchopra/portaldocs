@@ -26,6 +26,8 @@ Developers should ensure that the version number is correctly updated on every b
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("5.0.0.56 (COMPUTER.150701-1627)")]
 ```
 
+<!--TODO: Determine the expansion for the acronym MEF. -->
+
 Developers can also override this behavior by deriving from the `ApplicationContext` class,  MEF-exporting the derived class as `[Export(typeof(ApplicationContext))]`, and overriding the `get` method for the `Version` property on the class. 
 
 **NOTE**:  Ensure that the overridden `get` method returns a constant value for a specific build.
@@ -38,7 +40,6 @@ For more information about additional version information for an assembly manife
 
 <!--TODO: Determine whether the folloiwing link is internal only, or if there is another link that is available to all developers. -->
 For more information about MSBuild properties, see [https://aka.ms/buildproperties](https://aka.ms/buildproperties).
-
 
 <a name="versioning-for-extensions-overview-implications-of-changing-the-version"></a>
 ### Implications of changing the version
@@ -85,8 +86,7 @@ Each `web.config` that is associated with an extension includes an `AllowedParen
 
 <!-- test -->
 <add key="Microsoft.Portal.Framework.FrameworkConfiguration.AllowedParentFrame" value="['*']" />
-```
- -->
+``` -->
    
 <!-- required Glossary document. -->
 
@@ -98,4 +98,5 @@ Each `web.config` that is associated with an extension includes an `AllowedParen
 | Term            | Meaning |
 | ---             | --- |
 | CDN             | Content Delivery Network   |
+| MEF-export      | |
 | trusted host    | |
