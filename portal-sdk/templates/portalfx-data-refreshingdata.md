@@ -9,7 +9,10 @@ In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  
 
 In many scenarios, users expect to see their rendered data update implicitly when server data changes. The auto-refreshing of client-side data, also known as  'polling', can be accomplished by configuring the cache object to include 'polling', as in the example located at `<dir>\Client\V1\Hubs\RobotData.ts`. This code is also included in the following example.
 
-{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Hubs/RobotData.ts", "section": "dataRefresh#poll"}
+<!-- {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Hubs/RobotData.ts", "section": "dataRefresh#poll"}
+-->
+
+{"gitdown": "include-file", "file": "../Samples/SamplesExtension/Extension/Client/V1/Hubs/RobotData.ts"}
 
 Additionally, the extension can customize the polling interval by using the `pollingInterval` option. By default, the polling interval is 60 seconds. It can be customized to a minimum of 10 seconds. The minimum is enforced to avoid the server load that can result from inaccurate changes.  However, there have been instances when this 10-second minimum has caused negative customer impact because of the increased server load.
 
