@@ -1,3 +1,3 @@
-{"gitdown": "contents", "maxLevel": 2}
 
-{"gitdown": "include-file", "file": "./portalfx-extension-QnA.md"}
+The page you requested has moved to [./portalfx-stackoverflow.md](./portalfx-stackoverflow.md). 
+

@@ -1,5 +1,4 @@
-{"gitdown": "contents", "maxLevel": 2}
 
-# Onboarding
-{"gitdown": "include-headings", "file": "../templates/portalfx-onboarding.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-onboarding-exitcriteria.md"}
+
+The page you requested has moved to [./top-onboarding.md](./top-onboarding.md). 
+
