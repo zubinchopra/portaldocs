@@ -1,8 +1,6 @@
-<a name="azure-portal-extensions-architecture"></a>
-# Azure Portal Extensions Architecture
+<a name="azure-portal-a-composed-web-application"></a>
+# Azure Portal -- A composed web application
 
-<a name="azure-portal-extensions-architecture-azure-portal-a-composed-web-application"></a>
-## Azure Portal -- A composed web application
 
 The Azure Portal web application is based on a UI composition system whose primary design goal is to enable the integration of UI built by hundreds of teams into a single, robust single-page web application.
 
@@ -26,19 +24,19 @@ With this system, a team develops a UI extension to plug into and extend the UI 
 
 * * * 
 
-<a name="azure-portal-extensions-architecture-azure-portal-a-composed-web-application-the-portal-shell"></a>
+<a name="azure-portal-a-composed-web-application-the-portal-shell"></a>
 ### The Portal &quot;Shell&quot;
 
 The Azure Portal web application is designed to the [single-page application pattern](portalfx-extensions-glossary-architecture.md), where UI is generated via client-side-evaluated JavaScript and dynamic HTML.  The Azure Portal "Shell" is the client-side JavaScript that controls the overall rendering of UI in the browser.  The Shell is responsible for rendering the [chrome](portalfx-extensions-glossary-architecture.md) of the Azure Portal (the navigation menu on the left and bar at the top).  Any team- or service-specific UI is developed in UI extensions as Blades (pages or windows) and Parts (tiles).  Based on user interaction with the Azure Portal UI, the Shell determines which Blades/Parts are to be displayed and it delegates the rendering of these Blades/Parts to the appropriate extension(s).
 
 ![alt-text](../media/top-extensions-architecture/arch-review.png "Azure Portal Shell")
 
-<a name="azure-portal-extensions-architecture-azure-portal-a-composed-web-application-ui-extensions"></a>
+<a name="azure-portal-a-composed-web-application-ui-extensions"></a>
 ### UI extensions
 
 UI extensions are simple, static web applications. Static  means that UI extensions do no server-side UI-generation.  UI extensions are developed as client-side-evaluated TypeScript that compiles to JavaScript, as HTML templates, and as LESS stylesheets that compile to CSS.  When the Shell determines that it needs to display a Blade or Part from UI extension "A", the JIT loads an HTML page that collects the extension JavaScript/HTML/CSS for that extension.  The Shell loads the HTML page from an endpoint URL registered centrally as part of the Azure Portal's configuration.  The Shell then directs the extension and its client-side JavaScript to render the required Blade or Part.  When the user navigates in such a way that no Blades/Parts from extension "A" are in use, the Shell can unload the UI extension from the browser, allowing the larger Azure Portal app to reclaim browser memory and network connections.
 
-<a name="azure-portal-extensions-architecture-azure-portal-a-composed-web-application-ui-extension-isolation"></a>
+<a name="azure-portal-a-composed-web-application-ui-extension-isolation"></a>
 ### UI extension isolation
 
 The business logic and UI generation accomplished by UI extensions is isolated from the Azure Portal "chrome" and from the UI of other UI extensions.  This is important for three reasons:
@@ -50,7 +48,7 @@ In 2013, when the Azure Portal was designed, the only browser facility suitable 
 
 **NOTE**: Since browsers circa 2018 scale better IFrames and since the Ibiza UX design is pivoting towards full-screen Blades, the Ibiza team continues to invest in a more conventional use of IFrames, where UI extensions can access the DOM directly and can craft their UI generation following standard web development patterns and OSS libraries.
 
-<a name="azure-portal-extensions-architecture-azure-portal-a-composed-web-application-projecting-blade-and-part-ui"></a>
+<a name="azure-portal-a-composed-web-application-projecting-blade-and-part-ui"></a>
 ### Projecting Blade and Part UI
 
 UI extensions develop their Blades and Parts following the [MVVM](portalfx-extensions-glossary-architecture.md) pattern.  
@@ -84,7 +82,7 @@ Now, when a UI extension's Blade or Part is to be displayed, the Shell instantia
 
 Because most UI is dynamic, like Forms that the user updates or like Grids/Lists that are refreshed to reflect new/updated server data, changes to the `ViewModel` are kept consistent between the Shell and UI extension IFrames.  The object-remoting system detects changes to [Knockout.js](http://knockoutjs.com/) observables  that are embedded in the `ViewModel`, computes diffs between the two `ViewModel` copies and uses `postMessage` to send diff-grams between the two `ViewModel` copies.  Beyond the conventional use of the Knockout.js library by the UI extension and its `ViewModel` class, complexities of the object-remoting system are hidden from the UI extension developer.
 
-<a name="azure-portal-extensions-architecture-azure-portal-a-composed-web-application-secure-per-service-ui"></a>
+<a name="azure-portal-a-composed-web-application-secure-per-service-ui"></a>
 ### Secure per-service UI
 
 The security model for UI extensions builds upon the standard [same-origin policy](portalfx-extensions-glossary-architecture.md) that supported by all browsers and is the basis for today's web applications.  A UI extension's homepage URL is typically located on an origin specific to that UI extension and its resource provider.  This HTML page can only issue HTTPS calls to its origin domain and any origins that allow [COR](portalfx-extensions-glossary-architecture.md) calls from the UI extension's origin.
@@ -97,7 +95,7 @@ In practice, HTTPS calls from UI extensions are made from the client to load "mo
 
 In any of these cases, the HTTPS call includes an [AAD](portalfx-extensions-glossary-architecture.md) token that authorizes the UI extension to act on behalf of the user against those Azure resource types that the UI extension supports.  The AAD token is obtained during AAD single-sign-on authentication that precedes the loading of the Portal Shell.  When a UI extension is loaded into its client-side IFrame and asked to render a Blade or a Part, the UI extension typically calls an FX API with which it can acquire an AAD token that is scoped to that UI extension.  To load "model" data, the UI extension then issues HTTP calls carrying this token to ARM, to its RP or to its extension controller.
 
-<a name="azure-portal-extensions-architecture-azure-portal-a-composed-web-application-linking-and-navigating-within-the-portal"></a>
+<a name="azure-portal-a-composed-web-application-linking-and-navigating-within-the-portal"></a>
 ### Linking and navigating within the Portal
 
 Frequently, user interactions with the Portal chrome and within Blade/Part UI will cause in-Portal navigation to a new Blade.  This navigation is accomplished via FX APIs, as in the following example.
@@ -140,7 +138,7 @@ These APIs and associated code-generation are critical to integrating UI and UX 
 
 * A TypeScript definition file for those API types used in the construction of extension "A"'s exported Blades and Parts
 
-<a name="azure-portal-extensions-architecture-azure-portal-a-composed-web-application-blade-and-part-api-versioning"></a>
+<a name="azure-portal-a-composed-web-application-blade-and-part-api-versioning"></a>
 ### Blade and Part API versioning
 
 Each UI-extension-developed Blade and Part includes TypeScript types that describe the set of parameters with which that Blade/Part can be invoked, as in the following example.
@@ -173,7 +171,7 @@ With this, extensions preserve the flexibility to evolve their sets of Blades an
 
 Additionally, the Ibiza SDK contains APIs that allow for the wholesale replacement of one Blade or Part with new equivalent Blades/Parts.  It also has APIs that allow for the safe migration of Blades and Part between UI extensions, for example, when responsibilities for specific UIs transfer between teams.
 
-<a name="azure-portal-extensions-architecture-azure-portal-a-composed-web-application-common-portal-ux-marketplace-and-browse"></a>
+<a name="azure-portal-a-composed-web-application-common-portal-ux-marketplace-and-browse"></a>
 ### Common Portal UX -- Marketplace and Browse
 
 Beyond Blades and Parts, UI extensions can benefit from other UI integration with the Azure Portal.
@@ -194,7 +192,7 @@ A UI extension team publishes their N>0 packages to a service, where all such pa
 Second, for a given UI extension / ARM resource type to be represented in the standard Azure Portal "Browse" UI, UI extensions develop UI metadata for the resource types that their UI extension supports.  This is accomplished with the PDL `<AssetType>` tag.  No-PDL variants of `<AssetType>` are currently in development.  An "asset type" is expressed as metadata so that standard Azure Portal UI, like "Browse" Blades and Parts, can display resources without the need to involve UI extension business log, which is potentially a performance problem when spanning N resource types.
 
 
-<a name="azure-portal-extensions-architecture-glossary"></a>
+<a name="azure-portal-a-composed-web-application-glossary"></a>
 ## Glossary
 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
