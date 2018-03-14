@@ -1,4 +1,4 @@
-# Azure Portal Extensions Architecture
+# Azure Portal -- A composed web application
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-architecture-overview.md"}
 
