@@ -14,6 +14,8 @@ The metrics are reported as part of an executive summary every Friday. Extension
 
 ###	Performance
 
+All blades must meet the required blade reveal time of < 4 seconds for the 80th percentile and < 8 seconds for the 95th percentile before being enabled in PROD. Extensions must be enabled in MPAC, the internal environment, to start tracking performance. Resource and Create blades are tracked explicitly. All blades are rolled up into Weighted Experience Score (WxP), which must be greater than 80. WxP determines the percentage of blade usage that meets the performance bar.
+
 **BladeFullReady** is the time it takes a blade to fully load. Your blades should load faster than 4 seconds at the 95th percentile.
 
 You should see at least 100 loads of the UX (extension/blade/tiles) to get a reliable signal. If you cannot generate that traffic authentically in the expected timeframe, please hold a bug bash to increase the traffic.
@@ -53,7 +55,7 @@ MPAC and PROD reliability are included in weekly status emails and each team is 
 
 We require at least 100 loads of the UX (extension/blade/tiles) to get a signal. If you cannot generate that traffic authentically in the expected timeframe, please hold a bug bash to increase traffic.
 
-Use the following query to calculate the performance and reliability of your extension.
+To calculate the performance and reliability of your extension, use the query located at [https://aka.ms/portalfx/perfsignoff](https://aka.ms/portalfx/perfsignoff).
     
 ```json 
     // First parameter startDate
