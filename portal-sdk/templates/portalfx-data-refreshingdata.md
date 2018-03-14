@@ -9,7 +9,9 @@ In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  
 
 In many scenarios, users expect to see their rendered data update implicitly when server data changes. The auto-refreshing of client-side data, also known as  'polling', can be accomplished by configuring the cache object to include 'polling', as in the example located at `<dir>\Client\V1\Hubs\RobotData.ts`. This code is also included in the following example.
 
-{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/Hubs/RobotData.ts","section":"dataRefresh#poll"}
+<!--
+gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/Hubs/RobotData.ts","section":"dataRefresh#poll"}
+-->
 
 Additionally, the extension can customize the polling interval by using the `pollingInterval` option. By default, the polling interval is 60 seconds. It can be customized to a minimum of 10 seconds. The minimum is enforced to avoid the server load that can result from inaccurate changes.  However, there have been instances when this 10-second minimum has caused negative customer impact because of the increased server load.
 
@@ -88,7 +90,9 @@ As server data changes, there are scenarios where the extension should take expl
 
 * **User makes server changes** - User initiates some action and, as a consequence, the extension issues an AJAX call that changes server data. As a best-practice, this AJAX call is typically issued from an extension DataContext.
 
-{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/Hubs/RobotData.ts","section":"dataRefresh#refreshFromDataContext"}
+<!--
+gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/Hubs/RobotData.ts","section":"dataRefresh#refreshFromDataContext"}
+-->
 
 In this scenario, because the AJAX call will be issued from a DataContext, refreshing data in caches is performed  using methods from the dataCache classes directly. See ["Refreshing/updating a QueryCache/EntityCache"](#refresh-datacache) below.
   
@@ -126,7 +130,9 @@ To understand the design behind this collection of methods and how to select the
   
 As mentioned above, this method will issue an AJAX call (either using the `supplyData` or `sourceUri`'option supplied to the cache object) for each entry currently held in the cache object.  Upon completion, each AJAX result is [merged](#data-merging) onto its corresponding cache entry, as in the following example.
 
-{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/Hubs/RobotData.ts","section":"dataRefresh#refreshFromDataContext"}
+<!-->
+gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/Hubs/RobotData.ts","section":"dataRefresh#refreshFromDataContext"}
+-->
 
 If the (optional) `predicate` parameter is supplied to the `refreshAll` call, then only those entries for which the predicate returns 'true' will be refreshed.  This `predicate` feature is useful when the extension understands the nature of the server data changes and can - based on this knowledge - choose to not refresh cache object entries whose server data has not changed.
 
@@ -135,10 +141,12 @@ If the (optional) `predicate` parameter is supplied to the `refreshAll` call, th
   
 The `refresh` method is useful when the server data changes are known to be specific to a single cache entry.  This is a single query in the case of `QueryCache`, and it is a single entity `id` in the case of `EntityCache`.
 
-{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/ResourceTypes/SparkPlug/SparkPlugData.ts","section":"dataRefresh#dataCacheRefresh"}
+<!--
+gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/ResourceTypes/SparkPlug/SparkPlugData.ts","section":"dataRefresh#dataCacheRefresh"}
 
-{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/ResourceTypes/SparkPlug/SparkPlugData.ts","section":"dataRefresh#dataCacheRefreshCalled"}
-  
+gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/ResourceTypes/SparkPlug/SparkPlugData.ts","section":"dataRefresh#dataCacheRefreshCalled"}
+-->
+
 Using `refresh`, only a single AJAX call will be issued to the server.
 
 #### '`applyChanges`'
@@ -147,11 +155,15 @@ In some scenarios, AJAX calls to the server to refresh cached data can be *avoid
 
 **Example - Adding an item to a QueryCache entry**
 
-{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/Hubs/RobotData.ts","section":"dataRefresh#applyChanges1"}
+<!--
+gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/Hubs/RobotData.ts","section":"dataRefresh#applyChanges1"}
+-->
 
 **Example - Removing an item to a QueryCache entry**
 
-{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/Hubs/RobotData.ts","section":"dataRefresh#applyChanges2"}
+<!--
+gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/Hubs/RobotData.ts","section":"dataRefresh#applyChanges2"}
+-->
 
 Similar to '`refreshAll`', the '`applyChanges`' method accepts a function that is called for each cache entry currently in the cache object, whgch allows the extension to update only those cache entries known to be impacted by the server changes made by the user.
   
