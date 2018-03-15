@@ -4,13 +4,14 @@
 <!-- TODO: deprecate the link to portalfx-howitworks.md  and replace it with portalfx a link to -extensions-architecture.md -->
 <!-- TODO:  Remove links to documents that are located in the master index or are otherwise known.  -->
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-howitworks.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-creating-extensions.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-sample-extensions.md"}
+{"gitdown": "include-headings", "file": "../templates/top-extensions-architecture.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-extensions-samples-overview.md"}
 
 # Common scenarios
 {"gitdown": "include-headings", "file": "../templates/portalfx-browse.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-create.md"}
+<!--
+gitdown": "include-headings", "file": "../templates/portalfx-create.md"}
+-->
 
 # Basic Concepts  
 {"gitdown": "include-headings", "file": "../templates/portalfx-ui-concepts.md"}
