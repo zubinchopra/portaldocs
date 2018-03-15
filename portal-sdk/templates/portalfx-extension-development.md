@@ -1,8 +1,9 @@
 
 ##  Getting Started
 
-<!-- TODO: deprecate the link to portalfx-howitworks.md  and replace it with portalfx a link to -extensions-architecture.md -->
-<!-- TODO:  Remove links to documents that are located in the master index or are otherwise known.  -->
+<!-- TODO:  Remove links to documents that are located in the master index or are otherwise known.  
+In the meantime, some gitdown includes are commented out for npm run docs.
+-->
 
 {"gitdown": "include-headings", "file": "../templates/top-extensions-architecture.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-extensions-samples-overview.md"}
@@ -11,21 +12,22 @@
 {"gitdown": "include-headings", "file": "../templates/portalfx-browse.md"}
 <!--
 gitdown": "include-headings", "file": "../templates/portalfx-create.md"}
--->
+
 
 # Basic Concepts  
-{"gitdown": "include-headings", "file": "../templates/portalfx-ui-concepts.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-no-pdl-programming.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-parts.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-blades.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-controls.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-controls-monitor-chart.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-ui-concepts.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-no-pdl-programming.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-parts.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-blades.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-controls.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-controls-monitor-chart.md"}
 
 # Authentication
-{"gitdown": "include-headings", "file": "../templates/portalfx-authentication.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-data.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-parameter-collection-overview.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-provisioning-arm.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-authentication.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-data.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-parameter-collection-overview.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-provisioning-arm.md"}
+-->
 
 # Resource management
 {"gitdown": "include-headings", "file": "../templates/portalfx-assets.md"}
