@@ -18,12 +18,11 @@
 
 
 gitdown": "include-headings", "file": "../templates/portalfx-create.md"}
--->
+
 
 ## Basic Concepts
-{"gitdown": "include-headings", "file": "../templates/portalfx-ui-concepts.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-no-pdl-programming.md"}
-<!--
+gitdown": "include-headings", "file": "../templates/portalfx-ui-concepts.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-no-pdl-programming.md"}
   gitdown": "include-headings", "file": "../templates/portalfx-parts.md"}
 
   gitdown": "include-headings", "file": "../templates/portalfx-blades.md"}
@@ -33,13 +32,14 @@ gitdown": "include-headings", "file": "../templates/portalfx-create.md"}
   gitdown": "include-headings", "file": "../templates/top-extensions-forms.md"}
 
   gitdown": "include-headings", "file": "../templates/portalfx-controls.md"}
--->
+
 
 ## Authentication
-{"gitdown": "include-headings", "file": "../templates/portalfx-authentication.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-data.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-parameter-collection-overview.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-provisioning-arm.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-authentication.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-data.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-parameter-collection-overview.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-provisioning-arm.md"}
+-->
 
 ## Resource management
 {"gitdown": "include-headings", "file": "../templates/portalfx-assets.md"}
