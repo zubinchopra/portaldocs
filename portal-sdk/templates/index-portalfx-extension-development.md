@@ -2,18 +2,23 @@
 <!--When documents are deprecated,they are commented out of this index. -->
 # Development
 
-<!--
+
 ## Getting Started
 
-  gitdown": "include-headings", "file": "../templates/portalfx-howitworks.md"}
+  {"gitdown": "include-headings", "file": "../templates/top-extensions-architecture.md"}
 
+<!--
   gitdown": "include-headings", "file": "../templates/portalfx-creating-extensions.md"}
   gitdown": "include-headings", "file": "../templates/portalfx-sample-extensions.md"}
 -->
 
 ## Common scenarios
-{"gitdown": "include-headings", "file": "../templates/portalfx-browse.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-create.md"}
+<!--
+ gitdown": "include-headings", "file": "../templates/portalfx-browse.md"}
+
+
+gitdown": "include-headings", "file": "../templates/portalfx-create.md"}
+-->
 
 ## Basic Concepts
 {"gitdown": "include-headings", "file": "../templates/portalfx-ui-concepts.md"}
