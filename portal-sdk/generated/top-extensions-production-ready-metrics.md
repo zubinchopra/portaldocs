@@ -3,7 +3,7 @@
       
 The Portal team has established standard quality metrics that help you determine if your extension is ready to be made available to the general public (public preview or GA). You are expected to meet this criteria before shipping and maintain high quality over time.
 
-The metrics are reported as part of an executive summary every Friday. Extensions that fail to meet the criteria are flagged in the report and may be asked to come to the regular executive product syncs to discuss their quality issues.
+The metrics are reported as part of an executive summary every Friday. Extensions that fail to meet the criteria are flagged in the report and may be asked to come to the regular executive product syncs to discuss their quality issues. This document discusses production-ready metrics for the following topics.
 
 * [Performance](#performance)
 * [Reliability](#reliability)
@@ -13,52 +13,56 @@ The metrics are reported as part of an executive summary every Friday. Extension
 * [Create Success Rate](#create-success-rate)
 * [Resource move](#resource-move)
 
+The following table contains links to more information about each topic as appropriate.
+
+| Document | Purpose |
+| -------- | ------- |
+|  Power BI Dashboard for Performance and Reliability | [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf) |
+| Power BI Dashboard for Success Rates | [https://aka.ms/portalfx/successrates](https://aka.ms/portalfx/successrates) |
+| Power BI Dashboard for Status | [http://aka.ms/portalfx/resourcemove/dashboard](http://aka.ms/portalfx/resourcemove/dashboard) |
+| Performance Query |     [https://aka.ms/portalfx/perfsignoff](https://aka.ms/portalfx/perfsignoff) |
+| Performance Checklist | [portalfx-performance.md](portalfx-performance.md) |
+| Telemetry Access  | [portalfx-telemetry-getting-started.md#permissions](portalfx-telemetry-getting-started.md#permissions) |
+| Portal COP (Telemetry) |     [portalfx-performance-portalcop.md](portalfx-performance-portalcop.md) |
+| Best practices |     [portalfx-extensions-bp-performance.md](portalfx-extensions-bp-performance.md) |
+| Stackoverflow  |    [portal-stackoverflow.md](portal-stackoverflow.md) |
+
 <a name="production-ready-metrics-and-quality-metrics-performance"></a>
 ### Performance
 
-All blades must meet the required blade reveal time of < 4 seconds for the 80th percentile and < 8 seconds for the 95th percentile before being enabled in PROD. Extensions must be enabled in MPAC, the internal environment, to start tracking performance. Resource and Create blades are tracked explicitly. All blades are rolled up into Weighted Experience Score (WxP), which must be greater than 80. WxP determines the percentage of blade usage that meets the performance bar.
-
 **BladeFullReady** is the time it takes a blade to fully load. Your blades should load faster than 4 seconds at the 95th percentile.
 
-You should see at least 100 loads of the UX (extension/blade/tiles) to get a reliable signal. If you cannot generate that traffic authentically in the expected timeframe, please hold a bug bash to increase the traffic.
+You should see at least 100 loads of the UX (extension/blade/tiles) to get a reliable signal. If you cannot generate that traffic authentically in the expected timeframe, please hold a bug bash to increase the traffic. Also ensure that the  URL for the extension does not include the `feature.canmodifyextensions` flag.
 
-You can measure your current numbers by running the following query which targets the Partner table in the Azportal cluster.
+You can calculate the performance and reliability of an extension by running the query that is located at [https://aka.ms/portalfx/perfsignoff](https://aka.ms/portalfx/perfsignoff). It is also included in the following code.
 
 ```json
-BladePerformanceIncludingNetwork(ago(1d), now())
-| where Extension == "Microsoft_Azure_Compute"
+// First parameter startDate
+// Second parameter timeSpan
+// Third parameter includeTestTraffic - set this to `false` if you are already in public preview
+GetExtensionPerfReliability(now(),7d,true) 
+| where extension == "<extensionName>"
+
 ```
 
-There is also a Power BI Dashboard located at [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf).
+where 
 
-For more information about performance and reliability, see the following resources: 
+`<extensionName>`, without the angle brackets, is  replaced with the unique name of the extension as defined in the `extension.pdl` file.
 
-  * Telemetry Access for access 
-        
-    [portalfx-telemetry-getting-started.md](portalfx-telemetry-getting-started.md)
+If any of the performance computations are below the bar, please investigate and resolve the related issues.
 
-  * Query - including test/dev traffic
-
-    [https://aka.ms/portalfx/perfsignoff](https://aka.ms/portalfx/perfsignoff)
-
-* Checklist
-
-    [portalfx-performance.md](portalfx-performance.md)
-
-* Portal COP (Telemetry)
-
-    [portalfx-performance-portalcop.md](portalfx-performance-portalcop.md)
+There is also a Power BI Dashboard that displays computations only for genuine traffic, and it is located at [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf).
 
 <a name="production-ready-metrics-and-quality-metrics-reliability"></a>
 ### Reliability
 
-Every extension meets the reliability Service Level Agreement (SLA). There are some reliability metrics to meet previous to enabling the extension in the production environment; however, extensions must be enabled in MPAC in order to start tracking reliability. Meeting the reliability bar is a requirement for public preview or GA.
+Every extension meets the reliability Service Level Agreement (SLA) of loading successfully at least 99% of the time.This applies to extension loads, blade loads, and part loads. This should be met previousw to enabling the extension in the production environment; however, extensions must be enabled in MPAC in order to start tracking reliability. Meeting the reliability bar is a requirement for public preview or GA.
 
 MPAC and PROD reliability are included in weekly status emails and each team is expected to investigate regressions.
 
-We require at least 100 loads of the UX (extension/blade/tiles) to get a signal. If you cannot generate that traffic authentically in the expected timeframe, please hold a bug bash to increase traffic.
+We require at least 100 loads of the UX (extension/blade/tiles) to get a signal. If you cannot generate that traffic authentically in the expected timeframe, please hold a bug bash to increase traffic.  Also ensure that the  URL for the extension does not include the `feature.canmodifyextensions` flag.
 
-To calculate the performance and reliability of your extension, use the query located at [https://aka.ms/portalfx/perfsignoff](https://aka.ms/portalfx/perfsignoff).
+To calculate the performance and reliability of your extension, use the query located at [https://aka.ms/portalfx/perfsignoff](https://aka.ms/portalfx/perfsignoff). It is also in the following code.
     
 ```json 
     // First parameter startDate
@@ -68,7 +72,11 @@ To calculate the performance and reliability of your extension, use the query lo
     | where extension == "<extensionName>"
 ```
 
-If any of the reliability numbers of the extension are below the bar, please investigate and resolve the related issues.
+where 
+
+`<extensionName>`, without the angle brackets, is  replaced with the unique name of the extension as defined in the `extension.pdl` file.
+
+If any of the reliability computations are below the bar, please investigate and resolve the related issues.
 
 <a name="production-ready-metrics-and-quality-metrics-usability"></a>
 ### Usability
@@ -94,18 +102,14 @@ Nearly 70% of Azure users are from outside of the United States. Therefore, it i
 <a name="production-ready-metrics-and-quality-metrics-create-success-rate"></a>
 ### Create Success Rate
     
-The user's ability to purchase or create Azure resources is a critical scenario for the product. Users fill out a form to create a resource, validation passes, and they click the create button. When a user gets to this point, we expect the create operation to succeed at least 99% of the time.
+The user's ability to purchase or create Azure resources is a critical scenario for the product. Users fill out a form to create a resource, then the form content passes validation, and they click the Create button. When a user gets to this point, the create operation should succeed at least 99% of the time.
      
 Extensions and Resource Providers (RPs) are responsible for validating all inputs to ensure the Create is not submitted unless that Create will be successful. This applies to all services.
 
 Services that use ARM template deployment and other ARM-based services should also validate resource provider registration, permissions, and deployment to avoid common issues and improve extension success rates. 
-
-<!--TODO: Locate or create Query
--->
-You can measure your current success rates on create blades that are live by using the following query.
-
-You can also see the current stats in PowerBI located at [https://aka.ms/portalfx/successrates](https://aka.ms/portalfx/successrates). 
   
+You can measure your current success rates on create blades that are live running queries on the dashboard located at [https://aka.ms/portalfx/successrates](https://aka.ms/portalfx/successrates).
+
 For more information about creating success, see [portalfx-create.md#validation](portalfx-create.md#validation).
 
 <a name="resource-move"></a>
@@ -113,12 +117,4 @@ For more information about creating success, see [portalfx-create.md#validation]
 
 ARM-based services allow customers to move resources between subscriptions and resource groups. You should support this in the UX.
 
-For more information on resource moves, see the following resources.
-    
-* Documentation 
-
-    [portalfx-resourcemove.md](portalfx-resourcemove.md)
-	
-* Status Dashboard in PowerBI
-        
-    [http://aka.ms/portalfx/resourcemove/dashboard](http://aka.ms/portalfx/resourcemove/dashboard)
+For more information on resource moves, see [portalfx-resourcemove.md](portalfx-resourcemove.md).
