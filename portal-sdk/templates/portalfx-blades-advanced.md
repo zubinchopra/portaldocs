@@ -31,8 +31,9 @@ A status bar can be displayed at the top of a blade that contains both text and 
 
 This capability is exposed through the **statusBar** member in the Blade base class by using `this.statusBar(myStatus)` in your blade view-model, as in the code located at `<dir>Client/V1/Blades/ContentState/ViewModels/ContentStateViewModels.ts`.
 It is also included in the following code.
-
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/ContentState/ViewModels/ContentStateViewModels.ts", "section": "templateBlade#contentState"}
+<!--
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/ContentState/ViewModels/ContentStateViewModels.ts", "section": "templateBlade#contentState"}
+-->
 
 ### Pinning the blade
 
@@ -45,20 +46,27 @@ Settings that are associated with a blade can be stored. Those settings need to 
 The process is as follows.
 
 Specify the settings in the PDL file using the `TemplateBlade.Settings` element.
-
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Template/Template.pdl", "section": "templateBlade#settingsPDL"}
+<!--
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Template/Template.pdl", "section": "templateBlade#settingsPDL"}
+-->
 
 After the settings are declared, they should also be specified in the ViewModel, as in the following example.
 
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Template/ViewModels/TemplateBladeViewModels.ts", "section": "templateBlade#settingsVMDef"}
+<!--
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Template/ViewModels/TemplateBladeViewModels.ts", "section": "templateBlade#settingsVMDef"}
+-->
 
 Retrieve the settings by using the blade container.
 
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Template/ViewModels/TemplateBladeViewModels.ts", "section": "templateBlade#settingsVMUse"}
+<!--
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Template/ViewModels/TemplateBladeViewModels.ts", "section": "templateBlade#settingsVMUse"}
+-->
 
 Also send the settings to the `onInputsSet` method.
 
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Template/ViewModels/TemplateBladeViewModels.ts", "section": "templateBlade#settingsVMois"}
+<!--
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Template/ViewModels/TemplateBladeViewModels.ts", "section": "templateBlade#settingsVMois"}
+-->
 
 ### Displaying Unauthorized UI
 
@@ -66,7 +74,9 @@ You can set the blade to Unauthorized UI using the `unauthorized` member of the 
 
 The following code does this statically, but it can also be done dynamically, based  on a condition after data is loaded.
 
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Unauthorized/ViewModels/UnauthorizedBladeViewModel.ts", "section": "templateBlade#Unauthorized"}
+<!--
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Unauthorized/ViewModels/UnauthorizedBladeViewModel.ts", "section": "templateBlade#Unauthorized"}
+-->
 
 ### Dynamically displaying Notice UI
 
@@ -74,4 +84,6 @@ You can set the blade to the Notice UI using `enableNotice` member of the blade 
 
 Enabling the blade can be done statically with the constructor, or it can be done dynamically. In the following example, the blade is set to Notice UI if the **id** input parameter has a specific value.
 
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/DynamicNotice/ViewModels/DynamicNoticeViewModels.ts", "section": "templateBlade#dynamicNotice"}
+<!--
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/DynamicNotice/ViewModels/DynamicNoticeViewModels.ts", "section": "templateBlade#dynamicNotice"}
+-->

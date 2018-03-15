@@ -12,11 +12,15 @@ The process is as follows.
 
 Menu blades are defined in the PDL file in the following code. The code is also located at `<dir>\Client/V1/Blades/MenuBlade/MenuBlade.pdl`.
 
-{"gitdown": "include-section",  "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/MenuBlade/MenuBlade.pdl", "section": "menuBlade#pdlDef"}
+<!--
+gitdown": "include-section",  "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/MenuBlade/MenuBlade.pdl", "section": "menuBlade#pdlDef"}
+-->
 
 The following code demonstrates how to define a menu blade ViewModel to open four different items.
 
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/MenuBlade/ViewModels/SampleMenuBlade.ts", "section": "menuBlade#ctor"}
+<!--
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/MenuBlade/ViewModels/SampleMenuBlade.ts", "section": "menuBlade#ctor"}
+-->
 
 There are a few things to notice in the preceding code.
 
