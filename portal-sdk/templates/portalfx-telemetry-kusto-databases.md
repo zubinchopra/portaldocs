@@ -14,7 +14,7 @@
 
 |Database          | Table Name        | Details                                                                                                                                              |
 |------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-|AzPtlCosmos       | ClientTelemetry   | This is all the Client Telemetry data that is collected from the portal. This is the main table that should be good for most scenarios.              |
+|AzPtlCosmos       | ClientTelemetry   | This is all the Client Telemetry data that is collected from the Portal. This is the main table that should be good for most scenarios.              |
 |AzPtlCosmos       | ExtTelemetry      | This holds client events data for extensions using the Extension Telemetry feature.                                                                  |
 
 > **Important:** Data in both ClientTelemetry and ExtTelemetry tables will only include rows where the action is present in their respective allow list. If you need to query for actions that are not present in these tables, Kusto supports [cross-databases queries](https://kusto.azurewebsites.net/docs/queryLanguage/query_language_syntax.html?q=cross) allowing you to query the ClientTelemetry or ExtTelemetry directly from the AzurePortal database. 
@@ -47,15 +47,15 @@ While we have moved to Kusto, we still have streams that continue to exist. This
 
 |Name              | Schema                                                                                                           | Cosmos Link                                                                                                                                                                                                           |
 |------------------|------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|Client Telemetry  | [DataSet=53004](https://datacatalog.analytics.msftcloudes.com/#/entity/53004/schema)             | [Daily ClientTelemetry](https://cosmos11.osdinfra.net/cosmos/AzureAnalytics.Partner.AAPT/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Daily/ClientTelemetry/)                          |
-|ClientTelemetryForKustoExport | [DataSet=93405](https://datacatalog.analytics.msftcloudes.com/#/entity/93405/schema) | [Hourly ClientTelemetry](https://cosmos11.osdinfra.net/cosmos/azureanalytics.partner.azureportal/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Hourly/ClientTelemetryForKustoExport/)   |
+|Client Telemetry  | [DataSet=53004](https://aka.ms/datastudio/#/entity/53004/schema)             | [Daily ClientTelemetry](https://cosmos11.osdinfra.net/cosmos/AzureAnalytics.Partner.AAPT/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Daily/ClientTelemetry/)                          |
+|ClientTelemetryForKustoExport | [DataSet=93405](https://aka.ms/datastudio/#/entity/93405/schema) | [Hourly ClientTelemetry](https://cosmos11.osdinfra.net/cosmos/azureanalytics.partner.azureportal/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Hourly/ClientTelemetryForKustoExport/)   |
 
 We plan to merge ClientTelemetryForKustoExport into ClientTelemetry stream very shortly. ClientTelemetryForKustoExport is the stream that currently feeds the Kusto database - AzPtlCosmos
 
 ### ClientTelemetry (AzPtlCosmos)
 
 #### Action 
-This represents an event in the portal.
+This represents an event in the Portal.
 
 {"gitdown": "include-file", "file": "portalfx-telemetry-actions.md"}
 
@@ -131,9 +131,9 @@ This field identifies a user by PUID. We can use this to identify queries like d
 This represents the user agent of the user. This is a standard UserAgentString - [User Agent](https://en.wikipedia.org/wiki/User_agent)
 
 #### UserCity
-This represents the City that the User has used the portal from. We derive this from the Users Client IP.
+This represents the City that the User has used the Portal from. We derive this from the Users Client IP.
 
 #### UserCountry
-This represents the Country that the User has used the portal from. We derive this from the Users Client IP.
+This represents the Country that the User has used the Portal from. We derive this from the Users Client IP.
 
 Read more about [Kusto query language](https://kusto.azurewebsites.net/docs/queryLanguage/query_language.html).
