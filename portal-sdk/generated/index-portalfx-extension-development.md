@@ -1,69 +1,69 @@
-* [Development](#development)
-    * [Getting Started](#development-getting-started)
-    * [Common scenarios](#development-common-scenarios)
-    * [Basic Concepts](#development-basic-concepts)
-    * [Authentication](#development-authentication)
-    * [Resource management](#development-resource-management)
-    * [Debugging](#development-debugging)
-    * [Other](#development-other)
 
 <!--When documents are deprecated,they are commented out of this index. -->
 <a name="development"></a>
 # Development
 
-<!--
 <a name="development-getting-started"></a>
 ## Getting Started
 
-  gitdown": "include-headings", "file": "../templates/portalfx-howitworks.md"}
+  * [Azure Portal -- A composed web application](top-extensions-architecture.md#azure-portal-a-composed-web-application)
 
-* [Getting started with the Portal SDK](portalfx-creating-extensions.md#getting-started-with-the-portal-sdk)
 
-* [Samples extension](portalfx-sample-extensions.md#samples-extension)
+  * [Portal Extensions](top-onboarding.md#portal-extensions)
 
--->
+
+  * [Overview](portalfx-extensions-samples-overview.md#overview)
+* [Samples extension](portalfx-extensions-samples-overview.md#samples-extension)
+* [V1 versus V2](portalfx-extensions-samples-overview.md#v1-versus-v2)
+* [Sample Source Code](portalfx-extensions-samples-overview.md#sample-source-code)
+
 
 <a name="development-common-scenarios"></a>
 ## Common scenarios
-* [Building browse experiences](portalfx-browse.md#building-browse-experiences)
 
-* [Building create experiences](portalfx-create.md#building-create-experiences)
-* [Building custom create forms](portalfx-create.md#building-custom-create-forms)
+  * [Building browse experiences](portalfx-browse.md#building-browse-experiences)
 
+
+ gitdown": "include-headings", "file": "../templates/portalfx-create.md"}
 
 <a name="development-basic-concepts"></a>
 ## Basic Concepts
-* [UI Concepts](portalfx-ui-concepts.md#ui-concepts)
 
-* [Defining Blades and Parts using TypeScript decorators (a.k.a. 'no-PDL')](portalfx-no-pdl-programming.md#defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl)
+  * [UI Concepts](portalfx-ui-concepts.md#ui-concepts)
 
-<!-->
-* [Parts (a.k.a. tiles)](portalfx-parts.md#parts-a-k-a-tiles)
 
-<!--
+  * [Defining Blades and Parts using TypeScript decorators (a.k.a. 'no-PDL')](portalfx-no-pdl-programming.md#defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl)
 
--->
+  
+  
 
-<!--
-  gitdown": "include-headings", "file": "../templates/top-extensions-forms.md"}
+  
 
-  gitdown": "include-headings", "file": "../templates/portalfx-controls.md"}
--->
+  * [Portal Forms](top-extensions-forms.md#portal-forms)
+
+
+  * [Overview](portalfx-controls-overview.md#overview)
+
 
 <a name="development-authentication"></a>
 ## Authentication
-* [Calling ARM](portalfx-authentication.md#calling-arm)
+
+  * [Calling ARM](portalfx-authentication.md#calling-arm)
 * [Calling alternate resources](portalfx-authentication.md#calling-alternate-resources)
 
-* [Working with data](portalfx-data.md#working-with-data)
-* [Advanced data topics](portalfx-data.md#advanced-data-topics)
 
-* [Introduction to Parameter Collection](portalfx-parameter-collection-overview.md#introduction-to-parameter-collection)
+  * [Working with data](top-extensions-data.md#working-with-data)
+* [Advanced data topics](top-extensions-data.md#advanced-data-topics)
+
+  
+  * [Introduction to Parameter Collection](portalfx-parameter-collection-overview.md#introduction-to-parameter-collection)
     * [Roles](portalfx-parameter-collection-overview.md#roles)
     * [Implementation](portalfx-parameter-collection-overview.md#implementation)
     * [More details](portalfx-parameter-collection-overview.md#more-details)
 
-* [ARM APIs](portalfx-provisioning-arm.md#arm-apis)
+
+  * [ARM APIs](portalfx-provisioning-arm.md#arm-apis)
+
 
 
 <a name="development-resource-management"></a>
@@ -93,6 +93,7 @@
 ## Debugging
 * [Debugging an Extension](top-extensions-debugging.md#debugging-an-extension)
 
+* [Status Codes and Error Messages](portalfx-extensions-status-codes.md#status-codes-and-error-messages)
 
 * [Testing in production](portalfx-testinprod.md#testing-in-production)
 * [Marking automated tests as test/synthetic traffic](portalfx-testinprod.md#marking-automated-tests-as-test-synthetic-traffic)

@@ -19,15 +19,15 @@ The web page must statically include the following scripts previous to the `data
 
 **NOTE**: **hammerjs** version 1.1.3 has been tested. If **hammer** is not included, the extension will not get multi-touch, but everything else should work correctly.
 
-The **requirejs** is used to load the graph control, with the program entry that is specified in `data-main`. There are three modules that should be explicitly brought in as dependencies. 
+The **requirejs** is used to load the graph control, with the program entry that is specified in `data-main`. There are three modules that should be explicitly imported as dependencies. 
 
-<!-- TODO: Determine whether there is a sample for this. -->
+<!-- TODO: Determine whether there is a sample for this. The Viva.Controls are not in the SDK that currently ships to partners. -->
 
 * `Viva.Controls/Controls/Visualization/Graph/GraphWidget` 
 
     Contains the widget
 
-*` Viva.Controls/Controls/Visualization/Graph/GraphViewModel`
+* `Viva.Controls/Controls/Visualization/Graph/GraphViewModel`
 
     Contains the ViewModel that supports the widget
 

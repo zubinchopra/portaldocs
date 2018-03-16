@@ -13,6 +13,7 @@ The process is as follows.
 
 Menu blades are defined in the PDL file in the following code. The code is also located at `<dir>\Client/V1/Blades/MenuBlade/MenuBlade.pdl`.
 
+
 ```xml
 
 <MenuBlade
@@ -23,7 +24,7 @@ Menu blades are defined in the PDL file in the following code. The code is also 
 
 The following code demonstrates how to define a menu blade ViewModel to open four different items.
 
-```typescript
+ ```typescript
 
 export class SampleMenuBlade extends FxMenuBlade.ViewModel {
     constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: DataContext) {

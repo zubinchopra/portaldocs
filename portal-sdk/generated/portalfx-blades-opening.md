@@ -373,8 +373,8 @@ There are two separate `<BladeAction>` elements defined for this part.  The `Col
 
 When using `<BladeAction>`, you're generally going to be launching blades from your own extension.  In some cases, you may [import a part from another extension](portalfx-extension-sharing-pde.md).  Using this technique, the source of the shared part will control launching of the blade.  However - in some cases you may want to launch a blade from another extension using a part from the current extension.  This is where `BladeReference` is useful.
 
-<a name="blade-opening-and-closing-the-pde-file"></a>
-## The PDE File
+
+ ## The PDE File
 
 You may not have noticed, but every time you build your project you're generating a .PDE file inside of the `\Client\_generated` directory. The PDE file contains a list of the parts which are exposed in the global scope, along with a few other pieces of metadata:
 

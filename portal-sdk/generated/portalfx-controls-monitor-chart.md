@@ -21,7 +21,7 @@ Some of the benefits of using the Monitor Chart are as follows.
 
     An array of charts can be displayed responsively in the control
 
-If you are onboarding to Azure Monitor for the first time, please reach out to the <a href="mailto:ibizamon@microsoft.com?subject=Azure Monitor Onboarding">Monitoring team</a>. The Monitoring team will add your resource type to a configuration which allows the Monitor Control to fetch metrics for your resources.
+If you are onboarding to Azure Monitor for the first time, please reach out to the <a href="mailto:monitoringcontrib@microsoft.com?subject=Azure Monitor Onboarding">Monitoring team</a>. The Monitoring team will add your resource type to a configuration which allows the Monitor Control to fetch metrics for your resources.
 
 <a name="monitor-chart-the-monitor-chart-control"></a>
 ### The monitor chart control
@@ -63,7 +63,7 @@ Developers can add the monitor chart control to their extensions by using the fo
 
 The code can plot more than one chart while referencing the control. Also, it can plot multiple metrics for each chart.
 
-For a complete list of the options that can be sent to the control, see  `Fx/Controls/MonitorChart` module in the  `Fx.d.ts` file of the project.  You can also view the interfaces directly in the PortalFx repository, as in the example located at [https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FFramework.Client%2FTypeScript%2FFx%2FControls%2FMonitorChart.ts&version=GBproduction&_a=contents](https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FFramework.Client%2FTypeScript%2FFx%2FControls%2FMonitorChart.ts&version=GBproduction&_a=contents).
+For a complete list of the options that can be sent to the control, see  `Fx/Controls/MonitorChart` module in the  `Fx.d.ts` file of the project.  You can also view the interfaces directly in the PortalFx repository, as in the example located at [https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/MonitorChartPlayground](https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/MonitorChartPlayground).
 
 <a name="monitor-chart-legacy-blade-usage"></a>
 ### Legacy Blade Usage
@@ -172,13 +172,21 @@ export class MonitorChartPartAdapter {
 }
 ```
 
-**NOTE**: For a complete list of the options that can be sent to the `MonitorChartPart`, see the `MonitorChartPart.d.ts` file either in the Hubs Nuget package, or directly in the Hubs repository, as in the example located at [https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FExtensions%2FHubsExtension%2FTypeScript%2FHubsExtension%2FForExport%2FMonitorChartPart.d.ts&_a=contents](https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FExtensions%2FHubsExtension%2FTypeScript%2FHubsExtension%2FForExport%2FMonitorChartPart.d.ts&_a=contents).
+**NOTE**: For a complete list of the options that can be sent to the `MonitorChartPart`, see the `MonitorChartPart.d.ts` file either in the Hubs Nuget package, or directly in the Hubs repository, as in the example located at 
+You can also view the interfaces directly in the PortalFx repository, as in the example located at [https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/MonitorChartPlayground](https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/MonitorChartPlayground).
+
+<!-- TODO: Determine whether the MonitorChartPart.d.ts contains the same information as the Fx.d.ts file from the previous section.
+[https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FExtensions%2FHubsExtension%2FTypeScript%2FHubsExtension%2FForExport%2FMonitorChartPart.d.ts&_a=contents](https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FExtensions%2FHubsExtension%2FTypeScript%2FHubsExtension%2FForExport%2FMonitorChartPart.d.ts&_a=contents).
+-->
+
+
 
 <a name="monitor-chart-monitor-chart-control-samples"></a>
 ### Monitor chart control samples
 
- The monitor chart control sample is located at `<dir>\Client\V2\Preview\MonitorChart\MonitorChartBlade.ts`. This code is also included in the working copy located at [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/monitorchart](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/monitorchart).
+ The monitor chart control sample is located at `<dir>\Client\V2\Preview\MonitorChart\MonitorChartBlade.ts`. This code is also included in the working copy located at [https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/MonitorChartPlayground](https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/MonitorChartPlayground).
 
+<!-- TODO: Determine whether a new user would need to enter this query into the controls playground. 
 <a name="monitor-chart-monitor-chart-control-samples-plotting-single-charts-with-dummy-data"></a>
 #### Plotting single charts with dummy data
 
@@ -205,6 +213,7 @@ export class MonitorChartPartAdapter {
 The results of the code are included in the following image.
 
 ![alt-text](../media/portalfx-controls-monitor-chart/monitor-chart-control-single-input.png "Metrics chart control single input")
+-->
 
 <a name="monitor-chart-monitor-chart-control-samples-plotting-multiple-charts-with-dummy-data"></a>
 #### Plotting multiple charts with dummy data

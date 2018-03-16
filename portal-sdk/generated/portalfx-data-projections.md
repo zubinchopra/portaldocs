@@ -28,34 +28,15 @@ interface Robot {
 
 Each robot will be entered into a grid with three columns. The `name` column and the `status` column are the same data as that of the model, but the third column is a combination of properties from the model object in the `QueryCache`.  The model and manufacturer observables are combined into a single property. The interface for the data to display in the grid is located at `<dir>\Client\V1\Data\Projection\ViewModels\MapAndMapIntoViewModels.ts`. This code is also included in the following example.
 
-```typescript
-
-/**
-* Details for the shaped data that is bound to the grid.
-*/
-export interface RobotDetails {
-   name: KnockoutObservableBase<string>;
-   status: KnockoutObservableBase<string>;
-   modelAndMfg: KnockoutObservableBase<string>;
-}
-
-```
+<!--
+  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#robotDetailsModel"}
+-->
 
 An initial implementation of this might resemble the section named "data#buggyMapProjection". The logging portion of the code that includes  `projectionId` and `_logMapFunctionRunning()` are discussed in [](). 
 
-```typescript
-
-var projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
-    var projectionId = this._uuid++;
-    this._logMapFunctionRunning(projectionId, robot);
-    return <RobotDetails>{
-        name: ko.observable(robot.name()),
-        status: ko.observable(robot.status()),
-        modelAndMfg: ko.observable("{0}:{1}".format(robot.model(), robot.manufacturer()))
-    };
-});
-
-```
+<!--
+gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#buggyMapProjection"}
+-->
 
 Without knowing too much about map() this looks like a fairly reasonable implementation. We know `robot.name()` has the name of the robot and `robot.model()` and `robot.manufacturer()` will give us the model and manufacturer values. The `RobotDetails` interface that is used to model the data in the grid requires observables for the  `name` and `modelAndMfg` properties, therefore the strings that are received from the `QueryCache` model are put into a pair of observables.
 
@@ -124,59 +105,23 @@ This prevents the map() from taking a dependency on robot.model() and robot.manu
 
 A correct implemenation of the map above then looks like (again ignore uuid and the logging functions):
 
-```typescript
-
-var projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
-    var projectionId = this._uuid++;
-    this._logMapFunctionRunning(projectionId, robot);
-    return <RobotDetails>{
-        name: robot.name,
-        status: robot.status,
-        modelAndMfg: ko.pureComputed(() => {
-            this._logComputedRecalculating(projectionId, robot);
-            return "{0}:{1}".format(robot.model(), robot.manufacturer());
-        })
-    };
-});
-
-```
+<!--
+gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#properMapProjection"}
+-->
 
 You can click on the 'Proper map' button in the sample and perform the same actions to see the difference. Now updating a property on the opened grid item no longer results in a rerunning of your map function. Instead changes to `status` are pushed directly to the DOM and changes to `model` cause the pureComputed to recalculate but importantly __do not change the object in grid.items()__.
 
 Now that you understand how `map()` works we can introduce `mapInto()`. Here's the code the same projection implemented with mapInto():
 
-```typescript
-
-var projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
-    var projectionId = this._uuid++;
-    this._logMapFunctionRunning(projectionId, robot);
-    return <RobotDetails>{
-        name: robot.name,
-        status: robot.status,
-        modelAndMfg: ko.pureComputed(() => {
-            this._logComputedRecalculating(projectionId, robot);
-            return "{0}:{1}".format(robot.model(), robot.manufacturer());
-        })
-    };
-});
-
-```
+<!--
+  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#properMapIntoProjection"}
+-->
 
 You can see how it reacts by clicking on the 'Proper mapInto' button and then add/remove/update the items. The code and behavior are the exact same. So how are map() and mapInto() different? We can see with a buggy implementation of a projection using mapInto():
 
-```typescript
-
-var projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
-    var projectionId = this._uuid++;
-    this._logMapFunctionRunning(projectionId, robot);
-    return <RobotDetails>{
-        name: ko.observable(robot.name()),
-        status: ko.observable(robot.status()),
-        modelAndMfg: ko.observable("{0}:{1}".format(robot.model(), robot.manufacturer()))
-    };
-});
-
-```
+<!--
+gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#buggyMapIntoProjection"}
+-->
 
 This is the same as our buggy implementation of map() we wrote earlier. Click the 'Buggy mapInto' button and then play around with updating status() and model() of the top row while that row is activated. You'll notice, unlike map(), that the child blade doesn't close however you'll also notice that when the source data in the QueryCache changes __the observable changes are not present in the projected object__. The reason for this is mapInto() ignores any observables that use in the mapping function you supply. It is therefore guaranteed that a projected item will stay the same item as long as the source item is around but if you write your map incorrectly it isn't guaranteed the projected data is update to date.
 
@@ -200,28 +145,9 @@ The samples extension includes an example of using a __projected array__ to bind
 
 `\Client\Data\Projection\ViewModels\ProjectionBladeViewModel.ts`
 
-```typescript
-
-this._view = dataContext.robotData.robotsQuery.createView(container);
-
-// As items are added or removed from the underlying items array,
-// individual changed items will be re-evaluated to create the computed
-// value in the resulting observable array.
-var projectedItems = this._view.items.mapInto<RobotDetails>(container, (itemLifetime, robot) => {
-    return <RobotDetails>{
-        name: robot.name,
-        computedName: ko.pureComputed(() => {
-            return "{0}:{1}".format(robot.model(), robot.manufacturer());
-        })
-    };
-});
-
-this.grid = new Grid.ViewModel<RobotDetails, string>(
-    container,
-    projectedItems,
-    Grid.Extensions.SelectableRow);
-
-```
+<!--
+gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/ProjectionBladeViewModel.ts", "section": "data#mapExample"}
+-->
 
 <a name="data-shaping-chaining-uses-of-map-and-filter"></a>
 ### Chaining uses of <code>map</code> and <code>filter</code>

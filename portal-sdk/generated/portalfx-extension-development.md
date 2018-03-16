@@ -2,20 +2,23 @@
 <a name="getting-started"></a>
 ## Getting Started
 
-<!-- TODO: deprecate the link to portalfx-howitworks.md  and replace it with portalfx a link to -extensions-architecture.md -->
-<!-- TODO:  Remove links to documents that are located in the master index or are otherwise known.  -->
+<!-- TODO:  Remove links to documents that are located in the master index or are otherwise known.  
+In the meantime, some gitdown includes are commented out for npm run docs.
+-->
 
-* [Understanding the Azure Portal Architecture](portalfx-howitworks.md#understanding-the-azure-portal-architecture)
-* [Understanding the Azure Portal Extension Architecture](portalfx-howitworks.md#understanding-the-azure-portal-extension-architecture)
+* [Azure Portal -- A composed web application](top-extensions-architecture.md#azure-portal-a-composed-web-application)
 
-* [Getting started with the Portal SDK](portalfx-creating-extensions.md#getting-started-with-the-portal-sdk)
 
-* [Samples extension](portalfx-sample-extensions.md#samples-extension)
+* [Overview](portalfx-extensions-samples-overview.md#overview)
+* [Samples extension](portalfx-extensions-samples-overview.md#samples-extension)
+* [V1 versus V2](portalfx-extensions-samples-overview.md#v1-versus-v2)
+* [Sample Source Code](portalfx-extensions-samples-overview.md#sample-source-code)
 
 
 <a name="common-scenarios"></a>
 # Common scenarios
 * [Building browse experiences](portalfx-browse.md#building-browse-experiences)
+
 
 * [Building create experiences](portalfx-create.md#building-create-experiences)
 * [Building custom create forms](portalfx-create.md#building-custom-create-forms)
@@ -23,40 +26,37 @@
 
 <a name="basic-concepts"></a>
 # Basic Concepts
+
 * [UI Concepts](portalfx-ui-concepts.md#ui-concepts)
+
 
 * [Defining Blades and Parts using TypeScript decorators (a.k.a. 'no-PDL')](portalfx-no-pdl-programming.md#defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl)
 
-* [Parts (a.k.a. tiles)](portalfx-parts.md#parts-a-k-a-tiles)
 
-* [Blades](portalfx-blades.md#blades)
 
-* [Controls](portalfx-controls.md#controls)
-    * [Basic Screen Controls](portalfx-controls.md#basic-screen-controls)
-    * [Date and Time](portalfx-controls.md#date-and-time)
-    * [Drop downs](portalfx-controls.md#drop-downs)
-    * [Editors](portalfx-controls.md#editors)
-    * [Forms](portalfx-controls.md#forms)
-    * [Lists](portalfx-controls.md#lists)
-    * [Helpers and Indicators](portalfx-controls.md#helpers-and-indicators)
-    * [Data Visualization Objects](portalfx-controls.md#data-visualization-objects)
-    * [Deprecated controls](portalfx-controls.md#deprecated-controls)
+
+
+
+
 
 * [Monitor Chart](portalfx-controls-monitor-chart.md#monitor-chart)
 
 
 <a name="authentication"></a>
 # Authentication
+
+
 * [Calling ARM](portalfx-authentication.md#calling-arm)
 * [Calling alternate resources](portalfx-authentication.md#calling-alternate-resources)
 
-* [Working with data](portalfx-data.md#working-with-data)
-* [Advanced data topics](portalfx-data.md#advanced-data-topics)
+
+
 
 * [Introduction to Parameter Collection](portalfx-parameter-collection-overview.md#introduction-to-parameter-collection)
     * [Roles](portalfx-parameter-collection-overview.md#roles)
     * [Implementation](portalfx-parameter-collection-overview.md#implementation)
     * [More details](portalfx-parameter-collection-overview.md#more-details)
+
 
 * [ARM APIs](portalfx-provisioning-arm.md#arm-apis)
 

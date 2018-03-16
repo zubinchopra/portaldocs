@@ -140,6 +140,7 @@ window.addEventListener("message", receiveMessage, false);
 
 ```
 
+
 The extension should also provide a handler for the incoming message. In the following example, the **receiveMessage** method handles three different incoming message types, and reacts to theming changes in the Portal.
 
 ```xml

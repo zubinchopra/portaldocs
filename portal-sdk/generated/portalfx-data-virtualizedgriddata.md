@@ -114,14 +114,16 @@ public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
 }
 ```
 
-<a name="querying-for-virtualized-data-pageable-skip-take-grid"></a>
-#### Pageable / skip-take grid
+<a name="querying-for-virtualized-data-pageable-random-access-grid"></a>
+#### Pageable / random access grid
 
 ![Pageable grid][pageable-grid]
 
-The pageable approach requires setting up a `QueryCache` with a navigation element.  The navigation element describes the skip-take behavior:
+The pageable approach requires setting up a `QueryCache` with a navigation element.  The navigation element can access data in an order that is not sequential. This is known as  random access or skip-take behavior, as in the example located at 
 
 `\SamplesExtension\Extension\Client\Controls\ProductPageableData.ts`
+
+It is also in the following code.
 
 ```ts
 var QueryString = MsPortalFx.Base.Resources
