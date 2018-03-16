@@ -7,15 +7,15 @@
 
   {"gitdown": "include-headings", "file": "../templates/top-extensions-architecture.md"}
 
-  {"gitdown": "include-headings", "file": "../templates/portalfx-creating-extensions.md"}
+  {"gitdown": "include-headings", "file": "../templates/top-onboarding.md"}
 
-  {"gitdown": "include-headings", "file": "../templates/portalfx-sample-extensions.md"}
+  {"gitdown": "include-headings", "file": "../templates/portalfx-extensions-samples-overview.md"}
 
 ## Common scenarios
 
   {"gitdown": "include-headings", "file": "../templates/portalfx-browse.md"}
 
-  {"gitdown": "include-headings", "file": "../templates/portalfx-create.md"}
+ gitdown": "include-headings", "file": "../templates/portalfx-create.md"}
 
 ## Basic Concepts
 
