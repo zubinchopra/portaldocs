@@ -1,7 +1,6 @@
-{"gitdown": "contents", "maxLevel": 2}
+
 <!--When documents are deprecated,they are commented out of this index. -->
 # Development
-
 
 ## Getting Started
 
@@ -29,13 +28,13 @@
 
   {"gitdown": "include-headings", "file": "../templates/top-extensions-forms.md"}
 
-  {"gitdown": "include-headings", "file": "../templates/portalfx-controls.md"}
+  {"gitdown": "include-headings", "file": "../templates/portalfx-controls-overview.md"}
 
 ## Authentication
 
   {"gitdown": "include-headings", "file": "../templates/portalfx-authentication.md"}
 
-  {"gitdown": "include-headings", "file": "../templates/portalfx-data.md"}
+  {"gitdown": "include-headings", "file": "../templates/top-extensions-data.md"}
   
   {"gitdown": "include-headings", "file": "../templates/portalfx-parameter-collection-overview.md"}
 
@@ -56,7 +55,7 @@
 
 ## Debugging
 {"gitdown": "include-headings", "file": "../templates/top-extensions-debugging.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-debugging-extension-load-failures.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-extensions-status-codes.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-testinprod.md"}
 
 ## Other
