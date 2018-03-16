@@ -7,7 +7,7 @@ Most controls are available in the playground located at  [https://aka.ms/portal
 
 ## Controls that are used by other controls
 
-<!-- TODO:  Determine whether there are samples and experiences that are best documented inside an existing document instead of being  documented in separate documents.  If so, determine whether it is appropriate for them to be combined into the following separate table.-->
+<!-- TODO:  Determine whether the separate documents still contain data that should be separated from the main controls-procedure document.   If so, determine whether it is appropriate for them to be combined into the following separate table.-->
 
 | Control        | Sample | Experience |
 | -------------- | --------- | -------------- |
@@ -59,6 +59,10 @@ Controls that do not have a link to a unique experience can be located from  the
 
 ## Drop down controls
 
+<!-- TODO: Determine whether the following controls still need their own document. 
+Console
+It is possible to combine the migration sections of some documents, thereby reducing the number of files that need to be read. 
+-->
 | Drop Down | Document | Sample | Experience |
 | --------- | -------- | ------ | ---------- |
 | DropDown | [portalfx-controls-dropdown.md](portalfx-controls-dropdown.md) | `<dir>\Client\V2\Controls\ DropDown\DropDownBlade.ts` | [https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/DropDownPlayground](https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/DropDownPlayground) |

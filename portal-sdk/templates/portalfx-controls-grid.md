@@ -10,9 +10,44 @@ The grid control can be configured with different options such as multiple selec
 These behaviors are added to the grid control by using plugins. Grid plugins are also known as "API extensions". This terminology can be confusing to Portal extension developers, therefore, for the purposes of discussion, grid extensions are referred to as plugins.
 
 Plugins are enabled in three ways.
+
 1. With bit flags that are sent to the ViewModel constructor
 1. As a dependency of an enabled plugin
 1. By default
+
+The following subtopics are discussed in this document.
+
+* [Getting Started](#getting-started)
+
+* [Enabling Plugins](#enabling-plugins)
+
+* [Providing Data](#providing-data)
+
+* [Defining Columns](#defining-columns)
+
+* [Formatting](#formatting)
+
+* [Selection and Activation](#selection-and-activation)
+
+* [Sorting](#sorting)
+
+* [Filtering](#filtering)
+
+* [Editing](#editing)
+
+* [Paging](#paging)
+
+* [Grouping](#grouping)
+
+* [Hierarchical](#hierarchical)
+
+* [Context Menus](#context-menus)
+
+* [Scrolling ](#scrolling)
+
+* [Reordering](#reordering)
+
+* [Dynamic Grid Definition](#dynamic-grid-definition)
 
 ### Getting Started
 
@@ -39,8 +74,9 @@ Some basic implementations are located in the following table.
 
 ### Enabling Plugins
 
-To enable a plugin you need to do two things.
-1.  Set the appropriate bit flag when the grid is constructed. Bit flags are combined by using the  "|" or the  "+" operator.  The "&" operator cannot be used.  If it is used, a plugin will not be created.
+ Perform the following two actions to enable a plugin.
+ 
+1. Set the appropriate bit flag when the grid is constructed. Bit flags are combined by using the  "|" or the  "+" operator.  The "&" operator cannot be used.  If it is used, a plugin will not be created.
 1. Provide plugin options.
 
 The following chart specifies which plugins can be combined. 
@@ -55,101 +91,87 @@ The sample located at `<dir>\Client/V1/Controls/Grid/ViewModels/ScrollableGridWi
 
 ### Providing Data
 
-In the basic scenario your data is provided to the grid, throw the items param as a KnockoutObservableArray&lt;T>.
-The array can be one you create or more commonly it will be the items property of a QueryView.
+Typically, when data is provided to a grid, it is provided in the `items` parameter as a `KnockoutObservableArray&lt;T>`.
+The array can be created within the extension, but it is more common to use the `items` property of a `QueryView` object.
 
-In virtualization scenarios you will provide the data to the grid via a DataNavigator.
-Navigators can support two data retrieval patterns.
-1. Sequential data access using continuation tokens.Sequential navigation can be enabled by the Pageable plugin.
-1. Random data access aka skip-take. Random access navigation can be enabled by the Pageable or Scrollable plugins.
+When data is virtualized, it is provided to the grid by using a `DataNavigator` object. Navigators can support two data retrieval patterns.
 
-[Data Documentation](portalfx-data.md)
+1. Sequential data access using continuation tokens. Sequential navigation can be enabled by the `Pageable` plugin.
+1. Random data access, which is also known as skip-take. Random access navigation can be enabled by the `Pageable` or `Scrollable` plugins.
+
+For more information about data handling, see [portalfx-data.md](portalfx-data.md).
 
 ### Defining Columns
 
-Columns are defined by setting the columns property on the grid ViewModel.
-The header text of the column is declared with the name property.
-Cell values for the column are determined by the itemKey property.
-The itemKey specifies the name of the property on your data item.
-For each data item the grid will use the itemKey to read the value.
-There are many other column options that specify the formatting of the value or enable plugin specific behaviors.
+Columns are defined by setting the `columns` property on the grid `ViewModel`. The header text of the column is declared by using the `name` property. The grid is populated by using property-value or key-value pairs. The `itemKey` contains the name of the data item property. For each data item, the grid will use the `itemKey` to retrieve the value that will be used for each cell value for the column.
+
+There are many other column options that specify the formatting of the value, or enable plugin-specific behaviors, as in the example located at `<dir>/Client/V1/Controls/Grid/ViewModels/BasicGridViewModel.ts` and in the following example.
 
 {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Controls/Grid/ViewModels/BasicGridViewModel.ts", "section": "grid#columndefinitions"}
 
 ### Formatting
 
 Columns are formatted using three key properties.
-  - ``itemKey``: The property of your data item to display.  
-  - ``format``: Optional format type from the Format enumeration. 
-  - ``formatOptions``:  Optional formatter specific options.
 
-By default values you specify with the column itemKey will be formated as text.
-The text formatter does a simplistic toString conversion.
-If you have an object or need more specific formatting for a date or number there are many built in formatters to use.
+* **itemKey**: The property of the data item to display.
 
-[Formatted Grid Sample][FormattedSample]
+* **format**: Optional format type from the Format enumeration. 
 
-### Formatting Dates
+* **formatOptions**: Optional formatter-specific options.
 
-Dates are formatted using the International API using the current locale set by the user.
-The data value of the date can be a number, string, or date.
-The formatters will convert to date and then use the Intl API to convert to text.
-The following formatters can be used for formatting dates:
-- ShortDate: 7/18/2013
-- LongDate: Thursday, July 18, 2013 
-- MonthDay: July 18
-- YearMonth: July, 2013
-- ShortTime: 11:20 AM
-- LongTime: 11:20:19 AM
-- CustomDate: Any format possible using Intl date formatting
+The column `itemKey` is formated as text by using the default values. The text formatter does a `toString` conversion. There are many built-in formatters for formatting dates, numbers and other objects, as in the sample located at `<dir>/Client/V1/Controls/Grid/ViewModels/FormattedGridViewModel.ts`.
+
+#### Formatting Dates
+
+Dates are formatted using the International API, and the current locale that is set by the user. The data value of the date can be a number, a string, or a date. The formatters will convert that value  to a date, and then use the Intl API to convert it to text.
+
+The following formatters can be used for formatting dates.
+* ShortDate: 7/18/2013
+* LongDate: Thursday, July 18, 2013 
+* MonthDay: July 18
+* YearMonth: July, 2013
+* ShortTime: 11:20 AM
+* LongTime: 11:20:19 AM
+* CustomDate: Any format possible using Intl date formatting
+
+The sample located at `<dir>/Client/V1/Controls/Grid/ViewModels/FormattedGridViewModel.ts` demonstrates how to format dates in the grid. It is also in the following code.
 
 {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Controls/Grid/ViewModels/FormattedGridViewModel.ts", "section": "grid#dateformatter"}
 
-You can create your on Intl option or use one of the predefined options from the ``Globalization.Intl`` namespace.
+The extension can use a customized International option, or it can use one of the predefined options from the `Globalization.Intl` namespace that is located at [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat).
 
-[Intl API DateTime](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat)
+#### Formatting Numbers
 
-### Formatting Numbers
-
-There is a single formatter for formatting numbers called the Number formatter.
-The number formatter uses the Int API and will format to the current locale the user has set in the portal.
-It is capable of formatting numbers in many ways including currency.
+The Number formatter is a single formatter for formatting numbers. It uses the International API and formats to the current locale that the user set in the Portal. It uses many formats, including currency. It is in the sample located at `<dir>/Client/V1/Controls/Grid/ViewModels/FormattedGridViewModel.ts`, and is also in the following code.
 
 {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Controls/Grid/ViewModels/FormattedGridViewModel.ts", "section": "grid#numberformatter"}
 
-[Intl API Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat)
+Predefined options are demonstrated in the `Intl.DateTimeFormat` namespace that is located at 
+[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat).
 
-### Formatting Images
+#### Formatting Images
 
-There are several formatters for displaying images in cells.
-The preferred formatters are SvgIcon and SvgIconLookup.
-The SvgIcon formatter allows you to display an SVG and optional text where the data value contains the SVG or an object containing the SVG and text.
-The SvgIconLookup allows you to map data values to SVGs for display.  
-There are two other similar formatters that use image uris instead of SVGs.
-However, portal SVGs are preferred because they are themed.
+There are several formatters that display images in cells. For example, there are two formatters that use image URI's instead of SVGs. The preferred formatters are `SvgIcon` and `SvgIconLookup`. The Portal SVGs are preferred because they are themed.
 
-### Formatting Uris
+* The `SvgIcon` formatter allows an extension to display an SVG with optional text that contains the SVG as a data value.  It also allows the display of an object that contains both the SVG and text content.
 
-There is a single Uri formatter that formats a data value containing a URI as a clickable link.
-The data value can also be an object containing the URI, text, and target.
+* The `SvgIconLookup` allows an extension to map data values to SVGs for display.
+
+#### Formatting Uris
+
+There is a URI formatter that formats a data value that contains a URI as a clickable link. The data value can also be an object that contains the URI, the text, and the target.
 
 #### Formatting Text
 
-The default formatter for the Grid is the Text formatter.
-There is also a TextLookup formatter that uses a map to convert specific data values to text.
+The default formatter for the Grid is the `Text` formatter. There is also a `TextLookup` formatter that uses a map to convert specific data values to text.
 
-### Formatting Html
+#### Formatting Html
 
-The Html formatter allows you to display html.
-The html is specified by your data values and can not include knockout data bindings.
-If you need knockout bindings use the HtmBindings formatter.
+The `Html` formatter allows an extension to display `html`. The `html` is specified by data values and can not include **Knockout** data bindings. If **Knockout** bindings are needed, the extension should use the `HtmBindings` formatter.
 
-### Custom Formatting (HtmlBindings)
+#### Custom Formatting with HtmlBindings
 
-The grid only has a single way to do custom formatting.
-This is done using the HtmlBindings formatter.
-With the HtmlBindings formatter you can specify an html template containing knockout bindings.
-The $data object bound to the template will be in the following format where value is specified by the itemKey property and settings.item is your data item:
+The grid does custom formatting with the `HtmlBindings` formatter, which is the only way that custom formatting can be accomplished. The `HtmlBindings` formatter allows developers to specify an html template that contains **Knockout** bindings. The `$data` object that is bound to the template is in the following format, where the value specified by the `itemKey` property and `settings.item` is the data item.
 
 ```
 {
@@ -160,114 +182,97 @@ The $data object bound to the template will be in the following format where val
 }
 ```
 
+The example is in the code located at `<dir>Client/V1/Controls/Grid/ViewModels/FormattedGridViewModel.ts`, and is also in the following example.
+
 {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Controls/Grid/ViewModels/FormattedGridViewModel.ts", "section": "grid#customhtmlformatter"}
 
 ### Selection and Activation
 
-With the grid you can enable the SelectableRow extension that enables row selections and blade activations.
-Selection and activation are separate concepts that overlap in the grid.
-Activation in the grid is displaying a blade.
-Selection is the selecting of items within the grid.
-Depending on your settings the act of selecting may also activate a blade.
-This is done by either setting the selection option activateOnSelected to true or by setting specific columns to be activatable by defining `activatable = true`.
- 
-Blade activations can be homogeneous or heterogeneous.
-For homogeneous blade activations you use BladeAction in PDL to specify the blade to open.
-For heterogeneous blade activation you use DynamicBladeAction in PDL.
-You must also implement createSelection to return a DynamicBladeSelection object per item.
+The `SelectableRow` extension enables blade activations and row selections. Activation and selection are separate concepts that overlap in the grid.
 
-[Grid Selection Sample][SelectableSample]
+* Activation in the grid is displaying a blade.
+
+* Selection is the selecting of items within the grid.
+
+The act of selecting data may also activate a blade, depending on the settings of the extension. This is performed  by setting the  `activateOnSelected` selection option to `true`, or by setting specific columns to be activatable by defining `activatable = true`.
+
+<!-- TODO: Determine a better definition for heterogenerous and homogeneous blades. -->
+
+Blade activations can be homogeneous or heterogeneous.
+
+* For homogeneous blade activations, use `BladeAction` in the PDL file to specify the blade to open.
+
+* For heterogeneous blade activation, use `DynamicBladeAction` in the PDL file.
+
+You must also implement `createSelection` to return a `DynamicBladeSelection` object for each item.
  
 ### Sorting
 
-If you enable the SortableColumn plugin grid headers can be used to sort the data.
-If you have a dataNavigator the sorting options will be passed to the navigator when changed and the navigator should handle the sorting -- typically by passing to the backend server as part of the query.
-If you have local data in an observable items array the grid has a default sort callback that will sort the items in the array.
-You can provide a custom sort for local data in the ``SortableColumnOptions sortCallback`` property.
- 
-For each column you can set the initial sortOrder.
-You can also opt out of sorting for a column by setting ``sortable = false``;
+If the `SortableColumn` plugin is enabled, grid headers can be used to sort the data.
 
-[Grid Sorting Sample][SortableSample]
+If the extension uses a `dataNavigator`, the sorting options are sent to the navigator when they are changed, and the navigator should handle the sorting. This is typically accomplished by sending it to the server as part of the query.
+
+If there is local data in an observable items array, the grid has a default sort callback that will sort the items in the array. A custom sort for local data can be provided for the extension in the `SortableColumnOptions sortCallback` property.
  
+The initial `sortOrder` can be set for each column. The extension can also opt out of sorting a column by setting `sortable = false;`.
+
 ### Filtering
 
-The grid has a Filterable row plugin that can be used for filtering.
-The plugin provides a simple search box UI that users can use to enter text.
-The filtering can occur on the server or in the grid locally.
-To enable filtering through the data navigator set serverFiltering to true.
-Otherwise the filtering will occur in the grid on the client.
+The grid has a `Filterable` row plugin that can be used for filtering. The plugin provides a simple search box UI that users can use to enter text.
+The filtering can occur on the server or in the grid locally.  Filtering occurs in the grid on the client, unless `serverFiltering` is set to true to  enable filtering through the `dataNavigator`.
 
-The client side filtering works as follows.
-The set of properties to filter against are by default the itemkeys of all columns.
-Alternatively, you can specify the set of properties to filter against using the searchableColumns option.
-For every searchable property the grid looks for a column definition.
-If a column definition is found the grid looks for a filterableFormat option.
-If a filterableFormat is found it is used to convert the data to value to a searchable string.
-If a filterableFormat is not found the grid converts value to string using JSON.stringify and the text formatter.
-The grid then searches for all the search terms in the formatted property values.
-If every search term is found the item is added to the filter results.
+Client-side filtering works as follows.
+<!-- TODO: Determine whether the following is true of server-side filtering also. -->
+The set of properties to filter against are the `itemkeys` of all columns, by default. The extension can specify the set of properties to filter against by using the `searchableColumns` option.
+<!-- end TODO -->
 
-[Grid Filtering Sample](FilterableSample)
+
+The grid looks for a column definition for every searchable property.
+
+1. If a column definition is found, the grid looks for a `filterableFormat` option.
+1. If a `filterableFormat` is found, it is used to convert the data to value to a searchable string.
+1. If a `filterableFormat` is not found, the grid converts the value to a string using the `JSON.stringify` function and the text formatter.
+1. The grid then searches for all the search terms in the formatted property values.
+1. If every search term is found, the item is added to the filter results.
 
 ### Editing
 
-The editable grid enables editing a list of data entities.
-It allows for editing existing items, deleting items, and adding new items.
-When a row is being edited the cells will be formatted with the ``editableFormat`` specified on the column.
-When not being edited the cells are formatted with ``format`` specified in the column definition.
-A row remains in the edit state until all the validators on the cells indicate the row is valid.
+The editable grid allows the user to edit a list of data entities. The user can add new items and edit or delete existing items. A row remains in the edit state until all the validators on the cells indicate the row is valid.
 
-There are special formatters for editing that create form controls that allow data editing.
-The formatters specifically for editing are 
-- CheckBox
-- TextBox
-- MultiselectDropDown
-- CheckBoxRowSelection
-- DropDown
+* When a row is being edited, the cells are formatted with the `editableFormat` specified on the column.
+* When not being edited, the cells are formatted with the `format` that was specified in the column definition.
 
-[Editable Grid Sample][EditableSample]
-[All Controls in a Grid Sample][AllControlsSample]
+There are special formatters for editing that create form controls that allow data editing. These formatters are in the following list.
+
+* CheckBox
+* TextBox
+* MultiselectDropDown
+* CheckBoxRowSelection
+* DropDown
 
 ### Paging
 
-The pageable plugin enables virtualization for large data sets using sequential and random access.
-Alternatively, there is a scrollable plugin for random access scrolling.
+The pageable plugin enables virtualization for large data sets that use sequential and random access. There is also a scrollable plugin for random access scrolling. The following table compares sequential to random access.
 
-For sequential data the ``type`` must be specified ``PageableType.Sequential``.
-You must also supply a data navigator that supports loadByContinuationToken.
-For sequential data the grid will load the first page of data and display a button for the user to load more data.
-
-For random access data the ``type`` must be specified ``PageableType.Page``.
-In addition a data navigator that supports loadBySkipTake is required.
-For random access the grid will load the first page and display a pager control at the bottem that will allow the user to navigate through the data pages.
-
-[Pageable Grid Sample][PageableSample]
+| Item           | Sequential | Random Access |
+| -------------- | ---------- | ------------- |
+| `type`         | Specified as `PageableType.Sequential` | Specified as `PageableType.Page` |
+| data navigator | Supports `loadByContinuationToken` |  Supports `loadBySkipTake` |
+| After first page is loaded | Display a button to load more data | Display a pager control for navigation through subsequent data pages |
 
 ### Grouping
 
-The grid groupable plugin allows you to order your data into groups of rows with a group header.
-To groups are determined by using the ``groupKey`` option to read the property of your data item.
-Each item having the same value for the groupKey property will be in the same group.
-By default the groups will be auto-generated for each unique group.
-However, if you can generate and control the groups yourself through the ``groups`` property.
+The groupable plugin orders data into groups of rows, each of which has a group header. The  groups are specified  by using the `groupKey` option to read the property of the data item. Each item that has the same value for the `groupKey` property will be in the same group.
 
-[Grid Grouping Sample][GroupedSample]
+By default, the groups are auto-generated for each unique group.  However, the developer can generate the  groups by using the `groups` property.
 
 ### Hierarchical
 
-The hierarchical grid plugin allows you to display hierarchical data with expand and collapse of parent rows.
-To display hierarchical data you must implement a hierarchy.
-Hierarchies can be somewhat complicated to implement depending on your requirements.
-Your hierarchy will supply the current items to display to the grid.
-The hierarchy implementation is responsible for initializing and keeping track of the expanded states for all items.
-The grid will notify the hierarchy when the user expands or collapses a row and the hierarchy must update the items.
+The hierarchical grid plugin displays hierarchical data and allows the user to expand and collapse parent rows.
+To display hierarchical data the extension implements a hierarchy. The hierarchy implementation initializes and keeps track of the expanded states for all items. The hierarchy supplies the current items to display on the grid, and the grid notifies the hierarchy when the user expands or collapses a row, whereupon the hierarchy updates the items.
 
-Hierarchies may also support virtualization with the pageable or scrollable plugins.
-For virtualization is common to create a custom data navigator that implements the hierarchy interface.
-This is because the navigator will be outputting data items that exclude collapsed children.
-Is is also important for virtual hierarchies to update the navigator ``metatdata totalItemCount`` on every expand/collapse to return the total items excluding collapsed children.
-Updating the count lets the grid know the virtualization needs updating.
+Hierarchies also supports virtualization with the `Pageable` or `Scrollable` plugins. The developer creates a custom data navigator that implements the hierarchy interface for virtualization. This is because the navigator outputs data items that exclude the child objects of the parent rows that are collapsed. The virtual hierarchy also needs to update the navigator `metatdata totalItemCount` on every expand or collapse action, so that it can return the total number of items that are displayed, which excludes the the collapsed child objects. Updating the count makes the grid aware that the virtualization should be updated. 
+
 The hierarchical grid implementations are located in the following table.
 
 | Name | Location | 
@@ -277,52 +282,52 @@ The hierarchical grid implementations are located in the following table.
 
 ### Context Menus
 
-The context menu shortcut is the ellipsis at the end of each grid row.
-It enables displaying the context menu by click.
-The context menu shortcut plugin is enabled by default.
+The context menu shortcut is the ellipsis at the end of each grid row. This plugin is enabled by default, and enables displaying the context menu by using a click.
 
-To customize the context menu you must supply a ``commandGroup`` property on your grid item containg the command group you wish to display.
-
-[Context Menu Shortcut Grid Sample][ContextMenuSample]
+To customize the context menu, the extension supplies a `commandGroup` property on the grid item that contains the command group to be displayed.
  
 ### Scrolling
 
-The scrollable grid plugin enables scrolling within the grid.
-This is useful when the grid needs to fill an entire container and keep the headers at the top.
-The container element must have a width and height or the scrolling will not display correctly.
-The scrolling can be virtualized or non virtualized.
+The scrollable grid plugin enables scrolling within the grid. This is useful when the grid needs to keep the headers at the top of a container that it is filling. The container element has a width and height so that the scrolling displays correctly. The scrolling can be virtualized or non-virtualized.
 
-To fill a blade with the scrollable grid make the blade/part size ``FitToContainer``.
-This will ensure the blade content area has a height and width set to the viewport size.
-A scrollable grid fixture element directly in the blade will then work properly.
+To fill a blade with the scrollable grid, set the blade-part size to `FitToContainer`. This sets the blade content area height and width to the viewport size.
 
-For virtualized scrolling you must supply a data navigator that supports loadBySkipTake.
-For non-virtualized grids you do not supply a data navigator and just set the grid ``items`` property directly.
-
-[Scrollable Grid Sample][ScrollableSample]
+Virtualized scrolling requires a data navigator that supports the `loadBySkipTake` method. Non-virtualized grids do not requires a data navigator because the extension sets the grid `items` property directly.
 
 ### Reordering
 
-The grid reorder row plugin allows users to reorder the items in the grid with drag and drop.
-The reordering can be automatic or handled by the extension using the ``reorderRow`` event, as in the following sample.
-
-[Reorderable Grid Sample][ReorderSample]
+The grid reorder plugin allows users to reorder the items in the grid with drag and drop. The reordering can be automatic or handled by the extension by using the `reorderRow` event.
 
 ### Dynamic Grid Definition
 
-In some cases an extension may not know grid columns or other properties in advance.
-In these scenarios the extension author must define and create the grid at run-time.
-There are several options for dynamic definition of a grid.
+In some cases an extension may not be aware of grid columns or other properties previous to being requested by the user. In these scenarios, the extension should define and create the grid at run-time. There are several options for dynamic definition of a grid.
 
-1. Create and add columns when data is available.  The columns property is an observable array and allows changes as needed.
-2. Make the grid ViewModel property on your part/blade observable. Instead of declaring `public grid: Grid.ViewModel<T>;` declare the grid as `public grid: KnockoutObservable<Grid.ViewModel<T>>;`. This makes your ViewModel property observable so you can set it whenever you want.  You can also clear it by setting it to null. The template would be the same `<div data-bind="pcControl: grid"></div>`.
-3. Use sections for layout.  If you are using sections you can add the grid to the section children dynamically.
-4. CustomHtml control has an updatable inner viewmodel.
-5. htmlTemplate binding allows you to dynamically specify both the ViewModel and the template `<div data-bind="htmlTemplate: { data: viewModel, html: template }"></div>`
+1. Create and add columns when data is available.  The `columns` property is an observable array and allows changes as needed.
 
+1. Make the grid `ViewModel` property on the blade or part observable.
 
+    * Old declaration
+   
+        `public grid: Grid.ViewModel<T>;` 
+
+    * New declaration
+   
+        `public grid: KnockoutObservable<Grid.ViewModel<T>>;`. 
+
+    This makes the `ViewModel` property observable, so that it can be set by the extension whenever it is appropriate. It can also be cleared by setting it to null. The binding template would be the same, as in the following code.
+
+     `<div data-bind="pcControl: grid"></div>`.
+
+1. Use sections for layout.  The grid can be added dynamically to the section children.
+
+1. `CustomHtml` control has an updatable inner `ViewModel`.
+
+1. The `htmlTemplate` binding allows the extension  to dynamically specify both the `ViewModel` and the binding template `<div data-bind="htmlTemplate: { data: viewModel, html: template }"></div>`.
+
+<!-- TODO: 
+Update this section when these plugins are complete.
 ### Plugins
-
 
 - RightClickableRow (Docs coming soon)            - Plugin to have right-clickable row.
 - Hoverable (Docs coming soon)                    - Plugin to enable hover index communication with other parts.
+-->
