@@ -355,9 +355,8 @@ There are two separate `<BladeAction>` elements defined for this part.  The `Col
 
 When using `<BladeAction>`, you're generally going to be launching blades from your own extension.  In some cases, you may [import a part from another extension](portalfx-extension-sharing-pde.md).  Using this technique, the source of the shared part will control launching of the blade.  However - in some cases you may want to launch a blade from another extension using a part from the current extension.  This is where `BladeReference` is useful.
 
-<!--
-gitdown": "include-file", "file": "portalfx-extensibility-pde.md"}
--->
+
+ {"gitdown": "include-file", "file": "portalfx-extensibility-pde.md"}
 
 ##### Consuming the blade (Not recommended for new scenarios)
 
