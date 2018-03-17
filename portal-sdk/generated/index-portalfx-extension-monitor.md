@@ -31,8 +31,7 @@
     * [Configuration](portalfx-telemetry-alerting-availability.md#configuration)
     * [How often do they run?](portalfx-telemetry-alerting-availability.md#how-often-do-they-run)
     * [How do I onboard?](portalfx-telemetry-alerting-availability.md#how-do-i-onboard)
-    * [What happens if I need to update them?](portalfx-telemetry-alerting-availability.md#what-happens-if-i-need-to-update-them)
-    * [How do I know my extension's current configuration?](portalfx-telemetry-alerting-availability.md#how-do-i-know-my-extension-s-current-configuration)
+    * [What happens if I need to update them or how do I know my extension's current configuration?](portalfx-telemetry-alerting-availability.md#what-happens-if-i-need-to-update-them-or-how-do-i-know-my-extension-s-current-configuration)
 
 * [Performance](portalfx-telemetry-alerting-performance.md#performance)
     * [Configuration](portalfx-telemetry-alerting-performance.md#configuration)
