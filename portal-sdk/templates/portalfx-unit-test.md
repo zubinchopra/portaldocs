@@ -3,7 +3,9 @@
 
 ## Getting Started with Visual Studio (Coming Soon)
 
-1. In Visual Studio `File > New > Project > Visual C# > Azure Portal` will scaffold you a Solution with two projects Extension.csproj and Extension.UnitTest.csproj
+
+1. To support the Unit Test project in Visual Studio you must first install the `Node Tools for Visual Studio` [from here](https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1) then
+1. Launch Visual Studio and click `File > New > Project > Visual C# > Azure Portal` will scaffold you a Solution with two projects Extension.csproj and Extension.UnitTest.csproj
 1. On the Extension.UnitTests project right click on `npm > Install Missing npm Packages`
 1. Build Extension.UnitTests.csproj `Ctl + Shift + B`
 1. Open index.html in a browser
