@@ -1,4 +1,4 @@
-# Release Notes since 11/17/2017
+# Release Notes since 11/18/2017
 
 ## 5.0.302.1035
 1 Breaking Changes, 2 Features added and 9 Bugs Fixed
@@ -187,11 +187,3 @@
 ## 5.0.302.911
 0 Breaking Changes, 2 Features added and 1 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1740864'>1740864</a></td><td>Bug Fix</td><td>Remove page configuration hash</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1716273'>1716273</a></td><td>Feature</td><td>[ExtensionConfiguration] Enable PROD public and update feedback for extension Microsoft_Azure_Migrate</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10451566'>10451566</a></td><td>Feature</td><td>[ExtensionConfiguration] - Update uri for extension Microsoft_Azure_Automation</td></tr></table>
-
-## 5.0.302.910
-0 Breaking Changes, 3 Features added and 4 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1735694'>1735694</a></td><td>Bug Fix</td><td>Remove DocDb settings migration code</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1732314'>1732314</a></td><td>Bug Fix</td><td>Output relative paths in ProcessClientResourcesToExternalModuleTask</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1725760'>1725760</a></td><td>Feature</td><td>Enable newautoscale feature flag in mooncake</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1706789'>1706789</a></td><td>Bug Fix</td><td>Update extensions.*.json for national clouds uriformat for classic iaas extensions</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1699326'>1699326</a></td><td>Feature</td><td>msportalfx.js does not parse and contains minified code</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1677165'>1677165</a></td><td>Feature</td><td>ContentUnbundler not generating localized content when satellite assemblies dont exist under /bin</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1677152'>1677152</a></td><td>Bug Fix</td><td>Update default startboard</td></tr></table>
-
-## 5.0.302.907
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1724244'>1724244</a></td><td>Bug Fix</td><td>Fix handling of retryAttempt and bundle query parameters</td></tr></table>
