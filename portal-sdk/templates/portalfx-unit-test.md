@@ -6,7 +6,7 @@ Covered in this document:
 - CI: test results output to CI accepted formats JUNIT, TRX, other.
 - Code Coverage: where to find your code coverage output
 
-## Getting Started with Visual Studio (Coming Soon)
+## Getting Started with Visual Studio
 
 1. To support the Unit Test project in Visual Studio you must first install the `Node Tools for Visual Studio` [from here](https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1) then
 1. Launch Visual Studio and click `File > New > Project > Visual C# > Azure Portal`. It will scaffold a Solution with two projects Extension.csproj and Extension.UnitTest.csproj
