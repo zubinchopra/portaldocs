@@ -9,8 +9,6 @@ The following controls have been deprecated.  They have been replaced with more 
 | DiffEditor  | Obsolete. Use  Code editor instead. | `<dir>\Client\V1\Controls\DiffEditor\ViewModels\DiffEditorViewModels.ts` |  http://aka.ms/portalfx/samples#blade/SamplesExtension/DiffEditorInstructions/selectedItem/DiffEditorInstructions/selectedValue/DiffEditorInstructions | 
 | Drop Down  | Obsolete.  Use V2 control instead.  | `<dir>\Client\V1\Controls\ DropDown\ViewModels\DropDownViewModels.ts`  | |
 | Essentials Control | Obsolete.  Use V2 control instead.  | `<dir>\Client\V1\Controls\Essentials\ViewModels\DefaultEssentialsViewModel.ts`  <br> `<dir>\Client\V1\Controls\Essentials\ViewModels\IndexViewModels.ts`  | |
-| File Download Button |  | `<dir>\Client\V1\Controls\FileDownloadButton\ViewModels\ FileDownloadButtonViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/FileDownloadButtonInstructions/selectedItem/FileDownloadButtonInstructions/selectedValue/FileDownloadButtonInstructions |  
-| File Upload (async) |  | `<dir>\Client\V1\Controls\AsyncFileUpload\ViewModels\ AsyncFileUploadViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/AsyncFileUploadInstructions/selectedItem/AsyncFileUploadInstructions/selectedValue/AsyncFileUploadInstructions |
 | Gallery | Obsolete. | `<dir>\Client\V1\Controls\Gallery\ViewModels\GalleryViewModels.ts` |  |
 | HotSpot | Obsolete. Use fx click instead. | `<dir>\Client\V1\Controls\HotSpot\ViewModels\HotSpotViewModels.ts` |  |
 | IFrame |  Obsolete. | `<dir>\Client\V1\Controls\IFrame\ViewModels\IFrameViewModels.ts` |  |
