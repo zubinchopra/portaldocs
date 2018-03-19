@@ -43,8 +43,7 @@ For a complete list of the options that can be sent to the control, see  the `Fx
 
 You can view the monitor chart control interfaces directly in the PortalFx repository, which is located at [https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FFramework.Client%2FTypeScript%2FFx%2FControls%2FMonitorChart.ts&version=GBproduction&_a=contents](https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FFramework.Client%2FTypeScript%2FFx%2FControls%2FMonitorChart.ts&version=GBproduction&_a=contents) The monitor chart V2 control interface is located at [https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FFramework.Client%2FTypeScript%2FFx%2FControls%2FMonitorChartV2.ts&version=GBproduction&_a=contents](https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FFramework.Client%2FTypeScript%2FFx%2FControls%2FMonitorChartV2.ts&version=GBproduction&_a=contents). 
 
-For a working copy, you can experiment with the monitor chart control sample located at [https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/MonitorChartPlayground](https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/MonitorChartPlayground) and the monitor chart V2 control located at 
-[https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/monitorchartv2](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/monitorchartv2).
+For a working copy, you can experiment with the monitor chart control sample located at [https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/MonitorChartPlayground](https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/MonitorChartPlayground) and the monitor chart V2 control located at [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/monitorchartv2](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/monitorchartv2).
 
 ### The monitorChart control
 
@@ -79,7 +78,7 @@ The monitor chart control sample code that adds the control to an extension is l
 
 ### The monitorChart V2 control
 
-The monitorChart V2 control can plot more than one metric on the chart while it is referenced. Also, it can plot multiple metrics for each chart. You can specify the dimensions by which to segment the data, and you can specify sets of filters with which to filter the data. The code sample that adds the V2 control to an extension is located at `<dir>\Client\V2\Preview\MonitorChartV2\MonitorChartV2Blade.ts`. It is also in the working copy located at [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/monitorchartv2](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/monitorchartv2) and in the following example.
+The monitorChart V2 control can plot more than one metric on the chart while it is referenced. Also, it can plot multiple metrics for each chart. You can specify the dimensions by which to segment the data, and you can specify sets of filters with which to filter the data. The code sample that adds the V2 control to an extension is located at `<dir>\Client\V2\Preview\MonitorChart\MonitorChartBlade.ts`. It is also in the working copy located at [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/monitorchartv2](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/monitorchartv2) and in the following example.
 
     ```typescript
     import * as MonitorChart from "Fx/Controls/MonitorChart";
