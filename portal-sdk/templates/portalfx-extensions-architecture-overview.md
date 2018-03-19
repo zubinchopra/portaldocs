@@ -9,7 +9,7 @@ With this system, a team develops a UI extension to plug into and extend the UI 
 
 [UI extension isolation](#ui-extension-isolation)
 
-[Projecting Blade/Part UI](#projecting-blade-part-ui)
+[Projecting Blade and Part UI](#projecting-blade-and-part-ui)
 
 [Secure per-service UI](#secure-per-service-ui)
 
