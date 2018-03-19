@@ -13,7 +13,7 @@ The Azure Portal team ships sample code that extension developers can leverage. 
 
 Devlopers can view working copies of  sample controls in the Dogfood environment, which is located at [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/controls](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/controls). This site also contains links to working copies of individual controls. In some instances, controls describe the properties that they use in various interfaces, as in the following image.
 
-![alt-text](controlProperties.png "Property for Filterable Grid Extensions Options Interface")
+![alt-text](../media/portalfx-controls/controlProperties.png "Property for Filterable Grid Extensions Options Interface")
 
 First-party extension developers, i.e. Microsoft employees, have access to the Dogfood environment, therefore they can view the samples that are located at [https://aka.ms/portalfx/viewSamples](https://aka.ms/portalfx/viewSamples).
 
