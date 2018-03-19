@@ -17,11 +17,13 @@ Both of these models use the existing `QueryCache` and the `MsPortalFx.Data.Remo
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
-#### "Load more" model
+### "Load more" model
+
+The following image depicts a load-more grid with a continuation token.
 
 ![alt-text](../media/portalfx-data/loadmore-grid.png "Loadmore Grid with continuation token")
 
-The 'load more' approach requires setting up a `QueryCache` object that uses a navigation element. The navigation element describes the continuation token model in the sample located at `<dir>\Client\Controls\ProductData.ts` The example is also in the following code.
+The 'load more' approach requires setting up a `QueryCache` object that uses a navigation element. The navigation element describes the continuation token data model in the sample located at `<dir>\Client\V1\Controls\ProductData.ts` The example is also in the following code.
 
 ```ts
 this.productsCache = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModels.Product, ProductQueryParams>({
@@ -54,9 +56,7 @@ this.productsCache = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModels.
 });
 ```
 
-In the `viewModel`, use the `Pageable` extension for the grid, with the `Sequential` type. 
-
-Instead of the `createView` API on the QueryCache, use the `createNavigator` API which integrates with the virtualized data system, as in the sample located at `<dir>\Client\Controls\Grid\ViewModels\PageableGridViewModel.ts`.
+In the `viewModel` for a load-more grid, the code uses the `Pageable` extension for the grid, with the `Sequential` type. Instead of using the `createView` API on the QueryCache, use the `createNavigator` API which integrates with the virtualized data system, as in the sample located at `<dir>\Client\V1\Controls\Grid\ViewModels\PageableGridViewModel.ts`.
 
 ```ts
 constructor(container: MsPortalFx.ViewModels.PartContainerContract,
@@ -112,11 +112,11 @@ public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
 }
 ```
 
-#### Pageable random access grid
+### Pageable random access grid
 
 ![alt-text](../media/portalfx-data/pageable-grid.png "Pageable grid")
 
-The pageable approach requires setting up a `QueryCache` with a navigation element.  The navigation element can access data in an order that is not sequential. This is known as random access, or skip-take behavior, as in the example located at `<dir>\Client\Controls\ProductPageableData.ts`. It is also in the following code.
+The pageable approach requires setting up a `QueryCache` with a navigation element.  The navigation element can access data in an order that is not sequential. This is known as random access, or skip-take behavior, as in the example located at `<dir>\Client\V1\Controls\ProductPageableData.ts`. It is also in the following code.
 
 ```ts
 var QueryString = MsPortalFx.Base.Resources
@@ -149,7 +149,7 @@ var productsCache = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModels.P
 });
 ```
 
-In the ViewMmodel, use the `Pageable` extension for the grid, with the `Pageable` type. Instead of the `createView` API on the QueryCache, use the `createNavigator` API which integrates with the virtualized data system, as in the example located at `<dir>\Client\Controls\Grid\ViewModels\PageableGridViewModel.ts`. It is also in the following code.
+In the ViewMmodel for a random access grid, use the `Pageable` extension for the grid, with the `Pageable` type. Instead of the `createView` API on the QueryCache, use the `createNavigator` API which integrates with the virtualized data system, as in the example located at `<dir>\Client\V1\Controls\Grid\ViewModels\PageableGridViewModel.ts`. It is also in the following code.
 
 ```ts
 constructor(container: MsPortalFx.ViewModels.PartContainerContract,
