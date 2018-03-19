@@ -28,7 +28,7 @@ The Azure components of a UI experience are documented several ways.
 <a name="extension-controls-procedure"></a>
 ## Procedure
 
-To use a control, there are basically three steps. The following example demonstrates the three steps in **C#**; in **Typescript**, the three steps still occur, but they may be programmed slightly differently.
+To use a control, there are basically three steps. The following example demonstrates the three steps in **C#**; the three steps still occur in **Typescript**, but they may be programmed slightly differently.
 
 <!-- TODO: Determine whether the import statement is an alternative to referencing the control in the PDL in order to connect it to the extension, and if so, when.   -->
 
@@ -53,7 +53,7 @@ To use a control, there are basically three steps. The following example demonst
     <div data-bind="pcControl:infoBox"></div>
     ```
 
-1. Then, create the ViewModel.
+1. Then, create the ViewModel in the code.
 
    ```c#
    public infoBox: infoBox.Contract;
@@ -64,8 +64,6 @@ To use a control, there are basically three steps. The following example demonst
    });
 
    ```
-
-
 
 The ViewModel can be created by experimenting with controls in the Controls Playground located at  [https://aka.ms/portalfx/viewSamples](https://aka.ms/portalfx/viewSamples). Alternatively, an extension can be developed by using the samples located at  `<dir>\Client\V1\Controls` or `<dir>\Client\V2\Controls\`, where `<dir>` is the `SamplesExtension\Extension\` directory, based on where the samples were installed when the developer set up the SDK.
 
@@ -201,7 +199,7 @@ It is possible to combine the migration sections of some documents, thereby redu
 | ------------- | -------- | ------ | ---------- |
 | | |  <p align="center">Aggregates</p> | |
 | Controls Chart    | [portalfx-controls-chart.md](portalfx-controls-chart.md)     |  `<dir>\Client\V1\Controls\Chart\ViewModels\BarChartViewModels.ts` <br>     `<dir>\Client\V1\Controls\Chart\ViewModels\OverlayedViewChartViewModel.ts` `\Client\Controls\Chart\ViewModels\LineChartDateBasedViewModels.ts` |  |
-| Plotting Metrics  (Monitor Chart)       | [portalfx-controls-monitor-chart.md](portalfx-controls-monitor-chart.md) | `<dir>\Client\V2\Preview\MonitorChart\ MonitorChartBlade.ts`     | [https://aka.ms/portalfx/sampleMonitorChart](https://aka.ms/portalfx/sampleMonitorChart) |
+| Plotting Metrics  (Monitor Chart and Monitor Chart V2)       | [portalfx-controls-monitor-chart.md](portalfx-controls-monitor-chart.md) | `<dir>\Client\V2\Preview\MonitorChart\ MonitorChartBlade.ts`     | [https://aka.ms/portalfx/sampleMonitorChart](https://aka.ms/portalfx/sampleMonitorChart) |
 | Donut         | [portalfx-controls-donut.md](portalfx-controls-donut.md) | `<dir>\Client\V2\Controls\Donut\DonutBlade.ts`  | |
 |       | | <p align="center">Gauges</p>   | |
 | Quota Gauge   | | | [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground)  |   
