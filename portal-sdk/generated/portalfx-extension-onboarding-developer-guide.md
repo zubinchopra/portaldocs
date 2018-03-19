@@ -35,7 +35,6 @@ This is typical configuraiton for an extension:
      uri: "//demo.hosting.portal.azure.net/demo",
      uriFormat: "//demo.hosting.portal.azure.net/demo/{0}",
      feedbackEmail: "azureux-demo@microsoft.com",
-     cacheability: "none",
      disabled: true,
 }
 ```
@@ -145,14 +144,8 @@ cacheability: "manifest",
 ```
    
 If you using the legacy DIY deployment, then you will need to do some work before you can set the cacheability to manifest or your extension will slow down the performance of Azure Portal.
-Please read about [Client-Side caching](https://aka.ms/cacheability) to improve the performance of your extension  before setting the value to none.
+Please read about [Client-Side caching](https://aka.ms/cacheability) to improve the performance of your extension before setting the value to none.
 NOTE: Setting cacheability to **manifest** is a pre-requisite for Public Preview / GA. 
-
-For private preview, you can mark the cacheability to 
-
-```
-cacheability: "none",
-```
 
 <a name="configuration-5-disabled"></a>
 ### >
@@ -185,7 +178,7 @@ Here is a table that explains mapping of portal environment to extension configu
 
 
    
-The above table implies that to manage extension configuraiton in Dogfood, BlackForest, FairFax and MoonCake the extension developer will need to send the pull request tfor modifying Extensions.test.json, Extensions.bf.json, Extensions.ff.json and Extensions.mc.json.
+The above table implies that to manage extension configuraiton in Dogfood, BlackForest, FairFax and MoonCake the extension developer will need to send the pull request for modifying Extensions.test.json, Extensions.bf.json, Extensions.ff.json and Extensions.mc.json.
 However, the extension configuration for RC, MPAC, Preview and PROD is managed by the same file Extensions.prod.json. ** Therefore, extension can not host different stamps for these environments.**
 
 <a name="understanding-scenarios-for-config-change"></a>
@@ -362,10 +355,9 @@ Dogfood -> RC -> MPAC -> PROD -> National Clouds (BF, FF and MC).
 <a name="expediting-the-deployment-of-configuration-changes"></a>
 ## Expediting the deployment of configuration changes
 
-In order to expedite the deployment of changes, you will need to send the pull request for each branch in portal repository i.e. Dogfood, MPAC and Production.
+In order to expedite the deployment of changes, you will need to send the pull request for each branch in portal repository i.e. MPAC and Production.
 
-** All the pull requests should be sent for Dev branch. Once the Pull request is marked as complete then you can cherry-pick the same commit from dev branch and send the pull request for Dogfood branch.
-Once the Dogfood Pull request is marked complete then you can cherry-pick the same commit from dogfood branch and send the pull request for for MPAC branch. 
+** All the pull requests should be sent for Dev branch. Once the Pull request is marked as complete then you can cherry-pick the same commit from dev branch and send the pull request for MPAC branch. 
 Once the MPAC Pull request is marked complete then you can cherry-pick the same commit from MPAC branch and send the pull request for for production branch. **
 
 If the pull request is not sent in the above specified order or the commit message is chanegd then it will lead to unit Test failure. In case of test failure your changes will be reverted without any notice.

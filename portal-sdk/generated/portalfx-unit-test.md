@@ -1,16 +1,18 @@
 
+<a name="unit-test-framework-preview"></a>
 # Unit Test Framework preview
 
+<a name="unit-test-framework-preview-getting-started-with-visual-studio-coming-soon"></a>
 ## Getting Started with Visual Studio (Coming Soon)
 
-
-1. To support the Unit Test project in Visual Studio you must first install the `Node Tools for Visual Studio` [from here](https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1) then
-1. Launch Visual Studio and click `File > New > Project > Visual C# > Azure Portal`. It will scaffold a Solution with two projects Extension.csproj and Extension.UnitTest.csproj
-1. Build the solution `Ctl + Shift + B`
+1. In Visual Studio `File > New > Project > Visual C# > Azure Portal` will scaffold you a Solution with two projects Extension.csproj and Extension.UnitTest.csproj
+1. On the Extension.UnitTests project right click on `npm > Install Missing npm Packages`
+1. Build Extension.UnitTests.csproj `Ctl + Shift + B`
 1. Open index.html in a browser
 
 note you can also run  `npm run test` from the commandline.
 
+<a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code"></a>
 ## Creating a project from scratch with Visual Studio Code
 
 Available from [SDK 5.0.302.1016](https://aka.ms/portalfx/download)
@@ -37,6 +39,7 @@ This tutorial will provide you step by step instructions for creating a UnitTest
 
 NOTE: this document uses relative path syntax to indicate where you should add each file e.g ./index.html indicates adding an index.html at the root of your test project folder Extension.UnitTests/index.html
 
+<a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code-add-index-html-for-running-tests"></a>
 ### Add ./index.html for running tests
 
 ```html
@@ -60,6 +63,7 @@ NOTE: this document uses relative path syntax to indicate where you should add e
 
 ```
 
+<a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code-to-generate-fxscriptdependencies-js"></a>
 ### to generate FxScriptDependencies.js
 
 In the ./index.html the last script imported is `./_generated/Fx/FxScriptDependencies.js`. This generated script:
@@ -71,6 +75,7 @@ In the ./index.html the last script imported is `./_generated/Fx/FxScriptDepende
 
 To generate this script and all other dependencies it requires to be able to successfully run tests, msportalfx-ut provides a gulpfile that automates the generation of FxScriptDependencies.js and is executed via the `prereq` script below.
 
+<a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code-to-generate-fxscriptdependencies-js-add-package-json"></a>
 #### Add ./package.json
 
 ```json
@@ -121,6 +126,7 @@ npm install --no-optional
 
 the reference to the msportalfx-ut gulpfile will provide a default gulp task that will generate FxScriptDependencies.js and its dependencies. To run the script config items must be specified in msportalfx-ut.config.json.
 
+<a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code-to-generate-fxscriptdependencies-js-add-msportalfx-ut-config-json"></a>
 #### add ./msportalfx-ut.config.json
 
 msportalfx-ut.config.json defines paths to those files needed by the msportalfx-ut node module to generate `./_generated/Fx/FxScriptDependencies.js`.  The keys are defined as follows:
@@ -151,6 +157,7 @@ msportalfx-ut.config.json defines paths to those files needed by the msportalfx-
 
 NOTE: if your official build environment uses different paths then your dev environment you can override them either by using command line arguments or environmental variables.  The msportalfx-ut gulpfile will search in the following order command line argument > environmental variable > ./msportalfx-ut.config.json file.  An example of overriding an item for an official build via a command line argument `gulp --UTNodeModuleResolutionPath ./some/other/location`
 
+<a name="unit-test-framework-preview-add-a-test"></a>
 ## Add a test
 
 To compile your test and for dev time intellisense you will need a ./tsconfig.json
@@ -237,6 +244,7 @@ describe("Resource Overview Blade Tests", () => {
 
 ````
 
+<a name="unit-test-framework-preview-add-a-test-build-your-test-project"></a>
 ### Build your test project
 
 run the following command
@@ -247,6 +255,7 @@ npm run build
 
 ```
 
+<a name="unit-test-framework-preview-configure-require-and-mocha-using-add-init-js"></a>
 ## Configure Require and Mocha using add init.js
 
 requirejs will need to know where all your modules are located for your extension and any frameworks that you are using
@@ -281,16 +290,19 @@ requirejs will need to know where all your modules are located for your extensio
 
 ```
 
+<a name="unit-test-framework-preview-configure-require-and-mocha-using-add-init-js-run-your-tests"></a>
 ### Run your tests
 
 `npm run test` or open index.html in a browser if you have already performed a build.
 
+<a name="unit-test-framework-preview-corext-environments"></a>
 ## Corext Environments
 
 Build environments which are setup using Corext will need to manually add additional lines in order to specify where to pick up the Unit Test Framework NuGet package.
 This NuGet package will be expanded at a different location (CxCache) than the default, so you need to update your Corext config and the npm packages.json in order to
 point to the correct location.
 
+<a name="unit-test-framework-preview-corext-environments-common-error"></a>
 ### Common Error
 
 If you are a executing the default instructions on your Corext environment, this is the error you will see:
@@ -299,6 +311,7 @@ If you are a executing the default instructions on your Corext environment, this
 
 This error indicates that it cannot find the expanded NuGet package for the Unit Test Framework. 
 
+<a name="unit-test-framework-preview-corext-environments-fix"></a>
 ### Fix
 
 1. **Update your Repository's `corext.config`**

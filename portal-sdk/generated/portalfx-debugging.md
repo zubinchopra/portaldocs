@@ -359,3 +359,14 @@ Next steps: [Deploying your extension](portalfx-deployment.md)
 	![Response Headers from extension show version](../media/portalfx-debugging/response-headers-show-version.png)
 
  Its important to note that there can be a difference in the fx.environment.version on the client and the version in the x-ms-version returned from the server e.g the user starts a session and the extension is updated/deployed while the user's session is still active.
+
+
+<a name="debugging-faq-i-have-updated-my-extensions-deployed-version-how-can-i-run-the-latest-version-of-my-extension-independent-of-the-shell-s-version-caching"></a>
+#### I have updated my extensions deployed version, how can I run the latest version of my extension independent of the shell&#39;s version caching?
+
+- Go to the portal with the feature flags: feature.canmodifystamps=true and ExtensionName=true.
+- The portal will load your extension without using the cached version, and you should see any updates to your extension.
+
+Example For One Extension: https://portal.azure.com?feature.canmodifystamps=true&Microsoft_Azure_Compute=true
+
+Example For Multiple Extensions: https://portal.azure.com?feature.canmodifystamps=true&Microsoft_Azure_Compute=true&Microsoft_Azure_Storage=true

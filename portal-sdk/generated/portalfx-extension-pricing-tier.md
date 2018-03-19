@@ -98,7 +98,7 @@ export class RobotSpecPickerV3Extender implements HubsExtension.Azure.SpecPicker
     * See SpecPickerExtender interface.
     */
    public output = ko.observable<SpecPicker.SpecPickerExtenderOutput>();
-   
+
    /**
     * See SpecPickerExtender interface.
     */
@@ -135,7 +135,7 @@ this.selectionMode = selectionMode || Lists.ListView.SelectionMode.Single;
 this._specDataView = dataContext.robotData.specDataEntity.createView(container);
 this._specDataView.fetch({}).then(
     () => {
-        var specData = ko.toJS(this._specDataView.item());
+        const specData = ko.toJS(this._specDataView.item());
         // Pass the spec data into an observable
         this._specData(specData);
     },
@@ -147,33 +147,33 @@ this._specDataView.fetch({}).then(
 //config#specPickerData
 
 // a computed which returns an array of spec ids which will determine what specs will be shown
-var filteredSpecIds = ko.computed(container, () => {
-    var input = this.input();
+const filteredSpecIds = ko.computed(container, () => {
+    const input = this.input();
     if (!input) {
         return [];
     }
     // Options is a property passed in as part of the blade inputs. Defaults to any type
-    var options = input.options;
-    var filterFeatures: string[] = options && options.filterFeatures || [];
-    
+    const options = input.options;
+    const filterFeatures: string[] = options && options.filterFeatures || [];
+
     // React to the input availableSpecData observable. This observable is updated
     // when billing information returns from the server and contains specs which have not
     // been filtered out by the billing calls.
     return input.availableSpecData().filter((spec) => {
         // This will filter out any spec which contains the feature in input.options.filterFeatures
-        return !spec.features.first((feature) => !!~filterFeatures.indexOf(feature.displayValue));
-    }).map((spec) => spec.id)
+        return !spec.features.first((feature) => (feature.displayValue !== null && feature.displayValue !== undefined) && !!~filterFeatures.indexOf(feature.displayValue.toString()));
+    }).map((spec) => spec.id);
 });
 ko.reactor(container, () => {
     // react to inputs and specData observables being updated
-    var input = this.input(),
+    const input = this.input(),
         specData = this._specData();
 
     if (!input || !specData) {
         return;
     }
 
-    var output: SpecPicker.SpecPickerExtenderOutput = {
+    const output: SpecPicker.SpecPickerExtenderOutput = {
         specData: specData,
         //disabledSpecs: [],
         //failureMessage: "",
@@ -192,7 +192,7 @@ The data fetching part is where you're code will bring all of the spec picker da
 this._specDataView = dataContext.robotData.specDataEntity.createView(container);
 this._specDataView.fetch({}).then(
     () => {
-        var specData = ko.toJS(this._specDataView.item());
+        const specData = ko.toJS(this._specDataView.item());
         // Pass the spec data into an observable
         this._specData(specData);
     },
