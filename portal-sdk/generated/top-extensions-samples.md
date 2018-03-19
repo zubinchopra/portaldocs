@@ -198,7 +198,7 @@ Most controls are available in the playground located at  [https://aka.ms/portal
 <a name="portal-extension-samples-controls-that-are-used-by-other-controls"></a>
 ## Controls that are used by other controls
 
-<!-- TODO:  Determine whether there are samples and experiences that are best documented inside an existing document instead of being  documented in separate documents.  If so, determine whether it is appropriate for them to be combined into the following separate table.-->
+<!-- TODO:  Determine whether the separate documents still contain data that should be separated from the main controls-procedure document.   If so, determine whether it is appropriate for them to be combined into the following separate table.-->
 
 | Control        | Sample | Experience |
 | -------------- | --------- | -------------- |
@@ -254,6 +254,10 @@ Controls that do not have a link to a unique experience can be located from  the
 <a name="portal-extension-samples-drop-down-controls"></a>
 ## Drop down controls
 
+<!-- TODO: Determine whether the following controls still need their own document. 
+Console
+It is possible to combine the migration sections of some documents, thereby reducing the number of files that need to be read. 
+-->
 | Drop Down | Document | Sample | Experience |
 | --------- | -------- | ------ | ---------- |
 | DropDown | [portalfx-controls-dropdown.md](portalfx-controls-dropdown.md) | `<dir>\Client\V2\Controls\ DropDown\DropDownBlade.ts` | [https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/DropDownPlayground](https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/DropDownPlayground) |
@@ -307,7 +311,6 @@ Controls that do not have a link to a unique experience can be located from  the
 | InfoBox |  | `<dir>\Client\V2\Controls\Infobox\InfoboxBlade.ts` | [https://df.onecloud.azure-test.net/#blade/SamplesExtension/InfoBoxBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/InfoBoxBlade) |
 | ProgressBar |  | `<dir>\Client\V1\Controls\ProgressBar\ViewModels\ProgressBarViewModels.ts` |  [https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/ProgressBarPlayground](https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/ProgressBarPlayground) <br> [http://aka.ms/portalfx/samples#blade/SamplesExtension/ProgressBarInstructions/selectedItem/ProgressBarInstructions/selectedValue/ProgressBarInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/ProgressBarInstructions/selectedItem/ProgressBarInstructions/selectedValue/ProgressBarInstructions)  |
 
-
 <a name="portal-extension-samples-data-visualization-objects"></a>
 ## Data Visualization Objects
 
@@ -315,7 +318,7 @@ Controls that do not have a link to a unique experience can be located from  the
 | ------------- | -------- | ------ | ---------- |
 | | |  <p align="center">Aggregates</p> | |
 | Controls Chart    | [portalfx-controls-chart.md](portalfx-controls-chart.md)     |  `<dir>\Client\V1\Controls\Chart\ViewModels\BarChartViewModels.ts` <br>     `<dir>\Client\V1\Controls\Chart\ViewModels\OverlayedViewChartViewModel.ts` `\Client\Controls\Chart\ViewModels\LineChartDateBasedViewModels.ts` |  |
-| Plotting Metrics  (Monitor Chart)       | [portalfx-controls-monitor-chart.md](portalfx-controls-monitor-chart.md) | `<dir>\Client\V2\Preview\MonitorChart\ MonitorChartBlade.ts`     | [https://aka.ms/portalfx/sampleMonitorChart](https://aka.ms/portalfx/sampleMonitorChart) |
+| Plotting Metrics  (Monitor Chart and Monitor Chart V2)       | [portalfx-controls-monitor-chart.md](portalfx-controls-monitor-chart.md) | `<dir>\Client\V2\Preview\MonitorChart\ MonitorChartBlade.ts`     | [https://aka.ms/portalfx/sampleMonitorChart](https://aka.ms/portalfx/sampleMonitorChart) |
 | Donut         | [portalfx-controls-donut.md](portalfx-controls-donut.md) | `<dir>\Client\V2\Controls\Donut\DonutBlade.ts`  | |
 |       | | <p align="center">Gauges</p>   | |
 | Quota Gauge   | | | [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground)  |   
@@ -344,8 +347,6 @@ The following controls have been deprecated.  They have been replaced with more 
 | DiffEditor  | Obsolete. Use  Code editor instead. | `<dir>\Client\V1\Controls\DiffEditor\ViewModels\DiffEditorViewModels.ts` |  http://aka.ms/portalfx/samples#blade/SamplesExtension/DiffEditorInstructions/selectedItem/DiffEditorInstructions/selectedValue/DiffEditorInstructions | 
 | Drop Down  | Obsolete.  Use V2 control instead.  | `<dir>\Client\V1\Controls\ DropDown\ViewModels\DropDownViewModels.ts`  | |
 | Essentials Control | Obsolete.  Use V2 control instead.  | `<dir>\Client\V1\Controls\Essentials\ViewModels\DefaultEssentialsViewModel.ts`  <br> `<dir>\Client\V1\Controls\Essentials\ViewModels\IndexViewModels.ts`  | |
-| File Download Button |  | `<dir>\Client\V1\Controls\FileDownloadButton\ViewModels\ FileDownloadButtonViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/FileDownloadButtonInstructions/selectedItem/FileDownloadButtonInstructions/selectedValue/FileDownloadButtonInstructions |  
-| File Upload (async) |  | `<dir>\Client\V1\Controls\AsyncFileUpload\ViewModels\ AsyncFileUploadViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/AsyncFileUploadInstructions/selectedItem/AsyncFileUploadInstructions/selectedValue/AsyncFileUploadInstructions |
 | Gallery | Obsolete. | `<dir>\Client\V1\Controls\Gallery\ViewModels\GalleryViewModels.ts` |  |
 | HotSpot | Obsolete. Use fx click instead. | `<dir>\Client\V1\Controls\HotSpot\ViewModels\HotSpotViewModels.ts` |  |
 | IFrame |  Obsolete. | `<dir>\Client\V1\Controls\IFrame\ViewModels\IFrameViewModels.ts` |  |
