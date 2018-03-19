@@ -253,7 +253,7 @@ The monitorChart control results are in the following image.
 
 The monitorChart V2 control results are in the following image.
 
-![alt-text](../media/portalfx-controls-monitor-chart-v2/monitor-chart-v2-control-sample.png "Metrics chart control single input")
+![alt-text](../media/portalfx-controls-monitor-chart/monitor-chart-v2-control-sample.png "Metrics chart control single input")
 
 
 
