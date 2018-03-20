@@ -3,6 +3,215 @@
 * To ask a question about breaking changes [use this](https://aka.ms/ask/ibiza-breaking-change)  
 
 
+## 5.0.302.1036
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1975832'>1975832</a></td><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1975832'>PDL: Blades with Pinnable="true" now require a pinned part to be specified</a><p></div><div>
+
+<p style="margin:0px;"><font color="#000000" face=Calibri size=3>Currently in the Ibiza Portal SDK there is a feature that
+exists in which if a PDL blade author indicates that a blade is pinnable but
+does not provide a dashboard part then the portal dynamically creates a part
+for that blade.&nbsp; We call this dynamically created part a inferred pinned
+part.&nbsp; The inferred pinned part loads the blade view model to populate its
+title, subtitle and icon.&nbsp; When this feature was developed blade view models
+were very simple and in many if not most cases just consisted of code to
+populate the blade title, subtitle and icon.&nbsp;&nbsp; Since then we have
+added menu blades, template blades and no PDL as well.&nbsp;&nbsp; It is now
+costly to load blade view models to populate these inferred pinned parts on the
+dashboard.&nbsp; &nbsp;As well as we are finding a growing number of bugs.</font></p>
+
+<p style="margin:0px;"><br></p>
+
+<h1 style="margin:16px 0px 0px;"><span style="margin:0px;"><font color="#2f5496" face="Calibri Light" size=5>What is changing</font></span></h1>
+
+<p style="margin:0px;"><font face=Calibri><font size=3><font color="#000000">We are now retiring pinned inferred parts for
+blades.&nbsp;&nbsp; This means that any pinnable PDL blade must specify a
+pinned part to use on the dashboard when it is pinned.&nbsp;&nbsp; <u>This does
+NOT affect noPDL blades as they already require a pinnable part to be
+specified.</u></font></font></font></p>
+
+<p style="margin:0px;"><font color="#000000" face=Calibri size=3>&nbsp;</font></p>
+
+<p style="margin:0px;"><font color="#000000" face=Calibri size=3>For example –</font></p>
+
+<p style="margin:0px;"><font color="#000000" face=Calibri size=3>&nbsp;</font></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp; </span><span style="margin:0px;color:maroon;font-family:Consolas;font-size:10.5pt;">&lt;TemplateBlade</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="margin:0px;color:red;font-family:Consolas;font-size:10.5pt;">Name</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">=</span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">&quot;RPStatusBlade&quot;</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"></span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style="margin:0px;color:red;font-family:Consolas;font-size:10.5pt;">ViewModel</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">=</span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">&quot;{ViewModel
+Name=RPStatusBlade, Module=./ViewModels/RPStatusBlade}&quot;</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"></span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style="margin:0px;color:red;font-family:Consolas;font-size:10.5pt;">Template</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">=</span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">&quot;{Html
+Source='./Templates/RPStatusBlade.html'}&quot;</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"></span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style="margin:0px;color:red;font-family:Consolas;font-size:10.5pt;">Width</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">=</span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">&quot;Medium&quot;</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"></span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style="margin:0px;color:red;font-family:Consolas;font-size:10.5pt;">InitialDisplayState</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">=</span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">&quot;Maximized&quot;</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"></span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style="background:yellow;margin:0px;color:red;font-family:Consolas;font-size:10.5pt;">Pinnable</span><span style="background:yellow;margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">=</span><span style="background:yellow;margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">&quot;true&quot;</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"></span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style="margin:0px;color:red;font-family:Consolas;font-size:10.5pt;">PartSize</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">=</span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">&quot;FullWidthFitHeight&quot;</span><span style="margin:0px;color:maroon;font-family:Consolas;font-size:10.5pt;">&gt;</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"></span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp; </span><span style="margin:0px;color:maroon;font-family:Consolas;font-size:10.5pt;">&lt;/TemplateBlade&gt;</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"></span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;</span></p>
+
+<p style="margin:0px;"><font color="#000000" face=Calibri size=3>&nbsp;</font></p>
+
+<p style="margin:0px;"><font color="#000000" face=Calibri size=3>Lacking a pinned part will produce this error when compiling
+the extension –</font></p>
+
+<p style="margin:0px;"><font color="#000000" face=Calibri size=3>&nbsp;</font></p>
+
+<p style="margin:0px;"><span style="margin:0px;color:red;font-family:&quot;Courier New&quot;;"><font size=3>PDL1245:
+The blade 'RPStatusBlade' has Pinnable enabled but is missing
+PinnedPart.&nbsp;&nbsp;&nbsp; Either set Pinnable to false or provide a pinned
+part.</font></span></p>
+
+<p style="margin:0px;"><font color="#000000" face=Calibri size=3>&nbsp;</font></p>
+
+<h1 style="margin:16px 0px 0px;"><span style="margin:0px;"><font color="#2f5496" face="Calibri Light" size=5>Adding a PinnedPart</font></span></h1>
+
+<p style="margin:0px;"><font color="#000000" face=Calibri size=3>To resolve this error you can very quickly and &nbsp;easily
+add a new noPDL part to that can be used when pinning your blade.&nbsp;&nbsp; Here
+is a sample of what this looks like for the example blade shared in this email
+below. </font></p>
+
+<p style="margin:0px;"><font color="#000000" face=Calibri size=3>&nbsp;</font></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:rgb(175, 0, 219);font-family:Consolas;font-size:10.5pt;">import</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">*</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="margin:0px;color:rgb(175, 0, 219);font-family:Consolas;font-size:10.5pt;">as</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="margin:0px;color:rgb(0, 16, 128);font-family:Consolas;font-size:10.5pt;">ButtonPart</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="margin:0px;color:rgb(175, 0, 219);font-family:Consolas;font-size:10.5pt;">from</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="margin:0px;color:rgb(163, 21, 21);font-family:Consolas;font-size:10.5pt;">&quot;Fx/Composition/ButtonPart&quot;</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">;</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><font color="#000000" face=Calibri size=3>&nbsp;</font></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:rgb(175, 0, 219);font-family:Consolas;font-size:10.5pt;">export</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">interface</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="margin:0px;color:rgb(38, 127, 153);font-family:Consolas;font-size:10.5pt;">RPStatusBladePinnedPartParameters</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> {</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp; </span><span style="margin:0px;color:rgb(0, 16, 128);font-family:Consolas;font-size:10.5pt;">subscriptionId</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">: </span><span style="margin:0px;color:rgb(38, 127, 153);font-family:Consolas;font-size:10.5pt;">string</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">;</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">}</span></p>
+
+<p style="margin:0px;"><font color="#000000" face=Calibri size=3>&nbsp;</font></p>
+
+<p style="margin:0px;"><font color="#000000" face=Calibri size=3>&nbsp;</font></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">@</span><span style="margin:0px;color:rgb(0, 16, 128);font-family:Consolas;font-size:10.5pt;">ButtonPart</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">.</span><span style="margin:0px;color:rgb(121, 94, 38);font-family:Consolas;font-size:10.5pt;">Decorator</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">()</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:rgb(175, 0, 219);font-family:Consolas;font-size:10.5pt;">export</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">class</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="background:yellow;margin:0px;color:rgb(38, 127, 153);font-family:Consolas;font-size:10.5pt;">RPStatusBladePinnedPart</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> {</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp; </span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">public</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="margin:0px;color:rgb(0, 16, 128);font-family:Consolas;font-size:10.5pt;">title</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> = </span><span style="margin:0px;color:rgb(0, 16, 128);font-family:Consolas;font-size:10.5pt;">strings</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">.</span><span style="margin:0px;color:rgb(0, 16, 128);font-family:Consolas;font-size:10.5pt;">title</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">;</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp; &nbsp;&nbsp;</span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">public</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="margin:0px;color:rgb(0, 16, 128);font-family:Consolas;font-size:10.5pt;">shortTitle</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">: </span><span style="margin:0px;color:rgb(38, 127, 153);font-family:Consolas;font-size:10.5pt;">string</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">;</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp; </span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">public</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="margin:0px;color:rgb(0, 16, 128);font-family:Consolas;font-size:10.5pt;">subtitle</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">: </span><span style="margin:0px;color:rgb(38, 127, 153);font-family:Consolas;font-size:10.5pt;">string</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">;</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp; </span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">public</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="margin:0px;color:rgb(0, 16, 128);font-family:Consolas;font-size:10.5pt;">description</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">: </span><span style="margin:0px;color:rgb(38, 127, 153);font-family:Consolas;font-size:10.5pt;">string</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">;</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp; </span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">public</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="margin:0px;color:rgb(0, 16, 128);font-family:Consolas;font-size:10.5pt;">icon</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">: </span><span style="margin:0px;color:rgb(38, 127, 153);font-family:Consolas;font-size:10.5pt;">MsPortalFx</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">.</span><span style="margin:0px;color:rgb(38, 127, 153);font-family:Consolas;font-size:10.5pt;">Base</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">.</span><span style="margin:0px;color:rgb(38, 127, 153);font-family:Consolas;font-size:10.5pt;">Image</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">;</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp; </span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">public</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="margin:0px;color:rgb(0, 16, 128);font-family:Consolas;font-size:10.5pt;">context</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">: </span><span style="margin:0px;color:rgb(38, 127, 153);font-family:Consolas;font-size:10.5pt;">ButtonPart</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">.</span><span style="margin:0px;color:rgb(38, 127, 153);font-family:Consolas;font-size:10.5pt;">Context</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&lt;</span><span style="margin:0px;color:rgb(38, 127, 153);font-family:Consolas;font-size:10.5pt;">RPStatusBladePinnedPartParameters</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">, </span><span style="margin:0px;color:rgb(38, 127, 153);font-family:Consolas;font-size:10.5pt;">DataContext</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&gt;;</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp; </span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">public</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="margin:0px;color:rgb(121, 94, 38);font-family:Consolas;font-size:10.5pt;">onInitialize</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">() {</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">const</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> { </span><span style="margin:0px;color:rgb(0, 16, 128);font-family:Consolas;font-size:10.5pt;">parameters</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> } = </span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">this</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">.</span><span style="margin:0px;color:rgb(0, 16, 128);font-family:Consolas;font-size:10.5pt;">context</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">;</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.. implementation details omitted but here is where you can assign title,
+subtitle and icon ..</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp; }</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp; </span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">public</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="margin:0px;color:rgb(121, 94, 38);font-family:Consolas;font-size:10.5pt;">onClick</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">() {</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">const</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> { </span><span style="margin:0px;color:rgb(0, 16, 128);font-family:Consolas;font-size:10.5pt;">container</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">, </span><span style="margin:0px;color:rgb(0, 16, 128);font-family:Consolas;font-size:10.5pt;">parameters</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> } = </span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">this</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">.</span><span style="margin:0px;color:rgb(0, 16, 128);font-family:Consolas;font-size:10.5pt;">context</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">;</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="margin:0px;color:rgb(0, 16, 128);font-family:Consolas;font-size:10.5pt;">container</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">.</span><span style="margin:0px;color:rgb(121, 94, 38);font-family:Consolas;font-size:10.5pt;">openBlade</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">(</span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">new</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="margin:0px;color:rgb(38, 127, 153);font-family:Consolas;font-size:10.5pt;">RPStatusBladeReference</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">(</span><span style="margin:0px;color:rgb(0, 16, 128);font-family:Consolas;font-size:10.5pt;">parameters</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">));</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;}</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">}</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;</span></p>
+
+<p style="margin:0px;"><font color="#000000" face=Calibri size=3>And once you have this new part you can specify it as the
+pinned part for your PDL blade –</font></p>
+
+<p style="margin:0px;"><font color="#000000" face=Calibri size=3>&nbsp;</font></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp; </span><span style="margin:0px;color:maroon;font-family:Consolas;font-size:10.5pt;">&lt;TemplateBlade</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="margin:0px;color:red;font-family:Consolas;font-size:10.5pt;">Name</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">=</span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">&quot;RPStatusBlade&quot;</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"></span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style="margin:0px;color:red;font-family:Consolas;font-size:10.5pt;">ViewModel</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">=</span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">&quot;{ViewModel
+Name=RPStatusBlade, Module=./ViewModels/RPStatusBlade}&quot;</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"></span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="margin:0px;color:red;font-family:Consolas;font-size:10.5pt;">Template</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">=</span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">&quot;{Html
+Source='./Templates/RPStatusBlade.html'}&quot;</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"></span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style="margin:0px;color:red;font-family:Consolas;font-size:10.5pt;">Width</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">=</span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">&quot;Medium&quot;</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"></span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style="margin:0px;color:red;font-family:Consolas;font-size:10.5pt;">InitialDisplayState</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">=</span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">&quot;Maximized&quot;</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"></span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style="margin:0px;color:red;font-family:Consolas;font-size:10.5pt;">Pinnable</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">=</span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">&quot;true&quot;</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"></span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style="margin:0px;color:red;font-family:Consolas;font-size:10.5pt;">PartSize</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">=</span><span style="margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">&quot;FullWidthFitHeight&quot;</span><span style="margin:0px;color:maroon;font-family:Consolas;font-size:10.5pt;">&gt;</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">….</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;</span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;&nbsp;&nbsp; </span><span style="background:yellow;margin:0px;color:maroon;font-family:Consolas;font-size:10.5pt;">&lt;PinnedPart</span><span style="background:yellow;margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="background:yellow;margin:0px;color:red;font-family:Consolas;font-size:10.5pt;">PartType</span><span style="background:yellow;margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">=</span><span style="background:yellow;margin:0px;color:blue;font-family:Consolas;font-size:10.5pt;">&quot;RPStatusBladePinnedPart&quot;</span><span style="background:yellow;margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="background:yellow;margin:0px;color:maroon;font-family:Consolas;font-size:10.5pt;">/&gt;</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"></span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp; </span><span style="margin:0px;color:maroon;font-family:Consolas;font-size:10.5pt;">&lt;/TemplateBlade&gt;</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"></span></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">&nbsp;</span></p>
+
+<h1 style="margin:16px 0px 0px;"><span style="margin:0px;"><font color="#2f5496" face="Calibri Light" size=5>Redirecting
+existing pinned parts on customer dashboards</font></span></h1>
+
+<p style="margin:0px;"><font color="#000000" face=Calibri size=3>It maybe very likely that your customers already have
+inferred pinned parts for your blade on their dashboards.&nbsp;&nbsp; For these
+customers now is a good time also to specify a redirect in for these older
+pinned parts.&nbsp;&nbsp; If this is a new blade you can skip this step.&nbsp;&nbsp;
+If you are unsure if customers have pinned the inferred part you can use the
+extension analyzer to determine this.&nbsp;&nbsp; The extension analyzer report
+is here.&nbsp;&nbsp; Simply change the extension name in the URL to be your extension
+name.&nbsp;&nbsp; Parts that have the prefix [InferredBladePinPart] in their
+name are parts that need redirects.</font></p>
+
+<p style="margin:0px;"><font color="#000000" face=Calibri size=3>&nbsp;</font></p>
+
+<p style="margin:0px;"><a href="https://extensionanalyzer.azurewebsites.net/extensions/Microsoft_Azure_Classic_Compute#parttelemetry"><font color="#0563c1" face=Calibri size=3>https://extensionanalyzer.azurewebsites.net/extensions/Microsoft_Azure_Classic_Compute#parttelemetry</font></a></p>
+
+<p style="margin:0px;"><font color="#000000" face=Calibri size=3>&nbsp;</font></p>
+
+<p style="margin:0px;"><font color="#000000" face=Calibri size=3>So returning back to the example above our redirect looks
+like this –</font></p>
+
+<p style="margin:0px;"><font color="#000000" face=Calibri size=3>&nbsp;</font></p>
+
+<p style="background:white;margin:0px;line-height:14.25pt;"><span style="margin:0px;color:maroon;font-family:Consolas;font-size:10.5pt;">&lt;RedirectInferredPinnedPart</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;"> </span><span style="margin:0px;color:red;font-family:Consolas;font-size:10.5pt;">Blade</span><span style="margin:0px;color:black;font-family:Consolas;font-size:10.5pt;">=</span><span style="margin:0px;color:blue;font-family:Consolas;font-size</p></td></tr></table>
+
 ## 5.0.302.1035
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2139965'>2139965</a></td><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2139965'>[BREAKING] [TestFramework] C# Test framework now requires selenium.webdriver 3.9.1 and newtonsoft.json 10.0.3</a><p></div><div style="background-color:transparent;box-sizing:content-box;color:rgb(34, 34, 34);font-family:Segoe UI,Helvetica Neue,Helvetica,Arial,Verdana;font-size:14px;font-style:normal;font-variant:normal;font-weight:400;height:55.86px;letter-spacing:normal;margin-bottom:0px;margin-left:0px;margin-right:0px;margin-top:0px;orphans:2;overflow:visible;padding-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;text-align:left;text-decoration:none;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;">The C# test framework now requires Selenium Webdriver 3.8 and NewtonSoft.Json 10.0.3.&nbsp; This is a breaking change due to a change in the webdriver interface.&nbsp; Builds may fail to compile and tests may fail with an error around the webdriver interfaces to run if mismatched versions are used. &nbsp;</div><div style="background-color:transparent;box-sizing:content-box;color:rgb(34, 34, 34);font-family:Segoe UI,Helvetica Neue,Helvetica,Arial,Verdana;font-size:14px;font-style:normal;font-variant:normal;font-weight:400;height:18.62px;letter-spacing:normal;margin-bottom:0px;margin-left:0px;margin-right:0px;margin-top:0px;orphans:2;overflow:visible;padding-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;text-align:left;text-decoration:none;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;"><br style="background-color:transparent;box-sizing:content-box;color:rgb(34, 34, 34);font-family:Segoe UI,Helvetica Neue,Helvetica,Arial,Verdana;font-size:14px;height:auto;margin-bottom:0px;margin-left:0px;margin-right:0px;margin-top:0px;overflow:visible;padding-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;"></div><div style="background-color:transparent;box-sizing:content-box;color:rgb(34, 34, 34);font-family:Segoe UI,Helvetica Neue,Helvetica,Arial,Verdana;font-size:14px;font-style:normal;font-variant:normal;font-weight:400;height:18.62px;letter-spacing:normal;margin-bottom:0px;margin-left:0px;margin-right:0px;margin-top:0px;orphans:2;overflow:visible;padding-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;text-align:left;text-decoration:none;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;">Specifically the following packages have been updated to the corresponding versions:</div><div style="background-color:transparent;box-sizing:content-box;color:rgb(34, 34, 34);font-family:Segoe UI,Helvetica Neue,Helvetica,Arial,Verdana;font-size:14px;font-style:normal;font-variant:normal;font-weight:400;height:55.86px;letter-spacing:normal;margin-bottom:0px;margin-left:0px;margin-right:0px;margin-top:0px;orphans:2;overflow:visible;padding-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;text-align:left;text-decoration:none;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;">&nbsp; &lt;package id=&quot;Newtonsoft.Json&quot; version=&quot;10.0.3&quot; targetFramework=&quot;net45&quot; /&gt;<br style="background-color:transparent;box-sizing:content-box;color:rgb(34, 34, 34);font-family:Segoe UI,Helvetica Neue,Helvetica,Arial,Verdana;font-size:14px;height:auto;margin-bottom:0px;margin-left:0px;margin-right:0px;margin-top:0px;overflow:visible;padding-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;">&nbsp; &lt;package id=&quot;Selenium.Support&quot; version=&quot;3.9.1&quot; targetFramework=&quot;net40&quot; /&gt;<br style="background-color:transparent;box-sizing:content-box;color:rgb(34, 34, 34);font-family:Segoe UI,Helvetica Neue,Helvetica,Arial,Verdana;font-size:14px;height:auto;margin-bottom:0px;margin-left:0px;margin-right:0px;margin-top:0px;overflow:visible;padding-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;">&nbsp; &lt;package id=&quot;Selenium.WebDriver&quot; version=&quot;3.9.1&quot; targetFramework=&quot;net40&quot; /&gt;<br style="background-color:transparent;box-sizing:content-box;color:rgb(34, 34, 34);font-family:Segoe UI,Helvetica Neue,Helvetica,Arial,Verdana;font-size:14px;height:auto;margin-bottom:0px;margin-left:0px;margin-right:0px;margin-top:0px;overflow:visible;padding-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;"></div><div style="background-color:transparent;box-sizing:content-box;color:rgb(34, 34, 34);font-family:Segoe UI,Helvetica Neue,Helvetica,Arial,Verdana;font-size:14px;font-style:normal;font-variant:normal;font-weight:400;height:18.62px;letter-spacing:normal;margin-bottom:0px;margin-left:0px;margin-right:0px;margin-top:0px;orphans:2;overflow:visible;padding-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;text-align:left;text-decoration:none;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;"></p></td></tr></table>
 
