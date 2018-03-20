@@ -133,7 +133,7 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 ## Debugging
 
- [Debugging](./generated/top-debugging.md)
+ [Debugging](./generated/top-extensions-debugging.md)
 
 * [Using developer mode](./generated/portalfx-extensions-debugging-tool.md)
 * [Debugging extension load failures](./generated/portalfx-extensions-debugging-load-failures.md)
@@ -142,10 +142,14 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 * [Debugging knockout](./generated/portalfx-extensions-debugging-knockout.md)
 * [Debugging the data stack](./generated/portalfx-extensions-debugging-data-stacks.md)
 
+## Performance profiling
+
+* [Performance profiling](top-extensions-performance-profiling.md)
+
 ## Testing
 
 The Ibiza team provides limited testing support. Due to resource constraints the C# and Node.js framework is open source. This is so that partners can unblock themselves in case the Ibiza team cannot make requested improvements as quickly as you might expect.
-* [Unit testing support]()
+* [Unit testing support](portalfx-unit-test.md)
 * [C# Test Framework (Open source)]()
 * [Node.js Test Framework (Open source)]()
 
@@ -157,7 +161,7 @@ The Ibiza team collects standard telemetry for __generic actions__ like blade op
 * [Portal telemetry overview]()
 * [Getting access to raw portal telemetry data]()
 * [Consuming telemetry via pre-build Power BI Dashboards]()
-* [Performance and reliability monitoring / alerting](./generated/top-extensions-performance.md)
+* [Performance and reliability monitoring / alerting]()
 * [Collecting feedback from your users]()
 * [Set up and verify telemetry logging from your extension]()
 
@@ -220,7 +224,7 @@ Extensions are required to be running a version of the Ibiza SDK that has been p
 
 These features are supported, but have had no recent investment. No additional investment is planned. There are modern capabilities that should be used instead if you are developing new features.
 * [PDL based blades and parts]()
-* [Controls in the msportalfx namespace]()
+* [Controls in the msportalfx namespace](portalfx-extensions-samples-controls-deprecated.md)
 * [EditScope](./generated/portalfx-legacy-editscopes.md)
 
 ## Frequently asked questions
