@@ -719,15 +719,15 @@ Update the following image to a more current blade and associated website.
 ![alt-text](../media/portalfx-telemetry/fiddler.png "portalfx-telemetry/fiddler.png")
 
 
-![alt-text](../media/portalfx-telemetry/supportedfunctions.png "portalfx-testinprod/supportedfunctions.png")
+![alt-text](../media/portalfx-telemetry/supportedfunctions.png "portalfx-telemetry/supportedfunctions.png")
 
-<a name="all-images-in-the-media-library-portalfx-testinprod"></a>
-## portalfx-testinprod
+<a name="all-images-in-the-media-library-portalfx-extensions-testing-in-production"></a>
+## portalfx-extensions-testing-in-production
 
-![alt-text](../media/portalfx-testinprod/errinsecureresponse.png "portalfx-testinprod/errinsecureresponse.png ")
+![alt-text](../media/portalfx-productiontest/errinsecureresponse.png "portalfx-productiontest/errinsecureresponse.png ")
 
 
-![alt-text](../media/portalfx-testinprod/localExtensions.png "portalfx-testinprod/localExtensions.png")
+![alt-text](../media/portalfx-productiontest/localExtensions.png "portalfx-productiontest/localExtensions.png")
 
 <a name="all-images-in-the-media-library-portalfx-ui-concepts"></a>
 ## portalfx-ui-concepts

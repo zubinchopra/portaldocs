@@ -88,8 +88,7 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 # Debugging
 
 
-* [Testing in production](portalfx-testinprod.md#testing-in-production)
-* [Marking automated tests as test/synthetic traffic](portalfx-testinprod.md#marking-automated-tests-as-test-synthetic-traffic)
+* [Testing in Production](portalfx-extensions-testing-in-production.md#testing-in-production)
 
 
 <a name="other"></a>

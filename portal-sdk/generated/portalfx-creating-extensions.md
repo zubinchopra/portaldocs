@@ -242,7 +242,7 @@ That's it. After you compile your blade you can test it out by deep linking usin
 <a name="getting-started-with-the-portal-sdk-next-steps"></a>
 ### Next Steps
 
-Read more about [testing in production](portalfx-testinprod.md).
+Read more about [testing in production](portalfx-productiontest.md).
 
 Next Steps: To debug issues loading an extension in the portal, go through the [Debugging extension failures](portalfx-debugging-extension-load-failures.md) guide.
 
