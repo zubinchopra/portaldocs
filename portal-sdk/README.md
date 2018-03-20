@@ -31,15 +31,18 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 ## Development guide
 
+### Getting Started
+
 Azure portal extension development is supported on the Microsoft Windows 8, Windows Server 2012 R2, and Windows 10.
- [Development guide](./generated/top-extensions-getting-started.md)
 
 1. [Install the SDK](./generated/top-extensions-install-software.md)
-* [How to use the MSI Installer](./generated/downloads.md)
-* [How to update portal Nuget packages](./generated/top-extensions-nuget.md)
-2. Configure your IDE - *Typescript version / Compile on save*
-* [Visual Studio](portalfx-ide-setup.md) *(with Extension project template)*
-* [VS Code]()
+    * [How to use the MSI Installer](./generated/downloads.md)
+    * [How to update portal Nuget packages](./generated/top-extensions-nuget.md)
+1. Configure your IDE - *Typescript version / Compile on save*
+    * [Visual Studio](portalfx-ide-setup.md) *(with Extension project template)*
+    * [VS Code]()
+1. 	Run your code
+    * [Running the extension locally (a.k.a. Sideloading)](top-extensions-sideloading.md)
 
 [Ask an sdk setup question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
 
