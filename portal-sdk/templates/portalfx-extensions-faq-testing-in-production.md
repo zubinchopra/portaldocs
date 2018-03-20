@@ -26,7 +26,7 @@ You need to allow the Azure Portal to frame your extension URL. For more informa
 
 *** My Extension fails to side load and I get an ERR_INSECURE_RESPONSE in the browser console ***
 
-![ERR_INSECURE_RESPONSE](../media/portalfx-testinprod/errinsecureresponse.png)
+![ERR_INSECURE_RESPONSE](../media/portalfx-productiontest/errinsecureresponse.png)
 
 In this case the browser is trying to load the extension but the SSL certificate from localhost is not trusted the solution is to install/trust the certificate.
 

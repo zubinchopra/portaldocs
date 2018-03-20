@@ -26,7 +26,7 @@ ERR_INSECURE_RESPONSE in the browser console
 
 ***My Extension fails to sideload and I get an ERR_INSECURE_RESPONSE in the browser console***.
    
-![alt-text](../media/portalfx-testinprod/errinsecureresponse.png "ERR_INSECURE_RESPONSE Log")
+![alt-text](../media/portalfx-productiontest/errinsecureresponse.png "ERR_INSECURE_RESPONSE Log")
 
 ERROR: the browser is trying to load the extension but the SSL certificate from localhost is not trusted.
 

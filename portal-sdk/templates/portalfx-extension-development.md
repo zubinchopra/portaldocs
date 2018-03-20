@@ -54,7 +54,7 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 # Debugging
 {"gitdown": "include-headings", "file": "../templates/portalfx-debugging.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-debugging-extension-load-failures.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-testinprod.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-extensions-testing-in-production.md"}
 
 # Other
 {"gitdown": "include-headings", "file": "../templates/portalfx-binding-reference.md"}
