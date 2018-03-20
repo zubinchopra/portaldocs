@@ -15,6 +15,6 @@ First-party extension developers, i.e. Microsoft employees, have access to the D
 They can also access the controls playground located at [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground), which allows them to build their own code instead of using the provided samples.
 
 The Azure components of a UI experience are documented several ways. 
-* There may be a document that provides guidance about the component, in terms of what it is, what it does, or how it is used. 
+* There may be a document that provides specific guidance about the component, in terms of what it is, what it does, or how it is used. 
 * The location of the sample code is included so that the developer can view the source for the component, or modify it as appropriate for the extensions they develop.  
 * A working copy of the component can be viewed in the Dogfood environment or the controls playground.

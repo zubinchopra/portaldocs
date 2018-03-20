@@ -20,7 +20,7 @@ First-party extension developers, i.e. Microsoft employees, have access to the D
 They can also access the controls playground located at [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground), which allows them to build their own code instead of using the provided samples.
 
 The Azure components of a UI experience are documented several ways. 
-* There may be a document that provides guidance about the component, in terms of what it is, what it does, or how it is used. 
+* There may be a document that provides specific guidance about the component, in terms of what it is, what it does, or how it is used. 
 * The location of the sample code is included so that the developer can view the source for the component, or modify it as appropriate for the extensions they develop.  
 * A working copy of the component can be viewed in the Dogfood environment or the controls playground.
 
@@ -158,6 +158,8 @@ Controls that do not have a link to a unique experience can be located in the pl
 <a name="extension-controls-forms-controls"></a>
 ## Forms controls
 
+<!-- TODO: Determine whether there is any significant difference between a basic screen control and a forms control. -->
+
 | Forms | Document | Sample | Experience |
 | --------- | -------- | ------ | ---------- |
 | CheckBox  |   |   |  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/CheckBoxBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/CheckBoxBlade) |
@@ -188,11 +190,11 @@ Controls that do not have a link to a unique experience can be located in the pl
 <a name="extension-controls-helpers-and-indicators"></a>
 ## Helpers and Indicators
 
-| Helpers | Document | Sample | Experience |
-| ------- | -------- | ------ | ---------- |
-| InfoBalloon |  | `<dir>\Client\V1\Controls\DockedBalloon\ViewModels\DockedBalloonViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/DockedBalloonInstructions/selectedItem/DockedBalloonInstructions/selectedValue/DockedBalloonInstructions  |
-| InfoBox |  | `<dir>\Client\V2\Controls\Infobox\InfoboxBlade.ts` | [https://df.onecloud.azure-test.net/#blade/SamplesExtension/InfoBoxBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/InfoBoxBlade) |
-| ProgressBar |  | `<dir>\Client\V1\Controls\ProgressBar\ViewModels\ProgressBarViewModels.ts` |  [https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/ProgressBarPlayground](https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/ProgressBarPlayground) <br> [http://aka.ms/portalfx/samples#blade/SamplesExtension/ProgressBarInstructions/selectedItem/ProgressBarInstructions/selectedValue/ProgressBarInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/ProgressBarInstructions/selectedItem/ProgressBarInstructions/selectedValue/ProgressBarInstructions)  |
+| Helpers |Sample | Experience |
+| ------- |  ------ | ---------- |
+| InfoBalloon |  `<dir>\Client\V1\Controls\DockedBalloon\ViewModels\DockedBalloonViewModels.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/DockedBalloonInstructions/selectedItem/DockedBalloonInstructions/selectedValue/DockedBalloonInstructions  |
+| InfoBox |   `<dir>\Client\V2\Controls\Infobox\InfoboxBlade.ts` | [https://df.onecloud.azure-test.net/#blade/SamplesExtension/InfoBoxBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/InfoBoxBlade) |
+| ProgressBar |   `<dir>\Client\V1\Controls\ProgressBar\ViewModels\ProgressBarViewModels.ts` |  [https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/ProgressBarPlayground](https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/ProgressBarPlayground) <br> [http://aka.ms/portalfx/samples#blade/SamplesExtension/ProgressBarInstructions/selectedItem/ProgressBarInstructions/selectedValue/ProgressBarInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/ProgressBarInstructions/selectedItem/ProgressBarInstructions/selectedValue/ProgressBarInstructions)  |
 
 <a name="extension-controls-data-visualization-objects"></a>
 ## Data Visualization Objects
