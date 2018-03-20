@@ -42,7 +42,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
     * [Visual Studio](portalfx-ide-setup.md) *(with Extension project template)*
     * [VS Code]()
 1. 	Run your code
-    * [Running the extension locally (a.k.a. Sideloading)](top-extensions-sideloading.md)
+    * [Running the extension locally (a.k.a. Sideloading)](./generated/top-extensions-sideloading.md)
 
 [Ask an sdk setup question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
 
