@@ -5,30 +5,32 @@ Blades are the main unit of the user experience (UX) that can be built using the
 
 Blades are components that are developed as part of the extension, and can be rendered at specific locations in the Portal UI. They are opened by using the `container.openContextPane(...)` API, as specified in the `MsPortalFx.d.ts` file of the project.
 
-## Conceptual Overview
+## Overview
 
 Use the following steps to develop a blade.
-1.	 You and your team will determine the types of blades that can be grouped together in a shared context.   Decide on a name for this group, or area.  In this example, the area for blades is named ```Greetings```, and the blade that is being developed is named ```Aloha```. Remember to remove the angle brackets when substituting the name of the group for the parameter name ```<AreaName>```.
-1.	Add a folder for the group of blades within the ```Client``` folder of the project. It should be named the same as the area.
+
+1. You and your team will determine the types of blades that can be grouped together into one area.  Because these blades will probably share data, the area is also known as a `DataContext` that is meaningfully named.  In this example, the data context for blades is named `Greetings`, and the blade that is being developed is named `Aloha`. Remember to remove the angle brackets when substituting the name of the `DataContext` group for the parameter name `<AreaName>`.
+
+1. Add a folder for the group of blades within the `Client` folder of the project. It should be named the same as the area.
 
     ![alt-text](../media/portalfx-extensions-helloWorld/areaFolder.png "Area Folder")
 
-1.	Add a file for the new blade to the folder. The file should be named the same as the blade. In the following image, the name of the blade is ```Aloha```.
+1. Add a file for the new blade to the folder. The file should be named the same as the blade. In the following image, the name of the blade is `Aloha`.
 
     ![alt-text](../media/portalfx-extensions-helloWorld/areaBladeFile.png "New Blade in Folder")
 
-1.	Also add a file that describes the area to the area folder.  The name of the file should be the name of the group, concatenated with the word ‘Area’. 
+1. Also add a file that describes the area to the area folder.  The name of the file should be the name of the group, concatenated with the word ‘Area’. This is also known as the  `DataContext`.
 
-    ![alt-text](../media/portalfx-extensions-helloWorld/areaGroupFile.png "GreetingsArea describes the area")
+    ![alt-text](../media/portalfx-extensions-helloWorld/areaGroupFile.png "GreetingsArea describes the area or datacontext")
 
-1.	Within the file that was just created, add the following code.
+1. Within the `GreetingsArea.ts` file that was just created, add the following code.
 
     ```cs
     export class DataContext {
     }
     ```
 
-1. There are some basic parts that are required in the blade file.  The first part is the import statements, as in the following example.
+1. There are some basic parts that are required in the `Aloha.ts` blade file.  The first part is the import statements, as in the following example.
 
     ```cs
     import * as TemplateBlade from "Fx/Composition/TemplateBlade";
@@ -52,7 +54,7 @@ Use the following steps to develop a blade.
 
 1.	The following code implements the class for the new blade. In this instance the code sets the title, subtitle, and binds the string 'Hello world!' to the UI. This code should be added to the class in the TemplateBlade decorator from the preceding step.
 
-    **NOTE**: the text from the data-bind statement is named the same as the message, thereby completing the binding.
+    **NOTE**: the text from the `data-bind` statement is named the same as the message, thereby completing the binding.
 
     ```cs
         public title = "My blade title";
