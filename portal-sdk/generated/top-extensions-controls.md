@@ -42,7 +42,7 @@ To use a control, there are basically three steps. The following example demonst
 		   
 	`<control>`  is the name of the control, for example, infoBox.
 
-    In some instances, the control is connected to the extension by being referenced in the pdl file, instead of importing the module for the control in the code.
+    In some instances, the control is connected to the extension by being referenced in the pdl file, instead of importing the module for the control.
     
 	
 1. Change the link element in the HTML template to a control container.
@@ -65,29 +65,35 @@ To use a control, there are basically three steps. The following example demonst
 
    ```
 
-The ViewModel can be created by experimenting with controls in the Controls Playground located at  [https://aka.ms/portalfx/viewSamples](https://aka.ms/portalfx/viewSamples). Alternatively, an extension can be developed by using the samples located at  `<dir>\Client\V1\Controls` or `<dir>\Client\V2\Controls\`, where `<dir>` is the `SamplesExtension\Extension\` directory, based on where the samples were installed when the developer set up the SDK.
+The ViewModel can be created by experimenting with controls in the playground located at  [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground) and the samples located at [https://aka.ms/portalfx/viewSamples](https://aka.ms/portalfx/viewSamples). Alternatively, an extension can be developed by using the samples located at  `<dir>\Client\V1\Controls` or `<dir>\Client\V2\Controls\`, where `<dir>` is the `SamplesExtension\Extension\` directory, based on where the samples were installed when the developer set up the SDK.
 
 
 <a name="extension-controls-samples-controls"></a>
 ## Samples Controls
 
-**NOTE**: In the following tables, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it can be experienced by using the link in the table. 
+Most controls are available in the playground located at  [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground), which also generates custom code. The following tables include the location of code samples that are shipped with the SDK for developers who are not generating custom code.
 
-Most controls are available in the playground located at  [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground), which also generates code. The following tables include information about Portal controls, including the location of samples that are shipped with the SDK and working copies in the Dogfood environment. The SDK samples are separate from the playground samples, which are customized  based on the developer's interaction with the environment.
+The experience for the control may include a link to the Dogfood environment in addition to or instead of a link to the playground.
+
+The documents that describe a control, if any, include information other than the three development steps. For example, a developer may need assistance in migrating from a previous edition of a control.
+ 
+**NOTE**: In the following tables, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it can be experienced by using the link in the table. 
 
 <a name="extension-controls-controls-that-are-used-by-other-controls"></a>
 ## Controls that are used by other controls
 
-<!-- TODO:  Determine whether the separate documents still contain data that should be separated from the main controls-procedure document.   If so, determine whether it is appropriate for them to be combined into the following separate table.-->
+<!-- TODO:  Determine whether the controls that are used by other controls need to have their own document, or can just be explained in a control that uses them. Also determine whether there are more controls than just the label that belong in the list. -->
 
 | Control        | Sample | Experience |
 | -------------- | --------- | -------------- |
 | CopyableLabel | `<dir>\Client\V2\Controls\ CopyableLabel\CopyableLabelBlade.ts` | http://aka.ms/portalfx/samples#blade/SamplesExtension/CopyableLabelBlade |
-  
+
 <a name="extension-controls-basic-screen-controls"></a>
 ## Basic Screen Controls
 
-Controls that do not have a link to a unique experience can be located from  the selection list at [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/controls](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/controls).
+<!-- TODO:  Determine whether the separate documents still contain data that should be separated from the main controls-procedure document.   If so, determine whether it is appropriate for them to be combined into the following separate table.-->
+
+Controls that do not have a link to a unique experience can be located in the playground at  [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground) or in the selection list at [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/controls](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/controls).
 
 | Control |  Document | Sample | Experience |
 | ------- | -------- | ------ | ---------- |
@@ -134,10 +140,7 @@ Controls that do not have a link to a unique experience can be located from  the
 <a name="extension-controls-drop-down-controls"></a>
 ## Drop down controls
 
-<!-- TODO: Determine whether the following controls still need their own document. 
-Console
-It is possible to combine the migration sections of some documents, thereby reducing the number of files that need to be read. 
--->
+<!-- TODO: Determine whether it is more appropriate to have all the migration instructions located in one document, instead of one for each control. -->
 | Drop Down | Document | Sample | Experience |
 | --------- | -------- | ------ | ---------- |
 | DropDown | [portalfx-controls-dropdown.md](portalfx-controls-dropdown.md) | `<dir>\Client\V2\Controls\ DropDown\DropDownBlade.ts` | [https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/DropDownPlayground](https://ms.portal.azure.com/?Microsoft_Azure_Playground=true#blade/Microsoft_Azure_Playground/ControlsIndex/DropDownPlayground) |
