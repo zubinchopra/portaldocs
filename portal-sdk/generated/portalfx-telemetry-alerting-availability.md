@@ -6,7 +6,10 @@ The alerts can be configured for extension availability, blade availability and 
 <a name="availability-configuration"></a>
 ## Configuration
 
-You can define N number of environment within "environments" property like the below.
+At a high level you define;
+
+1. N number of environment within "environments" property like the below.
+2. The availability configuration for the alerts within that environment
 
 ```json
 {
@@ -17,19 +20,41 @@ You can define N number of environment within "environments" property like the b
             "environment": ["portal.azure.com"],
             "availability": [
                 {
-                    "type": "blade", // Support value, "extension", "blade" or "part"
-                    "enabled": true, // Enable or disable blade type alerts for Your_Extension_Name
+                    "type": "extension", // Support value, "extension", "blade" or "part"
+                    "enabled": true, // Enable or disable extension type alerts for Your_Extension_Name
                     "criteria": [
                        ...
                     ]
                 },
+                {
+                    "type": "blade",
+                    "enabled": true,
+                    "criteria": [
+                       ...
+                    ]
+                }
                 ...
-            ]
+            ],
+            "performance": [...], // Optional. Have it when you want to enable performance alerts.
+            "clientError": [...] // Optional.
         },
+        {
+            "environment": ["ms.portal.azure.com"],
+            "performance": [
+                {
+                    ...
+                }
+                ...
+             ]
+            ...
+        }
         ...
     ]
 }
 ```
+Per each of those, you can define a set of criteria like the below.
+
+> Only blade or part is required to have a namePath property or optionally to have an exclusion property.
 
 <a name="availability-configuration-what-is-environments"></a>
 ### What is environments?
