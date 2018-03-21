@@ -1016,7 +1016,7 @@ The Properties blade provides users a convenient way access the properties of th
 
 ### QuickStart Blade
 
-The QuickStart blade provides users a convenient way to learn how to use your service. 
+The QuickStart blade provides users a convenient way to learn how to use the service. 
 
 <!-- TODO: Determine whether the following sentence is advertising, or an actuality for services. -->
 
@@ -1026,7 +1026,7 @@ Every service should have a QuickStart Blade.
 
 Use the following steps to create a QuickStart Blade.
 
-1. The PDL to define a QuickStart Blade is located at     `<dir>\Client\V1\Blades\BladeKind\BladeKinds.pdl`.
+1. The PDL to define a QuickStart Blade is located at     `<dir>\Client\V1\Blades\BladeKind\BladeKinds.pdl`. It is also in the following code.
 
     ```xml
     <azurefx:QuickStartBlade Name="QuickStartBlade"
@@ -1252,85 +1252,13 @@ The Setting List Blade provides a convenient way to display a list of settings f
     ```
 
 
-    
-### Blade Settings
+       gitdown": "include-file", "file": "../templates/portalfx-blades-settings.md"}
 
-One goal of the Azure Portal is to standardize key interaction patterns across resources, so that customers can learn them once and apply them everywhere. There a few setting items which are consistent across most resources. To make that process easier, the Framework will automatically add specific settings, but also allow extensions to opt in for any settings that the Framework does not automatically add. All the settings that are added by the Framework can always be opted out, by setting  the appropriate enabling option to `false`. 
-
-Only two settings are added automatically: RBAC and Audit logs, or events. They are only added if a valid resource id was specified within the `resourceId()` property on the settingsList viewmodel. The best way to set this property is to use the `onInputsSet` call, as in the following code.
-
-```ts
-export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.SettingList.ViewModelV2 {
-    ...
-
-     public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
-        var id = inputs.id;
-        this.resourceId(id);
-
-        return null
-    }
-}
-```
-
-#### Tags and RBAC
-
-Tags and role-based access (RBAC) for users are the most common settings. Although the Portal does not automatically add Tags, it is extremely easy to opt in if your resource supports tagging. To opt in for tags, set the following in the **options** parameter of the **super** method of the **SettingsList** ViewModel, as in the following example.
-
-```ts
-export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.SettingList.ViewModelV2 {
-    constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState: any, dataContext: BladesArea.DataContext) {
-         super(container, initialState, this._getSettings(container),
-            {
-             enableRbac: true,
-             enableTags: true,
-             groupable: true
-            });
-    }
-}
-```
-
-For more information about tags, see [portalfx-tags](portalfx-tags) and [https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-using-tags](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-using-tags).
-
-#### Support settings
-
-<!-- TODO:  Determine whether this mailto address is accurate. -->
-
-One key experience is Troubleshooting and Support. Azure provides customers with a consistent UI so that they can assess the health of every resource, check its audit logs, get troubleshooting information, or open a support ticket. Every extension should reach out to the <a href="mailto:AzSFAdoption@microsoft.com?subject=Onboarding with the Support team&body=Hello, I have a new extension that needs to opt in to to the features that Troubleshooting and Support provides.">Support Team at AzSFAdoption@microsoft.com</a> to opt in to the support system and UX integration.
-
-Enabling the coordination between your extension and the support extension takes a little more effort. For each setting, the extension should opt in by using the **options** parameter of the **super** method of the **SettingsList** ViewModel, as in the following example.
-
-```ts
-export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.SettingList.ViewModelV2 {
-    constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState: any, dataContext: BladesArea.DataContext) {
-         super(container, initialState, this._getSettings(container),
-            {
-             enableSupportHelpRequest: true,
-             enableSupportTroubleshoot: true,
-             enableSupportResourceHealth: true,
-             enableSupportEventLogs: true,
-             groupable: true
-            });
-    }
-}
-```
-
-To test the coordination, use the following feature flags, depending on which settings you are testing.  **NOTE**: Your extension name is in lower case.
-
-* ?<extensionName>_troubleshootsettingsenabled=true
-* ?<extensionName>_healthsettingsenabled=true
-* ?<extensionName>_requestsettingsenabled=true
-
-For example, the following query string would enable TroubleShooting and Support for an extension named `microsoft_azure_classic_compute`.
-
-`?microsoft_azure_classic_compute_requestsettingsenabled=true`
-
-For more information about onboarding to support for Product Teams, see [http://aka.ms/portalfx/productteamsupport](http://aka.ms/portalfx/productteamsupport).
-
-    ## AppBlades
+    ### AppBlades
 
 AppBlades provide an IFrame where an extension can render content.  The extension IFrame is associated with an IFrame that hosts the UI, in order to enable the flexibility and control of the Model-View-View-Model methodology.
 
-AppBlades can rehost an existing experience, and allow developers to create a UI that is not supported by the Fx. Because it does not use Ibiza Fx controls, extension developers are fully responsible for accessibility, theming, and consistency.
+AppBlades can rehost an existing experience, and allow developers to create a UI that is not supported by the Fx. Because AppBlades do not use Ibiza Fx controls, extension developers are fully responsible for accessibility, theming, and consistency.
 
 This programming model results in maximum flexibility and reduces additional developer responsibilities. We recommend using AppBlades under the following conditions.
 
@@ -1356,7 +1284,7 @@ When using AppBlade, developers are responsible for the following.
 
     Building your own controls, or using available alternatives to Ibiza Fx controls
 
-## Creating an AppBlade
+### Creating an AppBlade
 
 1. Add the blade definition to your PDL file, as in the following example.
 
@@ -1367,7 +1295,7 @@ When using AppBlade, developers are responsible for the following.
     </AppBlade>
     ```
 
-1. Create a ViewModel TypeScript class. The following code snippet displays the ViewModel for the template blade defined in the previous step. In this case, it is showing the docs.microsoft.azure.com by using  an AppBlade in the Portal.
+1. Create a ViewModel TypeScript class. The following code includes the `ViewModel` for the template blade defined in the previous step. In this case, the AppBlade  displays the "docs.microsoft.azure.com" Website in the Portal.
 
     ```javascript
     export class MicrosoftDocsBladeViewModel extends MsPortalFx.ViewModels.AppBlade.ViewModel {
@@ -1384,9 +1312,9 @@ When using AppBlade, developers are responsible for the following.
 
 **NOTE**: The source location for the contents of the IFrame is sent to the container by using the `source` property.
 
-## The Ibiza command bar
+### The Ibiza command bar
 
-The Ibiza command bar can optionally be used in an AppBlade to leverage Framework support and make Azure navigation a more consistent experience. To use a command bar, add it to the PDL file for the extension PDL and configure it in the AppBlade ViewModel, as in the following example.
+The Ibiza command bar can optionally be used in an AppBlade to leverage Framework support and make Azure navigation a more consistent experience. To use a command bar, add it to the PDL file for the extension PDL and configure it in the AppBlade `ViewModel`, as in the following example.
 
 ```typescript
 
@@ -1411,13 +1339,13 @@ private _openLinkButton(): Toolbars.OpenLinkButton {
 
 ```
 
-## Sending messages between the IFrame and Ibiza Fx
+### Sending messages between the IFrame and Ibiza Fx
 
-The AppBlade ViewModel is hosted in the hidden IFrame in which the extension is loaded. However, the contents of the AppBlade are hosted in different IFrame that is visible on the screen. The Ibiza extension IFrame and the UI IFrame communicate by sending and receiving messages. The following sections demonstrate how to exchange messages between the two IFrames and to the Portal.
+The AppBlade `ViewModel` is hosted in the hidden IFrame in which the extension is loaded. However, the contents of the AppBlade are hosted in a different IFrame that is visible on the screen. The Ibiza extension IFrame and the UI IFrame communicate by sending and receiving messages. The following sections demonstrate how to exchange messages between the two IFrames and the Portal.
 
-## Ibiza extension IFrame messaging
+### Ibiza extension IFrame messaging
 
-### Listen to a message
+#### Listen to a message
 
 The extension can listen to messages that are sent from the UI IFrame to the Ibiza extension ViewModel by using the **on** method in the **AppBlade** ViewModel, as in the following example.
 
@@ -1436,7 +1364,7 @@ this.on("getAuthToken", () => {
 
 ```
 
-### Post a message
+#### Post a message
 
 The Ibiza extension ViewModel can post messages to the UI IFrame by using the **postMessage** method in the AppBlade ViewModel, as in the following example.
 
@@ -1447,9 +1375,9 @@ this.postMessage(new FxAppBlade.Message("favoriteAnimal", "porcupine"));
 
 ```
 
-## UI IFrame messaging
+### UI IFrame messaging
 
-### Listen to a message
+#### Listen to a message
 
 The extension can listen for messages that are sent from the Ibiza extension ViewModel to the UI Frame by adding an event listener to the application window, as shown in the following code.
 
@@ -1511,7 +1439,7 @@ function receiveMessage(event) {
 
 ```
 
-### Post a message
+#### Post a message
 
 The  UI IFrame can post messages back to the Portal using the **postMessage** method. There is a required message that the  IFrame sends to the Portal to indicate that it is ready to receive messages.
 
@@ -1535,7 +1463,7 @@ if (window.parent !== window) {
 
 ```
 
-## Changing UI themes
+### Changing UI themes
 
 When using a template blade, extension developers can implement themes. Typically, the user selects a theme, which in turn is sent to the UI IFrame. The following code snippet demonstrates how to pass the selected theme to the UI IFrame using the **postMessage** method,  as specified in the section named [Sending messages between the IFrame and Ibiza Fx](#sending-messages-between-the-iframe-and-ibiza-fx).
 
@@ -1552,42 +1480,7 @@ MsPortalFx.Services.getSettings().then(settings => {
 ```
 
 
-    
-## Legacy Blades
-
-A blade is the vertical container that acts as the starting point for any journey. You can define multiple blades, each containing their own collection of statically defined lenses and parts.
-
-**NOTE**: Given the complexity associated with this model, extension authors are encouraged to use TemplateBlades instead, as specified in [portalfx-blades-overview.md](portalfx-blades-overview.md).
-
-The following image depicts a legacy blade.
-
-![alt-text](../media/portalfx-extensions-helloWorld/helloWorldExtensionAlohaBlade.png "Blade")
-
-**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
-
-Blades can be created in any PDL file, and they will be aggregated at compile time into the extension definition, as in the code located at `<dir>\Client\V1\Blades\Locked\Locked.pdl`. The code is also in the following example.
-
-```xml
-<Blade Name="LockedBlade"
-       ViewModel="LockedBladeViewModel">
-    <Lens>
-        ...
-    </Lens>
-</Blade>
-```
-
-Blades use ViewModels to drive dynamic content, including titles, icons, and status.  The following is a list of legacy blade subtopics.
-
-| Type                 | Document                                                       | Description |
-| -------------------- | -------------------------------------------------------------- | ----------- |
-| Controlling blade UI | [portalfx-blades-ui.md](portalfx-blades-ui.md)                 | Customizing blade behavior and experience | 
-| Opening blades       | [portalfx-blades-opening.md](portalfx-blades-opening.md)       | How to open blades using the new container APIs or the legacy declarative APIs. | 
-| Blade parameters     | [portalfx-blades-parameters.md](portalfx-blades-parameters.md) | Explicit declaration for parameters that blades are required to receive.    |  
-| Blade properties     | [portalfx-blades-properties.md](portalfx-blades-properties.md) | Information sent to the blade as a `BladeParameter` is also sent to the blade ViewModel by using  a `<Property>` element. | 
-| Blade outputs        | [portalfx-blades-outputs.md](portalfx-blades-outputs.md)       | A list of output properties that return data from a child blade back to the calling blade. | 
-| Pinning blades       | [portalfx-blades-pinning.md](portalfx-blades-pinning.md)       | Pinning a blade creates a part on the currently active dashboard.    | 
-| Closing blades       | [portalfx-blades-closing.md](portalfx-blades-closing.md)       | How to close the current blade that was called from a blade or a part container.  |
-
+                       gitdown": "include-file", "file": "../templates/portalfx-blades-legacy.md"}
 
   ## Samples Blades
 
@@ -1611,8 +1504,6 @@ The following table contains blades  that display lists of controls.  These obje
 | ------- | -------- | ------ | ---------- |
 | ControlIndexBlade |  | `<dir>\Client\V1\Controls\ControlIndexBlade\ViewModels\ControlIndexViewModel.ts` |  |
 | UnsupportedIndexBlade |  | `<dir>\Client\V1\Controls\UnsupportedIndexBlade\ViewModels\UnsupportedIndexViewModel.ts` |   |
-
-
 
  
 <a name="blades-and-template-blades-best-practices"></a>

@@ -1,9 +1,9 @@
 <a name="appblades"></a>
-## AppBlades
+### AppBlades
 
 AppBlades provide an IFrame where an extension can render content.  The extension IFrame is associated with an IFrame that hosts the UI, in order to enable the flexibility and control of the Model-View-View-Model methodology.
 
-AppBlades can rehost an existing experience, and allow developers to create a UI that is not supported by the Fx. Because it does not use Ibiza Fx controls, extension developers are fully responsible for accessibility, theming, and consistency.
+AppBlades can rehost an existing experience, and allow developers to create a UI that is not supported by the Fx. Because AppBlades do not use Ibiza Fx controls, extension developers are fully responsible for accessibility, theming, and consistency.
 
 This programming model results in maximum flexibility and reduces additional developer responsibilities. We recommend using AppBlades under the following conditions.
 
@@ -30,7 +30,7 @@ When using AppBlade, developers are responsible for the following.
     Building your own controls, or using available alternatives to Ibiza Fx controls
 
 <a name="creating-an-appblade"></a>
-## Creating an AppBlade
+### Creating an AppBlade
 
 1. Add the blade definition to your PDL file, as in the following example.
 
@@ -41,7 +41,7 @@ When using AppBlade, developers are responsible for the following.
     </AppBlade>
     ```
 
-1. Create a ViewModel TypeScript class. The following code snippet displays the ViewModel for the template blade defined in the previous step. In this case, it is showing the docs.microsoft.azure.com by using  an AppBlade in the Portal.
+1. Create a ViewModel TypeScript class. The following code includes the `ViewModel` for the template blade defined in the previous step. In this case, the AppBlade  displays the "docs.microsoft.azure.com" Website in the Portal.
 
     ```javascript
     export class MicrosoftDocsBladeViewModel extends MsPortalFx.ViewModels.AppBlade.ViewModel {
@@ -59,9 +59,9 @@ When using AppBlade, developers are responsible for the following.
 **NOTE**: The source location for the contents of the IFrame is sent to the container by using the `source` property.
 
 <a name="the-ibiza-command-bar"></a>
-## The Ibiza command bar
+### The Ibiza command bar
 
-The Ibiza command bar can optionally be used in an AppBlade to leverage Framework support and make Azure navigation a more consistent experience. To use a command bar, add it to the PDL file for the extension PDL and configure it in the AppBlade ViewModel, as in the following example.
+The Ibiza command bar can optionally be used in an AppBlade to leverage Framework support and make Azure navigation a more consistent experience. To use a command bar, add it to the PDL file for the extension PDL and configure it in the AppBlade `ViewModel`, as in the following example.
 
 ```typescript
 
@@ -87,15 +87,15 @@ private _openLinkButton(): Toolbars.OpenLinkButton {
 ```
 
 <a name="sending-messages-between-the-iframe-and-ibiza-fx"></a>
-## Sending messages between the IFrame and Ibiza Fx
+### Sending messages between the IFrame and Ibiza Fx
 
-The AppBlade ViewModel is hosted in the hidden IFrame in which the extension is loaded. However, the contents of the AppBlade are hosted in different IFrame that is visible on the screen. The Ibiza extension IFrame and the UI IFrame communicate by sending and receiving messages. The following sections demonstrate how to exchange messages between the two IFrames and to the Portal.
+The AppBlade `ViewModel` is hosted in the hidden IFrame in which the extension is loaded. However, the contents of the AppBlade are hosted in a different IFrame that is visible on the screen. The Ibiza extension IFrame and the UI IFrame communicate by sending and receiving messages. The following sections demonstrate how to exchange messages between the two IFrames and the Portal.
 
 <a name="ibiza-extension-iframe-messaging"></a>
-## Ibiza extension IFrame messaging
+### Ibiza extension IFrame messaging
 
 <a name="ibiza-extension-iframe-messaging-listen-to-a-message"></a>
-### Listen to a message
+#### Listen to a message
 
 The extension can listen to messages that are sent from the UI IFrame to the Ibiza extension ViewModel by using the **on** method in the **AppBlade** ViewModel, as in the following example.
 
@@ -115,7 +115,7 @@ this.on("getAuthToken", () => {
 ```
 
 <a name="ibiza-extension-iframe-messaging-post-a-message"></a>
-### Post a message
+#### Post a message
 
 The Ibiza extension ViewModel can post messages to the UI IFrame by using the **postMessage** method in the AppBlade ViewModel, as in the following example.
 
@@ -127,10 +127,10 @@ this.postMessage(new FxAppBlade.Message("favoriteAnimal", "porcupine"));
 ```
 
 <a name="ui-iframe-messaging"></a>
-## UI IFrame messaging
+### UI IFrame messaging
 
 <a name="ui-iframe-messaging-listen-to-a-message"></a>
-### Listen to a message
+#### Listen to a message
 
 The extension can listen for messages that are sent from the Ibiza extension ViewModel to the UI Frame by adding an event listener to the application window, as shown in the following code.
 
@@ -193,7 +193,7 @@ function receiveMessage(event) {
 ```
 
 <a name="ui-iframe-messaging-post-a-message"></a>
-### Post a message
+#### Post a message
 
 The  UI IFrame can post messages back to the Portal using the **postMessage** method. There is a required message that the  IFrame sends to the Portal to indicate that it is ready to receive messages.
 
@@ -218,7 +218,7 @@ if (window.parent !== window) {
 ```
 
 <a name="changing-ui-themes"></a>
-## Changing UI themes
+### Changing UI themes
 
 When using a template blade, extension developers can implement themes. Typically, the user selects a theme, which in turn is sent to the UI IFrame. The following code snippet demonstrates how to pass the selected theme to the UI IFrame using the **postMessage** method,  as specified in the section named [Sending messages between the IFrame and Ibiza Fx](#sending-messages-between-the-iframe-and-ibiza-fx).
 
