@@ -59,9 +59,7 @@ Use the following three steps to create a template blade.
 
     **Export**: Optional field.  Flag that specifies whether this blade is exported in the extension so that it can be opened by other extensions. As a result, a strongly typed blade reference is created. 
 
-1. Create a `ViewModel` TypeScript class. The following example demonstrates the `ViewModel` that is associated with the blade from the PDL file in the previous step. 
-Change the link element in the HTML template to a control container.
-This model exposes two observable properties, but more complex behavior can be added as appropriate.
+1. Create a `ViewModel` TypeScript class. The following example demonstrates the `ViewModel` that is associated with the blade from the PDL file in the previous step. This model exposes two observable properties, but more complex behavior can be added as appropriate.
 
     ```js
     export class MyTemplateBladeViewModel extends MsPortalFx.ViewModels.Blade {
@@ -134,10 +132,11 @@ Ibiza provides an extensive controls library that can be used in the HTML templa
     }
     ```
 
+1. This example uses the PDL file from the section named [#creating-the-templateblade](#creating-the-templateblade).
+
 ### Sending parameters
 
-Blades can receive input parameters that are part of the signature for the blade. The following code adds an "id" input parameter to the template blade.
-It reuses the HTML template from the previous steps.
+Blades can receive input parameters that are part of the signature for the blade. The following code adds an "id" input parameter to the template blade. It reuses the HTML template from the previous steps.
 
 1. Include the parameters in the signature of the blade in the PDL definition.
 
@@ -246,7 +245,7 @@ The working copy of the sample in the Dogfood environment is located at  [https:
 
 Blades can display buttons that are docked at the base of the blade.  The following code demonstrates how to add buttons to the blade.
 
-1. Add an `ActionBar` element in your PDL template. The `ActionBar` is docked to the bottom of the blade and contains buttons, as in the following example.
+1. Add an `ActionBar` element in the PDL template. The `ActionBar` is docked to the bottom of the blade and contains buttons, as in the following example.
 
     ```xml
     <TemplateBlade
