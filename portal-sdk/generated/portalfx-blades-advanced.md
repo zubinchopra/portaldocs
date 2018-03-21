@@ -64,6 +64,8 @@ Settings that are associated with a blade can be stored. Those settings need to 
 
 The process is as follows.
 
+<!-- TODO:  Determine why the samples in this section are malformed from the GitHub perspective.  They do not format as sub-paragraphs for line  items, and they ruin the formatting for later items. -->
+
 Specify the settings in the PDL file using the `TemplateBlade.Settings` element.
 
 ```xml
@@ -79,6 +81,7 @@ Specify the settings in the PDL file using the `TemplateBlade.Settings` element.
 
 ```
 
+
 After the settings are declared, they should also be specified in the ViewModel, as in the following example.
 
 ````typescript
@@ -90,7 +93,8 @@ public fontSettingValue = ko.observable<FontStyle>();
 
 ```
 
- Retrieve the settings by using the blade container.
+
+Retrieve the settings by using the blade container.
 
 ```typescript
 
@@ -120,6 +124,7 @@ this.configureHotSpot = new HotSpotViewModel(container, {
 });
 
 ```
+
 
 Also send the settings to the `onInputsSet` method.
 
