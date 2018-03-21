@@ -1,7 +1,7 @@
 <a name="performance"></a>
 # Performance
 
-The alerts can be configured for extension performance, blade performance and part performance.
+The alerts can be configured for extension performance, blade performance and part performance on different environments.
 
 <a name="performance-configuration"></a>
 ## Configuration
@@ -20,36 +20,20 @@ At a high level you define;
             "environment": ["portal.azure.com"],
             "availability": [...], // Optional. Have it when you want to enable availability alerts.
             "performance": [
-                {
-                    "type": "extension",
-                    "enabled": true,
+                 {
+                    "type": "extension", // Support value, "extension", "blade" or "part"
+                    "enabled": true, // Enable or disable extension type alerts for Your_Extension_Name
                     "criteria": [
-                        {
-                            ...
-                        },
-                        ...
+                       ...
                     ]
                 },
                 {
                     "type": "blade",
-                    "enabled": true, 
-                    "criteria": [
-                        {
-                            ...
-                        },
-                        ...
-                    ]
-                },
-                {
-                    "type": "part", 
                     "enabled": true,
                     "criteria": [
-                        {
-                            ...
-                        },
-                        ...
+                       ...
                     ]
-                },
+                }
                 ...
             ],
             "clientError": [...] // Optional. Have it when you want to enable Client Error alerts.
@@ -59,11 +43,12 @@ At a high level you define;
             "performance": [
                 {
                     ...
-                },
+                }
                 ...
-             ],
+             ]
             ...
         }
+        ...
     ]
     ...
 }
