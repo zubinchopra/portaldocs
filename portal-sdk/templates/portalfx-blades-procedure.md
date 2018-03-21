@@ -1,9 +1,11 @@
 
 ## TemplateBlades
 
-The TemplateBlade is the recommended way of authoring blades in Ibiza. It is the equivalent to windows or pages in other systems.
-It uses an HTML template for the UI, and a ViewModel with the logic that binds to that HTML template. 
-You can think of a TemplateBlade as an HTML page. Authoring template blades requires a blade definition in PDL, an HTML template, a ViewModel, and optionally a CSS file. The following sections discuss the details of the PDL definition and the blade capabilities in the ViewModel.
+The `TemplateBlade` is the recommended way of authoring blades in Ibiza. It is the equivalent to windows or pages in other systems.
+
+You can think of a TemplateBlade as an HTML page. Authoring template blades requires a , an HTML template, a ViewModel, an optional CSS file, and either a blade definition in PDL or a ViewModel with the logic that binds to the HTML template.
+
+The following sections discuss the blade definition and the blade capabilities in the ViewModel, using the `Infobox` control.  The pdl definition can be used, and there is a TypeScript sample located at `<dir>\Client\V2\Controls\Infobox\InfoboxBlade.ts`.
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
@@ -21,11 +23,13 @@ You can think of a TemplateBlade as an HTML page. Authoring template blades requ
 
 * [Displaying a loading indicator UX](#displaying-a-loading-indicator-ux)
 
+* * * 
+
 ### Creating the TemplateBlade
 
-Use the following steps to create a template blade.
+Use the following three steps to create a template blade.
 
-1. Add the **blade definition** to your PDL file
+1. Add the blade definition to the PDL file, as in the following example.
 
     ```xml
     <TemplateBlade
@@ -48,13 +52,16 @@ Use the following steps to create a template blade.
     **InitialDisplayState**: Optional field.  Specifies whether the blade is opened maximized or not. The default value is `Normal`. 
 
     **Style**: Optional field. Visual style for the blade. The default value is `Basic`. 
+
     **Pinnable**: Optional field. Flag that specifies whether the blade can be pinned or not. The default value is `false`.
 
-    **ParameterProvider**: Optional field. Flag that specifies whether the blade is a parameter-provider. The default value is  `false`.
+    **ParameterProvider**: Optional field. Flag that specifies whether the blade provides parameters to other objects. The default value is  `false`.
 
-    **Export**: Optional field.  Flag that specifies whether this blade is exported in your extension and therefore can be opened by other extensions. As a result, a strongly typed blade reference is created. 
+    **Export**: Optional field.  Flag that specifies whether this blade is exported in the extension so that it can be opened by other extensions. As a result, a strongly typed blade reference is created. 
 
-1. Create a **ViewModel** TypeScript class. The following code snippet shows the Viewmodel that is associated with the blade that was defined in the PDL file. This model exposes two observable properties, but more complex behavior can be added for your extension as appropriate.
+1. Create a `ViewModel` TypeScript class. The following example demonstrates the `ViewModel` that is associated with the blade from the PDL file in the previous step. 
+Change the link element in the HTML template to a control container.
+This model exposes two observable properties, but more complex behavior can be added as appropriate.
 
     ```js
     export class MyTemplateBladeViewModel extends MsPortalFx.ViewModels.Blade {
@@ -78,7 +85,7 @@ Use the following steps to create a template blade.
 
     ```
 
-1. Create a template for the blade using regular HTML and **Knockout**. The **Knockout** bindings are bound to the public properties in the ViewModel in the previous step. 
+1. Create a template for the blade using regular HTML and **Knockout**. The **Knockout** bindings are bound to the public properties in the `ViewModel` in the previous step. 
 
     ```html
     <div>This is an example template blade that shows a link.</div>
@@ -86,13 +93,11 @@ Use the following steps to create a template blade.
     <a data-bind="text: text, attr: { href: url }" target="_blank"></a>
     ```
 
-For more information about Knockout, see [knockout.js](http://knockoutjs.com/).
+For more information about **Knockout**, see [http://knockoutjs.com](http://knockoutjs.com/).
 
 ### Adding controls
 
-The example in the previous section uses ordinary HTML in its template. Ibiza provides an extensive controls library that you can use in the HTML template. The following example uses the `InfoBox` control instead of a regular HTML link.
-
-<!-- TODO:  Determine whether the code in this file is in a sample that ships with the SDK. -->
+Ibiza provides an extensive controls library that can be used in the HTML template. The following example uses the `InfoBox` control instead of a regular HTML link.
 
 1. Change the link element in the HTML template to a control container.
 
@@ -102,7 +107,7 @@ The example in the previous section uses ordinary HTML in its template. Ibiza pr
     <div data-bind="pcControl:infoBox"></div>
     ```
 
-1. Update the blade ViewModel to expose and instantiate the control ViewModel, as in the following code.
+1. Update the blade `ViewModel` to expose and instantiate the control ViewModel, as in the following code.
 
     ```javascript
     export class MyTemplateBladeViewModel extends MsPortalFx.ViewModels.Blade {
@@ -129,9 +134,10 @@ The example in the previous section uses ordinary HTML in its template. Ibiza pr
     }
     ```
 
-### Sending parameters 
+### Sending parameters
 
-Blades can receive input parameters that are defined as part of the signature for the blade. The following code adds an "id" input parameter to the template blade.
+Blades can receive input parameters that are part of the signature for the blade. The following code adds an "id" input parameter to the template blade.
+It reuses the HTML template from the previous steps.
 
 1. Include the parameters in the signature of the blade in the PDL definition.
 
@@ -180,11 +186,12 @@ Blades can receive input parameters that are defined as part of the signature fo
 
 ### Adding commands
 
-Template blades can display commands at the top. To add the commands,  add a toolbar to the TemplateBlade, and then define its contents in the TemplateBlade's `ViewModel`.
+Commands are typically displayed at the top of the template blade. To add the commands,  add a toolbar to the `TemplateBlade`, and then define its contents in the `ViewModel`.
+
 The working copy of the sample in the Dogfood environment is located at  [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/bladewithtoolbar](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SDKMenuBlade/bladewithtoolbar).
 
 
-1. Add a **CommmandBar** element to your PDL template
+1. Add a `CommmandBar` element to the PDL template.
     ```xml
     <TemplateBlade
                 Name="MyTemplateBlade"
@@ -197,7 +204,7 @@ The working copy of the sample in the Dogfood environment is located at  [https:
     </TemplateBlade>
     ```
 
-1. Instantiate the `CommandBar` in the ViewModel, as in the following code.
+1. Instantiate the `CommandBar` in the ViewModel, as in the following example.
 
     ```javascript
     import Def = ExtensionDefinition.ViewModels.Resource.MyTemplateBladeViewModel;
@@ -237,9 +244,9 @@ The working copy of the sample in the Dogfood environment is located at  [https:
 
 ### Adding buttons 
 
-Blades can display buttons that are docked at to the base of the blade.  The following code demonstrates how to add buttons to the blade.
+Blades can display buttons that are docked at the base of the blade.  The following code demonstrates how to add buttons to the blade.
 
-1. Add an `ActionBar` element in your PDL template. The ActionBar  is docked to the bottom of the blade and contains buttons, as in the following example.
+1. Add an `ActionBar` element in your PDL template. The `ActionBar` is docked to the bottom of the blade and contains buttons, as in the following example.
 
     ```xml
     <TemplateBlade
@@ -291,7 +298,7 @@ Blades can display buttons that are docked at to the base of the blade.  The fol
 
 ### Displaying a full-screen blade
 
-If you want the blade to open using the full screen, just add `InitialState="Maximized"` to the PDL definition of the blade, as in the following code.
+To open the blade using the full screen,  add `InitialState="Maximized"` to the PDL definition of the blade, as in the following code.
 
 ```xml
 <TemplateBlade
@@ -304,7 +311,7 @@ If you want the blade to open using the full screen, just add `InitialState="Max
 
 ### Displaying a loading indicator UX 
 
-Sometimes interaction with a blade should be prevented while it is initializing. In those cases, a shield that contains a loading indicator UX is displayed in the blade to block the display. The shield can be fully transparent or opaque. The following code demonstrates how to set an opaque filter in the blade.
+Sometimes, interaction with a blade should be prevented while it is initializing. In those cases, a shield that contains a loading indicator UX is displayed in the blade to block the display. The shield can be fully transparent or opaque. The following code demonstrates how to set an opaque filter in the blade.
 
 ```javascript
 constructor(container: FxCompositionBlade.Container, initialState: any, dataContext: BladesArea.DataContext) {
@@ -312,10 +319,10 @@ constructor(container: FxCompositionBlade.Container, initialState: any, dataCont
 
     var operation = Q.defer<any>();
 
-    // show the shield while the operation promise is not resolved
+    // display the shield while the operation promise is not resolved
     container.operations.add(operation.promise, { blockUi: true, shieldType: MsPortalFx.ViewModels.ShieldType.Opaque });
 
-    // wait for 3 seconds and resolved the promise (which will remove the shield)
+    // wait for 3 seconds and resolve the promise (which will remove the shield)
     window.setTimeout(() => { operation.resolve(); }, 3000);
 }
 ```
