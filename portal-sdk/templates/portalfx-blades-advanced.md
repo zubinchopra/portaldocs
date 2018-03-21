@@ -46,13 +46,11 @@ Settings that are associated with a blade can be stored. Those settings need to 
 
 The process is as follows.
 
-
-
-1. Specify the settings in the PDL file using the `TemplateBlade.Settings` element.
+Specify the settings in the PDL file using the `TemplateBlade.Settings` element.
 
    {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Template/Template.pdl", "section": "templateBlade#settingsPDL"}
 
-1.  After the settings are declared, they should also be specified in the ViewModel, as in the following example.
+After the settings are declared, they should also be specified in the ViewModel, as in the following example.
 
 <!-- TODO:  Determine why the samples in this section are malformed from the GitHub perspective.  They do not format as sub-paragraphs for line  items, and they ruin the formatting for later items. -->
 
