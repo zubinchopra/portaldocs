@@ -1252,12 +1252,13 @@ The Setting List Blade provides a convenient way to display a list of settings f
     ```
 
 
-       
+ 
 ### Blade Settings
 
-One goal of the Azure Portal is to standardize key interaction patterns across resources, so that customers can learn them once and apply them everywhere. There a few setting items which are consistent across most resources. To make that process easier, the Framework will automatically add specific settings, but also allow extensions to opt in for any settings that the Framework does not automatically add. All the settings that are added by the Framework can always be opted out, by setting  the appropriate enabling option to `false`. 
+One goal of the Azure Portal is to standardize key interaction patterns across resources, so that customers can learn them once and apply them everywhere. There a few setting items which are consistent across most resources. To make that process easier, the Framework will automatically add specific settings, but also allow extensions to opt in for any settings that the Framework does not automatically add. All the settings that are added by the Framework can always be opted out, by setting the appropriate enabling option to `false`. 
 
 Only the following two settings are added automatically.
+
 * Tags and RBAC
 
 * Audit logs
@@ -1319,11 +1320,15 @@ export class SettingListPartViewModel extends MsPortalFx.ViewModels.Parts.Settin
 }
 ```
 
-To test the coordination, use the following feature flags, depending on the  settings your extension needs.  **NOTE**: The extension name is in lower case.
+To test the coordination, use the following feature flags, depending on the  settings your extension needs. 
 
-* ?<extensionName>_troubleshootsettingsenabled=true
-* ?<extensionName>_healthsettingsenabled=true
-* ?<extensionName>_requestsettingsenabled=true
+**NOTE**: The extension name is in lower case.
+
+* `?<extensionName>_troubleshootsettingsenabled=true`
+
+* `?<extensionName>_healthsettingsenabled=true`
+
+* `?<extensionName>_requestsettingsenabled=true`
 
 For example, the following query string would enable TroubleShooting and Support for an extension named `microsoft_azure_classic_compute`.
 
