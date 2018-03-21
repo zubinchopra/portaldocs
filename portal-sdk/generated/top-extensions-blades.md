@@ -484,7 +484,7 @@ Settings that are associated with a blade can be stored. Those settings need to 
 
 The process is as follows.
 
-1. Specify the settings in the PDL file using the `TemplateBlade.Settings` element.
+Specify the settings in the PDL file using the `TemplateBlade.Settings` element.
 
 ```xml
 
@@ -499,7 +499,7 @@ The process is as follows.
 
 ```
 
-2. After the settings are declared, they should also be specified in the ViewModel, as in the following example.
+After the settings are declared, they should also be specified in the ViewModel, as in the following example.
 
 ````typescript
 
@@ -510,9 +510,9 @@ public fontSettingValue = ko.observable<FontStyle>();
 
 ```
 
-3. Retrieve the settings by using the blade container.
+ Retrieve the settings by using the blade container.
 
-   ```typescript
+```typescript
 
 const configuration = container.activateConfiguration<Settings>();
 this.configureHotSpot = new HotSpotViewModel(container, {
@@ -541,9 +541,9 @@ this.configureHotSpot = new HotSpotViewModel(container, {
 
 ```
 
-1. Also send the settings to the `onInputsSet` method.
+Also send the settings to the `onInputsSet` method.
 
-   ```typescript
+```typescript
 
 public onInputsSet(inputs: Def.TemplateBladeWithSettingsViewModel.InputsContract, settings: Def.TemplateBladeWithSettingsViewModel.SettingsContract): MsPortalFx.Base.Promise {
     // Any changes to the  Configuration values (see 'updateValues' above) will cause 'onInputsSet' to be called with the
