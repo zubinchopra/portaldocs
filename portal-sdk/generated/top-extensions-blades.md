@@ -484,7 +484,7 @@ Settings that are associated with a blade can be stored. Those settings need to 
 
 The process is as follows.
 
-<!-- TODO:  Determine why the samples in this section are malformed from the GitHub perspective.  They do not format as sub-paragraphs for line  items, and they ruin the formatting for later items. -->
+
 
 Specify the settings in the PDL file using the `TemplateBlade.Settings` element.
 
@@ -504,7 +504,9 @@ Specify the settings in the PDL file using the `TemplateBlade.Settings` element.
 
 After the settings are declared, they should also be specified in the ViewModel, as in the following example.
 
-````typescript
+<!-- TODO:  Determine why the samples in this section are malformed from the GitHub perspective.  They do not format as sub-paragraphs for line  items, and they ruin the formatting for later items. -->
+
+```typescript
 
 // These are required by the portal presently.  Re: Part Settings, the Part below works exclusively in terms of
 // 'configuration.updateValues' to update settings values and 'onInputsSet(..., settings)' to receive settings values.
