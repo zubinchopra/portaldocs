@@ -23,16 +23,18 @@ The following sections discuss advanced topics in template blade development.
 <a name="advanced-topics-deep-linking"></a>
 ### Deep linking
 
-Deep linking is the feature that gives the user a URL that directly navigates to the new blade when a blade is opened and the portal URL is updated. By design, only certain blades can be deep linked. Blades that cannot be deep linked are the ones that cannot be opened independent of some parent blade or part, like blades that return values to a calling module. An example of blades that cannot be deep-linked is a Web page in the middle of an website's check-out experience.
+Deep linking is the feature that displays a URL that directly navigates to the new blade when a parent blade is opened and the Portal URL is updated. By design, only certain blades can be deep linked.
 
-One of the easiest ways to make your blade deep linkable is to mark your TemplateBlade as pinnable. For more information about pinning blades, see [#pinning-the-blade](#pinning-the-blade).
+Blades that cannot be deep linked are the ones that cannot be opened independent of a parent blade or part, like blades that return values to a calling module. An example of blades that cannot be deep-linked is a Web page in the middle of a website's check-out experience.
+
+One of the easiest ways to make a deep-linkable blade is to mark its  TemplateBlade as pinnable. For more information about pinning blades, see [#pinning-the-blade](#pinning-the-blade).
 
 <a name="advanced-topics-displaying-notifications"></a>
 ### Displaying notifications
 
-A status bar can be displayed at the top of a blade that contains both text and coloration that can be used to convey information and status to users. For example, when validation fails in a form, a red bar with a message can be displayed at the top of the blade. This area is clickable and can either open a new blade or an external url.
+A status bar can be displayed at the top of a blade that contains both text and coloration that convey informations and status to users. For example, when validation fails in a form, a red bar with a message is displayed at the top of the blade. This area is clickable and can open a new blade or an external URL.
 
-This capability is exposed through the **statusBar** member in the Blade base class by using `this.statusBar(myStatus)` in your blade view-model, as in the code located at `<dir>Client/V1/Blades/ContentState/ViewModels/ContentStateViewModels.ts`.
+This capability is exposed by adding the `statusBar` member to the Blade base class. Use `this.statusBar(myStatus)` in the `ViewModel`, as in the code located at `<dir>Client/V1/Blades/ContentState/ViewModels/ContentStateViewModels.ts`.
 It is also included in the following code.
 
 ```typescript
@@ -53,16 +55,16 @@ this.statusBar(statusBar);
 <a name="advanced-topics-pinning-the-blade"></a>
 ### Pinning the blade
 
-Blades can be marked as able to be pinned to the dashboard by setting `Pinnable="true"` in the TemplateBlade's PDL definition file. By default, blades are pinned as button parts to the dashboard. If a different represention should be used, it should be specified in the PDL file. 
+Blades can be marked as pinnable to the dashboard by setting `Pinnable="true"` in the TemplateBlade's PDL definition file. Blades are pinned as button parts to the dashboard by default. Any other represention should be specified in the PDL file. 
 
 <a name="advanced-topics-storing-settings"></a>
 ### Storing settings
 
-Settings that are associated with a blade can be stored. Those settings need to be declared both in the PDL definition file and in the ViewMmodel that is associated with the blade.  The code that demonstrates how to store settings is located at  `<dir>Client/V1/Blades/Template/Template.pdl` and  `<dir>Client/V1/Blades/Template/ViewModels/TemplateBladeViewModels.ts`.
+Settings that are associated with a blade can be stored. Those settings need to be declared both in the PDL definition file and in the `ViewMmodel` for the blade.  The code that demonstrates how to store settings is located at  `<dir>Client/V1/Blades/Template/Template.pdl` and  `<dir>Client/V1/Blades/Template/ViewModels/TemplateBladeViewModels.ts`.
 
 The process is as follows.
 
-Specify the settings in the PDL file using the `TemplateBlade.Settings` element.
+1. Specify the settings in the PDL file using the `TemplateBlade.Settings` element.
 
 ```xml
 
@@ -77,9 +79,9 @@ Specify the settings in the PDL file using the `TemplateBlade.Settings` element.
 
 ```
 
-After the settings are declared, they should also be specified in the ViewModel, as in the following example.
+2. After the settings are declared, they should also be specified in the ViewModel, as in the following example.
 
-```typescript
+````typescript
 
 // These are required by the portal presently.  Re: Part Settings, the Part below works exclusively in terms of
 // 'configuration.updateValues' to update settings values and 'onInputsSet(..., settings)' to receive settings values.
@@ -88,9 +90,9 @@ public fontSettingValue = ko.observable<FontStyle>();
 
 ```
 
-Retrieve the settings by using the blade container.
+3. Retrieve the settings by using the blade container.
 
-```typescript
+   ```typescript
 
 const configuration = container.activateConfiguration<Settings>();
 this.configureHotSpot = new HotSpotViewModel(container, {
@@ -119,9 +121,9 @@ this.configureHotSpot = new HotSpotViewModel(container, {
 
 ```
 
-Also send the settings to the `onInputsSet` method.
+1. Also send the settings to the `onInputsSet` method.
 
-```typescript
+   ```typescript
 
 public onInputsSet(inputs: Def.TemplateBladeWithSettingsViewModel.InputsContract, settings: Def.TemplateBladeWithSettingsViewModel.SettingsContract): MsPortalFx.Base.Promise {
     // Any changes to the  Configuration values (see 'updateValues' above) will cause 'onInputsSet' to be called with the
@@ -138,6 +140,8 @@ public onInputsSet(inputs: Def.TemplateBladeWithSettingsViewModel.InputsContract
 ### Displaying Unauthorized UI
 
 You can set the blade to Unauthorized UI using the `unauthorized` member of the blade container. The code that describes how to set the blade is located at  `<dir>/Client/V1/Blades/Unauthorized/ViewModels/UnauthorizedBladeViewModel.ts`.
+
+<!-- TODO: Determine why it is a container and not a class. -->
 
 The following code does this statically, but it can also be done dynamically, based  on a condition after data is loaded.
 
@@ -164,7 +168,7 @@ constructor(container: MsPortalFx.ViewModels.ContainerContract,
 
 You can set the blade to the Notice UI using `enableNotice` member of the blade container. The code that describes how to set the blade is located at  `<dir>Client/V1/Blades/DynamicNotice/ViewModels/DynamicNoticeViewModels.ts`.
 
-Enabling the blade can be done statically with the constructor, or it can be done dynamically. In the following example, the blade is set to Notice UI if the **id** input parameter has a specific value.
+The blade can be enabled statically with the constructor, or it can be done dynamically. In the following example, the blade is set to the Notice UI if the **id** input parameter contains a specific value.
 
 ```typescript
 
