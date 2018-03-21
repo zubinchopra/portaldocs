@@ -1,10 +1,10 @@
 ## Menu Blade
 
-Menu blades are rendered as a menu on the left side of the screen. This blade gets combined by the Shell with the blade that its opened at its right. Each item that is referenced from the left menu is rendered using the same header as the blade menu, resulting in the two blades being displayed as one blade.  This is similar to the way that the resource menu blade operates.
+Menu blades are rendered as a menu on the left side of the screen. The Shell combines this blade with the blade that is immediately to its right. Each item that is referenced from the left menu is rendered using the same header as the menu blade, resulting in the two blades being displayed as one blade.  This is similar to the way that the resource menu blade operates.
 
 The process is as follows.
 
-1. Menu blade is displayed as a menu (list of items), where each item opens a blade when clicked
+1. The menu blade is displayed as a menu, or list of items that open blades when clicked
 1. The menu blade is rendered to the left of the screen
 1. The blades that are opened from the menu share the chrome with the menu blade 
 
@@ -12,10 +12,9 @@ The process is as follows.
 
 Menu blades are defined in the PDL file in the following code. The code is also located at `<dir>\Client/V1/Blades/MenuBlade/MenuBlade.pdl`.
 
-
 {"gitdown": "include-section",  "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/MenuBlade/MenuBlade.pdl", "section": "menuBlade#pdlDef"}
 
-The following code demonstrates how to define a menu blade ViewModel to open four different items.
+The following code demonstrates how to define a menu blade `ViewModel` to open four different items.
 
  {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/MenuBlade/ViewModels/SampleMenuBlade.ts", "section": "menuBlade#ctor"}
 
