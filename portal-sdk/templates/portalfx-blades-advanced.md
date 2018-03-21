@@ -46,17 +46,22 @@ Settings that are associated with a blade can be stored. Those settings need to 
 
 The process is as follows.
 
+<!-- TODO:  Determine why the samples in this section are malformed from the GitHub perspective.  They do not format as sub-paragraphs for line  items, and they ruin the formatting for later items. -->
+
 Specify the settings in the PDL file using the `TemplateBlade.Settings` element.
 
 {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Template/Template.pdl", "section": "templateBlade#settingsPDL"}
+
 
 After the settings are declared, they should also be specified in the ViewModel, as in the following example.
 
 `{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Template/ViewModels/TemplateBladeViewModels.ts", "section": "templateBlade#settingsVMDef"}
 
- Retrieve the settings by using the blade container.
+
+Retrieve the settings by using the blade container.
 
 {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/Template/ViewModels/TemplateBladeViewModels.ts", "section": "templateBlade#settingsVMUse"}
+
 
 Also send the settings to the `onInputsSet` method.
 
