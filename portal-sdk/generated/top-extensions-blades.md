@@ -486,7 +486,7 @@ The process is as follows.
 
 1. Specify the settings in the PDL file using the `TemplateBlade.Settings` element.
 
-   ```xml
+```xml
 
 <TemplateBlade Name="PdlTemplateBladeWithSettings"
                ViewModel="{ViewModel Name=TemplateBladeWithSettingsViewModel, Module=./Template/ViewModels/TemplateBladeViewModels}"
@@ -499,9 +499,9 @@ The process is as follows.
 
 ```
 
-1. After the settings are declared, they should also be specified in the ViewModel, as in the following example.
+2. After the settings are declared, they should also be specified in the ViewModel, as in the following example.
 
-   ````typescript
+````typescript
 
 // These are required by the portal presently.  Re: Part Settings, the Part below works exclusively in terms of
 // 'configuration.updateValues' to update settings values and 'onInputsSet(..., settings)' to receive settings values.
@@ -510,7 +510,7 @@ public fontSettingValue = ko.observable<FontStyle>();
 
 ```
 
-1. Retrieve the settings by using the blade container.
+3. Retrieve the settings by using the blade container.
 
    ```typescript
 
@@ -754,7 +754,7 @@ There are a few things to notice in the preceding code.
 
 You can view a working copy of the MenuBlade  in the Dogfood environment sample located at [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/PdlSampleMenuBlade/browserelated](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/PdlSampleMenuBlade/browserelated).
  
-
+    
 ## Blade Kinds
 
 Blade Kinds are a set of built-in blades that encapsulate common patterns. These implementations offer a consistent UI and are easily implemented, because they provide a simplified programming model with a closed UI.  When the Blade Kinds for an extension are updated, developers can use the updates and the layout without changing the rest of the extension implementations. For example, one type of blade kind, the Quick start, is depicted in the following image.
