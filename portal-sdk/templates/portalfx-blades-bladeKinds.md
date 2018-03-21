@@ -256,7 +256,7 @@ The Properties blade provides users a convenient way access the properties of th
 
 ### QuickStart Blade
 
-The QuickStart blade provides users a convenient way to learn how to use your service. 
+The QuickStart blade provides users a convenient way to learn how to use the service. 
 
 <!-- TODO: Determine whether the following sentence is advertising, or an actuality for services. -->
 
@@ -266,7 +266,7 @@ Every service should have a QuickStart Blade.
 
 Use the following steps to create a QuickStart Blade.
 
-1. The PDL to define a QuickStart Blade is located at     `<dir>\Client\V1\Blades\BladeKind\BladeKinds.pdl`.
+1. The PDL to define a QuickStart Blade is located at     `<dir>\Client\V1\Blades\BladeKind\BladeKinds.pdl`. It is also in the following code.
 
     ```xml
     <azurefx:QuickStartBlade Name="QuickStartBlade"
