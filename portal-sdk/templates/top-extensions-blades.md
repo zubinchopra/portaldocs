@@ -13,7 +13,7 @@
 
     {"gitdown": "include-file", "file": "../templates/portalfx-blades-settings.md"}
 
-gitdown": "include-file", "file": "../templates/portalfx-blades-appblades.md"}
+    {"gitdown": "include-file", "file": "../templates/portalfx-blades-appblades.md"}
 
 gitdown": "include-file", "file": "../templates/portalfx-blades-legacy.md"}
 
