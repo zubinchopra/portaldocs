@@ -3,11 +3,13 @@
 # Working with data
 
 
-    ## Overview
+    
+<a name="working-with-data-overview"></a>
+## Overview
 
-The Azure Portal UX provides unique data access challenges. Many blades and parts may be displayed at the same time, each of which instantiates a new `ViewModel` instance. Each `ViewModel` often needs access to the same or related data. To optimize for these interesting data-access patterns, extensions follow specific patterns that consist of  code organization and data management.
+The Azure Portal UX provides unique data access challenges. Many blades and parts may be displayed at the same time, each of which instantiates a new `ViewModel` instance. Each `ViewModel` often needs access to the same or related data. To optimize for these interesting data-access patterns, extensions follow specific patterns that consist of code organization and data management.
 
-The following sections discuss these  patterns and how to apply them to an extension.
+The following sections discuss these patterns and how to apply them to an extension.
 
 * **Code organization**
 
@@ -25,31 +27,29 @@ All of these data concepts are used to achieve the goals of loading and updating
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
-<a name="working-with-data-areas"></a>
+<a name="working-with-data-overview-areas"></a>
 ### Areas
 
-From the perspective of code organization, an area can be defined as a project-level folder. It is of great assistance when data operations are segmented within the extension.
+From the perspective of code organization, an area can be defined as a project-level folder. It is of great assistance when data operations are segmented within the extension. `Areas` are a scheme for organizing and partitioning the source code of the extension. This makes it easier for teams to develop an extension in parallel. Areas help categorize related blades and parts, and each area also maintains the data that is required by its blades and parts.
 
-`Areas` are a scheme for organizing and partitioning the source code of the extension. This makes it easier for teams to develop an extension in parallel. Areas help categorize related blades and parts, and each area also maintains the data that is required by its blades and parts.
-
-Every area within an extension gets a distinct `DataContext` singleton, and it loads/caches/updates the data of the model types necessary to support the area's blades and parts.
+Every area within an extension gets a distinct `DataContext` singleton, and it loads/caches/updates the data that is associated with the models that support the area's blades and parts.
 
 An area is defined in the extension by using the following steps.
 
-  1. Create a folder in the `Client\` directory of the project that contains the extension. The name of that folder is the name of the area.
+  1. Create a folder in the `Client\` directory of the project that contains the extension. The name of that folder is the name of the area, in addition to being the name of the `DataContext`.
 
-  1. In the root of that folder, create a `DataContext` named `<AreaName>Area.ts`, where `<AreaName>` is the name of the folder that was just created, as specified in [#developing-a-datacontext-for-an-area](#developing-a-datacontext-for-an-area). For example, the `DataContext` for the `Security` area in the sample is located at `\Client\Security\SecurityArea.ts`.  
+  1. In the root of that folder, create a file for the `DataContext` and name it `<AreaName>Area.ts`, where `<AreaName>` is the name of the folder that was just created, as specified in [#developing-a-datacontext-for-an-area](#developing-a-datacontext-for-an-area). For example, the `DataContext` for the `Security` area in the sample is located at `\Client\Security\SecurityArea.ts`.  
 
 A typical extension resembles the following image.
 
 ![alt-text](../media/portalfx-data-context/area.png "Extensions can host multiple areas")
 
-<a name="working-with-data-data-contexts"></a>
+<a name="working-with-data-overview-data-contexts"></a>
 ### Data contexts
 
-For each area in an extension, there is a singleton `DataContext` instance that supports access to shared data for the blades and parts implemented in that area. Access to shared data means data loading, caching, refreshing and updating. Whenever multiple blades and parts make use of common server data, the `DataContext` is an ideal place to locate data loading/updating logic for an extension [area](portalfx-extensions-glossary-data.md).
+For each area in an extension, there is a singleton `DataContext` instance that supports access to shared data for the blades and parts implemented in that area. Access to shared data means data loading, caching, refreshing and updating. Whenever multiple blades and parts make use of common server data, the `DataContext` is an ideal place to locate data logic for an extension [area](portalfx-extensions-glossary-data.md).
 
-When a blade or part `ViewModel` is instantiated, its constructor is sent a reference to the `DataContext` singleton instance for the associated extension area.  In the blade or part `ViewModel` constructor, the `ViewModel` accesses the data required by that blade or part, as in the code located at `<dir>/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/MasterViewModels.ts`.
+When a blade or part `ViewModel` is instantiated, its constructor is sent a reference to the `DataContext` singleton instance for the associated extension area.   The `ViewModel` accesses the data required by that blade or part in its constructor, as in the code located at `<dir>/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/MasterViewModels.ts`.  The code is also in the following example.
 
 ```typescript
 
@@ -65,99 +65,60 @@ constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: an
 
 The benefits of centralizing data access in a singleton `DataContext` include the following.
 
-* Caching and Sharing
+1. Caching and Sharing
 
-  The `DataContext` singleton instance will exist for the entire amount of time that the extension is loaded in the browser. Consequently, when a blade is opened, and therefore a new blade `ViewModel` is instantiated, data required by the new blade will often already be loaded and cached in the `DataContext`, as required by some previously opened blade or rendered part.
+   The `DataContext` singleton instance will exist for the entire amount of time that the extension is loaded in the browser. Consequently, when a blade is opened, and therefore a new blade `ViewModel` is instantiated, data required by the new blade may have previously been loaded and cached in the `DataContext`, because it was  required by some previously opened blade or rendered part.
   
-  Not only will this cached data be available immediately,  which optimizes rendering performance and improves perceived responsiveness, but also no new **AJAX** calls are necessary to load the data for the newly-opened blade, which reduces server load and Cost of Goods Sold (COGS).
+   This cached data is available immediately, which optimizes rendering performance and improves [perceived responsiveness](portalfx-extensions-glossary-data.md). Also, no new **AJAX** calls are necessary to load the data for the newly-opened blade, which reduces server load and Cost of Goods Sold (COGS).
 
-* Consistency
+1. Consistency
   
-  It is very common for multiple blades and parts to render the same data in levels of different detail, or with different presentation. Moreover, there are situations where such blades or parts are displayed on the screen at the same time, or separated in time only by a single user navigation. 
+   It is very common for multiple blades and parts to render the same data in levels of different detail, or with different presentation. Also, there are situations where such blades or parts are displayed on the screen simultaneously, or separated in time only by a single user navigation. 
 
-  In such cases, the user expects to see all the blades and parts depicting the exact same state of the user's data. An effective way to achieve this consistency is to load only a single copy of the data, which is what `DataContext` is designed to do.
+   In these cases, the user expects to see all the blades and parts that describe the exact same state of the data. Using a shared `DataContext`  effectively achieves this consistency by allowing all the blades to use the single copy of the data that it contains.
+  
+1. Fresh data
 
-* Fresh data
+   Users expect to see information that always reflects the current state of their data in the cloud. Another benefit of loading and caching data in a single location is that the cached data is regularly updated to accurately reflect the state of server data.
 
-  Users expect to see data that always reflects the current state of their data in the cloud, which is neither stale nor out-of-date. Another benefit of loading and caching data in a single location is that the cached data can be regularly updated to accurately reflect the state of server data. 
+   For more information on refreshing data, see [portalfx-data-refreshingdata.md](portalfx-data-refreshingdata.md).
 
-  For more information on refreshing data, see [portalfx-data-refreshingdata.md](portalfx-data-refreshingdata.md).
-
-<a name="working-with-data-data-caches"></a>
+<a name="working-with-data-overview-data-caches"></a>
 ### Data caches
  
-  The `DataCache` classes are a full-featured and convenient way to load and cache data required by blade and part `ViewModels`. The   `DataCache` class objects in the API are `QueryCache`, `EntityCache` and the `EditScopeCache`. For more information about  `DataCache` classes, see [portalfx-data-caching.md](portalfx-data-caching.md). 
+  The `DataCache` classes are a full-featured and convenient way to load and cache data required by blade and part `ViewModels`. The `DataCache` class objects in the API are `QueryCache`, `EntityCache` and the `EditScopeCache`. 
 
-* **CRUD methods**
+* QueryCache
 
-  The CRUD methods are Create, Replace, Update, and Delete. Commands for  blades and parts often use these methods to modify server data. These commands should be implemented in methods on the `DataContext` class, where each method can issue **AJAX** calls and reflect server changes in associated DataCaches.
+  Loads data of type `Array<T>` according to an extension-specified `TQuery` type. `QueryCache` is useful for  list-like views like Grid, List, Tree, or Chart. For more information about the `QueryCache`, see [portalfx-data-caching.md#querycache](portalfx-data-caching.md#querycache). 
+    
+* EntityCache
 
-* **QueryCache**
+  The `EntityCache` caches a single item, typically from the `QueryCache` object, as specified in [portalfx-data-caching.md#entitycache](portalfx-data-caching.md#entitycache).
 
-  Loads data of type `Array<T>` according to an extension-specified `TQuery` type. `QueryCache` is useful for loading data for list-like views like Grid, List, Tree, or Chart.
+* EditScopeCache
 
-The `DataCache` classes all share the same API. The usage pattern is as follows.
-
-1.  In a `DataContext`, the extension creates and configures `DataCache` instances, as specified in [portalfx-data-caching.md](portalfx-data-caching.md). Configuration includes the following.  
-
-    * How to load data when it is missing from the cache
-    * How to implicitly refresh cached data, to keep it consistent with server state
-
-     ```typescript
-
-this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataModels.WebsiteModel, number>({
-    entityTypeName: SamplesExtension.DataModels.WebsiteModelType,
-    sourceUri: MsPortalFx.Data.uriFormatter(Util.appendSessionId(DataShared.websiteByIdUri), true),
-    findCachedEntity: {
-        queryCache: this.websitesQuery,
-        entityMatchesId: (website, id) => {
-            return website.id() === id;
-        }
-    }
-});
-
-``` 
-
-1. In its constructor, each blade and part `ViewModel` creates a `DataView` with which to load and refresh data for the blade or part.
-
-    ```typescript
-
-this._websiteEntityView = dataContext.websiteEntities.createView(container);
-
-```
-
-1. When the blade or part ViewModel receives its parameters in the `onInputsSet` method, the ViewModel calls the  `dataView.fetch()` method to load data.
-
-```typescript
-
-/**
- * Invoked when the blade's inputs change
- */   
-public onInputsSet(inputs: Def.BrowseMasterListViewModel.InputsContract): MsPortalFx.Base.Promise {
-    return this._websitesQueryView.fetch({ runningStatus: this.runningStatus.value() });
-}
-
-```
+  The `EditScopeCache` class is less commonly used. It loads and manages instances of `EditScope`, which is a change-tracked, editable model for use in Forms, as specified in [portalfx-legacy-editscopes.md](portalfx-legacy-editscopes.md).
   
-For more information about employing these concepts, see [portalfx-data-masterdetailsbrowse.md](portalfx-data-masterdetailsbrowse.md).
+ * `DataCache` class methods
 
-<a name="working-with-data-data-views"></a>
+  The `DataCache` objects use the CRUD methods: Create, Replace, Update, and Delete. Commands for blades and parts often use these methods to modify server data. These commands are implemented in methods on the `DataContext` class, where each method can issue **AJAX** calls to the server and reflect data changes in associated DataCaches. For more information about sharnig  data across the parent and child blades, see  [portalfx-data-masterdetailsbrowse.md](portalfx-data-masterdetailsbrowse.md).
+
+<a name="working-with-data-overview-data-views"></a>
 ### Data views
 
-Memory management is very important in the Azure Portal, because overuse of memory by many different extensions may impact responsiveness.
+`DataCaches` in the `DataContext` of an `area` will exist in memory for as long as an extension is loaded, and consequently may support blades and parts that come and go as the user navigates in the Azure Portal.  Memory management becomes important, because memory overuse by many extensions or blades simultaneously can impact responsiveness. Consequently, each `DataCache` instance manages a set of [cache entries](portalfx-extensions-glossary-data.md), and the `DataCache` class includes  mechanisms to automatically manage the number of cache entries present at any given time. 
 
-Each `DataCache` instance manages a set of [cache entries](portalfx-extensions-glossary-data.md), and the `DataCache` includes automatic mechanisms to manage the number of cache entries present at any given time. This is important because `DataCaches` in the `DataContext` of an `area` will exist in memory for as long as an extension is loaded, and consequently may support blades and parts that come and go as the user navigates in the Azure Portal.  
+The data in the `DataCache`, and therefore the `DataContext`, is impacted by the needs of the `DataView` for the `ViewModel`. When a `ViewModel` calls the `fetch()` method for its `DataView`, the method implicitly forms a ref-count to a `DataCache` entry. This ref-count keeps the entry in the `DataCache` as long as the blade or part `ViewModel` has not been disposed by the extension.
 
-When a `ViewModel` calls the `fetch()` method for its `DataView`, this `fetch()` call implicitly forms a ref-count to a `DataCache` cache entry, thereby pinning the entry in the DataCache as long as the blade/part `ViewModel` has not been  disposed by the extension. When all blade or part `ViewModels` that hold ref-counts to the same cache entry are disposed indirectly by using via DataView,  the DataCache can elect to evict or discard the cache entry. In this way, the `DataCache` can manage its size automatically, without explicit extension code.
+The `DataCache` manages its size automatically, without explicit code in the extension source, by using the `DataView` to track the ref-counts to cache entries. When every blade or part `ViewModel` that holds a ref-count to a specific cache entry is disposed indirectly by using `DataView`, the `DataCache` can elect to discard the cache entry. 
 
-
-
-
-
-<a name="working-with-data-developing-a-datacontext-for-an-area"></a>
+<a name="working-with-data-overview-developing-a-datacontext-for-an-area"></a>
 ### Developing a DataContext for an area
 
-Typically, the `DataContext` associated with a particular area is instantiated from the `initialize()` method of `<dir>\Client\Program.ts`, which is the entry point of the extension.
+The `DataContext` class does not specify the use of any single FX base class or interface. In practice, the members of a `DataContext` class typically include [data caches](#data-caches) and [data views](#data-views).
+
+Typically, the `DataContext` associated with a particular area is instantiated from the `initialize()` method of `<dir>\Client\Program.ts`, which is the entry point of the extension, as in the following example.
 
 ```typescript
 
@@ -167,7 +128,7 @@ this.viewModelFactories.V1$MasterDetail().setDataContextFactory<typeof MasterDet
 
 ```
 
-There is a single `DataContext` class per area. That class is named `[AreaName]Area.ts`, as in the code located at  `<dir>\Client\V1\MasterDetail\MasterDetailArea.ts`.
+There is a single `DataContext` class per area. That class is named `<AreaName>Area.ts`, as in the code located at  `<dir>\Client\V1\MasterDetail\MasterDetailArea.ts` and in the following example.
 
 ```typescript
 
@@ -192,7 +153,7 @@ export class DataContext {
 
 ```
 
-The `DataContext` class does not specify the use of any single FX base class or interface. In practice, the members of a DataContext class typically include [data caches](#data-caches) and [data views](#data-views).
+
 
     gitdown": "include-file", "file": "../templates/portalfx-data-caching.md"}
 
@@ -214,7 +175,6 @@ The `DataContext` class does not specify the use of any single FX base class or 
 
 <a name="advanced-data-topics"></a>
 # Advanced data topics
-
 
     gitdown": "include-file", "file": "../templates/portalfx-data-atomization.md"}
 
@@ -284,13 +244,15 @@ See [Reflecting server data changes on the client](portalfx-data-configuringdata
 
 | Term                 | Meaning |
 | ---                  | --- |
-| area             |    |
+| area                 | A project-level folder that is used to organize and partition the source code by categorizing related blades and parts by their data requirements.  |
 | ARM | Azure Resource Manager | 
+| cache entries | | 
 | COGS |   Cost of Goods Sold |
-| CORS | | 
-| CRUD |   Create, Replace, Update, Delete |
+| CORS | Cross-origin resource sharing. A mechanism that defines a way in which a browser and server can interact to determine whether or not it is safe to allow the cross-origin requests to be served.  For example, restricted resources, like  fonts,  may be requested from domains outside the domain from other resources are served. It may use additional HTTP headers to allow users to gain permission to access selected resources from a server on a different origin. | 
+| CRUD | Create, Replace, Update, Delete |
 | JSON Web Token |  JSON-based token that asserts information between the server and the client.  For example, a JWT could assert that the client user has the claim "logged in as admin".  | 
 | JWT token | JSON Web Token |
 | lifetime | The amount of time an object exists in memory between instantiation and destruction.  It may be automatically destroyed by when a parent object is deallocated, or its existence may be managed by a lifetime manager object or a child lifetime manager object. |
 | polling | The process that determines which client-side data should be automatically refreshed. |
+| perceived responsiveness | Responsiveness that is immediately apparent to an average user. |
 | reactor | |
