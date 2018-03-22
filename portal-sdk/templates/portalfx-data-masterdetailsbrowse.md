@@ -54,7 +54,7 @@ For this scenario, the `ViewModel` for the master view's list of websites is loc
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#createView"} 
 
- 3. There are two controls on this blade, both of which use the view that was just created: a `grid` control and the `OptionGroup` control.
+ 3. There are two controls on this blade, both of which use the view that was just created: a `grid` control and the `OptionGroup` control. 
 
     1. The `grid` control displays the data from the `QueryCache`, as specified in  [#fetching-data-for-the-grid](#fetching-data-for-the-grid).
 
@@ -68,7 +68,7 @@ The observable `items` array of the view is sent to the grid constructor as the 
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#gridConstructor"}
 
-The `fetch()` command has not yet been issued on the QueryCache. When the command is issued, the view's `items` array will be observably updated, which populates the grid with the results. This occurs by calling the  `fetch()` method on the blade's `onInputsSet()`, which returns the promise shown in the following example.
+The `fetch()` command has not yet been issued on the `QueryCache`. When the command is issued, the view's `items` array will be observably updated, which populates the grid with the results. This occurs by calling the  `fetch()` method on the blade's `onInputsSet()`, which returns the promise shown in the following example.
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#onInputsSet"}
 
@@ -76,17 +76,23 @@ This will populate the `QueryCache` with items from the server and display them 
 
 #### The OptionGroup control 
 
-The  control is initialized, and the extension then subscribes to its value property, as in the following example.
+The `OptionGroup` control allows the user to select whether to display websites that are in a running state, websites in a stopped state or display both types of sites. This implies that the control may cause the extension to display different subsets of the data that is currently located in the `QueryCache`. The control may also change the data that is displayed in the grid. 
+
+<!-- TODO:  Determine whether the grid leaves data on the master view in a grayed-out state. -->
+
+The `OptionGroup` control is initialized, and the extension then subscribes to its value property, as in the following example.
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#optionGroupValueSubscription"}
 
-In the subscription, the extension performs the following actions.
+In the [subscription](portalfx-extensions-glossary-data.md), the extension performs the following actions.
 
 1. Put the grid in a loading mode. It will remain in this mode until all of the data is retrieved.
-1. Request the new data by calling the `fetch()` method on the data view with new parameters.
+
+1. Request the new data by calling the `fetch()` method on the `DataView` with new parameters.
+
 1. When the `fetch()` method completes, take the grid out of loading mode.
 
-There is no need to get the results of the fetch and replace the items in the grid because the grid's `items` array has been pointed to the `items` array of the view. The view will update its `items` array as soon as the fetch is complete.
+There is no need to get the results of the fetch and replace the items in the grid because the grid's `items` array has a reference to the `items` array of the view. The view will update its `items` array as soon as the fetch is complete.
 
 The rest of the code demonstrates that the grid has been configured to activate any of the websites when they are clicked. The `id` of the website that is activated is sent to the details child blade as an input.  For more information about the details child blade, see [#implementing-the-detail-view](#implementing-the-detail-view).
 
