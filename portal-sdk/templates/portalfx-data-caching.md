@@ -32,7 +32,7 @@ Use the following steps to create a blade or part that uses the `DataCache` clas
 
 3. When the blade or part `ViewModel` receives its parameters in the `onInputsSet` method, the `ViewModel` calls the  `dataView.fetch()` method to load data.
 
-   {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#onInputsSet"}
+{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#onInputsSet"}
   
 ### The QueryCache
 
