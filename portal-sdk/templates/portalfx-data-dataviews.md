@@ -2,7 +2,15 @@
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
+
+<!--TODO: Remove the following placeholder sentence when it is explained in more detail. -->
+
+Because this discussion includes AJAX, TypeScript, and template classes, it does not strictly specify an object-property-method model.
+
 The `QueryView` and `EntityView` cache objects both present data from the cache to the `ViewModel`, and provide reference counting. A `DataView` is created from the `createView` method of the cache object that was used, as in the example located at `<dir>Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\MasterViewModels.ts`. This example demonstrates a `SaveItemCommand` class that uses the binding between a part and a command. This code is also included in the following example.
+
+
+as in the `WebsiteQuery` example.  
 
 ```ts
 this._websitesQueryView = dataContext.masterDetailBrowseSample.websitesQuery.createView(container);
@@ -23,6 +31,13 @@ public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
 ```
 
 The `runningStatus` is a filter which will be applied to the query. This allows several views to be created over a single cache, each of which presents a potentially different data set.
+
+
+
+
+
+
+
 
 ### Observable map & filter
 

@@ -1,10 +1,11 @@
 
 # Working with data
 
-
     {"gitdown": "include-file", "file": "../templates/portalfx-data-overview.md"}
 
-    gitdown": "include-file", "file": "../templates/portalfx-data-caching.md"}
+    {"gitdown": "include-file", "file": "../templates/portalfx-data-caching.md"}
+
+    {"gitdown": "include-file", "file": "../templates/portalfx-data-dataviews.md"}
 
     gitdown": "include-file", "file": "../templates/portalfx-data-masterdetailsbrowse.md"}
 
@@ -12,7 +13,7 @@
 
     gitdown": "include-file", "file": "../templates/portalfx-data-loadingdata.md"}
 
-    gitdown": "include-file", "file": "../templates/portalfx-data-dataviews.md"}
+
 
     gitdown": "include-file", "file": "../templates/portalfx-data-projections.md"}
   
