@@ -20,9 +20,9 @@ Use the following steps to create a blade or part that uses the `DataCache` clas
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and `<dirParent>` is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
-1. In a `DataContext`, the extension creates and configures `DataCache` instances. Configuring the instance specifies how to load data when it is missing from the cache and how to implicitly refresh cached data, to keep it consistent with the server state. The following `WebsiteQuery` example includes a constructor for a Website extension that creates a data cache. The code is also located at `<dir>Client\V1\Data\MasterDetailBrowse\MasterDetailBrowseData.ts`.
+<!-- TODO:  Determine whether there is a better sample that illustrates the points in the content, specifically the load and refresh points. -->
 
-    <!-- TODO:  Determine whether there is a better sample that illustrates the points in the content, specifically the load and refresh points. -->
+1. In a `DataContext`, the extension creates and configures `DataCache` instances. Configuring the instance specifies how to load data when it is missing from the cache and how to implicitly refresh cached data, to keep it consistent with the server state. The following `WebsiteQuery` example includes a constructor for a Website extension that creates a data cache. The code is also located at `<dir>Client\V1\Data\MasterDetailBrowse\MasterDetailBrowseData.ts`.
 
      {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/MasterDetailBrowse/MasterDetailBrowseData.ts", "section": "data-overview#create-data-cache"} 
 
