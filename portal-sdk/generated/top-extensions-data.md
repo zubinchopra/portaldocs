@@ -154,7 +154,9 @@ export class DataContext {
 
 
 
-    ## The DataCache class
+    
+<a name="working-with-data-the-datacache-class"></a>
+## The DataCache class
 
 Multiple parts or services in an extension can rely on the same set of data. For queries, this may be a list of results, whereas for a details blade, it may be a single entity. In either case, it is critical to ensure that all parts that share a specific set of data perform the following actions.
 
@@ -169,7 +171,7 @@ The `DataCache` objects all share the same class within the API.   -->
   
 They are a full-featured way of loading and caching data used by blade and part `ViewModels`.  The `QueryCache` object queries for a collection of data, whereas the `EntityCache` object loads an individual entity. 
  
-<a name="working-with-data-overview-using-the-datacache-class"></a>
+<a name="working-with-data-the-datacache-class-using-the-datacache-class"></a>
 ### Using the DataCache class
 
 Use the following steps to create a blade or part that uses the `DataCache` class. 
@@ -311,15 +313,11 @@ The `EditScopeCache` class is less commonly used. It loads and manages instances
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
-
 <!--TODO: Remove the following placeholder sentence when it is explained in more detail. -->
 
-Because this discussion includes AJAX, TypeScript, and template classes, it does not strictly specify an object-property-method model.
+**NOTE**: Because this discussion includes AJAX, TypeScript, and template classes, it does not strictly specify an object-property-method model.
 
-The `QueryView` and `EntityView` cache objects both present data from the cache to the `ViewModel`, and provide reference counting. A `DataView` is created from the `createView` method of the cache object that was used, as in the example located at `<dir>Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\MasterViewModels.ts`. This example demonstrates a `SaveItemCommand` class that uses the binding between a part and a command. This code is also included in the following example.
-
-
-as in the `WebsiteQuery` example.  
+The `QueryView` and `EntityView` cache objects both present data from the cache to the `ViewModel`, and provide reference counting. A `DataView` is created from the `createView` method of the cache object that was used, as in the example located at `<dir>Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\MasterViewModels.ts`. This example demonstrates a `SaveItemCommand` class that uses the binding between a part and a command. This code is also included in the following `WebsiteQuery` example.
 
 ```ts
 this._websitesQueryView = dataContext.masterDetailBrowseSample.websitesQuery.createView(container);
@@ -439,7 +437,7 @@ See [Reflecting server data changes on the client](portalfx-data-configuringdata
 
    ## Frequently asked questions
 
-<a name="working-with-data-overview-"></a>
+<a name="working-with-data-the-datacache-class-"></a>
 ### 
 
 * * * 
