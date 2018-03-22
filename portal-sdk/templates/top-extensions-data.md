@@ -7,7 +7,7 @@
 
     {"gitdown": "include-file", "file": "../templates/portalfx-data-dataviews.md"}
 
-    gitdown": "include-file", "file": "../templates/portalfx-data-masterdetailsbrowse.md"}
+    {"gitdown": "include-file", "file": "../templates/portalfx-data-masterdetailsbrowse.md"}
 
     gitdown": "include-file", "file": "../templates/portalfx-data-lifetime.md"}
 
