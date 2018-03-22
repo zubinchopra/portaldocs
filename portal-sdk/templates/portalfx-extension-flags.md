@@ -1,3 +1,4 @@
+<!-- TODO: deprecate this document. It has been replaced by portalfx-extensions-flags.md   -->
 
 # Extension flags
 
@@ -108,15 +109,16 @@ This will make these feature flags available in client-code for all users.
 
 ## Shell feature flags
 The Fx team supports the following feature flags:
+
 | Feature | Notes |
 |---------|-------|
-| `clientOptimizations={true,false}` | Turns off bundling and minification of JavaScript to make debugging easier.  NOTE: This applies to both the portal and extensions source. |
 | `feature.autoenablemove=true` | Shows the "change" (resource move) link in Essentials for all resource types |
 | `feature.browsecuration={name}` | Switches the curation file used for the More Services menu, default favorites, and search results (available: default). [Submit an ibiza-browse partner request](http://aka.ms/new-ibiza-browse-request) for custom curation to support a specific scenario. |
 | `feature.browsecurationflags={a,b}` | Comma-delimited list of additional flags used to render Browse curation (available: appservice, aws, vms) |
-| `feature.canmodifyextensions=true` | See [Testing In Production](portalfx-testinprod.md) |
+| `feature.canmodifyextensions=true` | See [top-extensions-production-testing.md](top-extensions-production-testing.md) |
 | `feature.canmodifystamps=true` | See [Extension Stamps](portalfx-deployment.md#before-deploying-extension-2-extension-stamps) |
 | `feature.consoletelemetry=true` | Logs most telemetry events to the browser console |
+
 | `feature.customportal=false` | Overrides the ms.portal redirect when signing in to portal.azure.com |
 | `feature.disableextensions=true` | Disables all extensions (NOTE: Extensions must be enabled explicitly with this flag, including Hubs) |
 | `feature.feedback=false` | Disables the feedback pane |
@@ -128,6 +130,7 @@ The Fx team supports the following feature flags:
 | `feature.pov2compatibilitymode=false` | Disable compatibility mode for POv2 (when enabled) to run faster. |
 | `feature.relex={x}` | Comma-delimited list of extensions to load in Relex (NOTE: `*` will load all extensions in Relex) |
 | `feature.relexsinglecomm=true` | When run in conjunction with the feature.relex flag, runs the corresponding extensions in relex with a single web socket connection to relex for all extensions |
+
 | `feature.showbugreportlink=true|false` | Shows/hides the "Report bug" link in the top bar |
 | `feature.showrelexdialog=false` | Hides the relex dialog that is shown if performance is slow	|
 | `{extension-name}=true|false` | Enables/disables an extension. See [Enable/disable extensions](portalfx-deployment.md#before-deploying-extension-1-for-extensions-onboarding-ibiza-enable-disable-extensions). |
@@ -135,3 +138,4 @@ The Fx team supports the following feature flags:
 | `hubsextension_showserverevents=true` | Automatically show all error and warning events as notifications |
 | `microsoft_azure_marketplace_curation=???` | Uses a named curation |
 | `microsoft_azure_marketplace_itemhidekey=???` | Shows named items that are hidden in the Marketplace |
+
