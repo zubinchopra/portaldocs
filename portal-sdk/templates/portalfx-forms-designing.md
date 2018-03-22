@@ -21,22 +21,16 @@ To use a section, create a section ViewModel and bind it into the DOM in the bla
 
 The section's `style` property can be used to achieve other layouts. This includes table layouts that display controls in multiple rows and columns, as a list of tabs, or as a combination of layouts.
 
-In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK. Clicking on the following link will display a working copy of a basic Portal form.
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK. 
 
-[http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/formsallup](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/formsallup) 
+A working copy of a basic Portal form is located at [http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/formsallup](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/formsallup) .
 
 Click on 'Basic Create Form' to view an example of basic form creation. The code to create the section is located at  `<dir>\Client\V1\Forms\Samples\BasicCreate\ViewModels\Parts\FormsSampleBasicCreatePart.ts`.
 
-The following template binds the section into the DOM, and will autogenerate the layout for all of the child objects. 
+The template located at `<dir>\Client\V1\Forms\Samples\BasicCreate\Templates\FormSampleBasicCreate.html` binds the section into the DOM, and will autogenerate the layout for all of the child objects.  It is included in the following example.
 
-`<dir>\Client\V1\Forms\Samples\BasicCreate\Templates\FormSampleBasicCreate.html`
-
-<!--TODO:  Determine how to include live samples of code when the page is generated.  For example, 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Samples/BasicCreate/ViewModels/Parts/FormsSampleBasicCreatePart.ts", "section": "forms#section"}
-and 
-```
-{"gitdown": "include-file", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Samples/BasicCreate/Templates/FormSampleBasicCreate.html"}
-```
-At the present time, this is a link to elsewhere on the hard drive (the local repository) within the gitHub environment.
 
--->
+The html for the template is in the following code.
+
+{"gitdown": "include-file", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Samples/BasicCreate/Templates/FormSampleBasicCreate.html"}
