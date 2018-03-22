@@ -16,7 +16,7 @@ The server data is cached using one of the two cache objects, and then the exten
 * [Implementing the detail view](#implementing-the-detail-view)
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK. 
-
+     
 The code for this example is located at:
 `<dir>\Client\V1\MasterDetail\MasterDetailArea.ts`
 `<dir>\Client\V1\MasterDetail\MasterDetailBrowse\MasterDetailBrowse.pdl`
@@ -32,7 +32,7 @@ The Portal uses an `Area` to contain the cache and other data objects that are s
 
 Inside the folder, there is a **TypeScript** file that contains the `DataContext` class. Its name is a combination of the name of the area and the word 'Area'. The `DataContext` class is the class that will be sent to all the `ViewModels` associated with the area.
 
-For the example, the file is named  `MasterDetailArea.ts` and is located at `<dir>Client/V1/MasterDetail/MasterDetailArea.ts`. This code is also included in the following example.
+For the example, the file is named `MasterDetailArea.ts` and is located at `<dir>Client/V1/MasterDetail/MasterDetailArea.ts`. This code is also included in the following example.
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailArea.ts", "section": "data#websitesQueryCache"}
 
@@ -56,7 +56,7 @@ The master view is used to display the data in the caches. The advantage of usin
 
    The view is the `fetch()` method that is called to populate the `QueryCache`, and allows the items that are returned by the fetch call to be viewed. 
 
-   There are two controls on this blade, both of which use the view that was just created: a grid and the `OptionGroup` control.  
+   There are two controls on this blade, both of which use the view that was just created: a grid and the `OptionGroup` control.
 
     1. The grid displays the data in the `QueryCache`, as specified in [portalfx-data-dataviews.md](portalfx-data-dataviews.md) and in [#fetching-data-for-the-grid](#fetching-data-for-the-grid).
 
