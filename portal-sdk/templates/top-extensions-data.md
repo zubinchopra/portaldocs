@@ -24,7 +24,6 @@
 
 # Advanced data topics
 
-
     gitdown": "include-file", "file": "../templates/portalfx-data-atomization.md"}
 
    {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-data.md"}
