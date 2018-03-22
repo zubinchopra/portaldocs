@@ -51,7 +51,7 @@ this._websiteEntityView = dataContext.websiteEntities.createView(container);
 
 3. When the blade or part `ViewModel` receives its parameters in the `onInputsSet` method, the `ViewModel` calls the  `dataView.fetch()` method to load data.
 
-   ```typescript
+```typescript
 
 /**
  * Invoked when the blade's inputs change
@@ -62,6 +62,7 @@ public onInputsSet(inputs: Def.BrowseMasterListViewModel.InputsContract): MsPort
 
 ```
   
+<a name="the-datacache-class-the-querycache"></a>
 ### The QueryCache
 
 The `QueryCache` object is used to query for a collection of data or cache a list of items. It is useful for loading data for list-like views like Grid, List, Tree, or Chart. It takes a generic parameter for the type of object stored in its cache, and a type for the object that defines the query. It loads data of type `Array<T>` according to an extension-specified `TQuery` type.
@@ -106,6 +107,7 @@ public websitesQuery = new MsPortalFx.Data.QueryCache<DataModels.WebsiteModel, W
 });
 ```
 
+<a name="the-datacache-class-entitycache"></a>
 ### EntityCache
  
 The `EntityCache` object can be used to cache a single item.  It is useful for loading data into property views and single-record views. 
