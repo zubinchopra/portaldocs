@@ -22,4 +22,4 @@ Please use the following links for info on how to use the C# Portal Test Framewo
 
 {"gitdown": "include-file", "file": "../templates/portalfx-testing-contributing.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-csharp-test-framework-overview.md "}
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-csharp-test-framework-overview.md"}
