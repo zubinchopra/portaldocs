@@ -88,7 +88,7 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 # Debugging
 
 
-* [Testing in Production](portalfx-extensions-testing-in-production.md#testing-in-production)
+* [Testing in Production](top-extensions-production-testing.md#testing-in-production)
 
 
 <a name="other"></a>
