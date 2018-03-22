@@ -182,7 +182,7 @@ Use the following steps to create a blade or part that uses the `DataCache` clas
 
 1. In a `DataContext`, the extension creates and configures `DataCache` instances. Configuring the instance specifies how to load data when it is missing from the cache and how to implicitly refresh cached data, to keep it consistent with the server state. The following `WebsiteQuery` example includes a constructor for a Website extension that creates a data cache. The code is also located at `<dir>Client\V1\Data\MasterDetailBrowse\MasterDetailBrowseData.ts`.
 
-     ```typescript
+```typescript
 
 this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataModels.WebsiteModel, number>({
     entityTypeName: SamplesExtension.DataModels.WebsiteModelType,
@@ -218,6 +218,7 @@ public onInputsSet(inputs: Def.BrowseMasterListViewModel.InputsContract): MsPort
 
 ```
   
+<a name="working-with-data-the-datacache-class-the-querycache"></a>
 ### The QueryCache
 
 The `QueryCache` object is used to query for a collection of data or cache a list of items. It is useful for loading data for list-like views like Grid, List, Tree, or Chart. It takes a generic parameter for the type of object stored in its cache, and a type for the object that defines the query. It loads data of type `Array<T>` according to an extension-specified `TQuery` type.
@@ -262,6 +263,7 @@ public websitesQuery = new MsPortalFx.Data.QueryCache<DataModels.WebsiteModel, W
 });
 ```
 
+<a name="working-with-data-the-datacache-class-entitycache"></a>
 ### EntityCache
  
 The `EntityCache` object can be used to cache a single item.  It is useful for loading data into property views and single-record views. 
@@ -304,6 +306,7 @@ When an EntityCache is instantiated, three elements are specified.
 
 1. **findCachedEntity**: Optional. Allows the lookup of an entity from the `QueryCache`, instead of retrieving the data a second time from the server, which creates a second copy of the data on the client. This element also serves as a method, whose two properties are: 1) the `QueryCache` to use and 2) a function that, given an item from the QueryCache, will specify whether this is the object that was requested by the parameters to the `fetch()` call.
     
+<a name="working-with-data-the-datacache-class-editscopecache"></a>
 ### EditScopeCache
 
 The `EditScopeCache` class is less commonly used. It loads and manages instances of `EditScope`, which is a change-tracked, editable model for use in Forms, as specified in [portalfx-legacy-editscopes.md](portalfx-legacy-editscopes.md).  
@@ -346,7 +349,8 @@ The `runningStatus` is a filter which will be applied to the query. This allows 
 
 
 
-### Observable map & filter
+<a name="working-with-data-the-datacache-class-observable-map-filter"></a>
+### Observable map &amp; filter
 
 In many cases, the developer may want to shape the extension data to fit the view to which it will be bound. Some cases where this is useful are as follows.   
 
@@ -380,12 +384,14 @@ For more information about shaping and filtering your data, see [portalfx-data-p
 
     gitdown": "include-file", "file": "../templates/portalfx-data-typemetadata.md"}
 
+<a name="advanced-data-topics"></a>
 # Advanced data topics
 
     gitdown": "include-file", "file": "../templates/portalfx-data-atomization.md"}
 
    ## Best Practices 
 
+<a name="advanced-data-topics-use-querycache-and-entitycache"></a>
 ### Use QueryCache and EntityCache
 
 When performing data access from your view models, it may be tempting to make data calls directly from the `onInputsSet` function. By using the `QueryCache` and `EntityCache` objects from the `DataCache` class, you can control access to data through a single component. A single ref-counted cache can hold data across your entire extension.  This has the following benefits.
@@ -401,6 +407,7 @@ To learn more, visit [portalfx-data-caching.md#configuring-the-data-cache](porta
 
 
 
+<a name="advanced-data-topics-avoid-unnecessary-data-reloading"></a>
 ### Avoid unnecessary data reloading
 
 As users navigate through the Ibiza UX, they will frequently revisit often-used resources within a short period of time.
@@ -437,7 +444,7 @@ See [Reflecting server data changes on the client](portalfx-data-configuringdata
 
    ## Frequently asked questions
 
-<a name="working-with-data-the-datacache-class-"></a>
+<a name="advanced-data-topics-"></a>
 ### 
 
 * * * 

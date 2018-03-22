@@ -26,7 +26,7 @@ Use the following steps to create a blade or part that uses the `DataCache` clas
 
 1. In a `DataContext`, the extension creates and configures `DataCache` instances. Configuring the instance specifies how to load data when it is missing from the cache and how to implicitly refresh cached data, to keep it consistent with the server state. The following `WebsiteQuery` example includes a constructor for a Website extension that creates a data cache. The code is also located at `<dir>Client\V1\Data\MasterDetailBrowse\MasterDetailBrowseData.ts`.
 
-     ```typescript
+```typescript
 
 this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataModels.WebsiteModel, number>({
     entityTypeName: SamplesExtension.DataModels.WebsiteModelType,
@@ -62,6 +62,7 @@ public onInputsSet(inputs: Def.BrowseMasterListViewModel.InputsContract): MsPort
 
 ```
   
+<a name="the-datacache-class-the-querycache"></a>
 ### The QueryCache
 
 The `QueryCache` object is used to query for a collection of data or cache a list of items. It is useful for loading data for list-like views like Grid, List, Tree, or Chart. It takes a generic parameter for the type of object stored in its cache, and a type for the object that defines the query. It loads data of type `Array<T>` according to an extension-specified `TQuery` type.
@@ -106,6 +107,7 @@ public websitesQuery = new MsPortalFx.Data.QueryCache<DataModels.WebsiteModel, W
 });
 ```
 
+<a name="the-datacache-class-entitycache"></a>
 ### EntityCache
  
 The `EntityCache` object can be used to cache a single item.  It is useful for loading data into property views and single-record views. 
