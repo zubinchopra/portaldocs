@@ -3,6 +3,8 @@
 
     {"gitdown": "include-file", "file": "../templates/portalfx-data-overview.md"}
 
+    {"gitdown": "include-file", "file": "../templates/portalfx-data-modeling.md"}
+
     {"gitdown": "include-file", "file": "../templates/portalfx-data-caching.md"}
 
     {"gitdown": "include-file", "file": "../templates/portalfx-data-dataviews.md"}
