@@ -25,6 +25,37 @@ This means the extension has a consistent story.
 1. Track and monitor metrics in the Azure Dashboard
 
 Removing customizations from blades also provides more reliable blade performance.
-
     
 * * * 
+
+### Controls playground questions
+
+DESCRIPTION:  If I run into any problems using the controls playground or the new control `ViewModels`, who do I ask? 
+
+SOLUTION: For control `ViewModel` issues, please post on stack overflow.  For specific playground extension issues or general playground extension feedback, please reach out to ibizacontrols@microsoft.com.
+
+* * *
+
+### Adding code to the controls playground
+
+DESCRIPTION:  Why can’t I type code directly into the controls playground editor?
+
+SOLUTION: The controls playground does not execute code provided by the user due to security concerns.  We are looking into how we can mitigate that, but for now, the code snippet is for your reference only.
+
+* * *
+
+### Missing playground controls
+
+DESCRIPTION: Why aren’t all of the new controls in the playground?
+
+SOLUTION:  The code for the playground extension is generated from `Fx.d.ts`.  Some of the controls require additional configuration.
+
+* * *
+
+### Playground controls are not localized
+
+DESCRIPTION: Why is it that the controls playground does not provide localization?
+
+SOLUTION: Localization is done at build times, so none of the string inputs are localized.  Instead, the strings are sent  in non-localized forms so that copy/pasted code compiles and runs without requiring additional work.
+
+* * *
