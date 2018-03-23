@@ -13,9 +13,7 @@
 
     {"gitdown": "include-file", "file": "../templates/portalfx-data-loadingdata.md"}
 
-    gitdown": "include-file", "file": "../templates/portalfx-data-lifetime.md"}
-
-
+    {"gitdown": "include-file", "file": "../templates/portalfx-data-lifetime.md"}
 
     gitdown": "include-file", "file": "../templates/portalfx-data-projections.md"}
   
