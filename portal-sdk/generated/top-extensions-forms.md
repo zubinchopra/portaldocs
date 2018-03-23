@@ -14,7 +14,6 @@ The Azure SDK includes extensive support for displaying and managing user input.
   * Form reset
   * Persisting edits across journeys and browser sessions
  
-
 <a name="developing-forms-forms-topics"></a>
 ## Forms Topics
 
