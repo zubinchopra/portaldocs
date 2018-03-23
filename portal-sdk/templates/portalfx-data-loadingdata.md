@@ -5,10 +5,10 @@ Loading data is more easily accomplished with the following methods from the `Qu
 
 | Method | Purpose | Sample |
 | ------ | ------- | ------ |   
-| [supplyData](#the-supplyData-method) | Controlling AJAX calls | `<dir>\Client\V1\Data\SupplyData\SupplyData.ts` |
+| [supplyData](#the-supplydata-method) | Controlling AJAX calls | `<dir>\Client\V1\Data\SupplyData\SupplyData.ts` |
 | [Authenticating AJAX calls](#authenticating-ajax-calls) | Server-side authentication | `\Client\Data\Loader\LoaderSampleData.ts` |
 | [invokeAPI](#the-invokeapi-method) | Optimize CORS preflight requests | `<dir>\Client\V1\ResourceTypes\Engine\EngineData.ts` |
-| [findCachedEntity](#the-findcachedentity-method) | [Reusing loaded or cached data](#reusing-loaded-or-cached-data) | `<dir>\Client\V1\ResourceTypes\Engine\EngineData.ts` |
+| [findCachedEntity](#the-findcachedentity-method) | Reusing loaded or cached data | `<dir>\Client\V1\ResourceTypes\Engine\EngineData.ts` |
 | [cachedAjax](#the-cachedAjax-method) | [Ignore redundant data](#ignore-redundant-data)  |  `<dir>\Client\V1\Data\SupplyData\SupplyData.ts` |
 
 
@@ -87,11 +87,41 @@ The `invokeAPI` method optimizes CORS preflight requests. When [CORS](portalfx-e
 
 The `invokeApi` method uses a fixed endpoint and a different type of caching to reduce the number of calls to the server.  Consequently, the extension performance is optimized by using a single URI.
 
- The following examples describe the state of the code before and after using `invokeAPI`.
+#### The invokeApi optimization
+
+To apply the `invokeApi` optimization, perform the following two steps.
+
+1. Supply the `invokeApi` option directly to the `MsPortalFx.Base.Net.ajax({...})` option. This allows the extension to issue all requests to the fixed endpoint `https://management.azure.com/api/invoke`. The actual path and query string are actually sent as an `x-ms-path-query` header. At the `api/invoke` endpoint, ARM reconstructs the original URL on the server side and processes the request in its original form. 
+
+    <!-- TODO: Determine whether cache:false creates the unique timestamp, or the absence of cache:false creates the unique timestamp  -->
+
+1. Remove `cache:false`.  This avoids emitting a unique timestamp (i.e., &_=1447122511837) on every request, which invalidates the single-uri benefit that is provided by the `invokeApi`.
+
+The sample located at `<dir>\Client\V1\ResourceTypes\Engine\EngineData.ts`  uses the  `invokeApi: "api/invoke"` line of code to supply the invokeApi option directly to the `MsPortalFx.Base.Net.ajax({...})` option. This is similar to the following code.
+
+```ts
+    public resourceEntities = new MsPortalFx.Data.EntityCache<DataModels.RootResource, string>({
+        entityTypeName: ExtensionTemplate.DataModels.RootResourceType,
+        sourceUri: MsPortalFx.Data.uriFormatter(endpoint + "{id}?" + this._armVersion, false),
+        supplyData: (httpMethod: string, uri: string, headers?: StringMap<any>, data?: any, params?: any) => {
+            return MsPortalFx.Base.Net.ajax({
+                uri: uri,
+                type: httpMethod || "GET",
+                dataType: "json",
+                traditional: true,
+                headers: headers,
+                contentType: "application/json",
+                setAuthorizationHeader: true,
+                invokeApi: "api/invoke",
+                data: data
+            })
+        }
+    });    
+```
 
 #### Before using invokeApi
 
-The following code illustrates one preflight per request.
+ The following example describes the process before using `invokeAPI`. It  illustrates one preflight per request.
 
 ```ts
     public resourceEntities = new MsPortalFx.Data.EntityCache<DataModels.RootResource, string>({
@@ -154,41 +184,9 @@ Actual CORS request to resource
 
 The previous sample makes one preflight request for each `MsPortalFx.Base.Net.ajax` request. In the extreme case, if network latency were the dominant factor, this code results in 50% overhead.
 
-#### The invokeApi optimization
-
-To apply the `invokeApi` optimization, perform the following two steps.
-
-1. Supply the `invokeApi` option directly to the `MsPortalFx.Base.Net.ajax({...})` option. This allows the extension to issue all requests to the fixed endpoint `https://management.azure.com/api/invoke`. The actual path and query string are actually sent as an `x-ms-path-query` header. At the `api/invoke` endpoint, ARM reconstructs the original URL on the server side and processes the request in its original form. 
-
-    <!-- TODO: Determine whether cache:false creates the unique timestamp, or the absence of cache:false creates the unique timestamp  -->
-
-1. Remove `cache:false`.  This avoids emitting a unique timestamp (i.e., &_=1447122511837) on every request, which invalidates the single-uri benefit that is provided by the `invokeApi`.
-
-The sample located at `<dir>\Client\V1\ResourceTypes\Engine\EngineData.ts`  uses the  `invokeApi: "api/invoke"` line of code to supply the invokeApi option directly to the `MsPortalFx.Base.Net.ajax({...})` option. This is similar to the following code.
-
-```ts
-    public resourceEntities = new MsPortalFx.Data.EntityCache<DataModels.RootResource, string>({
-        entityTypeName: ExtensionTemplate.DataModels.RootResourceType,
-        sourceUri: MsPortalFx.Data.uriFormatter(endpoint + "{id}?" + this._armVersion, false),
-        supplyData: (httpMethod: string, uri: string, headers?: StringMap<any>, data?: any, params?: any) => {
-            return MsPortalFx.Base.Net.ajax({
-                uri: uri,
-                type: httpMethod || "GET",
-                dataType: "json",
-                traditional: true,
-                headers: headers,
-                contentType: "application/json",
-                setAuthorizationHeader: true,
-                invokeApi: "api/invoke",
-                data: data
-            })
-        }
-    });    
-```
-
 #### After applying the invokeApi optimization
 
-This code results in the following requests.
+ The following example describes the same process after using `invokeAPI`. It results in the following requests.
 
 ```
 Preflight 
@@ -264,21 +262,17 @@ this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataMode
 
 ```
 
-### Ignore redundant data 
+### The cachedAjax method
 
-If the call to `MsPortalFx.Base.Net.ajax()` is replaced with `MsPortalFx.Base.Net.cachedAjax()`, then a hash is generated on the server to provide change detection.  This not only saves network bandwidth, but it also saves client-side processing.
+The `MsPortalFx.Base.Net.cachedAjax()` method generates a sha256 hash on the server to provide change detection. If a query is not unique, or if the results are not unique, the server informs the client that it previously acquired the requested content. This uses less network bandwidth than the call to `MsPortalFx.Base.Net.ajax()` and reduces client-side processing.
 
-This capability is built into the SDK as a server-side filter that is activated when the header `x-ms-cache-tag` is present.  This value is a SHA256 hash of the return data plus the query information.  
+This capability is built into the SDK as a server-side filter that is activated when the header `x-ms-cache-tag` is present.  This value is a SHA256 hash of the return data plus the query information.
 
-**NOTE**: If the extension uses a server that does not utilize the SDK, then this filter may not be available by default and therefore the calculation may need to be implemented by the service provider.
+The hash calculation should ensure uniqueness of the query and result. The hash calculation is `x-ms-cache-tag = sha256(method + URL + query string + query body + result)`. If the `RequestHeader.x-ms-cache-tag` is equivalent to the  `ResponseHeader.x-ms-cache-tag` then do not return any data and instead return the status `304` `NOT MODIFIED`.
 
-The hash calculation should ensure uniqueness of the query and result, as in the following example.  
+**NOTE**: If the extension uses a server that does not utilize the SDK, then this filter may not be available and therefore the calculation may need to be implemented by the service provider.
 
-`x-ms-cache-tag = sha256(method + URL + query string + query body + result)`
-
-If the `RequestHeader.x-ms-cache-tag` is equivalent to the  `ResponseHeader.x-ms-cache-tag` then do not return any data and instead return the status `304` `NOT MODIFIED`.
-
-When using `cachedAjax()`, the return data is wrapped in the following interface.
+The following interface uses the `cachedAjax()` method.
 
 ```ts
 export interface AjaxCachedResult<T> {
@@ -302,7 +296,7 @@ The parameters are as follows.
 
 * **jqXHR**: The **AJAX** result object that contains more details for the call.
 
-The following example shows the same `supplyData` override using the `cachedAjax()` method.
+The following example demonstrates the `supplyData` override using the `cachedAjax()` method. When `response.modified` is equal to false, then no merge operation is performed.
 
 ```ts
 public websitesQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModels.WebsiteModel, any>({
@@ -329,7 +323,5 @@ public websitesQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModel
     }
 });
 ```
-
-When `response.modified` is equal to false, then no merge operation is performed.
 
 
