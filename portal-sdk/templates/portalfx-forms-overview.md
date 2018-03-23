@@ -1,6 +1,6 @@
 # Developing Forms
 
-The Azure SDK includes extensive support for displaying and managing user input. Forms are created using HTML templates, view models, and edit scopes. Developers can use standard HTML and **Knockout** to build their forms, in addition to the following items for which  the SDK framework includes support.
+The Azure SDK includes extensive support for displaying and managing user input. Forms are created using `HTML` templates, `ViewModels`, and `EditScopes`. Developers can use standard `HTML` and **Knockout** to build forms, in addition to the following items for which  the SDK Framework includes support.
 
   * Labels
   * Validation, as in the following image
@@ -13,7 +13,7 @@ The Azure SDK includes extensive support for displaying and managing user input.
 
 ## Forms Topics
 
-There are a number of subtopics in the forms topic.  Sample source code is included in subtopics that discuss the various Azure SDK API items. In the following tables, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to Dogfood copies of sample experiences are included in the tables as appropriate.    
+There are a number of subtopics in the forms topic.  Sample source code is included in subtopics that discuss the various Azure SDK API items.
 
 | API Topic             | Document              | 
 | --------------------- | --------------------- | 
