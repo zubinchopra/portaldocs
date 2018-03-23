@@ -1,6 +1,8 @@
+
 <a name="data-shaping"></a>
 ## Data shaping
-In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
+
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
 <a name="data-shaping-shaping-and-filtering-data"></a>
 ### Shaping and filtering data
@@ -28,15 +30,35 @@ interface Robot {
 
 Each robot will be entered into a grid with three columns. The `name` column and the `status` column are the same data as that of the model, but the third column is a combination of properties from the model object in the `QueryCache`.  The model and manufacturer observables are combined into a single property. The interface for the data to display in the grid is located at `<dir>\Client\V1\Data\Projection\ViewModels\MapAndMapIntoViewModels.ts`. This code is also included in the following example.
 
-<!--
-  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#robotDetailsModel"}
--->
+```typescript
+
+/**
+* Details for the shaped data that is bound to the grid.
+*/
+export interface RobotDetails {
+   name: KnockoutObservableBase<string>;
+   status: KnockoutObservableBase<string>;
+   modelAndMfg: KnockoutObservableBase<string>;
+}
+
+```
 
 An initial implementation of this might resemble the section named "data#buggyMapProjection". The logging portion of the code that includes  `projectionId` and `_logMapFunctionRunning()` are discussed in [](). 
 
-<!--
-gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#buggyMapProjection"}
--->
+```typescript
+
+var projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+    var projectionId = this._uuid++;
+    this._logMapFunctionRunning(projectionId, robot);
+    return <RobotDetails>{
+        name: ko.observable(robot.name()),
+        status: ko.observable(robot.status()),
+        modelAndMfg: ko.observable("{0}:{1}".format(robot.model(), robot.manufacturer()))
+    };
+});
+
+```
+
 
 Without knowing too much about map() this looks like a fairly reasonable implementation. We know `robot.name()` has the name of the robot and `robot.model()` and `robot.manufacturer()` will give us the model and manufacturer values. The `RobotDetails` interface that is used to model the data in the grid requires observables for the  `name` and `modelAndMfg` properties, therefore the strings that are received from the `QueryCache` model are put into a pair of observables.
 

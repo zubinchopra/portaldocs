@@ -64,9 +64,9 @@ Settings that are associated with a blade can be stored. Those settings need to 
 
 The process is as follows.
 
-1. Specify the settings in the PDL file using the `TemplateBlade.Settings` element.
+1 Specify the settings in the PDL file using the `TemplateBlade.Settings` element.
 
-   ```xml
+```xml
 
 <TemplateBlade Name="PdlTemplateBladeWithSettings"
                ViewModel="{ViewModel Name=TemplateBladeWithSettingsViewModel, Module=./Template/ViewModels/TemplateBladeViewModels}"
@@ -79,7 +79,7 @@ The process is as follows.
 
 ```
 
-1. After the settings are declared, they should also be specified in the ViewModel, as in the following example.
+2 After the settings are declared, they should also be specified in the ViewModel, as in the following example.
 
 <!-- TODO:  Determine why the samples in this section are malformed from the GitHub perspective.  They do not format as sub-paragraphs for line  items, and they ruin the formatting for later items. -->
 
@@ -94,9 +94,9 @@ public fontSettingValue = ko.observable<FontStyle>();
 
 <!-- TODO:  Determine why the previous sample seems to be malformed from the GitHub perspective.  They do not format as sub-paragraphs for line  items, and they ruin the formatting for later items. -->
 
-1. Retrieve the settings by using the blade container.
+3 Retrieve the settings by using the blade container.
 
-   ```typescript
+```typescript
 
 const configuration = container.activateConfiguration<Settings>();
 this.configureHotSpot = new HotSpotViewModel(container, {
@@ -125,9 +125,9 @@ this.configureHotSpot = new HotSpotViewModel(container, {
 
 ```
 
-1. Also send the settings to the `onInputsSet` method.
+4 Also send the settings to the `onInputsSet` method.
 
-   ```typescript
+```typescript
 
 public onInputsSet(inputs: Def.TemplateBladeWithSettingsViewModel.InputsContract, settings: Def.TemplateBladeWithSettingsViewModel.SettingsContract): MsPortalFx.Base.Promise {
     // Any changes to the  Configuration values (see 'updateValues' above) will cause 'onInputsSet' to be called with the
@@ -140,6 +140,7 @@ public onInputsSet(inputs: Def.TemplateBladeWithSettingsViewModel.InputsContract
 
 ```
 
+<a name="advanced-topics-displaying-unauthorized-ui"></a>
 ### Displaying Unauthorized UI
 
 You can set the blade to Unauthorized UI using the `unauthorized` member of the blade container. The code that describes how to set the blade is located at  `<dir>/Client/V1/Blades/Unauthorized/ViewModels/UnauthorizedBladeViewModel.ts`.
@@ -166,6 +167,7 @@ constructor(container: MsPortalFx.ViewModels.ContainerContract,
 
 ```
 
+<a name="advanced-topics-dynamically-displaying-notice-ui"></a>
 ### Dynamically displaying Notice UI
 
 You can set the blade to the Notice UI using `enableNotice` member of the blade container. The code that describes how to set the blade is located at  `<dir>Client/V1/Blades/DynamicNotice/ViewModels/DynamicNoticeViewModels.ts`.
