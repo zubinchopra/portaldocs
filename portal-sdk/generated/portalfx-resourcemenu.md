@@ -204,7 +204,7 @@ interface ResourceMenuConfig {
 
 The following options are available:
 
-| Option                        | Exit criter | Enabled by default | Scenario |
+| Option                        | Exit criteria | Enabled by default | Scenario |
 |-------------------------------|-------------|--------------------|----------|
 | `enableAlerts`                | No  | No | Create, view, and update alert rules. |
 | `enableAppInsights`           | No  | No | View Application Insights monitoring. |
@@ -242,6 +242,17 @@ public getMenuConfig(resourceInfo: MsPortalFx.Assets.ResourceInformation): MsPor
         }
     );
 }
+```
+
+##### Per cloud enabling and disabling settings
+
+If you need to enable/disable some of the opt in settings respective to different cloud environments you can make use of [extension feature flags](portalfx-extension-flags.md#feature-flags).
+By doing so you can set something like the below, and ensure to follow the extension feature flag documentation to enable or disable it per desired domain.
+
+```ts
+    options: {
+        enableSupportResourceHealth: MsPortalFx.isFeatureEnabled("someFlag"),
+    },
 ```
 
 Now define a group with a single item, the menu's group and item API is as follows.

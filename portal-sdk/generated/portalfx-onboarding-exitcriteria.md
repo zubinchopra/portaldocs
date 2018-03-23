@@ -1,10 +1,10 @@
 * [Exit criteria & quality metrics](#exit-criteria-quality-metrics)
     * [Performance (Stakeholder: [Sean Watson](mailto:ibiza-perf@microsoft.com))](#exit-criteria-quality-metrics-performance-stakeholder-sean-watson-mailto-ibiza-perf-microsoft-com)
     * [Reliability (Stakeholder: [Sean Watson](mailto:ibiza-reliability@microsoft.com))](#exit-criteria-quality-metrics-reliability-stakeholder-sean-watson-mailto-ibiza-reliability-microsoft-com)
-    * [Usability (Stakeholder: [Angela Moulden](ibiza-usability@microsoft.com))](#exit-criteria-quality-metrics-usability-stakeholder-angela-moulden-ibiza-usability-microsoft-com)
+    * [Usability (Stakeholder: [Mariah Jackson](ibiza-usability@microsoft.com))](#exit-criteria-quality-metrics-usability-stakeholder-mariah-jackson-ibiza-usability-microsoft-com)
     * [Accessibility (Stakeholder: [Paymon Parsadmehr](ibiza-accessibility@microsoft.com))](#exit-criteria-quality-metrics-accessibility-stakeholder-paymon-parsadmehr-ibiza-accessibility-microsoft-com)
     * [Create success (Stakeholder: [Paymon Parsadmehr](mailto:ibiza-create@microsoft.com))](#exit-criteria-quality-metrics-create-success-stakeholder-paymon-parsadmehr-mailto-ibiza-create-microsoft-com)
-    * [Resource move (Stakeholder: [Edison Park](mailto:ibiza-resourceMove@microsoft.com))](#exit-criteria-quality-metrics-resource-move-stakeholder-edison-park-mailto-ibiza-resourcemove-microsoft-com)
+    * [Resource move (Stakeholder: [Balbir Singh](mailto:ibiza-resourceMove@microsoft.com))](#exit-criteria-quality-metrics-resource-move-stakeholder-balbir-singh-mailto-ibiza-resourcemove-microsoft-com)
 * [Leveraging Ibiza's alerts to provide great customer experience](#leveraging-ibiza-s-alerts-to-provide-great-customer-experience)
 
 
@@ -94,8 +94,8 @@ See also:
 - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-reliability)
 
 
-<a name="exit-criteria-quality-metrics-usability-stakeholder-angela-moulden-ibiza-usability-microsoft-com"></a>
-### Usability (Stakeholder: <a href="ibiza-usability@microsoft.com">Angela Moulden</a>)
+<a name="exit-criteria-quality-metrics-usability-stakeholder-mariah-jackson-ibiza-usability-microsoft-com"></a>
+### Usability (Stakeholder: <a href="ibiza-usability@microsoft.com">Mariah Jackson</a>)
 
 Each service must define the critical, P0 scenarios for their business. These scenarios must be usability tested to
 ensure 80% success rate and an 80% experience score (based on a short survey). Usability must be measured by testing
@@ -136,8 +136,8 @@ See also:
 - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-create)
 
 
-<a name="exit-criteria-quality-metrics-resource-move-stakeholder-edison-park-mailto-ibiza-resourcemove-microsoft-com"></a>
-### Resource move (Stakeholder: <a href="mailto:ibiza-resourceMove@microsoft.com">Edison Park</a>)
+<a name="exit-criteria-quality-metrics-resource-move-stakeholder-balbir-singh-mailto-ibiza-resourcemove-microsoft-com"></a>
+### Resource move (Stakeholder: <a href="mailto:ibiza-resourceMove@microsoft.com">Balbir Singh</a>)
 
 ARM-based services must allow customers to move resources between subscriptions and resource groups.
 

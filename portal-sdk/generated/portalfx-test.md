@@ -153,7 +153,7 @@ portalAuth.SignInAndSkipPostValidation(userName: "", /** The account login to us
 
 ```
 
-Please note that multi factor authentication (MFA) is not supported, you must use an account that does not require MFA.  If you are part of the Microsoft Azure organization please see (Azure Security Guidelines)[https://microsoft.sharepoint.com/teams/azure2fa/SitePages/FAQ%20on%20Use%20of%20MSA%20on%20Azure%20Subsriptions.aspx] for details on how to request an exception for an MSA/OrgID account.  You can not use a service account to login to the Azure Portal.
+Please note that multi factor authentication (MFA) is not supported, you must use an account that does not require MFA.  If you are part of the Microsoft Azure organization please see [Azure Security Guidelines](https://microsoft.sharepoint.com/teams/azure2fa/SitePages/FAQ%20on%20Use%20of%20MSA%20on%20Azure%20Subsriptions.aspx) for details on how to request an exception for an MSA/OrgID account.  You can not use a service account to login to the Azure Portal.
 
 <a name="c-portal-test-framework-c-test-framework-overview-side-loading-an-extension-via-test-framework"></a>
 ### Side Loading An Extension via Test Framework
@@ -195,7 +195,7 @@ webDriver.Dispose();
 <a name="c-portal-test-framework-c-test-framework-overview-managing-authentication-credentials-unsupported"></a>
 ### Managing authentication credentials (unsupported)
 While the test framework does not provide any support for managing login credentials, there are some recommendations:
-1.  If you are in the Azure org, please see (Azure Security guidelines)[https://microsoft.sharepoint.com/teams/azure2fa/SitePages/FAQ%20on%20Use%20of%20MSA%20on%20Azure%20Subsriptions.aspx]
+1.  If you are in the Azure org, please see [Azure Security guidelines](https://microsoft.sharepoint.com/teams/azure2fa/SitePages/FAQ%20on%20Use%20of%20MSA%20on%20Azure%20Subsriptions.aspx)
 1.  Do not store your credentials in the test code.
 1.  Do not check in your credentials into your repository.
 1.  Some possibilities for storing login credentials include:
@@ -275,6 +275,7 @@ namespace DocSampleTest
 
 
 ```
+
 
 
 <a name="c-portal-test-framework-testing-parts-and-blades"></a>

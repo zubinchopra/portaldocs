@@ -305,7 +305,7 @@ Now, why is this so?  It seems easier to do this in a single-step at the Blade-l
 [Controlling the loading indicator](portalfx-parts-revealContent.md) in Blades/Parts is the almost exactly the same for PDL and no-PDL Blades/Parts.  That is:  
 - An opaque loading indicator is shown as soon as the Blade/Part is displayed
 - The FX calls `onInitialize` (no-PDL) or `onInputsSet` (PDL) so the extension can render its Blade/Part UI
-- (Optionally) the extension can all `revealContent(...)` to show its UI, at which point a transparent/translucent loading indicator ("marching ants" at the top of Blade/Part) replaces the opaque loading indicator
+- (Optionally) the extension can call `revealContent(...)` to show its UI, at which point a transparent/translucent loading indicator ("marching ants" at the top of Blade/Part) replaces the opaque loading indicator
 - The extension resolves the Promise returned from `onInitialize` / `onInputsSet` and all loading indicators are removed.
 
 The only difference with no-PDL here is that `onInitialize` replaces `onInputsSet` as the entrypoint for Blade/Part initialization.  
