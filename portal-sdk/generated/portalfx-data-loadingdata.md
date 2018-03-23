@@ -6,24 +6,29 @@ Loading data is more easily accomplished with the following methods from the `Qu
 
 | Method | Purpose | Sample |
 | ------ | ------- | ------ |   
-| `supplyData` | [Controlling AJAX calls](#controlling-ajax-calls) | `<dir>\Client\V1\Data\SupplyData\SupplyData.ts` |
-| `invokeAPI`  | [Optimize CORS preflight requests](#optimize-cors-preflight-requests) | `<dir>\Client\V1\ResourceTypes\Engine\EngineData.ts` |
-| `findCachedEntity` | [Reusing loaded or cached data](#reusing-loaded-or-cached-data) | `<dir>\Client\V1\ResourceTypes\Engine\EngineData.ts` |
-| `cachedAjax()` | [Ignore redundant data](#ignore-redundant-data)  |  `<dir>\Client\V1\Data\SupplyData\SupplyData.ts` |
-| `DataCache` object | [Making authenticated AJAX calls](#making-authenticated-ajax-calls) | `\Client\Data\Loader\LoaderSampleData.ts` |
+| [supplyData](#the-supplyData-method) | Controlling AJAX calls | `<dir>\Client\V1\Data\SupplyData\SupplyData.ts` |
+| [Authenticating AJAX calls](#authenticating-ajax-calls) | Server-side authentication | `\Client\Data\Loader\LoaderSampleData.ts` |
+| [invokeAPI](#the-invokeapi-method) | Optimize CORS preflight requests | `<dir>\Client\V1\ResourceTypes\Engine\EngineData.ts` |
+| [findCachedEntity](#the-findcachedentity-method) | [Reusing loaded or cached data](#reusing-loaded-or-cached-data) | `<dir>\Client\V1\ResourceTypes\Engine\EngineData.ts` |
+| [cachedAjax](#the-cachedAjax-method) | [Ignore redundant data](#ignore-redundant-data)  |  `<dir>\Client\V1\Data\SupplyData\SupplyData.ts` |
 
-In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
+
+<!-- TODO: Locate LoaderSampleData.ts or its replacement. -->
+
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
 * * *
 
-<a name="loading-data-controlling-ajax-calls"></a>
-### Controlling AJAX calls
+<a name="loading-data-the-supplydata-method"></a>
+### The supplyData method
 
-In this case, the `QueryCache` is sent a `sourceUri` attribute which it uses to form a request. This request is sent by using  a `GET` method, with a default set of headers. In some cases, developers may wish to manually make the request.  This can be useful for some scenarios, including the following.
+The `supplyData` method is used to control AJAX calls. The extension sends a `sourceUri` attribute to the  `QueryCache` that it uses to form a request. This request is typically sent by using  a `GET` method, with a default set of headers. In some cases, developers may wish to manually make the request.  This is used in scenarios like the following.
 
 * The request needs to be a `POST` instead of `GET`
-* Custom HTTP headers should be sent with the request
-* The data needs to be processed on the client before placing it inside of the cache
+
+* Custom `HTTP` headers should be sent with the request
+
+* The data should be processed on the client before placing it inside of the cache
 
 The sample located at `<dir>\Client\V1\Data\SupplyData\SupplyData.ts`  overrides the code that makes the request by using the `supplyData` method. This code is also included in the following example.
 
@@ -55,18 +60,40 @@ public websitesQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModel
 });
 ```
 
-<a name="loading-data-optimize-cors-preflight-requests"></a>
-### Optimize CORS preflight requests
+<a name="loading-data-authenticating-ajax-calls"></a>
+### Authenticating AJAX calls
 
-The `invokeAPI` method is a great improvement to the preflight request process.
+For most services, developers will make Ajax calls from the client to the server. Often the server acts as a proxy, and makes another call to a server-side API which requires authentication. 
 
-When [CORS](portalfx-extensions-glossary.data.md) is used to call ARM directly from the extension, the browser actually makes two network calls for every one **AJAX** call in the client code.
+**NOTE**: One server-side API is ARM.
+
+When bootstrapping extensions, the portal will send a [JWT token](portalfx-extensions-glossary-data.md) to the extension. That same token can be included in the HTTP headers of a request to ARM, to provide end-to-end authentication. To make those authenticated calls, the Portal includes an API which performs Ajax requests, similar to the jQuery `$.ajax()` library named `MsPortalFx.Base.Net.ajax()`. If the extension uses a `DataCache` object,  this class is used by default. However, it can also be used independently, as in the example located at 
+<!-- TODO:  Determine whether LoaderSampleData.ts is still used or has been replaced.  It is no longer in <SDK>\\Extensions\SamplesExtension\Extension.  The closest match is  Client\V1\Data\SupplyData\Templates\SupplyDataInstructions.html -->
+`\Client\Data\Loader\LoaderSampleData.ts`.
+
+ This code is also included in the following example.
+
+```ts
+var promise = MsPortalFx.Base.Net.ajax({
+    uri: "/api/websites/list",
+    type: "GET",
+    dataType: "json",
+    cache: false,
+    contentType: "application/json",
+    data: JSON.stringify({ param: "value" })
+});
+```
+
+<a name="loading-data-the-invokeapi-method"></a>
+### The invokeAPI method
+
+The `invokeAPI` method optimizes CORS preflight requests. When [CORS](portalfx-extensions-glossary.data.md) is used to call ARM directly from the extension, the browser actually makes two network calls for every one **AJAX** call in the client code.
 
 The `invokeApi` method uses a fixed endpoint and a different type of caching to reduce the number of calls to the server.  Consequently, the extension performance is optimized by using a single URI.
 
  The following examples describe the state of the code before and after using `invokeAPI`.
 
-<a name="loading-data-optimize-cors-preflight-requests-before-using-invokeapi"></a>
+<a name="loading-data-the-invokeapi-method-before-using-invokeapi"></a>
 #### Before using invokeApi
 
 The following code illustrates one preflight per request.
@@ -92,7 +119,7 @@ The following code illustrates one preflight per request.
 
 ```
 
-This code results in one CORS preflight request for each unique uri.  For example, if the user were to browse to two separate resources `aresource` and `otherresource`, it would result in the following requests.
+This code results in one CORS preflight request for each unique uri.  For example, if the user were to browse to two separate resources named `aresource` and `otherresource`, it would result in the following requests.
 
 ```
 Preflight 
@@ -130,20 +157,20 @@ Actual CORS request to resource
         ...some otherresource data..
 ```
 
-This code makes one preflight request for each `MsPortalFx.Base.Net.ajax` request. In the extreme case, if network latency were the dominant factor, this code results in 50% overhead.
+The previous sample makes one preflight request for each `MsPortalFx.Base.Net.ajax` request. In the extreme case, if network latency were the dominant factor, this code results in 50% overhead.
 
-<a name="loading-data-optimize-cors-preflight-requests-after-applying-the-invokeapi-optimization"></a>
-#### After applying the invokeApi optimization
+<a name="loading-data-the-invokeapi-method-the-invokeapi-optimization"></a>
+#### The invokeApi optimization
 
 To apply the `invokeApi` optimization, perform the following two steps.
 
-1. Supply the invokeApi option directly to the `MsPortalFx.Base.Net.ajax({...})` option. This allows the extension to use the fixed endpoint `https://management.azure.com/api/invoke` to which to issue all the requests. The actual path and query string are actually sent as an `x-ms-path-query` header. At the `api/invoke` endpoint, ARM reconstructs the original URL on the server side and processes the request in its original form. 
+1. Supply the `invokeApi` option directly to the `MsPortalFx.Base.Net.ajax({...})` option. This allows the extension to issue all requests to the fixed endpoint `https://management.azure.com/api/invoke`. The actual path and query string are actually sent as an `x-ms-path-query` header. At the `api/invoke` endpoint, ARM reconstructs the original URL on the server side and processes the request in its original form. 
 
     <!-- TODO: Determine whether cache:false creates the unique timestamp, or the absence of cache:false creates the unique timestamp  -->
 
 1. Remove `cache:false`.  This avoids emitting a unique timestamp (i.e., &_=1447122511837) on every request, which invalidates the single-uri benefit that is provided by the `invokeApi`.
 
-The sample located at `<dir>\Client\V1\ResourceTypes\Engine\EngineData.ts`  uses the  `invokeApi: "api/invoke"` line of code to supply the invokeApi option directly to the `MsPortalFx.Base.Net.ajax({...})` option. This is similar to the following code, which  also demonstrates the application of this optimization.
+The sample located at `<dir>\Client\V1\ResourceTypes\Engine\EngineData.ts`  uses the  `invokeApi: "api/invoke"` line of code to supply the invokeApi option directly to the `MsPortalFx.Base.Net.ajax({...})` option. This is similar to the following code.
 
 ```ts
     public resourceEntities = new MsPortalFx.Data.EntityCache<DataModels.RootResource, string>({
@@ -164,6 +191,9 @@ The sample located at `<dir>\Client\V1\ResourceTypes\Engine\EngineData.ts`  uses
         }
     });    
 ```
+
+<a name="loading-data-the-invokeapi-method-after-applying-the-invokeapi-optimization"></a>
+#### After applying the invokeApi optimization
 
 This code results in the following requests.
 
@@ -205,7 +235,7 @@ Actual Ajax Request
 
 * The preflight request is cached for an hour.
 * The request is always for a single resource named `https://management.azure.com/api/invoke`. All requests now go through this single endpoint, therefore a single preflight request is used for all subsequent requests.
-* The `x-ms-path-query` preserves the request for the original path segments, the query string and the hash from the query cache.
+* The `x-ms-path-query` preserves the request for the original path segments, the query string, and the hash from the query cache.
 
 Within the Portal implementation itself, this optimization has been applied to the Hubs extension.
 
@@ -213,12 +243,20 @@ Within the Portal implementation itself, this optimization has been applied to t
 
 The Azure team observed about 15% gains for the scenarios tested, which were  resources and resource-groups data loads with normal network latency. The benefits should be greater as latencies increase.
 
-<a name="loading-data-reusing-loaded-or-cached-data"></a>
-### Reusing loaded or cached data
+<a name="loading-data-the-findcachedentity-method"></a>
+### The findCachedEntity method
 
-Browsing resources is a very common activity in the Portal.  Columns in the resource list should be loaded using a `QueryCache<TEntity, ...>`.  When the user activates a resource list item, the details that are displayed in the resource blade should be loaded using an `EntityCache<TEntity, ...>`, where `TEntity` is often shared between the two data caches.
+The `findCachedEntity` option is used to locate data that was previously loaded in a  `QueryCache`, or that was nested in an  `EntityCache`.  The entity can be identified by the `TEntity` attribute that is in both caches. The `findCachedEntity` option  is preferred over issuing an **AJAX** call to re-load the resource details model into an `EntityCache` object.
+  
+The `QueryCache` object, or resource list, contains a series of similar objects that are described by several attributes, or columns. Those columns should be loaded as entities from the `QueryCache` using the syntax `QueryCache<TEntity, ...>`.
 
-To display details of a resource, use the `findCachedEntity` option to locate an entity that was previously loaded in some other `QueryCache`, or that was nested in some other `EntityCache`. This is preferred instead of issuing an **AJAX** call to load the resource details model into `EntityCache`. The preferred method is in the following code.
+The `TEntity` attribute may have been sent to the view as a resource list, to give the user a series of information from which to select.
+
+When the user activates a resource list item, the `EntityCache` object is used to access a row of data from the `QueryCache`, where the resource list item is the `TEntity` attribute.
+
+The resource list item details that can be displayed in the resource blade should be loaded as entities from the `EntityCache` object, using the syntax `EntityCache<TEntity, ...>`, where `TEntity` is the same attribute as the one in the `QueryCache` data cache call and represents the resource list item that the user activated.
+
+An example of the  `findCachedEntity` option is in the following code.
 
 ```ts
 this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataModels.WebsiteModel, number>({
@@ -303,26 +341,4 @@ public websitesQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModel
 
 When `response.modified` is equal to false, then no merge operation is performed.
 
-<a name="loading-data-making-authenticated-ajax-calls"></a>
-### Making authenticated AJAX calls
 
-For most services, developers will make Ajax calls from the client to the server. Often the server acts as a proxy, and makes another call to a server-side API which requires authentication. 
-
-**NOTE**: One server-side API is ARM.
-
-When bootstrapping extensions, the portal will send a [JWT token](portalfx-extensions-glossary-data.md) to the extension. That same token can be included in the HTTP headers of a request to ARM, in order to provide end-to-end authentication. To help make those authenticated calls, the portal includes an API which performs Ajax requests, similar to the jQuery `$.ajax()` library named `MsPortalFx.Base.Net.ajax()`. If the extension uses a `DataCache` object,  this class is used by default. However, it can also be used independently, as in the example located at 
-<!-- TODO:  Determine whether LoaderSampleData.ts is still used or has been replaced.  It is no longer in <SDK>\\Extensions\SamplesExtension\Extension.  The closest match is  Client\V1\Data\SupplyData\Templates\SupplyDataInstructions.html -->
-`\Client\Data\Loader\LoaderSampleData.ts`.
-
- This code is also included in the following example.
-
-```ts
-var promise = MsPortalFx.Base.Net.ajax({
-    uri: "/api/websites/list",
-    type: "GET",
-    dataType: "json",
-    cache: false,
-    contentType: "application/json",
-    data: JSON.stringify({ param: "value" })
-});
-```
