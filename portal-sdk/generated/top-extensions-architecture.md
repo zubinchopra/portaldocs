@@ -12,7 +12,7 @@ With this system, a team develops a UI extension to plug into and extend the UI 
 
 [UI extension isolation](#ui-extension-isolation)
 
-[Projecting Blade/Part UI](#projecting-blade-part-ui)
+[Projecting Blade and Part UI](#projecting-blade-and-part-ui)
 
 [Secure per-service UI](#secure-per-service-ui)
 
@@ -20,7 +20,7 @@ With this system, a team develops a UI extension to plug into and extend the UI 
 
 [Blade and Part API versioning](#blade-and-part-api-versioning)
 
-[Common Portal UX -- Marketplace and Browse](#common-portal-ux----marketplace-and-browse)
+[Common Portal UX Marketplace and Browse](#common-portal-ux-marketplace-and-browse)
 
 * * * 
 
@@ -85,11 +85,11 @@ Because most UI is dynamic, like Forms that the user updates or like Grids/Lists
 <a name="azure-portal-a-composed-web-application-secure-per-service-ui"></a>
 ### Secure per-service UI
 
-The security model for UI extensions builds upon the standard [same-origin policy](portalfx-extensions-glossary-architecture.md) that supported by all browsers and is the basis for today's web applications.  A UI extension's homepage URL is typically located on an origin specific to that UI extension and its resource provider.  This HTML page can only issue HTTPS calls to its origin domain and any origins that allow [COR](portalfx-extensions-glossary-architecture.md) calls from the UI extension's origin.
+The security model for UI extensions builds upon the standard [same-origin policy](portalfx-extensions-glossary-architecture.md) that supported by all browsers and is the basis for today's web applications.  A UI extension's homepage URL is typically located on an origin specific to that UI extension and its Resource Provider.  This HTML page can only issue HTTPS calls to its origin domain and any origins that allow [CORS](portalfx-extensions-glossary-architecture.md) calls from the UI extension's origin.
 
 In practice, HTTPS calls from UI extensions are made from the client to load "model" data, and the HTTPS calls are typically directed to the following locations.
 
-* Using CORs, to the Azure Resource Manager (ARM) and/or to the service's Resource Provider (RP);
+* Using CORs, to the Azure Resource Manager (ARM) and/or to the service's Resource Provider (RP)
 
 * Less common, not recommended -- Using same-origin, to HTTP endpoints that are  extension controllers that are  dedicated to the operation of the UI extension.
 
@@ -172,7 +172,7 @@ With this, extensions preserve the flexibility to evolve their sets of Blades an
 Additionally, the Ibiza SDK contains APIs that allow for the wholesale replacement of one Blade or Part with new equivalent Blades/Parts.  It also has APIs that allow for the safe migration of Blades and Part between UI extensions, for example, when responsibilities for specific UIs transfer between teams.
 
 <a name="azure-portal-a-composed-web-application-common-portal-ux-marketplace-and-browse"></a>
-### Common Portal UX -- Marketplace and Browse
+### Common Portal UX Marketplace and Browse
 
 Beyond Blades and Parts, UI extensions can benefit from other UI integration with the Azure Portal.
 <!--  mentioned briefly here. -->
@@ -199,14 +199,14 @@ This section contains a glossary of terms and acronyms that are used in this doc
 
 | Term                              | Meaning |
 | ---                               | --- |
-| AAD                               |  |
+| AAD                               | Azure Active Directory |
 | AMD                               | Asynchronous Module Definition |
 | API                               | Application Programmer Interface |
 | ARM                               | Azure Resource Manager | 
 | asynchronous module definition    | A JavaScript API that specifies a mechanism that defines code modules and their dependencies in order to load them asynchronously. |
 | chrome | The graphic control elements of a browser interface. These include elements like scrollbars, toolbar buttons,  the browser window frame, and other browser helper objects. | 
 | CLI                               | Command Line Interface |
-| COR | Cross-origin resource. A mechanism that defines a way in which a browser and server can interact to determine whether or not it is safe to allow the cross-origin requests to be served.  For example, restricted resources, like  fonts,  may be requested from domains outside the domain from other resources are served. It may use additional HTTP headers to allow users to gain permission to access selected resources from a server on a different origin. | 
+| CORS | Cross-origin resource sharing. A mechanism that defines a way in which a browser and server can interact to determine whether or not it is safe to allow the cross-origin requests to be served.  For example, restricted resources, like  fonts,  may be requested from domains outside the domain from other resources are served. It may use additional HTTP headers to allow users to gain permission to access selected resources from a server on a different origin. | 
 | extension                         | A Web application that was developed using the Azure Portal SDK and is made available to users through the Azure Portal. |
 | MVVM                 | Model-View-View-Model methodology.  A  method of software organization that separates the view from the data storage model, but depends on intelligence in the view or in the data objects so that there is no controller module that needs to process or transfer information.  The controller's function is handled instead by the device operating system or by the server that is communicating with the application. This methodology allows the application to multitask, call other functions that are located on the device, or switch between orientations without losing data or damaging the view. |
 | live tile                         | An object that displays at-a-glance information without opening an app. |

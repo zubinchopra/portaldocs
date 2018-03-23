@@ -182,7 +182,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | ---                       | --- |
 | .Net                      | A software framework developed by Microsoft that runs primarily on Microsoft Windows. | 
 | 1CS                       | One Compliance System  | 
-| AAD | | 
+| AAD                       | Azure Active Directory  | 
 | API                       | Application Programming Interface  |
 | ARM                       | Azure Resource Manager |
 | BladeFullReady            | The time it takes a blade to fully load. | 
@@ -207,7 +207,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | Marketplace               | See Marketplace Gallery. | 
 | Marketplace Gallery       | Also known as the Gallery or Marketplace Gallery. | 
 | MPAC                      | ms.portal.azure.com, the Azure Portal instance for internal Microsoft customers.  | 
-| P0 scenarios              | The most important user scenarios for an extension. Less important scenarios that are used for usability testing are categorized as P1, P2, or P3. |
+| P0 scenarios              | The most important user scenarios for an extension. They typically contain critical or showstoppers, without which the extension does not pass its acceptance criteria. Less important scenarios that are typically used for usability testing are categorized as P1, P2, or P3, although some testing can categorize scenarios as far as P10. |
 | PDE                       | Portal Definition Export | 
 | PHP                       | Recursive acronym for PHP: Hypertext Preprocessor. | 
 | PM                        | Program Manager | 
