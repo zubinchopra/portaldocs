@@ -10,7 +10,7 @@ Loading data is more easily accomplished with the following methods from the `Qu
 | [Authenticating AJAX calls](#authenticating-ajax-calls) | Server-side authentication | `\Client\Data\Loader\LoaderSampleData.ts` |
 | [invokeAPI](#the-invokeapi-method) | Optimize CORS preflight requests | `<dir>\Client\V1\ResourceTypes\Engine\EngineData.ts` |
 | [findCachedEntity](#the-findcachedentity-method) | Reusing loaded or cached data | `<dir>\Client\V1\ResourceTypes\Engine\EngineData.ts` |
-| [cachedAjax](#the-cachedAjax-method) | [Ignore redundant data](#ignore-redundant-data)  |  `<dir>\Client\V1\Data\SupplyData\SupplyData.ts` |
+| [cachedAjax](#the-cachedajax-method) | [Ignore redundant data](#ignore-redundant-data)  |  `<dir>\Client\V1\Data\SupplyData\SupplyData.ts` |
 
 
 <!-- TODO: Locate LoaderSampleData.ts or its replacement. -->
@@ -273,11 +273,11 @@ this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataMode
 <a name="loading-data-the-cachedajax-method"></a>
 ### The cachedAjax method
 
-The `MsPortalFx.Base.Net.cachedAjax()` method generates a sha256 hash on the server to provide change detection. If a query is not unique, or if the results are not unique, the server informs the client that it previously acquired the requested content. This uses less network bandwidth than the call to `MsPortalFx.Base.Net.ajax()` and reduces client-side processing.
+The `MsPortalFx.Base.Net.cachedAjax()` method generates a SHA256 hash on the server to provide change detection. If a query is not unique, or if the results are not unique, the server informs the client that it previously acquired the requested content. This methodology uses less network bandwidth than the call to `MsPortalFx.Base.Net.ajax()` and reduces client-side processing.
 
 This capability is built into the SDK as a server-side filter that is activated when the header `x-ms-cache-tag` is present.  This value is a SHA256 hash of the return data plus the query information.
 
-The hash calculation should ensure uniqueness of the query and result. The hash calculation is `x-ms-cache-tag = sha256(method + URL + query string + query body + result)`. If the `RequestHeader.x-ms-cache-tag` is equivalent to the  `ResponseHeader.x-ms-cache-tag` then do not return any data and instead return the status `304` `NOT MODIFIED`.
+The hash calculation should ensure uniqueness of the query and result. The hash calculation is `x-ms-cache-tag = sha256(method + URL + query string + query body + result)`. If the `RequestHeader.x-ms-cache-tag` is equivalent to the  `ResponseHeader.x-ms-cache-tag` then the extension should return the status `304` `NOT MODIFIED` without any data.
 
 **NOTE**: If the extension uses a server that does not utilize the SDK, then this filter may not be available and therefore the calculation may need to be implemented by the service provider.
 
@@ -305,7 +305,7 @@ The parameters are as follows.
 
 * **jqXHR**: The **AJAX** result object that contains more details for the call.
 
-The following example demonstrates the `supplyData` override using the `cachedAjax()` method. When `response.modified` is equal to false, then no merge operation is performed.
+The following example demonstrates the `supplyData` override using the `cachedAjax()` method. When `response.modified` is equal to `false`, then no merge operation is performed.
 
 ```ts
 public websitesQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModels.WebsiteModel, any>({
@@ -332,5 +332,3 @@ public websitesQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModel
     }
 });
 ```
-
-
