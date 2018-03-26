@@ -10,13 +10,12 @@
 <a name="data-shaping-understanding-observable-map-and-mapinto"></a>
 ### Understanding observable map() and mapInto()
 
-When working with data in a QueryCache, the most common operation is to reshape all the items in the cache into a format that is better for displaying in the UI. For example, **Knockout** observable versions of the `map()` and `mapInto()` methods can be used to accomplish this.
+When working with data in a `QueryCache`, the most common operation is to reshape all the items in the cache into a format that is better for displaying in the UI. For example, **Knockout** observable versions of the `map()` and `mapInto()` methods can be used to accomplish this.
 
  and some pitfalls to watch out for.
 
-In the following generated data model will accept a QueryCache of `Robot` objects as a parameter. 
+In the following generated data model will accept a `QueryCache` of `Robot` objects as a parameter. 
 
-<!-- this is generated so I couldn't put comments in to do an include-section -->
 ```ts
 interface Robot {
     name: KnockoutObservable<string>;
@@ -43,7 +42,7 @@ export interface RobotDetails {
 
 ```
 
-An initial implementation of this might resemble the section named "data#buggyMapProjection". The logging portion of the code that includes  `projectionId` and `_logMapFunctionRunning()` are discussed in [](). 
+An initial implementation of this might be somewhat buggy, but would resemble the following code. 
 
 ```typescript
 
@@ -59,15 +58,20 @@ var projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionL
 
 ```
 
+The `projectionId` and `_logMapFunctionRunning` methods are discussed in [](). 
 
-Without knowing too much about map() this looks like a fairly reasonable implementation. We know `robot.name()` has the name of the robot and `robot.model()` and `robot.manufacturer()` will give us the model and manufacturer values. The `RobotDetails` interface that is used to model the data in the grid requires observables for the  `name` and `modelAndMfg` properties, therefore the strings that are received from the `QueryCache` model are put into a pair of observables.
+Without knowing too much about map() this looks like a fairly reasonable implementation. 
+
+The `robot.name()` contains the name of the robot and `robot.model()` and `robot.manufacturer()` will give us the model and manufacturer values. 
+
+The `RobotDetails` interface that is used to model the data in the grid requires observables for the  `name` and `modelAndMfg` properties, therefore the strings that are received from the `QueryCache` model are put into a pair of observables.
 
 The reason that this implementation is somewhat buggy is the following.
  In the sample located at `<dir>\Client/V1/Data/Projection/Templates/UnderstandingMapAndMapInto.html`
 <!-- TODO: Locate working sample; this html -->
  When the blade opens up click on the __Buggy Map__ button to load the grid with a data projection code shown above. You should see something like the following show up in the __log stream__ control at the bottom of the blade:
-
 ```
+
 Creating buggy map() projection
 Creating a projection (projection id=4, robot=Bolt)
 Creating a projection (projection id=5, robot=Botly)
@@ -75,9 +79,9 @@ Creating a projection (projection id=6, robot=Spring)
 Creating a projection (projection id=7, robot=MetalHead)
 ```
 
-Let's talk about what's happening here. We've created the projection shown above and passed it to the grid. Since there are four items in the QueryCache the projection will run four times, once on each object. Everytime we run the mapping function on an item in the grid this sample creates a new ID for the resulting `RobotDetails` object. You can see the robot names and the ID we generated for the details object in the output above.
+We've created the projection shown above and passed it to the grid. Since there are four items in the QueryCache the projection will run four times, once on each object. Everytime we run the mapping function on an item in the grid this sample creates a new ID for the resulting `RobotDetails` object. You can see the robot names and the ID we generated for the details object in the output above.
 
-Activate the first time in the grid so the child blade opens then what we're going to do is simulate the QueryCache getting an updated property value (generally by polling the server) for that activated item. You can do this by clicking on the 'update status' command at the top of the blade. When you click you'll see that the status for the 'Bolt' robot was updated but the child blade closed. Why did it do that? It's still the same item in the QueryCache, we've just updated one of it's properties. And you can see the top row of the grid is still an item with a name of 'Bolt'. The answer can be found in the __log__ at the bottom of the blade:
+Activate the first time in the grid so the child blade opens then what we're going to do is simulate the QueryCache getting an updated property value (generally by polling the server) for that activated item. You can do this by clicking on the 'update status' command at the top of the blade. When you click you'll see that the status for the 'Bolt' robot was updated but the child blade closed. Why did it do that? It's still the same item in the QueryCache, we've just updated one of it's properties. And you can see the top row of the grid is still an item with a name of 'Bolt'. The answer can be found in the __log__ at the bottom of the blade.
 
 ```
 Updating robot status to 'processor' (robot='Bolt')
