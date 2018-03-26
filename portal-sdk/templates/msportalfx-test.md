@@ -9,11 +9,11 @@
 
 {"gitdown": "include-file", "file": "../templates/msportalfx-test-debugging.md"}
 
-{"gitdown": "include-file", "file": "../templates/msportalfx-test-localization.md"}
+{"gitdown": "include-file", "file": "../templates/msportalfx-test-scenarios-localization.md"}
 
-{"gitdown": "include-file", "file": "../templates/msportalfx-test-user-management.md"}
+{"gitdown": "include-file", "file": "../templates/msportalfx-test-scenarios-user-management.md"}
 
-{"gitdown": "include-file", "file": "../templates/msportalfx-test-configuration.md"}
+{"gitdown": "include-file", "file": "../templates/msportalfx-test-scenarios-configuration.md"}
 
 {"gitdown": "include-file", "file": "../templates/msportalfx-test-scenarios-create.md"}
 
