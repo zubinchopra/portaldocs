@@ -11,13 +11,13 @@
 
     {"gitdown": "include-file", "file": "../templates/portalfx-data-masterdetailsbrowse.md"}
 
-    gitdown": "include-file", "file": "../templates/portalfx-data-loadingdata.md"}
+    {"gitdown": "include-file", "file": "../templates/portalfx-data-loadingdata.md"}
 
-       {"gitdown": "include-file", "file": "../templates/portalfx-data-lifetime.md"}
+    {"gitdown": "include-file", "file": "../templates/portalfx-data-lifetime.md"}
 
     gitdown": "include-file", "file": "../templates/portalfx-data-projections.md"}
   
-    gitdown": "include-file", "file": "../templates/portalfx-data-refreshingdata.md"}
+    {"gitdown": "include-file", "file": "../templates/portalfx-data-refreshingdata.md"}
 
     gitdown": "include-file", "file": "../templates/portalfx-data-virtualizedgriddata.md"}
 

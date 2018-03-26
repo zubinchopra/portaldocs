@@ -7,35 +7,29 @@ In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  
 
 ### Polling
 
-In many scenarios, users expect to see their rendered data update implicitly when server data changes. The auto-refreshing of client-side data, also known as  'polling', can be accomplished by configuring the cache object to include 'polling', as in the example located at `<dir>\Client\V1\Hubs\RobotData.ts`. This code is also included in the following example.
+In many scenarios, users expect to see their rendered data updated implicitly when server data changes. The auto-refreshing of client-side data, also known as  'polling', can be accomplished by configuring the cache object to include it, as in the example located at `<dir>\Client\V1\Hubs\RobotData.ts`. This code is also included in the following example.
 
-<!-- {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Hubs/RobotData.ts", "section": "dataRefresh#poll"}
--->
-
-{"gitdown": "include-file", "file": "../Samples/SamplesExtension/Extension/Client/V1/Hubs/RobotData.ts"}
+{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Hubs/RobotData.ts", "section": "dataRefresh#poll"}
 
 Additionally, the extension can customize the polling interval by using the `pollingInterval` option. By default, the polling interval is 60 seconds. It can be customized to a minimum of 10 seconds. The minimum is enforced to avoid the server load that can result from inaccurate changes.  However, there have been instances when this 10-second minimum has caused negative customer impact because of the increased server load.
 
 ## Data merging
 
-For the Azure Portal UI to be responsive, it is important to avoid re-rendering entire blades and parts when data changes. Instead, it is better to make granular data changes so that FX controls and **Knockout** HTML templates can re-render small portions of the Blade/Part UI. In many cases when data is refreshed, the newly-loaded server data precisely matches previously-cached data, and therefore there is no need to re-render the UI.
+For the Azure Portal UI to be responsive, it is important to avoid re-rendering entire blades and parts when data changes. Instead, it is better to make granular data changes so that FX controls and **Knockout** HTML templates can re-render small portions of the blade or part UI. In many cases when data is refreshed, the newly-loaded server data precisely matches previously-cached data, and therefore there is no need to re-render the UI.
 
 When cache object data is refreshed - either implicitly as specified in [#the-implicit-refresh](#the-implicit-refresh),  or explicitly as specified in  [#the-explicit-refresh](#the-explicit-refresh) - the newly-loaded server data is added to previously-cached, client-side data through a process called "data merging". The data merging process is as follows.
 
 1. The newly-loaded server data is compared to previously-cached data
 1. Differences between newly-loaded and previously-cached data are detected. For instance, "property <X> on object <Y> changed value" and "the Nth item in array <Z> was removed".
-1. The differences are applied to the previously-cached data, via changes to Knockout observables.
+1. The differences are applied to the previously-cached data, via changes to **Knockout** observables.
 
 ### Data merging caveats 
 
 For many scenarios, data merging requires no configuration because it is an implementation detail of implicit and explicit refreshed. However, in some scenarios, there are gotcha's to look out for.
 
-#### Supply type metadata for arrays  
+#### Supply type metadata for arrays
 
-When detecting changes between items in an previously-loaded array and a newly-loaded array, the "data merging" algorithm requires some per-array configuration. Specifically, the data merging algorithm that is not configured does not know how to match items between the old and new arrays. Without configuration, the algorithm considers each previously-cached array item as 'removed' because it matches no item in the newly-loaded array. Consequently, every newly-loaded array item is considered to be added because  it matches no item in the previously-cached array. This effectively replaces the entire contenst of the cached array, even in those cases where the server data is unchanged. This is often the cause of performance problems in the extension, like your Blade/Part (poor responsiveness, hanging).
-, even while users - sadly - see no pixel-level UI problems.  
-<!-- Determine whether "" is an acceptable translation for "(poor responsiveness, hanging)". -->
-To proactively warn you of these potential performance problems, the "data merge" algorithm will log warnings to the console that resemble:
+When detecting changes between items in an previously-loaded array and a newly-loaded array, the data merging algorithm requires some per-array configuration. Specifically, the data-merging algorithm that is not configured does not know how to match items between the old and new arrays. Without configuration, the algorithm considers each previously-cached array item as removed because it does not match any item in the newly-loaded array. Consequently, every newly-loaded array item is considered to be added because it does not match any item in the previously-cached array. This effectively replaces the entire contents of the cached array, even in those cases where the server data is unchanged. This is often the cause of performance problems in the extension, like poor responsiveness or hanging, even the UI does not display any indication that an error has occurred. To proactively warn users of  potential performance problems, the data-merge algorithm logs warnings to the console that resemble the following.
 
 ```
 Base.Diagnostics.js:351 [Microsoft_Azure_FooBar]  18:55:54 
