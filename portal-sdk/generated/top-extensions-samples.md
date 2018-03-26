@@ -172,10 +172,10 @@ Samples are primarily categorized into forms, controls, and other factors.
 
 The following table contains blades  that display lists of controls.  These objects are not inherently controls.
 
-| Gallery | Document | Sample | Experience |
-| ------- | -------- | ------ | ---------- |
-| ControlIndexBlade |  | `<dir>\Client\V1\Controls\ControlIndexBlade\ViewModels\ControlIndexViewModel.ts` |  |
-| UnsupportedIndexBlade |  | `<dir>\Client\V1\Controls\UnsupportedIndexBlade\ViewModels\UnsupportedIndexViewModel.ts` |   |
+| Gallery               | Sample | Experience |
+| --------------------- | ------ | ---------- |
+| ControlIndexBlade     | `<dir>\Client\V1\Controls\ControlIndexBlade\ViewModels\ControlIndexViewModel.ts` | |
+| UnsupportedIndexBlade | `<dir>\Client\V1\Controls\UnsupportedIndexBlade\ViewModels\UnsupportedIndexViewModel.ts` | |
 
  ### Samples Commands
 

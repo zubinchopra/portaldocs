@@ -19,7 +19,7 @@ Portal development patterns or architectures that are recommended based on custo
 <a name="azure-portal-best-practices-best-practices-bulb-productivity-tip"></a>
 ### :bulb: Productivity Tip
 
-**Typescript** 2.0.3 should be installed on your machine. The   version can be verified by executing the following command:
+**Typescript** 2.0.3 should be installed on your machine. The version can be verified by executing the following command:
 
 ```bash
 $>tsc -version
@@ -31,7 +31,7 @@ Also, **Typescript** files should be set up to Compile on Save.
 <a name="azure-portal-best-practices-best-practices-performance"></a>
 ### Performance
 
-There are practices that can improve the performance of the extension.  For more information, see [portalfx-performance-bestpractices.md](portalfx-performance-bestpractices.md).
+There are practices that can improve the performance of the extension.  For more information, see [portalfx-extensions-bp-performance.md](portalfx-extensions-bp-performance.md).
 
 
 <a name="azure-portal-best-practices-best-practices-productivity-tip"></a>
@@ -104,7 +104,7 @@ See [Reflecting server data changes on the client](portalfx-data-configuringdata
 <a name="azure-portal-best-practices-best-practices"></a>
 ## Best Practices
    
-These best practices are in addition to the techniques that are documented in topics like [portalfx-extensions-testing-in-production.md](portalfx-extensions-testing-in-production.md).
+These best practices are in addition to the techniques that are documented in topics like [top-extensions-production-testing.md](top-extensions-production-testing.md).
 
 
 ***What is the best environment for sideloading during initial testing?***

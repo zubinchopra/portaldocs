@@ -9,7 +9,6 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | 1CS                       | One Compliance System  | 
 | API                       | Application Programming Interface  |
 | ARM                       | Azure Resource Manager |
-| BladeFullReady            | The time it takes a blade to fully load. | 
 | C+E                       | Cloud + Enterprise | 
 | CEC                       | Common Engineering Criteria  | 
 | CEGRM                     | CSS Release management team | 
@@ -18,7 +17,6 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | CSS                       | CSS Release management  | 
 | Definition file | A file that provides type information for JavaScript code that is inherently not statically typed. Definition files are a fundamental part of using existing JavaScript libraries in TypeScript, and the file suffix is always  *.d.ts. |
 | DEV                       | Development | 
-| DF                        | Dogfood | 
 | DNS                       | Domain Name Server  | 
 | DNS                       | Domain Name System  | 
 | first-party extension     | An Azure Portal extension that is developed by Microsoft |
@@ -29,22 +27,17 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | GB Standard               | GB stands for Guobiao, or “National Standard” in Chinese. The GB standard is the basis for testing products that require certification. | 
 | Marketplace               | See Marketplace Gallery. | 
 | Marketplace Gallery       | Also known as the Gallery or Marketplace Gallery. | 
-| MPAC                      | ms.portal.azure.com, the Azure Portal instance for internal Microsoft customers.  | 
-| P0 scenarios              | The most important user scenarios for an extension. Less important scenarios that are used for usability testing are categorized as P1, P2, or P3. |
-| PDE | | 
+| PDE                       | Portal Definition Export | 
 | PHP                       | Recursive acronym for PHP: Hypertext Preprocessor. | 
 | PM                        | Program Manager | 
 | PM                        | Project Manager | 
 | PROD                      | Production  | 
-| QE                        | Quality Essential | 
-| RDFE                      | Red Dog Front End | 
 | REST                      | Representational state transfer   | 
 | RP                        | Resource Provider  | 
 | RP schema                 | Resource Provider schema | 
 | RPC                       | Remote Procedure Call | 
 | SDK                       | Software Development Kit | 
 | SDL                       | Security Development Lifecycle |
-| Service 360               | An extension of Service Portfolio Management. It enhances a Service Portfolio by providing a single view of business service performance across an organization, for business processes such as Operation, Risk, Investment, and Finance. | 
 | single page application | A web application that dynamically rewrites displayed pages instead of providing entire new pages from a server. | 
 | SLA                       | Service Level Agreement | 
 | SSL                       | Secure Socket Layer  | 

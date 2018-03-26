@@ -8,7 +8,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | ---                       | --- |
 | .Net                      | A software framework developed by Microsoft that runs primarily on Microsoft Windows. | 
 | 1CS                       | One Compliance System  | 
-| AAD | | 
+| AAD                       | Azure Active Directory  | 
 | API                       | Application Programming Interface  |
 | ARM                       | Azure Resource Manager |
 | BladeFullReady            | The time it takes a blade to fully load. | 

@@ -14,6 +14,8 @@
 | JSON Web Token |  JSON-based token that asserts information between the server and the client.  For example, a JWT could assert that the client user has the claim "logged in as admin".  | 
 | JWT token | JSON Web Token |
 | lifetime | The amount of time an object exists in memory between instantiation and destruction.  It may be automatically destroyed by when a parent object is deallocated, or its existence may be managed by a lifetime manager object or a child lifetime manager object. |
+| lifetime object | An object that informs the `DataCache` when a specific `DataView` is currently being displayed on the screen. This allows the Shell to make performance adjustments. | 
 | polling | The process that determines which client-side data should be automatically refreshed. |
 | perceived responsiveness | Responsiveness that is immediately apparent to an average user. |
 | reactor | |
+| subscription | | 
