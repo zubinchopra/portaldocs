@@ -5,7 +5,7 @@
 
 While blade templates allow manual layout of controls as specific **DOM** elements, the generally recommended approach is to bind a section `viewModel` into the **DOM** and then add control `viewModels` to the `children` observable array of the section. For example, the following image contains two sections with varying numbers of child objects in their respective arrays.
 
-![alt-text](../media/portalfx-forms-designing.md/forms-sections.png "Form Section")
+![alt-text](../media/portalfx-forms/forms-sections.png "Form Section")
 
 The section `viewModel` provides default styling for spacing and margins and is an easy way to dynamically add and remove controls.
 
