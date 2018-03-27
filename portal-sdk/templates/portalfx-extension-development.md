@@ -5,14 +5,12 @@
 In the meantime, some gitdown includes are commented out for npm run docs.
 -->
 
-{"gitdown": "include-headings", "file": "../templates/top-extensions-architecture.md"}
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-extensions-samples-overview.md"}
 
 # Common scenarios
 {"gitdown": "include-headings", "file": "../templates/portalfx-browse.md"}
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-create.md"}
+    gitdown": "include-headings", "file": "../templates/portalfx-create.md"}
 
 # Basic Concepts  
 
@@ -33,8 +31,6 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 
 {"gitdown": "include-headings", "file": "../templates/portalfx-authentication.md"}
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-data.md"}
-
 {"gitdown": "include-headings", "file": "../templates/portalfx-parameter-collection-overview.md"}
 
 {"gitdown": "include-headings", "file": "../templates/portalfx-provisioning-arm.md"}
@@ -54,7 +50,6 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 # Debugging
 {"gitdown": "include-headings", "file": "../templates/portalfx-debugging.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-debugging-extension-load-failures.md"}
-{"gitdown": "include-headings", "file": "../templates/top-extensions-production-testing.md"}
 
 # Other
 {"gitdown": "include-headings", "file": "../templates/portalfx-binding-reference.md"}

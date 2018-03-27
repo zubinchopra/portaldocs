@@ -1,17 +1,11 @@
 
 ## Data shaping
 
-**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
-
 ### Shaping and filtering data
 
-### Understanding observable map() and mapInto()
+When working with data in a `QueryCache`, the most common operation is to reshape the items in the cache into a format that is better for displaying in the UI. The **Knockout** observable versions of the `map()` and `mapInto()` methods can be used to accomplish this.
 
-When working with data in a `QueryCache`, the most common operation is to reshape all the items in the cache into a format that is better for displaying in the UI. For example, **Knockout** observable versions of the `map()` and `mapInto()` methods can be used to accomplish this.
-
- and some pitfalls to watch out for.
-
-In the following generated data model will accept a `QueryCache` of `Robot` objects as a parameter. 
+The following generated data model will accept a `QueryCache` of `Robot` objects as a parameter. 
 
 ```ts
 interface Robot {
@@ -24,62 +18,63 @@ interface Robot {
 }
 ```
 
-Each robot will be entered into a grid with three columns. The `name` column and the `status` column are the same data as that of the model, but the third column is a combination of properties from the model object in the `QueryCache`.  The model and manufacturer observables are combined into a single property. The interface for the data to display in the grid is located at `<dir>\Client\V1\Data\Projection\ViewModels\MapAndMapIntoViewModels.ts`. This code is also included in the following example.
+Each robot is entered into a grid with three columns. The `name` column and the `status` column are the same data as that of the model, but the third column is a combination of the model and manufacturer properties from the model object in the `QueryCache`. The working copy is located at [https://aka.ms/portalfx/projection](https://aka.ms/portalfx/projection). 
+
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
+
+The interface for the shaped data to display in the grid is located at `<dir>\Client\V1\Data\Projection\ViewModels\MapAndMapIntoViewModels.ts`. This code is also included in the following example.
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#robotDetailsModel"}
 
-An initial implementation of this might be somewhat buggy, but would resemble the following code. 
+An initial implementation of data projection would resemble the following code.
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#buggyMapProjection"}
 
-The `projectionId` and `_logMapFunctionRunning` methods are discussed in [](). 
+The `robot.name()` contains the name of the robot, and `robot.model()` and `robot.manufacturer()` contain the model and manufacturer values. The `RobotDetails` interface that is used to model the data in the grid requires observables for the  `name` and `modelAndMfg` properties, therefore the strings that are received from the `QueryCache` model are put into a pair of observables. The `projectionId` and `_logMapFunctionRunning` methods are discussed in [](). 
 
-Without knowing too much about map() this looks like a fairly reasonable implementation. 
+The reason that this implementation is somewhat buggy is demonstrated in the sample located at `<dir>\Client/V1/Data/Projection/Templates/UnderstandingMapAndMapInto.html` and in the working copy located at [https://aka.ms/portalfx/projection](https://aka.ms/portalfx/projection).  The grid can be configured with the buttons in the middle of the screen.  When the grid is configured  with different types of projections, the commands at the top of the screen can be used to add/remove/modify items in the data source.  The output window displays the results of the functions that were are run.
 
-The `robot.name()` contains the name of the robot and `robot.model()` and `robot.manufacturer()` will give us the model and manufacturer values. 
+1. When the blade opens, click on the **Buggy Map** button to load the grid with the data projection that was previously discussed. You should see something like the following be displayed in the **log stream** control at the bottom of the blade.
 
-The `RobotDetails` interface that is used to model the data in the grid requires observables for the  `name` and `modelAndMfg` properties, therefore the strings that are received from the `QueryCache` model are put into a pair of observables.
+    ```
+    Creating buggy map() projection
+    Creating a projection (projection id=4, robot=Spring) 
+    Creating a projection (projection id=5, robot=MetalHead)
+    Creating a projection (projection id=6, robot=Botly)
+    Creating a projection (projection id=7, robot=Bolt)
+    ```
 
-The reason that this implementation is somewhat buggy is the following.
- In the sample located at `<dir>\Client/V1/Data/Projection/Templates/UnderstandingMapAndMapInto.html`
-<!-- TODO: Locate working sample; this html -->
- When the blade opens up click on the __Buggy Map__ button to load the grid with a data projection code shown above. You should see something like the following show up in the __log stream__ control at the bottom of the blade:
-```
+    The projection was created and sent to the grid. Because there are four items in the `QueryCache`, the projection will run four times, once on each object. Every time the mapping function runs on an item in the grid, this sample creates a new ID for the resulting `RobotDetails` object.
 
-Creating buggy map() projection
-Creating a projection (projection id=4, robot=Bolt)
-Creating a projection (projection id=5, robot=Botly)
-Creating a projection (projection id=6, robot=Spring)
-Creating a projection (projection id=7, robot=MetalHead)
-```
+1. Activate the first line in the grid by clicking on it so that the child blade opens. You may need to scroll to view the grid and the child blade to the right.
 
-We've created the projection shown above and passed it to the grid. Since there are four items in the QueryCache the projection will run four times, once on each object. Everytime we run the mapping function on an item in the grid this sample creates a new ID for the resulting `RobotDetails` object. You can see the robot names and the ID we generated for the details object in the output above.
+1. Click on the **update status** command at the top of the blade. This simulates the `QueryCache` getting an updated property value for that activated item, generally by polling the server. You will see that the status for the robot was updated but the child blade closed.  The activated item is still the same item in the `QueryCache`, because the name has not changed, but one of its properties has been updated.  The reason why this implementation is considered to be somewhat buggy is explained in the **log** at the bottom of the blade.
 
-Activate the first time in the grid so the child blade opens then what we're going to do is simulate the QueryCache getting an updated property value (generally by polling the server) for that activated item. You can do this by clicking on the 'update status' command at the top of the blade. When you click you'll see that the status for the 'Bolt' robot was updated but the child blade closed. Why did it do that? It's still the same item in the QueryCache, we've just updated one of it's properties. And you can see the top row of the grid is still an item with a name of 'Bolt'. The answer can be found in the __log__ at the bottom of the blade.
+    ```
+    Updating robot status to 'processor' (robot='Bolt')
+    Creating a projection (projection id=8, robot=Bolt)
+    ```
 
-```
-Updating robot status to 'processor' (robot='Bolt')
-Creating a projection (projection id=8, robot=Bolt)
-```
+    After the status observable updates the map's projection, the function runs and computes a different projected item. The object with projectionId === 4 is gone and has been replaced with a new item with projectionId === 8. This is why the child blade closed. The item that was in the `selectableSet's` `activatedItems` observable array no longer exists in the grid's item list, because it has been replaced by an item with the same `name` and `modelAndMfg` but a new `status`.
 
-You'll notice after the status observable updates the map's projection function runs and computes __a different projected item__. The object with projectionId === 4 is gone and has been replaced with a new item with projectionId === 8. This is the reason the child blade closed. The item that was in selectableSet's activatedItems observable array no longer exists in the grid's list of items. It has been replaced by an item with the same `name` and `modelAndMfg` but a new `status`.
+#### How map() works
 
-To understand why the map does this you need to understand a little how map() works. When the mapping function you supply runs knockout is watching to see what observable values are read and it then takes a dependency on those values (just like ko.pureComputed or ko.reactor). If any of those values change knockout knows the generated item is now out of date because the source for that item has changed. How does the map function generate an update-to-date projection? The only way it can, by running the mapping function again. This can be especially bad if you do something expensive in your mapping function.
+When the mapping function runs **Knockout**, it watches to see what observable values are read. Then it takes a dependency on those values, in a manner similar to  **ko.pureComputed** or **ko.reactor**. If any of those values change, **Knockout** is aware that the generated item is out-of-date because the source for that item has changed.
 
-The same thing happens if you update the model property of the top item (by clicking the 'update model' command):
+The `map()` function generates an update-to-date projection by running the mapping function again. This might not be performant  if the extension does something expensive in the mapping function. The same thing happens if the extension updates the model property of the top item by clicking the **update model** command.
 
 ```
 Updating model to 'into' (robot=Bolt)
 Creating a projection (projection id=10, robot=Bolt)
 ```
 
-Reason is the same. During our mapping function we wrote:
+Reason is the same. The following line of code is in the mapping function. 
 
 ```
 modelAndMfg: ko.observable("{0}:{1}".format(robot.model(), robot.manufacturer()))
 ```
 
-Which means the map projection will run again anytime robot.model() is observably updated. This causes the old item to be removed from the grid and an entirely new item to be added.
+This means that the map projection will run again anytime `robot.model()` is observably updated. This causes the old item to be removed from the grid and an entirely new item to be added.
 
 This obviously isn't what we want so how do we write projections that don't do this? In the case of a property we want to pass through straight from the data model to the grid model (like the `status` property in this example) you simply pass the observable. Don't get the current string value out of the observable and shove it into a different observable. So this line from our mapping function:
 
@@ -101,7 +96,7 @@ modelAndMfg: ko.pureComputed(() => {
 })
 ```
 
-This prevents the map() from taking a dependency on robot.model() and robot.manufacturer() because __the pureComputed() function takes the dependency on robot.model() and robot.manufacturer()__. Since the pureComputed() we created will update whenever model() or manufacturer() updates ko.map knows it will not need to rerun your mapping function to keep the projection object up-to-date when those observables change in the source model.
+This prevents the map() from taking a dependency on `robot.model()` and `robot.manufacturer()` because the `pureComputed()` function takes the dependency on `robot.model()` and `robot.manufacturer()`. Since the `pureComputed()` we created will update whenever `model()` or `manufacturer()` updates `ko.map` knows it will not need to rerun your mapping function to keep the projection object up-to-date when those observables change in the source model.
 
 A correct implemenation of the map above then looks like (again ignore uuid and the logging functions):
 
