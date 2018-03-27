@@ -6,13 +6,6 @@
 In the meantime, some gitdown includes are commented out for npm run docs.
 -->
 
-* [Azure Portal -- A composed web application](top-extensions-architecture.md#azure-portal-a-composed-web-application)
-
-
-* [Overview](portalfx-extensions-samples-overview.md#overview)
-* [Samples extension](portalfx-extensions-samples-overview.md#samples-extension)
-* [V1 versus V2](portalfx-extensions-samples-overview.md#v1-versus-v2)
-* [Sample Source Code](portalfx-extensions-samples-overview.md#sample-source-code)
 
 
 <a name="common-scenarios"></a>
@@ -20,9 +13,7 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 * [Building browse experiences](portalfx-browse.md#building-browse-experiences)
 
 
-* [Building create experiences](portalfx-create.md#building-create-experiences)
-* [Building custom create forms](portalfx-create.md#building-custom-create-forms)
-
+    gitdown": "include-headings", "file": "../templates/portalfx-create.md"}
 
 <a name="basic-concepts"></a>
 # Basic Concepts
@@ -48,8 +39,6 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 
 * [Calling ARM](portalfx-authentication.md#calling-arm)
 * [Calling alternate resources](portalfx-authentication.md#calling-alternate-resources)
-
-
 
 
 * [Introduction to Parameter Collection](portalfx-parameter-collection-overview.md#introduction-to-parameter-collection)
@@ -87,8 +76,6 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 <a name="debugging"></a>
 # Debugging
 
-
-* [Testing in Production](top-extensions-production-testing.md#testing-in-production)
 
 
 <a name="other"></a>

@@ -2,7 +2,7 @@
 <a name="the-datacache-class"></a>
 ## The DataCache class
 
-Multiple parts or services in an extension can rely on the same set of data. For queries, this may be a list of results, whereas for a details blade, it may be a single entity. In either case, it is critical to ensure that all parts that share a specific set of data perform the following actions.
+The cache objects are a collection of cache entries. In extensions that use multiple active blades and parts, a specific cache object might contain many cache entries.  This means that multiple parts or services can rely on the same set of data. For queries, this may be a list of results, whereas for a details blade, it may be a single entity. In either case, it is critical to ensure that all parts that share a specific set of data perform the following actions.
 
 1. Use a single HTTP request to access that data
 1. Read from a single cache of data in memory
