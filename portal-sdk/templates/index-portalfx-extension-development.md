@@ -2,14 +2,6 @@
 <!--When documents are deprecated,they are commented out of this index. -->
 # Development
 
-## Getting Started
-
-  {"gitdown": "include-headings", "file": "../templates/top-extensions-architecture.md"}
-
-  {"gitdown": "include-headings", "file": "../templates/top-onboarding.md"}
-
-  {"gitdown": "include-headings", "file": "../templates/portalfx-extensions-samples-overview.md"}
-
 ## Common scenarios
 
   {"gitdown": "include-headings", "file": "../templates/portalfx-browse.md"}
@@ -25,10 +17,6 @@
   {"gitdown": "include-headings", "file": "../templates/portalfx-parts.md"}
 
   {"gitdown": "include-headings", "file": "../templates/portalfx-blades.md"}
-
-  {"gitdown": "include-headings", "file": "../templates/top-extensions-forms.md"}
-
-  {"gitdown": "include-headings", "file": "../templates/portalfx-controls-overview.md"}
 
 ## Authentication
 
