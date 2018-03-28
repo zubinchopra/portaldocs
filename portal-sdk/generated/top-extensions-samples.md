@@ -14,7 +14,7 @@ First-party extension developers, i.e. Microsoft employees, have access to the D
 
 The samples extension provides an individual sample for each feature available in the framework, as described in the following image.
 
- ![alt-text](../media/top-extensions-samples/samples.png  "Samples Extension Solution")
+ ![alt-text](../media/top-extensions-samples/samples.png "Samples Extension Solution")
 
 After installing the Portal Framework SDK, the local instance of the Portal will open with the samples extension pre-registered.  You can open the `SamplesExtension` solution file to experiment with samples in the IDE.
 
@@ -432,4 +432,12 @@ SOLUTION:  Terminate IIS express processes in Task Manager and click F5 again.
 
 * * *
 
- {"gitdown": "include-file", "file": "../templates/portalfx-portalfx-editscopeless-forms.md
+ ## Glossary
+
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+| Term                  | Meaning | 
+| ---                   | --- |
+| AMD                   | |
+| EditScope             | An Azure SDK object that provides a standard way of managing edits over a collection of input fields, blades, and extensions. |
+| ParameterCollector    | A collection of Parameter and Parameter-derived objects that are used by data source controls in advanced data-binding scenarios. |
