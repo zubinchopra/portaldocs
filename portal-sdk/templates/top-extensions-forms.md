@@ -4,7 +4,7 @@
 
 {"gitdown": "include-file", "file": "../templates/portalfx-forms-designing.md"}
 
-    {"gitdown": "include-file", "file": "../templates/portalfx-forms-construction.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-forms-construction.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-forms-integrating-with-commands.md"}
 
