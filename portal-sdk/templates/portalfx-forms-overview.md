@@ -103,12 +103,13 @@ Some form-integrated controls are as follows.
 
 There are a number of subtopics in the forms topic.  Sample source code is included in subtopics that discuss the various Azure SDK API items.
 
-| API Topic             | Document              | 
-| --------------------- | --------------------- | 
-| Designing and Arranging the Form | [portalfx-forms-designing.md](portalfx-forms-designing.md)                 |  
-| Forms Construction        | [portalfx-forms-construction.md](portalfx-forms-construction.md)      |  
-| Integrating Forms with Commands          | [portalfx-forms-integrating-with-commands.md](portalfx-forms-integrating-with-commands.md)        | 
-| Form Field Validation       | [portalfx-forms-field-validation.md](portalfx-forms-field-validation.md)      |  
+| API Topic                        | Document                                                                                     | 
+| -------------------------------- | -------------------------------------------------------------------------------------------- | 
+| Designing and Arranging the Form | [portalfx-forms-designing.md](portalfx-forms-designing.md)                                   |  
+| Forms Construction               | [portalfx-forms-construction.md](portalfx-forms-construction.md)                             |  
+| Integrating Forms with Commands  | [portalfx-forms-integrating-with-commands.md](portalfx-forms-integrating-with-commands.md)   | 
+| Form Field Validation            | [portalfx-forms-field-validation.md](portalfx-forms-field-validation.md)                     | 
+| Sample Extensions with Forms     | [portalfx-extensions-samples-forms.md](portalfx-extensions-samples-forms.md)                 |
 
 For more information about how forms and parameters interact with an extension, see [portalfx-parameter-collection-overview.md](portalfx-parameter-collection-overview.md).
 
