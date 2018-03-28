@@ -1,4 +1,4 @@
-## The controls Playground 
+## The controls playground 
 
 The controls playground is located at [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground), and it provides a space where developers can experiment with controls previous to adding them to an extension. They can see what a control looks like, and how it behaves. The following is a working instance of a control.
 
