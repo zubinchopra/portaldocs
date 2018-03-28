@@ -1,4 +1,4 @@
-# Developing Forms
+## Overview
 
 
 The Portal SDK includes extensive support for displaying and managing user input through the use of Forms. Forms offer the ability to take advantage of features like consistent form layout styles, form-integrated UI widgets, user input validation, and data change tracking.
@@ -6,11 +6,15 @@ The Portal SDK includes extensive support for displaying and managing user input
 Forms are created using `HTML` templates, `ViewModels`, and `EditScopes`. Developers can use standard `HTML` and **Knockout** to build forms, in addition to the following items for which  the SDK Framework includes support.
 
   * Labels
+  
   * Validation, as in the following image
 
     ![alt-text](../media/portalfx-forms/forms.png "Forms Example") 
+
   * Change tracking
+
   * Form reset
+
   * Persisting edits across journeys and browser sessions
 
 ### Form Layout
