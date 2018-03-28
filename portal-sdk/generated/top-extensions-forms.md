@@ -1,8 +1,8 @@
 <a name="portal-forms"></a>
 # Portal Forms
 
-<a name="developing-forms"></a>
-# Developing Forms
+<a name="portal-forms-overview"></a>
+## Overview
 
 
 The Portal SDK includes extensive support for displaying and managing user input through the use of Forms. Forms offer the ability to take advantage of features like consistent form layout styles, form-integrated UI widgets, user input validation, and data change tracking.
@@ -10,14 +10,18 @@ The Portal SDK includes extensive support for displaying and managing user input
 Forms are created using `HTML` templates, `ViewModels`, and `EditScopes`. Developers can use standard `HTML` and **Knockout** to build forms, in addition to the following items for which  the SDK Framework includes support.
 
   * Labels
+  
   * Validation, as in the following image
 
     ![alt-text](../media/portalfx-forms/forms.png "Forms Example") 
+
   * Change tracking
+
   * Form reset
+
   * Persisting edits across journeys and browser sessions
 
-<a name="developing-forms-form-layout"></a>
+<a name="portal-forms-overview-form-layout"></a>
 ### Form Layout
 
 Use form sections to group controls, and other sections, into structured layouts based on rows and columns. Form sections provide the following benefits.
@@ -48,7 +52,7 @@ Some form layout styles are as follows.
 
 **NOTE**: Custom layouts are not recommended.
  
-<a name="developing-forms-form-content"></a>
+<a name="portal-forms-overview-form-content"></a>
 ### Form Content
 
 Form-integrated controls are the UI widgets that are compatible with forms. They can be used in a majority of forms scenarios. They automatically enable good form patterns, built-in validation, and auto-tracking of changes.
@@ -101,7 +105,7 @@ Some form-integrated controls are as follows.
 
 ![alt-text](../media/portalfx-ux-forms/placeholder-image.png "Under Construction")
 
-<a name="developing-forms-form-topics"></a>
+<a name="portal-forms-overview-form-topics"></a>
 ### Form Topics
 
 There are a number of subtopics in the forms topic.  Sample source code is included in subtopics that discuss the various Azure SDK API items.
@@ -119,7 +123,7 @@ For more information about forms with editScopes, see  [portalfx-legacy-editscop
 
 For more information about forms without editScopes, see  [portalfx-editscopeless-overview.md](portalfx-editscopeless-overview.md).
 
-<a name="developing-forms-samples-forms"></a>
+<a name="portal-forms-overview-samples-forms"></a>
 ### Samples Forms
 
   | API Topic                             | Document                                                                 | Sample                                                           | Experience |
@@ -132,10 +136,10 @@ For more information about forms without editScopes, see  [portalfx-editscopeles
 
   
 
-<a name="developing-forms-frequently-asked-questions"></a>
+<a name="portal-forms-frequently-asked-questions"></a>
 ## Frequently asked questions
 
-<a name="developing-forms-frequently-asked-questions-should-i-use-an-action-bar-or-a-commands-toolbar-on-my-form"></a>
+<a name="portal-forms-frequently-asked-questions-should-i-use-an-action-bar-or-a-commands-toolbar-on-my-form"></a>
 ### Should I use an action bar or a commands toolbar on my form?
 
 It depends on the scenario that drives the UX. If the form will capture some data from the user and expect the blade to be closed after submitting the changes, then use an action bar, as specified in [portalfx-ux-create-forms.md#action-bar-+-blue-buttons](portalfx-ux-create-forms.md#action-bar-+-blue-buttons).  However, if the form will edit or update some data, and expect the user to make multiple changes before the blade is closed, then use commands, as specified in [portalfx-commands.md](portalfx-commands.md). 
@@ -152,7 +156,7 @@ It depends on the scenario that drives the UX. If the form will capture some dat
   
 * * * 
 
-<a name="developing-forms-glossary"></a>
+<a name="portal-forms-glossary"></a>
 ## Glossary
 
  This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).

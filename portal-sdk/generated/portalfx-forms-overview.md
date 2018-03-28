@@ -1,5 +1,5 @@
-<a name="developing-forms"></a>
-# Developing Forms
+<a name="overview"></a>
+## Overview
 
 
 The Portal SDK includes extensive support for displaying and managing user input through the use of Forms. Forms offer the ability to take advantage of features like consistent form layout styles, form-integrated UI widgets, user input validation, and data change tracking.
@@ -7,14 +7,18 @@ The Portal SDK includes extensive support for displaying and managing user input
 Forms are created using `HTML` templates, `ViewModels`, and `EditScopes`. Developers can use standard `HTML` and **Knockout** to build forms, in addition to the following items for which  the SDK Framework includes support.
 
   * Labels
+  
   * Validation, as in the following image
 
     ![alt-text](../media/portalfx-forms/forms.png "Forms Example") 
+
   * Change tracking
+
   * Form reset
+
   * Persisting edits across journeys and browser sessions
 
-<a name="developing-forms-form-layout"></a>
+<a name="overview-form-layout"></a>
 ### Form Layout
 
 Use form sections to group controls, and other sections, into structured layouts based on rows and columns. Form sections provide the following benefits.
@@ -45,7 +49,7 @@ Some form layout styles are as follows.
 
 **NOTE**: Custom layouts are not recommended.
  
-<a name="developing-forms-form-content"></a>
+<a name="overview-form-content"></a>
 ### Form Content
 
 Form-integrated controls are the UI widgets that are compatible with forms. They can be used in a majority of forms scenarios. They automatically enable good form patterns, built-in validation, and auto-tracking of changes.
@@ -98,7 +102,7 @@ Some form-integrated controls are as follows.
 
 ![alt-text](../media/portalfx-ux-forms/placeholder-image.png "Under Construction")
 
-<a name="developing-forms-form-topics"></a>
+<a name="overview-form-topics"></a>
 ### Form Topics
 
 There are a number of subtopics in the forms topic.  Sample source code is included in subtopics that discuss the various Azure SDK API items.
