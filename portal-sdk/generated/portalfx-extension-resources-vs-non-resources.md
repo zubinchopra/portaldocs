@@ -1,3 +1,4 @@
+
 <a name="developing-extensions-for-azure-resources-vs-non-azure-resources"></a>
 # Developing Extensions for Azure Resources vs. Non-Azure Resources
 
@@ -6,10 +7,13 @@
 
 The SDK has several framework features that make it easier to implement UX that is consistent across all resource types.  Most of these features are free once you've implemented the [Asset Model](portalfx-assets.md).
 
-- [Browse](portalfx-browse.md) - Integrates your resource type into the portal's main menu that categorizes and lists resources.
-- [Resource Menu](portalfx-resourcemenu.md) - Provides a base implementation of a menu blade, with standard resource features (e.g. RBAC, Locks, Audit Logs) automatically injected into the menu. 
-- Search - Azure resources are automatically integrated into the potal's global search
-- [Tile Gallery Integration](portalfx-ux-tile-gallery.md) - Exposes tiles for your resource in the portal's tile gallery
+* [Browse](portalfx-browse.md) - Integrates your resource type into the portal's main menu that categorizes and lists resources.
+
+* [Resource Menu](portalfx-resourcemenu.md) - Provides a base implementation of a menu blade, with standard resource features (e.g. RBAC, Locks, Audit Logs) automatically injected into the menu. 
+
+* Search - Azure resources are automatically integrated into the potal's global search
+
+* [Tile Gallery Integration](portalfx-ux-tile-gallery.md) - Exposes tiles for your resource in the portal's tile gallery
 
 The majority of the docs apply to these types of extensions.  The next few sections talk about building the less common, but still awesome, non Azure resource based extension.
 

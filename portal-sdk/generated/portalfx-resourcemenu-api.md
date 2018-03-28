@@ -1,6 +1,21 @@
 
 <a name="resource-menu-apis"></a>
-### Resource menu APIs
+## Resource menu APIs
+
+The following sections list the Resource Menu API's. They are also located at []().
+
+* [MsPortalFx Assets](#msportalfx-assets)
+
+* [Menu APIs](#menu-apis)
+
+* [Selectable APIs](#selectable-apis)
+
+* * *
+
+<a name="resource-menu-apis-msportalfx-assets"></a>
+### MsPortalFx Assets
+
+The `MsPortalFx.Assets` is the interface for the resource menu API.
 
 ```ts
 import * as FxMenuBlade from "Fx/Composition/MenuBlade";
@@ -120,8 +135,11 @@ declare module MsPortalFx.Assets {
 
 ```
 
-<a name="menu-apis"></a>
+<a name="resource-menu-apis-menu-apis"></a>
 ### Menu APIs
+
+This module contains the attributes that are common to all items and groups in the Resource menu.
+
 
 ```ts
 declare module "Fx/Composition/MenuBlade" {
@@ -169,8 +187,10 @@ declare module "Fx/Composition/MenuBlade" {
 }
 ```
 
-<a name="selectable-2-apis"></a>
-### Selectable 2 APIs
+<a name="resource-menu-apis-selectable-apis"></a>
+### Selectable APIs
+
+The selectable API's are the references to blades that are used when resource menu items are selected by the user.
 
 ```ts
 declare module "Fx/Composition/Selectable" {
