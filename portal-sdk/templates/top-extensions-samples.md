@@ -16,4 +16,4 @@
  
  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-samples.md"}
 
- {"gitdown": "include-file", "file": "../templates/portalfx-portalfx-editscopeless-forms.md
+ {"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-samples.md"}
