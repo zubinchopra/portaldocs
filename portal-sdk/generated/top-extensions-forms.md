@@ -145,15 +145,15 @@ A working copy of a basic Portal form is located at [http://aka.ms/portalfx/samp
 <a name="developing-forms-designing-and-arranging-the-form-the-customhtml-control-procedure"></a>
 #### Procedure
 
-To add a section to an extension, use the following five steps.
+To add a section to an extension, use the following three steps.
 
 1. Import the module to make the section available to the extension.
 	
-2. Change the link element in the HTML template to a control container.
+1. Change the link element in the HTML template to a control container.
 
     Use a `pcControl` binding handler to link the ViewModel to the HTML.
 
-3. Then, create the section `ViewModel` in the code.
+1. Then, create the section `ViewModel` in the code.
 
     Bind the section `ViewModel` into the **DOM** in the blade template. Then add all the controls that should be displayed into the `children` observable array of the section. This positions the controls sequentially on a blade, by default. 
 
@@ -161,9 +161,10 @@ To add a section to an extension, use the following five steps.
 
     **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK. 
 
-4. The code to create the section is located at  `<dir>\Client\V1\Forms\Samples\BasicCreate\ViewModels\Parts\FormsSampleBasicCreatePart.ts`. It is also in the following code.
 
-    ```typescript
+The code to create the section is located at  `<dir>\Client\V1\Forms\Samples\BasicCreate\ViewModels\Parts\FormsSampleBasicCreatePart.ts`. It is also in the following code.
+
+```typescript
 
 const mySectionOptions: Section.Options = {
     children: ko.observableArray<any>([
@@ -181,14 +182,16 @@ this.mySection = new Section.ViewModel(this._container, mySectionOptions);
 
 ```
 
-5. The HTML template located at `<dir>\Client\V1\Forms\Samples\BasicCreate\Templates\FormSampleBasicCreate.html` binds the section into the DOM, and will autogenerate the layout for all of the child objects.  It is included in the following example.
+The HTML template located at `<dir>\Client\V1\Forms\Samples\BasicCreate\Templates\FormSampleBasicCreate.html` binds the section into the DOM, and will autogenerate the layout for all of the child objects.  It is included in the following example.
 
     ﻿<div class="msportalfx-form" data-bind="pcControl: mySection"></div>
 
 
 
+<a name="developing-forms-forms-construction"></a>
 ## Forms Construction
 
+<a name="developing-forms-forms-construction-loading-editing-and-saving-data"></a>
 ### Loading, editing and saving data
 
 This sample reads and writes data to the server directly via `ajax()` calls. It loads and saves data by creating an `EditScopeCache` object and defining two functions. The `supplyExistingData` function reads the data from the server, and the `saveEditScopeChanges` function writes it back.
@@ -354,6 +357,7 @@ Because the `EditScope` is being used, the save/discard commands can just call t
 For more information, see [http://knockoutjs.com/documentation/computed-writable.html](http://knockoutjs.com/documentation/computed-writable.html).
 
 
+<a name="developing-forms-integrating-forms-with-commands"></a>
 ## Integrating Forms with Commands
 
 In most cases, editable forms are accompanied by commands which act upon those forms. There are two ways that form data can be made available to the command:
@@ -390,6 +394,7 @@ In the previous snippet, the `enabled` property of the command is toggled based 
 
 
 
+<a name="developing-forms-form-field-validation"></a>
 ## Form Field Validation
 
 Validating input is one of the primary benefits of the **Forms** API. Many simple and complex validators are available out of the box:
@@ -437,7 +442,7 @@ var nameTextboxOptions  = <MsPortalFx.ViewModels.Forms.TextBox.Options>{
       this._container, this, "requiredFieldValue", nameTextboxOptions );
 ```
 
-<a name="developing-forms-designing-and-arranging-the-form-samples-forms"></a>
+<a name="developing-forms-form-field-validation-samples-forms"></a>
 ### Samples Forms
 
   | API Topic                             | Document                                                                 | Sample                                                           | Experience |
