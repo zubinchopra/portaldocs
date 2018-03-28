@@ -20,15 +20,15 @@ A working copy of a basic Portal form is located at [http://aka.ms/portalfx/samp
 
 #### Procedure
 
-To add a section to an extension, use the following three steps.
+To add a section to an extension, use the following five steps.
 
 1. Import the module to make the section available to the extension.
 	
-1. Change the link element in the HTML template to a control container.
+2. Change the link element in the HTML template to a control container.
 
     Use a `pcControl` binding handler to link the ViewModel to the HTML.
 
-1. Then, create the section `ViewModel` in the code.
+3. Then, create the section `ViewModel` in the code.
 
     Bind the section `ViewModel` into the **DOM** in the blade template. Then add all the controls that should be displayed into the `children` observable array of the section. This positions the controls sequentially on a blade, by default. 
 
@@ -36,10 +36,10 @@ To add a section to an extension, use the following three steps.
 
     **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK. 
 
-1. The code to create the section is located at  `<dir>\Client\V1\Forms\Samples\BasicCreate\ViewModels\Parts\FormsSampleBasicCreatePart.ts`. It is also in the following code.
+4. The code to create the section is located at  `<dir>\Client\V1\Forms\Samples\BasicCreate\ViewModels\Parts\FormsSampleBasicCreatePart.ts`. It is also in the following code.
 
-    {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Samples/BasicCreate/ViewModels/Parts/FormsSampleBasicCreatePart.ts", "section": "forms#section"}
+    {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Forms/Samples/BasicCreate/ViewModels/Parts/FormsSampleBasicCreatePart.ts", "section": "forms#section"}
 
-1. The HTML template located at `<dir>\Client\V1\Forms\Samples\BasicCreate\Templates\FormSampleBasicCreate.html` binds the section into the DOM, and will autogenerate the layout for all of the child objects.  It is included in the following example.
+5. The HTML template located at `<dir>\Client\V1\Forms\Samples\BasicCreate\Templates\FormSampleBasicCreate.html` binds the section into the DOM, and will autogenerate the layout for all of the child objects.  It is included in the following example.
 
-    {"gitdown": "include-file", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Samples/BasicCreate/Templates/FormSampleBasicCreate.html"}
+    {"gitdown": "include-file", "file": "../Samples/SamplesExtension/Extension/Client/V1/Forms/Samples/BasicCreate/Templates/FormSampleBasicCreate.html"}
