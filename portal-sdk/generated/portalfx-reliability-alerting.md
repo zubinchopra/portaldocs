@@ -129,7 +129,7 @@ Currently they run every 5 minutes assessing the previous hour of data.
 ## How do I onboard?
 
 1. Generate your desired configuration
-    - This can be done by either manually editing the JSON file or making use of [the tool][alerting-tool] provided.
+    - This can be done by either manually editing the JSON file.
 1. Fill out the following work item [https://aka.ms/portalfx/alerting-onboarding][alerting-onboarding]
 1. Set up correlation rules in ICM
 
@@ -158,9 +158,7 @@ Currently they run every 5 minutes assessing the previous hour of data.
 ## How do I know my extension&#39;s current configuration?
 
 Within kusto your configuration will be defined under a function. To find the function use the [this link][alerting-kusto-partner] and replace `DefaultCriteria` with `Alert_YOUR_EXTENSION_NAME`. That function will only exist once you have onboarded to the alerting infrastructure.
-Or visit [the tool][alerting-tool] to view a read only version of your config, again this is only available once you have onboarded.
 
 
 [alerting-onboarding]: https://aka.ms/portalfx/alerting-onboarding
-[alerting-tool]: https://microsoft.sharepoint.com/teams/azureteams/docs/PortalFx/Alert/AlertCustomizationTool.zip
 [alerting-kusto-partner]: https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/azportal.kusto.windows.net/databases/Partner?q=H4sIAAAAAAAEAEvOKS0uSS3SUHesKsgvKknMUdfUS0ksSUxKLE7VUApILCrJSy1S0tRzSU1LLM0pcS7KBKrOTNTQBABHZQn9OQAAAA%3d%3d
