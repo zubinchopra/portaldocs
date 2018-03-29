@@ -15,7 +15,7 @@ We encourage all of our partners that wish to attend to schedule a meeting with 
 - *Goals*
     - Help extensions to meet the performance bar
     - Help extensions to measure performance 
-    - Help extensions to understand their current performance status that is part of the tracked bars
+    - Help extensions to understand their current performance status
 - *Meeting template*: <a href="https://microsoft.sharepoint.com/:u:/t/azureteams/docs/EaQmCFEng-5Ni3Z5jV7rpkQBulWs_E-_xPc9__zEIuhW4Q?e=QoSLFe">download template</a> 
 
 ### User experience consistency
