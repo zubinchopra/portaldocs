@@ -10,21 +10,21 @@ We encourage all of our partners that wish to attend to schedule a meeting with 
 ### Performance
 
 - *When?*  Wednesdays from 1:00 to 3:30
-- *Where?* B42 (Conf Room 42/46(12) surface hub)
+- *Where?* B42 (Conf Room 42/46)
 - *Contacts:* Sean Watson (sewatson)
 - *Goals*
     - Help extensions to meet the performance bar
     - Help extensions to measure performance 
     - Help extensions to understand their current performance status
-- *Meeting template*: <a href="https://microsoft.sharepoint.com/:u:/t/azureteams/docs/EaQmCFEng-5Ni3Z5jV7rpkQBulWs_E-_xPc9__zEIuhW4Q?e=QoSLFe">download template</a> 
+- *Meeting template*: <a href="https://portalfx/officehours/perf">download template</a> 
 
 ### User experience consistency
 
 - *When?*  Thursdays from 8:00 to 12:30
-- *Where?* B42 (location to be provided in the invite) + Skype
+- *Where?* B42 (Conf Room 42/45) + Skype (if requested)
 - *Contacts:* Eric Winner (ewinner), Leon Welicki (lwelicki)
 - *Goals*
     - Provide design + implementation guidance for Azure experiences
     - Review UX implementations and designs 
     - Formal design / experience / implementation Ibiza sign-off
-- *Meeting template*: <a href="https://microsoft.sharepoint.com/:u:/t/azureteams/docs/EbR-rO1IeSxKgd0_C_5rsasBWJqm7u_JS-wnDEJGHweiRQ?e=l8vruN">download template</a> 
+- *Meeting template*: <a href="https://portalfx/officehours/ux">download template</a> 
