@@ -16,7 +16,7 @@ We encourage all of our partners that wish to attend to schedule a meeting with 
     - Help extensions to meet the performance bar
     - Help extensions to measure performance 
     - Help extensions to understand their current performance status
-- *Meeting template*: <a href="https://portalfx/officehours/perf">download template</a> 
+- *Meeting template*: <a href="https://aka.ms/portalfx/officehours/perf">download template</a> 
 
 ### User experience consistency
 
@@ -27,4 +27,4 @@ We encourage all of our partners that wish to attend to schedule a meeting with 
     - Provide design + implementation guidance for Azure experiences
     - Review UX implementations and designs 
     - Formal design / experience / implementation Ibiza sign-off
-- *Meeting template*: <a href="https://portalfx/officehours/ux">download template</a> 
+- *Meeting template*: <a href="https://aka.ms/portalfx/officehours/ux">download template</a> 
