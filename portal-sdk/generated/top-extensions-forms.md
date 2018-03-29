@@ -25,6 +25,15 @@ Developers can use standard `HTML` and **Knockout** to build forms, in addition 
 
   * Persisting edits across journeys and browser sessions
 
+  Form controls are a subset of controls that allow users to input information.  These controls provide a consistent api surface for managing validation, dirty states, and user input.  They also provide a consistent layout structure.
+
+<a name="portal-forms-overview-form-control-view-model-contract-properties"></a>
+### Form control view model contract properties
+
+**value**: The value property is bound to the value shown in the control – You can subscribe to it in order to respond to user input, and you can set it to update the widgets value programmatically.
+
+**dirty**: The dirty property is bound to the edit state of the control.  It will change from false to true if the user changes the value property by interacting with the control.  Setting the value property programmatically will not affect the dirty state of the control.  Note: The framework will never reset this property from true back to false as the framework does not track the original values of the control.  To set (or reset) this property programmatically, just write to it as you would any other observable.
+
 <a name="portal-forms-overview-form-layout"></a>
 ### Form Layout
 
