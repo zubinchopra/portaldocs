@@ -1,9 +1,13 @@
-## Overview
 
+## Overview
 
 The Portal SDK includes extensive support for displaying and managing user input through the use of Forms. Forms offer the ability to take advantage of features like consistent form layout styles, form-integrated UI widgets, user input validation, and data change tracking.
 
-Forms are created using `HTML` templates, `ViewModels`, and `EditScopes`. Developers can use standard `HTML` and **Knockout** to build forms, in addition to the following items for which  the SDK Framework includes support.
+Forms are created using `HTML` templates, `ViewModels`, and `EditScopes`. 
+
+**NOTE**:  EditScopes are becoming obsolete.   It is recommended that extensions be developed without edit scopes, as specified in [portalfx-editscopeless-procedure.md](portalfx-editscopeless-procedure.md).
+
+Developers can use standard `HTML` and **Knockout** to build forms, in addition to the following items for which  the SDK Framework includes support.
 
   * Labels
   
@@ -49,55 +53,7 @@ Some form layout styles are as follows.
  
 ### Form Content
 
-Form-integrated controls are the UI widgets that are compatible with forms. They can be used in a majority of forms scenarios. They automatically enable good form patterns, built-in validation, and auto-tracking of changes.
-
-Some form-integrated controls are as follows.
-
-<!--TODO:  Determine whether this table should still exist. -->
-
-| Button       | Content Cell |
-| ------------ | ------------ |
-| Content Cell | Content Cell |
-
-* Button
-
-![alt-text](../media/portalfx-ux-forms/Button.png "Button" )
-
-* Checkboxes
-
-![alt-text](../media/portalfx-ux-forms/checkbox.png "Checkbox")
-
-* Copy label
-
-![alt-text](../media/portalfx-ux-forms/copy_label.png "Copy label")
-
-* Date picker
-
-![alt-text](../media/portalfx-ux-forms/dropdown.png "Dropdowns")
-
-* Date - time picker
-
-![alt-text](../media/portalfx-ux-forms/placeholder-image.png "Under Construction")
-
-* Date - time range picker
-
-![alt-text](../media/portalfx-ux-forms/placeholder-image.png "Under Construction")
-
-* Day picker
-
-![alt-text](../media/portalfx-ux-forms/placeholder-image.png "Under Construction")
-
-* Dropdowns (Single-select, Multi-select, Filterable, Groupable, Tokenized)
-
-![alt-text](../media/portalfx-ux-forms/dropdown.png "Dropdowns")
-
-* File download
-
-![alt-text](../media/portalfx-ux-forms/placeholder-image.png "Under Construction")
-
-* File upload
-
-![alt-text](../media/portalfx-ux-forms/placeholder-image.png "Under Construction")
+Form-integrated controls are the UI widgets that are compatible with forms. They can be used in a majority of forms scenarios. They automatically enable good form patterns, built-in validation, and auto-tracking of changes. The controls playground is located at  [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground), and it  allows them to build their own code instead of using the provided samples.
 
 ### Form Topics
 
