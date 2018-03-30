@@ -18,7 +18,11 @@ We encourage all of our partners that wish to attend to schedule a meeting with 
     - Help extensions to meet the performance bar
     - Help extensions to measure performance 
     - Help extensions to understand their current performance status
-- *Meeting template*: <a href="https://aka.ms/portalfx/officehours/perf">download template</a> 
+- *How to book time*: Send a meeting request with the following
+    - TO: sewatson;
+    - Subject: YOUR_EXTENSION_NAME: Azure performance office hours
+    - Location: Conf Room 42/46 (It is already reserved)
+
 
 <a name="office-hours-user-experience-consistency"></a>
 ### User experience consistency
@@ -30,4 +34,7 @@ We encourage all of our partners that wish to attend to schedule a meeting with 
     - Provide design + implementation guidance for Azure experiences
     - Review UX implementations and designs 
     - Formal design / experience / implementation Ibiza sign-off
-- *Meeting template*: <a href="https://aka.ms/portalfx/officehours/ux">download template</a> 
+- *How to book time*: Send a meeting request with the following
+    - TO: ewinner;lwelicki;
+    - Subject: YOUR_EXTENSION_NAME: Azure ux office hours
+    - Location: Conf Room 42/45 (It is already reserved), create a skype meeting if that is preferred
