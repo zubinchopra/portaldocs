@@ -18,7 +18,9 @@ Rather than initializing the EditScope by programmatically modifying/updating Ed
 
 ***Q: I need to integrate my Form with an EditScope. Where do I get the EditScope?*** 
 
-SOLUTION: This varies according to the UX design. Developers can choose between using a `ParameterProvider` component or `EditScopeCache` component as follows:
+**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions and forms be developed without edit scopes, as specified in [portalfx-editscopeless-procedure.md](portalfx-editscopeless-procedure.md).
+
+SOLUTION: Integrate forms with `EditScopes` varies according to the UX design. Developers can choose between using a `ParameterProvider` component or `EditScopeCache` component as follows:
 
 * Use `ParameterProvider` for the following scenario:
     * **Pop-up/dialog-like form** - The blade uses an ActionBar with an 'Ok'-like button that commits user edits. Typically, when the user commits the edits, the blade is implicitly closed, like a conventional UI pop-up/dialog. The blade uses `parameterProvider.editScope` to access the loaded/initialized EditScope.
@@ -46,73 +48,7 @@ SOLUTION: For many of the most common, simple Form scenarios, there is no need t
 
 For more information about type metadata, see [portalfx-data-typemetadata.md](portalfx-data-typemetadata.md).
 
- For EditScope and Forms, extensions supply [type metadata] for the following scenarios: 
-#### Editable grid
-#### Entity-type
-
-* **Editable grid** - Today's editable grid was developed to work exclusively with EditScope 'entity' arrays. An EditScope 'entity' array is one where created/updated/deleted array items are tracked individually by EditScope. To grant this special treatment to an array in the EditScope/Form model, supply type metadata for the type of the array items (for the `T` in `KnockoutObservableArray<T>`). The type is marked as an "entity type" and, the property/properties that constitute the entity's 'id' are specified in the following examples. 
-
-**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK.
- 
-* In TypeScript:
-
-The TypeScript sample is located at 
-`<dir>\Client\V1\Forms\Scenarios\ChangeTracking\Models\EditableFormData.ts`. This code is also included in the following working copy.
-
-{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/ChangeTracking/Models/EditableFormData.ts", "section": "formsEditScopeFaq#entityTypeMetadata"}
-
-* In C#:
-
-The C# sample is located at 
-`<dirParent>\SamplesExtension.DataModels/Person.cs`. This code is also included in the following working copy.
-
-{"gitdown": "include-section", "file":"../Samples/SamplesExtension/SamplesExtension.DataModels/Person.cs", "section": "formsEditScopeFaq#entityTypeMetadataCsharp"}
-  
-#### Track edits
-
-* **Opting out of edit tracking** - There are Form scenarios where some properties on the EditScope/Form model are not meant for editing but are - possibly - for presentation only. In this situation, the extension can instruct EditScope to *not track* user edits for such EditScope/Form model properties, like so:
-
-In TypeScript:  
-
-    MsPortalFx.Data.Metadata.setTypeMetadata("Employee", {
-        properties: {
-            accruedVacationDays: { trackEdits: false },
-            ...
-        },
-        ...
-    });  
-
-In C#:  
-
-    [TypeMetadataModel(typeof(Employee))]
-    public class Employee
-    {
-        [TrackEdits(false)]
-        public int AccruedVacationDays { get; set; }
-
-        ...
-    }  
-
-Extensions can supply type metadata to configure their EditScope as follows:  
-
-* When using ParameterProvider, supply the '`editScopeMetadataType`' option to the ParameterProvider constructor.
-* When using EditScopeCache, supply the '`entityTypeName`' option to '`MsPortalFx.Data.EditScopeCache.createNew`'.
-
-To either of these, extensions pass the type name used when registering the type metadata via '`MsPortalFx.Data.Metadata.setTypeMetadata`'.  
-  
-* * * 
-
-
-
-#### Apply array as edits
-
-And there is a corresponding '`applyArrayAsEdits`' EditScope method that simplifies applying edits to an existing EditScope 'entity' array. This is often done in a ParameterCollector's '`receiveResult`' callback, as in the following example.
-
-{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/ParameterCollection/FormWithCollectors/ViewModels/FormWithCollectorsBladeViewModel.ts", "section": "formsEditScopeFaq#applyArrayAsEdits"}
-
-This pair of EditScope methods significantly simplifies working with EditScope 'entity' arrays.  
-  
-* * *
+ For EditScope and Forms, extensions supply type metadata for the following scenarios.
 
 ### Keeping EditScope from tracking changes
 
