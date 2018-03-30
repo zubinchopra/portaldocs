@@ -4,7 +4,23 @@
 In May 2018, a European privacy law, the General Data Protection Regulation (GDPR), is due to take effect. The GDPR imposes new rules on companies, government agencies, non-profits, and other organizations that offer goods and services to people in the European Union (EU), or that collect and analyze data tied to EU residents. The GDPR applies no matter where you are located. 
 Microsoft products and services are available today to help you meet the GDPR requirements. Read more about Microsoft Privacy policy at [Trust Center](https://www.microsoft.com/en-us/trustcenter).
 
+Azure Portal creates or captures the following data, which can contain EUII.
+
+* Azure Portal Dashboards
+* User settings eg: Favorite Subscriptions or Directories, Last logged in Directory
+* Themes and Customizations
+
+GDPR compliance for Azure Portal can be reached in two ways.
+
+1. Use the Export option.
+
+1. Delete User Settings and Dashboards.
+
+We strongly recommend the verifying the data by using option 1, previous to using option 2, because it will be time consuming to rebuild the dashboards and re-add customizations.
+
 ### Portal Dashboard Settings
+
+The following are the instructions for the Portal Dashboard Settings options.
 
 When a user logs in to http://portal.azure.com, they are presented with the following screen.
 
