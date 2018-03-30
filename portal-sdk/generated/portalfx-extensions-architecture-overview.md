@@ -82,11 +82,11 @@ Because most UI is dynamic, like Forms that the user updates or like Grids/Lists
 <a name="secure-per-service-ui"></a>
 ### Secure per-service UI
 
-The security model for UI extensions builds upon the standard [same-origin policy](portalfx-extensions-glossary-architecture.md) that supported by all browsers and is the basis for today's web applications.  A UI extension's homepage URL is typically located on an origin specific to that UI extension and its resource provider.  This HTML page can only issue HTTPS calls to its origin domain and any origins that allow [COR](portalfx-extensions-glossary-architecture.md) calls from the UI extension's origin.
+The security model for UI extensions builds upon the standard [same-origin policy](portalfx-extensions-glossary-architecture.md) that supported by all browsers and is the basis for today's web applications.  A UI extension's homepage URL is typically located on an origin specific to that UI extension and its Resource Provider.  This HTML page can only issue HTTPS calls to its origin domain and any origins that allow [CORS](portalfx-extensions-glossary-architecture.md) calls from the UI extension's origin.
 
 In practice, HTTPS calls from UI extensions are made from the client to load "model" data, and the HTTPS calls are typically directed to the following locations.
 
-* Using CORs, to the Azure Resource Manager (ARM) and/or to the service's Resource Provider (RP);
+* Using CORs, to the Azure Resource Manager (ARM) and/or to the service's Resource Provider (RP)
 
 * Less common, not recommended -- Using same-origin, to HTTP endpoints that are  extension controllers that are  dedicated to the operation of the UI extension.
 

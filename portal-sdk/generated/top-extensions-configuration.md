@@ -14,7 +14,7 @@ The following links describe what a configuration file is and how to use it in d
 
 [Configuration file locations and structure](#configuration-file-locations-and-structure)
 
-[Extension Stamps and Safe Deployment](#extension-stamps-and-safe-deployment)
+[Extension stamps and safe deployment](#extension-stamps-and-safe-deployment)
 
 <a name="portal-extension-configuration-overview-configuration-file-locations-and-structure"></a>
 ### Configuration file locations and structure
@@ -154,7 +154,7 @@ Its options are as follows.
  For more information about loading extension configuration files, see [portalfx-extensions-testing-in-production-overview.md#loading-customized-extensions](portalfx-extensions-testing-in-production-overview.md#loading-customized-extensions).
 
 <a name="portal-extension-configuration-overview-extension-stamps-and-safe-deployment"></a>
-### Extension Stamps and Safe Deployment
+### Extension stamps and safe deployment
 
 The Azure Portal uses five different extension configuration files to manage the extension configuration. Because the hosting service provides a mechanism for deploying extensions using safe deployment practices, the Portal will load the version of the extension that is based on the region from where the customer is accessing the Portal. For more details, see the Hosting Service documentation located at [top-extensions-hosting-service.md](top-extensions-hosting-service.md).
 

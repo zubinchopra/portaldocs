@@ -21,6 +21,11 @@ Data Source: [https://AzPortal.kusto.windows.net](https://AzPortal.kusto.windows
 All Azure employees should have access, if you don't have access ensure you have joined your team's standard access group and it has access to (REDMOND\AZURE-ALL-PSV), to confirm that ensure it's listed here [http://aka.ms/standardaccess](http://aka.ms/standardaccess). If it is not listed then please follow the instructions on [http://aka.ms/standardaccess](http://aka.ms/standardaccess) to get it listed. For all other questions please reach out to [Ibiza Telemetry](mailto:ibiza-telemetry@microsoft.com).
 
 
+<a name="getting-started-permissions-programmatic-access"></a>
+#### Programmatic access
+
+We're currently not onboarding any more users on to programmatic access. Please check back after May 2018.
+
 <a name="getting-started-kusto-documentation-links"></a>
 ### Kusto Documentation &amp; Links
 
