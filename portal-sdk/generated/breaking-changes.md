@@ -1,7 +1,10 @@
-# Breaking Changes since 11/29/2017 
+# Breaking Changes since 11/30/2017 
 * Additional Q&A about breaking changes can be found [here](./breaking-changes.md) 
 * To ask a question about breaking changes [use this](https://aka.ms/ask/ibiza-breaking-change)  
 
+
+## 5.0.302.1051
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2184815'>2184815</a></td><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2184815'>Allow resource to be updated after creation for Essential control</a><p><div><br></div><div>The Essentials control has gone some interface changes to make development easier:</div><div><ol><li>The Essentials<span style="color:rgb(0, 0, 0);">&nbsp;ViewModel is no longer existing. You need to use the 'create' method to create an instance of the Essentials contract.</span></li><li>The option types and contracts have been renamed (&quot;Default&quot; to &quot;DefaultResourceLayout&quot;, &quot;CustomLayout&quot; to &quot;CustomResourceLayout&quot;, &quot;NonResource&quot; to &quot;NonResourceLayout&quot;).&nbsp;</li><li>Some of the unused interfaces (like BladeOpenOptions, etc) have been removed.</li></ol></div><div></p></td></tr></table>
 
 ## 5.0.302.1046
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2275444'>2275444</a></td><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2275444'>Set a default value for TypeScriptForceConsistentCasingInFileNames in tools targets</a><p><span style="margin:0px;font-family:&quot;Calibri&quot;,sans-serif;font-size:11pt;"><font color="#000000">RequireJS config is
