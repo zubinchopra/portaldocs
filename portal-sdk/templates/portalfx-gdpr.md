@@ -1,6 +1,11 @@
 
 ## Overview
 
+In May 2018, a European privacy law, the General Data Protection Regulation (GDPR), is due to take effect. The GDPR imposes new rules on companies, government agencies, non-profits, and other organizations that offer goods and services to people in the European Union (EU), or that collect and analyze data tied to EU residents. The GDPR applies no matter where you are located. 
+Microsoft products and services are available today to help you meet the GDPR requirements. Read more about Microsoft Privacy policy at [Trust Center](https://www.microsoft.com/en-us/trustcenter).
+
+### Portal Dashboard Settings
+
 When a user logs in to http://portal.azure.com, they are presented with the following screen.
 
 ![alt-text](../media/portalfx-gdpr/portalfx-gdpr-1.png)
