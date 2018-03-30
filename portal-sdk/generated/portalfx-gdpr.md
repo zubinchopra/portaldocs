@@ -1,5 +1,8 @@
 
-<a name="overview"></a>
+<a name="azure-portal-gdpr-compliance"></a>
+# Azure Portal: GDPR compliance
+
+<a name="azure-portal-gdpr-compliance-overview"></a>
 ## Overview
 
 In May 2018, a European privacy law, the General Data Protection Regulation (GDPR), is due to take effect. The GDPR imposes new rules on companies, government agencies, non-profits, and other organizations that offer goods and services to people in the European Union (EU), or that collect and analyze data tied to EU residents. The GDPR applies no matter where you are located. 
@@ -19,7 +22,7 @@ GDPR compliance for Azure Portal can be reached in two ways.
 
 We strongly recommend the verifying the data by using option 1, previous to using option 2, because it will be time consuming to rebuild the dashboards and re-add customizations.
 
-<a name="overview-portal-dashboard-settings"></a>
+<a name="azure-portal-gdpr-compliance-overview-portal-dashboard-settings"></a>
 ### Portal Dashboard Settings
 
 The following are the instructions for the Portal Dashboard Settings options.
