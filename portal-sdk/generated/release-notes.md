@@ -1,4 +1,4 @@
-# Release Notes since 11/30/2017
+# Release Notes since 12/1/2017
 
 ## 5.0.302.1054
 0 Breaking Changes, 1 Features added and 13 Bugs Fixed
@@ -235,7 +235,3 @@
 ## 5.0.302.913
 0 Breaking Changes, 3 Features added and 0 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1754110'>1754110</a></td><td>Feature</td><td>Fix pbidedicated path in fairfax configuration</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1752479'>1752479</a></td><td>Feature</td><td>Update configuration for extension Microsoft_Azure_InformationProtection</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1598644'>1598644</a></td><td>Feature</td><td>Portal should handle session timeout</td></tr></table>
-
-## 5.0.302.912
-0 Breaking Changes, 0 Features added and 0 Bugs Fixed
-<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
