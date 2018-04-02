@@ -3,14 +3,36 @@
 ## Best Practices
 
 Typically, extensions follow these best practices, which often result in performance improvements. Portal development patterns or architectures that are recommended based on customer feedback and usability studies are categorized by the type of blade. 
+
+* [Best Practices for All blades](#best-practices-for-all-blades)
+
+* [Best Practices for Create blades](#best-practices-for-create-blades)
+
+* [Best Practices for Menu blades](#best-practices-for-menu-blades)
+
+* [Best Practices for Resource List blades](#best-practices-for-resource-list-blades)
 	
+<a name="best-practices-best-practices-for-all-blades"></a>
+### Best Practices for All blades
+
+These patterns are recommended for every extension, but they are not required.
+
 * Never change the name of a Blade or a Part
 
-* Limit their `parameters` updates to the addition of parameters that are marked in **TypeScript** as optional
+* Limit blade `parameters` updates to the addition of parameters that are marked in **TypeScript** as optional
 
 * Never remove parameters from their `Parameters` type
 
-**NOTE**: These patterns are recommended for every extension, but they are not required.
+* Avoid observables when possible
+
+  The values in non-observables are much more performant than the values in observables.  Specifying a string instead of a `KnockoutObservable<string>`, os specifying a boolean instead of a `KnockoutObservable<boolean>` will improve performance whenever possible. The performance difference for each operation is not large, but when a blade can make tens or hundreds of values, they will add up.
+
+* Name `ViewModel` properties properly
+
+  Make sure that the only data that the proxied observables layer copies to the shell is the data that is needed in the extension iframe. The shell displays a warning when specific types of objects are being sent to the shell, for example, `editScopes`, but it can not guard against everything. 
+
+  Extension developers should occasionally review the data model to ensure that only the needed data is public.  The names of private members begin with an underscore, so that proxied observables are made aware by the naming convention that the members are private and therefore should not be sent to the shell.
+
 
 <a name="best-practices-best-practices-for-create-blades"></a>
 ### Best Practices for Create blades
