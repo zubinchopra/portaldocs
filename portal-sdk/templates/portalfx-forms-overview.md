@@ -49,7 +49,7 @@ Everything that applies to controls also applies to form controls, as specified 
 
 <!-- TODO: Determine which other properties are not configurable. -->
 
-All configurable properties on the control, like `value`, `validations`, or `dirty`, are options that can be sent as either observables or non-observables.   Observable values are best used when one observable is already present and you do not want to set up the two-way binding. For example, you could send the same observable as the `disabled` property to multiple forms, and then disable all of the forms at once by setting that observable only once.
+All configurable properties on the control, like `value`, `validations`, or `dirty`, are options that can be sent as either observables or non-observables.  Observable values are best used when one observable is already present and you do not want to set up the two-way binding. For example, you could send the same observable as the `disabled` property to multiple forms, and then disable all of the forms at once by setting that observable only once. For more information about observables, see [portalfx-blades-viewmodel.md#observable-and-non-observable-values](portalfx-blades-viewmodel.md#observable-and-non-observable-values).
 
 **NOTE**:  For the most part, sending in non-observables is recommended because it makes extension code more readable and less verbose.
 
