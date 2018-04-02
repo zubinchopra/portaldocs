@@ -120,8 +120,9 @@ An example of a message error alert criteria.
             {
                 "severity": 4,
                 "enabled": true,
-                "message1": "Cannot read property",
-                "message2": "of null",
+                "checkAllNullRefs": true, // Optional.
+                "message1": "Cannot read property", // Optional.
+                "message2": "of null", // Optional.
                 "minAffectedUserCount": 1,
                 "exclusion": {
                     "type": "or", // Only support value "and", "or".
@@ -152,6 +153,10 @@ This is the minimum number of percentage of users affected by any client error.
 ### What is minAffectedUserCount?
 
 This is the minimum number of users affected by any client error.
+
+<a name="client-error-configuration-what-is-checkallnullrefs"></a>
+### What is checkAllNullRefs?
+This includes all the null refs client errors. You can still specify message1, message2, etc. They're additional conditions. 'checkAllNullRefs' property is optional.
 
 <a name="client-error-configuration-what-is-message1-message2-message3-in-criteria-element-for-error-message-alerts"></a>
 ### What is message1, message2, message3 in criteria element for error message alerts?
