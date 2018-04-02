@@ -8,6 +8,7 @@ The following is a list of different types of blades.
 | Type                          | Document                                                       | Description |
 | ----------------------------- | ---- | ---- |
 | TemplateBlade                 | [portalfx-blades-procedure.md](portalfx-blades-procedure.md)   | Creating any Portal blade. This is the main and recommended authoring model for UI in the Portal. | 
+| The Blade ViewModel           | [portalfx-blades-viewmodel.md](portalfx-blades-viewmodel.md)   |  The `ViewModel` that associates data that is retrieved from the server with the blade and its controls. |
 | Advanced TemplateBlade Topics | [portalfx-blades-advanced.md](portalfx-blades-advanced.md)     | Advanced topics in template blade development.                                                    | 
 | MenuBlade                     | [portalfx-blades-menublade.md](portalfx-blades-menublade.md)   | Displays a vertical menu at the left of a blade.                                                  |  
 | Blade Kinds                   | [portalfx-blades-bladeKinds.md](portalfx-blades-bladeKinds.md) | A set of built-in blades that encapsulate common patterns.                                        | 
