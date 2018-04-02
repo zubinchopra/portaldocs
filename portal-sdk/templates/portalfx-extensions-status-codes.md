@@ -1,4 +1,6 @@
+
 ## Status Codes and Error Messages
+
 Status codes or error messages that are encountered while developing an extension may be dependent on the type of extension that is being created, or the development phase in which the message is encountered.  Terms that are encountered in the error messages may be defined in the [Glossary](portalfx-extensions-glossary-status-codes.md).
 <!-- TODO:  Find at least one status code for each of these conditions. -->
 
@@ -7,6 +9,23 @@ Status codes or error messages that are encountered while developing an extensio
 ***Console error messages in F12 developer tools***
 
 Some console and HTTP error messages are located at[https://msdn.microsoft.com/en-us/library/dn423949(v=vs.85).aspx](https://msdn.microsoft.com/en-us/library/dn423949(v=vs.85).aspx).
+
+* * *
+
+### UNKNOWN ENTITY-TYPED OBJECT ARRAY 
+
+***Error: "Entity-typed object/array is not known to this edit scope..." ***
+
+DESCRIPTION: After an `EditScope` is initialized and loaded, entities can be introduced and removed from the `EditScope` only by using `EditScope` APIs. Unfortunately, extensions cannot make an observable change to add or remove 'entity' objects from the `EditScope`. If an extension tries to make an observable change that introduces an 'entity' object into the EditScope, they will encounter this error discussed here.
+
+SOLUTION: To correctly add or remove an 'entity' objects, use the API's that are specified in 
+[portalfx-legacy-editscopes.md#editScope-entity-arrays](portalfx-legacy-editscopes.md#editScope-entity-arrays). A partial list is as follows.
+
+* `applyArrayAsEdits`: This API accepts a new array of 'entity' objects. The `EditScope` will diff this new array against the existing `EditScope` array items, determine which 'entity' objects are created/updated/deleted, and then records the corresponding user edits.
+
+* `getCreated/addCreated`: Addes new, 'created' entity objects to an `EditScope`.
+
+* `markForDelete`: Marks 'entity'  objects in an `EditScope`  for deletion.
 
 * * *
 
@@ -61,6 +80,8 @@ ERROR: The definition that was received from an extension had validation errors.
 SOLUTION: Scan the error logs for all the validation errors in the extension definition and fix them.
 
 * * * 
+
+
 
 ### Invalid Extension Name
 
