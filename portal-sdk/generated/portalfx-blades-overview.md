@@ -15,5 +15,5 @@ The following is a list of different types of blades.
 | Blade Settings                | [top-blades-settings.md](top-blades-settings.md)   | Framework settings that allow extensions to opt in or out of interaction patterns.                  | 
 | AppBlade                      | [top-blades-frameblades.md](top-blades-frameblades.md)   | Provides an IFrame to host the UI.                                                                | 
 | Blade with tiles              | [top-blades-legacy.md](top-blades-legacy.md)         |  Legacy authoring model. Given its complexity, you may want to use TemplateBlades instead. | | 
-| Sample Extensions with Blades | [portalfx-extensions-samples-blades.md](portalfx-extensions-samples-blades.md) |  SDK Samples that demonstrate how to develop extensions with different templates.  | | 
+
 
