@@ -4,28 +4,12 @@
 
 Form controls are a subset of controls that allow users to input information.  These controls provide a consistent API surface for managing validation, variable states, and user input.  They also provide a consistent layout structure.
   
-Forms offer the ability to take advantage of features like consistent layout styles and form-integrated UI widgets. They are created using `HTML` templates and `ViewModels`. 
-
-**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions and forms be developed without edit scopes, as specified in [portalfx-editscopeless-procedure.md](portalfx-editscopeless-procedure.md).
-
-Developers can use standard `HTML` and **Knockout** to build forms, in addition to the following items for which the SDK Framework includes support.
-
-  * Labels
-  
-  * Validation, as in the following image
-
-    ![alt-text](../media/portalfx-forms/forms.png "Forms Example") 
-
-  * Change tracking
-
-  * Form reset
-
-  * Persisting edits across journeys and browser sessions
-
 Everything that applies to controls also applies to form controls, as specified in [top-extensions-controls.md](top-extensions.controls.md).
 
-<a name="overview-form-control-view-model-contract-properties"></a>
-### Form control view model contract properties
+<a name="overview-form-control-view-model-contract"></a>
+### Form control view model contract
+
+The following properties and methods are present on all form controls.
 
 **value**: The value property is bound to the value shown in the control. You can subscribe to it in order to respond to user input, and you can set it to update the widget's value programmatically. This property is configurable.
 
@@ -37,7 +21,7 @@ Everything that applies to controls also applies to form controls, as specified 
 
 **validations**: Validations are run whenever the control value changes, when the validations array changes, or whenever the extension calls `triggerValidation` programmatically.  If the validations fail, the control will be marked as invalid, and the validation message will be shown below the control.  In addition, if this collection contains a "Required" validation, a red asterisk will be displayed next to the label of the control that signifies to users that a value is required to proceed. This property is configurable.
 
-**NOTE**: The extension can programmatically trigger validation on all visible form fields by using  `context.Form.TriggerValidation`, where context is the blade context object.
+  **NOTE**: The extension can programmatically trigger validation on all visible form fields by using  `context.Form.TriggerValidation`, where context is the blade context object.
 
 **validationResults**: This property is a reflection over the current state of all validations on the control.
 
@@ -50,20 +34,18 @@ Everything that applies to controls also applies to form controls, as specified 
 <a name="form-control-input-options"></a>
 ## Form control input options
 
-<!-- TODO: Determine which other properties are not configurable. -->
-
 All configurable properties on the control, like `value`, `validations`, or `dirty`, are options that can be sent as either observables or non-observables.  Observable values are best used when one observable is already present and you do not want to set up the two-way binding. For example, you could send the same observable as the `disabled` property to multiple forms, and then disable all of the forms at once by setting that observable only once. For more information about observables, see [portalfx-blades-viewmodel.md#observable-and-non-observable-values](portalfx-blades-viewmodel.md#observable-and-non-observable-values).
 
 **NOTE**:  For the most part, sending in non-observables is recommended because it makes extension code more readable and less verbose.
 
-**suppressDirtyBehavior**: This is used when the form control is not being used for saving data. When this flag is set to true, the control will not mark itself as `dirty` when the value is changed.  This will prevent dirty styling, and prevent this control from triggering the alert when blades are closed.  For example, if you have a slider that controls the zoom level of a view, no information is lost when the blade is closed.
+**suppressDirtyBehavior**: This is used when the form control is not being used for saving data. When this flag is set to true, the control will not mark itself as `dirty` when the value is changed.  This will prevent dirty styling, and prevent this control from triggering the alert when blades are closed.  For example, if you have a slider that controls the zoom level of a view, information like the slider position is lost when the blade is closed, but that setting is not relevant.
 
 **NOTE**: This property is not configurable after creation of the control.
 
 <a name="form-control-input-options-form-layout"></a>
 ### Form Layout
 
-Because form controls are often grouped together, it is important to keep the layout of the controls consistent. Consequently, most form layout is controlled by using sections. They allow developers to group controls and other sections, into structured layouts. For more information about sections at [http://aka.ms/portalfx/playground](http://aka.ms/portalfx/playground).
+Because form controls are often grouped together, it is important to keep the layout of the controls consistent. Consequently, most form layout is controlled by using sections. For more information about sections, see  [http://aka.ms/portalfx/playground](http://aka.ms/portalfx/playground).
 
 The section has two properties that allow for layout control. They are as follows.
 
@@ -71,20 +53,12 @@ The section has two properties that allow for layout control. They are as follow
 
 **LeftLabelWidth**: When this property is set to true, the labels of the child form controls are placed to the left of the control, instead of above the control.  The control labels have a fixed width that is set to the number of pixels that was sent to the control. 
 
-<!--TODO:  Determine what was meant by 
-
-"**NOTE**: Custom layouts are not recommended."
-Or, determine what is recommended instead of the custom layouts. -->
-
 <a name="form-control-input-options-legacy-integration"></a>
 ### Legacy Integration
 
 If you are working with blades that use legacy concepts like `editScope`, you can still use the new form controls by sending the `editScope` observable to the blade options as the `value` property. This results in the `editScope` being updated when the control is updated, and vice versa.
 
-<a name="form-control-input-options-form-content"></a>
-### Form Content
-
-Form-integrated controls are the UI widgets that are compatible with forms. They can be used in a majority of forms scenarios. They automatically enable good form patterns, built-in validation, and auto-tracking of changes. The controls playground is located at  [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground), and it allows developers to build their own code instead of using the provided samples.
+**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions and forms be developed without edit scopes, as specified in [portalfx-editscopeless-procedure.md](portalfx-editscopeless-procedure.md).
 
 <a name="form-control-input-options-form-topics"></a>
 ### Form Topics
