@@ -70,10 +70,10 @@ There are a number of subtopics in the forms topic.  Sample source code is inclu
 
 | API Topic                        | Document                                                                                     | 
 | -------------------------------- | -------------------------------------------------------------------------------------------- | 
-| Designing and Arranging the Form | [portalfx-forms-designing.md](portalfx-forms-designing.md)                                   |  
-| Forms Construction               | [portalfx-forms-construction.md](portalfx-forms-construction.md)                             |  
-| Integrating Forms with Commands  | [portalfx-forms-integrating-with-commands.md](portalfx-forms-integrating-with-commands.md)   | 
-| Form Field Validation            | [portalfx-forms-field-validation.md](portalfx-forms-field-validation.md)                     | 
+| Designing and Arranging the Form | [top-forms-designing.md](top-forms-designing.md)                                   |  
+| Forms Construction               | [top-forms-construction.md](top-forms-construction.md)                             |  
+| Integrating Forms with Commands  | [top-forms-integrating-with-commands.md](top-forms-integrating-with-commands.md)   | 
+| Form Field Validation            | [top-forms-field-validation.md](top-forms-field-validation.md)                     | 
 | Sample Extensions with Forms     | [portalfx-extensions-samples-forms.md](portalfx-extensions-samples-forms.md)                 |
 
 For more information about how forms and parameters interact with an extension, see [portalfx-parameter-collection-overview.md](portalfx-parameter-collection-overview.md).
