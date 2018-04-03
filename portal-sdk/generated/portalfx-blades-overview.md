@@ -8,13 +8,12 @@ The following is a list of different types of blades.
 
 | Type                          | Document                                                       | Description |
 | ----------------------------- | ---- | ---- |
-| TemplateBlade                 | [portalfx-blades-procedure.md](portalfx-blades-procedure.md)   | Creating any Portal blade. This is the main and recommended authoring model for UI in the Portal. | 
-| The Blade ViewModel           | [portalfx-blades-viewmodel.md](portalfx-blades-viewmodel.md)   |  The `ViewModel` that associates data that is retrieved from the server with the blade and its controls. |
-| Advanced TemplateBlade Topics | [portalfx-blades-advanced.md](portalfx-blades-advanced.md)     | Advanced topics in template blade development.                                                    | 
+| TemplateBlade                 | [top-blades-procedure.md](top-blades-procedure.md)   | Creating any Portal blade. This is the main and recommended authoring model for UI in the Portal. | 
+| The Blade ViewModel           | [top-blades-viewmodel.md](top-blades-viewmodel.md)   |  The `ViewModels` that associate data that is retrieved from the server with the blade and its controls. |
+| Advanced TemplateBlade Topics | [top-blades-advanced.md](top-blades-advanced.md)     | Advanced topics in template blade development.                                                    | 
 | MenuBlade                     | [portalfx-blades-menublade.md](portalfx-blades-menublade.md)   | Displays a vertical menu at the left of a blade.                                                  |  
-| Blade Kinds                   | [portalfx-blades-bladeKinds.md](portalfx-blades-bladeKinds.md) | A set of built-in blades that encapsulate common patterns.                                        | 
-| Blade Settings                | [portalfx-blades-settings.md](portalfx-blades-settings.md)   | Framework settings that allow extensions to opt in or out of interaction patterns.                  | 
-| AppBlade                      | [portalfx-blades-appblades.md](portalfx-blades-appblades.md)   | Provides an IFrame to host the UI.                                                                | 
-| Blade with tiles              | [portalfx-blades-legacy.md](portalfx-blades-legacy.md)         |  Legacy authoring model. Given its complexity, you may want to use TemplateBlades instead. | | 
+| Blade Settings                | [top-blades-settings.md](top-blades-settings.md)   | Framework settings that allow extensions to opt in or out of interaction patterns.                  | 
+| AppBlade                      | [top-blades-appblades.md](top-blades-appblades.md)   | Provides an IFrame to host the UI.                                                                | 
+| Blade with tiles              | [top-blades-legacy.md](top-blades-legacy.md)         |  Legacy authoring model. Given its complexity, you may want to use TemplateBlades instead. | | 
 | Sample Extensions with Blades | [portalfx-extensions-samples-blades.md](portalfx-extensions-samples-blades.md) |  SDK Samples that demonstrate how to develop extensions with different templates.  | | 
 
