@@ -12,7 +12,7 @@ The following is a list of different types of blades.
 | Advanced TemplateBlade Topics | [top-blades-advanced.md](top-blades-advanced.md)     | Advanced topics in template blade development.                                                    | 
 | MenuBlade                     | [top-blades-menublade.md](top-blades-menublade.md)   | Displays a vertical menu at the left of a blade.                                                  |  
 | Blade Settings                | [top-blades-settings.md](top-blades-settings.md)   | Framework settings that allow extensions to opt in or out of interaction patterns.                  | 
-| AppBlade                      | [top-blades-appblades.md](top-blades-appblades.md)   | Provides an IFrame to host the UI.                                                                | 
+| AppBlade                      | [top-blades-frameblades.md](top-blades-frameblades.md)   | Provides an IFrame to host the UI.                                                                | 
 | Blade with tiles              | [top-blades-legacy.md](top-blades-legacy.md)         |  Legacy authoring model. Given its complexity, you may want to use TemplateBlades instead. | | 
 | Sample Extensions with Blades | [portalfx-extensions-samples-blades.md](portalfx-extensions-samples-blades.md) |  SDK Samples that demonstrate how to develop extensions with different templates.  | | 
 

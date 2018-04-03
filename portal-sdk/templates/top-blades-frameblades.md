@@ -1,10 +1,10 @@
-### AppBlades
+### Frame Blades
 
-AppBlades provide an IFrame where an extension can render content.  The extension IFrame is associated with an IFrame that hosts the UI, in order to enable the flexibility and control of the Model-View-View-Model methodology.
+Frame Blades provide an IFrame where an extension can render content.  The extension IFrame is associated with an IFrame that hosts the UI, in order to enable the flexibility and control of the Model-View-View-Model methodology.
 
-AppBlades can rehost an existing experience, and allow developers to create a UI that is not supported by the Fx. Because AppBlades do not use Ibiza Fx controls, extension developers are fully responsible for accessibility, theming, and consistency.
+Frame blades can rehost an existing experience, and allow developers to create a UI that is not supported by the Fx. Because Frame blades do not use Ibiza Fx controls, extension developers are fully responsible for accessibility, theming, and consistency.
 
-This programming model results in maximum flexibility and reduces additional developer responsibilities. We recommend using AppBlades under the following conditions.
+This programming model results in maximum flexibility and reduces additional developer responsibilities. We recommend using Frame blades under the following conditions.
 
 * An existing extension that should be migrated to Ibiza without needing to be re-implemented 
 * Developers want to implement user interactions and experiences that are not supported by Ibiza Framework components
