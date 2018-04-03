@@ -420,7 +420,7 @@ This method can also be used to launch a blade from another extension, using the
 
 #### Hotspots (Not recommended for new scenarios)
 
-When building [Custom parts](portalfx-parts-overview.md#custom-parts), you may want to launch a blade from a div, button, or `<a>` tag. To launch a blade, start with a `pcHotSpot` binding in your HTML template:
+When building custom parts as specified in [portalfx-parts-overview.md#custom-parts](portalfx-parts-overview.md#custom-parts), you may want to launch a blade from a div, button, or `<a>` tag. To launch a blade, start with a `pcHotSpot` binding in your HTML template:
 
 `\SamplesExtension\Extension\Client\ParameterCollection\CollectorAsHotSpot\Templates\CompositePart.html`
 
