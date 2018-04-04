@@ -11,7 +11,7 @@ The following properties and methods are present on all form controls.
 
 **value**: The value property is bound to the value shown in the control. You can subscribe to it in order to respond to user input, and you can set it to update the widget's value programmatically. This property is configurable.
 
-**disabled**: Setting this property to `true` stops the user from entering data into the control.  It will also prevent validation from running, because if validation fails, there is no way for the user to correct the value of this control.  This property also shows the user that the control is disabled by changing the styling and aria attributes.
+**disabled**: Setting this property to `true` stops the user from entering data into the control.  It will also prevent validation from running, because if validation fails, there is no way for the user to correct the value of this control.  This property also shows the user that the control is disabled by changing the styling and aria attributes. This property is configurable.
 
 **dirty**: The dirty property is bound to the edit state of the control.  It is changed from `false` to `true` if the user changes the `value` property by interacting with the control.  Setting the `value` property programmatically will not affect the `dirty` state of the control. Additionally, when a blade is closed, and there are dirty fields present, a popup is displayed that warns the user that they might lose their input.  This alert is suppressed when the blade is closed programmatically with the blade close APIs, and data is sent back to the parent blade.  Additionally, developers can control the behavior of this alert by using the `Context.Form.ConfigureAlertOnClose` method, where context is the blade context object. This property is configurable.
 
@@ -21,13 +21,13 @@ The following properties and methods are present on all form controls.
 
   **NOTE**: The extension can programmatically trigger validation on all visible form fields by using  `context.Form.TriggerValidation`, where context is the blade context object.
 
-**validationResults**: This property is a reflection over the current state of all validations on the control.
+**validationResults**: This property is a reflection over the current state of all validations on the control. This property is read-only and is not configurable, although an extension can subscribe to it.
 
-**valid**: The valid property is a read-only property that reflects the current validation state of the control. 
+**valid**: This property reflects the current validation state of the control. This property is read-only and is not configurable, although an extension can subscribe to it.
 
 **label, sublabel, infoBalloonContent**: These properties allow the extension to display information that describes the control.  These properties will only appear in the widget if their values were set.  The label property is displayed above or to the right of the control.  The sublabel is typically shown below and to the left of the control.  The info balloon will be shown next to the label.  See the [Form Layout](#form-layout) on how to change layout.  Configuring these properties will also display information in accessible ways by using aria attributes.
 
-**triggerValidation**: This method runs all validations on the control.  It will return a `promise` with the overall valid state of the control after validation has completed.
+**triggerValidation**: This method runs all validations on the control.  It will return a `promise` with the overall valid state of the control after validation has completed. This property is read-only and is not configurable, although an extension can subscribe to it.
 
 ## Form control input options
 
