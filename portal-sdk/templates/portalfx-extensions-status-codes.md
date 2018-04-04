@@ -8,18 +8,19 @@ Status codes or error messages that are encountered while developing an extensio
 
 ***Console error messages in F12 developer tools***
 
-Some console and HTTP error messages are located at[https://msdn.microsoft.com/en-us/library/dn423949(v=vs.85).aspx](https://msdn.microsoft.com/en-us/library/dn423949(v=vs.85).aspx).
+Some console and HTTP error messages are located at [https://msdn.microsoft.com/en-us/library/dn423949(v=vs.85).aspx](https://msdn.microsoft.com/en-us/library/dn423949(v=vs.85).aspx).
 
 * * *
 
 ### UNKNOWN ENTITY-TYPED OBJECT ARRAY 
 
-***Error: "Entity-typed object/array is not known to this edit scope..." ***
+***Error: "Entity-typed object/array is not known to this edit scope..."***
 
-DESCRIPTION: After an `EditScope` is initialized and loaded, entities can be introduced and removed from the `EditScope` only by using `EditScope` APIs. Unfortunately, extensions cannot make an observable change to add or remove 'entity' objects from the `EditScope`. If an extension tries to make an observable change that introduces an 'entity' object into the EditScope, they will encounter this error discussed here.
+DESCRIPTION: After an `EditScope` is initialized and loaded, entities can be introduced and removed from the `EditScope` only by using `EditScope` APIs. Unfortunately, extensions cannot make an observable change to add or remove 'entity' objects from the `EditScope`. If an extension tries to make an observable change that introduces an 'entity' object into the EditScope, they will encounter this error. For any object residing in the `EditScope`, merely adding and removing keys cannot be detected by `EditScope` or by the FX at large and, consequently, edits cannot be tracked. When an extension attempts to add or remove keys from an `EditScope` object, this puts the `EditScope` edit-tracking in an inconsistent state.
 
-SOLUTION: To correctly add or remove an 'entity' objects, use the API's that are specified in 
-[portalfx-legacy-editscopes.md#editScope-entity-arrays](portalfx-legacy-editscopes.md#editScope-entity-arrays). A partial list is as follows.
+SOLUTION: To correctly add or remove 'entity' objects, use the API's that are specified in 
+[portalfx-legacy-editscopes.md#editScope-entity-arrays](portalfx-legacy-editscopes.md#editScope-entity-arrays).
+ It is good practice to use only observable changes and `EditScope` APIs to mutate/change the EditScope/Form model.   A partial list is as follows.
 
 * `applyArrayAsEdits`: This API accepts a new array of 'entity' objects. The `EditScope` will diff this new array against the existing `EditScope` array items, determine which 'entity' objects are created/updated/deleted, and then records the corresponding user edits.
 
@@ -27,6 +28,14 @@ SOLUTION: To correctly add or remove an 'entity' objects, use the API's that are
 
 * `markForDelete`: Marks 'entity'  objects in an `EditScope`  for deletion.
 
+DESCRIPTION: Often, extensions encounter this error because the data is modeled  as 'entities' binding with [editable grid](#editable-grid) in a `ParameterProvider` Blade as specified in [portalfx-legacy-editscopes.md#editScope-entity-arrays](portalfx-legacy-editscopes.md#editScope-entity-arrays).  The error may also be encountered when applying the array edits in a corresponding `ParameterCollector` Blade. 
+
+SOLUTION:  Here are two schemes that can be used to avoid this error.
+
+* Use the `applyArrayAsEdits` to commit array edits to an `EditScope`.
+
+* Define type metadata for this array twice. One copy is for array items typed as 'entities', and is used to edit the data in an editable grid. The other copy is for array items typed as not 'entities', and is used to commit data to an `EditScope` in the `ParameterCollector` blade.  
+  
 * * *
 
 ### ERR_CONNECTION_RESET

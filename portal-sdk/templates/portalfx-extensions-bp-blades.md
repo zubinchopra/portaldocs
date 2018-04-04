@@ -21,6 +21,14 @@ These patterns are recommended for every extension, but they are not required.
 
 * Never remove parameters from their `Parameters` type
 
+* Use standard `<a href="#">` tags when adding `fxclick` to open child blades to make the links accessible.
+
+* Do not use `<div>` tags when adding `fxClick` to open child blades. The <div>` tags require apply additional HTML attributes to make the links accessible.
+
+* Do not use the **Knockout** `click` data-binding to open child Blades. The `fxClick` data-binding was developed specifically to handle asynchronous click communication between the Portal Shell IFrame and the  extension's IFrame.
+
+* Do not call any of the `container.open*` methods from within an `fxclick handler`.  If the extension calls them, then the `ext-msportalfx-activated` class will be automatically added to the html element that was clicked. The class will be automatically removed when the child blade is closed.
+
 * Avoid observables when possible
 
   The values in non-observables are much more performant than the values in observables.  Specifying a string instead of a `KnockoutObservable<string>`, os specifying a boolean instead of a `KnockoutObservable<boolean>` will improve performance whenever possible. The performance difference for each operation is not large, but when a blade can make tens or hundreds of values, they will add up.
