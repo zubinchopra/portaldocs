@@ -39,7 +39,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
     * [How to use the MSI Installer](./generated/downloads.md)
     * [How to update portal Nuget packages](./generated/top-extensions-nuget.md)
 1. Configure your IDE - *Typescript version / Compile on save*
-    * [Visual Studio](portalfx-ide-setup.md) *(with Extension project template)*
+    * [Visual Studio]() *(with Extension project template)*
     * [VS Code]()
 1. 	Run your code
     * [Running the extension locally (a.k.a. Sideloading)](./generated/top-extensions-sideloading.md)
@@ -55,7 +55,13 @@ The next few sections walk through the different types of UI that can be built u
 The primary UI building block is a called a blade. A blade is like a page. It generally takes up the full screen, has a presence in the portal breadcrumb, and has an 'X' button to close it.
 
 [Developing blades](./generated/top-extensions-blades.md)
-
+[TemplateBlade](./generated/top-blades-procedure.md)	
+[The Blade ViewModel](./generated/top-blades-viewmodel.md)
+[Advanced TemplateBlade Topics](./generated/op-blades-advanced.md)
+[MenuBlade](./generated/top-blades-menublade.md)
+[Blade Settings](./generated/top-blades-settings.md)
+[Frame Blades](./generated/top-blades-frameblades.md)
+[Blade with tiles](./generated/top-blades-legacy.md)
 [Ask a question about blades on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts)
 
 ### Parts
@@ -71,7 +77,7 @@ If you want your experience to have a presence on Azure dashboards then you will
 Any template based UI in the portal (e.g. [template blades]() or [template parts]() can make use of a rich controls library maintained by the Ibiza team.
 
 * [Controls overview](./generated/top-extensions-controls.md)
-* [Controls playground]()
+* [Controls playground](./generated/portalfx-extensions-controls-playground.md)
 
 [Ask a controls related question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls)
 
@@ -81,8 +87,8 @@ When using HTML and framework controls you have some control over styling. These
 
  [Styling and Theming](./generated/top-extensions-style.md)
 
-* [CSS Style sanitization](./generated/portalfx-style-guide-style-sanitization.md)
-* [Adding Custom CSS](./generated/portalfx-style-guide-custom-css-file.md)
+* [CSS Style sanitization]()
+* [Adding Custom CSS]()
 * [Layout classes]()
 * [Typography]()
 * [Iconography]()
@@ -149,7 +155,7 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 ## Testing
 
 The Ibiza team provides limited testing support. Due to resource constraints the C# and Node.js framework is open source. This is so that partners can unblock themselves in case the Ibiza team cannot make requested improvements as quickly as you might expect.
-* [Unit testing support](portalfx-unit-test.md)
+* [Unit testing support]()
 * [C# Test Framework (Open source)]()
 * [Node.js Test Framework (Open source)]()
 
@@ -224,7 +230,7 @@ Extensions are required to be running a version of the Ibiza SDK that has been p
 
 These features are supported, but have had no recent investment. No additional investment is planned. There are modern capabilities that should be used instead if you are developing new features.
 * [PDL based blades and parts]()
-* [Controls in the msportalfx namespace](portalfx-extensions-samples-controls-deprecated.md)
+* [Controls in the msportalfx namespace](./generated/portalfx-extensions-samples-controls-deprecated.md)
 * [EditScope](./generated/portalfx-legacy-editscopes.md)
 
 ## Frequently asked questions
