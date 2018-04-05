@@ -1,30 +1,27 @@
 
-<a name="blades-and-template-blades"></a>
-# Blades and Template Blades
+<a name="blades"></a>
+# Blades
 
  
-<a name="blades-and-template-blades-overview"></a>
+<a name="blades-overview"></a>
 ## Overview
 
-Blades are the main UI container in the Portal. They are equivalent to `windows` or `pages` in other UX frameworks.      A blade typically takes up the full screen, has a presence in the Portal breadcrumb, and has an 'X' button to close it. The `TemplateBlade` is the recommended development model, which typically contains an import statement, an HTML template for the UI, and  ViewModel that contains the logic that binds to the HTML template. However, some previous development models are still supported.
+Blades are the main UI container in the Portal. They are equivalent to `windows` or `pages` in other UX frameworks.  A blade typically takes up the full screen, has a presence in the Portal breadcrumb, and has an 'X' button to close it. The `TemplateBlade` is the recommended development model, which typically contains an import statement, an HTML template for the UI, and a ViewModel that contains the logic that binds to the HTML template. However, a few other development models are supported.
 
 The following is a list of different types of blades.
 
-| Type                          | Document                                                       | Description |
+| Type                          | Document           | Description |
 | ----------------------------- | ---- | ---- |
-| TemplateBlade                 | [top-blades-procedure.md](top-blades-procedure.md)   | Creating any Portal blade. This is the main and recommended authoring model for UI in the Portal. | 
-| The Blade ViewModel           | [top-blades-viewmodel.md](top-blades-viewmodel.md)   |  The `ViewModels` that associate data that is retrieved from the server with the blade and its controls. |
-| Advanced TemplateBlade Topics | [top-blades-advanced.md](top-blades-advanced.md)     | Advanced topics in template blade development.                                                    | 
 | MenuBlade                     | [top-blades-menublade.md](top-blades-menublade.md)   | Displays a vertical menu at the left of a blade.                                                  |  
-| Blade Settings                | [top-blades-settings.md](top-blades-settings.md)   | Framework settings that allow extensions to opt in or out of interaction patterns.                  | 
-| AppBlade                      | [top-blades-frameblades.md](top-blades-frameblades.md)   | Provides an IFrame to host the UI.                                                                | 
+| Resource MenuBlade       |   | A specialized version of MenuBlade that adds support for standard Azure resource features.  | 
+| FrameBlade/AppBlade       | [top-blades-frameblades.md](top-blades-frameblades.md)   | Provides an IFrame to host the UI. Be advised that if you go this route you get great power and responsibility. You will own the DOM, which means you can build any UI you can dream up. You cannot use Ibiza controls meaning you will have an increased responsibility in terms of accessibility, consistency, and theming.  |
 | Blade with tiles              | [top-blades-legacy.md](top-blades-legacy.md)         |  Legacy authoring model. Given its complexity, you may want to use TemplateBlades instead. | | 
 
 
 
  
  
-<a name="blades-and-template-blades-best-practices"></a>
+<a name="blades-best-practices"></a>
 ## Best Practices
 
 Typically, extensions follow these best practices, which often result in performance improvements. Portal development patterns or architectures that are recommended based on customer feedback and usability studies are categorized by the type of blade. 
@@ -37,7 +34,7 @@ Typically, extensions follow these best practices, which often result in perform
 
 * [Best Practices for Resource List blades](#best-practices-for-resource-list-blades)
 	
-<a name="blades-and-template-blades-best-practices-best-practices-for-all-blades"></a>
+<a name="blades-best-practices-best-practices-for-all-blades"></a>
 ### Best Practices for All blades
 
 These patterns are recommended for every extension, but they are not required.
@@ -47,6 +44,14 @@ These patterns are recommended for every extension, but they are not required.
 * Limit blade `parameters` updates to the addition of parameters that are marked in **TypeScript** as optional
 
 * Never remove parameters from their `Parameters` type
+
+* Use standard `<a href="#">` tags when adding `fxclick` to open child blades to make the links accessible.
+
+* Do not use `<div>` tags when adding `fxClick` to open child blades. The <div>` tags require apply additional HTML attributes to make the links accessible.
+
+* Do not use the **Knockout** `click` data-binding to open child Blades. The `fxClick` data-binding was developed specifically to handle asynchronous click communication between the Portal Shell IFrame and the  extension's IFrame.
+
+* Do not call any of the `container.open*` methods from within an `fxclick handler`.  If the extension calls them, then the `ext-msportalfx-activated` class will be automatically added to the html element that was clicked. The class will be automatically removed when the child blade is closed.
 
 * Avoid observables when possible
 
@@ -59,7 +64,7 @@ These patterns are recommended for every extension, but they are not required.
   Extension developers should occasionally review the data model to ensure that only the needed data is public.  The names of private members begin with an underscore, so that proxied observables are made aware by the naming convention that the members are private and therefore should not be sent to the shell.
 
 
-<a name="blades-and-template-blades-best-practices-best-practices-for-create-blades"></a>
+<a name="blades-best-practices-best-practices-for-create-blades"></a>
 ### Best Practices for Create blades
 
 Best practices for create blades cover common scenarios that will save time and avoid deployment failures.
@@ -70,12 +75,12 @@ Best practices for create blades cover common scenarios that will save time and 
 
 * Every service should expose a way to get scripts to automate provisioning. Automation options should include **CLI**, **PowerShell**, **.NET**, **Java**, **NodeJs**, **Python**, **Ruby**, **PHP**, and **REST**, in that order. ARM-based services that use template deployment are opted in by default.
 
-<a name="blades-and-template-blades-best-practices-best-practices-for-menu-blades"></a>
+<a name="blades-best-practices-best-practices-for-menu-blades"></a>
 ### Best Practices for Menu blades
 
 Services should use the Menu blade instead of the Settings blade. ARM resources should opt in to the resource menu for a simpler, streamlined menu.
 
-<a name="blades-and-template-blades-best-practices-best-practices-for-resource-list-blades"></a>
+<a name="blades-best-practices-best-practices-for-resource-list-blades"></a>
 ### Best Practices for Resource List blades
 
   Resource List blades are also known as Browse blades.
@@ -90,7 +95,7 @@ Services should use the Menu blade instead of the Settings blade. ARM resources 
 
  ## Frequently asked questions
 
-<a name="blades-and-template-blades-best-practices-when-to-make-properties-observable"></a>
+<a name="blades-best-practices-when-to-make-properties-observable"></a>
 ### When to make properties observable
 
 *** Wwhy not make every property observable just in case you want to update it later?***
