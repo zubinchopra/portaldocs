@@ -71,11 +71,9 @@ The next few sections walk through the different types of UI that can be built u
 
 The primary UI building block is a called a blade. A blade is like a page. It generally takes up the full screen, has a presence in the portal breadcrumb, and has an 'X' button to close it.
 
-* [Developing blades](./generated/top-extensions-blades.md)
+* [Overview](./generated/top-extensions-blades.md)
 
 * [TemplateBlade](./generated/top-blades-procedure.md)
-
-* [The Blade ViewModel](./generated/top-blades-viewmodel.md)
 
 * [Advanced TemplateBlade Topics](./generated/op-blades-advanced.md)
 
