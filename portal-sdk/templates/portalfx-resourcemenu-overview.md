@@ -1,72 +1,48 @@
 
 ## Overview 
 
-The resource menu provides a browse-manage experience for an Azure resource. It
-does this by providing an app-like container that includes a navigation
-menu to the left of the screen. This navigation menu allows the user to access all of the functionality
-that the resource provides.  The functionality is categorized into relevant groups.
+The resource menu provides an easy-to-use implementation of a menu blade, as specified in [top-blades-menublade.md](top-blades-menublade.md), with various common Azure resource menu items readily available. It does this by providing an app-like container for a resource, with a navigation menu on the left. This navigation menu allows an extension to access all of the functionality of the resource, categorized into relevant groups.
 
-#### What is required to enable the resource menu?
+**What is required to enable the resource menu?**
 
-The resource menu requires:
+The resource menu requires that the extension perform the following.
 
-* Opting in via the PDL AssetType
-* Providing an AssetViewModel on the AssetType
-* A 'getMenuConfig' method on the AssetViewModel
-* Add menu items to the menu
-* Verify that UX is responsive when maximized and restored
+1. [Opt in by using an AssetType](#opt-in-by-using-an-assettype)
 
-### Migration
+1. [Provide an AssetViewModel on the AssetType](#provide-an-assetviewmodel-on-the-assettype)
 
-Developers that migrate to the Resource menu need to upgrade to SDK version 
-5.0.302.374 or newer. The SDK is available at[../generated/downloads.md](../generated/downloads.md).
+1. [Add a getMenuConfig method](#add-a-getmenuconfig-method)
 
-* For more informatation about migrating an extension from the settings blade to the resource menu, see
+1. [Add menu items to the menu](#add-menu-items-to-the-menu)
+
+1. [Add ResourceMenu titles](#add-resourcemenu-titles)
+
+1. [Validate that the UX is responsive](#validate-that-the-ux-is-responsive)
+
+For more information about migrating an extension from the settings blade to the resource menu, see
 [portalfx-resourcemenu-migration.md](portalfx-resourcemenu-migration.md).
 
-* For more information about the APIs that support the Resource menu, see [portalfx-resourcemenu-api.md](portalfx-resourcemenu-api.md).
+For more information about the APIs that support the Resource menu, see [portalfx-resourcemenu-api.md](portalfx-resourcemenu-api.md).
 
-* For answers to frequently asked questions, see [portalfx-extensions-faq-resourcemenu.md](portalfx-extensions-faq-resourcemenu.md).
+For answers to frequently asked questions, see [portalfx-extensions-faq-resourcemenu.md](portalfx-extensions-faq-resourcemenu.md).
 
-### Responding to user feedback
 
-As a product the main source of negative user feedback comes from horizontal
-scrolling and UI movement. This is something we are trying to address across the
-portal one way of doing that is removing blades from the user's journey. The
-average journey depth is 3/4 blades and the average flow is Browse, Resource
-blade, Settings and then some blade from settings. In most cases this will
-result in the 4th blade being off screen and then scrolled into view.
+If there are any issues please reach out to <a href="mailto:ibiza-menu-blade@microsoft.com?subject=Issues with Resource Samples">Ibiza Menu Blade</a>.
 
-### How is this different from the settings blade?
 
-Previously every extension had to create a settings blade for every resource
-they owned, that was an extra overhead, now the resource menu is a blade which
-is loaded from the HubsExtension and calls into the AssetViewModel associated to
-the AssetType to determine what menu items to show and what blades those items
-open. Every extension and resource can leverage this blade without worrying
-about getting UX consistency and avoid having to implementing the same blade
-multiple times. The biggest change to the API is how dynamic items are handled.
-Instead of having an observable array, the API is now a function that returns a
-promise for the list of items. The main motivator for this change was to counter
-usability issues with the list becoming jumpy and moving underneath the user
-unpredictably. Although it is still possible to handle all the dynamic cases
-that exist today by disabling the item and observably updating if the item is
-enabled/disabled once the blade/inputs have been determined or delay creating
-the menu object until all the dynamic items have been determined.
+**What does the resource menu provide that a menu blade does not?**
 
-#### The API is slightly different in two cases
+The resource menu is a blade which is loaded from the HubsExtension. It  calls the `AssetViewModel` that is  associated with the `AssetType` to determine what menu items to show and what blades those items open. Every extension and resource can leverage this blade without worrying about getting UX consistency and avoid having to implement the same blade multiple times. The resource menu also provides an `options` object on the `getMenuConfig` which exposes various Azure resource-related options such as `Support/Monitoring/Automation Scripts.`  
 
- 1. Grouping was defined by aligning every item within the same group to use the
- same group id where as now we have promoted the grouping concept, further
- details about that below.
- 2. Defining what blade to open was a dynamic blade selection whereas now it is
- a function supplyBladeReference().
+### Opt in by using an AssetType
 
-#### Opting in via the PDL AssetType
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>` is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
-Just provide 'UseResourceMenu="true"' as a property on the AssetType PDL tag as
-shown below. At some point in the future this will become the default experience
-and will require an opt out if the behaviour is undesired.
+The code for this example is located at `<dir>Client\V1\Navigation\ResourceMenuBlade\ViewModels`.
+
+<!-- TODO:  Determine whether this is the default experience yet. -->
+
+For the extension to use a resource menu, it should provide `UseResourceMenu="true"` as a property on the `AssetType`  tag in the PDL file, as in the following code. 
 
 ```xml
 <AssetType Name="MyResource"
@@ -74,9 +50,7 @@ and will require an opt out if the behaviour is undesired.
            UseResourceMenu="true">
 ```
 
-For this flag to take effect, your asset type should map to an ARM resource. You
-can associate your ARM resource to your asset type by specifying the following
-tags within your <AssetType> tag.
+For this flag to take effect, the `assetType` should map to an ARM resource. The ARM resource is associated with the  `assetType` by specifying the following tags within the `<AssetType>` tag.
 
 ```xml
 <Browse Type="ResourceType" />
@@ -85,7 +59,7 @@ tags within your <AssetType> tag.
     ApiVersion="api-version-you-want-to-use" />
 ```
 
-As an example, for Resource Groups, currently, the resource type tag is similar to below.
+As an example, the resource type tag for resource groups is in the following code.
 
 ```xml
 <ResourceType
@@ -93,11 +67,9 @@ As an example, for Resource Groups, currently, the resource type tag is similar 
     ApiVersion="2014-04-01-preview" />
 ```
 
-#### Providing an AssetViewModel on the AssetType
+### Provide an AssetViewModel on the AssetType
 
-First, if you don't have one already, create a new viewmodel for your
-AssetViewModel below is a skeleton for the AssetViewModel. For more information
-on assets [see the following](portalfx-assets.md)
+Create a new `ViewModel` for the `AssetViewModel`.  The following is a skeleton for the `AssetViewModel`. For more information on assets, see [portalfx-assets.md](portalfx-assets.md).
 
 ```ts
 /**
@@ -118,8 +90,7 @@ export class MyResourceViewModel
 }
  ```
 
-Once the AssetViewModel has been added you will need to add a reference to it
-from the AssetType in PDL.
+After the `AssetViewModel` has been added, there should also be a reference to it from the `AssetType` in the PDL file.
 
 ```xml
 <AssetType Name="MyResource"
@@ -127,9 +98,11 @@ from the AssetType in PDL.
            ViewModel="{ViewModel Name=MyResourceViewModel, Module=./AssetViewModels/MyResourceViewModel}">
 ```
 
-#### Adding a 'getMenuConfig' method on the AssetViewModel
+### Add a getMenuConfig method 
 
-The method must be called 'getMenuConfig' and must follow the signature below, see [Resource Menu APIs][resourcemenuapis] for a full list of the APIs and interfaces. 
+The next step in creating a ResourceMenu is to add a `getMenuConfig` method to the `AssetViewModel`.
+
+The method is named `getMenuConfig` and uses the following signature.  For a full list of the APIs and interfaces, see [portalfx-resourcemenu-api.md](portalfx-resourcemenu-api.md).
 
 ```ts
 public getMenuConfig(resourceInfo: MsPortalFx.Assets.ResourceInformation): MsPortalFx.Base.PromiseV<MsPortalFx.Assets.ResourceMenuConfig> {
@@ -137,7 +110,7 @@ public getMenuConfig(resourceInfo: MsPortalFx.Assets.ResourceInformation): MsPor
 }
 ```
 
-The following object is populated and passed in, if you would like to see more properties added here feel free to reach out to <a href="mailto:ibiza-menu-blade@microsoft.com?subject=Resource Sample Needs More Properties ">Ibiza Menu Blade</a>.
+The following object is populated and sent to the `getMenuConfig` method. If you would like to see more properties added here, reach out to <a href="mailto:ibiza-menu-blade@microsoft.com?subject=Resource Sample Needs More Properties ">Ibiza Menu Blade</a>.
 
 ```ts
 /**
@@ -156,10 +129,9 @@ interface ResourceInformation {
 
 ```
 
-#### Add menu items to the menu
+### Add menu items to the menu
 
-Once you have the skeleton of the resource menu working, the next step is to create the menu object to return in your 'getMenuConfig' method.
-The menu object follows the following structure, again see [Resource Menu APIs][resourcemenuapis] for the full list of APIs.
+After the resource menu skeleton is working, create the menu object to return in the `getMenuConfig` method, as in the following code.
 
 ```ts
 /**
@@ -181,36 +153,37 @@ interface ResourceMenuConfig {
 }
 ```
 
+The following properties can be sent to the  `getMenuConfig` method.
+
 | Property        | Description |
 |-----------------|-------------|
 | `groups`        | Array of groups and menu items within each group that will open a blade |
 | `defaultItemId` | ID of the menu item (defined in `groups`) to be selected by default |
 | `options`       | Flags to show/hide common menu items |
 
-The following options are available:
+The following options are available on  the `getMenuConfig` method.
 
-| Option                        | Production-ready metrics | Enabled by default | Scenario |
+| Option                        | Purpose | Production-ready metrics | Enabled by default | 
 |-------------------------------|-------------|--------------------|----------|
-| `enableAlerts`                | No  | No | Create, view, and update alert rules. |
-| `enableAppInsights`           | No  | No | View Application Insights monitoring. |
-| `enableDiagnostics`           | No  | No | View monitoring diagnostics. |
-| `enableExportTemplate`        | Yes | Resources, resource groups | Export a template of the resource group to automate redeployments. RPs must provide [template schemas](http://aka.ms/armschema) for this. Does not support classic resources. |
-| `enableLocks`                 | Yes | Resources, resource groups, subscriptions | Lock resources to avoid accidental deletion and/or editing. |
-| `enableLogAnalytics`          | No  | No | View OMS workspace. |
-| `enableLogSearch`             | No  | No | Search logs. |
-| `enableMetrics`               | No  | No | View monitoring metrics. |
-| `enableProperties`            | No  | No | Generic properties blade for resources. Only includes standard ARM properties today, but may be integrated with the supplemental data, if needed. (Please file a [partner request](http://aka.ms/portalfx/request).) Does not support non-tracked resources. |
-| `enableRbac`                  | Yes | All ARM resource types | Manage user/role assignments for this resource. |
-| `enableSupportEventLogs`      | Yes | Resources, resource groups, subscriptions | View all operations and events |
-| `enableSupportHelpRequest`    | Yes | All ARM resource types | Create a support request for this resource, resource group, or subscription. |
-| `enableSupportResourceHealth` | Yes | No | Check resource for common health issues (e.g. connectivity) and recommend fixes. |
-| `enableSupportTroubleshoot`   | No  | No | **Deprecated. Do not use.** Legacy support only. Moved to a new design with improved usability scores. |
-| `enableSupportTroubleshootV2` | Yes | No | Troubleshoot possible availability/reliability issues (e.g. connectivity). |
-| `enableTags`                  | Yes | Resources, resource groups, subscriptions | Tag resource with key/value pairs to group/organize related resources. RP must support PATCH operations to update tags. Does not support classic resources. |
-| `showAppInsightsFirst`        | No  | No | View Application Insights monitoring. `enableAppInsights` must be set to `true`. |
+| `enableAlerts`                | Create, view, and update alert rules. | No  | No |
+| `enableAppInsights`           | View Application Insights monitoring. | No  | No | 
+| `enableDiagnostics`           | View monitoring diagnostics. | No  | No | 
+| `enableExportTemplate`        |  Export a template of the resource group to automate redeployments. RPs must provide [template schemas](http://aka.ms/armschema) for this. Does not support classic resources. | Yes | Resources, resource groups |
+| `enableLocks`                 | Lock resources to avoid accidental deletion and/or editing. | Yes | Resources, resource groups, subscriptions | 
+| `enableLogAnalytics`          | View OMS workspace. | No  | No | 
+| `enableLogSearch`             | Search logs. | No  | No | 
+| `enableMetrics`               | View monitoring metrics. | No  | No | 
+| `enableProperties`            | Generic properties blade for resources. Only includes standard ARM properties today, but may be integrated with the supplemental data, if needed. (Please file a [partner request](http://aka.ms/portalfx/request).) Does not support non-tracked resources. | No  | No | 
+| `enableRbac`                  | Manage user/role assignments for this resource. | Yes | All ARM resource types | 
+| `enableSupportEventLogs`      | View all operations and events | Yes | Resources, resource groups, subscriptions | 
+| `enableSupportHelpRequest`    | Create a support request for this resource, resource group, or subscription. | Yes | All ARM resource types | 
+| `enableSupportResourceHealth` | Check resource for common health issues (e.g. connectivity) and recommend fixes. |Yes | No | 
+| `enableSupportTroubleshoot`   | **Deprecated. Do not use.** Legacy support only. Moved to a new design with improved usability scores. | No  | No | 
+| `enableSupportTroubleshootV2` | Troubleshoot possible availability/reliability issues (e.g. connectivity). | Yes | No | 
+| `enableTags`                  | Tag resource with key/value pairs to group/organize related resources. RP must support PATCH operations to update tags. Does not support classic resources. | Yes | Resources, resource groups, subscriptions | 
+| `showAppInsightsFirst`        | View Application Insights monitoring. `enableAppInsights` must be set to `true`. | No  | No | 
 
-In this case let's assume your resource has an item with the ID 'overview' and has also onboarded support, getting
-export template, locks, RBAC, Activity Log, new support request, and tags automatically:
+In this example, the resource contains an item with the ID 'overview' and has also onboarded to extension Support, as specified in [top-blades-settings.md#audit-logs](top-blades-settings.md#audit-logs). This support automatically makes the export template, locks, RBAC, Activity Log, new support request, and tags available to the extension.
 
 ```ts
 public getMenuConfig(resourceInfo: MsPortalFx.Assets.ResourceInformation): MsPortalFx.Base.PromiseV<MsPortalFx.Assets.ResourceMenuConfig> {
@@ -229,7 +202,7 @@ public getMenuConfig(resourceInfo: MsPortalFx.Assets.ResourceInformation): MsPor
 }
 ```
 
-Now define a group with a single item, the menu's group and item API is as follows.
+To define a menu group that contains a single item, the menu's group and item API are as follows.
 
 ```ts
 /**
@@ -275,7 +248,7 @@ interface MenuItemBase {
 }
 ```
 
-Now given that our 'getMenuConfig' will look something like the following.
+This means that the `getMenuConfig` method will resemble the following.
 
 ```ts
 import * as ClientResources from "ClientResources";
@@ -313,17 +286,15 @@ public getMenuConfig(resourceInfo: MsPortalFx.Assets.ResourceInformation): MsPor
 }
 ```
 
-Now you will have a Resource menu which has one group with one item in it which opens the blade 'MyResourceOverviewBlade'.
+At this point, the extension has a Resource menu that contains one group, with one item in it, that  opens the `MyResourceOverviewBlade` blade.
 
-#### Adding to the resourcemenu title and subtitle
+### Add ResourceMenu titles
 
-The resource menu by default (for the overview) will show the name of the
-resource as the title of the blade, and the resource type as the subtitle. When
-any menu item is selected, the title gets updated to
+In this overview, the resource menu by default will show the name of the
+resource as the title of the blade, and the type of resource as the subtitle. When
+any menu item is selected, the title gets updated to `<<resource name>> - <<selected menu item>>`.
 
-"`<<resource name>> - <<selected menu item>>`"
-
-Extension authors can add to the title and subtitle through the blade opened in
+Developers can add to the title and subtitle through the blade that was opened in
 the content area. They can do this by implementing the `HostedInMenuBlade`
 interface as follows.
 
@@ -346,20 +317,8 @@ export class MyResourceBlade
 }
 ```
 
-#### Verify that UX is responsive when maximized and restored
+### Validate that the UX is responsive
 
-Since the resource menu acts as a container for the blades opened by the menu items, the display state is preserved when you switch between menu items. So, you should verify that blades render acceptable UX when the resource menu is maximized and when the resource menu is restored to the specified widths.
+Because the resource menu acts as a container for the blades opened by the menu items, the display state is preserved when the user switches between menu items. The developer should validate that blades render the UX properly when the resource menu is maximized, and also when the resource menu is restored to the specified widths.
 
-Next Steps:
-
-* There are samples of resources using this in the Samples Extension see the Client\ResourceTypes\Desktop\ folder, particularly the AssetViewModels\DesktopViewModel.ts
-* See [Resource Menu APIs][resourcemenuapis]
-{"gitdown": "include-file", "file": "../templates/portalfx-resourcemenu-api.md"}
-
-* See the [frequently asked questions][resourcemenufaq]
-{"gitdown": "include-file", "file": "../templates/portalfx-resourcemenu-faq.md"}
-
-
-
-* If there are any issues please reach out to <a href="mailto:ibiza-menu-blade@microsoft.com?subject=Issues with Resource Samples">Ibiza Menu Blade</a>.
-
+For an example of responsive resources, see the `<dir>Client\V1\ResourceTypes\Desktop\` folder, specifically the `...AssetViewModels\DesktopViewModel.ts` file.
