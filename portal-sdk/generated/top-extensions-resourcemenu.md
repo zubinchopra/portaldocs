@@ -1,5 +1,9 @@
 
-<a name="overview"></a>
+<a name="the-resource-menu"></a>
+# The Resource Menu
+
+
+<a name="the-resource-menu-overview"></a>
 ## Overview
 
 The resource menu provides an easy-to-use implementation of a menu blade, as specified in [top-blades-menublade.md](top-blades-menublade.md), with various common Azure resource menu items readily available. It does this by providing an app-like container for a resource, with a navigation menu on the left. This navigation menu allows an extension to access all of the functionality of the resource, categorized into relevant groups.
@@ -35,7 +39,7 @@ If there are any issues please reach out to <a href="mailto:ibiza-menu-blade@mic
 
 The resource menu is a blade which is loaded from the HubsExtension. It  calls the `AssetViewModel` that is  associated with the `AssetType` to determine what menu items to show and what blades those items open. Every extension and resource can leverage this blade without worrying about getting UX consistency and avoid having to implement the same blade multiple times. The resource menu also provides an `options` object on the `getMenuConfig` which exposes various Azure resource-related options such as `Support/Monitoring/Automation Scripts.`  
 
-<a name="overview-opt-in-by-using-an-assettype"></a>
+<a name="the-resource-menu-overview-opt-in-by-using-an-assettype"></a>
 ### Opt in by using an AssetType
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>` is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
@@ -69,7 +73,7 @@ As an example, the resource type tag for resource groups is in the following cod
     ApiVersion="2014-04-01-preview" />
 ```
 
-<a name="overview-provide-an-assetviewmodel-on-the-assettype"></a>
+<a name="the-resource-menu-overview-provide-an-assetviewmodel-on-the-assettype"></a>
 ### Provide an AssetViewModel on the AssetType
 
 Create a new `ViewModel` for the `AssetViewModel`.  The following is a skeleton for the `AssetViewModel`. For more information on assets, see [portalfx-assets.md](portalfx-assets.md).
@@ -320,9 +324,277 @@ export class MyResourceBlade
 }
 ```
 
-<a name="overview-validate-that-the-ux-is-responsive"></a>
 ### Validate that the UX is responsive
 
 Because the resource menu acts as a container for the blades opened by the menu items, the display state is preserved when the user switches between menu items. The developer should validate that blades render the UX properly when the resource menu is maximized, and also when the resource menu is restored to the specified widths.
 
 For an example of responsive resources, see the `<dir>Client\V1\ResourceTypes\Desktop\` folder, specifically the `...AssetViewModels\DesktopViewModel.ts` file.
+
+
+
+## Resource menu APIs
+
+The following sections list the Resource Menu API's. They are also located at []().
+
+* [MsPortalFx Assets](#msportalfx-assets)
+
+* [Menu APIs](#menu-apis)
+
+* [Selectable 2 APIs](#selectable-2-apis)
+
+* * *
+
+### MsPortalFx Assets
+
+The `MsPortalFx.Assets` is the interface for the resource menu API.
+
+```ts
+import * as FxMenuBlade from "Fx/Composition/MenuBlade";
+ 
+declare module MsPortalFx.Assets {
+    /**
+     * The resource information for the resource menu.
+     */
+    interface ResourceInformation {
+        /**
+         * The resource ID.
+         */
+        resourceId: string;
+        /**
+         * The resource or resource group.
+         */
+        resource: FxSubscription | FxHubsAzure.ResourceGroup | FxHubsAzure.Resource;
+        /**
+         * The resource's subscription information (only valid for non-tenant resources).
+         */
+        subscription?: FxSubscription;
+    }
+
+    /**
+     * The options of the resource menu config.
+     */
+    interface ResourceMenuOptions {
+        /**
+         * Enables the settings for roles and users.
+         */
+        enableRbac?: boolean;
+        /**
+         * Enables the settings for help request support.
+         */
+        enableSupportHelpRequest?: boolean;
+        /**
+         * Enables the settings for troubleshoot support.
+         */
+        enableSupportTroubleshoot?: boolean;
+        /**
+         * Enables the settings for troubleshootv2 support.
+         */
+        enableSupportTroubleshootV2?: boolean;
+        /**
+         * Enables the settings for resource health support.
+         */
+        enableSupportResourceHealth?: boolean;
+        /**
+         * Enables the settings for the event logs.
+         */
+        enableSupportEventLogs?: boolean;
+        /**
+         * Enables the setting for tags.
+         */
+        enableTags?: boolean;
+    }
+
+    /**
+     * Defines a group extension in the menu.
+     * This is used to extend the built-in groups with additional items.
+     *
+     * NOTE: The referenceId must be one of the constants for group IDs in this file.
+     *       Using a different ID will result in a load rejection.
+     */
+    interface MenuGroupExtension {
+        /**
+         * Gets the ID for the built-in group.
+         */
+        referenceId: string;
+        /**
+         * The menu items in the group.
+         */
+        items: MenuItem[];
+    }
+
+    /**
+     * The menu group instance type (either a menu group or a menu group extension).
+     */
+    type MenuGroupInstance = MenuGroup | MenuGroupExtension;
+
+    /**
+     * The resource menu configuration.
+     */
+    interface ResourceMenuConfig {
+       /**
+         * The resource menu item (overview item).
+         */
+        overview: MenuItem;
+        /**
+         * The menu item groups.
+         */
+        groups: MenuGroupInstance[];
+        /**
+         * The ID of the default menu item.
+         * If this is not provided, the overview item will be the default item.
+         */
+        defaultItemId?: string;
+        /**
+         * Optional set of resource menu options.
+         */
+        options?: ResourceMenuOptions;
+    }
+
+    /**
+     * The contract for the asset type's resource menu config.
+     */
+    interface ResourceMenuConfigContract {
+        /**
+         * Gets the resource menu configuration.
+         *
+         * @param resourceInfo The resource ID and resource|resource group for the menus.
+         * @return A promise which will be resolved with the resource menu configuration.
+         */
+        getMenuConfig(resourceInfo: ResourceInformation): FxBase.PromiseV<ResourceMenuConfig>;
+    }
+}
+
+```
+
+### Menu APIs
+
+This module contains the attributes that are common to all items and groups in the Resource menu.
+
+
+```ts
+declare module "Fx/Composition/MenuBlade" {
+    /**
+     * Attributes common to all items and groups in the menu.
+     */
+    interface MenuItemBase {
+        /**
+         * Gets the ID for the item.
+         */
+        id: string;
+        /**
+         * The display text for the item.
+         */
+        displayText: string;
+        /**
+         * A space-delimited list of keywords associated to the item.
+         */
+        keywords?: string | string[];
+    }
+
+    /**
+     * Defines an item in a group of the menu.
+     */
+    interface MenuItem extends MenuItemBase, FxComposition.Selectable2Options<FxComposition.BladeReference<any>> {
+        /**
+         * The icon associated to the menu item.
+         */
+        icon: FxBase.Image;
+        /**
+         * A value indicating whether or not the item is enabled.
+         */
+        enabled?: KnockoutObservableBase<boolean>;
+    }
+
+    /**
+     * Defines a group in the menu.
+     */
+    interface MenuGroup extends MenuItemBase {
+        /**
+         * The menu items in the group.
+         */
+        items: MenuItem[];
+    }
+}
+```
+
+### Selectable 2 APIs
+
+<!-- TODO: Determine what happened to selectable 1 api's and whether they should also be documented. -->
+
+The selectable 2 API's are the references to blades that are used when resource menu items are selected by the user.
+
+```ts
+declare module "Fx/Composition/Selectable" {
+    /**
+     * Configuration to pass to the selectable constructor
+     */
+    interface Selectable2Options<TBladeReference> {
+        /**
+         * This callback is invoked by the portal when a new blade is to be opened
+         * in response to a user-invoked navigation.
+         *
+         * @return A blade reference that describes the blade to open.  This value cannot be null or undefined.
+         */
+        supplyBladeReference?: () => TBladeReference;
+        /**
+         * This callback is invoked by the portal when a new blade is to be opened
+         * asychronously in response to a user-invoked navigation.
+         *
+         * @return A promise that returns a blade reference that describes the blade to open.  This value cannot be null or undefined.
+         */
+        supplyBladeReferenceAsync?: () => Q.Promise<TBladeReference>;
+    }
+}
+```
+
+
+<a name="the-resource-menu-frequently-asked-questions"></a>
+## Frequently asked questions
+
+<!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
+
+<a name="the-resource-menu-frequently-asked-questions-the-resource-menu"></a>
+### The Resource menu
+
+***What is the resource menu?***
+
+SOLUTION:  The resource menu is a single location for all the resource's functionality. It reduces horizontal movement by promoting a consistent navigation model for all Azure resources.
+
+* * *
+
+<a name="the-resource-menu-frequently-asked-questions-resource-menu-samples"></a>
+### Resource menu samples
+
+***Are there any samples I can refer to?***
+
+SOLUTION: There are numerous samples that demonstrate how to use the resource menu.  They are located at `..<dir>\Client\ResourceTypes\Desktop\AssetViewModels\DesktopViewModel.ts`, where `<dir>` is the `SamplesExtension\Extension\` directory, based on where the samples were installed when the developer set up the SDK. 
+
+* * *
+
+<a name="the-resource-menu-frequently-asked-questions-the-support-resource-management-group"></a>
+### The Support Resource Management Group
+
+***How do I add items to the Support/Resource Management Group?***
+
+SOLUTION:  You can add items by using a `MenuGroupExtension`. `MenuGroupExtension` is a special kind of menu group that is  specified in the menu config object.  For more information, see 
+[portalfx-resourcemenu-migration.md#creating-an-assetviewmodel](portalfx-resourcemenu-migration.md#creating-an-assetviewmodel).
+
+* * * 
+
+<a name="the-resource-menu-frequently-asked-questions-horizontal-scrolling"></a>
+### Horizontal scrolling
+
+***How do I reduce horizontal scrolling and UI movement in my extension?***
+
+Horizontal scrolling and UI movement was a prime source of negative user feedback. One way of addressing this issue is to refactor the extension so that there are fewer blades on the user's journey. The average journey depth is three or four blades and the average flow is Browse, Resource blade, Settings and then some blade from Settings or Resource menu. In many cases, the fourth blade is displayed off screen and then scrolled into view.  Using a Resource blade reduces the dependency on the settings blade. In some instances, an extension no longer uses a Settings blade, thereby reducing the number of blades on the journey.
+
+* * *
+
+<a name="the-resource-menu-glossary"></a>
+## Glossary
+
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+| Term                | Meaning |
+| ------------------- | --- |
+| screen jitter       | Re-displaying a list or blade in many places on the screen, or at different widths with every screen refresh. |

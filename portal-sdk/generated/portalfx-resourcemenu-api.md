@@ -8,7 +8,7 @@ The following sections list the Resource Menu API's. They are also located at []
 
 * [Menu APIs](#menu-apis)
 
-* [Selectable APIs](#selectable-apis)
+* [Selectable 2 APIs](#selectable-2-apis)
 
 * * *
 
@@ -187,10 +187,12 @@ declare module "Fx/Composition/MenuBlade" {
 }
 ```
 
-<a name="resource-menu-apis-selectable-apis"></a>
-### Selectable APIs
+<a name="resource-menu-apis-selectable-2-apis"></a>
+### Selectable 2 APIs
 
-The selectable API's are the references to blades that are used when resource menu items are selected by the user.
+<!-- TODO: Determine what happened to selectable 1 api's and whether they should also be documented. -->
+
+The selectable 2 API's are the references to blades that are used when resource menu items are selected by the user.
 
 ```ts
 declare module "Fx/Composition/Selectable" {
