@@ -41,7 +41,7 @@ You can view a working copy of the MenuBlade  in the Dogfood environment sample 
 
 * Menu items can be made to be enabled or visible dynamically.
 
-    You can define the `menuItem` and then provide an optional property for the enabled property or the  visible property. Then, dynamically update the observable.
+    You can define the `menuItem` and then provide an optional property for the enabled property or the visible property. Then, dynamically update the observable.
 
 * Menu items can also provide a tooltip
 
