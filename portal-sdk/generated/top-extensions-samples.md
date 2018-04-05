@@ -1,7 +1,8 @@
 <a name="portal-extension-samples"></a>
 # Portal Extension Samples
 
- ## Overview
+<a name="portal-extension-samples-overview"></a>
+## Overview
 
 The Azure Portal team ships samples that extension developers can leverage. When you install the Portal SDK, located at [http://aka.ms/portalfx/download](http://aka.ms/portalfx/download), the samples get installed as well. The source for the samples is located in the `Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension` folder. First-party extension developers, i.e. Microsoft employees, can access a live, up-to-date version of the samples at [https://aka.ms/portalfx/viewSamples](https://aka.ms/portalfx/viewSamples).
 
