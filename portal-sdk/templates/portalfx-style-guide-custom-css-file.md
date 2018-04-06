@@ -1,14 +1,13 @@
-<!--TODO:  This document has been deprecated.  It has been replaced by portalfx-style-guide-overview.md -->
 
 ## Custom CSS files
 
-Extension developers can combine commonly used classes into a CSS file. CSS styles that are defined in stylesheets are [sanitized](portalfx-extensions-glossary-style-guide.md) using the same rules as the style attribute (see below). All custom class names begin with the `.ext-` prefix that identifies them as classes that are owned by the extension. 
+Extension developers can combine commonly used classes into a CSS file. CSS styles that are defined in stylesheets are [sanitized](portalfx-extensions-glossary-style-guide.md) using the same rules as the `style` attribute (see below). All custom class names begin with the `.ext-` prefix that identifies them as classes that are owned by the extension. 
 
 All developers who install the Portal Framework SDK that is located at [http://aka.ms/portalfx/download](http://aka.ms/portalfx/download) also install the samples on their computers during the installation process. The source for the samples is located in the `Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension` folder.
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>` is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
-To specify custom styles, add a new CSS file to your extension, as in the sample located at `<dir>\Client\V1\Parts\Custom\Styles\ExampleStyles.css`. This code is also included in the following example.
+ Add a new CSS file to your extension to specify custom styles, as in the sample located at `<dir>\Client\V1\Parts\Custom\Styles\ExampleStyles.css`. This code is also included in the following example.
 
 ```css
 .ext-too-many-clicks-box {
@@ -19,7 +18,7 @@ To specify custom styles, add a new CSS file to your extension, as in the sample
 }
 ```
 
-CSS files can then be referenced from any PDL file, inside of the `Definition` element, as in the  sample located at `<dir>\Client\V1\Parts\Custom\CustomParts.pdl`. This code is also included in the following example.
+CSS files can then be referenced from any PDL file inside  the `Definition` element, as in the  sample located at `<dir>\Client\V1\Parts\Custom\CustomParts.pdl`. This code is also included in the following example.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -41,3 +40,4 @@ The styles that are included in the CSS file can now be used inside HTML templat
     <button data-bind="click: resetClickCount">Reset</button>
 </div>
 ```
+

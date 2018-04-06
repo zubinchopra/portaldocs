@@ -1,7 +1,7 @@
-<!--TODO:  This document has been deprecated.  It has been replaced by portalfx-style-guide-overview.md -->
+
 ## Themed color classes
 
-Base colors within the Portal have been outfitted to change based on user-chosen themes. Because the actual hexadecimal values of these colors are determined by the theme definitions, acceptable levels of contrast between elements are maintained by the Framework. The following classes have been made available to extension authors, so that their extensions can react to theme changes and maintain readability.
+Base colors within the Portal have been outfitted to change based on user-chosen themes. Because the actual hexadecimal values of these colors are determined by the theme definitions, acceptable levels of contrast between elements are maintained by the Framework. The following classes have been made available to extension developers, so that their extensions can react to theme changes and maintain readability.
 
 ### Text color classes
 ```css
