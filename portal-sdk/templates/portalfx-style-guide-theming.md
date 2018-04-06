@@ -1,5 +1,5 @@
 
-## Themed color classes
+## Style Themes
 
 Base colors within the Portal have been outfitted to change based on user-chosen themes. Because the actual hexadecimal values of these colors are determined by the theme definitions, acceptable levels of contrast between elements are maintained by the Framework. The following classes have been made available to extension developers, so that their extensions can react to theme changes and maintain readability.
 
