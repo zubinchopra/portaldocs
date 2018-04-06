@@ -17,6 +17,6 @@ Please use the following links for info on how to use the C# Portal Test Framewo
 
 {"gitdown": "include-file", "file": "../templates/portalfx-loading-a-subset-of-extensions.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-testing-best-practices.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-testing.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-csharp-test-framework-overview.md"}
