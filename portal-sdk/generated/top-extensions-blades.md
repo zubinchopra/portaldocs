@@ -2,7 +2,6 @@
 <a name="blades"></a>
 # Blades
 
- 
 <a name="blades-overview"></a>
 ## Overview
 
@@ -12,14 +11,12 @@ The following is a list of different types of blades.
 
 | Type                          | Document           | Description |
 | ----------------------------- | ---- | ---- |
-| MenuBlade                     | [top-blades-menublade.md](top-blades-menublade.md)   | Displays a vertical menu at the left of a blade.                                                  |  
+| TemplateBlade                 | [top-blades-procedure.md](top-blades-procedure.md) | Creating any Portal blade. This is the main and recommended authoring model for UI in the Portal. |
+| MenuBlade                     | [top-blades-menublade.md](top-blades-menublade.md)   | Displays a vertical menu at the left of a blade.                                       |  
 | Resource MenuBlade       |   | A specialized version of MenuBlade that adds support for standard Azure resource features.  | 
 | FrameBlade/AppBlade       | [top-blades-frameblades.md](top-blades-frameblades.md)   | Provides an IFrame to host the UI. Be advised that if you go this route you get great power and responsibility. You will own the DOM, which means you can build any UI you can dream up. You cannot use Ibiza controls meaning you will have an increased responsibility in terms of accessibility, consistency, and theming.  |
 | Blade with tiles              | [top-blades-legacy.md](top-blades-legacy.md)         |  Legacy authoring model. Given its complexity, you may want to use TemplateBlades instead. | | 
 
-
-
- 
  
 <a name="blades-best-practices"></a>
 ## Best Practices
@@ -39,11 +36,11 @@ Typically, extensions follow these best practices, which often result in perform
 
 These patterns are recommended for every extension, but they are not required.
 
-* Never change the name of a Blade or a Part
+* Never change the name of a blade or a part. These are unique identifiers that appear in links that users may bookmark, and they are used to locate your blade when a user pins it to the dashboard. You can safely change the title that is displayed in the UI of the blade.
 
-* Limit blade `parameters` updates to the addition of parameters that are marked in **TypeScript** as optional
+* Limit blade `parameters` updates to the addition of parameters that are marked in **TypeScript** as optional. Removing, renaming, or adding required parameters will cause breaks if other extensions are pointing to your blade, or if previously pinned tiles are not configured to send those parameters.
 
-* Never remove parameters from their `Parameters` type
+* Never remove parameters from their `Parameters` type. You can just ignore them if they are no longer needed.
 
 * Use standard `<a href="#">` tags when adding `fxclick` to open child blades to make the links accessible.
 
