@@ -28,10 +28,10 @@
 
   {"gitdown": "include-headings", "file": "../templates/portalfx-provisioning-arm.md"}
 
-
 ## Resource management
+
 {"gitdown": "include-headings", "file": "../templates/portalfx-assets.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-provisioning-arm.md"}
+
 {"gitdown": "include-headings", "file": "../templates/portalfx-essentials.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-resourcemenu.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-permissions.md"}
@@ -44,10 +44,11 @@
 ## Debugging
 {"gitdown": "include-headings", "file": "../templates/top-extensions-debugging.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-extensions-status-codes.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-testinprod.md"}
+{"gitdown": "include-headings", "file": "../templates/top-extensions-production-testing.md"}
 
 ## Other
+
 {"gitdown": "include-headings", "file": "../templates/portalfx-binding-reference.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-blade-viewmodel.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-blades-viewmodel.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-load-configuration.md"}
 
