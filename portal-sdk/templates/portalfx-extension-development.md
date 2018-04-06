@@ -8,7 +8,8 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 
 
 # Common scenarios
-{"gitdown": "include-headings", "file": "../templates/portalfx-browse.md"}
+
+gitdown": "include-headings", "file": "../templates/portalfx-browse.md"}
 
     gitdown": "include-headings", "file": "../templates/portalfx-create.md"}
 
@@ -17,14 +18,6 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 {"gitdown": "include-headings", "file": "../templates/portalfx-ui-concepts.md"}
 
 {"gitdown": "include-headings", "file": "../templates/portalfx-no-pdl-programming.md"}
-
-{"gitdown": "include-headings", "file": "../templates/portalfx-parts.md"}
-
-{"gitdown": "include-headings", "file": "../templates/portalfx-blades.md"}
-
-{"gitdown": "include-headings", "file": "../templates/portalfx-controls.md"}
-
-{"gitdown": "include-headings", "file": "../templates/portalfx-controls-monitor-chart.md"}
 
 # Authentication
 
