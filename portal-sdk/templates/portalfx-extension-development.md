@@ -46,5 +46,4 @@ gitdown": "include-headings", "file": "../templates/portalfx-browse.md"}
 
 # Other
 {"gitdown": "include-headings", "file": "../templates/portalfx-binding-reference.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-blade-viewmodel.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-load-configuration.md"}
