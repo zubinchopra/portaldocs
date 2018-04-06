@@ -1,7 +1,7 @@
 
 ## Testing Parts and Blades
 
-Once you have an instance of the Portal object you can find parts on the StartBoard using the **Portal.StartBoard.FindSinglePartByTitle** method. The method will give you a an instance of the Part class that you can use to perform actions on the part, like clicking on it:
+An extension can find parts on the StartBoard by using the **Portal.StartBoard.FindSinglePartByTitle** method, after you have an instance of the Portal object. The method will give you an instance of the Part class that can be  used to perform actions on the part.  In the following example, the button whose name is "Samples" is clicked. 
 
 ```cs
 var portal = this.NavigateToPortal();
@@ -12,7 +12,7 @@ var samplesPart = portal.StartBoard.FindSinglePartByTitle<ButtonPart>(samplesTit
 samplesPart.Click();
 ```
 
-You can find blades in a simmilar way using the **Portal.FindSingleBladeByTitle** method and then find parts within the blade using the **Blade.FindSinglePartByTitle** method:
+You can find blades in a simmilar way using the **Portal.FindSingleBladeByTitle** method. You can then find parts within the blade using the **Blade.FindSinglePartByTitle** method, as in the following example.
 
 ```cs
 var blade = portal.FindSingleBladeByTitle(samplesTitle);
@@ -24,7 +24,7 @@ blade.FindSinglePartByTitle(sampleName).Click();
 blade = portal.FindSingleBladeByTitle(sampleName);
 ```
 
-If you need to find parts based on different conditions other than the part's title you can do so by using the FindElement or FindElements methods on any web element:
+If you need to find parts based on different conditions, you can use the `FindElement` or `FindElements` methods on any web element, as in the following example.
 
 ```cs
 var errorPart = webDriver.WaitUntil(() => blade.FindElements<Part>()
@@ -32,9 +32,9 @@ var errorPart = webDriver.WaitUntil(() => blade.FindElements<Part>()
 									"Could not find a part with a Send Error text.");
 ```
 
-Notice the use of the **WebDriver.WaitUntil** method as a general and recommended mechanism to ask the WebDriver to retry an operation until a condition succeeds. In this case, the test case asks WebDriver to wait until it can find a part within the blade that has text that contains the 'Send Error' string. Once it can find such part it is returned to the errorPart variable, or if it can't find it after the default timeout (10 seconds) it will throw an exception with the text specified in the last parameter.
+**NOTE**: The **WebDriver.WaitUntil** method is a general and recommended mechanism to ask the **WebDriver** to retry an operation until a condition succeeds. In this instance, the test asks **WebDriver** to wait until it finds a part in the blade that contains text that includes the 'Send Error' string. When the part is found, it is returned to the `errorPart` variable; otherwise, if it is not found before the default timeout of 10 seconds, the  method  throws an exception that uses  the text specified in the last parameter.
 
-You can also use classic Selenium WebDriver syntax to find any element based on a **By** selector. For example, this will find a single button element within the found part:
+Classic Selenium **WebDriver** syntax can also be used to find any element based on a **By** selector. For example, the following code finds a single button element within the found part.
 
 ```cs
 webDriver.WaitUntil(() => errorPart.FindElement(By.TagName("button")),
