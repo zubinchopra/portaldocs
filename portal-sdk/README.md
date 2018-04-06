@@ -73,9 +73,7 @@ The primary UI building block is a called a blade. A blade is like a page. It ge
 
 * [Overview](./generated/top-extensions-blades.md)
 
-* [TemplateBlade](./generated/top-blades-procedure.md)
-
-* [Advanced TemplateBlade Topics](./generated/op-blades-advanced.md)
+* [Advanced TemplateBlade Topics](./generated/top-blades-advanced.md)
 
 * [MenuBlade](./generated/top-blades-menublade.md)
 
@@ -309,6 +307,8 @@ These features are supported, but have had no recent investment. No additional i
 * [Controls in the msportalfx namespace](./generated/portalfx-extensions-samples-controls-deprecated.md)
 
 * [EditScope](./generated/portalfx-legacy-editscopes.md)
+
+* [Legacy PDL TemplateBlade](./generated/portalfx-legacy-blades-template-pdl.md)
 
 ## Frequently asked questions
 
