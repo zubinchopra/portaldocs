@@ -1,4 +1,3 @@
-<!--TODO:  This document has been deprecated.  It has been replaced by portalfx-style-guide-overview.md -->
 
 <a name="color-palette"></a>
 ## Color palette
@@ -12,15 +11,18 @@ The Portal offers a built-in set of classes that are based on a core color palet
 
 1. [Color SVG](#color-svg)
 
-<a name="convey-status"></a>
-## Convey status
+<a name="color-palette-convey-status"></a>
+### Convey status
 
-These classes can be applied to specific UI elements  in an extension to convey status. These classes ensure any future changes to the status colors will automatically be applied to the content of the extension. The names of the class prefixes are as follows.
+CSS classes can be applied to specific UI elements in an extension to convey status. These classes ensure any future changes to the status colors will automatically be applied to the content of the extension. The names of the class prefixes are as follows.
 
-* `msportalfx-bg-*` changes the background color.
-* `msportalfx-text-*` changes the foreground color. The foreground color will be the same for the text and for the border.
-* `msportalfx-br-*` changes the border color.
-* `msportalfx-fill-*` changes the SVG fill color.
+**msportalfx-bg-**: changes the background color.
+
+**msportalfx-text-**: changes the foreground color. The foreground color will be the same for the text and for the border.
+
+**msportalfx-br-**: changes the border color.
+
+**msportalfx-fill-**: changes the SVG fill color.
 
 The classes can be combined to update multiple aspects simultaneously.
 
@@ -66,8 +68,8 @@ Error
 </div>
 </div>
 
-<a name="differentiate-data"></a>
-## Differentiate data
+<a name="color-palette-differentiate-data"></a>
+### Differentiate data
 
 Differentiating data with color is a common representation technique, for example, when drawing lines in a chart, or coloring pie chart sections. The following sets of classes are provided to specify background colors for elements. They also define a contrasted color for the text. They do not change appearance between themes.
 
@@ -176,8 +178,8 @@ Tint 3
 </div>
 </div>
 
-<a name="color-svg"></a>
-## Color SVG
+<a name="color-palette-color-svg"></a>
+### Color SVG
 Certain types of custom SVG content should adhere to the color palette. This is mostly for custom controls that use color to differentiate data, like charts. Iconography does not have this requirement, and instead you should refer to the [Icons](portalfx-icons.md) documentation to color those.
 
 To use the palette within SVG content, use the same class names as the one for [data differentiation](#bgcolortext). The classes affect both the "`stroke`" and "`fill`" properties. The CSS rules assume the target element is within an "`g`" element contained in an "`svg`" element. The following sample shows proper usage:
