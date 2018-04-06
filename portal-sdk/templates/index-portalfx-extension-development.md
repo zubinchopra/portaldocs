@@ -14,15 +14,12 @@
 
   {"gitdown": "include-headings", "file": "../templates/portalfx-no-pdl-programming.md"}
   
-  {"gitdown": "include-headings", "file": "../templates/portalfx-parts.md"}
-
-  {"gitdown": "include-headings", "file": "../templates/portalfx-blades.md"}
 
 ## Authentication
 
   {"gitdown": "include-headings", "file": "../templates/portalfx-authentication.md"}
 
-  {"gitdown": "include-headings", "file": "../templates/top-extensions-data.md"}
+ "gitdown": "include-headings", "file": "../templates/top-extensions-data.md"}
   
   {"gitdown": "include-headings", "file": "../templates/portalfx-parameter-collection-overview.md"}
 
@@ -49,6 +46,6 @@
 ## Other
 
 {"gitdown": "include-headings", "file": "../templates/portalfx-binding-reference.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-blades-viewmodel.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-blades-viewmodel.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-load-configuration.md"}
 
