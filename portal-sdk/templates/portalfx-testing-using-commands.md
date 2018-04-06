@@ -4,7 +4,8 @@
 The Test Framework provides objects to interact with commands both from the command bar and context menus.
 
 ### To use commands from the command bar
-Use the **Blade.FindCommandBar** method to get an instance of the Command Bar and then the **CommandBar.FindCommandBarItem** method to find the relevant command:
+
+Use the **Blade.FindCommandBar** method to get an instance of the Command Bar and then the **CommandBar.FindCommandBarItem** method to find the relevant command, as in the following example.
 
 ```cs
 var blade = portal.FindSingleBladeByTitle(contactName);
@@ -14,7 +15,7 @@ CommandBar commandBar = blade.FindCommandBar();
 var command = commandBar.FindCommandBarItem("DELETE");
 ```
 
-Once you call Click() on the command it could be that it opens a message box to show some message to the user. You can interact with that message box using the **CommandBar.FindMessageBox** method and the **MessageBox.ClickButton** method:
+After the  Click() method on the command is called, the extension may display a messageBox to show a message to the user. The extension can interact with the messageBox using the **CommandBar.FindMessageBox** method and the **MessageBox.ClickButton** method, as in the following example.
 
 ```cs
 command.Click();
@@ -24,51 +25,57 @@ webDriver.WaitUntil(() => !commandBar.HasMessageBox, "There is still a message b
 ```
 
 ### To use commands from context menus
-To do this you can first use Selenium's **Actions** class to perform a contextual click on the desired web element. Let's first find a grid row where we want to open the context menu:
 
-```cs
-var portal = this.NavigateToPortal();
+Use the following steps to use Selenium's **Actions** class to perform a contextual click on the desired web element.
 
-string contactName = "Jane Doe";
-string subscriptionName = "Portal Subscription 2";
+1. Find a grid row that has a context menu to open.
 
-this.ProvisionContact(contactName, subscriptionName, portal);
+    ```cs
+    var portal = this.NavigateToPortal();
 
-portal.StartBoard.FindSinglePartByTitle("Contacts").Click();
-var blade = portal.FindSingleBladeByTitle("Contacts List");
-var grid = webDriver.WaitUntil(() => blade.FindElement<Grid>(), "Could not find the grid.");
-GridRow row = webDriver.WaitUntil(() => grid.FindRow(contactName), "Could not find the contact row.");
-```
+    string contactName = "Jane Doe";
+    string subscriptionName = "Portal Subscription 2";
 
-Now let's open the context menu:
+    this.ProvisionContact(contactName, subscriptionName, portal);
 
-```cs
-Actions actions = new Actions(webDriver);
-actions.ContextClick(row);
-actions.Perform();
-```
+    portal.StartBoard.FindSinglePartByTitle("Contacts").Click();
+    var blade = portal.FindSingleBladeByTitle("Contacts List");
+    var grid = webDriver.WaitUntil(() => blade.FindElement<Grid>(), "Could not find the grid.");
+    GridRow row = webDriver.WaitUntil(() => grid.FindRow(contactName), "Could not find the contact row.");
+    ```
 
-Then find the context menu and use the **ContextMenu.FindContextMenuItemByText** method to find the actual command to click:
+1. Open the context menu.
 
-```cs
-ContextMenuItem menuItem = webDriver.WaitUntil(() => webDriver.FindElement<ContextMenu>(),
-                                               "Could not find the context menu.")
-                                    .FindContextMenuItemByText("Delete");
-```
+    ```cs
+    Actions actions = new Actions(webDriver);
+    actions.ContextClick(row);
+    actions.Perform();
+    ```
 
-Finally, let's deal with the message box and verify that this Contact got deleted:
+1. Find the context menu and use the **ContextMenu.FindContextMenuItemByText** method to find the actual command to click.
 
-```cs
-menuItem.Click();
+    ```cs
+    ContextMenuItem menuItem = webDriver.WaitUntil(() => webDriver.FindElement<ContextMenu>(),
+                                                "Could not find the context menu.")
+                                        .FindContextMenuItemByText("Delete");
+    ```
 
-portal.FindMessageBox("Delete contact").ClickButton("Yes");
+1. Interact with the message box to verify that this Contact was deleted.
 
-webDriver.WaitUntil(() => !portal.HasMessageBox, "There is still a message box in the Portal.");
+    ```cs
+    menuItem.Click();
 
-portal.StartBoard.FindSinglePartByTitle("Deleted");
-```
+    portal.FindMessageBox("Delete contact").ClickButton("Yes");
+
+    webDriver.WaitUntil(() => !portal.HasMessageBox, "There is still a message box in the Portal.");
+
+    portal.StartBoard.FindSinglePartByTitle("Deleted");
+    ```
 
 ### Full example
+
+The entire example is in the following code.
+
 ```cs
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
