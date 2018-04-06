@@ -4,7 +4,7 @@
 
 ## Common scenarios
 
-  {"gitdown": "include-headings", "file": "../templates/portalfx-browse.md"}
+ gitdown": "include-headings", "file": "../templates/portalfx-browse.md"}
 
  gitdown": "include-headings", "file": "../templates/portalfx-create.md"}
 
