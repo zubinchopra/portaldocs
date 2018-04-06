@@ -45,7 +45,7 @@ You can view a working copy of the MenuBlade  in the Dogfood environment sample 
 
 * Menu items can also provide a tooltip
 
-	Tooltips can be used to display further information on what the menu item defines, or they can also be used to explain to the user why the menu item is disabled. For example, a tooltip for a disabled menu item might indicate that the user does not have access to that menu item.
+    Tooltips can be used to display further information on what the menu item defines, or they can also be used to explain to the user why the menu item is disabled. For example, a tooltip for a disabled menu item might indicate that the user does not have access to that menu item.
 
 Menu blades also allow the user to collapse the menu pane. This is not available for developers to control programmatically.
 
