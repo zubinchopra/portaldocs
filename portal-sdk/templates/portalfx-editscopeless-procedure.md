@@ -10,7 +10,6 @@ This procedure uses the EngineV3 sample that is located at  `<dir>\Client\V1\Cre
 
 For more information about the create engine, see [portalfx-create-engine-sample.md](portalfx-create-engine-sample.md).
 
-
 1. Import modules
 
     All new controls are located in `Fx/Controls` namespace. Use the following snippet to import the `TextBox` module into your code.
@@ -30,7 +29,6 @@ For more information about the create engine, see [portalfx-create-engine-sample
     **/
     public engineName: TextBox.Contract;
     ```
-
 
 1. Modify Control Initialization
 
@@ -62,7 +60,7 @@ For more information about the create engine, see [portalfx-create-engine-sample
 
 1. Modify the action bar valid computation
 
-   In order to modify the `valid` computation, the existing logic that was used to validate the state of action bar is removed.  It is replaced by the following logic that computes validation using the editScope, along with validation for new TextBox.
+   In order to modify the `valid` computation, the existing logic validated the state of the action bar was removed and  replaced by the following logic that computes validation using the `editScope`, along with validation for new TextBox. The new logic is in the following code.
 
     ```ts
     ko.computed<boolean>(container, () => {
@@ -72,7 +70,7 @@ For more information about the create engine, see [portalfx-create-engine-sample
 1. Modify ARM provisioner to use value from new control
 
     The `_supplyTemplateDeploymentOptions` provides the  ARM provisioner with the template deployment options.
-    Because  the form is not backed by editscope we need to change the way the value of Engine name is sent to the template, as in the following example.
+    Because  the form is not backed by editscope, the value of Engine name is sent to the template a little differently, as in the following example.
 
     ```ts
     var engineName = this.engineName.value(); 

@@ -102,8 +102,11 @@ this._container.form.configureAlertOnClose(ko.computed(container, () => {
 Other CSS classes are in the following list.
 
 * msportalfx-docking-header
+
 * msportalfx-docking-body
+
 * msportalfx-docking-footer
+
 * msportalfx-padding
 
  The `msportalfx-docking-*` classes are used when elements will be docked at the header, body or footer of the blade. 
@@ -111,7 +114,7 @@ Other CSS classes are in the following list.
 <!-- TODO: Determine whether 10 x 10 is px or some other unit of measurement. -->
 The `msportalfx-padding` class adds 10 x 10 padding to the blade.
 
-These blade styling css classes  allow the blade to be used as a canvas.
+These blade styling css classes allow the blade to be used as a canvas.
 
 **NOTE**: Unlike previous version of SDK, No-PDL blades do not add padding or docking content behavior by default. This  makes style management easier.
 
