@@ -3,21 +3,6 @@
 <a name="development"></a>
 # Development
 
-<a name="development-getting-started"></a>
-## Getting Started
-
-  * [Azure Portal -- A composed web application](top-extensions-architecture.md#azure-portal-a-composed-web-application)
-
-
-  * [Portal Extensions](top-onboarding.md#portal-extensions)
-
-
-  * [Overview](portalfx-extensions-samples-overview.md#overview)
-* [Samples extension](portalfx-extensions-samples-overview.md#samples-extension)
-* [V1 versus V2](portalfx-extensions-samples-overview.md#v1-versus-v2)
-* [Sample Source Code](portalfx-extensions-samples-overview.md#sample-source-code)
-
-
 <a name="development-common-scenarios"></a>
 ## Common scenarios
 
@@ -39,12 +24,6 @@
 
   
 
-  * [Portal Forms](top-extensions-forms.md#portal-forms)
-
-
-  * [Overview](portalfx-controls-overview.md#overview)
-
-
 <a name="development-authentication"></a>
 ## Authentication
 
@@ -65,12 +44,11 @@
   * [ARM APIs](portalfx-provisioning-arm.md#arm-apis)
 
 
-
 <a name="development-resource-management"></a>
 ## Resource management
+
 * [Assets](portalfx-assets.md#assets)
 
-* [ARM APIs](portalfx-provisioning-arm.md#arm-apis)
 
 * [Essentials panel](portalfx-essentials.md#essentials-panel)
 
@@ -95,16 +73,15 @@
 
 * [Status Codes and Error Messages](portalfx-extensions-status-codes.md#status-codes-and-error-messages)
 
-* [Testing in production](portalfx-testinprod.md#testing-in-production)
-* [Marking automated tests as test/synthetic traffic](portalfx-testinprod.md#marking-automated-tests-as-test-synthetic-traffic)
+* [Testing in Production](top-extensions-production-testing.md#testing-in-production)
 
 
 <a name="development-other"></a>
 ## Other
+
 * [PDL Binding Quick Reference](portalfx-binding-reference.md#pdl-binding-quick-reference)
 
-* [Understanding the blade view model](portalfx-blade-viewmodel.md#understanding-the-blade-view-model)
-    * [Blade initialization](portalfx-blade-viewmodel.md#blade-initialization)
+* [Overview](portalfx-blades-viewmodel.md#overview)
 
 * [Exposing configuration settings for the client](portalfx-load-configuration.md#exposing-configuration-settings-for-the-client)
 * [Step by step walkthrough](portalfx-load-configuration.md#step-by-step-walkthrough)
