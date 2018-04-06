@@ -1,4 +1,3 @@
-{"gitdown": "contents"}
 
 #  C# Portal Test Framework
 
