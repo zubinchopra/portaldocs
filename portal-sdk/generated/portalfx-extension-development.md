@@ -10,8 +10,8 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 
 <a name="common-scenarios"></a>
 # Common scenarios
-* [Building browse experiences](portalfx-browse.md#building-browse-experiences)
 
+gitdown": "include-headings", "file": "../templates/portalfx-browse.md"}
 
     gitdown": "include-headings", "file": "../templates/portalfx-create.md"}
 
@@ -22,15 +22,6 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 
 
 * [Defining Blades and Parts using TypeScript decorators (a.k.a. 'no-PDL')](portalfx-no-pdl-programming.md#defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl)
-
-
-
-
-
-
-
-
-* [Monitor Chart](portalfx-controls-monitor-chart.md#monitor-chart)
 
 
 <a name="authentication"></a>
@@ -52,23 +43,28 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 
 <a name="resource-management"></a>
 # Resource management
+
 * [Assets](portalfx-assets.md#assets)
 
-* [ARM APIs](portalfx-provisioning-arm.md#arm-apis)
 
-* [Essentials panel](portalfx-essentials.md#essentials-panel)
+gitdown": "include-headings", "file": "../templates/portalfx-provisioning-arm.md"}
 
-* [Resource menu](portalfx-resourcemenu.md#resource-menu)
+gitdown": "include-headings", "file": "../templates/portalfx-essentials.md"}
 
-* [Defining permissions and checking access](portalfx-permissions.md#defining-permissions-and-checking-access)
+gitdown": "include-headings", "file": "../templates/portalfx-resourcemenu.md"}
 
-* [Notifications](portalfx-notifications.md#notifications)
+gitdown": "include-headings", "file": "../templates/portalfx-permissions.md"}
+
+        gitdown": "include-headings", "file": "../templates/portalfx-notifications.md"}
 
 * [Subscriptions](portalfx-subscriptions.md#subscriptions)
 
+
 * [Resource Tags](portalfx-tags.md#resource-tags)
 
+
 * [Resource moves](portalfx-resourcemove.md#resource-moves)
+
 
 * [Pricing Tier](portalfx-extension-pricing-tier.md#pricing-tier)
 
@@ -78,12 +74,12 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 
 
 
+
 <a name="other"></a>
 # Other
+
 * [PDL Binding Quick Reference](portalfx-binding-reference.md#pdl-binding-quick-reference)
 
-* [Understanding the blade view model](portalfx-blade-viewmodel.md#understanding-the-blade-view-model)
-    * [Blade initialization](portalfx-blade-viewmodel.md#blade-initialization)
 
 * [Exposing configuration settings for the client](portalfx-load-configuration.md#exposing-configuration-settings-for-the-client)
 * [Step by step walkthrough](portalfx-load-configuration.md#step-by-step-walkthrough)
