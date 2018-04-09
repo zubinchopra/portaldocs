@@ -66,15 +66,15 @@ There are several options that can be specified as properties on the object that
 
 <!--TODO:  Determine where gitHub generates the samples from.  they do not appear to be in https://github.com/Azure/portaldocs/tree/dev/portal-sdk/samples -->
 
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#HelloWorld"}
+  gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#HelloWorld"}
 
 A relative path to an html file that contains the template can also be provided. In the following code, if the blade is in a file called `MyBlade.ts`, then a file named `MyBlade.html` can be added in the same directory; then, send  `./MyBladeName.html` to the htmlTemplate property of the decorator.
 
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#DecoratorReference"}
+  gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#DecoratorReference"}
 
 In addition, the TypeScript programming model requires a context property to be present in the  blade class. For more information about the context property, see [the context property](#the-context-property).  The context property is populated by the framework by default and contains APIs that can be called to interact with the shell. The following code describes the context property.
-
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#Context"}
+  
+  gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#Context"}
 
 For more information about building single page applications, and how to develop blades and parts for the Portal using **TypeScript** decorators, see the video located at  [https://aka.ms/portalfx/typescriptdecorators](https://aka.ms/portalfx/typescriptdecorators).
 
@@ -86,7 +86,7 @@ Declaring the type of this property can be a little tricky, and the declaration 
 
 This is the simplest declaration of the context property, and it is included in the following code.
 
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#Context"}
+  gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#Context"}
 
 The framework provided `TemplateBlade.Context` type takes in two generic parameters.
 
@@ -235,3 +235,67 @@ module Main {
 }
 ```
 
+
+### Type metadata
+<!-- TODO:  Move this back to the TypeScript  document -->
+***Q: When do I need to worry about type metadata for my EditScope?***
+
+SOLUTION: For many of the most common, simple Form scenarios, there is no need to describe the EditScope/Form model in terms of type metadata. Generally speaking, supplying type metadata is the way to turn on advanced FX behavior, in much the same way that - in .NET - developers apply custom attributes to their .NET types to tailor .NET FX behavior for the types.
+
+For more information about type metadata, see [portalfx-data-typemetadata.md](portalfx-data-typemetadata.md).
+
+ For EditScope and Forms, extensions supply [type metadata] for the following scenarios: 
+#### Editable grid
+#### Entity-type
+
+* **Editable grid** - Today's editable grid was developed to work exclusively with EditScope 'entity' arrays. An EditScope 'entity' array is one where created/updated/deleted array items are tracked individually by EditScope. To grant this special treatment to an array in the EditScope/Form model, supply type metadata for the type of the array items (for the `T` in `KnockoutObservableArray<T>`). The type is marked as an "entity type" and, the property/properties that constitute the entity's 'id' are specified in the following examples. 
+
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK.
+ 
+* In TypeScript:
+
+The TypeScript sample is located at 
+`<dir>\Client\V1\Forms\Scenarios\ChangeTracking\Models\EditableFormData.ts`. This code is also included in the following working copy.
+
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/ChangeTracking/Models/EditableFormData.ts", "section": "formsEditScopeFaq#entityTypeMetadata"}
+
+* In C#:
+
+The C# sample is located at 
+`<dirParent>\SamplesExtension.DataModels/Person.cs`. This code is also included in the following working copy.
+
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/SamplesExtension.DataModels/Person.cs", "section": "formsEditScopeFaq#entityTypeMetadataCsharp"}
+  
+#### Track edits
+
+* **Opting out of edit tracking** - There are Form scenarios where some properties on the EditScope/Form model are not meant for editing but are - possibly - for presentation only. In this situation, the extension can instruct EditScope to *not track* user edits for such EditScope/Form model properties, like so:
+
+In TypeScript:  
+
+    MsPortalFx.Data.Metadata.setTypeMetadata("Employee", {
+        properties: {
+            accruedVacationDays: { trackEdits: false },
+            ...
+        },
+        ...
+    });  
+
+In C#:  
+
+    [TypeMetadataModel(typeof(Employee))]
+    public class Employee
+    {
+        [TrackEdits(false)]
+        public int AccruedVacationDays { get; set; }
+
+        ...
+    }  
+
+Extensions can supply type metadata to configure their EditScope as follows:  
+
+* When using ParameterProvider, supply the '`editScopeMetadataType`' option to the ParameterProvider constructor.
+* When using EditScopeCache, supply the '`entityTypeName`' option to '`MsPortalFx.Data.EditScopeCache.createNew`'.
+
+To either of these, extensions pass the type name used when registering the type metadata via '`MsPortalFx.Data.Metadata.setTypeMetadata`'.  
+  
+* * * 
