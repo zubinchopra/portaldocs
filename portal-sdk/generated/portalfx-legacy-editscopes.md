@@ -2,13 +2,10 @@
 <a name="legacy-edit-scopes"></a>
 ## Legacy Edit Scopes
 
-**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions be developed without edit scopes, as specified in [portalfx-editscopeless-procedure.md](portalfx-editscopeless-procedure.md).
+**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions be developed without edit scopes, as specified in [portalfx-editscopeless-procedure.md](portalfx-editscopeless-procedure.md). For more information about forms without editScopes, see  [portalfx-editscopeless-overview.md](portalfx-editscopeless-overview.md) and [portalfx-controls-dropdown.md#migration-to-the-new-dropdown](portalfx-controls-dropdown.md#migration-to-the-new-dropdown).
 
 <!-- TODO:  Compare document with the pieces of the portalfx-editscopes*.md document -->
 <!-- TODO:  These documents and the portalfx-editscopeless*.md documents are still in work -->
-
-<a name="legacy-edit-scopes-working-with-edit-scopes"></a>
-### Working with Edit Scopes
 
 Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide many common functions that would otherwise be difficult to orchestrate, like the following:
 
@@ -17,14 +14,94 @@ Edit scopes provide a standard way of managing edits over a collection of input 
   * Provide a way to discard all changes in a form
   * Persist unsaved changes from the form to the cloud
   * Simplify merging changes from the server into the current edit
-
-In some instances, development approaches that do not use `editScopes` are preferred.  For more information about forms without editScopes, see  [portalfx-editscopeless-overview.md](portalfx-editscopeless-overview.md) and [portalfx-controls-dropdown.md#migration-to-the-new-dropdown](portalfx-controls-dropdown.md#migration-to-the-new-dropdown).
-
+ 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>` is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK. 
 
+<a name="legacy-edit-scopes-data-model"></a>
+### Data Model
+
+<a name="legacy-edit-scopes-editscope-entity-arrays"></a>
+### EditScope entity arrays
+
+An EditScope is a hierarchy of 'entity' objects.  EditScope 'entity' arrays were designed with a few requirements in mind.
+
+* The user's edits need to be serialized so that journey-switching works with unsaved Form edits. For editing large arrays, the FX should not serialize array edits by persisting two full copies of the array.
+
+* In the UI, the FX will indicate which array items were created/updated/deleted by the user. In some cases, array removes are rendered with strike-through styling.
+
+* Array adds/removes need to be revertable for some scenarios.
+
+Consequently, EditScope 'entity' arrays behave differently than regular JavaScript arrays. Importantly:
+
+* 'Creates' are kept out-of-band
+* 'Deletes' are non-destructive
+
+By default, when the EditScope's `root` is an object, this object is considered an 'entity'. The EditScope becomes a hierarchy of 'entities' when:
+
+* the EditScope includes an array of 'entity' objects
+
+* some EditScope object includes a property that is 'entity'-typed  
+
+An object is treated by EditScope as an 'entity' when type metadata associated with the object is marked as an 'entity' type.
+
+(see [The getEntityArrayWithEdits method](#the-getentityarraywithedits-method) and the EditScope video located at [https://aka.ms/portalfx/editscopes](https://aka.ms/portalfx/editscopes) for more details).
+
+Every 'entity' object is tracked by the EditScope as being created/updated/deleted. Extension developers define 'entities' at a granularity that suit the scenario, making it easy to determine what data in the  EditScope/Form data model was edited by the user.
+
+After the `EditScope` is initialized and loaded, entities can be introduced and removed from the EditScope only by using EditScope APIs. Unfortunately, extensions cannot simply make an observable change to add a new 'entity' object or remove an existing 'entity' from the EditScope. If an extension tries to make an observable change that introduces an 'entity' object into the EditScope, it will  encounter the error message discussed in [portalfx-extensions-status-codes.md#unknown-entity-typed-object-array](portalfx-extensions-status-codes.md#unknown-entity-typed-object-array).
+
+An `editScope` entity array is an array where created/updated/deleted items are tracked individually by `EditScope`. Array adds/removes are revertable for some scenarios. Rows can be added or removed from an editable grid, but the corresponding adds/removes may not be immediately viewable from the `EditScope` array. To grant this treatment to an array in the `EditScope`/`Form` model, the extension supplies type metadata for the type of the array items. For example, the  `T` in `KnockoutObservableArray<T>` contains the type. 
+
 Any edits that were made by the user and collected in an `EditScope` are saved in the storage for the browser session. This is managed by the shell. Parts or blades may request an `EditScope`, but the most common usage is in a blade. A blade defines a `BladeParameter` with a `Type` of `NewEditScope`. This informs the shell that a blade is asking for a new `editScope` object. Within the rest of the blade, that parameter can be attached to an `editScopeId` property on any part. Using this method, many parts and commands on the blade can all read from the same editScopeId. This is common when a command needs to save information about a part. After sending the `editScopeId` to the part as a property, the `viewModel`  loads the `editScope` from the cloud. 
+
+A pair of EditScope methods significantly simplifies working with EditScope `EntityArrays`.
+
+* [The getEntityArrayWithEdits method](#the-getentityarraywithedits-method)
+
+* [The applyArrayAsEdits method](#the-applyarrayasedits-method)
+
+<a name="legacy-edit-scopes-editscope-entity-arrays-the-getentityarraywithedits-method"></a>
+#### The getEntityArrayWithEdits method
+
+To see the actual state of an EditScope `EntityArray`, use the `getEntityArrayWithEdits` EditScope method. The `getEntityArrayWithEdits` EditScope method returns the following types of arrays.
+
+* An array that includes 'created' entities and does not include 'deleted' entities
+
+* Discrete arrays that individually capture 'created', 'updated' and 'deleted' entities
+
+This method is particularly useful in the `mapOutgoingDataForCollector` callback of the `ParameterProvider` when returning an edited array to some ParameterCollector, as in the following code.
+
+gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/ParameterCollection/ParameterProviders/ViewModels/ProviderViewModels.ts", "section": "formsEditScopeFaq#getEntityArrayWithEdits"}
+
+In the UI, the FX renders an indication of what array items were created/updated/deleted. 
+
+The following example converts an array of strings into an 'entity' array for consumption by an editable grid.  The editable grid can only be bound to an `EditScope` 'entity' array.
+
+Modeling your data as an 'entity' array
+gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/ParameterCollection/ParameterProviders/ViewModels/ProviderViewModels.ts", "section": "formsEditScopeFaq#makeEntityForEditableGrid"}
+
+Converting your data to an 'entity' array for consumption by an editable grid
+gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/ParameterCollection/ParameterProviders/ViewModels/ProviderViewModels.ts", "section": "formsEditScopeFaq#makeEntityForEditableGrid2"}
+
+<a name="legacy-edit-scopes-editscope-entity-arrays-the-applyarrayasedits-method"></a>
+#### The applyArrayAsEdits method
+
+The `applyArrayAsEdits` method simplifies applying edits to an existing `EditScope` entity array. This API accepts a new array of 'entity' objects. The `EditScope` will compare  this new array to  the existing `EditScope` array items, determine which 'entity' objects are created/updated/deleted, and then records the corresponding user edits.
+
+This is often done in a ParameterCollector's `receiveResult` callback, as in the following examples.
+
+gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/ParameterCollection/FormWithCollectors/ViewModels/FormWithCollectorsBladeViewModel.ts", "section": "formsEditScopeFaq#applyArrayAsEdits"}
+
+gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/ParameterCollection/ParameterProviders/ViewModels/ProviderViewModels.ts", "section": "formsEditScopeFaq#getEntityArrayWithEdits"}
+
+* * *
+
+* * *
+
  
-Some methods of using the editScope are as follows.
+* [The EditScopeAccessor](#the-editscopeaccessor)
+
+Some patterns for of using the editScope are as follows.
 
 * [Request an editscope from pdl](#request-an-editscope-from-pdl)
 
@@ -32,14 +109,68 @@ Some methods of using the editScope are as follows.
 
 * [Load an edit scope from a data context](#load-an-edit-scope-from-a-data-context)
 
-* [The EditScopeAccessor](#the-editscopeaccessor)
-
 1. [Create new objects and bind them to the editScope](#create-new-objects-and-bind-them-to-the-editscope)
 
-* [Editable entity arrays](#editable-entity-arrays)
 
 For more information about edit scopes and  managing unsaved edits, watch the video located at 
 [https://aka.ms/portalfx/editscopes](https://aka.ms/portalfx/editscopes).
+
+* * *
+* * *
+
+<a name="legacy-edit-scopes-editscope-and-ajax"></a>
+### EditScope and AJAX
+
+This sample reads and writes data to the server directly via `ajax()` calls. It loads and saves data by creating an `EditScopeCache` object and defining two functions. The `supplyExistingData` function reads the data from the server, and the `saveEditScopeChanges` function writes it back.
+
+In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>` is the `SamplesExtension\` directory. Links to the Dogfood environment will display working copies of the samples that were made available with the SDK.
+
+The code for this example is associated with the basic form sample. It is located at 
+* `<dir>\Client\V1\Forms\Samples\Basic\FormsSampleBasic.pdl`
+* `<dir>\Client\V1\Forms\Samples\Basic\Templates\FormSampleBasic.html`
+* `<dir>\Client\V1\Forms\Samples\Basic\ViewModels\FormsSampleBasicBlade.ts`
+
+The code instantiates an `EditScope` via a `MsPortalFx.Data.EditScopeView` object. When the data to manipulate is already located on the client, an edit scope view can also be obtained from other data cache objects, as in the following example.
+
+gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Samples/Basic/ViewModels/FormsSampleBasicBlade.ts", "section": "forms#editScopeCache"}
+
+Then, the code transforms the data to make it match the model type. The server returns strings, but the `WebsiteModel` type that is used is defined in the following code.
+
+  ```ts
+   interface WebsiteModel {
+      id: KnockoutObservable<number>;
+      name: KnockoutObservable<string>;
+      running: KnockoutObservable<boolean>;
+  }
+  ```
+
+Therefore, the save and load functions have to transform the data to make it match the `WebsiteModel` model type. The control `viewModels` require a reference to a `Form.ViewModel`, so the code creates a form and sends the reference to the `editScope` to it, as in the following example.
+
+gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Samples/Basic/ViewModels/FormsSampleBasicBlade.ts", "section": "forms#formViewModel"}
+
+This form displays one textbox that allows the user to edit the name of the website, as specified in the following code.
+
+gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Samples/Basic/ViewModels/FormsSampleBasicBlade.ts", "section": "forms#controls"}
+
+The form is rendered using a section. The code loads all the controls that should be displayed into the `children` observable array of the section. This positions the controls sequentially on a blade, by default, so it is an easy way to standardize the look of forms in the Portal. An alternative to the default positioning is to manually author the HTML for the form by binding each control into an HTML template for the blade.
+
+This sample includes two commands at the top of the blade that will save or discard data. Commands are used because this blade stays open after a save/discard operation. If the blade were to close after the operation, then there would be an action bar at the bottom of the blade to use instead. 
+
+The commands check to make sure that the `EditScope` has been populated previous to enabling themselves via the `canExecute` portion of the `ko.pureComputed` code.
+
+The commands also keep themselves disabled during save operations via a `_saving` observable that the blade maintains, as in the following code.
+
+`<dir>\Client\V1\Forms\Samples\Basic\ViewModels\FormsSampleBasicBlade.ts`
+
+<!--
+gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Samples/Basic/ViewModels/FormsSampleBasicBlade.ts", "section": "forms#commands"}
+-->
+
+Because the `EditScope` is being used, the save/discard commands can just call the `saveChanges()` or `revertAll()` methods on the edit scope to trigger the right action.
+
+For more information, see [http://knockoutjs.com/documentation/computed-writable.html](http://knockoutjs.com/documentation/computed-writable.html).
+
+
 
 <a name="legacy-edit-scopes-request-an-editscope-from-pdl"></a>
 ### Request an editscope from pdl
@@ -111,18 +242,18 @@ public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
 }
 ```
 
-<!--TODO:  Determine which piece of code is associated with this paragraph.  -->
+<!--TODO: Determine which piece of code is associated with this paragraph.  -->
 
- The code that loads the `EditScope` is largely related to data loading, so the data context is the preferred location for the code. 
+ The code that loads the `EditScope` is largely related to data loading, so the data context is the preferred location for the code.
 
 <a name="legacy-edit-scopes-load-an-edit-scope-from-a-data-context"></a>
 ### Load an edit scope from a data context
 
  <!--TODO:  The following sample code does not exist by this name.  -->
  For an example of loading an edit scope from a data context, view the sample that is located at `<dir>\Client\Data\MasterDetailEdit\MasterDetailEditData.ts`.
- <!--TODO:  The  previous sample code does not exist by this name.  -->
+ <!--TODO:  The previous sample code does not exist by this name.  -->
 
-The following code creates a new `EditScopeCache`, which is bound to the `DataModels.WebsiteModel` object type. It uses an edit scope within a form.  The `fetchForExistingData()` method on the cache provides a promise, which informs the `ViewModel` that the `editScope` is loaded and available.
+The following code creates a new `EditScopeCache`, which is bound to the `DataModels.WebsiteModel` object type. It uses an `editScope` within a form.  The `fetchForExistingData()` method on the cache provides a promise, which informs the `ViewModel` that the `EditScope` is loaded and available.
 
 ```ts
 this.editScopeCache = MsPortalFx.Data.EditScopeCache.create<DataModels.WebsiteModel, number>({
@@ -152,48 +283,36 @@ Form fields require a binding to one or more `EditScope` observables. Consequent
 
 1. **EditScopeAccessor** This is the preferred, compile-time verified methodology. The form field ViewModel constructor accepts an EditScopeAccessor, wraps a compile-time verified lambda, and returns the EditScope observable to which the Form field should bind, as in the following code located at     `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`.  It is also in the following code.
 
-    ```typescript
-
-this.textBoxSimpleAccessor = new MsPortalFx.ViewModels.Forms.TextBox.ViewModel(
-    container,
-    this,
-    this.createEditScopeAccessor<string>((data) => { return data.state; }),
-    textBoxSimpleAccessorOptions);
-
-``` 
+    gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts", "section": "formsEditScopeFaq#editScopeAccessor"} 
     The EditScopeAccessor methodology is preferred for the following reasons.
 
     * The supplied lambda will be compile-time verified. This code is more maintainable, for example, when the property names on the Form model types are changed.
     * There are advanced variations of `EditScopeAccessor` that enable less-common scenarios like binding multiple `EditScope` observables to a single form field.  There are others that demonstrate translating form model data for presentation to the user, as in the code located at       `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`. It is also in the following code.
   
-    ```typescript
-
-this.textBoxReadWriteAccessor = new MsPortalFx.ViewModels.Forms.TextBox.ViewModel(
-    container,
-    this,
-    this.createEditScopeAccessor<string>(<MsPortalFx.ViewModels.Forms.EditScopeAccessors.Options<FormIntegratedFormData.FormIntegratedFormData, string>>{
-        readFromEditScope: (data: FormIntegratedFormData.FormIntegratedFormData): string => {
-            return data.state2().toUpperCase();
-        },
-        writeToEditScope: (data: FormIntegratedFormData.FormIntegratedFormData, newValue: string): void => {
-            data.state2(newValue);
-        }
-    }),
-    textBoxReadWriteAccessorOptions);
-
-```
+    gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts", "section": "formsEditScopeFaq#editScopeAccessorAdvanced"}
 
 1. **String-typed path** This methodology is discouraged because it is not compile-time verified. The form field ViewModel constructor accepts a string-typed path that contains the location of the EditScope observable to which the Form field should bind, as in the code located at    `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`. It is also in the following code.
 
-  ```typescript
+  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts", "section": "formsEditScopeFaq#editScopePath"} 
 
-this.textBoxViewModel = new MsPortalFx.ViewModels.Forms.TextBox.ViewModel(container, this, "name", textBoxOptions);
+* * *
 
-``` 
+<a name="legacy-edit-scopes-"></a>
+### 
 
-### EditScope entity arrays
 
-An `editScope` entity array is an array where created/updated/deleted items are tracked individually by `EditScope`. To grant this treatment to an array in the `EditScope`/`Form` model, the extension supplies  type metadata for the type of the array items. For example, the  `T` in `KnockoutObservableArray<T>` contains the type. The type is marked as an "entity type". The property/properties that constitute the entity's 'id' are specified in the following examples. 
+
+
+
+The type is marked as an "entity type". 
+
+These factors made EditScope `EntityArrays` behave differently than regular JavaScript arrays, as follows.
+
+* `Creates` are kept out-of-band
+
+* `Deletes` are non-destructive
+
+The property/properties that constitute the entity's 'id' are specified in the following examples. 
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK.
  
@@ -202,48 +321,22 @@ An `editScope` entity array is an array where created/updated/deleted items are 
     The TypeScript sample is located at 
     `<dir>\Client\V1\Forms\Scenarios\ChangeTracking\Models\EditableFormData.ts`. This code is also included in the following working copy.
 
-    ```typescript
-
-MsPortalFx.Data.Metadata.setTypeMetadata("GridItem", {
-properties: {
-    key: null,
-    option: null,
-    value: null
-},
-entityType: true,
-idProperties: [ "key" ]
-});
-
-```
+    gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/ChangeTracking/Models/EditableFormData.ts", "section": "formsEditScopeFaq#entityTypeMetadata"}
 
 * In C#:
 
     The C# sample is located at 
     `<dirParent>\SamplesExtension.DataModels/Person.cs`. This code is also included in the following working copy.
 
-    ```csharp
+    gitdown": "include-section", "file":"../Samples/SamplesExtension/SamplesExtension.DataModels/Person.cs", "section": "formsEditScopeFaq#entityTypeMetadataCsharp"}
 
-[TypeMetadataModel(typeof(Person), "SamplesExtension.DataModels")]
-[EntityType]
-public class Person
-{
-    /// <summary>
-    /// Gets or sets the SSN of the person.
-    /// The "Id" attribute will be serialized to TypeScript/JavaScript as part of type metadata, and will be used
-    /// by MsPortalFx.Data.DataSet in its "merge" method to merge data by identity.
-    /// </summary>
-    [Id]
-    public int SsnId { get; set; }
-    
-```
-
-    
-The following `EditScope` methods and properties significantly simplify working with `EditScope` entity arrays.
+The following properties significantly simplify working with `EditScope` entity arrays.
 
 * [The trackEdits property](#the-trackedits-property)
 
 * [The applyArrayAsEdits method](#the-applyarrayasedits-method)
 
+<a name="legacy-edit-scopes--the-trackedits-property"></a>
 #### The trackEdits property
 
  Some properties on the EditScope/Form model are only for presentation instead of for editing. In this situation, the extension can instruct `EditScope` to opt out of tracking user edits for the specified properties.
@@ -269,43 +362,28 @@ In C#:
         ...
     }  
 
-Extensions can supply type metadata to configure their `EditScope` as follows.  
+Extensions can supply type metadata to configure their `EditScope` as follows.
 
-* When using ParameterProvider, supply the `editScopeMetadataType` option to the `ParameterProvider` constructor.
+* When using `ParameterProvider`, supply the `editScopeMetadataType` option to the `ParameterProvider` constructor.
 
 * When using `EditScopeCache`, supply the `entityTypeName` option to `MsPortalFx.Data.EditScopeCache.createNew`.
 
 Extensions can pass the type name used to register type metadata to either of these options by using `MsPortalFx.Data.Metadata.setTypeMetadata`.
 
-#### The applyArrayAsEdits method
+<a name="legacy-edit-scopes--the-getcreated-addcreated-method"></a>
+#### The getCreated/addCreated method
 
-The `applyArrayAsEdits` method simplifies applying edits to an existing `EditScope` entity array. This is often done in a ParameterCollector's `receiveResult` callback, as in the following example.
+The `getCreated/addCreated` APIs allow for the addition of new, 'created' entity objects. The `getCreated` method returns a distinct, out-of-band array that collects all 'created' entities corresponding to a given 'entity' array. The `addCreated` method is a helper method that places a new 'entity' object in this `getCreated` array.
 
-```typescript
+<a name="legacy-edit-scopes--the-markfordelete-method"></a>
+#### The markForDelete method
 
-this.itemsCollector = new MsPortalFx.ViewModels.ParameterCollector<DataModels.ServerConfig[]>(container, {
-    selectable: this.itemsSelector.selectable,
-    supplyInitialData: () => {
-        const editScope = this._editScopeView.editScope();
-
-        // Use EditScope's 'getEntityArrayWithEdits' to develop an array with all created/updated/deleted items
-        // in this entity array.
-        return editScope.getEntityArrayWithEdits<DataModels.ServerConfig>(editScope.root.serverConfigs).arrayWithEdits;
-    },
-    receiveResult: (result: DataModels.ServerConfig[]) => {
-        const editScope = this._editScopeView.editScope();
-
-        // Use EditScope's 'applyArrayWithEdits' to examine the array returned from the Provider Blade
-        // and apply any differences to our EditScope entity array in terms of created/updated/deleted entities.
-        editScope.applyArrayAsEdits(result, editScope.root.serverConfigs);
-    }
-});
-
-```
+The `markForDelete` APIs allows an extension to delete an 'entity' from the `EditScope` as a non-destructive operation. This allows the extension to render 'deleted' edits with strike-through or similar styling. Calling this `markForDelete` method puts the associated 'entity' in a 'deleted' state, although the deletion is not yet saved.
 
 <!-- TODO:  The following content seems to belong with editscopes instead of the form documents.  However, it is not properly formatted.  -->
 
-### Create new objects and bind them to the editScope 
+<a name="legacy-edit-scopes-create-new-objects-and-bind-them-to-the-editscope"></a>
+### Create new objects and bind them to the editScope
 
 The following code creates a new set of form field objects and binds them to the `editScope`. The sample is also located at  `<dir>\Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\DetailViewModels.ts`.  
 
@@ -356,100 +434,18 @@ private _initializeForm(): void {
 
 For more information about form fields, see [portalfx-controls.md#forms](portalfx-controls.md#forms).
 
-### Editable entity arrays
-
-EditScope `EntityArray` objects were designed with a few requirements in mind.
-* The UI edits are serialized so that Journey-switching works with unsaved Form edits. For editing large arrays, the FX should not serialize array edits by persisting two full copies of the potentially very large array.
-* In the UI, the FX renders an indication of what array items were created/updated/deleted. In some cases, array removes are rendered with strike-through styling.
-* Array adds/removes are revertable for some scenarios.
-
-These factors made EditScope `EntityArrays` behave differently than regular JavaScript arrays, as follows.
-
-* `Creates` are kept out-of-band
-
-* `Deletes` are non-destructive
-
-Rows can be added or removed from an editable grid, but the corresponding adds/removes may not be immediately viewable from the EditScope array. To conveniently see the actual state of an EditScope `EntityArray`, use the `getEntityArrayWithEdits` EditScope method. This returns the following types of arrays.
-* An array that includes 'created' entities and does not include 'deleted' entities
-* Discrete arrays that individually capture 'created', 'updated' and 'deleted' entities  
-
-A pair of EditScope methods significantly simplifies working with EditScope `EntityArrays`.  
-
-* The `getEntityArrayWithEdits` method is particularly useful in the `mapOutgoingDataForCollector` callback of the `ParameterProvider` when returning an edited array to some ParameterCollector, as in the following code.
-
-    ```typescript
-
-this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModels.ServerConfig[], KnockoutObservableArray<DataModels.ServerConfig>>(container, {
-    editScopeMetadataType: DataModels.ServerConfigType,
-    mapIncomingDataForEditScope: (incoming) => {
-        return ko.observableArray(incoming);  // Editable grid can only bind to an observable array.
-    },
-    mapOutgoingDataForCollector: (outgoing) => {
-        const editScope = this.parameterProvider.editScope();
-
-        // Use EditScope's 'getEntityArrayWithEdits' to return an array with all created/updated/deleted items.
-        return editScope.getEntityArrayWithEdits<DataModels.ServerConfig>(outgoing).arrayWithEdits;
-    }
-});
-
-```
-
-* There is a corresponding `applyArrayAsEdits` EditScope method that simplifies applying edits to an existing EditScope `EntityArray`. This is often done in a ParameterCollector's `receiveResult` callback, as in the following example.
-
-    ```typescript
-
-this.itemsCollector = new MsPortalFx.ViewModels.ParameterCollector<DataModels.ServerConfig[]>(container, {
-    selectable: this.itemsSelector.selectable,
-    supplyInitialData: () => {
-        const editScope = this._editScopeView.editScope();
-
-        // Use EditScope's 'getEntityArrayWithEdits' to develop an array with all created/updated/deleted items
-        // in this entity array.
-        return editScope.getEntityArrayWithEdits<DataModels.ServerConfig>(editScope.root.serverConfigs).arrayWithEdits;
-    },
-    receiveResult: (result: DataModels.ServerConfig[]) => {
-        const editScope = this._editScopeView.editScope();
-
-        // Use EditScope's 'applyArrayWithEdits' to examine the array returned from the Provider Blade
-        // and apply any differences to our EditScope entity array in terms of created/updated/deleted entities.
-        editScope.applyArrayAsEdits(result, editScope.root.serverConfigs);
-    }
-});
-
-```
-
-<a name="legacy-edit-scopes-key-value-pairs"></a>
-### Key-value pairs
-
-<!-- TODO: Determine whether this section remains here, or should be moved to the edit grid document -->
-
-***Q: My Form data is just key/value-pairs. How do I model a Dictionary/StringMap in EditScope? Why can't I just use a JavaScript object like a property bag?***
-
-Like all models and view models treated by the Azure Portal FX, after the object/array is instantiated and returned to the FX in the process of rendering the UI, any subsequent mutation of that object/array should be done by changing/mutating **Knockout** observables. Portal controls and Knockout HTML template rendering both subscribe to these observables and re-render only when these observables change value.
-
-This poses a challenge to the common JavaScript programming technique of treating a JavaScript object as a property bag of key-value-pairs. If an extension only adds or removes keys from a model or ViewModel object, the FX will not be aware of these changes. EditScope will not recognize these changes as user edits and therefore such key adds/removes will put EditScope edit-tracking in an inconsistent state.
-
-So, how does an extension model a Dictionary/StringMap/property bag when using the Portal FX and EditScope?  
-
-The pattern is to develop the Dictionary/StringMap/property bag as an observable array of key/value-pairs, like `KnockoutObservableArray<{ key: string; value: TValue; }>`. 
-
-Often, additionally, it is important to let users edit the Dictionary/StringMap/property bag using *an editable grid*. In such cases, it is important to describe the array of key/value-pairs as an 'entity' array since editable grid can only be bound to an EditScope 'entity' array. For more information about how to develop type metadata to use the array with editable grid, see [#editable-grid](#editable-grid).
-
-Here's a sample that does something similar, converting - in this case - an array of strings into an 'entity' array for consumption by editable grid.  
-
-* * *
 <a name="legacy-edit-scopes-q-what-should-be-returned-from-saveeditscopechanges-i-don-t-understand-the-different-values-of-the-accepteditscopechangesaction-enum"></a>
 ### Q: What should be returned from &#39;saveEditScopeChanges&#39;? I don&#39;t understand the different values of the <code>AcceptEditScopeChangesAction</code> enum.
 
 <!-- TODO:  Move this to the EditScope document -->
 
 SOLUTION: 
-When creating an EditScopeCache, the `saveEditScopeChanges` callback supplied by the extension is called to push EditScope edits to a server/backend. This callback returns a `Promise` that should be resolved when the 'save' AJAX call completes, which occurs after the server/backend accepts the user's edits. 
+When creating an EditScopeCache, the `saveEditScopeChanges` callback supplied by the extension is called to push EditScope edits to a server. This callback returns a `Promise` that should be resolved when the 'save' AJAX call completes, which occurs after the server accepts the user's edits. 
 
 When the extension resolves this `Promise`, it can supply a value that instructs the EditScope to  reset itself to a clean/unedited state. If no such value is returned during Promise resolution, then the EditScope is reset by default.  This means taking the user's client-side edits and considering these values to be the new, clean/unedited EditScope state. This works for many scenarios.  
 
 There are scenarios where the default `saveEditScopeChanges` behavior does not work, like: the following. 
-* During 'save', the server/backend produces new data values that need to be merged into the EditScope.
+* During 'save', the server produces new data values that need to be merged into the EditScope.
 * For "create new record" scenarios, after 'save', the extension should clear the form, so that the user can enter a new record.
 
 For these cases, the extension will resolve the `saveEditScopeChanges` Promise with a value from the `AcceptEditScopeChangesAction` enum. These values allow the extension to specify conditions like the following.
@@ -457,51 +453,5 @@ For these cases, the extension will resolve the `saveEditScopeChanges` Promise w
 * The EditScope's data is to be reverted/cleared as part of completing the 'save' operation (the "create new record" UX scenario).
 
 For more information about each enum value, see the jsdoc comments around `MsPortalFx.Data.AcceptEditScopeChangesAction` or in `MsPortalFxDocs.js` in Visual Studio or any code editor.
-
-<a name="legacy-edit-scopes-q-what-should-be-returned-from-saveeditscopechanges-i-don-t-understand-the-different-values-of-the-accepteditscopechangesaction-enum-caveat-anti-pattern"></a>
-#### Caveat / anti-pattern
-
-There is an important anti-pattern to avoid here re: '`saveEditScopeChanges`'. If the AJAX call that saves the user's edits fails, the extension should merely **reject** the '`saveEditScopeChanges`' Promise (which is natural to do with Q Promise-chaining/piping). The extension *should not* resolve their Promise with '`AcceptEditScopeChangesAction.DiscardClientChanges`', since this will lose the user's Form edits (a data-loss bug).
-  
-* * *
-
-<a name="legacy-edit-scopes-common-error-entity-typed-object-array-is-not-known-to-this-edit-scope"></a>
-### Common error: &quot;Entity-typed object/array is not known to this edit scope...&quot;
-
-SOLUTION: 
-EditScope data follows a particular data model. In short, the EditScope is a hierarchy of 'entity' objects. By default, when the EditScope's '`root`' is an object, this object is considered an 'entity'. The EditScope becomes a hierarchy of 'entities' when:
-* the EditScope includes an array of 'entity' objects
-* some EditScope object includes a property that is 'entity'-typed  
-
-An object is treated by EditScope as an 'entity' when type metadata associated with the object is marked as an 'entity' type (see [here](#entity-type) and the EditScope video located at [here](portalfx-legacy-editscopes.md) for more details).
-
-Every 'entity' object is tracked by the EditScope as being created/updated/deleted. Extension developers define 'entities' at a granularity that suit their scenario, making it easy to determine what in their larger EditScope/Form data model has been user-edited.  
-
-Now, regarding the error above, once the EditScope is initialized/loaded, 'entities' can be introduced and removed from the EditScope only via EditScope APIs. It is an unfortunate design limitation of EditScope that extensions cannot simply make an observable change to add a new 'entity' object or remove an existing 'entity' from the EditScope. If an extension tries to do an observable add (make an observable change that introduces an 'entity' object into the EditScope), they'll encounter the error discussed here.  
-
-To correctly (according to the EditScope design) add or remove an 'entity' object into/out of an EditScope, here are APIs that are useful:
-* ['`applyArrayAsEdits`'](#apply-array-as-edits) - This API accepts a new array of 'entity' objects. The EditScope proceeds to diff this new array against the existing EditScope array items, determine which 'entity' objects are created/updated/deleted, and then records the corresponding user edits.
-* '`getCreated/addCreated`' - These APIs allow for the addition of new, 'created' entity objects. The '`getCreated`' method returns a distinct, out-of-band array that collects all 'created' entities corresponding to a given 'entity' array. The '`addCreated`' method is merely a helper method that places a new 'entity' object in this '`getCreated`' array.
-* '`markForDelete`' - 'Deleting' an 'entity' from the EditScope is treated as a non-destructive operation. This is so that - if the extension chooses - they can render 'deleted' (but unsaved) edits with strike-through styling (or equivalent). Calling this '`markForDelete`' method merely puts the associated 'entity' in a 'deleted' state.  
-
-* * *
-
-<a name="legacy-edit-scopes-common-error-entity-typed-object-array-is-not-known-to-this-edit-scope-common-error-scenario"></a>
-#### Common error scenario
-
-SOLUTION: 
-Often, extensions encounter this "Entity-typed object/array is not known to this edit scope..." error as a side-effect of modeling their data as 'entities' binding with [editable grid](#editable-grid) in some ParameterProvider Blade.  Then, commonly, the error is encountered when applying the array edits in a corresponding ParameterCollector Blade.  Here are two schemes that can be useful to avoid this error:
-* Use the [`applyArrayAsEdits'](#apply-array-as-edits) EditScope method mentioned above to commit array edits to an EditScope.
-* Define type metadata for this array *twice* - once only for editing the data in an editable grid (array items typed as 'entities'), and separately for committing to an EditScope in the ParameterCollector Blade (array items typed as not 'entities').  
-  
-* * *
-
-<a name="legacy-edit-scopes-editable-object-not-present"></a>
-### Editable object not present
-
-***"Encountered a property 'foo' on an editable object that is not present on the original object..."***
-
-SOLUTION: 
-As discussed in [portalfx-extensions-faq-forms.md#key-value-pairs](portalfx-extensions-faq-forms.md#key-value-pairs), the extension should mutate the EditScope/Form model by making observable changes and by calling EditScope APIs. For any object residing in the `EditScope`, merely adding and removing keys cannot be detected by `EditScope` or by the FX at large and, consequently, edits cannot be tracked. When an extension attempts to add or remove keys from an `EditScope` object, this puts the `EditScope` edit-tracking in an inconsistent state. When the `EditScope` detects such an inconsistency, it issues the `Encountered a property...` error to encourage the extension developer to use only observable changes and `EditScope` APIs to mutate/change the EditScope/Form model.  
 
 * * *
