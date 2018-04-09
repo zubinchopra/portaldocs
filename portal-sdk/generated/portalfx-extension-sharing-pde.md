@@ -179,7 +179,7 @@ To share your PDE with other teams please follow these guidelines:
 <a name="what-is-the-select-member-blade"></a>
 ## What is the Select Member Blade?
 
-The Select Member Blade is a tool intended to unify "member selection" scenarios across the portal by separating the process of selection from the action being taken on those members. This means the hosting extension will be responsible for making any changes to the back-end data after the members have been returned by the Select Member Blade. Note that currently, a "member" can refer to any User, Group, or Service Principal within the current tenant's context. The Select Member Blade is built using the ParameterCollection Framework v3.0. This means the Select Member Blade is a "provider" and that to use it, you will need to write a "collector" which calls it. An example of this can be found in the next section. To better understand the basics of how passing data with this framework works, see the examples of its usage in the Samples extension provided with the Azure SDK. 
+The Select Member Blade is a tool intended to unify "member selection" scenarios across the Portal by separating the process of selection from the action being taken on those members. This means the hosting extension will be responsible for making any changes to the back-end data after the members have been returned by the Select Member Blade. Note that currently, a "member" can refer to any User, Group, or Service Principal within the current tenant's context. The Select Member Blade is built using the ParameterCollection Framework v3.0. This means the Select Member Blade is a "provider" and that to use it, you will need to write a "collector" which calls it. An example of this can be found in the next section. To better understand the basics of how passing data with this framework works, see the examples of its usage in the Samples extension provided with the Azure SDK. 
 
 ![Select Member Blade](../media/portalfx-pde-aadrbac/SMBimg.PNG)
 
@@ -278,7 +278,7 @@ the title and subtitle which appear on the selectMember blade.
              Kind ="Blade"
              Text ="{Resource testSelectMemberV3CommandTitle, Module=ClientResources}"
              ViewModel ="TestSelectMemberV3CommandViewModel">
-      <BladeAction Blade ="{BladeReference SelectMemberV3, ExtensionName=Microsoft_Azure_AD}"
+      <BladeAction Blade ="{BladeReference SelectMemberV3, extensionName=Microsoft_Azure_AD}"
                    ParameterCollector ="selectMemberCollector">
         <BladeInput Parameter="title" Source="title" />
         <BladeInput Parameter="subtitle" Source="subtitle" />
@@ -333,7 +333,7 @@ Install-Package Microsoft.Portal.Extensions.Billing -Source https://msazure.pkgs
 <a name="consumption"></a>
 ## Consumption
 
-- No docs have been provided to auxdocs that detail consumption. In the interim please reach out to [Mayur Oberoi](mailto:mayuro@microsoft.com) or [Ruchi Chopra](mailto:ruchic@microsoft.com) for consumption guidelines.
+- No docs have been provided to auxdocs that detail consumption. In the interim please reach out to <a href="mailto:mayuro@microsoft.com?subject=Auxdocs Consumption Guidelines">Mayur Oberoi</a> or <a href="mailto:ruchic@microsoft.com?subject=Auxdocs Consumption Guidelines">Ruchi Chopra</a> for consumption guidelines.
 * [Sharing your PDE with other teams](#sharing-your-pde-with-other-teams)
 * [Getting started with the Select Members Blade](#getting-started-with-the-select-members-blade)
 * [What is the Select Member Blade?](#what-is-the-select-member-blade)
@@ -694,7 +694,7 @@ Install-Package Microsoft.Portal.Extensions.Insights -Source https://msazure.pkg
 <a name="commands-consumption"></a>
 ## Consumption
 
-- ETA for the consumption docs is 8/12/2016. In the interim please reach out to [Ibiza Activity Logs](mailto:ibiza-activity-logs@microsoft.com) for consumption guidelines.
+- ETA for the consumption docs is 8/12/2016. In the interim please reach out to <a href="mailto:ibiza-activity-logs@microsoft.com?subject=Consumption Guidelines">Ibiza Activity Logs</a> for consumption guidelines.
 
 <tags
     ms.service="portalfx"
@@ -820,7 +820,7 @@ Install-Package Microsoft.Portal.Extensions.Monitoring -Source https://msazure.p
 <a name="commands-what-are-the-keyvault-picker-blades"></a>
 ## What are the KeyVault picker blades
 
-The KeyVault picker blades are a tool intended to unify KeyVault selection and/or key/secret selection scenarios across the portal. The Pickers are built using the ParameterCollection Framework v3.0. This means the blades are a "provider" and that to use it, you will need to write a "collector" which calls the blades and receives data back. An example of this can be found in the next section. To better understand the basics of how passing data with this framework works, see the examples of its usage in the Samples extension provided with the Azure SDK. 
+The KeyVault picker blades are a tool intended to unify KeyVault selection and/or key/secret selection scenarios across the Portal. The Pickers are built using the ParameterCollection Framework v3.0. This means the blades are a "provider" and that to use it, you will need to write a "collector" which calls the blades and receives data back. An example of this can be found in the next section. To better understand the basics of how passing data with this framework works, see the examples of its usage in the Samples extension provided with the Azure SDK. 
 A typical flow for partner teams to follow if they need a key identifier or secret identifier in order to initialize their resource would be:
 
 - Vault and key selector buttons are shown, but key selector is locked.
@@ -915,7 +915,7 @@ The following is an example of the PDL changes needed to use the blade.
 
 ```xml
 
-    <BladeAction Blade ="{BladeReference VaultPicker, ExtensionName=Microsoft_Azure_KeyVault}"
+    <BladeAction Blade ="{BladeReference VaultPicker, extensionName=Microsoft_Azure_KeyVault}"
                    ParameterCollector ="vaultPickerCollector">
       </BladeAction>
 
@@ -978,7 +978,7 @@ The following is an example of the PDL changes needed to use the blade.
 
 <a name="commands-key-secret-pickers-pdl-changes"></a>
 ### PDL Changes
-	<BladeAction Blade ="{BladeReference KeyPicker, ExtensionName=Microsoft_Azure_KeyVault}"
+	<BladeAction Blade ="{BladeReference KeyPicker, extensionName=Microsoft_Azure_KeyVault}"
 	                   ParameterCollector ="keyPickerCollector">
 	</BladeAction>
 
@@ -1118,5 +1118,7 @@ You shouldn't need to add any extra telemetry on your side.
 
 <a name="getting-started-with-azure-cdn-4-telemetry-and-monitoring-contact-us"></a>
 ### Contact Us
-You can start development today! Create a code review and add "inzarif" and "cdneng" as reviewers.
+You can start development today! Create a code review and add  and "cdneng" as reviewers.
+Azure CDN Engineering team
+
 Don't hesitate to contact us for any questions, concerns, or bug reports.
