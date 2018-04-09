@@ -32,13 +32,13 @@ gitdown": "include-headings", "file": "../templates/portalfx-browse.md"}
 
 {"gitdown": "include-headings", "file": "../templates/portalfx-assets.md"}
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-provisioning-arm.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-provisioning-arm.md"}
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-essentials.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-essentials.md"}
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-resourcemenu.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-resourcemenu.md"}
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-permissions.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-permissions.md"}
 
 {"gitdown": "include-headings", "file": "../templates/portalfx-notifications.md"}
 
@@ -52,7 +52,6 @@ gitdown": "include-headings", "file": "../templates/portalfx-browse.md"}
 
 # Debugging
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-debugging.md"}
 
 {"gitdown": "include-headings", "file": "../templates/portalfx-debugging-extension-load-failures.md"}
 
