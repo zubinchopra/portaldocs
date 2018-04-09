@@ -22,15 +22,15 @@ gitdown": "include-headings", "file": "../templates/portalfx-browse.md"}
 # Authentication
 
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-authentication.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-authentication.md"}
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-parameter-collection-overview.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-parameter-collection-overview.md"}
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-provisioning-arm.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-provisioning-arm.md"}
 
 # Resource management
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-assets.md"}
+gitdown": "include-headings", "file": "../templates/portalfx-assets.md"}
 
 gitdown": "include-headings", "file": "../templates/portalfx-provisioning-arm.md"}
 
