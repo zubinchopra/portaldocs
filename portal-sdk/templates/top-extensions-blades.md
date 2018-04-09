@@ -3,7 +3,7 @@
 
 ## Overview
 
-Blades are the main UI container in the Portal. They are equivalent to `windows` or `pages` in other UX frameworks.  A blade typically takes up the full screen, has a presence in the Portal breadcrumb, and has an 'X' button to close it. The `TemplateBlade` is the recommended development model, which typically contains an import statement, an HTML template for the UI, and a ViewModel that contains the logic that binds to the HTML template. However, a few other development models are supported.
+Blades are the main UI container in the Portal. They are equivalent to `windows` or `pages` in other UX frameworks.  A blade typically takes up the full screen, has a presence in the Portal breadcrumb, and has an 'X' button to close it. The `TemplateBlade` is the recommended development model, which typically contains an import statement, an HTML template for the UI, and a ViewModel that contains the logic that binds to the HTML template. However, a few other development models are supported.     
 
 The following is a list of different types of blades.
 
