@@ -40,7 +40,7 @@ gitdown": "include-headings", "file": "../templates/portalfx-resourcemenu.md"}
 
 gitdown": "include-headings", "file": "../templates/portalfx-permissions.md"}
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-notifications.md"}
+        gitdown": "include-headings", "file": "../templates/portalfx-notifications.md"}
 
 {"gitdown": "include-headings", "file": "../templates/portalfx-subscriptions.md"}
 
