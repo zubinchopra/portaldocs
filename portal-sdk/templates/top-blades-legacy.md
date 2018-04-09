@@ -32,4 +32,4 @@ Blades use ViewModels to drive dynamic content, including titles, icons, and sta
 | Blade properties     | [portalfx-blades-properties.md](portalfx-blades-properties.md) | Information sent to the blade as a `BladeParameter` is also sent to the blade ViewModel by using  a `<Property>` element. | 
 | Blade outputs        | [portalfx-blades-outputs.md](portalfx-blades-outputs.md)       | A list of output properties that return data from a child blade back to the calling blade. | 
 | Pinning blades       | [portalfx-blades-pinning.md](portalfx-blades-pinning.md)       | Pinning a blade creates a part on the currently active dashboard.    | 
-| Closing blades       | [portalfx-blades-opening-and-closing.mdd](portalfx-blades-opening-and-closing.md)       | How to close the current blade that was called from a blade or a part container.  |
+| Closing blades       | [top-blades-opening-and-closing.md](top-blades-opening-and-closing.md)       | How to close the current blade that was called from a blade or a part container.  |
