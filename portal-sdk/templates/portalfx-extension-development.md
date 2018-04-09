@@ -48,15 +48,15 @@ gitdown": "include-headings", "file": "../templates/portalfx-tags.md"}
 
 gitdown": "include-headings", "file": "../templates/portalfx-resourcemove.md"}
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-extension-pricing-tier.md"}
+  gitdown": "include-headings", "file": "../templates/portalfx-extension-pricing-tier.md"}
 
 # Debugging
 
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-debugging-extension-load-failures.md"}
+  gitdown": "include-headings", "file": "../templates/portalfx-debugging-extension-load-failures.md"}
 
 # Other
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-binding-reference.md"}
+  gitdown": "include-headings", "file": "../templates/portalfx-binding-reference.md"}
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-load-configuration.md"}
+  gitdown": "include-headings", "file": "../templates/portalfx-load-configuration.md"}
