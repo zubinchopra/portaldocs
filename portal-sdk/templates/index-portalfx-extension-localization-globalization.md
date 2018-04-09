@@ -1,5 +1,2 @@
-{"gitdown": "contents", "maxLevel": 2}
 
-# Localization / Globalization
-{"gitdown": "include-headings", "file": "../templates/portalfx-localization.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-globalization.md"}
+The page you requested has moved to [portalfx-localization-globalization.md](portalfx-localization-globalization.md). 

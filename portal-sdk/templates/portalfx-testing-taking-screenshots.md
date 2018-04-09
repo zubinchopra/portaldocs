@@ -1,5 +1,5 @@
 
-## Taking Screenshots while Testings
+## Taking Screenshots while Testing
 
 The Test Framework provides built-in support for taking screenshots from test cases. You can use the **WebDriver.TakeScreenshot** method to take the screenshot and save it as a PNG file to the local disk. You can do this at any point within the test case, but a typical approach is to do it at least in the test `CleanUp` method when the outcome of the test case is not "Passed".
 

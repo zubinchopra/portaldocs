@@ -1,2 +1,2 @@
-{"gitdown": "include-file", "file": "../templates/portalfx-localization.md"}
-{"gitdown": "include-file", "file": "../templates/portalfx-globalization.md"}
+
+The page you requested has moved to [portalfx-localization-globalization.md](portalfx-localization-globalization.md). 
