@@ -9,11 +9,7 @@ The `QueryCache` caches a list of items as specified in [portalfx-data-caching.m
 
 The server data is cached using one of the two cache objects, and then the extension uses that cache to display the websites across the two blades. The data for both blades is located in the same cache, therefore the server is not queried again when it is time to open the second blade. When the data in the cache is updated, the  updated data is displayed across all blades at the same time. Consequently, the Portal always presents a consistent view of the data.
 
-* [Linking the DataContext to the ViewModel](#linking-the-datacontext-to-the-viewmodel)
-
-* [Implementing the master view](#implementing-the-master-view)
-
-* [Implementing the detail view](#implementing-the-detail-view)
+### Linking the DataContext to the ViewModel
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK. 
      
@@ -23,10 +19,6 @@ The code for this example is located at:
 `<dir>\Client\V1\Data\MasterDetailBrowse\MasterDetailBrowseData.ts`
 `<dir>\Client\V1\asterDetail\MasterDetailBrowse\ViewModels\DetailViewModels.ts`
 `<dir>\Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\MasterViewModels.ts`
-
-* * * 
-
-### Linking the DataContext to the ViewModel
 
 The Portal uses an `Area` to contain the cache and other data objects that are shared across multiple blades. The code for the area is located in its own folder, as specified in [portalfx-data-overview.md#areas](portalfx-data-overview.md#areas). In this example, the area folder is named `MasterDetail` and it is located in the `Client` folder of the extension.
 
@@ -39,6 +31,9 @@ For the example, the file is named `MasterDetailArea.ts` and is located at `<dir
 If this is a new area for the extension, the developer should edit the `Program.ts` file to create the `DataContext` when the extension is loaded. The SDK edition of the `Program.ts` file is located at `<dir>\Client\Program.ts`. For the extension that is being built, find the `initializeDataContexts` method and then use the `setDataContextFactory` method to set the `DataContext`, as in the following example.
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailArea.ts", "section": "data#createDataContext"}
+
+
+* [Implementing the detail view](#implementing-the-detail-view)
 
 ### Implementing the master view
 
