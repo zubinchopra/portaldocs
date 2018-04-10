@@ -8,7 +8,7 @@ The following links describe what a configuration file is and how to use it in d
 
 [Configuration file locations and structure](#configuration-file-locations-and-structure)
 
-[Extension Stamps and Safe Deployment](#extension-stamps-and-safe-deployment)
+[Extension stamps and safe deployment](#extension-stamps-and-safe-deployment)
 
 ### Configuration file locations and structure
 
@@ -119,7 +119,7 @@ Its options are as follows.
 
   **NOTE**: Setting the value of the `cacheability` attribute to `manifest` is a requirement for registering the extension into the Portal.  For assistance with caching, send a pull request as specified in [top-extensions-publishing.md](top-extensions-publishing.md).
     
-  For more information about caching, see [portalfx-extension-homepage-caching.md](portalfx-extension-homepage-caching.md).
+  For more information about caching, see [portalfx-performance-caching-homepage.md](portalfx-performance-caching-homepage.md).
 
 * **disabled**: Optional. Registers the extension configuration into the Portal in hidden mode.  A value of  `true` disables an extension, and a value of `false` enables the extension for display. The default value is `false`. Ideally you would not disable your extension. Even if you want to hide your UX for a private preview or testing then there are ways to do this from within the extension, as specified in [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md). To temporarily enable a disabled extension in private preview for this test session only, add an extension override in the Portal URL, as in the following example.
   
@@ -144,9 +144,9 @@ Its options are as follows.
  
  * **scriptoptimze**: Leverage the performance optimizations in the base controller. A value of `true`  , whereas a value of `false` .
 
- For more information about loading extension configuration files, see [portalfx-extensions-testing-in-production-overview.md#loading-customized-extensions](portalfx-extensions-testing-in-production-overview.md#loading-customized-extensions).
+ For more information about loading extension configuration files, see [portalfx-extensions-production-testing-overview.md#loading-customized-extensions](portalfx-extensions-production-testing-overview.md#loading-customized-extensions).
 
-### Extension Stamps and Safe Deployment
+### Extension stamps and safe deployment
 
 The Azure Portal uses five different extension configuration files to manage the extension configuration. Because the hosting service provides a mechanism for deploying extensions using safe deployment practices, the Portal will load the version of the extension that is based on the region from where the customer is accessing the Portal. For more details, see the Hosting Service documentation located at [top-extensions-hosting-service.md](top-extensions-hosting-service.md).
 

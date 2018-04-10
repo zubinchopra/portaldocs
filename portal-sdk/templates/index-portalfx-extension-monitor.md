@@ -16,7 +16,7 @@
 
 ## Performance 
 
-  gitdown": "include-headings", "file": "../templates/portalfx-performance.md"}
+  gitdown": "include-headings", "file": "../templates/portalfx-performance-overview.md"}
 
 ## Reliability
 

@@ -403,7 +403,7 @@ the current state of wizards and full-screen Create support.
 Create is our first chance to engage with and win customers and every error  puts us at risk of losing customers. This is specifically true of 
 new customers. As a business, we need to lead that engagement on a positive note by creating resources quickly and easily.
 When a customer clicks the Create button, it should succeed. This includes all types of errors – from
-using the wrong location to exceeding quotas  to unhandled exceptions in the backend. This will help avoid failures and surface errors before deployment. For more information about adding validation to your form fields, see  [portalfx-forms-field-validation.md](portalfx-forms-field-validation.md).  
+using the wrong location to exceeding quotas  to unhandled exceptions in the backend. This will help avoid failures and surface errors before deployment. For more information about adding validation to your form fields, see  [top-forms-field-validation.md](top-forms-field-validation.md).  
 
 In an effort to resolve Create success regressions as early as possible, sev 2 [ICM](http://icm.ad.msft.net) (internal only)
 incidents will be created and assigned to extension teams whenever the success rate

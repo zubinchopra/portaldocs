@@ -20,7 +20,7 @@ The following table contains links to more information about each topic as appro
 | Power BI Dashboard for Success Rates | [https://aka.ms/portalfx/successrates](https://aka.ms/portalfx/successrates) |
 | Power BI Dashboard for Status | [http://aka.ms/portalfx/resourcemove/dashboard](http://aka.ms/portalfx/resourcemove/dashboard) |
 | Performance Query |     [https://aka.ms/portalfx/perfsignoff](https://aka.ms/portalfx/perfsignoff) |
-| Performance Checklist | [portalfx-performance.md](portalfx-performance.md) |
+| Performance Checklist | [portalfx-performance-overview.md](portalfx-performance-overview.md) |
 | Telemetry Access  | [portalfx-telemetry-getting-started.md#permissions](portalfx-telemetry-getting-started.md#permissions) |
 | Portal COP (Telemetry) |     [portalfx-performance-portalcop.md](portalfx-performance-portalcop.md) |
 | Best practices |     [portalfx-extensions-bp-performance.md](portalfx-extensions-bp-performance.md) |

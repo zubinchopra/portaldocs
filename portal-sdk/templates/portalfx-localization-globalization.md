@@ -149,7 +149,7 @@ There are many cases where you will refer to a string directly from PDL. The com
 
 #### Formatting strings according to locale
 
-The [Azure Portal Globalization API Formatters](portalfx-globalization.md) enables you to easily format numbers, currencies, and dates for different cultures in JavaScript.
+The [Azure Portal Globalization API Formatters](portalfx-localization-globalization.md) enables you to easily format numbers, currencies, and dates for different cultures in JavaScript.
 
 This is exposed publically through the module "MsPortalFx/Globalization"
 

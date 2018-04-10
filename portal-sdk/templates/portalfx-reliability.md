@@ -45,10 +45,10 @@ You can, if preferred, run queries locally but ensure you are using the Fx provi
 There are a few items that the FX team advises all extensions to follow.
 
 - [Configure CDN](portalfx-cdn.md)
-- [Extension HomePage Caching](portalfx-extension-homepage-caching.md)
+- [Extension HomePage Caching](portalfx-performance-caching-homepage.md)
 - [Persistent Caching of scripts across extension updates](portalfx-performance-caching-scripts.md)
 - Geo-distribution, ensure you are serving your extension as close as possible to users.
-The FX provides an [Extension Hosting Service](portalfx-extension-hosting-service.md) which handles Geo-distribution.
+The FX provides an [Extension Hosting Service](top-extensions-hosting-service.md) which handles Geo-distribution.
 To assess your extensions performance by data center see the [Extension performance/reliability report][Ext-Perf/Rel-Report]
 - Turning on [IIS compression](https://technet.microsoft.com/en-us/library/cc730629(v=ws.10).aspx)
 - [Run portalcop to identify and resolve common performance issues](portalfx-performance-portalcop.md)

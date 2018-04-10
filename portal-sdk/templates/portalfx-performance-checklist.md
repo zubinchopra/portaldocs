@@ -13,7 +13,7 @@
 
 - [Configure CDN](portalfx-cdn.md)
 - [Improve part responsiveness with revealContent](portalfx-parts-revealContent.md)
-- [Extension HomePage Caching](portalfx-extension-homepage-caching.md)
+- [Extension HomePage Caching](portalfx-performance-caching-homepage.md)
 - [Persistent Caching of scripts across extension updates](portalfx-performance-caching-scripts.md)
 - [Run portalcop to identify and resolve common performance issues](portalfx-performance-portalcop.md)
 - [Optimize number CORS preflight requests to ARM using invokeApi](portalfx-data-loadingdata.md)

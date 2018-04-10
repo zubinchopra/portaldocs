@@ -354,14 +354,11 @@ Since the resource menu acts as a container for the blades opened by the menu it
 Next Steps:
 
 * There are samples of resources using this in the Samples Extension see the Client\ResourceTypes\Desktop\ folder, particularly the AssetViewModels\DesktopViewModel.ts
-* See [Resource Menu APIs][resourcemenuapis]
-{"gitdown": "include-file", "file": "../templates/portalfx-resourcemenu-api.md"}
+* See [Resource Menu APIs](portalfx-resourcemenu-api.md)
 
-* See the [frequently asked questions][resourcemenufaq]
-{"gitdown": "include-file", "file": "../templates/portalfx-resourcemenu-faq.md"}
+* See the [frequently asked questions](portalfx-extensions-faq-resourcemenu.md)
 
-* [Migrate any of your current resources to use the resource menu][resourcemenuadoption]
-{"gitdown": "include-file", "file": "../templates/portalfx-resourcemenu-adoption.md"}
+* Migrate any of your current resources to use the resource menu as specified in [portalfx-resourcemenu-migration.md](portalfx-resourcemenu-migration.md).
 
 * If there are any issues please reach out to <a href="mailto:ibiza-menu-blade@microsoft.com?subject=Issues with Resource Samples">Ibiza Menu Blade</a>.
 

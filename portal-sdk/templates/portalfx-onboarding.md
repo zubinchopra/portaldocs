@@ -192,7 +192,7 @@ Both First-party and Third-party extension developers can install and run sample
 
 <!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by portalfx-extensions-onboarding-criteria in the portalfx-extensions-onboarding.md document.   -->
 
-1. **[Production-ready metrics  + quality metrics](portalfx-onboarding-exitcriteria.md)**
+1. **[Production-ready metrics  + quality metrics](top-extensions-production-ready-metrics.md)**
 <!-- TODO:  deprecate the preceding   section of this document by removing it.  It has been  replaced by portalfx-extensions-onboarding-criteria in the portalfx-extensions-onboarding.md document.   -->
 
 

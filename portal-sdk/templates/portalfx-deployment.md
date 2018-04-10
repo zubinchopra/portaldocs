@@ -1,4 +1,3 @@
-{"gitdown": "contents"}
 
 ## Overview
 
@@ -114,7 +113,7 @@ changes, and redeploy the extension.
 
 ## Deploying extension UI
 
-[Deploying through Extension Hosting Service](portalfx-extension-hosting-service.md)
+[Deploying through Extension Hosting Service](top-extensions-hosting-service.md)
 
 ## Deploying extension controllers
 
@@ -153,10 +152,10 @@ We also recommend that extensions use a CDN, such as Azure CDN, to move the most
 
 Having a presence in all geographies is important for good performance.
 We see much higher latencies and reliability issues when servers are not geo-located with their users.
-(For more tips, see the [performance page](portalfx-performance.md).)
+(For more tips, see the [performance page](portalfx-performance-overview.md).)
 
 In order to deploy to all regions:
-1.	Use [Extension Hosting Service](portalfx-extension-hosting-service.md) to deploy UI
+1.	Use [Extension Hosting Service](top-extensions-hosting-service.md) to deploy UI
 1.	Deploy Controllers to all regions
 
 In general, it is best to set up servers in every region.
@@ -172,6 +171,3 @@ In the first case, you can probably get away with fewer servers, but in the seco
 
 [deployment-architecture]: ../media/portalfx-custom-extensions-deployment/deployment.png
 <!-- TODO:  add "hotfix" info here for when developers need to walk their code into the 4 environments instead of waiting for the automated processes.-->
-
-<!-- TODO: add "portalfx-extension-onboarding-developer-guide.md#making-your-extension-visible--enabled-in-portal-on-a-specific-time" here -->
-

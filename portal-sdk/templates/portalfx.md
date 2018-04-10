@@ -23,11 +23,11 @@ Ready to grow your business?
 
 1. [Downloads](/portal-sdk/generated/downloads.md), [Release Notes](/portal-sdk/generated/release-notes.md), [Breaking Changes](/portal-sdk/generated/breaking-changes.md)
 1. [Development](portalfx-extension-development.md)
-1. [Style Guide](portalfx-style-guide.md)
+1. [Style Guide]([top-extensions-style.md)
 1. [Test](portalfx-extension-test.md)
 1. [Telemetry / Performance / Reliability](portalfx-extension-monitor.md) 
 1. [Deploy](portalfx-extension-deployment.md)
-1. [Localization / Globalization](portalfx-extension-localization-globalization.md)
+1. [Localization / Globalization](portalfx-localization-globalization.md)
 1. [Accessibility](portalfx-extension-accessibility.md)
 1. [Sharing PDE](portalfx-extension-sharing-pde.md)
 1. [Notifying your customers what's new](portalfx-extension-posting-whats-new-notification.md)

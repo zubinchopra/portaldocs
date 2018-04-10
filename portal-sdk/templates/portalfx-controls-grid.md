@@ -99,7 +99,7 @@ When data is virtualized, it is provided to the grid by using a `DataNavigator` 
 1. Sequential data access using continuation tokens. Sequential navigation can be enabled by the `Pageable` plugin.
 1. Random data access, which is also known as skip-take. Random access navigation can be enabled by the `Pageable` or `Scrollable` plugins.
 
-For more information about data handling, see [portalfx-data.md](portalfx-data.md).
+For more information about data handling, see top-extensions-data.md](top-extensions-data.md).
 
 ### Defining Columns
 
