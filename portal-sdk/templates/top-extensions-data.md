@@ -5,9 +5,9 @@
 
     {"gitdown": "include-file", "file": "../templates/portalfx-data-modeling.md"}
 
-    {"gitdown": "include-file", "file": "../templates/portalfx-data-caching.md"}
+    gitdown": "include-file", "file": "../templates/portalfx-data-caching.md"}
 
-    {"gitdown": "include-file", "file": "../templates/portalfx-data-dataviews.md"}
+    gitdown": "include-file", "file": "../templates/portalfx-data-dataviews.md"}
 
 
 <!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
