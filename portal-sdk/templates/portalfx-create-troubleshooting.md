@@ -1,6 +1,3 @@
-{"gitdown": "contents"}
-
-# Create Troubleshooting
 
 ## Overview
 
