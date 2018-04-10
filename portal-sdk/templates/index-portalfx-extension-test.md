@@ -1,4 +1,3 @@
-{"gitdown": "contents", "maxLevel": 2}
 
 # Portal Test Frameworks
 {"gitdown": "include-headings", "file": "../templates/portalfx-choosing-test-framework.md"}

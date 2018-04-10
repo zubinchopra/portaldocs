@@ -1,4 +1,3 @@
-{"gitdown": "contents"}
 
 ## Defining permissions and checking access
 

@@ -1,4 +1,3 @@
-{"gitdown": "contents"}
 
 <tags
     ms.service="portalfx"
@@ -13,7 +12,7 @@
 
 ## What is the Select Member Blade?
 
-The Select Member Blade is a tool intended to unify "member selection" scenarios across the portal by separating the process of selection from the action being taken on those members. This means the hosting extension will be responsible for making any changes to the back-end data after the members have been returned by the Select Member Blade. Note that currently, a "member" can refer to any User, Group, or Service Principal within the current tenant's context. The Select Member Blade is built using the ParameterCollection Framework v3.0. This means the Select Member Blade is a "provider" and that to use it, you will need to write a "collector" which calls it. An example of this can be found in the next section. To better understand the basics of how passing data with this framework works, see the examples of its usage in the Samples extension provided with the Azure SDK. 
+The Select Member Blade is a tool intended to unify "member selection" scenarios across the Portal by separating the process of selection from the action being taken on those members. This means the hosting extension will be responsible for making any changes to the back-end data after the members have been returned by the Select Member Blade. Note that currently, a "member" can refer to any User, Group, or Service Principal within the current tenant's context. The Select Member Blade is built using the ParameterCollection Framework v3.0. This means the Select Member Blade is a "provider" and that to use it, you will need to write a "collector" which calls it. An example of this can be found in the next section. To better understand the basics of how passing data with this framework works, see the examples of its usage in the Samples extension provided with the Azure SDK. 
 
 ![Select Member Blade](../media/portalfx-pde-aadrbac/SMBimg.PNG)
 
@@ -109,7 +108,7 @@ the title and subtitle which appear on the selectMember blade.
              Kind ="Blade"
              Text ="{Resource testSelectMemberV3CommandTitle, Module=ClientResources}"
              ViewModel ="TestSelectMemberV3CommandViewModel">
-      <BladeAction Blade ="{BladeReference SelectMemberV3, ExtensionName=Microsoft_Azure_AD}"
+      <BladeAction Blade ="{BladeReference SelectMemberV3, extensionName=Microsoft_Azure_AD}"
                    ParameterCollector ="selectMemberCollector">
         <BladeInput Parameter="title" Source="title" />
         <BladeInput Parameter="subtitle" Source="subtitle" />

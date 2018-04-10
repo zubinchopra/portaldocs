@@ -1,5 +1,4 @@
-﻿{"gitdown": "contents"}
-
+﻿
 ## Building create experiences
 
 The Azure portal offers 3 ways to build a create form:
@@ -40,7 +39,7 @@ Note that the **+New** menu is curated and can change at any time based on C+E l
 ### Design for a single blade
 All create experiences should be designed for a single blade. Start by building a template blade. Always prefer dropdowns over pickers (form fields that allow selecting items from a list in a child blade) and avoid using selectors (form fields that open child blades).
 
-Email [ibizafxpm](mailto:ibizafxpm@microsoft.com?subject=Full-screen Create) if you have any questions about the current state of full-screen create experiences.
+Reach out to <a href="mailto:ibizafxpm@microsoft.com?subject=Full-screen Create">Ibiza FX PM</a> if you have any questions about the current state of full-screen create experiences.
 
 ### Add a provider component
 The [parameter collection framework](portalfx-parameter-collection-overview.md) is platform that enables you to build UX to collect data from the user. If you're not familiar with collectors and providers, now is a good time to read more about it.
@@ -48,7 +47,7 @@ The [parameter collection framework](portalfx-parameter-collection-overview.md) 
 In most cases, your blade will be launched from the Marketplace or a toolbar command (like Create from Browse). They will act as the collectors. Consequently, your blade will be expected to act as a provider. Here's what a provider looks like:
 
 ```ts
-// Instantiate a parameter provider view model.
+// Instantiate a parameter provider ViewModel.
 this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModel, DataModel>(container, {
     // This is where we receive the initial data defined in the UI definition file uploaded
     // with the gallery package. We'll use the data to seed the edit scope. This is the time
@@ -74,7 +73,7 @@ A provisioner is another component in the [parameter collection framework](porta
 (Refer to the full EngineV3 sample to see the full create blade)
 
 ```ts
-// Instantiate a ARM provisioner view model.
+// Instantiate a ARM provisioner ViewModel.
 this.armProvisioner = new AzureResourceManager.Provisioner<DataModel>(container, initialState, {
     // This is where we supply the ARM provisioner with the template deployment options
     // required by the deployment operation.
@@ -120,7 +119,7 @@ this.armProvisioner = new AzureResourceManager.Provisioner<DataModel>(container,
 2. Custom provisioning:
 (Refer to the full RobotV3 sample to see the full create blade)
 ```ts
-// Instantiate a provisioner view model.
+// Instantiate a provisioner ViewModel.
 this.provisioner = new ParameterCollection.Provisioner<DataModel>(container, {
     // This is where we supply the provisioner with the provisioning operation.
     supplyProvisioningPromise: (data) => {
@@ -158,7 +157,8 @@ Use built-in form fields, like TextField and DropDown, to build your form the wa
 // so all we need to do is point our form's edit scope to the parameter provider's edit scope.
 this.editScope = this.parameterProvider.editScope;
 ```
-Learn more about [building forms](portalfx-forms.md).
+
+For more information about building forms, see [top-extensions-forms.md](top-extensions-forms.md).
 
 ### Standard ARM fields
 All ARM subscription resources require a subscription, resource group, location and pricing dropdown. The portal offers built-in controls for each of these. Refer to the EngineV3 Create sample (`SamplesExtension\Extension\Client\Create\EngineV3\ViewModels\CreateEngineBladeViewModel.ts`) for a working example.
@@ -190,12 +190,14 @@ import * as LocationDropDown from "Fx/Controls/LocationDropDown";
 Each ARM dropdown can disable, hide, group, and sort.
  
 #### Disable
-This is the preferred method of disallowing the user to select a value from ARM. The disable callback will run for each fetched value from ARM. The return value of your callback will be a reason for why the value is disabled. If no reason is provided, then the value will not be disabled. This is to ensure the customer has information about why they can’t select an option, and reduces support calls.
+This is the preferred method of disallowing the user to select a value from ARM. The disable callback will run for each fetched value from ARM. The return value of your callback will be a reason for why the value is disabled. If no reason is provided, then the value will not be disabled. This is to ensure the customer has information about why they can not select an option, and reduces support calls, as in the following example.
 {"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#disable"}
+
 When disabling, the values will be displayed in groups with the reason they are disabled as the group header. Disabled groups will be placed at the bottom of the dropdown list.
  
 #### Hide
-This is an alternative method of disallowing the user to select a value from ARM. The hide callback will run for each fetched value from ARM. The return value of your callback will return a boolean for if the value should be hidden. If you choose to hide, a message telling the user why some values are hidden is required.
+This is an alternative method of disallowing the user to select a value from ARM. The hide callback will run for each fetched value from ARM. The return value of your callback will return a boolean for if the value should be hidden. If you choose to hide the value, a message telling the user why some values are hidden is required, as in the following example.
+
 {"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#hide"}
 
 ##### Note on Hide
@@ -204,14 +206,14 @@ It's recommended to use the `disable` option so you can provide scenario-specifi
 #### Group
 This is a way for you to group values in the dropdown. The group callback will take a value from the dropdown and return a display string for which group the value should be in. If no display string or an empty string is provided, then the value will default to the top level of the group dropdown.
  
-If you want to sort the groups (not the values within the group), you can supply the 'sort' option, which should be a conventional comparator function that determines the sort order by returning a number greater or less than zero. It defaults to alphabetical sorting.
+If you want to sort the groups (not the values within the group), you can supply the 'sort' option, which should be a conventional comparator function that determines the sort order by returning a number greater or less than zero. It defaults to alphabetical sorting, as in the following example.
  
 {"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#group"}
  
 If you both disable and group, values which are disabled will be placed under the disabled group rather than the grouping provided in this callback.
  
 #### Sort
-If you want to sort values in the dropdown, supply the 'sort' option, which should be a convention comparator function that returns a number greater or less than zero. It defaults to alphabetical based on the display string of the value.
+If you want to sort values in the dropdown, supply the 'sort' option, which should be a convention comparator function that returns a number greater or less than zero. It defaults to alphabetical based on the display string of the value, as in the following example.
  
 {"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#sort"}
  
@@ -394,15 +396,14 @@ complicated design and extended development time. The Portal Fx team is testing 
 these issues and will notify teams once usability has been confirmed and APIs updated. Wizards are discouraged and will
 not be supported.
 
-Email [ibizafxpm](mailto:ibizafxpm@microsoft.com?subject=Create wizards + full screen) if you have any questions about
+Reach out to <a href="mailto:ibizafxpm@microsoft.com?subject=Create wizards + full screen">Ibiza FX PM</a> if you have any questions about
 the current state of wizards and full-screen Create support.
 
 ### Validation
-Create is our first chance to engage with and win customers and every hiccup puts us at risk of losing customers; specifically
+Create is our first chance to engage with and win customers and every error  puts us at risk of losing customers. This is specifically true of 
 new customers. As a business, we need to lead that engagement on a positive note by creating resources quickly and easily.
 When a customer clicks the Create button, it should succeed. This includes all types of errors – from
-using the wrong location to exceeding quotas  to unhandled exceptions in the backend. [Adding validation to your form fields](portalfx-forms-field-validation.md)
-will help avoid failures and surface errors before deployment.
+using the wrong location to exceeding quotas  to unhandled exceptions in the backend. This will help avoid failures and surface errors before deployment. For more information about adding validation to your form fields, see  [portalfx-forms-field-validation.md](portalfx-forms-field-validation.md).  
 
 In an effort to resolve Create success regressions as early as possible, sev 2 [ICM](http://icm.ad.msft.net) (internal only)
 incidents will be created and assigned to extension teams whenever the success rate
@@ -411,8 +412,7 @@ drops 5% or more for 50+ deployments over a rolling 24-hour period.
 #### ARM template deployment validation
 If your form uses the ARM provisioner, you need to opt in to deployment validation manually by adding
 `CreateFeatures.EnableArmValidation` to the `HubsProvisioner<T>` options. Wizards are not currently supported; we are
-working on a separate solution for wizards. Email [ibizafxpm](mailto:ibizafxpm@microsoft.com?subject=Create wizards + deployment validation)
-if you have any questions about wizard support.
+working on a separate solution for wizards. Reach out to <a href="mailto:ibizafxpm@microsoft.com?subject=Create wizards + deployment validation">Ibiza FX PM</a> if you have any questions about wizard support.
 
 ```ts
  this.armProvisioner = new HubsProvisioner.HubsProvisioner<DeployFromTemplateDataModel>(container, initialState, {
@@ -433,8 +433,7 @@ gets the same template that is sent to ARM and gives it to the user. This allows
 resources via CLI, PowerShell, and other supported tools/platforms. Wizards are not currently supported; we are working
 on a separate solution for wizards.
 
-Email [ibizafxpm](mailto:ibizafxpm@microsoft.com?subject=Create wizards + automation options)
-if you have any questions about wizard support.
+Reach out to <a href="mailto:ibizafxpm@microsoft.com?subject=Create wizards + automation options">Ibiza FX PM</a> if you have any questions about wizard support.
 
 ### Testing
 Due to the importance of Create and how critical validation is, all Create forms should have automated testing to help

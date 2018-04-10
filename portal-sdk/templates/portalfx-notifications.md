@@ -1,8 +1,7 @@
-{"gitdown": "contents"}
 
 ## Notifications
 
-The Notifications menu aggregates informational messages, warnings, and errors across all portal extensions and cloud-connected services via local, client notifications and global, server events from the Event service.
+The Notifications menu aggregates informational messages, warnings, and errors across all Portal extensions and cloud-connected services via local, client notifications and global, server events from the Event service.
 
 ![Notifications help project status and progress][notification]
 
@@ -10,7 +9,7 @@ The Notifications menu aggregates informational messages, warnings, and errors a
 
 A notification is a **short, informative message** letting the user know about, and ideally take action on, an event that has occurred (or may occur) in the system. Notifications must be **useful and relevant**.
 
-**Server events** are maintained by the public Event service. The Event service tracks all service events, which may be aggregated into larger operations, which are then visualized as notifications within the portal. The Notifications hub automatically surfaces notifications for all critical, error, and completed deployment events.
+**Server events** are maintained by the public Event service. The Event service tracks all service events, which may be aggregated into larger operations, which are then visualized as notifications within the Portal. The Notifications hub automatically surfaces notifications for all critical, error, and completed deployment events.
 
 **Client notifications** are only available in the current browser session. When the browser is refreshed, local, client notifications will be lost. Always prefer server events.
 
@@ -62,7 +61,7 @@ If an operation requires calling a server-side API or may take more than 2 secon
 
 Following the aforementioned steps will ensure the UI is as responsive as possible.
 
-> [WACOM.NOTE] Server events may take up to 1.5 minutes to display in the portal. **Using both server events and client notifications is critical to ensuring UI responsiveness.**
+> [WACOM.NOTE] Server events may take up to 1.5 minutes to display in the Portal. **Using both server events and client notifications is critical to ensuring UI responsiveness.**
 
 
 #### Be specific
@@ -107,7 +106,7 @@ MsPortalFx.Hubs.Notifications.ClientNotification.publish({
     description: resx.myEvent.description,
     status: MsPortalFx.Hubs.Notifications.NotificationStatus.Information,
     linkedBlade: {
-        extension: "ExtensionName",
+        extension: "extensionName",
         detailBlade: "BladeName",
         detailBladeInputs: {
             bladeInputProperty1: "bladeInput1"
@@ -129,7 +128,7 @@ MsPortalFx.Hubs.Notifications.ClientNotification.publish({
 
 #### Suppressing server events
 
-When a client notification is associated with a back-end server event, add the correlation id from the Event service. By specifying the correlation id, the portal will suppress any server events to ensure duplicate notifications aren't published.
+When a client notification is associated with a back-end server event, add the correlation id from the Event service. By specifying the correlation id, the Portal will suppress any server events to ensure duplicate notifications aren't published.
 
 > [WACOM.NOTE] Azure Resource Manager (ARM) automatically publishes server events for every operation. If your extension initiates ARM operations, extract the Event service correlation id from the `x-ms-correlation-request-id` response header.
 

@@ -1,4 +1,4 @@
-{"gitdown": "contents"}
+
 
 ## Building browse experiences
 
@@ -406,12 +406,12 @@ browse is as easy as defining an asset type, adding a grid column service, and
 writing the browse service. The workflow for browse is as follows:
 
 1. The user asks for a list of assets.
-2. The shell will create a new browse service view model.
+2. The shell will create a new browse service ViewModel.
 3. The service will return an (initially empty) observable array which contains the results.
 4. The service will ask it's back-end data source for an updated list of assets.
 5. The list will be kept up to date via `MsPortalFx.Data.Loader` polling.
 6. When the user closes the browse blade, the `canceled` property on the service is set to `true`.
-7. The view model is disposed.
+7. The ViewModel is disposed.
 
 There is a full reference implementation in
 `\Client\Hubs\Browse\Services\RobotBrowseService.ts`:

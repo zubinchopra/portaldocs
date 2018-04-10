@@ -1,6 +1,8 @@
-{"gitdown": "contents"}
+
 ## Pricing Tier
+
 ### Consuming the Spec Picker Blade
+
 The spec picker has a three controls (dropdown, infobox, and selector) for getting the data from the spec picker blades. The best way is to use the Spec Picker dropdown in your create blades.
 
 {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#specDropDown"}

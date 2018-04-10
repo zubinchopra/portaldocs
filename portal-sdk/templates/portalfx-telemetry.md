@@ -1,4 +1,3 @@
-{"gitdown": "contents"}
 
 ## Portal Telemetry Overview
 

@@ -1,4 +1,3 @@
-{"gitdown": "contents"}
 
 {"gitdown": "include-file", "file": "portalfx-parameter-collection-related.md"}
 

@@ -1,4 +1,3 @@
-{"gitdown": "contents", "maxLevel": 2}
 
 # Telemetry 
 

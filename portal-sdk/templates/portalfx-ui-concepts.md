@@ -1,4 +1,4 @@
-{"gitdown": "contents"}
+
 
 ## UI Concepts
 Before you start building an extension for the portal, take a few minutes to review our terminology and concepts.

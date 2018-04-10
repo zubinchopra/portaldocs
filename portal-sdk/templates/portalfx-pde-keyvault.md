@@ -1,4 +1,3 @@
-{"gitdown": "contents"}
 
 <tags
     ms.service="portalfx"
@@ -13,7 +12,7 @@
 
 ## What are the KeyVault picker blades
 
-The KeyVault picker blades are a tool intended to unify KeyVault selection and/or key/secret selection scenarios across the portal. The Pickers are built using the ParameterCollection Framework v3.0. This means the blades are a "provider" and that to use it, you will need to write a "collector" which calls the blades and receives data back. An example of this can be found in the next section. To better understand the basics of how passing data with this framework works, see the examples of its usage in the Samples extension provided with the Azure SDK. 
+The KeyVault picker blades are a tool intended to unify KeyVault selection and/or key/secret selection scenarios across the Portal. The Pickers are built using the ParameterCollection Framework v3.0. This means the blades are a "provider" and that to use it, you will need to write a "collector" which calls the blades and receives data back. An example of this can be found in the next section. To better understand the basics of how passing data with this framework works, see the examples of its usage in the Samples extension provided with the Azure SDK. 
 A typical flow for partner teams to follow if they need a key identifier or secret identifier in order to initialize their resource would be:
 
 - Vault and key selector buttons are shown, but key selector is locked.
@@ -102,7 +101,7 @@ The following is an example of the PDL changes needed to use the blade.
 
 ```xml
 
-    <BladeAction Blade ="{BladeReference VaultPicker, ExtensionName=Microsoft_Azure_KeyVault}"
+    <BladeAction Blade ="{BladeReference VaultPicker, extensionName=Microsoft_Azure_KeyVault}"
                    ParameterCollector ="vaultPickerCollector">
       </BladeAction>
 
@@ -160,7 +159,7 @@ The following is an example of the PDL changes needed to use the blade.
 	      });
 
 ### PDL Changes
-	<BladeAction Blade ="{BladeReference KeyPicker, ExtensionName=Microsoft_Azure_KeyVault}"
+	<BladeAction Blade ="{BladeReference KeyPicker, extensionName=Microsoft_Azure_KeyVault}"
 	                   ParameterCollector ="keyPickerCollector">
 	</BladeAction>
 

@@ -1,8 +1,7 @@
-{"gitdown": "contents"}
 
 # Accessibility
 
-Accessibility is about making the portal usable by people who have limitations that prevent or impede the use of conventional user interfaces. For some situations, accessibility requirements are imposed by law. However, Microsoft requires all blocking accessibility issues to be addressed regardless of legal requirements so the portal caters to the largest possible audience. The framework team has taken an inclusive design approach in incorporating keyboard, programmatic, and visual design support throughout the portal. Extensions are responsible for any graphics, styling, and custom HTML templates they provide.
+Accessibility is about making the Portal usable by people who have limitations that prevent or impede the use of conventional user interfaces. For some situations, accessibility requirements are imposed by law. However, Microsoft requires all blocking accessibility issues to be addressed regardless of legal requirements so the Portal caters to the largest possible audience. The framework team has taken an inclusive design approach in incorporating keyboard, programmatic, and visual design support throughout the Portal. Extensions are responsible for any graphics, styling, and custom HTML templates they provide.
 
 
 ## What the framework provides
@@ -11,7 +10,7 @@ Accessibility is about making the portal usable by people who have limitations t
 #### The framework provides reusable  tiles/parts, forms, and controls that are fully accessible.
 * Using the Form creation helper, your form will be fully accessible.
 
-* All portal:
+* All Portal:
   * Chrome
   * Panes
   * Sidebar
@@ -19,7 +18,7 @@ Accessibility is about making the portal usable by people who have limitations t
   * Context menus
   * Widgets
 
-* Keyboard shortcuts are provided and are listed within the help menu in the portal. The shortcuts must work when using your extension content.
+* Keyboard shortcuts are provided and are listed within the help menu in the Portal. The shortcuts must work when using your extension content.
 
 * A fully accessible default theme (Blue)  
   _**NOTE:** When using that theme, the contrast ratio for all text must meet <a href="http://www.interactiveaccessibility.com/web-accessibility-guidelines">AAA guidelines</a>._
@@ -30,7 +29,7 @@ Accessibility is about making the portal usable by people who have limitations t
 * Focus moves to newly opened blade in the content section  
 	   _**NOTE:** Currently focus is on first focusable element however further usability testing will be required to determine final design._ 
 
-* Focus moves to context pane when opened
+* Focus moves to blade when opened
 
 * Focus should move freely across all elements visible in the Portal, except in the following cases:
 		* ContextMenu captures focus in a loop
@@ -67,9 +66,9 @@ Accessibility is about making the portal usable by people who have limitations t
 1. Ensure there is accessible name (required) and description (optional) for content and interactive UI elements in your extension.
 
 2. Verify keyboard accessibility of your blade content and forms.  
-  - Navigate to your content in the portal and ensure focus is captured to your content in the expected way (autofocus on open provided by the framework)  
+  - Navigate to your content in the Portal and ensure focus is captured to your content in the expected way (autofocus on open provided by the framework)  
   - Ensure the <a href="https://www.paciellogroup.com/blog/2014/08/using-the-tabindex-attribute/">tab order is natural</a> while navigating the blade content
-  - Verify that portal provided keyboard shortcuts are functional within your provided content  
+  - Verify that Portal provided keyboard shortcuts are functional within your provided content  
 3. Visually verify your UI to ensure:  
   - Text contrast meets <a href="http://www.interactiveaccessibility.com/web-accessibility-guidelines">AAA guidelines</a>  
 	Color contrast ratio- The updated Section 508 of the Americans with Disability Act, as well as other legislation, requires that the default color contrasts between text and its background must be 5:1. For large text (18-point font sizes, or 14 points and bolded), the required default contrast is 3:1.   
@@ -83,7 +82,7 @@ Accessibility is about making the portal usable by people who have limitations t
 ## Best Practices
 * Design and code with accessibility in mind  
 
-* Use portal tiles/parts, forms, and controls whenever possible, as those are designed to be accessible  
+* Use Portal tiles/parts, forms, and controls whenever possible, as those are designed to be accessible  
 
 * Use HTML semantics when using custom HTML <a href="http://www.w3schools.com/html/html5_semantic_elements.asp">Web semantics</a>  
 	For example, don't create a button with a styled DIV tag. Use the BUTTON tag instead.

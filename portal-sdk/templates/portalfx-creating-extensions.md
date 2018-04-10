@@ -1,6 +1,5 @@
 
 <!-- TODO:  deprecate this document.  It has been  replaced  as specified in the TODO comments.  -->
-{"gitdown": "contents"}
 
 ## Getting started with the Portal SDK
 

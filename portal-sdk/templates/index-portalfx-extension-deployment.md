@@ -1,4 +1,4 @@
-{"gitdown": "contents", "maxLevel": 2}
+
 
 # Deployment
 {"gitdown": "include-headings", "file": "../templates/portalfx-deployment.md"}
