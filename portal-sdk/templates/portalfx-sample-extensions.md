@@ -1,3 +1,2 @@
-## Samples extension
 
-The page you requested has moved to [portalfx-extensions-samples-overview.md](portalfx-extensions-samples-overview.md). 
+The page you requested has moved to [top-extensions-samples.md](top-extensions-samples.md). 

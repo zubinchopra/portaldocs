@@ -449,7 +449,7 @@ in the standard [telemetry](portalfx-telemetry.md) tables. Query for
 
 ### Telemetry
 
-Refer to [Create telemetry](/portal-sdk/generated/index-portalfx-extension-monitor.md#portalfx-telemetry-create) for additional information on usage dashboards and queries.
+Refer to [Create telemetry](portalfx-telemetry-create.md) for additional information on usage dashboards and queries.
 
 ### Troubleshooting
 

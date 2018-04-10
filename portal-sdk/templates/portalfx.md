@@ -14,7 +14,8 @@ The success of Azure Portal is dependent on the success of our partners. For our
 Ready to grow your business?
 
 # Home 
-## [Onboard Ibiza](/portal-sdk/generated/index-portalfx-extension-onboarding.md)
+## [Onboard Ibiza](top-onboarding.md)
+
 [portalfx-extensions-onboarding.md](portalfx-extensions-onboarding.md)
 <!-- TODO:  deprecate the previous section of this document by removing it.  It has been  replaced by portalfx-extensions-architecture-overview.md -->
 
@@ -33,6 +34,7 @@ Ready to grow your business?
 
 Feeling Lost? Reach out to Community: [Stackoverflow](portalfx-stackoverflow.md)
 
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by readme.md -->
 # Marketplace/Gallery Developer Resources 
 
 1. [Gallery Overview](/gallery-sdk/generated/index-gallery.md#gallery-overview)
@@ -46,7 +48,6 @@ Feeling Lost? Reach out to Community: [Stackoverflow](portalfx-stackoverflow.md)
 1. [Developer tooling and productivity](/gallery-sdk/generated/index-gallery.md#developer-tooling-and-productivity)
 1. [Gallery Frequently Asked Questions](/gallery-sdk/generated/index-gallery.md#gallery-frequently-asked-questions)
 
-<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by readme.md -->
 # Code of Conduct
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.

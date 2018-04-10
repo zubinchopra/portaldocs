@@ -53,11 +53,12 @@ First-party extension developers i.e. Microsoft employees have access to Dogfood
 
 Both First-party and Third-party extension developers can install and run samples extension on their local machine.
 <!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  top-extensions-samples.md -->
-<!-- TODO:  deprecate the following   section of this document by removing it.  It has been  replaced by  portalfx-extensions-testing-in-production-overview.md -->
+<!-- TODO:  deprecate the following   section of this document by removing it.  It has been  replaced by  portalfx-extensions-production-testing-overview.md -->
 
-7. **[Side-load your extension for local testing](/portal-sdk/generated/index-portalfx-extension-development.md#debugging-testing-in-production)**
+7. **Side-load your extension for local testing**
    Side-loading allows you to test and debug your extension locally against any environment. This is the preferred method of testing.
-<!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  portalfx-extensions-testing-in-production-overview.md -->
+   [portalfx-extension-development.md#debugging-testing-in-production](portalfx-extension-development.md#debugging-testing-in-production)
+<!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  portalfx-extensions-production-testing-overview.md -->
 <!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by  portalfx-extensions-onboarding-procedures.md -->
 9. **Marketplace integration**
 
@@ -75,6 +76,7 @@ Both First-party and Third-party extension developers can install and run sample
 
 <!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  portalfx-extensions-onboarding-procedures.md -->
 
+<!-- TODO:  deprecate the following   section of this document by removing it.  It has been  replaced by  portalfx-extensions-bp-blades.md -->
 
 1. **Recommended patterns**
 
@@ -85,6 +87,7 @@ Both First-party and Third-party extension developers can install and run sample
 
      All services should use the menu blade instead of the Settings blade. ARM resources should opt in to the resource
      menu for a simpler, streamlined menu.
+     <!-- TODO:  deprecate the preceding section of this document by removing it.  It has been  replaced by  portalfx-extensions-bp-blades.md -->
 <!-- TODO:  deprecate the following   section of this document by removing it.  It has been  replaced by  portalfx-stackoverflow.md -->
      See also:
      - [#ibiza-blades-parts on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts) for menu blade questions
@@ -98,6 +101,7 @@ Both First-party and Third-party extension developers can install and run sample
       resources (not just tracked resources) get this for free when implementing the resource menu. All other services
       should add the equivalent experience for their service.
 
+     <!-- TODO:  deprecate the following section of this document by removing it.  It has been  replaced by  portalfx-extensions-bp-blades.md -->
    - **Create blades**
 
      All Create blades should be a single blade. **Do not use wizards or picker blades.** Use form sections and
@@ -110,12 +114,13 @@ Both First-party and Third-party extension developers can install and run sample
      template deployment are opted in by default.
 
      See also:
-     - [Create documentation](/portal-sdk/generated/index-portalfx-extension-development.md#common-scenarios-building-create-experiences)
+     - [Create documentation](portalfx-extension-development.md#common-scenarios-building-create-experiences)
+          <!-- TODO:  deprecate the preceding section of this document by removing it.  It has been  replaced by  portalfx-extensions-bp-blades.md -->
      <!-- TODO:  deprecate the following   section of this document by removing it.  It has been  replaced by  portalfx-stackoverflow.md --
      - [#ibiza-create on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-create)
      - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-create)
      <!-- TODO:  deprecate the preceding  section of this document by removing it.  It has been  replaced by  portalfx-stackoverflow.md --
-
+        <!-- TODO:  deprecate the following section of this document by removing it.  It has been  replaced by  portalfx-extensions-bp-blades.md -->
    - **Browse (resource list) blades**
 
       All Browse blades should have:
@@ -129,6 +134,7 @@ Both First-party and Third-party extension developers can install and run sample
       - [#ibiza-browse on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse)
       - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-browse)
 
+        <!-- TODO:  deprecate the preceding section of this document by removing it.  It has been  replaced by  portalfx-extensions-bp-blades.md -->
    - **Export template / RP schema**
 
      ARM RPs must provide a schema for all tracked and nested resource types to ensure they support the export template
