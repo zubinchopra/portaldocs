@@ -14,7 +14,7 @@ Actions are specific operations, like create a website or backup a database. Ins
 For more information, read the full [RBAC documentation](http://aka.ms/azurerbac).
 
 
-<a name="principles"></a>
+
 ### Core principles
 
 #### Fail open
@@ -24,8 +24,8 @@ In general, every element should be prepared to "fail open" in case of network f
 Be granular when defining permissions. If any bit of data can be obtained via an HTTP GET call, don't require write access to access that information. When data is only exposed in a form, disable form controls to ensure readers cannot submit changes, but don't block access to _viewing_ the form.
 
 
-<a name="summary"></a>
-#### At a glance
+
+#### Summary 
 
 Before you begin, here's a quick look at the steps you can expect to complete:
 
@@ -88,7 +88,6 @@ Before you begin, here's a quick look at the steps you can expect to complete:
     ```
 
 
-<a name="actions"></a>
 #### Determining the action
 
 Actions are implicitly defined by the ARM resource provider (RP) API. For instance, the action for deleting a website is "Microsoft.Web/sites/delete". Use the following steps to determine the appropriate action for your API call:
@@ -138,8 +137,8 @@ Use the following form to convert an API call (e.g. ``GET /subscriptions/###``) 
 <button style="width:100px" onclick="var slash = '/'; var msres = 'microsoft.resources'; var api = document.getElementById('_api').value.replace('https:'+slash+slash, '').replace('management.azure.com', '').replace('dogfood-resources.windows.net', ''); var prov = api.lastIndexOf(slash+'providers'+slash); if (prov >= 0) { api = api.substring(prov+11); } else { api = msres+slash+api; } if (api[0] == slash) { api = api.substring(1); } api = api.split(slash); for (var i=2; i<api.length; i+=2) { api[i] = ''; } api.push(document.getElementById('_verb').value); document.getElementById('_action').value = api.join(slash).replace(/\/+/g, slash)">Get action</button> <input id="_action" style="width:500px" />
 
 
-<a name="pdl"></a>
-#### Required permissions for blades, parts, and commands
+#### Required permissions 
+
 
 Start by defining the required permissions for your blades, parts, and commands. A permission consists of an action and a scope. As covered above, actions are defined by the ARM RP API. The scope is the asset the action pertains to.
 
@@ -192,8 +191,6 @@ If the blade/part/command is already associated with an asset type, each permiss
 
 > [WACOM.NOTE] Adapter parts and part references do not support defining permissions. The extension that controls what data will be used should define and check access. Extensions that use an `ExtenderViewModel` will need to expose a way to allow consumers to either check access or define the actions/scopes that need to be checked.
 
-
-<a name="references"></a>
 #### Permission references
 
 If your asset has commonly-used actions, create an alphanumeric alias and use a reference instead of a full permission. Permission references use predefined, compiler-checked aliases instead of action ids.
@@ -233,7 +230,6 @@ Aliases are shared with PDE and can be used by dependent extensions:
 ```
 
 
-<a name="bool"></a>
 #### Boolean logic
 
 By default, all of the specified permissions are required, like an AND operation.
@@ -291,7 +287,6 @@ For more advanced scenarios, you can also nest permission sets.
 ```
 
 
-<a name="pickers"></a>
 #### Checking permissions for pickers
 
 To check access in pickers, add a filter that returns a lambda to obtain the resource id and the required action.
@@ -306,7 +301,6 @@ this.filters([
 > [WACOM.NOTE] The filter is currently applied after you click the item, not before. When you click, the item is disabled.
 
 
-<a name="ts"></a>
 #### Checking permissions from TypeScript
 
 In some cases, you may need to check access in TypeScript. A few examples include:
@@ -334,8 +328,7 @@ Note that you can also reference the permission definition from TypeScript in th
 > **NOTE:** Always use `container.unauthorized()` when denying access to a blade, part, or command, except for parts on locked blades, which should be rendered empty.
 
 
-<a name="rdfe"></a>
-#### Checking RDFE/classic access
+#### Checking RDFE or classic access
 
 Before adding any UI that requires access to RDFE, be sure to check RDFE access (e.g. service and co-admin) by checking for "rdfe" permission. TypeScript would look like the following, as an example:
 

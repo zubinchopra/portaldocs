@@ -10,9 +10,7 @@ There are 3 ways you can be surfaced in Browse:
 2. [Browse service](#assets) for assets that don't use ARM (aka Browse v1)
 3. [Custom blade](#blade) if you have a single instance and not a list of resources
 
-
-<a name="resources"></a>
-### No-code Browse
+### Resources
 
 "No-code" Browse automatically queries ARM for resources of a specific type and displays them in a paged grid. Simply define an asset type in PDL, specify the resource type, indicate that it should be visible in the Browse hub, and specify the API version that hubs extension should use to call ARM for the resource type. That's it.
 
@@ -30,8 +28,8 @@ No-code Browse requires the following:
 * Asset blade must accept a single `Id` input property
 * Asset id must be the resource id (not an object)
 
-<a name="create"></a>
-#### Add command
+#### Create 
+
 To allow people to create new resources from Browse, you can associate your asset type with a Marketplace item or category:
 
 ```xml
@@ -47,8 +45,9 @@ To allow people to create new resources from Browse, you can associate your asse
 
 The Browse blade will launch the Marketplace item, if specified; otherwise, it will launch the Marketplace category blade for the specific menu item id (e.g. `gallery/virtualMachines/recommended` for Virtual machines > Recommended). To determine the right Marketplace category, contact the <a href="mailto:1store?subject=Marketplace menu item id">Marketplace team</a>. If neither is specified, the Add command won't be available.
 
-<a name="columns"></a>
+
 #### Customizing columns
+
 By default, no-code Browse only shows the resource name, group, location, and subscription. To customize the columns, add a view-model to the `AssetType` and indicate that you have custom Browse config:
 
 ```xml
@@ -122,8 +121,8 @@ Notice that the genre column actually renders 2 properties: genre and subgenre. 
 
 At this point, you should be able to compile and see your columns show up in your Browse blade. Of course, you still need to populate your supplemental data. Let's do that now...
 
-<a name="supplementaldata"></a>
 #### Providing supplemental data
+
 In order to specify supplemental data to display on top of the standard resource columns, you'll need to opt in to specifying supplemental data in PDL:
 
 ```xml
@@ -212,8 +211,8 @@ class BookViewModel implements ExtensionDefinition.ViewModels.ResourceTypes.Book
 
 Now, you should have supplemental data getting populated. Great! Let's add context menu commands...
 
-<a name="commands"></a>
 #### Adding context menu commands
+
 Context menu commands in Browse must take a single `id` input parameter that is the resource id of the specific resource. To specify commands, add the name of the command group defined in PDL to Browse config:
 
 ```xml
@@ -242,8 +241,8 @@ class BookViewModel implements ExtensionDefinition.ViewModels.ResourceTypes.Book
 
 If you need to expose different commands based on some other metadata, you can also specify the the command group in `SupplementalData.contextMenu` in the same way.
 
-<a name="infobox"></a>
-#### Adding an informational message/link
+#### Adding an informational message link
+
 If you need to display an informational message and/or link above the list of resources, add an `infoBox` to your Browse config:
 
 ```ts
@@ -274,8 +273,6 @@ class BookViewModel implements ExtensionDefinition.ViewModels.ResourceTypes.Book
 }
 ```
 
-
-<a name="assets"></a>
 #### Browse service
 
 The Browse service API provides support for custom data, whether that comes from ARM or another source.
@@ -473,7 +470,6 @@ module SamplesExtension.Hubs {
 ```
 
 
-<a name="blade"></a>
 ### Custom blade permalink-browse-custom-blade
 
 If you don't have a list of resources and simply need to add a custom blade to Browse, you can define an asset type with a `Browse` type of `AssetTypeBlade`. This tells Browse to launch the blade associated with the asset type. Note that the asset type doesn't actually refer to an instance of a resource in this case. This is most common for services that are only provisioned once per directory. In this case, the `PluralDisplayName` is used in the Browse menu, but the other display names are ignored. Feel free to set them to the same value.

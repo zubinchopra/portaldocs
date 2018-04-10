@@ -23,7 +23,7 @@ The Azure portal offers 3 ways to build a create form:
 
 ### Create Marketplace package (aka Gallery package)
 The Marketplace provides a categorized collection of packages which can be created in the portal. Publishing your package to the Marketplace is simple:
-
+
 1. Create a package and publish it to the DF Marketplace yourself, if applicable. Learn more about [publishing packages to the Marketplace](../../gallery-sdk/generated/index-gallery.md).
 1. Side-load your extension to test it locally.
 1. Set a "hide key" before testing in production.
@@ -37,6 +37,7 @@ Note that the **+New** menu is curated and can change at any time based on C+E l
 ![The Marketplace][marketplace]
 
 ### Design for a single blade
+
 All create experiences should be designed for a single blade. Start by building a template blade. Always prefer dropdowns over pickers (form fields that allow selecting items from a list in a child blade) and avoid using selectors (form fields that open child blades).
 
 Reach out to <a href="mailto:ibizafxpm@microsoft.com?subject=Full-screen Create">Ibiza FX PM</a> if you have any questions about the current state of full-screen create experiences.
@@ -67,6 +68,7 @@ this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModel, 
 ```
 
 ### Add a provisioner component
+
 A provisioner is another component in the [parameter collection framework](portalfx-parameter-collection-overview.md). If you're creating your resource by deploying a single template to ARM, you need to use an ARM provisioner. Otherwise, you need to use a regular provisioner to implement your custom deployment process.
 
 1. ARM provisioning:
@@ -150,6 +152,7 @@ this.provisioner = new ParameterCollection.Provisioner<DataModel>(container, {
 ```
 
 ### Build your form
+
 Use built-in form fields, like TextField and DropDown, to build your form the way you want. Use the built-in EditScope integration to manage changes and warn customers if they leave the form.
 
 ```ts
@@ -161,8 +164,11 @@ this.editScope = this.parameterProvider.editScope;
 For more information about building forms, see [top-extensions-forms.md](top-extensions-forms.md).
 
 ### Standard ARM fields
+
 All ARM subscription resources require a subscription, resource group, location and pricing dropdown. The portal offers built-in controls for each of these. Refer to the EngineV3 Create sample (`SamplesExtension\Extension\Client\Create\EngineV3\ViewModels\CreateEngineBladeViewModel.ts`) for a working example.
+
 ### Setting the value
+
 Each of these fields will retrieve values from the server and populate a dropdown with them. If you wish to set the value of these dropdowns, make sure to lookup the value from the `fetchedValues` array, and then set the `value` observable.
 ```ts
 locationDropDown.value(locationDropDown.fetchedValues().first((value)=> value.name === "centralus"))
@@ -170,57 +176,77 @@ locationDropDown.value(locationDropDown.fetchedValues().first((value)=> value.na
 
 ### Edit scopeless based accessible dropdowns
 #### Subscriptions dropdown
+
 ```ts
 import * as SubscriptionDropDown from "Fx/Controls/SubscriptionDropDown";
 ```
 {"gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#subscriptionDropDown"}
 
 #### Resource groups dropdown
+
 ```ts
 import * as ResourceGroupDropDown from "Fx/Controls/ResourceGroupDropDown";
 ```
 {"gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
+
 #### Locations dropdown
+
 ```ts
 import * as LocationDropDown from "Fx/Controls/LocationDropDown";
 ```
 {"gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#locationDropDown"}
 
 ### ARM dropdown options
+
 Each ARM dropdown can disable, hide, group, and sort.
  
 #### Disable
+
 This is the preferred method of disallowing the user to select a value from ARM. The disable callback will run for each fetched value from ARM. The return value of your callback will be a reason for why the value is disabled. If no reason is provided, then the value will not be disabled. This is to ensure the customer has information about why they can not select an option, and reduces support calls, as in the following example.
-{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#disable"}
+
+<!-- TODO:  Determine whether this sample causes gitHub to stop. -->
+
+ gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#disable"}
 
 When disabling, the values will be displayed in groups with the reason they are disabled as the group header. Disabled groups will be placed at the bottom of the dropdown list.
  
 #### Hide
+
 This is an alternative method of disallowing the user to select a value from ARM. The hide callback will run for each fetched value from ARM. The return value of your callback will return a boolean for if the value should be hidden. If you choose to hide the value, a message telling the user why some values are hidden is required, as in the following example.
 
-{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#hide"}
+<!-- TODO:  Determine whether this sample causes gitHub to stop. -->
+
+gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#hide"}
 
 ##### Note on Hide
+
 It's recommended to use the `disable` option so you can provide scenario-specific detail as to why a given dropdown value is disabled, and customers will be able to see that their specific desired value is not available. Disabling is preferable to hiding, as users often react negatively when they cannot visually locate their expected dropdown value.  In extreme cases, this can trigger incidents with your Blade.
 
 #### Group
+
 This is a way for you to group values in the dropdown. The group callback will take a value from the dropdown and return a display string for which group the value should be in. If no display string or an empty string is provided, then the value will default to the top level of the group dropdown.
  
 If you want to sort the groups (not the values within the group), you can supply the 'sort' option, which should be a conventional comparator function that determines the sort order by returning a number greater or less than zero. It defaults to alphabetical sorting, as in the following example.
  
-{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#group"}
+ <!-- TODO:  Determine whether this sample causes gitHub to stop. -->
+
+gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#group"}
  
 If you both disable and group, values which are disabled will be placed under the disabled group rather than the grouping provided in this callback.
  
 #### Sort
+
 If you want to sort values in the dropdown, supply the 'sort' option, which should be a convention comparator function that returns a number greater or less than zero. It defaults to alphabetical based on the display string of the value, as in the following example.
  
-{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#sort"}
+ <!-- TODO:  Determine whether this sample causes gitHub to stop. -->
+
+gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#sort"}
  
 If you sort and use disable or group functionality, this will sort inside of the groups provided.
 
 ### Edit scope based accessible dropdowns
 ### Migrating from legacy ARM dropdowns to Accessible versions
+
 For scenarios where your Form is built in terms of EditScope, the FX now provides versions of the new, accessible ARM dropdowns that are drop-in replacements for old, non-accessible controls.  These have minimal API changes and are simple to integrate into existing Blades/Parts.
 
 These dropdowns are, however, based on a new accessible control which no longer support the following options.
@@ -244,6 +270,7 @@ These dropdowns are, however, based on a new accessible control which no longer 
 - `visible` - use the `visible` binding in your html template
 
 #### Subscriptions dropdown
+
 In your current EditScope-based form, your Subscription dropdown looks something like this:
 ```ts
 import SubscriptionsDropDown = MsPortalFx.Azure.Subscriptions.DropDown;
@@ -274,10 +301,15 @@ With the new, accessible Subscription dropdown, you'll change your code to look 
 ```ts
 import * as SubscriptionDropDown from "FxObsolete/Controls/SubscriptionDropDown";
 ```
-{"gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#subscriptionDropDown"}
 
-#### Resource groups **legacy** dropdown
+<!-- TODO:  Determine whether this sample causes gitHub to stop. -->
+
+gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#subscriptionDropDown"}
+
+#### Resource groups legacy dropdown
+
 In your current EditScope-based form, your Resource Group dropdown looks something like this:
+
 ```ts
 import ResourceGroupsDropDown = MsPortalFx.Azure.ResourceGroups.DropDown;
 // The resource group drop down.
@@ -313,10 +345,15 @@ With the new, accessible Resource Group dropdown, you'll change your code to loo
 ```ts
 import * as ResourceGroupDropDown from "FxObsolete/Controls/ResourceGroupDropDown";
 ```
-{"gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
+
+<!-- TODO:  Determine whether this sample causes gitHub to stop. -->
+
+gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
 
 #### Locations **legacy** dropdown
+
 In your current EditScope-based form, your Location dropdown looks something like this:
+
 ```ts
 import LocationsDropDown = MsPortalFx.Azure.Locations.DropDown;
 // The locations drop down.
@@ -346,20 +383,29 @@ var locationsDropDownOptions: LocationsDropDown.Options = {
 ```
 
 With the new, accessible Location dropdown, you'll change your code to look something like:
+
 ```ts
 import * as LocationDropDown from "FxObsolete/Controls/LocationDropDown";
 ```
-{"gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#locationDropDown"}
+
+<!-- TODO:  Determine whether this sample causes gitHub to stop. -->
+
+gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#locationDropDown"}
 
 #### Pricing dropdown
+
 ```ts
 *`MsPortalFx.Azure.Pricing.DropDown`
 
 import * as Specs from "Fx/Specs/DropDown";
 ```
-{"gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#specDropDown"}
+
+<!-- TODO:  Determine whether this sample causes gitHub to stop. -->
+
+gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#specDropDown"}
 
 #### Additional/custom validation to the ARM fields
+
 Sometimes you need to add extra validation on any of the previous ARM fields. For instance, you might want to check with you RP/backend to make sure that the selected location is available in certain cirqumstances. To do that, just add a custom validator like you would do with any regular form field. Exmaple:
 
 ```ts
@@ -389,6 +435,7 @@ this.locationsDropDown = new LocationsDropDown(container, locationsDropDownOptio
 ```
 
 #### Wizards
+
 The Azure portal has a **legacy pattern** for wizard blades, however customer feedback and usability has proven the design
 isn't ideal and shouldn't be used. Additionally, the wizard wasn't designed for
 [Parameter Collector v3](portalfx-parameter-collection-getting-started.md), which leads to a more
@@ -410,6 +457,7 @@ incidents will be created and assigned to extension teams whenever the success r
 drops 5% or more for 50+ deployments over a rolling 24-hour period.
 
 #### ARM template deployment validation
+
 If your form uses the ARM provisioner, you need to opt in to deployment validation manually by adding
 `CreateFeatures.EnableArmValidation` to the `HubsProvisioner<T>` options. Wizards are not currently supported; we are
 working on a separate solution for wizards. Reach out to <a href="mailto:ibizafxpm@microsoft.com?subject=Create wizards + deployment validation">Ibiza FX PM</a> if you have any questions about wizard support.
@@ -428,6 +476,7 @@ Refer to the Engine V3 sample for a running example
 - [http://aka.ms/portalfx/samples#create/microsoft.engine](http://aka.ms/portalfx/samples#create/microsoft.engine)
 
 ### Automation options
+
 If your form uses the ARM provisioner, you will get an "Automation options" link in the action bar by default. This link
 gets the same template that is sent to ARM and gives it to the user. This allows customers to automate the creation of
 resources via CLI, PowerShell, and other supported tools/platforms. Wizards are not currently supported; we are working

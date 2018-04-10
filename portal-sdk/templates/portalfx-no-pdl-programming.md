@@ -154,7 +154,7 @@ module Main {
 }
 ```
 
-<a name="no-pdl-context-property"></a>
+
 ### The context property
 
 The context property contains APIs you can call to interact with the shell. It will be populated for you by the framework before your `onInitialize()` function is called.  **It will not be populated in your constructor.  In fact, we advise against having a constructor and instead doing all initialization work in the onInitialize function.** This is a fairly common [Dependency injection technique](https://en.wikipedia.org/wiki/Dependency_injection).
@@ -196,7 +196,7 @@ When you build your project, the compiler will also produce an auto generated bl
 
 Each time you add an additional decorator you will need to incorporate it into the context declaration as we did here.  
 
-<a name="no-pdl-faq"></a>
+
 ### no-PDL FAQ
 
 #### How do I know what properties/methods to add to my Blade or Part class?  I'm used to my TypeScript class inheriting an interface.
@@ -225,7 +225,9 @@ public onInitialize() {
 
 ...
 ```
-<a name="no-pdl-error"></a>
+
+#### No-pdl-error
+
 ```
 Argument of type 'typeof TestTemplateBlade' is not assignable to parameter of type 'TemplateBladeClass'.
   Type 'TestTemplateBlade' is not assignable to type 'Contract<any, any>'.
