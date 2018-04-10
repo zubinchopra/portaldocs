@@ -1,4 +1,4 @@
-# Release Notes since 12/9/2017
+# Release Notes since 12/10/2017
 
 ## 5.0.302.1058
 0 Breaking Changes, 1 Features added and 3 Bugs Fixed
@@ -235,7 +235,3 @@
 ## 5.0.302.952
 0 Breaking Changes, 3 Features added and 0 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1792584'>1792584</a></td><td>Feature</td><td>Enable Information Protection extension in FairFax environment</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1599134'>1599134</a></td><td>Feature</td><td>[Regions] Update new regions script</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10636943'>10636943</a></td><td>Feature</td><td>[ExtensionConfiguration] Enable direct access to Log analytics API for extension AppInsightsExtension</td></tr></table>
-
-## 5.0.302.951
-1 Breaking Changes, 0 Features added and 0 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1711235'>1711235</a></td><td><strong>Break</strong></td><td>[EV2] Add configurable bake time</td></tr></table>
