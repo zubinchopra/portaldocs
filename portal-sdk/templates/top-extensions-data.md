@@ -9,7 +9,10 @@
 
     {"gitdown": "include-file", "file": "../templates/portalfx-data-dataviews.md"}
 
-    {"gitdown": "include-file", "file": "../templates/portalfx-data-masterdetailsbrowse.md"}
+
+<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
+
+    gitdown": "include-file", "file": "../templates/portalfx-data-masterdetailsbrowse.md"}
 
     {"gitdown": "include-file", "file": "../templates/portalfx-data-loadingdata.md"}
 
