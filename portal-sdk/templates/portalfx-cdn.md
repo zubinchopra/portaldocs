@@ -127,9 +127,9 @@ The */CDN/* portion of this url is inserted after the host address, and before t
 
 When you release to ensure that users are served the latest static content, as opposed to stale content,  you need to configure versioning.
 
-### Configuring versioning of your Extensioon 
+### Configuring versioning of your Extension 
 
-{"gitdown": "include-file", "file": "portalfx-versioning-extensions.md"}
+Configuring versioning of your Extension is specified in [portalfx-extensions-versioning.md](portalfx-extensions-versioning.md). 
 
 ### FAQ
 
