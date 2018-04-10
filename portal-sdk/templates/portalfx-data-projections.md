@@ -24,11 +24,15 @@ Each robot is entered into a grid with three columns. The `name` column and the 
 
 The interface for the shaped data to display in the grid is located at `<dir>\Client\V1\Data\Projection\ViewModels\MapAndMapIntoViewModels.ts`. This code is also included in the following example.
 
-{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#robotDetailsModel"}
+<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
+
+gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#robotDetailsModel"}
 
 An initial implementation of data projection would resemble the following code.
 
-{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#buggyMapProjection"}
+<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
+
+gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#buggyMapProjection"}
 
 The `robot.name()` contains the name of the robot, and `robot.model()` and `robot.manufacturer()` contain the model and manufacturer values. The `RobotDetails` interface that is used to model the data in the grid requires observables for the  `name` and `modelAndMfg` properties, therefore the strings that are received from the `QueryCache` model are put into a pair of observables. The `projectionId` and `_logMapFunctionRunning` methods are discussed in [](). 
 

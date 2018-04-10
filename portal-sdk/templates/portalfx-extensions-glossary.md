@@ -22,23 +22,23 @@
 
 ## Feature Flags
 
-  gitdown": "include-file", "file": "./portalfx-extensions-glossary-flags.md"}
+  {"gitdown": "include-file", "file": "./portalfx-extensions-glossary-flags.md"}
 
 ## Hello World Extension
 
-  gitdown": "include-file", "file": "./portalfx-extensions-glossary-helloWorld.md"}
+  {"gitdown": "include-file", "file": "./portalfx-extensions-glossary-helloWorld.md"}
 
 ## Hosting Service
 
-  gitdown": "include-file", "file": "./portalfx-extensions-glossary-hosting-service.md"}
+  {"gitdown": "include-file", "file": "./portalfx-extensions-glossary-hosting-service.md"}
 
 ## Initializing the Developer Platform
 
-  gitdown": "include-file", "file": "./portalfx-extensions-glossary-getting-started.md"}
+  {"gitdown": "include-file", "file": "./portalfx-extensions-glossary-getting-started.md"}
 
 ## Status Codes and Error Messages
 
-  gitdown": "include-file", "file": "./portalfx-extensions-glossary-status-codes.md"}
+  {"gitdown": "include-file", "file": "./portalfx-extensions-glossary-status-codes.md"}
 
 ## Testing in Production
 

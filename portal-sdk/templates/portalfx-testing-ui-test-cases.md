@@ -1,7 +1,7 @@
 
 ## C# Test Framework Overview
 
-You write UI based test cases using Visual Studio and the Portal Test Framework which is part of the Portal SDK.
+You can write UI-based test cases using **Visual Studio** and the Portal Test Framework that is part of the Portal SDK.
 
 ### Creating the Test Project
 
@@ -15,7 +15,7 @@ To create a test project that can use the Portal Test Framework, use the followi
 
 1. Add an `app.config` file to your test project and define the basic Test Framework settings under appSettings, as in the following example.
 
-    gitdown": "include-section", "file": "../samples/SampleCSTestsFiles/app.config", "section": "config#appSettings"}
+    {"gitdown": "include-section", "file": "../samples/SampleCSTestsFiles/app.config", "section": "config#appSettings"}
 
 1. Add a new Unit Test class and start writing your test case.
 
@@ -23,7 +23,7 @@ To create a test project that can use the Portal Test Framework, use the followi
 
 To navigate to the Portal, the extension supplies the Portal's uri.  We recommend setting the value in the `app.config` file as shown in [Creating the Test Project](#creating-the-test-project).  After the extension has the Portal uri, it can use the **WebDriverFactory.Create** method to create an instance of the `WebDriver` object and then use the **PortalAuthentication** class to login and navigate to the Portal in the browser, as in the following example.
 
-    gitdown": "include-section", "file": "../samples/SampleCSTestsFiles/NavigateToPortalTest.cs", "section": "config#navigateToPortal"}
+    {"gitdown": "include-section", "file": "../samples/SampleCSTestsFiles/NavigateToPortalTest.cs", "section": "config#navigateToPortal"}
 
 **NOTE**: Multi-factor authentication (MFA) is not supported.  You must use an account that does not require MFA.  If you are part of the Microsoft Azure organization, see the Azure Security Guidelines located at [https://aka.ms/portalfx/securityguidelines](https://aka.ms/portalfx/securityguidelines) for details on how to request an exception for an MSA/OrgID account.  You can not use a service account to login to the Azure Portal.
 
@@ -31,11 +31,11 @@ To navigate to the Portal, the extension supplies the Portal's uri.  We recommen
 
 The Portal provides options for side-loading an extension for testing. To side-load an  extension on a `localhost` you can set a query string. To side-load a deployed extension, you can set the appropriate query strings and execute the `registerTestExtension` function.  For more information, see [top-extensions-sideloading.md](top-extensions-sideloading.md).
 
-gitdown": "include-section", "file": "../samples/SampleCSTestsFiles/NavigateToPortalTest.cs", "section": "config#sideLoadingExtension"}
+{"gitdown": "include-section", "file": "../samples/SampleCSTestsFiles/NavigateToPortalTest.cs", "section": "config#sideLoadingExtension"}
 
 Remember to dispose the `WebDriver` to cleanup, as in the following example.
 
-gitdown": "include-section", "file": "../samples/SampleCSTestsFiles/NavigateToPortalTest.cs", "section": "config#dispose"}
+{"gitdown": "include-section", "file": "../samples/SampleCSTestsFiles/NavigateToPortalTest.cs", "section": "config#dispose"}
 
 ### Managing authentication credentials (unsupported)
 

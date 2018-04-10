@@ -9,54 +9,54 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 
 # Common scenarios
 
-gitdown": "include-headings", "file": "../templates/portalfx-browse.md"}
+  {"gitdown": "include-headings", "file": "../templates/portalfx-browse.md"}
 
-    gitdown": "include-headings", "file": "../templates/portalfx-create.md"}
+  {"gitdown": "include-headings", "file": "../templates/portalfx-create.md"}
 
 # Basic Concepts  
 
-  gitdown": "include-headings", "file": "../templates/portalfx-ui-concepts.md"}
+  {"gitdown": "include-headings", "file": "../templates/portalfx-ui-concepts.md"}
 
-gitdown": "include-headings", "file": "../templates/portalfx-no-pdl-programming.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-no-pdl-programming.md"}
 
 # Authentication
 
 
-gitdown": "include-headings", "file": "../templates/portalfx-authentication.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-authentication.md"}
 
-gitdown": "include-headings", "file": "../templates/portalfx-parameter-collection-overview.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-parameter-collection-overview.md"}
 
-gitdown": "include-headings", "file": "../templates/portalfx-provisioning-arm.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-provisioning-arm.md"}
 
 # Resource management
 
-gitdown": "include-headings", "file": "../templates/portalfx-assets.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-assets.md"}
 
-gitdown": "include-headings", "file": "../templates/portalfx-provisioning-arm.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-provisioning-arm.md"}
 
-gitdown": "include-headings", "file": "../templates/portalfx-essentials.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-essentials.md"}
 
-gitdown": "include-headings", "file": "../templates/portalfx-resourcemenu.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-resourcemenu.md"}
 
-gitdown": "include-headings", "file": "../templates/portalfx-permissions.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-permissions.md"}
 
-        gitdown": "include-headings", "file": "../templates/portalfx-notifications.md"}
+        {"gitdown": "include-headings", "file": "../templates/portalfx-notifications.md"}
 
-gitdown": "include-headings", "file": "../templates/portalfx-subscriptions.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-subscriptions.md"}
 
-gitdown": "include-headings", "file": "../templates/portalfx-tags.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-tags.md"}
 
-gitdown": "include-headings", "file": "../templates/portalfx-resourcemove.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-resourcemove.md"}
 
-  gitdown": "include-headings", "file": "../templates/portalfx-extension-pricing-tier.md"}
+  {"gitdown": "include-headings", "file": "../templates/portalfx-extension-pricing-tier.md"}
 
 # Debugging
 
 
-  gitdown": "include-headings", "file": "../templates/portalfx-debugging-extension-load-failures.md"}
+  {"gitdown": "include-headings", "file": "../templates/portalfx-debugging-extension-load-failures.md"}
 
 # Other
 
-  gitdown": "include-headings", "file": "../templates/portalfx-binding-reference.md"}
+  {"gitdown": "include-headings", "file": "../templates/portalfx-binding-reference.md"}
 
-  gitdown": "include-headings", "file": "../templates/portalfx-load-configuration.md"}
+  {"gitdown": "include-headings", "file": "../templates/portalfx-load-configuration.md"}
