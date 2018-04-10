@@ -24,15 +24,21 @@ Use the following steps to create a blade or part that uses the `DataCache` clas
 
 1. In a `DataContext`, the extension creates and configures `DataCache` instances. Configuring the instance specifies how to load data when it is missing from the cache and how to implicitly refresh cached data, to keep it consistent with the server state. The following `WebsiteQuery` example includes a constructor for a Website extension that creates a data cache. The code is also located at `<dir>Client\V1\Data\MasterDetailBrowse\MasterDetailBrowseData.ts`.
 
-{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/MasterDetailBrowse/MasterDetailBrowseData.ts", "section": "data-overview#create-data-cache"} 
+<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
+
+  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/MasterDetailBrowse/MasterDetailBrowseData.ts", "section": "data-overview#create-data-cache"} 
 
 2. Each blade and part `ViewModel` creates a `DataView` in its constructor, so that it can load and refresh data for the blade or part.
 
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/DetailViewModels.ts", "section": "data#entityCacheView"}
+<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
+
+  gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/DetailViewModels.ts", "section": "data#entityCacheView"}
 
 3. When the blade or part `ViewModel` receives its parameters in the `onInputsSet` method, the `ViewModel` calls the  `dataView.fetch()` method to load data.
 
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#onInputsSet"}
+<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
+
+  gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#onInputsSet"}
   
 ### The QueryCache
 
@@ -86,7 +92,9 @@ The `EntityCache` object can be used to cache a single item.  It is useful for l
 
 It accepts data of type `T` according to some extension-specified `TId` type. This specifies the type for the object that defines the query, as in the `WebsiteQuery` example located at `<dir>Client/V1/MasterDetail/MasterDetailArea.ts`. This code is also included in the following example.
 
-{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailArea.ts", "section": "data#websitesEntityCache"}
+<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
+
+  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailArea.ts", "section": "data#websitesEntityCache"}
 
 <!--TODO: Determine whether these parameters can be described as "
 a generic parameter for the type of object stored in its cache, "  -->

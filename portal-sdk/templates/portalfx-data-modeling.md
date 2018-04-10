@@ -43,7 +43,9 @@ For each area in an extension, there is a singleton `DataContext` instance that 
 
 When a blade or part `ViewModel` is instantiated, its constructor is sent a reference to the `DataContext` singleton instance for the associated extension area.   The `ViewModel` accesses the data required by that blade or part in its constructor, as in the code located at `<dir>/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/MasterViewModels.ts`.  The code is also in the following example.
 
-{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/MasterViewModels.ts","section":"data-overview#data-context-ctor-use"}
+<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
+
+  gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/MasterViewModels.ts","section":"data-overview#data-context-ctor-use"}
 
 The benefits of centralizing data access in a singleton `DataContext` include the following.
 
@@ -103,5 +105,7 @@ Typically, the `DataContext` associated with a particular area is instantiated f
 
 There is a single `DataContext` class per area. That class is named `<AreaName>Area.ts`, as in the code located at  `<dir>\Client\V1\MasterDetail\MasterDetailArea.ts` and in the following example.
 
-{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailArea.ts", "section": "data#dataContextMembers"}
+<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
+
+gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailArea.ts", "section": "data#dataContextMembers"}
 
