@@ -1,10 +1,10 @@
 {"gitdown": "contents"}
 
-# Portal Telemetry Overview
+## Portal Telemetry Overview
 
-Ibiza portal tracks several pieces of information as users navigate through the portal. Extensions do not need to consume any APIs to have this information collected.
+Azue Portal tracks several pieces of information as users navigate through the Portal. Extensions do not need to consume any APIs to have this information collected.
 
-> **Note**: Currently, telemetry is made available to partners through Kusto. All Azure employees should have access, if you don't have access ensure you have joined your team's standard access group and it's listed here [http://aka.ms/standardaccess](http://aka.ms/standardaccess). If it is not listed then please reach out to [Ibiza Telemetry](mailto:ibiza-telemetry@microsoft.com).
+> **Note**: Currently, telemetry is made available to partners through Kusto. All Azure employees should have access, if you don't have access ensure you have joined your team's standard access group and it's listed here [http://aka.ms/standardaccess](http://aka.ms/standardaccess). If it is not listed then please reach out to <a href="mailto:ibiza-telemetry@microsoft.com?subject=Team standard access group not listed">Ibiza Telemetry</a>.
 
 You can access our Kusto cluster using <a href="https://azportal.kusto.windows.net/AzurePortal" target="_blank" title="Kusto">Kusto Explorer</a> or 
 <a href="https://azportal.kusto.windows.net/AzurePortal?web=1" target="_blank" title="KustoWeb">Kusto Web Explorer</a>. 
@@ -15,17 +15,17 @@ Our Kusto cluster contains two databases:
 
 There are two tables used for telemetry:
 
-* ClientTelemetry - contains telemetry logged by Framework and Hubs. In this table, you can find all the telemetry events (e.g. BladeLoaded, PartLoaded) which are logged by default for any extension which is registered in the portal.
+* ClientTelemetry - contains telemetry logged by Framework and Hubs. In this table, you can find all the telemetry events (e.g. BladeLoaded, PartLoaded) which are logged by default for any extension which is registered in the Portal.
 * ExtTelemetry - contains extension telemetry. As an extension author, you may log additional telemetry to this table. 
     * *Note*: Your extension will log to this table only if you have onboarded to the telemetry services provided by Framework.
 
 You can read more [here](portalfx-telemetry-kusto-databases.md) about Kusto and about the data provided in our Kusto cluster.
 
-### Tracked Actions
+#### Tracked Actions
 
-{"gitdown": "include-file", "file": "portalfx-telemetry-actions.md"}
+For more information about tracked actions, see [portalfx-telemetry-actions.md](portalfx-telemetry-actions.md).
 
-## Logging
+### Logging
 
 There are two options for collecting telemetry and error/warning logs. You can either configure and use the Portal Framework's built-in telemetry services or you can utilize an entirely custom telemetry system.
 
@@ -33,7 +33,7 @@ There are two options for collecting telemetry and error/warning logs. You can e
 
 > Information should be collected in a way that that ensures no personally identifiable information (PII) is captured. It is very important for security and compliance reasons that PII data is not sent to telemetry services and you should have practices in place to ensure that this is enforced.
 
-### Onboarding to ExtTelemetry/ExtEvents tables
+#### Onboarding to ExtTelemetry/ExtEvents tables
 
 To start using the built-in controller provided by Framework for collecting telemetry and error/warning logs, just add `this.EnablePortalLogging = true;` in the constructor of your extension definition class:
 
@@ -46,13 +46,13 @@ To start using the built-in controller provided by Framework for collecting tele
 
 You can read [here](portalfx-telemetry-logging.md) more details about using the telemetry controller provided by Framework.
 
-### Logging telemetry to ExtTelemetry table
+#### Logging telemetry to ExtTelemetry table
 
 You can use the Portal telemetry APIs to log telemetry. However, before you do so you will need to initialize the telemetry service.
 
 ```ts
   // Initialize the telemetry functionality and make it available for use.
-  MsPortalFx.Base.Diagnostics.Telemetry.initialize("ExtensionName", false /* traceBrowserInformation */ );
+  MsPortalFx.Base.Diagnostics.Telemetry.initialize("extensionName", false /* traceBrowserInformation */ );
 ```
 
 > Note that you don't need to trace browser information to your particular extension as this data is collected globally. However, if you would like the browser information in your own telemetry store set traceBrowserInformation to true.
@@ -73,7 +73,7 @@ Telemetry logs go to ExtTelemetry table, which is available in Kusto in both Azu
 The recommended format for `name` column is 'Extension/Microsoft_Azure_NewExtension/Blade/NewBladeName', if the event is related to a blade. 
 Please do not stringify `data` and `context` columns when passing them through. These columns usually contain JSON values. You should pass their values as objects, as otherwise, this will result in double-encoded strings. 
 
-### Logging errors/warnings to ExtEvents table
+#### Logging errors/warnings to ExtEvents table
 
 To log errors/warnings, you can call the `error`/`warning` methods as shown below:
 
@@ -93,9 +93,9 @@ We have built [Extension Errors Dashboard](portalfx-telemetry-extension-errors.m
 
 **NOTE:**  In the charts from [Extension Errors Dashboard](portalfx-telemetry-extension-errors.md), we aggregate the error messages by omitting the text which is within double quotes (") or single quotes ('). We consider those parts to be the dynamic part of the message (e.g. an id, a timestamp etc.). For example, a message like [Could not find part "PartName1"] will be treated as [Could not find part ""]. Please use this format for all the logged error messages, if you want them to be aggregated by our queries.
 
-## Available Power BI Dashboards
+### Available Power BI Dashboards
 
-Following are some of the dashboards that we support. If you do not have access to any of these please contact [ibiza-telemetry@microsoft.com](mailto:ibiza-telemetry@microsoft.com)
+Following are some of the dashboards that we support. If you do not have access to any of these please contact <a href="mailto:ibiza-telemetry@microsoft.com?subject=Do not have dashboard access">Ibiza Telemetry</a>.
 
 |Name                            | PowerBi Link                                                                                                                                     | Metrics Description                                                                    |
 |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
@@ -105,11 +105,11 @@ Following are some of the dashboards that we support. If you do not have access 
 |Extension Errors Dashboard      | [http://aka.ms/portalfx/dashboard/ExtensionErrors](http://aka.ms/portalfx/dashboard/ExtensionErrors)                                             | [Extension Errors Docs](portalfx-telemetry-extension-errors.md)   |
 
 
-## Collecting Feedback From Your Users
+### Collecting Feedback From Your Users
 
 In February 2016 we introduced a standardized pane for collecting user feedback. We currently expose one method to extension developers.
 
-### Resource Deleted Survey
+#### Resource Deleted Survey
 
 To ask a user why they deleted a resource use the `openResourceDeletedFeedbackPane` method:
 
@@ -120,7 +120,7 @@ To ask a user why they deleted a resource use the `openResourceDeletedFeedbackPa
 
 Call this method after a user starts the deletion process for a resource. Shell will open the feedback pane with a standardized survey. The name of the resource you pass to the method will be shown to the user in the survey. Responses to this survey are logged to the telemetry tables. If the feedback pane is already open calls to this method will be no-ops.
 
-### Questions?
+#### Questions?
 
 Read more about [Kusto query language](https://kusto.azurewebsites.net/docs/queryLanguage/query_language.html).
 

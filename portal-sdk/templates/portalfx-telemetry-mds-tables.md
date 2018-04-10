@@ -38,4 +38,4 @@
 
 ### AuxwebUiClientTelemetry
 
-{"gitdown": "include-file", "file": "portalfx-telemetry-actions.md"}
+For more information, see [portalfx-telemetry-actions.md](portalfx-telemetry-actions.md).

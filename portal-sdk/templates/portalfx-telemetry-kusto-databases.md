@@ -55,9 +55,10 @@ We plan to merge ClientTelemetryForKustoExport into ClientTelemetry stream very 
 ### ClientTelemetry (AzPtlCosmos)
 
 #### Action 
+
 This represents an event in the Portal.
 
-{"gitdown": "include-file", "file": "portalfx-telemetry-actions.md"}
+For more information about actions, see [portalfx-telemetry-actions.md](portalfx-telemetry-actions.md).
 
 #### ActionModifier
 This is used in tandem with the Action field. This represents a status of a particular Action. So for BladeReady for eg., you will see ActionModifier values of start, complete & cancel
