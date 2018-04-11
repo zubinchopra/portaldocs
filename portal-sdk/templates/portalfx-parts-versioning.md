@@ -21,7 +21,8 @@ This example is based on the sample located at `<dir>\Client\V1\Hubs\Browse\Brow
 
  The **CanUseOldInputVersion** attribute can be set to `true` to specify that the part can process older versions of inputs. It should be used in conjunction with the  part property named `version`, as in the following example.
 
-   {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Hubs/Browse/Browse.pdl"}
+<!-- TODO:  Determine whether the following sample is causing GitHub to stop the build. -->
+     gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Hubs/Browse/Browse.pdl"}
 
 ```xml
 <Part Name="RobotPart"
