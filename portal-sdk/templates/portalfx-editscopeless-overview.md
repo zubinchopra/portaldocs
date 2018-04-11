@@ -1,13 +1,15 @@
 
 ## EditScope-less Forms
 
-Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide common functions that would otherwise be difficult to orchestrate, like tracking changes in field values across a form, or simplifying the merge  of form changes from the server into the current edit. In contrast, editscope-less forms are compatible with new controls and consequently, EditScopes are becoming obsolete. It is recommended that extensions be developed without editScopes.
+<!-- TODO:  Determine a better term than "editscope-less. -->
+
+Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide common functions that would otherwise be difficult to orchestrate, like tracking changes in field values across a form, or simplifying the merge of form changes from the server into the current edit.  In contrast, editscope-less forms are compatible with new controls and consequently, EditScopes are becoming obsolete. It is recommended that extensions be developed without editScopes.
 
 <!-- TODO: Determine whether controls like OptionsGroup, that are not located in Fx/Controls, are considered part of the EditScopeless pattern.   -->
 
-The EditScope-less controls are located in the `Fx/Controls` namespace. They support creating forms without initializing their `editscope`. The controls and a list of documents that discusses them in more detail are listed in  [portalfx-controls-overview.md](portalfx-controls-overview.md).  For samples and experiences that are associated with editscope-less form controls, see [portalfx-extensions-samples-overview.md](portalfx-extensions-samples-overview.md).
+The EditScope-less controls are located in the `Fx/Controls` namespace. They support creating forms without initializing their `editscope`. The controls and a list of documents that discusses them in more detail are listed in  [portalfx-controls-overview.md](portalfx-controls-overview.md).  For samples and experiences that are associated with editscope-less form controls, see [top-extensions-samples.md](top-extensions-samples.md).
 
- Less association with `editscope` accessors  makes the initialization of the controls easier. The  `editScope` is no longer tied to each control, and the controls become stateless. This means two things.
+ Less dependence on `editScopeAccessors` makes it easier to initialize controls. The  `editScope` is no longer bound to each control, and the controls become stateless. This has two impacts.
 
 1. There is no initial value for these controls.  The value of a control is initialized by setting it, as in the following example.
 
@@ -30,7 +32,7 @@ import * as Section from "Fx/Controls/Section";
 import * as TextBox from "Fx/Controls/TextBox";
 ``` 
 
-The controls are initialized through a factory method called `create()`. This function returns an interface. The following example invokes the `create()` method to create a TextBox with specific label, subLabel and a collection of validations.
+The controls are initialized through a factory method named `create()`. This function returns an interface. The following example invokes the `create()` method to create a TextBox with a specific label, subLabel and a collection of validations.
 
 ```ts
 import * as TextBox from "Fx/Controls/TextBox";
@@ -47,7 +49,7 @@ const firstNameViewModel = TextBox.create(container, {
 
 ### Dropdown loading indicator
 
-The Ibiza SDK now supports displaying the loading indicator when data is loaded by an asynchronous **AJAX** call that populates the dropdown. The following code implements a loading indicator that uses a dropdown.
+The Azure SDK now supports displaying the loading indicator when data is loaded by an asynchronous **AJAX** call that populates the dropdown, as in the  following code.
 
 ```ts
 
