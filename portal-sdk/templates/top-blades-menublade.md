@@ -17,7 +17,9 @@ The following code demonstrates how to define a menu blade `ViewModel` to open t
 
  {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/MenuBlade/SampleMenuBlade.ts",
  "section": "menuBlade#ctor"}
+ 
 
+ 
 There are a few things to notice in the preceding code.
 
 * Menus have an overview item. This item is the default selected item when the user loads the menu blade.
