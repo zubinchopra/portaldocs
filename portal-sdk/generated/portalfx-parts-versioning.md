@@ -2,24 +2,28 @@
 <a name="versioning"></a>
 ### Versioning
 
-When users customize or pin a part the following state is stored and used the next time the part is loaded from a customized context.
+When users customize or pin a part, the following states are stored and used the next time the part is loaded from a customized context.
 
-1. Basic part metadata (e.g. part name, extension name, etc)
-1. Part inputs (e.g. resource id)
-1. Part settings (e.g. time range for a chart).
+1. Basic part metadata, like part name or extension name
+1. Part inputs, like resource id
+1. Part settings, like time range for a chart
 
-Over time, extension developers will find the need to modify the schema of a  part's inputs and/or settings to support new functionality.  Ibiza will always call your latest code, but it may call it with older versions of inputs and settings that were stored when an earlier version of your code was active.  
+Because these states are stored, these parts need to be backwards-compatible.
 
-Your part may also be called with older inputs by code running in other extensions that may have taken a dependency on an earlier version of your part.  This is what happens when another extension uses a .pde file along with a `<PartReference/>`. 
+Supporting new functionality may require the modification of the schema of a part's inputs and settings. 
 
-To handle this you need to support backwards compatibility in your code.
+The Azure Portal always calls the most recent edition of an extension, as specified in the extensions configuration file. However, older versions of inputs and settings that were stored by an earlier edition of the extension may still exist, and they may be incompatible with the most recent edition of the extension. Consequently, users may experience unexpected results when the extension or part is called with previous settings.
 
-<a name="walkthrough"></a>
-### Walkthrough
+Likewise, other extensions may have taken dependencies on less-recent editions of the extension or part. For example, another extension may use a .pde file that contains a `<PartReference/>`.  Those other extensions may also experience unexpected results when they call the extension or part with old inputs.
 
-For part inputs we've added the **CanUseOldInputVersion** attribute that you should set to true to indicate that your part can handle older versions of inputs.  We recommend you use that in conjunction with a new part property/input called 'version'.  
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
-Inline parts can define the current version as a constant.  In this case, this is the first explicit version.  We recommend using 2 the first time you do this.
+This example is based on the sample located at `<dir>\Client\V1\Hubs\Browse\Browse.pdl`. It builds on the ViewModel located at `<dir>\Client\V1\Hubs\Browse\ViewModels\RobotPartViewmodel.ts`.
+
+ The **CanUseOldInputVersion** attribute can be set to `true` to specify that the part can process older versions of inputs. It should be used in conjunction with the  part property named `version`, as in the following example.
+
+<!-- TODO:  Determine whether the following sample is causing GitHub to stop the build. -->
+     gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Hubs/Browse/Browse.pdl"}
 
 ```xml
 <Part Name="RobotPart"
@@ -37,7 +41,9 @@ Inline parts can define the current version as a constant.  In this case, this i
 </Part>
 ```
 
-Globally defined parts can't specify constant bindings, but the flow is mostly the same.
+**NOTE**: Inline parts can specify the current version as a constant.  Although this is the first explicit version, we recommend using  a value of `2` the first time it is used.
+
+Globally-defined parts can not specify constant bindings, but the flow is mostly the same.
 
 ```xml
 <CustomPart Name="RobotSummary2"
@@ -55,7 +61,7 @@ Globally defined parts can't specify constant bindings, but the flow is mostly t
 </CustomPart>
 ```
 
-The meat of the solution is in your part view model code.  The example below shows how to handle explicitly versioned inputs as well as the version of your parts that existed in the wild before you added explicit versioning support.
+  The following code demonstrates how to process explicitly-versioned inputs, in addition to the version of the parts that existed previous to the addition of explicit versioning support.
 
 ```javascript
 public onInputsSet(inputs: Def.InputsContract, settings: Def.SettingsContract): MsPortalFx.Base.Promise {
@@ -64,7 +70,7 @@ public onInputsSet(inputs: Def.InputsContract, settings: Def.SettingsContract): 
             name = inputs.name;
         } else if (inputs.version === "1") { // this block explicitly handles version 1, which is now old, but was an explicit version
             var oldInputs: any = inputs;
-            name = oldInputs.oldName;
+             name = oldInputs.oldName;
         } else if (MsPortalFx.Util.isNullOrUndefined(inputs.version)) { // this block handles any version of the inputs
             var oldestInputs: any = inputs;                             //  that existed before the version property was added
             name = oldestInputs.oldestName;
@@ -75,7 +81,7 @@ public onInputsSet(inputs: Def.InputsContract, settings: Def.SettingsContract): 
     }
 ```
 
-You can use the same exact technique for part settings.
+The same technique can be used for part settings.
 
 ```javascript
 public onInputsSet(inputs: Def.InputsContract, settings: Def.SettingsContract): MsPortalFx.Base.Promise {

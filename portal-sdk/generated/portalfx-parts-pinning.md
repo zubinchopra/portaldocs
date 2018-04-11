@@ -31,7 +31,7 @@ When a part is pinned (or moved to another blade), a new view model for that par
 
 Given this constraint, it's very important to __not pass model data in bindings__.  Only keys and ids which are used to load data from a back end should be passed around as bindings.  If data about the robot changes (such as the name), those changes should be reflected in the part.  This provides the 'live tile' feel of the portal, and ensures the data in the part is not stale.
 
-> [WACOM.NOTE] To learn more about keys and data loading in the portal, read [working with data](portalfx-data.md).
+> [WACOM.NOTE] To learn more about keys and data loading in the portal, read [working with data](top-extensions-data.md).
 
 
 <a name="pinning-parts-preventing-pinning"></a>

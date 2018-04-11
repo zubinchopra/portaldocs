@@ -1,14 +1,16 @@
 
-<a name="editscope-less-forms"></a>
-## EditScope-less Forms
+<a name="forms-without-editscopes"></a>
+## Forms without EditScopes
 
-Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide common functions that would otherwise be difficult to orchestrate, like tracking changes in field values across a form, or simplifying the merge  of form changes from the server into the current edit. In contrast, editscope-less forms are compatible with new controls and consequently, EditScopes are becoming obsolete. It is recommended that extensions be developed without editScopes.
+<!-- TODO:  Determine a better term than "editscopeless. -->
+
+Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide common functions that would otherwise be difficult to orchestrate, like tracking changes in field values across a form, or simplifying the merge of form changes from the server into the current edit.  In contrast, forms without `editScopes` are compatible with new controls and consequently, EditScopes are becoming obsolete. It is recommended that extensions be developed without editScopes.
 
 <!-- TODO: Determine whether controls like OptionsGroup, that are not located in Fx/Controls, are considered part of the EditScopeless pattern.   -->
 
-The EditScope-less controls are located in the `Fx/Controls` namespace. They support creating forms without initializing their `editscope`. The controls and a list of documents that discusses them in more detail are listed in  [portalfx-controls-overview.md](portalfx-controls-overview.md).  For samples and experiences that are associated with editscope-less form controls, see [portalfx-extensions-samples-overview.md](portalfx-extensions-samples-overview.md).
+The controls that do not use `EditScopes` are located in the `Fx/Controls` namespace. They support creating forms without initializing their `editscope`. The controls and a list of documents that discusses them in more detail are listed in  [portalfx-controls-overview.md](portalfx-controls-overview.md).  For samples and experiences that are associated with these form controls, see [top-extensions-samples.md](top-extensions-samples.md).
 
- Less association with `editscope` accessors  makes the initialization of the controls easier. The  `editScope` is no longer tied to each control, and the controls become stateless. This means two things.
+ Less dependence on `editScopeAccessors` makes it easier to initialize controls. The  `editScope` is no longer bound to each control, and the controls become stateless. This has two impacts.
 
 1. There is no initial value for these controls.  The value of a control is initialized by setting it, as in the following example.
 
@@ -31,7 +33,7 @@ import * as Section from "Fx/Controls/Section";
 import * as TextBox from "Fx/Controls/TextBox";
 ``` 
 
-The controls are initialized through a factory method called `create()`. This function returns an interface. The following example invokes the `create()` method to create a TextBox with specific label, subLabel and a collection of validations.
+The controls are initialized through a factory method named `create()`. This function returns an interface. The following example invokes the `create()` method to create a TextBox with a specific label, subLabel and a collection of validations.
 
 ```ts
 import * as TextBox from "Fx/Controls/TextBox";
@@ -46,10 +48,10 @@ const firstNameViewModel = TextBox.create(container, {
 });
 ```
 
-<a name="editscope-less-forms-dropdown-loading-indicator"></a>
+<a name="forms-without-editscopes-dropdown-loading-indicator"></a>
 ### Dropdown loading indicator
 
-The Ibiza SDK now supports displaying the loading indicator when data is loaded by an asynchronous **AJAX** call that populates the dropdown. The following code implements a loading indicator that uses a dropdown.
+The Azure SDK now supports displaying the loading indicator when data is loaded by an asynchronous **AJAX** call that populates the dropdown, as in the  following code.
 
 ```ts
 
@@ -75,7 +77,7 @@ const dropdownDataPromise = Q(model.people.fetch("", container)).then((people) =
 });
 ```
 
-<a name="editscope-less-forms-customizing-alerts"></a>
+<a name="forms-without-editscopes-customizing-alerts"></a>
 ### Customizing Alerts
 
 The SDK provides two ways to configure the behavior of an alert, which is the pop-up that is displayed when the  user tries to close a form that contains unsaved edits. 
@@ -100,14 +102,17 @@ this._container.form.configureAlertOnClose(ko.computed(container, () => {
 
 ```
 
-<a name="editscope-less-forms-customizing-alerts-other-css-classes"></a>
+<a name="forms-without-editscopes-customizing-alerts-other-css-classes"></a>
 #### Other CSS classes
 
 Other CSS classes are in the following list.
 
 * msportalfx-docking-header
+
 * msportalfx-docking-body
+
 * msportalfx-docking-footer
+
 * msportalfx-padding
 
  The `msportalfx-docking-*` classes are used when elements will be docked at the header, body or footer of the blade. 
@@ -115,11 +120,11 @@ Other CSS classes are in the following list.
 <!-- TODO: Determine whether 10 x 10 is px or some other unit of measurement. -->
 The `msportalfx-padding` class adds 10 x 10 padding to the blade.
 
-These blade styling css classes  allow the blade to be used as a canvas.
+These blade styling css classes allow the blade to be used as a canvas.
 
 **NOTE**: Unlike previous version of SDK, No-PDL blades do not add padding or docking content behavior by default. This  makes style management easier.
 
-<a name="editscope-less-forms-replacing-action-bar-with-button"></a>
+<a name="forms-without-editscopes-replacing-action-bar-with-button"></a>
 ### Replacing Action Bar with Button
 
 Out-of-the-box CSS classes can be used to dock a button at the bottom of blade and make it look like an Action Bar.
@@ -135,7 +140,7 @@ The following sample demonstrates how to replace the action bar by docking a but
 
 ```
 
-<a name="editscope-less-forms-closing-the-blade"></a>
+<a name="forms-without-editscopes-closing-the-blade"></a>
 ### Closing the blade
 
 The following code closes the blade.
