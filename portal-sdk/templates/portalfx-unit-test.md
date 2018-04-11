@@ -118,7 +118,7 @@ To generate `./_generated/Ext/ExtensionStringResourcesRequireConfig.js` and to c
     "karma-requirejs": "1.1.0",
     "karma-trx-reporter": "0.2.9",
     "mocha": "5.0.4",
-    "msportalfx-ut": "file:../../packages/Microsoft.Portal.TestFramework.UnitTest.5.0.302.979/msportalfx-ut-5.302.979.tgz",
+    "msportalfx-ut": "file:../../packages/Microsoft.Portal.TestFramework.UnitTest.5.0.302.1057/msportalfx-ut-5.302.1057.tgz",
     "nconf": "0.10.0",
     "requirejs": "2.3.5",
     "sinon": "4.4.3",
