@@ -3,13 +3,13 @@
 
 Intrinsic parts are composed of existing controls in the portal, and provide patterns for solving common patterns in the portal.
 
-We have a list of all the currently available intrinsics located under the [samples extension](https://aka.ms/portalfx/samples/#blade/SamplesExtension/IntrinsicPartsIndexBlade).
-If you install the latest [SDK version](downloads.md) you will find the sample code here:
-	_%userprofile%\Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension\Extension\Client\Parts\Intrinsic\ViewModels_
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
+
+All of the currently available intrinsics can be located in the working copy located at  [https://aka.ms/portalfx/samples/#blade/SamplesExtension/IntrinsicPartsIndexBlade](https://aka.ms/portalfx/samples/#blade/SamplesExtension/IntrinsicPartsIndexBlade).
 
 ## Asset
 
-![asset][asset]
+![asset][asset]: ../media/portalfx-controls/asset.png
 
 <a href="https://aka.ms/portalfx/samples/#blade/SamplesExtension/AssetPartIntrinsicInstructions">
 Learn how to use the Asset part.
@@ -17,7 +17,7 @@ Learn how to use the Asset part.
 
 ## Button 
 
-![button][button]
+![button][button]: ../media/portalfx-controls/button.png
 
 <a href="https://aka.ms/portalfx/samples/#blade/SamplesExtension/ButtonPartIntrinsicInstructions">
 Learn how to use the Button part.
@@ -25,7 +25,9 @@ Learn how to use the Button part.
 
 ## Chart 
 
-![chart][chart]
+![chart][chart]: ../media/portalfx-controls/chart.png
+[barChart]: ../media/portalfx-controls/barChart.png
+
 
 <a href="https://aka.ms/portalfx/samples/#blade/SamplesExtension/ChartPartIntrinsicInstructions">
 Learn how to use the Chart part.
@@ -33,7 +35,7 @@ Learn how to use the Chart part.
 
 ## Collection 
 
-![collection][grid]
+![collection][grid]: ../media/portalfx-controls/grid.png
 
 <a href="https://aka.ms/portalfx/samples/#blade/SamplesExtension/CollectionIndexPartBlade">
 Learn how to use the Collection part.
@@ -41,7 +43,7 @@ Learn how to use the Collection part.
 
 ## Collection Summary 
 
-![collectionSummary][collectionsummary]
+![collectionSummary][collectionsummary]: ../media/portalfx-controls/collectionsummary.png
 
 <a href="https://aka.ms/portalfx/samples/#blade/SamplesExtension/CollectionSummaryPartIntrinsicInstructions">
 Learn how to use the Collection Summary part.
@@ -49,7 +51,7 @@ Learn how to use the Collection Summary part.
 
 ## Diff Editor 
 
-![diffEditorPartTitle][diff]
+![diffEditorPartTitle][diff]: ../media/portalfx-controls/diff.png
 
 <a href="https://aka.ms/portalfx/samples/#blade/SamplesExtension/DiffEditorPartIntrinsicInstructions">
 Learn how to use the Diff Editor part.
@@ -58,6 +60,7 @@ Learn how to use the Diff Editor part.
 ## Donut 
 
 ![donut][donut]
+[donut]: ../media/portalfx-controls/Donut.png
 
 <a href="https://aka.ms/portalfx/samples/#blade/SamplesExtension/DonutPartIntrinsicInstructions">
 Learn how to use the Donut part.
@@ -66,6 +69,7 @@ Learn how to use the Donut part.
 ## Editor 
 
 ![editorPartTitle][editor]
+[editor]: ../media/portalfx-controls/editor.png
 
 <a href="https://aka.ms/portalfx/samples/#blade/SamplesExtension/EditorPartIntrinsicInstructions">
 Learn how to use the Editor part
@@ -74,6 +78,7 @@ Learn how to use the Editor part
 ## Info List 
 
 ![infoList][infolist]
+[infolist]: ../media/portalfx-controls/infolist.png
 
 <a href="https://aka.ms/portalfx/samples/#blade/SamplesExtension/InfoListPartIntrinsicInstructions">
 Learn how to use the Info list part.
@@ -89,6 +94,7 @@ Learn how to use the Properties part.
 ## Quickstart 
 
 ![quickStart][quickstart]
+[quickstart]: ../media/portalfx-controls/quickstart.png
 
 <a href="https://aka.ms/portalfx/samples/#blade/SamplesExtension/QuickstartPartIntrinsicInstructions">
 Learn how to use the Quick start part.
@@ -106,6 +112,8 @@ Learn how to use the Quota gauge part.
 
 ![setupPartTitle][setup]
 
+[setup]: ../media/portalfx-controls/setup.png
+
 <a href="https://aka.ms/portalfx/samples/#blade/SamplesExtension/SetupPartBlade">
 Learn how to use the Setup part.
 </a>
@@ -113,6 +121,7 @@ Learn how to use the Setup part.
 ## Simple Chart 
 
 ![chart][chart]
+[chart]: ../media/portalfx-controls/chart.png
 
 <a href="https://aka.ms/portalfx/samples/#blade/SamplesExtension/SimpleChartPartIntrinsicInstructions/selectedItem/SimpleChartPartIntrinsicInstructions">
 Learn how to use the Simple Chart part.
@@ -121,6 +130,7 @@ Learn how to use the Simple Chart part.
 ## Single value guage
 
 ![singleValueGauge][gauge]
+[gauge]: ../media/portalfx-controls/gauge.png
 
 <a href="https://aka.ms/portalfx/samples/#blade/SamplesExtension/SingleValueGaugeIntrinsicInstructions">
 Learn how to use the Single value gauge part.
@@ -128,17 +138,6 @@ Learn how to use the Single value gauge part.
 
 Next steps: [Developing custom parts](portalfx-parts.md#parts-a-k-a-tiles-how-to-create-a-custom-part-where-you-define-the-look-and-feel-as-well-as-the-data-loading)
 
-[asset]: ../media/portalfx-controls/asset.png
-[button]: ../media/portalfx-controls/button.png
-[barChart]: ../media/portalfx-controls/barChart.png
-[grid]: ../media/portalfx-controls/grid.png
-[collectionsummary]: ../media/portalfx-controls/collectionsummary.png
-[diff]: ../media/portalfx-controls/diff.png
-[donut]: ../media/portalfx-controls/Donut.png
-[editor]: ../media/portalfx-controls/editor.png
-[infolist]: ../media/portalfx-controls/infolist.png
+
 [settings]: ../media/portalfx-controls/settings.png
-[quickstart]: ../media/portalfx-controls/quickstart.png
-[gauge]: ../media/portalfx-controls/gauge.png
-[setup]: ../media/portalfx-controls/setup.png
-[chart]: ../media/portalfx-controls/chart.png
+
