@@ -17,7 +17,7 @@ note you can also run  `npm run test` from the commandline.
 
 ## Creating a project from scratch with Visual Studio Code
 
-Available from [SDK 5.0.302.1016](https://aka.ms/portalfx/download)
+Available from [SDK 5.0.302.1057](https://aka.ms/portalfx/download)
 
 This tutorial will provide you step by step instructions for creating a UnitTest project for your Azure Portal Extension.  The resulting folder structure will look like the following:
 
