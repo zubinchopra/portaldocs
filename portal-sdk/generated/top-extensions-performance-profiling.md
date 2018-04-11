@@ -6,7 +6,6 @@
 <a name="performance-overview"></a>
 ## Overview
 
-
 The PowerBi dashboard that is located at [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf) displays various performance statistics for several extensions.
 You can select your extension, blade, and part(s) from the filters, as in the following image.
 
@@ -485,7 +484,7 @@ So we don't think you need to geo-distribute this layer.
 
 If Azure determines that Layer 3 is getting hit too often, the Ibiza team may change the geo-distribution strategy.
 
-The storage account should be the same across all upgrades of the extension, which includes geo-distribution across regions when the extension is deployed. For more information about extension configuration and geo-distribution, see [portalfx-extension-hosting-service-advanced.md](portalfx-extension-hosting-service-advanced.md).
+The storage account should be the same across all upgrades of the extension, which includes geo-distribution across regions when the extension is deployed. For more information about extension configuration and geo-distribution, see [portalfx-extensions-hosting-service-advanced.md](portalfx-extensions-hosting-service-advanced.md).
 
 An extension can make sure that scripts are available across extension updates by using a class that derives from `Microsoft.Portal.Framework.IPersistentContentCache` on the extension server. To do this, derive a class from `Microsoft.Portal.Framework.BlobStorageBackedPersistentContentCache` and [MEF](portalfx-extensions-glossary-performance.md)-export your implementation. If one account per region is used to handle the geo-distribution strategy, they can be synchronized by using a custom implementation of the `Microsoft.Portal.Framework.IPersistentContentCache` interface, similar to the one in the following code.
 
@@ -573,11 +572,125 @@ To validate that  persistent caching is working, perform the following steps.
 
 There are a few patterns that assist in improving browser and Portal performance.
 
+<a name="performance-best-practices-general-best-practices"></a>
+### General Best Practices
+
+1. Test your scenarios at scale 
+
+    * Determine how your scenario deals with hundreds of subscriptions or thousands of resources.
+
+    * Do not fan out to gather all subscriptions. Instead, limit the default experience to first N subscriptions and have the user determine their own scope.
+
+1. Develop in diagnostics mode 
+
+    * Use [https://portal.azure.com?trace=diagnostics](https://portal.azure.com?trace=diagnostics) to detect console performance warnings, like using too many defers or using too many `ko.computed` dependencies.
+
+1. Be wary of observable usage 
+
+    * Try not to use them unless necessary
+
+    * Do not aggressively update UI-bound observables. Instead, accumulate the changes and then update the observable. Also, manually throttle or use `.extend({ rateLimit: 250 });` when initializing the observable.
+
+1. Run portalcop to identify and resolve common performance issues, as specified in [portalfx-performance-portalcop.md](portalfx-performance-portalcop.md).
+
+<a name="performance-best-practices-coding-best-practices"></a>
+### Coding best practices
+
+1. Reduce network calls.
+
+    * Ideally there should be only one network call per blade.
+
+    * Utilize batch to make network requests, as in the following example.
+
+        ```
+        import { batch } from "Fx/Ajax";
+
+        return batch<WatchResource>({
+            headers: { accept: applicationJson },
+            isBackgroundTask: false, // Use true for polling operations​
+            setAuthorizationHeader: true,
+            setTelemetryHeader: "Get" + entityType,
+            type: "GET",
+            uri: uri,
+        }, WatchData._apiRoot).then((response) => {
+            const content = response && response.content;
+            if (content) {
+                return convertFromResource(content);
+            }
+        });
+        ```
+
+1. Remove automatic polling.
+
+    If you need to poll, only poll on the second request and ensure `isBackgroundTask: true` is in the batch call.
+
+1. Optimize bundling. The waterfall can be avoided or reduced by using the following code.
+
+    ```
+    /// <amd-bunding root="true" priority="0" />
+
+    import ClientResources = require("ClientResources");
+    ```
+
+1. Remove all dependencies on obsoleted code.
+
+    * Loading any required obsoleted bundles is a blocking request during your extension load times
+
+    * For more information, see [https://aka.ms/portalfx/obsoletebundles](https://aka.ms/portalfx/obsoletebundles).
+
+1. Use the Portal's ARM token, as specified in []().
+
+1. Do not use old PDL blades that are composed of parts. Instead, use TypeScript decorators, as specified in  [portalfx-no-pdl-programming.md#building-a-hello-world-template-blade-using-decorators](portalfx-no-pdl-programming.md#building-a-hello-world-template-blade-using-decorators).
+
+    Each part on the blade has its own `viewmodel` and template overhead. Switching to a no-pdl template blade will mitigate that overhead.
+
+1. Use the latest controls available. The controls are located at [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground), and they  use the Asynchronous Module Loader (AMD), thereby reducing what is required to load your blade. This also  minimizes your observable usage.
+
+1. Remove bad CSS selectors
+
+    * Build with warnings as errors and fix them.
+
+    * List HTML elements first in a CSS selector list.
+        
+        Bad CSS selectors are defined as selectors that end in HTML elements. For example, `.class1 .class2 .class3 div { background: red; } ` ends with the HTML element `div`. 
+    Because CSS is evaluated from right-to-left, the browser will find all `div` elements first, which is more expensive than placing the `div`earlier in the list.
+
+1. Fix your telemetry
+
+    * Ensure you are returning the relevant blocking promises as part of your initialization path (`onInitialize` or `onInputsSet`).
+
+    * Ensure your telemetry is capturing the correct timings.
+
+<a name="performance-best-practices-operational-best-practices"></a>
+### Operational best practices
+
+1. Enable performance alerts
+
+    To ensure your experience never regresses unintentionally, you can opt into configurable alerting on your extension, blade and part load times. For more information, see [portalfx-telemetry-alerting-overview.md](portalfx-telemetry-alerting-overview.md).
+
+1. Move the extension to the Azure hosting service, as specified in [top-extensions-hosting-service.md](top-extensions-hosting-service.md). If it is not on the hosting service, check the following factors.
+
+    * Homepage caching should be enabled
+    * Persistent content caching should be enabled
+    * Compression is enabled
+    * Your service is efficiently geo-distributed 
+
+    **NOTE**: An actual presence in a region instead of a CDN contributes to extension performance.
+
+1. Use Brotli Compression 
+
+    Move to V2 targets to get this type of compression by default. 
+
+
+1. Remove controllers. Do not proxy ARM through your controllers.
+
+
 <a name="performance-best-practices-use-amd"></a>
 ### Use AMD
 
 Azure supports [Asynchronous Module Definition (AMD)](http://requirejs.org/docs/whyamd.html), which is an improvement over bundling scripts into a single file at
-compilation time. Now, the Portal downloads only the files needed to display the current UI onto the screen. This makes it faster to unload and reload an extension, and provides for generally better performance in the browser.  
+compilation time. Now, the Portal downloads only the files needed to display the current U
+ onto the screen. This makes it faster to unload and reload an extension, and provides for generally better performance in the browser.  
 
 * Old code
 
@@ -632,7 +745,7 @@ Significant performance improvements can be achieved by reducing the number of d
 
 Use the Knockout projections that are located at [https://github.com/stevesanderson/knockout-projections](https://github.com/stevesanderson/knockout-projections) to shape and filter model data.  They work in context with  with the  `QueryView` and `EntityView` objects that are discussed in [portalfx-data-projections.md#using-knockout-projections](portalfx-data-projections.md#using-knockout-projections).
 
-The code located at   `<dir>\Client\V1\Controls\Grid\ViewModels\SelectableGridViewModel.ts` improves extension performance by connecting the reduced model data to a ViewModel that uses grids.  It is also in the following example.
+The code located at `<dir>\Client\V1\Controls\Grid\ViewModels\SelectableGridViewModel.ts` improves extension performance by connecting the reduced model data to a ViewModel that uses grids.  It is also in the following example.
 
 ```ts
 
@@ -685,23 +798,29 @@ SOLUTION:
 
 1. Decrease Part 'Revealed' scores
 
-    * Optimize the Blades's `constructor` and `OnInputsSet` methods of the part.
-    * Wrap any **AJAX** calls with custom telemetry to ensure that they are not waiting on the result of the call.
+    * Optimize the part's `constructor` and `OnInputsSet` methods
+    * Remove obsolete bundles, as specified in  [https://aka.ms/portalfx/obsoletebundles](https://aka.ms/portalfx/obsoletebundles).
+    * Wrap any **AJAX** calls with custom telemetry to ensure that they are not waiting on the result of the call.     Also, ensure that **AJAX** is called using the batch api.
     * If the part receives partial data previous to the completion of the `OnInputsSet` method, then the part can reveal the information early and display the partial data.  The part should also  load the UI for the individual components.
 
 1. Decrease Blade 'Revealed' scores.
 
     * Optimize the quantity and quality of parts on the blade.
-        * If there is only one part, or if the part is not a `<TemplateBlade>`, then migrate the part to use the new template as specified in  [portalfx-blades-procedure.md](portalfx-blades-procedure.md).
+        * If there is only one part, or if the part is not a `<TemplateBlade>`, then migrate the part to use the  no-pdl template as specified in  [top-blades-procedure.md](top-blades-procedure.md).
         * If there are more than three parts, consider refactoring or removing some of them so that fewer parts need to be displayed.
-    * Optimize the Blades's `constructor` and `OnInputsSet` methods of the blade.
-   * Wrap any **AJAX** calls with custom telemetry to ensure that they are not waiting on the result of the call.
+    * Optimize the Blades's `constructor` and `OnInputsSet` methods.
+    * Remove obsolete bundles, as specified in  [https://aka.ms/portalfx/obsoletebundles](https://aka.ms/portalfx/obsoletebundles).
+    * Use  the Portal's ARM token, if possible. Verify whether the extension can use the Portal's ARM token and if so, follow the instructions located at []() to install it.
+    * Change the extension to use the hosting service, as specified in [top-extensions-hosting-service.md](top-extensions-hosting-service.md).
+       * Wrap any **AJAX** calls with custom telemetry to ensure that they are not waiting on the result of the call.   Also, ensure that **AJAX** is called using the batch api.
     * Reduce the revealed times for parts on the blade.
+    * Check for waterfalling or serialized bundle requests, as described in [portalfx-extensions-bp-performance.md#coding-best-practices](portalfx-extensions-bp-performance.md#coding-best-practices).  If any waterfalls exist within the extension, ensure you have the proper bundling hinting in place, as specified in the optimize bundling document located at []().
 
 * * *
 
 <a name="performance-frequently-asked-questions-my-wxp-score-is-below-the-bar"></a>
 ### My WxP score is below the bar
+
 ***How do I identify which pieces of the extension are not performant?***
 
 DESCRIPTION: 
@@ -713,6 +832,37 @@ SOLUTION:
 If the extension is drastically under the bar, it is  likely that a high-usage blade is not meeting the performance bar.  If the extension is nearly meeting the  bar, then it is likely that a low-usage blade is the one that is not meeting the bar.
 
 * * * 
+
+<a name="performance-frequently-asked-questions-azure-performance-office-hours"></a>
+### Azure performance office hours
+
+***Is there any way I can get further help?***
+
+Sure! Book in some time in the Azure performance office hours.
+
+**When?** Wednesdays from 1:00 to 3:30
+
+**Where?** Building 42, Conference Room 42/46
+
+**Contacts**: Sean Watson (sewatson)
+
+**Goals**:
+
+* Help extensions to meet the performance bar
+* Help extensions to measure performance
+* Help extensions to understand their current performance status
+
+**How to book time** 
+
+Send a meeting request with the following information.
+
+```
+TO: sewatson
+Subject: YOUR_EXTENSION_NAME: Azure performance office hours
+Location: Conf Room 42/46 (It is already reserved)
+```
+
+You can also reach out to <a href="mailto:sewatson@microsoft.com?subject=<extensionName>: Azure performance office hours&body=Hello, I need some help with my extension.  Can I meet with you in Building 42, Conference Room 42/46 on Wednesday the <date> from 1:00 to 3:30?">Azure Extension Performance Team at sewatson@microsoft.com</a>.
 
 <!--###  Extension 'InitialExtensionResponse' is above the bar
 
@@ -730,7 +880,9 @@ This section contains a glossary of terms and acronyms that are used in this doc
 
 | Term                | Meaning |
 | ------------------- | ------- |
+| AMD                 | Asynchronous Module Definition |
 | above the fold | Initially displayed on the Web page without scrolling. |
+| Brotli Compression | A data format that is specifically for data streams that use general-purpose the LZ77 lossless compression algorithm and other algorithms in their compression schemes.  This type of compression decreases the size of transmissions of web fonts, and  can now be used to encode any data sent by a web server to a web browser if both client and server support the format.  | 
 | CDN | Content Delivery Network |
 | FullRevealed  | The ViewModel within the blade or part has received all of the information that is will display. |
 | MEF | |
