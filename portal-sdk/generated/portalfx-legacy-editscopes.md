@@ -63,10 +63,7 @@ Any edits that were made by the user and collected in an `EditScope` are saved i
 
 The properties that are associated with the entity's 'id' are specified in the following examples. 
  
-* In TypeScript:
-
-    The TypeScript sample is located at 
-    `<dir>\Client\V1\Forms\Scenarios\ChangeTracking\Models\EditableFormData.ts`. This code is also included in the following working copy.
+The TypeScript sample is located at     `<dir>\Client\V1\Forms\Scenarios\ChangeTracking\Models\EditableFormData.ts`. This code is also included in the following working copy.
 
 ```typescript
 
@@ -82,10 +79,7 @@ idProperties: [ "key" ]
 
 ```
 
-* In C#:
-
-    The C# sample is located at 
-    `<dirParent>\SamplesExtension.DataModels/Person.cs`. This code is also included in the following working copy.
+The C# sample is located at `<dirParent>\SamplesExtension.DataModels/Person.cs`. This code is also included in the following working copy.
 
 ```csharp
 
