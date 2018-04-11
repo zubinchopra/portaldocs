@@ -136,7 +136,8 @@ The following example located at `<dir>/Client/V1/Parts/TileGallery/TileGallery.
 
 The following is the TypeScript code that reads and writes samples. It is also located at `<dir>Client/V1/Parts/TileGallery/ViewModels/GeneralGalleryPart.ts`.
 
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/TileGallery/ViewModels/GeneralGalleryPart.ts", "section": "parts#TileGalleryWithNewConfigurationPattern"}
+<!-- TODO:  Determine whether the following sample is causing gitHub to blow up. -->
+  gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/TileGallery/ViewModels/GeneralGalleryPart.ts", "section": "parts#TileGalleryWithNewConfigurationPattern"}
 
 ### The no-data message
 
