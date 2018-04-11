@@ -1,7 +1,6 @@
 
 ## Overview
 
-
 The PowerBi dashboard that is located at [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf) displays various performance statistics for several extensions.
 You can select your extension, blade, and part(s) from the filters, as in the following image.
 

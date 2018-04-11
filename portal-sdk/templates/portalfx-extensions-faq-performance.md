@@ -16,7 +16,7 @@ SOLUTION:
 1. Decrease Part 'Revealed' scores
 
     * Optimize the part's `constructor` and `OnInputsSet` methods
-    * Remove obsolete bundles, as specified in  [portalfx-extension-reference-obsolete-bundle.md](portalfx-extension-reference-obsolete-bundle.md).
+    * Remove obsolete bundles, as specified in  [https://aka.ms/portalfx/obsoletebundles](https://aka.ms/portalfx/obsoletebundles).
     * Wrap any **AJAX** calls with custom telemetry to ensure that they are not waiting on the result of the call.     Also, ensure that **AJAX** is called using the batch api.
     * If the part receives partial data previous to the completion of the `OnInputsSet` method, then the part can reveal the information early and display the partial data.  The part should also  load the UI for the individual components.
 
@@ -26,12 +26,12 @@ SOLUTION:
         * If there is only one part, or if the part is not a `<TemplateBlade>`, then migrate the part to use the  no-pdl template as specified in  [top-blades-procedure.md](top-blades-procedure.md).
         * If there are more than three parts, consider refactoring or removing some of them so that fewer parts need to be displayed.
     * Optimize the Blades's `constructor` and `OnInputsSet` methods.
-    * Remove obsolete bundles, as specified in  [portalfx-extension-reference-obsolete-bundle.md](portalfx-extension-reference-obsolete-bundle.md).
+    * Remove obsolete bundles, as specified in  [https://aka.ms/portalfx/obsoletebundles](https://aka.ms/portalfx/obsoletebundles).
     * Use  the Portal's ARM token, if possible. Verify whether the extension can use the Portal's ARM token and if so, follow the instructions located at []() to install it.
     * Change the extension to use the hosting service, as specified in [top-extensions-hosting-service.md](top-extensions-hosting-service.md).
        * Wrap any **AJAX** calls with custom telemetry to ensure that they are not waiting on the result of the call.   Also, ensure that **AJAX** is called using the batch api.
     * Reduce the revealed times for parts on the blade.
-    * Check for waterfalling or serialized bundle requests.  If any exist within the extension, ensure you have the proper bundling hinting in place, as specified in the optimize bundling document located at []().
+    * Check for waterfalling or serialized bundle requests, as described in [portalfx-extensions-bp-performance.md#coding-best-practices](portalfx-extensions-bp-performance.md#coding-best-practices).  If any waterfalls exist within the extension, ensure you have the proper bundling hinting in place, as specified in the optimize bundling document located at []().
 
 * * *
 
