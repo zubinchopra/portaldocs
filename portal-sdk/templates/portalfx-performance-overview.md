@@ -105,6 +105,59 @@ For more information about telemetry, see [portalfx-telemetry-getting-started.md
 
 **NOTE**: It is good practice to run queries locally by using the Azure-provided Kusto functions to calculate your assessment.
 
+## Performance profiling
+
+### How to profile your scenario
+
+1.	Open a browser and load the Portal using `https://portal.azure.com/?clientoptimizations=bundle&feature.nativeperf=true`.
+
+    * The `clientOptimizations=bundle` flag allows you to assess which bundles are being downloaded in a user-friendly manner. For more information, see [portalfx-extensions-flags-trace#the- clientoptimizations-flag](portalfx-extensions-flags-trace#the- clientoptimizations-flag).
+
+    * The `feature.nativeperf=true` feature  exposes native performance markers within the profile traces, which allows you to accurately match portal telemetry markers to the profile.
+
+1. Go to a blank dashboard.
+
+1. Clear cache by using a hard reset and reload the Portal.
+
+1. Use the browser's profiling timeline to throttle both the network and the CPU, which  best reflects the 80th percentile scenario, and then start the Profiler.
+
+1. Walk through your scenario.
+
+    *	Switch to the dashboard that is associated with the scenario.
+
+    *	Deep link to your blade. Make sure to keep the feature flags in the deep link. Deep-linking will isolate as much noise as possible from the profile.
+
+1. Stop the Profiler.
+
+
+## Identify common slowdowns
+
+Some of the main factors in extension performance are associated with network performance, extra bundled code, and overallocation of CPU resources to rendering and observables. The following guidelines may help you isolate areas in which extension performance can be improved.
+
+1.	Blocking network calls
+
+    You can identify Unnecessary network calls by using the scenarios located in [The BladePerformanceIncludingNetwork method](#the-bladeperformanceincludingnetwork-method).
+
+1.	Waterfalling bundling
+
+    If any waterfalls exist within the extension, ensure you have the proper bundling hinting in place, as specified in the optimize bundling document located at []().
+
+    The waterfall can be avoided or reduced by using the following code.
+
+      ```
+      /// <amd-bunding root="true" priority="0" />
+
+      import ClientResources = require("ClientResources");
+    ```
+
+1.	Heavy rendering and CPU from overuse of UI-bound observables
+
+    Guidelines on how to use observables are located in [portalfx-blades-viewmodel.md](portalfx-blades-viewmodel.md).
+
+## Verifying a change
+
+To correctly verify a change, you will need to ensure the 'before' and 'after' are instrumented correctly with telemetry. Without telemetry, you cannot truly verify that the change was helpful. What may seem to be huge improvement in performance may transition into a smaller win after the extension moves to production. Occasionally, they actually transision into decreases in performance.  The main goal is to trust the telemetry and instead of profiling, because the telemetry reports on the extension's performance in production.
+
 ## Topics that Improve Blade Performance
 
 The following table contains documents that are related to improving extension perfomance.
