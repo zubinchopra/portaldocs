@@ -3,8 +3,9 @@
 <a name="onboarding-outside-of-ibiza-compliance-marketplace-integration-and-others"></a>
 ## Compliance, Marketplace Integration, and others
 
-<a name="onboarding-outside-of-ibiza-introduction"></a>
-## Introduction
+
+<a name="onboarding-outside-of-ibiza-overview"></a>
+## Overview
 
 It is important to read this guide carefully, as we rely on you to manage the extension registration / configuration management process  in the Portal repository. External partners should also read this guide to understand the capabilities that Portal can provide for  extensions by using configuration. However, external partner requests should be submitted by sending an email to <a href="mailto:ibizafxpm@microsoft.com?subject=<Onboarding Request ID> Add <extensionName> extension to the Portal&body=Extension name: <Company>_<BrandOrSuite>_<ProductOrComponent> <br><br> URLs: <br><br> PROD:  main.<extensionName>.ext.contoso.com <br><br> Contact info: <br><br> Business Contacts:<br><br> Dev leads: <br><br> PROD on-call email: <br><br>">ibizafxpm@microsoft.com</a> instead of using the internal sites that are in this document. 
 
@@ -30,10 +31,7 @@ Dev leads: _________
 PROD on-call email: _________
 ```
 
-The email may also contain the extension config file, as specified in [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
-
-
-
+**NOTE**: The name of the extension is the same for both the PROD version and the custom deployment version, as specified in [portalfx-extensions-custom-deployment.md](portalfx-extensions-custom-deployment.md).  For the hosting service, the request should include the name of the extension as `<prefix>.hosting.portal.azure.net/<prefix>`, as specified in [portalfx-cdn.md#configuring-your-extension](portalfx-cdn.md#configuring-your-extension). The email may also contain the extension config file, as specified in [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
 
 <a name="onboarding-outside-of-ibiza-quality-essentials"></a>
 ## Quality Essentials
@@ -61,11 +59,9 @@ These requirements apply to both the Portal fx and extensions. Since Fx provides
 | Policy            | Location  | Fx coverage |
 | ---               | ---       | --- |
 | Accessibility     | [portalfx-accessibility.md](portalfx-accessibility.md) | Generic control supports on keyboard, focus handling, touch, screen reader, high contrast, and theming |
-| Global Readiness  | [portalfx-globalization.md](portalfx-globalization.md) and [portalfx-localization.md](portalfx-localization.md) | Localizability, regional format, text support, China GB standard |
+| Global Readiness  | [portalfx-localization-globalization.md](portalfx-localization-globalization.md) | Localizability, regional format, text support, China GB standard |
 | Privacy           |  [portalfx-authentication.md](portalfx-authentication.md) | User settings data handling, encryption, and authentication |
 | SDL               |  [https://microsoft.sharepoint.com/ teams/QualityEssentials/SitePages/ SDL_SecurityDevelopmentLifecycleOverview.aspx](https://microsoft.sharepoint.com/teams/QualityEssentials/SitePages/SDL_SecurityDevelopmentLifecycleOverview.aspx)         | Security Development Lifecycle Threat modeling |
-
-
 
 For more information and any questions about Fx coverage, reach out to the Fx Coverage contact that is located in [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md).
 
@@ -74,9 +70,6 @@ For more information and any questions about Fx coverage, reach out to the Fx Co
    
 Plan ahead for all the outbound communication, blogging, and marketing work that publicizes new services during the time that they are being deployed to customers.  This coordination is important, particularly when software release commitments are aligned with the Azure events and conferences. This coordination may be optional for preview releases, but the localized azure.com content and service updates plan are required for stakeholder signoff, if the extension will be deployed to GA.
  
-
-
-
 <a name="onboarding-outside-of-ibiza-for-more-information"></a>
 ## For More Information
    
