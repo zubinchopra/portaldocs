@@ -9,15 +9,11 @@ In the following example, the AppInsightsExtension has been selected for further
 
 ![alt-text](../media/portalfx-performance/extensionPerfQuerySelection.png "PowerBi Extension Query")
 
-
-<!-- TODO: Determine whether all extensions are being held to the 95th percentile. -->
-Portal performance is the sum of the performance of all the experiences in the product or extension.  Portal performance from a customer's perspective is seen as all experiences throughout the product. For example, the blades and parts associated with the extension in the previous image are displayed in the following image. As a developer, you have a responsibility to  uphold your extension to the performance bar. The lower minimum is 80th percentile, and the upper minimum is the 95th Percentile Bar.
+Portal performance is the sum of the performance of all the experiences in the product or extension.  Portal performance from a customer's perspective is seen as all experiences throughout the product. For example, the blades and parts associated with the extension in the previous image are displayed in the following image. As a developer, you have a responsibility to  uphold your extension to the 95th percentile performance bar.
 
 ![alt-text](../media/portalfx-performance/extensionPerfQueryBladesParts.png "PowerBi Extension Query")
 
-<!-- TODO:  Determine whether this should be the 80th percentile, the 95th percentile, or both. -->
-
-All extensions need to meet the minimum performance required to be  at the 80th percentile, as  in the following table.
+All extensions need to meet the minimum performance required to be  at the 95th percentile, as  in the following table.
 
 | Area      |  Telemetry Action         | How is it measured? |
 | --------- | ------------------------- | ------------------- |
@@ -72,13 +68,13 @@ The WxP score is a per-extension Weight eXPerience score (WxP). It is expressed 
 
 ```txt
 
-WxP = (BladeViewsMeetingTheBar * 80thPercentileBar) /
-     ((BladeViewsMeetingTheBar * 80thPercentileBar) + 
+WxP = (BladeViewsMeetingTheBar * 95thPercentileBar) /
+     ((BladeViewsMeetingTheBar * 95thPercentileBar) + 
      ∑(BladeViewsNotMeetingTheBar * ActualLoadTimePerBlade))
 
 ```
 
-| Blade   | 80th Percentile Times | Usage Count | Meets 80th Percentile Bar? |
+| Blade   | 95th Percentile Times | Usage Count | Meets 95th Percentile Bar? |
 | ------- | --------------------- | ----------- | -------------------------- |
 | Blade A | 1.2                   | 1000        | Yes                        |
 | Blade B | 5                     | 500         | No                         |
@@ -86,8 +82,8 @@ WxP = (BladeViewsMeetingTheBar * 80thPercentileBar) /
 
 ```txt
 
-WxP = (BladeViewsMeetingTheBar * 80thPercentileBar) /
-     ((BladeViewsMeetingTheBar * 80thPercentileBar) +
+WxP = (BladeViewsMeetingTheBar * 95thPercentileBar) /
+     ((BladeViewsMeetingTheBar * 95hPercentileBar) +
      ∑(BladeViewsNotMeetingTheBar * ActualLoadTimePerBlade)) %   
       
    = (4 * 1000) / ((4 * 1000) + ((5 * 500) + (6 * 400))) %
@@ -119,7 +115,7 @@ For more information about telemetry, see [portalfx-telemetry-getting-started.md
 
 1. Clear cache by using a hard reset and reload the Portal.
 
-1. Use the browser's profiling timeline to throttle both the network and the CPU, which  best reflects the 80th percentile scenario, and then start the Profiler.
+1. Use the browser's profiling timeline to throttle both the network and the CPU, which  best reflects the 95th percentile scenario, and then start the Profiler.
 
 1. Walk through your scenario.
 
