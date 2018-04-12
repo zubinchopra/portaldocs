@@ -2,24 +2,55 @@
 <a name="resource-menu-migration"></a>
 # Resource menu migration
 
-The resource menu is the navigation menu for all your resource's functionality. visually, it is not a separate blade;  it ties the navigation menu and the content
-directly together giving the user the sense of being in a single 'app' like container. See [Resource menu](portalfx-resourcemenu.md) for a overview of what
-the resource menu is and why its worth doing.
+The Resource menu is the navigation menu for all your resource's functionality. Visually, the Resource menu  is not a separate blade; it ties the navigation menu and the content together, giving the user the impression that they are viewing a single 'app' like container. 
 
-<a name="resource-menu-migration-migrating-from-a-settings-blade-to-a-resource-menu-blade"></a>
-## Migrating from a settings blade to a resource menu blade
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included. 
 
-Adopting the resource menu requires a few steps:
+There are several samples that use resource menus or resource types. Their locations are as follows.
 
-1. Opting in your asset to use the resource menu
-1. Creating an AssetViewModel, if you haven't already, and adding a method to your AssetViewModel
+* `<dir>\Client\V1\ResourceTypes`
+
+* `<dir>\Client\V2\ResourceTypes`
+
+Within those directories, there may be code that resembles the extension that you are maintaining.
+
+Use the following steps to migrate from a settings blade to a resource menu blade.
+
+1. [Using the resource menu](#using-the-resource-menu)
+
+1. [Creating an Asset ViewModel](portalfx-resourcemenu-migration.md#creating-an-asset-viewmodel) 
+
 1. Porting the current settings into the new method
-1. Feature flag any old behaviour
 
-<a name="resource-menu-migration-migrating-from-a-settings-blade-to-a-resource-menu-blade-opting-in-your-asset-to-use-the-resource-menu"></a>
-### Opting in your asset to use the resource menu
+1. Feature flag previous behaviors
 
-You need to add the 'UseResourceMenu' property and specify a viewmodel on your AssetType PDL tag.
+* * *
+
+<a name="resource-menu-migration-using-the-resource-menu"></a>
+### Using the resource menu
+
+To use a resource menu in an extension, add the `UseResourceMenu` property and specify a `ViewModel` on the `AssetType` tag in the PDL file.
+
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
+
+Some examples that contain AssetViewModels are in the following list.
+
+`<dir>\Client\V1\ResourceTypes\Container`
+`<dir>\Client\V1\ResourceTypes\Desktop`
+`<dir>\Client\V1\ResourceTypes\Document`
+`<dir>\Client\V1\ResourceTypes\ExtensionResources`
+`<dir>\Client\V1\ResourceTypes\Host`
+`<dir>\Client\V1\ResourceTypes\MobilePhone`
+`<dir>\Client\V1\ResourceTypes\Snowmobile`
+`<dir>\Client\V1\ResourceTypes\SnowmobileSki`
+`<dir>\Client\V1\ResourceTypes\SparkPlug`
+`<dir>\Client\V1\ResourceTypes\Storage\HardDrive`
+`<dir>\Client\V1\ResourceTypes\Storage\SolidStateDrive`
+`<dir>\Client\V1\ResourceTypes\Storage\StorageDrive`
+`<dir>\Client\V1\ResourceTypes\TenantResource`
+`<dir>\Client\V2\ResourceTypes\VirtualServer\AssetType`
+
+
 
 ``` xml
 <AssetType Name="MyResource"
@@ -28,13 +59,14 @@ You need to add the 'UseResourceMenu' property and specify a viewmodel on your A
            UseResourceMenu="true">
 ```
 
-<a name="resource-menu-migration-migrating-from-a-settings-blade-to-a-resource-menu-blade-creating-an-assetviewmodel"></a>
+<a name="resource-menu-migration-creating-an-assetviewmodel"></a>
 ### Creating an AssetViewModel
 
-(if you haven't already, and adding a method to your AssetViewModel).
+Create the `ViewModel` and then add a `getMenuConfig` method to the `AssetViewModel`. This method contains all the logic that determines which items to add to the menu, based on dynamic dependencies.
 
-Now create your viewmodel and then add a 'getMenuConfig' method. This method is where all the logic for determining which items to add to the menu given any dynamic dependencies.
-Below is a simple menu with three items and two groups; specifying an overview item, a custom group with an item, and adding an item to a framework group. See [Resource Menu APIs][resourcemenuapis] for a full list of the APIs.
+The following code contains a menu that has three items and two groups. The items are an overview item, a custom group with an item, and adding an item to a framework group.
+
+You can see that the API follows the settings item API very closely without the groups and the blade references. Referencing blades within your own extension can be done via the first two options, if you are opening a blade outside of your extension you can use the third method.
 
 ``` ts
 import BladeReferences = require("../../_generated/BladeReferences");
@@ -138,33 +170,18 @@ export class MyResourceViewModel
 }
  ```
 
+For more information about the Resource menu APIs, see [portalfx-resourcemenu-api.md](portalfx-resourcemenu-api.md).
 
-### Porting the current settings into the new method
+### Feature flag previous behaviors
 
- You can see that the API follows the settings item API very closely minus the groups and the blade references. Referencing blades within your own extension can be done via
- the first two options, if you are opening a blade outside of your extension you can use the third method.
-
-### Feature flag any old behaviour
-
-Once you have adopted the Resource menu you will notice throughout your experience there are a few cases which the old behaviour is no longer suitable. If that is the
-case please use the following to switch on.
+After the Resource menu has been added to the extension, there may be cases in which previous code is no longer suitable. However, backward-compatibility may be an issue, for developers and other users.  If so, the "resourcemenu" feature flag can be used to switch between the resource menu and previous settings selections, as in the following code.
 
 ``` ts
 MsPortalFx.isFeatureEnabled("resourcemenu")
 ```
 
-One such case is the Resource summary part on the resource blade. Please add the following to the getSettingsSelection option:
+For example, if the Resource summary part on the resource blade is not enabled, then settings should be retrieved from a different blade by using the  `getSettingsSelection` option.
 
 ``` ts
 getSettingsSelection: MsPortalFx.isFeatureEnabled("resourcemenu") ? null : SettingsSelection;
 ```
-
-Next Steps:
-
-* Adopt the resource menu for all your resources
-* See the [frequently asked questions][resourcemenufaq]
-* There are samples of resources using this in the Samples Extension see the Client\ResourceTypes\Desktop\ folder, particularly the AssetViewModels\DesktopViewModel.ts
-* If there are any issues please reach out to <a href="mailto:ibiza-menu-blade@microsoft.com?subject=Issues with Azure Sample Resources">Ibiza Menu Blade</a>.
-
-[resourcemenuapis](portalfx-resourcemenu-api.md)
-[resourcemenufaq](portalfx-resourcemenu-faq.md)
