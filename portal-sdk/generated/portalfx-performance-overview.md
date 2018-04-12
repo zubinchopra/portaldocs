@@ -21,7 +21,7 @@ Portal performance is the sum of the performance of all the experiences in the p
 All extensions need to meet the minimum performance required to be  at the 80th percentile, as  in the following table.
 
 | Area      |  Telemetry Action         | How is it measured? |
-| --------- | ------------------------- | ------------------- | ------------------- |
+| --------- | ------------------------- | ------------------- |
 | Extension   | ExtensionLoad          | The time it takes for your extension's home page to be loaded and the initial scripts, specifically, the initialize call, to complete within the  Extension definition file. |
 | Blade     | BladeFullReady      | The time it takes for the blade's `onInitialize` or `onInputsSet` to resolve and all the parts on the blade to become ready. This means that it can display all of the data it has requested.  |
 | Part      | PartReady              | Time it takes for the part to be rendered and then the part's `OnInputsSet` to resolve.   |
