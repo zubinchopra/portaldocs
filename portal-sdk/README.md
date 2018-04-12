@@ -196,7 +196,7 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 ## Performance profiling
 
-* [Performance profiling](top-extensions-performance-profiling.md)
+* [Performance profiling](./generated/top-extensions-performance-profiling.md)
 
 ## Testing
 
