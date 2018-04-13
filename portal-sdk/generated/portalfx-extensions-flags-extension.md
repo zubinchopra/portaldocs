@@ -14,6 +14,38 @@ The only limitation on developer-designed flag names is that they cannot contain
 * Can contain any non-empty value (e.g. `azurecompute_someflag=true`)
 * Cannot include an underscore in the flag portion of the name (i.e., `azure_compute_some_flag` does not work, but `azure_compute_someflag` works)
  
+<a name="extension-flags-the-support-extension"></a>
+### The support extension
+
+<!--TODO:  Determine whether there are other extensions that can be used by developer extensions that require code changes in addition to the query string feature flag. -->
+
+Azure provides a support extension so that every resource that subscribes can assess its health, check the audit logs, get troubleshooting information, or open a support ticket.  Every extension should reach out to the <a href="mailto:AzSFAdoption@microsoft.com?subject=Onboarding with the Support team&body=Hello, I have a new extension that needs to opt in to to the features that Troubleshooting and Support provides.">Azure Self-Help Adoption Core Team at AzSFAdoption@microsoft.com</a> to opt in to the support system and UX integration.
+
+The developer needs to add code to the extension for each setting that will be used.  The following flags are used in coordination with the support extension, as specified in [portalfx-blades-settings.md#support-settings](portalfx-blades-settings.md#support-settings).
+
+After the extension has been modified for the support extension, these flags can be used to obtain various types of support.  They are invoked as follows. 
+
+```js
+   &<extensionName>=troubleshootsettingsenabled=true
+   &<extensionName>=healthsettingsenabled=true
+   &<extensionName>=requestsettingsenabled=true
+```
+
+<!-- TODO:  Determine the actions that are performed by the other two flags. -->
+
+* **troubleshootsettingsenabled**:  A value of `true`   , and a value of `false`    .
+
+* **healthsettingsenabled**: A value of `true`   , and a value of `false`    .
+
+* **requestsettingsenabled**:  A value of `true` enables troubleShooting from the support extension, and a value of `false` disables it.  This implies that coordination between your team and the Support team has been completed so that the support extension can respond to this flag setting.
+
+
+<a name="extension-flags-the-azure-content-delivery-network"></a>
+### The Azure Content Delivery Network
+
+The Azure Content Delivery Network, as specified in [portalfx-pde-cdn.md](portalfx-pde-cdn.md), requires code changes and allows the use of an extension flag to provide the capability to send audio, video, images, and other files to customers.
+
+
 <a name="extension-flags-feature-flag-api-contract"></a>
 ### Feature flag API contract
 
@@ -92,8 +124,8 @@ Flags can be enabled for all users in one or more deployments by using an extens
   'prod.websitesextension.com': {
       'websitesextension_requestsettingsenabled':'true'
   },
-  'dogfood.websitesextension.com': {
-        'websitesextension_healthsettingsenabled':'true'
+  'dogfood.websitesextension.com': {healthsettingsenabled
+        'websitesextension_':'true'
   }
 }" />
  ```
@@ -122,6 +154,12 @@ Flags can be enabled for all users in one or more deployments by using an extens
 </details>
 
 <br>
+
+<a name="extension-flags-other-feature-flag-services"></a>
+### Other feature flag services
+
+<!--TODO: Determine whether 
+ ?feature.disablebladecustomization still qualifies as being a feature flag. -->
 
 For more information about extension flags, see [https://docs.microsoft.com/en-us/vsts/articles/phase-features-with-feature-flags](https://docs.microsoft.com/en-us/vsts/articles/phase-features-with-feature-flags).
 

@@ -172,6 +172,9 @@ For more information about the Resource menu APIs, see [portalfx-resourcemenu-ap
 
 ### Flag previous behaviors
 
+
+<!-- TODO:  Determine how "isFeatureEnabled" is different from query string feature flags.  -->
+
 After the Resource menu has been added to the extension, there may be cases in which previous code is no longer suitable. However, backward-compatibility may be an issue, for developers and other users.  If so, the `resourcemenu` feature flag can be used to switch between the resource menu and previous settings selections, as in the following code.
 
 ``` ts
