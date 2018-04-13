@@ -2,7 +2,11 @@
 
 ## Overview
 
-The Azure Portal team ships samples that extension developers can leverage. When you install the Portal SDK, located at [http://aka.ms/portalfx/download](http://aka.ms/portalfx/download), the samples get installed as well. The source for the samples is located in the `Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension` folder. First-party extension developers, i.e. Microsoft employees, can access a live, up-to-date version of the samples at [https://aka.ms/portalfx/viewSamples](https://aka.ms/portalfx/viewSamples).
+The Azure Portal team ships samples that extension developers can leverage.
+
+When you install the Portal SDK, located at [http://aka.ms/portalfx/download](http://aka.ms/portalfx/download), the samples get installed as well. The source for the samples is located in the `Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension` folder.
+
+First-party extension developers, i.e. Microsoft employees, can access a live, up-to-date version of the samples at [https://aka.ms/portalfx/viewSamples](https://aka.ms/portalfx/viewSamples).
 
 For our latest controls we have developed a new playground. The playground gives you a listing of all the recommended controls as well as a sample page for each control. The sample pages will let you see a working copy of the control, try out different control options, and has documentation for each option and view model property.
 
@@ -33,7 +37,7 @@ The **V2** samples address the following API areas.
 
 ### V1
 
-Our **V1** APIs use APIs that support previous UX patterns, or  are becoming less commonly used.  The **V1** APIs are also more difficult to use than the new API, for both the UX design and  the associated APIs.
+Our **V1** APIs use APIs that support previous UX patterns, or are becoming obsolete or are less commonly used.  The **V1** APIs are also more difficult to use than the new API, for both the UX design and  the associated APIs.
 
 The following **V1** concepts should not be used when **V2** APIs can be used instead.
 
