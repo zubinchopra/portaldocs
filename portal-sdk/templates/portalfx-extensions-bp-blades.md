@@ -15,11 +15,11 @@ Typically, extensions follow these best practices, which often result in perform
 
 These patterns are recommended for every extension, but they are not required.
 
-* Never change the name of a Blade or a Part
+* Never change the name of a blade or a part. These are unique identifiers that appear in links that users may bookmark, and they are used to locate your blade when a user pins it to the dashboard. You can safely change the title that is displayed in the UI of the blade.
 
-* Limit blade `parameters` updates to the addition of parameters that are marked in **TypeScript** as optional
+* Limit blade `parameters` updates to the addition of parameters that are marked in **TypeScript** as optional. Removing, renaming, or adding required parameters will cause breaks if other extensions are pointing to your blade, or if previously pinned tiles are not configured to send those parameters.
 
-* Never remove parameters from their `Parameters` type
+* Never remove parameters from their `Parameters` type. You can just ignore them if they are no longer needed.
 
 * Use standard `<a href="#">` tags when adding `fxclick` to open child blades to make the links accessible.
 
@@ -53,6 +53,9 @@ Best practices for create blades cover common scenarios that will save time and 
 ### Best Practices for Menu blades
 
 Services should use the Menu blade instead of the Settings blade. ARM resources should opt in to the resource menu for a simpler, streamlined menu.
+
+Extensions should migrate to the `ResourceMenu` for all of their resources.
+
 
 ### Best Practices for Resource List blades
 
