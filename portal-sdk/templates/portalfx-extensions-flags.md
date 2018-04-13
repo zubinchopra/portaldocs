@@ -1,4 +1,5 @@
-# Portal Query String Flags
+
+# Feature Flags
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-flags-overview.md"}
 

@@ -75,7 +75,7 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 | storage     | Add all storage services to the **Storage** category  
 | vm          | Rename **Compute** to **VMs**, and rename **Web + Mobile** to **App Services** |
 
-**feature.canmodifyextensions**:  Required to support loading untrusted extensions for security purposes. For more information, see [portalfx-extensions-testing-in-production-overview.md#loading-customized-extensions](portalfx-extensions-testing-in-production-overview.md#loading-customized-extensions).
+**feature.canmodifyextensions**:  Required to support loading untrusted extensions for security purposes. For more information, see [portalfx-extensions-production-testing-overview.md#loading-customized-extensions](portalfx-extensions-production-testing-overview.md#loading-customized-extensions).
 
 <!--TODO: Determine whether the following flag is associated with msportalfx-test.md#msportalfx-test-running-ci-->
 
@@ -111,6 +111,8 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 **feature.irissurfacename**:  Defines the surface name to use when querying IRIS.
 
 **feature.multicloud**: Enables multicloud mode. Reserved for team use.  
+
+**feature.nativeperf**:  Exposes native performance markers within the profile traces, which allows you to accurately match portal telemetry markers to the profile. The main use case is when profiling your extension/blade performance locally. Native performance markers will show up in the browser's performance profiling tool. 
 
 **feature.nodirectory**:  Opens the avatar menu after the user signs in.
 
