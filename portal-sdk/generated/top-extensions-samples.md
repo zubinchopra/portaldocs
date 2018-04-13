@@ -4,7 +4,11 @@
 <a name="portal-extension-samples-overview"></a>
 ## Overview
 
-The Azure Portal team ships samples that extension developers can leverage. When you install the Portal SDK, located at [http://aka.ms/portalfx/download](http://aka.ms/portalfx/download), the samples get installed as well. The source for the samples is located in the `Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension` folder. First-party extension developers, i.e. Microsoft employees, can access a live, up-to-date version of the samples at [https://aka.ms/portalfx/viewSamples](https://aka.ms/portalfx/viewSamples).
+The Azure Portal team ships samples that extension developers can leverage.
+
+When you install the Portal SDK, located at [http://aka.ms/portalfx/download](http://aka.ms/portalfx/download), the samples get installed as well. The source for the samples is located in the `Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension` folder.
+
+First-party extension developers, i.e. Microsoft employees, can access a live, up-to-date version of the samples at [https://aka.ms/portalfx/viewSamples](https://aka.ms/portalfx/viewSamples).
 
 For our latest controls we have developed a new playground. The playground gives you a listing of all the recommended controls as well as a sample page for each control. The sample pages will let you see a working copy of the control, try out different control options, and has documentation for each option and view model property.
 
@@ -38,7 +42,7 @@ The **V2** samples address the following API areas.
 <a name="portal-extension-samples-v1-versus-v2-v1"></a>
 ### V1
 
-Our **V1** APIs use APIs that support previous UX patterns, or  are becoming less commonly used.  The **V1** APIs are also more difficult to use than the new API, for both the UX design and  the associated APIs.
+Our **V1** APIs use APIs that support previous UX patterns, or are becoming obsolete or are less commonly used.  The **V1** APIs are also more difficult to use than the new API, for both the UX design and  the associated APIs.
 
 The following **V1** concepts should not be used when **V2** APIs can be used instead.
 
@@ -80,10 +84,13 @@ In the filter box, search for "Azure Portal SDK". You can use `Shift + Space` to
 
 ***How do I fix this?***
 
- Description:
+ DESCRIPTION:  
+
  Right out of the box, the samples are not aware of whether V1 or V2 is being used, or whether the IDE options match the version. There may be an error message TS1219.  Errors may also occur based on the version of the SDK.
 
- SOLUTION:  Add a `tsconfig.json` file to the project that specifies that decorators are experimental, as in the following code.
+ SOLUTION: 
+
+ Add a `tsconfig.json` file to the project that specifies that decorators are experimental, as in the following code.
 
  ```cs
  {
@@ -110,9 +117,12 @@ In the filter box, search for "Azure Portal SDK". You can use `Shift + Space` to
 
 *** Unable to launch the Microsoft Visual Studio IIS Express Web server***
 
-Description:
+DESCRIPTION:
+
 Failed to register URL "https://localhost:44306/" for site "SamplesExtension" application "/". Error description: Cannot create a file when that file already exists. (0x800700b7)
 
-SOLUTION:  Terminate IIS express processes in Task Manager and click F5 again.
+SOLUTION: 
+
+Terminate IIS express processes in Task Manager and click F5 again.
 
 * * *
