@@ -1,10 +1,13 @@
 
-<a name="extension-flags-and-feature-flags"></a>
-## Extension flags and Feature Flags
+<a name="overview"></a>
+## Overview
     
-There are three types of query string flags that are used with extensions to modify run-time behavior. The purpose of each type of flag is similar but not identical. The Azure Portal makes use of flag values by making modifications to the server or browser, to the shell, and to the extension at runtime. Query string flags can be differentiated by the naming convention that is used to invoke them.
+There are three types of query string flags that are used with extensions to modify run-time behavior. The purpose of each type of flag is similar but not identical. The Azure Portal makes use of flag values by making modifications to the server or browser, to the shell, and to the extension at runtime. Portal query string flags can be differentiated by the naming convention that is used to invoke them.
+
 * Some feature flags have their own names, like  `https://portal.azure.com/?<featureName>=<value>`
+
 * Most feature flags are invoked with the  syntax: `https://portal.azure.com/?feature.<featureName>=true`
+
 * Otherwise, flags are directives to the extension, in which case the syntax is `<extensionName>_<extensionFlag>=<value>`
 
 **NOTE**: Features that are invoked through `extensiondefinition` are outside of the scope of this document. For more information about using `extensiondefinition`, see `Microsoft.Portal.Framework.ExtensionDefinition` class.

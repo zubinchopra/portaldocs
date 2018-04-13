@@ -1,13 +1,17 @@
-<a name="portal-query-string-flags"></a>
-# Portal Query String Flags
+
+<a name="feature-flags"></a>
+# Feature Flags
 
 
-<a name="portal-query-string-flags-extension-flags-and-feature-flags"></a>
-## Extension flags and Feature Flags
+<a name="feature-flags-overview"></a>
+## Overview
     
-There are three types of query string flags that are used with extensions to modify run-time behavior. The purpose of each type of flag is similar but not identical. The Azure Portal makes use of flag values by making modifications to the server or browser, to the shell, and to the extension at runtime. Query string flags can be differentiated by the naming convention that is used to invoke them.
+There are three types of query string flags that are used with extensions to modify run-time behavior. The purpose of each type of flag is similar but not identical. The Azure Portal makes use of flag values by making modifications to the server or browser, to the shell, and to the extension at runtime. Portal query string flags can be differentiated by the naming convention that is used to invoke them.
+
 * Some feature flags have their own names, like  `https://portal.azure.com/?<featureName>=<value>`
+
 * Most feature flags are invoked with the  syntax: `https://portal.azure.com/?feature.<featureName>=true`
+
 * Otherwise, flags are directives to the extension, in which case the syntax is `<extensionName>_<extensionFlag>=<value>`
 
 **NOTE**: Features that are invoked through `extensiondefinition` are outside of the scope of this document. For more information about using `extensiondefinition`, see `Microsoft.Portal.Framework.ExtensionDefinition` class.
@@ -24,7 +28,7 @@ The following table specifies the types of query string flags that are used with
   Changing the default feature flags that are sent to the extension requires Shell configuration changes and redeployment.
 
 
-<a name="portal-query-string-flags-trace-mode-flags"></a>
+<a name="feature-flags-trace-mode-flags"></a>
 ## Trace Mode Flags
    
 Trace mode flags are associated with code that exists inside the Portal. They can be invoked with the syntax: `https://portal.azure.com/?trace=<settingName>`, or they can be configured externally through the `.config` file.  For example, [https://portal.azure.com/?trace=diagnostics](https://portal.azure.com/?trace=diagnostics) will enable verbose debugging information in the console. The trace mode allows the developer to enable, disable, and filter tracking output.
@@ -33,7 +37,7 @@ The information that is displayed in trace mode is associated with debugging, mo
 
 Often the errors that are displayed in the console can lead you down the path of fixing your issues. In addition to viewing the standard errors displayed in the console, it's often useful to load the Portal in trace mode.
 
-<a name="portal-query-string-flags-the-clientoptimizations-flag"></a>
+<a name="feature-flags-the-clientoptimizations-flag"></a>
 ## The clientoptimizations flag
 
 The **clientoptimizations** flag behaves somewhat like a trace mode flag, in that it is neither a Shell feature flag nor a flag for an extension.  Instead, it turns off bundling and minification of JavaScript to make debugging easier.   A value of `true` turns on bundling and minification,  and a value of `false` turns them both off. A value of `bundle` turns off JavaScript minification but retains bundling so the Portal still loads fairly quickly.  The value `bundle` is the suggested value for Portal extension debugging.
@@ -53,7 +57,7 @@ To set the optimization mode for a specific extension only:
 
  <!--TODO:  Verify whether this section contains all trace modes for the Azure Portal. -->
 
-<a name="portal-query-string-flags-trace-mode-flag-list"></a>
+<a name="feature-flags-trace-mode-flag-list"></a>
 ## Trace mode flag list
 Trace modes are enabled by appending them to the query string, as in the following example: `https://portal.azure.com/?trace=<settingName>`, where ```settingName```, without angle brackets, is the type of trace to run on the extension. The Azure trace mode flags are in the following list.
 
@@ -79,7 +83,7 @@ Trace modes are enabled by appending them to the query string, as in the followi
 
 
 
-<a name="portal-query-string-flags-extension-flags"></a>
+<a name="feature-flags-extension-flags"></a>
 ## Extension Flags
 
 Extension flags are specially-formatted query string parameters that are sent through the Portal to extensions and their controller methods.  They are often used while testing to enable and disable features that are maintained in the source code. Flags can only be used on items like form elements or HTML template components; they cannot be used to hide blades, parts, or commands. 
@@ -94,7 +98,7 @@ The only limitation on developer-designed flag names is that they cannot contain
 * Can contain any non-empty value (e.g. `azurecompute_someflag=true`)
 * Cannot include an underscore in the flag portion of the name (i.e., `azure_compute_some_flag` does not work, but `azure_compute_someflag` works)
  
-<a name="portal-query-string-flags-extension-flags-feature-flag-api-contract"></a>
+<a name="feature-flags-extension-flags-feature-flag-api-contract"></a>
 ### Feature flag API contract
 
 Developers can create flags for extensions, and plan to manage them as a part of the software maintenance process.  Typically, the flag is boolean and has a descriptive name. A value of `true` turns on the feature, and a value of `false` turns it off. 
@@ -209,7 +213,7 @@ You can ask questions on Stackoverflow with the tag [ibiza](https://stackoverflo
 
 
 
-<a name="portal-query-string-flags-shell-feature-flags"></a>
+<a name="feature-flags-shell-feature-flags"></a>
 ## Shell feature flags
 
 The Ibiza Fx team supports the following Shell feature flags. These flags are only available to the Shell, unless they are configured to be shared. Unless otherwise noted, a value of `true` enables the feature, and a value of `false` disables it. 
@@ -221,7 +225,7 @@ Shell feature flags are invoked with the syntax: `https://portal.azure.com/?feat
 
 The keyboard shortcut CTRL+ALT+D toggles the visibility of the debug tool, as specified in [portalfx-extensions-debugging-overview.md](portalfx-extensions-debugging-overview.md). The yellow sticky that is located at the bottom on the right side of the window can be used to toggle trace mode flags and shell feature flags.
 
-<a name="portal-query-string-flags-shell-feature-flags-the-extensionname-flag"></a>
+<a name="feature-flags-shell-feature-flags-the-extensionname-flag"></a>
 ### The extensionName flag
 
 The name of the extension can be used as a feature flag. The extension name can contain any character in the ranges between [a-z] or [0-9]. The portal query string can handle multiple extensions simultaneously.
@@ -239,7 +243,7 @@ The name of the extension can be used in the query string to access various Shel
 | testExtensions | Contains the name of the extension, and the environment in which the extension is located. For example, `?testExtensions={"HelloWorld":"https://localhost:44300/"}` specifies the intent to load the `HelloWorld` extension from the localhost port 44300 into the current session of the Portal. The **name** and **uri**  parameters are as specified in [portalfx-extensions-configuration-overview.md#understanding-the-extension-configuration-in-portal](portalfx-extensions-configuration-overview.md#understanding-the-extension-configuration-in-portal).|
 
     
-<a name="portal-query-string-flags-shell-feature-flags-the-canmodifystamps-flag"></a>
+<a name="feature-flags-shell-feature-flags-the-canmodifystamps-flag"></a>
 ### The canmodifystamps flag
 
 The **canmodifystamps** flag is used in conjunction with the **extensionName** parameter to pass developer-specified values to the extension, to specify which stage or build number to use, and other purposes. When the **canmodifystamps** flag is set to true, the following run options can be enabled.
@@ -258,7 +262,7 @@ The **canmodifystamps** flag is used in conjunction with the **extensionName** p
     * **buildNumber**:  The build number as specified in [portalfx-extensions-hosting-service-scenarios.md#sideloading](portalfx-extensions-hosting-service-scenarios.md#sideloading). Replace the dots in the build number with the letter 'd', so that build number 1.0.8.31 is represented by 1d0d8d31.
     * **uriFormatPrefix**: The value to use when building the **uriFormat** string. For example, when **uriFormat** is `//{0}.devtest.ext.azure.com`, the query string `https://portal.azure.com?feature.canmodifystamps=true&Microsoft_Azure_DevTestLab=perf` would cause  the `{0}` in the **uriFormat** string to be replaced with `perf` and attempt to load the extension from `https://perf.devtest.ext.azure.com`.
     
-<a name="portal-query-string-flags-shell-feature-flags-shell-flags"></a>
+<a name="feature-flags-shell-feature-flags-shell-flags"></a>
 ### Shell flags
 
 The following are the feature flags that are invoked with the syntax: `feature.<featureName>=true` unless otherwise noted.
@@ -289,7 +293,7 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 | storage     | Add all storage services to the **Storage** category  
 | vm          | Rename **Compute** to **VMs**, and rename **Web + Mobile** to **App Services** |
 
-**feature.canmodifyextensions**:  Required to support loading untrusted extensions for security purposes. For more information, see [portalfx-extensions-testing-in-production-overview.md#loading-customized-extensions](portalfx-extensions-testing-in-production-overview.md#loading-customized-extensions).
+**feature.canmodifyextensions**:  Required to support loading untrusted extensions for security purposes. For more information, see [portalfx-extensions-production-testing-overview.md#loading-customized-extensions](portalfx-extensions-production-testing-overview.md#loading-customized-extensions).
 
 <!--TODO: Determine whether the following flag is associated with msportalfx-test.md#msportalfx-test-running-ci-->
 
@@ -325,6 +329,8 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 **feature.irissurfacename**:  Defines the surface name to use when querying IRIS.
 
 **feature.multicloud**: Enables multicloud mode. Reserved for team use.  
+
+**feature.nativeperf**:  Exposes native performance markers within the profile traces, which allows you to accurately match portal telemetry markers to the profile. The main use case is when profiling your extension/blade performance locally. Native performance markers will show up in the browser's performance profiling tool. 
 
 **feature.nodirectory**:  Opens the avatar menu after the user signs in.
 
@@ -391,7 +397,7 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 
     For more information about webworkers, see [https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers).
 
-<a name="portal-query-string-flags-shell-feature-flags-marketplace-feature-flags"></a>
+<a name="feature-flags-shell-feature-flags-marketplace-feature-flags"></a>
 ### Marketplace feature flags
 
 <!--TODO:  Determine whether microsoft_azure_marketplace is an extension name or an example extension name.  If such is the case, then the following 4 flags should be documented as only the suffix name. -->
@@ -408,7 +414,7 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 **microsoft_azure_marketplace_quotaIdOverride**:  Associated with Marketplace extensions and the Create Launcher. A value of `true` ,  and a value of `false`. 
 
 
-<a name="portal-query-string-flags-glossary"></a>
+<a name="feature-flags-glossary"></a>
 ## Glossary
 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
