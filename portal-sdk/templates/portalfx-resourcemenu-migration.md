@@ -15,17 +15,15 @@ Within those directories, there may be code that resembles the extension that yo
 
 Use the following steps to migrate from a settings blade to a resource menu blade.
 
-1. [Using the resource menu](#using-the-resource-menu)
+1. [Use the resource menu](#use-the-resource-menu)
 
-1. [Creating an Asset ViewModel](portalfx-resourcemenu-migration.md#creating-an-asset-viewmodel) 
+1. [Create an Asset ViewModel](#create-an-asset-viewmodel) 
 
-1. Porting the current settings into the new method
-
-1. Feature flag previous behaviors
+1. [Flag previous behaviors](#flag-previous-behaviors)
 
 * * *
 
-### Using the resource menu
+### Use the resource menu
 
 To use a resource menu in an extension, add the `UseResourceMenu` property and specify a `ViewModel` on the `AssetType` tag in the PDL file.
 
@@ -57,13 +55,13 @@ Some examples that contain AssetViewModels are in the following list.
            UseResourceMenu="true">
 ```
 
-### Creating an AssetViewModel
+### Create an AssetViewModel
 
 Create the `ViewModel` and then add a `getMenuConfig` method to the `AssetViewModel`. This method contains all the logic that determines which items to add to the menu, based on dynamic dependencies.
 
-The following code contains a menu that has three items and two groups. The items are an overview item, a custom group with an item, and adding an item to a framework group.
+The following code ports the current settings of the extension into the new method.  It contains a menu that has three items and two groups. The items are an overview item, a custom group with an item, and adding an item to a framework group.
 
-You can see that the API follows the settings item API very closely without the groups and the blade references. Referencing blades within your own extension can be done via the first two options, if you are opening a blade outside of your extension you can use the third method.
+You can see that the API follows the settings item API very closely without the groups reference and the blade reference. Referencing blades within your own extension can be done by using the first two options. If the extension opens a blade outside of your extension, you can use the third method.
 
 ``` ts
 import BladeReferences = require("../../_generated/BladeReferences");
@@ -169,9 +167,9 @@ export class MyResourceViewModel
 
 For more information about the Resource menu APIs, see [portalfx-resourcemenu-api.md](portalfx-resourcemenu-api.md).
 
-### Feature flag previous behaviors
+### Flag previous behaviors
 
-After the Resource menu has been added to the extension, there may be cases in which previous code is no longer suitable. However, backward-compatibility may be an issue, for developers and other users.  If so, the "resourcemenu" feature flag can be used to switch between the resource menu and previous settings selections, as in the following code.
+After the Resource menu has been added to the extension, there may be cases in which previous code is no longer suitable. However, backward-compatibility may be an issue, for developers and other users.  If so, the `resourcemenu` feature flag can be used to switch between the resource menu and previous settings selections, as in the following code.
 
 ``` ts
 MsPortalFx.isFeatureEnabled("resourcemenu")
