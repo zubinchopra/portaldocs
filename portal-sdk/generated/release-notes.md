@@ -1,4 +1,4 @@
-# Release Notes since 12/14/2017
+# Release Notes since 12/15/2017
 
 ## 5.0.302.1081
 0 Breaking Changes, 1 Features added and 1 Bugs Fixed
@@ -243,11 +243,3 @@
 ## 5.0.302.955
 0 Breaking Changes, 1 Features added and 1 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1799567'>1799567</a></td><td>Feature</td><td>Fx/Ajax.batch() API enhancements to differentiate foreground and background requests</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1797089'>1797089</a></td><td>Bug Fix</td><td>Increase MonitorChart default polling interval to 5 minutes</td></tr></table>
-
-## 5.0.302.954
-0 Breaking Changes, 2 Features added and 2 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1803864'>1803864</a></td><td>Bug Fix</td><td>Feature values should be case sensitive</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1798457'>1798457</a></td><td>Feature</td><td>Compute extension to flight AFD extension</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1787065'>1787065</a></td><td>Bug Fix</td><td>Widgets.TopBar.ts doesn't show the title correctly</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1748372'>1748372</a></td><td>Feature</td><td>[ExtensionConfiguration] Browse config update for extension Microsoft_Intune_Edu</td></tr></table>
-
-## 5.0.302.952
-0 Breaking Changes, 3 Features added and 0 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1792584'>1792584</a></td><td>Feature</td><td>Enable Information Protection extension in FairFax environment</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1599134'>1599134</a></td><td>Feature</td><td>[Regions] Update new regions script</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10636943'>10636943</a></td><td>Feature</td><td>[ExtensionConfiguration] Enable direct access to Log analytics API for extension AppInsightsExtension</td></tr></table>
