@@ -1,8 +1,7 @@
 
-## Using Fx/Controls in EditScope backed forms
+## Using Azure cControls in EditScope backed forms
 
-Several new Azure controls are compatible with EditScope-backed controls. 
-This process specifies how to add the editscopeless **Name**  TextBox control from the `Fx/Controls/TextBox` module to an EditScope-based control. 
+Several new Azure controls are compatible with EditScope-backed controls. This process specifies how to add the editscopeless **Name**  TextBox control from the `Fx/Controls/TextBox` module to an EditScope-based control. 
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. 
 
@@ -67,6 +66,7 @@ For more information about the create engine, see [portalfx-create-engine-sample
                 this.actionBar.valid(this.valid() && this.engineName.valid());
     });
     ```
+
 1. Modify ARM provisioner to use value from new control
 
     The `_supplyTemplateDeploymentOptions` provides the  ARM provisioner with the template deployment options.
@@ -76,4 +76,4 @@ For more information about the create engine, see [portalfx-create-engine-sample
     var engineName = this.engineName.value(); 
     ```
 
-When this procedure is complete, all the changes that are required for an EditScope-backed form to work with editscope-less controls have been added.
+When this procedure is complete, all the changes that are required for an EditScope-backed form to work with controls that do not use `EditScopes` have been added.

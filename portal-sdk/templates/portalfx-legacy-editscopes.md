@@ -23,7 +23,7 @@ This document is organized into the following sections.
 
 * [Loading the EditScope](#loading-the-editscope)
 
-For more information about edit scopes and  managing unsaved edits, watch the video located at 
+For more information about edit scopes and managing unsaved edits, watch the video located at 
 [https://aka.ms/portalfx/editscopes](https://aka.ms/portalfx/editscopes).
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK.
@@ -55,7 +55,11 @@ After the `EditScope` is initialized and loaded, entities can be introduced and 
 
 An `editScope` entity array is an array where created/updated/deleted items are tracked individually by `EditScope`. Array adds/removes are revertable for some scenarios. Rows can be added or removed from an editable grid, but the corresponding adds/removes may not be immediately viewable from the `EditScope` array. To grant this treatment to an array in the `EditScope`/`Form` model, the extension supplies type metadata for the type of the array items. For example, the  `T` in `KnockoutObservableArray<T>` contains the type. 
 
-Any edits that were made by the user and collected in an `EditScope` are saved in the storage for the browser session. This is managed by the shell. Parts or blades may request an `EditScope`, but the most common usage is in a blade. A blade defines a `BladeParameter` with a `Type` of `NewEditScope`. This informs the shell that a blade is asking for a new `editScope` object. Within the rest of the blade, that parameter can be attached to an `editScopeId` property on any part. Using this method, many parts and commands on the blade can all read from the same editScopeId. This is common when a command needs to save information about a part. After sending the `editScopeId` to the part as a property, the `viewModel`  loads the `editScope` from the cloud. 
+Any edits that were made by the user and collected in an `EditScope` are saved in the storage for the browser session. This is managed by the shell. 
+
+`EditScope` integration can manage changes and warn customers that they might lose data if they leave the form without saving their changes.  The `parameterProvider` instantiates and initializes an `EditScope`, so all that needs to be done is to connect the form's `EditScope` to the `parameterProvider's` `EditScope`.
+
+Parts or blades may request an `EditScope`, but the most common usage is in a blade. A blade defines a `BladeParameter` with a `Type` of `NewEditScope`. This informs the shell that a blade is asking for a new `editScope` object. Within the rest of the blade, that parameter can be attached to an `editScopeId` property on any part. Using this method, many parts and commands on the blade can all read from the same editScopeId. This is common when a command needs to save information about a part. After sending the `editScopeId` to the part as a property, the `viewModel`  loads the `editScope` from the cloud. 
 
 The properties that are associated with the entity's 'id' are specified in the following examples. 
  
@@ -124,7 +128,7 @@ In C#:
 
 Extensions can supply type metadata to configure an `EditScope` as follows.
 
-* When using `ParameterProvider`, supply the `editScopeMetadataType` option to the `ParameterProvider` constructor.
+* When using `ParameterProvider`, supply the `editScopeMetadataType` option to the `ParameterProvider` constructor. 
 
 * When using `EditScopeCache`, supply the `entityTypeName` option to `MsPortalFx.Data.EditScopeCache.createNew`.
 
@@ -164,7 +168,15 @@ The following example demonstrates converting data to an 'entity' array for cons
 
 The `applyArrayAsEdits` method simplifies applying edits to an existing `EditScope` entity array. This API accepts a new array of 'entity' objects. The `EditScope` will compare  this new array to  the existing `EditScope` array items, determine which 'entity' objects are created/updated/deleted, and then records the corresponding user edits.
 
-This is often performed in a ParameterCollector's `receiveResult` callback.  The  following example uses a discrete array that individually capture 'created', 'updated' and 'deleted' entities.
+This is often performed in a ParameterCollector's `receiveResult` callback, as in the following example.
+
+```ts
+// The parameter provider takes care of instantiating and initializing an edit scope for you,
+// so all we need to do is point our form's edit scope to the parameter provider's edit scope.
+this.editScope = this.parameterProvider.editScope;
+```
+
+ The  following example uses a discrete array that individually capture 'created', 'updated' and 'deleted' entities.
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/ParameterCollection/FormWithCollectors/ViewModels/FormWithCollectorsBladeViewModel.ts", "section": "formsEditScopeFaq#applyArrayAsEdits"}
 

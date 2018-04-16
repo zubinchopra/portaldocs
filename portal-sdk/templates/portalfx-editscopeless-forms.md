@@ -1,7 +1,7 @@
 
 ## EditScopeless Forms
 
-Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide common functions that would otherwise be difficult to orchestrate, like tracking changes in field values across a form, or simplifying the merge  of form changes from the server into the current edit. In contrast, editscope-less forms are compatible with new controls and consequently, EditScopes are becoming obsolete. It is recommended that extensions be developed without edit scopes.
+Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide common functions that would otherwise be difficult to orchestrate, like tracking changes in field values across a form, or simplifying the merge  of form changes from the server into the current edit. In contrast, forms that do not use  `editScopes` are compatible with new controls and consequently, EditScopes are becoming obsolete. It is recommended that extensions be developed without `editScopes`.
 
 <!-- TODO: Determine whether controls like OptionsGroup, that are not located in Fx/Controls, are considered part of the EditScopeless pattern.   -->
 
@@ -31,7 +31,7 @@ import * as TextBox from "Fx/Controls/TextBox";
 
 <!-- TODO: Determine whether controls outside of "Fx/Controls" should be included in the table.  -->
 
-The folloiwng is a list of all the new controls that are available in "Fx/Controls", in addition to  a list of documents that discuss the control in more detail. For samples and experiences that are associated with editscope-less form controls, see [portalfx-extensions-samples-overview.md](portalfx-extensions-samples-overview.md).
+The folloiwng is a list of all the new controls that are available in "Fx/Controls", in addition to  a list of documents that discuss the control in more detail. For samples and experiences that are associated with form controls that do not use `EditScopes`, see [top-extensions-samples.md](top-extensions-samples.md).
 
 | Control                 | Document                                                                             | 
 | ----------------------- | ------------------------------------------------------------------------------------ |  

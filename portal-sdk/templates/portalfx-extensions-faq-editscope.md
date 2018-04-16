@@ -26,9 +26,9 @@ SOLUTION: Integrate forms with `EditScopes` varies according to the UX design. D
     * **Pop-up/dialog-like form** - The blade uses an ActionBar with an 'Ok'-like button that commits user edits. Typically, when the user commits the edits, the blade is implicitly closed, like a conventional UI pop-up/dialog. The blade uses `parameterProvider.editScope` to access the loaded/initialized EditScope.
 
 * Use `EditScopeCache` for the following scenarios:
-    * **Save/Revert blade** - There are 'Save' and 'Revert changes' commands in the CommandBar of the blade. Typically, these commands keep the blade open so the user can perform successive edit and save cycles without closing and reopening the form. The blade uses an `EditScopeView`, as specified in  `editScopeCache.createView(...)`, to load/acquire the EditScope.  
+    * **Save/Revert blade** - There are 'Save' and 'Revert changes' commands in the CommandBar of the blade. Typically, these commands keep the blade open so the user can perform successive edit and save cycles without closing and reopening the form. 
 
-    * **Document editing** - The blade uses an `EditScopeView`, as specified in  `editScopeCache.createView(...)`, to load/acquire the EditScope.   The user can make edits to a single EditScope/Form model across multiple parent-child blades. The parent blade sends its `inputs.editScopeId` input to any child blade that edits the same model as the parent Blade. The child blade uses this `inputs.editScopeId` in its call to `editScopeView.fetchForExistingData(editScopeId)` to fetch the EditScope of the parent Blade. Scenarios like these resemble document editing. 
+    * **Document editing** - In the document-editing scenario, the user can make edits to a single EditScope/Form model across multiple parent-child blades. The parent blade sends its `inputs.editScopeId` input to any child blade that edits the same model as the parent Blade. The child blade uses this `inputs.editScopeId` in its call to `editScopeView.fetchForExistingData(editScopeId)` to fetch the EditScope of the parent Blade. 
 
 * * *
   
@@ -82,33 +82,5 @@ SOLUTION:  An extension can model a Dictionary/StringMap/property bag for an `Ed
 The users can edit the contents of the  Dictionary/StringMap/property bag by using an editable grid. The editable grid can only be bound to an `EditScope` 'entity' array. This allows the extension to describe the array of key/value-pairs as an 'entity' array.
 
 For more information about how to develop type metadata to use the array with the editable grid, see [portalfx-legacy-editscopes.md#the-getEntityArrayWithEdits-method](portalfx-legacy-editscopes.md#the-getEntityArrayWithEdits-method).
-
-* * *
-
-### Q: What should be returned from `saveEditScopeChanges`? I don't understand the different values of the `AcceptEditScopeChangesAction` enum.
-
-<!-- TODO:  Move this to the EditScope document -->
-
-SOLUTION: 
-
-When creating an `EditScopeCache`, the `saveEditScopeChanges` callback is called to push `EditScope` edits to a server. This callback returns a `Promise` that should be resolved when the 'save' AJAX call completes, which occurs after the server accepts the user's edits. 
-
-**NOTE**:  If the AJAX call that saves the user's edits fails, the extension should reject the `saveEditScopeChanges` `promise`. The extension should not resolve the `promise` with `AcceptEditScopeChangesAction.DiscardClientChanges`, because it will lose the user's Form edits.
-
-When the extension resolves this `promise`, it supplies a value that instructs the `EditScope` to  reset itself to a clean/unedited state. If no such value is returned when the `promise` is resolved, then the `EditScope` is reset by default, which means taking the user's client-side edits and considering these values to be the new, clean/unedited `EditScope` state.
-
-In the following scenarios, the default `saveEditScopeChanges` behavior does not work.
-
-* During the `save` operation, the server produces new data values that need to be merged into the `EditScope`.
-
-* For "create new record" scenarios, after the `save` operation completes, the extension should clear the form, so that the user can enter a new record.
-
-For these cases, the extension will resolve the `saveEditScopeChanges` promise with a value from the `AcceptEditScopeChangesAction` enum. These values allow the extension to specify the following states.
-
-* The EditScopeCache implicitly reloads the EditScope data as part of completing the `save` operation.
-
-* The EditScope's data is reverted and cleared as part of completing the 'save' operation, which was the "create new record" UX scenario.
-
-For more information about the enum values, see the **jsdoc** comments in the `MsPortalFx.Data.AcceptEditScopeChangesAction` API or in the `MsPortalFxDocs.js` file.  They can be viewed in **Visual Studio** or any code editor.
 
 * * *
