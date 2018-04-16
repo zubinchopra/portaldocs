@@ -23,7 +23,7 @@ __Time Saving Note__ - If you are developing this type of extension then your li
 
 ### Marketplace integration
 
-You do not need to have an Azure resource provider to [integrate with the marketplace and the portal's create flows](portalfx-create.md).
+You do not need to have an Azure resource provider to integrate with the marketplace and the portal's create flows, as specified in [top-extensions-create.md](top-extensions-create.md).
 
 ### Browse (Service entry point)
 

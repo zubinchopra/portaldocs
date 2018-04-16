@@ -11,7 +11,7 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 
   {"gitdown": "include-headings", "file": "../templates/portalfx-browse.md"}
 
-  {"gitdown": "include-headings", "file": "../templates/portalfx-create.md"}
+  
 
 # Basic Concepts  
 
