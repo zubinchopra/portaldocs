@@ -70,7 +70,7 @@ import * as SubscriptionDropDown from "Fx/Controls/SubscriptionDropDown";
 
 The following code contains a `SubscriptionDropDown`. 
 
-{"gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#subscriptionDropDown"}
+  gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#subscriptionDropDown"}
 
 #### Resource groups dropdown
 
@@ -81,8 +81,8 @@ import * as ResourceGroupDropDown from "Fx/Controls/ResourceGroupDropDown";
 ```
 
 The following code contains a `ResourceGroupDropDown`. 
-
-{"gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
+ 
+  gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
 
 #### Locations dropdown
 
@@ -94,7 +94,7 @@ import * as LocationDropDown from "Fx/Controls/LocationDropDown";
 
 The following code contains a `ResourceGroupDropDown`. 
 
-{"gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#locationDropDown"}
+  gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#locationDropDown"}
 
 <!-- TODO: Determine the location of the pricing dropdown so that it can be added to these examples. -->
 
