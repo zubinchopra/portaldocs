@@ -49,7 +49,7 @@ const firstNameViewModel = TextBox.create(container, {
 
 ### Dropdown loading indicator
 
-The Azure SDK now supports displaying the loading indicator when data is loaded by an asynchronous **AJAX** call that populates the dropdown, as in the  following code.
+The Azure SDK supports displaying the loading indicator when data is loaded by an asynchronous **AJAX** call that populates the dropdown, as in the following code.
 
 ```ts
 
@@ -75,12 +75,14 @@ const dropdownDataPromise = Q(model.people.fetch("", container)).then((people) =
 });
 ```
 
+For more information about loading indicators, see [top-blades-procedure.md#displaying-a-loading-indicator-ux](top-blades-procedure.md#displaying-a-loading-indicator-ux).
+
 ### Customizing Alerts
 
-The SDK provides two ways to configure the behavior of an alert, which is the pop-up that is displayed when the  user tries to close a form that contains unsaved edits. 
+The SDK provides two ways to configure the behavior of an alert, which is the pop-up that is displayed when the user tries to close a form that contains unsaved edits. 
 
 
-1. The alert can be suppressed the alert by setting the value to `FxViewModels.AlertLevel.None`, as in the following code.
+1. The alert can suppress the alert by setting the value to `FxViewModels.AlertLevel.None`, as in the following code.
 
     ```ts
     form.configureAlertOnClose(FxViewModels.AlertLevel.None);
@@ -88,20 +90,20 @@ The SDK provides two ways to configure the behavior of an alert, which is the po
 
 1. The value of the alert's behavior can be computed and returned to the `Message` function by using an overloaded definition, which is appropriate for more complex scenarios. The behavior of the alert and message are dynamically set, based on the checkbox and textBox, as in the following code.
 
-```ts
+    ```ts
 
-this._container.form.configureAlertOnClose(ko.computed(container, () => {
-    return {
-        showAlert: configureCheckBox.value(),
-        message: configureMessageTextBox.value()
-    }
-}));
+    this._container.form.configureAlertOnClose(ko.computed(container, () => {
+        return {
+            showAlert: configureCheckBox.value(),
+            message: configureMessageTextBox.value()
+        }
+    }));
 
-```
+    ```
 
-#### Other CSS classes
+### CSS classes
 
-Other CSS classes are in the following list.
+ The `msportalfx-docking-*` classes are used when elements will be docked at the header, body or footer of the blade. They are in the following list.
 
 * msportalfx-docking-header
 
@@ -111,8 +113,6 @@ Other CSS classes are in the following list.
 
 * msportalfx-padding
 
- The `msportalfx-docking-*` classes are used when elements will be docked at the header, body or footer of the blade. 
-
 <!-- TODO: Determine whether 10 x 10 is px or some other unit of measurement. -->
 The `msportalfx-padding` class adds 10 x 10 padding to the blade.
 
@@ -120,9 +120,9 @@ These blade styling css classes allow the blade to be used as a canvas.
 
 **NOTE**: Unlike previous version of SDK, No-PDL blades do not add padding or docking content behavior by default. This  makes style management easier.
 
-### Replacing Action Bar with Button
+### Replacing action bars with buttons
 
-Out-of-the-box CSS classes can be used to dock a button at the bottom of blade and make it look like an Action Bar.
+Out-of-the-box CSS classes can dock a button at the bottom of blade to make it look like an Action Bar.
 
 The following sample demonstrates how to replace the action bar by docking a button and errorInfo box at the bottom of the blade by using the `msportalfx-docking-footer` css class. The `msportalfx-padding` class  adds 10 x 10 padding to the docked footer.
 
@@ -150,3 +150,5 @@ const okButtonClick = () => {
                         });
 };
 ```
+
+For more information about opening and closing blades, see [top-blades-opening-and-closing.md](top-blades-opening-and-closing.md). 
