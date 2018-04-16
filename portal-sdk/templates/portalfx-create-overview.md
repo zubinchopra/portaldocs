@@ -434,7 +434,7 @@ The Marketplace provides a categorized collection of packages that can be create
 
 **NOTE**: The **+New** menu is curated and can change at any time, based on C+E leadership business goals. Ensure documentation, demos, and tests are created from browse, as specified in [portalfx-browse.md](portalfx-browse.md) or deep-links as specified in [portalfx-links.md](portalfx-links.md) as the entry point.
 
-![alt-text](/media/portalfx-create/plus-new.png "The +New menu")
+![alt-text](../media/portalfx-create/plus-new.png "The +New menu")
 
 ![alt-text](../media/portalfx-ui-concepts/gallery.png "The Marketplace")
 

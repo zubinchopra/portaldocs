@@ -11,9 +11,6 @@
 * [Building browse experiences](portalfx-browse.md#building-browse-experiences)
 
 
-* [Building create experiences](portalfx-create.md#building-create-experiences)
-* [Building custom create forms](portalfx-create.md#building-custom-create-forms)
-
 
 <a name="development-basic-concepts"></a>
 ## Basic Concepts
