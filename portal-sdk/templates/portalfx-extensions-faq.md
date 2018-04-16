@@ -43,7 +43,7 @@ FAQ's that are associated with Azure samples.
 
 FAQ's that are associated with testing an extension in the production environment.
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-testing-in-production.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-production-testing.md"}
 
 
 
