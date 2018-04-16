@@ -24,7 +24,7 @@ FromLocalPackage
 
 #### Opening the create blade from a local gallery package
 
-To open/navigate to the create blade a local gallery package that has been side loaded into the Portal along with your extension you can use `portal.openGalleryCreateBladeFromLocalPackage`.  The returned promise will resolve with the CreateBlade defined by that gallery package. 
+To open/navigate to the create blade a local gallery package that has been sideloaded into the Portal along with your extension you can use `portal.openGalleryCreateBladeFromLocalPackage`.  The returned promise will resolve with the CreateBlade defined by that gallery package. 
 
 ```ts 
 import TestFx = require('MsPortalFx-Test');

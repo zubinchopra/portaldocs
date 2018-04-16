@@ -13,8 +13,6 @@
 
   {"gitdown": "include-file", "file": "../templates/msportalfx-test-scenarios-user-management.md"}
 
-  {"gitdown": "include-file", "file": "../templates/msportalfx-test-scenarios-configuration.md"}
-
   {"gitdown": "include-file", "file": "../templates/msportalfx-test-scenarios-create.md"}
 
 {"gitdown": "include-file", "file": "../templates/msportalfx-test-scenarios-browse.md"}

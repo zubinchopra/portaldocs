@@ -1,24 +1,26 @@
 
-### Parts
+## Parts
 
-#### How to get the reference to a part on a blade
+### How to get the reference to a part on a blade
 
-1. If it is a specific part, like the essentials for example:
+If it is a specific part, like the essentials for example:
+
 ```
 	let thePart = blade.element(testFx.Parts.ResourceSummaryPart);
 ```
 
-1. For a more generic part:
+For a more generic part:
 ```
 	let thePart = blade.part({innerText: "some part text"});
 ``` 
 
-1. To get a handle of this part using something else than simple text you can also do this:
+To get a handle of this part using something else than simple text you can also do this:
+
 ```
 	let thePart = blade.element(By.Classname("myPartClass")).AsType(testFx.Parts.Part);
 ```
 
-#### CollectionPart
+### CollectionPart
 
 The following example demonstrates how to:
 

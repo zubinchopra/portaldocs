@@ -1,7 +1,7 @@
 
-## Side loading a local extension during the test session
+## Sideloading a local extension during the test session
 
-You can use MsPortalFx-Test to write end to end tests that side load your local extension in the Portal. You can do this by specifying additional options in the Portal object. If you have not done so, please take a look at the *Installation* section of [this page](https://auxdocs.azurewebsites.net/en-us/documentation/articles/portalfx-testing-getting-started) to learn how to get started with MsPortalFx-Test. 
+You can use MsPortalFx-Test to write end to end tests that sideload your local extension in the Portal. You can do this by specifying additional options in the Portal object. If you have not done so, please take a look at the *Installation* section of [this page](https://auxdocs.azurewebsites.net/en-us/documentation/articles/portalfx-testing-getting-started) to learn how to get started with MsPortalFx-Test. 
 
 We'll write a test that verifies that the Browse experience for our extension has been correctly implemented. But before doing that we should have an extension to test and something to browse to, so let's work on those first.
 
@@ -15,7 +15,7 @@ To prepare the target extension and resource:
 
 1. Wait for the resource to get created.
 
-To write a test verifies the Browse experience while side loading your local extension:
+To write a test that verifies the Browse experience while sideloading your local extension:
 
 1. Create a new TypeScript file called **localextensiontests.ts**.
  
