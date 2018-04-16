@@ -42,8 +42,7 @@
 ## Debugging
 
  <!-- top-extensions-debugging.md -->
- 
-  {"gitdown": "include-headings", "file": "../templates/portalfx-extensions-status-codes.md"}
+
   {"gitdown": "include-headings", "file": "../templates/top-extensions-production-testing.md"}
 
 ## Other
