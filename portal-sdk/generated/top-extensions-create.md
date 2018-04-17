@@ -1,5 +1,9 @@
+
+<a name="building-create-experiences"></a>
+# Building create experiences
+
 ﻿
-<a name="overview"></a>
+<a name="building-create-experiences-overview"></a>
 ## Overview
 
 The Azure portal offers three ways to build a create form:
@@ -29,7 +33,7 @@ This document contains information about building custom create forms, including
 | Telemetry | [portalfx-telemetry-create.md](portalfx-telemetry-create.md) | Additional information on usage dashboards and queries. |
 | Troubleshooting Guide | [portalfx-create-troubleshooting.md](portalfx-create-troubleshooting.md) | Additional debugging information. |
 
-<a name="overview-building-custom-create-forms"></a>
+<a name="building-create-experiences-overview-building-custom-create-forms"></a>
 ### Building custom create forms
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>` is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. 
@@ -52,7 +56,7 @@ If the resource is being created by deploying a single template to ARM, the exte
 
 Reach out to <a href="mailto:ibizafxpm@microsoft.com?subject=Full-screen Create&body=I  have some questions about the current state of full-screen create experiences.">Ibiza FX PM</a> if you have any questions about the current state of full-screen create experiences.
 
-<a name="overview-standard-arm-fields"></a>
+<a name="building-create-experiences-overview-standard-arm-fields"></a>
 ### Standard ARM fields
 
 All ARM subscription resources require [subscription](#subscriptions-dropdown), [resource groups](#resource-groups -dropdown), [location](#locations-dropdown) and pricing dropdowns. The Portal offers built-in controls for each of these, as demonstrated in `<dir>\Client\V1\Create\EngineV3\ViewModels\CreateEngineBladeViewModel.ts` .
@@ -63,7 +67,7 @@ Each of these fields will retrieve values from the server and populate a dropdow
 locationDropDown.value(locationDropDown.fetchedValues().first((value)=> value.name === "centralus"))
 ```
 
-<a name="overview-standard-arm-fields-subscriptions-dropdown"></a>
+<a name="building-create-experiences-overview-standard-arm-fields-subscriptions-dropdown"></a>
 #### Subscriptions dropdown
 
 The following dropdown does not use an `EditScope`.
@@ -76,7 +80,7 @@ The following code contains a `SubscriptionDropDown`.
 
   gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#subscriptionDropDown"}
 
-<a name="overview-standard-arm-fields-resource-groups-dropdown"></a>
+<a name="building-create-experiences-overview-standard-arm-fields-resource-groups-dropdown"></a>
 #### Resource groups dropdown
 
 The following dropdown does not use an `EditScope`.
@@ -89,7 +93,7 @@ The following code contains a `ResourceGroupDropDown`.
  
   gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
 
-<a name="overview-standard-arm-fields-locations-dropdown"></a>
+<a name="building-create-experiences-overview-standard-arm-fields-locations-dropdown"></a>
 #### Locations dropdown
 
 The following dropdown does not use an `EditScope`.
@@ -104,12 +108,12 @@ The following code contains a `ResourceGroupDropDown`.
 
 <!-- TODO: Determine the location of the pricing dropdown so that it can be added to these examples. -->
 
-<a name="overview-arm-dropdown-options"></a>
+<a name="building-create-experiences-overview-arm-dropdown-options"></a>
 ### ARM dropdown options
 
 Each ARM dropdown can [disable](#the-disable-method), [hide](#the-hide-method), [group](#the-group-method), and [sort](#the-sort-method).
  
-<a name="overview-arm-dropdown-options-the-disable-method"></a>
+<a name="building-create-experiences-overview-arm-dropdown-options-the-disable-method"></a>
 #### The disable method
 
 This is the preferred method of displaying values from ARM that are disabled, because it reduces support calls. The disable callback runs for each value that is fetched from ARM. The return value of the callback contains the reason  why the value is disabled. The values are displayed in groups at the bottom of the dropdown list, with the reason as the group header.  If no reason is provided, then the value is not disabled. This ensures the customer has information about why they can not select an option, as in the following example.
@@ -118,7 +122,7 @@ This is the preferred method of displaying values from ARM that are disabled, be
 
  gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#disable"}
 
-<a name="overview-arm-dropdown-options-the-hide-method"></a>
+<a name="building-create-experiences-overview-arm-dropdown-options-the-hide-method"></a>
 #### The hide method
 
 This is an alternative method of disallowing values from ARM. The hide callback runs for each value that is fetched from ARM. The return value of the callback contains a boolean that specifies whether the value should be hidden. If the extension hides the value, the required message telling the user why the values are hidden is displayed, as in the following example.
@@ -129,7 +133,7 @@ gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScrip
 
 **NOTE**: It is recommended to use the `disable` option so that scenario-specific detail about the dropdown value  can be displayed. Customers can see that a specific value is not available instead of hiding it, therefore reducing the potential for negative reactions when the values cannot be visually located.  In extreme cases, missing data  may trigger blade incidents.
 
-<a name="overview-arm-dropdown-options-the-group-method"></a>
+<a name="building-create-experiences-overview-arm-dropdown-options-the-group-method"></a>
 #### The group method
 
 This method groups together the values in the dropdown. The group callback receives a value from the dropdown and returns a display string that specifies which group should contain the value. If no display string or an empty display string is provided, then the value defaults to the top level of the group dropdown.
@@ -142,7 +146,7 @@ gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScrip
  
 If the extension uses both disable and group, values that are disabled are displayed in the disabled group instead of in the group specified by the display string. 
  
-<a name="overview-arm-dropdown-options-the-sort-method"></a>
+<a name="building-create-experiences-overview-arm-dropdown-options-the-sort-method"></a>
 #### The sort method
 
 The `sort` option, is a conventional comparator function that returns a number greater or less than zero. It defaults to alphabetical sorting, based on the display string of the value, as in the following example.
@@ -153,7 +157,7 @@ gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScrip
  
 If the extension combines the `sort` option with the `disable` or `group` functionality, the sort will operate  inside of the groups provided.
 
-<a name="overview-editscope-accessible-dropdowns"></a>
+<a name="building-create-experiences-overview-editscope-accessible-dropdowns"></a>
 ### EditScope-accessible dropdowns
 
 **NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions be developed without edit scopes, as specified in [portalfx-editscopeless-procedure.md](portalfx-editscopeless-procedure.md). For more information about forms without editScopes, see  [portalfx-editscopeless-overview.md](portalfx-editscopeless-overview.md) and [portalfx-controls-dropdown.md#migration-to-the-new-dropdown](portalfx-controls-dropdown.md#migration-to-the-new-dropdown).
@@ -181,7 +185,7 @@ For scenarios where a form is built with an `EditScope`, the Portal provides ver
 
 The following sections contain code that may resemble your  implementation of the legacy controls. They also contain code that can replace the legacy controls in the implementation.
 
-<a name="overview-editscope-accessible-dropdowns-subscriptions-dropdown"></a>
+<a name="building-create-experiences-overview-editscope-accessible-dropdowns-subscriptions-dropdown"></a>
 #### Subscriptions dropdown
 
 The following code for subscription dropdowns should be updated to use the new controls instead of `EditScopes`. 
@@ -226,7 +230,7 @@ The following code for subscription dropdowns should be updated to use the new c
 
     gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#subscriptionDropDown"}
 
-<a name="overview-editscope-accessible-dropdowns-resource-groups-legacy-dropdown"></a>
+<a name="building-create-experiences-overview-editscope-accessible-dropdowns-resource-groups-legacy-dropdown"></a>
 #### Resource groups legacy dropdown
 
 The following code for Resource Group dropdowns should be updated to use the new controls instead of `EditScopes`. 
@@ -276,7 +280,7 @@ The following code for Resource Group dropdowns should be updated to use the new
 
     gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
 
-<a name="overview-editscope-accessible-dropdowns-locations-legacy-dropdown"></a>
+<a name="building-create-experiences-overview-editscope-accessible-dropdowns-locations-legacy-dropdown"></a>
 #### Locations <strong>legacy</strong> dropdown
 
 The following code for Location dropdowns should be updated to use the new controls instead of `EditScopes`. 
@@ -322,7 +326,7 @@ The following code for Location dropdowns should be updated to use the new contr
 
     gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#locationDropDown"}
 
-<a name="overview-editscope-accessible-dropdowns-pricing-dropdown"></a>
+<a name="building-create-experiences-overview-editscope-accessible-dropdowns-pricing-dropdown"></a>
 #### Pricing dropdown
 
 The following code for Pricing dropdowns demonstrates the use of  the new controls.
@@ -338,7 +342,7 @@ import * as Specs from "Fx/Specs/DropDown";
 gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#specDropDown"}
 
 
-<a name="overview-validation"></a>
+<a name="building-create-experiences-overview-validation"></a>
 ### Validation
 
 Sometimes an extension should perform custom validation on the ARM dropdowns. For instance, you might want to check with your Resource Provider server to make sure that the selected location is available. If so, the developer can  a custom validator similar to any form field, as in the following example.
@@ -369,7 +373,7 @@ var locationsDropDownOptions: LocationsDropDown.Options = {
 this.locationsDropDown = new LocationsDropDown(container, locationsDropDownOptions);
 ```
 
-<a name="overview-validation-create-validation"></a>
+<a name="building-create-experiences-overview-validation-create-validation"></a>
 #### Create Validation
 
 Create is the first opportunity to engage customers. Errors and delays put an extension at risk of losing customers, especially new customers. To address potential issues, extensions should create resources quickly and easily. This means that the extension should handle all types of errors, including using the wrong location, exceeding quotas,  unhandled exceptions from servers or resource providers, and others.  Form field validation will help avoid failures and identify errors before deployment.
@@ -382,7 +386,7 @@ Incidents are created and monitored on the ICM dashboard that is located at   [h
 
  For more information about adding validation to your form fields, see  [top-forms-field-validation.md](top-forms-field-validation.md).  
 
-<a name="overview-validation-arm-template-deployment-validation"></a>
+<a name="building-create-experiences-overview-validation-arm-template-deployment-validation"></a>
 #### ARM template deployment validation
 
 If the form uses the ARM provisioner, you need to opt in to deployment validation manually by adding
@@ -406,7 +410,7 @@ For more information about deployment validation see the Engine V3 sample locate
 - [http://aka.ms/portalfx/samples#create/microsoft.engine](http://aka.ms/portalfx/samples#create/microsoft.engine)
 
 
-<a name="overview-automation-options"></a>
+<a name="building-create-experiences-overview-automation-options"></a>
 ### Automation options
 
 All Create forms should have automated testing to help avoid regressions. Validation is critical, and the performance of the Create blade is important  in ensuring the highest possible quality for your customers.
@@ -421,7 +425,7 @@ in the standard telemetry tables, as specified in [portalfx-telemetry.md](portal
 
 
 
-<a name="overview-initiating-create-from-other-places"></a>
+<a name="building-create-experiences-overview-initiating-create-from-other-places"></a>
 ### Initiating Create from other places
 
 Some scenarios may require launching the Create experience from outside the `+New` menu or the Marketplace. The following are supported patterns.
@@ -439,7 +443,7 @@ Some scenarios may require launching the Create experience from outside the `+Ne
 
 
 
-<a name="overview-create-marketplace-and-gallery-packages"></a>
+<a name="building-create-experiences-overview-create-marketplace-and-gallery-packages"></a>
 ### Create Marketplace and Gallery packages
 
 The Marketplace provides a categorized collection of packages that can be created in the Portal. To publish your package to the Marketplace, perform the following steps.
@@ -460,10 +464,45 @@ The Marketplace provides a categorized collection of packages that can be create
 
 ![alt-text](../media/portalfx-ui-concepts/gallery.png "The Marketplace")
 
-<a name="overview-wizards"></a>
+<a name="building-create-experiences-overview-wizards"></a>
 ### Wizards
 
 The Azure portal has a **legacy pattern** for wizard blades, because customer feedback and usability studies have proven that the design is not  ideal and therefore should not be used. In addition, the wizard does not include parameter collectors, as specified in 
 [portalfx-parameter-collection-getting-started.md](portalfx-parameter-collection-getting-started.md), which leads to complicated designs and increased development time.  Consequently it is not recommended that extensions continue to use wizards, and they are not supported.
 
 Reach out to <a href="mailto:ibizafxpm@microsoft.com?subject=Create wizards + full screen">Ibiza FX PM</a> if you have any questions about wizards and full-screen Create support.
+
+
+
+
+
+<a name="building-create-experiences-glossary"></a>
+## Glossary
+ 
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+| Term        | Meaning | 
+| ----------- | ------- |
+| collector   | An endpoint that collects and transforms information from various provisioners previous to sending it to the provider in a provider-consumer relationship. |
+| consumer    | An endpoint that requests  data from a provider that typically acts as a server. |
+| provider    | An endpoint that acts as a server in a client-server relationship.  The endpoint may be a designated peer instead of an actual server. The client-server relationship is similar to the provider-consumer relationship, and the provider  may collect and transform information from provisioners and collectors previous to sending the information to the client.  | 
+| provisioner | An endpoint that sends data to the provider, who then sends it to whatever acts as a consumer in a provider-consumer relationship.  Typically, the provider is a customer-facing endpoint, and may collect and transform information from various provisioners before returning to its role as a primary provider and sending the information to the consumer. 	| 
+
+
+
+
+
+
+<a name="building-create-experiences-glossary"></a>
+## Glossary
+ 
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+| Term        | Meaning | 
+| ----------- | ------- |
+| collector   | An endpoint that collects and transforms information from various provisioners previous to sending it to the provider in a provider-consumer relationship. |
+| consumer    | An endpoint that requests  data from a provider that typically acts as a server. |
+| provider    | An endpoint that acts as a server in a client-server relationship.  The endpoint may be a designated peer instead of an actual server. The client-server relationship is similar to the provider-consumer relationship, and the provider  may collect and transform information from provisioners and collectors previous to sending the information to the client.  | 
+| provisioner | An endpoint that sends data to the provider, who then sends it to whatever acts as a consumer in a provider-consumer relationship.  Typically, the provider is a customer-facing endpoint, and may collect and transform information from various provisioners before returning to its role as a primary provider and sending the information to the consumer. 	| 
+
+
