@@ -125,7 +125,7 @@ A working copy is located at [http://aka.ms/portalfx/samples#blade/SamplesExtens
 
 1. The following part supports only the large, standard size.
 
-     gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/PartSizes/PartSizes.pdl", "section": "parts#BasicPartThatSupportsSingleStandardSize"}
+     {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/PartSizes/PartSizes.pdl", "section": "parts#BasicPartThatSupportsSingleStandardSize"}
 
 1. The following part supports multiple, standard sizes.
 
