@@ -8,6 +8,13 @@
 
 Parts, also known as tiles, are a framework feature that integrates the UI of an extension on dashboards.  Parts were more prevalent on blades, but this older pattern is being obsoleted by TemplateBlades that do not contain parts. For more information about template blades, see [portalfx-blades-overview.md](portalfx-blades-overview.md).
 
+Intrinsic parts are composed of existing controls in the portal, and provide patterns for solving common patterns in the portal.
+
+Many of the intrinsics can be found in the playground located at [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground).
+
+The remainder of them can be located in the working copy located at  [https://aka.ms/portalfx/samples/#blade/SamplesExtension/IntrinsicPartsIndexBlade](https://aka.ms/portalfx/samples/#blade/SamplesExtension/IntrinsicPartsIndexBlade).
+
+
 The following sections cover these topics.
 
 1. [Traditional Blades versus Template Blades](#traditional-parts-and-template-blades)
@@ -305,73 +312,7 @@ public onInputsSet(inputs: Def.InputsContract, settings: Def.SettingsContract): 
 
  
  
-<a name="parts-intrinsic-parts"></a>
-## Intrinsic Parts
-
-Intrinsic parts are composed of existing controls in the portal, and provide patterns for solving common patterns in the portal.
-
-**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
-
-Many of the intrinsics can be found in the playground located at [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground).
-
-The remainder of them can be located in the working copy located at  [https://aka.ms/portalfx/samples/#blade/SamplesExtension/IntrinsicPartsIndexBlade](https://aka.ms/portalfx/samples/#blade/SamplesExtension/IntrinsicPartsIndexBlade).
-
-<a name="parts-asset"></a>
-## Asset
-
-![alt-text](../media/portalfx-controls/asset.png "Asset")
-
-<a href="https://aka.ms/portalfx/samples/#blade/SamplesExtension/AssetPartIntrinsicInstructions">
-Learn how to use the Asset part.
-</a>
-
-<a name="parts-collection-summary"></a>
-## Collection Summary
-
-![alt-text](../media/portalfx-controls/collectionsummary.png "collectionSummary")
-
-<a href="https://aka.ms/portalfx/samples/#blade/SamplesExtension/CollectionSummaryPartIntrinsicInstructions">
-Learn how to use the Collection Summary part.
-</a>
-
-<a name="parts-info-list"></a>
-## Info List
-
-![alt-text](../media/portalfx-controls/infolist.png "InfoList")
-
-<a href="https://aka.ms/portalfx/samples/#blade/SamplesExtension/InfoListPartIntrinsicInstructions">
-Learn how to use the Info list part.
-</a>
-
-<a name="parts-properties"></a>
-## Properties
-
-<a href="https://aka.ms/portalfx/samples/#blade/SamplesExtension/PropertiesPartIntrinsicInstructions">
-Learn how to use the Properties part.
-
-<a name="parts-quickstart"></a>
-## Quickstart
-
-![alt-text](../media/portalfx-controls/quickstart.png "Quickstart")
-
-<a href="https://aka.ms/portalfx/samples/#blade/SamplesExtension/QuickstartPartIntrinsicInstructions">
-Learn how to use the Quick start part.
-</a>
-
-<a name="parts-setup"></a>
-## Setup
-
-![alt-text](../media/portalfx-controls/setup.png "setupPartTitle")
-
-![alt-text](../media/portalfx-controls/settings.png "Settings")
-
-<a href="https://aka.ms/portalfx/samples/#blade/SamplesExtension/SetupPartBlade">
-Learn how to use the Setup part.
-</a>
-
- 
- 
-<a name="parts-setup-permanently-discontinue-a-part"></a>
+<a name="parts-versioning-permanently-discontinue-a-part"></a>
 ### Permanently discontinue a part
 
 Developers occasionally build and ship parts, and later  discontinue their functionality. However, there may be cases where these parts were pinned and  incorporated into the layout of a user's dashboard.
@@ -382,9 +323,7 @@ To discontinue a part, developers delete the majority of the code, but leave eno
 
 This ensures that customers are informed that this part is no longer supported, and that parts that fail will not be displayed on their dashboards.
 
-  
-   
-<a name="parts-setup-removing-a-part-from-a-blade-default-layout"></a>
+<a name="parts-versioning-removing-a-part-from-a-blade-default-layout"></a>
 ### Removing a part from a blade default layout
 
 An unlocked blade's default layout should consist of tiles that provide the most  value to users and still meet extension performance goals out-of-the-box.  That layout may change over time, and your team may decide that a part that was included in a blade's default layout should be removed.
@@ -408,6 +347,7 @@ The following procedure to remove a part from a blade  layout.
 </RedirectPart>
 ```
 
+  
    
 <a name="parts-revealing-part-content"></a>
 ## Revealing part content
@@ -513,8 +453,6 @@ Also, if the promise that was returned from `onInputsSet` is rejected, the part 
 ![alt-text](../media/portalfx-parts/default-error-UX.png "Default error UX")
 
      gitdown": "include-file", "file": "../templates/portalfx-parts-errors.md"}
-
-    gitdown": "include-file", "file": "../templates/portalfx-parts-assets-dont-exist.md"}
 
    gitdown": "include-file", "file": "../templates/portalfx-extensions-samples-parts.md"}
 
