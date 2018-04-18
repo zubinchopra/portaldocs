@@ -33,11 +33,13 @@
   {"gitdown": "include-headings", "file": "../templates/portalfx-permissions.md"}
   {"gitdown": "include-headings", "file": "../templates/portalfx-notifications.md"}
   {"gitdown": "include-headings", "file": "../templates/portalfx-subscriptions.md"}
-  {"gitdown": "include-headings", "file": "../templates/portalfx-tags.md"}
-  {"gitdown": "include-headings", "file": "../templates/portalfx-resourcemove.md"}
-  {"gitdown": "include-headings", "file": "../templates/portalfx-extension-pricing-tier.md"}
+    gitdown": "include-headings", "file": "../templates/portalfx-tags.md"}
+    gitdown": "include-headings", "file": "../templates/portalfx-resourcemove.md"}
+    gitdown": "include-headings", "file": "../templates/portalfx-extension-pricing-tier.md"}
 
 ## Other
+
+<!--TODO: Determine which of these is stopping the GitHub include process -->
 
     gitdown": "include-headings", "file": "../templates/portalfx-binding-reference.md"}
     gitdown": "include-headings", "file": "../templates/portalfx-blades-viewmodel.md"}
