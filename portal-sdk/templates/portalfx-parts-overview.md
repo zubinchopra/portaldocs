@@ -12,13 +12,19 @@ The remainder of them can be located in the working copy located at  [https://ak
 
 The following sections cover these topics.
 
-1. [Traditional Blades versus Template Blades](#traditional-parts-and-template-blades)
-1. [Displaying data by using intrinsic parts](#displaying-data-by-using-intrinsic-parts)
-1. [Custom parts](#custom-parts)
-1. [Integrating parts into the part gallery](#integrating-parts-into-the-part-gallery)
-1. [Defining the sizing behavior](#defining-the-sizing-behavior)
-1. [Per-user part settings](#per-user-part-settings)
-1. [The no-data message](#the-no-data-message)
+* [Traditional Blades versus Template Blades](#traditional-parts-and-template-blades)
+
+* [Displaying data by using intrinsic parts](#displaying-data-by-using-intrinsic-parts)
+
+* [Custom parts](#custom-parts)
+
+* [Integrating parts into the part gallery](#integrating-parts-into-the-part-gallery)
+
+* [Defining the sizing behavior](#defining-the-sizing-behavior)
+
+* [Per-user part settings](#per-user-part-settings)
+
+* [The no-data message](#the-no-data-message)
 
 * * * 
 
