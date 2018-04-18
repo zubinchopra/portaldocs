@@ -8,7 +8,6 @@
 
 {"gitdown": "include-headings", "file": "../templates/portalfx-browse.md"}
 
-
 ## Basic Concepts
 
 {"gitdown": "include-headings", "file": "../templates/portalfx-ui-concepts.md"}
@@ -25,7 +24,6 @@
 
 {"gitdown": "include-headings", "file": "../templates/portalfx-provisioning-arm.md"}
 
-
 ## Resource management
 
   {"gitdown": "include-headings", "file": "../templates/portalfx-assets.md"}
@@ -39,10 +37,9 @@
   {"gitdown": "include-headings", "file": "../templates/portalfx-resourcemove.md"}
   {"gitdown": "include-headings", "file": "../templates/portalfx-extension-pricing-tier.md"}
 
-
 ## Other
 
-  {"gitdown": "include-headings", "file": "../templates/portalfx-binding-reference.md"}
-  {"gitdown": "include-headings", "file": "../templates/portalfx-blades-viewmodel.md"}
-  {"gitdown": "include-headings", "file": "../templates/portalfx-load-configuration.md"}
+    gitdown": "include-headings", "file": "../templates/portalfx-binding-reference.md"}
+    gitdown": "include-headings", "file": "../templates/portalfx-blades-viewmodel.md"}
+    gitdown": "include-headings", "file": "../templates/portalfx-load-configuration.md"}
 
