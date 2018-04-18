@@ -17,8 +17,6 @@
 
   {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-debugging.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-stackoverflow.md"}
-
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-debugging.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-debugging.md"}
