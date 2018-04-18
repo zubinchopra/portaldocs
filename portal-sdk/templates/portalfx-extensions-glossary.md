@@ -90,27 +90,27 @@
 
 ## Parts
 
-{"gitdown": "include", "file": "./portalfx-extensions-glossary-parts.md"}
+  gitdown": "include", "file": "./portalfx-extensions-glossary-parts.md"}
 
 ## Performance
 
-{"gitdown": "include", "file": "./portalfx-extensions-glossary-performance.md"}
+  gitdown": "include", "file": "./portalfx-extensions-glossary-performance.md"}
 
 ## Resource Menu
 
-{"gitdown": "include", "file": "./portalfx-extensions-glossary-resourcemenu.md"}
+  gitdown": "include", "file": "./portalfx-extensions-glossary-resourcemenu.md"}
 
 ## Sideloading
 
-{"gitdown": "include", "file": "./portalfx-extensions-glossary-sideloading.md"}
+  gitdown": "include", "file": "./portalfx-extensions-glossary-sideloading.md"}
 
 ## Style Guide
 
-{"gitdown": "include", "file": "./portalfx-extensions-glossary-style-guide.md"}
+  gitdown": "include", "file": "./portalfx-extensions-glossary-style-guide.md"}
 
 ## Testing
 
-{"gitdown": "include", "file": "./portalfx-extensions-glossary-testing.md"}
+  gitdown": "include", "file": "./portalfx-extensions-glossary-testing.md"}
 
 ## No-PDL Programming
 
