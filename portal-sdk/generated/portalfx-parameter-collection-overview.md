@@ -1,20 +1,5 @@
-* [Introduction to Parameter Collection](#introduction-to-parameter-collection)
-    * [Roles](#introduction-to-parameter-collection-roles)
-        * [Collectors and Providers](#introduction-to-parameter-collection-roles-collectors-and-providers)
-        * [Provisioners](#introduction-to-parameter-collection-roles-provisioners)
-    * [Implementation](#introduction-to-parameter-collection-implementation)
-    * [More details](#introduction-to-parameter-collection-more-details)
 
-
-<div class="wa-documentationArticle-meta">
-  <p class="wa-linkArray">
-    Related documents:
-    <a href="portalfx-parameter-collection-overview.md">Parameter Collection Overview</a>
-    <a href="portalfx-parameter-collection-getting-started.md">Parameter Collection v3 Getting Started </a>
-    <a href="portalfx-parameter-collection-v2.md">PCv2 (Obsolete)</a>
-  </p>
-</div>
-
+For a list of related files, see [portalfx-parameter-collection-related.md](portalfx-parameter-collection-related.md). 
 
 <a name="introduction-to-parameter-collection"></a>
 # Introduction to Parameter Collection

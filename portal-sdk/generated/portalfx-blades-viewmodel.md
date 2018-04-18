@@ -22,29 +22,7 @@ Or this:
 
 The properties on the `ViewModel` that creates this blade are in the following example.
 
-```typescript
-
-/**
- * Textbox control containing the user's name.
- */
-public nameTextBox: TextBox.ViewModel;
-
-/**
- * Observable containing either a numeric textbox or a textbox.
- */
-public smartPhone: KnockoutObservable<TextBox.ViewModel>
-
-/**
- * OK button for submitting updated user data back to server.
- */
-public okButton: Button.Contract;
-
-/**
- * EntityView containing the person being edited
- */
-private _view: MsPortalFx.Data.EntityView<Person, any>;
-
-```
+  gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Blades/ViewModelInitExample/ViewModels/ViewModelInitExample.ts", "section": "bladeViewModel#properties"}
 
 Private members of the blade `ViewModel` are properties whose name starts with an underscore. The proxied observable layer does not transfer private members to the shell iframe. For example, the `EntityView` object named `_view` is not directly used in the rendering of the blade, therefore it does not appear in the blade template, nor is it proxied to the shell iframe.
 
@@ -52,13 +30,7 @@ Private members of the blade `ViewModel` are properties whose name starts with a
 
 The template for this blade is in the following example.
 
-```xml
-
-<div data-bind="pcControl: nameTextBox"></div>
-<div data-bind="pcControl: smartPhone"></div>
-<div data-bind="pcControl: okButton"></div>
-
-```
+ gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Blades/ViewModelInitExample/Templates/Template.html", "section": "bladeViewModel#template"}
 
 <a name="overview-the-blade-constructor"></a>
 ### The blade constructor
@@ -67,25 +39,7 @@ When a blade is opened, the Portal creates a blade that displays a loading UX in
 
 This example will always need a readonly textbox for the name and an OK button to close the blade, so they are created in the constructor.  The constructor is not aware of  the value of the name textbox yet, because the values are only known after the  data is retrieved.  The value can be updated later because the `value` property of the textbox view model is observable, as in the following example of the blade  `ViewModel` constructor.
 
-```typescript
-
-this._view = dataContext.personData.peopleEntities.createView(container);
-
-this.nameTextBox = new TextBox.ViewModel(container, {
-    readonly: true,
-    label: ko.observable("Name")
-});
-
-this.smartPhone = ko.observable<TextBox.ViewModel>();
-
-this.okButton = Button.create(container, {
-    text: "OK",
-    onClick: () => {
-        container.closeChildBlade();
-    }
-});
-
-```
+  gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Blades/ViewModelInitExample/ViewModels/ViewModelInitExample.ts", "section": "bladeViewModel#constructor"}
 
 <a name="overview-the-blade-constructor-observable-and-non-observable-values"></a>
 #### Observable and non-observable values
@@ -133,28 +87,7 @@ this._buttonText("New button text");
 
 When the input values for the blade are ready, the framework will call the `onInputsSet` method. This is often when the extension fetches the data for the blade and update the view models that were created in the constructor. When the promise  that is returned from the `onInputsSet` method is resolved, the blade is considered 'loaded' the loading UI indicator will be removed from the blade. The following is the `onInputsSet` method for the person object example.
 
-```typescript
-
-return this._view.fetch(inputs.id).then(() => {
-    let person = this._view.data;
-
-    // populate name textbox value
-    this.nameTextBox.value(person.name());
-
-    // if smartphone has a value create a control to display it
-    // otherwise leave it empty
-    let smartPhone = person.smartPhone();
-    if (smartPhone) {
-        let textBox = new TextBox.ViewModel(this._container, {
-            readonly: true,
-            label: ko.observable("Smart phone"),
-            defaultValue: ko.observable(smartPhone)
-        });
-        this.smartPhone(textBox);
-    }
-});
-
-```
+  gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Blades/ViewModelInitExample/ViewModels/ViewModelInitExample.ts", "section": "bladeViewModel#onInputsSet"}
 
 The extension uses a `fetch()` to get data from the server, based on the inputs provided by the Framework. The return value for the `onInputSet` is the `promise` that is returned by the fetch call, so that the blade can be displayed as soon as the data is loaded. There is  also a `then()` on the fetch promise so that the extension can populate the dynamic pieces of the blade. The steps to display the person object with the data that was retrieved from the server are as follows.
 
@@ -164,15 +97,10 @@ The extension uses a `fetch()` to get data from the server, based on the inputs 
 
     When the textbox `ViewModel` is written to the `smartPhone` observable, the `pcControl` binding handler in the blade template observes the new `ViewModel` and constructs a textbox control. If the observable is not populated, the `<div>` in the template remains empty, and nothing is displayed on the blade.
 
-<a name="overview-best-practices-when-using-observables"></a>
-### Best practices when using observables
+<a name="overview-efficient-mutation-of-observable-arrays"></a>
+### Efficient mutation of observable arrays
 
-* Proper naming of `ViewModel` properties
-
-  - The easiest thing you can do to improve performance is make sure proxied observables is not copying data to the shell that is only needed in the extension iframe. The shell will warn you when it sees certain types of objects (like an editscope) being sent to the shell but it can't guard against everything. It is on the extension author to review their view model and ensure the right data is public vs private. Any private member name should start with an underscore so that proxied observables knows not to send the property to the shell.
-
-* Efficient mutation of observable arrays
-  - While doing:
+Using the following example can lead to severe performance problems in an extension because it queues 100 observable updates of one item each.
 
   ```ts
   let numbers = ko.observable([]);
@@ -181,7 +109,10 @@ The extension uses a `fetch()` to get data from the server, based on the inputs 
   }
   ```
 
-  and
+<a name="overview-efficient-mutation-of-observable-arrays-case-1-code-with-performance-problems"></a>
+##### Case 1: Code with performance problems
+
+The following code is much more performant because it queues a single observable update that contains 100 items.
 
   ```ts
   let tempArray = [];
@@ -191,23 +122,30 @@ The extension uses a `fetch()` to get data from the server, based on the inputs 
   let numbers = ko.observable(tempArray);
   ```
 
-  Might look more or less equivalent the first example above can lead to SEVERE performance problems. In terms of observable   changes the first example queues 100 observable updates of one item each. The second example queues a single observable update   with 100 items.
+<a name="overview-efficient-mutation-of-observable-arrays-case-2-performant-code"></a>
+##### Case 2: Performant code
 
-  This is obviously a fictional example but let's say we were pushing data points to a series displayed on a chart that had   auto-scaling of it's axes turned on. Let's assume it takes 0.01 seconds to render an extra data point but 0.5 seconds to   recalcuate the scale of the x-axis and the y-axis every time the data is updated.
+In a more real example, an extension is pushing data points to a series displayed on a chart that is currently using auto-scaling of its axes. It takes 0.01 seconds to render an extra data point, but 0.5 seconds to recalcuate the scale of the x-axis and the y-axis every time the data is updated.
 
-  In this case the first example would take 100 * (0.01 + 0.5) = 51 seconds to process all the changes. The second example   would take (100 * 0.01) + 0.5 = 1.5 seconds to process the changes. That is a *3400% difference*. Again, this is a made up   example but we have seen this mistake made by extension authors again and again that results in real performance problems.
+In this example, the code in Case 1 would take 100 * (0.01 + 0.5) = 51 seconds to process all the changes, but the code in Case 2 would take (100 * 0.01) + 0.5 = 1.5 seconds to process the changes, for a difference of 3400%. This non-performant code results in performance problems that are serious enough that the Framework attempts to detect this type of code in an  extension.  When the Framework encounters this type of code, it displays the following warning  message.
 
-  This is such a common problem the framework attempts to detect when an extension writes this type of code and warns them   with the message:
+```
+Performance warning: A proxied observable array is mutated inefficiently.
+```
 
-  Performance warning: A proxied observable array is mutated inefficiently.
+Typically, this means there is a repeated `push()` on an observable array somewhere in the code, although there are other inefficient array mutations that the Framework can call out.
 
-  Generally this means you have somewhere in your code doing a repeated push() on an observable array (although there are a few  other inefficient array mutations it attempts to catch). If you ever see this warning in the console please take them time   to figure out what is going on and address the issue.
+When you encounter this warning in the console, please address the issue.
 
-<a name="data-pureComputed">
-<a name="overview-ko-purecomputed"></a>
-### ko.pureComputed()
+<a name="overview-the-ko-purecomputed-method"></a>
+### The ko.pureComputed method
 
-You might have noticed unlike `ko.reactor` or knockout's observable subscribe method the Portal's version of the knockout `pureComputed()` has not been modified to take a lifetime manager. Knockout has some good documentation on pureComputeds [here](http://knockoutjs.com/documentation/computed-pure.html) but in a nut shell the reason is that any knockout dependencies (which are the things that will pin a computed or observable in memory) associated with the pureComputed are allocated only when someone is listening to the pureComputed and are cleaned up as soon everyone stops listening to the pureComputed. This works great for 'pure' functions where there are no side effects which applies to the vast majority of cases where you would like to create a computed so you should always try to use a pureComputed as opposed to a ko.reactor. Here's an example to help you understand the difference between the two so you know when you need to use a reactor as opposed to a pureComputed:
+<!-- TODO: Determine what is meant by "everyone".  Is this multiple extensions, multiple blades, or multiple ViewModels? -->
+You might have noticed unlike `ko.reactor` or knockout's observable subscribe method, the Portal's version of the knockout `pureComputed()` has not been modified to use a lifetime manager. The reason is that any **Knockout** dependencies (which are the things that will pin a computed or observable in memory) that are associated with the `pureComputed` are allocated only when someone is listening to the `pureComputed`. They   are cleaned up when everyone stops listening to the `pureComputed`.
+
+This works great for the vast majority of cases for 'pure' functions where there are no side effects. Consequently, it is good practice to use a `pureComputed` instead of a `ko.reactor` method. 
+
+The following example demonstrates the difference between the  `pureComputed` method and the  `ko.reactor` method. 
 
 ```ts
 let obsNum = ko.observable(0);
@@ -239,21 +177,26 @@ According to pureComputed obsNum changed 0 times
 According to reactor obsNum changed 3 times
 ```
 
-Here incrementing `pureComputedCounter` or `reactorCounter` is a side-effect because it has no bearing on the value of the observables produced by the functions (`pure` and `reactor`). If you need a side effect use `ko.reactor()`. If you don't use `ko.pureComputed()`. (Note: if we had added `pure.subscribe(lifetime, (val) => console.log(val.toString()))` right after creating `pure` then `pureComputedCounter` would have been incremented to 3 as well because the pureComputed becomes live as soon as a listener is attached).
+In this example, incrementing `pureComputedCounter` or `reactorCounter` is a side-effect because it has no bearing on the value of the observables that are produced by the functions (`pure` and `reactor`). If the  side-effect is needed, the extension should  use the  `ko.reactor()` method; otherwise, it should  use the  `ko.pureComputed()` method.
+
+**NOTE**: If the extension code contained `pure.subscribe(lifetime, (val) => console.log(val.toString()))` right after creating `pure`, then `pureComputedCounter` would also have been incremented to 3 because the `pureComputed` becomes live as soon as a listener is attached.
+
+For more information about `pureComputeds`, see [http://knockoutjs.com/documentation/computed-pure.html](http://knockoutjs.com/documentation/computed-pure.html).
 
 <a name="overview-the-ko-reactor-method"></a>
 ### The ko.reactor method
 
-Any observables read in the function that are sent to `ko.reactor()` will become a dependency for that reactor.  The reactor will recompute whenever any of those observable values change. The same is true for the  `ko.pureComputed()` method  and the observable array's `map()` and `mapInto()` functions. This can lead to a situation where a computed is recalculating at times you never intended. For more information about `map` and `mapInto`, see [portalfx-data-projections.md#shaping-and-filtering-data](portalfx-data-projections.md#shaping-and-filtering-data).
+Any observables read in the function that are sent to `ko.reactor()` will become a dependency for that reactor.  The reactor will recompute whenever any of those observable values change. The same is true for the  `ko.pureComputed()` method and the observable array's `map()` and `mapInto()` functions. This can lead to a situation where a `computed` is recalculating unintentionally. For more information about `map` and `mapInto`, see [portalfx-data-projections.md#shaping-and-filtering-data](portalfx-data-projections.md#shaping-and-filtering-data).
 
-Whenever you write a pureComputed or a reactor it's always a good idea to put a breakpoint in the computed function and see when and why. We have seen computed functions that should run once actually run 30+ time and waste CPU time recalculating things that didn't need to be recalculated. If another computed takes a dependency on that computed the problem grows expontentially.
+It is also good practice to put a breakpoint in the `computed` function whenever a `pureComputed` or a `reactor` to determine how many times each function runs.  There have been instances when `computed` functions that should run once actually ran more than thirty times, which wastes CPU time on unnecessary  recalculations.  If another `computed` takes a dependency on the function that runs too often,  the CPU consumption performance issue grows exponentially.
 
-This is actually such a common problem the framework has code that attempts to detect problematic computed functions. When a computed is created that has dependencies on 30 or more other observables the shell will output an error to the console. This should be an 
-indication to the extension author the computed has likely picked up unnecessary dependencies and is wasting time recomputing when  those dependencies change.
+Consequently, the Framework attempts to detect problematic computed functions. When a `computed` is created that has dependencies on 30 or more other observables, the Shell will send an error message to the console. This allows the developer to locate unnecessary dependencies on the `computed` has likely that are wasting time recomputing when the dependencies change.
 
-There are a few strategies you can use to ensure your computed only calculates when you intend it to:
+The following strategies can be used to ensure that the `computed` only calculates when the developer intends that it should.
 
-* Try to avoid calling other functions in your computed method. When the entire implementation of the computed is visible in one place it's not too hard to scan the code and figure out what observables are dependencies of the function. If you write something like:
+1. Use the explicit dependency overload of `ko.reactor()`/`ko.pureComputed()`. The functions are overloaded, so that they can subscribe to a list of observables that the extension can send in the second parameter. When this overload is used, an observable that is read by the `computed` function will not become a dependency. Instead, the `computed` will only recalculate when the observables that were listed as dependencies are changed.
+
+1. Avoid calling other functions in the `computed` method. When the entire implementation of the computed is inline, it is easier to scan the code to determine what observables are dependencies of the function. For example, the private member `_processfoo` in the following code may call three more helper methods, which makes it more difficult to determine which observables will cause `computed()` to recalculate.
 
 ```ts
 let computed = ko.pureComputed(() => {
@@ -262,13 +205,16 @@ let computed = ko.pureComputed(() => {
 });
 ```
 
-And `_processFoo()` calls three more helper methods it becomes a lot of work to figure out which observables will cause `computed()` to 
-recalculate.
+1. Use `ko.ignoreDependencies()` inside the computed function. For example, the original code might be as in the following example.
 
-* Use the explicit dependency overload of ko.reactor()/ko.pureComputed(). There is an overload of those functions that takes as a second parameter a list of observables to subscribe to. When this overload is used an observable that is read is the computed function will not become a dependency. No matter what code is called inside the body of the computed you can be sure it will only recalculate when the observables you listed as dependencies are changed.
+```ts
+let computed = ko.reactor(lifetime, [this.foo, this.bar], (foo, bar) => {
+    this._processFoo(foo, bar);
+});
+```
 
-* Use ko.ignoreDependencies() inside your computed function. Doing:
-
+The previous code has been refactored for readability by using the `ko.ignoreDependencies()` function. The improved code is in the following example.
+ 
 ```ts
 let computed = ko.reactor(lifetime, () => {
     let foo = this.foo();
@@ -278,13 +224,3 @@ let computed = ko.reactor(lifetime, () => {
     });
 });
 ```
-
-Is equivalent to doing:
-
-```ts
-let computed = ko.reactor(lifetime, [this.foo, this.bar], (foo, bar) => {
-    this._processFoo(foo, bar);
-});
-```
-
-(The second just looks a lot cleaner).

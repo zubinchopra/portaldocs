@@ -43,6 +43,8 @@ Perform the following steps to open a blade from  a different extension.
 
 The following `openBlade` methods are now available on the template blade container.
 
+<!-- TODO: Determine whether   openContextBlade exists on this object. -->
+
 ```javascript
     // opens a blade right now
     openBlade(bladeToOpen: BladeReference): Promise<boolean>; 

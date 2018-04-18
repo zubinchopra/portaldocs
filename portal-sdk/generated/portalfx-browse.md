@@ -1,26 +1,22 @@
-* [Building browse experiences](#building-browse-experiences)
-    * [No-code Browse](#building-browse-experiences-no-code-browse)
-    * [Implementing a Browse provider](#building-browse-experiences-implementing-a-browse-provider)
-    * [Custom blade permalink-browse-custom-blade](#building-browse-experiences-custom-blade-permalink-browse-custom-blade)
 
 
 <a name="building-browse-experiences"></a>
 ## Building browse experiences
 
-The Favorites in the left nav and the Browse menu are the primary ways to launch tools and services within the portal. The default favorites are determined by C+E leadership based on the highest grossing services with the most engaged customers. New services will start in the Browse menu and, based on those metrics or the number of favorites surpasses other defaults, the list can be updated.
+The primary ways to launch tools and services within the portal are the Favorites in the left navigation panel and the Browse menu. New services start in the Browse menu, but the default favorites are determined by C+E leadership. The list can be updated based on those metrics or the number of favorites surpasses other defaults.
+ 
+There are 3 ways that an extension can be surfaced in Browse.
 
-There are 3 ways you can be surfaced in Browse:
+1. ["No-code" Browse](#no-code-browse) for ARM resources
 
-1. ["No-code" Browse](#resources) for ARM resources
-2. [Browse service](#assets) for assets that don't use ARM (aka Browse v1)
-3. [Custom blade](#blade) if you have a single instance and not a list of resources
+1. [Browse service](#browse-service) for assets that don't use ARM (aka Browse v1)
 
+1. [Custom blade](#blade) if you have a single instance and not a list of resources
 
-<a name="resources"></a>
 <a name="building-browse-experiences-no-code-browse"></a>
 ### No-code Browse
 
-"No-code" Browse automatically queries ARM for resources of a specific type and displays them in a paged grid. Simply define an asset type in PDL, specify the resource type, indicate that it should be visible in the Browse hub, and specify the API version that hubs extension should use to call ARM for the resource type. That's it.
+"No-code" Browse automatically queries ARM for resources of a specific type and displays them in a paged grid. No-code Browse requires that an asset blade must accept a single `Id` input property, and that the asset id must be the resource id (not an object). The developer should define an asset type in PDL, specify the resource type, and specify the API version that the Hubs extension should use to call ARM for the resource type, as in the following example.
 
 ```xml
 <AssetType Name="Book" ... >
@@ -29,17 +25,14 @@ There are 3 ways you can be surfaced in Browse:
 </AssetType>
 ```
 
-![No-code Browse grid](../media/portalfx-browse/nocode.png)
+Then, the extension should specify that the resource should be visible in the Browse hub.
 
-No-code Browse requires the following:
+![alt-text](../media/portalfx-browse/nocode.png "No-code Browse grid")
 
-* Asset blade must accept a single `Id` input property
-* Asset id must be the resource id (not an object)
+<a name="building-browse-experiences-no-code-browse-create"></a>
+#### Create
 
-<a name="create"></a>
-<a name="building-browse-experiences-no-code-browse-add-command"></a>
-#### Add command
-To allow people to create new resources from Browse, you can associate your asset type with a Marketplace item or category:
+To allow developers to create new resources from Browse, the asset type can be associated  with a Marketplace item or category, as in the following example.
 
 ```xml
 <AssetType
@@ -52,11 +45,11 @@ To allow people to create new resources from Browse, you can associate your asse
 </AssetType>
 ```
 
-The Browse blade will launch the Marketplace item, if specified; otherwise, it will launch the Marketplace category blade for the specific menu item id (e.g. `gallery/virtualMachines/recommended` for Virtual machines > Recommended). To determine the right Marketplace category, contact the <a href="mailto:1store?subject=Marketplace menu item id">Marketplace team</a>. If neither is specified, the Add command won't be available.
+The Browse blade launches the Marketplace item, if specified; otherwise, it launches the Marketplace category blade for the specific menu item id. For example, `gallery/virtualMachines/recommended` is the id for the menu item that can be reached by `Virtual machines > Recommended`. To determine the right Marketplace category, contact the <a href="mailto:1store?subject=Marketplace menu item id">Marketplace team</a>. If neither the Marketplace item nor the Marketplace category blade is specified, the Add command will not be available.
 
-<a name="columns"></a>
 <a name="building-browse-experiences-no-code-browse-customizing-columns"></a>
 #### Customizing columns
+
 By default, no-code Browse only shows the resource name, group, location, and subscription. To customize the columns, add a view-model to the `AssetType` and indicate that you have custom Browse config:
 
 ```xml
@@ -130,9 +123,9 @@ Notice that the genre column actually renders 2 properties: genre and subgenre. 
 
 At this point, you should be able to compile and see your columns show up in your Browse blade. Of course, you still need to populate your supplemental data. Let's do that now...
 
-<a name="supplementaldata"></a>
 <a name="building-browse-experiences-no-code-browse-providing-supplemental-data"></a>
 #### Providing supplemental data
+
 In order to specify supplemental data to display on top of the standard resource columns, you'll need to opt in to specifying supplemental data in PDL:
 
 ```xml
@@ -221,9 +214,9 @@ class BookViewModel implements ExtensionDefinition.ViewModels.ResourceTypes.Book
 
 Now, you should have supplemental data getting populated. Great! Let's add context menu commands...
 
-<a name="commands"></a>
 <a name="building-browse-experiences-no-code-browse-adding-context-menu-commands"></a>
 #### Adding context menu commands
+
 Context menu commands in Browse must take a single `id` input parameter that is the resource id of the specific resource. To specify commands, add the name of the command group defined in PDL to Browse config:
 
 ```xml
@@ -252,9 +245,9 @@ class BookViewModel implements ExtensionDefinition.ViewModels.ResourceTypes.Book
 
 If you need to expose different commands based on some other metadata, you can also specify the the command group in `SupplementalData.contextMenu` in the same way.
 
-<a name="infobox"></a>
 <a name="building-browse-experiences-no-code-browse-adding-an-informational-message-link"></a>
-#### Adding an informational message/link
+#### Adding an informational message link
+
 If you need to display an informational message and/or link above the list of resources, add an `infoBox` to your Browse config:
 
 ```ts
@@ -285,8 +278,6 @@ class BookViewModel implements ExtensionDefinition.ViewModels.ResourceTypes.Book
 }
 ```
 
-
-<a name="assets"></a>
 <a name="building-browse-experiences-no-code-browse-browse-service"></a>
 #### Browse service
 
@@ -421,12 +412,12 @@ browse is as easy as defining an asset type, adding a grid column service, and
 writing the browse service. The workflow for browse is as follows:
 
 1. The user asks for a list of assets.
-2. The shell will create a new browse service view model.
+2. The shell will create a new browse service ViewModel.
 3. The service will return an (initially empty) observable array which contains the results.
 4. The service will ask it's back-end data source for an updated list of assets.
 5. The list will be kept up to date via `MsPortalFx.Data.Loader` polling.
 6. When the user closes the browse blade, the `canceled` property on the service is set to `true`.
-7. The view model is disposed.
+7. The ViewModel is disposed.
 
 There is a full reference implementation in
 `\Client\Hubs\Browse\Services\RobotBrowseService.ts`:
@@ -488,7 +479,6 @@ module SamplesExtension.Hubs {
 ```
 
 
-<a name="blade"></a>
 <a name="building-browse-experiences-custom-blade-permalink-browse-custom-blade"></a>
 ### Custom blade permalink-browse-custom-blade
 

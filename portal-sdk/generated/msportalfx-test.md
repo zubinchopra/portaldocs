@@ -1,10 +1,9 @@
 
-<a name="overview"></a>
-## Overview
+  ## Overview
 
 MsPortalFx-Test is an end-to-end test framework that runs tests against the Microsoft Azure Portal interacting with it as a user would. 
 
-<a name="overview-goals"></a>
+<a name="goals"></a>
 ### Goals
 
 - Strive for zero breaking changes to partner team CI
@@ -16,7 +15,7 @@ MsPortalFx-Test is an end-to-end test framework that runs tests against the Micr
 - Robust
 - Great Docs
 
-<a name="overview-general-architecture"></a>
+<a name="general-architecture"></a>
 ### General Architecture
 
 3 layers of abstraction (note the names may change but the general idea should be the same).  There may also be some future refactoring to easily differentiate between the layers.
@@ -43,7 +42,7 @@ MsPortalFx-Test is an end-to-end test framework that runs tests against the Micr
 
 
 
-
+  
 <a name="getting-started"></a>
 ## Getting Started
 
@@ -240,11 +239,11 @@ If you don't have access, please follow the enlistment instructions below.
 1. Once that is done you should be able to build and then see your test in the test explorer.  If you don’t see your tests, then make sure you don’t have any build errors.  You can also try restarting Visual Studio to see if that makes them show up.  
 
 
+  
+<a name="sideloading-a-local-extension-during-the-test-session"></a>
+## Sideloading a local extension during the test session
 
-<a name="side-loading-a-local-extension-during-the-test-session"></a>
-## Side loading a local extension during the test session
-
-You can use MsPortalFx-Test to write end to end tests that side load your local extension in the Portal. You can do this by specifying additional options in the Portal object. If you have not done so, please take a look at the *Installation* section of [this page](https://auxdocs.azurewebsites.net/en-us/documentation/articles/portalfx-testing-getting-started) to learn how to get started with MsPortalFx-Test. 
+You can use MsPortalFx-Test to write end to end tests that sideload your local extension in the Portal. You can do this by specifying additional options in the Portal object. If you have not done so, please take a look at the *Installation* section of [this page](https://auxdocs.azurewebsites.net/en-us/documentation/articles/portalfx-testing-getting-started) to learn how to get started with MsPortalFx-Test. 
 
 We'll write a test that verifies that the Browse experience for our extension has been correctly implemented. But before doing that we should have an extension to test and something to browse to, so let's work on those first.
 
@@ -258,7 +257,7 @@ To prepare the target extension and resource:
 
 1. Wait for the resource to get created.
 
-To write a test verifies the Browse experience while side loading your local extension:
+To write a test that verifies the Browse experience while sideloading your local extension:
 
 1. Create a new TypeScript file called **localextensiontests.ts**.
  
@@ -411,8 +410,7 @@ The following output will be sent to your console as the test progresses:
 	  1 passing (23s)
 
 
-<a name="running"></a>
-## Running
+  ## Running
 
 * In Dev
 
@@ -454,6 +452,7 @@ The following output will be sent to your console as the test progresses:
             At the end of your script you will need to copy the resulting trx file to the TestResults folder where Cloudtest expects to pick it up from. To generate a trx file, we used the mocha-trx-reporter npm package. To pass secrets to cloudtest, you can either use test secretstore which has been configured to use a certificate installed on all cloudtest VMs for particular paths, or one of the other solutions shown [here](https://stackoverflow.microsoft.com/questions/11589/getting-ais-token-in-cloudtest-machine/11665#11665)
 
             RunTests.ps1
+            
             ```
             cd ..\UITests
 
@@ -483,18 +482,17 @@ The following output will be sent to your console as the test progresses:
 
     *  How to setup test run parallelization
 
-<a name="debugging"></a>
-## Debugging
+  ## Debugging
 
-<a name="debugging-debug-tests-101"></a>
+<a name="sideloading-a-local-extension-during-the-test-session-debug-tests-101"></a>
 ### debug tests 101
 
-<a name="debugging-debugging-tests-in-vs-code"></a>
+<a name="sideloading-a-local-extension-during-the-test-session-debugging-tests-in-vs-code"></a>
 ### debugging tests in VS Code
 
 If you run mocha with the --debug-brk flag, you can press F5 and the project will attach to a debugger. 
 
-<a name="debugging-checking-the-result-of-the-currently-running-test-in-code"></a>
+<a name="sideloading-a-local-extension-during-the-test-session-checking-the-result-of-the-currently-running-test-in-code"></a>
 ### Checking the result of the currently running test in code
 
 Sometimes it is useful to get the result of the currently running test, for example: you want to take a screenshot only when the test fails.
@@ -511,7 +509,7 @@ Sometimes it is useful to get the result of the currently running test, for exam
 
 One thing to watch out for in typescript is how lambda functions, "() => {}", behave.  Lambda functions (also called "fat arrow" sometimes) in Typescript capture the "this" variable from the surrounding context.  This can cause problems when trying to access Mocha's current test state.  See [arrow functions](https://basarat.gitbooks.io/typescript/content/docs/arrow-functions.html) for details.
 
-<a name="debugging-how-to-take-a-screenshot-of-the-browser"></a>
+<a name="sideloading-a-local-extension-during-the-test-session-how-to-take-a-screenshot-of-the-browser"></a>
 ### How to take a screenshot of the browser
 
 This is an example of how to take a screenshot of what is currently displayed in the browser.  
@@ -537,7 +535,7 @@ import testFx = require('MsPortalFx-Test');
 
 ```
 
-<a name="debugging-how-to-capture-browser-console-output"></a>
+<a name="sideloading-a-local-extension-during-the-test-session-how-to-capture-browser-console-output"></a>
 ### How to capture browser console output
 
 When trying to identify reasons for failure of a test its useful to capture the console logs of the browser that was used to execute your test. You can capture the logs at a given level e.g error, warning, etc or at all levels using the LogLevel parameter. The following example demonstrates how to call getBrowserLogs and how to work with the result. getBrowserLogs will return a Promise of string[] which when resolved will contain the array of logs that you can view during debug or write to the test console for later analysis.    
@@ -554,27 +552,24 @@ import testFx = require('MsPortalFx-Test');
 
 ```
 
-<a name="debugging-callstack"></a>
+<a name="sideloading-a-local-extension-during-the-test-session-callstack"></a>
 ### Callstack
 
-<a name="debugging-test-output-artifacts"></a>
+<a name="sideloading-a-local-extension-during-the-test-session-test-output-artifacts"></a>
 ### Test output artifacts
 
 
-<a name="localization"></a>
-## Localization
+  ## Localization
 
 This section intentionally left  blank.
 
-
+  
 <a name="user-management"></a>
 ## User Management
 
 This section intentionally left blank.
 
-
-
-
+  
 <a name="user-management-create"></a>
 ### Create
 
@@ -603,7 +598,7 @@ FromLocalPackage
 <a name="user-management-create-opening-the-create-blade-from-a-local-gallery-package"></a>
 #### Opening the create blade from a local gallery package
 
-To open/navigate to the create blade a local gallery package that has been side loaded into the Portal along with your extension you can use `portal.openGalleryCreateBladeFromLocalPackage`.  The returned promise will resolve with the CreateBlade defined by that gallery package. 
+To open/navigate to the create blade a local gallery package that has been sideloaded into the Portal along with your extension you can use `portal.openGalleryCreateBladeFromLocalPackage`.  The returned promise will resolve with the CreateBlade defined by that gallery package. 
 
 ```ts 
 import TestFx = require('MsPortalFx-Test');
@@ -1177,29 +1172,31 @@ import testFx = require('MsPortalFx-Test');
 
 
 
-<a name="user-management-parts"></a>
-### Parts
+<a name="parts"></a>
+## Parts
 
-<a name="user-management-parts-how-to-get-the-reference-to-a-part-on-a-blade"></a>
-#### How to get the reference to a part on a blade
+<a name="parts-how-to-get-the-reference-to-a-part-on-a-blade"></a>
+### How to get the reference to a part on a blade
 
-1. If it is a specific part, like the essentials for example:
+If it is a specific part, like the essentials for example:
+
 ```
 	let thePart = blade.element(testFx.Parts.ResourceSummaryPart);
 ```
 
-1. For a more generic part:
+For a more generic part:
 ```
 	let thePart = blade.part({innerText: "some part text"});
 ``` 
 
-1. To get a handle of this part using something else than simple text you can also do this:
+To get a handle of this part using something else than simple text you can also do this:
+
 ```
 	let thePart = blade.element(By.Classname("myPartClass")).AsType(testFx.Parts.Part);
 ```
 
-<a name="user-management-parts-collectionpart"></a>
-#### CollectionPart
+<a name="parts-collectionpart"></a>
+### CollectionPart
 
 The following example demonstrates how to:
 
@@ -1229,10 +1226,10 @@ The following example demonstrates how to:
 
 Note if you have multiple collection parts you may want to use `blade.part(...)` to search by text.
 
-<a name="user-management-parts-grid"></a>
+<a name="parts-collectionpart-grid"></a>
 #### Grid
 
-<a name="user-management-parts-grid-finding-a-row-within-a-grid"></a>
+<a name="parts-collectionpart-grid-finding-a-row-within-a-grid"></a>
 ##### Finding a row within a grid
 
 The following demonstrates how to use `Grid.findRow` to:
@@ -1248,7 +1245,7 @@ The following demonstrates how to use `Grid.findRow` to:
                 
 ```
 
-<a name="user-management-parts-createcomboboxfield"></a>
+<a name="parts-collectionpart-createcomboboxfield"></a>
 #### CreateComboBoxField
 
 use this for modeling the resouce group `CreateComboBoxField` on create blades.
@@ -1285,10 +1282,10 @@ use this for modeling the resouce group `CreateComboBoxField` on create blades.
         
 ```
 
-<a name="user-management-parts-editor"></a>
+<a name="parts-collectionpart-editor"></a>
 #### Editor
 
-<a name="user-management-parts-editor-can-read-and-write-content"></a>
+<a name="parts-collectionpart-editor-can-read-and-write-content"></a>
 ##### Can read and write content
 
 The following example demonstrates how to:
@@ -1326,11 +1323,11 @@ The following example demonstrates how to:
         
 ```
 
-<a name="user-management-parts-essentials"></a>
+<a name="parts-collectionpart-essentials"></a>
 #### essentials
 
 
-<a name="user-management-parts-essentials-essentials-tests"></a>
+<a name="parts-collectionpart-essentials-essentials-tests"></a>
 ##### Essentials tests
 
 The following example demonstrates how to:
@@ -1460,16 +1457,16 @@ The following example demonstrates how to:
 ```
 
 
-<a name="user-management-command"></a>
+<a name="parts-command"></a>
 ### Command
 
-<a name="user-management-action-bar"></a>
+<a name="parts-action-bar"></a>
 ### Action Bar
 
-<a name="user-management-delete"></a>
+<a name="parts-delete"></a>
 ### Delete
 
-<a name="user-management-styling-layout-regression-detection"></a>
+<a name="parts-styling-layout-regression-detection"></a>
 ### Styling / layout regression detection
 
 To detect styling or layout regressions in your tests, use the `portal.detectStylingRegression` function.
@@ -1522,31 +1519,31 @@ For reference, here's the signature of the `portal.detectStylingRegression` func
     ```
 
 
-<a name="user-management-locators"></a>
+<a name="parts-locators"></a>
 ### Locators
 
-<a name="user-management-consuming-updates"></a>
+<a name="parts-consuming-updates"></a>
 ### Consuming Updates
 
-<a name="user-management-code-coverage"></a>
+<a name="parts-code-coverage"></a>
 ### Code Coverage
 
-<a name="user-management-code-coverage-interop-how-to-run-net-code-from-your-tests"></a>
+<a name="parts-code-coverage-interop-how-to-run-net-code-from-your-tests"></a>
 #### Interop, how to run .NET code from your tests
 edge.js
 
 
 
 
-<a name="user-management-mocking"></a>
+<a name="parts-mocking"></a>
 ### Mocking
 
-<a name="user-management-mocking-how-to-show-mock-data-into-the-portal"></a>
+<a name="parts-mocking-how-to-show-mock-data-into-the-portal"></a>
 #### How to show mock data into the Portal
 
 The [MsPortalFx-Mock](https://www.npmjs.com/package/msportalfx-mock) package provides a framework for showing mock data in the portal. It come with builtin support for mocking ARM data.
 
-<a name="user-management-mocking-how-to-show-mock-data-into-the-portal-mocking-arm"></a>
+<a name="parts-mocking-how-to-show-mock-data-into-the-portal-mocking-arm"></a>
 ##### Mocking ARM
 
 Mock data including providers, subscriptions, resource groups and resources can be defined in JSON object and used to initialize the ArmManager.

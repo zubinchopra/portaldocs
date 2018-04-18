@@ -7,7 +7,6 @@ The sample below shows how to fill out a form to create a resource.
 ### Open your create blade
 You first need to navigate to your create blade.  Below we show how to deep link directly to it after signing in.  Deep links are useful for speeding up the process of getting to your blade.  
 
-```cs
 ```csharp
 
 // Sign into the portal
@@ -18,13 +17,12 @@ portalAuth.SignInAndSkipPostValidation(userName: "", /** The account login to us
         fragment: "create/Microsoft.ResourceGroup" /** The hash fragment, we use this to navigate directly to the create blade on sign in. **/);
 
 ```
-```
+
 
 <a name="create-sample-fill-out-the-create-form"></a>
 ### Fill out the create form
 Once you have the create blade open, you need to fill out the form.  In order to find fields, you should first grab an instance of the **FormSection** class that corresponds to the blade.  You can use the FormSection class to find specific fields based on their labels.  The field controls can then be used to set or get their corresponding values.
 
-```cs
 ```csharp
 
 var rgNameTextboxFieldLabel = "Resource group name";
@@ -56,13 +54,13 @@ var rgSelectedFilterComboValue = rgFilterComboBox.Value;
 rgFilterComboBox.SetValueToFirstDropdownMatch(rgSelectedFilterComboValue);
 
 ```
-```
+
 
 <a name="create-sample-completing-the-create-and-validating-success"></a>
 ### Completing the create and validating success
 After the create blade has been completely filled out, you can start the click by clicking the "Create" button via the **ActionBar.ClickOk()** method.  You can verify the create was successful by waiting for the notification to appear.  
 
-```cs
+
 ```csharp
 
 // Find and click the create button (sometimes also called Ok button)
@@ -73,5 +71,4 @@ webDriver.WaitUntil(() => portal.IsBladeClosed(rgCreateBladeTitle),
 
 portal.GetNotifications(text: "Creating resource group '" + rgName + "' succeeded", timeout: TimeSpan.FromSeconds(90));
 
-```
 ```

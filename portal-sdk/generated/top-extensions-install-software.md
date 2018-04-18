@@ -2,7 +2,6 @@
 # Install Software for Extension Development
 
 <!-- document headers are in the individual documents -->
-
 <a name="install-software-for-extension-development-minimum-installation"></a>
 ## Minimum Installation
 

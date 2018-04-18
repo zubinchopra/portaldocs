@@ -66,8 +66,6 @@
 ## Debugging
 
  <!-- top-extensions-debugging.md -->
- 
-  * [Status Codes and Error Messages](portalfx-extensions-status-codes.md#status-codes-and-error-messages)
 
   * [Testing in Production](top-extensions-production-testing.md#testing-in-production)
 

@@ -1,11 +1,3 @@
-* [Defining Blades and Parts using TypeScript decorators (a.k.a. 'no-PDL')](#defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl)
-    * [Introduction](#defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-introduction)
-    * [Current TypeScript decorator support](#defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-current-typescript-decorator-support)
-    * [Building a hello world template blade using decorators](#defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-building-a-hello-world-template-blade-using-decorators)
-    * [Building a menu blade using decorators](#defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-building-a-menu-blade-using-decorators)
-    * [The context property](#defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-the-context-property)
-    * [no-PDL FAQ](#defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-no-pdl-faq)
-
 
 <a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl"></a>
 ## Defining Blades and Parts using TypeScript decorators (a.k.a. &#39;no-PDL&#39;)
@@ -59,56 +51,15 @@ This section pulls from a sample that [you can see in the dogfood environment](h
 
 Here is an example of a very simple template blade, represented by a single TpeScript file in your extension project.
 
-```typescript
-
-/// <reference path="../../../TypeReferences.d.ts" />
-import * as ClientResources from "ClientResources";
-import * as TemplateBlade from "Fx/Composition/TemplateBlade";
-import * as BladesArea from "../BladesArea";
-
-//docs#DecoratorReference
-@TemplateBlade.Decorator({
-htmlTemplate: "" +
-    "<div class='msportalfx-padding'>" +
-    "  <div>This is a Template Blade.</div>" +
-    "</div>",
-})
-//docs#DecoratorReference
-export class SimpleTemplateBlade {
-public title = ClientResources.simpleTemplateBlade;
-public subtitle: string;
-
-//docs#Context
-public context: TemplateBlade.Context<void, BladesArea.DataContext>;
-//docs#Context
-
-public onInitialize() {
-    return Q();  // This sample loads no data.
-}
-}
-
-```
+  gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#HelloWorld"}
 
 This is the decorator code.  There are several options that can be specified as properties on the object passed into the decorator.  This sample shows the simplest scenario where you only need to provide an HTML template.  In this case, the template is provided inline, something the SDK supports for convinience.  You also have the ability to provide a relative path to an html file that contains the template (e.g. If your blade is in a file called `MyBlade.ts` then you can add a file right next to it called `MyBlade.html` and then pass `./MyBladeName.html` into the htmlTemplate property of the decorator).
 
-```typescript
-
-@TemplateBlade.Decorator({
-htmlTemplate: "" +
-    "<div class='msportalfx-padding'>" +
-    "  <div>This is a Template Blade.</div>" +
-    "</div>",
-})
-
-```
+  gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#DecoratorReference"}
 
 Additionally, the No-PDL programming model introduces (and requires) a context property to be present in your blade class. The context property is populated by the framework on your behalf and contains APIs you can call to interact with the shell.  You can learn more about the context property [here](#no-pdl-context-property).
 
-```typescript
-
-public context: TemplateBlade.Context<void, BladesArea.DataContext>;
-
-```
+  gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#Context"}
 
 <a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-building-a-menu-blade-using-decorators"></a>
 ### Building a menu blade using decorators
@@ -209,7 +160,7 @@ module Main {
 }
 ```
 
-<a name="no-pdl-context-property"></a>
+
 <a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-the-context-property"></a>
 ### The context property
 
@@ -217,11 +168,7 @@ The context property contains APIs you can call to interact with the shell. It w
 
 Declaring the type of this property can be a little tricky, and the declaration can change if more No-PDL decorators are added to your file.  This is because certain APIs on the context object get enhanced when new decorators are used.  Let's start with a basic example and build from there.
 
-```typescript
-
-public context: TemplateBlade.Context<void, BladesArea.DataContext>;
-
-```
+  gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#Context"}
 
 This is the simplest declaration of the context property.  The framework provided `TemplateBlade.Context` type takes in two generic parameters. The first parameter represents the type of object that represents the parameters to the blade.  This simple blade takes no parameters, hence the value of `void` for the first generic parameter.  The second generic parameter represents the type of your model data, which – today – must be the DataContext object for your Blade/Part. This makes the context property aware of your data context in a strongly typed way.
 
@@ -256,7 +203,7 @@ When you build your project, the compiler will also produce an auto generated bl
 
 Each time you add an additional decorator you will need to incorporate it into the context declaration as we did here.  
 
-<a name="no-pdl-faq"></a>
+
 <a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-no-pdl-faq"></a>
 ### no-PDL FAQ
 
@@ -288,7 +235,10 @@ public onInitialize() {
 
 ...
 ```
-<a name="no-pdl-error"></a>
+
+<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-no-pdl-faq-no-pdl-error"></a>
+#### No-pdl-error
+
 ```
 Argument of type 'typeof TestTemplateBlade' is not assignable to parameter of type 'TemplateBladeClass'.
   Type 'TestTemplateBlade' is not assignable to type 'Contract<any, any>'.
@@ -384,7 +334,7 @@ If yours is a scenario where your Blade/Part should show the loading indicators 
 #### When should I use the &#39;operations&#39; API to control the Blade/Part&#39;s loading indicator?
 There are scenarios like 'User clicks "Save" on my Blade/Part' where the extension wants to show loading indicators at the Blade/Part level.  What's distinct about this scenario is that the Blade/Part has already completed its initialization and, now, the user is interacting with the Blade/Part UI.  This is precisely the kind of scenario for the 'operations' API.  
 
-For no-PDL Blades/Parts, the 'operations' API is `this.context.container.operations`, and the API's use is described [here](portalfx-extensions-blades-advanced.md#showing-a-shield-loading-status-in-your-blade).  There is a sample to consult [here](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).
+For no-PDL Blades/Parts, the 'operations' API is `this.context.container.operations`, and the API's use is described [here](portalfx-blades-advanced.md#showing-a-shield-loading-status-in-your-blade).  There is a sample to consult [here](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).
 
 <a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-no-pdl-faq-how-can-i-save-some-state-for-my-no-pdl-blade"></a>
 #### How can I save some state for my no-PDL Blade?
