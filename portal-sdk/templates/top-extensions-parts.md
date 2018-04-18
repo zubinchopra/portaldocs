@@ -13,11 +13,11 @@
 
    {"gitdown": "include-file", "file": "../templates/portalfx-parts-revealContent.md"}
 
-   {"gitdown": "include-file", "file": "../templates/portalfx-parts-errors.md"}
+     gitdown": "include-file", "file": "../templates/portalfx-parts-errors.md"}
 
-  {"gitdown": "include-file", "file": "../templates/portalfx-parts-assets-dont-exist.md"}
+    gitdown": "include-file", "file": "../templates/portalfx-parts-assets-dont-exist.md"}
 
-  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-samples-parts.md"}
+   gitdown": "include-file", "file": "../templates/portalfx-extensions-samples-parts.md"}
 
  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-parts.md"}
 
