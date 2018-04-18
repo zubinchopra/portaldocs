@@ -64,8 +64,6 @@ This section demonstrates how to create a "Hello World" template blade using dec
 
 There are several options that can be specified as properties on the object that is sent to the decorator. The following code contains the simplest scenario where only an HTML template is needed.  The template is provided inline.
 
-<!--TODO:  Determine where gitHub generates the samples from.  they do not appear to be in https://github.com/Azure/portaldocs/tree/dev/portal-sdk/samples -->
-
   {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#HelloWorld"}
 
 A relative path to an html file that contains the template can also be provided. In the following code, if the blade is in a file called `MyBlade.ts`, then a file named `MyBlade.html` can be added in the same directory; then, send  `./MyBladeName.html` to the htmlTemplate property of the decorator.
@@ -294,8 +292,7 @@ In C#:
 Extensions can supply type metadata to configure their EditScope as follows:  
 
 * When using ParameterProvider, supply the '`editScopeMetadataType`' option to the ParameterProvider constructor.
-* When using EditScopeCache, supply the '`entityTypeName`' option to '`MsPortalFx.Data.EditScopeCache.createNew`'.
+* When using EditScopeCache, supply the '`entityTypeName`' option to `MsPortalFx.Data.EditScopeCache.createNew`.
 
 To either of these, extensions pass the type name used when registering the type metadata via '`MsPortalFx.Data.Metadata.setTypeMetadata`'.  
   
-* * * 

@@ -1,8 +1,8 @@
 ## TypeScript decorators 
 
-  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-typescript-overview.md"}
+  gitdown": "include-file", "file": "../templates/portalfx-extensions-typescript-overview.md"}
 
-  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-typescript-procedure.md"}
+  gitdown": "include-file", "file": "../templates/portalfx-extensions-typescript-procedure.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-typescript.md"}
 
