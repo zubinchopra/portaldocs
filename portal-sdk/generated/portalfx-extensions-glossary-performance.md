@@ -5,7 +5,9 @@ This section contains a glossary of terms and acronyms that are used in this doc
 
 | Term                | Meaning |
 | ------------------- | ------- |
+| AMD                 | Asynchronous Module Definition |
 | above the fold | Initially displayed on the Web page without scrolling. |
+| Brotli Compression | A data format that is specifically for data streams that use general-purpose the LZ77 lossless compression algorithm and other algorithms in their compression schemes.  This type of compression decreases the size of transmissions of web fonts, and  can now be used to encode any data sent by a web server to a web browser if both client and server support the format.  | 
 | CDN | Content Delivery Network |
 | FullRevealed  | The ViewModel within the blade or part has received all of the information that is will display. |
 | MEF | |

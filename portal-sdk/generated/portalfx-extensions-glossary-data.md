@@ -15,7 +15,8 @@
 | JWT token | JSON Web Token |
 | lifetime | The amount of time an object exists in memory between instantiation and destruction.  It may be automatically destroyed by when a parent object is deallocated, or its existence may be managed by a lifetime manager object or a child lifetime manager object. |
 | lifetime object | An object that informs the `DataCache` when a specific `DataView` is currently being displayed on the screen. This allows the Shell to make performance adjustments. | 
-| polling | The process that determines which client-side data should be automatically refreshed. |
+| polling | The process that determines which client-side data should be automatically refreshed. The auto-refreshing of client-side data. |
 | perceived responsiveness | Responsiveness that is immediately apparent to an average user. |
 | reactor | |
+| shaping data | Selecting or combining properties in a `QueryCache` or `EntityCache` to form variables that are a closer match for the intended `ViewModel`.  This differs from filtering in that filtering selects rows in a `QueryCache` instead of columnar values. | 
 | subscription | | 

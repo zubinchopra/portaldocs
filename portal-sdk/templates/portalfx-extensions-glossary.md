@@ -54,11 +54,11 @@
 
 ## Flighting 
 
-  {"gitdown": "include-file", "file": "./portalfx-extensions-glossary-flighting.md"}
+  gitdown": "include-file", "file": "./portalfx-extensions-glossary-flighting.md"}
   
 ## Forms 
 
-  {"gitdown": "include-file", "file": "./portalfx-extensions-glossary-forms.md"}
+  gitdown": "include-file", "file": "./portalfx-extensions-glossary-forms.md"}
 
 ## Hello World Extension
 
@@ -66,7 +66,7 @@
 
 ## Hosting Service
 
-  {"gitdown": "include-file", "file": "./portalfx-extensions-glossary-hosting-service.md"}
+  gitdown": "include-file", "file": "./portalfx-extensions-glossary-hosting-service.md"}
   
 ## Key Components 
 
