@@ -16,7 +16,7 @@ Open a command prompt in this directory and run:
 
 <!-- gitdown: off -->
     ```
-    {"gitdown": "include", "file": "./foo.md"}
+      gitdown": "include", "file": "./foo.md"}
     ```
 <!-- gitdown: on -->
 
@@ -24,7 +24,7 @@ Open a command prompt in this directory and run:
 
 <!-- gitdown: off -->
     ```
-    {"gitdown": "include-section", "file": "../test/BrowseResourceBladeTests.ts", "section": "tutorial-browse-context-menu#step2"}
+      gitdown": "include-section", "file": "../test/BrowseResourceBladeTests.ts", "section": "tutorial-browse-context-menu#step2"}
     ```
 <!-- gitdown: on -->
 
