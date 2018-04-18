@@ -321,7 +321,7 @@ To minimize the probability of regression, use the following procedure to migrat
         ```
     * Legacy deployment `extension.pdl` file
 
-    Custom deployment can also flight traffic to multiple extension editions, as in the following example.
+        Custom deployment can also flight traffic to multiple extension editions, as in the following example.
 
         ``` 
         {
