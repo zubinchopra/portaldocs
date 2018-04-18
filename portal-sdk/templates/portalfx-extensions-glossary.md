@@ -8,7 +8,7 @@
 
 ## Extension Architecture
 
-{"gitdown": "include-file", "file": "./portalfx-extensions-glossary-architecture.md"
+{"gitdown": "include-file", "file": "./portalfx-extensions-glossary-architecture.md"}
 
 ## Blades 
 
@@ -116,4 +116,5 @@
 {"gitdown": "include", "file": "./portalfx-extensions-glossary-typescript.md"}
 
 ## Versioning
+
 {"gitdown": "include", "file": "./portalfx-extensions-glossary-versioning.md"}
