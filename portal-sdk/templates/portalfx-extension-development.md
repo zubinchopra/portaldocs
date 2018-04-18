@@ -31,11 +31,11 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 
 {"gitdown": "include-headings", "file": "../templates/portalfx-essentials.md"}
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-permissions.md"}
+  gitdown": "include-headings", "file": "../templates/portalfx-permissions.md"}
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-notifications.md"}
+  gitdown": "include-headings", "file": "../templates/portalfx-notifications.md"}
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-subscriptions.md"}
+  gitdown": "include-headings", "file": "../templates/portalfx-subscriptions.md"}
 
   gitdown": "include-headings", "file": "../templates/portalfx-tags.md"}
 
