@@ -10,7 +10,7 @@ Parts, also known as tiles, are a framework feature that integrates the UI of an
 
 The following sections cover these topics.
 
-1. [Traditional Blades versus Template Blades](#traditional-blades-versus-template-blades)
+1. [Traditional Blades versus Template Blades](#traditional-parts-and-template-blades)
 1. [Displaying data by using intrinsic parts](#displaying-data-by-using-intrinsic-parts)
 1. [Custom parts](#custom-parts)
 1. [Integrating parts into the part gallery](#integrating-parts-into-the-part-gallery)
@@ -20,8 +20,8 @@ The following sections cover these topics.
 
 * * * 
 
-<a name="parts-overview-traditional-blades-versus-template-blades"></a>
-### Traditional Blades versus Template Blades
+<a name="parts-overview-traditional-parts-and-template-blades"></a>
+### Traditional parts and template blades
 
 Previously, Ibiza blades contained customizable parts, or tiles, that served as the main way for users to navigate the UI. However, the UI's were difficult to navigate, caused excessive navigation, caused excessive horizontal scrolling, and were not very performant.
 
@@ -69,32 +69,29 @@ For more information about built-in parts, see [portalfx-parts-intrinsic.md](por
 Unlike intrinsic parts, custom parts use `html` templates that are bound to the view model. The developer defines the look and feel in addition to the data loading for the part. Templates also can use other controls that are provided by the framework, as specified in [top-extensions-controls.md](top-extensions-controls.md).
 
 The following is an example of a custom part. The three files used for the custom part example are the following.
-`<dir>\Client\V1\Parts\Custom\CustomParts.pdl`
-`<dir>\Client\V1\Parts\Custom\Templates\ExampleCustomPart.html`
-`<dir>\Client\V1\Parts\Custom\ViewModels\ExampleCustomPartViewModel.ts`
+
+* `<dir>\Client\V1\Parts\Custom\CustomParts.pdl`
+
+* `<dir>\Client\V1\Parts\Custom\Templates\ExampleCustomPart.html`
+
+* `<dir>\Client\V1\Parts\Custom\ViewModels\ExampleCustomPartViewModel.ts`
 
 A working copy is located at [http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/custompart](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/custompart).
 
 The following procedure demonstrates how to use a custom part.
 
+<!-- TODO:  Determine whether the samples in this section are causing gitHub to blow up. -->
+
 1. Declare the part in the global `<Definition>` section of the PDL for the extension, as in the following example.
 
-
-<!-- TODO:  Determine whether the following sample is causing gitHub to blow up. -->
 
    gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/Custom/CustomParts.pdl", "section": "Parts#CustomPartsPDLDoc"}
 
 1. The pdl points to the html template.
 
-
-<!-- TODO:  Determine whether the following sample is causing gitHub to blow up. -->
-
    gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/Custom/Templates/ExampleCustomPart.html", "section": "Parts#CustomPartTemplateDoc"}
 
 1. The HTML template is bound to the following ViewModel by using **Knockout**, which is also referred to in the pdl.
-
-
-<!-- TODO:  Determine whether the following sample is causing gitHub to blow up. -->
 
    gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/Custom/ViewModels/ExampleCustomPartViewModel.ts", "section": "parts#CustomPartViewModelDoc"}
 
@@ -132,7 +129,7 @@ If the part that is being developed is associated with an Ibiza asset like an AR
 <a name="parts-overview-defining-the-sizing-behavior"></a>
 ### Defining the sizing behavior
 
-There is a significant amount of flexibility when sizing extension tiles. All size options are included in the `<CustomPart>` tag in the PDL located at `<dir>\Client/V1/Parts/PartSizes/PartSizes.pdl`.
+There is a significant amount of flexibility when sizing extension tiles. All size options are included in the `<CustomPart>` tag in the PDL file located at `<dir>\Client/V1/Parts/PartSizes/PartSizes.pdl`.
 
 A working copy is located at [http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/partsizes](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/partsizes).
 
@@ -183,7 +180,7 @@ The following example located at `<dir>/Client/V1/Parts/TileGallery/TileGallery.
 
   gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/TileGallery/TileGallery.pdl", "section": "parts#PartSettingsDocs"}
 
-The following is the TypeScript code that reads and writes samples. It is also located at `<dir>Client/V1/Parts/TileGallery/ViewModels/GeneralGalleryPart.ts`.
+The following is the TypeScript code that reads and writes settings. It is also located at `<dir>Client/V1/Parts/TileGallery/ViewModels/GeneralGalleryPart.ts`.
 
 <!-- TODO:  Determine whether the following sample is causing gitHub to blow up. -->
   gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/TileGallery/ViewModels/GeneralGalleryPart.ts", "section": "parts#TileGalleryWithNewConfigurationPattern"}
@@ -191,22 +188,21 @@ The following is the TypeScript code that reads and writes samples. It is also l
 <a name="parts-overview-the-no-data-message"></a>
 ### The no-data message
 
-Sometimes parts are displayed for which no data is available. For example, an extension may display a teaser 'deployment history' that contains sample data, before a user has enabled deployments. To support this, part `container` objects use the `noDataMessage` property.
+Sometimes parts are displayed for which no data is available. For example, an extension may display a prototype 'deployment history' that contains sample data, previous to the time when the user  enables  deployments for the extension. To support this, part `container` objects use the `noDataMessage` property.
 
-The following example populates the part with sample data and set `noDataMessage` to a nonempty string.
+The following example populates the part with sample data and set `noDataMessage` to a non-empty string.
 
 ```ts
 container.noDataMessage("Enable deployments to see your history");
 ```
 
-In this example, the part is grayed-out and is non-interactive. The message is displayed over the part. To remove the message, set the `noDataMessage` value back to `null`. 
+In this example, the part is grayed-out and is non-interactive. The message is displayed on top of the part. To remove the message, set the `noDataMessage` value back to `null`. 
 
-This feature is used to inform the user that the feature exists, although the part is not applicable because no data is available yet.
-If the extension needs to disable a part while the  data is loading, it should return a promise from the  `onInputsSet` method or use the `container.operations` queue.
+This feature informs the user that the feature exists, although no data is available yet. If the extension needs to disable a part while the  data is loading, it should return a promise from the  `onInputsSet` method or use the `container.operations` queue.
    
  
-<a name="parts-overview-versioning"></a>
-### Versioning
+<a name="parts-versioning"></a>
+## Versioning
 
 When users customize or pin a part, the following states are stored and used the next time the part is loaded from a customized context.
 
@@ -218,9 +214,9 @@ Because these states are stored, these parts need to be backwards-compatible.
 
 Supporting new functionality may require the modification of the schema of a part's inputs and settings. 
 
-The Azure Portal always calls the most recent edition of an extension, as specified in the extensions configuration file. However, older versions of inputs and settings that were stored by an earlier edition of the extension may still exist, and they may be incompatible with the most recent edition of the extension. Consequently, users may experience unexpected results when the extension or part is called with previous settings.
+The Azure Portal always calls the most recent edition of an extension, which is specified in the extensions configuration file. However, older versions of inputs and settings that were stored by earlier editions of an extension may still exist, and they may be incompatible with the most recent edition of the extension. Consequently, users may experience unexpected results when the extension or part is called with previous settings.
 
-Likewise, other extensions may have taken dependencies on less-recent editions of the extension or part. For example, another extension may use a .pde file that contains a `<PartReference/>`.  Those other extensions may also experience unexpected results when they call the extension or part with old inputs.
+Likewise, other extensions may have taken dependencies on less-recent editions of the extension or part. For example, another extension may use a .pde file that contains a `<PartReference/>`.  Those other extensions may also experience unexpected results when they call the extension or part with previous inputs.
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
@@ -287,7 +283,7 @@ public onInputsSet(inputs: Def.InputsContract, settings: Def.SettingsContract): 
     }
 ```
 
-The same technique can be used for part settings.
+The same technique can be used for part settings as in the following example.
 
 ```javascript
 public onInputsSet(inputs: Def.InputsContract, settings: Def.SettingsContract): MsPortalFx.Base.Promise {
@@ -309,8 +305,8 @@ public onInputsSet(inputs: Def.InputsContract, settings: Def.SettingsContract): 
 
  
  
-<a name="intrinsic-parts"></a>
-# Intrinsic Parts
+<a name="parts-intrinsic-parts"></a>
+## Intrinsic Parts
 
 Intrinsic parts are composed of existing controls in the portal, and provide patterns for solving common patterns in the portal.
 
@@ -318,7 +314,7 @@ Intrinsic parts are composed of existing controls in the portal, and provide pat
 
 All of the currently available intrinsics can be located in the working copy located at  [https://aka.ms/portalfx/samples/#blade/SamplesExtension/IntrinsicPartsIndexBlade](https://aka.ms/portalfx/samples/#blade/SamplesExtension/IntrinsicPartsIndexBlade).
 
-<a name="intrinsic-parts-asset"></a>
+<a name="parts-asset"></a>
 ## Asset
 
 ![asset][asset]: ../media/portalfx-controls/asset.png
@@ -327,7 +323,7 @@ All of the currently available intrinsics can be located in the working copy loc
 Learn how to use the Asset part.
 </a>
 
-<a name="intrinsic-parts-button"></a>
+<a name="parts-button"></a>
 ## Button
 
 ![button][button]: ../media/portalfx-controls/button.png
@@ -336,7 +332,7 @@ Learn how to use the Asset part.
 Learn how to use the Button part.
 </a>
 
-<a name="intrinsic-parts-chart"></a>
+<a name="parts-chart"></a>
 ## Chart
 
 ![chart][chart]: ../media/portalfx-controls/chart.png
@@ -347,7 +343,7 @@ Learn how to use the Button part.
 Learn how to use the Chart part.
 </a>
 
-<a name="intrinsic-parts-collection"></a>
+<a name="parts-collection"></a>
 ## Collection
 
 ![collection][grid]: ../media/portalfx-controls/grid.png
@@ -356,7 +352,7 @@ Learn how to use the Chart part.
 Learn how to use the Collection part.
 </a>
 
-<a name="intrinsic-parts-collection-summary"></a>
+<a name="parts-collection-summary"></a>
 ## Collection Summary
 
 ![collectionSummary][collectionsummary]: ../media/portalfx-controls/collectionsummary.png
@@ -365,7 +361,7 @@ Learn how to use the Collection part.
 Learn how to use the Collection Summary part.
 </a>
 
-<a name="intrinsic-parts-diff-editor"></a>
+<a name="parts-diff-editor"></a>
 ## Diff Editor
 
 ![diffEditorPartTitle][diff]: ../media/portalfx-controls/diff.png
@@ -374,7 +370,7 @@ Learn how to use the Collection Summary part.
 Learn how to use the Diff Editor part.
 </a>
 
-<a name="intrinsic-parts-donut"></a>
+<a name="parts-donut"></a>
 ## Donut
 
 ![donut][donut]
@@ -384,7 +380,7 @@ Learn how to use the Diff Editor part.
 Learn how to use the Donut part.
 </a>
 
-<a name="intrinsic-parts-editor"></a>
+<a name="parts-editor"></a>
 ## Editor
 
 ![editorPartTitle][editor]
@@ -394,7 +390,7 @@ Learn how to use the Donut part.
 Learn how to use the Editor part
 </a>
 
-<a name="intrinsic-parts-info-list"></a>
+<a name="parts-info-list"></a>
 ## Info List
 
 ![infoList][infolist]
@@ -404,7 +400,7 @@ Learn how to use the Editor part
 Learn how to use the Info list part.
 </a>
 
-<a name="intrinsic-parts-properties"></a>
+<a name="parts-properties"></a>
 ## Properties
 
 ![properties][properties]
@@ -412,7 +408,7 @@ Learn how to use the Info list part.
 <a href="https://aka.ms/portalfx/samples/#blade/SamplesExtension/PropertiesPartIntrinsicInstructions">
 Learn how to use the Properties part.
 
-<a name="intrinsic-parts-quickstart"></a>
+<a name="parts-quickstart"></a>
 ## Quickstart
 
 ![quickStart][quickstart]
@@ -422,7 +418,7 @@ Learn how to use the Properties part.
 Learn how to use the Quick start part.
 </a>
 
-<a name="intrinsic-parts-quota-guage"></a>
+<a name="parts-quota-guage"></a>
 ## Quota Guage
 
 ![quotaGauge][gauge]
@@ -431,7 +427,7 @@ Learn how to use the Quick start part.
 Learn how to use the Quota gauge part.
 </a>
 
-<a name="intrinsic-parts-setup"></a>
+<a name="parts-setup"></a>
 ## Setup
 
 ![setupPartTitle][setup]
@@ -442,7 +438,7 @@ Learn how to use the Quota gauge part.
 Learn how to use the Setup part.
 </a>
 
-<a name="intrinsic-parts-simple-chart"></a>
+<a name="parts-simple-chart"></a>
 ## Simple Chart
 
 ![chart][chart]
@@ -452,7 +448,7 @@ Learn how to use the Setup part.
 Learn how to use the Simple Chart part.
 </a>
 
-<a name="intrinsic-parts-single-value-guage"></a>
+<a name="parts-single-value-guage"></a>
 ## Single value guage
 
 ![singleValueGauge][gauge]
@@ -470,7 +466,7 @@ Next steps: [Developing custom parts](portalfx-parts.md#parts-a-k-a-tiles-how-to
 
  
  
-<a name="intrinsic-parts-single-value-guage-permanently-discontinue-a-part"></a>
+<a name="parts-single-value-guage-permanently-discontinue-a-part"></a>
 ### Permanently discontinue a part
 
 Developers occasionally build and ship parts, and later  discontinue their functionality. However, there may be cases where these parts were pinned and  incorporated into the layout of a user's dashboard.
@@ -483,14 +479,16 @@ This ensures that customers are informed that this part is no longer supported, 
 
   
    
-<a name="intrinsic-parts-single-value-guage-removing-a-part-from-a-blade-default-layout"></a>
+<a name="parts-single-value-guage-removing-a-part-from-a-blade-default-layout"></a>
 ### Removing a part from a blade default layout
 
-An unlocked blade's default layout should consist of tiles that provide the most out-of-the-box value to users and still meet extension performance goals.  That layout may change over time, and your team  may decide that a part that was included in a blade's default layout should be removed.
+An unlocked blade's default layout should consist of tiles that provide the most  value to users and still meet extension performance goals out-of-the-box.  That layout may change over time, and your team may decide that a part that was included in a blade's default layout should be removed.
 
-1. If the part was defined inline as a `<Part/>` or `<CustomPart>` element within a `<Blade/>` and `<Lens/>`, then the part should be moved out of the blade and into the global part catalog for the extension. Otherwise, if the  part is already defined in the global part catalog, or is defined in another extension then the pdl file may contain a  `<PartReference/>` tag for the blade, instead of  a `<Part/>` tag.
+1. If the part was defined inline as a `<Part/>` or `<CustomPart>` element within a `<Blade/>` and `<Lens/>`, then the part should be moved out of the blade and into the global part catalog for the extension. Otherwise, if the  part is already defined in the global part catalog, or is defined in another extension, then the pdl file may contain a  `<PartReference/>` tag for the blade, instead of  a `<Part/>` tag.
 
 **NOTE**: It is best practice to use **Typescript** or no-pdl parts.
+
+The following procedure to remove a part from a blade  layout.
 
 1. Remove the  `<Part/>` or `<PartReference/>` tag from the extension configuration or pdl file.
 
@@ -506,14 +504,14 @@ An unlocked blade's default layout should consist of tiles that provide the most
 ```
 
    
-<a name="intrinsic-parts-improving-part-performance"></a>
-## Improving Part Performance
+<a name="parts-revealing-part-content"></a>
+## Revealing part content
 
-When a Part loads, the user is presented with the default **blocking loading** indicator that is in the following image.
+When a part loads, the user is presented with the default **blocking loading** indicator similar to the one in the following image.
 
 ![alt-text](../media/portalfx-parts/portalfx-parts-opaquespinner.png "Part with blocking loading indicator") 
 
-By default, the lifetime of this indicator is controlled by the promise that is returned from the `onInputsSet` method of the part, as in the following example.
+By default, the lifetime of this indicator is controlled by the `promise` that is returned from the `onInputsSet` method of the part, as in the following example.
 
 ```ts
 public onInputsSet(inputs: Def.InputsContract): MsPortalFx.Base.Promise {
@@ -524,25 +522,28 @@ public onInputsSet(inputs: Def.InputsContract): MsPortalFx.Base.Promise {
 
 With large amounts of data, it is good practice to reveal content while the data continues to load.  When this occurs, the **blocking loading** indicator can be removed previous to the completion of the data loading process. This allows the user to interact with the part and the data that is currently accessible.
 
-Essential content can be displayed while the non-essential content continues to load in the background, as signified by the  **status** marker on the bottom  left side of the tile.
+Essential content can be displayed while the non-essential content continues to load in the background, as signified by the  **status** marker on the bottom left side of the tile.
 
-A **non-blocking loading** indicator is displayed at the top of the part.  the user can activate or interact with the part while it is in this state. A part that contains the status marker and the **non-blocking loading** indicator is in the following image.
+A **non-blocking loading** indicator is displayed at the top of the part.  The user can activate or interact with the part while it is in this state. A part that contains the status marker and the **non-blocking loading** indicator is in the following image.
 
 ![alt-text](../media/portalfx-parts/portalfx-parts-translucentspinner.png "Part with non-blocking loading indicator") 
 
-The `container.revealContent()` API that is located in the ViewModel can add this optimization to the part that is being developed. This method performs the following.
+The `container.revealContent()` API that is located in the `ViewModel` can add this optimization to the part. This method performs the following.
 
-* Remove the **blocking loading** indicator
-* Reveal content on the part
-* Display the **non-blocking** loading indicator
-* Allow the user to interact with the part
+1. Remove the **blocking loading** indicator
+
+1. Reveal content on the part
+
+1. Display the **non-blocking** loading indicator
+
+1. Allow the user to interact with the part
 
 The `container.revealContent()` method can be called from either the ViewModel's `constructor` method or the ViewModel's `onInputsSet` function. These calls are located either in a `.then(() => ...)` callback, after the essential data has loaded, or they are located in the `onInputsSet` method, previous to the code that initiates data loading.
 
-<a name="intrinsic-parts-improving-part-performance-calling-from-the-constructor"></a>
+<a name="parts-revealing-part-content-calling-from-the-constructor"></a>
 ### Calling from the constructor
 
-If the part contains interesting content to display previous to loading any data, the extension should call the `container.revealContent()` method from the ViewModel's `constructor` .  The following example demonstrates  a chart that immediately displays the X-axis and the Y-axis.
+If the part needs to display content previous to loading any data, the extension should call the `container.revealContent()` method from the ViewModel's `constructor` .  The following example demonstrates  a chart that immediately displays the X-axis and the Y-axis.
 
 ```ts
 export class BarChartPartViewModel implements Def.BarChartPartViewModel.Contract {
@@ -561,12 +562,12 @@ export class BarChartPartViewModel implements Def.BarChartPartViewModel.Contract
 }
 ```
 
-<a name="intrinsic-parts-improving-part-performance-calling-from-oninputsset"></a>
+<a name="parts-revealing-part-content-calling-from-oninputsset"></a>
 ### Calling from onInputsSet
 
- Calling the `onInputsSet` method to return a promise behaves consistently, whether or not the part makes use of the  `container.revealContent()` method. Consequently, the  `container.revealContent()`method can optimize the behavior of the part that is being developed. There are two methodologies that are used to call the `container.revealContent()` method.
+The `onInputsSet` method behaves consistently when returning a promise , whether or not the part uses the `container.revealContent()` method. Consequently, the `container.revealContent()` method can optimize the behavior of the part that is being developed. There are two methodologies that are used to call the `container.revealContent()` method.
  
-It is common to call the  `container.revealContent()` method after some essential, fast-loading data is loaded, as in the following example.
+Typically, the `container.revealContent()` method is called after  essential, fast-loading data is loaded, as in the following example.
 
 ```ts
 public onInputsSet(inputs: MyPartInputs): Promise {
@@ -606,77 +607,19 @@ Also, if the promise that was returned from `onInputsSet` is rejected, the part 
 
 ![alt-text](../media/portalfx-parts/default-error-UX.png "Default error UX")
 
+     gitdown": "include-file", "file": "../templates/portalfx-parts-errors.md"}
 
+    gitdown": "include-file", "file": "../templates/portalfx-parts-assets-dont-exist.md"}
 
-   
-<a name="intrinsic-parts-improving-part-performance-handling-part-errors"></a>
-### Handling part errors
-
-Occasionally while loading parts, an extension may encounter some sort of unrecoverable error. In that case, the part may placed into a failure state, as in the following image.
-
-![alt-text](../media/portalfx-debugging/failure.png "Failed part")
-
-Parts should only be placed into a failed state if there was a system fault and no action can be taken by the user to correct the error. If the user can correct the error, then display guidance about how to do so. An example is located at `<dir>\Client\V1\Parts\Lifecycle\ViewModels\PartLifecycleViewModels.ts`, and in the following code.
-
-```ts
-constructor(container: MsPortalFx.ViewModels.PartContainer, initialState: any, dataContext: DataContext) {
-    container.fail(SamplesExtension.Resources.Strings.failedToLoad);
-}
-```
-
-If the error is  fixed, for example, if you are polling for data, and a subsequent poll returns valid results, then the extension can call `container.recover()` to return the part to its normal display state.
-
-
-  
-<a name="intrinsic-parts-improving-part-performance-handling-assets-that-no-longer-exist"></a>
-### Handling assets that no longer exist
-
-Many parts represent assets such as ARM resources that can be deleted from the UI, PowerShell, or calling REST APIs directly.  A stateless UI system would handle this by loading only assets that exist at the time the UI starts up.  Since Ibiza holds the state for all user customizations, this 'Not Found' case needs to be handled in a few specific places. 
-
-* A part that has been pinned to the startboard represents an asset that no longer exists
-  * Example: The VM part
-* A part that has been pinned to the startboard depends on information provided by an asset that no longer exists
-  * Example: The CPU chart for a VM part
-
-<a name="intrinsic-parts-improving-part-performance-handling-assets-that-no-longer-exist-automatic-http-404-handling"></a>
-#### Automatic HTTP 404 handling
-
-In an attempt to cover the most common scenarios, the Portal's built-in data layer automatically detects HTTP 404 responses from **AJAX** calls.  When a part depends on data and a 404 has been detected, Ibiza automatically makes the part non-interactive and displays a message of 'Not Found'.
-
-The effect is that in most "not found" scenarios, most extensions will display the more accurate 'Not found' message instead of the sad cloud UX that is reserved for  unexpected errors.
-
-This distinction also allows the Portal telemetry system differentiate between a part that fails to render because of bugs and a part that fails to render because the user's asset has been deleted.
-
-**NOTE**: Instances of 'Not Found' do not count against a part's reliability KPI.
-
-<a name="intrinsic-parts-improving-part-performance-handling-assets-that-no-longer-exist-how-to-opt-out-of-automatic-http-404-handling"></a>
-#### How to opt out of automatic HTTP 404 handling
-
-We strongly encourage teams to develop extensions that allow the Portal to  handle 404 responses by default. However, there may be some valid exceptions where this standard behavior may not be the best action an extensinon can perform.  In those very rare cases you can opt out of automatic 404 handling by setting the `showNotFoundErrors` flag to `false` when creating the extension's `dataViews`, as in the following example.
-
-```js
-this._dataView = dataContext.createView(container, { interceptNotFound: false });
-```
-
-The preceding code makes 404s result in rejected promises, and individual extensions apply special handling of 404 responses.
-
-
-  ## Samples Parts 
-
-| API Topic                             | Document                                                                 | Sample                                                           | Experience |
-| ----------------------------------------------  | ------------------------------------------------------------------------ | ---------------------------------------------------------------- | ---------- |
-| Button Part | | `<dir>\Client\V1\Parts\Intrinsic\ButtonPart\ViewModels\ButtonPartIntrinsicInstructionsPartViewModel.ts`  | [http://aka.ms/portalfx/samples#blade/SamplesExtension/ButtonPartIntrinsicInstructions/selectedItem/ButtonPartIntrinsicInstructions/selectedValue/ButtonPartIntrinsicInstructions](http://aka.ms/portalfx/samples#blade/SamplesExtension/ButtonPartIntrinsicInstructions/selectedItem/ButtonPartIntrinsicInstructions/selectedValue/ButtonPartIntrinsicInstructions)  | 
-| Custom Part |  |  | http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/custompart  | 
-
-
+   gitdown": "include-file", "file": "../templates/portalfx-extensions-samples-parts.md"}
 
  
-<a name="intrinsic-parts-best-practices"></a>
+<a name="parts-best-practices"></a>
 ## Best Practices
 
 Portal development patterns or architectures that are recommended based on customer feedback and usability studies may be categorized by the type of part.
 
-<a name="intrinsic-parts-best-practices-loading-indicators"></a>
+<a name="parts-best-practices-loading-indicators"></a>
 #### Loading indicators
 
 Loading indicators should be consistently applied across all blades and parts of the extension.  To achieve this:
@@ -697,7 +640,7 @@ public onInputsSet(inputs: MyPartInputs): Promise {
 }
 ```
 
-<a name="intrinsic-parts-best-practices-handling-part-errors"></a>
+<a name="parts-best-practices-handling-part-errors"></a>
 ### Handling part errors
 
 The sad cloud UX is displayed when there is no meaningful error to display to the user. Typically this occures when the error is unexpected and the only option the user has is to try again.
@@ -714,7 +657,7 @@ For example, if the error is caused because the user's credentials are not known
 
  ## Frequently asked questions
 
-<a name="intrinsic-parts-best-practices-"></a>
+<a name="parts-best-practices-"></a>
 ### 
 
 * * * 

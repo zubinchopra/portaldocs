@@ -1,12 +1,12 @@
 
-<a name="improving-part-performance"></a>
-## Improving Part Performance
+<a name="revealing-part-content"></a>
+## Revealing part content
 
-When a Part loads, the user is presented with the default **blocking loading** indicator that is in the following image.
+When a part loads, the user is presented with the default **blocking loading** indicator similar to the one in the following image.
 
 ![alt-text](../media/portalfx-parts/portalfx-parts-opaquespinner.png "Part with blocking loading indicator") 
 
-By default, the lifetime of this indicator is controlled by the promise that is returned from the `onInputsSet` method of the part, as in the following example.
+By default, the lifetime of this indicator is controlled by the `promise` that is returned from the `onInputsSet` method of the part, as in the following example.
 
 ```ts
 public onInputsSet(inputs: Def.InputsContract): MsPortalFx.Base.Promise {
@@ -17,25 +17,28 @@ public onInputsSet(inputs: Def.InputsContract): MsPortalFx.Base.Promise {
 
 With large amounts of data, it is good practice to reveal content while the data continues to load.  When this occurs, the **blocking loading** indicator can be removed previous to the completion of the data loading process. This allows the user to interact with the part and the data that is currently accessible.
 
-Essential content can be displayed while the non-essential content continues to load in the background, as signified by the  **status** marker on the bottom  left side of the tile.
+Essential content can be displayed while the non-essential content continues to load in the background, as signified by the  **status** marker on the bottom left side of the tile.
 
-A **non-blocking loading** indicator is displayed at the top of the part.  the user can activate or interact with the part while it is in this state. A part that contains the status marker and the **non-blocking loading** indicator is in the following image.
+A **non-blocking loading** indicator is displayed at the top of the part.  The user can activate or interact with the part while it is in this state. A part that contains the status marker and the **non-blocking loading** indicator is in the following image.
 
 ![alt-text](../media/portalfx-parts/portalfx-parts-translucentspinner.png "Part with non-blocking loading indicator") 
 
-The `container.revealContent()` API that is located in the ViewModel can add this optimization to the part that is being developed. This method performs the following.
+The `container.revealContent()` API that is located in the `ViewModel` can add this optimization to the part. This method performs the following.
 
-* Remove the **blocking loading** indicator
-* Reveal content on the part
-* Display the **non-blocking** loading indicator
-* Allow the user to interact with the part
+1. Remove the **blocking loading** indicator
+
+1. Reveal content on the part
+
+1. Display the **non-blocking** loading indicator
+
+1. Allow the user to interact with the part
 
 The `container.revealContent()` method can be called from either the ViewModel's `constructor` method or the ViewModel's `onInputsSet` function. These calls are located either in a `.then(() => ...)` callback, after the essential data has loaded, or they are located in the `onInputsSet` method, previous to the code that initiates data loading.
 
-<a name="improving-part-performance-calling-from-the-constructor"></a>
+<a name="revealing-part-content-calling-from-the-constructor"></a>
 ### Calling from the constructor
 
-If the part contains interesting content to display previous to loading any data, the extension should call the `container.revealContent()` method from the ViewModel's `constructor` .  The following example demonstrates  a chart that immediately displays the X-axis and the Y-axis.
+If the part needs to display content previous to loading any data, the extension should call the `container.revealContent()` method from the ViewModel's `constructor` .  The following example demonstrates  a chart that immediately displays the X-axis and the Y-axis.
 
 ```ts
 export class BarChartPartViewModel implements Def.BarChartPartViewModel.Contract {
@@ -54,12 +57,12 @@ export class BarChartPartViewModel implements Def.BarChartPartViewModel.Contract
 }
 ```
 
-<a name="improving-part-performance-calling-from-oninputsset"></a>
+<a name="revealing-part-content-calling-from-oninputsset"></a>
 ### Calling from onInputsSet
 
- Calling the `onInputsSet` method to return a promise behaves consistently, whether or not the part makes use of the  `container.revealContent()` method. Consequently, the  `container.revealContent()`method can optimize the behavior of the part that is being developed. There are two methodologies that are used to call the `container.revealContent()` method.
+The `onInputsSet` method behaves consistently when returning a promise , whether or not the part uses the `container.revealContent()` method. Consequently, the `container.revealContent()` method can optimize the behavior of the part that is being developed. There are two methodologies that are used to call the `container.revealContent()` method.
  
-It is common to call the  `container.revealContent()` method after some essential, fast-loading data is loaded, as in the following example.
+Typically, the `container.revealContent()` method is called after  essential, fast-loading data is loaded, as in the following example.
 
 ```ts
 public onInputsSet(inputs: MyPartInputs): Promise {
@@ -98,4 +101,3 @@ The promise returned from `onInputsSet` still determines the visibility of the l
 Also, if the promise that was returned from `onInputsSet` is rejected, the part displays the default error UX.  The promise that was returned from `onInputsSet` could be rejected if either the fast-loading data promise or the slow-loading data promise was rejected. The customizable error UX is in the following image.
 
 ![alt-text](../media/portalfx-parts/default-error-UX.png "Default error UX")
-

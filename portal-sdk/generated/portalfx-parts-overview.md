@@ -6,7 +6,7 @@ Parts, also known as tiles, are a framework feature that integrates the UI of an
 
 The following sections cover these topics.
 
-1. [Traditional Blades versus Template Blades](#traditional-blades-versus-template-blades)
+1. [Traditional Blades versus Template Blades](#traditional-parts-and-template-blades)
 1. [Displaying data by using intrinsic parts](#displaying-data-by-using-intrinsic-parts)
 1. [Custom parts](#custom-parts)
 1. [Integrating parts into the part gallery](#integrating-parts-into-the-part-gallery)
@@ -16,8 +16,8 @@ The following sections cover these topics.
 
 * * * 
 
-<a name="overview-traditional-blades-versus-template-blades"></a>
-### Traditional Blades versus Template Blades
+<a name="overview-traditional-parts-and-template-blades"></a>
+### Traditional parts and template blades
 
 Previously, Ibiza blades contained customizable parts, or tiles, that served as the main way for users to navigate the UI. However, the UI's were difficult to navigate, caused excessive navigation, caused excessive horizontal scrolling, and were not very performant.
 
@@ -65,32 +65,29 @@ For more information about built-in parts, see [portalfx-parts-intrinsic.md](por
 Unlike intrinsic parts, custom parts use `html` templates that are bound to the view model. The developer defines the look and feel in addition to the data loading for the part. Templates also can use other controls that are provided by the framework, as specified in [top-extensions-controls.md](top-extensions-controls.md).
 
 The following is an example of a custom part. The three files used for the custom part example are the following.
-`<dir>\Client\V1\Parts\Custom\CustomParts.pdl`
-`<dir>\Client\V1\Parts\Custom\Templates\ExampleCustomPart.html`
-`<dir>\Client\V1\Parts\Custom\ViewModels\ExampleCustomPartViewModel.ts`
+
+* `<dir>\Client\V1\Parts\Custom\CustomParts.pdl`
+
+* `<dir>\Client\V1\Parts\Custom\Templates\ExampleCustomPart.html`
+
+* `<dir>\Client\V1\Parts\Custom\ViewModels\ExampleCustomPartViewModel.ts`
 
 A working copy is located at [http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/custompart](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/custompart).
 
 The following procedure demonstrates how to use a custom part.
 
+<!-- TODO:  Determine whether the samples in this section are causing gitHub to blow up. -->
+
 1. Declare the part in the global `<Definition>` section of the PDL for the extension, as in the following example.
 
-
-<!-- TODO:  Determine whether the following sample is causing gitHub to blow up. -->
 
    gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/Custom/CustomParts.pdl", "section": "Parts#CustomPartsPDLDoc"}
 
 1. The pdl points to the html template.
 
-
-<!-- TODO:  Determine whether the following sample is causing gitHub to blow up. -->
-
    gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/Custom/Templates/ExampleCustomPart.html", "section": "Parts#CustomPartTemplateDoc"}
 
 1. The HTML template is bound to the following ViewModel by using **Knockout**, which is also referred to in the pdl.
-
-
-<!-- TODO:  Determine whether the following sample is causing gitHub to blow up. -->
 
    gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/Custom/ViewModels/ExampleCustomPartViewModel.ts", "section": "parts#CustomPartViewModelDoc"}
 
@@ -128,7 +125,7 @@ If the part that is being developed is associated with an Ibiza asset like an AR
 <a name="overview-defining-the-sizing-behavior"></a>
 ### Defining the sizing behavior
 
-There is a significant amount of flexibility when sizing extension tiles. All size options are included in the `<CustomPart>` tag in the PDL located at `<dir>\Client/V1/Parts/PartSizes/PartSizes.pdl`.
+There is a significant amount of flexibility when sizing extension tiles. All size options are included in the `<CustomPart>` tag in the PDL file located at `<dir>\Client/V1/Parts/PartSizes/PartSizes.pdl`.
 
 A working copy is located at [http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/partsizes](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/partsizes).
 
@@ -179,7 +176,7 @@ The following example located at `<dir>/Client/V1/Parts/TileGallery/TileGallery.
 
   gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/TileGallery/TileGallery.pdl", "section": "parts#PartSettingsDocs"}
 
-The following is the TypeScript code that reads and writes samples. It is also located at `<dir>Client/V1/Parts/TileGallery/ViewModels/GeneralGalleryPart.ts`.
+The following is the TypeScript code that reads and writes settings. It is also located at `<dir>Client/V1/Parts/TileGallery/ViewModels/GeneralGalleryPart.ts`.
 
 <!-- TODO:  Determine whether the following sample is causing gitHub to blow up. -->
   gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/TileGallery/ViewModels/GeneralGalleryPart.ts", "section": "parts#TileGalleryWithNewConfigurationPattern"}
@@ -187,15 +184,14 @@ The following is the TypeScript code that reads and writes samples. It is also l
 <a name="overview-the-no-data-message"></a>
 ### The no-data message
 
-Sometimes parts are displayed for which no data is available. For example, an extension may display a teaser 'deployment history' that contains sample data, before a user has enabled deployments. To support this, part `container` objects use the `noDataMessage` property.
+Sometimes parts are displayed for which no data is available. For example, an extension may display a prototype 'deployment history' that contains sample data, previous to the time when the user  enables  deployments for the extension. To support this, part `container` objects use the `noDataMessage` property.
 
-The following example populates the part with sample data and set `noDataMessage` to a nonempty string.
+The following example populates the part with sample data and set `noDataMessage` to a non-empty string.
 
 ```ts
 container.noDataMessage("Enable deployments to see your history");
 ```
 
-In this example, the part is grayed-out and is non-interactive. The message is displayed over the part. To remove the message, set the `noDataMessage` value back to `null`. 
+In this example, the part is grayed-out and is non-interactive. The message is displayed on top of the part. To remove the message, set the `noDataMessage` value back to `null`. 
 
-This feature is used to inform the user that the feature exists, although the part is not applicable because no data is available yet.
-If the extension needs to disable a part while the  data is loading, it should return a promise from the  `onInputsSet` method or use the `container.operations` queue.
+This feature informs the user that the feature exists, although no data is available yet. If the extension needs to disable a part while the  data is loading, it should return a promise from the  `onInputsSet` method or use the `container.operations` queue.

@@ -1,6 +1,6 @@
 
 <a name="intrinsic-parts"></a>
-# Intrinsic Parts
+## Intrinsic Parts
 
 Intrinsic parts are composed of existing controls in the portal, and provide patterns for solving common patterns in the portal.
 
@@ -8,7 +8,7 @@ Intrinsic parts are composed of existing controls in the portal, and provide pat
 
 All of the currently available intrinsics can be located in the working copy located at  [https://aka.ms/portalfx/samples/#blade/SamplesExtension/IntrinsicPartsIndexBlade](https://aka.ms/portalfx/samples/#blade/SamplesExtension/IntrinsicPartsIndexBlade).
 
-<a name="intrinsic-parts-asset"></a>
+<a name="asset"></a>
 ## Asset
 
 ![asset][asset]: ../media/portalfx-controls/asset.png
@@ -17,7 +17,7 @@ All of the currently available intrinsics can be located in the working copy loc
 Learn how to use the Asset part.
 </a>
 
-<a name="intrinsic-parts-button"></a>
+<a name="button"></a>
 ## Button
 
 ![button][button]: ../media/portalfx-controls/button.png
@@ -26,7 +26,7 @@ Learn how to use the Asset part.
 Learn how to use the Button part.
 </a>
 
-<a name="intrinsic-parts-chart"></a>
+<a name="chart"></a>
 ## Chart
 
 ![chart][chart]: ../media/portalfx-controls/chart.png
@@ -37,7 +37,7 @@ Learn how to use the Button part.
 Learn how to use the Chart part.
 </a>
 
-<a name="intrinsic-parts-collection"></a>
+<a name="collection"></a>
 ## Collection
 
 ![collection][grid]: ../media/portalfx-controls/grid.png
@@ -46,7 +46,7 @@ Learn how to use the Chart part.
 Learn how to use the Collection part.
 </a>
 
-<a name="intrinsic-parts-collection-summary"></a>
+<a name="collection-summary"></a>
 ## Collection Summary
 
 ![collectionSummary][collectionsummary]: ../media/portalfx-controls/collectionsummary.png
@@ -55,7 +55,7 @@ Learn how to use the Collection part.
 Learn how to use the Collection Summary part.
 </a>
 
-<a name="intrinsic-parts-diff-editor"></a>
+<a name="diff-editor"></a>
 ## Diff Editor
 
 ![diffEditorPartTitle][diff]: ../media/portalfx-controls/diff.png
@@ -64,7 +64,7 @@ Learn how to use the Collection Summary part.
 Learn how to use the Diff Editor part.
 </a>
 
-<a name="intrinsic-parts-donut"></a>
+<a name="donut"></a>
 ## Donut
 
 ![donut][donut]
@@ -74,7 +74,7 @@ Learn how to use the Diff Editor part.
 Learn how to use the Donut part.
 </a>
 
-<a name="intrinsic-parts-editor"></a>
+<a name="editor"></a>
 ## Editor
 
 ![editorPartTitle][editor]
@@ -84,7 +84,7 @@ Learn how to use the Donut part.
 Learn how to use the Editor part
 </a>
 
-<a name="intrinsic-parts-info-list"></a>
+<a name="info-list"></a>
 ## Info List
 
 ![infoList][infolist]
@@ -94,7 +94,7 @@ Learn how to use the Editor part
 Learn how to use the Info list part.
 </a>
 
-<a name="intrinsic-parts-properties"></a>
+<a name="properties"></a>
 ## Properties
 
 ![properties][properties]
@@ -102,7 +102,7 @@ Learn how to use the Info list part.
 <a href="https://aka.ms/portalfx/samples/#blade/SamplesExtension/PropertiesPartIntrinsicInstructions">
 Learn how to use the Properties part.
 
-<a name="intrinsic-parts-quickstart"></a>
+<a name="quickstart"></a>
 ## Quickstart
 
 ![quickStart][quickstart]
@@ -112,7 +112,7 @@ Learn how to use the Properties part.
 Learn how to use the Quick start part.
 </a>
 
-<a name="intrinsic-parts-quota-guage"></a>
+<a name="quota-guage"></a>
 ## Quota Guage
 
 ![quotaGauge][gauge]
@@ -121,7 +121,7 @@ Learn how to use the Quick start part.
 Learn how to use the Quota gauge part.
 </a>
 
-<a name="intrinsic-parts-setup"></a>
+<a name="setup"></a>
 ## Setup
 
 ![setupPartTitle][setup]
@@ -132,7 +132,7 @@ Learn how to use the Quota gauge part.
 Learn how to use the Setup part.
 </a>
 
-<a name="intrinsic-parts-simple-chart"></a>
+<a name="simple-chart"></a>
 ## Simple Chart
 
 ![chart][chart]
@@ -142,7 +142,7 @@ Learn how to use the Setup part.
 Learn how to use the Simple Chart part.
 </a>
 
-<a name="intrinsic-parts-single-value-guage"></a>
+<a name="single-value-guage"></a>
 ## Single value guage
 
 ![singleValueGauge][gauge]
