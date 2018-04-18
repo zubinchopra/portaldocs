@@ -45,6 +45,8 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 
 # Other
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-binding-reference.md"}
+<!--TODO: Determine which of these is stopping the GitHub include process -->
 
-{"gitdown": "include-headings", "file": "../templates/portalfx-load-configuration.md"}
+  gitdown": "include-headings", "file": "../templates/portalfx-binding-reference.md"}
+
+  gitdown": "include-headings", "file": "../templates/portalfx-load-configuration.md"}
