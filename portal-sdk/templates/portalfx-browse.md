@@ -2,17 +2,19 @@
 
 ## Building browse experiences
 
-The Favorites in the left nav and the Browse menu are the primary ways to launch tools and services within the portal. The default favorites are determined by C+E leadership based on the highest grossing services with the most engaged customers. New services will start in the Browse menu and, based on those metrics or the number of favorites surpasses other defaults, the list can be updated.
+The primary ways to launch tools and services within the portal are the Favorites in the left navigation panel and the Browse menu. New services start in the Browse menu, but the default favorites are determined by C+E leadership. The list can be updated based on those metrics or the number of favorites surpasses other defaults.
+ 
+There are 3 ways that an extension can be surfaced in Browse.
 
-There are 3 ways you can be surfaced in Browse:
+1. ["No-code" Browse](#no-code-browse) for ARM resources
 
-1. ["No-code" Browse](#resources) for ARM resources
-2. [Browse service](#assets) for assets that don't use ARM (aka Browse v1)
-3. [Custom blade](#blade) if you have a single instance and not a list of resources
+1. [Browse service](#browse-service) for assets that don't use ARM (aka Browse v1)
 
-### Resources
+1. [Custom blade](#blade) if you have a single instance and not a list of resources
 
-"No-code" Browse automatically queries ARM for resources of a specific type and displays them in a paged grid. Simply define an asset type in PDL, specify the resource type, indicate that it should be visible in the Browse hub, and specify the API version that hubs extension should use to call ARM for the resource type. That's it.
+### No-code Browse 
+
+"No-code" Browse automatically queries ARM for resources of a specific type and displays them in a paged grid. No-code Browse requires that an asset blade must accept a single `Id` input property, and that the asset id must be the resource id (not an object). The developer should define an asset type in PDL, specify the resource type, and specify the API version that the Hubs extension should use to call ARM for the resource type, as in the following example.
 
 ```xml
 <AssetType Name="Book" ... >
@@ -21,16 +23,13 @@ There are 3 ways you can be surfaced in Browse:
 </AssetType>
 ```
 
-![No-code Browse grid](../media/portalfx-browse/nocode.png)
+Then, the extension should specify that the resource should be visible in the Browse hub.
 
-No-code Browse requires the following:
-
-* Asset blade must accept a single `Id` input property
-* Asset id must be the resource id (not an object)
+![alt-text](../media/portalfx-browse/nocode.png "No-code Browse grid")
 
 #### Create 
 
-To allow people to create new resources from Browse, you can associate your asset type with a Marketplace item or category:
+To allow developers to create new resources from Browse, the asset type can be associated  with a Marketplace item or category, as in the following example.
 
 ```xml
 <AssetType
@@ -43,8 +42,7 @@ To allow people to create new resources from Browse, you can associate your asse
 </AssetType>
 ```
 
-The Browse blade will launch the Marketplace item, if specified; otherwise, it will launch the Marketplace category blade for the specific menu item id (e.g. `gallery/virtualMachines/recommended` for Virtual machines > Recommended). To determine the right Marketplace category, contact the <a href="mailto:1store?subject=Marketplace menu item id">Marketplace team</a>. If neither is specified, the Add command won't be available.
-
+The Browse blade launches the Marketplace item, if specified; otherwise, it launches the Marketplace category blade for the specific menu item id. For example, `gallery/virtualMachines/recommended` is the id for the menu item that can be reached by `Virtual machines > Recommended`. To determine the right Marketplace category, contact the <a href="mailto:1store?subject=Marketplace menu item id">Marketplace team</a>. If neither the Marketplace item nor the Marketplace category blade is specified, the Add command will not be available.
 
 #### Customizing columns
 

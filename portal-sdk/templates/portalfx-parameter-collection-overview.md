@@ -1,5 +1,5 @@
 
-{"gitdown": "include-file", "file": "portalfx-parameter-collection-related.md"}
+For a list of related files, see [portalfx-parameter-collection-related.md](portalfx-parameter-collection-related.md). 
 
 # Introduction to Parameter Collection
 
