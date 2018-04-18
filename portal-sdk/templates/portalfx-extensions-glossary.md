@@ -45,11 +45,12 @@
 ## Extensions Onboarding
 
 <!--TODO:  Determine which glossary terms are included in other bp documents previous to deleting this one -->
-{"gitdown": "include-file", "file": "./portalfx-extensions-glossary-external.md"}
+
+  gitdown": "include-file", "file": "./portalfx-extensions-glossary-external.md"}
 
 ## Feature Flags
 
-  {"gitdown": "include-file", "file": "./portalfx-extensions-glossary-flags.md"}
+    gitdown": "include-file", "file": "./portalfx-extensions-glossary-flags.md"}
 
 ## Flighting 
 
@@ -113,8 +114,8 @@
 
 ## No-PDL Programming
 
-{"gitdown": "include", "file": "./portalfx-extensions-glossary-typescript.md"}
+  gitdown": "include", "file": "./portalfx-extensions-glossary-typescript.md"}
 
 ## Versioning
 
-{"gitdown": "include", "file": "./portalfx-extensions-glossary-versioning.md"}
+{"gitdown": "include", "file": "./portalfx-extensions-glossary-versioning.md"}  
