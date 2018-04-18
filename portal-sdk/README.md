@@ -89,7 +89,7 @@ The primary UI building block is a called a blade. A blade is like a page. It ge
 
 If you want your experience to have a presence on Azure dashboards then you will want to build parts (a.k.a. tiles).
 
-* [Developing parts](top-extensions-parts.md)
+* [Developing parts](./generated/top-extensions-parts.md)
 
 [Ask a question about parts on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts)
 
