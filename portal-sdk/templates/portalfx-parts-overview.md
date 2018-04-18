@@ -3,6 +3,13 @@
 
 Parts, also known as tiles, are a framework feature that integrates the UI of an extension on dashboards.  Parts were more prevalent on blades, but this older pattern is being obsoleted by TemplateBlades that do not contain parts. For more information about template blades, see [portalfx-blades-overview.md](portalfx-blades-overview.md).
 
+Intrinsic parts are composed of existing controls in the portal, and provide patterns for solving common patterns in the portal.
+
+Many of the intrinsics can be found in the playground located at [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground).
+
+The remainder of them can be located in the working copy located at  [https://aka.ms/portalfx/samples/#blade/SamplesExtension/IntrinsicPartsIndexBlade](https://aka.ms/portalfx/samples/#blade/SamplesExtension/IntrinsicPartsIndexBlade).
+
+
 The following sections cover these topics.
 
 1. [Traditional Blades versus Template Blades](#traditional-parts-and-template-blades)
