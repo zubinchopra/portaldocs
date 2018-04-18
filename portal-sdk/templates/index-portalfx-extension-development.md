@@ -39,11 +39,6 @@
   {"gitdown": "include-headings", "file": "../templates/portalfx-resourcemove.md"}
   {"gitdown": "include-headings", "file": "../templates/portalfx-extension-pricing-tier.md"}
 
-## Debugging
-
- <!-- top-extensions-debugging.md -->
-
-  {"gitdown": "include-headings", "file": "../templates/top-extensions-production-testing.md"}
 
 ## Other
 
