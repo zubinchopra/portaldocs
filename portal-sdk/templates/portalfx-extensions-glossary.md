@@ -82,7 +82,7 @@
 
 ## Testing in Production
 
-{"gitdown": "include", "file": "./portalfx-extensions-glossary-production-testing.md"}
+  gitdown": "include", "file": "./portalfx-extensions-glossary-production-testing.md"}
 
 ## Onboarding
 
@@ -118,4 +118,4 @@
 
 ## Versioning
 
-{"gitdown": "include", "file": "./portalfx-extensions-glossary-versioning.md"}  
+ gitdown": "include", "file": "./portalfx-extensions-glossary-versioning.md"}  
