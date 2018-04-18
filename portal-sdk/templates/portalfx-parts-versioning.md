@@ -1,5 +1,5 @@
 
-### Versioning
+## Versioning
 
 When users customize or pin a part, the following states are stored and used the next time the part is loaded from a customized context.
 
@@ -11,9 +11,9 @@ Because these states are stored, these parts need to be backwards-compatible.
 
 Supporting new functionality may require the modification of the schema of a part's inputs and settings. 
 
-The Azure Portal always calls the most recent edition of an extension, as specified in the extensions configuration file. However, older versions of inputs and settings that were stored by an earlier edition of the extension may still exist, and they may be incompatible with the most recent edition of the extension. Consequently, users may experience unexpected results when the extension or part is called with previous settings.
+The Azure Portal always calls the most recent edition of an extension, which is specified in the extensions configuration file. However, older versions of inputs and settings that were stored by earlier editions of an extension may still exist, and they may be incompatible with the most recent edition of the extension. Consequently, users may experience unexpected results when the extension or part is called with previous settings.
 
-Likewise, other extensions may have taken dependencies on less-recent editions of the extension or part. For example, another extension may use a .pde file that contains a `<PartReference/>`.  Those other extensions may also experience unexpected results when they call the extension or part with old inputs.
+Likewise, other extensions may have taken dependencies on less-recent editions of the extension or part. For example, another extension may use a .pde file that contains a `<PartReference/>`.  Those other extensions may also experience unexpected results when they call the extension or part with previous inputs.
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
@@ -80,7 +80,7 @@ public onInputsSet(inputs: Def.InputsContract, settings: Def.SettingsContract): 
     }
 ```
 
-The same technique can be used for part settings.
+The same technique can be used for part settings as in the following example.
 
 ```javascript
 public onInputsSet(inputs: Def.InputsContract, settings: Def.SettingsContract): MsPortalFx.Base.Promise {

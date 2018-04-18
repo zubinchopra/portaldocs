@@ -1,5 +1,5 @@
 
-# Intrinsic Parts
+## Intrinsic Parts
 
 Intrinsic parts are composed of existing controls in the portal, and provide patterns for solving common patterns in the portal.
 
