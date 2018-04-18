@@ -1,7 +1,7 @@
 
-  {"gitdown": "include-file", "file": "../templates/portalfx-pde-publish.md"}
+    gitdown": "include-file", "file": "../templates/portalfx-pde-publish.md"}
 
-  {"gitdown": "include-file", "file": "../templates/portalfx-pde-adrbac.md"}
+    gitdown": "include-file", "file": "../templates/portalfx-pde-adrbac.md"}
 
   {"gitdown": "include-file", "file": "../templates/portalfx-pde-billing.md"}
 
