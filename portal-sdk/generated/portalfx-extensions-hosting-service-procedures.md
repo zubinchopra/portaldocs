@@ -299,30 +299,20 @@ Extensions should publish the extracted deployment artifacts that are generated 
 
 To minimize the probability of regression, use the following procedure to migrate an extension from custom  deployment to a hosting service. For more information about custom deployment, see [portalfx-extensions-custom-deployment.md](portalfx-extensions-custom-deployment.md).
 
-<details>
 
-  <summary>1. Change the uri format to use a hosting service in the PROD environment</summary>
+1. Change the uri format to use a hosting service in the PROD environment
 
    An example of a pull request for modifying the `uriFormat` parameter is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/c22b81463cab1d0c6b2c1abc803bc25fb2836aad?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/c22b81463cab1d0c6b2c1abc803bc25fb2836aad?refName=refs%2Fheads%2Fdev).
-</details>
 
-<details>
-  <summary>2. Flight changes in MPAC</summary>
+1. Flight changes in MPAC
 
   An example of a pull request for a flighting extension in MPAC is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
 
-</details>
-
-<details>
-  
-  <summary>3. Enable 100% traffic in MPAC and PROD</summary>
+1. Enable 100% traffic in MPAC and PROD
   
   An example of a pull request that enables 100% traffic without flighting for `MicrosoftAzureClassicStorageExtension`, and 100% traffic with flighting for `Microsoft_Azure_Storage` is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/b81b415411f54ad83f93d43d37bcad097949a4e3?refName=refs%2Fheads%2Fdev&discussionId=-1&_a=summary&fullScreen=false](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/b81b415411f54ad83f93d43d37bcad097949a4e3?refName=refs%2Fheads%2Fdev&discussionId=-1&_a=summary&fullScreen=false). 
-</details>
 
-<details>
-
-  <summary>4. Enable flighting in MPAC</summary>
+1. Enable flighting in MPAC
 
   The Azure Portal provides the ability to flight the MPAC customers to multiple editions of an extension. Traffic will be equally distributed between all registered configurations, or stamps.  An example of a pull request is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
     
@@ -356,4 +346,3 @@ To minimize the probability of regression, use the following procedure to migrat
         ],
       }
     ``` 
-</details>
