@@ -62,7 +62,7 @@
 
 ## Hello World Extension
 
-  {"gitdown": "include-file", "file": "./portalfx-extensions-glossary-helloWorld.md"}
+    gitdown": "include-file", "file": "./portalfx-extensions-glossary-helloWorld.md"}
 
 ## Hosting Service
 
@@ -70,15 +70,15 @@
   
 ## Key Components 
 
-  {"gitdown": "include-file", "file": "./portalfx-extensions-glossary-key-components.md"}
+    gitdown": "include-file", "file": "./portalfx-extensions-glossary-key-components.md"}
 
 ## Initializing the Developer Platform
 
-  {"gitdown": "include-file", "file": "./portalfx-extensions-glossary-getting-started.md"}
+    gitdown": "include-file", "file": "./portalfx-extensions-glossary-getting-started.md"}
 
 ## Status Codes and Error Messages
 
-  {"gitdown": "include-file", "file": "./portalfx-extensions-glossary-status-codes.md"}
+    gitdown": "include-file", "file": "./portalfx-extensions-glossary-status-codes.md"}
 
 ## Testing in Production
 
@@ -86,7 +86,7 @@
 
 ## Onboarding
 
-{"gitdown": "include", "file": "./portalfx-extensions-glossary-onboarding.md"}
+  gitdown": "include", "file": "./portalfx-extensions-glossary-onboarding.md"}
 
 ## Parts
 
