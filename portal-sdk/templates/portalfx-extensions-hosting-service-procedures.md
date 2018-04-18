@@ -294,43 +294,43 @@ To minimize the probability of regression, use the following procedure to migrat
 
 1. Flight changes in MPAC
 
-  An example of a pull request for a flighting extension in MPAC is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
+    An example of a pull request for a flighting extension in MPAC is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
 
 1. Enable 100% traffic in MPAC and PROD
   
-  An example of a pull request that enables 100% traffic without flighting for `MicrosoftAzureClassicStorageExtension`, and 100% traffic with flighting for `Microsoft_Azure_Storage` is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/b81b415411f54ad83f93d43d37bcad097949a4e3?refName=refs%2Fheads%2Fdev&discussionId=-1&_a=summary&fullScreen=false](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/b81b415411f54ad83f93d43d37bcad097949a4e3?refName=refs%2Fheads%2Fdev&discussionId=-1&_a=summary&fullScreen=false). 
+    An example of a pull request that enables 100% traffic without flighting for `MicrosoftAzureClassicStorageExtension`, and 100% traffic with flighting for `Microsoft_Azure_Storage` is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/b81b415411f54ad83f93d43d37bcad097949a4e3?refName=refs%2Fheads%2Fdev&discussionId=-1&_a=summary&fullScreen=false](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/b81b415411f54ad83f93d43d37bcad097949a4e3?refName=refs%2Fheads%2Fdev&discussionId=-1&_a=summary&fullScreen=false). 
 
 1. Enable flighting in MPAC
 
-  The Azure Portal provides the ability to flight the MPAC customers to multiple editions of an extension. Traffic will be equally distributed between all registered configurations, or stamps.  An example of a pull request is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
-    
-  * Hosting service `extension.pdl` file
+    The Azure Portal provides the ability to flight the MPAC customers to multiple editions of an extension. Traffic will be equally distributed between all registered configurations, or stamps.  An example of a pull request is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
+        
+    * Hosting service `extension.pdl` file
 
-    To flight traffic to multiple stamps, register other stamps in `flightUri`. For example, the friendly name `MPACFlight` is used to flight traffic to another edition of an extension, as in the following example.
+        To flight traffic to multiple stamps, register other stamps in `flightUri`. For example, the friendly name `MPACFlight` is used to flight traffic to another edition of an extension, as in the following example.
 
-    ``` 
-    { 
-      name: "Microsoft_Azure_Demo", 
-      uri: "//demo.hosting.portal.azure.net/demo", 
-      uriFormat: "//demo.hosting.portal.azure.net/demo/{0}", 
-      feedbackEmail: "azureux-demo@microsoft.com", 
-      flightUris: [
-        "//demo.hosting.portal.azure.net/demo/MPACFlight",
-      ],
-    }
-    ```
-  * Legacy deployment `extension.pdl` file
-
-   Custom deployment can also flight traffic to multiple extension editions, as in the following example.
-
-    ``` 
-    {
-        name: "Microsoft_Azure_Demo",
-        uri: "//main.demo.ext.azure.com",
-        uriFormat: "//{0}.demo.ext.azure.com",
-        feedbackEmail: "azureux-demo@microsoft.com",
+        ``` 
+        { 
+        name: "Microsoft_Azure_Demo", 
+        uri: "//demo.hosting.portal.azure.net/demo", 
+        uriFormat: "//demo.hosting.portal.azure.net/demo/{0}", 
+        feedbackEmail: "azureux-demo@microsoft.com", 
         flightUris: [
-            "//flight.demo.ext.azure.com",
+            "//demo.hosting.portal.azure.net/demo/MPACFlight",
         ],
-      }
-    ``` 
+        }
+        ```
+    * Legacy deployment `extension.pdl` file
+
+    Custom deployment can also flight traffic to multiple extension editions, as in the following example.
+
+        ``` 
+        {
+            name: "Microsoft_Azure_Demo",
+            uri: "//main.demo.ext.azure.com",
+            uriFormat: "//{0}.demo.ext.azure.com",
+            feedbackEmail: "azureux-demo@microsoft.com",
+            flightUris: [
+                "//flight.demo.ext.azure.com",
+            ],
+        }
+        ``` 
