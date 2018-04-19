@@ -70,7 +70,7 @@ import * as SubscriptionDropDown from "Fx/Controls/SubscriptionDropDown";
 
 The following code contains a `SubscriptionDropDown`. 
 
- {"gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#subscriptionDropDown"}
+ {"gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#subscriptionDropDown"}
 
 #### Resource groups dropdown
 
@@ -82,7 +82,7 @@ import * as ResourceGroupDropDown from "Fx/Controls/ResourceGroupDropDown";
 
 The following code contains a `ResourceGroupDropDown`. 
  
- {"gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
+ {"gitdown": "include-section", "file": "../Samples/InternalSamplesExtension/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
 
 #### Locations dropdown
 
@@ -94,7 +94,7 @@ import * as LocationDropDown from "Fx/Controls/LocationDropDown";
 
 The following code contains a `ResourceGroupDropDown`. 
 
- {"gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#locationDropDown"}
+ {"gitdown": "include-section", "file": "../Samples/InternalSamplesExtension/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#locationDropDown"}
 
 <!-- TODO: Determine the location of the pricing dropdown so that it can be added to these examples. -->
 
@@ -211,7 +211,7 @@ The following code for subscription dropdowns should be updated to use the new c
 
     <!-- TODO:  Determine whether this sample causes gitHub to stop. -->
 
-   {"gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#subscriptionDropDown"}
+   {"gitdown": "include-section", "file": "../Samples/InternalSamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#subscriptionDropDown"}
 
 #### Resource groups legacy dropdown
 
@@ -260,7 +260,7 @@ The following code for Resource Group dropdowns should be updated to use the new
 
     <!-- TODO:  Determine whether this sample causes gitHub to stop. -->
 
-   {"gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
+   {"gitdown": "include-section", "file": "../Samples/InternalSamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
 
 #### Locations **legacy** dropdown
 
@@ -305,7 +305,7 @@ The following code for Location dropdowns should be updated to use the new contr
 
     <!-- TODO:  Determine whether this sample causes gitHub to stop. -->
 
-   {"gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#locationDropDown"}
+   {"gitdown": "include-section", "file": "../Samples/InternalSamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#locationDropDown"}
 
 #### Pricing dropdown
 
@@ -319,7 +319,7 @@ import * as Specs from "Fx/Specs/DropDown";
 
 <!-- TODO:  Determine whether this sample causes gitHub to stop. -->
 
-{"gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#specDropDown"}
+{"gitdown": "include-section", "file": "../Samples/InternalSamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#specDropDown"}
 
 
 ### Validation 
