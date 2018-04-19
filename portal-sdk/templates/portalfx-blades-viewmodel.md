@@ -21,7 +21,7 @@ Or this:
 
 The properties on the `ViewModel` that creates this blade are in the following example.
 
-  gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Blades/ViewModelInitExample/ViewModels/ViewModelInitExample.ts", "section": "bladeViewModel#properties"}
+ {"gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Blades/ViewModelInitExample/ViewModels/ViewModelInitExample.ts", "section": "bladeViewModel#properties"}
 
 Private members of the blade `ViewModel` are properties whose name starts with an underscore. The proxied observable layer does not transfer private members to the shell iframe. For example, the `EntityView` object named `_view` is not directly used in the rendering of the blade, therefore it does not appear in the blade template, nor is it proxied to the shell iframe.
 
@@ -29,7 +29,7 @@ Private members of the blade `ViewModel` are properties whose name starts with a
 
 The template for this blade is in the following example.
 
- gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Blades/ViewModelInitExample/Templates/Template.html", "section": "bladeViewModel#template"}
+{"gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Blades/ViewModelInitExample/Templates/Template.html", "section": "bladeViewModel#template"}
 
 ### The blade constructor
 
@@ -37,7 +37,7 @@ When a blade is opened, the Portal creates a blade that displays a loading UX in
 
 This example will always need a readonly textbox for the name and an OK button to close the blade, so they are created in the constructor.  The constructor is not aware of  the value of the name textbox yet, because the values are only known after the  data is retrieved.  The value can be updated later because the `value` property of the textbox view model is observable, as in the following example of the blade  `ViewModel` constructor.
 
-  gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Blades/ViewModelInitExample/ViewModels/ViewModelInitExample.ts", "section": "bladeViewModel#constructor"}
+ {"gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Blades/ViewModelInitExample/ViewModels/ViewModelInitExample.ts", "section": "bladeViewModel#constructor"}
 
 #### Observable and non-observable values
 
@@ -83,7 +83,7 @@ this._buttonText("New button text");
 
 When the input values for the blade are ready, the framework will call the `onInputsSet` method. This is often when the extension fetches the data for the blade and update the view models that were created in the constructor. When the promise  that is returned from the `onInputsSet` method is resolved, the blade is considered 'loaded' the loading UI indicator will be removed from the blade. The following is the `onInputsSet` method for the person object example.
 
-  gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Blades/ViewModelInitExample/ViewModels/ViewModelInitExample.ts", "section": "bladeViewModel#onInputsSet"}
+ {"gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Blades/ViewModelInitExample/ViewModels/ViewModelInitExample.ts", "section": "bladeViewModel#onInputsSet"}
 
 The extension uses a `fetch()` to get data from the server, based on the inputs provided by the Framework. The return value for the `onInputSet` is the `promise` that is returned by the fetch call, so that the blade can be displayed as soon as the data is loaded. There is  also a `then()` on the fetch promise so that the extension can populate the dynamic pieces of the blade. The steps to display the person object with the data that was retrieved from the server are as follows.
 

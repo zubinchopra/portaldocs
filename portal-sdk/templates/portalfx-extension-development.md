@@ -29,26 +29,26 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 
 {"gitdown": "include-headings", "file": "../templates/portalfx-assets.md"}
 
-gitdown": "include-headings", "file": "../templates/portalfx-essentials.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-essentials.md"}
   
- gitdown": "include-headings", "file": "../templates/portalfx-resourcemenu.md"}
+{"gitdown": "include-headings", "file": "../templates/portalfx-resourcemenu.md"}
 
-  gitdown": "include-headings", "file": "../templates/portalfx-permissions.md"}
+ {"gitdown": "include-headings", "file": "../templates/portalfx-permissions.md"}
 
-  gitdown": "include-headings", "file": "../templates/portalfx-notifications.md"}
+ {"gitdown": "include-headings", "file": "../templates/portalfx-notifications.md"}
 
-  gitdown": "include-headings", "file": "../templates/portalfx-subscriptions.md"}
+ {"gitdown": "include-headings", "file": "../templates/portalfx-subscriptions.md"}
 
-  gitdown": "include-headings", "file": "../templates/portalfx-tags.md"}
+ {"gitdown": "include-headings", "file": "../templates/portalfx-tags.md"}
 
-  gitdown": "include-headings", "file": "../templates/portalfx-resourcemove.md"}
+ {"gitdown": "include-headings", "file": "../templates/portalfx-resourcemove.md"}
 
-  gitdown": "include-headings", "file": "../templates/portalfx-extension-pricing-tier.md"}
+ {"gitdown": "include-headings", "file": "../templates/portalfx-extension-pricing-tier.md"}
 
 # Other
 
 <!--TODO: Determine which of these is stopping the GitHub include process -->
 
-  gitdown": "include-headings", "file": "../templates/portalfx-binding-reference.md"}
+ {"gitdown": "include-headings", "file": "../templates/portalfx-binding-reference.md"}
 
-  gitdown": "include-headings", "file": "../templates/portalfx-load-configuration.md"}
+ {"gitdown": "include-headings", "file": "../templates/portalfx-load-configuration.md"}

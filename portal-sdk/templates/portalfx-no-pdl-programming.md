@@ -46,15 +46,15 @@ This section pulls from a sample that [you can see in the dogfood environment](h
 
 Here is an example of a very simple template blade, represented by a single TpeScript file in your extension project.
 
-  gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#HelloWorld"}
+ {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#HelloWorld"}
 
 This is the decorator code.  There are several options that can be specified as properties on the object passed into the decorator.  This sample shows the simplest scenario where you only need to provide an HTML template.  In this case, the template is provided inline, something the SDK supports for convinience.  You also have the ability to provide a relative path to an html file that contains the template (e.g. If your blade is in a file called `MyBlade.ts` then you can add a file right next to it called `MyBlade.html` and then pass `./MyBladeName.html` into the htmlTemplate property of the decorator).
 
-  gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#DecoratorReference"}
+ {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#DecoratorReference"}
 
 Additionally, the No-PDL programming model introduces (and requires) a context property to be present in your blade class. The context property is populated by the framework on your behalf and contains APIs you can call to interact with the shell.  You can learn more about the context property [here](#no-pdl-context-property).
 
-  gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#Context"}
+ {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#Context"}
 
 ### Building a menu blade using decorators
 
@@ -161,7 +161,7 @@ The context property contains APIs you can call to interact with the shell. It w
 
 Declaring the type of this property can be a little tricky, and the declaration can change if more No-PDL decorators are added to your file.  This is because certain APIs on the context object get enhanced when new decorators are used.  Let's start with a basic example and build from there.
 
-  gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#Context"}
+ {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#Context"}
 
 This is the simplest declaration of the context property.  The framework provided `TemplateBlade.Context` type takes in two generic parameters. The first parameter represents the type of object that represents the parameters to the blade.  This simple blade takes no parameters, hence the value of `void` for the first generic parameter.  The second generic parameter represents the type of your model data, which – today – must be the DataContext object for your Blade/Part. This makes the context property aware of your data context in a strongly typed way.
 

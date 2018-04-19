@@ -1,7 +1,2 @@
 
-# Deployment
-
-{"gitdown": "include-headings", "file": "../templates/portalfx-deployment.md"}
-
-{"gitdown": "include-headings", "file": "../templates/portalfx-deployment-sovereign.md"}
-
+The page you requested has moved to [portalfx-extension-deployment.md](portalfx-extension-deployment.md). 

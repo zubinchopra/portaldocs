@@ -15,8 +15,7 @@ Menu blades are defined in a **TypeScript** file as shown in the following code.
 
 The following code demonstrates how to define a menu blade `ViewModel` to open two different items.
 
- {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/MenuBlade/SampleMenuBlade.ts",
- "section": "menuBlade#ctor"}
+ {"gitdown": "include-file", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/MenuBlade/SampleMenuBlade.ts"}
  
 
  

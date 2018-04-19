@@ -26,19 +26,19 @@ Use the following steps to create a blade or part that uses the `DataCache` clas
 
 <!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
-  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/MasterDetailBrowse/MasterDetailBrowseData.ts", "section": "data-overview#create-data-cache"} 
+ {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/MasterDetailBrowse/MasterDetailBrowseData.ts", "section": "data-overview#create-data-cache"} 
 
 2. Each blade and part `ViewModel` creates a `DataView` in its constructor, so that it can load and refresh data for the blade or part.
 
 <!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
-  gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/DetailViewModels.ts", "section": "data#entityCacheView"}
+ {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/DetailViewModels.ts", "section": "data#entityCacheView"}
 
 3. When the blade or part `ViewModel` receives its parameters in the `onInputsSet` method, the `ViewModel` calls the  `dataView.fetch()` method to load data.
 
 <!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
-  gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#onInputsSet"}
+ {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#onInputsSet"}
   
 ### The QueryCache
 
@@ -94,7 +94,7 @@ It accepts data of type `T` according to some extension-specified `TId` type. Th
 
 <!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
-  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailArea.ts", "section": "data#websitesEntityCache"}
+ {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailArea.ts", "section": "data#websitesEntityCache"}
 
 <!--TODO: Determine whether these parameters can be described as "
 a generic parameter for the type of object stored in its cache, "  -->
@@ -109,4 +109,4 @@ When an EntityCache is instantiated, three elements are specified.
     
 ### EditScopeCache
 
-The `EditScopeCache` class is less commonly used. It loads and manages instances of `EditScope`, which is a change-tracked, editable model for use in Forms, as specified in [portalfx-legacy-editscopes.md](portalfx-legacy-editscopes.md).  
+The `EditScopeCache` class is less commonly used. It loads and manages instances of `EditScope`, which is a change-tracked, editable model for use in Forms.

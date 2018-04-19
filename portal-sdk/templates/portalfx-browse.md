@@ -10,22 +10,51 @@ There are 3 ways that an extension can be surfaced in Browse.
 
 1. [Browse service](#browse-service) for assets that don't use ARM (aka Browse v1)
 
-1. [Custom blade](#blade) if you have a single instance and not a list of resources
+1.
 
-### No-code Browse 
+* No-code Browse for ARM resources
 
-"No-code" Browse automatically queries ARM for resources of a specific type and displays them in a paged grid. No-code Browse requires that an asset blade must accept a single `Id` input property, and that the asset id must be the resource id (not an object). The developer should define an asset type in PDL, specify the resource type, and specify the API version that the Hubs extension should use to call ARM for the resource type, as in the following example.
+    "No-code" Browse automatically queries ARM for resources of a specific type and displays them in a paged grid. No-code Browse requires that an asset blade accepts a single `Id` input property, and that the asset id is the resource id instead of an object. The developer should define an asset type in PDL, specify the resource type, and specify the API version that the Hubs extension will use to call ARM for the resource type, as in the following example.
+
+    ```xml
+    <AssetType Name="Book" ... >
+    <Browse Type="ResourceType" />
+    <ResourceType ResourceTypeName="Microsoft.Press/books" ApiVersion="2016-01-01" />
+    </AssetType>
+    ```
+
+    Then, the extension specifies  that the resource should be visible in the Browse hub, as in the following image.
+
+    ![alt-text](../media/portalfx-browse/nocode.png "No-code Browse grid")
+
+* Browse service for assets that don't use ARM (aka Browse v1)
+
+    The Browse service API provides support for custom data, whether that comes from ARM or another source.
+
+    **NOTE:** The Browse service API has been replaced with the Browse v2 API, which starts with no-code.
+
+    The UI for browse are implemented as part of the Shell. This
+    means that extensions will accept a request for a browse, reason about the browse criteria, and return a list of results. Extensions opt into this functionality by creating an asset type and defining a browse service.
+
+    
+* Custom blades
+
+
+ permalink-browse-custom-blade
+
+If the extension will not have a list of resources and  only needs only a single custom blade for Browse, the developer can define an asset type with a `Browse` type of `AssetTypeBlade`. This tells Browse to launch the blade that is associated with the asset type. The asset type does not refer to an instance of a resource in this case. This is most common for services that are only provisioned once per directory. In this case, the `PluralDisplayName` is used in the Browse menu, but the other display names are ignored. Feel free to set them to the same value.
 
 ```xml
-<AssetType Name="Book" ... >
-  <Browse Type="ResourceType" />
-  <ResourceType ResourceTypeName="Microsoft.Press/books" ApiVersion="2016-01-01" />
+<AssetType
+    Name="CompanyLibrary"
+    BladeName="CompanyLibraryBlade"
+    PluralDisplayName="..."
+    ... >
+  <Browse Type="AssetTypeBlade" />
 </AssetType>
 ```
 
-Then, the extension should specify that the resource should be visible in the Browse hub.
 
-![alt-text](../media/portalfx-browse/nocode.png "No-code Browse grid")
 
 #### Create 
 
@@ -271,22 +300,10 @@ class BookViewModel implements ExtensionDefinition.ViewModels.ResourceTypes.Book
 }
 ```
 
-#### Browse service
-
-The Browse service API provides support for custom data, whether that comes from ARM or another source.
-
-**NOTE:** The Browse service API is no longer being maintained. All efforts have been refocused on our Browse v2 API, which starts with no-code. We'll continue to expand that thru the first half of 2015.
-
-The UI for browse in the portal are implemented as part of the shell. This
-means that extension authors are largely responsible for accepting a request
-for a browse, reasoning about the browse criteria, and returning a list of
-results. Extensions opt into this functionality by creating an asset type and
-defining a browse service.
-
 #### Defining an Asset Type permalink-asset-type-non-arm
 
 Asset types provide a way for the shell to understand high level objects in
-your extension. Asset types are the portal's way of understanding the
+your extension. Asset types are the Portal's way of understanding the
 capabilities of a given object. Currently, it defines services for:
 
   * Browse
@@ -310,13 +327,19 @@ samples under `\Client\Hubs\Browse\Browse.pdl`:
 
 The fields defined here work as follows:
 
-* **Name** \- Identifier used for the asset type.
-* **Text** \- JavaScript literal that stores the human readable name for the asset. See `\Client\Shared\SharedArea.ts`.
-* **IconUri** \- JavaScript literal that stores the URI to the icon for the given asset.
-* **BladeName** \- Reference to the blade that will be opened when this asset is selected in a list.
-* **PartName** \- Reference to the part that will represent the asset on the startboard.
-* **Browse ServiceViewModel** \- Class that provides browse services.
-* **GridColumn ServiceViewModel** \- Class which provides grid columns services when displaying assets in browse or in resource lists.
+**Name**: Identifier used for the asset type.
+
+**Text**: JavaScript literal that stores the human readable name for the asset. See `\Client\Shared\SharedArea.ts`.
+
+**IconUri**: JavaScript literal that stores the URI to the icon for the given asset.
+
+**BladeName**: Reference to the blade that will be opened when this asset is selected in a list.
+
+**PartName**: Reference to the part that will represent the asset on the startboard.
+
+**Browse ServiceViewModel**:  Class that provides browse services.
+
+**GridColumn ServiceViewModel**: Class which provides grid columns services when displaying assets in browse or in resource lists.
 
 An example of each of these classes can be found in the samples under
 `\Client\Hubs\Browse\`. This also contains a full reference implementation.
@@ -329,8 +352,12 @@ needs a list of columns, and the properties on the asset objects which are
 going to map to those columns. If you've worked with other grids, the API is
 the same as defining a grid schema.
 
+<!--TODO: Determine whether it makes more sense to use the sammple in the samples extension than the  literal. -->
 There is a reference implementation available at
-`\Client\Hubs\Browse\Services\RobotGridColumnsService.ts`:
+
+`<dir>\Client\V1\Hubs\Browse\Services\RobotGridColumnsService.ts`, and in the following code.
+
+  {"gitdown": "include-file", "file": "../Samples/SamplesExtension/Extension/Client/V1/Hubs/Browse/Services/RobotGridColumnsService.ts"}
 
 ```ts
 module SamplesExtension.Hubs {
@@ -465,20 +492,5 @@ module SamplesExtension.Hubs {
         }
     }
 }
-```
-
-
-### Custom blade permalink-browse-custom-blade
-
-If you don't have a list of resources and simply need to add a custom blade to Browse, you can define an asset type with a `Browse` type of `AssetTypeBlade`. This tells Browse to launch the blade associated with the asset type. Note that the asset type doesn't actually refer to an instance of a resource in this case. This is most common for services that are only provisioned once per directory. In this case, the `PluralDisplayName` is used in the Browse menu, but the other display names are ignored. Feel free to set them to the same value.
-
-```xml
-<AssetType
-    Name="CompanyLibrary"
-    BladeName="CompanyLibraryBlade"
-    PluralDisplayName="..."
-    ... >
-  <Browse Type="AssetTypeBlade" />
-</AssetType>
 ```
 

@@ -45,7 +45,7 @@ When a blade or part `ViewModel` is instantiated, its constructor is sent a refe
 
 <!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
-  gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/MasterViewModels.ts","section":"data-overview#data-context-ctor-use"}
+ {"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/MasterViewModels.ts","section":"data-overview#data-context-ctor-use"}
 
 The benefits of centralizing data access in a singleton `DataContext` include the following.
 
@@ -81,7 +81,7 @@ The benefits of centralizing data access in a singleton `DataContext` include th
 
 * EditScopeCache
 
-  The `EditScopeCache` class is less commonly used. It loads and manages instances of `EditScope`, which is a change-tracked, editable model for use in Forms, as specified in [portalfx-legacy-editscopes.md](portalfx-legacy-editscopes.md).
+  The `EditScopeCache` class is less commonly used. It loads and manages instances of `EditScope`, which is a change-tracked, editable model for use in Forms.
   
  * `DataCache` class methods
 
@@ -103,11 +103,11 @@ Typically, the `DataContext` associated with a particular area is instantiated f
 
 <!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
-gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/Program.ts", "section": "data#createDataContext"}
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/Program.ts", "section": "data#createDataContext"}
 
 There is a single `DataContext` class per area. That class is named `<AreaName>Area.ts`, as in the code located at  `<dir>\Client\V1\MasterDetail\MasterDetailArea.ts` and in the following example.
 
 <!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
-gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailArea.ts", "section": "data#dataContextMembers"}
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailArea.ts", "section": "data#dataContextMembers"}
 

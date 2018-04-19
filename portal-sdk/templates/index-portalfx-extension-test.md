@@ -1,5 +1,5 @@
 
 # Portal Test Frameworks
-{"gitdown": "include-headings", "file": "../templates/portalfx-choosing-test-framework.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-test.md"}
-{"gitdown": "include-headings", "file": "../templates/msportalfx-test.md"}
+
+The page you requested has moved to [portalfx-extension-test.md](portalfx-extension-test.md). 
+

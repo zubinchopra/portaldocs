@@ -15,7 +15,7 @@ Donuts can be added to part templates with the following html:
 
 The sample located at `<dir>\Client\V2\Controls\Donut\DonutBlade.ts` includes a donut blade. It is also in the following code.
 
-{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Donut/DonutBlade.ts"} 
+{"gitdown":"include-file","file":"../Samples/SamplesExtension/Extension/Client/V2/Controls/Donut/DonutBlade.ts"} 
 
 <!-- TODO:  Determine why the previous sample, ViewModels\DonutViewModels.ts, no longer exists in what is shipped with the SDK. Also  determine whether the previous xml is still relevant, or if there is a better sample.
 -->
