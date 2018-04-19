@@ -1,4 +1,4 @@
-# Release Notes since 12/18/2017
+# Release Notes since 12/19/2017
 
 ## 5.0.302.1081
 0 Breaking Changes, 1 Features added and 1 Bugs Fixed
