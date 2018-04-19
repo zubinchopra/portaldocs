@@ -73,13 +73,19 @@ The primary UI building block is a called a blade. A blade is like a page. It ge
 
 * [Overview](./generated/top-extensions-blades.md)
 
-* [Advanced TemplateBlade Topics](./generated/top-blades-advanced.md)
+* [TemplateBlade](./generated/top-blades-procedure.md)
 
 * [MenuBlade](./generated/top-blades-menublade.md)
+
+* [ResourceMenuBlade](./generated/top-blades-resourcemenu.md)
 
 * [Blade Settings](./generated/top-blades-settings.md)
 
 * [Frame Blades](./generated/top-blades-frameblades.md)
+
+* [Opening and closing Blades programmatically](./generated/top-blades-opening-and-closing.md)
+
+* [Advanced TemplateBlade Topics](./generated/top-blades-advanced.md)
 
 * [Blade with tiles](./generated/top-blades-legacy.md)
 
@@ -95,7 +101,7 @@ If you want your experience to have a presence on Azure dashboards then you will
 
 ### Building UI with HTML templates and Fx controls
 
-Any template based UI in the portal (e.g. [template blades]() or [template parts]() can make use of a rich controls library maintained by the Ibiza team.
+Any template based UI in the portal (e.g. template blades or template parts can make use of a rich controls library maintained by the Ibiza team.
 
 * [Controls overview](./generated/top-extensions-controls.md)
 
@@ -229,6 +235,14 @@ The Ibiza team collects standard telemetry for __generic actions__ like blade op
 [Ask about telemetry on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-telemetry)
 
 [Ask about performance and reliability on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-performance)
+
+## Experimentation and flighting
+
+It is common for teams to want to experiment with new capabilities. We offer two framework features that make this possible.
+
+* [Flighting a new version of your extension in MPAC](./generated/top-extensions-flighting.md)
+
+* [Feature flags to enable or disable individual features within an environment](./generated/top-extensions-flags.md)
 
 ## Localization / Globalization
 
