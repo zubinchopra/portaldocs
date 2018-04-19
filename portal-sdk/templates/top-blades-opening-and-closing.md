@@ -55,7 +55,7 @@ The following `openBlade` methods are now available on the template blade contai
     openContextBladeAsync(promiseToDetermineBladeToOpen: Promise<BladeReference>): Promise<boolean>; 
 ```
 
-### Methods for opening blades within the menu
+### Opening blades within the menu
 
 When the template blade is in the context of a menu blade, for example, when the template blade is the child of a menu blade, the following methods are available on the `menu` object within the PDL `container` object or the no-PDL `context` object. 
 

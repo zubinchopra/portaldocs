@@ -3,9 +3,45 @@
 
 The `TemplateBlade` is the recommended way of authoring blades in Ibiza. It is the equivalent to windows or pages in other systems.
 
-You can think of a TemplateBlade as an HTML page. Authoring template blades requires a , an HTML template, a ViewModel, an optional CSS file, and either a blade definition in PDL or a ViewModel with the logic that binds to the HTML template.
+You can think of a `TemplateBlade` as an HTML page. Authoring template blades requires an HTML template, a ViewModel, and an optional CSS file.
 
-The following sections discuss the blade definition and the blade capabilities in the ViewModel, using the `Infobox` control.  The pdl definition can be used, and there is a TypeScript sample located at `<dir>\Client\V2\Controls\Infobox\InfoboxBlade.ts`.
+To create a template blade you create a single TypeScript file inside one of your area directories. Here is a basic example of a `TemplateBlade`.
+
+{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#HelloWorld"}
+
+Import statements at the top of the file pull in things like the template blade module, your client resources, and your area information.
+
+Below that is the template blade decorator which is where you supply your HTML template.  The template can include Knockout constructs for data binding as well as referencing Ibiza controls. The document located at [top-extensions-controls.md](top-extensions-controls.md) covers the supported features and recommended patterns in detail. There are other, optional pieces of metadata you can specify in the decorator such as opting in to the feature that lets users pin your blade.
+
+Below the decorator is a TypeScript class that implements the blade logic. The name of the class is used as a unique identifier for a blade within your extension. That name will appear in URLs and will be used to locate the blade when a user clicks on a pinned part. 
+
+**WARNING**: Changing these names after shipping will result in broken links.
+
+This class has three public properties.
+
+**Title**:  String which can optionally be observable. It directly maps to what the user will see in the blade header. 
+
+**subtitle**:  String which can optionally be observable. It directly maps to what the user will see in the blade header.  
+
+  {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#Context"}
+
+**context**: This property is auto populated by the framework when your blade loads. It contains many APIs you can use to interact with the shell such as blade opening, access to blade parameters, and much more. The context property accepts two generic type arguments. The first represents the type of your parameters. In this simple case we use void because this blade takes no parameters.  You can define your own interface type to define your parameters and then use that type as the first parameter. The second parameter represents the data context type that is shared by all blades in an area.
+
+In this simple case we use void because this blade takes no parameters. You can define your own interface type to define your parameters and then use that type as the first parameter. The secomd parameter represents the data context type that is shared by all blades in an area.
+
+The `onInitialize()` method is called by the framework when loading your blade. The context property will be populated before this method is called. This is where you do all of your blade loading logic. In this simple example the blade does not fetch any data from a server and so it simply returns a resolved promise via Q(). This instructs the framework to immediately remove the loading indicator and render your template. If your blade requires data to load before content is rendered then you should return a promise that resolves when your blade is ready. The Portal will keep the loading indicator on the blade until this happens. The portal telemetry infrastructure will also place markers around the beginning of your onInitialize() and the end of this promise in order to measure the performance of your blade load path. If your blade has a two-phase load (meaning you want to show some content to the user before all the data is loaded) then you can call `context.container.revealContent()` at the end of the first phase. This will signal to the framework to remove the loading indicator and render your content even though the blade is not fully ready. You are responsible for making the experience usable while in this partially ready state.
+
+There are several samples that show more advanced features of template blades.
+
+* Source Code installed with the SDK
+
+  `<dir>\Client/V2/Blades/Template`
+
+* Live running sample
+The working copy is located at 
+    [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/TemplateBladesBlade/overview](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/TemplateBladesBlade/overview)
+
+    It contains links that are clicked to can
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 

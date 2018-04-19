@@ -1,7 +1,9 @@
 
 ## Menu Blade
 
-Menu blades are rendered as a menu on the left side of the screen. The Shell combines this blade with the blade that is immediately to its right. Each item that is referenced from the left menu is rendered using the same header as the menu blade, resulting in the two blades being displayed as one blade.  This is similar to the way that the resource menu blade operates.
+Menu blades are rendered as a menu on the left side of the screen. The Shell combines this blade with the blade that is immediately to its right. Each item that is referenced from the left menu is rendered using the same header as the menu blade, resulting in the two blades being displayed as one blade.  This is similar to the way that the resource menu blade operates.  A user can click on the double left arrow to collapse the menu pane, as in the following image.
+ 
+![alt-text](../media/portalfx-blades/menuBlade.png "Menu Blade")
 
 The process is as follows.
 
@@ -17,12 +19,10 @@ The following code demonstrates how to define a menu blade `ViewModel` to open t
 
  {"gitdown": "include-file", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/MenuBlade/SampleMenuBlade.ts"}
  
-
- 
 There are a few things to notice in the preceding code.
 
 * Menus have an overview item. This item is the default selected item when the user loads the menu blade.
-* Menu items `id` property is required to be unique, this will also be used in the deep link of your menu blade.
+* The Menu item's `id` property is required to be unique; it  will be used in the deep link of the menu blade.
 * Menus can have different groups. In this code there is a single group.
 * Each menu item opens a blade, and all necessary parameters are provided.
 * The menu blade ideally should not be loading data. That can be done on the child blade after the user opens the blade.
@@ -33,7 +33,7 @@ You can view a working copy of the MenuBlade  in the Dogfood environment sample 
 
 * Dynamically changing the default selected item
 
-    If on load you want to take the user to a different menu item by default, you can specify the `defaultId` as part of the constructor options.
+    If  you want to take the user to a different menu item by default, you can specify the `defaultId` as part of the constructor options.
 
 * Hide the search box
 
@@ -41,16 +41,21 @@ You can view a working copy of the MenuBlade  in the Dogfood environment sample 
 
 * Menu items should also define keywords. When a user searches within the menu blade's search box, the item's `displayText` and the keywords are used to match the search terms.
 
-* Menu items can be made to be enabled or visible dynamically.
-
-    You can define the `menuItem` and then provide an optional property for the enabled property or the visible property. Then, dynamically update the observable.
+* Menu items can be made to be enabled or visible dynamically by providing an optional property for either of those properties and dynamically updating the observable after defining the menu item.
 
 * Menu items can also provide a tooltip
 
-    Tooltips can be used to display further information on what the menu item defines, or they can also be used to explain to the user why the menu item is disabled. For example, a tooltip for a disabled menu item might indicate that the user does not have access to that menu item.
+    This can be used to display further information on what the menu item defines, or it can also be used to explain to the user reasons why the menu item is disabled. 
 
-Menu blades also allow the user to collapse the menu pane. This is not available for developers to control programmatically.
+Menu blades also allow the user to collapse the menu pane.  This is not available programmatically to control by extension authors, as in the preceding image.
 
- A user can click on the double left arrow to collapse the menu pane, as in the following image.
- 
-![alt-text](../media/portalfx-blades/menuBlade.png "Menu Blade")
+### Navigation within a menu blade
+
+There are various options on how to open blades when the user interacts with your experience.
+
+When in menu blades there are some extra options exposed.
+
+* `container.menu.switchMenuItem()`
+* `container.menu.openBlade()`
+
+For more information about those options see [top-blades-opening-and-closing.md-opening-blades-within-the-menu](top-blades-opening-and-closing.md-opening-blades-within-the-menu).

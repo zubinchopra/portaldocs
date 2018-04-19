@@ -9,12 +9,15 @@ The following is a list of different types of blades.
 
 | Type                          | Document           | Description |
 | ----------------------------- | ---- | ---- |
-| TemplateBlade                 | [top-blades-procedure.md](top-blades-procedure.md) | Creating any Portal blade. This is the main and recommended authoring model for UI in the Portal. |
-| Opening and Closing Blades    | [top-blades-opening-and-closing.md](top-blades-opening-and-closing.md) | Opening and closing blades, within an extension and from a separate extension.  |
-| MenuBlade                     | [top-blades-menublade.md](top-blades-menublade.md)   | Displays a vertical menu at the left of a blade.                                       |  
+| TemplateBlade                 | [top-blades-procedure.md](top-blades-procedure.md) | Creating any Portal blade. This is the main and recommended authoring model for UI in the Portal. (Recommended) |
+| MenuBlade                     | [top-blades-menublade.md](top-blades-menublade.md) | Displays a vertical menu at the left of a blade.      |
 | Resource MenuBlade       |   [top-blades-resourcemenu.md](top-blades-resourcemenu.md)  | A specialized version of MenuBlade that adds support for standard Azure resource features.  | 
-| FrameBlade/AppBlade       | [top-blades-frameblades.md](top-blades-frameblades.md)   | Provides an IFrame to host the UI. Be advised that if you go this route you get great power and responsibility. You will own the DOM, which means you can build any UI you can dream up. You cannot use Ibiza controls meaning you will have an increased responsibility in terms of accessibility, consistency, and theming.  |
-| Blade with tiles              | [top-blades-legacy.md](top-blades-legacy.md)         |  Legacy authoring model. Given its complexity, you may want to use TemplateBlades instead. | | 
+| Blade Settings | [portalfx-blades-settings.md](portalfx-blades-settings.md) | Settings that  standardize key interaction patterns across resources. | 
+| FrameBlades       | [top-blades-frameblades.md](top-blades-frameblades.md)  | Provides an IFrame to host the UI. Be advised that if you go this route you get great power and responsibility. You will own the DOM, which means you can build any UI you can dream up. You cannot use Ibiza controls meaning you will have an increased responsibility in terms of accessibility, consistency, and theming.  |
+| Opening and Closing Blades    | [top-blades-opening-and-closing.md](top-blades-opening-and-closing.md) | Opening and closing blades, within an extension and from a separate extension.  |
+| Advanced TemplateBlade Topics    | [top-blades-advanced.md](top-blades-advanced.md) | More blade development techniques.  |
+| Blade with tiles   | [top-blades-legacy.md](top-blades-legacy.md)  |  Legacy authoring model. Deprecated due to its complexity. | 
+
 
  {"gitdown": "include-file", "file": "portalfx-extensions-bp-blades.md"}
 
