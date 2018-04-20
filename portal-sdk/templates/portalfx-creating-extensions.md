@@ -4,10 +4,12 @@
 
 ### Prerequisites
 
-- Microsoft Windows 10, Windows Server 2012 R2, or latest
-- Visual Studio 2015 Update 3
-- Latest version of the <a href="http://www.typescriptlang.org/#Download" target="_blank">TypeScript plugin for Visual Studio</a>
-- Latest version of the <a href="../generated/downloads.md" target="_blank">Azure Portal SDK</a>
+- Windows 10 [Download](https://www.microsoft.com/en-us/software-download/windows10), Windows Server 2012 R2 [Download](https://www.microsoft.com/en-us/download/details.aspx?id=41703), or the most recent edition of the client or server platform. Some 
+- Visual Studio 2015 update 3 (a SKU of Professional or greater is required) - [Download](https://www.visualstudio.com/vs/older-downloads/)
+- TypeScript 2.3.3 for Visual Studio 2015 — May 22, 2017 [Download](http://download.microsoft.com/download/6/D/8/6D8381B0-03C1-4BD2-AE65-30FF0A4C62DA/2.3.3-TS-release-dev14update3-20170519.1/TypeScript_Dev14Full.exe)
+- Node.js LTS 8.11.1 or later - [Download](https://nodejs.org/dist/v8.11.1/node-v8.11.1-x64.msi)
+- Node Tools for Visual Studio 2025 v1.3.1- [Download](https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1)
+- The latest Azure Portal SDK - [Download](http://aka.ms/portalfx/download)
 
 ### Creating an Extension
 The Azure Portal SDK includes everything you need to build extensions for the portal.  Included are variety of tools and samples that help developers build extensions on top of the framework.
