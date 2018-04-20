@@ -21,7 +21,7 @@ Or this:
 
 The properties on the `ViewModel` that creates this blade are in the following example.
 
- {"gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Blades/ViewModelInitExample/ViewModels/ViewModelInitExample.ts", "section": "bladeViewModel#properties"}
+ {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Blades/ViewModelInitExample/ViewModels/ViewModelInitExample.ts", "section": "bladeViewModel#properties"}
 
 Private members of the blade `ViewModel` are properties whose name starts with an underscore. The proxied observable layer does not transfer private members to the shell iframe. For example, the `EntityView` object named `_view` is not directly used in the rendering of the blade, therefore it does not appear in the blade template, nor is it proxied to the shell iframe.
 
@@ -29,7 +29,7 @@ Private members of the blade `ViewModel` are properties whose name starts with a
 
 The template for this blade is in the following example.
 
-{"gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Blades/ViewModelInitExample/Templates/Template.html", "section": "bladeViewModel#template"}
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client//V2/Blades/ViewModelInitExample/Templates/Template.html", "section": "bladeViewModel#template"}
 
 ### The blade constructor
 
