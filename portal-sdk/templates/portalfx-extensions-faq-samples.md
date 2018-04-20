@@ -9,7 +9,7 @@
 
  DESCRIPTION:  
 
- Right out of the box, the samples are not aware of whether V1 or V2 is being used, or whether the IDE options match the version. There may be an error message TS1219.  Errors may also occur based on the version of the SDK.
+  By default, the samples are not aware of whether V1 or V2 is being used, or whether the IDE options match the version. There may be an error message TS1219.  Errors may also occur based on the version of the SDK.
 
  SOLUTION: 
 
@@ -45,6 +45,6 @@ Failed to register URL "https://localhost:44306/" for site "SamplesExtension" ap
 
 SOLUTION: 
 
-Terminate IIS express processes in Task Manager and click F5 again.
+Terminate IIS express processes in Task Manager and press F5 again.
 
 * * *
