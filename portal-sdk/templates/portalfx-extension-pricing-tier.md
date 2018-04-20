@@ -35,15 +35,15 @@ The data in here will have the information that will be shown on the specs and a
 
 Sample Spec
 
- {"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/HubsExtension/SpecPickerV3/Mock.ts", "section": "config#sampleSpec"}
+ gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/HubsExtension/SpecPickerV3/Mock.ts", "section": "config#sampleSpec"}
 
 Sample Features
 
- {"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/HubsExtension/SpecPickerV3/Mock.ts", "section": "config#sampleFeature"}
+ gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/HubsExtension/SpecPickerV3/Mock.ts", "section": "config#sampleFeature"}
 
 Sample Resource Map
 
- {"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/HubsExtension/SpecPickerV3/Mock.ts", "section": "config#sampleResourceMap"}
+ gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/HubsExtension/SpecPickerV3/Mock.ts", "section": "config#sampleResourceMap"}
 
 For the resourceIds in the resource map, you'll need to cooridanate with billing to add any new resource ids in your spec picker.
 The `default` resource map will be used if no region is specified as part of the spec picker blade inputs.
