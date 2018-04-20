@@ -5,7 +5,7 @@
 <a name="portal-forms-overview"></a>
 ## Overview
 
-Form controls are a subset of controls that allow users to input information.  These controls provide a consistent API surface for managing validation, variable states, and user input.  They also provide a consistent layout structure.
+Form controls are a subset of controls that allow users to input information.  These controls provide a consistent API surface for managing validation, dirty states, and user input.  They also provide a consistent layout structure.
   
 Everything that applies to controls also applies to form controls, as specified in [top-extensions-controls.md](top-extensions.controls.md).
 
@@ -26,13 +26,13 @@ The following properties and methods are present on all form controls.
 
   **NOTE**: The extension can programmatically trigger validation on all visible form fields by using  `context.Form.TriggerValidation`, where context is the blade context object.
 
-**validationResults**: This property is a reflection over the current state of all validations on the control. This property is read-only and is not configurable, although an extension can subscribe to it.
+**validationResults**: This property is a reflection of the current state of all validations on the control. This property is read-only and is not configurable.
 
-**valid**: This property reflects the current validation state of the control. This property is read-only and is not configurable, although an extension can subscribe to it.
+**valid**: This property reflects the current validation state of the control. This property is read-only and is not configurable.
 
-**label, sublabel, infoBalloonContent**: These properties allow the extension to display information that describes the control.  These properties will only appear in the widget if their values were set.  The label property is displayed above or to the right of the control.  The sublabel is typically shown below and to the left of the control.  The info balloon will be shown next to the label.  See the [Form Layout](#form-layout) on how to change layout.  Configuring these properties will also display information in accessible ways by using aria attributes.
+**label, sublabel, infoBalloonContent**: These properties allow the extension to display information that describes the control.  These properties will only appear in the control if their values were set.  The label property is displayed above or to the right of the control.  The sublabel is typically shown below and to the left of the control.  The info balloon will be shown next to the label.  See the [Form Layout](#form-layout) on how to change layout.  Configuring these properties will also display information in accessible ways by using aria attributes.
 
-**triggerValidation**: This method runs all validations on the control.  It will return a `promise` with the overall valid state of the control after validation has completed. This property is read-only and is not configurable, although an extension can subscribe to it.
+**triggerValidation**: This method runs all validations on the control.  It will return a `promise` with the overall valid state of the control after validation has completed. This property is read-only and is not configurable.
 
 <a name="portal-forms-form-control-input-options"></a>
 ## Form control input options
@@ -52,9 +52,9 @@ Because form controls are often grouped together, it is important to keep the la
 
 The section has two properties that allow for layout control. They are as follows.
 
-**leftLabelPosition**: When this property is set to true, the labels of child form controls are placed to the left of the control, instead of above the control.  The controls themselves are aligned vertically, a few pixels to the right of the longest label.
+**leftLabelPosition**: When this property is set to `true`, the labels of child form controls are placed to the left of the control, instead of above the control.  The controls themselves are aligned vertically, a few pixels to the right of the longest label.
 
-**LeftLabelWidth**: When this property is set to true, the labels of the child form controls are placed to the left of the control, instead of above the control.  The control labels have a fixed width that is set to the number of pixels that was sent to the control. 
+**LeftLabelWidth**: When this property is set to `true`, the labels of the child form controls are placed to the left of the control, instead of above the control.  The control labels have a fixed width that is set to the number of pixels that was sent to the control. 
 
 <a name="portal-forms-form-control-input-options-legacy-integration"></a>
 ### Legacy Integration
@@ -70,17 +70,15 @@ There are a number of subtopics in the forms topic.  Sample source code is inclu
 
 | API Topic                        | Document                                                                                     | 
 | -------------------------------- | -------------------------------------------------------------------------------------------- | 
-| Designing and Arranging the Form | [top-forms-designing.md](top-forms-designing.md)                                   |  
-| Forms Construction               | [top-forms-construction.md](top-forms-construction.md)                             |  
 | Integrating Forms with Commands  | [top-forms-integrating-with-commands.md](top-forms-integrating-with-commands.md)   | 
 | Form Field Validation            | [top-forms-field-validation.md](top-forms-field-validation.md)                     | 
-| Sample Extensions with Forms     | [portalfx-extensions-samples-forms.md](portalfx-extensions-samples-forms.md)                 |
 
 For more information about how forms and parameters interact with an extension, see [portalfx-parameter-collection-overview.md](portalfx-parameter-collection-overview.md).
 
 For more information about forms with editScopes, see [portalfx-legacy-editscopes.md](portalfx-legacy-editscopes.md).
 
 For more information about forms without editScopes, see [portalfx-editscopeless-overview.md](portalfx-editscopeless-overview.md).
+
 
 <a name="portal-forms-frequently-asked-questions"></a>
 ## Frequently asked questions
@@ -102,6 +100,7 @@ It depends on the scenario that drives the UX. If the form will capture some dat
   
 * * * 
 
+
 <a name="portal-forms-glossary"></a>
 ## Glossary
 
@@ -119,3 +118,7 @@ It depends on the scenario that drives the UX. If the form will capture some dat
 | promise | An object that is returned from asynchronous processing which binds together the results of multiple asynchronous operations.  This is in accordance with a contract that async operation(s) will either complete successfully or will have been rejected. | 
 | property bag | A container that contains different types of object properties. Allows the   addition of properties without modifying the server side object, and with minimal changes to the client code.|
 | validation |  The process of ensuring that form or field contents are within the specified constraints for an application.  This includes items like field length or numeric checks. |
+| AMD                   | |
+| EditScope             | An Azure SDK object that provides a standard way of managing edits over a collection of input fields, blades, and extensions. |
+| ParameterCollector    | A collection of Parameter and Parameter-derived objects that are used by data source controls in advanced data-binding scenarios. |
+
