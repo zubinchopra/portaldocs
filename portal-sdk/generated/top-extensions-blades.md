@@ -11,18 +11,21 @@ The following is a list of different types of blades.
 
 | Type                          | Document           | Description |
 | ----------------------------- | ---- | ---- |
-| TemplateBlade                 | [top-blades-procedure.md](top-blades-procedure.md) | Creating any Portal blade. This is the main and recommended authoring model for UI in the Portal. |
-| Opening and Closing Blades    | [top-blades-opening-and-closing.md](top-blades-opening-and-closing.md) | Opening and closing blades, within an extension and from a separate extension.  |
-| MenuBlade                     | [top-blades-menublade.md](top-blades-menublade.md)   | Displays a vertical menu at the left of a blade.                                       |  
+| TemplateBlade                 | [top-blades-procedure.md](top-blades-procedure.md) | Creating any Portal blade. This is the main and recommended authoring model for UI in the Portal. (Recommended) |
+| MenuBlade                     | [top-blades-menublade.md](top-blades-menublade.md) | Displays a vertical menu at the left of a blade.      |
 | Resource MenuBlade       |   [top-blades-resourcemenu.md](top-blades-resourcemenu.md)  | A specialized version of MenuBlade that adds support for standard Azure resource features.  | 
-| FrameBlade/AppBlade       | [top-blades-frameblades.md](top-blades-frameblades.md)   | Provides an IFrame to host the UI. Be advised that if you go this route you get great power and responsibility. You will own the DOM, which means you can build any UI you can dream up. You cannot use Ibiza controls meaning you will have an increased responsibility in terms of accessibility, consistency, and theming.  |
-| Blade with tiles              | [top-blades-legacy.md](top-blades-legacy.md)         |  Legacy authoring model. Given its complexity, you may want to use TemplateBlades instead. | | 
+| Blade Settings | [portalfx-blades-settings.md](portalfx-blades-settings.md) | Settings that  standardize key interaction patterns across resources. | 
+| FrameBlades       | [top-blades-frameblades.md](top-blades-frameblades.md)  | Provides an IFrame to host the UI. Be advised that if you go this route you get great power and responsibility. You will own the DOM, which means you can build any UI you can dream up. You cannot use Ibiza controls meaning you will have an increased responsibility in terms of accessibility, consistency, and theming.  |
+| Opening and Closing Blades    | [top-blades-opening-and-closing.md](top-blades-opening-and-closing.md) | Opening and closing blades, within an extension and from a separate extension.  |
+| Advanced TemplateBlade Topics    | [top-blades-advanced.md](top-blades-advanced.md) | More blade development techniques.  |
+| Blade with tiles   | [top-blades-legacy.md](top-blades-legacy.md)  |  Legacy authoring model. Deprecated due to its complexity. | 
+
 
  
 <a name="blades-best-practices"></a>
 ## Best Practices
 
-Typically, extensions follow these best practices, which often result in performance improvements. Portal development patterns or architectures that are recommended based on customer feedback and usability studies are categorized by the type of blade. 
+Following these best practices usually results in the best performance. Portal development patterns or architectures that are recommended based on customer feedback and usability studies are categorized by the type of blade.
 
 * [Best Practices for All blades](#best-practices-for-all-blades)
 
@@ -35,13 +38,15 @@ Typically, extensions follow these best practices, which often result in perform
 <a name="blades-best-practices-best-practices-for-all-blades"></a>
 ### Best Practices for All blades
 
-These patterns are recommended for every extension, but they are not required.
+These patterns are recommended for every extension.
 
-* Never change the name of a blade or a part. These are unique identifiers that appear in links that users may bookmark, and they are used to locate your blade when a user pins it to the dashboard. You can safely change the title that is displayed in the UI of the blade.
+* Never change the name of a blade or a part. These are unique identifiers that appear in links that users may bookmark, and they are used to locate your blade when a user pins it to the dashboard. Changing the name can break aspects of the user experience.
+
+  * You can safely change the title (displayed in the UI) of the blade.
 
 * Limit blade `parameters` updates to the addition of parameters that are marked in **TypeScript** as optional. Removing, renaming, or adding required parameters will cause breaks if other extensions are pointing to your blade, or if previously pinned tiles are not configured to send those parameters.
 
-* Never remove parameters from their `Parameters` type. You can just ignore them if they are no longer needed.
+* Never remove parameters from their `Parameters` type.  Instead, ignore them if they are no longer needed.
 
 * Use standard `<a href="#">` tags when adding `fxclick` to open child blades to make the links accessible.
 
@@ -53,14 +58,13 @@ These patterns are recommended for every extension, but they are not required.
 
 * Avoid observables when possible
 
-  The values in non-observables are much more performant than the values in observables.  Specifying a string instead of a `KnockoutObservable<string>`, os specifying a boolean instead of a `KnockoutObservable<boolean>` will improve performance whenever possible. The performance difference for each operation is not large, but when a blade can make tens or hundreds of values, they will add up.
-
+  The values in non-observables are much more performant than the values in observables.  Specifying a string instead of a `KnockoutObservable<string>`, os specifying a boolean instead of a `KnockoutObservable<boolean>` will improve performance. The benefit for each operation is small, but when a blade makes tens or hundreds of values, it adds up.
+  
 * Name `ViewModel` properties properly
 
-  Make sure that the only data that the proxied observables layer copies to the shell is the data that is needed in the extension iframe. The shell displays a warning when specific types of objects are being sent to the shell, for example, `editScopes`, but it can not guard against everything. 
+  Make sure the only data that the proxied observables layer copies to the Shell is the data that is needed in the extension iFrame. The Shell displays a warning when specific types of objects are being sent to the shell, for example, `editScopes`, but it can not guard against everything. 
 
   Extension developers should occasionally review the data model to ensure that only the needed data is public.  The names of private members begin with an underscore, so that proxied observables are made aware by the naming convention that the members are private and therefore should not be sent to the shell.
-
 
 <a name="blades-best-practices-best-practices-for-create-blades"></a>
 ### Best Practices for Create blades
@@ -86,9 +90,7 @@ Extensions should migrate to the `ResourceMenu` for all of their resources.
 
   Resource List blades are also known as Browse blades.
 
-  Browse blades should contain an "Add" command to help customers create new resources quickly. They should also contain Context menu commands in the "..." menu for each row.
-
-  In addition, they should show all resource properties in the Column Chooser.
+  Browse blades should contain an "Add" command to help customers create new resources quickly. They should also contain Context menu commands in the "..." menu for each row. And, they should show all resource properties in the Column Chooser.
 
   For more information, see the Asset documentation located at [portalfx-assets.md](portalfx-assets.md).
 
@@ -101,7 +103,7 @@ Extensions should migrate to the `ResourceMenu` for all of their resources.
 
 *** Why not make every property observable just in case you want to update it later?***
 
-SOLUTION: The reason is performance. Using an observable string instead of a string increases the size of the `ViewModel`.  It also means that the proxied observable layer has to do extra work to connect listeners to the observable if it is ever updated. Both these factors will reduce the blade reveal performance, for literally no benefit if the observable is  never updated. Extensions should use non-observable values wherever possible. However, there are still many framework `Viewmodels` that accept only observable values, therefore the extension provides an observable even though it will never be updated.
+SOLUTION: Performance. Using an observable string instead of a string increases the size of the `ViewModel`.  It also means that the proxied observable layer has to do extra work to connect listeners to the observable if it is ever updated. Both factors reduce the blade reveal performance - for no benefit when the observable is never updated. Extensions should use non-observable values wherever possible. However, there are still many framework Viewmodels that accept only observable values, therefore the extension may provide an observable even though it will never be updated.
 
 * * *
 
