@@ -14,59 +14,130 @@ The process is as follows.
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
-Menu blades are defined in a **TypeScript** file as shown in the following code. The code is also located at `<dir>/Client/V2/Blades/MenuBlade/SampleMenuBlade.ts`.
+Menu blades are defined in a **TypeScript** file as shown in the following code. The code is also located at `<dir>/Client/V1/Blades/MenuBlade/ViewModels/SampleMenuBlade.ts`.
 
 The following code demonstrates how to define a menu blade `ViewModel` to open two different items.
 
- /// <reference path="../../../TypeReferences.d.ts" />
+ /// <reference path="../../../../TypeReferences.d.ts" />
+/// <reference path="../../../../ClientResources.d.ts" />
 
-import { SampleMenuBlade as BladeClientResources } from "ClientResources";
+import { DataContext } from "../../BladesArea";
+import * as BladeReferences from "../../../../_generated/BladeReferences";
+import * as HubsBladeReferences from "../../../../_generated/HubsExtension/BladeReferences";
+import * as FxMenuBlade from "Fx/Composition/Pdl/MenuBlade";
 import * as ClientResources from "ClientResources";
-import * as MenuBlade from "Fx/Composition/MenuBlade";
-import * as BladeReferences from "../../../_generated/BladeReferences";
-import * as BladesArea from "../BladesArea";
+import * as CreateEngine from "../../../Create/EngineV3/ViewModels/CreateEngineLauncherPartViewModel";
 
-@MenuBlade.Decorator()
-export class SampleMenuBlade {
-    public title = BladeClientResources.menuBladeTitle;
-    public subtitle = ClientResources.samples;
+export = Main;
 
-    public context: MenuBlade.Context<void, BladesArea.DataContext>;
+module Main {
+    "use strict";
 
-    public viewModel: MenuBlade.ViewModel2;
+    import FxImages = MsPortalFx.Base.Images;
 
-    public onInitialize() {
-        const { container } = this.context;
+    //menuBlade#ctor
+    export class SampleMenuBlade extends FxMenuBlade.ViewModel {
+        constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: DataContext) {
+            super(container);
+            this.title(ClientResources.SampleMenuBlade.title);
+            this.icon(FxImages.Gear());
 
-        this.viewModel = MenuBlade.ViewModel2.create(container, {
-            groups: [
+            const resourceName = "roturn600";
+            this.menu.groups([
                 {
-                    id: "default",
-                    displayText: BladeClientResources.menuBladeSamples,
+                    id: "enginesgroup",
+                    displayText: ClientResources.AssetTypeNames.Engine.singular,
                     items: [
+                        // Menu item that demonstrates opening of a blade from a different extension
                         {
-                            id: "controlsMenuBladeContentAreaBlade",
-                            displayText: BladeClientResources.controlsMenuBladeContentAreaBladeTitle,
+                            id: "browserelated",
+                            displayText: ClientResources.SampleMenuBlade.relatedResources,
                             icon: null,
                             supplyBladeReference: () => {
-                                return new BladeReferences.ControlsMenuBladeContentAreaBladeReference();
-                            }
+                                return new HubsBladeReferences.MapResourceGroupBladeReference({
+                                    id: "/subscriptions/sub123/resourcegroups/snowtraxpxz",
+                                });
+                            },
                         },
-                    ]
-                }
-            ],
-            overview: {
-                id: "overview",
-                displayText: BladeClientResources.overviewBladeTitle,
-                icon: null,
-                supplyBladeReference: () => {
-                    return new BladeReferences.MenuBladeOverviewBladeReference();
-                }
-            }
-        });
-
-        return Q();  // This sample loads no data.
+                        // Menu item that demonstrates opening of a parameter collector blade for a create scenario
+                        {
+                            id: "createengine",
+                            displayText: ClientResources.createEngine,
+                            icon: null,
+                            supplyBladeReference: () => {
+                                return new BladeReferences.CreateEngineV3BladeReference({
+                                    supplyInitialData: () => {
+                                        return {
+                                            model: "Azure Engine 3.0",
+                                        };
+                                    },
+                                    supplyProviderConfig: () => {
+                                        return {
+                                            provisioningConfig: {
+                                                provisioningEnabled: true,
+                                                galleryCreateOptions: CreateEngine.galleryCreateOptions,
+                                                startboardProvisioningInfo: CreateEngine.startboardProvisioningInfo,
+                                            },
+                                            createEngineOptions: CreateEngine.createEngineOptions,
+                                        };
+                                    },
+                                    receiveResult: result => {
+                                        // Intentionally blank. The launched blade is responsible for the create operation.
+                                    }
+                                });
+                            },
+                        },
+                        // Menu item that demonstrates opting out of full width.
+                        {
+                            id: "fullwidthoptout",
+                            displayText: ClientResources.SampleMenuBlade.optOut,
+                            icon: null,
+                            supplyBladeReference: () => {
+                                return new BladeReferences.BladeWidthSmallBladeReference({bladeTitle: ClientResources.SampleMenuBlade.optOut});
+                            },
+                        },
+                        // Menu item that demonstrates a blade that can have activated width.
+                        {
+                        id: "activationSample",
+                            displayText: ClientResources.ActivationStyleBlade.title,
+                            icon: null,
+                            supplyBladeReference: () => {
+                                return new BladeReferences.BladeWithActivationStyleReference();
+                            },
+                        }
+                    ],
+                },
+                {
+                    id: "group2",
+                    displayText: "Group #2",
+                    items: [
+                        {
+                            id: "unauthorizedblade",
+                            displayText: ClientResources.bladeUnauthorized,
+                            icon: null,
+                            supplyBladeReference: () => new BladeReferences.UnauthorizedBladeReference(),
+                        },
+                        {
+                            id: "bladeWithSummary",
+                            displayText: resourceName,
+                            icon: null,
+                            supplyBladeReference: () => new BladeReferences.EngineBladeReference({
+                                id: `/subscriptions/sub123/resourcegroups/snowtraxpxz/providers/Providers.Test/statefulIbizaEngines/${resourceName}`,
+                            }),
+                        },
+                    ],
+                },
+            ]);
+            this.menu.setOptions({
+                defaultId: "browserelated",
+                // You can also specify an overview item over here. That would show up right at
+                // the top of the menu right below the search box. See the SDKMenuBladeViewModel.ts
+                // as an example. This sample intentionally doesn't specify the overview item to
+                // test the case where no overview is specified.
+            });
+        }
     }
+    //menuBlade#ctor
 }
 
  
