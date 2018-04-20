@@ -72,7 +72,8 @@ There are a few things to notice in the preceding code.
 * Each menu item opens a blade, and all necessary parameters are provided.
 * The menu blade ideally should not be loading data. That can be done on the child blade after the user opens the blade.
 
-You can view a working copy of the MenuBlade  in the Dogfood environment sample located at [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/PdlSampleMenuBlade/browserelated](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/PdlSampleMenuBlade/browserelated).
+You can view a working copy of the MenuBlade in the Dogfood environment sample located at 
+[https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SampleMenuBlade](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SampleMenuBlade).
 
 <a name="menu-blade-optional-functionality"></a>
 ### Optional functionality
@@ -98,7 +99,7 @@ Menu blades also allow the user to collapse the menu pane.  This is not availabl
 <a name="menu-blade-navigation-within-a-menu-blade"></a>
 ### Navigation within a menu blade
 
-There are various options that can be used to open blades when the user interacts with your experience.
+As a developer, you have various options on how to open blades when the user interacts with your experience.
 
 When in menu blades there are some extra options exposed.
 
