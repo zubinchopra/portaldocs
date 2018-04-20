@@ -17,6 +17,6 @@ An example of a context pane is in the following image.
 A context blade can be authored as a standard blade implementation. The extension can call a variant of the blade-opening APIs that will instruct the Portal to open the context blade at the location at which you want to open the blade. 
 An example of using a context blade is located at `<dir>/Client/V1/Navigation/OpenAndCloseBladeApis/ViewModels/OpenBladeApiSamplesViewModel.ts`. It is also in the following code.
 
-  gitdown": "include-file", "file": "../SamplesExtension/Extension/Client/V1/Navigation/OpenAndCloseBladeApis/ViewModels/OpenBladeApiSamplesViewModel.ts"}
+{"gitdown": "include-file", "file": "../SamplesExtension/Extension/Client/V1/Navigation/OpenAndCloseBladeApis/ViewModels/OpenBladeApiSamplesViewModel.ts"}
     
 For information about blade references, see [top-blades-opening-and-closing.md#open-blade-methods](top-blades-opening-and-closing.md#open-blade-methods).
