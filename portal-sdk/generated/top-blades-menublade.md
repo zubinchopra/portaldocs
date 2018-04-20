@@ -1,7 +1,10 @@
+
 <a name="menu-blade"></a>
 ## Menu Blade
 
-Menu blades are rendered as a menu on the left side of the screen. The Shell combines this blade with the blade that is immediately to its right. Each item that is referenced from the left menu is rendered using the same header as the menu blade, resulting in the two blades being displayed as one blade.  This is similar to the way that the resource menu blade operates.
+Menu blades are rendered as a menu on the left side of the screen. The Shell combines this blade with the blade that is immediately to its right. Each item that is referenced from the left menu is rendered using the same header as the menu blade, resulting in the two blades being displayed as one blade.  This is similar to the way that the resource menu blade operates.  A user can click on the double left arrow to collapse the menu pane, as in the following image.
+ 
+![alt-text](../media/portalfx-blades/menuBlade.png "Menu Blade")
 
 The process is as follows.
 
@@ -11,129 +14,101 @@ The process is as follows.
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
-Menu blades are defined in the PDL file in the following code. The code is also located at `<dir>\Client/V1/Blades/MenuBlade/MenuBlade.pdl`.
+Menu blades are defined in a **TypeScript** file as shown in the following code. The code is also located at `<dir>/Client/V2/Blades/MenuBlade/SampleMenuBlade.ts`.
 
-```xml
+The following code demonstrates how to define a menu blade `ViewModel` to open two different items.
 
-<MenuBlade
-  Name="PdlSampleMenuBlade"
-  ViewModel="SampleMenuBlade" />
+ /// <reference path="../../../TypeReferences.d.ts" />
 
-```
+import { SampleMenuBlade as BladeClientResources } from "ClientResources";
+import * as ClientResources from "ClientResources";
+import * as MenuBlade from "Fx/Composition/MenuBlade";
+import * as BladeReferences from "../../../_generated/BladeReferences";
+import * as BladesArea from "../BladesArea";
 
-The following code demonstrates how to define a menu blade `ViewModel` to open four different items.
+@MenuBlade.Decorator()
+export class SampleMenuBlade {
+    public title = BladeClientResources.menuBladeTitle;
+    public subtitle = ClientResources.samples;
 
- ```typescript
+    public context: MenuBlade.Context<void, BladesArea.DataContext>;
 
-export class SampleMenuBlade extends FxMenuBlade.ViewModel {
-    constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: DataContext) {
-        super(container);
-        this.title(ClientResources.SampleMenuBlade.title);
-        this.icon(FxImages.Gear());
+    public viewModel: MenuBlade.ViewModel2;
 
-        const resourceName = "roturn600";
-        this.menu.groups([
-            {
-                id: "enginesgroup",
-                displayText: ClientResources.AssetTypeNames.Engine.singular,
-                items: [
-                    // Menu item that demonstrates opening of a blade from a different extension
-                    {
-                        id: "browserelated",
-                        displayText: ClientResources.SampleMenuBlade.relatedResources,
-                        icon: null,
-                        supplyBladeReference: () => {
-                            return new HubsBladeReferences.MapResourceGroupBladeReference({
-                                id: "/subscriptions/sub123/resourcegroups/snowtraxpxz",
-                            });
+    public onInitialize() {
+        const { container } = this.context;
+
+        this.viewModel = MenuBlade.ViewModel2.create(container, {
+            groups: [
+                {
+                    id: "default",
+                    displayText: BladeClientResources.menuBladeSamples,
+                    items: [
+                        {
+                            id: "controlsMenuBladeContentAreaBlade",
+                            displayText: BladeClientResources.controlsMenuBladeContentAreaBladeTitle,
+                            icon: null,
+                            supplyBladeReference: () => {
+                                return new BladeReferences.ControlsMenuBladeContentAreaBladeReference();
+                            }
                         },
-                    },
-                    // Menu item that demonstrates opening of a parameter collector blade for a create scenario
-                    {
-                        id: "createengine",
-                        displayText: ClientResources.createEngine,
-                        icon: null,
-                        supplyBladeReference: () => {
-                            return new BladeReferences.CreateEngineV3BladeReference({
-                                supplyInitialData: () => {
-                                    return {
-                                        model: "Azure Engine 3.0",
-                                    };
-                                },
-                                supplyProviderConfig: () => {
-                                    return {
-                                        provisioningConfig: {
-                                            provisioningEnabled: true,
-                                            galleryCreateOptions: CreateEngine.galleryCreateOptions,
-                                            startboardProvisioningInfo: CreateEngine.startboardProvisioningInfo,
-                                        },
-                                        createEngineOptions: CreateEngine.createEngineOptions,
-                                    };
-                                },
-                                receiveResult: result => {
-                                    // Intentionally blank. The launched blade is responsible for the create operation.
-                                }
-                            });
-                        },
-                    },
-                    // Menu item that demonstrates opting out of full width.
-                    {
-                        id: "fullwidthoptout",
-                        displayText: ClientResources.SampleMenuBlade.optOut,
-                        icon: null,
-                        supplyBladeReference: () => {
-                            return new BladeReferences.BladeWidthSmallBladeReference({bladeTitle: ClientResources.SampleMenuBlade.optOut});
-                        },
-                    },
-                    // Menu item that demonstrates a blade that can have activated width.
-                    {
-                    id: "activationSample",
-                        displayText: ClientResources.ActivationStyleBlade.title,
-                        icon: null,
-                        supplyBladeReference: () => {
-                            return new BladeReferences.BladeWithActivationStyleReference();
-                        },
-                    }
-                ],
-            },
-            {
-                id: "group2",
-                displayText: "Group #2",
-                items: [
-                    {
-                        id: "unauthorizedblade",
-                        displayText: ClientResources.bladeUnauthorized,
-                        icon: null,
-                        supplyBladeReference: () => new BladeReferences.UnauthorizedBladeReference(),
-                    },
-                    {
-                        id: "bladeWithSummary",
-                        displayText: resourceName,
-                        icon: null,
-                        supplyBladeReference: () => new BladeReferences.EngineBladeReference({
-                            id: `/subscriptions/sub123/resourcegroups/snowtraxpxz/providers/Providers.Test/statefulIbizaEngines/${resourceName}`,
-                        }),
-                    },
-                ],
-            },
-        ]);
-        this.menu.setOptions({
-            defaultId: "browserelated",
-            // You can also specify an overview item over here. That would show up right at
-            // the top of the menu right below the search box. See the SDKMenuBladeViewModel.ts
-            // as an example. This sample intentionally doesn't specify the overview item to
-            // test the case where no overview is specified.
+                    ]
+                }
+            ],
+            overview: {
+                id: "overview",
+                displayText: BladeClientResources.overviewBladeTitle,
+                icon: null,
+                supplyBladeReference: () => {
+                    return new BladeReferences.MenuBladeOverviewBladeReference();
+                }
+            }
         });
+
+        return Q();  // This sample loads no data.
     }
 }
 
-```
-
+ 
 There are a few things to notice in the preceding code.
 
-* Menus can have different groups. In this code there are two groups.
+* Menus have an overview item. This item is the default selected item when the user loads the menu blade.
+* The Menu item's `id` property is required to be unique; it  will be used in the deep link of the menu blade.
+* Menus can have different groups. In this code there is a single group.
 * Each menu item opens a blade, and all necessary parameters are provided.
-* Menu items can integrate with `EditScope` and `ParameterProvider`, as displayed in the `createengine` item.
-* At the end of the constructor, options for the menu are set. The option set defines the `id` of the default item.
+* The menu blade ideally should not be loading data. That can be done on the child blade after the user opens the blade.
 
 You can view a working copy of the MenuBlade  in the Dogfood environment sample located at [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/PdlSampleMenuBlade/browserelated](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/PdlSampleMenuBlade/browserelated).
+
+<a name="menu-blade-optional-functionality"></a>
+### Optional functionality
+
+* Dynamically changing the default selected item
+
+    If  you want to take the user to a different menu item by default, you can specify the `defaultId` as part of the constructor options.
+
+* Hide the search box
+
+    If you want to hide the search box that is shown by default, you can set the `showSearch` property to `false`.
+
+* Menu items should also define keywords. When a user searches within the menu blade's search box, the item's `displayText` and the keywords are used to match the search terms.
+
+* Menu items can be made to be enabled or visible dynamically by providing an optional property for either of those properties and dynamically updating the observable after defining the menu item.
+
+* Menu items can also provide a tooltip
+
+    This can be used to display further information on what the menu item defines, or it can also be used to explain to the user reasons why the menu item is disabled. 
+
+Menu blades also allow the user to collapse the menu pane.  This is not available programmatically to control by extension authors, as in the preceding image.
+
+<a name="menu-blade-navigation-within-a-menu-blade"></a>
+### Navigation within a menu blade
+
+There are various options on how to open blades when the user interacts with your experience.
+
+When in menu blades there are some extra options exposed.
+
+* `container.menu.switchMenuItem()`
+* `container.menu.openBlade()`
+
+For more information about those options see [top-blades-opening-and-closing.md-opening-blades-within-the-menu](top-blades-opening-and-closing.md-opening-blades-within-the-menu).
