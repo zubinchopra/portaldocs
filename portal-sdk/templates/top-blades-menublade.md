@@ -13,11 +13,11 @@ The process is as follows.
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
-Menu blades are defined in a **TypeScript** file as shown in the following code. The code is also located at `<dir>/Client/V2/Blades/MenuBlade/SampleMenuBlade.ts`.
+Menu blades are defined in a **TypeScript** file as shown in the following code. The code is also located at `<dir>/Client/V1/Blades/MenuBlade/ViewModels/SampleMenuBlade.ts`.
 
 The following code demonstrates how to define a menu blade `ViewModel` to open two different items.
 
- {"gitdown": "include-file", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/MenuBlade/SampleMenuBlade.ts"}
+ {"gitdown": "include-file", "file": "../Samples/SamplesExtension/Extension/Client/V1/Blades/MenuBlade/ViewModels/SampleMenuBlade.ts"}
  
 There are a few things to notice in the preceding code.
 
