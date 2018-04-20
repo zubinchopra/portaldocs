@@ -59,4 +59,4 @@ When in menu blades there are some extra options exposed.
 * `container.menu.switchMenuItem()`
 * `container.menu.openBlade()`
 
-For more information about those options see [top-blades-opening-and-closing.md-opening-blades-within-the-menu](top-blades-opening-and-closing.md-opening-blades-within-the-menu).
+For more information about those options see [top-blades-opening-and-closing.md#opening-blades-within-the-menu](top-blades-opening-and-closing.md#opening-blades-within-the-menu).
