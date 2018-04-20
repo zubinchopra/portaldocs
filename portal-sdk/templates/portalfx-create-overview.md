@@ -108,7 +108,7 @@ This is the preferred method of displaying values from ARM that are disabled, be
 
 <!-- TODO:  Determine whether this sample causes gitHub to stop. -->
 
-{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#disable"}
+gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#disable"}
 
 #### The hide method
 
@@ -116,7 +116,7 @@ This is an alternative method of disallowing values from ARM. The hide callback 
 
 <!-- TODO:  Determine whether this sample causes gitHub to stop. -->
 
-{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#hide"}
+gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#hide"}
 
 **NOTE**: It is recommended to use the `disable` option so that scenario-specific detail about the dropdown value  can be displayed. Customers can see that a specific value is not available instead of hiding it, therefore reducing the potential for negative reactions when the values cannot be visually located.  In extreme cases, missing data  may trigger blade incidents.
 
@@ -128,7 +128,7 @@ If the extension should sort the groups, as opposed to the values within the gro
  
  <!-- TODO:  Determine whether this sample causes gitHub to stop. -->
 
-{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#group"}
+gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#group"}
  
 If the extension uses both disable and group, values that are disabled are displayed in the disabled group instead of in the group specified by the display string. 
  
@@ -138,7 +138,7 @@ The `sort` option, is a conventional comparator function that returns a number g
  
  <!-- TODO:  Determine whether this sample causes gitHub to stop. -->
 
-{"gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#sort"}
+gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#sort"}
  
 If the extension combines the `sort` option with the `disable` or `group` functionality, the sort will operate  inside of the groups provided.
 
