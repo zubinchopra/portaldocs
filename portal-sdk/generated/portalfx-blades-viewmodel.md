@@ -22,7 +22,29 @@ Or this:
 
 The properties on the `ViewModel` that creates this blade are in the following example.
 
-  gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Blades/ViewModelInitExample/ViewModels/ViewModelInitExample.ts", "section": "bladeViewModel#properties"}
+```typescript
+
+/**
+ * Textbox control containing the user's name.
+ */
+public nameTextBox: TextBox.ViewModel;
+
+/**
+ * Observable containing either a numeric textbox or a textbox.
+ */
+public smartPhone: KnockoutObservable<TextBox.ViewModel>
+
+/**
+ * OK button for submitting updated user data back to server.
+ */
+public okButton: Button.Contract;
+
+/**
+ * EntityView containing the person being edited
+ */
+private _view: MsPortalFx.Data.EntityView<Person, any>;
+
+```
 
 Private members of the blade `ViewModel` are properties whose name starts with an underscore. The proxied observable layer does not transfer private members to the shell iframe. For example, the `EntityView` object named `_view` is not directly used in the rendering of the blade, therefore it does not appear in the blade template, nor is it proxied to the shell iframe.
 
@@ -30,7 +52,13 @@ Private members of the blade `ViewModel` are properties whose name starts with a
 
 The template for this blade is in the following example.
 
- gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Blades/ViewModelInitExample/Templates/Template.html", "section": "bladeViewModel#template"}
+```xml
+
+<div data-bind="pcControl: nameTextBox"></div>
+<div data-bind="pcControl: smartPhone"></div>
+<div data-bind="pcControl: okButton"></div>
+
+```
 
 <a name="overview-the-blade-constructor"></a>
 ### The blade constructor
@@ -39,7 +67,25 @@ When a blade is opened, the Portal creates a blade that displays a loading UX in
 
 This example will always need a readonly textbox for the name and an OK button to close the blade, so they are created in the constructor.  The constructor is not aware of  the value of the name textbox yet, because the values are only known after the  data is retrieved.  The value can be updated later because the `value` property of the textbox view model is observable, as in the following example of the blade  `ViewModel` constructor.
 
-  gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Blades/ViewModelInitExample/ViewModels/ViewModelInitExample.ts", "section": "bladeViewModel#constructor"}
+```typescript
+
+this._view = dataContext.personData.peopleEntities.createView(container);
+
+this.nameTextBox = new TextBox.ViewModel(container, {
+    readonly: true,
+    label: ko.observable("Name")
+});
+
+this.smartPhone = ko.observable<TextBox.ViewModel>();
+
+this.okButton = Button.create(container, {
+    text: "OK",
+    onClick: () => {
+        container.closeChildBlade();
+    }
+});
+
+```
 
 <a name="overview-the-blade-constructor-observable-and-non-observable-values"></a>
 #### Observable and non-observable values
@@ -87,7 +133,28 @@ this._buttonText("New button text");
 
 When the input values for the blade are ready, the framework will call the `onInputsSet` method. This is often when the extension fetches the data for the blade and update the view models that were created in the constructor. When the promise  that is returned from the `onInputsSet` method is resolved, the blade is considered 'loaded' the loading UI indicator will be removed from the blade. The following is the `onInputsSet` method for the person object example.
 
-  gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Blades/ViewModelInitExample/ViewModels/ViewModelInitExample.ts", "section": "bladeViewModel#onInputsSet"}
+```typescript
+
+return this._view.fetch(inputs.id).then(() => {
+    let person = this._view.data;
+
+    // populate name textbox value
+    this.nameTextBox.value(person.name());
+
+    // if smartphone has a value create a control to display it
+    // otherwise leave it empty
+    let smartPhone = person.smartPhone();
+    if (smartPhone) {
+        let textBox = new TextBox.ViewModel(this._container, {
+            readonly: true,
+            label: ko.observable("Smart phone"),
+            defaultValue: ko.observable(smartPhone)
+        });
+        this.smartPhone(textBox);
+    }
+});
+
+```
 
 The extension uses a `fetch()` to get data from the server, based on the inputs provided by the Framework. The return value for the `onInputSet` is the `promise` that is returned by the fetch call, so that the blade can be displayed as soon as the data is loaded. There is  also a `then()` on the fetch promise so that the extension can populate the dynamic pieces of the blade. The steps to display the person object with the data that was retrieved from the server are as follows.
 

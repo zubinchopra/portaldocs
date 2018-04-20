@@ -74,9 +74,31 @@ import * as SubscriptionDropDown from "Fx/Controls/SubscriptionDropDown";
 
 The following code contains a `SubscriptionDropDown`. 
 
-  gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#subscriptionDropDown"}
+ ```typescript
 
-<a name="overview-standard-arm-fields-resource-groups-dropdown"></a>
+// The subscriptions drop down.
+const subscriptionsDropDownOptions: SubscriptionDropDownOptions = {
+    form: this,
+    accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
+        return data.subscription;
+    }),
+    validations: ko.observableArray([
+        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectSubscription)
+    ]),
+    // Providing a list of resource providers (NOT the resource types) makes sure that when
+    // the deployment starts, the selected subscription has the necessary permissions to
+    // register with the resource providers (if not already registered).
+    // Example: Providers.Test, Microsoft.Compute, etc.
+    resourceProviders: ko.observable([resourceProvider]),
+    // Optional -> You can pass the gallery item to the subscriptions drop down, and the
+    // the subscriptions will be filtered to the ones that can be used to create this
+    // gallery item.
+    filterByGalleryItem: this._galleryItem
+};
+this.subscriptionsDropDown = createSubscriptionDropDown(container, subscriptionsDropDownOptions);
+
+```
+
 #### Resource groups dropdown
 
 The following dropdown does not use an `EditScope`.
@@ -87,7 +109,36 @@ import * as ResourceGroupDropDown from "Fx/Controls/ResourceGroupDropDown";
 
 The following code contains a `ResourceGroupDropDown`. 
  
-  gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
+ ```typescript
+
+this.resourceGroupDropDown = createResourceGroupDropDown(container, {
+    form: this,
+    accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
+        return data.resourceGroup;
+    }),
+    label: ko.observable<string>(ClientResources.resourceGroup),
+    subscriptionIdObservable: this.subscriptionsDropDown.subscriptionId,
+    validations: ko.observableArray([
+        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectResourceGroup),
+        new MsPortalFx.Azure.RequiredPermissionsValidator(requiredPermissionsCallback)
+    ]),
+    // Optional -> RBAC permission checks on the resource group. Here, we're making sure the
+    // user can create an engine under the selected resource group, but you can add any actions
+    // necessary to have permissions for on the resource group.
+    requiredPermissions: ko.observable({
+        actions: actions,
+        // Optional -> You can supply a custom error message. The message will be formatted
+        // with the list of actions (so you can have {0} in your message and it will be replaced
+        // with the array of actions).
+        message: ClientResources.enginePermissionCheckCustomValidationMessage.format(actions.toString())
+    }),
+    // Optional -> Will determine which mode is selectable by the user. It defaults to Both.
+    allowedMode: ko.observable(ResourceGroupDropDownMode.Both), //Alternatively Mode.UseExisting or Mode.CreateNew
+    value: { mode: ResourceGroupDropDownMode.CreateNew, value: { name: "NewResourceGroup_1", location: "" } },
+    createNewPlaceholder: ClientResources.createNew
+});
+
+```
 
 <a name="overview-standard-arm-fields-locations-dropdown"></a>
 #### Locations dropdown
@@ -100,25 +151,43 @@ import * as LocationDropDown from "Fx/Controls/LocationDropDown";
 
 The following code contains a `ResourceGroupDropDown`. 
 
-  gitdown": "include-section", "file": "../../../src/SDK/devkit/TemplateBuilder/ProjectTemplates/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#locationDropDown"}
+ ```typescript
+
+// The locations drop down.
+this.locationsDropDown = createLocationDropDown(container, {
+    form: this,
+    accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
+        return data.location;
+    }),
+    subscriptionIdObservable: this.subscriptionsDropDown.subscriptionId,
+    resourceTypesObservable: ko.observable([resourceType]),
+    validations: ko.observableArray([
+        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectLocation)
+    ])
+    // hiding: {
+    //     hide: (loc) => loc.name === "eastus",
+    //     // Provide a reason for hiding locations.
+    //     reason: createStrings.hiddenReason
+    // },
+    // disable: (loc) => loc.name === "centralus" && createStrings.disabledReason
+});
+
+```
 
 <!-- TODO: Determine the location of the pricing dropdown so that it can be added to these examples. -->
 
-<a name="overview-arm-dropdown-options"></a>
 ### ARM dropdown options
 
 Each ARM dropdown can [disable](#the-disable-method), [hide](#the-hide-method), [group](#the-group-method), and [sort](#the-sort-method).
  
-<a name="overview-arm-dropdown-options-the-disable-method"></a>
 #### The disable method
 
 This is the preferred method of displaying values from ARM that are disabled, because it reduces support calls. The disable callback runs for each value that is fetched from ARM. The return value of the callback contains the reason  why the value is disabled. The values are displayed in groups at the bottom of the dropdown list, with the reason as the group header.  If no reason is provided, then the value is not disabled. This ensures the customer has information about why they can not select an option, as in the following example.
 
 <!-- TODO:  Determine whether this sample causes gitHub to stop. -->
 
- gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#disable"}
+gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScript/Tests/Controls/Forms/DropDown.Subscription.test.ts", "section": "config#disable"}
 
-<a name="overview-arm-dropdown-options-the-hide-method"></a>
 #### The hide method
 
 This is an alternative method of disallowing values from ARM. The hide callback runs for each value that is fetched from ARM. The return value of the callback contains a boolean that specifies whether the value should be hidden. If the extension hides the value, the required message telling the user why the values are hidden is displayed, as in the following example.
@@ -129,7 +198,6 @@ gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScrip
 
 **NOTE**: It is recommended to use the `disable` option so that scenario-specific detail about the dropdown value  can be displayed. Customers can see that a specific value is not available instead of hiding it, therefore reducing the potential for negative reactions when the values cannot be visually located.  In extreme cases, missing data  may trigger blade incidents.
 
-<a name="overview-arm-dropdown-options-the-group-method"></a>
 #### The group method
 
 This method groups together the values in the dropdown. The group callback receives a value from the dropdown and returns a display string that specifies which group should contain the value. If no display string or an empty display string is provided, then the value defaults to the top level of the group dropdown.
@@ -142,7 +210,6 @@ gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScrip
  
 If the extension uses both disable and group, values that are disabled are displayed in the disabled group instead of in the group specified by the display string. 
  
-<a name="overview-arm-dropdown-options-the-sort-method"></a>
 #### The sort method
 
 The `sort` option, is a conventional comparator function that returns a number greater or less than zero. It defaults to alphabetical sorting, based on the display string of the value, as in the following example.
@@ -153,7 +220,6 @@ gitdown": "include-section", "file": "../../../src/SDK/Framework.Tests/TypeScrip
  
 If the extension combines the `sort` option with the `disable` or `group` functionality, the sort will operate  inside of the groups provided.
 
-<a name="overview-editscope-accessible-dropdowns"></a>
 ### EditScope-accessible dropdowns
 
 **NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions be developed without edit scopes, as specified in [portalfx-editscopeless-procedure.md](portalfx-editscopeless-procedure.md). For more information about forms without editScopes, see  [portalfx-editscopeless-overview.md](portalfx-editscopeless-overview.md) and [portalfx-controls-dropdown.md#migration-to-the-new-dropdown](portalfx-controls-dropdown.md#migration-to-the-new-dropdown).
@@ -181,7 +247,6 @@ For scenarios where a form is built with an `EditScope`, the Portal provides ver
 
 The following sections contain code that may resemble your  implementation of the legacy controls. They also contain code that can replace the legacy controls in the implementation.
 
-<a name="overview-editscope-accessible-dropdowns-subscriptions-dropdown"></a>
 #### Subscriptions dropdown
 
 The following code for subscription dropdowns should be updated to use the new controls instead of `EditScopes`. 
@@ -224,9 +289,32 @@ The following code for subscription dropdowns should be updated to use the new c
 
     <!-- TODO:  Determine whether this sample causes gitHub to stop. -->
 
-    gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#subscriptionDropDown"}
+   ```typescript
 
-<a name="overview-editscope-accessible-dropdowns-resource-groups-legacy-dropdown"></a>
+// The subscriptions drop down.
+const subscriptionsDropDownOptions: SubscriptionDropDownOptions = {
+    form: this,
+    accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
+        return data.subscription;
+    }),
+    validations: ko.observableArray([
+        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectSubscription)
+    ]),
+    // Providing a list of resource providers (NOT the resource types) makes sure that when
+    // the deployment starts, the selected subscription has the necessary permissions to
+    // register with the resource providers (if not already registered).
+    // Example: Providers.Test, Microsoft.Compute, etc.
+    resourceProviders: ko.observable([resourceProvider]),
+    // Optional -> You can pass the gallery item to the subscriptions drop down, and the
+    // the subscriptions will be filtered to the ones that can be used to create this
+    // gallery item.
+    filterByGalleryItem: this._galleryItem
+};
+this.subscriptionsDropDown = createSubscriptionDropDown(container, subscriptionsDropDownOptions);
+
+```
+
+<a name="overview-standard-arm-fields-resource-groups-legacy-dropdown"></a>
 #### Resource groups legacy dropdown
 
 The following code for Resource Group dropdowns should be updated to use the new controls instead of `EditScopes`. 
@@ -274,10 +362,38 @@ The following code for Resource Group dropdowns should be updated to use the new
 
     <!-- TODO:  Determine whether this sample causes gitHub to stop. -->
 
-    gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
+   ```typescript
 
-<a name="overview-editscope-accessible-dropdowns-locations-legacy-dropdown"></a>
-#### Locations <strong>legacy</strong> dropdown
+this.resourceGroupDropDown = createResourceGroupDropDown(container, {
+    form: this,
+    accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
+        return data.resourceGroup;
+    }),
+    label: ko.observable<string>(ClientResources.resourceGroup),
+    subscriptionIdObservable: this.subscriptionsDropDown.subscriptionId,
+    validations: ko.observableArray([
+        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectResourceGroup),
+        new MsPortalFx.Azure.RequiredPermissionsValidator(requiredPermissionsCallback)
+    ]),
+    // Optional -> RBAC permission checks on the resource group. Here, we're making sure the
+    // user can create an engine under the selected resource group, but you can add any actions
+    // necessary to have permissions for on the resource group.
+    requiredPermissions: ko.observable({
+        actions: actions,
+        // Optional -> You can supply a custom error message. The message will be formatted
+        // with the list of actions (so you can have {0} in your message and it will be replaced
+        // with the array of actions).
+        message: ClientResources.enginePermissionCheckCustomValidationMessage.format(actions.toString())
+    }),
+    // Optional -> Will determine which mode is selectable by the user. It defaults to Both.
+    allowedMode: ko.observable(ResourceGroupDropDownMode.Both), //Alternatively Mode.UseExisting or Mode.CreateNew
+    value: { mode: ResourceGroupDropDownMode.CreateNew, value: { name: "NewResourceGroup_1", location: "" } },
+    createNewPlaceholder: ClientResources.createNew
+});
+
+```
+
+#### Locations **legacy** dropdown
 
 The following code for Location dropdowns should be updated to use the new controls instead of `EditScopes`. 
 
@@ -320,9 +436,30 @@ The following code for Location dropdowns should be updated to use the new contr
 
     <!-- TODO:  Determine whether this sample causes gitHub to stop. -->
 
-    gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#locationDropDown"}
+   ```typescript
 
-<a name="overview-editscope-accessible-dropdowns-pricing-dropdown"></a>
+// The locations drop down.
+this.locationsDropDown = createLocationDropDown(container, {
+    form: this,
+    accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
+        return data.location;
+    }),
+    subscriptionIdObservable: this.subscriptionsDropDown.subscriptionId,
+    resourceTypesObservable: ko.observable([resourceType]),
+    validations: ko.observableArray([
+        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectLocation)
+    ])
+    // hiding: {
+    //     hide: (loc) => loc.name === "eastus",
+    //     // Provide a reason for hiding locations.
+    //     reason: createStrings.hiddenReason
+    // },
+    // disable: (loc) => loc.name === "centralus" && createStrings.disabledReason
+});
+
+```
+
+<a name="overview-standard-arm-fields-pricing-dropdown"></a>
 #### Pricing dropdown
 
 The following code for Pricing dropdowns demonstrates the use of  the new controls.
@@ -335,7 +472,46 @@ import * as Specs from "Fx/Specs/DropDown";
 
 <!-- TODO:  Determine whether this sample causes gitHub to stop. -->
 
-gitdown": "include-section", "file": "../../../src/SDK/AcceptanceTests/Extensions/SamplesExtension/Extension/Client/V1/Create/EngineV3/ViewModels/CreateEngineBladeViewModel.ts", "section": "config#specDropDown"}
+```typescript
+
+// The spec picker initial data observable.
+const initialDataObservable = ko.observable<SpecPicker.InitialData>({
+    selectedSpecId: "A0",
+    entityId: "",
+    recommendedSpecIds: ["small_basic", "large_standard"],
+    recentSpecIds: ["large_basic", "medium_basic"],
+    selectRecommendedView: false,
+    subscriptionId: "subscriptionId",
+    regionId: "regionId",
+    options: { test: "DirectEA" },
+    disabledSpecs: [
+        {
+            specId: "medium_standard",
+            message: ClientResources.robotPricingTierLauncherDisabledSpecMessage,
+            helpBalloonMessage: ClientResources.robotPricingTierLauncherDisabledSpecHelpBalloonMessage,
+            helpBalloonLinkText: ClientResources.robotPricingTierLauncherDisabledSpecLinkText,
+            helpBalloonLinkUri: ClientResources.robotPricingTierLauncherDisabledSpecLinkUri
+        }
+    ]
+});
+this.specDropDown = new SpecsDropDown(container, {
+    form: this,
+    accessor: this.createEditScopeAccessor((data: CreateEngineDataModel) => {
+        return data.spec;
+    }),
+    initialData: initialDataObservable,
+    // This extender should be the same extender view model used for the spec picker blade.
+    // You may need to extend your data context or share your data context between your
+    // create area and you spec picker area to use the extender with the current datacontext.
+    specPickerExtender: new BillingSpecPickerV3Extender(container, initialDataObservable(), dataContext),
+    pricingBlade: {
+        detailBlade: "BillingSpecPickerV3",
+        detailBladeInputs: {},
+        hotspot: "EngineSpecDropdown1"
+    }
+});
+
+```
 
 
 <a name="overview-validation"></a>
