@@ -24,13 +24,16 @@ Configuration settings are commonly used to control application behavior like ti
 
 This procedure assumes that a Portal extension named "MyExtension" is being customized to add a new configuration called "PageSize". The source for the samples is located in the `Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension` folder.
 
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. 
+
+
 1. Open the `ApplicationConfiguration.cs` file that is located in the  `Configuration` folder.
 
-1. Add a new property named `PageSize`, to the sample code that is located at `SamplesExtension\Extension\Configuration\ArmConfiguration.cs`. The sample is included in the following code.
+1. Add a new property named `PageSize`, to the sample code that is located at `SamplesExtension\Extension\` directory, and  `<dirParent>\Extension\Configuration\ArmConfiguration.cs`. The sample is included in the following code.
 
     <!--TODO:  Customize the sample code to match the description -->
 
-     {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Configuration/ArmConfiguration.cs", "section": "config#configurationsettings"}
+     {"gitdown": "include-section", "file": "SamplesExtension/Extension/Configuration/ArmConfiguration.cs", "section": "config#configurationsettings"}
 
 1. Save the file. 
 
