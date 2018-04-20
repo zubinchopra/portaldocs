@@ -47,11 +47,11 @@ You can view a working copy of the MenuBlade  in the Dogfood environment sample 
 
     This can be used to display further information on what the menu item defines, or it can also be used to explain to the user reasons why the menu item is disabled. 
 
-Menu blades also allow the user to collapse the menu pane.  This is not available programmatically to control by extension authors, as in the preceding image.
+Menu blades also allow the user to collapse the menu pane.  This is not available programmatically to control by developers, as in the preceding image.
 
 ### Navigation within a menu blade
 
-There are various options on how to open blades when the user interacts with your experience.
+There are various options that can be used to open blades when the user interacts with your experience.
 
 When in menu blades there are some extra options exposed.
 
