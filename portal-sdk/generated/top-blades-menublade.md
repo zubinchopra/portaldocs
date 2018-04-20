@@ -18,57 +18,51 @@ Menu blades are defined in a **TypeScript** file as shown in the following code.
 
 The following code demonstrates how to define a menu blade `ViewModel` to open two different items.
 
- /// <reference path="../../../TypeReferences.d.ts" />
-
-import { SampleMenuBlade as BladeClientResources } from "ClientResources";
-import * as ClientResources from "ClientResources";
-import * as MenuBlade from "Fx/Composition/MenuBlade";
-import * as BladeReferences from "../../../_generated/BladeReferences";
-import * as BladesArea from "../BladesArea";
+ ```typescript
 
 @MenuBlade.Decorator()
 export class SampleMenuBlade {
-    public title = BladeClientResources.menuBladeTitle;
-    public subtitle = ClientResources.samples;
+public title = BladeClientResources.menuBladeTitle;
+public subtitle = ClientResources.samples;
 
-    public context: MenuBlade.Context<void, BladesArea.DataContext>;
+public context: MenuBlade.Context<void, BladesArea.DataContext>;
 
-    public viewModel: MenuBlade.ViewModel2;
+public viewModel: MenuBlade.ViewModel2;
 
-    public onInitialize() {
-        const { container } = this.context;
+public onInitialize() {
+    const { container } = this.context;
 
-        this.viewModel = MenuBlade.ViewModel2.create(container, {
-            groups: [
-                {
-                    id: "default",
-                    displayText: BladeClientResources.menuBladeSamples,
-                    items: [
-                        {
-                            id: "controlsMenuBladeContentAreaBlade",
-                            displayText: BladeClientResources.controlsMenuBladeContentAreaBladeTitle,
-                            icon: null,
-                            supplyBladeReference: () => {
-                                return new BladeReferences.ControlsMenuBladeContentAreaBladeReference();
-                            }
-                        },
-                    ]
-                }
-            ],
-            overview: {
-                id: "overview",
-                displayText: BladeClientResources.overviewBladeTitle,
-                icon: null,
-                supplyBladeReference: () => {
-                    return new BladeReferences.MenuBladeOverviewBladeReference();
-                }
+    this.viewModel = MenuBlade.ViewModel2.create(container, {
+        groups: [
+            {
+                id: "default",
+                displayText: BladeClientResources.menuBladeSamples,
+                items: [
+                    {
+                        id: "controlsMenuBladeContentAreaBlade",
+                        displayText: BladeClientResources.controlsMenuBladeContentAreaBladeTitle,
+                        icon: null,
+                        supplyBladeReference: () => {
+                            return new BladeReferences.ControlsMenuBladeContentAreaBladeReference();
+                        }
+                    },
+                ]
             }
-        });
+        ],
+        overview: {
+            id: "overview",
+            displayText: BladeClientResources.overviewBladeTitle,
+            icon: null,
+            supplyBladeReference: () => {
+                return new BladeReferences.MenuBladeOverviewBladeReference();
+            }
+        }
+    });
 
-        return Q();  // This sample loads no data.
-    }
+    return Q();  // This sample loads no data.
 }
-
+ 
+```
  
 There are a few things to notice in the preceding code.
 
@@ -99,12 +93,12 @@ You can view a working copy of the MenuBlade  in the Dogfood environment sample 
 
     This can be used to display further information on what the menu item defines, or it can also be used to explain to the user reasons why the menu item is disabled. 
 
-Menu blades also allow the user to collapse the menu pane.  This is not available programmatically to control by extension authors, as in the preceding image.
+Menu blades also allow the user to collapse the menu pane.  This is not available programmatically to control by developers, as in the preceding image.
 
 <a name="menu-blade-navigation-within-a-menu-blade"></a>
 ### Navigation within a menu blade
 
-There are various options on how to open blades when the user interacts with your experience.
+There are various options that can be used to open blades when the user interacts with your experience.
 
 When in menu blades there are some extra options exposed.
 
