@@ -1,3 +1,4 @@
-{"gitdown": "contents", "maxLevel": 2}
 
-{"gitdown": "include-file", "file": "./portalfx.md"}
+
+The page you requested has moved to [./portalfx.md](./portalfx.md). 
+

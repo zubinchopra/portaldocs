@@ -283,3 +283,59 @@ requirejs will need to know where all your modules are located for your extensio
 ### Run your tests
 
 `npm run test` or open index.html in a browser if you have already performed a build.
+
+## Corext Environments
+
+Build environments which are setup using Corext will need to manually add additional lines in order to specify where to pick up the Unit Test Framework NuGet package.
+This NuGet package will be expanded at a different location (CxCache) than the default, so you need to update your Corext config and the npm packages.json in order to
+point to the correct location.
+
+### Common Error
+
+If you are a executing the default instructions on your Corext environment, this is the error you will see:
+
+`npm ERR! enoent ENOENT: no such file or directory, stat 'C:\...\ExtensionName\packages\Microsoft.Portal.TestFramework.UnitTest.5.0.302.979\msportalfx-ut-5.302.979.tgz'`
+
+This error indicates that it cannot find the expanded NuGet package for the Unit Test Framework. 
+
+### Fix
+
+1. **Update your Repository's `corext.config`**
+
+    Found under `\<ExtensionRepoName>\.corext\corext.config`
+
+    Under the `<generator>` section add the following to the bottom:
+
+    ```xml
+    <!-- Unit Test Framework -->
+    <package id="Microsoft.Portal.TestFramework.UnitTest" />
+    ```
+
+2. **Update your Extension's `package.config`**
+
+    Found under `\<ExtensionRepoName>\src\<ExtensionName>\packages.config`
+
+    Add the folowing to your `<packages>`:
+
+    ```xml
+    <package id="Microsoft.Portal.TestFramework.UnitTest" version="5.0.302.1016" targetFramework="net45" />
+    ```
+
+    **Note:** *The version listed above should match the version of the Portal SDK you are using for your extension and will match the `"Microsoft.Portal.Framework"` package in your `packages.config`.*
+
+3. **Update your Unit Test `package.json`**
+
+    Found under `<ExtensionRepoName>\src\<ExtensionName>.UnitTests\package.json`
+
+    If you have the package `msportalfx-ut` in your dependencies, remove it.
+
+    Update your scripts init command to be the following:
+
+    `"init": "npm install --no-optional && npm install %PkgMicrosoft_Portal_TestFramework_UnitTest%\\msportalfx-ut-5.302.1016.tgz --no-save",`
+
+    **Note:** *The version listed above should match the version of the Portal SDK you are using for your extension and will match the `"Microsoft.Portal.Framework"` package in your `packages.config`.*
+
+4. **Run the following commands to finish the setup**
+
+    * Run Corext Init - From the root of your repository run: `init`
+    * Run the Npm install - From your Unit Test directory run: `npm run init`

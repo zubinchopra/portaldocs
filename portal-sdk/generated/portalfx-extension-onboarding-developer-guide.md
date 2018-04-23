@@ -35,7 +35,6 @@ This is typical configuraiton for an extension:
      uri: "//demo.hosting.portal.azure.net/demo",
      uriFormat: "//demo.hosting.portal.azure.net/demo/{0}",
      feedbackEmail: "azureux-demo@microsoft.com",
-     cacheability: "none",
      disabled: true,
 }
 ```
@@ -68,7 +67,7 @@ If your extension is in preview mode then you also need to add the preview tag:
 ```
 
 <a name="configuration-2-uri-uriformat"></a>
-###  start="2">
+### >
 <li>uri / uriFormat:</li>
 <
 
@@ -127,14 +126,14 @@ To use a secondary, test stamp, specify the feature.canmodifystamps flag in addi
 would replace the {0} in the uriFormat string with perf and attempt to load the extension from there (making the extension URL https://perf.demo.ext.azure.com). Note that you must specify the flag feature.canmodifystamps=true in order to override the stamp.
    
 <a name="configuration-3-feedbackemail"></a>
-###  start="3">
+### >
 <li>feedbackEmail:</li>
 <
 
 This is the email id where you you want all the feedback should be sent.
 
 <a name="configuration-4-cacheability"></a>
-###  start="4">
+### >
 <li>Cacheability:</li>
 <
 
@@ -145,17 +144,11 @@ cacheability: "manifest",
 ```
    
 If you using the legacy DIY deployment, then you will need to do some work before you can set the cacheability to manifest or your extension will slow down the performance of Azure Portal.
-Please read about [Client-Side caching](https://aka.ms/cacheability) to improve the performance of your extension  before setting the value to none.
+Please read about [Client-Side caching](https://aka.ms/cacheability) to improve the performance of your extension before setting the value to none.
 NOTE: Setting cacheability to **manifest** is a pre-requisite for Public Preview / GA. 
 
-For private preview, you can mark the cacheability to 
-
-```
-cacheability: "none",
-```
-
 <a name="configuration-5-disabled"></a>
-###  start="5">
+### >
 <li>disabled:</li>
 <
    
@@ -185,6 +178,7 @@ Here is a table that explains mapping of portal environment to extension configu
 
 
 **NOTE** The RC, MPAC, Preview, and PROD environments all share the same `Extensions.prod.json` file for configuration; therefore you can only have one entry for your extension across all these environments.
+The above table implies that to manage extension configuraiton in Dogfood, BlackForest, FairFax and MoonCake the extension developer will need to send the pull request for modifying Extensions.test.json, Extensions.bf.json, Extensions.ff.json and Extensions.mc.json.
 
 <a name="understanding-scenarios-for-config-change"></a>
 ## Understanding scenarios for config change
@@ -198,7 +192,7 @@ All new extensions should always be added to the portal configuration in disable
 https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/459608f61d5c36864affafe6eb9d230655f67a29?refName=refs%2Fheads%2Fdev
    
 <a name="understanding-scenarios-for-config-change-2-enabling-an-extension-in-the-portal"></a>
-###  start="2">
+### >
 <li>Enabling an extension in the portal</li>
 <
    
@@ -215,7 +209,7 @@ https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit
     
 
 <a name="understanding-scenarios-for-config-change-3-moving-from-diy-deployment-to-extension-hosting-service"></a>
-###  start="3">
+### >
 <li>Moving from DIY deployment to Extension hosting service</li>
 <
 
@@ -231,7 +225,7 @@ Here is a sample pull request for modifying the uriFormat:
 https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/c22b81463cab1d0c6b2c1abc803bc25fb2836aad?refName=refs%2Fheads%2Fdev
 
 <a name="understanding-scenarios-for-config-change-3-moving-from-diy-deployment-to-extension-hosting-service-2-flight-changes-in-mpac"></a>
-####  start="2">
+#### >
 <li>Flight changes in MPAC:</li>
 <
 
@@ -239,7 +233,7 @@ Here is a sample pull request for flighting extension in MPAC:
 https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev
 
 <a name="understanding-scenarios-for-config-change-3-moving-from-diy-deployment-to-extension-hosting-service-3-enable-100-traffic-in-mpac-and-prod"></a>
-####  start="3">
+#### >
 <li>Enable 100% traffic in MPAC and PROD:</li>
 <
 
@@ -248,7 +242,7 @@ https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit
 
 
 <a name="understanding-scenarios-for-config-change-3-moving-from-diy-deployment-to-extension-hosting-service-4-enable-flighting-in-mpac"></a>
-####  start="4">
+#### >
 <li>Enable flighting in MPAC</li>
 <
 
@@ -286,21 +280,21 @@ In case of legacy deploment:
 Here is a sample pull request: https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev
 
 <a name="understanding-scenarios-for-config-change-3-moving-from-diy-deployment-to-extension-hosting-service-5-performance-improvements-manifest-caching"></a>
-####  start="5">
+#### >
 <li>Performance Improvements : Manifest Caching</li>
 <
 
   Work In Progress
 
 <a name="understanding-scenarios-for-config-change-3-moving-from-diy-deployment-to-extension-hosting-service-6-performance-improvements-you-have-removed-pcv1-and-pcv2-code-from-you-extension"></a>
-####  start="6">
+#### >
 <li>Performance Improvements : You have removed PCV1 and PCV2 Code from you extension</li>
 <
 
   Work In Progress
 
 <a name="understanding-scenarios-for-config-change-3-moving-from-diy-deployment-to-extension-hosting-service-7-updating-the-feedback-email"></a>
-####  start="7">
+#### >
 <li>Updating the feedback email</li>
 <
 
@@ -360,10 +354,9 @@ Dogfood -> RC -> MPAC -> PROD -> National Clouds (BF, FF and MC).
 <a name="expediting-the-deployment-of-configuration-changes"></a>
 ## Expediting the deployment of configuration changes
 
-In order to expedite the deployment of changes, you will need to send the pull request for each branch in portal repository i.e. Dogfood, MPAC and Production.
+In order to expedite the deployment of changes, you will need to send the pull request for each branch in portal repository i.e. MPAC and Production.
 
-** All the pull requests should be sent for Dev branch. Once the Pull request is marked as complete then you can cherry-pick the same commit from dev branch and send the pull request for Dogfood branch.
-Once the Dogfood Pull request is marked complete then you can cherry-pick the same commit from dogfood branch and send the pull request for for MPAC branch. 
+** All the pull requests should be sent for Dev branch. Once the Pull request is marked as complete then you can cherry-pick the same commit from dev branch and send the pull request for MPAC branch. 
 Once the MPAC Pull request is marked complete then you can cherry-pick the same commit from MPAC branch and send the pull request for for production branch. **
 
 If the pull request is not sent in the above specified order or the commit message is chanegd then it will lead to unit Test failure. In case of test failure your changes will be reverted without any notice.
