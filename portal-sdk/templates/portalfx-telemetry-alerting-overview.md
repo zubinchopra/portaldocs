@@ -17,8 +17,6 @@ The framework provides a per extension configurable alerting infrastructure, thi
 1. Performance
 1. Client Error
 
-> Today it only applies to availability, performance and client error, we are working on expanding it into the other areas.
-
 Once the thresholds for any of the configured alerts are met or surpassed a ICM alert containing details will be opened agaisnt the owning team.
 
 ## What is configurable?
