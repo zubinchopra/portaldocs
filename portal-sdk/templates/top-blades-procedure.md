@@ -29,19 +29,19 @@ This class has three public properties.
 
 In this simple case we use void because this blade takes no parameters. You can define your own interface type to define your parameters and then use that type as the first parameter. The secomd parameter represents the data context type that is shared by all blades in an area.
 
-The `onInitialize()` method is called by the framework when loading your blade. The context property will be populated before this method is called. This is where you do all of your blade loading logic. In this simple example the blade does not fetch any data from a server and so it simply returns a resolved promise via Q(). This instructs the framework to immediately remove the loading indicator and render your template. If your blade requires data to load before content is rendered then you should return a promise that resolves when your blade is ready. The Portal will keep the loading indicator on the blade until this happens. The portal telemetry infrastructure will also place markers around the beginning of your onInitialize() and the end of this promise in order to measure the performance of your blade load path. If your blade has a two-phase load (meaning you want to show some content to the user before all the data is loaded) then you can call `context.container.revealContent()` at the end of the first phase. This will signal to the framework to remove the loading indicator and render your content even though the blade is not fully ready. You are responsible for making the experience usable while in this partially ready state.
+The `onInitialize()` method is called by the framework when loading your blade. The context property will be populated before this method is called. This is where you do all of your blade loading logic. In this example the blade does not fetch any data from a server and so it only returns a resolved `promise` by using the `Q()` method. This instructs the Framework to immediately remove the loading indicator and render the template. If your blade requires data to load before content is rendered then you should return a promise that resolves when your blade is ready. The Portal will continue to load the loading indicator on the blade until this happens. The portal telemetry infrastructure will also place markers around the beginning of the `onInitialize()` method and the end of this promise in order to measure the performance of your blade load path. If your blade has a two-phase load, which means that the extension should display  some content to the user previous to loading all the data, then the extension should call `context.container.revealContent()` at the end of the first phase. This will signal to the framework to remove the loading indicator and render your content even though the blade is not fully ready. You are responsible for making the experience usable while in this partially ready state.
 
 There are several samples that show more advanced features of template blades.
 
 * Source Code installed with the SDK
 
-  `<dir>\Client/V2/Blades/Template`
+  `<dir>/Client/V2/Blades/Template`
 
 * Live running sample
-The working copy is located at 
+
+    The working copy is located at 
     [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/TemplateBladesBlade/overview](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/TemplateBladesBlade/overview)
 
-    It contains links that are clicked to can
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
