@@ -4,7 +4,7 @@
 
 A blade is the vertical container that acts as the starting point for any journey. You can define multiple blades, each of which contains a collection of statically defined lenses and parts.
 
-**NOTE**: Given the complexity associated with this model, extension authors are encouraged to use TemplateBlades instead, as specified in [portalfx-blades-overview.md](portalfx-blades-overview.md).
+**NOTE**: Given the complexity associated with this model, extension authors are encouraged to use TemplateBlades instead, as specified in [top-extensions-blades.md](top-extensions-blades.md).
 
 The following image contains a legacy blade.
 
@@ -25,12 +25,11 @@ Blades can be created in any PDL file. They are aggregated at compile time into 
 
 Blades use ViewModels to drive dynamic content, including titles, icons, and status.  The following is a list of legacy blade subtopics.
 
-| Type                 | Document                                                       | Description |
-| -------------------- | -------------------------------------------------------------- | ----------- |
-| Controlling blade UI | [portalfx-blades-ui.md](portalfx-blades-ui.md)                 | Customizing blade behavior and experience | 
-| Opening blades       | [portalfx-blades-opening.md](portalfx-blades-opening.md)       | How to open blades using the new container APIs or the legacy declarative APIs. | 
-| Blade parameters     | [portalfx-blades-parameters.md](portalfx-blades-parameters.md) | Explicit declaration for parameters that blades are required to receive.    |  
-| Blade properties     | [portalfx-blades-properties.md](portalfx-blades-properties.md) | Information sent to the blade as a `BladeParameter` is also sent to the blade ViewModel by using  a `<Property>` element. | 
-| Blade outputs        | [portalfx-blades-outputs.md](portalfx-blades-outputs.md)       | A list of output properties that return data from a child blade back to the calling blade. | 
-| Pinning blades       | [portalfx-blades-pinning.md](portalfx-blades-pinning.md)       | Pinning a blade creates a part on the currently active dashboard.    | 
-| Closing blades       | [top-blades-legacy-opening-and-closing.md](top-blades-legacy-opening-and-closing.md)       | How to close the current blade that was called from a blade or a part container.  |
+| Type                              | Document                                                   | Description |
+| --------------------------------- | ---------------------------------------------------------- | ----------- |
+| Controlling blade UI              | [portalfx-blades-ui.md](portalfx-blades-ui.md)             | Customizing blade behavior and experience | 
+| Opening and closing legacy blades | [top-blades-legacy-opening-and-closing.md](top-blades-legacy-opening-and-closing.md)        | How to open blades using the legacy declarative APIs.  How to close the current blade that was called from a blade or a part container.    |
+| Blade parameters                  | [portalfx-blades-parameters.md](portalfx-blades-parameters.md) | Explicit declaration for parameters that blades are required to receive.    |  
+| Blade properties                  | [portalfx-blades-properties.md](portalfx-blades-properties.md) | Information sent to the blade as a `BladeParameter` is also sent to the blade ViewModel by using  a `<Property>` element. | 
+| Blade outputs                     | [portalfx-blades-outputs.md](portalfx-blades-outputs.md)       | A list of output properties that return data from a child blade back to the calling blade. | 
+| Pinning blades                    | [portalfx-blades-pinning.md](portalfx-blades-pinning.md)       | Pinning a blade creates a part on the currently active dashboard.    | 
