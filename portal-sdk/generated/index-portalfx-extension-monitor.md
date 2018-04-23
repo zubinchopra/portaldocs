@@ -26,6 +26,7 @@
 * [Overview](portalfx-telemetry-alerting-overview.md#overview)
     * [What are the alerts?](portalfx-telemetry-alerting-overview.md#what-are-the-alerts)
     * [What is configurable?](portalfx-telemetry-alerting-overview.md#what-is-configurable)
+    * [How mapping is done from extension name to IcM team and service names?](portalfx-telemetry-alerting-overview.md#how-mapping-is-done-from-extension-name-to-icm-team-and-service-names)
 
 * [Availability](portalfx-telemetry-alerting-availability.md#availability)
     * [Configuration](portalfx-telemetry-alerting-availability.md#configuration)
