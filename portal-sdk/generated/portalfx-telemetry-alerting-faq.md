@@ -9,7 +9,7 @@
 <a name="fequently-asked-questions-how-do-i-know-my-extension-s-current-configuration"></a>
 ## How do I know my extension&#39;s current configuration?
 
-Within kusto your configuration will be defined under a function, see the sub categories for further details
+We have a daily extension customization Json backup from Azure SQL to Kusto. You can view your extension alert customization Json in Kusto. See the sub categories for further details
 
 <a name="fequently-asked-questions-what-happens-if-i-need-to-update-my-configuration"></a>
 ## What happens if I need to update my configuration?
