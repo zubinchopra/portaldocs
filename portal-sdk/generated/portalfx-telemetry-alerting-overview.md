@@ -26,6 +26,10 @@ Once the thresholds for any of the configured alerts are met or surpassed a ICM 
 
 Each area will be configurable to it's own extent, allowing various levels of custom configuration.
 
+<a name="overview-is-national-cloud-supported"></a>
+## Is National Cloud Supported?
+
+Alerts are supported in national clouds by specifying national cloud portal domain names in "environment" property in alert customization Json. See the sub categories for further details. Its subject title is 'Is National Cloud Supported?'.
 
 <a name="overview-how-mapping-is-done-from-extension-name-to-icm-team-and-service-names"></a>
 ## How mapping is done from extension name to IcM team and service names?
