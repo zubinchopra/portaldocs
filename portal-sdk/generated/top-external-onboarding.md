@@ -1,8 +1,5 @@
 <a name="onboarding-outside-of-ibiza"></a>
 # Onboarding outside of Ibiza
-<a name="onboarding-outside-of-ibiza-compliance-marketplace-integration-and-others"></a>
-## Compliance, Marketplace Integration, and others
-
 
 <a name="onboarding-outside-of-ibiza-overview"></a>
 ## Overview
@@ -33,9 +30,14 @@ PROD on-call email: _________
 
 **NOTE**: The name of the extension is the same for both the PROD version and the custom deployment version, as specified in [portalfx-extensions-custom-deployment.md](portalfx-extensions-custom-deployment.md).  For the hosting service, the request should include the name of the extension as `<prefix>.hosting.portal.azure.net/<prefix>`, as specified in [portalfx-cdn.md#configuring-your-extension](portalfx-cdn.md#configuring-your-extension). The email may also contain the extension config file, as specified in [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
 
-<a name="onboarding-outside-of-ibiza-quality-essentials"></a>
-## Quality Essentials
+<a name="onboarding-outside-of-ibiza-one-compliance-system-1cs"></a>
+## One Compliance System (1CS)
   
+  The One Compliance System (1CS) is located at [https://microsoft.sharepoint.com/teams/1CS/SitePages/Home.aspx](https://microsoft.sharepoint.com/teams/1CS/SitePages/Home.aspx).
+
+<a name="onboarding-outside-of-ibiza-one-compliance-system-1cs-quality-essentials-deprecated"></a>
+### Quality Essentials - Deprecated
+
 Compliance criteria and practices are defined in Quality Essentials throughout the development cycle. These ensure that services meet the Trusted Cloud commitments outlined in the Microsoft Azure Trust Center for our customers. These are required procedures for preview and Global Availability, and are to be revisited for every release cycle.
 
 Nearly 70% of Azure users are from outside of the United States. Therefore, it is important to make Azure a globalized product. There are a few internationalization requirements that the extension or service is required to support. This is the same set of languages that are supported by Azure Portal for GA.
