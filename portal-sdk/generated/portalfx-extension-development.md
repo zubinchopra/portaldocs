@@ -10,7 +10,7 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 <a name="common-scenarios"></a>
 # Common scenarios
 
-  * [Building browse experiences](portalfx-browse.md#building-browse-experiences)
+  * [Building browse experiences](top-extensions-browse.md#building-browse-experiences)
 
 
   
@@ -47,31 +47,35 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 
 * [Essentials panel](portalfx-essentials.md#essentials-panel)
 
-
-* [Defining permissions and checking access](portalfx-permissions.md#defining-permissions-and-checking-access)
-
-
-* [Notifications](portalfx-notifications.md#notifications)
+  
 
 
-* [Subscriptions](portalfx-subscriptions.md#subscriptions)
+ * [Defining permissions and checking access](portalfx-permissions.md#defining-permissions-and-checking-access)
 
 
-* [Resource Tags](portalfx-tags.md#resource-tags)
+ * [Notifications](portalfx-notifications.md#notifications)
 
 
-* [Resource moves](portalfx-resourcemove.md#resource-moves)
+ * [Subscriptions](portalfx-subscriptions.md#subscriptions)
 
 
-* [Pricing Tier](portalfx-extension-pricing-tier.md#pricing-tier)
+ * [Resource Tags](portalfx-tags.md#resource-tags)
+
+
+ * [Resource moves](portalfx-resourcemove.md#resource-moves)
+
+
+ * [Pricing Tier](portalfx-extension-pricing-tier.md#pricing-tier)
 
 
 <a name="other"></a>
 # Other
 
-* [PDL Binding Quick Reference](portalfx-binding-reference.md#pdl-binding-quick-reference)
+<!--TODO: Determine which of these is stopping the GitHub include process -->
+
+ * [PDL Binding Quick Reference](portalfx-binding-reference.md#pdl-binding-quick-reference)
 
 
-* [Exposing configuration settings for the client](portalfx-load-configuration.md#exposing-configuration-settings-for-the-client)
+ * [Exposing configuration settings for the client](portalfx-load-configuration.md#exposing-configuration-settings-for-the-client)
 * [Step by step walkthrough](portalfx-load-configuration.md#step-by-step-walkthrough)
 

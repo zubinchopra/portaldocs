@@ -1,27 +1,15 @@
-* [Assets](#assets)
-    * [Defining your asset type](#assets-defining-your-asset-type)
-    * [Blades, parts, and commands](#assets-blades-parts-and-commands)
-    * [Showing up in the Browse ("More services") menu](#assets-showing-up-in-the-browse-more-services-menu)
-    * [Showing up in Browse > Recent](#assets-showing-up-in-browse-recent)
-    * [Showing up in All Resources and resource group resources](#assets-showing-up-in-all-resources-and-resource-group-resources)
-    * [Handling permissions for RBAC](#assets-handling-permissions-for-rbac)
-    * [Special-casing ARM resource kinds](#assets-special-casing-arm-resource-kinds)
-    * [Handling deleted resources](#assets-handling-deleted-resources)
-    * [Linking notifications to assets](#assets-linking-notifications-to-assets)
-    * [ARM RP and resource type metadata](#assets-arm-rp-and-resource-type-metadata)
-
 
 <a name="assets"></a>
 ## Assets
 
-Assets are generic entities tracked within the portal. As generic entities, assets can identify subscription resources (e.g. websites), 
+Assets are generic entities tracked within the Portal. As generic entities, assets can identify subscription resources (e.g. websites), 
 higher-level entities (e.g. AAD directory), lower-level entities (e.g. TFS work items), or things not even remotely associated with 
 subscriptions (e.g. users). As an example, subscriptions, resource groups, and deployments are all tracked as assets.
 
 Assets are used for the following experiences:
 
 * [Notifications](portalfx-notifications.md) should be linked to an asset
-* The [Browse menu](portalfx-browse.md) lists browseable asset types
+* The [Browse menu](top-extensions-browse.md) lists browseable asset types
 * Browse > Recent only shows assets based on the asset type specified on a blade
 * The All Resources view only shows resources that have asset types that implement Browse v2
 * The resource group list only shows resources that have asset types with a defined `ResourceType`
@@ -31,7 +19,7 @@ Assets are used for the following experiences:
 
 All asset types have the following requirements:
 
-1. The asset type blade **_must_** have a single `id` parameter that is the asset id
+1. The asset type blade must* have a single `id` parameter that is the asset id
 2. The asset type part must be the same as the blade's pinned part
 3. The asset type part and blade's pinned part must open the asset type's blade
 4. Must call `notifyAssetDeleted()` when the resource has been deleted or is not found
@@ -43,6 +31,7 @@ Asset types that represent Azure Resource Manager (ARM) resource types also have
 
 <a name="assets-defining-your-asset-type"></a>
 ### Defining your asset type
+
 To define your asset type, simply add the following snippet to PDL:
 
 ```xml
@@ -64,7 +53,7 @@ To define your asset type, simply add the following snippet to PDL:
 
 The name can be anything, since it's scoped to your extension. You'll be typing this a lot, so keep it succinct, yet clear -- it will be used to identify asset types in telemetry.
 
-In order to provide a modern voice and tone within the portal, asset types have 4 different display names. The portal will use the most appropriate display name given the context. If your asset type display name includes an acronym or product name that is always capitalized, use the same values for upper and lower display name properties (e.g. `PluralDisplayName` and `LowerPluralDisplayName` may both use `SQL databases`). Do not share strings between singular and plural display name properties.
+In order to provide a modern voice and tone within the Portal, asset types have 4 different display names. The Portal will use the most appropriate display name given the context. If your asset type display name includes an acronym or product name that is always capitalized, use the same values for upper and lower display name properties (e.g. `PluralDisplayName` and `LowerPluralDisplayName` may both use `SQL databases`). Do not share strings between singular and plural display name properties.
 
 * The Browse menu shows the `ServiceDisplayName` in the list of browseable asset types.  If `ServiceDisplayName` is not available, `PluralDisplayName` will be shown instead
 * The All Resources blade uses the `SingularDisplayName` in the Type column, when visible
@@ -102,43 +91,48 @@ Remember, your part and blade should both have a single `id` input parameter, wh
 
 If your asset type is in preview, set the `IsPreview="true"` property. If the asset type is GA, simply remove the property (the default is `false`).
 
-<a name="blades-parts-commands"></a>
 <a name="assets-blades-parts-and-commands"></a>
 ### Blades, parts, and commands
+
 Every blade, part, and command that represents or acts on a single asset instance should specify an `AssetType` and `AssetIdProperty`. The `AssetType` is the `Name` specified on your `<AssetType />` node and the `AssetIdProperty` is the name of the input property that contains the asset id. Remember, that should be the string resource id, if your asset is an ARM resource.
 
 If a blade, part, or command represents or acts on multiple assets, use the primary asset type/id based on the context. For instance, when displaying information about a child asset that also obtains information about the parent, use the child's asset type/id.
 
 <a name="assets-showing-up-in-the-browse-more-services-menu"></a>
 ### Showing up in the Browse (&quot;More services&quot;) menu
+
 To show up in the Browse menu, your asset type must specify the `<Browse Type="" />` node. The `Type` informs the Browse menu 
-how to interact with your asset type. Learn more about [Browse integration](portalfx-browse.md).
+how to interact with your asset type. Learn more about [Browse integration](top-extensions-browse.md).
 
 Services that use [resource kinds](#resource-kinds) can also be added to the Browse menu, but that must be configured by the Fx team. To do this, [create a partner request](http://aka.ms/portalfx/request) with the asset type name and kind value.
 
 <a name="assets-showing-up-in-browse-recent"></a>
 ### Showing up in Browse &gt; Recent
-The Recent list in the Browse menu shows asset instances that have been interacted with. The portal tracks this via the 
+
+The Recent list in the Browse menu shows asset instances that have been interacted with. The Portal tracks this via the 
 `AssetType` and `AssetIdProperty` on each blade that is launched. See [Blades, parts, and commands](#blades-parts-commands) 
 above for more information.
 
 <a name="assets-showing-up-in-all-resources-and-resource-group-resources"></a>
 ### Showing up in All Resources and resource group resources
+
 The All Resources and resource group blades show all resources except alert rules, autoscale settings, and dashboards. Resources that aren't backed by an asset type use a very basic resource menu blade that exposes properties, RBAC, tags, locks, and activity log.
 
-To implement the most basic asset type, add the asset type definition (including display names, icon, blade, and part), add `<Browse Type="ResourceType" />` for [no-code Browse](portalfx-browse.md), and then include a `<ResourceType ResourceTypeName="" ApiVersion="" />` declaration.
+To implement the most basic asset type, add the asset type definition (including display names, icon, blade, and part), add `<Browse Type="ResourceType" />` for [no-code Browse](top-extensions-browse.md), and then include a `<ResourceType ResourceTypeName="" ApiVersion="" />` declaration.
 
 <a name="assets-handling-permissions-for-rbac"></a>
 ### Handling permissions for RBAC
+
 To ensure your blades, parts, and commands react to the user not having access, you can add an `AssetType`, `AssetIdProperty`, and required `Permissions` to your blades, parts, and commands. Learn more about [Permissions](portalfx-permissions.md).
 
-<a name="resource-kinds"></a>
+
 <a name="assets-special-casing-arm-resource-kinds"></a>
 ### Special-casing ARM resource kinds
-The portal supports overriding the following default behaviors based on the resource kind value:
+
+The Portal supports overriding the following default behaviors based on the resource kind value:
 
 * Hiding resources in Browse and resource groups
-* Displaying separate icons throughout the portal
+* Displaying separate icons throughout the Portal
 * Launching different blades when an asset is opened
 
 Kinds can also be used to
@@ -182,18 +176,16 @@ If different kinds need to opt in to a static resource menu overview item, add t
 </Kind>
 ```
 
-<a name='notify-asset-deleted'></a>
 <a name="assets-handling-deleted-resources"></a>
 ### Handling deleted resources
-The portal includes many references to assets, like pinned parts on the dashboard, recent items, and more. All references 
-are persisted to user settings and available when the user signs in again. When an asset is deleted, the portal needs to be 
-notified that these references need to be cleaned up. To do that, simply call 
-`MsPortalFx.UI.AssetManager.notifyAssetDeleted()`.
 
-It's important to note that assets can obviously be deleted outside the portal. When an asset is deleted outside of the portal and `notifyAssetDeleted()` cannot be called, these references will not be cleaned up. When the user signs in again, they will still see pinned parts, for instance. These parts will most likely fail to load due to a 404 from your back-end service due to the asset not existing anymore. When you get a 404 for an asset id, always call `notifyAssetDeleted()` to ensure the portal has a chance to clean up.
+The Portal includes many references to assets, like pinned parts on the dashboard, recent items, and more. All references are persisted to user settings and available when the user signs in again. When an asset is deleted, the Portal needs to be notified that these references need to be cleaned up. To do that, simply call `MsPortalFx.UI.AssetManager.notifyAssetDeleted()`.
+
+It's important to note that assets can obviously be deleted outside the Portal. When an asset is deleted outside of the Portal and `notifyAssetDeleted()` cannot be called, these references will not be cleaned up. When the user signs in again, they will still see pinned parts, for instance. These parts will most likely fail to load due to a 404 from your back-end service due to the asset not existing anymore. When you get a 404 for an asset id, always call `notifyAssetDeleted()` to ensure the Portal has a chance to clean up.
 
 <a name="assets-linking-notifications-to-assets"></a>
 ### Linking notifications to assets
+
 To link a notification to an asset, simply include an asset reference (`AssetTriplet`) in the notification:
 
 ```ts
@@ -213,11 +205,12 @@ Learn more about [notifications](portalfx-notifications.md).
 
 <a name="assets-arm-rp-and-resource-type-metadata"></a>
 ### ARM RP and resource type metadata
+
 Every ARM resource provider (RP) should have a default RP icon as well as a resource type icon specified in the RP manifest to support the following scenarios:
 
 * The AAD custom role management UI uses the resource type icon for resource type actions
 * Visual Studio uses the resource type icon in its list of resources
-* The portal uses the RP icon when a blade isn't associated with an asset type and doesn't have an icon
+* The Portal uses the RP icon when a blade isn't associated with an asset type and doesn't have an icon
 * When a resource type icon isn't provided, the RP icon is used
 
 When an icon is not specified, each experience will use the `MsPortalFx.Base.Images.Polychromatic.ResourceDefault()` icon:
@@ -229,7 +222,7 @@ When an icon is not specified, each experience will use the `MsPortalFx.Base.Ima
     <path opacity="0.5" fill="#FFFFFF" d="M28.225,50c-0.098,0-0.199-0.024-0.295-0.077c-0.178-0.105-0.288-0.289-0.288-0.502V27.478 c0-0.207,0.11-0.397,0.288-0.504l19.196-11.002c0.185-0.102,0.403-0.102,0.587,0c0.176,0.103,0.287,0.295,0.287,0.5v21.943 c0,0.211-0.111,0.398-0.287,0.502L28.511,49.923C28.429,49.976,28.325,50,28.225,50"/>
 </svg>
 
-To specify an RP icon, add the following portal metadata snippet:
+To specify an RP icon, add the following Portal metadata snippet:
 
 ```ts
 {

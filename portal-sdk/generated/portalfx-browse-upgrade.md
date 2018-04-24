@@ -247,4 +247,3 @@ The most efficient way to obtain and update data is to use a single query view t
     ```
 
 
-Next Steps: [Browse](portalfx-browse.md)
