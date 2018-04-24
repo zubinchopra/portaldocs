@@ -26,6 +26,7 @@
 * [Overview](portalfx-telemetry-alerting-overview.md#overview)
     * [What are the alerts?](portalfx-telemetry-alerting-overview.md#what-are-the-alerts)
     * [What is configurable?](portalfx-telemetry-alerting-overview.md#what-is-configurable)
+    * [How mapping is done from extension name to IcM team and service names?](portalfx-telemetry-alerting-overview.md#how-mapping-is-done-from-extension-name-to-icm-team-and-service-names)
 
 * [Availability](portalfx-telemetry-alerting-availability.md#availability)
     * [Configuration](portalfx-telemetry-alerting-availability.md#configuration)
@@ -44,6 +45,12 @@
     * [How often do they run?](portalfx-telemetry-alerting-error-messages.md#how-often-do-they-run)
     * [How do I onboard?](portalfx-telemetry-alerting-error-messages.md#how-do-i-onboard)
     * [What happens if I need to update them or how do I know my extension's current configuration?](portalfx-telemetry-alerting-error-messages.md#what-happens-if-i-need-to-update-them-or-how-do-i-know-my-extension-s-current-configuration)
+
+* [Create](portalfx-telemetry-alerting-create.md#create)
+    * [Configuration](portalfx-telemetry-alerting-create.md#configuration)
+    * [How often do they run?](portalfx-telemetry-alerting-create.md#how-often-do-they-run)
+    * [How do I onboard?](portalfx-telemetry-alerting-create.md#how-do-i-onboard)
+    * [What happens if I need to update them or how do I know my extension's current configuration?](portalfx-telemetry-alerting-create.md#what-happens-if-i-need-to-update-them-or-how-do-i-know-my-extension-s-current-configuration)
 
 * [Fequently asked questions](portalfx-telemetry-alerting-faq.md#fequently-asked-questions)
     * [How do I onboard?](portalfx-telemetry-alerting-faq.md#how-do-i-onboard)

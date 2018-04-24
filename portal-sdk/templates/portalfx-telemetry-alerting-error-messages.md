@@ -209,7 +209,7 @@ Currently error percentage alerts run every 15 minutes and error message alerts 
 
 | Field | Value |
 | -----  | ----- |
-| Routing ID | For all others 'AIMS://AZUREPORTAL\Portal\\{ExtensionName}' |
+| Routing ID | 'AIMS://AZUREPORTAL\Portal\\{ExtensionName}' |
 | Correlation ID | Specific to alert, use table below to map |
 | Mode | Hit count (recommended) |
 | Match DC/Region | Checked |

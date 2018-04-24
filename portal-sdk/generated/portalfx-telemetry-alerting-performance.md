@@ -201,7 +201,7 @@ Currently performance alerts run every 10 minutes assessing the previous 90 minu
 
 | Field | Value |
 | -----  | ----- |
-| Routing ID | For all others 'AIMS://AZUREPORTAL\Portal\\{ExtensionName}' |
+| Routing ID | 'AIMS://AZUREPORTAL\Portal\\{ExtensionName}' |
 | Correlation ID | Specific to alert, use table below to map |
 | Mode | Hit count (recommended) |
 | Match DC/Region | Checked |

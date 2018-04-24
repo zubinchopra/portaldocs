@@ -165,7 +165,7 @@ Currently they run every 5 minutes assessing the previous hour of data.
 
 | Field | Value |
 | -----  | ----- |
-| Routing ID | For create regression 'AIMS://AZUREPORTAL\Portal' <br/> For all others 'AIMS://AZUREPORTAL\Portal\\{ExtensionName}' |
+| Routing ID | 'AIMS://AZUREPORTAL\Portal\\{ExtensionName}' |
 | Correlation ID | Specific to alert, use table below to map |
 | Mode | Hit count (recommended) |
 | Match DC/Region | Checked |
