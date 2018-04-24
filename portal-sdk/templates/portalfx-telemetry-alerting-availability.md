@@ -182,7 +182,7 @@ Currently they run every 5 minutes assessing the previous hour of data.
 | Availability - Blade | BladeLoadAvailability |
 | Availability - Part | PartLoadAvailability | 
  
-## How do I know my extension's current customomization?
+## How do I know my extension's current customization?
 
 Click the [this link][alerting-extension-customization] and replace `HubsExtension` with `YOUR_EXTENSION_NAME` and run Kusto function, GetExtensionCustomizationJson. Or go to [https://azportal.kusto.windows.net/Partner][kusto-partner-database] to open Kusto.Explorer and run Kusto function, 
 GetExtensionCustomizationJson("YOUR_EXTENSION_NAME"). The regex is supported. You can view alert customization of onboarded extensions. The extension alert customization only exists once you have onboarded to the alerting infrastructure.
