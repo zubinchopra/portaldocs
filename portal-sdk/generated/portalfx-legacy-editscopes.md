@@ -68,11 +68,37 @@ The properties that are associated with the entity's 'id' are specified in the f
  
 The TypeScript sample is located at     `<dir>\Client\V1\Forms\Scenarios\ChangeTracking\Models\EditableFormData.ts`. This code is also included in the following working copy.
 
-  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/ChangeTracking/Models/EditableFormData.ts", "section": "formsEditScopeFaq#entityTypeMetadata"}
+ ```typescript
+
+MsPortalFx.Data.Metadata.setTypeMetadata("GridItem", {
+properties: {
+    key: null,
+    option: null,
+    value: null
+},
+entityType: true,
+idProperties: [ "key" ]
+});
+
+```
 
 The C# sample is located at `<dirParent>\SamplesExtension.DataModels/Person.cs`. This code is also included in the following working copy.
 
-  gitdown": "include-section", "file":"../Samples/SamplesExtension/SamplesExtension.DataModels/Person.cs", "section": "formsEditScopeFaq#entityTypeMetadataCsharp"}
+ ```csharp
+
+[TypeMetadataModel(typeof(Person), "SamplesExtension.DataModels")]
+[EntityType]
+public class Person
+{
+    /// <summary>
+    /// Gets or sets the SSN of the person.
+    /// The "Id" attribute will be serialized to TypeScript/JavaScript as part of type metadata, and will be used
+    /// by MsPortalFx.Data.DataSet in its "merge" method to merge data by identity.
+    /// </summary>
+    [Id]
+    public int SsnId { get; set; }
+    
+```
 
 The following enumerations simplify the conversation between the `EditScope` and the `EditScopeCache`. 
 
@@ -160,19 +186,74 @@ To see the actual state of an EditScope `EntityArray`, use the `getEntityArrayWi
 
 This method is particularly useful in the `mapOutgoingDataForCollector` callback of the `ParameterProvider` when returning an edited array to some ParameterCollector, as in the following code.
 
-  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/ParameterCollection/ParameterProviders/ViewModels/ProviderViewModels.ts", "section": "formsEditScopeFaq#getEntityArrayWithEdits"}
+ ```typescript
+
+this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModels.ServerConfig[], KnockoutObservableArray<DataModels.ServerConfig>>(container, {
+    editScopeMetadataType: DataModels.ServerConfigType,
+    mapIncomingDataForEditScope: (incoming) => {
+        return ko.observableArray(incoming);  // Editable grid can only bind to an observable array.
+    },
+    mapOutgoingDataForCollector: (outgoing) => {
+        const editScope = this.parameterProvider.editScope();
+
+        // Use EditScope's 'getEntityArrayWithEdits' to return an array with all created/updated/deleted items.
+        return editScope.getEntityArrayWithEdits<DataModels.ServerConfig>(outgoing).arrayWithEdits;
+    }
+});
+
+```
 
 In the UI, the FX renders an indication of what array items were created/updated/deleted. 
 
 The following example converts an array of strings into an 'entity' array for consumption by an editable grid.  When modeling your data as an 'entity' array, the editable grid can only be bound to an `EditScope` 'entity' array.
 
-  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/ParameterCollection/ParameterProviders/ViewModels/ProviderViewModels.ts", "section": "formsEditScopeFaq#makeEntityForEditableGrid"}
+ ```typescript
+
+const wrapperTypeMetadataName = "ParameterProviderWithEditableStringsBladeViewModel_StringWrapperType";
+MsPortalFx.Data.Metadata.setTypeMetadata(wrapperTypeMetadataName, {
+name: wrapperTypeMetadataName,
+properties: {
+    value: null
+},
+entityType: true
+});
+
+export interface StringWrapperType {
+value: KnockoutObservable<string>;
+}
+
+```
 
 The following example demonstrates converting data to an 'entity' array for consumption by an editable grid.
 
-  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/ParameterCollection/ParameterProviders/ViewModels/ProviderViewModels.ts", "section": "formsEditScopeFaq#makeEntityForEditableGrid2"}
+ ```typescript
 
-<a name="legacy-editscopes-editscope-entity-arrays-the-applyarrayasedits-method"></a>
+this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<string[], KnockoutObservableArray<StringWrapperType>>(container, {
+    editScopeMetadataType: wrapperTypeMetadataName,
+    mapIncomingDataForEditScope: (incoming) => {
+        // Editable grid only accepts an array of editable entities (that is, objects and not strings).
+        const wrappedStrings = incoming.map((str) => {
+            return {
+                value: ko.observable(str)
+            };
+        });
+        return ko.observableArray(wrappedStrings);  // Editable grid can only bind to an observable array.
+    },
+    mapOutgoingDataForCollector: (outgoing) => {
+        const editScope = this.parameterProvider.editScope();
+
+        // Use EditScope's 'getEntityArrayWithEdits' to return an array with all created/updated/deleted items.
+        const entityArrayWithEdits = editScope.getEntityArrayWithEdits<StringWrapperType>(outgoing);
+
+        // Unwrap each string to produce the expected string array.
+        return entityArrayWithEdits.arrayWithEdits.map((wrapper) => {
+            return wrapper.value();
+        });
+    }
+});
+
+```
+
 #### The applyArrayAsEdits method
 
 The `applyArrayAsEdits` method simplifies applying edits to an existing `EditScope` entity array. This API accepts a new array of 'entity' objects. The `EditScope` will compare  this new array to  the existing `EditScope` array items, determine which 'entity' objects are created/updated/deleted, and then records the corresponding user edits.
@@ -187,13 +268,47 @@ this.editScope = this.parameterProvider.editScope;
 
  The  following example uses a discrete array that individually capture 'created', 'updated' and 'deleted' entities.
 
-  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/ParameterCollection/FormWithCollectors/ViewModels/FormWithCollectorsBladeViewModel.ts", "section": "formsEditScopeFaq#applyArrayAsEdits"}
+ ```typescript
+
+this.itemsCollector = new MsPortalFx.ViewModels.ParameterCollector<DataModels.ServerConfig[]>(container, {
+    selectable: this.itemsSelector.selectable,
+    supplyInitialData: () => {
+        const editScope = this._editScopeView.editScope();
+
+        // Use EditScope's 'getEntityArrayWithEdits' to develop an array with all created/updated/deleted items
+        // in this entity array.
+        return editScope.getEntityArrayWithEdits<DataModels.ServerConfig>(editScope.root.serverConfigs).arrayWithEdits;
+    },
+    receiveResult: (result: DataModels.ServerConfig[]) => {
+        const editScope = this._editScopeView.editScope();
+
+        // Use EditScope's 'applyArrayWithEdits' to examine the array returned from the Provider Blade
+        // and apply any differences to our EditScope entity array in terms of created/updated/deleted entities.
+        editScope.applyArrayAsEdits(result, editScope.root.serverConfigs);
+    }
+});
+
+```
 
 The  following example uses an array that includes 'created' entities and does not include 'deleted' entities.
 
-  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/ParameterCollection/ParameterProviders/ViewModels/ProviderViewModels.ts", "section": "formsEditScopeFaq#getEntityArrayWithEdits"}
+ ```typescript
 
-<a name="legacy-editscopes-the-editscopecache"></a>
+this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModels.ServerConfig[], KnockoutObservableArray<DataModels.ServerConfig>>(container, {
+    editScopeMetadataType: DataModels.ServerConfigType,
+    mapIncomingDataForEditScope: (incoming) => {
+        return ko.observableArray(incoming);  // Editable grid can only bind to an observable array.
+    },
+    mapOutgoingDataForCollector: (outgoing) => {
+        const editScope = this.parameterProvider.editScope();
+
+        // Use EditScope's 'getEntityArrayWithEdits' to return an array with all created/updated/deleted items.
+        return editScope.getEntityArrayWithEdits<DataModels.ServerConfig>(outgoing).arrayWithEdits;
+    }
+});
+
+```
+
 ### The EditScopeCache
 
 The `EditScopeCache` class is less commonly used. It loads and manages instances of `EditScope`, which is a change-tracked, editable model.  Typically, the blade uses an `EditScopeView`, as specified in  `editScopeCache.createView(...)`, to load/acquire the EditScope.  If the extension uses an `EditScopeCache` component to manage its `EditScope`, the extension should initialize the `EditScope` data in the `supplyNewData` and `supplyExistingData` callbacks that are sent to EditScopeCache. 
@@ -204,7 +319,6 @@ The `EditScopeCache` class is less commonly used. It loads and manages instances
 
  * **Document editing**: In the document-editing scenario, the user can make edits to a single EditScope/Form model across multiple parent-child blades.  The parent blade sends its `inputs.editScopeId` input to any child blade that edits the same model as the parent Blade. The child blade uses this `inputs.editScopeId` in its call to `editScopeView.fetchForExistingData(editScopeId)` to fetch the EditScope of the parent Blade.
  
-<a name="legacy-editscopes-the-editscopecache-the-saveeditscopechanges-method"></a>
 #### The saveEditScopeChanges method
 
 When creating an EditScopeCache, the `saveEditScopeChanges` callback supplied by the extension is called to push `EditScope` edits to a server. This callback returns a `Promise` that should be resolved when the 'save' AJAX call completes, which occurs after the server accepts the user's edits. 
@@ -219,7 +333,6 @@ There are other scenarios where the default `saveEditScopeChanges` behavior does
 
 For these cases, the extension will resolve the `saveEditScopeChanges` promise with a value from the `AcceptEditScopeChangesAction` enum. 
 
-<a name="legacy-editscopes-the-editscopecache-sample-editscopecache"></a>
 #### Sample EditScopeCache
 
  <!--TODO:  The following sample code does not exist by this name.  -->
@@ -247,11 +360,9 @@ this.editScopeCache = MsPortalFx.Data.EditScopeCache.create<DataModels.WebsiteMo
 });
 ```
  
-<a name="legacy-editscopes-view-model"></a>
 ### View Model
 
-<a name="legacy-editscopes-the-editscopeview"></a>
-### The editScopeView
+### The editScopeView 
 
 In most cases, editable forms are accompanied by commands which act upon those forms. Form data can be made available to the command by binding a value from a part `ViewModel` to a command `ViewModel`, or the `editScopeId` requested by the blade can be bound to the part and the command. The extension can instantiate an `EditScope` by using a `MsPortalFx.Data.EditScopeView` object. The `EditScopeView` object makes edited data available at `editScopeView.editScope().root` after the `editScope()` observable is populated. When the data to view and edit is already located on the client, an `EditScopeView` can also be obtained from other data cache objects. 
 
@@ -285,19 +396,25 @@ public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
 }
 ```
 
-<a name="legacy-editscopes-loading-the-editscope"></a>
 ### Loading the EditScope
 
 The code that loads the `EditScope` is largely related to data loading, so the data context is the preferred location for the code. 
 
-<a name="legacy-editscopes-loading-the-editscope-binding-observables"></a>
 #### Binding Observables
 
 Form fields require a binding to one or more `EditScope` observables. Consequently, they have two constructor overloads. Extension developers can configure this binding by supplying a path from the root of the EditScope/Form model down to the observable to which the form field should bind. They can do this by selecting one of the two form field constructor variations.
 
 The `EditScopeAccessor` is the preferred, compile-time verified methodology. The form field `ViewModel` constructor accepts an EditScopeAccessor, wraps a compile-time verified lambda, and returns the `EditScope` observable to which the Form field should bind, as in the following code located at     `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`.  It is also in the following code.
 
-  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts", "section": "formsEditScopeFaq#editScopeAccessor"} 
+ ```typescript
+
+this.textBoxSimpleAccessor = new MsPortalFx.ViewModels.Forms.TextBox.ViewModel(
+    container,
+    this,
+    this.createEditScopeAccessor<string>((data) => { return data.state; }),
+    textBoxSimpleAccessorOptions);
+
+``` 
 
 The EditScopeAccessor methodology is preferred for the following reasons.
 
@@ -305,11 +422,30 @@ The EditScopeAccessor methodology is preferred for the following reasons.
 
 * There are advanced variations of `EditScopeAccessor` that enable less-common scenarios like binding multiple `EditScope` observables to a single form field.  There are others that demonstrate translating form model data for presentation to the user, as in the code located at       `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`. It is also in the following code.
   
-  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts", "section": "formsEditScopeFaq#editScopeAccessorAdvanced"}
+ ```typescript
+
+this.textBoxReadWriteAccessor = new MsPortalFx.ViewModels.Forms.TextBox.ViewModel(
+    container,
+    this,
+    this.createEditScopeAccessor<string>(<MsPortalFx.ViewModels.Forms.EditScopeAccessors.Options<FormIntegratedFormData.FormIntegratedFormData, string>>{
+        readFromEditScope: (data: FormIntegratedFormData.FormIntegratedFormData): string => {
+            return data.state2().toUpperCase();
+        },
+        writeToEditScope: (data: FormIntegratedFormData.FormIntegratedFormData, newValue: string): void => {
+            data.state2(newValue);
+        }
+    }),
+    textBoxReadWriteAccessorOptions);
+
+```
 
 The string-typed path  methodology can be used instead of the `EditScopeAccessor`.  The string-typed path is discouraged because it is not compile-time verified. The form field ViewModel constructor accepts a string-typed path that contains the location of the EditScope observable to which the Form field should bind, as in the code located at    `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`. It is also in the following code.
 
-  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts", "section": "formsEditScopeFaq#editScopePath"} 
+ ```typescript
+
+this.textBoxViewModel = new MsPortalFx.ViewModels.Forms.TextBox.ViewModel(container, this, "name", textBoxOptions);
+
+``` 
 
 The following code creates a new set of form field objects and binds them to the `editScope`. The sample is also located at  `<dir>\Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\DetailViewModels.ts`.  
 
@@ -360,9 +496,9 @@ private _initializeForm(): void {
 
 <!--TODO: Determine whether there are other documents that discuss form fields, like validation.  -->
 
-For more information about form fields, see [portalfx-controls-overview.md](portalfx-controls-overview.md).
+For more information about form fields, see [top-extensions-controls.md](top-extensions-controls.md).
 
-<a name="legacy-editscopes-loading-the-editscope-editscope-by-using-ajax"></a>
+<a name="legacy-editscopes-editscope-entity-arrays-editscope-by-using-ajax"></a>
 #### EditScope by using AJAX
 
 An extension can read and write data to the server directly by using `ajax()` calls. It loads and saves data by creating an `EditScopeCache` object and defining two functions. The `supplyExistingData` function reads the data from the server, and the `saveEditScopeChanges` function writes it back.
@@ -374,7 +510,56 @@ The code for this example is associated with the basic form sample. It is locate
 
 The code instantiates an `EditScope` by using a `MsPortalFx.Data.EditScopeView` object. When the data to manipulate is already located on the client, an `EditScopeView` can also be obtained from other data cache objects, as in the following example.
 
-  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Samples/Basic/ViewModels/FormsSampleBasicBlade.ts", "section": "forms#editScopeCache"}
+ ```typescript
+
+const editScopeCache = EditScopeCache.createNew<WebsiteModel, number>({
+    supplyExistingData: (websiteId, lifetime) => {
+        return FxBaseNet.ajax({
+            uri: Util.appendSessionId(MsPortalFx.Base.Resources.getAppRelativeUri("/api/Websites/" + websiteId)), // this particular endpoint requires sessionId to be in query string
+            type: "GET",
+            dataType: "json",
+            cache: false,
+            contentType: "application/json"
+        }).then((data: any) => {
+            // after you get the data from the ajax query you can do whatever transforms
+            // you want in it to turn it into the model type you've defined
+            return {
+                id: ko.observable(data.id),
+                name: ko.observable(data.name),
+                running: ko.observable(data.running)
+            };
+        });
+    },
+    saveEditScopeChanges: (websiteId, editScope, edits, lifetime, dataToUpdate) => {
+        // get the website from the edit scope
+        const website = editScope.root;
+
+        // if you need to do conversion on the data before posting to server you can do that
+        // all we need to do here is turn the knockout object into json
+        const serializableWebsite = ko.toJSON(website);
+
+        this._saving(true);
+        return FxBaseNet.ajax({
+            uri: Util.appendSessionId(MsPortalFx.Base.Resources.getAppRelativeUri("/api/Websites/" + websiteId)),
+            type: "POST",
+            dataType: "json",
+            cache: false,
+            contentType: "application/json",
+            data: serializableWebsite
+        }).then(() => {
+            // Instruct the EditScope to accept the user-authored, client-side changes as the new state of the
+            // EditScope after the 'saveChanges' has completed successfully.
+            // ('AcceptClientChanges' is the default behavior.  This promise could also be resolved with 'null' or 'undefined'.)
+            return {
+                action: Data.AcceptEditScopeChangesAction.AcceptClientChanges
+            };
+        }).finally(() => {
+            this._saving(false);
+        });
+    }
+});
+
+```
 
 Then, the code transforms the data to make it match the model type. The server returns strings, but the `WebsiteModel` type that is used is defined in the following code.
 
@@ -388,11 +573,37 @@ Then, the code transforms the data to make it match the model type. The server r
 
 Therefore, the save and load functions have to transform the data to make it match the `WebsiteModel` model type. The control `viewModels` require a reference to a `Form.ViewModel`, so the code creates a form and sends the reference to the `editScope` to it, as in the following example.
 
-  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Samples/Basic/ViewModels/FormsSampleBasicBlade.ts", "section": "forms#formViewModel"}
+ ```typescript
+
+this._form = new Form.ViewModel<WebsiteModel>(this._ltm);
+this._form.editScope = this._editScopeView.editScope;
+
+```
 
 This form displays one textbox that allows the user to edit the name of the website, as specified in the following code.
 
-  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Samples/Basic/ViewModels/FormsSampleBasicBlade.ts", "section": "forms#controls"}
+ ```typescript
+
+const websiteName = new TextBox.ViewModel(
+    this._ltm,
+    this._form,
+    this._form.createEditScopeAccessor(data => data.name),
+    {
+        label: ko.observable(ClientResources.masterDetailEditWebsiteNameLabel),
+        validations: ko.observableArray([
+            new FxViewModels.RequiredValidation(ClientResources.masterDetailEditWebsiteNameRequired)
+        ]),
+        valueUpdateTrigger: ValueUpdateTrigger.Input // by default textboxes only update the value when the user moves focus. Since we don't do any expensive validation we can get updates on keypress
+    });
+
+// Section
+this.section = new Section.ViewModel(this._ltm, {
+    children: ko.observableArray<any>([
+        websiteName
+    ])
+});
+
+```
 
 The form is rendered using a section. The code loads all the controls that should be displayed into the `children` observable array of the section. This positions the controls sequentially on a blade, by default, so it is an easy way to standardize the look of forms in the Portal. An alternative to the default positioning is to manually author the HTML for the form by binding each control into an HTML template for the blade.
 
@@ -404,13 +615,51 @@ The commands also keep themselves disabled during save operations by using a `_s
 
 <!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
-  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Samples/Basic/ViewModels/FormsSampleBasicBlade.ts", "section": "forms#commands"}
+ ```typescript
+
+// set up save command
+const saveCommand = new Toolbars.CommandButton();
+saveCommand.label(ClientResources.saveText);
+saveCommand.icon(FxBase.Images.Save());
+saveCommand.command = {
+    canExecute: ko.pureComputed(() => {
+        // user can save when edit scope is dirty and we're not in the middle of a save operation
+        const editScope = this._editScopeView.editScope();
+        const editScopeDirty = !!editScope ? editScope.dirty() : false;
+        return !this._saving() && editScopeDirty;
+    }),
+    execute: (context: any): FxBase.Promise => {
+        return this._editScopeView.editScope().saveChanges();
+    }
+};
+
+// set up discard command
+const discardCommand = new Toolbars.CommandButton();
+discardCommand.label(ClientResources.discardText);
+discardCommand.icon(MsPortalFx.Base.Images.Delete());
+discardCommand.command = {
+    canExecute: ko.pureComputed(() => {
+        // user can save when edit scope is dirty and we're not in the middle of a save operation
+        const editScope = this._editScopeView.editScope();
+        const editScopeDirty = !!editScope ? editScope.dirty() : false;
+        return !this._saving() && editScopeDirty;
+    }),
+    execute: (context: any): FxBase.Promise => {
+        this._editScopeView.editScope().revertAll();
+        return null;
+    }
+};
+
+this.commandBar = new Toolbars.Toolbar(this._ltm);
+this.commandBar.setItems([saveCommand, discardCommand]);
+
+```
 
 Because the `EditScope` is being used, the save/discard commands can just call the `saveChanges()` or `revertAll()` methods on the edit scope to trigger the right action.
 
 For more information, see [http://knockoutjs.com/documentation/computed-writable.html](http://knockoutjs.com/documentation/computed-writable.html).
 
-<a name="legacy-editscopes-loading-the-editscope-editscope-request"></a>
+<a name="legacy-editscopes-editscope-entity-arrays-editscope-request"></a>
 #### Editscope request
 
 The following sample PDL file demonstrates requesting an `editScope`.  The sample is also located at `<dir>\Client\V1\MasterDetail\MasterDetailEdit\MasterDetailEdit.pdl`.  The `valid` element is using the `section` object of the form to determine if the form is currently valid. 
