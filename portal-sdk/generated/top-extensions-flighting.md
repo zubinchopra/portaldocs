@@ -7,7 +7,9 @@
 
 Exposing new functionality to a limited set of users can be useful. It tests the stability of the feature, and helps identify the most effective of several implementations for usability and performance. 
 
-The Ibiza team uses the MPAC environment that is located at [ms.portal.azure.com](ms.portal.azure.com) to flight pre-production versions of an extension previous to installing the bits in production. Typically, the MPAC environment points to the production version of various extensions.  It is connected to the production version of ARM and the Azure servers.
+The Ibiza team uses the MPAC environment that is located at [ms.portal.azure.com](ms.portal.azure.com) to flight pre-production versions of an extension previous to deploying  the bits to production. Typically, the MPAC environment points to the production version of various extensions.  It is connected to the production version of ARM and the Azure servers.
+
+If you are trying to experiment with a particular feature in production then you might want to read [portalfx-extensions-flags.md](portalfx-extensions-flags.md) instead of this document. This document is more about verifying the stability of your extension before exposing it to all users. There may be cases where the framework makes something difficult to flight because extensions do not have programmatic access to turn things on and off dynamically. In this case it might be ok to fall back to the MPAC flighting method to run your experiment.
 
 To let extensions achieve a similar level of pre-production validation, Azure enables extension flighting in the MPAC environment. Many testing scenarios are possible in the Portal, and most of them do not require any special support from the Ibiza framework. There are two main scenarios for flighting.
  
@@ -35,14 +37,14 @@ Flighting different versions of an extension allows developers to study the use 
 
     This does not apply for unlocked blades, which are blades with tiles on them.  You cannot programmatically add or remove tiles.  
 
-    **NOTE**: It is highly recommended that developers implement the majority of blades in an extension by using  the `TemplateBlade` pattern, as specified in [top-extension-blades](top-extension-blades).  The  `TemplateBlade`  pattern is not restricted from programmatically adding or removing tiles.  Resource overview blades are an exception to this pattern, as specified in [top-blades-resourcemenu.md](top-blades-resourcemenu.md). 
+    **NOTE**: It is highly recommended that developers implement the majority of blades in an extension by using  the `TemplateBlade` pattern, as specified in [top-extension-blades](top-extension-blades).  The  `TemplateBlade`  pattern is not restricted from programmatically adding or removing content.  Resource overview blades are an exception to this pattern, as specified in [top-blades-resourcemenu.md](top-blades-resourcemenu.md). 
 
 1. Switch the code to behave differently based on the experiment that was assigned to the user. This is based on the strategies that are specified in [#framework-support](#framework-support).
  
 <a name="mpac-flighting-mpac-service-level-agreement"></a>
 ## MPAC Service Level Agreement
 
-Azure directs all internal traffic to MPAC, and we want to keep the quality bar as close to production as possible. The MPAC environment contains special UI's that allow internal users to report issues quickly by sending email to Azure teams.  Because the Ibiza team relies on these communications to identify issues that may block a release to production, we investigate those issues within 24 hours during the Pacific Time business day.  If a user is using a specific extension's blade when they send the mail, then the mail also goes to the extension team. The extension team email includes  "flight=1" in the query string, if the user that reported the issue was in a flight.
+Azure directs all internal traffic to MPAC, and we want to keep the quality bar as close to production as possible. The MPAC environment contains features that allow internal users to report issues quickly by sending email to Azure teams.  Because the Ibiza team relies on these communications to identify issues that may block a release to production, we investigate those issues within 24 hours during the Pacific Time business day.  If a user is using a specific extension's blade when they send the mail, then the mail also goes to the extension team. The extension team email includes  "flight=1" in the query string, if the user that reported the issue was in a flight.
 
 If your extension is participating in MPAC flighting, then Ibiza expects your team to meet that same Service Level Agreement. This benefits your team if pre-production bits are causing an issue because you will find issues before they reach production.
 
@@ -72,7 +74,7 @@ The strategy for the designing, running, and analyzing the test flight is as fol
 
 1. Decide how to assign users to the different flights in the experiment.
 
-    For this example, 10% of the user population will participate in the experiment by using implementation 'A'. The other 90% of users will continue to use the the existing  implementation 'B'. Users are assigned to group 'A' or 'B' on a per session basis.
+    For this example, 10% of the user population will participate in the experiment by using implementation 'A'. The other 90% of users will continue to use the  existing  implementation 'B'. Users are assigned to group 'A' or 'B' on a per session basis.
 
 1. Create the flights for the experiment.
  
