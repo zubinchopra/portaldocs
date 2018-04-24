@@ -103,7 +103,7 @@ Services that use ARM template deployment and other ARM-based services should al
   
 You can measure your current success rates on create blades that are live running queries on the dashboard located at [https://aka.ms/portalfx/successrates](https://aka.ms/portalfx/successrates).
 
-For more information about creating success, see [portalfx-create-overview.md#validation](portalfx-create-overview.md#validation).
+For more information about creating success, see [top-extensions-create.md#validation](top-extensions-create.md#validation).
 
 ## Resource move
 

@@ -46,4 +46,4 @@ For more information on creating gallery packages and create forms see the [gall
 Determine what the content was, and whether it has been included in the key components document.
 -->
 
-For more information about creating Portal experiences, see     [portalfx-create-overview.md#building-custom-create-forms](portalfx-create-overview.md#building-custom-create-forms).
+For more information about creating Portal experiences, see     [top-extensions-create.md#building-custom-create-forms](top-extensions-create.md#building-custom-create-forms).
