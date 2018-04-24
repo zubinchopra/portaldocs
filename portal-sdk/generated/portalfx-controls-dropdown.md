@@ -274,7 +274,7 @@ The following code is dependent on the use of the `EditScope` observable or the 
 
    If the `MultiSelectDropDown` in the extension does not use an `EditScope`, it can be converted to an AMD DropDown using the new form field APIs that do not use EditScopes. 
 
-   For more information about the form field APIs that are recommended for developing new blades without `EditScopes`, see [portalfx-editscopeless-forms.md](portalfx-editscopeless-forms.md).
+   For more information about the form field APIs that are recommended for developing new blades without `EditScopes`, see [top-editscopeless-forms.md](top-editscopeless-forms.md).
 
    One scenario for the MultiSelectDropDown->DropDown that is becoming obsolete resembles the following code.
    
