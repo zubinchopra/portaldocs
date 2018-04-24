@@ -344,7 +344,7 @@ private _initializeForm(): void {
 
 <!--TODO: Determine whether there are other documents that discuss form fields, like validation.  -->
 
-For more information about form fields, see [portalfx-controls-overview.md](portalfx-controls-overview.md).
+For more information about form fields, see [top-extensions-controls.md](top-extensions-controls.md).
 
 #### EditScope by using AJAX
 

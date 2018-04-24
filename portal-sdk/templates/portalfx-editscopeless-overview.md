@@ -7,7 +7,7 @@ Edit scopes provide a standard way of managing edits over a collection of input 
 
 <!-- TODO: Determine whether controls like OptionsGroup, that are not located in Fx/Controls, are considered part of the EditScopeless pattern.   -->
 
-The controls that do not use `EditScopes` are located in the `Fx/Controls` namespace. They support creating forms without initializing their `editscope`. The controls and a list of documents that discusses them in more detail are listed in  [portalfx-controls-overview.md](portalfx-controls-overview.md).  For samples and experiences that are associated with these form controls, see [top-extensions-samples.md](top-extensions-samples.md).
+The controls that do not use `EditScopes` are located in the `Fx/Controls` namespace. They support creating forms without initializing their `editscope`. The controls and a list of documents that discusses them in more detail are listed in  [top-extensions-controls.md](top-extensions-controls.md).  For samples and experiences that are associated with these form controls, see [top-extensions-samples.md](top-extensions-samples.md).
 
  Less dependence on `editScopeAccessors` makes it easier to initialize controls. The  `editScope` is no longer bound to each control, and the controls become stateless. This has two impacts.
 
