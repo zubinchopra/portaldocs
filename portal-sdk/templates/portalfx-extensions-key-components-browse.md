@@ -21,7 +21,7 @@ The code for the browse implementation is located in the ```Browse.pdl``` file i
 
 When the  ```resourceType ``` name "Microsoft.PortalSdk/rootResources" is replaced with your production Resource Provider (RP) type,  your resources will be displayed in the list after the F5 button is clicked. 
 
-For more information on the Browse experience, see the document located at [portalfx-browse.md](portalfx-browse.md).
+For more information on the Browse experience, see the document located at [top-extensions-browse.md](top-extensions-browse.md).
 
 For more information about Resource Providers (RP) and other ARM support, see the Microsoft internal ARM wiki, located at [http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Wiki.aspx](http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Wiki.aspx).
 

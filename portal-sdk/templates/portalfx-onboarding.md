@@ -129,7 +129,7 @@ Both First-party and Third-party extension developers can install and run sample
       - Show all resource properties in the column chooser
 
       See also:
-      - [Browse documentation](portalfx-browse.md)
+      - [Browse documentation](top-extensions-browse.md)
       - [Asset documentation](portalfx-assets.md)
       - [#ibiza-browse on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse)
       - [Ask a question](https://stackoverflow.microsoft.com/questions/ask?tags=ibiza-browse)

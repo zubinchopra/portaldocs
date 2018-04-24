@@ -5,7 +5,7 @@
 
 The SDK has several framework features that make it easier to implement UX that is consistent across all resource types.  Most of these features are free once you've implemented the [Asset Model](portalfx-assets.md).
 
-* [Browse](portalfx-browse.md) - Integrates your resource type into the portal's main menu that categorizes and lists resources.
+* [Browse](top-extensions-browse.md) - Integrates your resource type into the portal's main menu that categorizes and lists resources.
 
 * [Resource Menu](portalfx-resourcemenu.md) - Provides a base implementation of a menu blade, with standard resource features (e.g. RBAC, Locks, Audit Logs) automatically injected into the menu. 
 
@@ -27,10 +27,10 @@ You do not need to have an Azure resource provider to integrate with the marketp
 
 ### Browse (Service entry point)
 
-The [Browse](portalfx-browse.md) experience can serve as a user's main entry point to your non-resource extension. You have two options:
+The [Browse](top-extensions-browse.md) experience can serve as a user's main entry point to your non-resource extension. You have two options:
 
-1. Use the [asset model](portalfx-browse.md#building-browse-experiences-no-code-browse-defining-an-asset-type-permalink-asset-type-non-arm), which lets you define your browsable asset even though it is not an Azure resource. This option is good if __your service conceptually exposes a single, top level, list of entities (e.g. Accounts, Workspaces, etc.)__.
-2. Use the [custom browse](portalfx-browse.md#blade) option in browse.  __This option is useful if your service has many top level capabilities__. If you choose this option then it's highly recommended that you use a [menu blade](portalfx-blades-menublade.md) to expose your service's capabilities. The [Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade) experience shows this pattern in production.
+1. Use the [asset model](top-extensions-browse.md#defining-an-asset-type-permalink-asset-type-non-arm), which lets you define your browsable asset even though it is not an Azure resource. This option is good if __your service conceptually exposes a single, top level, list of entities (e.g. Accounts, Workspaces, etc.)__.
+2. Use the [custom browse](top-extensions-browse.md#building-browse-experiences) option in browse.  __This option is useful if your service has many top level capabilities__. If you choose this option then it's highly recommended that you use a [menu blade](portalfx-blades-menublade.md) to expose your service's capabilities. The [Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade) experience shows this pattern in production.
 
 ### Menu blades
 

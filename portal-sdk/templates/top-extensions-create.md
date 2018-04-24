@@ -435,7 +435,7 @@ The Marketplace provides a categorized collection of packages that can be create
 
 1. Notify the Marketplace team when the extension is ready to go live.
 
-**NOTE**: The **+New** menu is curated and can change at any time, based on C+E leadership business goals. Ensure documentation, demos, and tests are created from browse, as specified in [portalfx-browse.md](portalfx-browse.md) or deep-links as specified in [portalfx-links.md](portalfx-links.md) as the entry point.
+**NOTE**: The **+New** menu is curated and can change at any time, based on C+E leadership business goals. Ensure documentation, demos, and tests are created from browse, as specified in [top-extensions-browse.md](top-extensions-browse.md) or deep-links as specified in [portalfx-links.md](portalfx-links.md) as the entry point.
 
 ![alt-text](../media/portalfx-create/plus-new.png "The +New menu")
 
