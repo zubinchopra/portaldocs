@@ -6,7 +6,7 @@
 
 Hosting service scenarios are based on varying the content of the `config` file.  To load your extension in the Portal, it must be registered in the Portal configuration. If the extension is loaded in the Portal from the hosting service, then there are no changes required to sideload it. 
 
-For more information about updating the extension configuration, see [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md). For more information about sideloading, see [portalfx-extensions-sideloading-overview.md](portalfx-extensions-sideloading-overview.md).
+For more information about updating the extension configuration, see [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md). For more information about sideloading, see [top-extensions-sideloading.md](top-extensions-sideloading.md). 
  
 <a name="common-hosting-service-scenarios-new-extensions"></a>
 ### New extensions
