@@ -100,7 +100,7 @@ The manifest file contains all of the metadata for your gallery item. For a visu
 ```
 
 #### UIDefinition (UIDefinition.json)
-The spec file contains all metadata, parameters, and other content used in the portal create experience. This file should be in the Portal folder.
+The spec file contains all metadata, parameters, and other content used in the portal create experience. This file should be in the Portal folder. Note that if you are using a <i>no-PDL</i> create experience, you should use schema version 2018-02-12 instead of 2015-02-12 in the $schema field below.
 
 ```json
 {
