@@ -136,9 +136,9 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 ### Common scenarios and integration points
 
-* [Blades that __create__ or provision resources and services]()
+* [Blades that create or provision resources and services](top-extensions-create.md)
 
-* [Adding your resource or service into the __browse__ menu]()
+* [Adding your resource or service into the Browse menu](top-extensions-browse.md)
 
 * [Common UX for Azure Resource Manager (ARM) based services]()
 
@@ -148,7 +148,7 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 ### Other UI concepts
 
-* [Context panes]()
+* [Context panes](top-extensions-context-panes.md)
 
 * [Dialogs]()
 
@@ -208,7 +208,7 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 The Ibiza team provides limited testing support. Due to resource constraints the C# and Node.js framework is open source. This is so that partners can unblock themselves in case the Ibiza team cannot make requested improvements as quickly as you might expect.
 
-* [Unit testing support]()
+* [Unit testing support](portalfx-unit-test.md)
 
 * [C# Test Framework (Open source)]()
 
@@ -218,7 +218,7 @@ The Ibiza team provides limited testing support. Due to resource constraints the
 
 ## Telemetry and alerting
 
-The Ibiza team collects standard telemetry for __generic actions__ like blade opening and commmand execution. It also collects __performance__, __reliability__, and __user feedback__ information that facilitate the operation of your extension. You can also write your own events via the telemetry system. Ibiza supports alerting for common operations scenarios.
+The Ibiza team collects standard telemetry for generic actions like blade opening and commmand execution. It also collects performance, reliability, and user feedback information that facilitate the operation of your extension. You can also write your own events via the telemetry system. Ibiza supports alerting for common operations scenarios.
 
 * [Portal telemetry overview]()
 
@@ -254,7 +254,7 @@ The Azure portal supports multiple languages and locales. You will need to local
 
 * [Setting up Localization for your gallery package]()
 
-* [Testing locaization with side-loading]()
+* [Testing locaization with side-loading](top-extensions-sideloading.md)
 
 * [Formatting numbers, currencies and dates](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-globalization.md#globalization-api)
 
