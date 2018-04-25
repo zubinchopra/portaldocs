@@ -215,7 +215,7 @@ Some, but not all, SVG tags are allowed by the Portal. The following table speci
 
 ## Using built-in icons
 
-The Portal comes with a set of icons that are available for use with blades, parts, and commands.
+The Portal comes with a set of SVG icons that are available for use with blades, parts, and commands.
 
 <!-- TODO: Determine whether there is a way to include this content from the SDK samples.  -->
 
@@ -224,6 +224,7 @@ The Portal comes with a set of icons that are available for use with blades, par
   doing things to my CSS
 -->
 
+```
 <div>
 <style type="text/css">
   #icon-container h6, #icon-container h2 {
@@ -261,6 +262,9 @@ The Portal comes with a set of icons that are available for use with blades, par
   }
 </style>
 </div>
+```
+
+#### Polychromatic Icons
 
 <div id="icon-container">
 
@@ -4298,11 +4302,6 @@ The Portal comes with a set of icons that are available for use with blades, par
 
 
 
-
-
-
-
-
 <!--
   |
   |
@@ -4313,8 +4312,9 @@ The Portal comes with a set of icons that are available for use with blades, par
 </div>
 <div style="clear:both"></div>
 
-Next steps: [Creating icons](portalfx-icons-creation.md)
+The following script will append each icon to the list.
 
+```
 <script type="text/javascript">
   $(".icons li").each(function() {
     var $svg = $(this).children("svg");
@@ -4326,3 +4326,4 @@ Next steps: [Creating icons](portalfx-icons-creation.md)
     });
   });
 </script>
+```
