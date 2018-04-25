@@ -24,7 +24,7 @@ For more information about building extensions with TypeScript decorators, watch
 <a name="development-guide-develop-the-extension"></a>
 ## Develop the extension
 
-1. Build the extension and sideload it for local testing. Sideloading allows the testing and debugging of the extension locally against any environment. This is the preferred method of testing. For more information about sideloading, see [portalfx-extensions-sideloading-overview.md](portalfx-extensions-sideloading-overview.md). 
+1. Build the extension and sideload it for local testing. Sideloading allows the testing and debugging of the extension locally against any environment. This is the preferred method of testing. For more information about sideloading, see [top-extensions-sideloading.md](top-extensions-sideloading.md). 
 
 1. Complete the development and unit testing of the extension. For more information on debugging, see [top-extensions-debugging.md](top-extensions-debugging.md) and [top-extensions-production-testing.md](top-extensions-production-testing.md).
 
@@ -33,7 +33,34 @@ For more information about building extensions with TypeScript decorators, watch
 1. Create configuration files for the extension as specified in [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
 
 
-<a name="development-guide-deploy-the-extension"></a>
+
+
+<a name="extension-extensibility"></a>
+# Extension Extensibility
+
+One of the great things about the Azure portal is the ability for multiple services to blend together to form a cohesive user experience.  In many cases, extensions will want to share parts, share data, and kick off actions. There are a few examples where this is useful:
+
+- The [Azure Websites](https://azure.microsoft.com/en-us/services/websites/) browse blade [includes a part](portalfx-extension-sharing-pde.md) from [Visual Studio Online](http://www.visualstudio.com/en-us/products/what-is-visual-studio-online-vs.aspx) which sets up continuous deployment between a source code repository and a web site.
+
+![Setting up continuous deployment with part sharing][part-sharing]
+
+- After configuring continuous deployment, the Visual Studio Online extension informs the Azure Websites extension it is complete with a [RPC callback](portalfx-rpc.md).
+
+To start learning more about parts, check out the topics below:
+
+- [Part sharing](portalfx-extension-sharing-pde.md)
+- [Blade references](portalfx-extensibility-blade-reference.md)
+- [RPC](portalfx-rpc.md)
+
+Next steps: Learn about [part sharing](portalfx-extension-sharing-pde.md).
+
+[part-sharing]: ../media/portalfx-parts/part-sharing.png
+
+
+
+
+
+<a name="extension-extensibility-deploy-the-extension"></a>
 ## Deploy the extension
 
 1. Review the development phases that are located at [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md) to understand how development is related to production-ready metrics criteria.
@@ -77,12 +104,12 @@ For more information about building extensions with TypeScript decorators, watch
     -->
 
 
-<a name="development-guide-frequently-asked-questions"></a>
+<a name="extension-extensibility-frequently-asked-questions"></a>
 ## Frequently Asked Questions
 
    <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
 
-<a name="development-guide-frequently-asked-questions-getting-started"></a>
+<a name="extension-extensibility-frequently-asked-questions-getting-started"></a>
 ### Getting Started
 
 ***Q: I want to create a new extension. How do I start?***
@@ -95,7 +122,7 @@ When you are ready to register the extension in the preview or production enviro
 
 For more information about Portal architecture, see [top-extensions-architecture.md](top-extensions-architecture.md).
 
-<a name="development-guide-frequently-asked-questions-getting-help"></a>
+<a name="extension-extensibility-frequently-asked-questions-getting-help"></a>
 ### Getting Help
 
 ***Q: I'm stuck. Where can I find help?***
@@ -111,14 +138,14 @@ SOLUTION: There are a few ways to get help.
 * If you are unable to find an answer, reach out to the Ibiza team at  [Stackoverflow Ibiza](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).  For a list of topics and stackoverflow tags, see [portalfx-stackoverflow.md](portalfx-stackoverflow.md).
 
 
-<a name="development-guide-frequently-asked-questions-broswer-support"></a>
+<a name="extension-extensibility-frequently-asked-questions-broswer-support"></a>
 ### Broswer Support
 
 ***Q: Which browsers are supported?***
 
 SOLUTION: Currently the Portal supports the latest version of Edge, Firefox, Chrome, and Safari, and it also supports Internet Explorer Version 11.
 
-<a name="development-guide-frequently-asked-questions-blade-commands"></a>
+<a name="extension-extensibility-frequently-asked-questions-blade-commands"></a>
 ### Blade Commands
 
 ***Q: How do I show different commands for a blade based on the parameters passed to that blade?***
@@ -131,7 +158,7 @@ The **Toolbar** APIs allow an extension to call `commandBar.setItems([...])` to 
 
 
  
-<a name="development-guide-glossary"></a>
+<a name="extension-extensibility-glossary"></a>
 ## Glossary
 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).

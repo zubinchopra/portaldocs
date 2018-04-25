@@ -32,14 +32,14 @@ Use the following steps to develop a blade.
     }
     ```
 
-1. There are some basic parts that are required in the `Aloha.ts` blade file.  The first part is the import statements, as in the following example.
+1. There are some basic sections that are required in the `Aloha.ts` blade file.  The first section  is the import statements, as in the following example.
 
     ```cs
     import * as TemplateBlade from "Fx/Composition/TemplateBlade";
     import { DataContext } from "./<AreaName>Area"; // todo – substitute the name of the area, and remove the angle brackets 
     ```
 
-1.	The second code part is the template blade decorator. This lets the framework discover the blade. It is also where the html template is defined.
+1.	The second code section  is the template blade decorator. This lets the framework discover the blade. It is also where the html template is defined.
 
     The following  example shows the first part of a simple text data-binding. The corresponding data-binding code is in the next example.
 

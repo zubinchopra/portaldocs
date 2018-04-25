@@ -43,7 +43,7 @@ In your extension *.csproj file, you will need to add a reference to the Microso
 
 For the CdnIntegrationBlade to show up in your extension, you may reference it in one of the following ways:
 
- - You can add it as an item in your resource menu similar to the code blow: 
+ - You can add it as an item in your resource menu similar to the code below: 
 ```ts
 {
     id: "cdnIntegration",

@@ -48,6 +48,8 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 * [Essentials panel](portalfx-essentials.md#essentials-panel)
 
   
+* [The Resource Menu](top-blades-resourcemenu.md#the-resource-menu)
+    * [Overview](top-blades-resourcemenu.md#overview)
 
 
  * [Defining permissions and checking access](portalfx-permissions.md#defining-permissions-and-checking-access)
