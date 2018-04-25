@@ -15,19 +15,19 @@ At a high level you define;
     "enabled": true,
     "environments": [
         {
-            "environment": ["portal.azure.com", "portal.azure.cn"], // National clouds are supported.
-            "availability": [...], // Optional. Add it when you want to enable availability alerts.
-            "clientError": [...], // Optional. Add it when you want to enable client error alerts.
+            "environment": ["portal.azure.com", "portal.azure.cn"],
+            "availability": [...], // Optional
+            "clientError": [...], // Optional.
             "create": [
                  {
                     "type": "regression",
-                    "enabled": true, // Enable or disable create alerts for Your_Extension_Name.
+                    "enabled": true,
                     "criteria": [
                        ...
                     ]
                 }
             ],
-            "performance": [...], // Optional. Add it when you want to enable performance alerts.
+            "performance": [...], // Optional.
         },
         {
             "environment": ["ms.portal.azure.com"],
@@ -61,8 +61,8 @@ You can define N number of criteria like the below.
 
 ```json
 {
-    "severity": 3, // Support value 0, 1, 2, 3 or 4.
-    "enabled": true, // Enable or disable this criteria.
+    "severity": 3,
+    "enabled": true,
     "bladeName": ["CreateBlade"],
     "minSuccessRateOverPast24Hours":94.0,
     "minSuccessRateOverPastHour":94.0,
@@ -76,7 +76,7 @@ This is the severity value that an IcM alert would have when an alert is fired.
 
 ### What is bladeName?
 
-The name of the create blade.
+The list of the create blade name.
 
 ### What is minSuccessRateOverPast24Hours?
 
@@ -101,7 +101,7 @@ Every 60 minutes, we get create successRate and create totalCount for the last 6
 Alerts will only trigger when the following criteria are met.
 
 1. Hourly create successRate is below {minSuccessRateOverPastHour} and hourly create totalcount is above {minTotalCountOverPastHour}
-1. 24-Hour create successRate is below {minSuccessRateOverPast24Hours} and 24-Hour create totalcount is above {minTotalCountOverPast24Hours}
+1. 24-hour create successRate is below {minSuccessRateOverPast24Hours} and 24-hour create totalcount is above {minTotalCountOverPast24Hours}
 
 ### Is National Cloud Supported?
 Alerts are supported in national clouds. Specify the national cloud portal domain names in "environment" property. You can use the same criteria for national clouds or different set of criteria.The national cloud domain names are "portal.azure.cn", "portal.azure.us", "portal.microsoftazure.de". You can use any legit national cloud domain name, for instance, "aad.portal.azrue.cn".
@@ -155,9 +155,17 @@ Currently alerts run every 60 minutes assessing the previous 60 minute and previ
 | ----- | -------------- |
 | Create - Regression | CreateBladeSuccessRate |
 
-## What happens if I need to update them or how do I know my extension's current configuration?
+## How do I know my extension's current customization?
+
+Click the [this link][alerting-extension-customization] and replace `HubsExtension` with `YOUR_EXTENSION_NAME` and run Kusto function, GetExtensionCustomizationJson. Or go to [https://azportal.kusto.windows.net/Partner][kusto-partner-database] to open Kusto.Explorer and run Kusto function, 
+GetExtensionCustomizationJson("YOUR_EXTENSION_NAME"). The regex is supported. You can view alert customization of onboarded extensions. The extension alert customization only exists once you have onboarded to the alerting infrastructure.
+> The customizaztion has a daily sync from the SQL database at 5:00 pm PST.
+
+## What happens if I need to update them?
 
 1. Contact [ibizafxhot](mailto:ibizafxhot@microsoft.com) and attached the updated configuration
 1. We will respond as soon as possible and apply the updates
 
 [alerting-onboarding]: https://aka.ms/portalfx/alerting-onboarding
+[alerting-extension-customization]: https://azportal.kusto.windows.net/Partner?query=GetExtensionCustomizationJson%28%5C%22HubsExtension%5C%22%29
+[kusto-partner-database]: https://azportal.kusto.windows.net/Partner

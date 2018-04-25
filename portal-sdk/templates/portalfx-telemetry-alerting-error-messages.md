@@ -35,6 +35,7 @@ At a high level you define:
                     ]
                 }
             ],
+            "create": [...], // Optional. Add it when you want to enable create alerts.
             "performance": [...], // Optional. Add it when you want to enable performance alerts.
         },
         {
@@ -224,8 +225,13 @@ Currently error percentage alerts run every 15 minutes and error message alerts 
 | Error - AffectedUserPercentage | ErrorAffectedUserPercentage |
 | Error - Message | ErrorMessage |
 
+## How do I know my extension's current customization?
 
-## What happens if I need to update them or how do I know my extension's current configuration?
+Click the [this link][alerting-extension-customization] and replace `HubsExtension` with `YOUR_EXTENSION_NAME` and run Kusto function, GetExtensionCustomizationJson. Or go to [https://azportal.kusto.windows.net/Partner][kusto-partner-database] to open Kusto.Explorer and run Kusto function, 
+GetExtensionCustomizationJson("YOUR_EXTENSION_NAME"). The regex is supported. You can view alert customization of onboarded extensions. The extension alert customization only exists once you have onboarded to the alerting infrastructure.
+> The customizaztion has a daily sync from the SQL database at 5:00 pm PST.
+
+## What happens if I need to update them?
 
 1. Contact [ibizafxhot](mailto:ibizafxhot@microsoft.com) and attached the updated configuration
 1. We will respond as soon as possible and apply the updates
@@ -233,3 +239,5 @@ Currently error percentage alerts run every 15 minutes and error message alerts 
 [datacenter-code-name]: https://aka.ms/portalfx/alerting/datacenter-code-name
 [safe-deployment-stage]: https://aka.ms/portalfx/alerting/safe-deployment-stage
 [alerting-onboarding]: https://aka.ms/portalfx/alerting-onboarding
+[alerting-extension-customization]: https://azportal.kusto.windows.net/Partner?query=GetExtensionCustomizationJson%28%5C%22HubsExtension%5C%22%29
+[kusto-partner-database]: https://azportal.kusto.windows.net/Partner

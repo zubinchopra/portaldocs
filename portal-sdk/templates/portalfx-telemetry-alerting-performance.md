@@ -18,6 +18,7 @@ At a high level you define;
             "environment": ["portal.azure.com", "portal.azure.cn"], // National clouds are supported.
             "availability": [...], // Optional. Add it when you want to enable availability alerts.
             "clientError": [...], // Optional. Add it when you want to enable client error alerts.
+            "create": [...], // Optional. Add it when you want to enable create alerts.
             "performance": [
                  {
                     "type": "extension", // Support value, "extension", "blade" or "part".
@@ -199,7 +200,13 @@ Currently performance alerts run every 10 minutes assessing the previous 90 minu
 | Performance - Blade | BladeLoadPerformance |
 | Performance - Part | PartLoadPerformance|
 
-## What happens if I need to update them or how do I know my extension's current configuration?
+## How do I know my extension's current customization?
+
+Click the [this link][alerting-extension-customization] and replace `HubsExtension` with `YOUR_EXTENSION_NAME` and run Kusto function, GetExtensionCustomizationJson. Or go to [https://azportal.kusto.windows.net/Partner][kusto-partner-database] to open Kusto.Explorer and run Kusto function, 
+GetExtensionCustomizationJson("YOUR_EXTENSION_NAME"). The regex is supported. You can view alert customization of onboarded extensions. The extension alert customization only exists once you have onboarded to the alerting infrastructure.
+> The customizaztion has a daily sync from the SQL database at 5:00 pm PST.
+
+## What happens if I need to update them?
 
 1. Contact [ibizafxhot](mailto:ibizafxhot@microsoft.com) and attached the updated configuration
 1. We will respond as soon as possible and apply the updates
@@ -207,3 +214,5 @@ Currently performance alerts run every 10 minutes assessing the previous 90 minu
 [datacenter-code-name]: https://aka.ms/portalfx/alerting/datacenter-code-name
 [safe-deployment-stage]: https://aka.ms/portalfx/alerting/safe-deployment-stage
 [alerting-onboarding]: https://aka.ms/portalfx/alerting-onboarding
+[alerting-extension-customization]: https://azportal.kusto.windows.net/Partner?query=GetExtensionCustomizationJson%28%5C%22HubsExtension%5C%22%29
+[kusto-partner-database]: https://azportal.kusto.windows.net/Partner
