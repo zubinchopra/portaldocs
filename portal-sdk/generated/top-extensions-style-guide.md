@@ -9,21 +9,21 @@ The portal includes a built in list of CSS classes that may be used in templates
 
 Browse the following topics to learn about portal styling.
 
-* [Style sanitization](portalfx-style-guide-style-sanitization.md)
+* [Style sanitization](top-style-guide-html-css-sanitization.md)
 
-* [Adding Custom CSS](portalfx-style-guide-custom-css-file.md)
+* [Adding Custom CSS](top-style-guide-custom-css-file.md)
 
 * [Layout classes](portalfx-blades-layout.md)
 
 * [Typography]()
 
-* [Iconography]()
+* [Iconography](top-style-guide-iconography.md)
 
-* [Theming](portalfx-style-guide-theming.md)
+* [Theming](top-style-guide-theming.md)
 
-* [Utility classes](portalfx-style-guide-utility-classes.md)
+* [Utility classes](top-style-guide-utility-classes.md)
 
-* [Color Palette](portalfx-style-guide-color-palette.md)
+* [Color Palette](top-style-guide-color-palette.md)
 
 
 <!--

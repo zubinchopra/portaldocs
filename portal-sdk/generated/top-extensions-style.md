@@ -13,6 +13,12 @@ Browse the following topics to learn about portal styling.
 
 * [Adding Custom CSS](portalfx-style-guide-custom-css-file.md)
 
+* [Layout classes](portalfx-blades-layout.md)
+
+* [Typography]()
+
+* [Iconography]()
+
 * [Theming](portalfx-style-guide-theming.md)
 
 * [Utility classes](portalfx-style-guide-utility-classes.md)
