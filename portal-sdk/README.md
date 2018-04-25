@@ -105,7 +105,7 @@ Any template based UI in the portal (e.g. template blades or template parts can 
 
 * [Controls overview](./generated/top-extensions-controls.md)
 
-* [Controls playground](./generated/portalfx-extensions-controls-playground.md)
+* [Controls playground](./generated/top-extensions-controls-playground.md)
 
 [Ask a controls related question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls)
 
@@ -113,19 +113,19 @@ Any template based UI in the portal (e.g. template blades or template parts can 
 
 When using HTML and framework controls you have some control over styling. These documents walk through the relevant topics.
 
- [Styling and Theming](./generated/top-extensions-style.md)
+ [Styling and Theming](./generated/top-extensions-style-guide.md)
 
-* [CSS Style sanitization]()
+* [CSS Style sanitization](./generated/top-style-guide-html-css-sanitization.md)
 
-* [Adding Custom CSS]()
+* [Adding Custom CSS](./generated/top-style-guide-custom-css.md)
 
-* [Layout classes]()
+* [Layout classes](./generated/portalfx-blades-layout.md)
 
 * [Typography]()
 
-* [Iconography]()
+* [Iconography](./generated/top-style-guide-iconography.md)
 
-* [Theming]()
+* [Theming](./generated/portalfx-style-guide-theming.md)
 
 ### Forms
 
