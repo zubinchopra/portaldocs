@@ -53,60 +53,63 @@ Typically, extensions also use custom SVG's in the `Icon` attribute of the PDL f
 
 After the basics of the extension icons are working, developers may want to use the following techniques to make the extension be more impressive.
 
-* Color Palettes
+<a name="overview-customizing-the-extension-color-palettes"></a>
+#### Color Palettes
 
-    Most of the icons that the Framework provides are located in the root namespace.  An extension can change the color of all of the icons in the root namespace by using the 
-    `MsPortalFx.Base.Images.Add()` method, but not by using the `MsPortalFx.Base.Images.Polychromatic.PowerUp()` method.
+Most of the icons that the Framework provides are located in the root namespace.  An extension can change the color of all of the icons in the root namespace by using the 
+`MsPortalFx.Base.Images.Add()` method, but not by using the `MsPortalFx.Base.Images.Polychromatic.PowerUp()` method.
 
-    To change the color, add the code `{palette: MsPortalFx.Base.ImagePalette.*}`  inside the function, as in the following code.
+To change the color, add the code `{palette: MsPortalFx.Base.ImagePalette.*}`  inside the function, as in the following code.
 
-    ```ts
-    import CustomSvgImages = require("./SvgDefinitions.js");
-    ...
-    export class DeleteCommandViewModel implements MsPortalFx.ViewModels.CommandContract {
-        public icon = ko.observable<MsPortalFx.Base.Image>();
+```ts
+import CustomSvgImages = require("./SvgDefinitions.js");
+...
+export class DeleteCommandViewModel implements MsPortalFx.ViewModels.CommandContract {
+	public icon = ko.observable<MsPortalFx.Base.Image>();
 
-        constructor(dataContext: WebsitesDataContext) {
-            this.icon(MsPortalFx.Base.Images.Delete({palette: MsPortalFx.Base.ImagePalette.Blue}));
-        }
-    }
-    ```
+	constructor(dataContext: WebsitesDataContext) {
+		this.icon(MsPortalFx.Base.Images.Delete({palette: MsPortalFx.Base.ImagePalette.Blue}));
+	}
+}
+```
 
-* Custom data binding 
+<a name="overview-customizing-the-extension-custom-data-binding"></a>
+#### Custom data binding
 
-    An extension can use custom data binding for the command bar with the `image` tag. This allows it to switch between SVG's and normal images while using the same data binding, as in the following code.
+An extension can use custom data binding for the command bar with the `image` tag. This allows it to switch between SVG's and normal images while using the same data binding, as in the following code.
 
-    ```ts
-    export class DeleteCommandViewModel implements MsPortalFx.ViewModels.CommandContract {
-        public icon = ko.observable<MsPortalFx.Base.Image>();
+```ts
+export class DeleteCommandViewModel implements MsPortalFx.ViewModels.CommandContract {
+	public icon = ko.observable<MsPortalFx.Base.Image>();
 
-        constructor(dataContext: WebsitesDataContext) {
-            //SVG version
-            //this.icon(MsPortalFx.Base.Images.Start());
+	constructor(dataContext: WebsitesDataContext) {
+		//SVG version
+		//this.icon(MsPortalFx.Base.Images.Start());
 
-            //PNG Version
-            this.icon(MsPortalFx.Base.Images.ImageUri(MsPortalFx.Base.Resources.getContentUri("Content/RemoteExtension/Images/Website_Commandbar_Play.png")));
-        }
-    }
-    ```
+		//PNG Version
+		this.icon(MsPortalFx.Base.Images.ImageUri(MsPortalFx.Base.Resources.getContentUri("Content/RemoteExtension/Images/Website_Commandbar_Play.png")));
+	}
+}
+```
 
-* Preserve icon colors over theme changes
+<a name="overview-customizing-the-extension-preserve-icon-colors-over-theme-changes"></a>
+#### Preserve icon colors over theme changes
 
-    For built-in monochromatic icons, also known as flat icons, the color changes are relative to the Portal's background color as the user changes themes. 
+For built-in monochromatic icons, also known as flat icons, the color changes are relative to the Portal's background color as the user changes themes. 
 
-    For a working copy, you can experiment with monochromatic blades in the sample located at [https://df.onecloud.azure-test.net/#blade/SamplesExtension/IconsMonochromaticBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/IconsMonochromaticBlade).
+For a working copy, you can experiment with monochromatic blades in the sample located at [https://df.onecloud.azure-test.net/#blade/SamplesExtension/IconsMonochromaticBlade](https://df.onecloud.azure-test.net/#blade/SamplesExtension/IconsMonochromaticBlade).
 
-    In light themes, monochromatic icons are displayed in shades of black, as in the following image.
+In light themes, monochromatic icons are displayed in shades of black, as in the following image.
 
-    ![alt-text](../media/portalfx-icons/monochromatic-light-theme.png "Flat icons with light theme")
+![alt-text](../media/portalfx-icons/monochromatic-light-theme.png "Flat icons with light theme")
 
-    In dark themes, monochromatic icons are displayed in shades of white, as in the following image.
+In dark themes, monochromatic icons are displayed in shades of white, as in the following image.
 
-    ![alt-text](../media/portalfx-icons/monochromatic-dark-theme.png "Flat icons with dark theme")
+![alt-text](../media/portalfx-icons/monochromatic-dark-theme.png "Flat icons with dark theme")
 
-    If the color of the  icon should not be included in theme changes, send the `{ isLogo: true }` option to the icon's factory method. In the following example, the Delete icon remains black in all Portal themes.
+If the color of the icon should not be included in theme changes, send the `{ isLogo: true }` option to the icon's factory method. In the following example, the Delete icon remains black in all Portal themes.
 
-    ```typescript
+```typescript
 
 /**
   * The flat icon with logo flag.
@@ -115,9 +118,9 @@ public flatIconLogo: MsPortalFx.Base.Image = MsPortalFx.Base.Images.Delete({ isL
 
 ```
 
-    An alternative is to add custom color to an icon, and then send  `{isLogo: true}` to preserve the new colors. In the following example, the Delete icon  remains  blue in all Portal themes.
+An alternative is to add custom color to an icon, and then send  `{isLogo: true}` to preserve the new colors. In the following example, the Delete icon  remains  blue in all Portal themes.
 
-    ```typescript
+```typescript
 
 /**
   * The flat icon with palette and logo flag.
