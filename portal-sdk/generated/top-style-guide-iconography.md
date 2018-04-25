@@ -98,13 +98,13 @@ After the basics of the extension icons are working, developers may want to use 
 
     In light themes, monochromatic icons are displayed in shades of black, as in the following image.
 
-    ![alt-text](../media/portalfx-icons/icon-light-theme.png "Flat icons with light theme")
+    ![alt-text](../media/portalfx-icons/monochromatic-light-theme.png "Flat icons with light theme")
 
     In dark themes, monochromatic icons are displayed in shades of white, as in the following image.
 
-    ![alt-text](../media/portalfx-icons/icon-dark-theme.png "Flat icons with dark theme")
+    ![alt-text](../media/portalfx-icons/monochromatic-dark-theme.png "Flat icons with dark theme")
 
-    If the color of the  icon should not be included in theme changes, supply the `{ isLogo: true }` option to the icon's factory method. In the following example, the Delete icon remains **black** in all Portal themes.
+    If the color of the  icon should not be included in theme changes, send the `{ isLogo: true }` option to the icon's factory method. In the following example, the Delete icon remains black in all Portal themes.
 
     ```typescript
 
@@ -115,7 +115,7 @@ public flatIconLogo: MsPortalFx.Base.Image = MsPortalFx.Base.Images.Delete({ isL
 
 ```
 
-    An alternative is to add custom color to an icon, and then supply  `{isLogo: true}` to preserve the new colors. In the following example, the Delete icon  remains  **blue** in all Portal themes.
+    An alternative is to add custom color to an icon, and then send  `{isLogo: true}` to preserve the new colors. In the following example, the Delete icon  remains  blue in all Portal themes.
 
     ```typescript
 
