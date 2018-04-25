@@ -25,6 +25,8 @@ The following sections cover these topics.
 
 * [The no-data message](#the-no-data-message)
 
+* [Pinning parts](#pinning-parts)
+
 * * * 
 
 ### Traditional parts and template blades 
@@ -174,3 +176,55 @@ container.noDataMessage("Enable deployments to see your history");
 In this example, the part is grayed-out and is non-interactive. The message is displayed on top of the part. To remove the message, set the `noDataMessage` value back to `null`. 
 
 This feature informs the user that the feature exists, although no data is available yet. If the extension needs to disable a part while the  data is loading, it should return a promise from the  `onInputsSet` method or use the `container.operations` queue.
+
+### Pinning parts
+
+By default, all blades and parts are 'pinnable'.  Pinning a part creates a copy of that part on the [dashboard](portalfx-ui-concepts.md#ui-concepts-the-dashboard).  The part on the dashboard provides a shortcut for users, allowing them to get their most used blades, as in the following example.
+
+![alt-text](../media/portalfx-ui-concepts/dashboard.png "Dashboard")
+
+All parts are pinnable by default, at little or no cost to the developer.  Part settings are copied to the new part, and the current size is maintained.  The new part is a complete copy of the original part, and can be independently configured, resized, or moved around on the dashboard. 
+
+When a part is pinned or moved to another blade, a new ViewModel for that part is created.  This ViewModel will have the exact same contract.  The inputs to the part are stored in the Portal's cloud settings, and replayed onto the part when the dashboard loads.  For example, the robots part in this sample takes a single input named `id`, which comes from the blade.  When the part is pinned to the dashboard, the blade will obviously not be available, therefore the `id` of the part is stored in persistent storage. The  `id` of the part is in the pdl file located at `<dir>\SamplesExtension\Extension\Client\Hubs\Browse\Browse.pdl`, and it is also in the following code.
+
+```xml
+<CustomPart Name="RobotSummary"
+            ViewModel="{ViewModel Name=RobotSummaryViewModel, Module=./Browse/ViewModels/RobotSummaryViewModel}"
+            Template="{Html Source='Templates\\Robot.html'}"
+            InitialSize="FullWidthFitHeight"
+            AssetType="Robot"
+            AssetIdProperty="name">
+  <CustomPart.Properties>
+    <Property Name="name"
+              Source="{BladeParameter Name=id}" />
+  </CustomPart.Properties>
+</CustomPart>
+```
+
+Model data is not sent in bindings because the extension is required to store specific types of data in persistent storage. The only objects that should be sent as bindings between the extension and the various parts are the keys and ids that are used to load data from a back end server.   If data that specifies the robot changes, like  the name, those changes should be reflected in the part.  This provides the 'live tile' feel of the Portal, and ensures that the part data is not stale.
+
+For more information about keys and data loading in the Portal, see [top-extensions-data.md](top-extensions-data.md).
+
+### Preventing pinning
+
+In some cases, a part should not be pinnable.  Some instances are as follows.
+
+* The part is showing an editable form
+* The part is not performant enough to run persistently
+* The part should not be displayed in a constrained UX
+* The part has no value when pinned
+
+Parts are not individually flagged as not being pinnable.  Rather, a blade that contains those parts is `locked`, as in the sample located at `<dir>\SamplesExtension\Extension\Client\extension.pdl` and in the following code.
+
+```xml
+<Blade Name="SamplesBlade"
+       ViewModel="SamplesBladeViewModel"
+       Pinnable="True"
+       Locked="True">
+```
+
+**NOTE**:  All parts in the previous `SamplesBlade` will not provide the ability to be pinned.  However, the blade itself can still be pinned, as specified in [portalfx-blades-pinning.md](portalfx-blades-pinning.md).
+
+For more information, about sharing parts, see [portalfx-extensibility-pde.md](portalfx-extensibility-pde.md).
+
+

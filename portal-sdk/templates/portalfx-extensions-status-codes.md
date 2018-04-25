@@ -38,6 +38,20 @@ SOLUTION:  Here are two schemes that can be used to avoid this error.
   
 * * *
 
+### Form improperly allows edits
+
+*** Error: Form should not allow edits until an EditScope is loaded***
+
+ERROR:
+
+This error is commonly the result of making an observable change to `EditScope` data that is not due to the user making edits in the UI.   For example, establishing default values by writing to `EditScope` observables when a viewModel is initializing might cause this error.
+
+SOLUTION: 
+
+Extensions should use the `mapIncomingDataForEditScope` option when instantiating `ParameterProvider`, in order to establish initial values in the `EditScope`.
+
+* * *
+
 ### ERR_CONNECTION_RESET
 
 ***Cannot load `localhost` Ibiza extension with ERR_CONNECTION_RESET***
@@ -127,7 +141,42 @@ SOLUTION:
 
 1. If the extension is using AMD modules, verify that the `manifest.js` file is accessible from the browser. Under default settings it should be present at `/Content/Scripts/_generated/manifest.js`.
 
+
 * * * 
+
+### Server Error 404 
+
+ERROR: 404, Not Found.
+
+DESCRIPTION: The Portal's built-in data layer automatically detects HTTP 404 responses from **AJAX** calls, in order to cover the most common scenarios.  When a part depends on data and a 404 has been detected, Ibiza automatically makes the part non-interactive and displays a message of 'Not Found'.  The effect is that in most "not found" scenarios, extensions will display the more accurate 'Not found' message instead of the sad cloud UX that is reserved for unexpected errors.
+
+This distinction allows the Portal telemetry system to differentiate between bugs and deleted assets when parts  fail to render.
+
+SOLUTION: Extensions should allow the Portal to handle 404 responses by default. However, there are exceptions where this behavior may not be the best action.  In those cases, the extension can opt out of automatic 404 handling by setting the `showNotFoundErrors` flag to `false` when creating the extension's `dataViews`. The following code makes 404s result in rejected promises, which allows individual extensions to apply special handling.
+
+```js
+this._dataView = dataContext.createView(container, { interceptNotFound: false });
+```
+
+**NOTE**: Instances of 'Not Found' do not count against a part's reliability KPI.
+
+
+
+### Internal Server Error 500
+
+ERROR: Received 500, Internal Server Error when loading the extension. The extension logs the message "*Unable to find AMD modules '_generated/Manifest'*".
+
+SOLUTION:
+
+1. Make sure the **JavaScript** files are embedded as resources in the extension assembly. To see embedded resources, open the assembly in Reflector or some similar tool and explore resources. It should display `<YourExtensionNamespace>/Content/ … /_generated/Manifest.js` and with similar resources, although the dots and slashes are interchangeable. 
+
+1. If those resources are embedded, make sure the assembly contains the following attribute.
+
+    `[assembly: AllowEmbeddedContent("<YourExtensionNamespace>")]` 
+    
+    This indicates that the **JavaScript** is an embedded resource with this prefix.
+
+* * *
 
 ### Portal Error 520
 

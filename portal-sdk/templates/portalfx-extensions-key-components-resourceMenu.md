@@ -15,5 +15,5 @@ The code for the resource menu blade is located in the ``` AssetTypeViewModel ``
 
 <!-- TODO:  Locate a gallery doc that describes the common resource properties.  [Resource menu blade documentation](/gallery-sdk/generated/index-gallery.md#resource-management-resource-menu).-->
 
-For more information on the Resource Menu,  see          .
+For more information on the Resource Menu,  see [top-blades-resourcemenu.md](top-blades-resourcemenu.md).
 
