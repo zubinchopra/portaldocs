@@ -129,7 +129,7 @@ When using HTML and framework controls you have some control over styling. These
 
 ### Forms
 
-Many experiences require the user to fill out a form. The Ibiza controls library provides support for forms. It also provides a TypeScript based section model that lets you build your form in code without expressing all the fields in an html template.
+Many experiences require the user to enter data into a form. The Ibiza controls library provides support for forms. It also provides a TypeScript based section model that lets you build your form in code without expressing all the fields in an html template.
 * [Developing forms](./generated/top-extensions-forms.md)
 
 [Ask a forms related question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms)
