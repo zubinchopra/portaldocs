@@ -69,7 +69,7 @@ The next few sections walk through the different types of UI that can be built u
 
 Samples show how to do many common development tasks. 
 
-[Samples](top-extensions-samples.md)
+[Samples](/portal-sdk/generated/top-extensions-samples.md)
 
 ### Blades
 
@@ -141,9 +141,9 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 ### Common scenarios and integration points
 
-* [Blades that create or provision resources and services](top-extensions-create.md)
+* [Blades that create or provision resources and services](/portal-sdk/generated/top-extensions-create.md)
 
-* [Adding your resource or service into the Browse menu](top-extensions-browse.md)
+* [Adding your resource or service into the Browse menu](/portal-sdk/generated/top-extensions-browse.md)
 
 * [Common UX for Azure Resource Manager (ARM) based services]()
 
@@ -153,7 +153,7 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 ### Other UI concepts
 
-* [Context panes](top-extensions-context-panes.md)
+* [Context panes](/portal-sdk/generated/top-extensions-context-panes.md)
 
 * [Dialogs]()
 
@@ -261,7 +261,7 @@ The Azure portal supports multiple languages and locales. You will need to local
 
 * [Testing localization with side-loading](/portal-sdk/generated/top-extensions-sideloading.md)
 
-* [Formatting numbers, currencies and dates](top-extensions-localization-globalization.md#globalization-api)
+* [Formatting numbers, currencies and dates](/portal-sdk/generated/top-extensions-localization-globalization.md#globalization-api)
 
 [Ask about localization / globalization on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-localization-global)
 
