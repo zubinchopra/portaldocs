@@ -8,7 +8,7 @@ Couldn't find what you needed? [Ask about the docs on StackOverflow](https://sta
 
 * [Overview / Getting Started](/portal-sdk/generated/top-onboarding.md)
 
-* [Steps that do not involve the Ibiza team](/portal-sdk/generated/portalfx-extensions-onboarding-with-related-teams.md)
+* [Steps that do not involve the Ibiza team](/portal-sdk/generated/top-extensions-onboarding-with-related-teams.md)
 
 * [Manage cloud/environment specific configuration](/portal-sdk/generated/top-extensions-configuration.md)
 
@@ -63,7 +63,13 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 ## Developing your user interface UI
 
-The next few sections walk through the different types of UI that can be built using the framework. There are [samples](/portal-sdk/generated/top-extensions-samples.md) that show how to do many common development tasks. 
+The next few sections walk through the different types of UI that can be built using the framework.
+
+### Samples  
+
+Samples show how to do many common development tasks. 
+
+[Samples](top-extensions-samples.md)
 
 ### Blades
 
@@ -123,7 +129,7 @@ When using HTML and framework controls you have some control over styling. These
 
 * [Iconography](/portal-sdk/generated/top-style-guide-iconography.md)
 
-* [Theming](/portal-sdk/generated/portalfx-style-guide-theming.md)
+* [Theming](/portal-sdk/generated/top-style-guide-theming.md)
 
 ### Forms
 
@@ -247,7 +253,7 @@ It is common for teams to want to experiment with new capabilities. We offer two
 
 The Azure portal supports multiple languages and locales. You will need to localize your content.
 
-* [Localization overview and supported languages](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-localization.md#understanding-localization)
+* [Localization overview and supported languages](top-extensions-localization-globalization.md#understanding-localization)
 
 * [Setting up Localization for your extension]()
 
@@ -255,7 +261,7 @@ The Azure portal supports multiple languages and locales. You will need to local
 
 * [Testing locaization with side-loading](/portal-sdk/generated/top-extensions-sideloading.md)
 
-* [Formatting numbers, currencies and dates](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-globalization.md#globalization-api)
+* [Formatting numbers, currencies and dates](top-extensions-localization-globalization.md#globalization-api)
 
 [Ask about localization / globalization on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-localization-global)
 
@@ -298,7 +304,7 @@ The Ibiza team provides and operates a common extension hosting service that mak
 
 ### Custom extension deployment infrastructure
 
-You should strive to use the Ibiza hosting service. If for some reason this is not possible then [learn how to build a custom extension deployment infrastructure](/portal-sdk/generated/portalfx-extensions-custom-deployment.md).
+You should strive to use the Ibiza hosting service. If for some reason this is not possible then [learn how to build a custom extension deployment infrastructure](/portal-sdk/generated/top-extensions-custom-deployment.md).
 
 ## Upgrading the Ibiza SDK
 
