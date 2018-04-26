@@ -6,7 +6,7 @@ Couldn't find what you needed? [Ask about the docs on StackOverflow](https://sta
 
 ## Onboarding a new extension
 
-* [Overview / Getting Started](/portal-sdk/generated/top-onboarding.md)
+* [Overview / Getting started](/portal-sdk/generated/top-onboarding.md)
 
 * [Steps that do not involve the Ibiza team](/portal-sdk/generated/top-extensions-onboarding-with-related-teams.md)
 
@@ -23,25 +23,25 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 ## What's new
 
-* [No-PDL Blades and Parts](http://top-whats-new#no-pdl.md) - *Reduces the number of files and concepts to build UI*
+* [No-PDL blades and parts](http://top-whats-new#no-pdl.md) - *Reduces the number of files and concepts to build UI*
 
 * [Forms without edit scope](/portal-sdk/generated/top-editscopeless-forms.md) - *More intuitive APIs for building forms*
 
-* [Editable Grid V2](http://top-level/editable-grid.md) - *Improved APIs designed to work with new forms*
+* [Editable grid V2](http://top-level/editable-grid.md) - *Improved APIs designed to work with new forms*
 
-* [Extension Availability Alerts](http://top-level/availibility-alerts.md) - *Get notified if your extension goes down*
+* [Extension availability alerts](http://top-level/availibility-alerts.md) - *Get notified if your extension goes down*
 
-* [Actionable Notifications](http://top-level/availibility-alerts.md) - *Point users to well known next steps*
+* [Actionable notifications](http://top-level/availibility-alerts.md) - *Point users to well known next steps*
 
 * [EV2 support for the Extension Hosting Service](http://top-level/hosting-service#ev2.md) - *Nuff said*
 
-* [Multi-Column for Essentials Controls]() - *Better use of screen real estate*
+* [Multi-column for essentials controls]() - *Better use of screen real estate*
 
 * [TreeView improvements]() - *Checkboxes, commands, and Load More / Virtualization*
 
 ## Development guide
 
-### Getting Started
+### Getting started
 
 Azure portal extension development is supported on the Microsoft Windows 8, Windows Server 2012 R2, and Windows 10.
 
@@ -59,9 +59,9 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
     * [Running the extension locally (a.k.a. Sideloading)](/portal-sdk/generated/top-extensions-sideloading.md)
 
-[Ask an sdk setup question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
+[Ask an SDK setup question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
 
-## Developing your user interface UI
+## Developing your user interface
 
 The next few sections walk through the different types of UI that can be built using the framework.
 
@@ -85,11 +85,11 @@ The primary UI building block is a called a blade. A blade is like a page. It ge
 
 * [Blade Settings](/portal-sdk/generated/top-blades-settings.md)
 
-* [Frame Blades](/portal-sdk/generated/top-blades-frameblades.md)
+* [FrameBlades](/portal-sdk/generated/top-blades-frameblades.md)
 
-* [Opening and closing Blades programmatically](/portal-sdk/generated/top-blades-opening-and-closing.md)
+* [Opening and closing blades programmatically](/portal-sdk/generated/top-blades-opening-and-closing.md)
 
-* [Advanced TemplateBlade Topics](/portal-sdk/generated/top-blades-advanced.md)
+* [Advanced TemplateBlade topics](/portal-sdk/generated/top-blades-advanced.md)
 
 * [Blade with tiles](/portal-sdk/generated/top-blades-legacy.md)
 
@@ -113,15 +113,15 @@ Any template based UI in the portal (e.g. template blades or template parts can 
 
 [Ask a controls related question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls)
 
-### Styling and Theming
+### Styling and theming
 
 When using HTML and framework controls you have some control over styling. These documents walk through the relevant topics.
 
- [Styling and Theming](/portal-sdk/generated/top-extensions-style-guide.md)
+ [Styling and theming](/portal-sdk/generated/top-extensions-style-guide.md)
 
 * [HTML, CSS, and SVG sanitization](/portal-sdk/generated/top-style-guide-html-css-sanitization.md)
 
-* [Adding Custom CSS](/portal-sdk/generated/top-style-guide-custom-css.md)
+* [Adding custom CSS](/portal-sdk/generated/top-style-guide-custom-css.md)
 
 * [Layout classes](/portal-sdk/generated/portalfx-blades-layout.md)
 
@@ -175,7 +175,7 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 * [Adressing Data Merge Failures](/portal-sdk/generated/portalfx-data.md#data-merging)
 
-* [Legacy accessing C# model objects](/portal-sdk/generated/ortalfx-data-typemetadata.md#type-metadata)
+* [Legacy accessing C# model objects](/portal-sdk/generated/portalfx-data-typemetadata.md#type-metadata)
 
 * [Legacy Data Atomization](/portal-sdk/generated/portalfx-data-atomization.md)
 
@@ -205,7 +205,7 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 * [Debugging the data stack](/portal-sdk/generated/portalfx-extensions-debugging-data-stacks.md)
 
-## Performance profiling
+## Performance
 
 * [Performance profiling](/portal-sdk/generated/top-extensions-performance-profiling.md)
 
@@ -215,7 +215,7 @@ The Ibiza team provides limited testing support. Due to resource constraints the
 
 * [Unit testing support](/portal-sdk/generated/portalfx-unit-test.md)
 
-* [C# Test Framework (Open source)]()
+* [C# Test Framework (Open source)](top-extensions-csharp-test-framework.md)
 
 * [Node.js Test Framework (Open source)]()
 
@@ -229,7 +229,7 @@ The Ibiza team collects standard telemetry for generic actions like blade openin
 
 * [Getting access to raw portal telemetry data]()
 
-* [Consuming telemetry via pre-build Power BI Dashboards]()
+* [Consuming telemetry via pre-build Power BI dashboards]()
 
 * [Performance and reliability monitoring / alerting]()
 
@@ -255,11 +255,11 @@ The Azure portal supports multiple languages and locales. You will need to local
 
 * [Localization overview and supported languages](top-extensions-localization-globalization.md#understanding-localization)
 
-* [Setting up Localization for your extension]()
+* [Setting up localization for your extension]()
 
-* [Setting up Localization for your gallery package]()
+* [Setting up localization for your gallery package]()
 
-* [Testing locaization with side-loading](/portal-sdk/generated/top-extensions-sideloading.md)
+* [Testing localization with side-loading](/portal-sdk/generated/top-extensions-sideloading.md)
 
 * [Formatting numbers, currencies and dates](top-extensions-localization-globalization.md#globalization-api)
 
@@ -280,31 +280,31 @@ The Azure portal strives to meet high accessibility standards to ensure the prod
 Learn how to deploy your extension to the various clouds and environments.
 * [Extension registration, environments (e.g. dogfood, prod), clouds (e.g. Mooncake, BlackForest, Fairfax) and Ibiza team SLAs](/portal-sdk/generated/top-extensions-publishing.md)
 
-* [Extension Development Phases](/portal-sdk/generated/top-extensions-developmentPhases.md)
+* [Extension development phases](/portal-sdk/generated/top-extensions-developmentPhases.md)
 
 [Ask a deployment question on Stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)
 
-### Deployment using the Ibiza hosting service
+### Deployment using the Extension hosting service
 
-[Deployment using the Ibiza hosting service](/portal-sdk/generated/top-hosting-service.md)
+[Deployment using the Extension hosting service](/portal-sdk/generated/top-hosting-service.md)
 
 The Ibiza team provides and operates a common extension hosting service that makes it easy to get your bits into a globally distributed system without having to manage your own infrastructure.
 
-* [Hosting service overview](/portal-sdk/generated/portalfx-extensions-hosting-service-overview.md)
+* [Extension hosting service overview](/portal-sdk/generated/portalfx-extensions-hosting-service-overview.md)
 
-* [Onboarding your extension to hosting service](/portal-sdk/generated/portalfx-extensions-hosting-service-procedures.md)
+* [Onboarding your extension to the Extension Hosting Service](/portal-sdk/generated/portalfx-extensions-hosting-service-procedures.md)
 
 * [Validating extension registration with hosting service]()
 
 * [Versioning your extension](/portal-sdk/generated/portalfx-extensions-versioning.md)
 
-* [Deploying your extension using Express V2 + Hosting Service](/portal-sdk/generated/portalfx-extensions-hosting-service-advanced.md)
+* [Deploying your extension using Express V2 and the Hosting Service](/portal-sdk/generated/portalfx-extensions-hosting-service-advanced.md)
 
-* [SLA for registering extension with hosting service](/portal-sdk/generated/portalfx-extensions-svc-lvl-agreements.md)
+* [SLA for registering extension with the Extension Hosting Service](/portal-sdk/generated/portalfx-extensions-svc-lvl-agreements.md)
 
 ### Custom extension deployment infrastructure
 
-You should strive to use the Ibiza hosting service. If for some reason this is not possible then [learn how to build a custom extension deployment infrastructure](/portal-sdk/generated/top-extensions-custom-deployment.md).
+You should strive to use the Extension hosting service. If for some reason this is not possible then [learn how to build a custom extension deployment infrastructure](/portal-sdk/generated/top-extensions-custom-deployment.md).
 
 ## Upgrading the Ibiza SDK
 
@@ -323,17 +323,17 @@ These features are supported, but have had no recent investment. No additional i
 
 * [PDL based blades and parts]()
 
-* [Controls in the msportalfx namespace](/portal-sdk/generated/portalfx-extensions-samples-controls-deprecated.md)
+* [Controls in the MsPortalFx namespace](/portal-sdk/generated/portalfx-extensions-samples-controls-deprecated.md)
 
-* [EditScope](/portal-sdk/generated/portalfx-legacy-editscopes.md)
+* [EditScope](/portal-sdk/generated/top-legacy-editscopes.md)
 
-* [Legacy PDL TemplateBlade](/portal-sdk/generated/portalfx-legacy-blades-template-pdl.md)
+* [Legacy features](/portal-sdk/generated/portalfx-legacy-blades-template-pdl.md)
 
 ## Frequently asked questions
 
 The documents are combinations from all the previous topics. Consequently, there may be some repetition.
 
-* [Best Practices](/portal-sdk/generated/portalfx-extensions-bp.md)
+* [Best practices](/portal-sdk/generated/portalfx-extensions-bp.md)
 
 * [Frequently asked questions](/portal-sdk/generated/portalfx-extensions-faq.md)
 
