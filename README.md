@@ -215,7 +215,7 @@ The Ibiza team provides limited testing support. Due to resource constraints the
 
 * [Unit testing support](/portal-sdk/generated/portalfx-unit-test.md)
 
-* [C# Test Framework (Open source)](top-extensions-csharp-test-framework.md)
+* [C# Test Framework (Open source)](/portal-sdk/generated/top-extensions-csharp-test-framework.md)
 
 * [Node.js Test Framework (Open source)]()
 
@@ -253,7 +253,7 @@ It is common for teams to want to experiment with new capabilities. We offer two
 
 The Azure portal supports multiple languages and locales. You will need to localize your content.
 
-* [Localization overview and supported languages](top-extensions-localization-globalization.md#understanding-localization)
+* [Localization overview and supported languages](/portal-sdk/generated/top-extensions-localization-globalization.md#understanding-localization)
 
 * [Setting up localization for your extension]()
 
