@@ -196,9 +196,9 @@ Azure support for friendly names became available in SDK release 5.0.302.834.
 
 The runtime component of the hosting service is hosted inside an Azure Cloud Service. When an extension onboards, a publicly accessible endpoint is provided by the extension developer which will contain the contents that the hosting service should serve. For the hosting service to pick them up, it will look for a file called `config.json` that has a specific schema described below. 
 
-The hosting service will upload the config file, look into it to figure out which zip files it needs to download. There can be multiple versions of the extension referenced in `config.json`. The hosting service will upload them and unpack them on the local disk. After it has successfully uploaded and expanded all versions of the extension referenced in `config.json`, it will write `config.json` to disk.
+The hosting service will download the config file, and look into it to figure out which zip files it needs to download. There can be multiple versions of the extension referenced in the `config.json` file. The hosting service will download them and unpack them on the local disk. After it has successfully downloaded and expanded all versions of the extension referenced in `config.json`, it will write `config.json` to disk.
 
-For performance reasons, once a version is uploaded, it will not be uploaded again. 
+For performance reasons, once a version is downloaded, it will not be downloaded again. 
 
 * * * 
 
@@ -308,6 +308,7 @@ You can ask questions on Stackoverflow with the tag [ibiza-deployment](https://s
 
 FAQ's that are associated with Azure samples.
 
+
 <a name="frequently-asked-questions"></a>
 ## Frequently asked questions
 
@@ -318,10 +319,13 @@ FAQ's that are associated with Azure samples.
 
 ***How do I fix this?***
 
- Description:
- Right out of the box, the samples are not aware of whether V1 or V2 is being used, or whether the IDE options match the version. There may be an error message TS1219.  Errors may also occur based on the version of the SDK.
+ DESCRIPTION:  
 
- SOLUTION:  Add a `tsconfig.json` file to the project that specifies that decorators are experimental, as in the following code.
+  By default, the samples are not aware of whether V1 or V2 is being used, or whether the IDE options match the version. There may be an error message TS1219.  Errors may also occur based on the version of the SDK.
+
+ SOLUTION: 
+
+ Add a `tsconfig.json` file to the project that specifies that decorators are experimental, as in the following code.
 
  ```cs
  {
@@ -348,10 +352,13 @@ FAQ's that are associated with Azure samples.
 
 *** Unable to launch the Microsoft Visual Studio IIS Express Web server***
 
-Description:
+DESCRIPTION:
+
 Failed to register URL "https://localhost:44306/" for site "SamplesExtension" application "/". Error description: Cannot create a file when that file already exists. (0x800700b7)
 
-SOLUTION:  Terminate IIS express processes in Task Manager and click F5 again.
+SOLUTION: 
+
+Terminate IIS express processes in Task Manager and press F5 again.
 
 * * *
 

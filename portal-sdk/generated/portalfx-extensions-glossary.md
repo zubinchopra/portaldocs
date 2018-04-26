@@ -236,17 +236,88 @@ This section contains a glossary of terms and acronyms that are used in this doc
 
 <!--TODO:  Determine which glossary terms are included in other bp documents previous to deleting this one -->
 
-  gitdown": "include-file", "file": "./portalfx-extensions-glossary-external.md"}
+ ## Glossary
+    
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+| Term                      | Meaning |
+| ---                       | --- |
+| .Net                      | A software framework developed by Microsoft that runs primarily on Microsoft Windows. | 
+| 1CS                       | One Compliance System  | 
+| API                       | Application Programming Interface  |
+| ARM                       | Azure Resource Manager |
+| C+E                       | Cloud + Enterprise | 
+| CEC                       | Common Engineering Criteria  | 
+| CEGRM                     | CSS Release management team | 
+| CLI                       | Command Line Interface  | 
+| CNAME                     | Canonical Name record. A type of resource record in the Domain Name System (DNS) that specifies that a domain name is an alias for another domain (the 'canonical' domain). | 
+| CSS                       | CSS Release management  | 
+| Definition file | A file that provides type information for JavaScript code that is inherently not statically typed. Definition files are a fundamental part of using existing JavaScript libraries in TypeScript, and the file suffix is always  *.d.ts. |
+| DEV                       | Development | 
+| DNS                       | Domain Name Server  | 
+| DNS                       | Domain Name System  | 
+| first-party extension     | An Azure Portal extension that is developed by Microsoft |
+| FAQ                       | Frequently Asked Questions | 
+| GA                        | Global Availability | 
+| gallery                   | Also known as Marketplace or Azure Portal Marketplace. See Marketplace Gallery. | 
+| GB Certificate            | Six Sigma Green Belt Certification.  | 
+| GB Standard               | GB stands for Guobiao, or “National Standard” in Chinese. The GB standard is the basis for testing products that require certification. | 
+| Marketplace               | See Marketplace Gallery. | 
+| Marketplace Gallery       | Also known as the Gallery or Marketplace Gallery. | 
+| PDE                       | Portal Definition Export | 
+| PHP                       | Recursive acronym for PHP: Hypertext Preprocessor. | 
+| PM                        | Program Manager | 
+| PM                        | Project Manager | 
+| PROD                      | Production  | 
+| REST                      | Representational state transfer   | 
+| RP                        | Resource Provider  | 
+| RP schema                 | Resource Provider schema | 
+| RPC                       | Remote Procedure Call | 
+| SDK                       | Software Development Kit | 
+| SDL                       | Security Development Lifecycle |
+| single page application | A web application that dynamically rewrites displayed pages instead of providing entire new pages from a server. | 
+| SLA                       | Service Level Agreement | 
+| SSL                       | Secure Socket Layer  | 
+| third-party extension     | An Azure Portal extension that is developed by partners outside of Microsoft |
+| URL                       | Uniform Resource Locator | 
+| VP                        | Vice President | 
+| Weighted Experience Score | The percentage of blade usage that meets the performance bar. |
+| WxP                       | See Weighted Experience Score.  | 
+
+
+
 
 <a name="azure-portal-glossary-feature-flags"></a>
 ## Feature Flags
 
-    gitdown": "include-file", "file": "./portalfx-extensions-glossary-flags.md"}
+   ## Glossary
+
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+| Term                | Meaning |
+| ------------------- | --- |
+| API contract | An agreement between two pieces of code as to how to pass parameters between them, and how those parameters are processed. |
+| CDN                 | Content delivery network | 
+| CI infrastructure   | | 
+| curation            | The process of categorizing content around a specific topic or area of interest. Curated items often formed into various types of collections and are displayed together according to theme or purpose. | 
+| diagnostic switch  | |
+| DOM                | Document Object Model |
+| feature flag       | A coding technique that allows the enabling or disabling of new code within a solution. It allows the testing and development-level viewing of new features, before they are complete and ready for private preview.  |
+| IRIS               | | 
+| manifest caching | | 
+| marketplace | | 
+| MVC                | Model-View-Controller, a methodology of software organization that separates the view from the data storage model in a way that allows the processor or a controller to multitask or switch between applications or orientations without losing data or damaging the view.|
+| NPS popups         | Net Promoter Score | 
+| ProxiedObservables | | 
+| query string       | The part of a uniform resource locator (URL) that contains data. Query strings are generated by form submission, or by being entered into the address bar of the browser after the URL. The  query string is specified by the values following the question mark (?). The values are used in Web processing, along with the path component of the URL. Query strings should not be used to transfer large amounts of data.  | 
+| stage | | 
+| trace mode         | |
+| web worker | A way to for extensions to run scripts in background threads. |
 
 <a name="azure-portal-glossary-flighting"></a>
 ## Flighting
 
-  ## Glossary
+ ## Glossary
    
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
  
@@ -262,7 +333,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 <a name="azure-portal-glossary-forms"></a>
 ## Forms
 
-  
+ 
 <a name="azure-portal-glossary-glossary"></a>
 ## Glossary
 
@@ -288,12 +359,26 @@ This section contains a glossary of terms and acronyms that are used in this doc
 <a name="azure-portal-glossary-hello-world-extension"></a>
 ## Hello World Extension
 
-    gitdown": "include-file", "file": "./portalfx-extensions-glossary-helloWorld.md"}
+   ## Glossary
+ 
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+| Term          | Meaning | 
+| ---           | --- |
+| area          | Group of blades and parts that are associated with a single user-defined context.  |
+| blade         | An Azure SDK object, or an object from a framework API, that contains content by using an HTML template.  That template is bound to properties on the TypeScript class of the object.  The main unit of the Azure UX that can be built using the Azure SDK.   The vertical container that acts as the starting point for any journey.  Web pages that can be loaded in the Portal. |
+| data binding  | The process that establishes a connection between the application UI and the business logic  behind the pane. |
+| extension     | A Web application that was developed using the Azure Portal SDK and is made available to users through the Azure Portal. |
+| framework     | A software environment that provides large software platform functionality in the process of building and deploying applications. The larger platform is selectively changed by adding developer code to make software applications. |
+| part          | See blade. |
+| SDK           | Software Development Kit. |
+| UI            | User interface. |
+| UX            | User experience. |
 
 <a name="azure-portal-glossary-hosting-service"></a>
 ## Hosting Service
 
-  ## Glossary
+ ## Glossary
 
  This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
 
@@ -325,64 +410,257 @@ This section contains a glossary of terms and acronyms that are used in this doc
 <a name="azure-portal-glossary-key-components"></a>
 ## Key Components
 
-    gitdown": "include-file", "file": "./portalfx-extensions-glossary-key-components.md"}
+   ## Glossary
+
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+| Term                  | Meaning |
+| ---                   | --- |
+| blade                 | The main unit of the Azure UX that can be built using the Azure SDK.   The vertical container that acts as the starting point for any journey. Web pages that can be loaded in the Portal. Also known as blade or context blade. |
+| browse implementation | The implementation of the Azure Portal, based on the Portal environment, the Resource Provider (RP), and other factors. The portal's common navigation experience that displays a list of  services and resource types that  are available through the Portal. | 
+| experience            | Azure Portal software application. Also see UX. |
+| gallery package       | Contains all assets for a gallery item: icons, screenshots, descriptions, et al. The gallery package is compiled into a file with the .azpkg extension  for transfer between environments. |
+| Marketplace Gallery   | |
+| menu blade            | |
+| resource              | |
+| resource features     | |
+| resourceType          | The fully qualified name for the categories of resources to display in the BrowseResourceListPart. |
 
 <a name="azure-portal-glossary-initializing-the-developer-platform"></a>
 ## Initializing the Developer Platform
 
-    gitdown": "include-file", "file": "./portalfx-extensions-glossary-getting-started.md"}
+    
+<a name="azure-portal-glossary-glossary"></a>
+## Glossary
+
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+| Term              | Meaning |
+| ---               | --- |
+| Azure Portal SDK  | Software Development Kit for developing Azure Portal extensions. |
+| CDN               | Content Delivery Network |
+| IIS Express       | Internet Information Services. A Web server for hosting anything on the Web. |
+| localhost         | A hostname that means this computer or this host.  |
+| sideload          | The process of transferring data between two local devices, or between the development platform and the local host. Also side load, side-load. |  
 
 <a name="azure-portal-glossary-status-codes-and-error-messages"></a>
 ## Status Codes and Error Messages
 
-    gitdown": "include-file", "file": "./portalfx-extensions-glossary-status-codes.md"}
+   ## Glossary
+   
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+ 
+| Term                      | Meaning |
+| ---                       | --- |
+| desktop state             | A snapshot of |
+| first chance exception    | An exception's first pass through the debugger. Exceptions are thrown to the debugger first and then to the actual program.  If the exception is not handled by the program, it gets thrown to the debugger a second time. |
+| SSL                       | Secure Socket Layer |
+
+
 
 <a name="azure-portal-glossary-testing-in-production"></a>
 ## Testing in Production
 
-  gitdown": "include", "file": "./portalfx-extensions-glossary-production-testing.md"}
+ ## Glossary
+
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+ 
+| Term                 | Meaning |
+| ---                  | --- |
+| Developer Tools Console | | 
+| diagnostic switch | | 
+| endpoint             | A device that is connected to a LAN and accepts or transmits communications across a network. In terms of directories or Web pages, there may be several endpoints that are defined on the same device.  |
+| extension stamp | An instance of a service in a region. Every extension can deploy one or more extension editions based on testing requirements. The main extension is used for production and is the only one that the Portal will load by default. Also known as configuration or configuration file.   | 
+| hotfix | |
+| localhost            | A hostname that means this computer or this host.  |
+| obsolete script      | A script that makes certain parts of the Portal act as legacy code, in order to limit the performance costs of the old functionality to only extensions that are using them. | 
+| phishing | | 
+| pull request | |
+| private preview | |
+| query string       | The part of a uniform resource locator (URL) that contains data. Query strings are generated by form submission, or by being entered into the address bar of the browser after the URL. The  query string is specified by the values following the question mark (?). The values are used in Web processing, along with the path component of the URL. Query strings should not be used to transfer large amounts of data.  | 
+| sandboxed iframe     | Enables an extra set of restrictions for the content in the iframe.  It can treat the content as being from a unique origin, block form submission or script execution, prevent links from targeting other browsing context, and other items that restrict the behavior of the iframe during testing. | 
+| SAN                  | Storage Area Network  | 
+| sideloading          | Loading an extension for a specific user session from any source other than the uri that is registered in the Portal.  The process of transferring data between two local devices, or between the development platform and the local host. Also side load, side-load. |   
+| synthetic traffic    | Traffic that has been created with a traffic generators and that behaves like real traffic. It can be used to capture the behavior the network or device under test. | 
+| untrusted extension | An extension that is not accompanied by an SSL certificate. |
+| usability testing | |
 
 <a name="azure-portal-glossary-onboarding"></a>
 ## Onboarding
 
-  gitdown": "include", "file": "./portalfx-extensions-glossary-onboarding.md"}
+  
+<a name="azure-portal-glossary-glossary"></a>
+## Glossary
+
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+| Term                      | Meaning |
+| ---                       | --- |
+| .Net                      | A software framework developed by Microsoft that runs primarily on Microsoft Windows. | 
+| 1CS                       | One Compliance System  | 
+| AAD                       | Azure Active Directory  | 
+| API                       | Application Programming Interface  |
+| ARM                       | Azure Resource Manager |
+| BladeFullReady            | The time it takes a blade to fully load. | 
+| C+E                       | Cloud + Enterprise | 
+| CEC                       | Common Engineering Criteria  | 
+| CEGRM                     | CSS Release management team | 
+| CLI                       | Command Line Interface  | 
+| CNAME                     | Canonical Name record. A type of resource record in the Domain Name System (DNS) that specifies that a domain name is an alias for another domain (the 'canonical' domain). | 
+| CSS                       | CSS Release management  | 
+| Definition file | A file that provides type information for JavaScript code that is inherently not statically typed. Definition files are a fundamental part of using existing JavaScript libraries in TypeScript, and the file suffix is always  *.d.ts. |
+| DEV                       | Development | 
+| DF                        | Dogfood | 
+| DNS                       | Domain Name Server  | 
+| DNS                       | Domain Name System  | 
+| feasibility review | An analysis of a proposed project to determine  whether the project should go ahead, be redesigned, or abandoned altogether, from the perspectives of technical feasibility and financial feasibility. The review should  uncover the  strengths and weaknesses while they are relatively inexpensive to address. Also known as feasibility study. |
+| first-party extension     | An Azure Portal extension that is developed by Microsoft |
+| FAQ                       | Frequently Asked Questions | 
+| GA                        | Global Availability | 
+| gallery                   | Also known as Marketplace or Azure Portal Marketplace. See Marketplace Gallery. | 
+| GB Certificate            | Six Sigma Green Belt Certification.  | 
+| GB Standard               | GB stands for Guobiao, or “National Standard” in Chinese. The GB standard is the basis for testing products that require certification. | 
+| Marketplace               | See Marketplace Gallery. | 
+| Marketplace Gallery       | Also known as the Gallery or Marketplace Gallery. | 
+| MPAC                      | ms.portal.azure.com, the Azure Portal instance for internal Microsoft customers.  | 
+| P0 scenarios              | The most important user scenarios for an extension. They typically contain critical or showstoppers, without which the extension does not pass its acceptance criteria. Less important scenarios that are typically used for usability testing are categorized as P1, P2, or P3, although some testing can categorize scenarios as far as P10. |
+| PDE                       | Portal Definition Export | 
+| PHP                       | Recursive acronym for PHP: Hypertext Preprocessor. | 
+| PM                        | Program Manager | 
+| PM                        | Project Manager | 
+| PROD                      | Production  | 
+| QE                        | Quality Essential | 
+| RDFE                      | Red Dog Front End | 
+| REST                      | Representational state transfer   | 
+| RP                        | Resource Provider  | 
+| RP schema                 | Resource Provider schema | 
+| RPC                       | Remote Procedure Call | 
+| SDK                       | Software Development Kit | 
+| SDL                       | Security Development Lifecycle |
+| Service 360               | An extension of Service Portfolio Management. It enhances a Service Portfolio by providing a single view of business service performance across an organization, for business processes such as Operation, Risk, Investment, and Finance. | 
+| single page application | A web application that dynamically rewrites displayed pages instead of providing entire new pages from a server. | 
+| SLA                       | Service Level Agreement | 
+| SSL                       | Secure Socket Layer  | 
+| third-party extensions         |  Extensions that are developed by people that are external to Microsoft.  |
+| URL                       | Uniform Resource Locator | 
+| VP                        | Vice President | 
+| Weighted Experience Score | The percentage of blade usage that meets the performance bar. |
+| WxP                       | See Weighted Experience Score.  | 
 
 <a name="azure-portal-glossary-parts"></a>
 ## Parts
 
-  gitdown": "include", "file": "./portalfx-extensions-glossary-parts.md"}
+ ## Glossary
+
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+| Term                | Meaning |
+| ------------------- | --- |
+|  | |
 
 <a name="azure-portal-glossary-performance"></a>
 ## Performance
 
-  gitdown": "include", "file": "./portalfx-extensions-glossary-performance.md"}
+ ## Glossary
+
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+| Term                | Meaning |
+| ------------------- | ------- |
+| AMD                 | Asynchronous Module Definition |
+| above the fold | Initially displayed on the Web page without scrolling. |
+| Brotli Compression | A data format that is specifically for data streams that use general-purpose the LZ77 lossless compression algorithm and other algorithms in their compression schemes.  This type of compression decreases the size of transmissions of web fonts, and  can now be used to encode any data sent by a web server to a web browser if both client and server support the format.  | 
+| CDN | Content Delivery Network |
+| FullRevealed  | The ViewModel within the blade or part has received all of the information that is will display. |
+| MEF | |
+| Percentile | A figure that reports the relative standing of a particular value within a statistical data set.  It is a ranking in relation to the rest of the data, instead of the mean, standard deviation, or actual data value. For example, a score at the 80th percentile means that 80% of the scores are lower, and  20% of the scores were higher. | 
+| performance bar     |         |
+| Revealed | The ViewModel within the blade or part has received enough information to begin to display it. |
+| WxP score           | Weighted eXPerience score (WxP) |
+
 
 <a name="azure-portal-glossary-resource-menu"></a>
 ## Resource Menu
 
-  gitdown": "include", "file": "./portalfx-extensions-glossary-resourcemenu.md"}
+ ## Glossary
+
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+| Term                | Meaning |
+| ------------------- | --- |
+| screen jitter       | Re-displaying a list or blade in many places on the screen, or at different widths with every screen refresh. |
 
 <a name="azure-portal-glossary-sideloading"></a>
 ## Sideloading
 
-  gitdown": "include", "file": "./portalfx-extensions-glossary-sideloading.md"}
+ ## Glossary
+   
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+ 
+| Term                         | Meaning |
+| ---                          | --- |
+| localhost         | A hostname that means this computer or this host.  |
+| query string |  `uri` used for accessing the Azure Portal |
+| sideloading  | Loading an extension for a specific user session from any source other than the uri` that is registered in the Portal.  The process of transferring data between two local devices, or between the development platform and the local host. Also side load, side-load. |   
+| untrusted extension | An extension that is not accompanied by an SSL certificate. |
 
 <a name="azure-portal-glossary-style-guide"></a>
 ## Style Guide
 
-  gitdown": "include", "file": "./portalfx-extensions-glossary-style-guide.md"}
+ ## Glossary
+
+ This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+| Term                 | Meaning |
+| ---                  | --- |
+| sandbox | |
+| sanitize             | Given a list of acceptable elements, attributes, and CSS properties, **Sanitize** removeS all unacceptable HTML and CSS from a string.  |
+| Scalable Vector Graphics | An XML-based vector image format for two-dimensional Web graphics. |
+| SVG | Scalable Vector Graphics |
+| whitelist | The practice of specifying an index of approved software elements  that are permitted to be present and active on a Web page. The goal of whitelisting is to protect computers and networks from potentially harmful applications.  |
+
+
 
 <a name="azure-portal-glossary-testing"></a>
 ## Testing
 
-  gitdown": "include", "file": "./portalfx-extensions-glossary-testing.md"}
+ ## Glossary
+   
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+ 
+| Term                         | Meaning |
+| ---                          | --- |
+| idempotent         |  An operation whose result does not change after the initial application. For example, if the client needs to retry a request due to intermittent network issues, the same value will be sent to the server.  This allows the server to ignore the retry if it has already been processed. Even if the request is ignored, the same response will be returned if the client needs the values in the response. |
+| query string |  `uri` used for accessing the Azure Portal |
+| sideloading  | Loading an extension for a specific user session from any source other than the uri` that is registered in the Portal.  The process of transferring data between two local devices, or between the development platform and the local host. Also side load, side-load. |   
+| untrusted extension | An extension that is not accompanied by an SSL certificate. |
+
+
 
 <a name="azure-portal-glossary-no-pdl-programming"></a>
 ## No-PDL Programming
 
-  gitdown": "include", "file": "./portalfx-extensions-glossary-typescript.md"}
+ ## Glossary
+
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+| Term                | Meaning |
+| ------------------- | --- |
+| Typescript   | aka no-PDL programming. | 
+| Dependency injection technique | A technique whereby one object supplies the dependencies of another object. | 
+| intersection types | Combines multiple types into one. This allows existing types to be added together  to get a single type that contains  all the features. | 
 
 <a name="azure-portal-glossary-versioning"></a>
 ## Versioning
 
- gitdown": "include", "file": "./portalfx-extensions-glossary-versioning.md"}  
+<a name="azure-portal-glossary-glossary"></a>
+## Glossary
+
+ This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+| Term            | Meaning |
+| ---             | --- |
+| CDN             | Content Delivery Network   |
+| MEF-export      | |
+| trusted host    | |
+  

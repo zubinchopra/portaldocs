@@ -126,7 +126,7 @@ Its options are as follows.
 
   **NOTE**: Setting the value of the `cacheability` attribute to `manifest` is a requirement for registering the extension into the Portal.  For assistance with caching, send a pull request as specified in [top-extensions-publishing.md](top-extensions-publishing.md).
     
-  For more information about caching, see [portalfx-extension-homepage-caching.md](portalfx-extension-homepage-caching.md).
+  For more information about caching, see [portalfx-performance-caching-homepage.md](portalfx-performance-caching-homepage.md).
 
 * **disabled**: Optional. Registers the extension configuration into the Portal in hidden mode.  A value of  `true` disables an extension, and a value of `false` enables the extension for display. The default value is `false`. Ideally you would not disable your extension. Even if you want to hide your UX for a private preview or testing then there are ways to do this from within the extension, as specified in [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md). To temporarily enable a disabled extension in private preview for this test session only, add an extension override in the Portal URL, as in the following example.
   
