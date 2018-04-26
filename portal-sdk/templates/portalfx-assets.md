@@ -95,7 +95,7 @@ You can hide your asset in different environments by setting the hideassettypes 
 
 ##### Self hosted:
 
-Replace '*' with the desired environment, for documentation regarding enabling feature flags in self hosted extensions [click here.](https://github.com/Azure/portaldocs/blob/dev/portal-sdk/generated/portalfx-extension-flags.md#feature-flags)
+Replace '*' with the desired environment, for documentation regarding enabling feature flags in self hosted extensions [click here.](portalfx-extension-flags.md#feature-flags)
 
         <Setting name="Microsoft.StbPortal.Website.Configuration.ApplicationConfiguration.DefaultQueryString" value="{
             '*': {
