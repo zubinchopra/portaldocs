@@ -306,7 +306,7 @@ The Ibiza team provides and operates a common extension hosting service that mak
 
 * [Deploying your extension using Express V2 and the Hosting Service](/portal-sdk/generated/portalfx-extensions-hosting-service-advanced.md)
 
-* [SLA for registering an extension with the Extension Hosting Service](/portal-sdk/generated/portalfx-extensions-svc-lvl-agreements.md)
+* [SLA for registering an extension with the Extension Hosting Service](/portal-sdk/generated/top-extensions-svc-lvl-agreements.md)
 
 ### Custom extension deployment infrastructure
 
