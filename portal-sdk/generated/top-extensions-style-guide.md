@@ -15,7 +15,7 @@ Browse the following topics to learn about portal styling.
 
 * [Layout classes](portalfx-blades-layout.md)
 
-* [Typography]()
+* [Typography](top-style-guide-typography.md)
 
 * [Iconography](top-style-guide-iconography.md)
 
