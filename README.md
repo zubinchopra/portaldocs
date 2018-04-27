@@ -167,7 +167,13 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 * [Making authenticated calls to Azure Resource Manager (ARM)](/portal-sdk/generated/portalfx-data.md#making-authenticated-ajax-calls)
 
-* [Data Context, data views, and data caches](/portal-sdk/generated/portalfx-data-caching.md)
+* [Data Context, data views, and data caches](/portal-sdk/generated/top-extensions-data-caching.md)
+
+* [Data Context](/portal-sdk/generated/top-extensions-data-modeling.md)
+
+* [Data caches](/portal-sdk/generated/top-extensions-data-caching.md)
+
+* [Data views](/portal-sdk/generated/top-extensions-data-views.md)
 
 * [Auto-refreshing client data](/portal-sdk/generated/portalfx-data-refreshingdata.md#auto-refreshing-client-side-data-aka-polling)
 
@@ -177,7 +183,7 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 * [Legacy accessing C# model objects](/portal-sdk/generated/portalfx-data-typemetadata.md#type-metadata)
 
-* [Legacy Data Atomization](/portal-sdk/generated/portalfx-data-atomization.md)
+* [Legacy Data Atomization](/portal-sdk/generated/top-extensions-data-atomization.md)
 
 [Ask about data management on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching)
 
