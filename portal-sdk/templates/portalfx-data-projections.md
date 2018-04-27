@@ -3,9 +3,9 @@
 
 ### Shaping and filtering data
 
-When working with data in a `QueryCache`, the most common operation is to reshape the items in the cache into a format that is better for displaying in the UI. The **Knockout** observable versions of the `map()` and `mapInto()` methods can be used to accomplish this.
+Extensions that use data from  a `QueryCache` will select and filter the items in the cache, or reshape them into formats that are more suited to a specific UI. The **Knockout** observable versions of the `map()` and `mapInto()` methods can be used to accomplish this.
 
-The following generated data model will accept a `QueryCache` of `Robot` objects as a parameter. 
+The following data model accepts a `QueryCache` of `Robot` objects as a parameter. 
 
 ```ts
 interface Robot {
@@ -18,7 +18,7 @@ interface Robot {
 }
 ```
 
-Each robot is entered into a grid with three columns. The `name` column and the `status` column are the same data as that of the model, but the third column is a combination of the model and manufacturer properties from the model object in the `QueryCache`. The working copy is located at [https://aka.ms/portalfx/projection](https://aka.ms/portalfx/projection). 
+The  robots from the `QueryCache` are displayed on  a grid that is three columns wide. The `name` column and the `status` column are the same data as that of the model, but the third column is a combination of the model and manufacturer properties from the model object in the `QueryCache`. The working copy is located at [https://aka.ms/portalfx/projection](https://aka.ms/portalfx/projection). 
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
@@ -28,17 +28,17 @@ The interface for the shaped data to display in the grid is located at `<dir>\Cl
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#robotDetailsModel"}
 
-An initial implementation of data projection would resemble the following code.
+The initial implementation of [data projection](portalfx-extensions-glossary.md) would resemble the following code.
 
 <!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#buggyMapProjection"}
 
-The `robot.name()` contains the name of the robot, and `robot.model()` and `robot.manufacturer()` contain the model and manufacturer values. The `RobotDetails` interface that is used to model the data in the grid requires observables for the  `name` and `modelAndMfg` properties, therefore the strings that are received from the `QueryCache` model are put into a pair of observables. The `projectionId` and `_logMapFunctionRunning` methods are discussed in [](). 
+The `robot.name()` contains the name of the robot, and `robot.model()` and `robot.manufacturer()` respectively contain the model and manufacturer values. The `RobotDetails` interface that models the data in the grid requires observables for the  `name` and `modelAndMfg` properties, therefore they use the strings that are received from the `QueryCache` model. The `projectionId` and `_logMapFunctionRunning` methods are discussed in [](). 
 
-The reason that this implementation is somewhat buggy is demonstrated in the sample located at `<dir>\Client/V1/Data/Projection/Templates/UnderstandingMapAndMapInto.html` and in the working copy located at [https://aka.ms/portalfx/projection](https://aka.ms/portalfx/projection).  The grid can be configured with the buttons in the middle of the screen.  When the grid is configured  with different types of projections, the commands at the top of the screen can be used to add/remove/modify items in the data source.  The output window displays the results of the functions that were are run.
+The reason that this implementation is not extremely performant is demonstrated in the sample located at `<dir>\Client/V1/Data/Projection/Templates/UnderstandingMapAndMapInto.html` and in the working copy located at [https://aka.ms/portalfx/projection](https://aka.ms/portalfx/projection).  The grid is configured with the buttons in the middle of the screen.  When the grid is configured  with different types of projections, the commands at the top of the screen are used to add/remove/modify items in the data source.  The output window displays the results of the functions.
 
-1. When the blade opens, click on the **Buggy Map** button to load the grid with the data projection that was previously discussed. You should see something like the following be displayed in the **log stream** control at the bottom of the blade.
+1. When the blade opens, click on the **Buggy Map** button to load the grid with the data projection that was previously discussed. Something like the following is displayed in the **log stream** control at the bottom of the blade.
 
     ```
     Creating buggy map() projection
@@ -50,16 +50,18 @@ The reason that this implementation is somewhat buggy is demonstrated in the sam
 
     The projection was created and sent to the grid. Because there are four items in the `QueryCache`, the projection will run four times, once on each object. Every time the mapping function runs on an item in the grid, this sample creates a new ID for the resulting `RobotDetails` object.
 
-1. Activate the first line in the grid by clicking on it so that the child blade opens. You may need to scroll to view the grid and the child blade to the right.
+1. Activate the first line in the grid by clicking on it so that the child blade opens. You may need to scroll to the right to view the grid and the child blade.
 
-1. Click on the **update status** command at the top of the blade. This simulates the `QueryCache` getting an updated property value for that activated item, generally by polling the server. You will see that the status for the robot was updated but the child blade closed.  The activated item is still the same item in the `QueryCache`, because the name has not changed, but one of its properties has been updated.  The reason why this implementation is considered to be somewhat buggy is explained in the **log** at the bottom of the blade.
+1. Clicking on the **update status** command at the top of the blade simulates the `QueryCache` receiving a property value for the activated item. Typically, new property values are retrieved by polling the server. Whe the status is updated, the child blade closes and the new status for the robot is displayed.  The activated item is the same item in the `QueryCache`, because the name has not changed, but one of its properties has been updated.  
+
+The reason why this implementation is considered to be somewhat buggy is contained  in the **log** at the bottom of the blade.
 
     ```
     Updating robot status to 'processor' (robot='Bolt')
     Creating a projection (projection id=8, robot=Bolt)
     ```
 
-    After the status observable updates the map's projection, the function runs and computes a different projected item. The object with projectionId === 4 is gone and has been replaced with a new item with projectionId === 8. This is why the child blade closed. The item that was in the `selectableSet's` `activatedItems` observable array no longer exists in the grid's item list, because it has been replaced by an item with the same `name` and `modelAndMfg` but a new `status`.
+When the `status` observable updates the map's projection, the function runs and computes a different projected item. The object with "projectionId === 4" is gone and is replaced with a new item with "projectionId === 8" or some other value. Consequently, the child blade closed because its contents were based on the value of the  `status` observable. The object that was in the grid's item had a different status value, and it has  been replaced by an item with the same `name` and `modelAndMfg` but a new `status`. The previous  that was in the `selectableSet's` `activatedItems` observable array no longer exists in the grid's item list.
 
 #### How map() works
 

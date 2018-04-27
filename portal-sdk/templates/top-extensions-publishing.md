@@ -6,7 +6,7 @@ When an extension development team decides to make the extension publicly availa
 
 The Portal is deployed in four different environments: `dev`, `Dogfood`, `MPAC`, and `PROD`. The deployments are from four branches in the Portal repository. Pull requests are used to cherry-pick extension configurations from one branch to the next one by updating the configuration files that govern each environment. This document assumes that the extension has been completely developed and tested, and is ready to be moved to the next branch, as specified in [portalfx-extensions-branches.md](portalfx-extensions-branches.md). This document encompasses extension configuration files in the Portal repository; the source code for the extension is out of the scope of this document.
 
-As per the safe deployment mandate, all configuration changes are treated as code changes. Consequently, they use similar deployment processes. Changes that are checked in to the dev branch will be deployed in the following order: **Dogfood** -> **RC** -> **MPAC** -> **PROD** -> National Clouds (**BlackForest**, **FairFax**, and **Mooncake**).  The table in [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md) specifies the amount of time allowed to complete the deployment.
+As per the safe deployment mandate, all configuration changes are treated as code changes. Consequently, they use similar deployment processes. Changes that are checked in to the dev branch will be deployed in the following order: **Dogfood** -> **RC** -> **MPAC** -> **PROD** -> National Clouds (**BlackForest**, **FairFax**, and **Mooncake**).  The table in [top-extensions-svc-lvl-agreements.md](top-extensions-svc-lvl-agreements.md) specifies the amount of time allowed to complete the deployment.
 
 **NOTE**: If the pull requests are not sent in the above specified order of environments, or if the commit message for the extension has changed, then the extension will experience a unit test failure and the changes can be reverted without any notice to the developer.
 
@@ -91,4 +91,4 @@ These instructions can be used to submit pull requests for C# Test Framework imp
 1. You may or may not want to set up a new local git repository specifically for test framework improvements 
 1. The configuration files must be modified to match the test framework environment
 
-For more information about submitting improvements to the C# Test Framework, see [portalfx-extensions-csharp-test-framework-overview.md](portalfx-extensions-csharp-test-framework-overview.md).
+For more information about submitting improvements to the C# Test Framework, see [portalfx-extensions-csharp-test-publish.md](portalfx-extensions-csharp-test-publish.md).

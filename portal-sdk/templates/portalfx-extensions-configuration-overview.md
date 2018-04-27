@@ -132,7 +132,7 @@ Its options are as follows.
   
   For more information about enabling and disabling extensions, see [portalfx-extensions-configuration-procedure.md#managing-the-configuration-of-the-extension](portalfx-extensions-configuration-procedure.md#managing-the-configuration-of-the-extension).  
 
-  **NOTE**: If you disable your extension, you will need to add a future pull request to enable it later.  To get those changes deployed in a timely fashion and plan accordingly, see the [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md).
+  **NOTE**: If you disable your extension, you will need to add a future pull request to enable it later.  To get those changes deployed in a timely fashion and plan accordingly, see the [top-extensions-svc-lvl-agreements.md](top-extensions-svc-lvl-agreements.md).
 
 * **flightUris**: Optional.  The uri concatenated to a friendly name in order to flight traffic to another stamp, as in the following example.  
 
