@@ -35,9 +35,9 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 * [EV2 support for the Extension Hosting Service](http://top-level/hosting-service#ev2.md) - *Nuff said*
 
-* [Multi-column for essentials controls]() - *Better use of screen real estate*
+* [Multi-column for essentials controls](/portal-sdk/generated/) - *Better use of screen real estate*
 
-* [TreeView improvements]() - *Checkboxes, commands, and Load More / Virtualization*
+* [TreeView improvements](/portal-sdk/generated/) - *Checkboxes, commands, and Load More / Virtualization*
 
 ## Development guide
 
@@ -125,7 +125,7 @@ When using HTML and framework controls you have some control over styling. These
 
 * [Layout classes](/portal-sdk/generated/portalfx-blades-layout.md)
 
-* [Typography]()
+* [Typography](/portal-sdk/generated/top-style-guide-typography.md))
 
 * [Iconography](/portal-sdk/generated/top-style-guide-iconography.md)
 
@@ -145,7 +145,7 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 * [Adding your resource or service into the Browse menu](/portal-sdk/generated/top-extensions-browse.md)
 
-* [Common UX for Azure Resource Manager (ARM) based services]()
+* [Common UX for Azure Resource Manager (ARM) based services](/portal-sdk/generated/)
 
 [Ask about browse integration on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse)
 
@@ -155,11 +155,11 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 * [Context panes](/portal-sdk/generated/top-extensions-context-panes.md)
 
-* [Dialogs]()
+* [Dialogs](/portal-sdk/generated/)
 
-* [Notifications]()
+* [Notifications](/portal-sdk/generated/)
 
-* [Blade opening and communication between blades]()
+* [Blade opening and communication between blades](/portal-sdk/generated/)
 
 ### Loading and managing data
 
@@ -183,11 +183,11 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 ### Advanced development topics
 
-* [Memory management]()
+* [Memory management](/portal-sdk/generated/)
 
-* [Custom domains (e.g. aad.portal.azure.com)]()
+* [Custom domains (e.g. aad.portal.azure.com)](/portal-sdk/generated/)
 
-* [Sharing blades and parts across extensions]()
+* [Sharing blades and parts across extensions](/portal-sdk/generated/)
 
 ## Debugging
 
@@ -217,7 +217,7 @@ The Ibiza team provides limited testing support. Due to resource constraints the
 
 * [C# Test Framework (Open source)](/portal-sdk/generated/top-extensions-csharp-test-framework.md)
 
-* [Node.js Test Framework (Open source)]()
+* [Node.js Test Framework (Open source)](/portal-sdk/generated/)
 
 [Ask a test related question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test)
 
@@ -225,17 +225,17 @@ The Ibiza team provides limited testing support. Due to resource constraints the
 
 The Ibiza team collects standard telemetry for generic actions like blade opening and commmand execution. It also collects performance, reliability, and user feedback information that facilitate the operation of your extension. You can also write your own events via the telemetry system. Ibiza supports alerting for common operations scenarios.
 
-* [Portal telemetry overview]()
+* [Portal telemetry overview](/portal-sdk/generated/)
 
-* [Getting access to raw portal telemetry data]()
+* [Getting access to raw portal telemetry data](/portal-sdk/generated/)
 
-* [Consuming telemetry via pre-build Power BI dashboards]()
+* [Consuming telemetry via pre-built Power BI dashboards](/portal-sdk/generated/)
 
-* [Performance and reliability monitoring / alerting]()
+* [Performance and reliability monitoring / alerting](/portal-sdk/generated/)
 
-* [Collecting feedback from your users]()
+* [Collecting feedback from your users](/portal-sdk/generated/)
 
-* [Set up and verify telemetry logging from your extension]()
+* [Set up and verify telemetry logging from your extension](/portal-sdk/generated/)
 
 [Ask about telemetry on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-telemetry)
 
@@ -255,9 +255,9 @@ The Azure portal supports multiple languages and locales. You will need to local
 
 * [Localization overview and supported languages](/portal-sdk/generated/top-extensions-localization-globalization.md#understanding-localization)
 
-* [Setting up localization for your extension]()
+* [Setting up localization for your extension](/portal-sdk/generated/)
 
-* [Setting up localization for your gallery package]()
+* [Setting up localization for your gallery package](/portal-sdk/generated/)
 
 * [Testing localization with side-loading](/portal-sdk/generated/top-extensions-sideloading.md)
 
@@ -269,9 +269,9 @@ The Azure portal supports multiple languages and locales. You will need to local
 
 The Azure portal strives to meet high accessibility standards to ensure the product is accessible to to users of all levels of ability. There is regular testing and a process with SLAs for getting issues addressed quickly.
 
-* [Accessibility guidelines]()
+* [Accessibility guidelines](/portal-sdk/generated/)
 
-* [Accessibility testing and SLAs]()
+* [Accessibility testing and SLAs](/portal-sdk/generated/)
 
 [Ask about accessibility on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-accessibility)
 
@@ -294,13 +294,13 @@ The Ibiza team provides and operates a common extension hosting service that mak
 
 * [Onboarding your extension to the Extension Hosting Service](/portal-sdk/generated/portalfx-extensions-hosting-service-procedures.md)
 
-* [Validating extension registration with hosting service]()
+* [Validating extension registration with hosting service](/portal-sdk/generated/)
 
 * [Versioning your extension](/portal-sdk/generated/portalfx-extensions-versioning.md)
 
 * [Deploying your extension using Express V2 and the Hosting Service](/portal-sdk/generated/portalfx-extensions-hosting-service-advanced.md)
 
-* [SLA for registering extension with the Extension Hosting Service](/portal-sdk/generated/portalfx-extensions-svc-lvl-agreements.md)
+* [SLA for registering an extension with the Extension Hosting Service](/portal-sdk/generated/portalfx-extensions-svc-lvl-agreements.md)
 
 ### Custom extension deployment infrastructure
 
@@ -313,15 +313,15 @@ Extensions are required to be running a version of the Ibiza SDK that has been p
 
 * [Upgrading Ibiza NuGet packages](/portal-sdk/generated/top-extensions-nuget.md)
 
-* [Updating the C# test framework]()
+* [Updating the C# test framework](/portal-sdk/generated/top-extensions-csharp-test-framework.md)
 
-* [Updating the msportalfx-test framework]()
+* [Updating the msportalfx-test framework](/portal-sdk/generated/)
 
 ## Legacy features
 
 These features are supported, but have had no recent investment. No additional investment is planned. There are modern capabilities that should be used instead if you are developing new features.
 
-* [PDL based blades and parts]()
+* [PDL based blades and parts](/portal-sdk/generated/)
 
 * [Controls in the MsPortalFx namespace](/portal-sdk/generated/portalfx-extensions-samples-controls-deprecated.md)
 
