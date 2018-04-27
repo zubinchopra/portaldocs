@@ -11,7 +11,6 @@ Loading data is more easily accomplished with the following methods from the `Qu
 | [findCachedEntity](#the-findcachedentity-method) | Reusing loaded or cached data | `<dir>\Client\V1\ResourceTypes\Engine\EngineData.ts` |
 | [cachedAjax](#the-cachedajax-method) | Ignore redundant data  |  `<dir>\Client\V1\Data\SupplyData\SupplyData.ts` |
 
-
 <!-- TODO: Locate LoaderSampleData.ts or its replacement. -->
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
@@ -64,9 +63,9 @@ For most services, developers will make Ajax calls from the client to the server
 
 **NOTE**: One server-side API is ARM.
 
-When bootstrapping extensions, the portal will send a [JWT token](portalfx-extensions-glossary-data.md) to the extension. That same token can be included in the HTTP headers of a request to ARM, to provide end-to-end authentication. To make those authenticated calls, the Portal includes an API which performs Ajax requests, similar to the jQuery `$.ajax()` library named `MsPortalFx.Base.Net.ajax()`. If the extension uses a `DataCache` object,  this class is used by default. However, it can also be used independently, as in the example located at 
 <!-- TODO:  Determine whether LoaderSampleData.ts is still used or has been replaced.  It is no longer in <SDK>\\Extensions\SamplesExtension\Extension.  The closest match is  Client\V1\Data\SupplyData\Templates\SupplyDataInstructions.html -->
-`\Client\Data\Loader\LoaderSampleData.ts`.
+
+When bootstrapping extensions, the portal will send a [JWT token](portalfx-extensions-glossary-data.md) to the extension. That same token can be included in the HTTP headers of a request to ARM, to provide end-to-end authentication. To make those authenticated calls, the Portal includes an API which performs Ajax requests, similar to the jQuery `$.ajax()` library named `MsPortalFx.Base.Net.ajax()`. If the extension uses a `DataCache` object, this class is used by default. However, it can also be used independently, as in the example located at `<dir>\Client\Data\Loader\LoaderSampleData.ts`.
 
  This code is also included in the following example.
 
@@ -228,11 +227,8 @@ Actual Ajax Request
 * The request is always for a single resource named `https://management.azure.com/api/invoke`. All requests now go through this single endpoint, therefore a single preflight request is used for all subsequent requests.
 * The `x-ms-path-query` preserves the request for the original path segments, the query string, and the hash from the query cache.
 
-Within the Portal implementation itself, this optimization has been applied to the Hubs extension.
-
-<!-- TODO:  Determine whether the following sentence came from best practices and usabililty studies. -->
-
-The Azure team observed about 15% gains for the scenarios tested, which were  resources and resource-groups data loads with normal network latency. The benefits should be greater as latencies increase.
+<!-- TODO:  Determine whether the following came from best practices and usabililty studies. -->
+Within the Portal implementation itself, this optimization has been applied to the Hubs extension. The Azure team observed about 15% gains for the scenarios tested, which were  resources and resource-groups data loads with normal network latency. The benefits should be greater as latencies increase.
 
 ### The findCachedEntity method
 
@@ -240,11 +236,11 @@ The `findCachedEntity` option is used to locate data that was previously loaded 
   
 The `QueryCache` object, or resource list, contains a series of similar objects that are described by several attributes, or columns. Those columns should be loaded as entities from the `QueryCache` using the syntax `QueryCache<TEntity, ...>`.
 
-The `TEntity` attribute may have been sent to the view as a resource list, to give the user a series of information from which to select.
+The `TEntity` attribute may have been sent to the view as a resource list, to give the user a series of options from which to select.
 
-When the user activates a resource list item, the `EntityCache` object is used to access a row of data from the `QueryCache`, where the resource list item is the `TEntity` attribute.
+When the user activates a resource list item, the `EntityCache` object is used to access a row of data from the `QueryCache`, where the resource list item is the `TEntity` attribute. The row of data is the details for the resource list item.
 
-The resource list item details that can be displayed in the resource blade should be loaded as entities from the `EntityCache` object, using the syntax `EntityCache<TEntity, ...>`, where `TEntity` is the same attribute as the one in the `QueryCache` data cache call and represents the resource list item that the user activated.
+The row of data should be loaded as entities from the `EntityCache` object, using the syntax `EntityCache<TEntity, ...>`, where `TEntity` is the same attribute as the one in the `QueryCache` data cache call and represents the resource list item that the user activated. This row of data will be displayed in the child resource blade.
 
 An example of the  `findCachedEntity` option is in the following code.
 

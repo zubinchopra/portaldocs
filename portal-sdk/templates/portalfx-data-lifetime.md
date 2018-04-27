@@ -10,13 +10,13 @@ For more information on pureComputeds, see [portalfx-blades-viewmodel.md#the-ko.
 
 ### Child lifetime managers 
 
-The maximum amount of time that a child lifetime manager can exist is the lifetime of their parent.  However, they can be disposed before their parent is disposed. 
+The maximum amount of time that a child lifetime manager can exist is the lifetime of its parent.  However, they can be disposed before the parent is disposed. 
 
 When the developer is aware that extension child resources will have lifetimes that are shorter than that of the blade, a child lifetime manager can be created with the  `container.createChildLifetimeManager()` command, and sent to `ViewModel` constructors or whereever a lifetime manager object is needed. When the extension completes using those resources, the `dispose()` method can be explicitly called on the child lifetime manager. If the `dispose()` method is not called, the child lifetime manager will be disposed when its parent is disposed.
 
 <!-- TODO:  Determine whether the disposing of the  child lifetime manager  when its parent is disposed is implicit. -->
 
-In the following example, a data cache contains data. Each item is displayed as a row in a grid. A button is displayed separately in a section located below the grid. The `mapInto()` function is used to map the data cache items to the grid items, and to create a button and add it to the section.
+In the following example, a data cache already contains data. Each item is displayed as a row in a grid. A button is displayed in a section below the grid. The `mapInto()` function maps specific data cache items to the view grid items, and creates the button to add to the section.  The `itemLifetime` child lifetime manager is automatically created by the `mapInto()` function.
 
 ```ts
 let gridItems = this._view.items.mapInto(container, (itemLifetime, item) => {
@@ -29,11 +29,7 @@ let gridItems = this._view.items.mapInto(container, (itemLifetime, item) => {
 });
 ```
 
-In this example, whereever the value of an observable is read in the mapping function, it is  wrapped in a `ko.pureComputed`. For more information about this, see [portalfx-data-projections.md#data-shaping](portalfx-data-projections.md#data-shaping).
-
-In addition, the `itemLifetime` child lifetime manager that was automatically created by the `mapInto()` function was sent to the mapping function as a parameter, instead of sending the `container` into the button constructor.
-
-In the case of `map()` and `mapInto()`, the item lifetime manager will be disposed when the associated object is removed from the source array. In the previous example, this means the button `ViewModel` will be disposed at the correct time, but it will still be in the section because the button has not been removed from the section's `children()` array. 
+In this example, when the value of an observable is read in the mapping function, it is wrapped in a `ko.pureComputed`. The `itemLifetime` child lifetime manager was sent to the mapping function as a parameter, instead of sending the `container` into the button constructor. It will be disposed when the associated object is removed from the source array. This means the button `ViewModel` will be disposed at the correct time, but it will still be in the section because the button has not been removed from the section's `children()` array. 
 
 Fortunately, callbacks can be registered with the lifetime manager to use when it is disposed by using the `registerForDispose` command, as in the following example.
 
@@ -50,3 +46,5 @@ let gridItems = this._view.items.mapInto(container, (itemLifetime, item) => {
 ```
 
 Consequently, the `mapInto` function is working as expected, by using the child lifetime manager and the `registerForDispose` command.
+
+ For more information about selecting specific data cache items, see [portalfx-data-projections.md#data-shaping](portalfx-data-projections.md#data-shaping).
