@@ -7,9 +7,9 @@ The following list of data subtopics follows the Model-View-View-Model methodolo
 
 | Type                             | Document                                                                     | Description |
 | -------------------------------- | ---------------------------------------------------------------------------- | ---- |
-| Data Modeling and Organization   | [portalfx-data-modeling.md](portalfx-data-modeling.md)                       | The data model for the extension project source. | 
-| The Data Cache Object            | [portalfx-data-caching.md](portalfx-data-caching.md)                         | Caching data from the server |
-| The Data View Object             | [portalfx-data-views.md](portalfx-data-views.md)                             | Presenting data to the ViewModel | 
+| Data Modeling and Organization   | [top-extensions-data-modeling.md](top-extensions-data-modeling.md)                       | The data model for the extension project source. | 
+| The Data Cache Object            | [top-extensions-data-caching.md](top-extensions-data-caching.md)                         | Caching data from the server |
+| The Data View Object             | [top-extensions-data-views.md](top-extensions-data-views.md)                             | Presenting data to the ViewModel | 
 | The Browse Sample | [portalfx-data-masterdetailsbrowse.md](portalfx-data-masterdetailsbrowse.md) | Extension that allows a user to select a Website from a list of websites, using the QueryCache-EntityCache data models | 
 |  Loading Data | [portalfx-data-loading.md](portalfx-data-loading.md) | `QueryCache` and `EntityCache` methods that request data from servers and other sources  | 
 | Child Lifetime Managers  | [portalfx-data-lifetime.md](portalfx-data-lifetime.md) | Fine-grained memory management that allows resources to be destroyed previous to the closing of the blade. | 
@@ -21,11 +21,11 @@ The following list of data subtopics follows the Model-View-View-Model methodolo
 
 * * * 
 
-    {"gitdown": "include-file", "file": "../templates/portalfx-data-modeling.md"}
+    {"gitdown": "include-file", "file": "../templates/top-extensions-data-modeling.md"}
 
-   {"gitdown": "include-file", "file": "../templates/portalfx-data-caching.md"}
+   {"gitdown": "include-file", "file": "../templates/top-extensions-caching.md"}
 
-   {"gitdown": "include-file", "file": "../templates/portalfx-data-views.md"}
+   {"gitdown": "include-file", "file": "../templates/top-extensions-data-views.md"}
 
 <!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
