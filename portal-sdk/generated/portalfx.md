@@ -16,8 +16,9 @@ Ready to grow your business?
 
 <a name="home"></a>
 # Home
-<a name="home-onboard-ibiza-portal-sdk-generated-index-portalfx-extension-onboarding-md"></a>
-## <a href="/portal-sdk/generated/index-portalfx-extension-onboarding.md">Onboard Ibiza</a>
+<a name="home-onboard-ibiza-top-onboarding-md"></a>
+## <a href="top-onboarding.md">Onboard Ibiza</a>
+
 [portalfx-extensions-onboarding.md](portalfx-extensions-onboarding.md)
 <!-- TODO:  deprecate the previous section of this document by removing it.  It has been  replaced by portalfx-extensions-architecture-overview.md -->
 
@@ -26,17 +27,18 @@ Ready to grow your business?
 
 1. [Downloads](/portal-sdk/generated/downloads.md), [Release Notes](/portal-sdk/generated/release-notes.md), [Breaking Changes](/portal-sdk/generated/breaking-changes.md)
 1. [Development](portalfx-extension-development.md)
-1. [Style Guide](portalfx-style-guide.md)
+1. [Style Guide]([top-extensions-style-guide.md)
 1. [Test](portalfx-extension-test.md)
 1. [Telemetry / Performance / Reliability](portalfx-extension-monitor.md) 
 1. [Deploy](portalfx-extension-deployment.md)
-1. [Localization / Globalization](portalfx-extension-localization-globalization.md)
+1. [Localization / Globalization](portalfx-localization-globalization.md)
 1. [Accessibility](portalfx-extension-accessibility.md)
 1. [Sharing PDE](portalfx-extension-sharing-pde.md)
 1. [Notifying your customers what's new](portalfx-extension-posting-whats-new-notification.md)
 
 Feeling Lost? Reach out to Community: [Stackoverflow](portalfx-stackoverflow.md)
 
+<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by readme.md -->
 <a name="marketplace-gallery-developer-resources"></a>
 # Marketplace/Gallery Developer Resources
 
@@ -51,7 +53,6 @@ Feeling Lost? Reach out to Community: [Stackoverflow](portalfx-stackoverflow.md)
 1. [Developer tooling and productivity](/gallery-sdk/generated/index-gallery.md#developer-tooling-and-productivity)
 1. [Gallery Frequently Asked Questions](/gallery-sdk/generated/index-gallery.md#gallery-frequently-asked-questions)
 
-<!-- TODO:  deprecate the following  section of this document by removing it.  It has been  replaced by readme.md -->
 <a name="code-of-conduct"></a>
 # Code of Conduct
 

@@ -12,7 +12,7 @@ To create a test project that can use the Portal Test Framework, use the followi
 
 1. Add an `app.config` file to your test project and define the basic Test Framework settings under appSettings, as in the following example.
 
-   ```xml
+```xml
 
 <appSettings>
   <!-- Browser type. "Chrome", "IE" -->
@@ -36,6 +36,7 @@ To create a test project that can use the Portal Test Framework, use the followi
 
 1. Add a new Unit Test class and start writing your test case.
 
+<a name="navigating-to-the-portal"></a>
 ### Navigating to the Portal
 
 To navigate to the Portal, the extension supplies the Portal's uri.  We recommend setting the value in the `app.config` file as shown in [Creating the Test Project](#creating-the-test-project).  After the extension has the Portal uri, it can use the **WebDriverFactory.Create** method to create an instance of the `WebDriver` object and then use the **PortalAuthentication** class to login and navigate to the Portal in the browser, as in the following example.
@@ -70,8 +71,7 @@ portalAuth.SignInAndSkipPostValidation(userName: "", /** The account login to us
 
 For more information about handling credentials, see [Managing authentication credentials](#Managing authentication credentials).
 
-<a name="side-loading-an-extension"></a>
-### Side-loading An Extension
+### Side-loading An Extension 
 
 The Portal provides options for side-loading an extension for testing. To side-load an  extension on a `localhost` you can set a query string. To side-load a deployed extension, you can set the appropriate query strings and execute the `registerTestExtension` function.  For more information, see [top-extensions-sideloading.md](top-extensions-sideloading.md).
 

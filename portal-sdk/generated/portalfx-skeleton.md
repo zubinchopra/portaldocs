@@ -34,7 +34,7 @@ This is the only document within the topic that contains an H1-level header.
    * portalfx-stackoverflow.md
    * portalfx-extensions-status-codes.md
 
-1. Subtopics that occur within topics, like overviews or procedures, will always use that word as the last node within the filename.  Subtopics that are specific to a topic are self-naming, in one or two words. The last node of the file is the name of the subtopic, and is used to sort subtopics within the topic. Some filenames are `portalfx-telemetry-alerting-overview.md`, `portalfx-data-overview.md`, `portalfx-telemetry-alerting-performance.md` or `portalfx-style-guide-utility-classes.md`. 
+1. Subtopics that occur within topics, like overviews or procedures, will always use that word as the last node within the filename.  Subtopics that are specific to a topic are self-naming, in one or two words. The last node of the file is the name of the subtopic, and is used to sort subtopics within the topic. Some filenames are `portalfx-telemetry-alerting-overview.md`, `portalfx-data-modeling.md`, `portalfx-telemetry-alerting-performance.md` or `portalfx-style-guide-utility-classes.md`. 
 
 1. Best Practices, FAQ's, and glossaries use a slightly different naming convention, in that they are named `portalfx-extensions-bp-<major-area>`,  `portalfx-extensions-faq-<major-area>`, `portalfx-extensions-glossary-<major-area>`, respectively.
 
@@ -168,7 +168,7 @@ Each best practice section ends with three asterisks, as in '* * *', to include 
 <a name="skeleton-best-practices-onebox-stb-has-been-deprecated"></a>
 ### Onebox-stb has been deprecated
 
-Onebox-stb is no longer available. Please do not use it. Instead, migrate extensions to sideloading. For more information about sideloading, see [portalfx-extensions-testing-in-production-overview.md#sideloading](portalfx-extensions-testing-in-production-overview.md#sideloading).
+Onebox-stb is no longer available. Please do not use it. Instead, migrate extensions to sideloading. For more information about sideloading, see [portalfx-extensions-production-testing-overview.md#sideloading](portalfx-extensions-production-testing-overview.md#sideloading).
 
 For help on migration, reach out to <a href="mailto:ibiza-onboarding@microsoft.com?subject=Help on Migration">Ibiza Onboarding</a>.
 
