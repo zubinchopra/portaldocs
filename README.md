@@ -310,7 +310,7 @@ The Ibiza team provides and operates a common extension hosting service that mak
 
 ### Custom extension deployment infrastructure
 
-You should strive to use the Extension hosting service. If for some reason this is not possible then [learn how to build a custom extension deployment infrastructure](/portal-sdk/generated/top-extensions-custom-deployment.md).
+You should strive to use the Extension hosting service. If for some reason this is not possible then [learn how to build a custom extension deployment infrastructure](/portal-sdk/generated/portalfx-extensions-custom-deployment.md).
 
 ## Upgrading the Ibiza SDK
 
