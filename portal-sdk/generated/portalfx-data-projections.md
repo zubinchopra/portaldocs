@@ -26,6 +26,8 @@ Each robot is entered into a grid with three columns. The `name` column and the 
 
 The interface for the shaped data to display in the grid is located at `<dir>\Client\V1\Data\Projection\ViewModels\MapAndMapIntoViewModels.ts`. This code is also included in the following example.
 
+<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
+
 ```typescript
 
 /**
@@ -40,6 +42,8 @@ export interface RobotDetails {
 ```
 
 An initial implementation of data projection would resemble the following code.
+
+<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
 ```typescript
 
@@ -126,23 +130,61 @@ This prevents the map() from taking a dependency on `robot.model()` and `robot.m
 
 A correct implemenation of the map above then looks like (again ignore uuid and the logging functions):
 
-<!--
-gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#properMapProjection"}
--->
+```typescript
+
+var projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+    var projectionId = this._uuid++;
+    this._logMapFunctionRunning(projectionId, robot);
+    return <RobotDetails>{
+        name: robot.name,
+        status: robot.status,
+        modelAndMfg: ko.pureComputed(() => {
+            this._logComputedRecalculating(projectionId, robot);
+            return "{0}:{1}".format(robot.model(), robot.manufacturer());
+        })
+    };
+});
+
+```
 
 You can click on the 'Proper map' button in the sample and perform the same actions to see the difference. Now updating a property on the opened grid item no longer results in a rerunning of your map function. Instead changes to `status` are pushed directly to the DOM and changes to `model` cause the pureComputed to recalculate but importantly __do not change the object in grid.items()__.
 
 Now that you understand how `map()` works we can introduce `mapInto()`. Here's the code the same projection implemented with mapInto():
 
-<!--
-  gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#properMapIntoProjection"}
--->
+
+  ```typescript
+
+var projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+    var projectionId = this._uuid++;
+    this._logMapFunctionRunning(projectionId, robot);
+    return <RobotDetails>{
+        name: robot.name,
+        status: robot.status,
+        modelAndMfg: ko.pureComputed(() => {
+            this._logComputedRecalculating(projectionId, robot);
+            return "{0}:{1}".format(robot.model(), robot.manufacturer());
+        })
+    };
+});
+
+```
+
 
 You can see how it reacts by clicking on the 'Proper mapInto' button and then add/remove/update the items. The code and behavior are the exact same. So how are map() and mapInto() different? We can see with a buggy implementation of a projection using mapInto():
 
-<!--
-gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#buggyMapIntoProjection"}
--->
+```typescript
+
+var projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+    var projectionId = this._uuid++;
+    this._logMapFunctionRunning(projectionId, robot);
+    return <RobotDetails>{
+        name: ko.observable(robot.name()),
+        status: ko.observable(robot.status()),
+        modelAndMfg: ko.observable("{0}:{1}".format(robot.model(), robot.manufacturer()))
+    };
+});
+
+```
 
 This is the same as our buggy implementation of map() we wrote earlier. Click the 'Buggy mapInto' button and then play around with updating status() and model() of the top row while that row is activated. You'll notice, unlike map(), that the child blade doesn't close however you'll also notice that when the source data in the QueryCache changes __the observable changes are not present in the projected object__. The reason for this is mapInto() ignores any observables that use in the mapping function you supply. It is therefore guaranteed that a projected item will stay the same item as long as the source item is around but if you write your map incorrectly it isn't guaranteed the projected data is update to date.
 
@@ -155,7 +197,6 @@ mapInto() | No | Yes
 
 However if the projection is done correctly both functions should work identically.
 
-<a name="data-shaping-using-knockout-projections"></a>
 ### Using Knockout projections
 
 In many cases extension authors will want to shape and filter data as it is loaded via QueryView and EntityView.
@@ -166,12 +207,30 @@ The samples extension includes an example of using a __projected array__ to bind
 
 `\Client\Data\Projection\ViewModels\ProjectionBladeViewModel.ts`
 
-<!--
-gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/ProjectionBladeViewModel.ts", "section": "data#mapExample"}
--->
+```typescript
 
-<a name="data-shaping-chaining-uses-of-map-and-filter"></a>
-### Chaining uses of <code>map</code> and <code>filter</code>
+this._view = dataContext.robotData.robotsQuery.createView(container);
+
+// As items are added or removed from the underlying items array,
+// individual changed items will be re-evaluated to create the computed
+// value in the resulting observable array.
+var projectedItems = this._view.items.mapInto<RobotDetails>(container, (itemLifetime, robot) => {
+    return <RobotDetails>{
+        name: robot.name,
+        computedName: ko.pureComputed(() => {
+            return "{0}:{1}".format(robot.model(), robot.manufacturer());
+        })
+    };
+});
+
+this.grid = new Grid.ViewModel<RobotDetails, string>(
+    container,
+    projectedItems,
+    Grid.Extensions.SelectableRow);
+
+```
+
+### Chaining uses of `map` and `filter`
 
 Often, it is convenient to chain uses of `map` and `filter`:
 <!-- the below code no longer lives in samples extension anywhere -->
@@ -195,7 +254,6 @@ container.registerForDispose(projectedItems.subscribe(personItems));
 
 This filters to only Lumia 520 owners and then maps to just the columns the grid uses.  Additional pipeline stages can be added with more map/filters/computeds to do more complex projections and filtering.
 
-<a name="data-shaping-anti-patterns-and-best-practices"></a>
 ### Anti-patterns and best practices
 
 **Do not** unwrap observables directly in your mapping function - When returning a new object from the function supplied to `map`, you should **avoid unwrapping observables** directly in the mapping function, illustrated by `computedName` here:
@@ -220,7 +278,7 @@ The `computedName` property above is the source of a common bug where **"my grid
 * **Reuse observables from the input object** - Above, the `name` property above simply reuses - in the projected output object - an observable *from the input object*
 * **Use `ko.computed()` for new, computed properties** - The `computedName` property above uses a Knockout `computed` and unwraps observables *in the function defining the `computed`*.  With this, only the `computedName` property is recomputed when the input `robot` object changes.
 
-**Do** use `map` and `filter` to reduce the size of the data you are binding to a control - See [Use map and filter to reduce size of rendered data](/portal-sdk/generated/index-portalfx-extension-monitor.md#use-map-and-filter-to-reduce-size-of-rendered-data).
+**Do** use `map` and `filter` to reduce the size of the data you are binding to a control - See "Use map and filter to reduce size of rendered data".
 
 **Do not** use `subscribe` to project\shape data - An extreme anti-pattern would be to not use `map` at all when projecting/shaping data for use in controls:
 

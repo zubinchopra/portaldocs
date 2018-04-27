@@ -7,7 +7,7 @@ There are some scenarios that call for more fine-grained memory management wWhen
 
 **NOTE**: The  `pureComputed()` method does not use a lifetime manager because it already uses memory as efficiently as possible.  This is by design, therefore it is good practice to use it. Generally, any `computed` the extension creates in a `map()` should be a `pureComputed()` method, instead of a `ko.reactor` method.
 
-For more information on pureComputeds, see [portalfx-blade-viewmodel.md#data-pureComputed](portalfx-blade-viewmodel.md#data-pureComputed).
+For more information on pureComputeds, see [portalfx-blades-viewmodel.md#the-ko.pureComputed method](portalfx-blades-viewmodel.md#the-ko.pureComputed-method).
 
 <a name="lifetime-manager-child-lifetime-managers"></a>
 ### Child lifetime managers
@@ -35,7 +35,7 @@ In this example, whereever the value of an observable is read in the mapping fun
 
 In addition, the `itemLifetime` child lifetime manager that was automatically created by the `mapInto()` function was sent to the mapping function as a parameter, instead of sending the `container` into the button constructor.
 
-In the case of `map()` and `mapInto()`, the item lifetime manager will be disposed when the associated object is removed from the source array. In the previous example, this means the button `ViewModel` will be disposed at the correct time, but the now disposed button `ViewModel` will still be in the Section. The button has not been removed from the section's `children()` array. 
+In the case of `map()` and `mapInto()`, the item lifetime manager will be disposed when the associated object is removed from the source array. In the previous example, this means the button `ViewModel` will be disposed at the correct time, but it will still be in the section because the button has not been removed from the section's `children()` array. 
 
 Fortunately, callbacks can be registered with the lifetime manager to use when it is disposed by using the `registerForDispose` command, as in the following example.
 

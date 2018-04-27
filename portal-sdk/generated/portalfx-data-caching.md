@@ -26,7 +26,9 @@ Use the following steps to create a blade or part that uses the `DataCache` clas
 
 1. In a `DataContext`, the extension creates and configures `DataCache` instances. Configuring the instance specifies how to load data when it is missing from the cache and how to implicitly refresh cached data, to keep it consistent with the server state. The following `WebsiteQuery` example includes a constructor for a Website extension that creates a data cache. The code is also located at `<dir>Client\V1\Data\MasterDetailBrowse\MasterDetailBrowseData.ts`.
 
-```typescript
+<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
+
+ ```typescript
 
 this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataModels.WebsiteModel, number>({
     entityTypeName: SamplesExtension.DataModels.WebsiteModelType,
@@ -43,7 +45,9 @@ this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataMode
 
 2. Each blade and part `ViewModel` creates a `DataView` in its constructor, so that it can load and refresh data for the blade or part.
 
-```typescript
+<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
+
+ ```typescript
 
 this._websiteEntityView = dataContext.websiteEntities.createView(container);
 
@@ -51,7 +55,9 @@ this._websiteEntityView = dataContext.websiteEntities.createView(container);
 
 3. When the blade or part `ViewModel` receives its parameters in the `onInputsSet` method, the `ViewModel` calls the  `dataView.fetch()` method to load data.
 
-```typescript
+<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
+
+ ```typescript
 
 /**
  * Invoked when the blade's inputs change
@@ -62,7 +68,6 @@ public onInputsSet(inputs: Def.BrowseMasterListViewModel.InputsContract): MsPort
 
 ```
   
-<a name="the-datacache-class-the-querycache"></a>
 ### The QueryCache
 
 The `QueryCache` object is used to query for a collection of data or cache a list of items. It is useful for loading data for list-like views like Grid, List, Tree, or Chart. It takes a generic parameter for the type of object stored in its cache, and a type for the object that defines the query. It loads data of type `Array<T>` according to an extension-specified `TQuery` type.
@@ -107,7 +112,6 @@ public websitesQuery = new MsPortalFx.Data.QueryCache<DataModels.WebsiteModel, W
 });
 ```
 
-<a name="the-datacache-class-entitycache"></a>
 ### EntityCache
  
 The `EntityCache` object can be used to cache a single item.  It is useful for loading data into property views and single-record views. 
@@ -116,7 +120,9 @@ The `EntityCache` object can be used to cache a single item.  It is useful for l
 
 It accepts data of type `T` according to some extension-specified `TId` type. This specifies the type for the object that defines the query, as in the `WebsiteQuery` example located at `<dir>Client/V1/MasterDetail/MasterDetailArea.ts`. This code is also included in the following example.
 
-```typescript
+<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
+
+ ```typescript
 
 this.websiteEntities = new EntityCache<WebsiteModel, number>({
     entityTypeName: SamplesExtension.DataModels.WebsiteModelType,
@@ -153,4 +159,4 @@ When an EntityCache is instantiated, three elements are specified.
 <a name="the-datacache-class-editscopecache"></a>
 ### EditScopeCache
 
-The `EditScopeCache` class is less commonly used. It loads and manages instances of `EditScope`, which is a change-tracked, editable model for use in Forms, as specified in [portalfx-legacy-editscopes.md](portalfx-legacy-editscopes.md).  
+The `EditScopeCache` class is less commonly used. It loads and manages instances of `EditScope`, which is a change-tracked, editable model for use in Forms.

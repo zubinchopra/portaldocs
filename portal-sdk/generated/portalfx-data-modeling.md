@@ -18,6 +18,10 @@ The following sections discuss these patterns and how to apply them to an extens
 
     * Memory management with [data views](#data-views)
 
+* **Combining code organization and data management**
+
+ * [Developing a DataContext for an area](#developing-a-datacontext-for-an-area)
+
 All of these data concepts are used to achieve the goals of loading and updating extension data, in addition to efficient memory management. For more information about how the pieces fit together and how the resulting construct relates to the conventional MVVM pattern, see the [Data Architecture](https://auxdocs.blob.core.windows.net/media/DataArchitecture.pptx) video that discusses extension blades and parts.
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
@@ -46,7 +50,9 @@ For each area in an extension, there is a singleton `DataContext` instance that 
 
 When a blade or part `ViewModel` is instantiated, its constructor is sent a reference to the `DataContext` singleton instance for the associated extension area.   The `ViewModel` accesses the data required by that blade or part in its constructor, as in the code located at `<dir>/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/MasterViewModels.ts`.  The code is also in the following example.
 
-```typescript
+<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
+
+ ```typescript
 
 constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: MasterDetailArea.DataContext) {
     super();
@@ -78,7 +84,6 @@ The benefits of centralizing data access in a singleton `DataContext` include th
 
    For more information on refreshing data, see [portalfx-data-refreshingdata.md](portalfx-data-refreshingdata.md).
 
-<a name="overview-data-caches"></a>
 ### Data caches
  
   The `DataCache` classes are a full-featured and convenient way to load and cache data required by blade and part `ViewModels`. The `DataCache` class objects in the API are `QueryCache`, `EntityCache` and the `EditScopeCache`. 
@@ -93,13 +98,12 @@ The benefits of centralizing data access in a singleton `DataContext` include th
 
 * EditScopeCache
 
-  The `EditScopeCache` class is less commonly used. It loads and manages instances of `EditScope`, which is a change-tracked, editable model for use in Forms, as specified in [portalfx-legacy-editscopes.md](portalfx-legacy-editscopes.md).
+  The `EditScopeCache` class is less commonly used. It loads and manages instances of `EditScope`, which is a change-tracked, editable model for use in Forms.
   
  * `DataCache` class methods
 
   The `DataCache` objects use the CRUD methods: Create, Replace, Update, and Delete. Commands for blades and parts often use these methods to modify server data. These commands are implemented in methods on the `DataContext` class, where each method can issue **AJAX** calls to the server and reflect data changes in associated DataCaches. For more information about sharnig  data across the parent and child blades, see  [portalfx-data-masterdetailsbrowse.md](portalfx-data-masterdetailsbrowse.md).
 
-<a name="overview-data-views"></a>
 ### Data views
 
 `DataCaches` in the `DataContext` of an `area` will exist in memory for as long as an extension is loaded, and consequently may support blades and parts that come and go as the user navigates in the Azure Portal.  Memory management becomes important, because memory overuse by many extensions or blades simultaneously can impact responsiveness. Consequently, each `DataCache` instance manages a set of [cache entries](portalfx-extensions-glossary-data.md), and the `DataCache` class includes  mechanisms to automatically manage the number of cache entries present at any given time. 
@@ -108,12 +112,13 @@ The data in the `DataCache`, and therefore the `DataContext`, is impacted by the
 
 The `DataCache` manages its size automatically, without explicit code in the extension source, by using the `DataView` to track the ref-counts to cache entries. When every blade or part `ViewModel` that holds a ref-count to a specific cache entry is disposed indirectly by using `DataView`, the `DataCache` can elect to discard the cache entry. 
 
-<a name="overview-developing-a-datacontext-for-an-area"></a>
 ### Developing a DataContext for an area
 
 The `DataContext` class does not specify the use of any single FX base class or interface. In practice, the members of a `DataContext` class typically include [data caches](#data-caches) and [data views](#data-views).
 
 Typically, the `DataContext` associated with a particular area is instantiated from the `initialize()` method of `<dir>\Client\Program.ts`, which is the entry point of the extension, as in the following example.
+
+<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
 ```typescript
 
@@ -124,6 +129,8 @@ this.viewModelFactories.V1$MasterDetail().setDataContextFactory<typeof MasterDet
 ```
 
 There is a single `DataContext` class per area. That class is named `<AreaName>Area.ts`, as in the code located at  `<dir>\Client\V1\MasterDetail\MasterDetailArea.ts` and in the following example.
+
+<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
 ```typescript
 
