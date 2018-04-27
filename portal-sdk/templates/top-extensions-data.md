@@ -1,14 +1,31 @@
 
 # Working with data
 
-    {"gitdown": "include-file", "file": "../templates/portalfx-data-overview.md"}
+  ## Overview
+
+The following list of data subtopics follows the Model-View-View-Model methodology.
+
+| Type                             | Document                                                                     | Description |
+| -------------------------------- | ---------------------------------------------------------------------------- | ---- |
+| Data Modeling and Organization   | [portalfx-data-modeling.md](portalfx-data-modeling.md)                       | The data model for the extension project source. | 
+| The Data Cache Object            | [portalfx-data-caching.md](portalfx-data-caching.md)                         | Caching data from the server |
+| The Data View Object             | [portalfx-data-views.md](portalfx-data-views.md)                             | Presenting data to the ViewModel | 
+| The Master-Details Browse Sample | [portalfx-data-masterdetailsbrowse.md](portalfx-data-masterdetailsbrowse.md) | Extension that allows a user to select a Website from a list of websites, using the QueryCache-EntityCache data models | 
+|   | [portalfx-data-loadingdata.md](portalfx-data-loadingdata.md) |  | 
+|   | [portalfx-data-lifetime.md](portalfx-data-lifetime.md) |  | 
+|   | [portalfx-data-projections.md](portalfx-data-projections.md) |  | 
+|   | [portalfx-data-refreshingdata.md](portalfx-data-refreshingdata.md) |  | 
+|   | [portalfx-data-virtualizedgriddata.md](portalfx-data-virtualizedgriddata.md) |  | 
+|   | [portalfx-data-typemetadata.md](portalfx-data-typemetadata.md) |  | 
+|   | [top-extensions-data-atomization.md](top-extensions-data-atomization.md) |  | 
+
+* * * 
 
     {"gitdown": "include-file", "file": "../templates/portalfx-data-modeling.md"}
 
    {"gitdown": "include-file", "file": "../templates/portalfx-data-caching.md"}
 
-   {"gitdown": "include-file", "file": "../templates/portalfx-data-dataviews.md"}
-
+   {"gitdown": "include-file", "file": "../templates/portalfx-data-views.md"}
 
 <!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
@@ -38,11 +55,7 @@
 
    {"gitdown": "include-file", "file": "../templates/portalfx-data-typemetadata.md"}
 
-# Advanced data topics
-
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
-
-   {"gitdown": "include-file", "file": "../templates/portalfx-data-atomization.md"}
+   {"gitdown": "include-file", "file": "../templates/top-extensions-data-atomization.md"}
 
    {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-data.md"}
 

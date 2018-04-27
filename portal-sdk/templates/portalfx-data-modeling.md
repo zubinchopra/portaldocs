@@ -17,6 +17,10 @@ The following sections discuss these patterns and how to apply them to an extens
 
     * Memory management with [data views](#data-views)
 
+* **Combining code organization and data management**
+
+ * [Developing a DataContext for an area](#developing-a-datacontext-for-an-area)
+
 All of these data concepts are used to achieve the goals of loading and updating extension data, in addition to efficient memory management. For more information about how the pieces fit together and how the resulting construct relates to the conventional MVVM pattern, see the [Data Architecture](https://auxdocs.blob.core.windows.net/media/DataArchitecture.pptx) video that discusses extension blades and parts.
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
