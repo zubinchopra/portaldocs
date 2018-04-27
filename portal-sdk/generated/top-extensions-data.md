@@ -8,9 +8,9 @@ The following list of data subtopics follows the Model-View-View-Model methodolo
 
 | Type                             | Document                                                                     | Description |
 | -------------------------------- | ---------------------------------------------------------------------------- | ---- |
-| Data Modeling and Organization   | [portalfx-data-modeling.md](portalfx-data-modeling.md)                       | The data model for the extension project source. | 
-| The Data Cache Object            | [portalfx-data-caching.md](portalfx-data-caching.md)                         | Caching data from the server |
-| The Data View Object             | [portalfx-data-views.md](portalfx-data-views.md)                             | Presenting data to the ViewModel | 
+| Data Modeling and Organization   | [top-extensions-data-modeling.md](top-extensions-data-modeling.md)                       | The data model for the extension project source. | 
+| The Data Cache Object            | [top-extensions-data-caching.md](top-extensions-data-caching.md)                         | Caching data from the server |
+| The Data View Object             | [top-extensions-data-views.md](top-extensions-data-views.md)                             | Presenting data to the ViewModel | 
 | The Browse Sample | [portalfx-data-masterdetailsbrowse.md](portalfx-data-masterdetailsbrowse.md) | Extension that allows a user to select a Website from a list of websites, using the QueryCache-EntityCache data models | 
 |  Loading Data | [portalfx-data-loading.md](portalfx-data-loading.md) | `QueryCache` and `EntityCache` methods that request data from servers and other sources  | 
 | Child Lifetime Managers  | [portalfx-data-lifetime.md](portalfx-data-lifetime.md) | Fine-grained memory management that allows resources to be destroyed previous to the closing of the blade. | 
@@ -182,167 +182,6 @@ export class DataContext {
 
 
    
-## The DataCache class
-
-The cache objects are a collection of cache entries. In extensions that use multiple active blades and parts, a specific cache object might contain many cache entries.  This means that multiple parts or services can rely on the same set of data. For queries, this may be a list of results, whereas for a details blade, it may be a single entity. In either case, it is critical to ensure that all parts that share a specific set of data perform the following actions.
-
-1. Use a single HTTP request to access that data
-1. Read from a single cache of data in memory
-1. Release that data from memory when it is no longer required
-
-These are all features that the `DataCache` class provides. The Azure Portal `MsPortalFx.Data` class objects are `QueryCache`, `EntityCache` and the `EditScopeCache`. The `DataCache` classes all share the same API. 
-
-<!--TODO: Determine whether it is more accurate to say the following sentence.
-The `DataCache` objects all share the same class within the API.   -->
-  
-They are a full-featured way of loading and caching data used by blade and part `ViewModels`.  The `QueryCache` object queries for a collection of data, whereas the `EntityCache` object loads an individual entity. 
- 
-### Using the DataCache class
-
-Use the following steps to create a blade or part that uses the `DataCache` class. 
-
-**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and `<dirParent>` is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
-
-<!-- TODO:  Determine whether there is a better sample that illustrates the points in the content, specifically the load and refresh points. -->
-
-1. In a `DataContext`, the extension creates and configures `DataCache` instances. Configuring the instance specifies how to load data when it is missing from the cache and how to implicitly refresh cached data, to keep it consistent with the server state. The following `WebsiteQuery` example includes a constructor for a Website extension that creates a data cache. The code is also located at `<dir>Client\V1\Data\MasterDetailBrowse\MasterDetailBrowseData.ts`.
-
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
-
- ```typescript
-
-this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataModels.WebsiteModel, number>({
-    entityTypeName: SamplesExtension.DataModels.WebsiteModelType,
-    sourceUri: MsPortalFx.Data.uriFormatter(Util.appendSessionId(DataShared.websiteByIdUri), true),
-    findCachedEntity: {
-        queryCache: this.websitesQuery,
-        entityMatchesId: (website, id) => {
-            return website.id() === id;
-        }
-    }
-});
-
-``` 
-
-2. Each blade and part `ViewModel` creates a `DataView` in its constructor, so that it can load and refresh data for the blade or part.
-
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
-
- ```typescript
-
-this._websiteEntityView = dataContext.websiteEntities.createView(container);
-
-```
-
-3. When the blade or part `ViewModel` receives its parameters in the `onInputsSet` method, the `ViewModel` calls the  `dataView.fetch()` method to load data.
-
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
-
- ```typescript
-
-/**
- * Invoked when the blade's inputs change
- */   
-public onInputsSet(inputs: Def.BrowseMasterListViewModel.InputsContract): MsPortalFx.Base.Promise {
-    return this._websitesQueryView.fetch({ runningStatus: this.runningStatus.value() });
-}
-
-```
-  
-<a name="working-with-data-overview-the-querycache"></a>
-### The QueryCache
-
-The `QueryCache` object is used to query for a collection of data or cache a list of items. It is useful for loading data for list-like views like Grid, List, Tree, or Chart. It takes a generic parameter for the type of object stored in its cache, and a type for the object that defines the query. It loads data of type `Array<T>` according to an extension-specified `TQuery` type.
-
-The `QueryCache` parameters are as follows.
-
-<!-- TODO: Determine whether the sourceURI and entityTypeName are required paramters.  Per the example given, the other parameters are optional. -->
-
-**DataModels.WebsiteModel**: Optional. The model type for the website. This is usually auto-generated (see TypeMetadata section below).
-
-**WebsiteQuery**: Optional. The type that defines the parameters for the query. This often will include sort order, filter parameters, paging data, etc.
-
-**entityTypeName**: Provides the name of the metadata type. This is usually auto-generated (see TypeMetadata section below).
-
-**sourceUri**: Provides the endpoint which will accept the HTTP request.
-
-**poll**: Optional. A boolean field which determines whether entries in this cache should be refreshed on a timer.  You can use it in conjunction with property pollInterval can be used to override the default poll interval and pollPreservesClientOrdering can be used to preserve the client's existing record order when polling as opposed to using the order from the server response.
-
-**supplyData**: Optional. Allows the extension to override the logic used to perform an AJAX request. Allows for making the AJAX call, and post-processing the data before it is placed into the cache.
-
-In the example, when the `QueryCache` that contains the websites is created, two elements are specified.
-
-1. **entityTypeName**: The name of the metadata type. The QueryCache needs to know the shape of the data contained in it, in order to handle the data appropriately. That information is specified with the entity type.
-
-1. **sourceUri**: The endpoint that will accept the HTTP request. This function returns the URI to populate the cache. It is sent a set of parameters that are sent to a `fetch` call. In this case, `runningStatus` is the only parameter. Based on the presence of the `runningStatus` parameter, the URI is modified to query for the correct data.
-
-<!-- TODO:  determine whether "presence" can be changed to "value". Did they mean true if present and false if absent, with false as the default value?  This sentence needs more information. -->
-
-When all of these items are complete, the `QueryCache` is configured. It can be populated while Views that use the cache are being created, and the `fetch()` method is called. 
-
-The sample located at  `<dir>Client\V1\Data\MasterDetailBrowse\MasterDetailBrowseData.ts` creates a `QueryCache` which polls the `sourceUri` endpoint on a timed interval. This code is also included in the following example.
-
-```ts
-export interface WebsiteQuery {
-    runningStatus: boolean;
-}
-
-public websitesQuery = new MsPortalFx.Data.QueryCache<DataModels.WebsiteModel, WebsiteQuery>({
-    entityTypeName: DataModels.WebsiteModelType,
-    sourceUri: MsPortalFx.Base.Resources.getAppRelativeUri("/api/Websites?runningStatus={0}"),
-    poll: true
-});
-```
-
-<a name="working-with-data-overview-entitycache"></a>
-### EntityCache
- 
-The `EntityCache` object can be used to cache a single item.  It is useful for loading data into property views and single-record views. 
-
-<!-- Determine whether a template class can be specified as an object in the content.  Otherwise, find a more definitive term. -->
-
-It accepts data of type `T` according to some extension-specified `TId` type. This specifies the type for the object that defines the query, as in the `WebsiteQuery` example located at `<dir>Client/V1/MasterDetail/MasterDetailArea.ts`. This code is also included in the following example.
-
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
-
- ```typescript
-
-this.websiteEntities = new EntityCache<WebsiteModel, number>({
-    entityTypeName: SamplesExtension.DataModels.WebsiteModelType,
-
-    // uriFormatter() is a function that helps you fill in the parameters passed by the fetch()
-    // call into the URI used to query the backend. In this case websites are identified by a number
-    // which uriFormatter() will fill into the id spot of this URI. Again this particular endpoint
-    // requires the sessionId parameter as well but yours probably doesn't.
-    sourceUri: FxData.uriFormatter(Util.appendSessionId(MsPortalFx.Base.Resources.getAppRelativeUri("/api/Websites/{id}")), true),
-
-    // this property is how the EntityCache looks up a website from the QueryCache. This way we share the same
-    // data object across multiple views and make sure updates are reflected across all blades at the same time
-    findCachedEntity: {
-        queryCache: this.websitesQuery,
-        entityMatchesId: (website, id) => {
-            return website.id() === id;
-        }
-    }
-});
-
-```
-
-<!--TODO: Determine whether these parameters can be described as "
-a generic parameter for the type of object stored in its cache, "  -->
-
-When an EntityCache is instantiated, three elements are specified.
-
-1. **entityTypeName**: The name of the metadata type. The EntityCache needs to know the shape of the data contained in it, in order to reason over the data.
-
-1. **sourceUri**: The endpoint that will accept the HTTP request. This function returns the URI that the cache uses to get the data. It is sent a set of parameters that are sent to a `fetch` call. In this instance, the  `MsPortalFx.Data.uriFormatter()` helper method is used. It fills one or more parameters into the URI provided to it. In this instance there is only  one parameter, the `id` parameter, which is entered into the part of the URI containing `{id}`.
-
-1. **findCachedEntity**: Optional. Allows the lookup of an entity from the `QueryCache`, instead of retrieving the data a second time from the server, which creates a second copy of the data on the client. This element also serves as a method, whose two properties are: 1) the `QueryCache` to use and 2) a function that, given an item from the QueryCache, will specify whether this is the object that was requested by the parameters to the `fetch()` call.
-    
-### EditScopeCache
-
-The `EditScopeCache` class is less commonly used. It loads and manages instances of `EditScope`, which is a change-tracked, editable model for use in Forms.
-
 
    
 ## Using DataViews
@@ -674,9 +513,9 @@ Consequently, the `mapInto` function is working as expected, by using the child 
 <a name="working-with-data-data-shaping-shaping-and-filtering-data"></a>
 ### Shaping and filtering data
 
-When working with data in a `QueryCache`, the most common operation is to reshape the items in the cache into a format that is better for displaying in the UI. The **Knockout** observable versions of the `map()` and `mapInto()` methods can be used to accomplish this.
+Extensions that use data from  a `QueryCache` will select and filter the items in the cache, or reshape them into formats that are more suited to a specific UI. The **Knockout** observable versions of the `map()` and `mapInto()` methods can be used to accomplish this.
 
-The following generated data model will accept a `QueryCache` of `Robot` objects as a parameter. 
+The following data model accepts a `QueryCache` of `Robot` objects as a parameter. 
 
 ```ts
 interface Robot {
@@ -689,7 +528,7 @@ interface Robot {
 }
 ```
 
-Each robot is entered into a grid with three columns. The `name` column and the `status` column are the same data as that of the model, but the third column is a combination of the model and manufacturer properties from the model object in the `QueryCache`. The working copy is located at [https://aka.ms/portalfx/projection](https://aka.ms/portalfx/projection). 
+The  robots from the `QueryCache` are displayed on  a grid that is three columns wide. The `name` column and the `status` column are the same data as that of the model, but the third column is a combination of the model and manufacturer properties from the model object in the `QueryCache`. The working copy is located at [https://aka.ms/portalfx/projection](https://aka.ms/portalfx/projection). 
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
@@ -710,7 +549,7 @@ export interface RobotDetails {
 
 ```
 
-An initial implementation of data projection would resemble the following code.
+The initial implementation of [data projection](portalfx-extensions-glossary.md) would resemble the following code.
 
 <!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
@@ -728,11 +567,11 @@ var projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionL
 
 ```
 
-The `robot.name()` contains the name of the robot, and `robot.model()` and `robot.manufacturer()` contain the model and manufacturer values. The `RobotDetails` interface that is used to model the data in the grid requires observables for the  `name` and `modelAndMfg` properties, therefore the strings that are received from the `QueryCache` model are put into a pair of observables. The `projectionId` and `_logMapFunctionRunning` methods are discussed in [](). 
+The `robot.name()` contains the name of the robot, and `robot.model()` and `robot.manufacturer()` respectively contain the model and manufacturer values. The `RobotDetails` interface that models the data in the grid requires observables for the  `name` and `modelAndMfg` properties, therefore they use the strings that are received from the `QueryCache` model. The `projectionId` and `_logMapFunctionRunning` methods are discussed in [](). 
 
-The reason that this implementation is somewhat buggy is demonstrated in the sample located at `<dir>\Client/V1/Data/Projection/Templates/UnderstandingMapAndMapInto.html` and in the working copy located at [https://aka.ms/portalfx/projection](https://aka.ms/portalfx/projection).  The grid can be configured with the buttons in the middle of the screen.  When the grid is configured  with different types of projections, the commands at the top of the screen can be used to add/remove/modify items in the data source.  The output window displays the results of the functions that were are run.
+The reason that this implementation is not extremely performant is demonstrated in the sample located at `<dir>\Client/V1/Data/Projection/Templates/UnderstandingMapAndMapInto.html` and in the working copy located at [https://aka.ms/portalfx/projection](https://aka.ms/portalfx/projection).  The grid is configured with the buttons in the middle of the screen.  When the grid is configured  with different types of projections, the commands at the top of the screen are used to add/remove/modify items in the data source.  The output window displays the results of the functions.
 
-1. When the blade opens, click on the **Buggy Map** button to load the grid with the data projection that was previously discussed. You should see something like the following be displayed in the **log stream** control at the bottom of the blade.
+1. When the blade opens, click on the **Buggy Map** button to load the grid with the data projection that was previously discussed. Something like the following is displayed in the **log stream** control at the bottom of the blade.
 
     ```
     Creating buggy map() projection
@@ -744,16 +583,18 @@ The reason that this implementation is somewhat buggy is demonstrated in the sam
 
     The projection was created and sent to the grid. Because there are four items in the `QueryCache`, the projection will run four times, once on each object. Every time the mapping function runs on an item in the grid, this sample creates a new ID for the resulting `RobotDetails` object.
 
-1. Activate the first line in the grid by clicking on it so that the child blade opens. You may need to scroll to view the grid and the child blade to the right.
+1. Activate the first line in the grid by clicking on it so that the child blade opens. You may need to scroll to the right to view the grid and the child blade.
 
-1. Click on the **update status** command at the top of the blade. This simulates the `QueryCache` getting an updated property value for that activated item, generally by polling the server. You will see that the status for the robot was updated but the child blade closed.  The activated item is still the same item in the `QueryCache`, because the name has not changed, but one of its properties has been updated.  The reason why this implementation is considered to be somewhat buggy is explained in the **log** at the bottom of the blade.
+1. Clicking on the **update status** command at the top of the blade simulates the `QueryCache` receiving a property value for the activated item. Typically, new property values are retrieved by polling the server. Whe the status is updated, the child blade closes and the new status for the robot is displayed.  The activated item is the same item in the `QueryCache`, because the name has not changed, but one of its properties has been updated.  
+
+The reason why this implementation is considered to be somewhat buggy is contained  in the **log** at the bottom of the blade.
 
     ```
     Updating robot status to 'processor' (robot='Bolt')
     Creating a projection (projection id=8, robot=Bolt)
     ```
 
-    After the status observable updates the map's projection, the function runs and computes a different projected item. The object with projectionId === 4 is gone and has been replaced with a new item with projectionId === 8. This is why the child blade closed. The item that was in the `selectableSet's` `activatedItems` observable array no longer exists in the grid's item list, because it has been replaced by an item with the same `name` and `modelAndMfg` but a new `status`.
+When the `status` observable updates the map's projection, the function runs and computes a different projected item. The object with "projectionId === 4" is gone and is replaced with a new item with "projectionId === 8" or some other value. Consequently, the child blade closed because its contents were based on the value of the  `status` observable. The object that was in the grid's item had a different status value, and it has  been replaced by an item with the same `name` and `modelAndMfg` but a new `status`. The previous  that was in the `selectableSet's` `activatedItems` observable array no longer exists in the grid's item list.
 
 <a name="working-with-data-data-shaping-shaping-and-filtering-data-how-map-works"></a>
 #### How map() works
@@ -1754,6 +1595,7 @@ See [Reflecting server data changes on the client](portalfx-data-configuringdata
 | COGS |   Cost of Goods Sold |
 | CORS | Cross-origin resource sharing. A mechanism that defines a way in which a browser and server can interact to determine whether or not it is safe to allow the cross-origin requests to be served.  For example, restricted resources, like  fonts,  may be requested from domains outside the domain from other resources are served. It may use additional HTTP headers to allow users to gain permission to access selected resources from a server on a different origin. | 
 | CRUD | Create, Replace, Update, Delete |
+| data projection | Combining columns of data in a way that is meaningful to the current topic.  For example, the `county` column may be combined with the `state or province` column to provide a meaningful sort by county. |
 | JSON Web Token |  JSON-based token that asserts information between the server and the client.  For example, a JWT could assert that the client user has the claim "logged in as admin".  | 
 | JWT token | JSON Web Token |
 | lifetime | The amount of time an object exists in memory between instantiation and destruction.  It may be automatically destroyed by when a parent object is deallocated, or its existence may be managed by a lifetime manager object or a child lifetime manager object. |
