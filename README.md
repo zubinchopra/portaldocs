@@ -125,7 +125,7 @@ When using HTML and framework controls you have some control over styling. These
 
 * [Layout classes](/portal-sdk/generated/portalfx-blades-layout.md)
 
-* [Typography](/portal-sdk/generated/top-style-guide-typography.md))
+* [Typography](/portal-sdk/generated/top-style-guide-typography.md)
 
 * [Iconography](/portal-sdk/generated/top-style-guide-iconography.md)
 
