@@ -4,28 +4,32 @@
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
-When performing merge operations, the DataSet library will need to know a little bit about the schema of your model objects. For example, in the case of a Website, we want to know the property which defines the primary key of that object. This information which describes the object, and all of its properties is referred to in the portal as *type metadata*. Type metadata can be manually coded using existing libraries. However, for developers using C#, we provide two features that make this easier:
+When performing merge operations, the DataSet library needs to be aware of the data model schema. For example, in the Website extension described in [portalfx-data-masterdetailsbrowse.md](portalfx-data-masterdetailsbrowse.md), we want to know which property defines the primary key of a Website object. The information that describes the object and all of its properties is known as type metadata. 
 
-- Generation of type metadata from C# to TypeScript at build time
-- Generation of TypeScript model interfaces from C# model objects
+Type metadata can be manually coded using existing libraries. However, for developers using C#, we provide two features that make this easier.
 
-Both of these features allow you to write your model objects once in C#, and then let the compiler generate interfaces and data for use at runtime.
+* Generation of type metadata from C# to TypeScript at build time
+* Generation of TypeScript model interfaces from C# model objects
 
-To use type metadata generation, you need to keep your model objects (aka Data Transfer Objects / DTOs) in a separate .NET project from your extension. For an example, check out the `SamplesExtension.DataModels` project included in the SDK. The class library project used to generate models requires the following dependencies:
+These features allow developers to write your model objects only once in C#, and then let the compiler generate interfaces and data for use at runtime.
 
-- System.ComponentModel.DataAnnotations
-- System.ComponentModel.Composition
-- Microsoft.Portal.TypeMetadata
+The data model objects for type metadata generation are stored in a .NET project that is separate from the extension project. 
 
-`Microsoft.Portal.TypeMetadata` can be found at the following location:
-`%programfiles(x86)%\Microsoft SDKs\PortalSDK\Libraries\Microsoft.Portal.TypeMetadata.dll`
+The `SamplesExtension.DataModels` project included in the SDK uses `Microsoft.Portal.TypeMetadata` to generate 
+representations of objects that are used by the resource types. The class library project used to generate models requires the following dependencies.
 
-At the top of any C# file using the `TypeMetadataModel` annotation, the following namespaces must be imported:
+* System.ComponentModel.DataAnnotations
+* System.ComponentModel.Composition
+* Microsoft.Portal.TypeMetadata
 
-- `System.ComponentModel.DataAnnotations`
-- `Microsoft.Portal.TypeMetadata`
+The `Microsoft.Portal.TypeMetadata` library is located at `%programfiles(x86)%\Microsoft SDKs\PortalSDK\Libraries\Microsoft.Portal.TypeMetadata.dll`.
 
-For an example of a model class which generates TypeScript, open the following sample:
+1. At the top of any C# file using the `TypeMetadataModel` annotation, the following namespaces must be imported:
+
+* `System.ComponentModel.DataAnnotations`
+* `Microsoft.Portal.TypeMetadata`
+
+1.  For an example of a model class which generates TypeScript, open the following sample:
 
 ```cs
 // \SamplesExtension.DataModels\Robot.cs
@@ -70,7 +74,7 @@ namespace Microsoft.Portal.Extensions.SamplesExtension.DataModels
 }
 ```
 
-In the sample above, the `[TypeMetadataModel]` data attribute designates this class as one which should be included in the type generation. The first parameter to the data attributes notes the type we're targeting (this is always the same as the class you are decorating). The second attribute provides the TypeScript namespace for the model generated object. If you do not specify a namespace, the .NET namespace of the model object will be used. The `[Key]` attribute on the name field designates the name property as the primary key field of the object. This is required when performing merge operations from data sets and edit scopes.
+In the sample above, the `TypeMetadataModel` data attribute designates this class as one which should be included in the type generation. The first parameter specifies the type that is being targeted, which is  the same as the class that is being  decorated. The second attribute provides the `TypeScript` namespace for the model-generated object. If the  namespace is not specified, the .NET namespace of the model object will be used. The `key` attribute on the name field designates the name property as the primary key field of the object. This is required when performing merge operations from data sets and edit scopes.
 
 <a name="type-metadata-setting-options"></a>
 ### Setting options
@@ -131,10 +135,10 @@ MsPortalFx.Data.Metadata.setTypeMetadata("Post", blogPostMetadata);
 MsPortalFx.Data.Metadata.setTypeMetadata("Comment", commentMetadata);
 ```
 
-- The `name` property refers to the type name of the model object.
-- The `idProperties` property refers to one of the properties defined below that acts as the primary key for the object.
-- The `properties` object contains a property for each property on the model object.
-- The `itemType` property allows for nesting complex object types, and refers to a registered name of a metadata object. (see `setTypeMetadata`).
-- The `isArray` property informs the shell that the `comments` property will be an array of comment objects.
+* The `name` property refers to the type name of the model object.
+* The `idProperties` property refers to one of the properties defined below that acts as the primary key for the object.
+* The `properties` object contains a property for each property on the model object.
+* The `itemType` property allows for nesting complex object types, and refers to a registered name of a metadata object. (see `setTypeMetadata`).
+* The `isArray` property informs the shell that the `comments` property will be an array of comment objects.
 
 The `setTypeMetadata()` method will register your metadata with the system, making it available in the data APIs.
