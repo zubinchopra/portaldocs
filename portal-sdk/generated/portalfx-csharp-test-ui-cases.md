@@ -108,8 +108,7 @@ webDriver.Dispose();
 
 ```
 
-<a name="managing-authentication-credentials"></a>
-### Managing authentication credentials
+### Managing authentication credentials 
 
 While the test framework does not provide any support for managing login credentials, the following are some recommendations.
 
@@ -127,12 +126,11 @@ While the test framework does not provide any support for managing login credent
 
    * Write your own service for providing credentials.
 
-<a name="full-sample-code"></a>
 ### Full Sample Code
 
 The sample that demonstrates navigating to the Portal for testing is in the following code.
 
-
+```csharp
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
@@ -199,4 +197,5 @@ namespace DocSampleTest
     }
 }
 
+```csharp
 
