@@ -53,7 +53,7 @@ The following **V1** concepts should not be used when **V2** APIs can be used in
 * ParameterCollector/ParameterProvider
 * PDL
 
-**NOTE**: Building the **V2** support is still in process, therefore  the previously-listed **V1** concepts are not completely deprecated. For example, the source code for small, medium, and large blades is located in the `<dir>\Client\V1\Blades\BladeWidth` directory. In the meantime, use **V1** APIs in places where a **V2** replacement is not evident.
+**NOTE**: Building the **V2** support is still in process, therefore  the previously-listed **V1** concepts are not completely deprecated. For example, the source code for small, medium, and large blades is located in the `<dir>\Client\V1\Blades\BladeWidth`  directory. In the meantime, use **V1** APIs in places where a **V2** replacement is not evident.
 
 <a name="portal-extension-samples-v1-versus-v2-running-your-local-samples-extension"></a>
 ### Running your local samples extension

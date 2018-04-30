@@ -139,7 +139,7 @@ Its options are as follows.
   
   For more information about enabling and disabling extensions, see [portalfx-extensions-configuration-procedure.md#managing-the-configuration-of-the-extension](portalfx-extensions-configuration-procedure.md#managing-the-configuration-of-the-extension).  
 
-  **NOTE**: If you disable your extension, you will need to add a future pull request to enable it later.  To get those changes deployed in a timely fashion and plan accordingly, see the [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md).
+  **NOTE**: If you disable your extension, you will need to add a future pull request to enable it later.  To get those changes deployed in a timely fashion and plan accordingly, see the [top-extensions-svc-lvl-agreements.md](top-extensions-svc-lvl-agreements.md).
 
 * **flightUris**: Optional.  The uri concatenated to a friendly name in order to flight traffic to another stamp, as in the following example.  
 
@@ -202,7 +202,7 @@ The following is an example of a pull request for registering a `Scheduler` exte
 
 As per the safe deployment mandate, all the configuration changes are treated as code changes. Consequently, they use similar deployment processes.
 
-All changes that are checked in to the dev branch will be deployed in the following order: Dogfood -> RC -> MPAC -> PROD-> National Clouds (BlackForest, FairFax, and Mooncake). The table located at in [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md) specifies the amount of time allowed to complete the deployment.
+All changes that are checked in to the dev branch will be deployed in the following order: Dogfood -> RC -> MPAC -> PROD-> National Clouds (BlackForest, FairFax, and Mooncake). The table located at in [top-extensions-svc-lvl-agreements.md](top-extensions-svc-lvl-agreements.md) specifies the amount of time allowed to complete the deployment.
 
 <a name="portal-extension-configuration-process-details-expediting-deployment"></a>
 ### Expediting deployment
@@ -213,7 +213,7 @@ Typically, all pull requests are for the Dev branch. When a pull request for an 
 
 If the pull request is not sent in the specified order, or if the commit message is changed, then unit test failure may occur. In this case, the changes that are associated with the extension will be reverted without notice.
 
-The SLA for deploying configuration changes to all regions in the Production Environment is in the table specified in [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md).
+The SLA for deploying configuration changes to all regions in the Production Environment is in the table specified in [top-extensions-svc-lvl-agreements.md](top-extensions-svc-lvl-agreements.md).
 
 As per the safe deployment mandate, deployment to production environment is performed in stages, where each stage is a logical grouping of regions. There are five stages in the production environment. There is a 24-hour wait period between promoting the build from one batch to another. This implies that the minimum time to deploy a change in all regions in Production branch is five days. 
 

@@ -7,19 +7,46 @@ The Azure Portal SDK ships framework assemblies, tools, test framework and exten
 <a name="nuget-packages-configure-nuget-package-sources-for-development"></a>
 ## Configure NuGet package sources for development
 
-In order to download the NuGet packages as part of an extension, developers can choose between using CoreXT-compatible package sources, or consuming the local packages installed by the MSI. Choose a configuration that applies to your extension development context.
+In order to download the NuGet packages as part of an extension, developers can choose between CoreXT compatible package sources or consume the packages installed locally by the MSI. Choose a configuration that applies to your extension development context.
 
-* Extensions built in CoreXT
+<a name="nuget-packages-configure-nuget-package-sources-for-development-microsoft-internal-nuget-feed"></a>
+### Microsoft Internal NuGet Feed
 
-    In the CoreXT configuration file located at `<repoRootPath\.config\corext.config`, ensure that `msazure.pkgs.visualstudio.com` is included as a package source. The code to include the package source is as follows.
+Portal SDK NuGet packages are published to the following Microsoft internal NuGet feed. `https://msazure.pkgs.visualstudio.com/DefaultCollection/_apis/packaging/Official/nuget/index.json`
+Depending on your internal build system the configuration of how to consume this feed will vary.  For the latest guidance on consuming the above feed within your build system consult your build systems documentation. For those using 1ES systems see the NuGet in 1ES guide.
 
-        ```xml
-        <repo name="Official" uri="https://msazure.pkgs.visualstudio.com/DefaultCollection/_apis/packaging/Official/nuget/index.json" fallback="http://wanuget/Official/nuget" />
-        ```
+<a name="nuget-packages-configure-nuget-package-sources-for-development-getting-the-nuget-packages-externally"></a>
+### Getting the NuGet packages externally
 
-* Non-CoreXT extensions
+PortalSDK NuGet packages are only published to Microsoft internal NuGet feeds.  If you do not have access to those feeds such as the one mentioned above you will need use the Portal MSI to deliver NuGet packages to your development machines.  This is the recommended path for third party extension developers.
 
-    External partners can download and install the NuGet packages when they install and use **Visual Studio 2015**. For more information, see [portalfx-extensions-getting-started-procedure.md](portalfx-extensions-getting-started-procedure.md). The packages that are installed are located in the C:\Program Files (x86)\Microsoft SDKs\PortalSDK\Packages directory.
+Installing the Portal SDK MSI will unpack the NuGet packages to a default location of `C:\Program Files (x86)\Microsoft SDKs\PortalSDK\packages` and will setup a NuGet package source named PortalSDK that points to that location.  Any subsequent actions performed in Visual Studio or the NuGet command line will also search the new local PortalSDK feed in program files for Portal-related NuGet packages.
+
+<a name="nuget-packages-updating-your-extension-to-a-newer-version-of-the-sdk"></a>
+## Updating your extension to a newer version of the SDK
+
+<a name="nuget-packages-updating-your-extension-to-a-newer-version-of-the-sdk-update-your-nuget-packages"></a>
+### Update your NuGet Packages
+
+	In Visual Studio
+		a. Install the latest version of the Portal SDK MSI
+		b. In Visual Studio select `Tools > NuGet Package Manager > Manage NuGet packages for Solution…`
+		c. Select all Microsoft.Portal.* NuGet packages
+		d. Click Update
+		e. Build and fix any Breaking Changes
+	In CoreXT
+		a. Find the latest SDK version number from the SDK Downloads.
+		b. Update your package.config to the latest version of the SDK found in step 1.
+		c. run init.cmd
+			i. Note: your $(Pkg*) references  in your csproj should automatically update to point at the newest restored NuGet.
+		d. Copy over /Content files to get latest *.d.ts and *.pde files
+			i. Note: CoreXT does not copy content files. Commonly internal teams use either a <Target /> or NuGetContentRestore task to rehydrate the Content files from their CxCache.
+		e. Build and fix any Breaking Changes
+
+<a name="nuget-packages-updating-your-extension-to-a-newer-version-of-the-sdk-optional-update-the-pdl-xsd"></a>
+### [Optional] Update the pdl XSD
+
+TODO: would need a separate path of shipping the XSD to provide another path here where they don't need to update the SDK.
 
 **NOTE**:  `<repoRootPath>`, without the angle brackets, is the path to the extension repository on the development computer.
 
@@ -61,7 +88,7 @@ After installation, NuGet packages that are used for development are listed in t
 
 | Package | Purpose | 
 | ------- | ------- |
-| Microsoft.Portal.TestFramework | Allows use of UI-based test cases with **Selenium** and **Visual Studio**. For more information about using the test framework, see [portalfx-testing-ui-test-cases.md](portalfx-testing-ui-test-cases.md). | 
+| Microsoft.Portal.TestFramework | Allows use of UI-based test cases with **Selenium** and **Visual Studio**. For more information about using the test framework, see [top-extensions-csharp-test-framework.md](top-extensions-csharp-test-framework.md). | 
 | Microsoft.Portal.TestFramework.UnitTest | Unit Test framework. For more information about unit testing,  see [portalfx-unit-test.md](portalfx-unit-test.md). | 
 
 <a name="nuget-packages-available-nuget-packages-deprecated-packages"></a>
@@ -74,7 +101,7 @@ The following NuGet packages have been deprecated. Do not use these packages whe
 | Microsoft.Portal.Azure.Website | Contains the Authenticated Developer Portal Website with Hubs and Billing Extensions. | 
 | Microsoft.Portal.Azure.WebsiteNoAuth | Contains the Unauthenticated Developer Portal Website. | 
 | Microsoft.Portal.Framework.Scripts | Deprecated, use Microsoft.Portal.TestFramework.UnitTest instead, as specified in  [portalfx-unit-test.md](portalfx-unit-test.md).  | 
-| Microsoft.Portal.Tools.Etw | Provides the **EtwRelatedFilesUtility.exe** tool and sample configurations for developers who are self-hosting extensions. The recommended practice is to use the extension hosting service as specified in [top-extensions-hosting-service.md](top-extensions-hosting-service.md) instead of custom deployment, as specified in [portalfx-extensions-custom-deployment.md](portalfx-extensions-custom-deployment.md).  | 
+| Microsoft.Portal.Tools.Etw | Provides the **EtwRelatedFilesUtility.exe** tool and sample configurations for developers who are self-hosting extensions. The recommended practice is to use the extension hosting service as specified in [top-extensions-hosting-service.md](top-extensions-hosting-service.md) instead of custom deployment, as specified in [top-extensions-custom-deployment.md](top-extensions-custom-deployment.md).  | 
 
 <a name="nuget-packages-invoking-other-extensions-at-runtime"></a>
 ## Invoking other extensions at runtime

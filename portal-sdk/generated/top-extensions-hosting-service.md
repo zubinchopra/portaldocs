@@ -16,9 +16,9 @@ Teams that deploy UI for extensions with the classic cloud service model typical
 
 The cost of setting up and maintaining this infrastructure can be high. By leveraging the extension hosting service, developers can deploy extensions in all data centers without resource-heavy investments in the Web infrastructure.
 
-For less common scenarios, you might need to do a custom deployment. For example, if the extension needs to reach server services using certificate based authentication, then there should be controller code on the server that our hosting service does not support. You should be very sure that a custom hosting solution is the correct solution previous to developing one. For more information, see [portalfx-extensions-custom-deployment.md](portalfx-extensions-custom-deployment.md).
+For less common scenarios, you might need to do a custom deployment. For example, if the extension needs to reach server services using certificate based authentication, then there should be controller code on the server that our hosting service does not support. You should be very sure that a custom hosting solution is the correct solution previous to developing one. For more information, see [top-extensions-custom-deployment.md](top-extensions-custom-deployment.md).
 
-The SLA for onboarding the extension to the hosting service is located at [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md).
+The SLA for onboarding the extension to the hosting service is located at [top-extensions-svc-lvl-agreements.md](top-extensions-svc-lvl-agreements.md).
 
 You can ask questions on Stackoverflow with the tags [ibiza-deployment](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment) and [ibiza-hosting-service](https://stackoverflow.microsoft.com/questions/tagged/ibiza-hosting-service).
 
@@ -455,7 +455,7 @@ Extensions should publish the extracted deployment artifacts that are generated 
 <a name="provide-environment-specific-configuration-files-converting-from-custom-deployment-to-a-hosting-service"></a>
 ### Converting from custom  deployment to a hosting service
 
-To minimize the probability of regression, use the following procedure to migrate an extension from custom  deployment to a hosting service. For more information about custom deployment, see [portalfx-extensions-custom-deployment.md](portalfx-extensions-custom-deployment.md).
+To minimize the probability of regression, use the following procedure to migrate an extension from custom  deployment to a hosting service. For more information about custom deployment, see [top-extensions-custom-deployment.md](top-extensions-custom-deployment.md).
 
 
 1. Change the uri format to use a hosting service in the PROD environment
@@ -741,7 +741,7 @@ To remove a friendly name, just run an EV2 deployment with the `Rolloutspec.Remo
 
 Hosting service scenarios are based on varying the content of the `config` file.  To load your extension in the Portal, it must be registered in the Portal configuration. If the extension is loaded in the Portal from the hosting service, then there are no changes required to sideload it. 
 
-For more information about updating the extension configuration, see [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md). For more information about sideloading, see [portalfx-extensions-sideloading-overview.md](portalfx-extensions-sideloading-overview.md).
+For more information about updating the extension configuration, see [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md). For more information about sideloading, see [top-extensions-sideloading.md](top-extensions-sideloading.md). 
  
 <a name="common-hosting-service-scenarios-new-extensions"></a>
 ### New extensions

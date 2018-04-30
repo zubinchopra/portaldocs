@@ -4,7 +4,15 @@
 <a name="testing-in-production-introduction"></a>
 ## Introduction
 
-This document describes the various components of testing an extension in production, including status codes and testing procedures.  For information about regular testing and debugging, see [portalfx-test.md](portalfx-test.md) and [top-extensions-debugging.md](top-extensions-debugging.md).
+This document describes the various components of testing an extension in production, including status codes and testing procedures. 
+
+For information about regular testing and debugging, see [portalfx-test.md](portalfx-test.md) and [top-extensions-debugging.md](top-extensions-debugging.md).
+
+For more information about testing extensions in the hosting service, see  [portalfx-extensions-hosting-service-scenarios.md#sideloading](portalfx-extensions-hosting-service-scenarios.md#sideloading).  
+ 
+For information about debugging switches or feature flags that are used in hosting, see  [top-extensions-flags.md](top-extensions-flags.md).
+
+For more information about alternatives to the local host environment, see [top-extensions-custom-deployment.md](top-extensions-custom-deployment.md). 
 
 <a name="testing-in-production-registering-extensions-with-the-registertestextension-api"></a>
 ## Registering extensions with the registerTestExtension API
@@ -23,6 +31,7 @@ The developer may want to programmatically register a deployed extension with Ja
 1. Click **F12** to open the Developer Tools in the browser
   
 1. Run the following command in the browser console to register a custom extension.
+
     ```ts
     // use this command if the changes should persist 
     //  until the user resets the settings or
@@ -56,7 +65,9 @@ The developer may want to programmatically register a deployed extension with Ja
 1. Navigate to [https://portal.azure.com?feature.canmodifyextensions=true&clientOptimizations=false](https://portal.azure.com?feature.canmodifyextensions=true&clientOptimizations=false).
  
 The following example describes a complete uri and [query string](portalfx-extensions-glossary-production-testing.md) that instructs the Portal to load the extension named "Microsoft_Azure_Demo" from endpoint "https://DemoServer:59344". It registers the extension only for the current user session. 
+
 <!--TODO: This example contradicts the previous definition.  Determine which one is correct.  -->
+
    ```ts
    MsPortalImpl.Extension.registerTestExtension({
      name: "Microsoft_Azure_Demo",
@@ -87,11 +98,11 @@ where
 
 * **environment**: Portal environment in which to load the extension. Portal environments are `portal.azure.com`, `rc.portal.azure.com`, `mpac.portal.azure.com`, and `df.onecloud.azure-test.net`, although extension developers can sideload their extensions in any environment. 
 
-* **feature.canmodifyextensions**: Required to support loading untrusted extensions for security purposes.  This feature flag grants permission to the Portal to load extensions from URLs other than the ones that are typically used by customers.  It triggers an additional Portal UI that indicates that the Portal is running with untrusted extensions. This feature flag has a value of `true`.  For more information about feature flags, see [portalfx-extensions-flags.md](portalfx-extensions-flags.md).
+* **feature.canmodifyextensions**: Required to support loading untrusted extensions for security purposes.  This feature flag grants permission to the Portal to load extensions from URLs other than the ones that are typically used by customers.  It triggers an additional Portal UI that indicates that the Portal is running with untrusted extensions. This feature flag has a value of `true`.  For more information about feature flags, see [top-extensions-flags.md](top-extensions-flags.md).
 
 * **testExtensions**: Contains the name of the extension, and the environment in which the extension is located. It specifies the intent to load the extension `<extensionName>` from the `localhost:<portNumber>` into the current session of the Portal.
 
-  * **extensionName**: Matches the name of the extension, without the angle brackets, as specified in the `<Extension>` element  in the  `extension.pdl` file.  
+  * **extensionName**: Matches the name of the extension, without the angle brackets, as specified in the `<Extension>` element  in the  `extension.pdl` file.
 
   * **protocol**: Matches the protocol of the shell into which the extension is loaded, without the angle brackets.  It can have a value of `HTTP` or a value of `HTTPS`. For the production shell, the value is `HTTPS`.  If the value of this portion of the parameter is incorrectly specified, the browser will not allow the extension to communicate. 
 
@@ -117,19 +128,11 @@ where
 
 ![alt-text](../media/portalfx-productiontest/localExtensions.png "Local extensions")
 
-For more information on loading, see [portalfx-testing-ui-test-cases.md](portalfx-testing-ui-test-cases.md).
+For more information on loading, see [top-extensions-csharp-test-framework.md](top-extensions-csharp-test-framework.md).
 
 ## Completing the extension test
 
 When all steps are complete, the developer can submit a pull request to enable the extension, as specified in [top-extensions-publishing.md](top-extensions-publishing.md). When the extension is enabled, users will be able to access it in all environments, as specified in [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
-
-## Deploying test extensions using the hosting service 
- 
-For more information about common hosting scenarios, see  [portalfx-extensions-hosting-service-scenarios.md#sideloading](portalfx-extensions-hosting-service-scenarios.md#sideloading).  
- 
-For information about debugging switches or feature flags that are used in hosting, see  [portalfx-extensions-flags.md](portalfx-extensions-flags.md).
-
-For more information about alternatives to the local host environment, see [top-extensions-hosting-service.md](top-extensions-hosting-service.md). 
 
 ## Common use cases for custom extensions
 
@@ -328,7 +331,6 @@ Then, verify that when a **TypeScript** file is saved, that the following text i
 
  * * *
  
-<a name="testing-in-production-loading-customized-extensions-other-debugging-questions"></a>
 ### Other debugging questions
 
 ***How can I ask questions about debugging ?***
@@ -337,21 +339,60 @@ You can ask questions on Stackoverflow with the tag [ibiza](https://stackoverflo
 
 
 
-<a name="testing-in-production-status-codes-and-error-messages"></a>
+
 ## Status Codes and Error Messages
+
 Status codes or error messages that are encountered while developing an extension may be dependent on the type of extension that is being created, or the development phase in which the message is encountered.  Terms that are encountered in the error messages may be defined in the [Glossary](portalfx-extensions-glossary-status-codes.md).
 <!-- TODO:  Find at least one status code for each of these conditions. -->
 
-<a name="testing-in-production-status-codes-and-error-messages-console-error-messages"></a>
 ### Console Error Messages
 
 ***Console error messages in F12 developer tools***
 
-Some console and HTTP error messages are located at[https://msdn.microsoft.com/en-us/library/dn423949(v=vs.85).aspx](https://msdn.microsoft.com/en-us/library/dn423949(v=vs.85).aspx).
+Some console and HTTP error messages are located at [https://msdn.microsoft.com/en-us/library/dn423949(v=vs.85).aspx](https://msdn.microsoft.com/en-us/library/dn423949(v=vs.85).aspx).
 
 * * *
 
-<a name="testing-in-production-status-codes-and-error-messages-err_connection_reset"></a>
+### UNKNOWN ENTITY-TYPED OBJECT ARRAY 
+
+***Error: "Entity-typed object/array is not known to this edit scope..."***
+
+DESCRIPTION: After an `EditScope` is initialized and loaded, entities can be introduced and removed from the `EditScope` only by using `EditScope` APIs. Unfortunately, extensions cannot make an observable change to add or remove 'entity' objects from the `EditScope`. If an extension tries to make an observable change that introduces an 'entity' object into the EditScope, they will encounter this error. For any object residing in the `EditScope`, merely adding and removing keys cannot be detected by `EditScope` or by the FX at large and, consequently, edits cannot be tracked. When an extension attempts to add or remove keys from an `EditScope` object, this puts the `EditScope` edit-tracking in an inconsistent state.
+
+SOLUTION: To correctly add or remove 'entity' objects, use the API's that are specified in 
+[portalfx-legacy-editscopes.md#editScope-entity-arrays](portalfx-legacy-editscopes.md#editScope-entity-arrays).
+ It is good practice to use only observable changes and `EditScope` APIs to mutate/change the EditScope/Form model.   A partial list is as follows.
+
+* `applyArrayAsEdits`: This API accepts a new array of 'entity' objects. The `EditScope` will diff this new array against the existing `EditScope` array items, determine which 'entity' objects are created/updated/deleted, and then records the corresponding user edits.
+
+* `getCreated/addCreated`: Addes new, 'created' entity objects to an `EditScope`.
+
+* `markForDelete`: Marks 'entity'  objects in an `EditScope`  for deletion.
+
+DESCRIPTION: Often, extensions encounter this error because the data is modeled  as 'entities' binding with [editable grid](#editable-grid) in a `ParameterProvider` Blade as specified in [portalfx-legacy-editscopes.md#editScope-entity-arrays](portalfx-legacy-editscopes.md#editScope-entity-arrays).  The error may also be encountered when applying the array edits in a corresponding `ParameterCollector` Blade. 
+
+SOLUTION:  Here are two schemes that can be used to avoid this error.
+
+* Use the `applyArrayAsEdits` to commit array edits to an `EditScope`.
+
+* Define type metadata for this array twice. One copy is for array items typed as 'entities', and is used to edit the data in an editable grid. The other copy is for array items typed as not 'entities', and is used to commit data to an `EditScope` in the `ParameterCollector` blade.  
+  
+* * *
+
+### Form improperly allows edits
+
+*** Error: Form should not allow edits until an EditScope is loaded***
+
+ERROR:
+
+This error is commonly the result of making an observable change to `EditScope` data that is not due to the user making edits in the UI.   For example, establishing default values by writing to `EditScope` observables when a viewModel is initializing might cause this error.
+
+SOLUTION: 
+
+Extensions should use the `mapIncomingDataForEditScope` option when instantiating `ParameterProvider`, in order to establish initial values in the `EditScope`.
+
+* * *
+
 ### ERR_CONNECTION_RESET
 
 ***Cannot load `localhost` Ibiza extension with ERR_CONNECTION_RESET***
@@ -362,7 +403,6 @@ SOLUTION: [https://stackoverflow.microsoft.com/questions/48581/cannot-load-local
 
 * * * 
 
-<a name="testing-in-production-status-codes-and-error-messages-err_insecure_response"></a>
 ### ERR_INSECURE_RESPONSE
 
 ERR_INSECURE_RESPONSE in the browser console
@@ -377,7 +417,6 @@ SOLUTION: Install and trust the certificate.
 
 * * *
 
-<a name="testing-in-production-status-codes-and-error-messages-failed-to-initialize"></a>
 ### Failed To Initialize
 
 ERROR: The extension failed to initialize. One or more calls to methods on the extension's entry point class failing.
@@ -386,7 +425,6 @@ SOLUTION: Scan all the relevant error messages during the timeframe of the failu
 
 * * * 
 
-<a name="testing-in-production-status-codes-and-error-messages-first-response-not-received"></a>
 ### First Response Not Received
 
 ERROR: The shell loaded the extension URL obtained from the config into an IFrame; however there wasn't any response from the extension.
@@ -399,7 +437,6 @@ SOLUTION:
 
 * * * 
 
-<a name="testing-in-production-status-codes-and-error-messages-invalid-definition"></a>
 ### Invalid Definition
 
 ERROR: The definition that was received from an extension had validation errors.
@@ -408,7 +445,8 @@ SOLUTION: Scan the error logs for all the validation errors in the extension def
 
 * * * 
 
-<a name="testing-in-production-status-codes-and-error-messages-invalid-extension-name"></a>
+
+
 ### Invalid Extension Name
 
 ERROR: The name of the extension as specified in the `extensions.json` configuration file doesn't match the name of the extension in the extension manifest.
@@ -419,7 +457,6 @@ If the name in the manifest is incorrect, contact the relevant extension team to
 
 * * * 
 
-<a name="testing-in-production-status-codes-and-error-messages-invalid-indicate-loaded"></a>
 ### Invalid Indicate Loaded
 
 ERROR: The manifest for an extension was received at an invalid time. e.g. if the manifest was already obtained or the extension was already loaded.
@@ -428,7 +465,6 @@ SOLUTION: Report this issue to the framework team for investigation.
 
 * * * 
 
-<a name="testing-in-production-status-codes-and-error-messages-invalid-manifest"></a>
 ### Invalid Manifest
 
 ERROR: The manifest that was received from an extension had validation errors.
@@ -437,7 +473,6 @@ SOLUTION: Scan the error logs for all the validation errors in the extension man
 
 * * * 
 
-<a name="testing-in-production-status-codes-and-error-messages-manifest-not-received"></a>
 ### Manifest Not Received
 
 ERROR: The bootstrap logic was completed, however the extension did not return a manifest to the shell. The shell waits for a period of time (currently 40 seconds as of 2014/10/06) and then times out.
@@ -447,9 +482,45 @@ SOLUTION:
 
 1. If the extension is using AMD modules, verify that the `manifest.js` file is accessible from the browser. Under default settings it should be present at `/Content/Scripts/_generated/manifest.js`.
 
+
 * * * 
 
-<a name="testing-in-production-status-codes-and-error-messages-portal-error-520"></a>
+### Server Error 404 
+
+ERROR: 404, Not Found.
+
+DESCRIPTION: The Portal's built-in data layer automatically detects HTTP 404 responses from **AJAX** calls, in order to cover the most common scenarios.  When a part depends on data and a 404 has been detected, Ibiza automatically makes the part non-interactive and displays a message of 'Not Found'.  The effect is that in most "not found" scenarios, extensions will display the more accurate 'Not found' message instead of the sad cloud UX that is reserved for unexpected errors.
+
+This distinction allows the Portal telemetry system to differentiate between bugs and deleted assets when parts  fail to render.
+
+SOLUTION: Extensions should allow the Portal to handle 404 responses by default. However, there are exceptions where this behavior may not be the best action.  In those cases, the extension can opt out of automatic 404 handling by setting the `showNotFoundErrors` flag to `false` when creating the extension's `dataViews`. The following code makes 404s result in rejected promises, which allows individual extensions to apply special handling.
+
+```js
+this._dataView = dataContext.createView(container, { interceptNotFound: false });
+```
+
+**NOTE**: Instances of 'Not Found' do not count against a part's reliability KPI.
+
+
+
+<a name="testing-in-production-loading-customized-extensions-internal-server-error-500"></a>
+### Internal Server Error 500
+
+ERROR: Received 500, Internal Server Error when loading the extension. The extension logs the message "*Unable to find AMD modules '_generated/Manifest'*".
+
+SOLUTION:
+
+1. Make sure the **JavaScript** files are embedded as resources in the extension assembly. To see embedded resources, open the assembly in Reflector or some similar tool and explore resources. It should display `<YourExtensionNamespace>/Content/ … /_generated/Manifest.js` and with similar resources, although the dots and slashes are interchangeable. 
+
+1. If those resources are embedded, make sure the assembly contains the following attribute.
+
+    `[assembly: AllowEmbeddedContent("<YourExtensionNamespace>")]` 
+    
+    This indicates that the **JavaScript** is an embedded resource with this prefix.
+
+* * *
+
+<a name="testing-in-production-loading-customized-extensions-portal-error-520"></a>
 ### Portal Error 520
 
 ***The Portal encountered a part it cannot render***
@@ -472,7 +543,7 @@ SOLUTION: Use the following troubleshooting steps.
 
 * * *
 
-<a name="testing-in-production-status-codes-and-error-messages-sandboxed-iframe-security"></a>
+<a name="testing-in-production-loading-customized-extensions-sandboxed-iframe-security"></a>
 ### Sandboxed iframe security
 
 ***Error: 'Security of a sandboxed iframe is potentially compromised by allowing script and same origin access'.***
@@ -481,7 +552,7 @@ The Azure Portal should frame the extension URL, as specified in [portalfx-exten
 
 * * *
 
-<a name="testing-in-production-status-codes-and-error-messages-timed-out"></a>
+<a name="testing-in-production-loading-customized-extensions-timed-out"></a>
 ### Timed Out
 
 ERROR: The extension failed to load after the predefined timeout, which is currently 40 seconds.
@@ -490,7 +561,7 @@ SOLUTION: Scan the errors to see if there are any other relevant error messages 
 
 * * * 
 
-<a name="testing-in-production-status-codes-and-error-messages-too-many-bootgets"></a>
+<a name="testing-in-production-loading-customized-extensions-too-many-bootgets"></a>
 ### Too Many BootGets
 
 ERROR: The extension tried to send the bootGet message to request for Fx scripts multiple times. The error should specify the number of times it refreshed before the extension was disabled.
@@ -499,7 +570,7 @@ SOLUTION:  Scan the errors to see if there are any other relevant error messages
 
 * * * 
 
-<a name="testing-in-production-status-codes-and-error-messages-too-many-refreshes"></a>
+<a name="testing-in-production-loading-customized-extensions-too-many-refreshes"></a>
 ### Too Many Refreshes
 
 ERROR: The extension tried  to reload itself within the IFrame multiple times. The error should specify the number of times it refreshed before the extension was disabled.

@@ -12,7 +12,7 @@ Other samples and tools are also available to assist in the debugging process.  
 
 Here are a few tips that help get extension development back on track. If you still have questions, reach out to Ibiza team in by using the Stackoverflow tags as specified in [StackOverFlow Forums](portalfx-stackoverflow.md).
 
-To debug and test your local extension against the production portal, see [top-extensions-production-testing.md](top-extensions-production-testing.md).  
+To test your local extension against the production portal, see [top-extensions-production-testing.md](top-extensions-production-testing.md).  
 
 For more information about deploying the extension, see [portalfx-deployment.md](portalfx-deployment.md).
 
@@ -115,7 +115,7 @@ Extensions load failures are logged along with an associated failure code.  This
 If the extension is not loaded, or if the extension site is not running, another guide that may be of assistance is "Creating an Extension", located at [portalfx-extensions-create-blank-procedure.md](portalfx-extensions-create-blank-procedure.md).
 
 
-
+   
 <a name="debugging-an-extension-debugging-console-errors"></a>
 ## Debugging console errors
 
@@ -140,7 +140,7 @@ As of 9/14/2016 the best, and fastest, Developer Tools are provided by Google Ch
 
 The errors that are presented in the console can be of great assistance in fixing extension issues. The trace mode that is included in the Portal will display information other than the standard console errors. Trace mode is enabled by appending a flag to the end of the query string. For example,  `https://portal.azure.com/?trace=diagnostics` will enable verbose debugging information in the console. For more information about trace modes, see [portalfx-extensions-feature-flags-trace-mode.md](portalfx-extensions-feature-flags-trace-mode.md). For other debugging services, see [portalfx-extensions-feature-flags.md](portalfx-extensions-feature-flags.md).
 
-
+   
 <a name="debugging-an-extension-debugging-javascript"></a>
 ## Debugging JavaScript
 
@@ -153,7 +153,7 @@ To debug a specific view model, search for the code by class name. You can now s
 For more information about debugging JavaScript, view the video named ***Debugging tools for the Web***, located at [https://vimeo.com/157292748](https://vimeo.com/157292748).
 
 
-
+  
 <a name="debugging-an-extension-debugging-extensions-that-use-knockout"></a>
 ## Debugging Extensions that use Knockout
 
@@ -249,7 +249,7 @@ For more information:
 
     [https://app.pluralsight.com/library/courses/knockout-tips/table-of-contents](https://app.pluralsight.com/library/courses/knockout-tips/table-of-contents)
 
-
+   
 ## Debugging the data stack
 
 The data stack contains all the information that the browser associates with the current testing session.  If, for example, edit scope changes are not displayed in the query cache,  or if  a row in the grid is updated without immediately apparent cause, the data stack may provide some answers to the debugging process.  Here are tips on how to debug using the data stack.
@@ -259,7 +259,7 @@ The data stack contains all the information that the browser associates with the
 * When the edited data is contained in an `EditScope` object, it is accessible via the root property on the `EditScope` object. If `EditScopeView` object is being used, then the edited data is available at `editScopeView.editScope().root` after the `editScope()` observable is populated. The original data can be viewed using the `getOriginal()` method, so to view the original root object, the code can perform the  `editScope.getOriginal(editScope.root)` method.
 
 
-
+  
 ## Best Practices
 
 Methodologies exist that assist developers in improving the product while it is still in the testing stage. Some strategies include describing bugs accurately, including code-coverage test cases in a thorough test plan, and other items.
@@ -287,55 +287,6 @@ There are practices that can improve the performance of the extension.  For more
 ### Productivity Tip
 
 Install Chrome that is located at [http://google.com/dir](http://google.com/dir) to leverage the debugger tools while developing an extension.
-
-
-## Stackoverflow Forums
-
-The Ibiza team strives to answer the questions that are tagged with Ibiza tags on the Microsoft [Stackoverflow](https://stackoverflow.microsoft.com) Web site within 24 hours. If you do not receive a response within 24 hours, please email the owner associated with the tag. Third-party developers that have Stackoverflow questions should work with their primary contact.  If you do not yet have a primary contact, please reach out to our onboarding team at <a href="mailto:ibiza-onboarding@microsoft.com?subject=Azure Primary Contact&body=I have questions and did not find the answers on StackOverflow.">ibiza-onboarding@microsoft.com</a>. To help the Azure UI team answer your questions, the submissions are categorized into various topics that are marked with tags. 
-To read forum submissions, enter the following in the address bar of your browser:
-
-```https://stackoverflow.microsoft.com/questions/tagged/<ibizaTag>```
-
-To ask a question in a forum, enter the following in the address bar of your browser.
-
-```https://stackoverflow.microsoft.com/questions/ask?tags=<ibizaTag>```
-
-where
- 
-**ibizaTag**:  One of the tags from the following table, without the angle brackets.
-
-You can also click on the links in the table to open the correct Stackoverflow forum.
-<!--TODO: Determine whether the following UserVoice categories also have Stackoverflow support. 
-ibiza-notifications
-ibiza-quotas
-ibiza-samples-docs
--->
-
-| Tag                                                                                                   | Purpose                                                                                       | Owner               | Contact |
-| ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ------------------- | ------- |
-| [azure-gallery](https://stackoverflow.microsoft.com/questions/tagged/azure-gallery)                   |                                                                                               |                     | |
-| [ibiza](https://stackoverflow.microsoft.com/questions/tagged/ibiza)                                   | Generic tag, for use in conjunction with a more specific tag, or when the topic is unknown    | Adam Abdelhamed     | |
-| [ibiza-accessibility](https://stackoverflow.microsoft.com/questions/tagged/ibiza-accessibility)       | Questions regarding accessibility onboarding, best practices, supported accessible controls, etc. Also, questions regarding the accessibility bug process and exception process.         | Paymon Parsadmehr   | <a href="mailto:ibiza-accessibility@microsoft.com?subject=Stackoverflow: Accessibility">ibiza-accessibility@microsoft.com </a> | 
-| [ibiza-blades-parts](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts)         | A tag for all questions related to Ibiza Blades, Parts (Tiles), Commands.                     | Sean Watson         | |
-| [ibiza-breaking-changes](https://stackoverflow.microsoft.com/questions/tagged/ibiza-breaking-changes) | Breaking changes that are are insufficiently documented on [https://aka.ms/portalfx/breaking](https://aka.ms/portalfx/breaking)  | Madhur Joshi          | |
-| [ibiza-browse](https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse)                     | The primary navigation path in the Azure Portal. Browse consists of the Browse/Services menu, the resource list blade, and pinned part. Browse supports ARM subscription resources, ARM tenant resources, as well as custom data or simply launching your own blade. Learn more at [http://aka.ms/portalfx/browse](http://aka.ms/portalfx/browse).                                                     | Sean Watson         | |
-| [ibiza-controls](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls)                 | An Ibiza monitored tag for questions related to Ibiza controls                                | Shrey Shirwaikar    | |
-| [ibiza-controls-grid](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls-grid)       |                                                                                               | Shrey Shirwaikar    | |
-| [ibiza-create](https://stackoverflow.microsoft.com/questions/tagged/ibiza-create)                     |                                                                                               | Balbir Singh        | |
-| [ibiza-data-caching](https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching)         | Questions related to loading and caching data for use in your extension's Blades, Parts, etc. This includes topics like issuing AJAX calls from your extension, or the QueryCache/EntityCache caching components.                                                                                           | Brad Olenik         | |
-| [ibiza-deployment](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)             | Deployment and onboarding of an extension                                                     | Umair Aftab         | |
-| [ibiza-forms](https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms)                       | An Ibiza monitored tag for questions related to Azure Portal forms                            | Shrey Shirwaikar    | |
-| ibiza-forms-create                                                                                    | Deprecated tag.  Use #ibiza-forms for forms questions and #ibiza-create for Create questions. | Paymon Parsadmehr; Shrey Shirwaikar | |
-| [ibiza-hosting-service](https://stackoverflow.microsoft.com/questions/tagged/ibiza-hosting-service)   | Extension hosting service onboarding, **ContentUnbundler** and runtime                        | Umair Aftab         | |
-| [ibiza-localization-global](https://stackoverflow.microsoft.com/questions/tagged/ibiza-localization-global) | Questions related to Localization or globalization within the portal. Guidence on what is or is not supported, and current languages that the Portal supports.                                                             | Paymon Parsadmehr   | |
-| [ibiza-missing-docs](https://stackoverflow.microsoft.com/questions/tagged/ibiza-missing-docs)         | Topics that are not included in [https://aka.ms/portalfx/docs](https://aka.ms/portalfx/docs), are incomplete, or are difficult to understand  | Adam Abdelhamed            | |
-| [ibiza-performance](https://stackoverflow.microsoft.com/questions/tagged/ibiza-performance)           | Questions related to Ibiza performance.                                                       | Sean Watson         | <a href="mailto:ibiza-perf@microsoft.com?subject=Stackoverflow: Performance">ibiza-perf@microsoft.com </a> |
-| [ibiza-reliability](https://stackoverflow.microsoft.com/questions/tagged/ibiza-reliability)           | Questions related to extension reliability.                                                   | Sean Watson         | <a href="mailto:ibiza-reliability@microsoft.com?subject=Stackoverflow: Reliability">ibiza-reliability@microsoft.com</a> |
-| [ibiza-resources](https://stackoverflow.microsoft.com/questions/tagged/ibiza-resources)               |                                                                                               | Balbir Singh        | |
-| [ibiza-sdkupdate](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)               | Issues encountered during updating from one version of the ibiza sdk to another, for example,  **NuGet**, **MSI**, **PowerShell**, or **VSIX** project template-related issues   | Umair Aftab         | |
-| [ibiza-security-auth](https://stackoverflow.microsoft.com/questions/tagged/ibiza-security-auth)       | Questions related to Portal Authentication, Security model, AAD onboarding, Ibiza extension onboarding. Please provide details on your extension name and requirements/scenarios.                                         | Santhosh Somayajula | |
-| [ibiza-telemetry](https://stackoverflow.microsoft.com/questions/tagged/ibiza-telemetry)               | All questions regarding Ibiza-Telemetry                                                       | Sean Watson | ibiza-telemetry@microsoft.com</a> |
-| [ibiza-test](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test)                         | The CSharp test framework `Microsoft.Portal.TestFramework` and the nodejs test framework `msportalfx-test` | Umair Aftab | |
 
 
 ## FAQs for Debugging Extensions

@@ -91,4 +91,3 @@ The users can edit the contents of the  Dictionary/StringMap/property bag by usi
 For more information about how to develop type metadata to use the array with the editable grid, see [portalfx-legacy-editscopes.md#the-getEntityArrayWithEdits-method](portalfx-legacy-editscopes.md#the-getEntityArrayWithEdits-method).
 
 * * *
-
