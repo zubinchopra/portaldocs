@@ -14,10 +14,9 @@ The following list of data subtopics follows the Model-View-View-Model methodolo
 |  Loading Data | [portalfx-data-loading.md](portalfx-data-loading.md) | `QueryCache` and `EntityCache` methods that request data from servers and other sources  | 
 | Child Lifetime Managers  | [portalfx-data-lifetime.md](portalfx-data-lifetime.md) | Fine-grained memory management that allows resources to be destroyed previous to the closing of the blade. | 
 |   | [portalfx-data-projections.md](portalfx-data-projections.md) |  | 
-|   | [portalfx-data-refreshingdata.md](portalfx-data-refreshingdata.md) |  | 
-|   | [portalfx-data-virtualizedgriddata.md](portalfx-data-virtualizedgriddata.md) |  | 
+|   Merging and Refreshing Data | [portalfx-data-refreshingdata.md](portalfx-data-refreshingdata.md) |   `DataCache` / `DataView` object methods like `refresh` and `forceremove`.  | |   | [portalfx-data-virtualizedgriddata.md](portalfx-data-virtualizedgriddata.md) |  | 
 |   | [portalfx-data-typemetadata.md](portalfx-data-typemetadata.md) |  | 
-|   | [top-extensions-data-atomization.md](top-extensions-data-atomization.md) |  | 
+|   | [top-extensions-data-atomization.md](top-extensions-data-atomization.md) |  Allows data views to be bound to one data entity, and minimizes memory trace. | 
 
 * * * 
 

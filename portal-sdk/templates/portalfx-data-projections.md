@@ -29,6 +29,7 @@ The initial implementation of [data projection](portalfx-extensions-glossary.md)
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#buggyMapProjection"}
 
 The `robot.name()` contains the name of the robot, and `robot.model()` and `robot.manufacturer()` respectively contain the model and manufacturer values. The `RobotDetails` interface that models the data in the grid requires observables for the  `name` and `modelAndMfg` properties, therefore they use the strings that are received from the `QueryCache` model. The `projectionId` and `_logMapFunctionRunning` methods are discussed in [](). 
+
  The grid is configured with the buttons in the middle of the screen.  When the grid is configured  with different types of projections, the commands at the top of the screen are used to add/remove/modify items in the data source.  The output window displays the results of the functions.
 
 1. When the blade opens, click on the **Buggy Map** button to load the grid with the data projection that was previously discussed. Something like the following is displayed in the **log stream** control at the bottom of the blade.
@@ -47,12 +48,7 @@ The `robot.name()` contains the name of the robot, and `robot.model()` and `robo
 
 1. Clicking on the **update status** command at the top of the blade simulates the `QueryCache` receiving a property value for the activated item. Typically, new property values are retrieved by polling the server. Whe the status is updated, the child blade closes and the new status for the robot is displayed.  The activated item is the same item in the `QueryCache`, because the name has not changed, but one of its properties has been updated.  
 
-
-
-The reason that this implementation is not very performant is demonstrated in the sample located at `<dir>\Client/V1/Data/Projection/Templates/UnderstandingMapAndMapInto.html` and in the working copy located at [https://aka.ms/portalfx/projection](https://aka.ms/portalfx/projection). 
-
-
-The reason why this implementation is considered to be somewhat buggy is contained  in the **log** at the bottom of the blade.
+The reason that this implementation is not very performant is demonstrated in the sample located at `<dir>\Client/V1/Data/Projection/Templates/UnderstandingMapAndMapInto.html` and in the working copy located at [https://aka.ms/portalfx/projection](https://aka.ms/portalfx/projection).  It is also in the **log** at the bottom of the blade.
 
     ```
     Updating robot status to 'processor' (robot='Bolt')
@@ -65,14 +61,14 @@ When the `status` observable updates the map's projection, the function runs and
 
 When the mapping function runs **Knockout**, it watches to see what observable values are read. Then it takes a dependency on those values, in a manner similar to  **ko.pureComputed** or **ko.reactor**. If any of those values change, **Knockout** is aware that the generated item is out-of-date because the source for that item has changed.
 
-The `map()` function generates an update-to-date projection by running the mapping function again. This is not  performant when  the extension does something expensive in the mapping function because any increases in `map()` performance are outweighed by the decreases that occur when re-running the mapping function. The same thing happens if the extension updates the `model` property of the top item by clicking the **update model** command.
+The `map()` function generates an update-to-date projection by running the mapping function again. This is not  performant when  the extension does something expensive in the mapping function because any benefits  in `map()` performance are negated by running the mapping function more than is necessary. The same thing happens if the extension updates the `model` property of the top item by clicking the **update model** command.
 
 ```
 Updating model to 'into' (robot=Bolt)
 Creating a projection (projection id=10, robot=Bolt)
 ```
 
-Reason is the same. The following line of code is in the mapping function. 
+The following line of code is in the mapping function. 
 
 ```
 modelAndMfg: ko.observable("{0}:{1}".format(robot.model(), robot.manufacturer()))
@@ -131,7 +127,7 @@ However if the projection is done correctly both functions should work identical
 
 ### Using Knockout projections
 
-In many cases extension authors will want to shape and filter data as it is loaded via QueryView and EntityView.
+In many cases extension authors will want to shape and filter data when  it is loaded by using `QueryView` and `EntityView`.
 
 [Knockout projections](https://github.com/stevesanderson/knockout-projections) provide a simple way to efficiently perform `map` and `filter` functions over an observable array of model objects.  This allows you to add new computed properties to model objects, exclude unneeded properties on model objects, and generally change the structure of an object that is inside an array.  If used correctly, the Knockout projections library does this efficiently by only executing the developer-supplied mapping/filtering function when new data is added to the array and when data is modified. The Knockout projections library is included by default in the SDK.  You can learn more by [reading this blog post](http://blog.stevensanderson.com/2013/12/03/knockout-projections-a-plugin-for-efficient-observable-array-transformations/).
 
