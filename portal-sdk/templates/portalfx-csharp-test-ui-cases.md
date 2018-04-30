@@ -57,7 +57,6 @@ While the test framework does not provide any support for managing login credent
 
 The sample that demonstrates navigating to the Portal for testing is in the following code.
 
-```csharp
+
 {"gitdown": "include-file", "file": "../samples/SampleCSTestsFiles/NavigateToPortalTest.cs"}
-```csharp
 
