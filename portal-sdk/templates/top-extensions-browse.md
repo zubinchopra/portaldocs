@@ -491,3 +491,5 @@ module SamplesExtension.Hubs {
 }
 ```
 
+{"gitdown": "include-file", "file": "../templates/portalfx-browse-migration.md"}
+
