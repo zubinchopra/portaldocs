@@ -166,7 +166,7 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 * [Shaping and filtering data](/portal-sdk/generated/top-extensions-data-projections.md) 
 
-* [Legacy data management features](/portal-sdk/generated/top-extensions-data-typemetadata.md#type-metadata)
+* [Legacy data management features](/portal-sdk/generated/top-extensions-data-typemetadata.md)
 
 [Ask about data management on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching)
 
@@ -291,7 +291,7 @@ The Ibiza team provides and operates a common Extension Hosting Service that mak
 
 ### Custom extension deployment infrastructure
 
-You should strive to use the Extension Hosting Service. If for some reason this is not possible then [learn how to build a custom extension deployment infrastructure](/portal-sdk/generated/portalfx-extensions-custom-deployment.md).
+You should strive to use the Extension Hosting Service. If for some reason this is not possible then [learn how to build a custom extension deployment infrastructure](/portal-sdk/generated/top-extensions-custom-deployment.md).
 
 ## Upgrading the Ibiza SDK
 
