@@ -3,7 +3,7 @@
 
 For the most part, you can lay out a blade the same way you would build an **html** page using [**Knockout**](http://knockoutjs.com/).  Layout should be handled by using CSS, as specified in [portalfx-style-guide-custom-css-file.md](portalfx-style-guide-custom-css-file.md).  The framework provides a number of [controls](top-extensions-controls.md) that you can use by using **Knockout** bindings.  In additional, the Framework provides a set of css classes you can add to elements to help with docking them to the top or bottom of the blade.
 
-For more information about docking and controls, see [portalfx-legacy-blades-template-pdl.md#adding-buttons](portalfx-legacy-blades-template-pdl.md#adding-buttons).
+For more information about docking and controls, see [top-legacy-blades-template-pdl.md#adding-buttons](top-legacy-blades-template-pdl.md#adding-buttons).
 
 ### Controls that help out with layout
 

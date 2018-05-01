@@ -20,3 +20,4 @@
 | reactor | |
 | shaping data | Selecting or combining properties in a `QueryCache` or `EntityCache` to form variables that are a closer match for the intended `ViewModel`.  This differs from filtering in that filtering selects rows in a `QueryCache` instead of columnar values. | 
 | subscription | | 
+| type metadata | Data that describes an  object and  its properties.  | 

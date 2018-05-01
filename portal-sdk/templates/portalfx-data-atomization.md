@@ -1,2 +1,2 @@
 
-The page you requested has moved to [portalfx-data-atomization.md](portalfx-data-atomization.md). 
+The page you requested has moved to [top-extensions-data-atomization.md](top-extensions-data-atomization.md). 
