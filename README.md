@@ -34,9 +34,9 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 * [Actionable notifications](http://top-level/availibility-alerts.md) - *Point users to well known next steps*
 
-* [EV2 support for the extension hosting service](http://top-level/hosting-service#ev2.md) - *Nuff said*
+* [EV2 support for the Extension Hosting Service](http://top-level/hosting-service#ev2.md) - *Nuff said*
 
-* [Multi-column for Essentials controls](/portal-sdk/generated/) - *Better use of screen real estate*
+* [Multi-Column for the Essentials control](/portal-sdk/generated/) - *Better use of screen real estate*
 
 * [TreeView improvements](/portal-sdk/generated/) - *Checkboxes, commands, and Load More / Virtualization*
 
@@ -62,7 +62,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 [Ask an SDK setup question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
 
-### Samples  
+### Samples
 
 Samples show how to do many common development tasks. 
 
@@ -202,9 +202,9 @@ The Ibiza team provides limited testing support. Due to resource constraints the
 
 * [Unit testing support](/portal-sdk/generated/portalfx-unit-test.md)
 
-* [C# test framework (open source)](/portal-sdk/generated/top-extensions-csharp-test-framework.md)
+* [C# test framework (Open source)](/portal-sdk/generated/top-extensions-csharp-test-framework.md)
 
-* [Node.js test framework (open source)](/portal-sdk/generated/)
+* [Node.js test framework (Open source)](/portal-sdk/generated/)
 
 [Ask a test-related question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test)
 
@@ -281,11 +281,11 @@ The Ibiza team provides and operates a common Extension Hosting Service that mak
 
 * [Onboarding your extension to the Extension Hosting Service](/portal-sdk/generated/portalfx-extensions-hosting-service-procedures.md)
 
-* [Validating extension registration with Extension Hosting Service](/portal-sdk/generated/)
+* [Validating extension registration with the Extension Hosting Service](/portal-sdk/generated/)
 
 * [Versioning your extension](/portal-sdk/generated/portalfx-extensions-versioning.md)
 
-* [Deploying your extension using **Express V2** and the Extension Hosting Service](/portal-sdk/generated/portalfx-extensions-hosting-service-advanced.md)
+* [Deploying your extension using Express V2 and the Extension Hosting Service](/portal-sdk/generated/portalfx-extensions-hosting-service-advanced.md)
 
 * [SLA for registering an extension with the Extension Hosting Service](/portal-sdk/generated/top-extensions-svc-lvl-agreements.md)
 
@@ -310,7 +310,7 @@ These features are supported, but have had no recent investment. No additional i
 
 * [PDL-based programming](/portal-sdk/generated/portalfx-legacy-blades-template-pdl.md)
 
-* [Controls in the MsPortalFx namespace](/portal-sdk/generated/portalfx-extensions-samples-controls-deprecated.md)
+* [Controls in the MsPortalFx namespace](/portal-sdk/generated/top-extensions-samples-controls-deprecated.md)
 
 * [EditScope](/portal-sdk/generated/top-legacy-editscopes.md)
 
@@ -318,11 +318,11 @@ These features are supported, but have had no recent investment. No additional i
 
 The documents are combinations from all the previous topics. Consequently, there may be some repetition.
 
-* [Best practices](/portal-sdk/generated/portalfx-extensions-bp.md)
+* [Best practices](/portal-sdk/generated/top-extensions-bp.md)
 
-* [Frequently asked questions](/portal-sdk/generated/portalfx-extensions-faq.md)
+* [Frequently asked questions](/portal-sdk/generated/top-extensions-faq.md)
 
-* [Glossary](/portal-sdk/generated/portalfx-extensions-glossary.md)
+* [Glossary](/portal-sdk/generated/top-extensions-glossary.md)
 
 # Marketplace/Gallery Developer Resources
 

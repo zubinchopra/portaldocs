@@ -92,7 +92,7 @@ You quickly see every property that can be sent to the control as an option, in 
 
 <!--
 
-  gitdown": "include-file", "file": "../templates/portalfx-extensions-samples-controls-deprecated.md"}
+  gitdown": "include-file", "file": "../templates/top-extensions-samples-controls-deprecated.md"}
 
  gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-controls.md"}
  -->
