@@ -19,6 +19,7 @@ Kickoff the onboarding experience by sending mail to <a href="mailto:ibiza-onboa
 ## Azure portal architecture
 
 Learn how the framework is structured and how it is designed to run in multiple clouds / environments.
+
 * [Architecture overview](/portal-sdk/generated/top-extensions-architecture.md)
 
 ## What's new
@@ -33,7 +34,7 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 * [Actionable notifications](http://top-level/availibility-alerts.md) - *Point users to well known next steps*
 
-* [EV2 support for the Extension Hosting Service](http://top-level/hosting-service#ev2.md) - *Nuff said*
+* [EV2 support for the extension hosting service](http://top-level/hosting-service#ev2.md) - *Nuff said*
 
 * [Multi-column for essentials controls](/portal-sdk/generated/) - *Better use of screen real estate*
 
@@ -57,7 +58,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 1. 	Run your code
 
-    * [Running the extension locally (a.k.a. Sideloading)](/portal-sdk/generated/top-extensions-sideloading.md)
+    * [Running the extension locally (a.k.a. sideloading)](/portal-sdk/generated/top-extensions-sideloading.md)
 
 [Ask an SDK setup question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
 
@@ -83,9 +84,9 @@ The primary UI building block is a called a blade. A blade is like a page. It ge
 
 * [ResourceMenuBlade](/portal-sdk/generated/top-blades-resourcemenu.md)
 
-* [Blade Settings](/portal-sdk/generated/top-blades-settings.md)
+* [Blade settings](/portal-sdk/generated/top-blades-settings.md)
 
-* [FrameBlades](/portal-sdk/generated/top-blades-frameblades.md)
+* [FrameBlade](/portal-sdk/generated/top-blades-frameblades.md)
 
 * [Opening and closing blades programmatically](/portal-sdk/generated/top-blades-opening-and-closing.md)
 
@@ -159,7 +160,7 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 * [Notifications](/portal-sdk/generated/)
 
-* [Blade opening and communication between blades](/portal-sdk/generated/)
+* [Communication between blades](/portal-sdk/generated/)
 
 ### Loading and managing data
 
@@ -167,23 +168,21 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 * [Making authenticated calls to Azure Resource Manager (ARM)](/portal-sdk/generated/portalfx-data.md#making-authenticated-ajax-calls)
 
-* [Data Context, data views, and data caches](/portal-sdk/generated/top-extensions-data-caching.md)
-
-* [Data Context](/portal-sdk/generated/top-extensions-data-modeling.md)
+* [Data context](/portal-sdk/generated/top-extensions-data-modeling.md)
 
 * [Data caches](/portal-sdk/generated/top-extensions-data-caching.md)
 
 * [Data views](/portal-sdk/generated/top-extensions-data-views.md)
 
-* [Auto-refreshing client data](/portal-sdk/generated/portalfx-data-refreshingdata.md#auto-refreshing-client-side-data-aka-polling)
+* [Auto-refreshing client data](/portal-sdk/generated/top-extensions-data-refreshing.md#auto-refreshing-client-side-data-aka-polling)
 
 * [Shaping and filtering data](/portal-sdk/generated/portalfx-data-projections.md) 
 
-* [Adressing Data Merge Failures](/portal-sdk/generated/portalfx-data.md#data-merging)
+* [Addressing data merge failures](/portal-sdk/generated/top-extensions-data-refreshing.md#data-merge-failures)
 
 * [Legacy accessing C# model objects](/portal-sdk/generated/portalfx-data-typemetadata.md#type-metadata)
 
-* [Legacy Data Atomization](/portal-sdk/generated/top-extensions-data-atomization.md)
+* [Legacy - data atomization](/portal-sdk/generated/top-extensions-data-atomization.md)
 
 [Ask about data management on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching)
 
@@ -221,11 +220,11 @@ The Ibiza team provides limited testing support. Due to resource constraints the
 
 * [Unit testing support](/portal-sdk/generated/portalfx-unit-test.md)
 
-* [C# Test Framework (Open source)](/portal-sdk/generated/top-extensions-csharp-test-framework.md)
+* [C# test framework (open source)](/portal-sdk/generated/top-extensions-csharp-test-framework.md)
 
-* [Node.js Test Framework (Open source)](/portal-sdk/generated/)
+* [Node.js test framework (open source)](/portal-sdk/generated/)
 
-[Ask a test related question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test)
+[Ask a test-related question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test)
 
 ## Telemetry and alerting
 
@@ -255,7 +254,7 @@ It is common for teams to want to experiment with new capabilities. We offer two
 
 * [Feature flags to enable or disable individual features within an environment](/portal-sdk/generated/top-extensions-flags.md)
 
-## Localization / Globalization
+## Localization and globalization
 
 The Azure portal supports multiple languages and locales. You will need to localize your content.
 
@@ -290,9 +289,9 @@ Learn how to deploy your extension to the various clouds and environments.
 
 [Ask a deployment question on Stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)
 
-### Deployment using the Extension hosting service
+### Deployment using the extension hosting service
 
-[Deployment using the Extension hosting service](/portal-sdk/generated/top-hosting-service.md)
+[Deployment using the extension hosting service](/portal-sdk/generated/top-hosting-service.md)
 
 The Ibiza team provides and operates a common extension hosting service that makes it easy to get your bits into a globally distributed system without having to manage your own infrastructure.
 
@@ -304,9 +303,9 @@ The Ibiza team provides and operates a common extension hosting service that mak
 
 * [Versioning your extension](/portal-sdk/generated/portalfx-extensions-versioning.md)
 
-* [Deploying your extension using Express V2 and the Hosting Service](/portal-sdk/generated/portalfx-extensions-hosting-service-advanced.md)
+* [Deploying your extension using **Express V2** and the hosting service](/portal-sdk/generated/portalfx-extensions-hosting-service-advanced.md)
 
-* [SLA for registering an extension with the Extension Hosting Service](/portal-sdk/generated/top-extensions-svc-lvl-agreements.md)
+* [SLA for registering an extension with the extension hosting service](/portal-sdk/generated/top-extensions-svc-lvl-agreements.md)
 
 ### Custom extension deployment infrastructure
 
