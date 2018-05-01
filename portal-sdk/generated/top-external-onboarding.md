@@ -21,40 +21,23 @@ where
 ```json
 Extension name: <Company>_<BrandOrSuite>_<ProductOrComponent>  
 URLs:  (must adhere to pattern)
-PROD:  main.<extensionName>.ext.contoso.com
+PROD:   <extensionprefix>.hosting.portal.azure.net
 Contact info:_________
 Business Contacts:_________
 Dev leads: _________
 PROD on-call email: _________
 ```
 
-**NOTE**: The name of the extension is the same for both the PROD version and the custom deployment version, as specified in [portalfx-extensions-custom-deployment.md](portalfx-extensions-custom-deployment.md).  For the hosting service, the request should include the name of the extension as `<prefix>.hosting.portal.azure.net/<prefix>`, as specified in [portalfx-cdn.md#configuring-your-extension](portalfx-cdn.md#configuring-your-extension). The email may also contain the extension config file, as specified in [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
+**NOTE**: The name of the extension is the same for both the PROD version and the custom deployment version, as specified in [top-extensions-custom-deployment.md](top-extensions-custom-deployment.md).  For the hosting service, the request should include the name of the extension as `<prefix>.hosting.portal.azure.net/<prefix>`, as specified in [portalfx-cdn.md#configuring-your-extension](portalfx-cdn.md#configuring-your-extension). The email may also contain the extension config file, as specified in [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
 
 <a name="onboarding-outside-of-ibiza-one-compliance-system-1cs"></a>
 ## One Compliance System (1CS)
   
+One Compliance System (1CS) is Microsoft's platform to provide a single compliance system for engineering groups across the organization. 1CS is a component of the One Engineering System, 1ES. The platform is the work of the Developer Division as a part of Visual Studio Team Services (VSTS).
+
   The One Compliance System (1CS) is located at [https://microsoft.sharepoint.com/teams/1CS/SitePages/Home.aspx](https://microsoft.sharepoint.com/teams/1CS/SitePages/Home.aspx).
 
-<a name="onboarding-outside-of-ibiza-one-compliance-system-1cs-quality-essentials-deprecated"></a>
-### Quality Essentials - Deprecated
-
-Compliance criteria and practices are defined in Quality Essentials throughout the development cycle. These ensure that services meet the Trusted Cloud commitments outlined in the Microsoft Azure Trust Center for our customers. These are required procedures for preview and Global Availability, and are to be revisited for every release cycle.
-
-Nearly 70% of Azure users are from outside of the United States. Therefore, it is important to make Azure a globalized product. There are a few internationalization requirements that the extension or service is required to support. This is the same set of languages that are supported by Azure Portal for GA.
-
-The customer has a different set of expectations for the extension in each phase. To meet customer expectations, we have compiled production-ready metrics for each phase. The development of an extension  can proceed to the next step when it meets the production-ready metrics for the current step. To meet customer expectations and continue to increase customer satisfaction, several quality metrics are tracked for every extension by the Get1CS team. An overview of Quality Essentials is located at [https://aka.ms/qualityessentials](https://aka.ms/qualityessentials). 
-
- The Azure team only tracks the production-ready metrics and localization requirements. There may be tools to install from the QE and 1CS sites that are part of the Quality Essentials process. Quality Essentials and 1CS provide access to manage the release policies and procedures for each extension. QE tracks the following policies.
-* Accessibility
-* Global readiness
-* Global trade compliance
-* License terms
-* Open source software
-* Privacy
-* Security Development Lifecycle (SDL)
-* Software integrity
- 
-Some of the procedures such as Accessibility, GB Certificate, Privacy, and Security are also measured in the Service Health Review Scorecard that is located at [https://aka.ms/shr](https://aka.ms/shr), and in the production-ready metrics for management review and tracking. 
+Some of the procedures such as Accessibility, GB Certificate, Privacy, and Security are also measured in the Service Health Review Scorecard that is located at [http://aka.ms/s360](http://aka.ms/s360), and in the production-ready metrics for management review and tracking. 
 
 These requirements apply to both the Portal fx and extensions. Since Fx provides the common infrastructure and UI controls that govern the data handling and UX, hence some of the compliance work for extensions would be identical across in Ibiza, and rationally be mitigated by the Framework. For example, Accessibility support on keyboard navigation and screen reader recognition, as well as the regional format and text support to meet globalization requirements, are implemented at the controls that Framework distributed.  The same is true for Security threat modeling, extension authentication to ARM, postMessage/RPC layer and UserSettings, etc. are handled by Framework. To minimize the duplicate efforts on those items, Fx provides some level of "blueprint" documentation that can be used as a reference for compliance procedures. You are still responsible to review the tools and submit the results for approval previous to shipping the extension. 
 
