@@ -28,7 +28,7 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 * [Forms without edit scope](/portal-sdk/generated/top-editscopeless-forms.md) - *More intuitive APIs for building forms*
 
-* [Editable grid V2](http://top-level/editable-grid.md) - *Improved APIs designed to work with new forms*
+* [EditableGrid V2](http://top-level/editable-grid.md) - *Improved APIs designed to work with new forms*
 
 * [Extension availability alerts](http://top-level/availibility-alerts.md) - *Get notified if your extension goes down*
 
@@ -36,7 +36,7 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 * [EV2 support for the extension hosting service](http://top-level/hosting-service#ev2.md) - *Nuff said*
 
-* [Multi-column for essentials controls](/portal-sdk/generated/) - *Better use of screen real estate*
+* [Multi-column for Essentials controls](/portal-sdk/generated/) - *Better use of screen real estate*
 
 * [TreeView improvements](/portal-sdk/generated/) - *Checkboxes, commands, and Load More / Virtualization*
 
@@ -62,10 +62,6 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 [Ask an SDK setup question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
 
-## Developing your user interface
-
-The next few sections walk through the different types of UI that can be built using the framework.
-
 ### Samples  
 
 Samples show how to do many common development tasks. 
@@ -84,13 +80,13 @@ The primary UI building block is a called a blade. A blade is like a page. It ge
 
 * [ResourceMenuBlade](/portal-sdk/generated/top-blades-resourcemenu.md)
 
-* [Blade settings](/portal-sdk/generated/top-blades-settings.md)
-
 * [FrameBlade](/portal-sdk/generated/top-blades-frameblades.md)
 
 * [Opening and closing blades programmatically](/portal-sdk/generated/top-blades-opening-and-closing.md)
 
 * [Advanced TemplateBlade topics](/portal-sdk/generated/top-blades-advanced.md)
+
+* [Blade settings](/portal-sdk/generated/top-blades-settings.md)
 
 * [Blade with tiles](/portal-sdk/generated/top-blades-legacy.md)
 
@@ -166,25 +162,11 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 Since your extension is just web code, you can make **AJAX** calls to various services to load data into your UI. The framework provides a data library you can use to manage this data.
 
-* [Data](/portal-sdk/generated/top-extensions-data.md)
-
-* [Making authenticated calls to Azure Resource Manager (ARM)](/portal-sdk/generated/top-extensions-data.md#authenticating-ajax-calls)
-
-* [Data context](/portal-sdk/generated/top-extensions-data-modeling.md)
-
-* [Data caches](/portal-sdk/generated/top-extensions-data-caching.md)
-
-* [Data views](/portal-sdk/generated/top-extensions-data-views.md)
-
-* [Auto-refreshing client data](/portal-sdk/generated/top-extensions-data-refreshing.md#auto-refreshing-client-side-data-aka-polling)
+* [Making authenticated calls to Azure Resource Manager (ARM)](/portal-sdk/generated/top-extensions-data.md)
 
 * [Shaping and filtering data](/portal-sdk/generated/top-extensions-data-projections.md) 
 
-* [Addressing data merge failures](/portal-sdk/generated/top-extensions-data-refreshing.md#data-merge-failures)
-
-* [Legacy accessing C# model objects](/portal-sdk/generated/top-extensions-data-typemetadata.md#type-metadata)
-
-* [Legacy - data atomization](/portal-sdk/generated/top-extensions-data-atomization.md)
+* [Legacy data management features](/portal-sdk/generated/top-extensions-data-typemetadata.md#type-metadata)
 
 [Ask about data management on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching)
 
@@ -197,8 +179,6 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 * [Sharing blades and parts across extensions](/portal-sdk/generated/)
 
 ## Debugging
-
- [Debugging](/portal-sdk/generated/top-extensions-debugging.md)
 
 * [Using developer mode](/portal-sdk/generated/portalfx-extensions-debugging-tool.md)
 
@@ -287,35 +267,35 @@ The Azure portal strives to meet high accessibility standards to ensure the prod
 Learn how to deploy your extension to the various clouds and environments.
 * [Extension registration, environments (e.g. dogfood, prod), clouds (e.g. Mooncake, BlackForest, Fairfax) and Ibiza team SLAs](/portal-sdk/generated/top-extensions-publishing.md)
 
-* [Extension development phases](/portal-sdk/generated/top-extensions-developmentPhases.md)
+* [Going from private preview to public preview to GA](/portal-sdk/generated/top-extensions-developmentPhases.md)
 
 [Ask a deployment question on Stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)
 
-### Deployment using the extension hosting service
+### Deployment using the Extension Hosting Service
 
-[Deployment using the extension hosting service](/portal-sdk/generated/top-hosting-service.md)
+[Deployment using the Extension Hosting Service](/portal-sdk/generated/top-hosting-service.md)
 
-The Ibiza team provides and operates a common extension hosting service that makes it easy to get your bits into a globally distributed system without having to manage your own infrastructure.
+The Ibiza team provides and operates a common Extension Hosting Service that makes it easy to get your bits into a globally distributed system without having to manage your own infrastructure.
 
-* [Extension hosting service overview](/portal-sdk/generated/portalfx-extensions-hosting-service-overview.md)
+* [Extension Hosting Service overview](/portal-sdk/generated/portalfx-extensions-hosting-service-overview.md)
 
 * [Onboarding your extension to the Extension Hosting Service](/portal-sdk/generated/portalfx-extensions-hosting-service-procedures.md)
 
-* [Validating extension registration with hosting service](/portal-sdk/generated/)
+* [Validating extension registration with Extension Hosting Service](/portal-sdk/generated/)
 
 * [Versioning your extension](/portal-sdk/generated/portalfx-extensions-versioning.md)
 
-* [Deploying your extension using **Express V2** and the hosting service](/portal-sdk/generated/portalfx-extensions-hosting-service-advanced.md)
+* [Deploying your extension using **Express V2** and the Extension Hosting Service](/portal-sdk/generated/portalfx-extensions-hosting-service-advanced.md)
 
-* [SLA for registering an extension with the extension hosting service](/portal-sdk/generated/top-extensions-svc-lvl-agreements.md)
+* [SLA for registering an extension with the Extension Hosting Service](/portal-sdk/generated/top-extensions-svc-lvl-agreements.md)
 
 ### Custom extension deployment infrastructure
 
-You should strive to use the Extension hosting service. If for some reason this is not possible then [learn how to build a custom extension deployment infrastructure](/portal-sdk/generated/portalfx-extensions-custom-deployment.md).
+You should strive to use the Extension Hosting Service. If for some reason this is not possible then [learn how to build a custom extension deployment infrastructure](/portal-sdk/generated/portalfx-extensions-custom-deployment.md).
 
 ## Upgrading the Ibiza SDK
 
-Extensions are required to be running a version of the Ibiza SDK that has been published withing the past 4 months. 
+Extensions are required to be running a version of the Ibiza SDK that has been published within the past 4 months. 
 * [Upgrade policy and alerts](/portal-sdk/generated/portalfx-deploy.md#3-understand-extension-runtime-compatibility)
 
 * [Upgrading Ibiza NuGet packages](/portal-sdk/generated/top-extensions-nuget.md)
@@ -328,15 +308,13 @@ Extensions are required to be running a version of the Ibiza SDK that has been p
 
 These features are supported, but have had no recent investment. No additional investment is planned. There are modern capabilities that should be used instead if you are developing new features.
 
-* [PDL based blades and parts](/portal-sdk/generated/)
+* [PDL-based programming](/portal-sdk/generated/portalfx-legacy-blades-template-pdl.md)
 
 * [Controls in the MsPortalFx namespace](/portal-sdk/generated/portalfx-extensions-samples-controls-deprecated.md)
 
 * [EditScope](/portal-sdk/generated/top-legacy-editscopes.md)
 
-* [Legacy features](/portal-sdk/generated/portalfx-legacy-blades-template-pdl.md)
-
-## Frequently asked questions
+## Additional Resources
 
 The documents are combinations from all the previous topics. Consequently, there may be some repetition.
 
@@ -348,23 +326,23 @@ The documents are combinations from all the previous topics. Consequently, there
 
 # Marketplace/Gallery Developer Resources
 
-1. [Gallery Overview](/gallery-sdk/generated/index-gallery.md#gallery-overview)
+1. [Gallery overview](/gallery-sdk/generated/index-gallery.md#gallery-overview)
 
-1. [Gallery Item Specificiations](/gallery-sdk/generated/index-gallery.md#gallery-item-specificiations)
+1. [Gallery item Specifications](/gallery-sdk/generated/index-gallery.md#gallery-item-specificiations)
 
-1. [Gallery Item Metadata](/gallery-sdk/generated/index-gallery.md#gallery-item-metadata)
+1. [Gallery item metadata](/gallery-sdk/generated/index-gallery.md#gallery-item-metadata)
 
-1. [Gallery Item Field to UI Element Mappings](/gallery-sdk/generated/index-gallery.md#gallery-item-field-to-ui-element-mappings)
+1. [Gallery item field to UI element mappings](/gallery-sdk/generated/index-gallery.md#gallery-item-field-to-ui-element-mappings)
 
-1. [Gallery Package Development and Debugging](/gallery-sdk/generated/index-gallery.md#gallery-package-development-and-debugging)
+1. [Gallery package development and debugging](/gallery-sdk/generated/index-gallery.md#gallery-package-development-and-debugging)
 
-1. [Legacy OneBox Development approach](/gallery-sdk/generated/index-gallery.md#legacy-onebox-development-approach)
+1. [Legacy OneBox development approach](/gallery-sdk/generated/index-gallery.md#legacy-onebox-development-approach)
 
 1. [Using the Add to Resource Blade](/gallery-sdk/generated/index-gallery.md#using-the-add-to-resource-blade)
 
-1. [Your icon tile for the Azure Store](/gallery-sdk/generated/index-gallery.md#your-icon-tile-for-the-azure-store)
+1. [Your icon tile for the Azure store](/gallery-sdk/generated/index-gallery.md#your-icon-tile-for-the-azure-store)
 
 1. [Developer tooling and productivity](/gallery-sdk/generated/index-gallery.md#developer-tooling-and-productivity)
 
-1. [Gallery Frequently Asked Questions](/gallery-sdk/generated/index-gallery.md#gallery-frequently-asked-questions)
+1. [Gallery frequently asked questions](/gallery-sdk/generated/index-gallery.md#gallery-frequently-asked-questions)
 
