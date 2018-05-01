@@ -176,11 +176,11 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 * [Auto-refreshing client data](/portal-sdk/generated/top-extensions-data-refreshing.md#auto-refreshing-client-side-data-aka-polling)
 
-* [Shaping and filtering data](/portal-sdk/generated/portalfx-data-projections.md) 
+* [Shaping and filtering data](/portal-sdk/generated/top-extensions-data-projections.md) 
 
 * [Addressing data merge failures](/portal-sdk/generated/top-extensions-data-refreshing.md#data-merge-failures)
 
-* [Legacy accessing C# model objects](/portal-sdk/generated/portalfx-data-typemetadata.md#type-metadata)
+* [Legacy accessing C# model objects](/portal-sdk/generated/top-extensions-data-typemetadata.md#type-metadata)
 
 * [Legacy - data atomization](/portal-sdk/generated/top-extensions-data-atomization.md)
 
