@@ -14,7 +14,7 @@ Data Source: [https://AzPortal.kusto.windows.net](https://AzPortal.kusto.windows
 
 ### Permissions
 
-All Azure employees should have access to our Kusto clusters. The way permissions are granted is through inheritence of the overall `REDMOND\AZURE-ALL-PSV` group. We do not grant individuals access to the kusto, you will need to join your respective team's group. To inherit the valid permissions your team should have a standard access group you can join in //ramweb or //myaccess and that group should be configured to have the correct permissions.
+All Azure employees should have access to our Kusto clusters. The way permissions are granted is through inheritence of the overall AAD group (`REDMOND\AZURE-ALL-PSV` for teams in C+E, for teams outside `REDMOND\AZURE-ALL-FPS`). We do not grant individuals access to the kusto, you will need to join your respective team's group. To inherit the valid permissions your team should have a standard access group you can join in //ramweb or //myaccess and that group should be configured to have the correct permissions.
 
 If you don't have access please follow the below steps:
 
@@ -26,9 +26,10 @@ If you don't have access please follow the below steps:
 
 #### What if I can't find a group
 
-If you are unable to find a group to join within the table, you may need to create a new group. First confirm that which your colleagues, there maybe a group that is named non-intuitively.
+If you are unable to find a group to join within the table, you may need to create a new group. First confirm that with your colleagues, there may be a group that is named non-intuitively.
 
 If there is still no group you can join you will need to create a new group. To do that please follow documentation on [http://aka.ms/standardaccess](http://aka.ms/standardaccess).
+Look for the link named 'Azure RBAC Getting Started Guide'.
 
 
 For all other questions please reach out to [Ibiza Telemetry](mailto:ibiza-telemetry@microsoft.com).
