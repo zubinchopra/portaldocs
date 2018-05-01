@@ -166,7 +166,9 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 Since your extension is just web code, you can make **AJAX** calls to various services to load data into your UI. The framework provides a data library you can use to manage this data.
 
-* [Making authenticated calls to Azure Resource Manager (ARM)](/portal-sdk/generated/portalfx-data.md#making-authenticated-ajax-calls)
+* [Data](/portal-sdk/generated/top-extensions-data.md)
+
+* [Making authenticated calls to Azure Resource Manager (ARM)](/portal-sdk/generated/top-extensions-data.md#authenticating-ajax-calls)
 
 * [Data context](/portal-sdk/generated/top-extensions-data-modeling.md)
 
