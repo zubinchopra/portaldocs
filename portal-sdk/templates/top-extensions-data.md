@@ -15,16 +15,15 @@ The following list of data subtopics follows the Model-View-View-Model methodolo
 | Child Lifetime Managers  | [portalfx-data-lifetime.md](portalfx-data-lifetime.md) | Fine-grained memory management that allows resources to be destroyed previous to the closing of the blade. | 
 |   | [portalfx-data-projections.md](portalfx-data-projections.md) |  | 
 |   Merging and Refreshing Data | [portalfx-data-refreshingdata.md](portalfx-data-refreshingdata.md) |   `DataCache` / `DataView` object methods like `refresh` and `forceremove`.  | |   | [portalfx-data-virtualizedgriddata.md](portalfx-data-virtualizedgriddata.md) |  | 
-|   | [portalfx-data-typemetadata.md](portalfx-data-typemetadata.md) |  | 
-|   | [top-extensions-data-atomization.md](top-extensions-data-atomization.md) |  Allows data views to be bound to one data entity, and minimizes memory trace. | 
+|   | [portalfx-data-typemetadata.md](portalfx-data-typemetadata.md) |    Allows data views to be bound to one data entity, and minimizes memory trace. | 
 
 * * * 
 
-    {"gitdown": "include-file", "file": "../templates/top-extensions-data-modeling.md"}
+    {"gitdown": "include-file", "file": "../templates/portalfx-data-modeling.md"}
 
-   {"gitdown": "include-file", "file": "../templates/top-extensions-caching.md"}
+   {"gitdown": "include-file", "file": "../templates/portalfx-data-caching.md"}
 
-   {"gitdown": "include-file", "file": "../templates/top-extensions-data-views.md"}
+   {"gitdown": "include-file", "file": "../templates/portalfx-data-views.md"}
 
 <!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
