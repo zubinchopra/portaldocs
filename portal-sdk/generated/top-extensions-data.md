@@ -506,310 +506,13 @@ Consequently, the `mapInto` function is working as expected, by using the child 
 <!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
    
-<a name="working-with-data-shaping-and-filtering-data"></a>
-## Shaping and filtering data
-
-Extensions that use data from  a `QueryCache` will select and filter the items in the cache, or reshape them into formats that are more suited to a specific UI. The **Knockout** observable versions of the `map()` and `mapInto()` methods can be used to accomplish this.
-
-The following data model accepts a `QueryCache` of `Robot` objects as a parameter. 
-
-```ts
-interface Robot {
-    name: KnockoutObservable<string>;
-    status: KnockoutObservable<string>;
-    model: KnockoutObservable<string>;
-    manufacturer: KnockoutObservable<string>;
-    os: KnockoutObservable<string>;
-    specId: KnockoutObservable<string>;
-}
-```
-
-The  robots from the `QueryCache` are displayed on  a grid that is three columns wide. The `name` column and the `status` column are the same data as that of the model, but the third column is a combination of the model and manufacturer properties from the model object in the `QueryCache`. The working copy is located at [https://aka.ms/portalfx/projection](https://aka.ms/portalfx/projection). 
-
-**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
-
-The interface for the shaped data to display in the grid is located at `<dir>\Client\V1\Data\Projection\ViewModels\MapAndMapIntoViewModels.ts`. This code is also included in the following example.
-
-```typescript
-
-/**
-* Details for the shaped data that is bound to the grid.
-*/
-export interface RobotDetails {
-   name: KnockoutObservableBase<string>;
-   status: KnockoutObservableBase<string>;
-   modelAndMfg: KnockoutObservableBase<string>;
-}
-
-```
-
-The initial implementation of [data projection](portalfx-extensions-glossary.md) would resemble the following code.
-
-```typescript
-
-var projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
-    var projectionId = this._uuid++;
-    this._logMapFunctionRunning(projectionId, robot);
-    return <RobotDetails>{
-        name: ko.observable(robot.name()),
-        status: ko.observable(robot.status()),
-        modelAndMfg: ko.observable("{0}:{1}".format(robot.model(), robot.manufacturer()))
-    };
-});
-
-```
-
-The `robot.name()` contains the name of the robot, and `robot.model()` and `robot.manufacturer()` respectively contain the model and manufacturer values. The `RobotDetails` interface that models the data in the grid requires observables for the  `name` and `modelAndMfg` properties, therefore they use the strings that are received from the `QueryCache` model. The `projectionId` and `_logMapFunctionRunning` methods are discussed in [](). 
-
- The grid is configured with the buttons in the middle of the screen.  When the grid is configured  with different types of projections, the commands at the top of the screen are used to add/remove/modify items in the data source.  The output window displays the results of the functions.
-
-1. When the blade opens, click on the **Buggy Map** button to load the grid with the data projection that was previously discussed. Something like the following is displayed in the **log stream** control at the bottom of the blade.
-
-    ```
-    Creating buggy map() projection
-    Creating a projection (projection id=4, robot=Spring) 
-    Creating a projection (projection id=5, robot=MetalHead)
-    Creating a projection (projection id=6, robot=Botly)
-    Creating a projection (projection id=7, robot=Bolt)
-    ```
-
-    The projection was created and sent to the grid. Because there are four items in the `QueryCache`, the projection will run four times, once on each object. Every time the mapping function runs on an item in the grid, this sample creates a new ID for the resulting `RobotDetails` object.
-
-1. Activate the first line in the grid by clicking on it so that the child blade opens. You may need to scroll to the right to view the grid and the child blade.
-
-1. Clicking on the **update status** command at the top of the blade simulates the `QueryCache` receiving a property value for the activated item. Typically, new property values are retrieved by polling the server. Whe the status is updated, the child blade closes and the new status for the robot is displayed.  The activated item is the same item in the `QueryCache`, because the name has not changed, but one of its properties has been updated.  
-
-The reason that this implementation is not very performant is demonstrated in the sample located at `<dir>\Client/V1/Data/Projection/Templates/UnderstandingMapAndMapInto.html` and in the working copy located at [https://aka.ms/portalfx/projection](https://aka.ms/portalfx/projection).  It is also in the **log** at the bottom of the blade.
-
-    ```
-    Updating robot status to 'processor' (robot='Bolt')
-    Creating a projection (projection id=8, robot=Bolt)
-    ```
-
-When the `status` observable updates the map's projection, the function runs and computes a different projected item. The object with "projectionId === 4" is gone and is replaced with a new item with "projectionId === 8" or some other value. Consequently, the child blade closed because its contents were based on the value of the  `status` observable. The object that was in the grid's item had a different status value, and it has  been replaced by an item with the same `name` and `modelAndMfg` but a new `status`. The previous  that was in the `selectableSet's` `activatedItems` observable array no longer exists in the grid's item list.
-
-<a name="working-with-data-shaping-and-filtering-data-how-map-works"></a>
-### How map() works
-
-When the mapping function runs **Knockout**, it watches to see what observable values are read. Then it takes a dependency on those values, in a manner similar to  **ko.pureComputed** or **ko.reactor**. If any of those values change, **Knockout** is aware that the generated item is out-of-date because the source for that item has changed.
-
-The `map()` function generates an update-to-date projection by running the mapping function again. This is not  performant when  the extension does something expensive in the mapping function because any benefits  in `map()` performance are negated by running the mapping function more than is necessary. The same thing happens if the extension updates the `model` property of the top item by clicking the **update model** command.
-
-```
-Updating model to 'into' (robot=Bolt)
-Creating a projection (projection id=10, robot=Bolt)
-```
-
-The following line of code is in the mapping function. 
-
-```
-modelAndMfg: ko.observable("{0}:{1}".format(robot.model(), robot.manufacturer()))
-```
-
-This means that the map projection runs again whenever `robot.model()` is observably updated, which removes the old from  the grid and adds an entirely new item.
-
-This obviously isn't what we want so how do we write projections that don't do this? In the case of a property we want to pass through straight from the data model to the grid model (like the `status` property in this example) you simply pass the observable. Don't get the current string value out of the observable and shove it into a different observable. So this line from our mapping function:
-
-```
-status: ko.observable(robot.status()),
-```
-
-becomes this:
-
-```
-status: robot.status,
-```
-
-We can't take the same approach with the `modelAndMfg` property however since we need to combine multiple properties from the data model to produce one property on the grid model. For cases like this you should use a ko.pureComputed() like so:
-
-```
-modelAndMfg: ko.pureComputed(() => {
-    return "{0}:{1}".format(robot.model(), robot.manufacturer());
-})
-```
-
-This prevents the map() from taking a dependency on `robot.model()` and `robot.manufacturer()` because the `pureComputed()` function takes the dependency on `robot.model()` and `robot.manufacturer()`. Since the `pureComputed()` we created will update whenever `model()` or `manufacturer()` updates, `ko.map` knows it will not need to rerun your mapping function to keep the projection object up-to-date when those observables change in the source model.
-
-A correct implemenation of the map above then looks like (again ignore uuid and the logging functions):
-
-```typescript
-
-var projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
-    var projectionId = this._uuid++;
-    this._logMapFunctionRunning(projectionId, robot);
-    return <RobotDetails>{
-        name: robot.name,
-        status: robot.status,
-        modelAndMfg: ko.pureComputed(() => {
-            this._logComputedRecalculating(projectionId, robot);
-            return "{0}:{1}".format(robot.model(), robot.manufacturer());
-        })
-    };
-});
-
-```
-
-You can click on the 'Proper map' button in the sample and perform the same actions to see the difference. Now updating a property on the opened grid item no longer results in a rerunning of your map function. Instead changes to `status` are pushed directly to the DOM and changes to `model` cause the pureComputed to recalculate but importantly do not change the object in grid.items().
-
-Now that you understand how `map()` works we can introduce `mapInto()`. Here's the code the same projection implemented with mapInto():
-
-
-  ```typescript
-
-var projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
-    var projectionId = this._uuid++;
-    this._logMapFunctionRunning(projectionId, robot);
-    return <RobotDetails>{
-        name: robot.name,
-        status: robot.status,
-        modelAndMfg: ko.pureComputed(() => {
-            this._logComputedRecalculating(projectionId, robot);
-            return "{0}:{1}".format(robot.model(), robot.manufacturer());
-        })
-    };
-});
-
-```
-
-
-You can see how it reacts by clicking on the 'Proper mapInto' button and then add/remove/update the items. The code and behavior are the exact same. So how are map() and mapInto() different? We can see with a buggy implementation of a projection using mapInto():
-
-```typescript
-
-var projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
-    var projectionId = this._uuid++;
-    this._logMapFunctionRunning(projectionId, robot);
-    return <RobotDetails>{
-        name: ko.observable(robot.name()),
-        status: ko.observable(robot.status()),
-        modelAndMfg: ko.observable("{0}:{1}".format(robot.model(), robot.manufacturer()))
-    };
-});
-
-```
-
-This is the same as our buggy implementation of map() we wrote earlier. Click the 'Buggy mapInto' button and then play around with updating status() and model() of the top row while that row is activated. You'll notice, unlike map(), that the child blade doesn't close however you'll also notice that when the source data in the QueryCache changes the observable changes are not present in the projected object. The reason for this is mapInto() ignores any observables that use in the mapping function you supply. It is therefore guaranteed that a projected item will stay the same item as long as the source item is around but if you write your map incorrectly it isn't guaranteed the projected data is update to date.
-
-So to summarize:
-
-Function | Projection always guaranteed up to date | Projected object identity will not change
---- | --- | ---
-map() | Yes | No
-mapInto() | No | Yes
-
-However if the projection is done correctly both functions should work identically.
-
-### Using Knockout projections
-
-In many cases extension authors will want to shape and filter data when  it is loaded by using `QueryView` and `EntityView`.
-
-[Knockout projections](https://github.com/stevesanderson/knockout-projections) provide a simple way to efficiently perform `map` and `filter` functions over an observable array of model objects.  This allows you to add new computed properties to model objects, exclude unneeded properties on model objects, and generally change the structure of an object that is inside an array.  If used correctly, the Knockout projections library does this efficiently by only executing the developer-supplied mapping/filtering function when new data is added to the array and when data is modified. The Knockout projections library is included by default in the SDK.  You can learn more by [reading this blog post](http://blog.stevensanderson.com/2013/12/03/knockout-projections-a-plugin-for-efficient-observable-array-transformations/).
-
-The samples extension includes an example of using a projected array to bind to a grid:
-
-`\Client\Data\Projection\ViewModels\ProjectionBladeViewModel.ts`
-
-```typescript
-
-this._view = dataContext.robotData.robotsQuery.createView(container);
-
-// As items are added or removed from the underlying items array,
-// individual changed items will be re-evaluated to create the computed
-// value in the resulting observable array.
-var projectedItems = this._view.items.mapInto<RobotDetails>(container, (itemLifetime, robot) => {
-    return <RobotDetails>{
-        name: robot.name,
-        computedName: ko.pureComputed(() => {
-            return "{0}:{1}".format(robot.model(), robot.manufacturer());
-        })
-    };
-});
-
-this.grid = new Grid.ViewModel<RobotDetails, string>(
-    container,
-    projectedItems,
-    Grid.Extensions.SelectableRow);
-
-```
-
-### Chaining uses of `map` and `filter`
-
-Often, it is convenient to chain uses of `map` and `filter`:
-<!-- the below code no longer lives in samples extension anywhere -->
-```ts
-// Wire up the contents of the grid to the data view.
-this._view = dataContext.personData.peopleQuery.createView(container);
-var projectedItems = this._view.items
-    .filter((person: SamplesExtension.DataModels.Person) => {
-        return person.smartPhone() === "Lumia 520";
-    })
-    .map((person: SamplesExtension.DataModels.Person) => {
-        return <MappedPerson>{
-            name: person.name,
-            ssnId: person.ssnId
-        };
-    });
-
-var personItems = ko.observableArray<MappedPerson>([]);
-container.registerForDispose(projectedItems.subscribe(personItems));
-```
-
-This filters to only Lumia 520 owners and then maps to just the columns the grid uses.  Additional pipeline stages can be added with more map/filters/computeds to do more complex projections and filtering.
-
-### Anti-patterns and best practices
-
-**Do not** unwrap observables directly in your mapping function - When returning a new object from the function supplied to `map`, you should **avoid unwrapping observables** directly in the mapping function, illustrated by `computedName` here:
-
-```ts
-var projectedItems = this._view.items.map<RobotDetails>({
-    mapping: (robot: SamplesExtension.DataModels.Robot) => {
-        return <RobotDetails>{
-            name: robot.name,
-            
-            // DO NOT DO THIS!  USE A COMPUTED INSTEAD!
-            computedName: "{0}:{1}".format(robot.model(), robot.manufacturer());
-        };
-    },
-    ...
-```
-
-The `computedName` property above is the source of a common bug where "my grid loses selection when my QueryCache refreshes".  The reason for this is subtle.  If you unwrap observables in your mapping function, you will find that - each time the observable changes - your mapping function will be invoked again, (inefficiently) *generating an entirely new object*.  Since the Azure Portal FX's selection machinery presently relies on JavaScript object identity, selection tracked relative to the *old object* will be lost when this object is replaced by the *new object* generated by your mapping function.  Ignoring bugs around selection, generating new objects can lead to UI flicker and performance problems, as more UI is re-rendered than is necessary to reflect data changes. 
-
-**Do** follow these two patterns to avoid re-running of mapping functions and to avoid unnecessarily generating new output objects:
- 
-* **Reuse observables from the input object** - Above, the `name` property above simply reuses - in the projected output object - an observable *from the input object*
-* **Use `ko.computed()` for new, computed properties** - The `computedName` property above uses a Knockout `computed` and unwraps observables *in the function defining the `computed`*.  With this, only the `computedName` property is recomputed when the input `robot` object changes.
-
-**Do** use `map` and `filter` to reduce the size of the data you are binding to a control - See "Use map and filter to reduce size of rendered data".
-
-**Do not** use `subscribe` to project\shape data - An extreme anti-pattern would be to not use `map` at all when projecting/shaping data for use in controls:
-
-```ts
-// DO NOT DO THIS!
-this._view.items.subscribe((items) => {
-    var mappedItems: MappedPerson[] = [];
-    for (var i = 0; i < items.length; i++) {
-        // create a new mapped person for every item
-        mappedItems.push({
-            name: items[i].name,
-            model: robot.model()
-        });
-    }
-
-    this.selectableGridViewModel.items(mappedItems);
-});
-```
-
-There are two significant problems with `subscribe` used here:
-
-* Whenever `this._view.items` changes, an *entirely new array containing entirely new objects* will be generated.  Your scenario will suffer from the cost of serializing/deserializing this new array to the grid control and from the cost of fully re-rendering your grid.
-* Whenever the `robot.model` observable changes, this change *will not be reflected in the grid*, since no code has subscribed to this `robot.model` observable.
-
+The page you requested has moved to [top-extensions-data-projections.md](top-extensions-data-projections.md). 
 
 <!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
   
    
-## Data merging 
+<a name="working-with-data-data-merging"></a>
+## Data merging
 
 For the Azure Portal UI to be responsive, it is important to avoid re-rendering entire blades and parts when data changes. Instead, it is better to make granular data changes so that FX controls and **Knockout** HTML templates can re-render small portions of the blade or part UI. In many cases when an extension refreshes cached data, the newly-loaded server data precisely matches previously-cached data, and therefore there is no need to re-render the UI.
 
@@ -821,6 +524,7 @@ When cache object data is refreshed - either implicitly as specified in [#the-im
 
 For many scenarios, data merging requires no configuration because it is an implementation detail of implicit and explicit refreshes. However, there are caveats in some scenarios.
 
+<a name="working-with-data-data-merging-the-implicit-refresh"></a>
 ### The implicit refresh
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
@@ -839,6 +543,7 @@ public robotsQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModels.
 
 Additionally, the extension can customize the polling interval by using the `pollingInterval` option. By default, the polling interval is 60 seconds. It can be customized to a minimum of 10 seconds. The minimum is enforced to avoid the server load that can result from inaccurate changes.  However, there have been instances when this 10-second minimum has caused negative customer impact because of the increased server load.
 
+<a name="working-with-data-data-merging-the-explicit-refresh"></a>
 ### The explicit refresh
 
 When server data changes, the extension should take steps to keep the data cache consistent with the server. Explicit refreshing of a data cache object is necessary, for example, when the extension issues an **AJAX** call that changes server data. There are methods that explicitly and proactively reflect server data changes on the client.
@@ -863,6 +568,7 @@ public updateRobot(robot: SamplesExtension.DataModels.Robot): FxBase.PromiseV<an
 
 In this scenario, because the **AJAX** call will be issued from a `DataContext`, refreshing data in caches is performed  using methods in  the `dataCache` classes. See ["Refreshing or updating a data cache"](#refreshing-or-updating-a-data-cache).
 
+<a name="working-with-data-data-merging-refreshing-or-updating-a-data-cache"></a>
 ### Refreshing or updating a data cache
 
 The cache objects are a collection of cache entries. In extensions that use multiple active blades and parts, a specific cache object might contain many cache entries.  This means that multiple parts or services can rely on the same set of data. There are methods available on objects in the `DataCache` class that keep client-side cached data consistent with server data.
@@ -878,6 +584,7 @@ The following table specifies the `DataCache` object methods.
 
 For more information about the `DataCache`/`DataView` objects, see  [portalfx-data-caching.md](portalfx-data-caching.md).
 
+<a name="working-with-data-data-merging-refreshing-or-updating-a-data-cache-the-refresh-method"></a>
 #### The refresh method
   
 The `refresh` method is useful when the server data changes are known to be specific to a single cache entry.  This is a single query in the case of `QueryCache`, and it is a single entity `id` in the case of `EntityCache`.  This per-cache-entry method allows for more granular, often more efficient refreshing of cache object data. Only one AJAX call will be issued to the server, as in the following code.
@@ -936,6 +643,7 @@ There is one subtlety to the `refresh` method  on the  `QueryView/EntityView` ob
 
 **NOTE**: An anti-pattern to avoid is calling QueryView/EntityView's `fetch` and `refresh` methods in succession. The "refresh my data on Blade open" pattern trains the user to open Blades to fix stale data, or to close and then immediately reopen the same Blade. This behavior is often a symptom of a missing 'Refresh' command or a polling interval that is too long, as described in [#the-implicit-refresh](#the-implicit-refresh).
 
+<a name="working-with-data-data-merging-refreshing-or-updating-a-data-cache-the-refreshall-method"></a>
 #### The refreshAll method
   
 The `refreshAll` method issues N AJAX calls, one for each entry that is currently in the cache object.  The AJAX call is issued using either the `supplyData` or `uri` option supplied to the cache object. Upon completion, each AJAX result is merged onto its corresponding cache entry, as in the following example.
@@ -958,6 +666,7 @@ public updateRobot(robot: SamplesExtension.DataModels.Robot): FxBase.PromiseV<an
 
 If the optional `predicate` parameter is supplied to the `refreshAll` call, then only those entries for which the predicate returns `true` will be refreshed.  This feature is useful when the extension is aware of server data changes and therefore does not refresh cache object entries whose server data has not changed.
 
+<a name="working-with-data-data-merging-refreshing-or-updating-a-data-cache-the-applychanges-method"></a>
 #### The applyChanges method
 
 The `applyChanges` method is used in instances where the data may have already been cached. For instance, the user may have fully described the server data changes by filling out a Form on a Form Blade. In this case, the necessary cache object changes are known by the extension directly, as in the following examples.
@@ -1019,6 +728,7 @@ public deleteRobot(robot: SamplesExtension.DataModels.Robot): FxBase.PromiseV<an
 
 The `applyChanges` method accepts a function that is called for each cache entry currently in the cache object. This allows the extension to update only those cache entries that were impacted by the  changes made by the user.  This use of `applyChanges` can be a nice optimization to avoid some **AJAX** traffic to your servers.  When it is appropriate to write the data changes to the server, an extension would use the `refreshAll` method after the code that uses the  `applyChanges` method.
   
+<a name="working-with-data-data-merging-refreshing-or-updating-a-data-cache-the-forceremove-method"></a>
 #### The forceRemove method
   
 Cache objects in the `DataCache` class can contain cache entries for some time after the last blade or part has been closed or unpinned. This separates the cached data from the data view, and supports the scenario where a user closes a blade and immediately reopens it.
@@ -1062,6 +772,7 @@ Typically, when using the `forceRemove` method, the extension will take steps to
   
 * * *
 
+<a name="working-with-data-data-merging-type-metadata-for-arrays"></a>
 ### Type metadata for arrays
 
 When detecting changes between items in an previously-loaded array and a newly-loaded array, the data-merging algorithm requires some per-array configuration. Specifically, the data-merging algorithm that is not configured does not know how to match items between the old and new arrays. Without configuration, the algorithm considers each previously-cached array item as removed because it does not match any item in the newly-loaded array. Consequently, every newly-loaded array item is considered to be added because it does not match any item in the previously-cached array. This effectively replaces the entire contents of the cached array, even in those cases where the server data is unchanged. This is often the cause of performance problems in the extension, like poor responsiveness or hanging.  The UI does not display any indication that an error has occurred. To proactively warn users of  potential performance problems, the data-merge algorithm logs warnings to the console that resemble the following.
@@ -1073,6 +784,7 @@ MsPortalFx/Data/Data.DataSet Data.DataSet: Data of type [No type specified] is b
 
 Any array that is cached in the cache object is configured for data merging by using type metadata, as specified in [portalfx-data-typemetadata.md](portalfx-data-typemetadata.md). Specifically, for each `Array<T>`, the extension has to supply type metadata for type `T` that describes the `id` properties for that type. With this `id` metadata, the data-merging algorithm can match previously-cached and newly-loaded array items, and can also merge them in-place with fewer remove operations or add operations per item in the array.  In addition, when the server data does not change, each cached array item will match a newly-loaded server item and the arrays can merge in-place with no detected changes. Consquently, from the perspective of UI re-rendering, the merge will be a no-op.
 
+<a name="working-with-data-data-merging-refreshing-a-queryview-or-entityview"></a>
 ### Refreshing a QueryView or EntityView
 
 In some blades or parts, there can be a specific `Refresh` command that refreshes only the data that is visible in the specified blade or part. The `QueryView/EntityView` serves as a reference pointer to the data of that blade or part. The extension should refresh the data using that `QueryView/EntityView`, as in the following code.
@@ -1105,6 +817,7 @@ When `refresh` is called, a Promise is returned that reflects the progress/compl
 
 At the cache object level, in response to the QueryView/EntityView `refresh` call, an AJAX call will be issued for the corresponding cache entry, precisely in the same manner that would happen if the extension called the cache object's `refresh` method with the associated cache key (see [#the-refresh-method](#the-refresh-method)). 
 
+<a name="working-with-data-data-merging-refreshing-a-queryview-or-entityview-data-merge-failures"></a>
 #### Data merge failures
 
 As data-merging proceeds, differences are applied to the previously-cached data by using **Knockout** observable changes. When these observables are changed, **Knockout** subscriptions are notified and **Knockout** `reactors` and `computeds` are reevaluated. Any  extension callback can throw an exception, which  halts or preempts the current data-merge cycle. When this happens, the data-merging algorithm issues an error resembling the following log entry.
@@ -1115,6 +828,7 @@ Data merge failed for data set 'FooBarDataSet'. The error message was: ...
 
 In this case, some **JavaScript** code or extension code is causing an exception to be thrown. The exception is bubbled to the running data-merging algorithm to be logged. This error should be accompanied with a **JavaScript** stack trace that can be used to isolate and fix such bugs.  
 
+<a name="working-with-data-data-merging-refreshing-a-queryview-or-entityview-entityview-item-observable-does-not-change-on-refresh"></a>
 #### EntityView item observable does not change on refresh
 
 <!--TODO: Determine whether this paragraph belongs in a QueryView/EntityView topic instead. -->
@@ -1151,8 +865,10 @@ In this example, the supplied callback will be called both when the `item` obser
 <!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
    
+<a name="working-with-data-virtualized-data-for-the-grid"></a>
 ## Virtualized data for the grid
 
+<a name="working-with-data-virtualized-data-for-the-grid-querying-for-virtualized-data"></a>
 ### Querying for virtualized data
 
 If the server that your extension uses is going to return significant amounts of data, you should consider using the `DataNavigator` class provided by the Framework. The following two models are used to query virtualized data from the server.
@@ -1169,7 +885,8 @@ Both of these models use the existing `QueryCache` and the `MsPortalFx.Data.Remo
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
-### "Load more" model
+<a name="working-with-data-virtualized-data-for-the-grid-load-more-model"></a>
+### &quot;Load more&quot; model
 
 The following image depicts a load-more grid with a continuation token.
 
@@ -1264,6 +981,7 @@ public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
 }
 ```
 
+<a name="working-with-data-virtualized-data-for-the-grid-pageable-random-access-grid"></a>
 ### Pageable random access grid
 
 ![alt-text](../media/portalfx-data/pageable-grid.png "Pageable grid")
@@ -1362,6 +1080,7 @@ public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
 <!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
    
+<a name="working-with-data-type-metadata"></a>
 ## Type metadata
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
@@ -1386,12 +1105,12 @@ representations of objects that are used by the resource types. The class librar
 
 The `Microsoft.Portal.TypeMetadata` library is located at `%programfiles(x86)%\Microsoft SDKs\PortalSDK\Libraries\Microsoft.Portal.TypeMetadata.dll`.
 
-1. At the top of any C# file using the `TypeMetadataModel` annotation, the following namespaces must be imported:
+1. At the top of any C# file that uses the `TypeMetadataModel` annotation, the following namespaces must be imported.
 
 * `System.ComponentModel.DataAnnotations`
 * `Microsoft.Portal.TypeMetadata`
 
-1.  For an example of a model class which generates TypeScript, open the following sample:
+1.  For an example of a model class which generates **TypeScript**, open the following sample.
 
 ```cs
 // \SamplesExtension.DataModels\Robot.cs
@@ -1436,16 +1155,19 @@ namespace Microsoft.Portal.Extensions.SamplesExtension.DataModels
 }
 ```
 
-In the sample above, the `TypeMetadataModel` data attribute designates this class as one which should be included in the type generation. The first parameter specifies the type that is being targeted, which is  the same as the class that is being  decorated. The second attribute provides the `TypeScript` namespace for the model-generated object. If the  namespace is not specified, the .NET namespace of the model object will be used. The `key` attribute on the name field designates the name property as the primary key field of the object. This is required when performing merge operations from data sets and edit scopes.
+In the sample above, the `TypeMetadataModel` data attribute designates this class as one which should be included in the type generation. The first parameter specifies the type that is being targeted, which is  the same as the class that is being  decorated. The second attribute provides the `TypeScript` namespace for the model-generated object. If the  namespace is not specified, the .NET namespace of the model object is used. The `key` attribute on the `name` field specifies that the `name` property is the primary key field of the object. This is required when performing merge operations from data sets and edit scopes, as specified in [portalfx-data-refreshingdata.md](portalfx-data-refreshingdata.md).
 
+<a name="working-with-data-type-metadata-setting-options"></a>
 ### Setting options
 
-By default, the generated files will be placed in the `\Client\_generated` directory. They will still need to be explicitly included in the csproj for your extension. The TypeScript interface generation and metadata generation are both controlled via properties in your extension's csproj file. The `SamplesExtension.DataModels` project is already configured to generate models. 
+The TypeScript interface generation and metadata generation are both controlled by using  properties in your extension's csproj file. 
+By default, the generated files are placed in the `\Client\_generated` directory. They should be explicitly included in the csproj for the extension. The `SamplesExtension.DataModels` project is already configured to generate models. 
 
-Dependent on the version of the SDK you use the following changes are required to your project:
+The following changes are required for the project, depending upon the SDK version.
 
- * From Release 4.15 forward all you need to do is reference your DataModels project and ensure your datamodels are marked with the appropriate TypeMetadataModel attribute  
- * Versions prior to 4.15 require the following change to add this capability to another .NET project, the following changes need to be made to the extension (not model) csproj file:
+ * From Release 4.15 forward, reference the  DataModels project and ensure your datamodels are marked with the appropriate `TypeMetadataModel` attribute.
+
+ * Versions previous to 4.15 need to add this capability to another .NET project. Include the following code in the extension csproj file.
 
     `SamplesExtension.csproj`
 
@@ -1456,16 +1178,18 @@ Dependent on the version of the SDK you use the following changes are required t
 </ItemGroup>
 ```
 
-    The addition of `GenerateInterfaces` to the existing `CompileDependsOn` element will ensure the `GenerateInterfaces`         target is executed with the appropriate settings. The `AssemblyPaths` property notes the path on disk where the model        project assembly will be placed during a build.
+The addition of `GenerateInterfaces` to the existing `CompileDependsOn` element ensures that the `GenerateInterfaces`         target is executed with the appropriate settings. The `AssemblyPaths` property notes the path on disk where the model        project assembly will be placed during a build.
 
+<a name="working-with-data-type-metadata-using-the-generated-models"></a>
 ### Using the generated models
 
-Make sure that the generated TypeScript files are included in your csproj. The easiest way to include new models in your extension project is to the select the "Show All Files" option in the Solution Explorer of Visual Studio. Right click on the `\Client\_generated` directory in the solution explorer and choose "Include in Project". Inside of the `\Client\_generated` folder you will find a file named by the fully qualified namespace of the interface. In many cases, you'll want to instantiate an instance of the given type. One way to accomplish this is to create a TypeScript class which implements the generated interface. However, this defeats the point of automatically generating the interface. The framework provides a method which allows generating an instance of a given interface:
+Make sure that the generated TypeScript files are included in the csproj. The easiest way to include new models in your extension project is to the select the "Show All Files" option in the Solution Explorer of Visual Studio. Right click on the `\Client\_generated` directory in the solution explorer and choose "Include in Project". Inside of the `\Client\_generated` folder you will find a file named by the fully qualified namespace of the interface. In many cases, you'll want to instantiate an instance of the given type. One way to accomplish this is to create a TypeScript class which implements the generated interface. However, this defeats the point of automatically generating the interface. The framework provides a method which allows generating an instance of a given interface:
 
 ```ts
 MsPortalFx.Data.Metadata.createEmptyObject(SamplesExtension.DataModels.RobotType)
 ```
 
+<a name="working-with-data-type-metadata-non-generated-type-metadata"></a>
 ### Non-generated type metadata
 
 Optionally, you may choose to write your own metadata to describe model objects. This is only recommended if not using a .NET project to generate metadata at compile time. In place of using the generated metadata, you can set the `type` attribute of your `DataSet` to `blogPostMetadata`. The follow snippet manually describes a blog post model:
@@ -1504,6 +1228,7 @@ The `setTypeMetadata()` method will register your metadata with the system, maki
 
 
    
+<a name="working-with-data-data-atomization"></a>
 ## Data atomization
 
 Atomization fulfills two main goals: 
@@ -1540,6 +1265,7 @@ var cache = new MsPortalFx.Data.QueryCache<ModelType, QueryType>({
 
    ## Best Practices 
 
+<a name="working-with-data-data-atomization-use-querycache-and-entitycache"></a>
 ### Use QueryCache and EntityCache
 
 When performing data access from your view models, it may be tempting to make data calls directly from the `onInputsSet` function. By using the `QueryCache` and `EntityCache` objects from the `DataCache` class, you can control access to data through a single component. A single ref-counted cache can hold data across your entire extension.  This has the following benefits.
@@ -1555,6 +1281,7 @@ To learn more, visit [portalfx-data-caching.md#configuring-the-data-cache](porta
 
 
 
+<a name="working-with-data-data-atomization-avoid-unnecessary-data-reloading"></a>
 ### Avoid unnecessary data reloading
 
 As users navigate through the Ibiza UX, they will frequently revisit often-used resources within a short period of time.
@@ -1587,7 +1314,7 @@ See [Reflecting server data changes on the client](portalfx-data-configuringdata
 
    ## Frequently asked questions
 
-<a name="working-with-data-shaping-and-filtering-data-"></a>
+<a name="working-with-data-data-atomization-"></a>
 ### 
 
 * * * 
