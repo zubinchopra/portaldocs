@@ -308,7 +308,7 @@ Extensions are required to be running a version of the Ibiza SDK that has been p
 
 These features are supported, but have had no recent investment. No additional investment is planned. There are modern capabilities that should be used instead if you are developing new features.
 
-* [PDL-based programming](/portal-sdk/generated/portalfx-legacy-blades-template-pdl.md)
+* [PDL-based programming](/portal-sdk/generated/top-legacy-blades-template-pdl.md)
 
 * [Controls in the MsPortalFx namespace](/portal-sdk/generated/top-extensions-samples-controls-deprecated.md)
 
