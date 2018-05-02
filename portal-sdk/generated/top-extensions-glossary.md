@@ -6,7 +6,6 @@
 
 <!--TODO:  The order in this document should match the main index. -->
 
-
 <a name="azure-portal-glossary-extension-architecture"></a>
 ## Extension Architecture
 
@@ -409,6 +408,23 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | WARM                 | Windows Azure Release Management |
 | zip file             | The extracted deployment artifacts that are generated during the build.  They and the  `config.json` file will be deployed to a public endpoint.  |
   
+<a name="azure-portal-glossary-initializing-the-developer-platform"></a>
+## Initializing the Developer Platform
+
+    
+<a name="azure-portal-glossary-glossary"></a>
+## Glossary
+
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+| Term              | Meaning |
+| ---               | --- |
+| Azure Portal SDK  | Software Development Kit for developing Azure Portal extensions. |
+| CDN               | Content Delivery Network |
+| IIS Express       | Internet Information Services. A Web server for hosting anything on the Web. |
+| localhost         | A hostname that means this computer or this host.  |
+| sideload          | The process of transferring data between two local devices, or between the development platform and the local host. Also side load, side-load. |  
+
 <a name="azure-portal-glossary-key-components"></a>
 ## Key Components
 
@@ -428,64 +444,18 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | resource features     | |
 | resourceType          | The fully qualified name for the categories of resources to display in the BrowseResourceListPart. |
 
-<a name="azure-portal-glossary-initializing-the-developer-platform"></a>
-## Initializing the Developer Platform
-
-    
-<a name="azure-portal-glossary-glossary"></a>
-## Glossary
-
-This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
-
-| Term              | Meaning |
-| ---               | --- |
-| Azure Portal SDK  | Software Development Kit for developing Azure Portal extensions. |
-| CDN               | Content Delivery Network |
-| IIS Express       | Internet Information Services. A Web server for hosting anything on the Web. |
-| localhost         | A hostname that means this computer or this host.  |
-| sideload          | The process of transferring data between two local devices, or between the development platform and the local host. Also side load, side-load. |  
-
-<a name="azure-portal-glossary-status-codes-and-error-messages"></a>
-## Status Codes and Error Messages
-
-   ## Glossary
-   
-This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
- 
-| Term                      | Meaning |
-| ---                       | --- |
-| desktop state             | A snapshot of |
-| first chance exception    | An exception's first pass through the debugger. Exceptions are thrown to the debugger first and then to the actual program.  If the exception is not handled by the program, it gets thrown to the debugger a second time. |
-| SSL                       | Secure Socket Layer |
-
-
-
-<a name="azure-portal-glossary-testing-in-production"></a>
-## Testing in Production
+<a name="azure-portal-glossary-no-pdl-programming"></a>
+## No-PDL Programming
 
  ## Glossary
 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
- 
-| Term                 | Meaning |
-| ---                  | --- |
-| Developer Tools Console | | 
-| diagnostic switch | | 
-| endpoint             | A device that is connected to a LAN and accepts or transmits communications across a network. In terms of directories or Web pages, there may be several endpoints that are defined on the same device.  |
-| extension stamp | An instance of a service in a region. Every extension can deploy one or more extension editions based on testing requirements. The main extension is used for production and is the only one that the Portal will load by default. Also known as configuration or configuration file.   | 
-| hotfix | |
-| localhost            | A hostname that means this computer or this host.  |
-| obsolete script      | A script that makes certain parts of the Portal act as legacy code, in order to limit the performance costs of the old functionality to only extensions that are using them. | 
-| phishing | | 
-| pull request | |
-| private preview | |
-| query string       | The part of a uniform resource locator (URL) that contains data. Query strings are generated by form submission, or by being entered into the address bar of the browser after the URL. The  query string is specified by the values following the question mark (?). The values are used in Web processing, along with the path component of the URL. Query strings should not be used to transfer large amounts of data.  | 
-| sandboxed iframe     | Enables an extra set of restrictions for the content in the iframe.  It can treat the content as being from a unique origin, block form submission or script execution, prevent links from targeting other browsing context, and other items that restrict the behavior of the iframe during testing. | 
-| SAN                  | Storage Area Network  | 
-| sideloading          | Loading an extension for a specific user session from any source other than the uri that is registered in the Portal.  The process of transferring data between two local devices, or between the development platform and the local host. Also side load, side-load. |   
-| synthetic traffic    | Traffic that has been created with a traffic generators and that behaves like real traffic. It can be used to capture the behavior the network or device under test. | 
-| untrusted extension | An extension that is not accompanied by an SSL certificate. |
-| usability testing | |
+
+| Term                | Meaning |
+| ------------------- | --- |
+| Typescript   | aka no-PDL programming. | 
+| Dependency injection technique | A technique whereby one object supplies the dependencies of another object. | 
+| intersection types | Combines multiple types into one. This allows existing types to be added together  to get a single type that contains  all the features. | 
 
 <a name="azure-portal-glossary-onboarding"></a>
 ## Onboarding
@@ -606,6 +576,21 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | sideloading  | Loading an extension for a specific user session from any source other than the uri` that is registered in the Portal.  The process of transferring data between two local devices, or between the development platform and the local host. Also side load, side-load. |   
 | untrusted extension | An extension that is not accompanied by an SSL certificate. |
 
+<a name="azure-portal-glossary-status-codes-and-error-messages"></a>
+## Status Codes and Error Messages
+
+   ## Glossary
+   
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+ 
+| Term                      | Meaning |
+| ---                       | --- |
+| desktop state             | A snapshot of |
+| first chance exception    | An exception's first pass through the debugger. Exceptions are thrown to the debugger first and then to the actual program.  If the exception is not handled by the program, it gets thrown to the debugger a second time. |
+| SSL                       | Secure Socket Layer |
+
+
+
 <a name="azure-portal-glossary-style-guide"></a>
 ## Style Guide
 
@@ -621,6 +606,15 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | SVG | Scalable Vector Graphics |
 | whitelist | The practice of specifying an index of approved software elements  that are permitted to be present and active on a Web page. The goal of whitelisting is to protect computers and networks from potentially harmful applications.  |
 
+
+ 
+<a name="azure-portal-glossary-glossary"></a>
+## Glossary
+
+ This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+| Term                 | Meaning |
+| ---                  | --- |
 
 
 <a name="azure-portal-glossary-testing"></a>
@@ -638,19 +632,29 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | untrusted extension | An extension that is not accompanied by an SSL certificate. |
 
 
-
-<a name="azure-portal-glossary-no-pdl-programming"></a>
-## No-PDL Programming
-
  ## Glossary
 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
-
-| Term                | Meaning |
-| ------------------- | --- |
-| Typescript   | aka no-PDL programming. | 
-| Dependency injection technique | A technique whereby one object supplies the dependencies of another object. | 
-| intersection types | Combines multiple types into one. This allows existing types to be added together  to get a single type that contains  all the features. | 
+ 
+| Term                 | Meaning |
+| ---                  | --- |
+| Developer Tools Console | | 
+| diagnostic switch | | 
+| endpoint             | A device that is connected to a LAN and accepts or transmits communications across a network. In terms of directories or Web pages, there may be several endpoints that are defined on the same device.  |
+| extension stamp | An instance of a service in a region. Every extension can deploy one or more extension editions based on testing requirements. The main extension is used for production and is the only one that the Portal will load by default. Also known as configuration or configuration file.   | 
+| hotfix | |
+| localhost            | A hostname that means this computer or this host.  |
+| obsolete script      | A script that makes certain parts of the Portal act as legacy code, in order to limit the performance costs of the old functionality to only extensions that are using them. | 
+| phishing | | 
+| pull request | |
+| private preview | |
+| query string       | The part of a uniform resource locator (URL) that contains data. Query strings are generated by form submission, or by being entered into the address bar of the browser after the URL. The  query string is specified by the values following the question mark (?). The values are used in Web processing, along with the path component of the URL. Query strings should not be used to transfer large amounts of data.  | 
+| sandboxed iframe     | Enables an extra set of restrictions for the content in the iframe.  It can treat the content as being from a unique origin, block form submission or script execution, prevent links from targeting other browsing context, and other items that restrict the behavior of the iframe during testing. | 
+| SAN                  | Storage Area Network  | 
+| sideloading          | Loading an extension for a specific user session from any source other than the uri that is registered in the Portal.  The process of transferring data between two local devices, or between the development platform and the local host. Also side load, side-load. |   
+| synthetic traffic    | Traffic that has been created with a traffic generators and that behaves like real traffic. It can be used to capture the behavior the network or device under test. | 
+| untrusted extension | An extension that is not accompanied by an SSL certificate. |
+| usability testing | |
 
 <a name="azure-portal-glossary-versioning"></a>
 ## Versioning
