@@ -3,9 +3,29 @@
 
 This section contains all Azure Portal FAQ's.
 
-<!-- TODO:  FAQ Format in the individual docs  is ###Link, ***title***, Description, Solution, 3 Asterisks -->
+## Getting Started 
 
-## Debugging Extensions
+FAQ's that are associated with getting started as an extension developer.
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-getting-started.md"}
+
+## Blades, forms, and parts
+
+FAQ's that are associated with blades, forms, and parts. 
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-resourcemenu.md"}
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-forms.md"}
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-parts.md"}
+
+## Controls 
+
+FAQ's that are associated with controls, commands, and the playground. 
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-controls.md"}
+
+## Debugging
 
 FAQ's that are associated with ordinary extension testing.
 
@@ -17,11 +37,11 @@ FAQ's that are associated with configurations for extensions.
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-configuration.md"}
 
-## Forms
+## Loading and managing data
 
-FAQ's for forms.
+FAQ's that are associated with data and objects that manage data.
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-forms.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-data.md"}
 
 ## Hosting Service
 
@@ -29,7 +49,13 @@ FAQ's that are associated with extension hosting.
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-hosting-service.md"}
 
-## Samples 
+## Performance
+
+FAQ's that are associated with extension hosting. 
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-performance.md"}
+
+## Samples
 
 FAQ's that are associated with Azure samples.
 
@@ -39,11 +65,22 @@ FAQ's that are associated with Azure samples.
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-sideloading.md"}
 
-## Testing in Production
+## Style Guide 
 
-FAQ's that are associated with testing an extension in the production environment.
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-icons.md"}
+
+## Programming Azure with TypeScript Decorators
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-typescript.md"}
+
+## Testing 
+
+FAQ's that are associated with testing an extension.
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-production-testing.md"}
 
+## Legacy features
 
+FAQ's that are associated with legacy features like editscopes and pdl programming.
 
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-editscope.md"}
