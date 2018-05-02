@@ -83,10 +83,12 @@ Add `ServiceGroupRootReplacements.json` to your extension csproj
 Sample `ServiceGroupRootReplacements.json` 
 ```json
 {
-  "production": {
+  "production": {   
+    "ServiceGroupRootReplacementsVersion": 2,
     "AzureSubscriptionId": "<SubscriptionId>",
     "CertKeyVaultUri": "https://sometest.vault.azure.net/secrets/PortalHostingServiceDeploymentCertificate",
-    "TargetStorageConStringKeyVaultUri": "https://sometest.vault.azure.net/secrets/PortalHostingServiceStorageConnectionString",
+    "StorageAccountCredentialsType": "<ConnectionString | AccountKey>",
+    "TargetStorageCredentialsKeyVaultUri": "<https://sometest.vault.azure.net/secrets/PortalHostingServiceStorageConnectionString | https://sometest.vault.azure.net/secrets/PortalHostingServiceStorageAccountKey>",
     "TargetContainerName": "hostingservice",
     "ContactEmail": "youremail@microsoft.com",
     "PortalExtensionName": "Microsoft_Azure_Monitoring",
@@ -97,6 +99,9 @@ Sample `ServiceGroupRootReplacements.json`
 Other environments that are supported:
 i. Test i.e. Dogfood
 i. Production
+i. Fairfax
+i. Blackforest
+i. Mooncake
 
 iv Initiate a test deployment
 
@@ -104,12 +109,12 @@ You can quickly run a test deployment prior to onboarding to WARM from a local b
 
 ``` PowerShell
 
- New-AzureServiceRollout -ServiceGroupRoot E:\dev\vso\AzureUX-PortalFX\out\ServiceGroupRoot -RolloutSpec E:\dev\vso\AzureUX-PortalFX\out\ServiceGroupRoot\RolloutSpec.24h.json -RolloutInfra Test -Verbose -WaitToComplete
+ New-AzureServiceRollout -ServiceGroupRoot E:\dev\vso\AzureUX-PortalFX\out\ServiceGroupRoot -RolloutSpec E:\dev\vso\AzureUX-PortalFX\out\ServiceGroupRoot\RolloutSpec.PT1D.json -RolloutInfra Test -Verbose -WaitToComplete
 
 ```
-Replace RolloutSpec with the path to RolloutSpec.24h.json in your build
+Replace RolloutSpec with the path to RolloutSpec.PT1D.json in your build
 
-**Note:** The Ev2 Json templates provided perform either a 24hr or 6hr rollout to each stage within the hosting services stafe deployment stages. Currently the gating health check endpoint returns true in all cases so really only provides a time gated rollout.  This means that you need to vailidate the health of your deployment in each stage and cancel the deployment using the `Stop-AzureServiceRollout` command if something were wrong. Once a stop is executed you need to rollback your content to the prior version using `New-AzureServiceRollout`.  This document will be updated once health check rules are defined and enforced.  If you would like to implement your own health check endpoint you can customize the Ev2 json specs found in the NuGet.
+**Note:** The Ev2 Json templates provided perform either a PT1D (24 hour) or PT6H (6 hour) rollout by default to each stage within the hosting services stafe deployment stages. Currently the gating health check endpoint returns true in all cases so really only provides a time gated rollout.  This means that you need to validate the health of your deployment in each stage and cancel the deployment using the `Stop-AzureServiceRollout` command if something were wrong. Once a stop is executed you need to rollback your content to the prior version using `New-AzureServiceRollout`.  This document will be updated once health check rules are defined and enforced.  If you would like to implement your own health check endpoint you can customize the Ev2 json specs found in the NuGet.
 
 To perform a [production deployment](https://microsoft.sharepoint.com/teams/WAG/EngSys/deploy/_layouts/OneNote.aspx?id=%2Fteams%2FWAG%2FEngSys%2Fdeploy%2FSiteAssets%2FExpress%20v2%20Notebook&wd=target%28Ev2%20Documentation.one%7CD41B1200-A6DE-4B4D-A019-8318B6F3A084%2FHOWTO%3A%20Deploy%20a%20service%7C15090502-728B-4C84-AD7B-52D403590963%2F%29) or deployment via the [Warm UX](https://warm/newrelease/ev2) we assume that you have already onboarded to WARM. If not please see the following guidance from the Ev2 team  [Ev2 WARM onboarding guidance](https://microsoft.sharepoint.com/teams/WAG/EngSys/deploy/_layouts/15/WopiFrame.aspx?sourcedoc={ecdfb10d-7616-4efd-8499-f210056f808f}&action=edit&wd=target%28%2F%2FEv2%20Documentation.one%7C3c50b523-523e-452c-b153-6bfac92f4926%2FStep-1%20Onboarding%20to%20PROD%20dependencies%7C4c8d1b1e-8e27-41c2-b36e-f60c3d25ab3e%2F%29) for questions please reach out to ev2sup@microsoft.com
 
@@ -117,40 +122,21 @@ To perform a [production deployment](https://microsoft.sharepoint.com/teams/WAG/
 
 The above config will result in a build output as required by Ev2 and the hosting service. It looks like the following:
 
-As of version 5.0.302.834
-
 ```
 
 out\retail-amd64\ServiceGroupRoot
                 \HostingSvc\1.2.1.0.zip
-                \Parameters\*.json
+                \Production\*.json
                 \buildver.txt
-                \RolloutSpec.6h.json
-                \RolloutSpec.24h.json
-                \production.ServiceModel.6h.json
-                \production.ServiceModel.24h.json
-                \production.friendlyname_1.json
-                \production.friendlyname_2.json
-                \production.friendlyname_3.json
+                \Production.RolloutSpec.P1D.json
+                \Production.RolloutSpec.PT6H.json
+                \Production.RolloutSpec.RemoveFriendlyName.friendlyname_1.json
+                \Production.RolloutSpec.RemoveFriendlyName.friendlyname_2.json
+                \Production.RolloutSpec.RemoveFriendlyName.friendlyname_3.json
+                \Production.RolloutSpec.SetFriendlyName.friendlyname_1.json
+                \Production.RolloutSpec.SetFriendlyName.friendlyname_2.json
+                \Production.RolloutSpec.SetFriendlyName.friendlyname_3.json
 
-```
-
-As of version 5.0.302.837
-
-
-```
-
-out\retail-amd64\ServiceGroupRoot
-                \HostingSvc\1.2.1.0.zip
-                \Production.Parameters\*.json
-                \buildver.txt
-                \Production.RolloutSpec.6h.json
-                \Production.RolloutSpec.24h.json
-                \Production.ServiceModel.6h.json
-                \Production.ServiceModel.1D.json
-                \Production.friendlyname_1.json
-                \Production.friendlyname_2.json
-                \Production.friendlyname_3.json
 ```
 
 
@@ -163,3 +149,44 @@ The support for friendly name is now available in 5.0.302.834.
 1. Can I provide SAS token instead of keyvault for EV2 to access storage account
 
 The current rolloutspec generated by ContentUnbundler only provides support for using keyvault. If you would like to use SAS token , please submit a request on [user voice](https:\\aka.ms\portalfx\uservoice)
+
+1. Skipping safe deployment
+
+A template where safe deployment is skipped (no health checks are performed) can be generated by adding the property *"SkipSafeDeployment": "true"* to the ServiceGroupRootReplacements.json file.  
+```json
+{
+  "production": {   
+    "ServiceGroupRootReplacementsVersion": 2,
+    "AzureSubscriptionId": "<SubscriptionId>",
+    "CertKeyVaultUri": "https://sometest.vault.azure.net/secrets/PortalHostingServiceDeploymentCertificate",
+    "StorageAccountCredentialsType": "<ConnectionString | AccountKey>",
+    "TargetStorageCredentialsKeyVaultUri": "<https://sometest.vault.azure.net/secrets/PortalHostingServiceStorageConnectionString | https://sometest.vault.azure.net/secrets/PortalHostingServiceStorageAccountKey>",
+    "TargetContainerName": "hostingservice",
+    "ContactEmail": "youremail@microsoft.com",
+    "PortalExtensionName": "Microsoft_Azure_Monitoring",
+    "FriendlyNames": [ "friendlyname_1", "friendlyname_2", "friendlyname_3" ],
+    "SkipSafeDeployment": "true"
+  }
+}
+```
+
+1. Configurable Monitor durations (bake time)
+
+Templates with different monitor durations (time between each stage, also known as bake time) can be generated by adding the property *"MonitorDurations": [ "<ISO 8601 Duration specification>" ]* to the ServiceGroupRootReplacements.json file.  Please refer to your organization's safe deployment practices for recommended durations.
+
+```json
+{
+  "production": {   
+    "ServiceGroupRootReplacementsVersion": 2,
+    "AzureSubscriptionId": "<SubscriptionId>",
+    "CertKeyVaultUri": "https://sometest.vault.azure.net/secrets/PortalHostingServiceDeploymentCertificate",
+    "StorageAccountCredentialsType": "<ConnectionString | AccountKey>",
+    "TargetStorageCredentialsKeyVaultUri": "<https://sometest.vault.azure.net/secrets/PortalHostingServiceStorageConnectionString | https://sometest.vault.azure.net/secrets/PortalHostingServiceStorageAccountKey>",
+    "TargetContainerName": "hostingservice",
+    "ContactEmail": "youremail@microsoft.com",
+    "PortalExtensionName": "Microsoft_Azure_Monitoring",
+    "FriendlyNames": [ "friendlyname_1", "friendlyname_2", "friendlyname_3" ],
+    "MonitorDurations": [ "P30M", "PT1H" ],
+  }
+}
+```
