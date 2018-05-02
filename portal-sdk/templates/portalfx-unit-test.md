@@ -470,6 +470,17 @@ Note: generated via `npm run test` or `npm run test-ci`
 
 # FAQ
 
+## When I do File `File > New > Project > Visual C# > Azure Portal` I get the following error
+
+```
+
+Severity    Code    Description Project File    Line    Suppression State
+Error       Could not install package 'PortalFx.NodeJS8 10.0.0.125'. You are trying to install this package into a project that targets '.NETFramework,Version=v4.6.1', but the package does not contain any assembly references or content files that are compatible with that framework. For more information, contact the package author
+
+```
+
+Solution: Install the `Node Tools for Visual Studio` [from here](https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1)
+
 ## Corext Environments
 
 Build environments which are setup using Corext will need to manually add additional lines in order to specify where to pick up the Unit Test Framework NuGet package.
