@@ -2,9 +2,9 @@
 <a name="overview"></a>
 ## Overview
 
-Extension writers provide their own HTML templates and associated Cascading Style Sheets (CSS) to render and style their experiences. Those files are analyzed at runtime to filter out disallowed HTML tags, attribute names, attribute values, CSS properties, or CSS property values that are known to have potential negative impact on the Portal. This filtering ensures a consistent and sandboxed experience in the Portal.
+Extension writers provide their own HTML templates and associated Cascading Style Sheets (CSS) to render and style their experiences. Those files are analyzed at runtime to filter out disallowed HTML tags, attribute names, attribute values, CSS properties, or CSS property values that are known to have potential negative impact on the Portal. This filtering ensures a consistent and sandboxed experience in the Portal. Similar sanitization is also applied to SVG markup provided from the extension.
 
-The philosophy is to allow as much as possible for extension to use based on a  [whitelist](portalfx-extensions-glossary-style-guide.md). As such, developers may encounter items filtered out that are not mentioned in this document. If so, issues can be reported by using the  [ibiza](https://stackoverflow.microsoft.com/questions/tagged/ibiza) tag on Stack Overflow.
+The sanitization philosophy is to allow as much CSS as possible for the extension to use based on a  [whitelist](portalfx-extensions-glossary-style-guide.md). As such, developers may encounter items filtered out that are not mentioned in this document. Should this occur,  developers should report the issue by using the  [ibiza](https://stackoverflow.microsoft.com/questions/tagged/ibiza) tag on Stack Overflow.
 
 For more information, see [portalfx-stackoverflow.md](portalfx-stackoverflow.md).
 
@@ -19,7 +19,8 @@ The criteria that determine whether a css or an html element might have a negati
 
 <a name="html-sanitization"></a>
 ## HTML sanitization
-S
+
+HTML sanitization is divided between HTML tags and their attributes.
 
 <a name="html-sanitization-html-tags"></a>
 ### HTML tags
@@ -34,10 +35,12 @@ The `id` attribute is not allowed based on criterion 6.
 <a name="html-sanitization-attribute-data-bind-sanitization"></a>
 ### Attribute data-bind sanitization
 
+The `data-bind` value is sanitized to allow simple binding and logics, but no complex JavaScript is allowed.
+
 <a name="html-sanitization-css-sanitization"></a>
 ### CSS sanitization
 
-All CSS properties are allowed, with a few exceptions. The following properties are sanitized as described.
+All CSS properties are allowed, with a few exceptions based on the criteria listed previously. The following properties are sanitized as described.
 
 | Property | Criterion | Reason |
 | -------- | --------- | ------- |
@@ -47,12 +50,13 @@ All CSS properties are allowed, with a few exceptions. The following properties 
 | list-style | Criterion 3 |  Disallowed. Use expanded properties instead of the shorthand (list-style-type, etc) |
 | user-select | Criterion 4 |  Disallowed. Use Framework class msportalfx-unselectable to achieve the same result. |
 
-CSS media queries are not supported, and therefore are filtered out. The most common scenario for media queries is responding to container size. Extensions support this feature by subscribing to the container ViewModel tile size property as specified  in the LAYOUTDOC(LINKTOLAYOUTHERE) [portalfx-no-pdl-programming.md](portalfx-no-pdl-programming.md), [portalfx-blades-layout.md](portalfx-blades-layout.md), or [top-extensions-forms.md](top-extensions-forms.md).
+CSS media queries are not supported, and are filtered out. The most common scenario for media queries is responding to container size. Extensions support this feature by subscribing to the container ViewModel tile size property as specified  in the LAYOUTDOC(LINKTOLAYOUTHERE) [portalfx-no-pdl-programming.md](portalfx-no-pdl-programming.md), [portalfx-parts-overview.md](portalfx-parts-overview.md), or [top-extensions-forms.md](top-extensions-forms.md).
 
 <a name="svg-sanitization"></a>
 ## SVG sanitization
 
-SVG sanitization follows the rules applied to HTML sanitization, because they are both DOM structures. SVG's should be converted using the build tools specified in []() previous to being used directly in the Portal.
+SVG sanitization follows the rules applied to HTML sanitization, as they are both DOM structures. Before using SVGs directly in the Portal, convert them first using the build tools that are located at []().
 
-Some SVG functionality, like certain filters, and gradients, are known to cause significant browser rendering slowdowns, as specified in Criterion 2.  As such, they are sanitized out. The build tools should detect those early and mitigate them when possible. Developers  should ask questions on 
-Ask questions on: [StackOverflow](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza) if the sanitization of  SVG elements causes a blocking issue.
+Some SVG functionality, like certain filters, and gradients, are known to cause significant browser rendering slowdowns, as specified in Criterion 2.  As such, they are sanitized out. The build tools should detect those early and mitigate them when possible. Extension writers should rely on  [StackOverflow](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza) if the sanitization of SVG elements causes a blocking issue.
+
+For more information about SVG sanitization, see [top-style-guide-iconography.md](top-style-guide-iconography.md).
