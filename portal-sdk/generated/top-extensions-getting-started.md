@@ -1,10 +1,7 @@
 <a name="setting-up-for-azure-portal-development"></a>
 # Setting up for Azure Portal Development
 
-<a name="development-guide"></a>
-# Development Guide
-
-<a name="development-guide-getting-started"></a>
+<a name="setting-up-for-azure-portal-development-getting-started"></a>
 ## Getting Started
 
 The following procedure specifies how to set up a developer computer for Azure extension development.
@@ -21,7 +18,7 @@ For more information about key components of an extension, see [portalfx-extensi
 
 For more information about building extensions with TypeScript decorators, watch the video that is located at [https://aka.ms/portalfx/typescriptdecorators](https://aka.ms/portalfx/typescriptdecorators).
 
-<a name="development-guide-develop-the-extension"></a>
+<a name="setting-up-for-azure-portal-development-develop-the-extension"></a>
 ## Develop the extension
 
 1. Build the extension and sideload it for local testing. Sideloading allows the testing and debugging of the extension locally against any environment. This is the preferred method of testing. For more information about sideloading, see [top-extensions-sideloading.md](top-extensions-sideloading.md). 
