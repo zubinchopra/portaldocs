@@ -1,11 +1,11 @@
 
-## TemplateBlades
+## Legacy TemplateBlades with PDL
 
 The `TemplateBlade` is the recommended way of authoring blades in Ibiza. It is the equivalent to windows or pages in other systems.
 
 You can think of a TemplateBlade as an HTML page. Authoring template blades requires a , an HTML template, a ViewModel, an optional CSS file, and either a blade definition in PDL or a ViewModel with the logic that binds to the HTML template.
 
-The following sections discuss the blade definition and the blade capabilities in the ViewModel, using the `Infobox` control.  The pdl definition can be used, and there is a TypeScript sample located at `<dir>\Client\V2\Controls\Infobox\InfoboxBlade.ts`.
+The following sections discuss the blade definition and the blade capabilities in the ViewModel, using the `Infobox` control and the pdl definition that is located at `<dir>\Client\V2\Controls\Infobox\InfoboxBlade.ts`.
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 

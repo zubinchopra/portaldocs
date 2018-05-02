@@ -4,6 +4,14 @@ This is the home page for all documentation related to onboarding, developing, o
 
 Couldn't find what you needed? [Ask about the docs on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-missing-docs).
 
+## Support team news 
+
+* [Downloads](/portal-sdk/generated/downloads.md)
+
+* [Release notes](/portal-sdk/generated/release-notes.md)
+
+* [Breaking changes](/portal-sdk/generated/breaking-changes.md)
+
 ## Onboarding a new extension
 
 * [Overview / Getting started](/portal-sdk/generated/top-onboarding.md)
@@ -75,8 +83,7 @@ The primary UI building block is a called a blade. A blade is like a page. It ge
 * [Overview](/portal-sdk/generated/top-extensions-blades.md)
 
 * [TemplateBlade](/portal-sdk/generated/top-blades-procedure.md)
-
-* [MenuBlade](/portal-sdk/generated/top-blades-menublade.md)
+ [MenuBlade](/portal-sdk/generated/top-blades-menublade.md)
 
 * [ResourceMenuBlade](/portal-sdk/generated/top-blades-resourcemenu.md)
 
@@ -88,7 +95,6 @@ The primary UI building block is a called a blade. A blade is like a page. It ge
 
 * [Blade settings](/portal-sdk/generated/top-blades-settings.md)
 
-* [Blade with tiles](/portal-sdk/generated/)
 * [Blade with tiles](/portal-sdk/generated/top-blades-legacy.md)
 
 
