@@ -88,7 +88,9 @@ The primary UI building block is a called a blade. A blade is like a page. It ge
 
 * [Blade settings](/portal-sdk/generated/top-blades-settings.md)
 
+* [Blade with tiles](/portal-sdk/generated/)
 * [Blade with tiles](/portal-sdk/generated/top-blades-legacy.md)
+
 
 [Ask a question about blades on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts)
 
