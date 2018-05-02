@@ -35,8 +35,6 @@ The following list of data subtopics follows the Model-View-View-Model methodolo
 
    {"gitdown": "include-file", "file": "../templates/portalfx-data-virtualizedgriddata.md"}
 
-   {"gitdown": "include-file", "file": "../templates/top-extensions-data-typemetadata.md"}
-
    {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-data.md"}
 
    {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-data.md"}
