@@ -25,35 +25,17 @@ The following list of data subtopics follows the Model-View-View-Model methodolo
 
    {"gitdown": "include-file", "file": "../templates/portalfx-data-views.md"}
 
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
-
    {"gitdown": "include-file", "file": "../templates/portalfx-data-masterdetailsbrowse.md"}
-
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
    {"gitdown": "include-file", "file": "../templates/portalfx-data-loading.md"}
 
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
-
    {"gitdown": "include-file", "file": "../templates/portalfx-data-lifetime.md"}
 
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
-
-   {"gitdown": "include-file", "file": "../templates/portalfx-data-projections.md"}
-
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
-  
    {"gitdown": "include-file", "file": "../templates/portalfx-data-refreshing.md"}
-
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
    {"gitdown": "include-file", "file": "../templates/portalfx-data-virtualizedgriddata.md"}
 
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
-
-   {"gitdown": "include-file", "file": "../templates/portalfx-data-typemetadata.md"}
-
-   {"gitdown": "include-file", "file": "../templates/top-extensions-data-atomization.md"}
+   {"gitdown": "include-file", "file": "../templates/top-extensions-data-typemetadata.md"}
 
    {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-data.md"}
 
