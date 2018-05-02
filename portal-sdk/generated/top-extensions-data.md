@@ -399,8 +399,6 @@ public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
 
 For more information about shaping and filtering your data, see [portalfx-data-projections.md](portalfx-data-projections.md).
 
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
-
    
 ## Master details browse 
 
@@ -604,8 +602,6 @@ public onInputsSet(inputs: Def.BrowseDetailViewModel.InputsContract): MsPortalFx
 
 
 <!-- TODO:  Create a screen shot of the sample that displays these 3 items. Also, see whether there is an html file that can be included here.-->
-
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
    
 <a name="working-with-data-loading-data"></a>
@@ -938,28 +934,28 @@ public websitesQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModel
 });
 ```
 
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
-
-   ## Lifetime Manager
+   
+<a name="working-with-data-lifetime-manager"></a>
+## Lifetime Manager
 
 The `lifetime manager` ensures that any resources that are specifically associated with a blade are disposed of when the blade is closed. Each blade has its own lifetime manager. Controls, **Knockout** projections and APIs that use a `lifetime manager` will be disposed when the `lifetime manager` is disposed. That means, for the most part, extensions in the Portal implicitly perform efficient memory management.
 
 There are some scenarios that call for more fine-grained memory management wWhen dealing with large amounts of data, especially virtualized data. The most common case is the `map()` or `mapInto()` function, especially when it is used with a `reactor` or a control in the callback that generates individual items. These items can be destroyed previous to the closing of the blade by being removed from the source array. Otherwise, memory leaks can quickly add up and result in poor extension performance.
 
-**NOTE**: The  `pureComputed()` method does not use a lifetime manager because it already uses memory as efficiently as possible.  This is by design, therefore it is good practice to use it. Generally, any `computed` the extension creates in a `map()` should be a `pureComputed()` method, instead of a `ko.reactor` method.
+**NOTE**: The `pureComputed()` method does not use a lifetime manager because it already uses memory as efficiently as possible.  This is by design, therefore it is good practice to use it. Generally, any `computed` the extension creates in a `map()` should be a `pureComputed()` method, instead of a `ko.reactor` method.
 
 For more information on pureComputeds, see [portalfx-blades-viewmodel.md#the-ko.pureComputed method](portalfx-blades-viewmodel.md#the-ko.pureComputed-method).
 
-<a name="working-with-data-loading-data-child-lifetime-managers"></a>
+<a name="working-with-data-lifetime-manager-child-lifetime-managers"></a>
 ### Child lifetime managers
 
-The maximum amount of time that a child lifetime manager can exist is the lifetime of its parent.  However, they can be disposed before the parent is disposed. 
+The maximum amount of time that a child lifetime manager can exist is the lifetime of its parent.  However, they can be disposed before the parent is disposed.
 
 When the developer is aware that extension child resources will have lifetimes that are shorter than that of the blade, a child lifetime manager can be created with the  `container.createChildLifetimeManager()` command, and sent to `ViewModel` constructors or whereever a lifetime manager object is needed. When the extension completes using those resources, the `dispose()` method can be explicitly called on the child lifetime manager. If the `dispose()` method is not called, the child lifetime manager will be disposed when its parent is disposed.
 
 <!-- TODO:  Determine whether the disposing of the  child lifetime manager  when its parent is disposed is implicit. -->
 
-In the following example, a data cache already contains data. Each item is displayed as a row in a grid. A button is displayed in a section below the grid. The `mapInto()` function maps specific data cache items to the view grid items, and creates the button to add to the section.  The `itemLifetime` child lifetime manager is automatically created by the `mapInto()` function.
+In the following example, a data cache already contains data. Each item is displayed as a row in a grid. A button is displayed in a section below the grid. The `mapInto()` function maps specific data cache items to the view grid items, as specified in [portalfx-data-views.md](portalfx-data-views.md) and [top-extensions-data-projections.md](top-extensions-data-projections.md). It also creates the button to add to the section.  The `itemLifetime` child lifetime manager is automatically created by the `mapInto()` function.
 
 ```ts
 let gridItems = this._view.items.mapInto(container, (itemLifetime, item) => {
@@ -990,70 +986,9 @@ let gridItems = this._view.items.mapInto(container, (itemLifetime, item) => {
 
 Consequently, the `mapInto` function is working as expected, by using the child lifetime manager and the `registerForDispose` command.
 
- For more information about selecting specific data cache items, see [portalfx-data-projections.md#data-shaping](portalfx-data-projections.md#data-shaping).
 
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
-   
-<a name="working-with-data-using-dataviews"></a>
-## Using DataViews
 
-Data in a cache is presented to the `ViewModel` by using a `DataView`. 
-The `DataCache` objects contain a `createView` method that is used to create the `DataView`. The data in the cache is processed by the `DataView` that it associates with a specific `ViewModel`. There can be many `DataViews` for a cache but there is a one-to-one correspondence between the `DataView` and the `ViewModel`. Creating a `DataView` does not result in a data load operation from the server.  When a `ViewModel` calls the `fetch()` method for its `DataView`, the method implicitly counts each time a reference is made to each `DataCache` entry. This ref-count keeps the entry in the `DataCache` as long as the blade or part `ViewModel` has not been disposed by the extension.
-
-**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
-
-<!--TODO: Remove the following placeholder sentence when it is explained in more detail. -->
-
-**NOTE**: Because this discussion includes **AJAX**, **TypeScript**, and template classes, it does not strictly specify an object-property-method model.
-
-The example located at `<dir>Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\MasterViewModels.ts` demonstrates a `SaveItemCommand` class that uses the binding between a part and a command. This code is also included in the following `WebsiteQuery` example.
-
-```ts
-this._websitesQueryView = dataContext.masterDetailBrowseSample.websitesQuery.createView(container);
-```
-
-In the previous code, the `container` object acts as a lifetime object that  informs the cache when a given view is currently being displayed on the screen. This allows the Shell to make several adjustments for performance, including the following.
-
-* Adjust polling interval when the part is not on the screen
-
-* Automatically dispose of data when the blade that contains the part is closed
-
-The server is only queried when the `fetch` operation of the view is invoked, as in the code located at 
-`<dir>Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\MasterViewModels.ts` and  in the following example.
-
-```ts
-public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
-    return this._websitesQueryView.fetch({ runningStatus: inputs.filterRunningStatus.value });
-}
-```
-
-<a name="working-with-data-using-dataviews-observable-map-filter"></a>
-### Observable map &amp; filter
-
-In many cases, the developer may want to shape the extension data to fit the view to which it will be bound. Some cases where this is useful are as follows.
-
-* Matching the contract of a control, like data points of a chart
-
-* Adding a computed property to a model object
-
-* Filtering data that is presented on the client
-
-The recommended approach is to use the `map` and `filter` methods from the library that is located at [https://github.com/stevesanderson/knockout-projections](https://github.com/stevesanderson/knockout-projections).
-
-The `runningStatus` is a filter that is applied to the query to allow several views to be created over a single cache. Each view can present a different subset of data from the cache, as in the code located at 
-`<dir>Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\MasterViewModels.ts` and in the following example.
-
-```ts
-public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
-    return this._websitesQueryView.fetch({ runningStatus: inputs.filterRunningStatus.value });
-}
-```
-
-For more information about shaping and filtering your data, see [portalfx-data-projections.md](portalfx-data-projections.md).
-
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
-  
    
 <a name="working-with-data-data-merging"></a>
 ## Data merging
@@ -1406,8 +1341,6 @@ ko.reactor(lifetime, () => {
 In this example, the supplied callback will be called both when the `item` observable changes when the data first loads, and when any properties on the entity change, like `customerName`.
 
 
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
-
    
 <a name="working-with-data-virtualized-data-for-the-grid"></a>
 ## Virtualized data for the grid
@@ -1621,20 +1554,193 @@ public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
 
 
 
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
-
    
- The page you requested has moved to [top-extensions-data-typemetadata.md](top-extensions-data-typemetadata.md).
+<a name="working-with-data-type-metadata"></a>
+## Type metadata
+
+In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
+
+When performing merge operations, the DataSet library needs to be aware of the data model schema. For example, in the Website extension described in [portalfx-data-masterdetailsbrowse.md](portalfx-data-masterdetailsbrowse.md), we want to know which property defines the primary key of a Website object. The information that describes the object and all of its properties is known as type metadata. 
+
+Type metadata can be manually coded using existing libraries. However, for developers using C#, we provide two features that make this easier.
+
+* Generation of type metadata from C# to TypeScript at build time
+* Generation of TypeScript model interfaces from C# model objects
+
+These features allow developers to write your model objects only once in C#, and then let the compiler generate interfaces and data for use at runtime.
+
+The data model objects for type metadata generation are stored in a .NET project that is separate from the extension project. 
+
+The `SamplesExtension.DataModels` project included in the SDK uses `Microsoft.Portal.TypeMetadata` to generate 
+representations of objects that are used by the resource types. The class library project used to generate models requires the following dependencies.
+
+* System.ComponentModel.DataAnnotations
+* System.ComponentModel.Composition
+* Microsoft.Portal.TypeMetadata
+
+The `Microsoft.Portal.TypeMetadata` library is located at `%programfiles(x86)%\Microsoft SDKs\PortalSDK\Libraries\Microsoft.Portal.TypeMetadata.dll`.
+
+1. At the top of any C# file that uses the `TypeMetadataModel` annotation, the following namespaces must be imported.
+
+* `System.ComponentModel.DataAnnotations`
+* `Microsoft.Portal.TypeMetadata`
+
+1.  For an example of a model class which generates **TypeScript**, open the following sample.
+
+```cs
+// \SamplesExtension.DataModels\Robot.cs
+
+using System.ComponentModel.DataAnnotations;
+using Microsoft.Portal.TypeMetadata;
+
+namespace Microsoft.Portal.Extensions.SamplesExtension.DataModels
+{
+    /// <summary>
+    /// Representation of a robot used by the browse sample.
+    /// </summary>
+    [TypeMetadataModel(typeof(Robot), "SamplesExtension.DataModels")]
+    public class Robot
+    {
+        /// <summary>
+        /// Gets or sets the name of the robot.
+        /// </summary>
+        [Key]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the status of the robot.
+        /// </summary>
+        public string Status { get; set; }
+
+        /// <summary>
+        /// Gets or sets the model of the robot.
+        /// </summary>
+        public string Model { get; set; }
+
+        /// <summary>
+        /// Gets or sets the manufacturer of the robot.
+        /// </summary>
+        public string Manufacturer { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Operating System of the robot.
+        /// </summary>
+        public string Os { get; set; }
+    }
+}
+```
+
+In the sample above, the `TypeMetadataModel` data attribute designates this class as one which should be included in the type generation. The first parameter specifies the type that is being targeted, which is  the same as the class that is being  decorated. The second attribute provides the `TypeScript` namespace for the model-generated object. If the  namespace is not specified, the .NET namespace of the model object is used. The `key` attribute on the `name` field specifies that the `name` property is the primary key field of the object. This is required when performing merge operations from data sets and edit scopes, as specified in [portalfx-data-refreshingdata.md](portalfx-data-refreshingdata.md).
+
+<a name="working-with-data-type-metadata-setting-options"></a>
+### Setting options
+
+The TypeScript interface generation and metadata generation are both controlled by using  properties in your extension's csproj file. 
+By default, the generated files are placed in the `\Client\_generated` directory. They should be explicitly included in the csproj for the extension. The `SamplesExtension.DataModels` project is already configured to generate models. 
+
+The following changes are required for the project, depending upon the SDK version.
+
+ * From Release 4.15 forward, reference the  DataModels project and ensure your datamodels are marked with the appropriate `TypeMetadataModel` attribute.
+
+ * Versions previous to 4.15 need to add this capability to another .NET project. Include the following code in the extension csproj file.
+
+    `SamplesExtension.csproj`
+
+```xml
+<ItemGroup>
+    <GenerateInterfacesDataModelAssembly
+        Include="..\SamplesExtension.DataModels\bin\$(Configuration)\Microsoft.Portal.Extensions.SamplesExtension.DataModels.dll" />
+</ItemGroup>
+```
+
+The addition of `GenerateInterfaces` to the existing `CompileDependsOn` element ensures that the `GenerateInterfaces`         target is executed with the appropriate settings. The `AssemblyPaths` property notes the path on disk where the model        project assembly will be placed during a build.
+
+<a name="working-with-data-type-metadata-using-the-generated-models"></a>
+### Using the generated models
+
+Make sure that the generated TypeScript files are included in the csproj. The easiest way to include new models in your extension project is to the select the "Show All Files" option in the Solution Explorer of Visual Studio. Right click on the `\Client\_generated` directory in the solution explorer and choose "Include in Project". Inside of the `\Client\_generated` folder you will find a file named by the fully qualified namespace of the interface. In many cases, you'll want to instantiate an instance of the given type. One way to accomplish this is to create a TypeScript class which implements the generated interface. However, this defeats the point of automatically generating the interface. The framework provides a method which allows generating an instance of a given interface:
+
+```ts
+MsPortalFx.Data.Metadata.createEmptyObject(SamplesExtension.DataModels.RobotType)
+```
+
+<a name="working-with-data-type-metadata-non-generated-type-metadata"></a>
+### Non-generated type metadata
+
+Optionally, you may choose to write your own metadata to describe model objects. This is only recommended if not using a .NET project to generate metadata at compile time. In place of using the generated metadata, you can set the `type` attribute of your `DataSet` to `blogPostMetadata`. The follow snippet manually describes a blog post model:
+
+```ts
+var blogPostMetadata: MsPortalFx.Data.Metadata.Metadata = {
+    name: "Post"
+    idProperties: ["id"],
+    properties: {
+        "id": null,
+        "post": null,
+        "comments": { itemType: "Comment", isArray: true },
+    }
+};
+
+var commentMetadata: MsPortalFx.Data.Metadata.Metadata = {
+    name: "Comment"
+    properties: {
+        "name": null,
+        "post": null,
+        "date": null,
+    }
+};
+
+MsPortalFx.Data.Metadata.setTypeMetadata("Post", blogPostMetadata);
+MsPortalFx.Data.Metadata.setTypeMetadata("Comment", commentMetadata);
+```
+
+* The `name` property refers to the type name of the model object.
+* The `idProperties` property refers to one of the properties defined below that acts as the primary key for the object.
+* The `properties` object contains a property for each property on the model object.
+* The `itemType` property allows for nesting complex object types, and refers to a registered name of a metadata object. (see `setTypeMetadata`).
+* The `isArray` property informs the shell that the `comments` property will be an array of comment objects.
+
+The `setTypeMetadata()` method will register your metadata with the system, making it available in the data APIs.
 
 
-   
+<a name="working-with-data-data-atomization"></a>
+## Data atomization
 
-The page you requested has moved to [top-extensions-data-type-metadata.md](top-extensions-data-type-metadata.md). 
+Atomization fulfills two main goals: 
+
+1. It enables several data views to be bound to one data entity, thus presenting a smooth and  consistent experience to the user.  In this instance, two views that represent the same asset are always in sync. 
+1. It minimizes memory trace.
+
+Atomization can be switched only for entities, which have globally unique IDs (per type) in  the  metadata system. In this case, a third attribute can be added to its `TypeMetadataModel` attribute in C#, as in the following example.
+
+```cs
+
+[TypeMetadataModel(typeof(Robot), "SamplesExtension.DataModels", true /* Safe to unify entity as Robot IDs are globally unique. */)]
+
+```
+
+The Atomization attribute is set to 'off' by default. The Atomization attribute is not inherited and has to be set to `true` for all types that should be atomized. 
+In the simplest case, all entities within an extension will use the same atomization context, which defaults to one.
+In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
+
+It is possible to select a different atomization context for a given cache object, as in the following example.
+
+```cs
+
+var cache = new MsPortalFx.Data.QueryCache<ModelType, QueryType>({
+    ...
+    atomizationOptions: {
+        atomizationContextId: "string-id"
+    }
+    ...
+});
+
+```
+
 
 
    ## Best Practices 
 
-<a name="working-with-data-virtualized-data-for-the-grid-use-querycache-and-entitycache"></a>
+<a name="working-with-data-data-atomization-use-querycache-and-entitycache"></a>
 ### Use QueryCache and EntityCache
 
 When performing data access from your view models, it may be tempting to make data calls directly from the `onInputsSet` function. By using the `QueryCache` and `EntityCache` objects from the `DataCache` class, you can control access to data through a single component. A single ref-counted cache can hold data across your entire extension.  This has the following benefits.
@@ -1650,7 +1756,7 @@ To learn more, visit [portalfx-data-caching.md#configuring-the-data-cache](porta
 
 
 
-<a name="working-with-data-virtualized-data-for-the-grid-avoid-unnecessary-data-reloading"></a>
+<a name="working-with-data-data-atomization-avoid-unnecessary-data-reloading"></a>
 ### Avoid unnecessary data reloading
 
 As users navigate through the Ibiza UX, they will frequently revisit often-used resources within a short period of time.
@@ -1681,9 +1787,73 @@ With `extendEntryLifetimes`, unreferenced cache entries will be retained for som
 For your scenario to make use of `extendEntryLifetimes`, it is **very important** that you take steps to keep your client-side QueryCache/EntityCache data caches **consistent with server data**.
 See [Reflecting server data changes on the client](portalfx-data-configuringdatacache.md) for details.
 
+<a name="working-with-data-data-atomization-anti-patterns-and-best-practices"></a>
+### Anti-patterns and best practices
+
+Do not unwrap observables directly in the mapping function of your extensions.  When returning a new object from the function supplied to `map`, you should avoid unwrapping observables directly in the mapping function, illustrated by `computedName` in the following example.
+
+```ts
+var projectedItems = this._view.items.map<RobotDetails>({
+    mapping: (robot: SamplesExtension.DataModels.Robot) => {
+        return <RobotDetails>{
+            name: robot.name,
+            
+            // DO NOT DO THIS!  USE A COMPUTED INSTEAD!
+            computedName: "{0}:{1}".format(robot.model(), robot.manufacturer());
+        };
+    },
+    ...
+```
+
+The `computedName` property above is the source of a common bug where "my grid loses selection when my `QueryCache` refreshes".  The reason for this is subtle.  If you unwrap observables in your mapping function, you will find that - each time the observable changes - your mapping function will be invoked again, (inefficiently) *generating an entirely new object*.  Since the Azure Portal FX's selection machinery presently relies on JavaScript object identity, selection tracked relative to the *old object* will be lost when this object is replaced by the *new object* generated by your mapping function.  Ignoring bugs around selection, generating new objects can lead to UI flicker and performance problems, as more UI is re-rendered than is necessary to reflect data changes. 
+
+SOLUTION: Follow these two patterns to avoid re-running of mapping functions and to avoid unnecessarily generating new output objects.
+ 
+1.  Reuse observables from the input object
+
+    Above, the `name` property above simply reuses - in the projected output object - an observable *from the input object*
+
+1.  Use `ko.computed()` for new, computed properties
+
+    The `computedName` property above uses a Knockout `computed`, and unwraps observables in the function that defines the  `computed`.
+ With this, only the `computedName` property is recomputed when the input `robot` object changes.
+
+1.  Use `map` and `filter` to reduce the size of the data you are binding to a control
+
+    See "Use map and filter to reduce size of rendered data".
+
+1.  Do not use `subscribe` to project\shape data.
+
+    An extreme anti-pattern would be to not use `map` at all when projecting/shaping data for use in controls, as in the following example.
+
+    ```ts
+    // DO NOT DO THIS!
+    this._view.items.subscribe((items) => {
+        var mappedItems: MappedPerson[] = [];
+        for (var i = 0; i < items.length; i++) {
+            // create a new mapped person for every item
+            mappedItems.push({
+                name: items[i].name,
+                model: robot.model()
+            });
+        }
+
+        this.selectableGridViewModel.items(mappedItems);
+    });
+    ```
+
+    There are two significant problems with `subscribe` used.
+
+    * Whenever `this._view.items` changes, an *entirely new array containing entirely new objects* will be generated.  Your scenario will suffer from the cost of serializing/deserializing this new array to the grid control and from the cost of fully re-rendering your grid.
+
+    * Whenever the `robot.model` observable changes, this change *will not be reflected in the grid*, since no code has subscribed to this `robot.model` observable.
+
+
+
+
    ## Frequently asked questions
 
-<a name="working-with-data-virtualized-data-for-the-grid-"></a>
+<a name="working-with-data-data-atomization-"></a>
 ### 
 
 * * * 
