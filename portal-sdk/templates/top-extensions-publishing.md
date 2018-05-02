@@ -91,4 +91,4 @@ These instructions can be used to submit pull requests for C# Test Framework imp
 1. You may or may not want to set up a new local git repository specifically for test framework improvements 
 1. The configuration files must be modified to match the test framework environment
 
-For more information about submitting improvements to the C# Test Framework, see [portalfx-extensions-csharp-test-publish.md](portalfx-extensions-csharp-test-publish.md).
+For more information about submitting improvements to the C# Test Framework, see [portalfx-csharp-test-publish.md](portalfx-csharp-test-publish.md).
