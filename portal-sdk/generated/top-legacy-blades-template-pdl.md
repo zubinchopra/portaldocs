@@ -1,12 +1,12 @@
 
-<a name="templateblades"></a>
-## TemplateBlades
+<a name="legacy-templateblades-with-pdl"></a>
+## Legacy TemplateBlades with PDL
 
 The `TemplateBlade` is the recommended way of authoring blades in Ibiza. It is the equivalent to windows or pages in other systems.
 
 You can think of a TemplateBlade as an HTML page. Authoring template blades requires a , an HTML template, a ViewModel, an optional CSS file, and either a blade definition in PDL or a ViewModel with the logic that binds to the HTML template.
 
-The following sections discuss the blade definition and the blade capabilities in the ViewModel, using the `Infobox` control.  The pdl definition can be used, and there is a TypeScript sample located at `<dir>\Client\V2\Controls\Infobox\InfoboxBlade.ts`.
+The following sections discuss the blade definition and the blade capabilities in the ViewModel, using the `Infobox` control and the pdl definition that is located at `<dir>\Client\V2\Controls\Infobox\InfoboxBlade.ts`.
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
@@ -26,7 +26,7 @@ The following sections discuss the blade definition and the blade capabilities i
 
 * * * 
 
-<a name="templateblades-creating-the-templateblade"></a>
+<a name="legacy-templateblades-with-pdl-creating-the-templateblade"></a>
 ### Creating the TemplateBlade
 
 Use the following three steps to create a template blade.
@@ -95,7 +95,7 @@ Use the following three steps to create a template blade.
 
 For more information about **Knockout**, see [http://knockoutjs.com](http://knockoutjs.com/).
 
-<a name="templateblades-adding-controls"></a>
+<a name="legacy-templateblades-with-pdl-adding-controls"></a>
 ### Adding controls
 
 Ibiza provides an extensive controls library that can be used in the HTML template. The following example uses the `InfoBox` control instead of a regular HTML link.
@@ -137,7 +137,7 @@ Ibiza provides an extensive controls library that can be used in the HTML templa
 
 1. This example uses the PDL file from the section named [#creating-the-templateblade](#creating-the-templateblade).
 
-<a name="templateblades-sending-parameters"></a>
+<a name="legacy-templateblades-with-pdl-sending-parameters"></a>
 ### Sending parameters
 
 Blades can receive input parameters that are part of the signature for the blade. The following code adds an "id" input parameter to the template blade. It reuses the HTML template from the previous steps.
@@ -187,7 +187,7 @@ Blades can receive input parameters that are part of the signature for the blade
     }
     ```
 
-<a name="templateblades-adding-commands"></a>
+<a name="legacy-templateblades-with-pdl-adding-commands"></a>
 ### Adding commands
 
 Commands are typically displayed at the top of the template blade. To add the commands,  add a toolbar to the `TemplateBlade`, and then define its contents in the `ViewModel`.
@@ -246,7 +246,7 @@ The working copy of the sample in the Dogfood environment is located at  [https:
     }
     ```
 
-<a name="templateblades-adding-buttons"></a>
+<a name="legacy-templateblades-with-pdl-adding-buttons"></a>
 ### Adding buttons
 
 Blades can display buttons that are docked at the base of the blade.  The following code demonstrates how to add buttons to the blade.
@@ -301,7 +301,7 @@ Blades can display buttons that are docked at the base of the blade.  The follow
         }
     ```
 
-<a name="templateblades-displaying-a-full-screen-blade"></a>
+<a name="legacy-templateblades-with-pdl-displaying-a-full-screen-blade"></a>
 ### Displaying a full-screen blade
 
 To open the blade using the full screen,  add `InitialState="Maximized"` to the PDL definition of the blade, as in the following code.
@@ -315,7 +315,7 @@ To open the blade using the full screen,  add `InitialState="Maximized"` to the 
 </TemplateBlade>
 ```
 
-<a name="templateblades-displaying-a-loading-indicator-ux"></a>
+<a name="legacy-templateblades-with-pdl-displaying-a-loading-indicator-ux"></a>
 ### Displaying a loading indicator UX
 
 Sometimes, interaction with a blade should be prevented while it is initializing. In those cases, a shield that contains a loading indicator UX is displayed in the blade to block the display. The shield can be fully transparent or opaque. The following code demonstrates how to set an opaque filter in the blade.
