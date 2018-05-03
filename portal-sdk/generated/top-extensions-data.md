@@ -2,8 +2,6 @@
 <a name="working-with-data"></a>
 # Working with data
 
-  ## Overview
-
 The following list of data subtopics follows the Model-View-View-Model methodology.
 
 | Type                             | Document                                                                     | Description |
