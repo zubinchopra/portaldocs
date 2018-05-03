@@ -1,4 +1,12 @@
-# Release Notes since 1/2/2018
+# Release Notes since 1/3/2018
+
+## 5.0.302.1108
+0 Breaking Changes, 0 Features added and 2 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2422169'>2422169</a></td><td>Bug Fix</td><td>Fix QUnit tests for #2418356 Search bug - Change link opens settings pane instead of directory pane</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2418356'>2418356</a></td><td>Bug Fix</td><td>[Directory pane] Search bug - Change link opens settings pane instead of directory pane</td></tr></table>
+
+## 5.0.302.1107
+0 Breaking Changes, 0 Features added and 3 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2418456'>2418456</a></td><td>Bug Fix</td><td>[Browse] Launch NoPDL creates</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2418356'>2418356</a></td><td>Bug Fix</td><td>[Directory pane] Search bug - Change link opens settings pane instead of directory pane</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2288207'>2288207</a></td><td>Bug Fix</td><td>Add OMS capabilities to commands in Browse.</td></tr></table>
 
 ## 5.0.302.1105
 0 Breaking Changes, 0 Features added and 1 Bugs Fixed
