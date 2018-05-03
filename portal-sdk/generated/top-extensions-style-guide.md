@@ -11,7 +11,7 @@ Browse the following topics to learn about portal styling.
 
 * [Style sanitization](top-style-guide-html-css-sanitization.md)
 
-* [Adding Custom CSS](top-style-guide-custom-css-file.md)
+* [Adding Custom CSS](top-style-guide-custom-css.md)
 
 * [Layout classes](portalfx-blades-layout.md)
 

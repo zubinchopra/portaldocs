@@ -8,19 +8,18 @@ The following list of data subtopics follows the Model-View-View-Model methodolo
 
 | Type                             | Document                                                                     | Description |
 | -------------------------------- | ---------------------------------------------------------------------------- | ---- |
-| Data Modeling and Organization   | [portalfx-data-modeling.md](portalfx-data-modeling.md)                       | The data model for the extension project source. | 
-| The Data Cache Object            | [portalfx-data-caching.md](portalfx-data-caching.md)                         | Caching data from the server |
-| The Data View Object             | [portalfx-data-views.md](portalfx-data-views.md)                             | Presenting data to the ViewModel | 
-| The Browse Sample | [portalfx-data-masterdetailsbrowse.md](portalfx-data-masterdetailsbrowse.md) | Extension that allows a user to select a Website from a list of websites, using the QueryCache-EntityCache data models | 
-|  Loading Data | [portalfx-data-loading.md](portalfx-data-loading.md) | `QueryCache` and `EntityCache` methods that request data from servers and other sources  | 
-| Child Lifetime Managers  | [portalfx-data-lifetime.md](portalfx-data-lifetime.md) | Fine-grained memory management that allows resources to be destroyed previous to the closing of the blade. | 
-| Merging and Refreshing Data | [portalfx-data-refreshingdata.md](portalfx-data-refreshingdata.md) |   `DataCache` / `DataView` object methods like `refresh` and `forceremove`.  |
-| |    [portalfx-data-typemetadata.md](portalfx-data-typemetadata.md) | |
-|   | [portalfx-data-virtualizedgriddata.md](portalfx-data-virtualizedgriddata.md) |  | 
+| Data modeling and organization   | [portalfx-data-modeling.md](portalfx-data-modeling.md)                       | The data model for the extension project source. | 
+| The data cache object            | [portalfx-data-caching.md](portalfx-data-caching.md)                         | Caching data from the server |
+| The data view object             | [portalfx-data-views.md](portalfx-data-views.md)                             | Presenting data to the ViewModel | 
+| Loading data | [portalfx-data-loading.md](portalfx-data-loading.md) | `QueryCache` and `EntityCache` methods that request data from servers and other sources  | 
+| Merging and refreshing data | [portalfx-data-refreshingdata.md](portalfx-data-refreshingdata.md) |   `DataCache` / `DataView` object methods like `refresh` and `forceremove`.  |
+| Querying for virtualized data  | [portalfx-data-virtualizedgriddata.md](portalfx-data-virtualizedgriddata.md) |  Sequential and random-access data retrieval | 
+| Child lifetime managers  | [portalfx-data-lifetime.md](portalfx-data-lifetime.md) | Fine-grained memory management that allows resources to be destroyed previous to the closing of the blade. | 
+| The browse sample | [portalfx-data-masterdetailsbrowse.md](portalfx-data-masterdetailsbrowse.md) | Extension that allows a user to select a Website from a list of websites, using the QueryCache-EntityCache data models | 
 
 * * * 
 
-    
+   
 <a name="working-with-data-overview"></a>
 ## Overview
 
@@ -1348,28 +1347,28 @@ In this example, the supplied callback will be called both when the `item` obser
 <a name="working-with-data-virtualized-data-for-the-grid-querying-for-virtualized-data"></a>
 ### Querying for virtualized data
 
-If the server that your extension uses is going to return significant amounts of data, you should consider using the `DataNavigator` class provided by the Framework. The following two models are used to query virtualized data from the server.
+If the server that your extension uses is going to return significant amounts of data, you should consider using the `DataNavigator` class provided by the Framework. The following two models use the existing `QueryCache` and the `MsPortalFx.Data.RemoteDataNavigator` entities to query virtualized data from the server.
 
-* "Load more" model
+* ["Load more" data model](#"load-more"-data-model)
 
     This sequential model loads a page of data.  When the user scrolls to the bottom of the page, the model loads the next page of data.  There is no way to skip forward or backward in the data, and all data is represented in a timeline.  This works best with APIs that provide continuation tokens, or timeline based data.
 
-* Paged model
+* [Paged data model](#paged-data-model)
 
     The classic paged model provides either a pager control or a virtualized scrollbar which represents the paged data.  It works best with APIs that use random access or "skip/take"  data virtualization strategies.
 
-Both of these models use the existing `QueryCache` and the `MsPortalFx.Data.RemoteDataNavigator` entities to orchestrate virtualization.
-
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK.
 
-<a name="working-with-data-virtualized-data-for-the-grid-load-more-model"></a>
-### &quot;Load more&quot; model
+* * *
+
+<a name="working-with-data-virtualized-data-for-the-grid-load-more-data-model"></a>
+### &quot;Load more&quot; data model
 
 The following image depicts a load-more grid with a continuation token.
 
 ![alt-text](../media/portalfx-data/loadmore-grid.png "Loadmore Grid with continuation token")
 
-The 'load more' approach requires setting up a `QueryCache` object that uses a navigation element. The navigation element describes the continuation token data model in the sample located at `<dir>\Client\V1\Controls\ProductData.ts` The example is also in the following code.
+The navigation element in the 'load more' approach uses the continuation token data model in the sample located at `<dir>\Client\V1\Controls\ProductData.ts` The example is also in the following code.
 
 ```ts
 this.productsCache = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModels.Product, ProductQueryParams>({
@@ -1402,7 +1401,10 @@ this.productsCache = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModels.
 });
 ```
 
-In the `viewModel` for a load-more grid, the code uses the `Pageable` extension for the grid, with the `Sequential` type. Instead of using the `createView` API on the QueryCache, use the `createNavigator` API which integrates with the virtualized data system, as in the sample located at `<dir>\Client\V1\Controls\Grid\ViewModels\PageableGridViewModel.ts`.
+<a name="working-with-data-virtualized-data-for-the-grid-load-more-viewmodel"></a>
+### &quot;Load more&quot; ViewModel
+
+In the `ViewModel` for a load-more grid, the code uses the `Pageable` extension for the grid with the `Sequential` type. Instead of using the `createView` API on the QueryCache, use the `createNavigator` API which integrates with the virtualized data system, as in the sample located at `<dir>\Client\V1\Controls\Grid\ViewModels\PageableGridViewModel.ts`.
 
 ```ts
 constructor(container: MsPortalFx.ViewModels.PartContainerContract,
@@ -1458,12 +1460,14 @@ public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
 }
 ```
 
-<a name="working-with-data-virtualized-data-for-the-grid-pageable-random-access-grid"></a>
-### Pageable random access grid
+<a name="working-with-data-virtualized-data-for-the-grid-paged-data-model"></a>
+### Paged data model
+
+The following image contains a grid that uses random access.
 
 ![alt-text](../media/portalfx-data/pageable-grid.png "Pageable grid")
 
-The pageable approach requires setting up a `QueryCache` with a navigation element.  The navigation element can access data in an order that is not sequential. This is known as random access, or skip-take behavior, as in the example located at `<dir>\Client\V1\Controls\ProductPageableData.ts`. It is also in the following code.
+The navigation element in the 'pageable' approach can access data in an order that is not sequential. This is known as random access, or skip-take behavior, as in the example located at `<dir>\Client\V1\Controls\ProductPageableData.ts`. It is also in the following code.
 
 ```ts
 var QueryString = MsPortalFx.Base.Resources
@@ -1496,7 +1500,10 @@ var productsCache = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModels.P
 });
 ```
 
-In the ViewMmodel for a random access grid, use the `Pageable` extension for the grid, with the `Pageable` type. Instead of the `createView` API on the QueryCache, use the `createNavigator` API which integrates with the virtualized data system, as in the example located at `<dir>\Client\V1\Controls\Grid\ViewModels\PageableGridViewModel.ts`. It is also in the following code.
+<a name="working-with-data-virtualized-data-for-the-grid-paged-data-model-paged-model-viewmodel"></a>
+#### Paged model ViewModel
+
+In the ViewModel for a random access grid, use the `Pageable` extension for the grid, with the `Pageable` type. Instead of the `createView` API on the QueryCache, use the `createNavigator` API which integrates with the virtualized data system, as in the example located at `<dir>\Client\V1\Controls\Grid\ViewModels\PageableGridViewModel.ts`. It is also in the following code.
 
 ```ts
 constructor(container: MsPortalFx.ViewModels.PartContainerContract,
@@ -1551,7 +1558,6 @@ public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
     return this._pageableDataNavigator.setQuery({ categoryId: inputs.categoryId });
 }
 ```
-
 
 
    ## Best Practices 
