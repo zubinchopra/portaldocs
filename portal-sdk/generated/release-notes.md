@@ -1,5 +1,9 @@
 # Release Notes since 1/4/2018
 
+## 5.0.302.1111
+0 Breaking Changes, 1 Features added and 0 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2434242'>2434242</a></td><td>Feature</td><td>Enable Azure SignalR service</td></tr></table>
+
 ## 5.0.302.1110
 0 Breaking Changes, 1 Features added and 0 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2429377'>2429377</a></td><td>Feature</td><td>[GDPR][DsrHandler] Add national cloud support and enable it for BlackForest</td></tr></table>
