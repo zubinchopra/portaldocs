@@ -63,9 +63,6 @@ The ViewModel can be created by experimenting with controls in the playground lo
 
 
 {"gitdown": "include-file", "file": "../templates/top-extensions-controls-playground.md"}
-
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-samples-controls.md"}
-
 <!--
 
   gitdown": "include-file", "file": "../templates/top-extensions-samples-controls-deprecated.md"}
