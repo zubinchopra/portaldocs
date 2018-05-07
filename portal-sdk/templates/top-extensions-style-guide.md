@@ -32,6 +32,4 @@ Browse the following topics to learn about portal styling.
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-icons.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-icons.md"}
-
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-style-guide.md"}

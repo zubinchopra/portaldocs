@@ -106,7 +106,6 @@
 ## Style Guide
 
  {"gitdown": "include", "file": "portalfx-extensions-glossary-style-guide.md"}
- {"gitdown": "include", "file": "portalfx-extensions-glossary-icons.md"}
 
 ## Testing
 
