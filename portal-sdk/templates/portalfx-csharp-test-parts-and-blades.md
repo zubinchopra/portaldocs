@@ -41,7 +41,7 @@ webDriver.WaitUntil(() => errorPart.FindElement(By.TagName("button")),
 					"Could not find the button.")
 	     .Click();
 ```
-For more information, see [portalfx-extensions-bp-csharp-testing.md](portalfx-extensions-bp-csharp-testing.md).
+For more information, see [portalfx-extensions-bp-csharp-test.md](portalfx-extensions-bp-csharp-test.md).
 
 #### Full example
 

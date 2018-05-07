@@ -1,5 +1,4 @@
 
-
 ## Building browse experiences
 
 The primary ways to launch tools and services within the portal are the Favorites in the left navigation panel and the Browse menu. New services start in the Browse menu, but the default favorites are determined by C+E leadership. The list can be updated based on those metrics or the number of favorites surpasses other defaults.
