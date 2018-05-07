@@ -251,6 +251,132 @@ namespace DocSampleTest
 
 
 
+## Testing Parts and Blades
+
+An extension can find parts on the StartBoard by using the **Portal.StartBoard.FindSinglePartByTitle** method, after you have an instance of the Portal object. The method will give you an instance of the Part class that can be  used to perform actions on the part.  In the following example, the button whose name is "Samples" is clicked. 
+
+```cs
+var portal = this.NavigateToPortal();
+
+string samplesTitle = "Samples";
+
+var samplesPart = portal.StartBoard.FindSinglePartByTitle<ButtonPart>(samplesTitle);
+samplesPart.Click();
+```
+
+You can find blades in a simmilar way using the **Portal.FindSingleBladeByTitle** method. You can then find parts within the blade using the **Blade.FindSinglePartByTitle** method, as in the following example.
+
+```cs
+var blade = portal.FindSingleBladeByTitle(samplesTitle);
+
+string sampleName = "Notifications";
+
+blade.FindSinglePartByTitle(sampleName).Click();
+
+blade = portal.FindSingleBladeByTitle(sampleName);
+```
+
+If you need to find parts based on different conditions, you can use the `FindElement` or `FindElements` methods on any web element, as in the following example.
+
+```cs
+var errorPart = webDriver.WaitUntil(() => blade.FindElements<Part>()
+                                               .FirstOrDefault(p => p.Text.Contains("Send Error")),
+									"Could not find a part with a Send Error text.");
+```
+
+**NOTE**: The **WebDriver.WaitUntil** method is a general and recommended mechanism to ask the **WebDriver** to retry an operation until a condition succeeds. In this instance, the test case waits until it finds a part in the blade that contains text that includes the 'Send Error' string. When the part is found, it is returned to the `errorPart` variable; otherwise, if it is not found before the default timeout of 10 seconds, the  method  throws an exception that uses  the text specified in the last parameter.
+
+Classic Selenium **WebDriver** syntax can also be used to find any element based on a **By** selector. For example, the following code finds a single button element within the found part.
+
+```cs
+webDriver.WaitUntil(() => errorPart.FindElement(By.TagName("button")),
+					"Could not find the button.")
+	     .Click();
+```
+For more information, see [portalfx-extensions-bp-csharp-test.md](portalfx-extensions-bp-csharp-test.md).
+
+#### Full example
+
+```cs
+using System;
+using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.Portal.TestFramework.Core;
+using Microsoft.Selenium.Utilities;
+using OpenQA.Selenium;
+using Microsoft.Portal.TestFramework.Core.Shell;
+
+namespace SamplesExtensionTests
+{
+    [TestClass]
+    public class PartsAndBlades
+    {
+        private const string ExtensionUrl = "http://localhost:11998";
+        private const string ExtensionWebSitePath = @"d:\Users\julioct\Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension\Extension";
+        private static IWebDriver webDriver;
+        private static PortalServer portalServer;
+        private static WebServer extensionServer;
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            extensionServer = new WebServer(new Uri(ExtensionUrl), ExtensionWebSitePath);
+            if (extensionServer.IsHostedByTestFramework)
+            {
+                extensionServer.Start();
+            }
+
+            portalServer = PortalServer.Create();
+
+            if (portalServer.IsHostedByTestFramework)
+            {
+                portalServer.RegisterExtension("Samples", new Uri(extensionServer.Uri));
+                portalServer.Start();
+            }
+
+            webDriver = WebDriverFactory.Create();
+            webDriver.Url = "about:blank";
+            portalServer.ClearUserSettings();
+        }
+
+        [TestMethod]
+        public void CanFindPartsAndBlades()
+        {
+            var portal = this.NavigateToPortal();
+
+            string samplesTitle = "Samples";
+
+            var samplesPart = portal.StartBoard.FindSinglePartByTitle<ButtonPart>(samplesTitle);
+            samplesPart.Click();
+
+            var blade = portal.FindSingleBladeByTitle(samplesTitle);
+
+            string sampleName = "Notifications";
+
+            blade.FindSinglePartByTitle(sampleName).Click();
+
+            blade = portal.FindSingleBladeByTitle(sampleName);
+
+            var errorPart = webDriver.WaitUntil(() => blade.FindElements<Part>()
+														   .FirstOrDefault(p => p.Text.Contains("Send Error")),
+												"Could not find a part with a 'Send Error' text.");
+
+            webDriver.WaitUntil(() => errorPart.FindElement(By.TagName("button")),
+								"Could not find the button.")
+					 .Click();
+        }
+
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            webDriver.Dispose();
+            portalServer.Dispose();
+            extensionServer.Dispose();
+        }
+    }
+}
+
+```
 
 
 ##  Entering Data into Forms
@@ -863,6 +989,116 @@ If issues are encountered while developing the improvement, please search the in
  If you are unable to find an answer, reach out to the Ibiza team at  [Stackoverflow Ibiza Test](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza-test). 
 
  For a list of topics and stackoverflow tags, see [portalfx-stackoverflow.md](portalfx-stackoverflow.md).
+
+
+<a name="c-portal-test-framework-testing-best-practices"></a>
+## Testing Best Practices
+
+As you write UI based test cases using the Portal Test Framework it is recommended you follow a few best practices to ensure maximum reliability and to get the best value from your tests.
+
+*  Always verify that every action completed as expected
+
+    In many cases, the browser is not as fast as the test execution, so if you do not wait until expected conditions have completed, your tests could easily fail. For example, a messageBox may not be removed from the screen within a few moments after the button is clicked, even though the "Yes" button of a message box was clicked.   It is best practice to wait until the `CommandBar.HasMessageBox` property reports `false` before proceeding, as in the following example. This ensures the message box is gone and will not interfere with the next action.
+    
+    ```cs
+    commandBar.FindMessageBox("Delete contact").ClickButton("Yes");
+    webDriver.WaitUntil(() => !commandBar.HasMessageBox, "There is still a message box in the command bar.");
+    ```
+*  Log everything
+
+    It can be very difficult to diagnose a failed test case without a log. An easy way to write these logs is to use the `TestContext.WriteLine` method, as in the following example.
+
+    ```cs
+    TestContext.WriteLine("Starting provisioning from the StartBoard...");
+    ```
+
+*  Use built-in Test Framework methods
+
+    The Portal Test Framework provides many built-in methods to perform actions on Portal web elements.  It is recommended to use them for maximum test maintainability and reliability. For example, one way to find a StartBoard part by its title is in the following example.
+
+    ```cs
+    var part = webDriver.WaitUntil(
+        () => portal.StartBoard.FindElements<Part>()
+        .FirstOrDefault(p => p.PartTitle.Equals("TheTitle")),
+        "Could not find a part with title 'Samples'.");
+    ```
+
+    This code can be simplified by using a built-in method, as in the following example.
+
+    ```cs
+    var part = portal.StartBoard.FindSinglePartByTitle("TheTitle");
+    ```
+
+    This significantly reduces the amount of code. It also encapsulates the best practice of waiting until elements are found, because the `FindSinglePartByTitle` method internally performs a `WaitUntil` operation that retries until the part is found or the timeout is reached.
+
+    The `BaseElement` API also contains an extension method that wraps the `webDriver.WaitUntil` call.
+
+    ```cs
+    var part = blade.WaitForAndFindElement<Part>(p => p.PartTitle.Equals("TheTitle"));
+    ```
+
+* Use the WaitUntil method 
+
+    The `WaitUntil` method should be used when retrying actions or waiting for conditions. It can also be used to retry an action, because it takes a lambda function which could be an action, followed by a verification step.  The `WaitUntil` method will return when a "truthy" value is returned, i.e., the value is neither false nor null.  This is useful if the specific action does not behave consistently.  Remember to use only actions that are [idempotent](portalfx-extensions-glossary-testing.md) when using the  `WaitUntil` method in this pattern.
+
+* Use WaitUntil instead of Assert
+
+    The traditional method of verifying conditions within test cases is by using **Assert** methods. However, when dealing with conditions that are not satisfied immediately, it is best practice to use the  **WebDriver.WaitUntil** method, as in the following example.
+
+    ```cs
+    var field = form.FindField<Textbox>("contactName");
+    field.Value = contactName + Keys.Tab;
+    webDriver.WaitUntil(() => field.IsValid, "The 'contactName' field did not pass validations.");
+    ```
+
+    In this example, the test would have failed if the `Assert` method had been used to verify the `IsValid` property,
+     because the `TextBox` field uses a custom asynchronous validation.  This validation sends a request to the backend server to perform the required validation, which may take at least a second.
+
+*  Create wrapper abstractions
+
+    It is best practice to create wrappers and abstractions for common patterns of code. For example, when writing a `WaitUntil`, you may want to wrap it in a function that describes its actual intent.  This makes the intent of the  test code clear by hiding the actual details of  the abstraction's implementation.  It also helps with dealing with breaking changes, because you can modify the abstraction instead of every single test.  
+
+    If an abstraction you wrote might be generic and useful to the test framework, you may contribute it as specified in [Contributing.md](Contributing.md).
+
+* Clear user settings before starting a test
+
+    The Portal keeps track of all user customizations by using persistent user settings. This behavior is not ideal for test cases, because each test case might use Portals that have different customizations. To avoid this you can use the **portal.ResetDesktopState** method. 
+    
+    ```cs
+    portal.ResetDesktopState();
+    ```
+
+    **NOTE**: The method will force a reload of the Portal.
+
+* Use `FindElements` to verify the absence of elements
+
+    Sometimes an extension wants to verify that an element is not present, which may not be the same as code that validates  that an element is present.   In these cases you can use the **FindElements** method in combination with Linq methods to see if the element exists. For example, the following code verifies that there is no part with title 'John Doe' in the StartBoard.
+
+    ```cs
+    webDriver.WaitUntil(() => portal.StartBoard.FindElements<Part>()
+                                            .Count(p => p.PartTitle.Equals("John Doe")) == 0,
+                        "Expected to not find a part with title 'John Doe' in the StartBoard");
+    ```
+
+* Prefer CssSelector to Xpath
+
+    It is best practice to use CSS selectors instead of **XPath** to find some web elements in the Portal. Some reasons are as follows.
+    
+    * **Xpath** engines are different in each browser
+
+    * **XPath** can become complex and therefore more difficult to read
+
+    * CSS selectors are faster
+
+    * CSS is **JQuery's** locating strategy
+
+    * **Internet Explorer** does not have a native **XPath** engine
+
+    For example, the following code locates the selected row in a grid.
+
+    ```cs
+    grid.FindElements(By.CssSelector("[aria-selected=true]"))
+    ```
 
 
 

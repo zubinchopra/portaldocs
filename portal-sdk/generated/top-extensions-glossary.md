@@ -607,15 +607,6 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | whitelist | The practice of specifying an index of approved software elements  that are permitted to be present and active on a Web page. The goal of whitelisting is to protect computers and networks from potentially harmful applications.  |
 
 
- 
-<a name="azure-portal-glossary-glossary"></a>
-## Glossary
-
- This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
-
-| Term                 | Meaning |
-| ---                  | --- |
-
 
 <a name="azure-portal-glossary-testing"></a>
 ## Testing

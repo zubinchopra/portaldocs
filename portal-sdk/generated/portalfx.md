@@ -20,12 +20,13 @@ Ready to grow your business?
 ## <a href="top-onboarding.md">Onboard Ibiza</a>
 
 [portalfx-extensions-onboarding.md](portalfx-extensions-onboarding.md)
-<!-- TODO:  deprecate the previous section of this document by removing it.  It has been  replaced by portalfx-extensions-architecture-overview.md -->
 
 <a name="extension-developer-resources"></a>
 # Extension Developer Resources
 
 1. [Downloads](/portal-sdk/generated/downloads.md), [Release Notes](/portal-sdk/generated/release-notes.md), [Breaking Changes](/portal-sdk/generated/breaking-changes.md)
+<!-- TODO:  deprecate the previous section of this document by removing it.  It has been  replaced by portalfx-extensions-architecture-overview.md -->
+
 1. [Development](portalfx-extension-development.md)
 1. [Style Guide]([top-extensions-style-guide.md)
 1. [Test](portalfx-extension-test.md)

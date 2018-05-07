@@ -1,63 +1,62 @@
-* [Notifications](#notifications)
-    * [What is a notification?](#notifications-what-is-a-notification)
-    * [How and when to use notifications](#notifications-how-and-when-to-use-notifications)
-    * [Defining your notifications](#notifications-defining-your-notifications)
-
 
 <a name="notifications"></a>
 ## Notifications
 
-The Notifications menu aggregates informational messages, warnings, and errors across all portal extensions and cloud-connected services via local, client notifications and global, server events from the Event service.
+The Notifications menu aggregates messages across all Portal extensions and cloud-connected services. It does this by using local client notifications and global server events from the Event service. Messages can be informational, warnings, or errors, as in the following image.
 
-![Notifications help project status and progress][notification]
+![alt-text](../media/portalfx-notifications/notifications.png "Notifications help project status and progress")
 
-<a name="notifications-what-is-a-notification"></a>
-### What is a notification?
+A notification is a short message that informs the user about an event that has occurred, or may occur, in the system. Notifications contain useful and relevant information.
 
-A notification is a **short, informative message** letting the user know about, and ideally take action on, an event that has occurred (or may occur) in the system. Notifications must be **useful and relevant**.
+* Client notifications are only available in the current browser session. When the browser is refreshed, local, client notifications are lost. 
 
-**Server events** are maintained by the public Event service. The Event service tracks all service events, which may be aggregated into larger operations, which are then visualized as notifications within the portal. The Notifications hub automatically surfaces notifications for all critical, error, and completed deployment events.
+* Server events are maintained by the public Event service. The Event service tracks all service events, which may be aggregated into larger operations. The aggregates are then displayed as notifications within the Portal. The Notifications hub automatically displays notifications for all critical, error, and completed deployment events. Server events are preferred over client notifications because they are persisted.
 
-**Client notifications** are only available in the current browser session. When the browser is refreshed, local, client notifications will be lost. Always prefer server events.
+If you're using one of the older, PDL-based Notifications APIs, use the Notifications v3 upgrade guide located at [portalfx-notifications-migration.md](portalfx-notifications-migration.md) to convert your code.
+
+<a name="notifications-notification-statuses"></a>
+### Notification statuses
+
+Always use the correct status for notifications. Use the following list as a guide.
+
+**InProgress**: Long-running operation has started or is executing. It may be creating new resources or changing state.
+
+**Info**: Successful or non-critical updates, like state changes, that do not require action on the part of the user.  Some examples are stopped  websites and services.
+
+**Advisory**: Informational or potential warnings, issues under investigation, or changes that should have no impact. This includes upcoming data migrations or outage investigations.
+
+**Warning**: Pproblem or issue that might require attention, or could result in a more critical error. One example is a  certificate that is  about to expire.
+
+**Error**: Problem or condition that should be investigated, like data loss.
+
+**Critical**: Urgent problem or condition that needs immediate action or attention. An example is a VM that crashed.
+
+**NOTE**: Use the **Info** notification instead of the **Success** notification, which is being deprecated.
 
 
-<a name="notifications-how-and-when-to-use-notifications"></a>
-### How and when to use notifications
 
-<a name="notifications-how-and-when-to-use-notifications-is-a-notification-appropriate"></a>
+
+
+
+<a name="notifications-good-practices-for-notifications"></a>
+### Good Practices for notifications
+
+<a name="notifications-good-practices-for-notifications-is-a-notification-appropriate"></a>
 #### Is a notification appropriate?
 
-Avoid raising notifications people don't care about and don't use notifications too often. Avoid using multiple notifications when a single notification will suffice.
-
-<a name="notifications-how-and-when-to-use-notifications-always-use-server-events-for-back-end-events"></a>
-#### Always use server events for back-end events
-
-Always use server events for non-read operations and any events that originate in a back-end system.
-
+It is good practice to avoid raising notifications that users will not care about, or will not take action on.
+It is good practice to avoid using multiple notifications when a single notification will suffice.
+Don't use notifications too often. 
+Be as specific as possible and follow the voice and tone guidelines when defining notifications. Notifications are referenced out of context (e.g. within the hub and not the asset blade) and generic messages may not make sense.
+Always use server events for non-read operations, and for any events that originate in a back-end system.
 Always prefer global, server events by integrating with the Event service. Only use local, client notifications if the error originates on the client and doesn't apply to other users. Every event originating from a back-end system should be processed as a server event. This will ensure they are available to additional users and across browser sessions. _Local, client notifications are only visible in the current session._ When the browser is refreshed, all client notifications will be lost.
 
-<a name="notifications-how-and-when-to-use-notifications-always-save-server-events-for-asset-changes"></a>
+<a name="notifications-good-practices-for-notifications-always-save-server-events-for-asset-changes"></a>
 #### Always save server events for asset changes
 
 Server events are used to track asset history. Even if a change is deemed as unimportant, at least raise a low-priority Info event to track it appropriately.
 
-
-<a name="notifications-how-and-when-to-use-notifications-use-correct-status"></a>
-#### Use correct status
-
-Always use the correct status for your notifications. Use the following lists as a guide.
-
-* **InProgress** - Long-running operation has started or is executing (e.g. creating new resources or changing state)
-* **Info** - Successful or non-critical update (e.g. state change) that doesn't require action (e.g. stopped a website)
-* **Advisory** - (**Coming soon!**) Informational/potential warning, issue under investigation, or a change that should have no impact (e.g. upcoming data migration or outage investigation)
-* **Warning** - Potential problem or issue that might require attention and/or could result in a more critical error (e.g. certificate about to expire)
-* **Error** - Problem or condition that should be investigated (e.g. data loss)
-* **Critical** - (**Coming soon!**) Urgent problem/condition that needs immediate action/attention (e.g. VM crashed)
-
-> [WACOM.NOTE] This table depicts the notification status values we are moving towards. **Advisory** and **Critical** are coming, but not yet supported today. Please do not use **Success**, which will be deprecated moving forward. Use **Info** instead.
-
-
-<a name="notifications-how-and-when-to-use-notifications-use-in-progress-notifications-for-long-running-operations"></a>
+<a name="notifications-good-practices-for-notifications-use-in-progress-notifications-for-long-running-operations"></a>
 #### Use in-progress notifications for long-running operations
 
 If an operation requires calling a server-side API or may take more than 2 seconds, use an in-progress notification to track it. Most long-running operations can do the following:
@@ -74,28 +73,14 @@ If an operation requires calling a server-side API or may take more than 2 secon
 
 Following the aforementioned steps will ensure the UI is as responsive as possible.
 
-> [WACOM.NOTE] Server events may take up to 1.5 minutes to display in the portal. **Using both server events and client notifications is critical to ensuring UI responsiveness.**
+> [WACOM.NOTE] Server events may take up to 1.5 minutes to display in the Portal. **Using both server events and client notifications is critical to ensuring UI responsiveness.**
 
-
-<a name="notifications-how-and-when-to-use-notifications-be-specific"></a>
-#### Be specific
-
-Be as specific as possible and follow the voice and tone guidelines when defining notifications. Notifications are referenced out of context (e.g. within the hub and not the asset blade) and generic messages may not make sense.
-
-
-<a name="notifications-how-and-when-to-use-notifications-never-create-dead-ends"></a>
+<a name="notifications-good-practices-for-notifications-never-create-dead-ends"></a>
 #### Never create dead ends
 
 Associate notifications with assets and ensure there is a clear next-action. When a notification is clicked, the related asset is opened. If a notification does not have an asset, it is essentially a useless dead-end. _Do not create dead-end notifications!_
 
-
-
-<a name="notifications-defining-your-notifications"></a>
-### Defining your notifications
-
-**NOTE:** **Using legacy notifications?** The below API was introduced in SDK 5.0. If you're using one of the older, PDL-based Notifications APIs, use the [Notifications v3 upgrade guide](portalfx-notifications-upgrade.md) to convert your code.
-
-<a name="notifications-defining-your-notifications-one-time-notification"></a>
+<a name="notifications-good-practices-for-notifications-one-time-notification"></a>
 #### One-time notification
 
 For simple, one-time notifications that aren't part of a long-running operation and don't result in server events, simply publish a notification with the title, description, status, and linked asset. When the notification is clicked, the associated asset will be opened.
@@ -123,7 +108,7 @@ MsPortalFx.Hubs.Notifications.ClientNotification.publish({
     description: resx.myEvent.description,
     status: MsPortalFx.Hubs.Notifications.NotificationStatus.Information,
     linkedBlade: {
-        extension: "ExtensionName",
+        extension: "extensionName",
         detailBlade: "BladeName",
         detailBladeInputs: {
             bladeInputProperty1: "bladeInput1"
@@ -143,10 +128,10 @@ MsPortalFx.Hubs.Notifications.ClientNotification.publish({
 });
 ```
 
-<a name="notifications-defining-your-notifications-suppressing-server-events"></a>
+<a name="notifications-good-practices-for-notifications-suppressing-server-events"></a>
 #### Suppressing server events
 
-When a client notification is associated with a back-end server event, add the correlation id from the Event service. By specifying the correlation id, the portal will suppress any server events to ensure duplicate notifications aren't published.
+When a client notification is associated with a back-end server event, add the correlation id from the Event service. By specifying the correlation id, the Portal will suppress any server events to ensure duplicate notifications aren't published.
 
 > [WACOM.NOTE] Azure Resource Manager (ARM) automatically publishes server events for every operation. If your extension initiates ARM operations, extract the Event service correlation id from the `x-ms-correlation-request-id` response header.
 
@@ -188,15 +173,13 @@ n.publish();
 ```
 
 
-<a name="notifications-defining-your-notifications-open-a-different-asset-for-one-message"></a>
+<a name="notifications-good-practices-for-notifications-open-a-different-asset-for-one-message"></a>
 #### Open a different asset for one message
 
 If you need to open a different blade for a specific message, simply change the associated asset before re-publishing the notification.
 
 
-<a name="notifications-defining-your-notifications-open-a-different-blade"></a>
+<a name="notifications-good-practices-for-notifications-open-a-different-blade"></a>
 #### Open a different blade
 
 If you need to open a different blade (e.g. based on asset metadata or from another extension), use dynamic blade selection on the associated asset type.
-
-[notification]: ../media/portalfx-notifications/notifications.png

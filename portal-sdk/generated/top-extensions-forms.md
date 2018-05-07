@@ -75,7 +75,7 @@ There are a number of subtopics in the forms topic.  Sample source code is inclu
 
 For more information about how forms and parameters interact with an extension, see [portalfx-parameter-collection-overview.md](portalfx-parameter-collection-overview.md).
 
-For more information about forms with editScopes, see [portalfx-legacy-editscopes.md](portalfx-legacy-editscopes.md).
+For more information about forms with editScopes, see [top-legacy-editscopes.md](top-legacy-editscopes.md).
 
 For more information about forms without editScopes, see [portalfx-editscopeless-overview.md](portalfx-editscopeless-overview.md).
 

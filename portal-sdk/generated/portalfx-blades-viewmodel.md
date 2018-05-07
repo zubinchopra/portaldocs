@@ -6,9 +6,9 @@ The Portal uses a `viewModel` abstraction to allow extensions to deal with data 
 
 <!--  TODO: Determine whether each control item still has its own ViewModel or if they are combined with the parent somehow. -->
 
-The DOM is in an iframe controlled by the Portal, or the 'shell' iframe.  The extension is in a separate iframe, or the 'extension' iframe. The shell iframe and the extension iframe communicate through `ViewModels`. They often use **Knockout** observable values.
+The DOM is in an iFrame controlled by the Portal, or the 'shell' iFrame.  The extension is in a separate iFrame, or the 'extension' iFrame. The shell iFrame and the extension iFrame communicate through `ViewModels`. They often use **Knockout** observable values.
 
-When a blade is opened by the user,  the Portal calls the extension iframe and requests the `ViewModel` for that blade. The blade `ViewModel` consists of other `ViewModels` for items like textboxes, buttons, and other controls. These `ViewModels` are used to communicate with the user by displaying or collecting information. The blade `ViewModel` coordinates the transfer of the data to, from, and between the `ViewModels` for the controls. The `ViewModels` have a performance impact on the blades. Accessibility attributes are encapsulated in the controls.
+When a blade is opened by the user, the Portal calls the extension iFrame and requests the `ViewModel` for that blade. The blade `ViewModel` consists of other `ViewModels` for items like textboxes, buttons, and other controls. These `ViewModels` are used to communicate with the user by displaying or collecting information. The blade `ViewModel` coordinates the transfer of the data to, from, and between the `ViewModels` for the controls. The `ViewModels` have a performance impact on the blades. Accessibility attributes are encapsulated in the controls.
 
 **NOTE**: It is good practice to use a section control to layout the blade controls, instead of directly putting them in the template. A section control provides default styling, and is typically an easier way to deal with dynamically adding and removing of controls.
  
@@ -46,7 +46,7 @@ private _view: MsPortalFx.Data.EntityView<Person, any>;
 
 ```
 
-Private members of the blade `ViewModel` are properties whose name starts with an underscore. The proxied observable layer does not transfer private members to the shell iframe. For example, the `EntityView` object named `_view` is not directly used in the rendering of the blade, therefore it does not appear in the blade template, nor is it proxied to the shell iframe.
+Private members of the blade `ViewModel` are properties whose name starts with an underscore. The proxied observable layer does not transfer private members to the shell iFrame. For example, the `EntityView` object named `_view` is not directly used in the rendering of the blade, therefore it does not appear in the blade template, nor is it proxied to the shell iFrame.
 
 **NOTE**: Incorrect selection of the data that is to be proxied to the shell can greatly reduce the performance of the blade.
 
@@ -63,7 +63,7 @@ The template for this blade is in the following example.
 <a name="overview-the-blade-constructor"></a>
 ### The blade constructor
 
-When a blade is opened, the Portal creates a blade that displays a loading UX indicator, as specified in [portalfx-blades-procedure.md#displaying-a-loading-indicator-ux](portalfx-blades-procedure.md#displaying-a-loading-indicator-ux).  This indicator is displayed while the `ViewModel` for the blade is requested from the extension. Then,  the constructor for the blade `ViewModel` runs. The constructor should include the  `ViewModels` for the UI, and as much initialization as possible. 
+When a blade is opened, the Portal creates a blade that displays a loading UX indicator, as specified in [portalfx-blades-procedure.md#displaying-a-loading-indicator-ux](portalfx-blades-procedure.md#displaying-a-loading-indicator-ux).  This indicator is displayed while the `ViewModel` for the blade is requested from the extension. Then, the constructor for the blade `ViewModel` runs. The constructor should include the `ViewModels` for the UI, and as much initialization as possible. 
 
 This example will always need a readonly textbox for the name and an OK button to close the blade, so they are created in the constructor.  The constructor is not aware of  the value of the name textbox yet, because the values are only known after the  data is retrieved.  The value can be updated later because the `value` property of the textbox view model is observable, as in the following example of the blade  `ViewModel` constructor.
 
@@ -90,19 +90,19 @@ this.okButton = Button.create(container, {
 <a name="overview-the-blade-constructor-observable-and-non-observable-values"></a>
 #### Observable and non-observable values
 
-Observable values can be updated after their creation. In addition, observables are not limited to primitive types. Any properties that are not observable cannot be observably updated after the proxied observable layer has mirrored the `ViewModel` in the shell iframe.
+Observable values can be updated after their creation. In addition, observables are not limited to primitive types. Any properties that are not observable cannot be observably updated after the proxied observable layer has mirrored the `ViewModel` in the shell iFrame.
 
 There are optional UI elements for populating an observable, like the section control's `children` observable array. For example, there is a boolean option in the constructor of a grid control controls that specifies whether column headers should be displayed.
 
 If the grid is not an observable boolean, it cannot be changed after the grid `ViewModel` is created.  If column headers are dependent on some data that is retrieved from the server, then the grid `ViewModel` should be an observable so that constructing the grid with column headers can be delayed until data retrieval is complete. 
 
-In the next  example, the extension iframe will never propagate the following changes in value to the shell iframe because it is a non-observable value.
+In the next  example, the extension iFrame will never propagate the following changes in value to the shell iFrame because it is a non-observable value.
 
 ```ts
 viewModel.readonly = false;
 ```
 
-However, if the new value is stored in an observable, as in the following code, then the proxied observable layer will be notified of the change in the value and will reflect the change in the shell iframe. 
+However, if the new value is stored in an observable, as in the following code, then the proxied observable layer will be notified of the change in the value and will reflect the change in the shell iFrame. 
 
 ```ts
 viewModel.value("updated");

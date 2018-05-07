@@ -87,9 +87,6 @@ The playground provides a quick reference for both the options and the contract 
 ![alt-text](../media/portalfx-controls/playground_options.png "Control options and Interfaces")
  
 You quickly see every property that can be sent to the control as an option, in addition to all of the properties that it can return.
-
-
-
 <!--
 
   gitdown": "include-file", "file": "../templates/top-extensions-samples-controls-deprecated.md"}

@@ -10,7 +10,7 @@ The following list of data subtopics follows the Model-View-View-Model methodolo
 | The data cache object            | [portalfx-data-caching.md](portalfx-data-caching.md)                         | Caching data from the server |
 | The data view object             | [portalfx-data-views.md](portalfx-data-views.md)                             | Presenting data to the ViewModel | 
 | Loading data | [portalfx-data-loading.md](portalfx-data-loading.md) | `QueryCache` and `EntityCache` methods that request data from servers and other sources  | 
-| Merging and refreshing data | [portalfx-data-refreshingdata.md](portalfx-data-refreshingdata.md) |   `DataCache` / `DataView` object methods like `refresh` and `forceremove`.  |
+| Merging and refreshing data | [portalfx-data-refreshing.md](portalfx-data-refreshing.md) |   `DataCache` / `DataView` object methods like `refresh` and `forceremove`.  |
 | Querying for virtualized data  | [portalfx-data-virtualizedgriddata.md](portalfx-data-virtualizedgriddata.md) |  Sequential and random-access data retrieval | 
 | Child lifetime managers  | [portalfx-data-lifetime.md](portalfx-data-lifetime.md) | Fine-grained memory management that allows resources to be destroyed previous to the closing of the blade. | 
 | The browse sample | [portalfx-data-masterdetailsbrowse.md](portalfx-data-masterdetailsbrowse.md) | Extension that allows a user to select a Website from a list of websites, using the QueryCache-EntityCache data models | 
@@ -101,7 +101,7 @@ The benefits of centralizing data access in a singleton `DataContext` include th
 
    Users expect to see information that always reflects the current state of their data in the cloud. Another benefit of loading and caching data in a single location is that the cached data is regularly updated to accurately reflect the state of server data.
 
-   For more information on refreshing data, see [portalfx-data-refreshingdata.md](portalfx-data-refreshingdata.md).
+   For more information on refreshing data, see [portalfx-data-refreshing.md](portalfx-data-refreshing.md).
 
 ### Data caches
  

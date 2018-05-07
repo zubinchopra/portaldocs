@@ -1024,7 +1024,7 @@ SOLUTION: Integrate forms with `EditScopes` varies according to the UX design. D
 
 ***Q: Form fields have two constructor overloads, which should I use? What is an EditScopeAccessor?*** 
 
-SOLUTION: For more information about EditScopeAccessors, see [portalfx-legacy-editscopes.md#the-editscopeaccessor](portalfx-legacy-editscopes.md#the-editscopeaccessor).
+SOLUTION: For more information about EditScopeAccessors, see [top-legacy-editscopes.md#the-editscopeaccessor](top-legacy-editscopes.md#the-editscopeaccessor).
 
 * * * 
 
@@ -1041,11 +1041,11 @@ For more information about type metadata, see [portalfx-data-typemetadata.md](po
 
  * Editable grid
  
-    Specified in [portalfx-legacy-editscopes.md#editScope-entity-arrays](portalfx-legacy-editscopes.md#editScope-entity-arrays).
+    Specified in [top-legacy-editscopes.md#editScope-entity-arrays](top-legacy-editscopes.md#editScope-entity-arrays).
 
  * Opting out of edit tracking 
 
-    Specified in [portalfx-legacy-editscopes.md#the-trackedits-property](portalfx-legacy-editscopes.md#the-trackedits-property).
+    Specified in [top-legacy-editscopes.md#the-trackedits-property](top-legacy-editscopes.md#the-trackedits-property).
 
 
 * * *
@@ -1055,7 +1055,7 @@ For more information about type metadata, see [portalfx-data-typemetadata.md](po
 
 ***Q: Some of my Form data is not editable. How do I keep EditScope from tracking changes for this data?***
 
-SOLUTION: For more information about configuring an EditScope by using type metadata, see [portalfx-legacy-editscopes.md#the-trackedits-property](portalfx-legacy-editscopes.md#the-trackedits-property).
+SOLUTION: For more information about configuring an EditScope by using type metadata, see [top-legacy-editscopes.md#the-trackedits-property](top-legacy-editscopes.md#the-trackedits-property).
   
 * * *
 
@@ -1072,7 +1072,7 @@ SOLUTION:  An extension can model a Dictionary/StringMap/property bag for an `Ed
 
 The users can edit the contents of the  Dictionary/StringMap/property bag by using an editable grid. The editable grid can only be bound to an `EditScope` 'entity' array. This allows the extension to describe the array of key/value-pairs as an 'entity' array.
 
-For more information about how to develop type metadata to use the array with the editable grid, see [portalfx-legacy-editscopes.md#the-getEntityArrayWithEdits-method](portalfx-legacy-editscopes.md#the-getEntityArrayWithEdits-method).
+For more information about how to develop type metadata to use the array with the editable grid, see [top-legacy-editscopes.md#the-getEntityArrayWithEdits-method](top-legacy-editscopes.md#the-getEntityArrayWithEdits-method).
 
 * * *
 

@@ -36,7 +36,7 @@ The **V2** samples address the following API areas.
 
 * no-PDL TypeScript decorators that define all recommended Blade/Part variations
 
-* Forms that do not use **V1** EditScope. For more information about EditScope, see [portalfx-legacy-editscopes.md](portalfx-legacy-editscopes.md).
+* Forms that do not use **V1** EditScope. For more information about EditScope, see [top-legacy-editscopes.md](top-legacy-editscopes.md).
 
 <a name="portal-extension-samples-v1-versus-v2-v1"></a>
 ### V1
