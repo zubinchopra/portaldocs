@@ -31,6 +31,16 @@ The template for this blade is in the following example.
 
 {"gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Blades/ViewModelInitExample/Templates/Template.html", "section": "bladeViewModel#template"}
 
+The following methods are  associated with the blade `ViewModel`.
+
+* [#The-blade-constructor](the-blade-constructor)
+
+* [#The-onInputset-method](#the-onInputsSet-method)
+
+* [The-Knockout-reactor-method](#the-knockout-reactor-method) 
+
+* [The-Knockout pureComputed-method](#the-knockout-pureComputed-method) 
+
 ### The blade constructor
 
 When a blade is opened, the Portal creates a blade that displays a loading UX indicator, as specified in [portalfx-blades-procedure.md#displaying-a-loading-indicator-ux](portalfx-blades-procedure.md#displaying-a-loading-indicator-ux).  This indicator is displayed while the `ViewModel` for the blade is requested from the extension. Then, the constructor for the blade `ViewModel` runs. The constructor should include the `ViewModels` for the UI, and as much initialization as possible. 
@@ -81,7 +91,7 @@ this._buttonText("New button text");
 
 ### The onInputsSet method
 
-When the input values for the blade are ready, the framework will call the `onInputsSet` method. This is often when the extension fetches the data for the blade and update the view models that were created in the constructor. When the promise  that is returned from the `onInputsSet` method is resolved, the blade is considered 'loaded' the loading UI indicator will be removed from the blade. The following is the `onInputsSet` method for the person object example.
+When the input values for the blade are ready, the framework will call the `onInputsSet` method. This is often when the extension fetches the data for the blade and updates the view models that were created in the constructor. When the promise that is returned from the `onInputsSet` method is resolved, the blade is considered 'loaded', and the loading UI indicator will be removed from the blade. The following is the `onInputsSet` method for the person object example.
 
 {"gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Blades/ViewModelInitExample/ViewModels/ViewModelInitExample.ts", "section": "bladeViewModel#onInputsSet"}
 
@@ -93,89 +103,9 @@ The extension uses a `fetch()` to get data from the server, based on the inputs 
 
     When the textbox `ViewModel` is written to the `smartPhone` observable, the `pcControl` binding handler in the blade template observes the new `ViewModel` and constructs a textbox control. If the observable is not populated, the `<div>` in the template remains empty, and nothing is displayed on the blade.
 
-### Efficient mutation of observable arrays
 
-Using the following example can lead to severe performance problems in an extension because it queues 100 observable updates of one item each.
 
-  ```ts
-  let numbers = ko.observable([]);
-  for (i = 0; i < 100; i++) {
-      numbers.push(i);
-  }
-  ```
-
-##### Case 1: Code with performance problems
-
-The following code is much more performant because it queues a single observable update that contains 100 items.
-
-  ```ts
-  let tempArray = [];
-  for (i = 0; i < 100; i++) {
-      tempArray.push(i);
-  }
-  let numbers = ko.observable(tempArray);
-  ```
-
-##### Case 2: Performant code
-
-In a more real example, an extension is pushing data points to a series displayed on a chart that is currently using auto-scaling of its axes. It takes 0.01 seconds to render an extra data point, but 0.5 seconds to recalcuate the scale of the x-axis and the y-axis every time the data is updated.
-
-In this example, the code in Case 1 would take 100 * (0.01 + 0.5) = 51 seconds to process all the changes, but the code in Case 2 would take (100 * 0.01) + 0.5 = 1.5 seconds to process the changes, for a difference of 3400%. This non-performant code results in performance problems that are serious enough that the Framework attempts to detect this type of code in an  extension.  When the Framework encounters this type of code, it displays the following warning  message.
-
-```
-Performance warning: A proxied observable array is mutated inefficiently.
-```
-
-Typically, this means there is a repeated `push()` on an observable array somewhere in the code, although there are other inefficient array mutations that the Framework can call out.
-
-When you encounter this warning in the console, please address the issue.
-
-### The ko.pureComputed method
-
-<!-- TODO: Determine what is meant by "everyone".  Is this multiple extensions, multiple blades, or multiple ViewModels? -->
-You might have noticed unlike `ko.reactor` or knockout's observable subscribe method, the Portal's version of the knockout `pureComputed()` has not been modified to use a lifetime manager. The reason is that any **Knockout** dependencies (which are the things that will pin a computed or observable in memory) that are associated with the `pureComputed` are allocated only when someone is listening to the `pureComputed`. They   are cleaned up when everyone stops listening to the `pureComputed`.
-
-This works great for the vast majority of cases for 'pure' functions where there are no side effects. Consequently, it is good practice to use a `pureComputed` instead of a `ko.reactor` method. 
-
-The following example demonstrates the difference between the  `pureComputed` method and the  `ko.reactor` method. 
-
-```ts
-let obsNum = ko.observable(0);
-let pureComputedCounter = 0;
-let reactorCounter = 0;
-
-let pure = ko.pureComputed(() => {
-    pureComputedCounter++;
-    return obsNum() + 1;
-});
-
-let reactor = ko.reactor(lifetime, () => {
-    reactorCounter++;
-    return obsNum() + 2;
-});
-
-obsNum(10);
-obsNum(3);
-obsNum(5);
-
-console.log("According to pureComputed obsNum changed " + pureComputedCounter + " times");
-console.log("According to reactor obsNum changed " + reactorCounter + " times");
-```
-
-The output of the above will be:
-
-```
-According to pureComputed obsNum changed 0 times
-According to reactor obsNum changed 3 times
-```
-
-In this example, incrementing `pureComputedCounter` or `reactorCounter` is a side-effect because it has no bearing on the value of the observables that are produced by the functions (`pure` and `reactor`). If the  side-effect is needed, the extension should  use the  `ko.reactor()` method; otherwise, it should  use the  `ko.pureComputed()` method.
-
-**NOTE**: If the extension code contained `pure.subscribe(lifetime, (val) => console.log(val.toString()))` right after creating `pure`, then `pureComputedCounter` would also have been incremented to 3 because the `pureComputed` becomes live as soon as a listener is attached.
-
-For more information about `pureComputeds`, see [http://knockoutjs.com/documentation/computed-pure.html](http://knockoutjs.com/documentation/computed-pure.html).
-
-### The ko.reactor method
+### The Knockout reactor method
 
 Any observables read in the function that are sent to `ko.reactor()` will become a dependency for that reactor.  The reactor will recompute whenever any of those observable values change. The same is true for the  `ko.pureComputed()` method and the observable array's `map()` and `mapInto()` functions. This can lead to a situation where a `computed` is recalculating unintentionally. For more information about `map` and `mapInto`, see [portalfx-data-projections.md#shaping-and-filtering-data](portalfx-data-projections.md#shaping-and-filtering-data).
 
@@ -215,3 +145,84 @@ let computed = ko.reactor(lifetime, () => {
     });
 });
 ```
+
+### The Knockout pureComputed method
+
+<!-- TODO: Determine what is meant by "everyone".  Is this multiple extensions, multiple blades, or multiple ViewModels? -->
+You might have noticed unlike `ko.reactor` or knockout's observable subscribe method, the Portal's version of the knockout `pureComputed()` has not been modified to use a lifetime manager. The reason is that any **Knockout** dependencies that can pin a computed or observable in memory, and  that are associated with the `pureComputed` method, are allocated only when an extension is listening to the `pureComputed`. They   are cleaned up when everyone stops listening to the `pureComputed`.
+
+This works great for the vast majority of cases for 'pure' functions where there are no side effects. Consequently, it is good practice to use a `pureComputed` instead of a `ko.reactor` method. 
+
+The following example demonstrates the difference between the  `pureComputed` method and the  `ko.reactor` method. 
+
+```ts
+let obsNum = ko.observable(0);
+let pureComputedCounter = 0;
+let reactorCounter = 0;
+
+let pure = ko.pureComputed(() => {
+    pureComputedCounter++;
+    return obsNum() + 1;
+});
+
+let reactor = ko.reactor(lifetime, () => {
+    reactorCounter++;
+    return obsNum() + 2;
+});
+obsNum(10);
+obsNum(3);
+obsNum(5);
+
+console.log("According to pureComputed obsNum changed " + pureComputedCounter + " times");
+console.log("According to reactor obsNum changed " + reactorCounter + " times");
+```
+
+The output of the above will be:
+
+```
+According to pureComputed obsNum changed 0 times
+According to reactor obsNum changed 3 times
+```
+
+In this example, incrementing `pureComputedCounter` or `reactorCounter` is a side-effect because it has no bearing on the value of the observables that are produced by the functions (`pure` and `reactor`). If the  side-effect is needed, the extension should  use the  `ko.reactor()` method; otherwise, it should  use the  `ko.pureComputed()` method.
+
+**NOTE**: If the extension code contained `pure.subscribe(lifetime, (val) => console.log(val.toString()))` right after creating `pure`, then `pureComputedCounter` would also have been incremented to 3 because the `pureComputed` becomes live as soon as a listener is attached.
+
+For more information about `pureComputeds`, see [http://knockoutjs.com/documentation/computed-pure.html](http://knockoutjs.com/documentation/computed-pure.html).
+
+### ViewModel performance examples
+
+#### Case 1: Code with performance problems
+
+Using the following example of mutation of observable arrays can lead to severe performance problems in an extension because it queues 100 observable updates of one item each.
+
+  ```ts
+  let numbers = ko.observable([]);
+  for (i = 0; i < 100; i++) {
+      numbers.push(i);
+  }
+  ```
+
+The following code is much more performant because it queues a single observable update that contains 100 items.
+
+  ```ts
+  let tempArray = [];
+  for (i = 0; i < 100; i++) {
+      tempArray.push(i);
+  }
+  let numbers = ko.observable(tempArray);
+  ```
+
+#### Case 2: Performant code
+
+In a more real example, an extension is pushing data points to a series displayed on a chart that is currently using auto-scaling of its axes. It takes 0.01 seconds to render an extra data point, but 0.5 seconds to recalcuate the scale of the x-axis and the y-axis every time the data is updated.
+
+In this example, the code in Case 1 would take 100 * (0.01 + 0.5) = 51 seconds to process all the changes, but the code in Case 2 would take (100 * 0.01) + 0.5 = 1.5 seconds to process the changes, for a difference of 3400%. This non-performant code results in performance problems that are serious enough that the Framework attempts to detect this type of code in an  extension.  When the Framework encounters this type of code, it displays the following warning  message.
+
+```
+Performance warning: A proxied observable array is mutated inefficiently.
+```
+
+Typically, this means there is a repeated `push()` on an observable array somewhere in the code, although there are other inefficient array mutations that the Framework can call out.
+
+When you encounter this warning in the console, please address the issue.
