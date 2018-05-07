@@ -1,49 +1,55 @@
 
 ## Notifications
 
-The Notifications menu aggregates informational messages, warnings, and errors across all Portal extensions and cloud-connected services via local, client notifications and global, server events from the Event service.
+The Notifications menu aggregates messages across all Portal extensions and cloud-connected services. It does this by using local client notifications and global server events from the Event service. Messages can be informational, warnings, or errors, as in the following image.
 
-![Notifications help project status and progress][notification]
+![alt-text](../media/portalfx-notifications/notifications.png "Notifications help project status and progress")
 
-### What is a notification?
+A notification is a short message that informs the user about an event that has occurred, or may occur, in the system. Notifications contain useful and relevant information.
 
-A notification is a **short, informative message** letting the user know about, and ideally take action on, an event that has occurred (or may occur) in the system. Notifications must be **useful and relevant**.
+* Client notifications are only available in the current browser session. When the browser is refreshed, local, client notifications are lost. 
 
-**Server events** are maintained by the public Event service. The Event service tracks all service events, which may be aggregated into larger operations, which are then visualized as notifications within the Portal. The Notifications hub automatically surfaces notifications for all critical, error, and completed deployment events.
+* Server events are maintained by the public Event service. The Event service tracks all service events, which may be aggregated into larger operations. The aggregates are then displayed as notifications within the Portal. The Notifications hub automatically displays notifications for all critical, error, and completed deployment events. Server events are preferred over client notifications because they are persisted.
 
-**Client notifications** are only available in the current browser session. When the browser is refreshed, local, client notifications will be lost. Always prefer server events.
+If you're using one of the older, PDL-based Notifications APIs, use the Notifications v3 upgrade guide located at [portalfx-notifications-migration.md](portalfx-notifications-migration.md) to convert your code.
+
+### Notification statuses
+
+Always use the correct status for notifications. Use the following list as a guide.
+
+**InProgress**: Long-running operation has started or is executing. It may be creating new resources or changing state.
+
+**Info**: Successful or non-critical updates, like state changes, that do not require action on the part of the user.  Some examples are stopped  websites and services.
+
+**Advisory**: Informational or potential warnings, issues under investigation, or changes that should have no impact. This includes upcoming data migrations or outage investigations.
+
+**Warning**: Pproblem or issue that might require attention, or could result in a more critical error. One example is a  certificate that is  about to expire.
+
+**Error**: Problem or condition that should be investigated, like data loss.
+
+**Critical**: Urgent problem or condition that needs immediate action or attention. An example is a VM that crashed.
+
+**NOTE**: Use the **Info** notification instead of the **Success** notification, which is being deprecated.
 
 
-### How and when to use notifications
+
+
+
+
+### Good Practices for notifications
 
 #### Is a notification appropriate?
 
-Avoid raising notifications people don't care about and don't use notifications too often. Avoid using multiple notifications when a single notification will suffice.
-
-#### Always use server events for back-end events
-
-Always use server events for non-read operations and any events that originate in a back-end system.
-
+It is good practice to avoid raising notifications that users will not care about, or will not take action on.
+It is good practice to avoid using multiple notifications when a single notification will suffice.
+Don't use notifications too often. 
+Be as specific as possible and follow the voice and tone guidelines when defining notifications. Notifications are referenced out of context (e.g. within the hub and not the asset blade) and generic messages may not make sense.
+Always use server events for non-read operations, and for any events that originate in a back-end system.
 Always prefer global, server events by integrating with the Event service. Only use local, client notifications if the error originates on the client and doesn't apply to other users. Every event originating from a back-end system should be processed as a server event. This will ensure they are available to additional users and across browser sessions. _Local, client notifications are only visible in the current session._ When the browser is refreshed, all client notifications will be lost.
 
 #### Always save server events for asset changes
 
 Server events are used to track asset history. Even if a change is deemed as unimportant, at least raise a low-priority Info event to track it appropriately.
-
-
-#### Use correct status
-
-Always use the correct status for your notifications. Use the following lists as a guide.
-
-* **InProgress** - Long-running operation has started or is executing (e.g. creating new resources or changing state)
-* **Info** - Successful or non-critical update (e.g. state change) that doesn't require action (e.g. stopped a website)
-* **Advisory** - (**Coming soon!**) Informational/potential warning, issue under investigation, or a change that should have no impact (e.g. upcoming data migration or outage investigation)
-* **Warning** - Potential problem or issue that might require attention and/or could result in a more critical error (e.g. certificate about to expire)
-* **Error** - Problem or condition that should be investigated (e.g. data loss)
-* **Critical** - (**Coming soon!**) Urgent problem/condition that needs immediate action/attention (e.g. VM crashed)
-
-> [WACOM.NOTE] This table depicts the notification status values we are moving towards. **Advisory** and **Critical** are coming, but not yet supported today. Please do not use **Success**, which will be deprecated moving forward. Use **Info** instead.
-
 
 #### Use in-progress notifications for long-running operations
 
@@ -63,21 +69,9 @@ Following the aforementioned steps will ensure the UI is as responsive as possib
 
 > [WACOM.NOTE] Server events may take up to 1.5 minutes to display in the Portal. **Using both server events and client notifications is critical to ensuring UI responsiveness.**
 
-
-#### Be specific
-
-Be as specific as possible and follow the voice and tone guidelines when defining notifications. Notifications are referenced out of context (e.g. within the hub and not the asset blade) and generic messages may not make sense.
-
-
 #### Never create dead ends
 
 Associate notifications with assets and ensure there is a clear next-action. When a notification is clicked, the related asset is opened. If a notification does not have an asset, it is essentially a useless dead-end. _Do not create dead-end notifications!_
-
-
-
-### Defining your notifications
-
-**NOTE:** **Using legacy notifications?** The below API was introduced in SDK 5.0. If you're using one of the older, PDL-based Notifications APIs, use the [Notifications v3 upgrade guide](portalfx-notifications-upgrade.md) to convert your code.
 
 #### One-time notification
 
@@ -178,5 +172,3 @@ If you need to open a different blade for a specific message, simply change the 
 #### Open a different blade
 
 If you need to open a different blade (e.g. based on asset metadata or from another extension), use dynamic blade selection on the associated asset type.
-
-[notification]: ../media/portalfx-notifications/notifications.png

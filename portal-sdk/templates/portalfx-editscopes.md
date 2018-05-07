@@ -1,7 +1,7 @@
 
 # EditScopes and EditScopeless  Forms
 
-{"gitdown": "include-file", "file": "../templates/portalfx-legacy-editscopes.md"}
+{"gitdown": "include-file", "file": "../templates/top-legacy-editscopes.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-editscopeless-overview.md"}
 

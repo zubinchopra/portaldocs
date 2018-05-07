@@ -12,7 +12,7 @@ Watch this tutorial to understand, implement debug forms using EditScope
 
 [![Working with EditScope](../media/videos/editscope.png)](https://auxdocs.blob.core.windows.net/videos/EditScope_H264_4500kbps_AAC_und_ch2_128kbps.mp4)
 
-[Legacy EditScopes](portalfx-legacy-editscopes.md)
+[Legacy EditScopes](top-legacy-editscopes.md)
 
 [PowerPoint](https://auxdocs.blob.core.windows.net/videos/editscope20150312.pptx)
 
