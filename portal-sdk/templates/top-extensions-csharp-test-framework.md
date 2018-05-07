@@ -44,7 +44,7 @@ The C# Test framework is distributed as a NuGet package that is available in the
 
 {"gitdown": "include-file", "file": "../templates/portalfx-csharp-test-ui-cases.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-csharp-test-parts-and-blades"}
+{"gitdown": "include-file", "file": "../templates/portalfx-csharp-test-parts-and-blades.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-csharp-test-filling-forms.md"}
 
