@@ -74,7 +74,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 Samples show how to do many common development tasks. 
 
-[Samples](/portal-sdk/generated/top-extensions-samples.md)
+* [Samples](/portal-sdk/generated/top-extensions-samples.md)
 
 ### Blades
 
@@ -83,7 +83,8 @@ The primary UI building block is a called a blade. A blade is like a page. It ge
 * [Overview](/portal-sdk/generated/top-extensions-blades.md)
 
 * [TemplateBlade](/portal-sdk/generated/top-blades-procedure.md)
- [MenuBlade](/portal-sdk/generated/top-blades-menublade.md)
+
+* [MenuBlade](/portal-sdk/generated/top-blades-menublade.md)
 
 * [ResourceMenuBlade](/portal-sdk/generated/top-blades-resourcemenu.md)
 
@@ -187,6 +188,8 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 * [Sharing blades and parts across extensions](/portal-sdk/generated/)
 
 ## Debugging
+
+* [Debugging](/portal-sdk/generated/top-extensions-debugging.md)
 
 * [Using developer mode](/portal-sdk/generated/portalfx-extensions-debugging-tool.md)
 
