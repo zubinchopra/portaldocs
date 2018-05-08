@@ -181,7 +181,7 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 ## Debugging
 
-* [Using developer mode](/portal-sdk/generated/top-extensions-debugging.md#the-debugging-tool)
+* [Using developer mode](/portal-sdk/generated/top-extensions-debugging.md#the-debug-tool)
 
 * [Debugging extension load failures](/portal-sdk/generated/top-extensions-debugging.md#debugging-extension-load-failures)
 
