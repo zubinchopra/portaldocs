@@ -4,13 +4,7 @@ This is the home page for all documentation related to onboarding, developing, o
 
 Couldn't find what you needed? [Ask about the docs on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-missing-docs).
 
-## Support team news 
 
-* [Downloads](/portal-sdk/generated/downloads.md)
-
-* [Release notes](/portal-sdk/generated/release-notes.md)
-
-* [Breaking changes](/portal-sdk/generated/breaking-changes.md)
 
 ## Onboarding a new extension
 
@@ -54,19 +48,17 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 Azure portal extension development is supported on the Microsoft Windows 8, Windows Server 2012 R2, and Windows 10.
 
-1. [Install the SDK](/portal-sdk/generated/top-extensions-install-software.md)
+* [Downloads](/portal-sdk/generated/downloads.md)
 
-    * [How to update portal Nuget packages](/portal-sdk/generated/top-extensions-nuget.md)
+* [Release notes](/portal-sdk/generated/release-notes.md)
 
-1. Configure your IDE - *Typescript version / Compile on save*
+* [Breaking changes](/portal-sdk/generated/breaking-changes.md)
 
-    * [Visual Studio]() *(with Extension project template)*
+* [Install the SDK](/portal-sdk/generated/top-extensions-install-software.md)
 
-    * [VS Code]()
+* [How to update portal Nuget packages](/portal-sdk/generated/top-extensions-nuget.md)
 
-1. 	Run your code
-
-    * [Running the extension locally (a.k.a. sideloading)](/portal-sdk/generated/top-extensions-sideloading.md)
+* [Running the extension locally (a.k.a. sideloading)](/portal-sdk/generated/top-extensions-sideloading.md)
 
 [Ask an SDK setup question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
 
@@ -161,7 +153,7 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 * [Context panes](/portal-sdk/generated/top-extensions-context-panes.md)
 
-* [Dialogs](/portal-sdk/generated/)
+* [Dialogs](/portal-sdk/generated/top-extensions-dialogs.md)
 
 * [Notifications](/portal-sdk/generated/)
 
@@ -325,7 +317,7 @@ These features are supported, but have had no recent investment. No additional i
 
 * [EditScope](/portal-sdk/generated/top-legacy-editscopes.md)
 
-## Additional Resources
+## Additional resources
 
 The documents are combinations from all the previous topics. Consequently, there may be some repetition.
 
@@ -335,11 +327,11 @@ The documents are combinations from all the previous topics. Consequently, there
 
 * [Glossary](/portal-sdk/generated/top-extensions-glossary.md)
 
-# Marketplace/Gallery Developer Resources
+# Marketplace/Gallery developer resources
 
 1. [Gallery overview](/gallery-sdk/generated/index-gallery.md#gallery-overview)
 
-1. [Gallery item Specifications](/gallery-sdk/generated/index-gallery.md#gallery-item-specificiations)
+1. [Gallery item specifications](/gallery-sdk/generated/index-gallery.md#gallery-item-specificiations)
 
 1. [Gallery item metadata](/gallery-sdk/generated/index-gallery.md#gallery-item-metadata)
 
