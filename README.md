@@ -181,19 +181,17 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 ## Debugging
 
-* [Debugging](/portal-sdk/generated/top-extensions-debugging.md)
+* [Using developer mode](/portal-sdk/generated/top-extensions-debugging.md#the-debugging-tool)
 
-* [Using developer mode](/portal-sdk/generated/portalfx-extensions-debugging-tool.md)
+* [Debugging extension load failures](/portal-sdk/generated/top-extensions-debugging.md#debugging-extension-load-failures)
 
-* [Debugging extension load failures](/portal-sdk/generated/portalfx-extensions-debugging-load-failures.md)
+* [Debugging console errors](/portal-sdk/generated/top-extensions-debugging.md#debugging-console-errors)
 
-* [Debugging console errors](/portal-sdk/generated/portalfx-extensions-debugging-console-errors.md)
+* [Debugging javascript](/portal-sdk/generated/top-extensions-debugging.md#debugging-javascript)
 
-* [Debugging javascript](/portal-sdk/generated/portalfx-extensions-debugging-javascript.md)
+* [Debugging knockout](/portal-sdk/generated/top-extensions-debugging.md#debugging-knockout)
 
-* [Debugging knockout](/portal-sdk/generated/portalfx-extensions-debugging-knockout.md)
-
-* [Debugging the data stack](/portal-sdk/generated/portalfx-extensions-debugging-data-stacks.md)
+* [Debugging the data stack](/portal-sdk/generated/top-extensions-debugging.md#debugging-the-data-stack)
 
 ## Performance
 
