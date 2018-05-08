@@ -1,11 +1,11 @@
 
 <a name="upgrading-to-the-latest-notifications-api"></a>
-# Upgrading to the latest Notifications API
+## Upgrading to the latest Notifications API
 
 Notifications v3 simplifies your code by removing the need to pre-define notifications in PDL. You'll copy strings from PDL and switch to the new `ClientNotification` class.
 
 <a name="upgrading-to-the-latest-notifications-api-upgrading-from-notifications-v1-pre-4-6"></a>
-## Upgrading from Notifications v1 (pre-4.6)
+### Upgrading from Notifications v1 (pre-4.6)
 
 Moving from Notifications v1 to v3 involves switching from the `NotificationDefinition` element in PDL and the `Notification` class in TypeScript to the `ClientNotification` class.
 
@@ -69,7 +69,7 @@ Moving from Notifications v1 to v3 involves switching from the `NotificationDefi
 
 
 <a name="upgrading-to-the-latest-notifications-api-upgrading-from-notifications-v2-4-6-14"></a>
-## Upgrading from Notifications v2 (4.6-14)
+### Upgrading from Notifications v2 (4.6-14)
 
 Similar to the v1 migration, moving from v2 involves switching from the `Notification` element in PDL and the `NotificationManager.create()` function in TypeScript to the `ClientNotification` class.
 
@@ -182,7 +182,7 @@ Similar to the v1 migration, moving from v2 involves switching from the `Notific
 
 
 <a name="upgrading-to-the-latest-notifications-api-now-clean-up"></a>
-## Now, clean up :)
+### Now, clean up :)
 
 After upgrading to the new `ClientNotification` API, you can delete all your `NotificationDefinition` and `Notification` code in PDL.
 

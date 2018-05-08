@@ -2,30 +2,26 @@
 <a name="notifications"></a>
 ## Notifications
 
+A notification is a short message that informs the user about an event that has occurred, or may occur, in the system. Notifications contain useful and relevant information.
+
 The Notifications menu aggregates messages across all Portal extensions and cloud-connected services. It does this by using local client notifications and global server events from the Event service. Messages can be informational, warnings, or errors, as in the following image.
 
 ![alt-text](../media/portalfx-notifications/notifications.png "Notifications help project status and progress")
 
-A notification is a short message that informs the user about an event that has occurred, or may occur, in the system. Notifications contain useful and relevant information.
-
-* Client notifications are only available in the current browser session. When the browser is refreshed, local, client notifications are lost. 
-
-* Server events are maintained by the public Event service. The Event service tracks all service events, which may be aggregated into larger operations. The aggregates are then displayed as notifications within the Portal. The Notifications hub automatically displays notifications for all critical, error, and completed deployment events. Server events are preferred over client notifications because they are persisted.
-
-If you're using one of the older, PDL-based Notifications APIs, use the Notifications v3 upgrade guide located at [portalfx-notifications-migration.md](portalfx-notifications-migration.md) to convert your code.
+If you are using one of the older, PDL-based Notifications APIs, use the Notifications v3 upgrade guide located at [portalfx-notifications-migration.md](portalfx-notifications-migration.md) to convert your code to a newer edition.
 
 <a name="notifications-notification-statuses"></a>
 ### Notification statuses
 
-Always use the correct status for notifications. Use the following list as a guide.
+The following list contains the correct statuses for notifications.
 
 **InProgress**: Long-running operation has started or is executing. It may be creating new resources or changing state.
 
-**Info**: Successful or non-critical updates, like state changes, that do not require action on the part of the user.  Some examples are stopped  websites and services.
+**Info**: Successful or non-critical updates, like state changes, that do not require action on the part of the user.  Some examples are stopped websites and services.
 
 **Advisory**: Informational or potential warnings, issues under investigation, or changes that should have no impact. This includes upcoming data migrations or outage investigations.
 
-**Warning**: Pproblem or issue that might require attention, or could result in a more critical error. One example is a  certificate that is  about to expire.
+**Warning**: Problem or issue that might require attention, or could result in a more critical error. One example is a  certificate that is  about to expire.
 
 **Error**: Problem or condition that should be investigated, like data loss.
 
@@ -33,59 +29,17 @@ Always use the correct status for notifications. Use the following list as a gui
 
 **NOTE**: Use the **Info** notification instead of the **Success** notification, which is being deprecated.
 
+<a name="notifications-client-notifications"></a>
+### Client notifications
 
-
-
-
-
-<a name="notifications-good-practices-for-notifications"></a>
-### Good Practices for notifications
-
-<a name="notifications-good-practices-for-notifications-is-a-notification-appropriate"></a>
-#### Is a notification appropriate?
-
-It is good practice to avoid raising notifications that users will not care about, or will not take action on.
-It is good practice to avoid using multiple notifications when a single notification will suffice.
-Don't use notifications too often. 
-Be as specific as possible and follow the voice and tone guidelines when defining notifications. Notifications are referenced out of context (e.g. within the hub and not the asset blade) and generic messages may not make sense.
-Always use server events for non-read operations, and for any events that originate in a back-end system.
-Always prefer global, server events by integrating with the Event service. Only use local, client notifications if the error originates on the client and doesn't apply to other users. Every event originating from a back-end system should be processed as a server event. This will ensure they are available to additional users and across browser sessions. _Local, client notifications are only visible in the current session._ When the browser is refreshed, all client notifications will be lost.
-
-<a name="notifications-good-practices-for-notifications-always-save-server-events-for-asset-changes"></a>
-#### Always save server events for asset changes
-
-Server events are used to track asset history. Even if a change is deemed as unimportant, at least raise a low-priority Info event to track it appropriately.
-
-<a name="notifications-good-practices-for-notifications-use-in-progress-notifications-for-long-running-operations"></a>
-#### Use in-progress notifications for long-running operations
-
-If an operation requires calling a server-side API or may take more than 2 seconds, use an in-progress notification to track it. Most long-running operations can do the following:
-
-1. Create an in-progress local, client notification before calling the back-end server
-2. Initiate the server operation, which should create an in-progress server event
-3. Save the correlation id (from the Event service) to the client notification to avoid duplicate notifications
-4. Poll for status updates and update the client notification as appropriate
-
-> [WACOM.NOTE] If warnings or errors occur during the execution of the long-running operation, but don't affect the outcome, publish separate server events (and optionally client notifications) to track those issues.
-
-5. When the operation is complete, update the title and description, and re-publish the client notification
-6. Finalize the operation with necessary UI processing
-
-Following the aforementioned steps will ensure the UI is as responsive as possible.
-
-> [WACOM.NOTE] Server events may take up to 1.5 minutes to display in the Portal. **Using both server events and client notifications is critical to ensuring UI responsiveness.**
-
-<a name="notifications-good-practices-for-notifications-never-create-dead-ends"></a>
-#### Never create dead ends
-
-Associate notifications with assets and ensure there is a clear next-action. When a notification is clicked, the related asset is opened. If a notification does not have an asset, it is essentially a useless dead-end. _Do not create dead-end notifications!_
-
-<a name="notifications-good-practices-for-notifications-one-time-notification"></a>
+ Local client notifications are only visible in the current browser session. When the browser is refreshed,  all local client notifications are lost.
+ 
+<a name="notifications-client-notifications-one-time-notification"></a>
 #### One-time notification
 
-For simple, one-time notifications that aren't part of a long-running operation and don't result in server events, simply publish a notification with the title, description, status, and linked asset. When the notification is clicked, the associated asset will be opened.
+The design of the extension may require one-time notifications that are not part of a long-running operation and do not result in server events.  In these instances, the extension should publish a notification with the title, description, status, and linked asset. When the notification is clicked, the associated asset will be opened.
 
-To link a notification to an asset, specify the asset details: 
+To link a notification to an asset, the extension specifies the asset details, as in the following example. 
 
 ```ts
 MsPortalFx.Hubs.Notifications.ClientNotification.publish({
@@ -100,7 +54,7 @@ MsPortalFx.Hubs.Notifications.ClientNotification.publish({
 });
 ```
 
-To link a notification to a blade directly, specify the blade details: 
+To link a notification to a blade directly, the extension specifies the blade details, as in the following code. 
 
 ```ts
 MsPortalFx.Hubs.Notifications.ClientNotification.publish({
@@ -117,7 +71,7 @@ MsPortalFx.Hubs.Notifications.ClientNotification.publish({
 });
 ```
 
-Or you can link a notification to a deeplink by specify the deeplink URI: 
+To link a notification to a deeplink, the extension specifies the deeplink URI, as in the following code. 
 
 ```ts
 MsPortalFx.Hubs.Notifications.ClientNotification.publish({
@@ -128,14 +82,33 @@ MsPortalFx.Hubs.Notifications.ClientNotification.publish({
 });
 ```
 
-<a name="notifications-good-practices-for-notifications-suppressing-server-events"></a>
+<a name="notifications-server-events"></a>
+### Server events
+
+Server events are maintained by the public Event service. The Event service tracks all service events, which may be aggregated into larger operations. The aggregates are then displayed as notifications within the Portal. The Notifications Hub automatically displays notifications for all critical, error, and completed deployment events. Server events are preferable to client notifications because they can be persisted.
+
+<a name="notifications-server-events-suppressing-server-events"></a>
 #### Suppressing server events
 
-When a client notification is associated with a back-end server event, add the correlation id from the Event service. By specifying the correlation id, the Portal will suppress any server events to ensure duplicate notifications aren't published.
+When a client notification is associated with a server event, add the correlation id from the Event service. The Portal will suppress server events to ensure that duplicate notifications are not published if the extension specifies the correlation id.
 
-> [WACOM.NOTE] Azure Resource Manager (ARM) automatically publishes server events for every operation. If your extension initiates ARM operations, extract the Event service correlation id from the `x-ms-correlation-request-id` response header.
+**NOTE**: Azure Resource Manager (ARM) automatically publishes server events for every operation. If the extension initiates ARM operations, it should extract the Event service correlation id from the `x-ms-correlation-request-id` response header.
 
-As discussed above, to ensure UI responsiveness when initiating long-running operations, you'll create a new client notification, start your operation, and then update the notification accordingly.
+<a name="notifications-server-events-in-progress-notifications-for-long-running-operations"></a>
+#### In-progress notifications for long-running operations
+
+If an operation requires calling a server-side API or may take more than 2 seconds, use an in-progress notification to track it. Server events may take up to 1.5 minutes to display in the Portal. Effective use of  both server events and client notifications can be  critical to ensuring UI responsiveness. Using the following steps when initiating long-running operations will ensure that the UI is as responsive as possible. 
+
+1. Create an in-progress, local client notification previous to calling the server
+1. Initiate the server operation, which should create an in-progress server event
+1. Copy the correlation id from the Event service to the client notification to avoid duplicate notifications
+1. Poll for status updates and update the client notification as appropriate
+1. When the operation is complete, update the title and description, and re-publish the client notification
+1. Finalize the operation with necessary UI processing
+
+**NOTE**: If warnings or errors occur during the execution of the long-running operation, but do not affect the overall outcome, the extension should publish separate server events and  client notifications to track those issues.
+
+The procedure creates a new client notification, starts an operation, and then updates the notification accordingly, as in the following code.
 
 ```ts
 // publish an in-progress server event
@@ -172,14 +145,46 @@ n.status = MsPortalFx.Hubs.Notifications.NotificationStatus.Information;
 n.publish();
 ```
 
+<a name="notifications-best-practices-for-notifications"></a>
+### Best Practices for notifications
 
-<a name="notifications-good-practices-for-notifications-open-a-different-asset-for-one-message"></a>
-#### Open a different asset for one message
+* Avoid raising notifications that users will not care about, or will not act on to resolve an issue.
 
-If you need to open a different blade for a specific message, simply change the associated asset before re-publishing the notification.
+* Avoid using multiple notifications when a single notification will suffice.
+
+* Do not use notifications too often.
+
+* Be as specific as possible, and follow the [voice and tone](portalfx-extensions-glossary-notifications.md) guidelines when defining notifications. Notifications might be referenced out of context, for example, within the Hub instead of in the asset blade. Consequently, generic messages may not make sense or may not provide enough information.
+
+* Associate notifications with assets, and ensure there is a clear next-action. When a notification is clicked, the related asset is opened. If a notification does not have an asset, it is essentially a useless dead-end. 
+
+<a name="notifications-best-practices-for-notifications-client-notifications"></a>
+#### Client notifications
+
+* Only use local client notifications if the error originates on the client and does not apply to other users.
+
+* If you need to open a different blade based on asset metadata, or open a blade from another extension, use dynamic blade selection on the associated asset type. 
+If you need to open a different blade for a specific message, the extension should  change the associated asset before re-publishing the notification.
+
+<a name="notifications-best-practices-for-notifications-server-notifications"></a>
+#### Server notifications
+
+* Always prefer global server events by integrating with the Event service. Every event originating from a back-end system should be processed as a server event. This will ensure they are available to additional users and across browser sessions.
+
+* Always use server events for non-read operations, and for any events that originate on a server or end system.
+
+* Server events are used to track asset history. Even if a change is considered to be unimportant, the extension should raise a low-priority Info event to track it appropriately.
 
 
-<a name="notifications-good-practices-for-notifications-open-a-different-blade"></a>
-#### Open a different blade
+<a name="glossary"></a>
+## Glossary
 
-If you need to open a different blade (e.g. based on asset metadata or from another extension), use dynamic blade selection on the associated asset type.
+ This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+| Term                 | Meaning |
+| ---                  | --- |
+| notification | A short message that contains useful and relevant information and informs the user about an event that has occurred, or may occur, in the system.  |
+| style    | A technical term for the effect a writer can create through attitude, language, and the mechanics of writing.        |
+| voice and tone  | The attitude that a document conveys about its  subject and its readers. Voice can be institutional or academic — i.e.,  objective or formal. Tone can be informative or affective by either providing information or persuading the reader.  |
+
+
