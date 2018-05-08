@@ -2,7 +2,6 @@
 <a name="debugging-an-extension"></a>
 # Debugging an Extension
 
-
 <a name="debugging-an-extension-overview"></a>
 ## Overview
 
@@ -97,8 +96,6 @@ Next, click the `Restore default settings` option, as in the following image.
 
 The Portal refreshes when the `Apply` button is clicked, and user settings are cleared.
 
-
-
 <a name="debugging-an-extension-debugging-extension-load-failures"></a>
 ## Debugging extension load failures
 
@@ -114,8 +111,6 @@ Extensions load failures are logged along with an associated failure code.  This
 
 If the extension is not loaded, or if the extension site is not running, another guide that may be of assistance is "Creating an Extension", located at [portalfx-extensions-create-blank-procedure.md](portalfx-extensions-create-blank-procedure.md).
 
-
-   
 <a name="debugging-an-extension-debugging-console-errors"></a>
 ## Debugging console errors
 
@@ -140,7 +135,6 @@ As of 9/14/2016 the best, and fastest, Developer Tools are provided by Google Ch
 
 The errors that are presented in the console can be of great assistance in fixing extension issues. The trace mode that is included in the Portal will display information other than the standard console errors. Trace mode is enabled by appending a flag to the end of the query string. For example,  `https://portal.azure.com/?trace=diagnostics` will enable verbose debugging information in the console. For more information about trace modes, see [portalfx-extensions-feature-flags-trace-mode.md](portalfx-extensions-feature-flags-trace-mode.md). For other debugging services, see [portalfx-extensions-feature-flags.md](portalfx-extensions-feature-flags.md).
 
-   
 <a name="debugging-an-extension-debugging-javascript"></a>
 ## Debugging JavaScript
 
@@ -152,14 +146,12 @@ To debug a specific view model, search for the code by class name. You can now s
 
 For more information about debugging JavaScript, view the video named ***Debugging tools for the Web***, located at [https://vimeo.com/157292748](https://vimeo.com/157292748).
 
-
-  
-<a name="debugging-an-extension-debugging-extensions-that-use-knockout"></a>
-## Debugging Extensions that use Knockout
+<a name="debugging-an-extension-debugging-knockout"></a>
+## Debugging Knockout
 
 All of the Azure UI data that comes from the view model (i.e., the `ViewModel` object that is bound to the HTML source)  is bound to the user interface by  the **Knockout** (KO) JavaScript library. As a result, when something does not display correctly on the screen, generally there is a discrepancy between the ViewModel and the framework code. This section discusses solutions for oddities that may be  encountered in the UI.
 
-<a name="debugging-an-extension-debugging-extensions-that-use-knockout-knockout-commands"></a>
+<a name="debugging-an-extension-debugging-knockout-knockout-commands"></a>
 ### Knockout Commands
 
 One of the most useful commands when debugging knockout user interfaces is in the following code.
@@ -249,7 +241,6 @@ For more information:
 
     [https://app.pluralsight.com/library/courses/knockout-tips/table-of-contents](https://app.pluralsight.com/library/courses/knockout-tips/table-of-contents)
 
-   
 ## Debugging the data stack
 
 The data stack contains all the information that the browser associates with the current testing session.  If, for example, edit scope changes are not displayed in the query cache,  or if  a row in the grid is updated without immediately apparent cause, the data stack may provide some answers to the debugging process.  Here are tips on how to debug using the data stack.
@@ -259,7 +250,6 @@ The data stack contains all the information that the browser associates with the
 * When the edited data is contained in an `EditScope` object, it is accessible via the root property on the `EditScope` object. If `EditScopeView` object is being used, then the edited data is available at `editScopeView.editScope().root` after the `editScope()` observable is populated. The original data can be viewed using the `getOriginal()` method, so to view the original root object, the code can perform the  `editScope.getOriginal(editScope.root)` method.
 
 
-  
 ## Best Practices
 
 Methodologies exist that assist developers in improving the product while it is still in the testing stage. Some strategies include describing bugs accurately, including code-coverage test cases in a thorough test plan, and other items.
@@ -355,7 +345,7 @@ Then, verify that when a **TypeScript** file is saved, that the following text i
 
  * * *
  
-<a name="debugging-an-extension-debugging-extensions-that-use-knockout-other-debugging-questions"></a>
+<a name="debugging-an-extension-debugging-knockout-other-debugging-questions"></a>
 ### Other debugging questions
 
 ***How can I ask questions about debugging ?***
