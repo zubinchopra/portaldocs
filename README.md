@@ -211,7 +211,6 @@ The Ibiza team provides limited testing support. Due to resource constraints the
 
 ## Telemetry and alerting
 
-
 The Ibiza team collects standard telemetry for generic actions like blade opening and commmand execution. It also collects performance, reliability, and user feedback information that facilitate the operation of your extension. You can also write your own events via the telemetry system. Ibiza supports alerting for common operations scenarios.
 
 * [Portal telemetry overview](/portal-sdk/generated/)
