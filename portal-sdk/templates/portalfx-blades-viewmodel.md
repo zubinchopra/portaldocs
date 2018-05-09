@@ -1,7 +1,7 @@
 
 ## Overview 
 
-The Portal uses a `viewModel` abstraction to allow extensions to deal with data and manipulate UI without worrying about the differences in DOM events across browsers or having to remember to include the right accessiblity attributes.
+The Portal uses a `viewModel` abstraction to allow extensions to deal with data and manipulate UI without worrying about the differences in DOM events across browsers or having to remember to include the right accessibility attributes.
 
 <!--  TODO: Determine whether each control item still has its own ViewModel or if they are combined with the parent somehow. -->
 
@@ -102,8 +102,6 @@ The extension uses a `fetch()` to get data from the server, based on the inputs 
 1. Determine whether or not to populate the blade's `smartPhone` observable with a textbox `ViewModel`. 
 
     When the textbox `ViewModel` is written to the `smartPhone` observable, the `pcControl` binding handler in the blade template observes the new `ViewModel` and constructs a textbox control. If the observable is not populated, the `<div>` in the template remains empty, and nothing is displayed on the blade.
-
-
 
 ### The Knockout reactor method
 
@@ -215,7 +213,7 @@ The following code is much more performant because it queues a single observable
 
 #### Case 2: Performant code
 
-In a more real example, an extension is pushing data points to a series displayed on a chart that is currently using auto-scaling of its axes. It takes 0.01 seconds to render an extra data point, but 0.5 seconds to recalcuate the scale of the x-axis and the y-axis every time the data is updated.
+In a more real example, an extension is pushing data points to a series displayed on a chart that is currently using auto-scaling of its axes. It takes 0.01 seconds to render an extra data point, but 0.5 seconds to recalculate the scale of the x-axis and the y-axis every time the data is updated.
 
 In this example, the code in Case 1 would take 100 * (0.01 + 0.5) = 51 seconds to process all the changes, but the code in Case 2 would take (100 * 0.01) + 0.5 = 1.5 seconds to process the changes, for a difference of 3400%. This non-performant code results in performance problems that are serious enough that the Framework attempts to detect this type of code in an  extension.  When the Framework encounters this type of code, it displays the following warning  message.
 

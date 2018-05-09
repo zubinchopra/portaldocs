@@ -1,11 +1,11 @@
 
-### Using the Content Delivery Network
+## Using the Content Delivery Network
 
-Extension authors may choose to use a Content Delivery Network(CDN) to serve static images, scripts, and stylesheets. The Azure Portal SDK does not require the use of a CDN, or the use of a specific  CDN. However, extensions that are served from Azure can take advantage of the built-in CDN capabilities in the SDK.
+Developers may use a Content Delivery Network(CDN) to serve static images, scripts, and stylesheets. The Azure Portal SDK does not require the use of a CDN, or the use of a specific CDN. However, extensions that are served from Azure can take advantage of the built-in CDN capabilities in the SDK.
 
 ### Creating the CDN account
 
-Follow the guide located at [http://aka.ms/portalfx/cdn](http://aka.ms/portalfx/cdn)  to set up your CDN account.
+Follow the guide located at [http://aka.ms/portalfx/cdn](http://aka.ms/portalfx/cdn) to set up your CDN account.
 
 After creating your CDN, there are a few options that need to be set.
 
@@ -13,28 +13,33 @@ After creating your CDN, there are a few options that need to be set.
 
 * Click the "Enable Query String" to enable query string status.
 
-### Configuring your extension
+### Configuring the extension
 
-To take advantage of the CDN capabilities in the Portal SDK, there are a few pieces that must be configured. After setting up your CDN, you will receive a URL with which to access your content. It will be in the form:
+ There are a few pieces to configure to take advantage of the CDN capabilities in the Portal SDK. After setting up the CDN for the extension, you will receive a URL with which to access  content for the extension. It is in the form:
 
-    //<CDNNamespace>.vo.msecnd.net/
+    `//<CDNNamespace>.vo.msecnd.net/`
 
-This is the prefix for your CDN service. Your production service should be configured to use this prefix. In your local web.config, can set this with the following `appSetting`:
+This is the prefix for the CDN service. The production service should be configured to use it by using the following `appSetting` in the local `web.config` file.
 
 ```xml
 <add key="Microsoft.Portal.Extensions.SamplesExtension.ApplicationConfiguration.CdnPrefix" 
      value="//<CDNNamespace>.vo.msecnd.net/" />
 ```
 
-Notice that neither `http` nor `https` are used in the url. This is important. It allows your page to request content based on the current protocol of the request. Oftentimes, this setting will be blank in web.config, and instead configured in a `cscfg` for a cloud service.
+Neither `http` nor `https` are included in the url, so that the page can request content based on the current protocol. Sometimes, like for a cloud service, this setting is blank in `web.config`, and configured instead in a `cscfg`.
+
+Configuring versioning of your Extension is specified in [portalfx-extensions-versioning.md](portalfx-extensions-versioning.md). 
+
 
 ### Reading the prefix from configuration
 
-To read any FX configuration, you must have a class which inherits from `ApplicationContext`. This class needs to include a `CdnPrefix` property:
+To read any FX configuration, the extension uses a class which inherits from `ApplicationContext`, as in the following example.
 
 ```
 \SamplesExtension\Configuration\CustomApplicationContext.cs
 ```
+
+This class includes a `CdnPrefix` property, as in the following code.
 
 ```cs
 [Export(typeof(ApplicationContext))]
@@ -66,9 +71,11 @@ internal class CustomApplicationContext : ApplicationContext
 }
 ```
 
-This class will assign properties which are available in your `web.config` or `*.cscfg`. To read the values from those files, create a C# class which inherits from `ConfigurationSettings` and exports `ApplicationConfiguration`:
+This class assigns properties that are located in the `web.config` or `*.cscfg` files. To read the values from those files, the extension uses a C# class that  inherits from `ConfigurationSettings` and exports `ApplicationConfiguration`, as in the following example.
 
-    \SamplesExtension\Configuration\ApplicationConfiguration.cs
+    `\SamplesExtension\Configuration\ApplicationConfiguration.cs`
+
+This class is in the following code.
 
 ```cs
 [Export(typeof(ApplicationConfiguration))]
@@ -103,36 +110,37 @@ public class ApplicationConfiguration : ConfigurationSettings
 ```
 
 ### IIS / ASP.NET Configuration
-Files are pushed to the CDN using the following process:
 
-- The browser makes a request to a given CDN-able address (ex: http://exampleCDN.vo.msecnd.net/Content/jquery.js).
-- If the file is already cached on the CDN, it is returned.
-- If the file is not cached, the CDN service *makes a request* to the origin server for the resource (ex: http://myextension.cloudapp.net/CDN/Content/jquery.js)
-- The file is cached, and returned to the client.
+Files are pushed to the CDN using the following process.
 
-To enable this workflow, the CDN must be able to make an HTTP request to your extension. This would normally not be an issue, but some CDNs will make an HTTP __1.0__ request. HTTP 1.0 technically does not support gzip/deflated content, so IIS does not enable compression by default. To turn this on, the `noCompressionForHttp10` setting in `<httpCompression>` must be set to `false`:
+1. The browser makes a request to a specific CDN address, for example,  `http://exampleCDN.vo.msecnd.net/Content/jquery.js`.
 
-<a href="http://www.iis.net/configreference/system.webserver/httpcompression" target="_blank">http://www.iis.net/configreference/system.webserver/httpcompression</a>
+1. If the file is already cached on the CDN, it is sent to the browser.
 
-The url used for the request is in the following form:
+1. If the file is not cached, the CDN service makes a request to the origin server for the resource, for example,  `http://myextension.cloudapp.net/CDN/Content/jquery.js`.
+
+1. The file is cached and returned to the client.
+
+To enable this workflow, the CDN makes a HTTP request to the extension. This is typically  not an issue, but some CDNs will make an HTTP 1.0 request. HTTP 1.0 technically does not support gzip/deflated content, therefore IIS does not enable compression by default. To turn compression on, set the `noCompressionForHttp10` setting in `<httpCompression>` to `false`.
+
+The url for the request is in the following form.
 
 `http://myextension.cloudapp.net/CDN/Content/jquery.js`
 
-The */CDN/* portion of this url is inserted after the host address, and before the rest of the route for requested content. The request handling code in the SDK automatically handles incoming requests of the form /CDN/Content/... and /Content/...   
+The literal "/CDN/" is inserted into the url after the host address, and before the rest of the route for requested content. The request handling code in the SDK automatically handles incoming requests of the form `/CDN/Content/...` and `/Content/...`.   
+
+For more information, see [http://www.iis.net/configreference/system.webserver/httpcompression](http://www.iis.net/configreference/system.webserver/httpcompression).
 
 ### Invalidating content on the CDN
 
-- Amd Bundles are invalidated using a **hash** of the file content i.e https://hubs-s3-portal.azurecomcdn.net/AzureHubs/Content/Dynamic/AmdBundleDefinition_**83A1A15A39494B7BB1F704FDB5F32596D4498792**.js?root=*HubsExtension/ServicesHealth/ServicesHealthArea
-- static content is invalidated using the **extension version** i.e  https://hubs-s3-portal.azurecomcdn.net/AzureHubs/Content/**5.0.202.7608987.150717-1541**/Images/HubsExtension/Tour_Tile_Background_Normal.png
+Versioning should be configured when a new release of an extension is made available, to ensure that users are served the latest static content. Invalidating previous or stale content causes the Portal to    .
 
-When you release to ensure that users are served the latest static content, as opposed to stale content,  you need to configure versioning.
+* AMD  Bundles are invalidated using a hash value that is generated on the file content, as in the following example.
 
-### Configuring versioning of your Extension 
+https://hubs-s3-portal.azurecomcdn.net/AzureHubs/Content/Dynamic/AmdBundleDefinition_**83A1A15A39494B7BB1F704FDB5F32596D4498792**.js?root=*HubsExtension/ServicesHealth/ServicesHealthArea
 
-Configuring versioning of your Extension is specified in [portalfx-extensions-versioning.md](portalfx-extensions-versioning.md). 
+*  Static content is invalidated using the **extension version** that is associated  with a specific version, as in the following example. 
 
-### FAQ
+https://hubs-s3-portal.azurecomcdn.net/AzureHubs/Content/**5.0.202.7608987.150717-1541**/Images/HubsExtension/Tour_Tile_Background_Normal.png
 
-- I am not seeing paths w/ versioning during debug.
-    - Ensure IsDevelomentMode in your *.config is set to false
 

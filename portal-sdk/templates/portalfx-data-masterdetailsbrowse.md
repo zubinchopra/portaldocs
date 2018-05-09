@@ -33,7 +33,6 @@ The Portal uses an `Area` to contain the cache and other data objects that are s
 Inside the folder, there is a **TypeScript** file that contains the `DataContext` class. Its name is a combination of the name of the area and the word 'Area'. The `DataContext` class is the class that will be sent to all the `ViewModels` associated with the area.
 
 For the example, the file is named `MasterDetailArea.ts` and is located at `<dir>Client/V1/MasterDetail/MasterDetailArea.ts`. This code is also included in the following example.
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailArea.ts", "section": "data#websitesQueryCache"}
 
@@ -49,13 +48,10 @@ For this scenario, the `ViewModel` for the master view's list of websites is loc
 
 1. Make sure that the PDL that defines the blades specifies the `Area` so that the `ViewModels` receive the `DataContext`. In the `<Definition>` tag at the top of the PDL file, include an `Area` attribute whose value corresponds to the name of the area that is being built, as in the example located at `<dir>Client/V1/MasterDetail/MasterDetailBrowse/MasterDetailBrowse.pdl`. This code is also included in the following example.
 
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
  {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/MasterDetailBrowse.pdl", "section": "data#pdlArea"} 
 
 2. Use the `fetch()` method from the `DataView` to populate the `QueryCache` and  select data from it to be viewed. This process is known as creating a view on the `QueryCache`, and it allows the items that are returned by the fetch call to be viewed or edited. It also implicitly forms a ref-count to the `DataCache` entries that it selects. The code that performs this is in the following example.
-
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
  {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#createView"} 
 
@@ -71,13 +67,9 @@ For more information about dataviews, see [portalfx-data-views.md](portalfx-data
 
 The observable `items` array of the view is sent to the grid constructor as the `items` parameter, as in the following example.
 
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
-
  {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#gridConstructor"}
 
 The `fetch()` command has not yet been issued on the `QueryCache`. When the command is issued, the view's `items` array will be observably updated, which populates the grid with the results. This occurs by calling the  `fetch()` method on the blade's `onInputsSet()`, which returns the promise shown in the following example.
-
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
  {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#onInputsSet"}
 
@@ -90,8 +82,6 @@ The `OptionGroup` control allows the user to select whether to display websites 
 <!-- TODO:  Determine whether the grid leaves data on the master view in a grayed-out state. -->
 
 The `OptionGroup` control is initialized, and the extension then subscribes to its value property, as in the following example.
-
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
  {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#optionGroupValueSubscription"}
 
@@ -113,13 +103,9 @@ The detail view uses the `EntityCache` that was associated with the  `QueryCache
 
 1. The child blade creates a view on the `EntityCache`, as in the following code.
 
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
-
  {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/DetailViewModels.ts", "section": "data#entityCacheView"}
 
 2.  In the `onInputsSet()` method, the `fetch()` method is called with a parameter that contains the `id` of the website to display, as in the following example. 
-
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
  {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/DetailViewModels.ts", "section": "data#onInputsSet"}
 

@@ -47,10 +47,15 @@ The Azure Content Delivery Network, as specified in [portalfx-pde-cdn.md](portal
 
 Developers can create flags for extensions, and plan to manage them as a part of the software maintenance process.  Typically, the flag is boolean and has a descriptive name. A value of `true` turns on the feature, and a value of `false` turns it off. 
 
-The following code examples demonstrate how to turn extension  flags on and off inside the code. 
+The following sections demonstrate how to turn extension  flags on and off inside the code. 
 
-<details>
-<summary>Reading flags in **TypeScript** </summary>
+* [Reading flags in TypeScript](#reading-flags-in-typeScript)
+
+* [Programming default values for flags in C#](#programming-default-values-for-flags-in-C#)
+
+* [Reading flags in the context of an AJAX call in C#](#reading-flags-in-the-context-of-an-AJAX-call-in-C#)
+
+#### Reading flags in TypeScript 
 
 * Detecting whether a flag is set
 
@@ -84,9 +89,7 @@ The following code examples demonstrate how to turn extension  flags on and off 
     }
    ```
 
-</details>
-<details>
-<summary>Programming default values for flags in C#</summary>
+#### Programming default values for flags in C#
 
 Flags can be enabled for all users in one or more deployments by using an extension configuration, as in the following code. 
 
@@ -111,28 +114,26 @@ Flags can be enabled for all users in one or more deployments by using an extens
     ```
 
 1. Finally, in the config files (`web.config` or `cscfg`), add the following entry
-  ```json
-<Setting name="Microsoft.StbPortal.Website.Configuration.ApplicationConfiguration.DefaultQueryString" value="{
-  '*': {
-      'websitesextension_supportsettingsenabled':'true',
-      'websitesextension_troubleshootsettingsenabled':'true'
-  },
-  'prod.websitesextension.com': {
-      'websitesextension_requestsettingsenabled':'true'
-  },
-  'dogfood.websitesextension.com': {healthsettingsenabled
-        'websitesextension_':'true'
-  }
-}" />
- ```
+    ```json
+    <Setting name="Microsoft.StbPortal.Website.Configuration.ApplicationConfiguration.DefaultQueryString" value="{
+    '*': {
+        'websitesextension_supportsettingsenabled':'true',
+        'websitesextension_troubleshootsettingsenabled':'true'
+    },
+    'prod.websitesextension.com': {
+        'websitesextension_requestsettingsenabled':'true'
+    },
+    'dogfood.websitesextension.com': {healthsettingsenabled
+            'websitesextension_':'true'
+    }
+    }" />
+    ```
 
-* The asterisk specifies the default case. The flag will be set to the specified value for all requests to the extension, regardless of the domain.
+    * The asterisk specifies the default case. The flag will be set to the specified value for all requests to the extension, regardless of the domain.
 
-* Flags that are associated with the domain name in an environment, i.e. the domain name of the incoming extension requests, will take precedence over the flags that are in the default case.
+    * Flags that are associated with the domain name in an environment, i.e. the domain name of the incoming extension requests, will take precedence over the flags that are in the default case.
 
-</details>
-<details>
-<summary>Reading flags in the context of an AJAX call in C#</summary> 
+#### Reading flags in the context of an AJAX call in C#
 
 *  Using the RequestFlags dictionary
 
@@ -146,10 +147,6 @@ Flags can be enabled for all users in one or more deployments by using an extens
    ```
 
 <!-- TODO:  determine whether browsecuration affects the Browse menu, the More Services menu, or both -->
-
-</details>
-
-<br>
 
 ### Other feature flag services
 

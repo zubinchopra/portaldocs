@@ -19,6 +19,12 @@ FAQ's that are associated with blades, forms, and parts.
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-parts.md"}
 
+## Content Delivery Network
+
+FAQ's that are associated with the content delivery network.
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-cdn.md"}
+
 ## Controls 
 
 FAQ's that are associated with controls, commands, and the playground. 

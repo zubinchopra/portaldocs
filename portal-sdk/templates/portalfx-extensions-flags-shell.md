@@ -8,7 +8,7 @@ The Ibiza Fx team supports the following Shell feature flags. These flags are on
 
 Shell feature flags are invoked with the syntax: `https://portal.azure.com/?feature.<featureName>=true`.
 
-The keyboard shortcut CTRL+ALT+D toggles the visibility of the debug tool, as specified in [portalfx-extensions-debugging-overview.md](portalfx-extensions-debugging-overview.md). The yellow sticky that is located at the bottom on the right side of the window can be used to toggle trace mode flags and shell feature flags.
+The keyboard shortcut CTRL+ALT+D toggles the visibility of the debug tool, as specified in [top-extensions-debugging-overview.md](top-extensions-debugging-overview.md). The yellow sticky that is located at the bottom on the right side of the window can be used to toggle trace mode flags and shell feature flags.
 
 ### The extensionName flag
 
