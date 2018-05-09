@@ -50,8 +50,6 @@ For each area in an extension, there is a singleton `DataContext` instance that 
 
 When a blade or part `ViewModel` is instantiated, its constructor is sent a reference to the `DataContext` singleton instance for the associated extension area.   The `ViewModel` accesses the data required by that blade or part in its constructor, as in the code located at `<dir>/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/MasterViewModels.ts`.  The code is also in the following example.
 
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
-
  ```typescript
 
 constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: MasterDetailArea.DataContext) {
@@ -82,7 +80,7 @@ The benefits of centralizing data access in a singleton `DataContext` include th
 
    Users expect to see information that always reflects the current state of their data in the cloud. Another benefit of loading and caching data in a single location is that the cached data is regularly updated to accurately reflect the state of server data.
 
-   For more information on refreshing data, see [portalfx-data-refreshingdata.md](portalfx-data-refreshingdata.md).
+   For more information on refreshing data, see [portalfx-data-refreshing.md](portalfx-data-refreshing.md).
 
 ### Data caches
  
@@ -118,8 +116,6 @@ The `DataContext` class does not specify the use of any single FX base class or 
 
 Typically, the `DataContext` associated with a particular area is instantiated from the `initialize()` method of `<dir>\Client\Program.ts`, which is the entry point of the extension, as in the following example.
 
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
-
 ```typescript
 
 this.viewModelFactories.V1$MasterDetail().setDataContextFactory<typeof MasterDetailV1>(
@@ -129,8 +125,6 @@ this.viewModelFactories.V1$MasterDetail().setDataContextFactory<typeof MasterDet
 ```
 
 There is a single `DataContext` class per area. That class is named `<AreaName>Area.ts`, as in the code located at  `<dir>\Client\V1\MasterDetail\MasterDetailArea.ts` and in the following example.
-
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
 ```typescript
 

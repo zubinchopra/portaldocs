@@ -1,28 +1,39 @@
 <a name="getting-started-with-azure-cdn"></a>
 # Getting started with Azure CDN
 
-The Azure Content Delivery Network (CDN) is designed to send audio, video, images, and other files faster and more reliably to customers using servers that are closest to the users. This dramatically increases speed and availability, resulting in significant user experience improvements.
+The Azure Content Delivery Network (CDN) is designed to send audio, video, images, and other files faster and more reliably to customers by using servers that are closest to the users. These built-in CDN capabilities in the SDK dramatically increase speed and availability, and result in significant improvements in the user experience.
 
-Extension authors may choose to use a Content Delivery Network(CDN) to serve static images, scripts, and stylesheets. The Azure Portal SDK does not require the use of a CDN, or the use of a specific  CDN. However, extensions that are served from Azure can take advantage of the built-in CDN capabilities in the SDK.
+Developers may use a Content Delivery Network(CDN) to serve static images, scripts, and stylesheets. The Azure Portal SDK does not require the use of a CDN, or the use of a specific  CDN. 
 
 The benefits of using the CDN to cache web site assets include the following.
 
 * Better performance and user experience for end users
 
-    This is  especially true for applications that require multiple round-trips to load content.
+    This is especially true for applications that require multiple round-trips to load content.
 
 * Large scaling to better handle single-event high loads
     
-    For example, the start of a product launch event will cause a spike in user access that is not predictable annually
+    For example, the start of a product launch event will cause a spike in user access that is not predictable on an annual basis
 
 * Less traffic is sent to the origin
+
     User requests are distributed, and edge servers serve content
 
 The `CdnIntegrationBlade` allows customers to create and manage CDN endpoints for their existing Azure resources, as in the following example.
 
 ![alt-text](../media/portalfx-pde/CdnIntegrationBlade.png "Cdn integration blade")
 
-Through the simple integration explained in this document, your customers can enable CDN on their Azure resources within your extension without having to leave and go to the CDN extension. The CDN integration blade can be embedded in your own extension if you follow the below steps.
+ **NOTE**: The CdnIntegrationBlade only works in public Azure and is NOT available in national clouds like MoonCake, or BlackForest. 
+
+<a name="getting-started-with-azure-cdn-the-cdnintegration-blade"></a>
+### The CdnIntegration blade
+
+Through simple integration, your customers can enable CDN on their Azure resources within your extension without having to navigate to the CDN extension. Use the following steps to embed the CDN integration blade into your extension.
+
+1. Import the CDN Extension NuGet Package
+1. Reference the CDN PDE
+1. Reference the CDN Integration Blade
+
 
 <a name="getting-started-with-azure-cdn-1-importing-cdn-extension-nuget-package"></a>
 ## >
@@ -31,6 +42,7 @@ Through the simple integration explained in this document, your customers can en
 
 To be able to use the CDN integration blade, you will need to reference Microsoft.Portal.Extensions.Cdn nuget package.
 For CoreXT based environemtns, you can add a reference to the package in your **corext.config** or **packages.config** file as shown below. If you are not using CoreXT, please reference the package as appropriate in your environment.
+
 ```xml
 <package id="Microsoft.Portal.Extensions.Cdn" version="1.0.13.177" />
 ```
@@ -108,15 +120,6 @@ The AzureLocation of your resource, like *"West US"*, *"East Asia"*, etc.
 The hostname of your service which is used as an origin for the created CDN endpoints. This shouldn't include any slashes or protocols, only the domain name, like *"storagetest1.blob.core.windows.net"* or *"webapptest2.azurewebsites.net"*.
 
 
-<a name="getting-started-with-azure-cdn-3-referencing-cdn-integration-blade-notes-and-tips"></a>
-### Notes and Tips
-1.  Please use *"cdnIntegration"* for the resource menu item *id* because we use this id to track blade loads and create telemetry on CDN Integration Blade.
-2.  The *displayText* "Azure CDN" needs to be localized and should come from your Resources.resx.
-3.  The CdnIntegrationBlade *only* works in public Azure and is NOT available in national clouds like MoonCake, BlackForst, etc. 
-4.  You can set the *visible* property on this menu item to true or choose to conditionally show this blade based on a feature flag  in your extension.
-	```ts
-	visible: ko.observable(MsPortalFx.isFeatureEnabled("cdnintegration"))
-	```
 
 <a name="getting-started-with-azure-cdn-4-telemetry-and-monitoring"></a>
 ## >

@@ -26,7 +26,6 @@ Use the following steps to create a blade or part that uses the `DataCache` clas
 
 1. In a `DataContext`, the extension creates and configures `DataCache` instances. Configuring the instance specifies how to load data when it is missing from the cache and how to implicitly refresh cached data, to keep it consistent with the server state. The following `WebsiteQuery` example includes a constructor for a Website extension that creates a data cache. The code is also located at `<dir>Client\V1\Data\MasterDetailBrowse\MasterDetailBrowseData.ts`.
 
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
  ```typescript
 
@@ -45,7 +44,6 @@ this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataMode
 
 2. Each blade and part `ViewModel` creates a `DataView` in its constructor, so that it can load and refresh data for the blade or part.
 
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
  ```typescript
 
@@ -54,8 +52,6 @@ this._websiteEntityView = dataContext.websiteEntities.createView(container);
 ```
 
 3. When the blade or part `ViewModel` receives its parameters in the `onInputsSet` method, the `ViewModel` calls the  `dataView.fetch()` method to load data.
-
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
  ```typescript
 
@@ -73,8 +69,6 @@ public onInputsSet(inputs: Def.BrowseMasterListViewModel.InputsContract): MsPort
 The `QueryCache` object is used to query for a collection of data or cache a list of items. It is useful for loading data for list-like views like Grid, List, Tree, or Chart. It takes a generic parameter for the type of object stored in its cache, and a type for the object that defines the query. It loads data of type `Array<T>` according to an extension-specified `TQuery` type.
 
 The `QueryCache` parameters are as follows.
-
-<!-- TODO: Determine whether the sourceURI and entityTypeName are required paramters.  Per the example given, the other parameters are optional. -->
 
 **DataModels.WebsiteModel**: Optional. The model type for the website. This is usually auto-generated (see TypeMetadata section below).
 
@@ -119,8 +113,6 @@ The `EntityCache` object can be used to cache a single item.  It is useful for l
 <!-- Determine whether a template class can be specified as an object in the content.  Otherwise, find a more definitive term. -->
 
 It accepts data of type `T` according to some extension-specified `TId` type. This specifies the type for the object that defines the query, as in the `WebsiteQuery` example located at `<dir>Client/V1/MasterDetail/MasterDetailArea.ts`. This code is also included in the following example.
-
-<!-- TODO:  Determine whether this is the sample that is causing the npm run docs build to blow up. -->
 
  ```typescript
 

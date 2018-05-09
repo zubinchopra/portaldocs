@@ -2,93 +2,133 @@
 <a name="deep-links"></a>
 # Deep links
 
-Use deep links to jump directly into your extension within the portal. Each deep link consists of the portal URL (e.g. https://portal.azure.com), target directory domain name or tenant id (e.g. microsoft.com), deep link type prefix (i.e. asset, resource, blade, browse, or marketplace), and the actual deep link target.
+Use deep links to jump directly into your extension within the Portal. The syntax for all deep links is as follows.
 
+ `<portalURL>/<directory>#<linkType>/<target>`
 
-<a name="deep-links-resources"></a>
-## Resources
+ where
 
-To link to resources, all you need is the resource id. Currently, only subscription resources are supported. Tenant resources and nested resources are not supported.
+**portalURL**: The portal URL. For example, `https://portal.azure.com`.
 
-> `https://portal.azure.com/{directory}#resource{resource id}`
+**directory**: The target directory domain name or tenant id. For example, `microsoft.com`.
 
-For instance...
+<!-- TODO:  Determine whether this list of deep link types is complete. -->
 
-> [https://portal.azure.com/microsoft.com#resource/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/foo/providers/microsoft.web/sites/bar](https://portal.azure.com/microsoft.com#resource/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/foo/providers/microsoft.web/sites/bar)
+**linkType**: The type of deep link, used as a prefix. The types are `asset`,  `blade`, `browse`, `create`,  `marketplace`, or `resource`.
 
+   **NOTE**:  Remember to include the pound-sign ('#') previous to the link type.
 
-<a name="deep-links-blades"></a>
-## Blades
+**target**: The actual deep link target. Formatting for the deep link target is dependent on the type of link. The syntax for deep link targets are as follows.
 
-To link to blades, include the extension and blade name:
+* Assets
 
-> `https://portal.azure.com/{directory}#blade/{extension}/{blade}`
+    `<portalURL>/<directory>#asset/<extensionName>/<assetType>/<assetId>`
 
-For instance...
+* Blades
 
-> [https://portal.azure.com/microsoft.com#blade/HubsExtension/HelpAndSupportBlade](https://portal.azure.com/microsoft.com#blade/HubsExtension/HelpAndSupportBlade)
+    `<portalURL>/<directory>#blade/<extensionName>/<bladeName>`
 
-Blade inputs are serialized in consecutive name/value pairs:
-
-> [https://portal.azure.com/microsoft.com#blade/HubsExtension/BrowseAllBladeWithType/type/HubsExtension_Tag](https://portal.azure.com/microsoft.com#blade/HubsExtension/BrowseAllBladeWithType/type/HubsExtension_Tag)
+* Browse
 
 <!--
-TODO: micflan: Finish implementing Browse links
+    `<portalURL>/<directory>#browse/{resourceType}`
 
-<a name="deep-links-browse-blades-coming-soon"></a>
-## Browse blades (coming soon)
+    `<portalURL>/<directory>#browse/{resourceGroups}`
 
-To link to Browse v2 blades, include the resource type:
+    `<portalURL>/<directory>#browse/all`
 
-> `https://portal.azure.com/{directory}#browse/{resource type}`
+    `<portalURL>/<directory>#browse/subscriptions`
 
-For instance...
-
-> [https://portal.azure.com/microsoft.com#browse/microsoft.search/searchServices](https://portal.azure.com/microsoft.com#browse/microsoft.search/searchServices)
-
-Additionally, you can also link to the following Browse blades:
-
-* `#browse/all`
-* `#browse/resourcegroups`
-* `#browse/subscriptions`
-* `#browse/tags`
+    `<portalURL>/<directory>#browse/tags`
 -->
 
+* Create
 
-<a name="deep-links-create-blades"></a>
-## Create blades
+    `<portalURL>/<directory>#create/<packageId>`
 
-To link to Create blade, include the package id:
+* Marketplace
 
-> `https://portal.azure.com/{directory}#create/{package id}`
+    `<portalURL>/<directory>#create/{packageId}/preview`
 
-For instance...
+* Resource
 
-> [https://portal.azure.com/microsoft.com#create/NewRelic.NewRelicAccount](https://portal.azure.com/microsoft.com#create/NewRelic.NewRelicAccount)
-
-
-<a name="deep-links-marketplace-item-details-blades"></a>
-## Marketplace item details blades
-
-To link to the Marketplace item details blade for your package, add "/preview" to the end of your Create blade link:
-
-> `https://portal.azure.com/{directory}#create/{package id}/preview`
-
-For instance...
-
-> [https://portal.azure.com/microsoft.com#create/NewRelic.NewRelicAccount/preview](https://portal.azure.com/microsoft.com#create/NewRelic.NewRelicAccount/preview)
+    `<portalURL>/<directory>#resource{resourceId}`
 
 
-<a name="deep-links-assets"></a>
-## Assets
+Parameters for deep link targets are as follows:
 
-To link to assets, include the extension name, asset type, and asset id.
+**Extension Name**:  The name of the extension in the following format:  `<Company>_<BrandOrSuite>_<ProductOrComponent>`
 
-> `https://portal.azure.com/{directory}#asset/{extension}/{asset type}/{asset id}`
-
-For instance...
-
-> [https://portal.azure.com/microsoft.com#asset/Microsoft_Azure_Billing/BillingSubscriptionBrowseService/00000000-0000-0000-0000-000000000000](https://portal.azure.com/microsoft.com#asset/Microsoft_Azure_Billing/BillingSubscriptionBrowseService/00000000-0000-0000-0000-000000000000)
+Examples:  ```Contoso_Azure_<extensionName>``` , ```HubsExtension```, ```Nod_Publishers_Azure_<extensionName> ```
 
 
+**assetType**: Asset types include the following.
 
+    BillingSubscriptionBrowseService
+
+    Subscription 
+
+**assetId**: A GUID that is associated with the specific asset.
+
+**bladeName**: The name of the blade.
+
+**resourceType**: The type of resource that is in the Browse menu or .  
+
+    **NOTE**: Only subscription resources are supported. Tenant resources and nested resources are not supported.
+
+
+**resourceGroups**: The type of resource group that is in the Browse menu or the menu. This includes the following literals.
+
+all
+
+Subscription
+
+Tags
+
+**packageId**: The GUID that is associated with the package that contains the create blade.
+
+**resourceId**:  The GUID that is associated with the resource that is in the Browse menu or .
+
+<a name="deep-links-examples"></a>
+## Examples
+
+<!-- TODO: Determine whether any of these links should be live. If not, they will be included as code, as in the first example. -->
+
+The following is an example of a link to an asset. 
+
+`https://portal.azure.com/microsoft.com#asset/Microsoft_Azure_Billing/BillingSubscriptionBrowseService/00000000-0000-0000-0000-000000000000`
+
+The following is an example of a link to a blade. When the blade does not exist, the Portal displays the "sad cloud" blade.
+   [https://portal.azure.com/microsoft.com#blade/HubsExtension/HelpAndSupportBlade](https://portal.azure.com/microsoft.com#blade/HubsExtension/HelpAndSupportBlade)
+
+Blade inputs are serialized in consecutive name/value pairs, as in the following example.
+[https://portal.azure.com/microsoft.com#blade/HubsExtension/BrowseAllBladeWithType/type/HubsExtension_Tag](https://portal.azure.com/microsoft.com#blade/HubsExtension/BrowseAllBladeWithType/type/HubsExtension_Tag)
+
+The following is an example of a link to a browse resource. 
+[https://portal.azure.com/microsoft.com#browse/microsoft.search/searchServices](https://portal.azure.com/microsoft.com#browse/microsoft.search/searchServices)
+
+<!-- TODO:  Doublecheck that Browse still works this way. -->
+
+Additionally, you can link to the following Browse blades. An incorrect URL will display the "All resources" menu.
+
+[https://portal.azure.com/microsoft.com#browse/](https://portal.azure.com/microsoft.com#browse/)
+
+[https://portal.azure.com/microsoft.com#browse/all](https://portal.azure.com/microsoft.com#browse/all)
+
+[https://portal.azure.com/microsoft.com#browse/resourcegroups](https://portal.azure.com/microsoft.com#browse/resourcegroups)
+
+[https://portal.azure.com/microsoft.com#browse/subscriptions](https://portal.azure.com/microsoft.com#browse/subscriptions)
+
+[https://portal.azure.com/microsoft.com#browse/tags](https://portal.azure.com/microsoft.com#browse/tags)
+
+[https://portal.azure.com/microsoft.com#browse/all](https://portal.azure.com/microsoft.com#browse/all)
+
+
+The following is a link to a create blade.
+ [https://portal.azure.com/microsoft.com#create/NewRelic.NewRelicAccount](https://portal.azure.com/microsoft.com#create/NewRelic.NewRelicAccount)
+
+The following is a link to a create blade that is being previewed in the Marketplace.  The link for a Marketplace blade for your package appends the literal "/preview" to the end of the Create blade link, as in the following example.
+[https://portal.azure.com/microsoft.com#create/NewRelic.NewRelicAccount/preview](https://portal.azure.com/microsoft.com#create/NewRelic.NewRelicAccount/preview)
+
+The following is a link to a resource group within a subscription resource. If the resource does not exist, a message to that effect is displayed.
+[https://portal.azure.com/microsoft.com#resource/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/foo/providers/microsoft.web/sites/bar](https://portal.azure.com/microsoft.com#resource/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/foo/providers/microsoft.web/sites/bar)
