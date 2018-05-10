@@ -2,7 +2,7 @@
 
 The Azure Content Delivery Network (CDN) is designed to send audio, video, images, and other files faster and more reliably to customers by using servers that are closest to the users. These built-in CDN capabilities in the SDK dramatically increase speed and availability, and result in significant improvements in the user experience.
 
-Developers may use a Content Delivery Network(CDN) to serve static images, scripts, and stylesheets. The Azure Portal SDK does not require the use of a CDN, or the use of a specific  CDN. 
+Developers may use a Content Delivery Network (CDN) to serve static images, scripts, and stylesheets. The Azure Portal SDK does not require the use of a CDN, or the use of a specific  CDN.
 
 The benefits of using the CDN to cache web site assets include the following.
 
@@ -26,12 +26,21 @@ The `CdnIntegrationBlade` allows customers to create and manage CDN endpoints fo
 
 ### The CdnIntegration blade
 
-Through simple integration, your customers can enable CDN on their Azure resources within your extension without having to navigate to the CDN extension. Use the following steps to embed the CDN integration blade into your extension.
+Through simple integration, your customers can enable CDN on their Azure resources within your extension without navigating to the CDN extension. The CdnIntegrationBlade uses the following inputs.
+
+**resourceId**: The id of your ARM resource. For example, if the Azure CDN blade is called from a Storage resource menu, the resourceId for a storage account would resemble the following string. 
+`/subscriptions/93456ca3-e4aa-4986-ab1c-98afe7a12345/resourceGroups/rg1/providers/Microsoft.ClassicStorage/storageAccounts/storagetest1`. 
+
+**location**: The geographic location of your resource, like "West US", or "East Asia". More information about extension versioning is specified in [portalfx-extensions-hosting-service-procedures.md#upload-safe-deployment-config](portalfx-extensions-hosting-service-procedures.md#upload-safe-deployment-config).
+
+**originHostname**: The hostname of the service which is used as an origin for the created CDN endpoints. The hostname cannot contain slashes or protocols; instead it can contain only the domain name, like "storagetest1.blob.core.windows.net" or "webapptest2.azurewebsites.net".
+
+Use the following steps to embed the CDN integration blade into your extension.
 
 1. Import the CDN Extension NuGet Package
 1. Reference the CDN PDE
 1. Reference the CDN Integration Blade
-
+1. Telemetry and Monitoring
 
 ## 1. Importing CDN Extension NuGet Package
 
@@ -93,21 +102,6 @@ this._container.selectable.selectedValue(<MsPortalFx.ViewModels.DynamicBladeSele
         }
     });            
 ```
-
-### Blade Inputs
-The CdnIntegrationBlade takes the following inputs:
-
-1. **resourceId**:
-This is the id of your ARM resource. For example, if you are calling the Azure CDN blade from Storage resource menu, this is what the resourceId looks like for a storage account
-"/subscriptions/93456ca3-e4aa-4986-ab1c-98afe7a12345/resourceGroups/rg1/providers/Microsoft.ClassicStorage/storageAccounts/storagetest1"
-
-2. **location**:
-The AzureLocation of your resource, like *"West US"*, *"East Asia"*, etc.
-
-3. **originHostname**:
-The hostname of your service which is used as an origin for the created CDN endpoints. This shouldn't include any slashes or protocols, only the domain name, like *"storagetest1.blob.core.windows.net"* or *"webapptest2.azurewebsites.net"*.
-
-
 
 ## 4. Telemetry and Monitoring
 We are tracking the usage and actions on CDN integration blade through following metrics:
