@@ -111,7 +111,7 @@ An alternative is to add custom color to an icon, and then send  `{isLogo: true}
 
 ### MsPortalFx.Base.Images
 
-The following are special calls for icons that use the `MsPortalFx.Base` API.
+The following are special calls for icons that use     the `MsPortalFx.Base` API.
 
   * `MsPortalFx.Base.Images.Blank()`
   
