@@ -103,11 +103,11 @@ In dark themes, monochromatic icons are displayed in shades of white, as in the 
 
 If the color of the icon should not be included in theme changes, send the `{ isLogo: true }` option to the icon's factory method. In the following example, the Delete icon remains black in all Portal themes.
 
-{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/UI/ViewModels/Blades/IconBladeViewModels.ts","section":"icon#flatIconWithLogoFlat"}
+{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/UI/ViewModels/Blades/IconBladeViewModels.ts", "section": "icon#flatIconWithLogoFlat"}
 
 An alternative is to add custom color to an icon, and then send  `{isLogo: true}` to preserve the new colors. In the following example, the Delete icon  remains  blue in all Portal themes.
 
-{"gitdown":"include-section","file":"../Samples/SamplesExtension/Extension/Client/V1/UI/ViewModels/Blades/IconBladeViewModels.ts","section":"icon#flatIconWithPaletteAndLogoFlat"}
+{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/UI/ViewModels/Blades/IconBladeViewModels.ts", "section": "icon#flatIconWithPaletteAndLogoFlat"}
 
 ### MsPortalFx.Base.Images
 
