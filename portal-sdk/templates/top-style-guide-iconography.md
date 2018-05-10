@@ -111,7 +111,7 @@ An alternative is to add custom color to an icon, and then send  `{isLogo: true}
 
 ### MsPortalFx.Base.Images
 
-The following are special calls for icons that use     the `MsPortalFx.Base` API.
+The following are special calls for icons that use the `MsPortalFx.Base` API.
 
   * `MsPortalFx.Base.Images.Blank()`
   
@@ -141,13 +141,13 @@ export class DeleteCommandViewModel implements MsPortalFx.ViewModels.CommandCont
 }
 ```
 
+### Using the custom SVG's 
+
 An extension can also use custom SVG's in the command bar, as in the following procedure.
 
-1. Add SVGS's to your project and include the generated file as described above.
+1. Add SVGS's to your project  as specified in [#setting-up-the-project](#setting-up-the-project), except include  `<Svg Include="Content\Images\Commandbar_Trash.svg" />` in the project file.
 
-1. AMD example (Assuming we have `<Svg Include="Content\Images\Commandbar_Trash.svg" />` included in the project file):
-
-1.     , as in the following code.
+1.  Assign their build action to 'Svg', as in the following AMD example.
 
 ```ts
 import CustomSvgImages = require("./SvgDefinitions.js");
