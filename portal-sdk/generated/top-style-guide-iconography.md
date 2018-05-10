@@ -135,7 +135,7 @@ public flatIconLogoBlue: MsPortalFx.Base.Image = MsPortalFx.Base.Images.Delete({
 <a name="overview-msportalfx-base-images"></a>
 ### MsPortalFx.Base.Images
 
-The following are special calls for icons that use the `MsPortalFx.Base` API.
+The following are special calls for icons that use     the `MsPortalFx.Base` API.
 
   * `MsPortalFx.Base.Images.Blank()`
   
