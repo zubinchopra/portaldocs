@@ -20,7 +20,7 @@ The procedure for onboarding to the hosting service is as follows. Click on the 
 <a name="checklist-for-onboarding-hosting-service-update-isdevelopmentmode-flag"></a>
 ### Update IsDevelopmentMode flag
 
-The **Content Unbundler** tool requires setting the development mode to `false` to assign the correct build version to the zip file.
+The **Content Unbundler** tool requires setting the development mode to `false` to assign the correct build version to the zip file. If the name of the zip file generated is `HostingSvc.zip` instead of `<BUILD_VERSION>.zip,` then `IsDevelopmentMode` is probably set to `true`.
 
 Update the **IsDevelopmentMode** flag in the `web.config` file to false, as in the following example.
 ```xml
@@ -94,7 +94,7 @@ The zip file generated during the build should be named `<BUILD_VERSION>.zip`, w
 Environment configuration files serve two purposes.
 
 * They [override settings](#overriding-settings) for the target environment 
-* They [load the extension](#loading-in-the-target-environment) in the target environment
+* They [allow the extension to load](#loading-in-the-target-environment) in the target environment
 
 
 <a name="provide-environment-specific-configuration-files-overriding-settings"></a>
@@ -156,7 +156,7 @@ The following are examples for each environment.
     | MPAC        | ms.portal.azure.com |
     | PROD        | portal.azure.com    |
 
-    The `portal.azure.com.json` file  is enough to serve all production environments. If an environment requires a config value that is different from other environments, then an additional environment configuration can be added, for example,  `ms.portal.azure.com.json`.
+  `portal.azure.com.json` is enough to serve all production environments. If an environment requires a config value that is different from other environments, then an additional environment configuration can be added, for example,  `ms.portal.azure.com.json`.
 
     ```xml
     <EmbeddedResource Include="Content\Config\portal.azure.com.json" />
@@ -239,11 +239,29 @@ In addition to the zip files, the hosting service expects a config file to be lo
 
 Safe deployment practices require that extensions are rolled out to all data centers in a staged manner. The out-of-the-box hosting service provides the capability to deploy an extension in five stages, where each stage corresponds to one of five locations, or data centers.  The stages are as follows.
 
+* Public Cloud
+
 1. **stage1**: "centraluseuap"
 1. **stage2**: "westcentralus"
 1. **stage3**: "southcentralus"
 1. **stage4**: "westus"
 1. **stage5**: "*"
+
+* FairFax
+
+1. **stage1**: "usgovcentral"
+1.  **stage2**: "*"
+
+* Mooncake
+
+1. **stage1**: "chinanorth"
+1.  **stage2**: "*"
+
+* Blackforest
+
+1. **stage1**: "germanynortheast"
+1. **stage2**: "*"
+
 
 <!-- TODO:  Determine whether an extension can use the "stageDefinition" and "$sequence" parameters, or if they are reserved for hosting service use -->
 
@@ -279,11 +297,11 @@ For more information about testing extensions with stages in configuration files
 
 <!-- TODO:  determine how to make a public endpoint in order to copy the build files to it. -->
 
-Extensions should publish the extracted deployment artifacts that are generated during the build to a public endpoint. This means copying the zip files for the build, along with the `config.json` file, to a directory that is located on the endpoint.
+Extensions should publish the extracted deployment artifacts that are generated during the build to a public read only accessible  storage account. This means copying the zip files for the build, along with the `config.json` file, to a blob container that is publicly accessible.
 
-1. The developer should have access to two public endpoints, one for the Dogfood environment and one for the production environment.  An example of a Dogfood environment endpoint is `https://mybizaextensiondf.blob.core.windows.net/<extensionName>`.  An example of a PROD environment endpoint is `https://mybizaextensionprod.blob.core.windows.net/<extensionName>`.
+1. The extension should have two storage accounts, one for the Dogfood environment and one for the production environment. An example of a Dogfood environment endpoint is `https://mybizaextensiondf.blob.core.windows.net/<extensionName>`. An example of a PROD environment endpoint is `https://mybizaextensionprod.blob.core.windows.net/<extensionName>`.
 
-1. Make sure that all the zip files and the `config.json` file are in the same directory or are at the same level previous to copying the extension to the endpoints.
+1. Make sure that all the zip files and the config.json file are at the same level in the blob container.
 
 1. After these files are available on a public endpoint, file a request to register the public endpoint.  The link is located at   [https://aka.ms/extension-hosting-service/onboarding](https://aka.ms/extension-hosting-service/onboarding). To onboard the extension, please provide following information in the request. 
 
