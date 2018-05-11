@@ -285,7 +285,7 @@ Extensions should publish the extracted deployment artifacts that are generated 
 
 ### Converting from custom  deployment to a hosting service
 
-To minimize the probability of regression, use the following procedure to migrate an extension from custom  deployment to a hosting service. For more information about custom deployment, see [portalfx-extensions-custom-deployment.md](portalfx-extensions-custom-deployment.md).
+To minimize the probability of regression, use the following procedure to migrate an extension from custom  deployment to a hosting service. For more information about custom deployment, see [top-extensions-custom-deployment.md](top-extensions-custom-deployment.md).
 
 
 1. Change the uri format to use a hosting service in the PROD environment
