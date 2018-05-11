@@ -1,5 +1,25 @@
 # Release Notes since 1/11/2018
 
+## 5.0.302.1117
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2311328'>2311328</a></td><td>Bug Fix</td><td>Too many false alarm on code: ETIMEDOUT message: requestAnimationFrameQ timout after # seconds: callback:function (n){var t;return r.pageNavigator?t=r._updatePageViewport(n):r.demandLoadNavigator&&(t=r._updateDemandLoadViewp</td></tr></table>
+
+## 5.0.302.1116
+0 Breaking Changes, 1 Features added and 0 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2447904'>2447904</a></td><td>Feature</td><td>[DSR] Update to latest SDK and configure Sovereign Clouds endpoints accordingly</td></tr></table>
+
+## 5.0.302.1115
+0 Breaking Changes, 2 Features added and 0 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2432933'>2432933</a></td><td>Feature</td><td>[dSMS] Create script to migrate certificates from SecretStore to dSMS</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1596450'>1596450</a></td><td>Feature</td><td>[dSMS] Migrate DocDB connection string to dSMS</td></tr></table>
+
+## 5.0.302.1114
+0 Breaking Changes, 2 Features added and 2 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2447534'>2447534</a></td><td>Feature</td><td>[GDPR][DsrHandler] Disable DsrHander in BlackForest</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2433166'>2433166</a></td><td>Bug Fix</td><td>[dSMS] Make dSMS setup script configurable and re-usable for Relex, Hosting Service, etc</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2432546'>2432546</a></td><td>Bug Fix</td><td>Roll expiring Blackforest certs (part 1 - non-ARM certs)</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2363257'>2363257</a></td><td>Feature</td><td>Roll certs used in dogfood and onestb portal</td></tr></table>
+
+## 5.0.302.1112
+0 Breaking Changes, 1 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2444284'>2444284</a></td><td>Bug Fix</td><td>Remove read-only from files copied during build</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2442256'>2442256</a></td><td>Feature</td><td>[Microsoft_Azure_PowerBIDedicated] Add configuration for Mooncake </td></tr></table>
+
 ## 5.0.302.1111
 0 Breaking Changes, 1 Features added and 0 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2434242'>2434242</a></td><td>Feature</td><td>Enable Azure SignalR service</td></tr></table>
