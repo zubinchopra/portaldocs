@@ -4,8 +4,6 @@ This is the home page for all documentation related to onboarding, developing, o
 
 Couldn't find what you needed? [Ask about the docs on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-missing-docs).
 
-
-
 ## Onboarding a new extension
 
 * [Overview / Getting started](/portal-sdk/generated/top-onboarding.md)
@@ -274,7 +272,7 @@ Learn how to deploy your extension to the various clouds and environments.
 
 ### Deployment using the Extension Hosting Service
 
-[Deployment using the Extension Hosting Service](/portal-sdk/generated/top-hosting-service.md)
+[Deployment using the Extension Hosting Service](/portal-sdk/generated/top-extensions-hosting-service.md)
 
 The Ibiza team provides and operates a common Extension Hosting Service that makes it easy to get your bits into a globally distributed system without having to manage your own infrastructure.
 
