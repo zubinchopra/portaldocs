@@ -1,4 +1,4 @@
-# Release Notes since 1/12/2018
+# Release Notes since 1/13/2018
 
 ## 5.0.302.1117
 0 Breaking Changes, 0 Features added and 1 Bugs Fixed
@@ -251,31 +251,3 @@
 ## 5.0.302.970
 0 Breaking Changes, 0 Features added and 3 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1887207'>1887207</a></td><td>Bug Fix</td><td>Add Framework.Client to Microsoft.Portal.TestFramework due to loc dependency</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1801085'>1801085</a></td><td>Bug Fix</td><td>MsPortalImpl\Interactions\Interactions.FlowLayoutDragDrop.ts, line:111 throws "Cannot read property 'elementObject' of null"</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1769638'>1769638</a></td><td>Bug Fix</td><td>All Services blade does not honor discovery policy when switched to "By name" view</td></tr></table>
-
-## 5.0.302.969
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1893689'>1893689</a></td><td>Bug Fix</td><td>Hotfix production to prevent hammering CRP from browse tile</td></tr></table>
-
-## 5.0.302.968
-0 Breaking Changes, 1 Features added and 2 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1867737'>1867737</a></td><td>Bug Fix</td><td>Investigate session timeout occurring too often, from MPAC report.</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1599134'>1599134</a></td><td>Feature</td><td>[Regions] Update new regions script</td></tr><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=10734786'>10734786</a></td><td>Bug Fix</td><td>[Intune App] The wrong expiration date is selected for some iOS IPA app packages</td></tr></table>
-
-## 5.0.302.967
-0 Breaking Changes, 0 Features added and 0 Bugs Fixed
-<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
-
-## 5.0.302.966
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1737949'>1737949</a></td><td>Bug Fix</td><td>Services need to be de-duplicated in search based on resourceType and not just ID</td></tr></table>
-
-## 5.0.302.964
-0 Breaking Changes, 0 Features added and 0 Bugs Fixed
-<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
-
-## 5.0.302.963
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1823035'>1823035</a></td><td>Bug Fix</td><td>[Curation]Enable DNS in fairfax</td></tr></table>
-
-## 5.0.302.962
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1867450'>1867450</a></td><td>Bug Fix</td><td>Remove default portal idle timeout in Fairfax</td></tr></table>
