@@ -5,7 +5,7 @@ The following guidelines have been created to ensure a consistent developer expe
 
 To share your PDE with other teams please follow these guidelines: 
 
-1. Create a NuGet package
+1. Create a **NuGet** package
     
     Use the  naming convention `Microsoft.Portal.Extensions.<extensionName>`.  The  *.pde file should be located at  `/Client/_extensions/<extensionName>`.  Customimze the following code to create  your extension's NuGet package. Name it `Microsoft.Portal.Extensions.<extensionName>` to be consistent with the produced package name.
     
@@ -59,7 +59,7 @@ can be customized for this purpose.
     
     ```
  
-1. After the NuGet package is created, create a document that describes how to consume the content exposed by the PDE
+1. After the **NuGet** package is created, create a document that describes how to consume the content exposed by the PDE
 
     * Check your access to the documentation repository  that is located at [https://github.com/Azure](https://github.com/Azure).  If you do not have access, follow the instructions located at [http://aka.ms/azuregithub](http://aka.ms/azuregithub) to enable 2FA on your github account and link your microsoft account.
 	
@@ -67,7 +67,7 @@ can be customized for this purpose.
 	
 	* Guidelines for document creation are located at []().
 
-1. Publish the resulting NuGet package folder from your official builds to [http://wanuget/Official/](http://wanuget/Official/). 
+1. Publish the resulting **NuGet** package folder from your official builds to [http://wanuget/Official/](http://wanuget/Official/). 
 
 <!-- TODO:  Determine whereabouts of wanuget official feed. http://wanuget/official does not exist, and  https://msazure.pkgs.visualstudio.com/_packaging/Official/NuGet/v3/index.json does not appear to be the right one. Might it be https://www.nuget.org/profiles/microsoft?  -->
 
