@@ -1,26 +1,13 @@
 
-<tags
-    ms.service="portalfx"
-    ms.workload="portalfx"
-    ms.tgt_pltfrm="portalfx"
-    ms.devlang="portalfx"
-    ms.topic="distribute-pde"
-    ms.date="04/18/2016"
-    ms.author="nickha"/>    
-
-<a name="sharing-your-pde-with-other-teams"></a>
 ## Sharing your PDE with other teams
 
-The following guidelines have been created to ensure a consistent and easy to consume developer experience across all partner teams that need to share their PDE.
+The following guidelines have been created to ensure a consistent developer experience across all partner teams that share  PDE's.
 
 To share your PDE with other teams please follow these guidelines: 
 
-- Create a NuGet
+1. Create a NuGet package
     
-    - use the consistent naming convention Microsoft.Portal.Extensions.&lt;Name&gt;
-    - the *.pde file is to be delivered under /Client/_extensions/&lt;Name&gt; 
-  
-    The following nuproj snippet can be used to customimze for your extensions NuGet creation. Most teams name it Microsoft.Portal.Extensions.&lt;Name&gt; to be consistent with the produced package name
+    Use the  naming convention `Microsoft.Portal.Extensions.<extensionName>`.  The  *.pde file should be located at  `/Client/_extensions/<extensionName>`.  Customimze the following code to create  your extension's NuGet package. Name it `Microsoft.Portal.Extensions.<extensionName>` to be consistent with the produced package name.
     
     ```xml
 
@@ -29,17 +16,17 @@ To share your PDE with other teams please follow these guidelines:
     <Import Project="$(EnvironmentConfig)" />
     
     <PropertyGroup>
-        <Id>Microsoft.Portal.Extensions.Name</Id>
-        <Title>Microsoft Portal Extension Name</Title>
-        <Description>Provides the Microsoft Portal Name PDE</Description>
-        <Summary>Provides the Microsoft Portal Name PDE</Summary>
-        <Tags>Microsoft Azure Cloud Portal Framework Name  PDE</Tags>
+        <Id>Microsoft.Portal.Extensions.<extensionName></Id>
+        <Title>Microsoft Portal Extension <extensionName></Title>
+        <Description>Provides the Microsoft Portal <extensionName> PDE</Description>
+        <Summary>Provides the Microsoft Portal <extensionName> PDE</Summary>
+        <Tags>Microsoft Azure Cloud Portal Framework <extensionName> PDE</Tags>
     </PropertyGroup>
     
     <ItemGroup>
         <!-- update the following to pull the PDE from your official build-->
         <Content Include="$(RepoRoot)\src\SDK\Extensions\HubsExtension\TypeScript\HubsExtension\HubsExtension.pde">
-        <TargetPath>Client\_extensions\Name</TargetPath>
+        <TargetPath>Client\_extensions\<extensionName></TargetPath>
         </Content>
         <!-- include an install.ps1 to both set appropriate build action on pde and to pop documents-->
         <File Include="$(REPOROOT)\RDPackages\NuGet\Microsoft.Portal.Extensions.Name\Install.ps1" >
@@ -56,12 +43,9 @@ To share your PDE with other teams please follow these guidelines:
 
     ```
     
-- Include in the nuproj a Install.ps1 that will:
+1.  Include a Install.ps1 in the NuGet package that will set the correct build action on the PDE and open documentation that specifies how to consume the exposed content.  The following Install.ps1 script
+can be customized for this purpose.
 
-    - set the correct build action on PDE 
-    - and open documentation on how to consume the exposed content.  
-
-    Customize the following Install.ps1 script
 
     ```powershell
 
@@ -75,11 +59,18 @@ To share your PDE with other teams please follow these guidelines:
     
     ```
  
-- Now that the NuGet is created as part of your build you need to create a document for consuming the content exposed by the PDE
+1. After the NuGet package is created, create a document that describes how to consume the content exposed by the PDE
 
-    - [Check your access to the doc repo portalfx-docs-pr](https://github.com/Azure/portaldocs)
+    * Check your access to the documentation repository  that is located at [https://github.com/Azure](https://github.com/Azure).  If you do not have access, follow the instructions located at [http://aka.ms/azuregithub](http://aka.ms/azuregithub) to enable 2FA on your github account and link your microsoft account.
 	
-        - if you don’t have access follow the instructions [here](http://aka.ms/azuregithub) to enable 2FA on your github account and link your microsoft account
-		- Then through [here](http://aka.ms/azuregithub) request access to portalfxdocs
+	* Request access to portalfxdocs  at [http://aka.ms/azuregithub](http://aka.ms/azuregithub). 
+	
+	* Guidelines for document creation are located at []().
 
-- The resulting NuGet is to be published from your official builds to [http://wanuget/Official/](http://wanuget/Official/). See OneBranch guidance to [publish your package](https://microsoft.sharepoint.com/teams/WAG/EngSys/Implement/OneBranch/Publish%20your%20package.aspx)
+1. Publish the resulting NuGet package folder from your official builds to [http://wanuget/Official/](http://wanuget/Official/). 
+
+<!-- TODO:  Determine whereabouts of wanuget official feed. http://wanuget/official does not exist, and  https://msazure.pkgs.visualstudio.com/_packaging/Official/NuGet/v3/index.json does not appear to be the right one. Might it be https://www.nuget.org/profiles/microsoft?  -->
+
+<!-- TODO:  Find aka.ms link for the following site -->
+
+For more information, see  [https://microsoft.sharepoint.com/teams/WAG/EngSys/Implement/OneBranch/Publish%20your%20package.aspx](https://microsoft.sharepoint.com/teams/WAG/EngSys/Implement/OneBranch/Publish%20your%20package.aspx)
