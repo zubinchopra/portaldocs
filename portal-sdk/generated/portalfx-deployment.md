@@ -1,199 +1,242 @@
-* [Overview](#overview)
-    * [Portal](#overview-portal)
-    * [Portal deployment schedule](#overview-portal-deployment-schedule)
-* [Before deploying extension](#before-deploying-extension)
-    * [Enable or disable extensions onboarding Ibiza](#before-deploying-extension-enable-or-disable-extensions-onboarding-ibiza)
-    * [Extension "stamps"](#before-deploying-extension-extension-stamps)
-    * [Understand extension runtime compatibility](#before-deploying-extension-understand-extension-runtime-compatibility)
-* [Deploying extension UI](#deploying-extension-ui)
-* [Deploying extension controllers](#deploying-extension-controllers)
-* [Legacy/DIY deployments](#legacy-diy-deployments)
-* [Resiliency and failover](#resiliency-and-failover)
 
+<a name="deployment"></a>
+# Deployment
 
-<a name="overview"></a>
+<a name="deployment-overview"></a>
 ## Overview
 
-The Azure Portal uses a decentralized model of deployment that consists of several components that work together to
-provide the end-to-end experience, each deployed to separate endpoints:
+The Azure Portal uses a decentralized model of deployment that consists of several components that work together to provide the end-to-end experience.  Deploying an extension means that users can mange their experience by using servers that are geographically close to them, thereby reducing latency and improving the overall experience. 
 
-- **Portal** \- web application that hosts the shell
-- **Extensions** \- each extension is a web application that is loaded by the Portal
-- **ARM** \- public API for Azure that accepts calls from the Portal, Azure SDK, and command line
-- **Resource providers** \- provide resource-specific APIs for management operations (e.g. read, write, delete)
+The Portal is deployed continuously. On any day, multiple bug fixes, new features, and API changes may be deployed to production. When a new version of the Portal is deployed to production, the corresponding version of the SDK is automatically released to the download center located at [downloads.md](downloads.md). The download center contains the change log for releases, including bug fixes, new features, and a log of breaking changes.
 
-![Portal / Extension architecture][deployment-architecture]
+The Portal architecture and configuration for one extension are described in the following image.
 
-<a name="overview-portal"></a>
-### Portal
+![alt-text](../media/portalfx-custom-extensions-deployment/deployment.png "Portal / Extension architecture")
 
-The Portal is deployed to all [public Azure regions](http://azure.microsoft.com/regions) and uses geographical
-load-balancing via Azure Traffic Manager (using the "Performance" profile).
-(For more information about Azure Traffic Manager, see their
-[introduction](https://azure.microsoft.com/en-us/documentation/articles/traffic-manager-overview/).)
+The Portal is deployed to all public Azure regions as described in [http://azure.microsoft.com/regions](http://azure.microsoft.com/regions). It is load-balanced geographically by using the Azure Traffic Manager "Performance" profile. For more information about Azure Traffic Manager, see the Introduction located at [https://azure.microsoft.com/en-us/documentation/articles/traffic-manager-overview/](https://azure.microsoft.com/en-us/documentation/articles/traffic-manager-overview/).  Also see the Traffic Manager routing methods that are described  at [https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-routing-methods](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-routing-methods). For more information about the Content Delivery Network, see  [https://azure.microsoft.com/en-us/documentation/articles/cdn-overview/](https://azure.microsoft.com/en-us/documentation/articles/cdn-overview/).
+ 
+Extension components are  deployed to the following separate endpoints.
 
-Deploying in this fashion means that users can take advantage of a server closer to them, reducing latency and improving
-the overall experience of using the Portal.
+| Endpoint                     | Description                                                                              |
+| ---------------------------- | ---------------------------------------------------------------------------------------- |
+| Portal                       | The web application that hosts the shell                                                 |
+| Extension                    | A web application that is loaded by the Portal                                           |
+| Azure Resource Manager (ARM) | The public API for Azure that accepts calls from the Portal, Azure SDK, and command line |
+| Resource providers           | Provides resource-specific APIs for management operations, like read, write, or delete   |
+| Content Delivery Network     | Provides static images, scripts, and stylesheets                                         |
 
-The Portal also takes advantage of the [Azure CDN](https://azure.microsoft.com/en-us/documentation/articles/cdn-overview/)
-for static resources (images, scripts, etc.). This shifts the location of the most-downloaded files even closer to the user.
+<a name="deployment-deploying-an-extension"></a>
+## Deploying an extension
 
-<a name="overview-portal-deployment-schedule"></a>
-### Portal deployment schedule
-
-The Portal is deployed continuously. On any given day, multiple bug fixes, new features, and API changes may be deployed
-to production. When a new version of the Portal is deployed to production, the corresponding version of the SDK is
-automatically released to the [download center](downloads.md). The download center contains the change log for the given
-release, including bug fixes, new features, and a log of breaking changes.
-
-<a name="before-deploying-extension"></a>
-## Before deploying extension
+To deploy an extension, use the following steps.
 
 1. Enable or disable extensions onboarding Ibiza
-1. Extension "stamps"
-1. Understand extension runtime compatibility
 
-<a name="before-deploying-extension-enable-or-disable-extensions-onboarding-ibiza"></a>
-### Enable or disable extensions onboarding Ibiza
-<!-- TODO:  Remove  the following section, because it has been replaced by portalfx-extensions-configuration-overview.md    
--->
+	For more information about onboarding custom extensions to the Azure Portal, see [top-extensions-configuration-overview.md](top-extensions-configuration-overview.md).
 
-New extensions are disabled by default. This will hide the extension from users (it won't show up in the Portal at all)
-until it's ready for general use.
+	For more information about Gallery Item Hidekeys and the Azure Portal, see [portalfx-extensions-feature-flags-shell](portalfx-extensions-feature-flags-shell).
 
-To temporarily enable a disabled extension (for your session only), add an extension override in the Portal URL:
-`https://portal.azure.com?Microsoft_Azure_DevTestLab=true` (where `Microsoft_Azure_DevTestLab` is the name of the
-extension as registered with the Portal). Conversely, you can temporarily disable an extension by setting it to `false`.
-<!-- TODO:  Remove  the preceding section, because it has been replaced by portalfx-extensions-configuration-overview.md    
--->
-<!-- TODO:  Remove  the following  section, because it has been replaced by portalfx-extensions-feature-flags-shell.md    
--->
-You can use temporary enablement in conjunction with a Gallery Item Hidekey (if you have one) to also temporarily show
-your item in the "Create New" experience while your extension is enabled. Just combine the parameters. Following the
-previous example, if your hidekey is `DevTestLabHidden`, then you can combine it with the above to produce a single URL
-to enable both the extension and the Gallery item:
-`https://portal.azure.com?Microsoft_Azure_DevTestLab=true&microsoft_azure_marketplace_ItemHideKey=DevTestLabHidden`.
-<!-- TODO:  Remove  the previous section, because it has been replaced by portalfx-extensions-feature-flags-shell.md    -->
-To permanently enable an extension (e.g. if it's ready for general use), please contact the Portal team.
+	To permanently enable an extension when it is ready for general use, please reach out to `<a><mailto href>the Portal team</a>`.
 
-<a name="before-deploying-extension-extension-stamps"></a>
-### Extension &quot;stamps&quot;
+1. Decide on the Extension "stamps"
+	
+	Every extension can deploy one or more "stamps" based on their testing requirements. The stamp is a combination of the version of the extension and the stage on which it will be located.  For more information about extension stamps, see [top-extensions-configuration-overview.md](top-extensions-configuration-overview.md).
 
-Every extension can deploy one or more "stamps" based on their testing requirements.  For more information about extension stamps, see [portalfx-extensions-configuration-overview.md#instructions-for-use](portalfx-extensions-configuration-overview.md#instructions-for-use). 
-<!-- TODO:  Remove  the following  section, because it has been replaced by portalfx-extensions-configuration-overview.md    
--->
+1. Prepare for extension runtime compatibility
 
-In Azure parlance, a "stamp" is an
-instance of a service in a region. The "main" stamp is used for production and is the only one the Portal will be
-configured for. 
+	Extensions do not need to be recompiled and redeployed with every release of the SDK. To upgrade an extension, the developer can download the latest version of the SDK, fix any breaking compile-time
+	changes, and redeploy the extension.
+
+	* For extensions that use SDK builds older than 5.0.302.258
+	
+	Extensions are guaranteed 90 days of runtime backward compatibility after deployment. This means that an extension
+	that  is compiled against an  SDK that is older than 5.0.302.258  will be valid for 90 days. After that time, 
+	the extension must be upgraded to continue functioning in production.
+	
+	* For For extensions that use SDK build 5.0.302.258 and more recent
+	
+	Extensions are guaranteed 120 days of runtime backward compatibility after deployment. This means that an extension
+	that is compiled against the SDK build version 5.0.302.258, or more recent, will be valid for 120 days. After that time, 
+	the extension must be upgraded to continue functioning in production.
+
+1.  Deploy the extension by using the Extension Hosting Service
+
+	For more information, see [top-extensions-hosting-service.md](top-extensions-hosting-service.md).
+
+1. Deploy extension controllers to all regions
+
+	Each extension is responsible for deploying their controllers and setting up load-balancing across whatever regions
+	that is uses.
+
+	We recommend that extensions deploy controllers broadly across all regions in an active-active configuration and use a
+	technology, such as [Azure Traffic Manager](https://azure.microsoft.com/en-us/documentation/articles/traffic-manager-overview/)
+	with a "Performance" profile, to direct the user to the server closest to them. This will give users the best
+	experience, especially if the extension communicates with an RP that is also deployed across regions. ARM
+	is deployed in every region, therefore traffic for a user will stay entirely within one region, which reduces
+	network latency.
+
+<a name="deployment-legacy-diy-deployments"></a>
+## Legacy/DIY deployments
+
+For more information about custom deployment of extensions, see [top-extensions-custom-deployment.md](top-extensions-custom-deployment.md).
+
+<a name="deployment-resiliency-and-failover"></a>
+## Resiliency and failover
+
+Having a presence in all geographic locations is important for extension performance. Extensions encounter much higher latencies and reliability issues when servers are not geo-located with their users. For more information, see [top-extensions-performance.md](top-extensions-performance-overview.md).
+
+It is best practice to set up servers in every region for your extensions. If the extension content is primarily static, and all of its controller access is performed by ARM by using  CORS, then a CDN should be included as part of your solution. However, if the CDN goes down, the increase in latency by falling back to a different server location may result in a negative impact to your users.
+
+If your extension server uses controllers, there is some flexibility in how they are used. Typically,  messages across long distances suffer more from latency than throughput. For example, total network latency is not as noticeable for one long steady stream of data as it is for many small individual requests for status on many storage accounts. This is because the steady stream of data that is a file upload would be more of a "delay expected" moment that is infrequent, whereas the status messages are needed right away and very often. For file uploads, the extension would benefit from fewer servers that are strategically placed, but for messages, the extension would benefit from more servers that are geolocated with your clients.
+
+<!-- TODO:  add "hotfix" info here for when developers need to walk their code into the 4 environments instead of waiting for the automated processes.-->
+
+<a name="deployment-using-the-content-delivery-network"></a>
+## Using the Content Delivery Network
+
+Developers may use a Content Delivery Network(CDN) to serve static images, scripts, and stylesheets. The Azure Portal SDK does not require the use of a CDN, or the use of a specific CDN. However, the CDN changes the location of the most-downloaded files to servers that may be closer to the user than file servers and similar endpoints. Extensions that are served from Azure can take advantage of the built-in CDN capabilities in the SDK. 
+
+<a name="deployment-using-the-content-delivery-network-creating-the-cdn-account"></a>
+### Creating the CDN account
+
+Follow the guide located at [http://aka.ms/portalfx/cdn](http://aka.ms/portalfx/cdn) to set up your CDN account.
+
+After creating your CDN, there are a few options that need to be set.
+
+* Click the "Enable HTTPS" command to enable HTTP and HTTPS.
+
+* Click the "Enable Query String" to enable query string status.
+
+<a name="deployment-using-the-content-delivery-network-configuring-the-extension"></a>
+### Configuring the extension
+
+To take advantage of the CDN capabilities in the Portal SDK, there are a few pieces to configure. After setting up your CDN, you will receive a URL with which to access your content. It will be in the following format.
+
+    `//<CDNNamespace>.vo.msecnd.net/`
+
+This is the prefix for the CDN service. The production service should be configured to use it by using the following `appSetting` in the local `web.config` file.
+
+```xml
+<add key="Microsoft.Portal.Extensions.SamplesExtension.ApplicationConfiguration.CdnPrefix" 
+     value="//<CDNNamespace>.vo.msecnd.net/" />
+```
+
+Neither `http` nor `https` are included in the url, so that the page can request content based on the current protocol. Sometimes, like for a cloud service, this setting is blank in `web.config`, and configured instead in a `cscfg`.
+
+Configuring versioning of your Extension is specified in [portalfx-extensions-versioning.md](portalfx-extensions-versioning.md). 
 
 
-Additional stamps can be accessed using a URI format specified in extension config.
+<a name="deployment-using-the-content-delivery-network-reading-the-prefix-from-configuration"></a>
+### Reading the prefix from configuration
 
-For example, this might be an extension configuration:
+To read any FX configuration, the extension uses a class which inherits from `ApplicationContext`, as in the following example.
 
-```json
+```
+\SamplesExtension\Configuration\CustomApplicationContext.cs
+```
+
+This class includes a `CdnPrefix` property, as in the following code.
+
+```cs
+[Export(typeof(ApplicationContext))]
+internal class CustomApplicationContext : ApplicationContext
 {
-    name: "Microsoft_Azure_DevTestLab",
-    uri: "//main.devtest.ext.azure.com",
-    uriFormat: "//{0}.devtest.ext.azure.com"
+    private ApplicationConfiguration configuration;
+
+    [ImportingConstructor]
+    public CustomApplicationContext(ApplicationConfiguration configuration)
+    {
+        this.configuration = configuration;
+    }
+
+    public override bool IsDevelopmentMode
+    {
+        get
+        {
+            return this.configuration.IsDevelopmentMode;
+        }
+    }
+
+    public override string CdnPrefix
+    {
+        get
+        {
+            return this.configuration.CdnPrefix;
+        }
+    }
 }
 ```
 
-When users go to the Portal, it will load the `Microsoft_Azure_DevTestLab` extension from the URL
-`https://main.devtest.ext.azure.com` (the Portal always uses HTTPS).
+This class assigns properties that are located in the `web.config` or `*.cscfg` files. To read the values from those files, the extension uses a C# class that  inherits from `ConfigurationSettings` and exports `ApplicationConfiguration`, as in the following example.
 
-To use a secondary, test stamp, specify the `feature.canmodifystamps` flag in addition to a parameter matching the name
-of your extension as registered in the Portal. For instance,
-`https://portal.azure.com?feature.canmodifystamps=true&Microsoft_Azure_DevTestLab=perf` would replace the `{0}` in the
-`uriFormat` string with `perf` and attempt to load the extension from there (making the extension URL
-`https://perf.devtest.ext.azure.com`). Note that you must specify the flag `feature.canmodifystamps=true` in order to
-override the stamp.
-<!-- TODO:  Remove  the preceding  section, because it has been replaced by portalfx-extensions-configuration-overview.md    
--->
+    `\SamplesExtension\Configuration\ApplicationConfiguration.cs`
 
-<a name="before-deploying-extension-understand-extension-runtime-compatibility"></a>
-### Understand extension runtime compatibility
+This class is in the following code.
 
-Extensions do not need to be recompiled and redeployed with every release of the SDK.
+```cs
+[Export(typeof(ApplicationConfiguration))]
+public class ApplicationConfiguration : ConfigurationSettings
+{
+    /// <summary>
+    /// Gets a value indicating whether development mode is enabled.
+	/// Development mode turns minification off
+    /// </summary>
+    /// <remarks>
+	/// Development mode turns minification off. 
+	/// It also disables any caching that be happening.
+	/// </remarks>
+    [ConfigurationSetting]
+    public bool IsDevelopmentMode
+    {
+        get;
+        private set;
+    }
 
-**For SDK build 5.0.302.258 and later**
-Extensions are guaranteed 120 days of *runtime* backward compatibility after deployment. This means that an extension
-which is compiled against the build version 5.0.302.258 and later of the SDK will be valid for 120 days - at which point
-the extension must be upgraded to continue functioning in production.
+    /// <summary>
+    /// Gets a value indicating a custom location where browser should 
+	/// find cache-able content (rather than from the application itself).
+    /// </summary>
+    [ConfigurationSetting]
+    public string CdnPrefix
+    {
+        get;
+        private set;
+    }
+}
+```
 
-**For SDK build older than 5.0.302.258**
-Extensions are guaranteed 90 days of *runtime* backward compatibility after deployment. This means that an extension
-which is compiled against the build version older than 5.0.302.258 of the SDK will be valid for 90 days - at which point
-the extension must be upgraded to continue functioning in production.
+<a name="deployment-using-the-content-delivery-network-iis-asp-net-configuration"></a>
+### IIS / ASP.NET Configuration
 
-To upgrade an extension, the extension author must download the latest version of the SDK, fix any breaking compile-time
-changes, and redeploy the extension.
+Files are pushed to the CDN using the following process.
 
-<a name="deploying-extension-ui"></a>
-## Deploying extension UI
+1. The browser makes a request to a specific CDN address, for example,  `http://exampleCDN.vo.msecnd.net/Content/jquery.js`.
 
-[Deploying through Extension Hosting Service](portalfx-extension-hosting-service.md)
+1. If the file is already cached on the CDN, it is sent to the browser.
 
-<a name="deploying-extension-controllers"></a>
-## Deploying extension controllers
+1. If the file is not cached, the CDN service makes a request to the origin server for the resource, for example,  `http://exampleCDN.vo.msecnd.net/CDN/Content/jquery.js`.
 
-Each extension is responsible for deploying their controllers and setting up load-balancing across whatever regions
-make sense.
+1. The file is cached and sent to the client.
 
-We recommend that extensions deploy controllers broadly across all regions in an active-active configuration and use a
-technology, such as [Azure Traffic Manager](https://azure.microsoft.com/en-us/documentation/articles/traffic-manager-overview/)
-with a "Performance" profile, to direct the user to the server closest to them. This will give users the best
-experience, especially if the extension communicates with an RP that is also deployed broadly across regions. (Since ARM
-is deployed in every region, this means that that traffic for a user will stay entirely within one region, reducing
-latency.)
+To enable this workflow, the CDN makes an HTTP request to the extension. This is typically  not an issue, but some CDNs will make an HTTP 1.0 request. HTTP 1.0 technically does not support gzip/deflated content, therefore IIS does not enable compression by default. To turn compression on, set the `noCompressionForHttp10` setting in `<httpCompression>` to `false`.
 
-<!-- TODO:  deprecate the following section of this document by removing it.  It has been replaced by portalfx-extensions-custom-deployment.md -->
+The url for the request is in the following form.
 
-<a name="legacy-diy-deployments"></a>
-## Legacy/DIY deployments
+`http://exampleCDN.vo.msecnd.net/CDN/Content/jquery.js`
 
-If you choose to deploy extension UI through legacy / DIY deployments, make sure you understand that
-1.	You will be responsible for deploying to all regions
-1.	You will be responsible for deploying service to every new data center
-1.	You will be responsible for MDS setup, upgrade, Security pack upgrade and other infrastructure tasks
-1.	If you are planning to use CDN to serve extension UI then understand that when CDN goes down (and they do) then the fallback will be not pleasing to your users.
-1.	You will be responsible for setting up Persistent storage so that users do not see reliability drop during extension deployment
-1.	You will be responsible for setting up infrastructure to rollback in case of live-site issues
-1.	You are signing up for on-call / live site rotation for deployment infrastructure.
+The literal "/CDN/" is inserted into the url immediately after the host address. The request handling code in the SDK automatically handles incoming requests of the form `/CDN/Content/...` and `/Content/...`.   
 
-Each extension is responsible for deploying both UI and Controllers as well as setting up load-balancing across whatever regions make sense.
-In general, it is best to set up servers in every region. That said, there is some flexibility. If your content is primarily static and all of your controller access is ARM via CORS then CDN can work well. *** The caveat is that when the CDN goes down (and they do) then the fallback will be not pleasing to your users. ***
+For more information, see [http://www.iis.net/configreference/system.webserver/httpcompression](http://www.iis.net/configreference/system.webserver/httpcompression).
 
-We recommend that extensions deploy  broadly across all regions in an active-active configuration and use a technology, such as [Azure Traffic Manager](https://azure.microsoft.com/en-us/documentation/articles/traffic-manager-overview/) with a "Performance" profile, to direct the user to the server closest to them. This will give users the best experience, especially if the extension communicates with an RP that is also deployed broadly across regions. (Since ARM is deployed in every region, this means that that traffic for a user will stay entirely within one region, reducing latency.)
+<a name="deployment-using-the-content-delivery-network-invalidating-content-on-the-cdn"></a>
+### Invalidating content on the CDN
 
-We also recommend that extensions use a CDN, such as Azure CDN, to move the most commonly-downloaded resources as close to the end user as possible. For more information about using Azure CDN with extensions, see [Configuring CDN and understanding Extension Versioning](portalfx-cdn.md).
-<!-- TODO:  deprecate the previous section of this document by removing it.  It has been replaced by portalfx-extensions-custom-deployment.md -->
+Versioning should be configured when a new release of an extension is made available, to ensure that users are served the latest static content. Invalidating previous or stale content causes the Portal to    .
 
-<a name="resiliency-and-failover"></a>
-## Resiliency and failover
+* AMD Bundles are invalidated using a hash value that is generated on the file content, as in the following example.
 
-Having a presence in all geographies is important for good performance.
-We see much higher latencies and reliability issues when servers are not geo-located with their users.
-(For more tips, see the [performance page](portalfx-performance.md).)
+https://hubs-s3-portal.azurecomcdn.net/AzureHubs/Content/Dynamic/AmdBundleDefinition_**83A1A15A39494B7BB1F704FDB5F32596D4498792**.js?root=*HubsExtension/ServicesHealth/ServicesHealthArea
 
-In order to deploy to all regions:
-1.	Use [Extension Hosting Service](portalfx-extension-hosting-service.md) to deploy UI
-1.	Deploy Controllers to all regions
+* Static content is invalidated using the extension version that is associated with a specific version, as in the following example. 
 
-In general, it is best to set up servers in every region.
-That said, there is some flexibility.
-If your content is primarily static and all of your controller access is ARM via CORS then CDN can work well.
-***The caveat is that when the CDN goes down (and they do) then the fallback will be not pleasing to your users.***
-
-If you have controllers in your extension server, it depends on how they are used.
-Usually messages across long distances suffer more from latency than throughput.
-This means if you have a steady stream of data, such as uploading a file, the distance isn’t as noticeable as when you have lots of messages, such as individual calls to get status on lots of storage accounts.
-In this example the upload step would be more of a "delay expected" moment that is infrequent where the status messages are needed right away and very often.
-In the first case, you can probably get away with fewer servers, but in the second case geo-locating them will be very important.
-
-[deployment-architecture]: ../media/portalfx-custom-extensions-deployment/deployment.png
-<!-- TODO:  add "hotfix" info here for when developers need to walk their code into the 4 environments instead of waiting for the automated processes.-->
-
-<!-- TODO: add "portalfx-extension-onboarding-developer-guide.md#making-your-extension-visible--enabled-in-portal-on-a-specific-time" here -->
-
+https://hubs-s3-portal.azurecomcdn.net/AzureHubs/Content/**5.0.202.7608987.150717-1541**/Images/HubsExtension/Tour_Tile_Background_Normal.png
