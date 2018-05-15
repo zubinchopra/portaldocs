@@ -180,25 +180,33 @@ To compile your test and for dev time intellisense you will need a ./tsconfig.js
 ```json
 
 {
-  "compilerOptions": {
-    "experimentalDecorators": true,
-    "module": "amd",
-    "sourceMap": false,
-    "baseUrl": ".",
-    "rootDir": ".",
-    "target": "es5",
-    "paths": {
-      "msportalfx-ut/*": ["./node_modules/msportalfx-ut/lib/*"],
-      "*": [
-        "./_generated/Ext/typings/Client/*",
-        "./node_modules/@types/*/index"
-      ]
-    }
-  },
-  "include": [
-    "./_generated/Ext/typings/Definitions/*",
-    "test/**/*"
-  ]
+    "compileOnSave": true,
+    "compilerOptions": {
+        "baseUrl": ".",
+        "experimentalDecorators": true,
+        "module": "amd",
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "outDir": "./Output",
+        "rootDir": ".",
+        "sourceMap": false,
+        "target": "es5",
+        "paths": {
+            "msportalfx-ut/*": [
+                "./node_modules/msportalfx-ut/lib/*"
+            ],
+            "*": [
+                "./_generated/Ext/typings/Client/*",
+                "./node_modules/@types/*/index"
+            ]
+        }
+    },
+    "exclude": [],
+    "include": [
+        "./_generated/Ext/typings/Definitions/*",
+        "test/**/*"
+    ]
 }
 
 ```
