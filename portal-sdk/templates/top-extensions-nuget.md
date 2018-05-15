@@ -13,39 +13,35 @@ Portal SDK NuGet packages are published to the Microsoft internal NuGet feed loc
 
 ### Getting the NuGet packages externally
 
-PortalSDK NuGet packages are only published to Microsoft internal NuGet feeds.  If you do not have access to feeds like the one in the previous section, use the Portal MSI to deliver NuGet packages to your development machines.  This is the recommended path for [third party extension developers](portalfx-extensions-glossary-onboarding.md).
+PortalSDK NuGet packages are only published to Microsoft internal NuGet feeds.  If you do not have access to those feeds such as the one mentioned above you will need use those NuGet packages that are included in the Azure Portal SDK.  This is the recommended path for  [third party extension developers](portalfx-extensions-glossary-onboarding.md).
 
 Installing the Portal SDK MSI will unpack the NuGet packages to a default location of `C:\Program Files (x86)\Microsoft SDKs\PortalSDK\packages` and will setup a NuGet package source named PortalSDK that points to that location.  Any subsequent actions performed in **Visual Studio** or the **NuGet** command line will also search the new local PortalSDK feed in program files for Portal-related NuGet packages.
 
 ## Updating your extension to a newer version of the SDK
 
+External partners can download and install the NuGet packages when they install and use **Visual Studio 2015**. For more information, see [portalfx-extensions-getting-started-procedure.md](portalfx-extensions-getting-started-procedure.md). The packages that are installed are located in the `C:\Program Files (x86)\Microsoft SDKs\PortalSDK\Packages` directory.
+
 ### Update your NuGet Packages
 
-<!-- Determine where the NuGet Package Manager is located in VS 2015 and 2017 --> 
 * In Visual Studio
 1. Install the latest version of the Portal SDK MSI, as specified in [downloads.md](downloads.md).
-1. In Visual Studio select `Tools > NuGet Package Manager > Package Manager Console…`.
-1. Select all `Microsoft.Portal.*` NuGet package.
-1. Click the `Update` button.
-1. Build and fix any breaking changes.
+1. In Visual Studio open your Solution and select `Tools > NuGet Package Manager > Manage NuGet packages for Solution…`.
+1. Select all `Microsoft.Portal.*` NuGet packages.
+1. Click `Update`.
+1. Build and fix any breaking changes, as described in [Breaking changes](/portal-sdk/generated/breaking-changes.md).
 
 * In CoreXT
-1. Find the latest SDK version number from the SDK downloads.
+1. Find the latest SDK version number from the SDK downloads document located at [/portal-sdk/generated/downloads.md](/portal-sdk/generated/downloads.md).
+
+1. Update your `package.config` to the latest version of the SDK.
+
 1. Run `init.cmd`.
 
     **NOTE**: Your $(Pkg*) references in your `csproj` file  should automatically update to point at the newest restored NuGet.
-1. Copy over /Content files to get latest *.d.ts and *.pde files.
+
+1. Copy over `/Content` files to get latest `*.d.ts` and `*.pde` files.
 
     **NOTE**:  CoreXT does not copy content files. Typically, internal teams use either a `<Target />` or a `NuGetContentRestore` task to rehydrate the Content files from their CxCache.
+
 1. Build and fix any breaking changes.
 
-### [Optional] Update the pdl XSD
-
-TODO: would need a separate path of shipping the XSD to provide another path here where they don't need to update the SDK.
-
-**NOTE**:  `<repoRootPath>`, without the angle brackets, is the path to the extension repository on the development computer.
-
-
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-nuget-packages.md"}
-
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-nuget-procedure.md"}
