@@ -12,17 +12,19 @@ The benefits of using the CDN to cache web site assets include the following.
 
 * Large scaling to better handle single-event high loads
     
-    For example, the start of a product launch event will cause a spike in user access that is not predictable on an annual basis
+    For example, the start of a product launch event will cause a sharp increase in user access that is not predictable on an annual basis
 
 * Less traffic is sent to the origin
 
-    User requests are distributed, and edge servers serve content
+    User requests are distributed, which allows edge servers to serve content
 
 The `CdnIntegrationBlade` allows customers to create and manage CDN endpoints for their existing Azure resources, as in the following example.
 
 ![alt-text](../media/portalfx-pde/CdnIntegrationBlade.png "Cdn integration blade")
 
- **NOTE**: The CdnIntegrationBlade only works in public Azure and is NOT available in national clouds like MoonCake, or BlackForest. 
+ **NOTE**: The CdnIntegrationBlade only works in public Azure and is NOT available in national clouds like MoonCake or BlackForest. 
+ 
+If you want to develop extensions that use the Content Delivery Network, create a code review and add "cdneng" as reviewers. Or, contact the Ibiza team for questions, concerns, or bug reports by using the StackOverflow tag .
 
 ### The CdnIntegration blade
 
@@ -31,90 +33,87 @@ Through simple integration, your customers can enable CDN on their Azure resourc
 **resourceId**: The id of your ARM resource. For example, if the Azure CDN blade is called from a Storage resource menu, the resourceId for a storage account would resemble the following string. 
 `/subscriptions/93456ca3-e4aa-4986-ab1c-98afe7a12345/resourceGroups/rg1/providers/Microsoft.ClassicStorage/storageAccounts/storagetest1`. 
 
-**location**: The geographic location of your resource, like "West US", or "East Asia". More information about extension versioning is specified in [portalfx-extensions-hosting-service-procedures.md#upload-safe-deployment-config](portalfx-extensions-hosting-service-procedures.md#upload-safe-deployment-config).
+**location**: The geographic location of your resource, like "West US", or "East Asia". More information about extension versioning is specified in [top-extensions-hosting-service.md#upload-safe-deployment-config](top-extensions-hosting-service.md#upload-safe-deployment-config).
 
 **originHostname**: The hostname of the service which is used as an origin for the created CDN endpoints. The hostname cannot contain slashes or protocols; instead it can contain only the domain name, like "storagetest1.blob.core.windows.net" or "webapptest2.azurewebsites.net".
 
 Use the following steps to embed the CDN integration blade into your extension.
 
-1. Import the CDN Extension NuGet Package
-1. Reference the CDN PDE
-1. Reference the CDN Integration Blade
-1. Telemetry and Monitoring
+1. [Import the CDN Extension NuGet Package](#importing-cdn-extension-nuget-package)
+1. [Reference the CDN PDE](#reference-the-cdn-pde)
+1. [Reference the CDN Integration Blade](#reference-the-cdn-integration-blade)
+1. [Telemetry and Monitoring](#telemetry-and-monitoring)
 
-## 1. Importing CDN Extension NuGet Package
+## Import the CDN extension nuget package
 
-To be able to use the CDN integration blade, you will need to reference Microsoft.Portal.Extensions.Cdn nuget package.
-For CoreXT based environemtns, you can add a reference to the package in your **corext.config** or **packages.config** file as shown below. If you are not using CoreXT, please reference the package as appropriate in your environment.
+To use the CDN integration blade, the extension should reference the `Microsoft.Portal.Extensions.Cdn` NuGet package.
+For CoreXT-based environments, the project should have a reference to the package in the  `corext.config`  file or the  `packages.config` file as in the following example. Otherwise,  reference the package as appropriate in your development environment.
 
 ```xml
 <package id="Microsoft.Portal.Extensions.Cdn" version="1.0.13.177" />
 ```
 
-*Note:* you will need to update the version with the latest from [here](https://msazure.visualstudio.com/DefaultCollection/One/_apps/hub/ms.feed.feed-hub?feedName=Official&protocolType=NuGet&packageName=microsoft.portal.extensions.cdn)
+*NOTE**: Remember to use the latest version that is located at [https://msazure.visualstudio.com/DefaultCollection/One/_apps/hub/ms.feed.feed-hub?feedName=Official&protocolType=NuGet&packageName=microsoft.portal.extensions.cdn](https://msazure.visualstudio.com/DefaultCollection/One/_apps/hub/ms.feed.feed-hub?feedName=Official&protocolType=NuGet&packageName=microsoft.portal.extensions.cdn).
 
-## 2. Referencing CDN PDE
+## Reference the CDN PDE
 
-In your extension *.csproj file, you will need to add a reference to the Microsoft_Azure_Cdn.pde similar to this:
+In the extension *.csproj file, add a reference to the `Microsoft_Azure_Cdn.pde` similar to the following code.
 ```xml
 <ExtensionReference Include="$(PkgMicrosoft_Portal_Extensions_Cdn)\content\Client\_extensions\Cdn\Microsoft_Azure_Cdn.pde" />
 ```
 
-## 3. Referencing CDN Integration Blade
+## Reference the CDN Integration Blade
 
-For the CdnIntegrationBlade to show up in your extension, you may reference it in one of the following ways:
+For the CdnIntegrationBlade to show up in your extension, you may reference it in one of two ways.
 
- - You can add it as an item in your resource menu similar to the code blow: 
-```ts
-{
-    id: "cdnIntegration",
-    displayText: "Azure CDN",
-    enabled: ko.observable(true),
-    visible: ko.observable(true), //Shouldn't be visible in national clouds
-    keywords: [
-        "cdn",
-        "endpoint",
-        "profile",
-        "domain"
-    ],
-    icon: MsPortalFx.Base.Images.Polychromatic.Cdn(),
-    supplyBladeReference: () => {
-        return new CdnBladeReferences.CdnIntegrationBladeReference(
-            {
-                resourceId: <your resource Id>,
-                location: <your resource location>,
-                originHostname: <your resource hostname>
-            });
-    }
-}
-```
+ 1. It can be an item in the Resource menu, as in the following code. 
+	```ts
+	{
+		id: "cdnIntegration",
+		displayText: "Azure CDN",
+		enabled: ko.observable(true),
+		visible: ko.observable(true), //Shouldn't be visible in national clouds
+		keywords: [
+			"cdn",
+			"endpoint",
+			"profile",
+			"domain"
+		],
+		icon: MsPortalFx.Base.Images.Polychromatic.Cdn(),
+		supplyBladeReference: () => {
+			return new CdnBladeReferences.CdnIntegrationBladeReference(
+				{
+					resourceId: <your resource Id>,
+					location: <your resource location>,
+					originHostname: <your resource hostname>
+				});
+		}
+	}
+	```
 
- - You can alternatively open the CdnIntegrationBlade as a DynamicBladeSelection, which doesn't require importing the CDN nuget package, as shown in this example:
+1. It can be opened as a DynamicBladeSelection, which does not require importing the CDN NuGget package.  An example is in the following code.
+	```ts
+	this._container.selectable.selectedValue(<MsPortalFx.ViewModels.DynamicBladeSelection>{
+			extension: "Microsoft_Azure_Cdn",
+			detailBlade: "CdnIntegrationBlade",
+			detailBladeInputs: {
+				resourceId: this.resourceUri(),
+				location: this._siteView.item().Location(),
+				originHostname: this._siteView.item().DefaultHostName()
+			}
+		});            
+	```
 
-```ts
-this._container.selectable.selectedValue(<MsPortalFx.ViewModels.DynamicBladeSelection>{
-        extension: "Microsoft_Azure_Cdn",
-        detailBlade: "CdnIntegrationBlade",
-        detailBladeInputs: {
-            resourceId: this.resourceUri(),
-            location: this._siteView.item().Location(),
-            originHostname: this._siteView.item().DefaultHostName()
-        }
-    });            
-```
+## Telemetry and monitoring
 
-## 4. Telemetry and Monitoring
-We are tracking the usage and actions on CDN integration blade through following metrics:
+Ibiza tracks the usage and actions on the CDN integration blade by using the  following metrics.
 
- - Number of CDN Endpoints created from partner extensions vs. CDN extension.
- - Number of customers clicking Azure CDN from partner extension.
- - Number of customers managing CDN from partner extension.
- - Percentage of customers initiating a CDN create operation after landing into the Azure CDN blade. 
- - Percentage of success and failure of create operations from the Azure CDN blade.
+* Number of CDN Endpoints created from partner extensions as opposed to CDN extensions.
+* Number of customers clicking Azure CDN from partner extensions.
+* Number of customers managing CDN from partner extensions.
+* Percentage of customers initiating a CDN create operation after landing into the Azure CDN blade. 
+* Percentage of success and failure of create operations from the Azure CDN blade.
 
-You shouldn't need to add any extra telemetry on your side.
+No extra telemetry is required from the extension.
 
-### Contact Us
-You can start development today! Create a code review and add  and "cdneng" as reviewers.
-
-Don't hesitate to contact us for any questions, concerns, or bug reports.
+    
