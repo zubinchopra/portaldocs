@@ -82,6 +82,7 @@ To generate `./_generated/Ext/ExtensionStringResourcesRequireConfig.js` and to c
 #### Add ./package.json
 
 ```json
+
 {
   "name": "extension-ut",
   "version": "1.0.0",
@@ -91,8 +92,9 @@ To generate `./_generated/Ext/ExtensionStringResourcesRequireConfig.js` and to c
     "init": "npm install --no-optional",
     "prereq": "npm run init && gulp --gulpfile=./node_modules/msportalfx-ut/gulpfile.js --cwd ./",
     "build": "npm run prereq && tsc -p tsconfig.json",
+    "build-trace": "tsc -p tsconfig.json --diagnostics --listFiles --listEmittedFiles --traceResolution",
     "test": "npm run build && karma start",
-    "test-ci": "npm run build && karma start --single-run",
+    "test-ci": "npm run build && karma start --single-run --no-colors",
     "test-dev": "npm run build && index.html"
   },
   "keywords": [
@@ -114,6 +116,7 @@ To generate `./_generated/Ext/ExtensionStringResourcesRequireConfig.js` and to c
     "karma-coverage": "1.1.1",
     "karma-edge-launcher": "0.4.2",
     "karma-mocha": "1.3.0",
+    "karma-mocha-reporter": "2.2.5",
     "karma-junit-reporter": "1.2.0",
     "karma-requirejs": "1.1.0",
     "karma-trx-reporter": "0.2.9",
@@ -215,7 +218,7 @@ Add a test to ./test/ResourceOverviewBlade.test.ts.  You can modify this example
 
 ```typescript
 
-import { assert } from "chai";
+import { assert } from "chai"; // type issues with node d.ts and require js d.ts so using chai
 import { DataContext } from "Resource/ResourceArea";
 import { Parameters, ResourceOverviewBlade } from "Resource/ResourceOverviewBlade";
 import ClientResources = require("ClientResources");
@@ -234,7 +237,7 @@ describe("Resource Overview Blade Tests", () => {
     server.restore();
   });
 
-  it("title populated with content from ARM", (done) => {
+  it("title populated with content from ARM", () => {
     // arrange
     const resourceId = "/subscriptions/0c82cadf-f711-4825-bcaf-44189e8baa9f/resourceGroups/sdfsdfdfdf/providers/Providers.Test/statefulIbizaEngines/asadfasdff";
     server.respondWith((request) => {
@@ -247,21 +250,28 @@ describe("Resource Overview Blade Tests", () => {
       }
     });
 
-    const bladeParameters = { id: resourceId };
+    const bladeParameters : Parameters = { id: resourceId };
     // options for the blade under test. optional callbacks beforeOnInitializeCalled, afterOnInitializeCalled and afterRevealContentCalled
     // can be supplied to execute custom test code
-    const options = {
+ 
+    // get blade instance with context initialized and onInitialized called
+    return TemplateBladeHarness.initializeBlade(ResourceOverviewBlade, {
       parameters: bladeParameters,
       dataContext: new DataContext(),
-    };
-
-    // get blade instance with context initialized and onInitialized called
-    return TemplateBladeHarness.initializeBlade(ResourceOverviewBlade, options).then((resourceBlade) => {
+      afterOnInitializeCalled: (blade) => {
+        console.log("after on init called");
+      },
+      beforeOnInitializeCalled: (blade) => {
+        console.log("before on init called");
+      },
+      afterRevealContentCalled: (blade) => {
+        console.log("after reveal called");
+      },
+    }).then((resourceBlade) => {
+      
       assert.equal(resourceBlade.title(), "bar");
       assert.equal(resourceBlade.subtitle, ClientResources.resourceOverviewBladeSubtitle);
-    }).then(
-      () => done(),
-      (e) => done(e));
+    });
   });
 });
 
