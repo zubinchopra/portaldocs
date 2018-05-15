@@ -7,7 +7,7 @@ The Ibiza team provides and operates a common extension hosting service that mak
 
 The hosting service will host the extension's client side code and make it available to the portal across all Azure regions.
 
-Teams that deploy UI for extensions with the classic cloud service model typically have to invest significant amounts of time to onboard to [MDS](portalfx-extensions-hosting-service-glossary.md), setup compliant deployments across all data centers, and configure [cdn](portalfx-extensions-hosting-service-glossary.md), storage and caching optimizations for each extension.
+Teams that deploy UI for extensions with the classic cloud service model typically have to invest significant amounts of time to onboard to [MDS](portalfx-extensions-glossary-hosting-service.md), setup compliant deployments across all data centers, and configure [cdn](portalfx-extensions-glossary-hosting-service.md), storage and caching optimizations for each extension.
 
 The cost of setting up and maintaining this infrastructure can be high. By leveraging the extension hosting service, developers can deploy extensions in all data centers without resource-heavy investments in the deployment infrastructure.
 
