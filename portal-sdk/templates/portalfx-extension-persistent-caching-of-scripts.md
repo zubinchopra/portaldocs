@@ -107,7 +107,7 @@ web.config
 
 ### Verfiying that persistent caching is working
 
-- Deploy a version of your extension. Examine the scripts it loads, they will be of the form `prefix<sha hash>suffix.js`
+- Deploy a version of your extension. Examine the scripts it loads, they will be of the form `<sha hash>suffix.js`
 - Use a blob explorer of your preference and verify that the scripts have been written to blob storage.
 - Then make changes to TS files in your solution, build and deploy a new version of your extension.
 - Look for scripts that have the same prefix and suffix but a different hash.
