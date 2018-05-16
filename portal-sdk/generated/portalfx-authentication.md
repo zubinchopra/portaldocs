@@ -217,7 +217,7 @@ Controller code.
 
 Tokens received from AAD contain a set of claims (key/value pairs) with information about user, including
 personally-identifiable information (PII). Note that PII will only be available to extension who fall under the
-[Azure privacy policy](https://www.microsoft.com/TrustCenter/Privacy). Extensions that don't fall under this policy
+[Azure privacy policy](https://www.microsoft.com/en-us/TrustCenter/Privacy/default.aspx). Extensions that don't fall under this policy
 (e.g. share PII with third-parties) will not have access to the token or its claims. This is due to the fact that
 Microsoft can be sued for abuse/misuse of PII as outlined by the privacy policy. Any exceptions need to be approved by
 [Ibiza LCA](mailto:ibiza-lca@microsoft.com).

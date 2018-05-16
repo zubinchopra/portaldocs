@@ -5,9 +5,8 @@
 <a name="getting-started-installation"></a>
 ### Installation
 
-1. Install [Node.js](https://nodejs.org) if you have not done so. This will also install npm, which is the package manager for Node.js.  We have only verified support for LTS Node versions 4.5 and 5.1 which can be found in the "previous downloads" section.  Newer versions of Node are known to have compilation errors.  
-1. Install [Node Tools for Visual Studio](https://www.visualstudio.com/en-us/features/node-js-vs.aspx)
-1. Install [TypeScript](http://www.typescriptlang.org/) 1.8.10 or greater.
+1. Your computer should have the most recent editions of operating systems and other software installed, as specified in [top-extensions-install-software.md](top-extensions-install-software.md).
+
 1. Verify that your:
     - node version is v4.5 or v5.1 using `node -v`
     - npm version is 3.10.6 or greater using `npm -v`.  To update npm version use `npm install npm -g`
@@ -182,7 +181,7 @@ If you don't have access, please follow the enlistment instructions below.
 <a name="getting-started-running-tests-in-visual-studio"></a>
 ### Running tests in Visual Studio
  
-1. Install [Node Tools for Visual Studio](https://www.visualstudio.com/en-us/features/node-js-vs.aspx) (Note that we recommend using the Node.js “LTS” versions rather than the “Stable” versions since sometimes NTVS doesn’t work with newer Node.js versions.)
+1. Install the Node tools that are located at [https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1](https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1). (Note that we recommend using the Node.js “LTS” versions rather than the “Stable” versions since sometimes NTVS doesn’t work with newer Node.js versions.)
 
 1. Once that’s done, you should be able to open Visual Studio and then create new project: *New -> Project -> Installed, Templates, TypeScript, Node.js -> From Existing Node.js code*.
 

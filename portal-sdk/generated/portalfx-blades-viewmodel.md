@@ -62,7 +62,7 @@ The template for this blade is in the following example.
 
 The following methods are  associated with the blade `ViewModel`.
 
-* [#The-blade-constructor](the-blade-constructor)
+* [#The-blade-constructor](#the-blade-constructor)
 
 * [#The-onInputset-method](#the-onInputsSet-method)
 
