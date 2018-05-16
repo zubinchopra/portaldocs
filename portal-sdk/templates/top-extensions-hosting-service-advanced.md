@@ -1,4 +1,4 @@
-## Advanced Hosting Service Procedures
+## Advanced Hosting Service Topics
 
 **NOTE**: This section of the document assumes that the reader has reviewed the hosting service document located at [top-extensions-hosting-service-procedures.md](portalfx-extensions-hosting-service-procedures.md). 
 

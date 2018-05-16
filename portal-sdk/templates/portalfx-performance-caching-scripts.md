@@ -101,7 +101,7 @@ The `web.config` file includes the following information.
 
 To validate that  persistent caching is working, perform the following steps.
 
-1. Deploy a version of your extension. Make a list of the scripts that it loads, whose names are of the form `<prefix><sha hash><suffix>.js`.
+1. Deploy a version of your extension. Make a list of the scripts that it loads, whose names are of the form `<sha hash><suffix>.js`.
 1. Use any blob explorer or editor to validate that the scripts have been written to blob storage.
 1. Make changes to the TS files in the solution, then build and deploy a new version of the extension.
 1. Look for scripts that have the same prefix and suffix but a different hash.
