@@ -63,6 +63,6 @@ Once you reference the monitor chart control in your overview blade, it will loo
 
 <!-- References -->
 [1]: https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/monitorchartv2
-[2]: ../media/portalfx-controls-monitor-chart-v2/monitor-chart-v2-control-sample.png
-[3]: ../media/portalfx-controls-monitor-chart-v2/monitor-chart-v2-control-overview-blade.png
+[2]: ../media/portalfx-controls-monitor-chart/monitor-chart-v2-control-sample.png
+[3]: ../media/portalfx-controls-monitor-chart/monitor-chart-v2-control-overview-blade.png
 [4]: https://msazure.visualstudio.com/DefaultCollection/One/_git/AzureUX-PortalFX?path=%2Fsrc%2FSDK%2FFramework.Client%2FTypeScript%2FFx%2FControls%2FMonitorChartV2.ts&version=GBproduction&_a=contents
