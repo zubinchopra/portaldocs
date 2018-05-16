@@ -36,28 +36,24 @@ To deploy an extension, use the following steps.
 
 	For more information about Gallery Item Hidekeys and the Azure Portal, see [portalfx-extensions-feature-flags-shell](portalfx-extensions-feature-flags-shell).
 
-	To permanently enable an extension when it is ready for general use, please reach out to `<a><mailto href>the Portal team</a>`.
+	To permanently enable an extension when it is ready for general use, please reach out to 
+     <a href="mailto:ibizafxpm@microsoft.com?subject=Extension Ready for general use&body=Hello, I would like to permanently enable an extension.">the Portal team</a>.
 
 1. Decide on the Extension "stamps"
 	
-	Every extension can deploy one or more "stamps" based on their testing requirements. The stamp is a combination of the version of the extension and the stage on which it will be located.  For more information about extension stamps, see [top-extensions-configuration-overview.md](top-extensions-configuration-overview.md).
+	Every extension can deploy one or more "stamps" based on their testing requirements. The stamp is a combination of the version of the extension and the stage on which it will be located.  For more information about extension stamps, see [portalfx-extensions-configuration-overview.md#extension-stamps-and-safe-deployment](portalfx-extensions-configuration-overview.md#extension-stamps-and-safe-deployment).
 
 1. Prepare for extension runtime compatibility
 
-	Extensions do not need to be recompiled and redeployed with every release of the SDK. To upgrade an extension, the developer can download the latest version of the SDK, fix any breaking compile-time
-	changes, and redeploy the extension.
+	Extensions do not need to be recompiled and redeployed with every release of the SDK. To upgrade an extension, the developer can download the latest version of the SDK, fix any breaking compile-time changes, and redeploy the extension.
 
 	* For extensions that use SDK builds older than 5.0.302.258
 	
-	Extensions are guaranteed 90 days of runtime backward compatibility after deployment. This means that an extension
-	that  is compiled against an  SDK that is older than 5.0.302.258  will be valid for 90 days. After that time, 
-	the extension must be upgraded to continue functioning in production.
+	Extensions are guaranteed 90 days of runtime backward compatibility after deployment. This means that an extension that  is compiled against an  SDK that is older than 5.0.302.258  will be valid for 90 days. After that time, 	the extension must be upgraded to continue functioning in production.
 	
-	* For For extensions that use SDK build 5.0.302.258 and more recent
+	* For extensions that use SDK build 5.0.302.258 and more recent
 	
-	Extensions are guaranteed 120 days of runtime backward compatibility after deployment. This means that an extension
-	that is compiled against the SDK build version 5.0.302.258, or more recent, will be valid for 120 days. After that time, 
-	the extension must be upgraded to continue functioning in production.
+	Extensions are guaranteed 120 days of runtime backward compatibility after deployment. This means that an extension that is compiled against the SDK build version 5.0.302.258, or more recent, will be valid for 120 days. After that time, the extension must be upgraded to continue functioning in production.
 
 1.  Deploy the extension by using the Extension Hosting Service
 
@@ -65,15 +61,10 @@ To deploy an extension, use the following steps.
 
 1. Deploy extension controllers to all regions
 
-	Each extension is responsible for deploying their controllers and setting up load-balancing across whatever regions
-	that is uses.
+	Each extension is responsible for deploying their controllers and setting up load-balancing across whatever regions that it uses.
 
-	We recommend that extensions deploy controllers broadly across all regions in an active-active configuration and use a
-	technology, such as [Azure Traffic Manager](https://azure.microsoft.com/en-us/documentation/articles/traffic-manager-overview/)
-	with a "Performance" profile, to direct the user to the server closest to them. This will give users the best
-	experience, especially if the extension communicates with an RP that is also deployed across regions. ARM
-	is deployed in every region, therefore traffic for a user will stay entirely within one region, which reduces
-	network latency.
+	We recommend that extensions deploy controllers broadly across all regions in an active-active configuration and use a technology, such as [Azure Traffic Manager](https://azure.microsoft.com/en-us/documentation/articles/traffic-manager-overview/)
+	with a "Performance" profile, to direct the extension  to the server closest to the user. This will give users the best experience, especially if the extension communicates with an RP that is also deployed across regions. ARM is deployed in every region, therefore traffic for a user will stay entirely within one region, which reduces network latency.
 
 <a name="deployment-legacy-diy-deployments"></a>
 ## Legacy/DIY deployments
@@ -94,9 +85,126 @@ If your extension server uses controllers, there is some flexibility in how they
 <a name="deployment-using-the-content-delivery-network"></a>
 ## Using the Content Delivery Network
 
-Developers may use a Content Delivery Network(CDN) to serve static images, scripts, and stylesheets. The Azure Portal SDK does not require the use of a CDN, or the use of a specific CDN. However, the CDN changes the location of the most-downloaded files to servers that may be closer to the user than file servers and similar endpoints. Extensions that are served from Azure can take advantage of the built-in CDN capabilities in the SDK. 
+The Azure Content Delivery Network (CDN) is designed to send audio, video, images, and other files faster and more reliably to customers by using servers that are closest to the users. These built-in CDN capabilities in the SDK dramatically increase speed and availability, and result in significant improvements in the user experience.
 
-<a name="deployment-using-the-content-delivery-network-creating-the-cdn-account"></a>
+Developers may use a Content Delivery Network(CDN) to serve static images, scripts, and stylesheets. The Azure Portal SDK does not require the use of a CDN, or the use of a specific CDN. However, the CDN changes the location of the files that are downloaded most often to servers that may be closer to the user than the typical file servers and similar endpoints. Extensions that are served from Azure can take advantage of the built-in CDN capabilities in the SDK. The benefits of using the CDN to cache web site assets include the following.
+
+* Better performance and user experience for end users
+
+    This is especially true for applications that require multiple round-trips to load content.
+
+* Large scaling to better handle single-event high loads
+    
+    For example, the start of a product launch event will cause a sharp increase in user access that is not predictable on an annual basis
+
+* Less traffic is sent to the origin
+
+    User requests are distributed, which allows edge servers to serve content
+
+The `CdnIntegrationBlade` allows customers to create and manage CDN endpoints for their existing Azure resources, as in the following example.
+
+![alt-text](../media/portalfx-pde/CdnIntegrationBlade.png "Cdn integration blade")
+
+ **NOTE**: The CdnIntegrationBlade only works in public Azure and is NOT available in national clouds like MoonCake or BlackForest. 
+ 
+If you want to develop extensions that use the Content Delivery Network, create a code review and add "cdneng" as reviewers. Or, contact the Ibiza team for questions, concerns, or bug reports by using the StackOverflow tag .
+
+<a name="deployment-using-the-content-delivery-network-the-cdnintegration-blade"></a>
+### The CdnIntegration blade
+
+Through simple integration, your customers can enable CDN on their Azure resources within your extension without navigating to the CDN extension. The CdnIntegrationBlade uses the following inputs.
+
+**resourceId**: The id of your ARM resource. For example, if the Azure CDN blade is called from a Storage resource menu, the resourceId for a storage account would resemble the following string. 
+`/subscriptions/93456ca3-e4aa-4986-ab1c-98afe7a12345/resourceGroups/rg1/providers/Microsoft.ClassicStorage/storageAccounts/storagetest1`. 
+
+**location**: The geographic location of your resource, like "West US", or "East Asia". More information about extension versioning is specified in [top-extensions-hosting-service.md#upload-safe-deployment-config](top-extensions-hosting-service.md#upload-safe-deployment-config).
+
+**originHostname**: The hostname of the service which is used as an origin for the created CDN endpoints. The hostname cannot contain slashes or protocols; instead it can contain only the domain name, like "storagetest1.blob.core.windows.net" or "webapptest2.azurewebsites.net".
+
+Use the following steps to embed the CDN integration blade into your extension.
+
+1. [Import the CDN Extension NuGet Package](#importing-cdn-extension-nuget-package)
+1. [Reference the CDN PDE](#reference-the-cdn-pde)
+1. [Reference the CDN Integration Blade](#reference-the-cdn-integration-blade)
+1. [Telemetry and Monitoring](#telemetry-and-monitoring)
+
+<a name="deployment-import-the-cdn-extension-nuget-package"></a>
+## Import the CDN extension nuget package
+
+To use the CDN integration blade, the extension should reference the `Microsoft.Portal.Extensions.Cdn` NuGet package.
+For CoreXT-based environments, the project should have a reference to the package in the  `corext.config`  file or the  `packages.config` file as in the following example. Otherwise, reference the package as appropriate in your development environment.
+
+```xml
+<package id="Microsoft.Portal.Extensions.Cdn" version="1.0.13.177" />
+```
+
+*NOTE**: Remember to use the latest version that is located at [https://msazure.visualstudio.com/DefaultCollection/One/_apps/hub/ms.feed.feed-hub?feedName=Official&protocolType=NuGet&packageName=microsoft.portal.extensions.cdn](https://msazure.visualstudio.com/DefaultCollection/One/_apps/hub/ms.feed.feed-hub?feedName=Official&protocolType=NuGet&packageName=microsoft.portal.extensions.cdn).
+
+<a name="deployment-reference-the-cdn-pde"></a>
+## Reference the CDN PDE
+
+In the extension *.csproj file, add a reference to the `Microsoft_Azure_Cdn.pde` similar to the following code.
+```xml
+<ExtensionReference Include="$(PkgMicrosoft_Portal_Extensions_Cdn)\content\Client\_extensions\Cdn\Microsoft_Azure_Cdn.pde" />
+```
+
+<a name="deployment-reference-the-cdn-integration-blade"></a>
+## Reference the CDN Integration Blade
+
+For the CdnIntegrationBlade to show up in your extension, you may reference it in one of two ways.
+
+ 1. It can be an item in the Resource menu, as in the following code. 
+	```ts
+	{
+		id: "cdnIntegration",
+		displayText: "Azure CDN",
+		enabled: ko.observable(true),
+		visible: ko.observable(true), //Shouldn't be visible in national clouds
+		keywords: [
+			"cdn",
+			"endpoint",
+			"profile",
+			"domain"
+		],
+		icon: MsPortalFx.Base.Images.Polychromatic.Cdn(),
+		supplyBladeReference: () => {
+			return new CdnBladeReferences.CdnIntegrationBladeReference(
+				{
+					resourceId: <your resource Id>,
+					location: <your resource location>,
+					originHostname: <your resource hostname>
+				});
+		}
+	}
+	```
+
+1. It can be opened as a DynamicBladeSelection, which does not require importing the CDN NuGget package.  An example is in the following code.
+	```ts
+	this._container.selectable.selectedValue(<MsPortalFx.ViewModels.DynamicBladeSelection>{
+			extension: "Microsoft_Azure_Cdn",
+			detailBlade: "CdnIntegrationBlade",
+			detailBladeInputs: {
+				resourceId: this.resourceUri(),
+				location: this._siteView.item().Location(),
+				originHostname: this._siteView.item().DefaultHostName()
+			}
+		});            
+	```
+
+<a name="deployment-telemetry-and-monitoring"></a>
+## Telemetry and monitoring
+
+Ibiza tracks the usage and actions on the CDN integration blade by using the  following metrics.
+
+* Number of CDN Endpoints created from partner extensions as opposed to CDN extensions.
+* Number of customers clicking Azure CDN from partner extensions.
+* Number of customers managing CDN from partner extensions.
+* Percentage of customers initiating a CDN create operation after landing into the Azure CDN blade. 
+* Percentage of success and failure of create operations from the Azure CDN blade.
+
+No extra telemetry is required from the extension.
+
+<a name="deployment-telemetry-and-monitoring-creating-the-cdn-account"></a>
 ### Creating the CDN account
 
 Follow the guide located at [http://aka.ms/portalfx/cdn](http://aka.ms/portalfx/cdn) to set up your CDN account.
@@ -107,7 +215,7 @@ After creating your CDN, there are a few options that need to be set.
 
 * Click the "Enable Query String" to enable query string status.
 
-<a name="deployment-using-the-content-delivery-network-configuring-the-extension"></a>
+<a name="deployment-telemetry-and-monitoring-configuring-the-extension"></a>
 ### Configuring the extension
 
 To take advantage of the CDN capabilities in the Portal SDK, there are a few pieces to configure. After setting up your CDN, you will receive a URL with which to access your content. It will be in the following format.
@@ -125,8 +233,7 @@ Neither `http` nor `https` are included in the url, so that the page can request
 
 Configuring versioning of your Extension is specified in [portalfx-extensions-versioning.md](portalfx-extensions-versioning.md). 
 
-
-<a name="deployment-using-the-content-delivery-network-reading-the-prefix-from-configuration"></a>
+<a name="deployment-telemetry-and-monitoring-reading-the-prefix-from-configuration"></a>
 ### Reading the prefix from configuration
 
 To read any FX configuration, the extension uses a class which inherits from `ApplicationContext`, as in the following example.
@@ -205,7 +312,7 @@ public class ApplicationConfiguration : ConfigurationSettings
 }
 ```
 
-<a name="deployment-using-the-content-delivery-network-iis-asp-net-configuration"></a>
+<a name="deployment-telemetry-and-monitoring-iis-asp-net-configuration"></a>
 ### IIS / ASP.NET Configuration
 
 Files are pushed to the CDN using the following process.
@@ -228,7 +335,7 @@ The literal "/CDN/" is inserted into the url immediately after the host address.
 
 For more information, see [http://www.iis.net/configreference/system.webserver/httpcompression](http://www.iis.net/configreference/system.webserver/httpcompression).
 
-<a name="deployment-using-the-content-delivery-network-invalidating-content-on-the-cdn"></a>
+<a name="deployment-telemetry-and-monitoring-invalidating-content-on-the-cdn"></a>
 ### Invalidating content on the CDN
 
 Versioning should be configured when a new release of an extension is made available, to ensure that users are served the latest static content. Invalidating previous or stale content causes the Portal to    .
