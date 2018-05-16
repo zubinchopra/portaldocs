@@ -47,7 +47,7 @@ This is the only document within the topic that contains an H1-level header.
     | `portalfx-<major-area>-<topic>-procedures.md`  | Optional.  Checklist document. Used when there are specific steps to follow, or when there are specific tasks whose completion must be verified. |
     | `portalfx-extensions-bp-<topic>.md`            | Optional. Best Practices for the topic. |
     | `portalfx-extensions-faq-<topic>.md`           | Optional. Frequently Asked Questions for the topic. |
-    | `portalfx-<major-area>-<topic>-fyi.md`         | Optional. For Your Information. Contains links that could not be included in the content within the natural flow of the topic and subtopic. Typically, by the time the entire topic has been authored, there are few, if any, links left for this section.  |
+    | `portalfx-<major-area>-<topic>-moreinfo.md`         | Optional. More  Information. Contains links that could not be included in the content within the natural flow of the topic and subtopic. Typically, by the time the entire topic has been authored, there are few, if any, links left for this section.  |
     | `portalfx-extensions-glossary-<topic>.md`      | Required. Glossary for the topic. |
 
 1. Sections that have been written for other documents can be linked to within the subtopics using normal gitHub linking procedures. This is best practice, and is preferred over copying and modifying paragraphs from file to file.
@@ -77,8 +77,8 @@ This is the only document within the topic that contains an H1-level header.
    {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-skeleton.md"}
    
 <!-- optional FYI document, for links that could not be included in the content within the natural flow of the doc -->
-<!-- gitdown": "include-file", "file": "../templates/portalfx-<major-area>-<topic>-fyi.md"  -->
-   {"gitdown": "include-file", "file": "../templates/portalfx-skeleton-fyi.md"}
+<!-- gitdown": "include-file", "file": "../templates/portalfx-<major-area>-<topic>-moreinfo.md"  -->
+   {"gitdown": "include-file", "file": "../templates/portalfx-skeleton-moreinfo.md"}
 
 <!-- required Glossary document. -->
 <!-- gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-<major-area>.md"  -->
