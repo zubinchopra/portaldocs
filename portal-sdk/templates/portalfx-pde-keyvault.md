@@ -1,18 +1,9 @@
 
-<tags
-    ms.service="portalfx"
-    ms.workload="portalfx"
-    ms.tgt_pltfrm="portalfx"
-    ms.devlang="portalfx"
-    ms.topic="keyvault-pickers-usage-doc"
-    ms.date="1/31/2017"
-    ms.author="karlaug"/>    
+# KeyVault picker blades
 
-## Getting started with the KeyVault picker blades
+## Overview 
 
-## What are the KeyVault picker blades
-
-The KeyVault picker blades are a tool intended to unify KeyVault selection and/or key/secret selection scenarios across the Portal. The Pickers are built using the ParameterCollection Framework v3.0. This means the blades are a "provider" and that to use it, you will need to write a "collector" which calls the blades and receives data back. An example of this can be found in the next section. To better understand the basics of how passing data with this framework works, see the examples of its usage in the Samples extension provided with the Azure SDK. 
+The KeyVault picker blades unify KeyVault selection and/or key/secret selection scenarios across the Portal. They are built using the `ParameterCollection` Framework v3.0. This means the blades are considered to be providers and extensions that use them will include a collector that calls the blades and receives data in return. An example of this can be found in the next section. To better understand the basics of how sending data with this framework works, see the examples of its usage in the Samples extension provided with the Azure SDK. 
 A typical flow for partner teams to follow if they need a key identifier or secret identifier in order to initialize their resource would be:
 
 - Vault and key selector buttons are shown, but key selector is locked.
@@ -74,6 +65,7 @@ The .pde you need to reference can be found by downloading the Microsft.Portal.E
 	}
 
 ### Constructor
+
 	this.vaultPickerCollector = new MsPortalFx.ViewModels.ParameterCollector<VaultPickerInputsOutputs>(_container, {
 	          supplyInitialData: () => {
 	              return <VaultPickerInputsOutputs> {
@@ -111,6 +103,7 @@ The following is an example of the PDL changes needed to use the blade.
 
 
 ### Inputs/Outputs
+
 	export interface KeyPickerInputsOutputs {
 	    key: KnockoutObservable<Key>; // The key that was picked, or created.
 	    vaultId: KnockoutObservable<string>; // The vault id of the vault to pick from. This can be supplied here or in config. If it is supplied here it is an updateable input.
@@ -132,11 +125,13 @@ The following is an example of the PDL changes needed to use the blade.
 	}
 
 ### Config
+
 	export interface KeyPickerConfig {
 	    vaultId: string; // the resource id of the vault to display keys from (Optional if the id of the vault was supplied in the KeyPickerInputsOutputs)
 	    showCreateNew?: boolean; // Whether the picker will give the option to create a new key.
 	}
 ### Constructor
+
 	this.keyPickerCollector = new MsPortalFx.ViewModels.ParameterCollector<KeyPickerInputsOutputs>(_container, {
 	          supplyInitialData: () => {
 	              return <KeyPickerInputsOutputs> {
@@ -159,6 +154,7 @@ The following is an example of the PDL changes needed to use the blade.
 	      });
 
 ### PDL Changes
+
 	<BladeAction Blade ="{BladeReference KeyPicker, extensionName=Microsoft_Azure_KeyVault}"
 	                   ParameterCollector ="keyPickerCollector">
 	</BladeAction>

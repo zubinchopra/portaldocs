@@ -1,12 +1,4 @@
 
-<tags
-    ms.service="portalfx"
-    ms.workload="portalfx"
-    ms.tgt_pltfrm="portalfx"
-    ms.devlang="portalfx"
-    ms.topic="distribute-pde"
-    ms.date="04/18/2016"
-    ms.author="nickha"/>    
 
 ## Sharing your PDE with other teams
 

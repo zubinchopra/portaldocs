@@ -73,7 +73,7 @@ Having a presence in all geographic locations is important for extension perform
 
 It is best practice to set up servers in every region for your extensions. If the extension content is primarily static, and all of its controller access is performed by ARM by using  CORS, then a CDN should be included as part of your solution. However, if the CDN goes down, the increase in latency by falling back to a different server location may result in a negative impact to your users.
 
-If your extension server uses controllers, there is some flexibility in how they are used. Typically,  messages across long distances suffer more from latency than throughput. For example, total network latency is not as noticeable for one long steady stream of data as it is for many small individual requests for status on many storage accounts. This is because the steady stream of data that is a file upload would be more of a "delay expected" moment that is infrequent, whereas the status messages are needed right away and very often. For file uploads, the extension would benefit from fewer servers that are strategically placed, but for messages, the extension would benefit from more servers that are geolocated with your clients.
+If your extension server uses controllers, there is some flexibility in how they are used. Typically,  messages across long distances suffer more from latency than throughput. For example, total network latency is not as noticeable for one long steady stream of data as it is for many small individual requests for status on many storage accounts. This is because the steady stream of data that is a file upload would be more of a "delay expected" moment that is infrequent, whereas the status messages are needed right away and very often. For file uploads, the extension would benefit from fewer servers that are strategically placed, but for messages, the extension benefits from working with more servers that are geolocated with your clients.
 
 <!-- TODO:  add "hotfix" info here for when developers need to walk their code into the 4 environments instead of waiting for the automated processes.-->
 
@@ -99,13 +99,15 @@ The `CdnIntegrationBlade` allows customers to create and manage CDN endpoints fo
 
 ![alt-text](../media/portalfx-pde/CdnIntegrationBlade.png "Cdn integration blade")
 
- **NOTE**: The CdnIntegrationBlade only works in public Azure and is NOT available in national clouds like MoonCake or BlackForest. 
- 
-If you want to develop extensions that use the Content Delivery Network, create a code review and add "cdneng" as reviewers. Or, contact the Ibiza team for questions, concerns, or bug reports by using the StackOverflow tag .
+ **NOTE**: The CdnIntegrationBlade only works in public Azure and is NOT available in national clouds.
+  
+ <!-- TODO:  Verify whether this is the correct process to onboard to the CDN. -->
+If you want to develop extensions that use the Content Delivery Network, create a code review and add "cdneng" as reviewers. You can also contact the Azure CDN Engineering team for questions, concerns, or bug reports by using the StackOverflow tag [ibiza-deployment](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment) .
 
 ### The CdnIntegration blade
 
-Through simple integration, your customers can enable CDN on their Azure resources within your extension without navigating to the CDN extension. The CdnIntegrationBlade uses the following inputs.
+<!-- TODO: Determine whether the CdnIntegration blade should be included in top-extensions-blades.md. -->
+Through simple integration, your customers can enable CDN on their Azure resources within your extension without navigating to the CDN extension. The CdnIntegrationBlade uses the following inputs. The contents of the fields are constants if the  CdnIntegrationBlade  will be displayed in the Resource Menu, as specified in [reference the CDN Integration Blade](#reference-the-cdn-integration-blade).
 
 **resourceId**: The id of your ARM resource. For example, if the Azure CDN blade is called from a Storage resource menu, the resourceId for a storage account would resemble the following string. 
 `/subscriptions/93456ca3-e4aa-4986-ab1c-98afe7a12345/resourceGroups/rg1/providers/Microsoft.ClassicStorage/storageAccounts/storagetest1`. 
@@ -167,6 +169,17 @@ For the CdnIntegrationBlade to show up in your extension, you may reference it i
 		}
 	}
 	```
+
+**id**: Contains the value "cdnIntegration". The id is used for the resource menu item `id`, and to track blade loads and create telemetry.
+
+**displayText**: Contains the value "Azure CDN".  This field should be localized, and should be located in  the `Resources.resx` file.
+
+**visible**:  Specifies whether menu can be displayed. It can be set to `true` or can be controlled by a feature flag  in your extension, as in the following code.
+
+	```ts
+	visible: ko.observable(MsPortalFx.isFeatureEnabled("cdnintegration"))
+	```
+
 
 1. It can be opened as a DynamicBladeSelection, which does not require importing the CDN NuGget package.  An example is in the following code.
 	```ts
