@@ -25,7 +25,13 @@ Extension components are  deployed to the following separate endpoints.
 | Resource providers           | Provides resource-specific APIs for management operations, like read, write, or delete   |
 | Content Delivery Network     | Provides static images, scripts, and stylesheets                                         |
 
+The Content Delivery Network is described in []().
 However, if your team wants to manage the user experience themselves, you may want more information about custom deployment of extensions, as described in  [top-extensions-custom-deployment.md](top-extensions-custom-deployment.md).
+
+hosting
+configuration
+Portal deployment
+custom-deployment
 
 <a name="deployment-deploying-an-extension"></a>
 ## Deploying an extension
@@ -124,7 +130,7 @@ Through simple integration, your customers can enable CDN on their Azure resourc
 
 Use the following steps to embed the CDN integration blade into your extension.
 
-1. [Import the CDN Extension NuGet Package](#import-the-cdn-extension-nuget-package)
+1. [Import the CDN Extension NuGet Package](#import-cdn-extension-nuget-package)
 1. [Reference the CDN PDE](#reference-the-cdn-pde)
 1. [Reference the CDN Integration Blade](#reference-the-cdn-integration-blade)
 1. [Telemetry and Monitoring](#telemetry-and-monitoring)

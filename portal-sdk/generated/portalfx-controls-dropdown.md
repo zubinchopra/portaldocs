@@ -265,7 +265,7 @@ The following code is dependent on the use of the `EditScope` observable or the 
             });
         ```
 
-    1. Follow the instructions in the section named [Multi-select functionality](#multi-select-functionality) to add multiselect and filtering to the new DropDown in your extension.
+    1. Follow the instructions in the section named [Multiselect functionality](#multiselect-functionality) to add multiselect and filtering to the new DropDown in your extension.
 </details>
 
 <details>
@@ -358,8 +358,8 @@ Add `filter: true` to the options in the create call, as in the following code.
     });
 ```
 
-<a name="dropdown-migration-to-the-new-dropdown-multi-select-functionality"></a>
-#### Multi-select functionality
+<a name="dropdown-migration-to-the-new-dropdown-multiselect-functionality"></a>
+#### Multiselect functionality
 
 Add `multiselect: true` to the options in the create call, as in the following code.
 
