@@ -27,6 +27,8 @@ Use deep links to jump directly into your extension within the Portal. The synta
 * Blades
 
     `<portalURL>/<directory>#blade/<extensionName>/<bladeName>`
+    
+    `<portalURL>/<directory>#blade/<extensionName>.<bladeName>`
 
 * Browse
 
@@ -61,7 +63,6 @@ Parameters for deep link targets are as follows:
 
 Examples:  ```Contoso_Azure_<extensionName>``` , ```HubsExtension```, ```Nod_Publishers_Azure_<extensionName> ```
 
-
 **assetType**: Asset types include the following.
 
     BillingSubscriptionBrowseService
@@ -72,22 +73,25 @@ Examples:  ```Contoso_Azure_<extensionName>``` , ```HubsExtension```, ```Nod_Pub
 
 **bladeName**: The name of the blade.
 
-**resourceType**: The type of resource that is in the Browse menu or .  
+**packageId**: The GUID that is associated with the package that contains the create blade or the Marketplace gallery item.
 
-    **NOTE**: Only subscription resources are supported. Tenant resources and nested resources are not supported.
-
+**resourceId**:  The GUID that is associated with the resource that is in the Browse menu or .
 
 **resourceGroups**: The type of resource group that is in the Browse menu or the menu. This includes the following literals.
 
-all
+* all
 
-Subscription
+* Subscription
 
-Tags
+* Tags
 
-**packageId**: The GUID that is associated with the package that contains the create blade.
+**resourceType**: The type of resource that is in the Browse menu or .  
 
-**resourceId**:  The GUID that is associated with the resource that is in the Browse menu or .
+   **NOTE**: Only subscription resource groups are supported. Tenant resource groups and nested resource groups are not supported.
+
+<!--TODO:  Determine whether we have a list of resource types. -->
+
+
 
 <a name="deep-links-examples"></a>
 ## Examples
@@ -102,6 +106,8 @@ The following is an example of a link to a blade. When the blade does not exist,
    [https://portal.azure.com/microsoft.com#blade/HubsExtension/HelpAndSupportBlade](https://portal.azure.com/microsoft.com#blade/HubsExtension/HelpAndSupportBlade)
 
 Blade inputs are serialized in consecutive name/value pairs, as in the following example.
+
+<!--TODO: Determine whether the names are HubsExtension and type in the following example. -->
 [https://portal.azure.com/microsoft.com#blade/HubsExtension/BrowseAllBladeWithType/type/HubsExtension_Tag](https://portal.azure.com/microsoft.com#blade/HubsExtension/BrowseAllBladeWithType/type/HubsExtension_Tag)
 
 The following is an example of a link to a browse resource. 
