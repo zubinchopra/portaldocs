@@ -62,7 +62,7 @@ Form controls are a subset of controls which are used to gather user input.  You
 
 {"gitdown": "include-file", "file": "../templates/top-extensions-controls-playground.md"}
 
-{"gitdown": "include-file", "file": "../templates/top-extensions-samples-controls.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-samples-controls.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-controls.md"}
     
