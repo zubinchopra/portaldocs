@@ -1,6 +1,6 @@
 ## The controls playground 
 
-The controls playground is located at [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground), and it provides a space where developers can experiment with controls previous to adding them to an extension. They can see what a control looks like, and how it behaves. The following is a working instance of a control.
+The controls playground is located at [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground), and it provides a space where developers can experiment with controls previous to adding them to an extension. They can see what a control looks like, and how it behaves.
 
 ![alt-text](../media/portalfx-controls/playground1.png "A Working Control in the Playground")
 
@@ -19,3 +19,5 @@ The playground provides a quick reference for both the options and the contract 
 ![alt-text](../media/portalfx-controls/playground_options.png "Control options and Interfaces")
  
 You quickly see every property that can be sent to the control as an option, in addition to all of the properties that it can return.
+
+For specific playground extension issues or general playground extension feedback, please reach out to  <a href="mailto:ibizacontrols@microsoft.com?subject=Playground Extension issues or feedback">ibizacontrols@microsoft.com</a>.

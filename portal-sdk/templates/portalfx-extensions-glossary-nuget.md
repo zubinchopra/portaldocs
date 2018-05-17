@@ -4,4 +4,5 @@ This section contains a glossary of terms and acronyms that are used in this doc
 
 | Term                | Meaning |
 | ------------------- | --- |
-|  | |
+| PDE | |
+| PDL | Programming Definition Language | 

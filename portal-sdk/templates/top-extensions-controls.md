@@ -3,72 +3,66 @@
 
 ## Overview 
 
-Controls are the building blocks of the Azure extension experience. They allow users to view, edit, and analyze data.
+Controls are the building blocks of the Azure extension experience. They allow users to view, edit, and analyze data. Using built in controls provides consistency across the portal.  Additionally, issues around usability, accessibility, security and any other fundamentals are handled by the Framework team.
 
-The Azure Portal team ships sample code that extension developers can leverage. All developers who install the Portal Framework SDK that is located at [http://aka.ms/portalfx/download](http://aka.ms/portalfx/download) also install the samples on their computers during the installation process. The source for the samples is located in the `Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension` folder. The source specifies the namespace in which the control is located. 
+To render a control in the portal, you need to create a `ViewModel` and bind it to your html template.
 
-Developers can view working copies of  sample controls in the Dogfood environment, which is located at [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/controls](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/controls). This site also contains links to working copies of individual controls. In some instances, controls describe the properties that they use in various interfaces, as in the following image.
+Creating a control `ViewModel` involves calling a factory method from a framework-provided module.  All of the modules live under `Fx/Controls/`, as in the following example.
 
-![alt-text](../media/portalfx-controls/controlProperties.png "Property for Filterable Grid Extensions Options Interface")
+```ts
+import * as <alias> from "Fx/Controls/<ControlName>"; // this will pull in the <ControlName> module
+```
 
-First-party extension developers, i.e. Microsoft employees, have access to the Dogfood environment, therefore they can view the samples that are located at [https://aka.ms/portalfx/viewSamples](https://aka.ms/portalfx/viewSamples).
+All of the factory methods have similar signatures, like the following.
 
-They can also access the controls playground located at [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground), which allows them to build their own code instead of using the provided samples.
+```ts
+<alias>.create(lifetimeManager, configurationOptions);
+```
 
-The Azure components of a UI experience are documented several ways. 
-* There may be a document that provides specific guidance about the component, in terms of what it is, what it does, or how it is used. 
-* The location of the sample code is included so that the developer can view the source for the component, or modify it as appropriate for the extensions they develop.  
-* A working copy of the component can be viewed in the Dogfood environment or the controls playground.
+The **Knockout** binding for all controls is the `pcControl` binding, as in the following code.
 
-## Procedure
+```ts
+<div data-bind='pcControl: myControl'></div>
+```
 
-To use a control, there are basically three steps. The following example demonstrates the three steps in **C#**; the three steps still occur in **Typescript**, but they may be programmed slightly differently.
+Taken together, creating a blade as specified in [top-blades-procedure.md](top-blades-procedure.md) that contains only a textbox would look something like the following.
 
-<!-- TODO: Determine whether the import statement is an alternative to referencing the control in the PDL in order to connect it to the extension, and if so, when.   -->
+```cs
+import * as TemplateBlade from "Fx/Composition/TemplateBlade";
+import * as TextBox from "Fx/Controls/TextBox";  // import statement for the control
 
-1. The control is used by importing the module, as in the following code.
+@TemplateBlade.Decorator({
+    htmlTemplate:
+        "<div data-bind='pcControl: myTextbox'></div>" // div which binds to the textbox viewmodel
+})
+export class AddUserBlade {
+    public title = ClientResources.bladeTitle;
+    public subtitle = ClientResources.bladeSubtitle;
+    public context: TemplateBlade.Context<void, MyArea.DataContext>;
 
-   ```c#
-    import * as <control>  from "Fx/Controls/<control> ";
-   ```
+    /**
+     * textbox viewmodel declaration
+     */
+    public myTextbox: TextBox.Contract;
 
-   where
-		   
-	`<control>`  is the name of the control, for example, infoBox.
+    public onInitialize() {
+        const { container } = this.context;
+        
+        // textbox viewmodel factory method used to initialized the textbox;
+        this.myTextbox = TextBox.create(container, {
+            label: "this is my textbox"
+        });
 
-    In some instances, the control is connected to the extension by being referenced in the pdl file, instead of importing the module for the control.
-    
-	
-1. Change the link element in the HTML template to a control container.
+        return Q();
+    }
+}
+```
 
-    ```html
-    <div>This is an example template blade that shows a link.</div>
-
-    <div data-bind="pcControl:infoBox"></div>
-    ```
-
-1. Then, create the ViewModel in the code.
-
-   ```c#
-   public infoBox: infoBox.Contract;
-
-   this.infoBox = infoBox.create(container, {
-       label: "someLabel"
-       //Other options...
-   });
-
-   ```
-
-The ViewModel can be created by experimenting with controls in the playground located at  [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground) and the samples located at [https://aka.ms/portalfx/viewSamples](https://aka.ms/portalfx/viewSamples). Alternatively, an extension can be developed by using the samples located at  `<dir>\Client\V1\Controls` or `<dir>\Client\V2\Controls\`, where `<dir>` is the `SamplesExtension\Extension\` directory, based on where the samples were installed when the developer set up the SDK.
-
+Form controls are a subset of controls which are used to gather user input.  You can see more information about forms at [top-extensions-forms.md](top-extensions-forms.md).
 
 {"gitdown": "include-file", "file": "../templates/top-extensions-controls-playground.md"}
-<!--
 
-  gitdown": "include-file", "file": "../templates/top-extensions-samples-controls-deprecated.md"}
-
- gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-controls.md"}
- -->
+{"gitdown": "include-file", "file": "../templates/top-extensions-samples-controls.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-controls.md"}
     
