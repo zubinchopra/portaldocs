@@ -105,7 +105,7 @@ Any template based UI in the portal (e.g. template blades or template parts can 
 
 * [Controls overview](/portal-sdk/generated/top-extensions-controls.md)
 
-* [Controls playground](/portal-sdk/generated/top-extensions-controls-playground.md)
+* [Controls playground](/portal-sdk/generated/top-extensions-controls.md#the-controls-playground)
 
 [Ask a controls related question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls)
 
@@ -161,7 +161,9 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 Since your extension is just web code, you can make **AJAX** calls to various services to load data into your UI. The framework provides a data library you can use to manage this data.
 
-* [Making authenticated calls to Azure Resource Manager (ARM)](/portal-sdk/generated/top-extensions-data.md)
+* [Loading and managing data](/portal-sdk/generated/top-extensions-data.md)
+
+* [Making authenticated calls to Azure Resource Manager (ARM)](/portal-sdk/generated/top-extensions-data-loading.md#authenticating-ajax-calls)
 
 * [Shaping and filtering data](/portal-sdk/generated/top-extensions-data-projections.md) 
 
@@ -173,13 +175,15 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 * [Memory management](/portal-sdk/generated/)
 
+* [The Lifetime managers](/portal-sdk/generated/portalfx-data-lifetime.md) 
+
 * [Custom domains (e.g. aad.portal.azure.com)](/portal-sdk/generated/)
 
 * [Sharing blades and parts across extensions](/portal-sdk/generated/)
 
 ## Debugging
 
-* [Using developer mode](/portal-sdk/generated/top-extensions-debugging.md#the-debug-tool)
+* [The debug tool](/portal-sdk/generated/top-extensions-debugging.md#the-debug-tool)
 
 * [Debugging extension load failures](/portal-sdk/generated/top-extensions-debugging.md#debugging-extension-load-failures)
 
