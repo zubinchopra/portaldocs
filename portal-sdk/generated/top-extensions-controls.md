@@ -5,70 +5,67 @@
 <a name="extension-controls-overview"></a>
 ## Overview
 
-Controls are the building blocks of the Azure extension experience. They allow users to view, edit, and analyze data.
+Controls are the building blocks of the Azure extension experience. They allow users to view, edit, and analyze data. Using built in controls provides consistency across the portal.  Additionally, issues around usability, accessibility, security and any other fundamentals are handled by the Framework team.
 
-The Azure Portal team ships sample code that extension developers can leverage. All developers who install the Portal Framework SDK that is located at [http://aka.ms/portalfx/download](http://aka.ms/portalfx/download) also install the samples on their computers during the installation process. The source for the samples is located in the `Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension` folder. The source specifies the namespace in which the control is located. 
+To render a control in the portal, you need to create a `ViewModel` and bind it to your html template.
 
-Developers can view working copies of  sample controls in the Dogfood environment, which is located at [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/controls](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/controls). This site also contains links to working copies of individual controls. In some instances, controls describe the properties that they use in various interfaces, as in the following image.
+Creating a control `ViewModel` involves calling a factory method from a framework-provided module.  All of the modules live under `Fx/Controls/`, as in the following example.
 
-![alt-text](../media/portalfx-controls/controlProperties.png "Property for Filterable Grid Extensions Options Interface")
+```ts
+import * as <alias> from "Fx/Controls/<ControlName>"; // this will pull in the <ControlName> module
+```
 
-First-party extension developers, i.e. Microsoft employees, have access to the Dogfood environment, therefore they can view the samples that are located at [https://aka.ms/portalfx/viewSamples](https://aka.ms/portalfx/viewSamples).
+All of the factory methods have similar signatures, like the following.
 
-They can also access the controls playground located at [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground), which allows them to build their own code instead of using the provided samples.
+```ts
+<alias>.create(lifetimeManager, configurationOptions);
+```
 
-The Azure components of a UI experience are documented several ways. 
-* There may be a document that provides specific guidance about the component, in terms of what it is, what it does, or how it is used. 
-* The location of the sample code is included so that the developer can view the source for the component, or modify it as appropriate for the extensions they develop.  
-* A working copy of the component can be viewed in the Dogfood environment or the controls playground.
+The **Knockout** binding for all controls is the `pcControl` binding, as in the following code.
 
-<a name="extension-controls-procedure"></a>
-## Procedure
+```ts
+<div data-bind='pcControl: myControl'></div>
+```
 
-To use a control, there are basically three steps. The following example demonstrates the three steps in **C#**; the three steps still occur in **Typescript**, but they may be programmed slightly differently.
+Taken together, creating a blade as specified in [top-blades-procedure.md](top-blades-procedure.md) that contains only a textbox would look something like the following.
 
-<!-- TODO: Determine whether the import statement is an alternative to referencing the control in the PDL in order to connect it to the extension, and if so, when.   -->
+```cs
+import * as TemplateBlade from "Fx/Composition/TemplateBlade";
+import * as TextBox from "Fx/Controls/TextBox";  // import statement for the control
 
-1. The control is used by importing the module, as in the following code.
+@TemplateBlade.Decorator({
+    htmlTemplate:
+        "<div data-bind='pcControl: myTextbox'></div>" // div which binds to the textbox viewmodel
+})
+export class AddUserBlade {
+    public title = ClientResources.bladeTitle;
+    public subtitle = ClientResources.bladeSubtitle;
+    public context: TemplateBlade.Context<void, MyArea.DataContext>;
 
-   ```c#
-    import * as <control>  from "Fx/Controls/<control> ";
-   ```
+    /**
+     * textbox viewmodel declaration
+     */
+    public myTextbox: TextBox.Contract;
 
-   where
-		   
-	`<control>`  is the name of the control, for example, infoBox.
+    public onInitialize() {
+        const { container } = this.context;
+        
+        // textbox viewmodel factory method used to initialized the textbox;
+        this.myTextbox = TextBox.create(container, {
+            label: "this is my textbox"
+        });
 
-    In some instances, the control is connected to the extension by being referenced in the pdl file, instead of importing the module for the control.
-    
-	
-1. Change the link element in the HTML template to a control container.
+        return Q();
+    }
+}
+```
 
-    ```html
-    <div>This is an example template blade that shows a link.</div>
-
-    <div data-bind="pcControl:infoBox"></div>
-    ```
-
-1. Then, create the ViewModel in the code.
-
-   ```c#
-   public infoBox: infoBox.Contract;
-
-   this.infoBox = infoBox.create(container, {
-       label: "someLabel"
-       //Other options...
-   });
-
-   ```
-
-The ViewModel can be created by experimenting with controls in the playground located at  [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground) and the samples located at [https://aka.ms/portalfx/viewSamples](https://aka.ms/portalfx/viewSamples). Alternatively, an extension can be developed by using the samples located at  `<dir>\Client\V1\Controls` or `<dir>\Client\V2\Controls\`, where `<dir>` is the `SamplesExtension\Extension\` directory, based on where the samples were installed when the developer set up the SDK.
-
+Form controls are a subset of controls which are used to gather user input.  You can see more information about forms at [top-extensions-forms.md](top-extensions-forms.md).
 
 <a name="extension-controls-the-controls-playground"></a>
 ## The controls playground
 
-The controls playground is located at [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground), and it provides a space where developers can experiment with controls previous to adding them to an extension. They can see what a control looks like, and how it behaves. The following is a working instance of a control.
+The controls playground is located at [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground), and it provides a space where developers can experiment with controls previous to adding them to an extension. They can see what a control looks like, and how it behaves.
 
 ![alt-text](../media/portalfx-controls/playground1.png "A Working Control in the Playground")
 
@@ -87,12 +84,33 @@ The playground provides a quick reference for both the options and the contract 
 ![alt-text](../media/portalfx-controls/playground_options.png "Control options and Interfaces")
  
 You quickly see every property that can be sent to the control as an option, in addition to all of the properties that it can return.
-<!--
 
-  gitdown": "include-file", "file": "../templates/top-extensions-samples-controls-deprecated.md"}
+For specific playground extension issues or general playground extension feedback, please reach out to  <a href="mailto:ibizacontrols@microsoft.com?subject=Playground Extension issues or feedback">ibizacontrols@microsoft.com</a>.
 
- gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-controls.md"}
- -->
+
+<a name="extension-controls-samples-controls"></a>
+## Samples Controls
+
+There are some controls that are not yet ported over to the V2 programming model that uses a `create factory` method).  Additionally, there are some scenarios that are a bit more complicated than can be handled by the playground.  As such, we ship some code samples in the samples extension, which we provide to extension authors as part of the SDK. The following tables include the location of code samples for common scenarios in the samples extension.
+ 
+**NOTE**: In the following tables, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it can be experienced by using the link in the table. 
+
+| Control              | Sample Directory                                         | Experience                                                                              |
+| -------------------- | -------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Code Editor          | `<dir>\Client\V1\Controls\Editor\ViewModels`             | [https://aka.ms/portalfx/samples#blade/SamplesExtension/EditorSamplesBlade](https://aka.ms/portalfx/samples#blade/SamplesExtension/EditorSamplesBlade) |
+| Controls Chart       | `<dir>\Client\V1\Controls\Chart\ViewModels`              | [https://aka.ms/portalfx/samples#blade/SamplesExtension/ChartInstructions](https://aka.ms/portalfx/samples#blade/SamplesExtension/ChartInstructions) |
+| Donut                | `<dir>\Client\V2\Controls\Donut`                         | [https://aka.ms/portalfx/samples#blade/SamplesExtension/DonutBlade](https://aka.ms/portalfx/samples#blade/SamplesExtension/DonutBlade) |
+| EditableGrid         | `<dir>\Client\V2\Controls\EditableGrid`                  | [https://aka.ms/portalfx/samples#blade/SamplesExtension/EditableGrid](https://aka.ms/portalfx/samples#blade/SamplesExtension/EditableGrid) |
+| Essentials Control   | `<dir>\Client\V2\Controls\Essentials`                    | [https://aka.ms/portalfx/samples#blade/SamplesExtension/EssentialsIndexBlade](https://aka.ms/portalfx/samples#blade/SamplesExtension/EssentialsIndexBlade) |
+| File Download Button | `<dir>\Client\V1\Controls\FileDownloadButton\ViewModels` | [https://aka.ms/portalfx/samples#blade/SamplesExtension/FileDownloadButtonInstructions](https://aka.ms/portalfx/samples#blade/SamplesExtension/FileDownloadButtonInstructions) |
+| Graph                | `<dir>\Client\V1\Controls\Graph\ViewModels`              | [https://aka.ms/portalfx/samples#blade/SamplesExtension/GraphIndex](https://aka.ms/portalfx/samples#blade/SamplesExtension/GraphIndex) |
+| Grid Controls        | `<dir>\Client\V1\Controls\Grid\`                         | [https://aka.ms/portalfx/samples#blade/SamplesExtension/GridInstructions](https://aka.ms/portalfx/samples#blade/SamplesExtension/GridInstructions) |
+| ListView             | `<dir>\Client\V1\Controls\ListView\ViewModels`           | [https://aka.ms/portalfx/samples#blade/SamplesExtension/ListViewInstructions](https://aka.ms/portalfx/samples#blade/SamplesExtension/ListViewInstructions) |
+| Pill                 | `<dir>\Client\V2\Controls\Pill`                          | [https://aka.ms/portalfx/samples#blade/SamplesExtension/PillBlade](https://aka.ms/portalfx/samples#blade/SamplesExtension/PillBlade) |
+| Splitter             | `<dir>\Client\V2\Controls\Splitter`                      | [https://aka.ms/portalfx/samples#blade/SamplesExtension/SplitterBlade](https://aka.ms/portalfx/samples#blade/SamplesExtension/SplitterBlade) |
+| Toolbar              | `<dir>\Client\V1\Blades\Toolbar`                         | [https://aka.ms/portalfx/samples#blade/SamplesExtension/BladeWithToolbar](https://aka.ms/portalfx/samples#blade/SamplesExtension/BladeWithToolbar) |
+| Tree View            | `<dir>\Client\V1\Controls\Tree`                          | [https://aka.ms/portalfx/samples#blade/SamplesExtension/TreeBlade](https://aka.ms/portalfx/samples#blade/SamplesExtension/TreeBlade) |
+
 
 <a name="extension-controls-faqs-for-extension-controls"></a>
 ## FAQs for Extension Controls
