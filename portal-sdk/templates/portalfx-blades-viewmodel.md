@@ -43,7 +43,7 @@ The following methods are  associated with the blade `ViewModel`.
 
 ### The blade constructor
 
-When a blade is opened, the Portal creates a blade that displays a loading UX indicator, as specified in [portalfx-blades-procedure.md#displaying-a-loading-indicator-ux](portalfx-blades-procedure.md#displaying-a-loading-indicator-ux).  This indicator is displayed while the `ViewModel` for the blade is requested from the extension. Then, the constructor for the blade `ViewModel` runs. The constructor should include the `ViewModels` for the UI, and as much initialization as possible. 
+When a blade is opened, the Portal creates a blade that displays a loading UX indicator, as specified in [top-legacy-blades-template-pdl.md#displaying-a-loading-indicator-ux](top-legacy-blades-template-pdl.md#displaying-a-loading-indicator-ux).  This indicator is displayed while the `ViewModel` for the blade is requested from the extension. Then, the constructor for the blade `ViewModel` runs. The constructor should include the `ViewModels` for the UI, and as much initialization as possible. 
 
 This example will always need a readonly textbox for the name and an OK button to close the blade, so they are created in the constructor.  The constructor is not aware of  the value of the name textbox yet, because the values are only known after the  data is retrieved.  The value can be updated later because the `value` property of the textbox view model is observable, as in the following example of the blade  `ViewModel` constructor.
 

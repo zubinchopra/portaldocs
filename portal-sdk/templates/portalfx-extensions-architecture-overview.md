@@ -9,7 +9,7 @@ With this system, a team develops a UI extension to plug into and extend the UI 
 
 [UI extension isolation](#ui-extension-isolation)
 
-[Projecting Blade/Part UI](#projecting-blade-part-ui)
+[Projecting Blade and Part UI](#projecting-blade-and-part-ui)
 
 [Secure per-service UI](#secure-per-service-ui)
 
@@ -17,7 +17,7 @@ With this system, a team develops a UI extension to plug into and extend the UI 
 
 [Blade and Part API versioning](#blade-and-part-api-versioning)
 
-[Common Portal UX -- Marketplace and Browse](#common-portal-ux----marketplace-and-browse)
+[Common Portal UX Marketplace and Browse](#common-portal-ux-marketplace-and-browse)
 
 * * * 
 
@@ -161,7 +161,7 @@ With this, extensions preserve the flexibility to evolve their sets of Blades an
 
 Additionally, the Ibiza SDK contains APIs that allow for the wholesale replacement of one Blade or Part with new equivalent Blades/Parts.  It also has APIs that allow for the safe migration of Blades and Part between UI extensions, for example, when responsibilities for specific UIs transfer between teams.
 
-### Common Portal UX -- Marketplace and Browse
+### Common Portal UX Marketplace and Browse
 
 Beyond Blades and Parts, UI extensions can benefit from other UI integration with the Azure Portal.
 <!--  mentioned briefly here. -->
