@@ -29,9 +29,9 @@ To deploy an extension, use the following steps.
 
 1. Enable or disable extensions onboarding Ibiza
 
-	For more information about onboarding custom extensions to the Azure Portal, see [top-extensions-configuration-overview.md](top-extensions-configuration-overview.md).
+	For more information about onboarding custom extensions to the Azure Portal, see [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
 
-	For more information about Gallery Item Hidekeys and the Azure Portal, see [portalfx-extensions-feature-flags-shell](portalfx-extensions-feature-flags-shell).
+	For more information about Gallery Item Hidekeys and the Azure Portal, see [portalfx-extensions-flags-shell.md](portalfx-extensions-flags-shell.md).
 
 	To permanently enable an extension when it is ready for general use, please reach out to 
      <a href="mailto:ibizafxpm@microsoft.com?subject=Extension Ready for general use&body=Hello, I would like to permanently enable an extension.">the Portal team</a>.
@@ -69,7 +69,7 @@ For more information about custom deployment of extensions, see [top-extensions-
 
 ## Resiliency and failover
 
-Having a presence in all geographic locations is important for extension performance. Extensions encounter much higher latencies and reliability issues when servers are not geo-located with their users. For more information, see [top-extensions-performance.md](top-extensions-performance-overview.md).
+Having a presence in all geographic locations is important for extension performance. Extensions encounter much higher latencies and reliability issues when servers are not geo-located with their users. For more information, see [portalfx-performance-overview.md](portalfx-performance-overview.md).
 
 It is best practice to set up servers in every region for your extensions. If the extension content is primarily static, and all of its controller access is performed by ARM by using  CORS, then a CDN should be included as part of your solution. However, if the CDN goes down, the increase in latency by falling back to a different server location may result in a negative impact to your users.
 
@@ -118,7 +118,7 @@ Through simple integration, your customers can enable CDN on their Azure resourc
 
 Use the following steps to embed the CDN integration blade into your extension.
 
-1. [Import the CDN Extension NuGet Package](#importing-cdn-extension-nuget-package)
+1. [Import the CDN Extension NuGet Package](#import-cdn-extension-nuget-package)
 1. [Reference the CDN PDE](#reference-the-cdn-pde)
 1. [Reference the CDN Integration Blade](#reference-the-cdn-integration-blade)
 1. [Telemetry and Monitoring](#telemetry-and-monitoring)

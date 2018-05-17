@@ -17,9 +17,9 @@ This document is organized into the following sections.
 
 * [The EditScope Data Model](#the-editscope-data-model)
 
-* [The EditScopeCache](#the-editscopecache)
+* [The EditScope Cache](#the-editscope-cache)
 
-* [EditScope View Models](#editscope-view-models)
+* [EditScope ViewModels](#editscope-viewmodels)
 
 * [Loading the EditScope](#loading-the-editscope)
 
@@ -38,7 +38,7 @@ Parts or blades may request an `EditScope`, but the most typical usage is in a b
 
 After the `EditScope` is instantiated, initialized and loaded, entities can only be added  and removed from the EditScope by using EditScope methods. Unfortunately, extensions cannot add a new 'entity' object or remove an existing 'entity' from the EditScope by using observable changes. If an extension tries to make an observable change that introduces an 'entity' object into the EditScope, it will  encounter the error message described in [portalfx-extensions-status-codes.md#unknown-entity-typed-object-array](portalfx-extensions-status-codes.md#unknown-entity-typed-object-array).
 
-### EditScope entity arrays
+#### EditScope entity arrays
 
 The EditScope entity array is a hierarchy of 'entity' objects.  When the EditScope's `root` is an object, this object is considered an 'entity' by default. The EditScope becomes a hierarchy of entities when the EditScope includes an array of 'entity' objects. The extension supplies metadata for the type of the array items. For example, the  `T` in `KnockoutObservableArray<T>` contains the type.  Therefore, an object is treated by EditScope as an 'entity' when type metadata associated with the object is marked as an 'entity' type, or some EditScope object includes a property that is 'entity'-typed. 
 
@@ -183,7 +183,7 @@ The  following example uses an array that includes 'created' entities and does n
 
  {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/ParameterCollection/ParameterProviders/ViewModels/ProviderViewModels.ts", "section": "formsEditScopeFaq#getEntityArrayWithEdits"}
 
-### The EditScopeCache
+### The EditScope Cache
 ------------------------------------------------
 The `EditScopeCache` class is less commonly used. It loads and manages instances of `EditScope`.  Typically, the blade uses an `EditScopeView`, as specified in  `editScopeCache.createView(...)`, to load or acquire the EditScope,  connect the cache to the view and then display it on the blade.  If the extension uses an `EditScopeCache` component to manage its `EditScope`, the extension should initialize the `EditScope` data in the `supplyNewData` and `supplyExistingData` callbacks that are sent to the `EditScopeCache`. 
 
@@ -234,7 +234,7 @@ this.editScopeCache = MsPortalFx.Data.EditScopeCache.create<DataModels.WebsiteMo
 });
 ```
  
-### View Model
+### EditScope ViewModels
 ------------------------------------------------
 
 Rows can be added or removed from an editable grid, but the corresponding adds/removes may not be immediately viewable from the `EditScope` array. 

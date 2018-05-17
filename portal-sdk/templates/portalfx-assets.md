@@ -103,7 +103,7 @@ If a blade, part, or command represents or acts on multiple assets, the id is th
 
     Asset types that are displayed in the Browse menu specify the `<Browse Type="" />` node. The `Type` informs the Browse menu how to interact with the asset type. For more information about Browse integration, see [top-extensions-browse.md](top-extensions-browse.md).
 
-    Services that use [resource kinds](#resource-kinds) can be added to the Browse menu if they are configured by the Ibiza team. To do this, create a partner request at [http://aka.ms/portalfx/request](http://aka.ms/portalfx/request) with the asset type name and resource kind value.
+    Services that use [resource kinds](#special-casing-arm-resource-kinds) can be added to the Browse menu if they are configured by the Ibiza team. To do this, create a partner request at [http://aka.ms/portalfx/request](http://aka.ms/portalfx/request) with the asset type name and resource kind value.
 
 *  Displaying in the Browse Recent menu
 
@@ -128,7 +128,7 @@ Use the following procedure to implement the basic asset type.
 To ensure your blades, parts, and commands react in alignment with user permissions, you can add an `AssetType`, `AssetIdProperty`, and required `Permissions` to your blades, parts, and commands. For more information about permissions, see [portalfx-permissions.md](portalfx-permissions.md).
 
 
-### Special-casing ARM resource kinds
+### Special casing ARM resource kinds
 
 The Portal supports overriding the following default behaviors, based on the resource kind value for special-casing ARM resource kinds.
 
