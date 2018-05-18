@@ -43,7 +43,7 @@ In your extension *.csproj file, you will need to add a reference to the Microso
 
 For the CdnIntegrationBlade to show up in your extension, you may reference it in one of the following ways:
 
- - You can add it as an item in your resource menu similar to the code below: 
+ - You can add it as an item in your resource menu similar to the code blow: 
 ```ts
 {
     id: "cdnIntegration",
@@ -123,7 +123,5 @@ You shouldn't need to add any extra telemetry on your side.
 
 <a name="getting-started-with-azure-cdn-4-telemetry-and-monitoring-contact-us"></a>
 ### Contact Us
-You can start development today! Create a code review and add  and "cdneng" as reviewers.
-Azure CDN Engineering team
-
+You can start development today! Create a code review and add "inzarif" and "cdneng" as reviewers.
 Don't hesitate to contact us for any questions, concerns, or bug reports.
