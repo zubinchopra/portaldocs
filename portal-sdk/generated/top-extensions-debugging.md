@@ -52,9 +52,6 @@ The stickys that are associated with each part provide the following information
 <a name="debugging-an-extension-the-debug-tool-toggling-optimizations"></a>
 ### Toggling optimizations
 
-<a name="debugging-an-extension-the-clientoptimizations-flag"></a>
-## The clientoptimizations flag
-
 The **clientoptimizations** flag behaves somewhat like a trace mode flag, does not turn on and off code within an extension,nor does it control requests for another extension that is used by the extension that is being debugged.  Instead, it turns off bundling and minification of JavaScript to make debugging easier.   A value of `true` turns on bundling and minification,  and a value of `false` turns them both off. A value of `bundle` turns off JavaScript minification but retains bundling so the Portal still loads fairly quickly.  The value `bundle` is the suggested value for Portal extension debugging.  When debugging an extension, the developer should supply `false` for this flag to disable script minification and to turn on additional diagnostics
 
 <!--TODO: Both bundle and false are the recommended values for debugging.  Determine which one  is the better one.  -->
@@ -99,7 +96,7 @@ where
 
 The `IsDevelopmentMode` setting can be used on the server to alter the default optimization settings for the extension. for more information about the  `IsDevelopmentMode` setting and its alternatives, see [top-extensions-hosting-service-procedures.md#update-isdevelopmentmode-flag](top-extensions-hosting-service-procedures.md#update-isdevelopmentmode-flag).
 
-<a name="debugging-an-extension-the-clientoptimizations-flag-restore-default-settings"></a>
+<a name="debugging-an-extension-the-debug-tool-restore-default-settings"></a>
 ### Restore default settings
 
 The Portal tracks the state of the desktop for users as they navigate through the Portal. It stores the list of opened blades, active journeys, part selection status, and various other states of the Portal. At development time, it is often necessary to clear this information. If new parts are not displayed as expected, this is often the cause.
