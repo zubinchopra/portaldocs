@@ -88,8 +88,6 @@ The primary UI building block is a called a blade. A blade is like a page. It ge
 
 * [Blade with tiles](/portal-sdk/generated/top-blades-legacy.md)
 
-* * * 
-
 In addition to blades that you can develop, there are blades that your extensions can call that are not maintained by the Ibiza team.
 
 * [Portal Definition Export](/portal-sdk/generated/top-extensions-sharing-pde.md)
