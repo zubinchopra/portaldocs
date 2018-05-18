@@ -28,7 +28,7 @@ So we don't think you need to geo-distribute this layer.
 
 If Azure determines that Layer 3 is getting hit too often, the Ibiza team may change the geo-distribution strategy.
 
-The storage account should be the same across all upgrades of the extension, which includes geo-distribution across regions when the extension is deployed. For more information about extension configuration and geo-distribution, see [portalfx-extensions-hosting-service-advanced.md](portalfx-extensions-hosting-service-advanced.md).
+The storage account should be the same across all upgrades of the extension, which includes geo-distribution across regions when the extension is deployed. For more information about extension configuration and geo-distribution, see [top-extensions-hosting-service-advanced.md](top-extensions-hosting-service-advanced.md).
 
 An extension can make sure that scripts are available across extension updates by using a class that derives from `Microsoft.Portal.Framework.IPersistentContentCache` on the extension server. To do this, derive a class from `Microsoft.Portal.Framework.BlobStorageBackedPersistentContentCache` and [MEF](portalfx-extensions-glossary-performance.md)-export your implementation. If one account per region is used to handle the geo-distribution strategy, they can be synchronized by using a custom implementation of the `Microsoft.Portal.Framework.IPersistentContentCache` interface, similar to the one in the following code.
 
@@ -103,7 +103,7 @@ The `web.config` file includes the following information.
 
 To validate that  persistent caching is working, perform the following steps.
 
-1. Deploy a version of your extension. Make a list of the scripts that it loads, whose names are of the form `<prefix><sha hash><suffix>.js`.
+1. Deploy a version of your extension. Make a list of the scripts that it loads, whose names are of the form `<sha hash><suffix>.js`.
 1. Use any blob explorer or editor to validate that the scripts have been written to blob storage.
 1. Make changes to the TS files in the solution, then build and deploy a new version of the extension.
 1. Look for scripts that have the same prefix and suffix but a different hash.

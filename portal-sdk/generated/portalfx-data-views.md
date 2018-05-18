@@ -55,4 +55,4 @@ public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
 }
 ```
 
-For more information about shaping and filtering your data, see [portalfx-data-projections.md](portalfx-data-projections.md).
+For more information about shaping and filtering your data, see [top-extensions-data-projections.md](top-extensions-data-projections.md).
