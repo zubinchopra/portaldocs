@@ -48,6 +48,24 @@ The stickys that are associated with each part provide the following information
 
 ### Toggling optimizations 
 
+## The clientoptimizations flag
+
+The **clientoptimizations** flag behaves somewhat like a trace mode flag, does not turn on and off code within an extension,nor does it control requests for another extension that is used by the extension that is being debugged.  Instead, it turns off bundling and minification of JavaScript to make debugging easier.   A value of `true` turns on bundling and minification,  and a value of `false` turns them both off. A value of `bundle` turns off JavaScript minification but retains bundling so the Portal still loads fairly quickly.  The value `bundle` is the suggested value for Portal extension debugging.  When debugging an extension, the developer should supply `false` for this flag to disable script minification and to turn on additional diagnostics
+
+<!--TODO: Both bundle and false are the recommended values for debugging.  Determine which one  is the better one.  -->
+
+To set the optimizations mode for the portal and all extensions:
+
+    https://portal.azure.com/?clientoptimizations=<value>
+
+To set the optimization mode for a specific extension only:
+
+    https://portal.azure.com/?<YourExtension>_clientoptimizations=<value>
+
+**NOTE**:  This applies to both the Portal and extensions source. If testing extensions that are already deployed to production, use the **clientOptimizations** flag instead of the **IsDevelopmentMode** appSetting. If working in a development environment instead, use the **IsDevelopmentMode** appSetting instead of the **clientOptimizations** flag to turn off bundling and minification for this extension only. This will speed up Portal load during development and testing.  To change the **IsDevelopmentMode** appSetting, locate the appropriate `web.config` file and change the value of the **IsDevelopmentMode** appSetting to `true`. 
+
+ <!--TODO:  Verify whether this section contains all trace modes for the Azure Portal. -->
+
 Bundling and minification can be enabled or disabled for debugging.
 
 The following modes are available.
@@ -74,7 +92,7 @@ where
 
 **value**:  One of the previously-specified four modes, without the angle brackets.
 
-The `IsDevelopmentMode` setting can be used on the server to alter the default optimization settings for the extension. for more information about the  `IsDevelopmentMode` setting and its alternatives, see [portalfx-extensions-feature-flags-diagnostics.md](portalfx-extensions-feature-flags-diagnostics.md).
+The `IsDevelopmentMode` setting can be used on the server to alter the default optimization settings for the extension. for more information about the  `IsDevelopmentMode` setting and its alternatives, see [top-extensions-hosting-service-procedures.md#update-isdevelopmentmode-flag](top-extensions-hosting-service-procedures.md#update-isdevelopmentmode-flag).
 
 ### Restore default settings
 
