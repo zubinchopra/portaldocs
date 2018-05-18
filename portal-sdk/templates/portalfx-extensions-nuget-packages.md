@@ -34,7 +34,7 @@ After installation, NuGet packages that are used for development are listed in t
 | Package | Purpose | 
 | ------- | ------- |
 | Microsoft.Portal.TestFramework | Allows use of UI-based test cases with **Selenium** and **Visual Studio**. For more information about using the test framework, see [top-extensions-csharp-test-framework.md](top-extensions-csharp-test-framework.md). | 
-| Microsoft.Portal.TestFramework.UnitTest | Unit Test framework. For more information about unit testing,  see [portalfx-unit-test.md](portalfx-unit-test.md). | 
+| Microsoft.Portal.TestFramework.UnitTest | Unit Test framework. For more information about unit testing,  see [top-extensions-unit-test.md](top-extensions-unit-test.md). | 
 
 ### Deprecated packages
 
@@ -44,6 +44,6 @@ The following NuGet packages have been deprecated. Do not use these packages whe
 | ------- | ------- |
 | Microsoft.Portal.Azure.Website | Contains the Authenticated Developer Portal Website with Hubs and Billing Extensions. | 
 | Microsoft.Portal.Azure.WebsiteNoAuth | Contains the Unauthenticated Developer Portal Website. | 
-| Microsoft.Portal.Framework.Scripts | Deprecated, use Microsoft.Portal.TestFramework.UnitTest instead, as specified in  [portalfx-unit-test.md](portalfx-unit-test.md).  | 
+| Microsoft.Portal.Framework.Scripts | Deprecated, use Microsoft.Portal.TestFramework.UnitTest instead, as specified in  [top-extensions-unit-test.md](top-extensions-unit-test.md).  | 
 | Microsoft.Portal.Tools.Etw | Provides the **EtwRelatedFilesUtility.exe** tool and sample configurations for developers who are self-hosting extensions. The recommended practice is to use the extension hosting service as specified in [top-extensions-hosting-service.md](top-extensions-hosting-service.md) instead of custom deployment, as specified in [top-extensions-custom-deployment.md](top-extensions-custom-deployment.md).  | 
 
