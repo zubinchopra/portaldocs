@@ -1,4 +1,4 @@
-# Release Notes since 1/17/2018
+# Release Notes since 1/18/2018
 
 ## 5.0.302.1117
 0 Breaking Changes, 0 Features added and 1 Bugs Fixed
@@ -247,7 +247,3 @@
 ## 5.0.302.972
 0 Breaking Changes, 1 Features added and 1 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1894915'>1894915</a></td><td>Bug Fix</td><td>Default dashboards get merged instead of being overwritten in Domain Based Configurations</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1768051'>1768051</a></td><td>Feature</td><td>Remove Remote App link from Ibiza</td></tr></table>
-
-## 5.0.302.970
-0 Breaking Changes, 0 Features added and 3 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1887207'>1887207</a></td><td>Bug Fix</td><td>Add Framework.Client to Microsoft.Portal.TestFramework due to loc dependency</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1801085'>1801085</a></td><td>Bug Fix</td><td>MsPortalImpl\Interactions\Interactions.FlowLayoutDragDrop.ts, line:111 throws "Cannot read property 'elementObject' of null"</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1769638'>1769638</a></td><td>Bug Fix</td><td>All Services blade does not honor discovery policy when switched to "By name" view</td></tr></table>
