@@ -1,4 +1,12 @@
 
+<tags
+    ms.service="portalfx"
+    ms.workload="portalfx"
+    ms.tgt_pltfrm="portalfx"
+    ms.devlang="portalfx"
+    ms.topic="azure-monitoring-usage-doc"
+    ms.date="05/24/2016"
+    ms.author="nagan"/>    
 
 ## Getting started with Azure Monitoring
 
