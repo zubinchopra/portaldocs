@@ -12,6 +12,8 @@ The list of NuGet packages that contain extensions is contributed to by extensio
 
 The following sections describe the various NuGet packages by category.
 
+**NOTE**: The list of NuGet packages that contain extensions is contributed to by extension developers who ship the packages. Absence of an extension package from the list does not imply that the package does not exist, or does not ship. To verify whether an extension ships a NuGet package, reach out to the respective teams at [https://aka.ms/portalfx/uservoice](https://aka.ms/portalfx/uservoice) or [portalfx-extensions-contacts](portalfx-extensions-contacts).
+
 ### Development
 
 After installation, NuGet packages that are used for development are listed in the `NuGet Package Manager` tool in the **Visual Studio** project for the extension that is being built.
