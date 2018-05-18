@@ -19,7 +19,7 @@ The only limitation on developer-designed flag names is that they cannot contain
 
 Azure provides a support extension so that every resource that subscribes can assess its health, check the audit logs, get troubleshooting information, or open a support ticket.  Every extension should reach out to the <a href="mailto:AzSFAdoption@microsoft.com?subject=Onboarding with the Support team&body=Hello, I have a new extension that needs to opt in to to the features that Troubleshooting and Support provides.">Azure Self-Help Adoption Core Team at AzSFAdoption@microsoft.com</a> to opt in to the support system and UX integration.
 
-The developer needs to add code to the extension for each setting that will be used.  The following flags are used in coordination with the support extension, as specified in [portalfx-blades-settings.md#support-settings](portalfx-blades-settings.md#support-settings).
+The developer needs to add code to the extension for each setting that will be used.  The following flags are used in coordination with the support extension, as specified in [top-blades-settings.md#support-settings](top-blades-settings.md#support-settings).
 
 After the extension has been modified for the support extension, these flags can be used to obtain various types of support.  They are invoked as follows. 
 
