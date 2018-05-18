@@ -4,6 +4,7 @@
 NuGet packages are separated into the following categories.
 
 * [Development](#development)
+* [Shared Packages](#shared-packages)
 * [Publishing in the marketplace](#publishing-in-the-marketplace)
 * [Testing](#testing)
 * [Deprecated packages](#deprecated-packages)
@@ -24,6 +25,20 @@ After installation, NuGet packages that are used for development are listed in t
 | Microsoft.Portal.TypeMetadata  | Contains both runtime and compile time components that drive reflection-style features for the Azure Portal SDK.  This includes the compile time generation of C# model interfaces into TypeScript interfaces, and the injection of type information into the portal at runtime. | 
 | Microsoft.Portal.Tools | Contains PDC, Target files (.target) , [Definition files](portalfx-extensions-glossary-onboarding.md) and TypeScript 2.0.3 compiler. | 
 | Microsoft.Portal.Tools.ContentUnbundler | Contains the tool that packages an extension UI into a zip file which can be served by the hosting service. | 
+
+<a name="available-nuget-packages-shared-packages"></a>
+### Shared packages
+
+Portal Definition Exports, or PDE's, are extensions that are maintained by teams other than the Ibiza team and your team. These extensions are available for your use.
+
+| Package                                     | Purpose                   | Document |
+| ------------------------------------------- | ------------------------- | -------- |
+| `Microsft.Portal.Extensions.KeyVault.nuget` | The KeyVault picker blade | [portalfx-pde-keyvault.md](portalfx-pde-keyvault.md) |
+| `Microsft.Portal.Extensions.AAD.nuget     ` | The Select Member blade   | [portalfx-pde-adrbac.md](portalfx-pde-adrbac.md) |
+| `Microsft.Portal.Extensions.Billing`        | The Billing blade         | [portalfx-pde-billing.md](portalfx-pde-billing.md) |
+| `Microsft.Portal.Extensions.Hubs`           | The Hubs Extension        | [portalfx-hubsextension-pde.md](portalfx-hubsextension-pde.md) |
+| `Microsft.Portal.Extensions.Insights`       | Azure Insights            | [portalfx-pde-azureinsights.md](portalfx-pde-azureinsights.md) |
+| `Microsft.Portal.Extensions.Monitoring`     | Azure Monitoring          | [portalfx-pde-monitoring.md](portalfx-pde-monitoring.md) |
 
 <a name="available-nuget-packages-publishing-in-the-marketplace"></a>
 ### Publishing in the marketplace

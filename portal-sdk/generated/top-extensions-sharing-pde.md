@@ -2,16 +2,18 @@
 <a name="sharing-your-pde-with-other-teams"></a>
 # Sharing your PDE with other teams
 
-
 <a name="sharing-your-pde-with-other-teams-overview"></a>
 ## Overview
 
+Extensions can be used by other extensions within the Portal. There are extensions that the Ibiza team makes  available to developers, and other teams and developers are also encouraged to share extensions as appropriate.
 
-Extensions can be used by other extensions within the Portal. There are several extensions that the Ibiza team makes  available developers, and developers are also encouraged to share extensions as appropriate.
-A pde blade is a blade that is shared with other teams.  It is shared by means of packaging it as a NuGet package that is made available to the developer in the Visual Studio IDE and the CoreXT IDE. It is possible to access a NuGet package from other IDE's.  For more information, see []().
+Extensions and blades are shared by means of packaging them as NuGet packages that are  made available in the Visual Studio IDE and the CoreXT IDE,  although it is possible to access a NuGet package from other IDE's. 
+
+An extension can refer to another extension's NuGet packages in order to invoke its blades or parts at runtime.
+
+ For more information about sharing pde's, see [portalfx-extensions-nuget-packages.md](portalfx-extensions-nuget-packages.md). 
 Shared blades are typically dedicated to a specific function, like billing, monitoring, or  . Using a shared blade standardizes    across extensions, and 
  improves blade performance within the Portal.
- 
  
 <a name="sharing-your-pde-with-other-teams-basic-format-of-a-shared-blade"></a>
 ## Basic format of a shared blade
@@ -46,28 +48,18 @@ There are several options that are located in the PDL file. The following is a l
 
 **Export**: Optional field.  Specifies whether this blade is exported from your extension and to be opened by other extensions. If this field is `true`, a strongly typed blade reference is created. 
 
-
-<a name="sharing-your-pde-with-other-teams-installation"></a>
-## Installation
-
- To use a shared blade within your extension, perform the following steps.
-1.
-1.
-1.
-1.
-
 For more information on the types of shared extensions, see the  following list of PDE topics. 
 
-| Type                          | Document           | Description |
-| ----------------------------- | ---- | ---- |
-|                  | [portalfx-pde-publish.md](portalfx-pde-publish.md) | How to share a PDE with other teams.  |
-| The Select Member Blade                    | [portalfx-pde-adrbac.md](portalfx-pde-adrbac.md) |  Unifies "member selection" scenarios across the Portal.     |
-|      |   [portalfx-pde-billing.md](portalfx-pde-billing.md)  |   | 
-|     |   [portalfx-hubsextension-pde.md](portalfx-hubsextension-pde.md)  |    | 
-| Azure Insights  | [portalfx-pde-azureinsights.md](portalfx-pde-azureinsights.mdd) |  | 
-|  Azure Monitoring        | [portalfx-pde-monitoring.md](portalfx-pde-monitoring.md)  |  azure-monitoring-usage-doc  |
-|  KeyVault picker   | [portalfx-pde-keyvault.md](portalfx-pde-keyvault.md) |   |
-|  Azure Content Delivery Network   | [portalfx-pde-cdn.md](portalfx-pde-cdn.md) |   |
-| Extensibility | [portalfx-extensibility-pde.md](portalfx-extensibility-pde.md) | | 
+| Type                        | Document                                                       | Description                                                                 |
+| --------------------------- | -------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| Extensibility               | [portalfx-extensibility-pde.md](portalfx-extensibility-pde.md) | Locating and Importing the PDE file into your extension.                    | 
+| Sharing Extensions          | [portalfx-pde-publish.md](portalfx-pde-publish.md)             | How to share a PDE with other teams.                                        |
+| Content Delivery Network    | [portalfx-pde-cdn.md](portalfx-pde-cdn.md)                     | Storing images, scripts, and other files on globally geodistributed servers |
+| The KeyVault picker blade   | [portalfx-pde-keyvault.md](portalfx-pde-keyvault.md)           | Unifies KeyVault selection and/or key/secret selection scenarios across the Portal. |
+| The Select Member Blade     | [portalfx-pde-adrbac.md](portalfx-pde-adrbac.md)               | Unifies "member selection" scenarios across the Portal.                     |
+| The Billing Blade           | [portalfx-pde-billing.md](portalfx-pde-billing.md)             |                                                                             | 
+| The Hubs Extensions         | [portalfx-hubsextension-pde.md](portalfx-hubsextension-pde.md) | Provides the PricingTier, the ResourceTags, and other parts                 | 
+| Azure Insights              | [portalfx-pde-azureinsights.md](portalfx-pde-azureinsights.md) | Activity logs and other tools that provide metadata about extension performance and maintenance. | 
+| Azure Monitoring            | [portalfx-pde-monitoring.md](portalfx-pde-monitoring.md)       | azure-monitoring-usage-doc                                                  |
 
 For more information about sharing pde's, see [portalfx-extensions-nuget-packages.md](portalfx-extensions-nuget-packages.md).
