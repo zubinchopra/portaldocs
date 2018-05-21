@@ -23,7 +23,7 @@ Accessibility is about making the Portal usable by people who have limitations t
 
       **NOTE**: When using that theme, the contrast ratio for all text must meet the AAA guidelines that are located at [http://www.interactiveaccessibility.com/web-accessibility-guideline](http://www.interactiveaccessibility.com/web-accessibility-guideline).
 
-    * The Portal supports HighContrast mode and should display controls and chrome accordingly.
+    * The Portal supports `HighContrast` mode and should display controls and chrome accordingly.
 
 1. Focus management is handled by the Framework and follows those rules, unless the focus is changed by the user first.
 
@@ -33,8 +33,8 @@ Accessibility is about making the Portal usable by people who have limitations t
 
 * Focus should move freely across all elements visible in the Portal, except in the following cases:
 
-    * ContextMenu captures focus in a loop
-    * DropMenu captures focus in a loop
+    * `ContextMenu` captures focus in a loop
+    * `DropMenu` captures focus in a loop
 
 **NOTE**: Currently, the focus is on the first focusable element.
 
@@ -47,7 +47,7 @@ There are items for accessbility whose absence may result in bugs for the Framew
  
 1. Extension should update to use supported controls.  A sample of controls is located at [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/controls](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/controls). 
 
-    **NOTE**: Exceptions: (DiffEditor, DatePolyFills, PairedTimeline) are not supported by Framework.	
+    **NOTE**: `DiffEditor`, `DatePolyFills`, and `PairedTimeline` are not supported by Framework.	
 
 1. Extension should ensure theming support in both Light and Dark mode when using custom colors
 
@@ -83,11 +83,11 @@ When testing the extensions, a report that is created after testing is made avai
 
 Windows High Contrast Mode (WHCM) has native support for **Internet Explorer** and **Edge**. Other browsers do not support WHCM natively, and neither do other operating systems, therefore a custom theme is provided in the settings pane of the Portal. 
 
-**NOTE**: The custom theme is a good approximation of WCHM behavior and can be used to quickly verify compliance. To properly verify, use High Contrast settings option 2 with Edge.
+**NOTE**: The custom theme is a good approximation of WHCM behavior and can be used to quickly verify compliance. To properly verify, use High Contrast settings option 2 with Edge.
 
 ### Screen reader
 
-Either a combination of NVDA/Firefox or Narrator/Edge should satisfy screen reader requirements.
+Either a combination of **NVDA**/**Firefox** or **Narrator**/**Edge** should satisfy screen reader requirements.
 
 **NOTE**: At this time, Chrome seems to ignore some aria properties and the native widgets are not all properly accessible.
 
@@ -106,29 +106,29 @@ The following Websites provide accessibility test engines.
 
 After developing and testing an extension for accessibility, if there are still issues, they may be known by the Framework team.  Review the site located at [http://vstfrd:8080/Azure/RD/_workitems#path=Shared+Queries%2FAUX%2FIbiza%2FAccessibility%2FIbiza+Accessibility+-+Triaged+Active&_a=query](http://vstfrd:8080/Azure/RD/_workitems#path=Shared+Queries%2FAUX%2FIbiza%2FAccessibility%2FIbiza+Accessibility+-+Triaged+Active&_a=query)  to determine whether there are any known issues.   If this is a new issue, you can file a Framework bug by using the site located at  [http://aka.ms/portalfx/accessibility/bug](http://aka.ms/portalfx/accessibility/bug) on controls owned by the Framework.
 
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-accessibility-planning.md"}
+
 ## For more information 
 
 For more information about developing extensions with accessibility, see the following publications.
 
-What is Trusted Tester? (internal only)
+Trusted Tester with Keros (internal only)
 [https://www.1eswiki.com/wiki/Trusted_Tester_with_Keros#What_is_Trusted_Tester.3F](https://www.1eswiki.com/wiki/Trusted_Tester_with_Keros#What_is_Trusted_Tester.3F)
 
 What is Keros? (internal only) Baseline accessibility assessment (internal only)
 [https://www.1eswiki.com/wiki/Trusted_Tester_with_Keros#What_is_Keros.3F](https://www.1eswiki.com/wiki/Trusted_Tester_with_Keros#What_is_Keros.3F)
 
 Full MAS compliance assessment (internal only)
-[href="https://www.1eswiki.com/wiki/Trusted_Tester_with_Keros#Full_MAS_compliance_assessment](href="https://www.1eswiki.com/wiki/Trusted_Tester_with_Keros#Full_MAS_compliance_assessment)
+[https://www.1eswiki.com/wiki/Trusted_Tester_with_Keros#Full_MAS_compliance_assessment](https://www.1eswiki.com/wiki/Trusted_Tester_with_Keros#Full_MAS_compliance_assessment)
 
 WCAG color contrast tool
-[href="http://leaverou.github.io/contrast-ratio/](href="http://leaverou.github.io/contrast-ratio/)
+[http://leaverou.github.io/contrast-ratio/](http://leaverou.github.io/contrast-ratio/)
 
 WebAIM Accessibility
 [http://webaim.org/articles/](http://webaim.org/articles/)
 
 AAA guidelines
 [http://www.interactiveaccessibility.com/web-accessibility-guidelines](http://www.interactiveaccessibility.com/web-accessibility-guidelines)
-
-
 
 Natural tab order
 [https://www.paciellogroup.com/blog/2014/08/using-the-tabindex-attribute/](https://www.paciellogroup.com/blog/2014/08/using-the-tabindex-attribute/)
