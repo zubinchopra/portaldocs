@@ -136,8 +136,8 @@ Natural tab order
 Web semantics
 [http://www.w3schools.com/html/html5_semantic_elements.asp](http://www.w3schools.com/html/html5_semantic_elements.asp)
 
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-accessibility.md"}
 
-
-
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-accessibility.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-accessibility.md"}
