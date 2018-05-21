@@ -1,128 +1,184 @@
-* [Accessibility](#accessibility)
-    * [What the framework provides](#accessibility-what-the-framework-provides)
-    * [Troubleshooting issues:](#accessibility-troubleshooting-issues)
-    * [Testing for accessibility](#accessibility-testing-for-accessibility)
-    * [Basic accessibility checklist:](#accessibility-basic-accessibility-checklist)
-    * [Best Practices](#accessibility-best-practices)
-    * [References](#accessibility-references)
-
 
 <a name="accessibility"></a>
 # Accessibility
 
-Accessibility is about making the portal usable by people who have limitations that prevent or impede the use of conventional user interfaces. For some situations, accessibility requirements are imposed by law. However, Microsoft requires all blocking accessibility issues to be addressed regardless of legal requirements so the portal caters to the largest possible audience. The framework team has taken an inclusive design approach in incorporating keyboard, programmatic, and visual design support throughout the portal. Extensions are responsible for any graphics, styling, and custom HTML templates they provide.
-
+Accessibility is about making the Portal usable by people who have limitations that prevent or impede the use of conventional user interfaces. For some situations, accessibility requirements are imposed by law. However, Microsoft requires all blocking accessibility issues to be addressed regardless of legal requirements so the Portal caters to the largest possible audience. The Framework team has taken an inclusive design approach in incorporating keyboard, programmatic, and visual design support throughout the Portal. Extensions are responsible for any graphics, styling, and custom HTML templates they provide.
 
 <a name="accessibility-what-the-framework-provides"></a>
 ## What the framework provides
 
+1. The Framework provides reusable tiles, parts, forms, and controls that are fully accessible. 
 
-<a name="accessibility-what-the-framework-provides-the-framework-provides-reusable-tiles-parts-forms-and-controls-that-are-fully-accessible"></a>
-#### The framework provides reusable  tiles/parts, forms, and controls that are fully accessible.
-* Using the Form creation helper, your form will be fully accessible.
+    Using the Form creation helper, your form will be fully accessible.
 
-* All portal:
-  * Chrome
-  * Panes
-  * Sidebar
-  * Top nav
-  * Context menus
-  * Widgets
+    * All Portal:
+      * Chrome
+      * Panes
+      * Sidebar
+      * Top nav
+      * Context menus
+      * Widgets
 
-* Keyboard shortcuts are provided and are listed within the help menu in the portal. The shortcuts must work when using your extension content.
+    * Keyboard shortcuts are provided and are listed within the Help Menu in the Portal. The shortcuts must work when using your extension content.
 
-* A fully accessible default theme (Blue)  
-  _**NOTE:** When using that theme, the contrast ratio for all text must meet <a href="http://www.interactiveaccessibility.com/web-accessibility-guidelines">AAA guidelines</a>._
+    * A fully accessible default theme (Blue)
 
-* The Portal must support HighContrast mode and should display controls and chrome accordingly
+      **NOTE**: When using that theme, the contrast ratio for all text must meet the AAA guidelines that are located at [http://www.interactiveaccessibility.com/web-accessibility-guideline](http://www.interactiveaccessibility.com/web-accessibility-guideline).
 
-<a name="accessibility-what-the-framework-provides-focus-management-is-handled-by-the-framework-and-must-follow-those-rules-unless-focus-is-changed-by-the-user-first"></a>
-#### Focus management is handled by the framework and must follow those rules (unless focus is changed by the user first):
-* Focus moves to newly opened blade in the content section  
-	   _**NOTE:** Currently focus is on first focusable element however further usability testing will be required to determine final design._ 
+    * The Portal supports HighContrast mode and should display controls and chrome accordingly.
+
+1. Focus management is handled by the Framework and follows those rules, unless the focus is changed by the user first.
+
+* Focus moves to newly opened blade in the content section
 
 * Focus moves to context pane when opened
 
 * Focus should move freely across all elements visible in the Portal, except in the following cases:
-		* ContextMenu captures focus in a loop
-		* DropMenu captures focus in a loop
 
+    * ContextMenu captures focus in a loop
+    * DropMenu captures focus in a loop
 
-<a name="accessibility-troubleshooting-issues"></a>
-## Troubleshooting issues:
-- <a href="http://vstfrd:8080/Azure/RD/_workitems#path=Shared+Queries%2FAUX%2FIbiza%2FAccessibility%2FAll+D+and+F+bugs&_a=query">***Known issues*** </a> 
+**NOTE**: Currently, the focus is on the first focusable element.
 
-- **Is this a control owned by the framework?**   
-		<a href="http://aka.ms/portalfx/accessibility/bug">File a framework bug (internal only)</a>
-- **Missing text or labels?**   
-	Use the attribute TITLE to add a description that is shown on hover. If still not possible, use aria-label as last resort. <a href="http://www.w3schools.com/html/html_attributes.asp">Learn more about HTML attributes.</a>
+<a name="accessibility-accessibility-checklist"></a>
+## Accessibility Checklist
 
-- **Contrast too low?**   
-    Use the <a href="http://leaverou.github.io/contrast-ratio/">WCAG color contrast tool</a> to adjust colors
+<!--TODO: Determine what all of the accessiblity rules are, and associate them to the tagging rules for bugs -->
+There are items for accessbility whose absence may result in bugs for the Framework team.  In an effort to reduce the number of bugs, some guidelines are listed below.
+
+1. Extensions should update to SDK version 788 or more recent.
+ 
+1. Extension should update to use supported controls.  A sample of controls is located at [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/controls](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/controls). 
+
+    **NOTE**: Exceptions: (DiffEditor, DatePolyFills, PairedTimeline) are not supported by Framework.	
+
+1. Extension should ensure theming support in both Light and Dark mode when using custom colors
+
+1. Extension should not interfere with High Contrast theming.  A common mistake is to use a  `<div>` element instead of an `<a>` element for a link.
+
+1. When introducing user-actionable areas that are not based on supported controls, extension should use `fxClick` as documented. `click` binding is not supported.
+
+1. Extensions that create custom implementation of supported controls should be identified.
+
+1. Images and logos that are part of the Narrator Items mode should be labelled properly, or marked as aria-hidden if not significant.
+
+1. Review all controls and ensure that labels are being used. If labels are omitted, then use aria labels in the `ViewModel`.
+
+**NOTE**: The aria-label is one tool used by assistive technologies like screen readers. However, it is not natively supported on browsers and has no effect on them. It will not be of use to the population that is served by WCAG, except screen reader users. 
+
+1. Verify keyboard accessibility of your blade content and forms. Navigate to your content in the Portal and ensure focus is captured to your content in the expected way. Autofocus on open provided by the framework. 
+
+1. Screen items  have titles that are displayed on hover. If text or labels are missing from the screen, use the  `TITLE` attribute  to display them.  If the `TITLE` attribute cannot display the information,  use aria-label.  For more information about HTML attributes, see [http://www.w3schools.com/html/html_attributes.asp](http://www.w3schools.com/html/html_attributes.asp).
+
+1. Screen contrast has a minimum value. If the contrast is too low, use the WCAG color contrast tool that is located at [http://leaverou.github.io/contrast-ratio/](http://leaverou.github.io/contrast-ratio/) to adjust colors.
 
 <a name="accessibility-testing-for-accessibility"></a>
 ## Testing for accessibility
 
-* **High-contrast**  
-  IE or Firefox with Windows in High Contrast Mode Black on White.  
-	_**NOTE:** Chrome does not support High Contrast natively, and extensions apply filters that are not properly accessible._
+When testing the extensions, a report that is created after testing is made available to the developer of the extension.
 
-* **Screen reader**  
-  Either combination of NVDA/Firefox or Narrator/Edge  
-	_**NOTE:** At this time, Chrome seems to ignore some aria properties and the native widgets are not all properly accessible._
+<!--TODO: Determine what "justifications" means.  Why the pattern is applicable to this specific extension? -->
 
-* **Accessibility audit**
-  <a href="http://www.deque.com/products/axe/">aXe</a>: <a href="http://bitly.com/aXe-Chrome">Chrome plugin</a>, <a href="http://bit.ly/aXe-Firefox">Firefox plugin</a>, <a href="https://github.com/dequelabs/axe-core">axe-core</a> (unit testing)
+* Ibiza provides a list of common pattern that are not issues, with justifications
+
+* Ibiza provides a list of external product bugs that are not issues to fix with justifications and bug links
+
+<a name="accessibility-testing-for-accessibility-high-contrast"></a>
+### High-contrast
+
+Windows High Contrast Mode (WHCM) has native support for **Internet Explorer** and **Edge**. Other browsers do not support WHCM natively, and neither do other operating systems, therefore a custom theme is provided in the settings pane of the Portal. 
+
+**NOTE**: The custom theme is a good approximation of WCHM behavior and can be used to quickly verify compliance. To properly verify, use High Contrast settings option 2 with Edge.
+
+<a name="accessibility-testing-for-accessibility-screen-reader"></a>
+### Screen reader
+
+Either a combination of NVDA/Firefox or Narrator/Edge should satisfy screen reader requirements.
+
+**NOTE**: At this time, Chrome seems to ignore some aria properties and the native widgets are not all properly accessible.
+
+<a name="accessibility-testing-for-accessibility-accessibility-test-engines"></a>
+### Accessibility test engines
+
+The following Websites provide accessibility test engines.
+
+| Name    | Purpose | Website |
+| ------- | ------- |  ------ |
+| aXe: the Accessibility Engine| An open source rules library for accessibility testing        |  [http://www.deque.com/products/axe/](http://www.deque.com/products/axe/) |
+| Accessibility testing in Chrome Developer Tools |    Chrome plugin    |  [http://bitly.com/aXe-Chrome](http://bitly.com/aXe-Chrome) |
+|     aXe Developer Tools     |  Firefox plugin | [http://bit.ly/aXe-Firefox](http://bit.ly/aXe-Firefox) |
+|    Accessibility engine for automated Web UI testing   |  axe-core  (unit testing)  |[https://github.com/dequelabs/axe-core](https://github.com/dequelabs/axe-core) |
+
+<a name="accessibility-troubleshooting-issues"></a>
+## Troubleshooting issues
+
+After developing and testing an extension for accessibility, if there are still issues, they may be known by the Framework team.  Review the site located at [http://vstfrd:8080/Azure/RD/_workitems#path=Shared+Queries%2FAUX%2FIbiza%2FAccessibility%2FIbiza+Accessibility+-+Triaged+Active&_a=query](http://vstfrd:8080/Azure/RD/_workitems#path=Shared+Queries%2FAUX%2FIbiza%2FAccessibility%2FIbiza+Accessibility+-+Triaged+Active&_a=query)  to determine whether there are any known issues.   If this is a new issue, you can file a Framework bug by using the site located at  [http://aka.ms/portalfx/accessibility/bug](http://aka.ms/portalfx/accessibility/bug) on controls owned by the Framework.
+
+<a name="accessibility-for-more-information"></a>
+## For more information
+
+For more information about developing extensions with accessibility, see the following publications.
+
+What is Trusted Tester? (internal only)
+[https://www.1eswiki.com/wiki/Trusted_Tester_with_Keros#What_is_Trusted_Tester.3F](https://www.1eswiki.com/wiki/Trusted_Tester_with_Keros#What_is_Trusted_Tester.3F)
+
+What is Keros? (internal only) Baseline accessibility assessment (internal only)
+[https://www.1eswiki.com/wiki/Trusted_Tester_with_Keros#What_is_Keros.3F](https://www.1eswiki.com/wiki/Trusted_Tester_with_Keros#What_is_Keros.3F)
+
+Full MAS compliance assessment (internal only)
+[href="https://www.1eswiki.com/wiki/Trusted_Tester_with_Keros#Full_MAS_compliance_assessment](href="https://www.1eswiki.com/wiki/Trusted_Tester_with_Keros#Full_MAS_compliance_assessment)
+
+WCAG color contrast tool
+[href="http://leaverou.github.io/contrast-ratio/](href="http://leaverou.github.io/contrast-ratio/)
+
+WebAIM Accessibility
+[http://webaim.org/articles/](http://webaim.org/articles/)
+
+AAA guidelines
+[http://www.interactiveaccessibility.com/web-accessibility-guidelines](http://www.interactiveaccessibility.com/web-accessibility-guidelines)
 
 
-<a name="accessibility-basic-accessibility-checklist"></a>
-## Basic accessibility checklist:
 
-1. Ensure there is accessible name (required) and description (optional) for content and interactive UI elements in your extension.
+Natural tab order
+[https://www.paciellogroup.com/blog/2014/08/using-the-tabindex-attribute/](https://www.paciellogroup.com/blog/2014/08/using-the-tabindex-attribute/)
 
-2. Verify keyboard accessibility of your blade content and forms.  
-  - Navigate to your content in the portal and ensure focus is captured to your content in the expected way (autofocus on open provided by the framework)  
-  - Ensure the <a href="https://www.paciellogroup.com/blog/2014/08/using-the-tabindex-attribute/">tab order is natural</a> while navigating the blade content
-  - Verify that portal provided keyboard shortcuts are functional within your provided content  
-3. Visually verify your UI to ensure:  
-  - Text contrast meets <a href="http://www.interactiveaccessibility.com/web-accessibility-guidelines">AAA guidelines</a>  
-	Color contrast ratio- The updated Section 508 of the Americans with Disability Act, as well as other legislation, requires that the default color contrasts between text and its background must be 5:1. For large text (18-point font sizes, or 14 points and bolded), the required default contrast is 3:1.   
-  - Elements render as designed in the high-contrast themes  
-  - Color must not be the only means of conveying information  
-	Color dependence is defined as using color as the sole means to convey information. For example, a single indicator that is green for 'on', orange for 'standby', and red for 'off' is color dependent. When color is the only means to convey information, people who are color blind, and people who cannot see, do not have access to the same information that others have. The status or function that is being conveyed by color also needs to be available in a textual format that can be viewed by all, and can be read by screen reader software. This requirement does not mean that color cannot be used; it means that color cannot be the only means of conveying the information.   
-4. Run accessibility tools, address reported issues, and verify the screen reading experience.   
-  - <a href="https://www.1eswiki.com/wiki/Trusted_Tester_with_Keros" >Baseline accessibility assessment (internal only)</a>
+Web semantics
+[http://www.w3schools.com/html/html5_semantic_elements.asp](http://www.w3schools.com/html/html5_semantic_elements.asp)
 
 
 <a name="accessibility-best-practices"></a>
 ## Best Practices
-* Design and code with accessibility in mind  
 
-* Use portal tiles/parts, forms, and controls whenever possible, as those are designed to be accessible  
+1. Design and code your extension with accessibility in mind  
 
-* Use HTML semantics when using custom HTML <a href="http://www.w3schools.com/html/html5_semantic_elements.asp">Web semantics</a>  
-	For example, don't create a button with a styled DIV tag. Use the BUTTON tag instead.
+1. Use Portal tiles/parts, forms, and controls whenever possible, as those are designed to be accessible
 
-* Avoid using aria-*   
-	If you find yourself using those attributes, review your design and try to use HTML semantics as much as possible.
+1. Use HTML semantics when using custom HTML, as described in [http://www.w3schools.com/html/html5_semantic_elements.asp](http://www.w3schools.com/html/html5_semantic_elements.asp). For example, create buttons with the `BUTTON`  tag instead of a  styled `DIV` tag.
+
+1. Avoid using `aria-*`  attributes.  If you find yourself using those attributes, review your design and try to use HTML semantics as much as possible.
+
+1. Provide concise, meaningful instructions for user input.
+
+1. Scrub your content for consistent terminology and iconography before releasing it to the public
+
+1. Always use multiple sensory cues to convey information. Never use the position, orientation, size, shape, or color  of a UI element alone to communicate important information to the user.
 
 
-* Provide concise, meaningful instructions for user input
+<a name="accessibility-frequently-asked-questions"></a>
+## Frequently asked questions
 
-* Scrub your content for consistent terminology and iconography before releasing it to the public
+<a name="accessibility-frequently-asked-questions-"></a>
+### 
 
-* Always use multiple sensory cues to convey information. Never use the position, orientation, size, shape, or color  of a UI element alone to communicate important information to the user
+* * * 
 
-<a name="accessibility-references"></a>
-## References
+<a name="accessibility-glossary"></a>
+## Glossary
 
-* <a href="https://www.1eswiki.com/wiki/Trusted_Tester_with_Keros#What_is_Trusted_Tester.3F">What is Trusted Tester? (internal only)</a>  
-* <a href="https://www.1eswiki.com/wiki/Trusted_Tester_with_Keros#What_is_Keros.3F">What is Keros? (internal only)</a>
-* <a href="https://www.1eswiki.com/wiki/Trusted_Tester_with_Keros#What_is_Keros.3F">Baseline accessibility assessment (internal only)</a> 
-* <a href="https://www.1eswiki.com/wiki/Trusted_Tester_with_Keros#Full_MAS_compliance_assessment">Full MAS compliance assessment (internal only)</a> 
-* <a href="http://leaverou.github.io/contrast-ratio/">WCAG color contrast tool</a>
-* <a href="http://webaim.org/articles/">WebAIM Accessibility</a> 
-* <a href="http://www.interactiveaccessibility.com/web-accessibility-guidelines">AAA guidelines</a>
-* <a href="http://www.w3schools.com/html/html_attributes.asp">HTML Attributes</a>
-* <a href="https://www.paciellogroup.com/blog/2014/08/using-the-tabindex-attribute/">Natural tab order</a>
-* <a href="http://www.w3schools.com/html/html5_semantic_elements.asp">Web semantics</a> 
+This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+| Term                | Meaning |
+| ------------------- | --- |
+| WHCM |  Windows High Contrast Mode | 
+
+
