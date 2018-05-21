@@ -106,7 +106,7 @@ The following Websites provide accessibility test engines.
 
 After developing and testing an extension for accessibility, if there are still issues, they may be known by the Framework team.  Review the site located at [http://vstfrd:8080/Azure/RD/_workitems#path=Shared+Queries%2FAUX%2FIbiza%2FAccessibility%2FIbiza+Accessibility+-+Triaged+Active&_a=query](http://vstfrd:8080/Azure/RD/_workitems#path=Shared+Queries%2FAUX%2FIbiza%2FAccessibility%2FIbiza+Accessibility+-+Triaged+Active&_a=query)  to determine whether there are any known issues.   If this is a new issue, you can file a Framework bug by using the site located at  [http://aka.ms/portalfx/accessibility/bug](http://aka.ms/portalfx/accessibility/bug) on controls owned by the Framework.
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-accessibility-planning.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-accessibility-planning.md"}
 
 ## For more information 
 
