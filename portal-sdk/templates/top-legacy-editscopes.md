@@ -23,6 +23,8 @@ This document is organized into the following sections.
 
 * [Loading the EditScope](#loading-the-editscope)
 
+* [EditScope and AJAX](#editscope-and-ajax)
+
 For more information about edit scopes and managing unsaved edits, watch the video located at 
 [https://aka.ms/portalfx/editscopes](https://aka.ms/portalfx/editscopes).
 
@@ -350,7 +352,7 @@ private _initializeForm(): void {
 
 For more information about form fields, see [top-extensions-controls.md](top-extensions-controls.md).
 
-#### EditScope by using AJAX
+### EditScope and AJAX
 
 An extension can read and write data to the server directly by using **AJAX** calls. It loads and saves data by creating an `EditScopeCache` object and defining two functions. The `supplyExistingData` function reads the data from the server, and the `saveEditScopeChanges` function writes it back.
 
