@@ -1,115 +1,136 @@
 
-## Master details browse 
+## Master details browse scenario
 
-Blades can be arranged in a one-to-many relationship, or a summary-detail relationship.  This arrangement can use grids to display information from `QueryCache`-`EntityCache` cache objects as parent-child blades.  The extension retrieves data from the server and displays it across multiple blades, and the data is shared across the parent blade and the child blades.
+The code for this example comes from the 'master detail browse' sample in SamplesExtension. The code lives in:
+`\Client\MasterDetail\MasterDetailArea.ts`
+`\Client\MasterDetail\MasterDetailBrowse\MasterDetailBrowse.pdl`
+`\Client\MasterDetail\MasterDetailBrowse\MasterDetailBrowseData.ts`
+`\Client\MasterDetail\MasterDetailBrowse\ViewModels\DetailViewModels.ts`
+`\Client\MasterDetail\MasterDetailBrowse\ViewModels\MasterViewModels.ts`
 
-In this example, the information to display in the parent blade is a list of websites. The master view uses the `QueryCache` to load all of the data at once, as  specified in [#the-master-view](#the-master-view). The `QueryCache` caches a list of items as specified in [portalfx-data-caching.md#the-querycache](portalfx-data-caching.md#the-querycache). 
+The scenario modeled by this sample is one in which we want to retreive information from the server (a list of websites) and
+visualize this data across multiple blades. We'll cache the data from the server using a QueryCache and then use that QueryCache
+to visualize the websites across two blades. The first blade will show the list of websites in a grid. When the user activates
+one of those websites we'll open a second blade to show more details about the activated website. The data for both blades will
+be from the QueryCache we create. That saves us from having to query the server again when the second blade is opened and means
+when data in the QueryCache is updated that update is reflected across all blades at the same time. This ensures the user is always
+presented with a consistent view of the data.
 
-When the user activates a website on the master view, a child blade is opened, and displays detailed information about the activated website as specified in [#the-detail-view](#the-detail-view). The child blade is dependent on the parent blade for specific resources. The activated website that is displayed is associated with the `EntityCache` that contains a single item, as specified in [portalfx-data-caching.md#the-entitycache](portalfx-data-caching.md#the-entitycache).
+### The MasterDetail Area and DataContext
+The portal uses a concept calls an Area to hold the QueryCache and other data objects that will be shared across multiple blades.
+To create an Area create a folder named for the area you're creating (`MasterDetail` in this case) inside your extension's `Client` folder. 
+Inside the folder create a typescript file with the area name that ends in `Area` (so `MasterDetailArea.ts` in our example).
+This file holds a DataContext class. This DataContext is the class that will be passed to all the view models associated with the area.
+The DataContext for the MasterDetail Area contains the following:
 
-The server data is cached using one of the two cache objects, and then the extension uses that cache to display the websites across the two blades. The data for both blades is located in the same cache, therefore the server is not queried again when it is time to open the second blade. When the data in the cache is updated, the  updated data is displayed across all blades at the same time. Consequently, the Portal always presents a consistent view of the data.
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailArea.ts", "section": "data#dataContextMembers"}
 
-Linking the dataContext to the `ViewModel` is the process that connects the data to the UI. It does this in two ways.
+The QueryCache and the EntityCache are the two memebers relevant for the browse scenario we're going over. The DataContext also
+contains an EditScopeCache which is used in the master detail edit scenario.
 
-* [The master view](#the-master-view)
+If you're creating a new Area one more step that needs to be done is to edit your `Program.ts` file to create the DataContext when your 
+extension is loaded. Find the `initializeDataContexts` method and then use the `setDataContextFactory` method to set the DataContext like so:
 
-    The master view uses the `QueryCache` to load all of the data from the data store into the UI. 
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/Program.ts", "section": "data#createDataContext"}
 
-* [The detail view](#the-detail-view)
+### The websites QueryCache and EntityCache
+Now that we've gone over the DataContext that is be available to all blades in the Area let's go over the data caches we'll use
+in the master/detail browse scenario. 
 
-    The detail view uses the `EntityCache` to display detailed information about one item from the `QueryCache`.
-
-**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to the Dogfood environment are working copies of the samples that were made available with the SDK. 
-     
-The code for this example is located at:
-`<dir>\Client\V1\MasterDetail\MasterDetailArea.ts`
-`<dir>\Client\V1\MasterDetail\MasterDetailBrowse\MasterDetailBrowse.pdl`
-`<dir>\Client\V1\Data\MasterDetailBrowse\MasterDetailBrowseData.ts`
-`<dir>\Client\V1\asterDetail\MasterDetailBrowse\ViewModels\DetailViewModels.ts`
-`<dir>\Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\MasterViewModels.ts`
-
-The Portal uses an `Area` to contain the cache and other data objects that are shared across multiple blades. The code for the area is located in its own folder, as specified in [portalfx-data-modeling.md#areas](portalfx-data-modeling.md#areas). In this example, the area folder is named `MasterDetail` and it is located in the `Client` folder of the extension.
-
-Inside the folder, there is a **TypeScript** file that contains the `DataContext` class. Its name is a combination of the name of the area and the word 'Area'. The `DataContext` class is the class that will be sent to all the `ViewModels` associated with the area.
-
-For the example, the file is named `MasterDetailArea.ts` and is located at `<dir>Client/V1/MasterDetail/MasterDetailArea.ts`. This code is also included in the following example.
+The first is the QueryCache. We use a QueryCache to cache a list of items as opposed to an EntityCache which caches a single item.
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailArea.ts", "section": "data#websitesQueryCache"}
 
-If this is a new area for the extension, the developer should edit the `Program.ts` file to create the `DataContext` when the extension is loaded. The SDK edition of the `Program.ts` file is located at `<dir>\Client\Program.ts`. For the extension that is being built, find the `initializeDataContexts` method and then use the `setDataContextFactory` method to set the `DataContext`, as in the following example.
- 
-{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/Program.ts", "section": "data#createDataContext"}
+When we create the QueryCache to hold the websites we specify two things:
 
-### The master view
+1. The name of entityType for a website. The QueryCache needs to know the shape of the data contained in it (which is defined by the
+entity type) to handle the data appropriately.
 
-The master view is used to display the data in the caches. The advantage of using views is that they allow the `QueryCache` to handle the caching, refreshing, and evicting of data.
+2. A function that, given a set of parameters passed to a `fetch` call, returns the URI to populate the cache. In this case `runningStatus`
+is the only parameter we have to deal with. Based on it's presense we'll modify the URI to query for the correct data.
 
-For this scenario, the `ViewModel` for the master view's list of websites is located in `<dir>\Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\MasterViewModels.ts`. When it is instantiated, its constructor is sent a reference to the `DataContext` singleton instance.  The `ViewModel` accesses the data it requires in its constructor.
+For this sample that's all we need to do to configure the QueryCache. The QueryCache will be populated as we create Views over the cache
+and call fetch() on them.
 
-1. Make sure that the PDL that defines the blades specifies the `Area` so that the `ViewModels` receive the `DataContext`. In the `<Definition>` tag at the top of the PDL file, include an `Area` attribute whose value corresponds to the name of the area that is being built, as in the example located at `<dir>Client/V1/MasterDetail/MasterDetailBrowse/MasterDetailBrowse.pdl`. This code is also included in the following example.
+The other cache used in this sample is the EntityCache:
 
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailArea.ts", "section": "data#websitesEntityCache"}
 
- {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/MasterDetailBrowse.pdl", "section": "data#pdlArea"} 
+When creating the EntityCache for this example we specify three things:
 
-2. Use the `fetch()` method from the `DataView` to populate the `QueryCache` and  select data from it to be viewed. This process is known as creating a view on the `QueryCache`, and it allows the items that are returned by the fetch call to be viewed or edited. It also implicitly forms a ref-count to the `DataCache` entries that it selects. The code that performs this is in the following example.
+1. The entityType name again so the cache can reason over the data.
 
- {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#createView"} 
+2. The `sourceUri` property. Again this is a function that given the parameters from a `fetch()` call will return the URI the cache
+should use to get the data. In this case we've used the `MsPortalFx.Data.uriFormatter()` helper method. This method will handle
+the business of filling one or more parameters into the URI provided to it. In this case we only have one parameter, the `id` parameter,
+which will be filled into the part of the URI containing `{id}`.
 
- 3. When  the view is populated, the user needs to interact with it by using the controls. There are two controls on this blade, both of which use the view that was just created: a `grid` control and the `OptionGroup` control. 
+3. The `findCachedEntity` property. This is an optional property that allows us to look up an entity from the QueryCache rather than
+going to the server and creating a second copy of the website data on the client. The two properties here are the QueryCache to use
+and a function that given a item from the QueryCache will return say whether this is the object requested by the parameters to the
+fetch call.
 
-    1. The `grid` control displays the data from the `QueryCache`, as specified in  [#fetching-data-for-the-grid](#fetching-data-for-the-grid).
+### Implementing the master view
+Now let's get in to how to visualize the data in the caches. The first step is to make sure the PDL that defines the blades
+specifies the right Area so your view models receive your DataContext. In the `<Definition>` tag at the top of the PDL file 
+include an Area attribute whose value corresponds to the name of your Area:
 
-    1. The `OptionGroup` control allows the user to select whether to display websites that are in a running state, websites in a stopped state or display both types of sites. The display created by the `OptionGroup` control is specified in [#the-optiongroup-control](#the-optiongroup-control).
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/MasterDetailBrowse.pdl", "section": "data#pdlArea"}
 
-For more information about dataviews, see [portalfx-data-views.md](portalfx-data-views.md).
+The view model for the websites list is in `\Client\MasterDetail\MasterDetailBrowse\ViewModels\MasterViewModels.ts`. You'll notice 
+one of the first things the blade does is create a view on the QueryCache:
 
-#### Fetching data for the grid
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#createView"}
 
-The observable `items` array of the view is sent to the grid constructor as the `items` parameter, as in the following example.
+The view is how you call `fetch()` to populate the QueryCache and also how you view the items returned by the fetch call. Note that
+you may have multiple views over the same QueryCache. This happens when you have multiple blades on the screen at the same time
+visualizing data from the same cache. The advantage of using views is it allows the QueryCache to handle the caching/refreshing/evicting
+of data for you.
 
- {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#gridConstructor"}
+There are two controls on this blade and they both make use of the view we created. The grid visualizes the data in the QueryCache and
+the OptionGroup control that allows the user to pick whether they want to see only websites that are in a running state, websites in 
+a stopped state or both. We'll start by looking at how the grid is hooked up to the QueryCache then we'll examine how the OptionGroup
+control works.
 
-The `fetch()` command has not yet been issued on the `QueryCache`. When the command is issued, the view's `items` array will be observably updated, which populates the grid with the results. This occurs by calling the  `fetch()` method on the blade's `onInputsSet()`, which returns the promise shown in the following example.
+We pass the view's observable `items` array to the grid constructor as the `items` parameter:
 
- {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#onInputsSet"}
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#gridConstructor"}
 
-This will populate the `QueryCache` with items from the server and display them in the grid.
+It's okay that we haven't issued a `fetch()` on the QueryCache yet. Whenever the first `fetch` (or any subsequent fetch) is issued
+the view's `items` array will be observably updated which will populate the grid with the results.
 
-#### The optionGroup control 
+As is standard practice we'll call the view's `fetch` method on the blade's `onInputsSet()` and return the promise:
 
-The `OptionGroup` control allows the user to select whether to display websites that are in a running state, websites in a stopped state or display both types of sites. This implies that the control may cause the extension to display different subsets of the data that is currently located in the `QueryCache`. The control may also change the data that is displayed in the grid. 
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#onInputsSet"}
 
-<!-- TODO:  Determine whether the grid leaves data on the master view in a grayed-out state. -->
+That's enough to populate the QueryCache with items from the server and show them in the grid.
 
-The `OptionGroup` control is initialized, and the extension then subscribes to its value property, as in the following example.
+Now let's look at the OptionsGroup. We initialize the control and then subscribe to it's value property:
 
- {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#optionGroupValueSubscription"}
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/MasterViewModels.ts", "section": "data#optionGroupValueSubscription"}
 
-In the [subscription](portalfx-extensions-glossary-data.md), the extension performs the following actions.
+In the subscription we do the following:
 
-1. Put the grid in a loading mode. It will remain in this mode until all of the data is retrieved.
+1. Put the grid in a loading mode while we get the new data.
+2. Request the new data by calling `fetch()` on the data view with new parameters.
+3. Wait until fetch is done and take the grid out of loading mode.
 
-1. Request the new data by calling the `fetch()` method on the `DataView` with new parameters.
+There's no need to try to get the results of the fetch and replace the items in the grid because we've pointed the grid's items
+array to the items array of the view. The view will update it's items array as soon as the fetch is complete.
 
-1. When the `fetch()` method completes, take the grid out of loading mode.
+If you look through the rest of the code you'll see we've configured the grid to activate any of the websites when they're clicked on.
+We'll pass the 'id' of the website that is activated to the details blade as an input.
 
-There is no need to get the results of the fetch and replace the items in the grid because the grid's `items` array has a reference to the `items` array of the view. The view will update its `items` array as soon as the fetch is complete.
+### Implementing the detail view
+The detail view will use the EntityCache (which we hooked up to our QueryCache) from the DataContext to display the details of a
+website. Once you understand what's going on in the master blade you should have a pretty good handle of what's going on here.
+The blade starts by creating an view on the EntityCache:
 
-The rest of the code demonstrates that the grid has been configured to activate any of the websites when they are clicked. The `id` of the selected website is sent to the details child blade as an input. 
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/DetailViewModels.ts", "section": "data#entityCacheView"}
 
-### The detail view
+Then in the `onInputsSet` we call `fetch` passing the ID of the website we want the data for:
 
-The detail view uses the `EntityCache` that was associated with the  `QueryCache` from the `DataContext` to display the details of a website. 
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/DetailViewModels.ts", "section": "data#onInputsSet"}
 
-1. The child blade creates a view on the `EntityCache`, as in the following code.
-
- {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/DetailViewModels.ts", "section": "data#entityCacheView"}
-
-2.  In the `onInputsSet()` method, the `fetch()` method is called with a parameter that contains the `id` of the website to display, as in the following example. 
-
- {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailBrowse/ViewModels/DetailViewModels.ts", "section": "data#onInputsSet"}
-
-3. When the fetch is completed, the data is available in the view's `item` property. This blade uses the `text` data-binding in its `HTML` template to show the name, id and running status of the website. 
-
-
-<!-- TODO:  Create a screen shot of the sample that displays these 3 items. Also, see whether there is an html file that can be included here.-->
+When the fetch is completed the data will be available in the view's `item` property. This blade uses the `text` data-binding in it's
+HTML template to show the name, id and running status of the website but obviously you could do whatever you want with the item.

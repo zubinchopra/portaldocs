@@ -1,23 +1,21 @@
-
 ## Lifetime Manager
 
-The `lifetime manager` ensures that any resources that are specifically associated with a blade are disposed of when the blade is closed. Each blade has its own lifetime manager. Controls, **Knockout** projections and APIs that use a `lifetime manager` will be disposed when the `lifetime manager` is disposed. That means, for the most part, extensions in the Portal implicitly perform efficient memory management.
+The portal has a concept of a 'lifetime manager' to make sure any resources specifically associated with a blade are cleaned up
+when the blade is closed. Each blade has a lifetime manager associated with it. Controls, knockout projections and APIs that take 
+a lifetime manager will be disposed when the lifetime manager is disposed. That means, for the most part, extensions in the portal 
+will perform efficient memory management without having to worry about it.
 
-There are some scenarios that call for more fine-grained memory management wWhen dealing with large amounts of data, especially virtualized data. The most common case is the `map()` or `mapInto()` function, especially when it is used with a `reactor` or a control in the callback that generates individual items. These items can be destroyed previous to the closing of the blade by being removed from the source array. Otherwise, memory leaks can quickly add up and result in poor extension performance.
+There are some scenarios that call for more fine-grained memory management. The most common case is when you write a `map()` or 
+`mapInto()` function and create a reactor or control in the callback that generates the individual items. These items can obviously 
+be destroyed long before the blade is closed by being removed from the source array and when dealing with large amounts of data 
+(especially virtualized data) memory leaks can quickly add up and lead to poor performance. Before we get into a discussion of child 
+lifetime managers it should be noted that `pureComputed()` does *not* take a lifetime manager because pureComputed already uses memory 
+as efficiently as possible by design and generally any computed you create in a `map()` should be a pureComputed (as opposed to a 
+`ko.reactor`). More info on pureComputeds is available [here](portalfx-blade-viewmodel.md#data-pureComputed).
 
-**NOTE**: The `pureComputed()` method does not use a lifetime manager because it already uses memory as efficiently as possible.  This is by design, therefore it is good practice to use it. Generally, any `computed` the extension creates in a `map()` should be a `pureComputed()` method, instead of a `ko.reactor` method.
-
-For more information on pureComputeds, see [portalfx-blades-viewmodel.md#the-ko.pureComputed method](portalfx-blades-viewmodel.md#the-ko.pureComputed-method).
-
-### Child lifetime managers 
-
-The maximum amount of time that a child lifetime manager can exist is the lifetime of its parent.  However, they can be disposed before the parent is disposed.
-
-When the developer is aware that extension child resources will have lifetimes that are shorter than that of the blade, a child lifetime manager can be created with the  `container.createChildLifetimeManager()` command, and sent to `ViewModel` constructors or whereever a lifetime manager object is needed. When the extension completes using those resources, the `dispose()` method can be explicitly called on the child lifetime manager. If the `dispose()` method is not called, the child lifetime manager will be disposed when its parent is disposed.
-
-<!-- TODO:  Determine whether the disposing of the  child lifetime manager  when its parent is disposed is implicit. -->
-
-In the following example, a data cache already contains data. Each item is displayed as a row in a grid. A button is displayed in a section below the grid. The `mapInto()` function maps specific data cache items to the view grid items, as specified in [portalfx-data-views.md](portalfx-data-views.md) and [top-extensions-data-projections.md](top-extensions-data-projections.md). It also creates the button to add to the section.  The `itemLifetime` child lifetime manager is automatically created by the `mapInto()` function.
+For this example let's say you have some data in a data cache and for each item you want to display a row in a grid and separately 
+display a button in a Section located below the grid. We'll use the `mapInto()` function to map the items in the data cache into 
+grid items and in the map function create a button and add it to the section:
 
 ```ts
 let gridItems = this._view.items.mapInto(container, (itemLifetime, item) => {
@@ -30,9 +28,22 @@ let gridItems = this._view.items.mapInto(container, (itemLifetime, item) => {
 });
 ```
 
-In this example, when the value of an observable is read in the mapping function, it is wrapped in a `ko.pureComputed`. The `itemLifetime` child lifetime manager was sent to the mapping function as a parameter, instead of sending the `container` into the button constructor. It will be disposed when the associated object is removed from the source array. This means the button `ViewModel` will be disposed at the correct time, but it will still be in the section because the button has not been removed from the section's `children()` array. 
+A few things to note here. First is that everywhere we read the value an observable in the mapping function we wrapped it in a 
+ko.pureComputed. This is important and we have documentation [here](portalfx-data-projections.md#data-shaping) that goes into the reasons why.
 
-Fortunately, callbacks can be registered with the lifetime manager to use when it is disposed by using the `registerForDispose` command, as in the following example.
+The second thing is that rather than passing 'container' into the button constructor we passed `itemLifetime` which our mapping 
+function receives as a parameter. This is a "child" lifetime manager that was automatically created for you by the mapInto function.
+Child lifetime managers have a lifetime that is at most the lifetime of their parent but importantly they can be disposed before their 
+parent is disposed. When you know you have resources whose lifetime is shorter than that of the blade you can do 
+`container.createChildLifetimeManager()` to create a child lifetime manager and pass that in to view model constructors or anywhere 
+else a lifetime manager object is needed. When you know you are done with those resources you can explictly call `dispose()` on the 
+child lifetime manager. If you forget the child lifetime manager will be disposed when it's parent is disposed to prevent memory leaks.
+
+In the case of `map()` and `mapInto()` the item lifetime manager will be disposed when the associated object is removed from the source 
+array. In the example above this means the button view model will be disposed at the correct time but notice the now disposed button 
+view model will still be in the Section. Nobody has removed the button from the section's `children()` array. Fortunately extension 
+authors can register callbacks with the lifetime manager that are called when it's disposed using `registerForDispose`. To fix up 
+the sample above we can do:
 
 ```ts
 let gridItems = this._view.items.mapInto(container, (itemLifetime, item) => {
@@ -46,6 +57,4 @@ let gridItems = this._view.items.mapInto(container, (itemLifetime, item) => {
 });
 ```
 
-Consequently, the `mapInto` function is working as expected, by using the child lifetime manager and the `registerForDispose` command.
-
-
+Now our mapInto function is working properly.
