@@ -88,10 +88,6 @@ The primary UI building block is a called a blade. A blade is like a page. It ge
 
 * [Blade with tiles](/portal-sdk/generated/top-blades-legacy.md)
 
-In addition to blades that you can develop, there are blades that your extensions can call that are not maintained by the Ibiza team.
-
-* [Portal Definition Export](/portal-sdk/generated/top-extensions-sharing-pde.md)
-
 [Ask a question about blades on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts)
 
 ### Parts
@@ -156,7 +152,7 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 * [Dialogs](/portal-sdk/generated/top-extensions-dialogs.md)
 
-* [Notifications](/portal-sdk/generated/)
+* [Notifications](/portal-sdk/generated/top-extensions-notifications.md)
 
 * [Communication between blades](/portal-sdk/generated/)
 
@@ -164,25 +160,23 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 Since your extension is just web code, you can make **AJAX** calls to various services to load data into your UI. The framework provides a data library you can use to manage this data.
 
-* [Loading and managing data](/portal-sdk/generated/top-extensions-data.md)
+* [Making authenticated calls to Azure Resource Manager (ARM) and other endpoints](/portal-sdk/generated/top-extensions-data-loading.md#authenticating-ajax-calls)
 
-* [Making authenticated calls to Azure Resource Manager (ARM)](/portal-sdk/generated/top-extensions-data-loading.md#authenticating-ajax-calls)
+<!-- ajax calls and batch -->
 
-* [Shaping and filtering data](/portal-sdk/generated/top-extensions-data-projections.md) 
+<!-- Ajax all up, batch calls to arm, ajax calls with batch flags set (new doc) GURUA will look at seed content -->
 
-* [Legacy data management features](/portal-sdk/generated/top-extensions-data-typemetadata.md)
+* [Legacy data management features](/portal-sdk/generated/top-legacy-data.md)
 
 [Ask about data management on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching)
 
 ### Advanced development topics
 
-* [Memory management](/portal-sdk/generated/)
+* [Memory management(LifetimeManager)](/portal-sdk/generated/portalfx-data-lifetime.md) 
 
-* [The Lifetime managers](/portal-sdk/generated/portalfx-data-lifetime.md) 
+* [Sharing blades and parts across extensions](/portal-sdk/generated/top-extensions-sharing-blades-and-parts.md)
 
 * [Custom domains (e.g. aad.portal.azure.com)](/portal-sdk/generated/)
-
-* [Sharing blades and parts across extensions](/portal-sdk/generated/)
 
 ## Debugging
 
@@ -262,9 +256,9 @@ The Azure portal supports multiple languages and locales. You will need to local
 
 The Azure portal strives to meet high accessibility standards to ensure the product is accessible to to users of all levels of ability. There is regular testing and a process with SLAs for getting issues addressed quickly.
 
-* [Accessibility guidelines](/portal-sdk/generated/)
+* [Accessibility guidelines](/portal-sdk/generated/top-extensions-accessibility.md)
 
-* [Accessibility testing and SLAs](/portal-sdk/generated/)
+* [Accessibility testing and SLAs](/portal-sdk/generated/top-extensions-accessibility.md#accessibility-planning)
 
 [Ask about accessibility on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-accessibility)
 
