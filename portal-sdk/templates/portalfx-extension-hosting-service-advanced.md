@@ -4,20 +4,20 @@
 
 This section is only relevant to extension developers who are using WARM and EV2 for deployment or who plan to migrate to WARM and EV2 for deployment. 
 
-If you are not familiar with WARM and EV2 we recommned that you read the documentation provided by WARM and EV2 team. If you have any questions about these systems please reach out to the respective teams.
+If you are not familiar with WARM and EV2 we recommend that you read the documentation provided by WARM and EV2 team. If you have any questions about these systems please reach out to the respective teams.
 
 1. Onboard WARM: https://aka.ms/warm
 2. Onboard Express V2: https://aka.ms/ev2
 
-Deploying an extension with hosting requires extension developers to upload the zip file generated during build to a publically read-only storage account.
+Deploying an extension with hosting requires extension developers to upload the zip file generated during build to a publicly read-only storage account.
 Since EV2 does not provide an API to upload zip file to extension developer's storage account setting up deployment infrastructure can become a herculean task.
 Therefore, to simplify the deployment process you can leverage EV2 extension developed by Ibiza team that will allow you to upload the zip file to storage account in a compliant way.
 
 ### Configuring ContentUnbundler for Ev2 based deployments
 
-As of SDK version 5.0.302.817, extension developers can leverage the EV2 mode in Content Unbundler to genearate the rollout spec, service mdoel schema and parameter files for EV2 deployment.
+As of SDK version 5.0.302.817, extension developers can leverage the EV2 mode in Content Unbundler to generate the rollout spec, service model schema and parameter files for EV2 deployment.
 
-** NOTE:** If you are reading this section of the document we assume you have followed the Step-By-Step documentation for hsoting service. At this point, the only missing piece in your deployment is EV2 integration.
+** NOTE:** If you are reading this section of the document we assume you have followed the Step-By-Step documentation for hosting service. At this point, the only missing piece in your deployment is EV2 integration.
 If that is not the case, we recommend you go through the Step-By-Step documentation.
 
 **Basic Scenario**:
@@ -26,9 +26,9 @@ In the most common scenario, extension developers can leverage ContentUnbundler
 
 1. Execute ContentUnbundlerMode in EV2 mode
 
-For the content unbundler to generate rollout spec, service model schema and parameter files extension developers need to specify the `ContentUnbundlerMode` as ExportEv2. This attribute is provided in addittion to other properties for content unbundler.
+For the content unbundler to generate rollout spec, service model schema and parameter files extension developers need to specify the `ContentUnbundlerMode` as ExportEv2. This attribute is provided in addition to other properties for content unbundler.
 
-For example, this is the csproj configuraiton for Monitoring Extension in the CoreXT environment.
+For example, this is the csproj configuration for Monitoring Extension in the CoreXT environment.
 
 ```xml
   <!-- ContentUnbundler parameters -->
@@ -55,7 +55,7 @@ In order to author ServiceGroupRootReplacements.json you will need TargetContain
 i. Set up KeyVault
 
 During deployment we need to copy the zip from your official build to the storage account used provided when onboarding to the hosting service.  To do this you Ev2 and hosting service need two secrets:
-    1. The Certificate Ev2 will use to call the hosting service to initate a deployment.
+    1. The Certificate Ev2 will use to call the hosting service to initiate a deployment.
       **Note:** we ignore this certificate but it is still required. We validate you based on an allow list of storage accounts and the storage credential you supply via your `TargetStorageConStringKeyVaultUri` and `TargetContainerName` setting.
     1. The Connection string to the target storage account where you want your extension deployed
 
@@ -65,8 +65,9 @@ Follow this to [official guidance from Ev2](https://microsoft.sharepoint.com/tea
 
     1. Create a KeyVault. 
     1. Grant Ev2 read access to your KeyVault
-    1. Create an Ev2 Certificate and add it to the vault as a secret. In the csproj config example above we named the certificate in key vault `PortalHostingServiceDeploymentCertificate` 
-    1. Create a KeyVault secret for the storage account connection string. **NOTE: ** The format needs to be in the default form `DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1};EndpointSuffix={3}` i.e the format provided by default from portal.azure.com
+    1. Create an Ev2 Certificate and add it to the vault as a secret (this is needed by Ev2 for authentication). In the csproj config example above we named the certificate in key vault `PortalHostingServiceDeploymentCertificate` 
+    1. Create a KeyVault secret for the storage account connection string, account key (SDK version 5.0.302.1125+), or SAS Token (coming soon). 
+      **NOTE: ** The format for connection strings need to be in the default form `DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1};EndpointSuffix={3}` i.e the format provided by default from portal.azure.com
 
 Please ensure that any configuration for prod environments is done via jit access and on your SAW.
 
@@ -87,8 +88,8 @@ Sample `ServiceGroupRootReplacements.json`
     "ServiceGroupRootReplacementsVersion": 2,
     "AzureSubscriptionId": "<SubscriptionId>",
     "CertKeyVaultUri": "https://sometest.vault.azure.net/secrets/PortalHostingServiceDeploymentCertificate",
-    "StorageAccountCredentialsType": "<ConnectionString | AccountKey>",
-    "TargetStorageCredentialsKeyVaultUri": "<https://sometest.vault.azure.net/secrets/PortalHostingServiceStorageConnectionString | https://sometest.vault.azure.net/secrets/PortalHostingServiceStorageAccountKey>",
+    "StorageAccountCredentialsType": "<ConnectionString | AccountKey | SASToken>",
+    "TargetStorageCredentialsKeyVaultUri": "<https://sometest.vault.azure.net/secrets/PortalHostingServiceStorageConnectionString | https://sometest.vault.azure.net/secrets/PortalHostingServiceStorageAccountKey | https://sometest.vault.azure.net/secrets/PortalHostingServiceStorage-SASToken>",
     "TargetContainerName": "hostingservice",
     "ContactEmail": "youremail@microsoft.com",
     "PortalExtensionName": "Microsoft_Azure_Monitoring",
@@ -114,7 +115,7 @@ You can quickly run a test deployment prior to onboarding to WARM from a local b
 ```
 Replace RolloutSpec with the path to RolloutSpec.PT1D.json in your build
 
-**Note:** The Ev2 Json templates provided perform either a PT1D (24 hour) or PT6H (6 hour) rollout by default to each stage within the hosting services stafe deployment stages. Currently the gating health check endpoint returns true in all cases so really only provides a time gated rollout.  This means that you need to validate the health of your deployment in each stage and cancel the deployment using the `Stop-AzureServiceRollout` command if something were wrong. Once a stop is executed you need to rollback your content to the prior version using `New-AzureServiceRollout`.  This document will be updated once health check rules are defined and enforced.  If you would like to implement your own health check endpoint you can customize the Ev2 json specs found in the NuGet.
+**Note:** The Ev2 Json templates provided perform either a PT1D (24 hour) or PT6H (6 hour) rollout by default to each stage within the hosting services safe deployment stages. Currently the gating health check endpoint returns true in all cases so really only provides a time gated rollout.  This means that you need to validate the health of your deployment in each stage and cancel the deployment using the `Stop-AzureServiceRollout` command if something were wrong. Once a stop is executed you need to rollback your content to the prior version using `New-AzureServiceRollout`.  This document will be updated once health check rules are defined and enforced.  If you would like to implement your own health check endpoint you can customize the Ev2 json specs found in the NuGet.
 
 To perform a [production deployment](https://microsoft.sharepoint.com/teams/WAG/EngSys/deploy/_layouts/OneNote.aspx?id=%2Fteams%2FWAG%2FEngSys%2Fdeploy%2FSiteAssets%2FExpress%20v2%20Notebook&wd=target%28Ev2%20Documentation.one%7CD41B1200-A6DE-4B4D-A019-8318B6F3A084%2FHOWTO%3A%20Deploy%20a%20service%7C15090502-728B-4C84-AD7B-52D403590963%2F%29) or deployment via the [Warm UX](https://warm/newrelease/ev2) we assume that you have already onboarded to WARM. If not please see the following guidance from the Ev2 team  [Ev2 WARM onboarding guidance](https://microsoft.sharepoint.com/teams/WAG/EngSys/deploy/_layouts/15/WopiFrame.aspx?sourcedoc={ecdfb10d-7616-4efd-8499-f210056f808f}&action=edit&wd=target%28%2F%2FEv2%20Documentation.one%7C3c50b523-523e-452c-b153-6bfac92f4926%2FStep-1%20Onboarding%20to%20PROD%20dependencies%7C4c8d1b1e-8e27-41c2-b36e-f60c3d25ab3e%2F%29) for questions please reach out to ev2sup@microsoft.com
 
