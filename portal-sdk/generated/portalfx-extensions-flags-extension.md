@@ -53,11 +53,11 @@ Developers can create flags for extensions, and plan to manage them as a part of
 
 The following sections demonstrate how to turn extension  flags on and off inside the code. 
 
-* [Reading flags in TypeScript](#reading-flags-in-typeScript)
+* [Reading flags in TypeScript](#reading-flags-in-typescript)
 
-* [Programming default values for flags in C#](#programming-default-values-for-flags-in-C#)
+* [Programming default values for flags in C#](#programming-default-values-for-flags-in-c#)
 
-* [Reading flags in the context of an AJAX call in C#](#reading-flags-in-the-context-of-an-AJAX-call-in-C#)
+* [Reading flags in the context of an AJAX call in C#](#reading-flags-in-the-context-of-an-AJAX-call-in-c#)
 
 <a name="extension-flags-feature-flag-api-contract-reading-flags-in-typescript"></a>
 #### Reading flags in TypeScript
