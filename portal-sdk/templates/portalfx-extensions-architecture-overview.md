@@ -3,7 +3,7 @@ The Azure Portal web application is based on a UI composition system whose prima
 
 With this system, a team develops a UI extension to plug into and extend the UI of the Azure Portal.  Teams develop and refine UI iteratively and can choose a deployment cadence that suits their team schedule and their customer needs.  They can safely link from their UI to UI's constructed by other teams, resulting in a Portal application that -- to the Azure user -- appears to have been built by a single team.  Any bug in a team's UI has only a local impact on that team's UI and does not impact the availability/reliability of the larger Azure Portal UX or that of any other UI extension.
 
-[The Portal "Shell"](#the-portal-shell)
+[The Portal Shell](#the-portal-shell)
 
 [UI extensions](#ui-extensions)
 
@@ -11,7 +11,7 @@ With this system, a team develops a UI extension to plug into and extend the UI 
 
 [Projecting Blade and Part UI](#projecting-blade-and-part-ui)
 
-[Secure per-service UI](#secure-per-service-ui)
+[Secure per service UI](#secure-ui-per-service)
 
 [Linking and navigating within the Portal](#linking-and-navigating-within-the-portal)
 
@@ -21,7 +21,7 @@ With this system, a team develops a UI extension to plug into and extend the UI 
 
 * * * 
 
-### The Portal "Shell"
+### The Portal Shell
 
 The Azure Portal web application is designed to the [single-page application pattern](portalfx-extensions-glossary-architecture.md), where UI is generated via client-side-evaluated JavaScript and dynamic HTML.  The Azure Portal "Shell" is the client-side JavaScript that controls the overall rendering of UI in the browser.  The Shell is responsible for rendering the [chrome](portalfx-extensions-glossary-architecture.md) of the Azure Portal (the navigation menu on the left and bar at the top).  Any team- or service-specific UI is developed in UI extensions as Blades (pages or windows) and Parts (tiles).  Based on user interaction with the Azure Portal UI, the Shell determines which Blades/Parts are to be displayed and it delegates the rendering of these Blades/Parts to the appropriate extension(s).
 
@@ -75,7 +75,7 @@ Now, when a UI extension's Blade or Part is to be displayed, the Shell instantia
 
 Because most UI is dynamic, like Forms that the user updates or like Grids/Lists that are refreshed to reflect new/updated server data, changes to the `ViewModel` are kept consistent between the Shell and UI extension IFrames.  The object-remoting system detects changes to [Knockout.js](http://knockoutjs.com/) observables  that are embedded in the `ViewModel`, computes diffs between the two `ViewModel` copies and uses `postMessage` to send diff-grams between the two `ViewModel` copies.  Beyond the conventional use of the Knockout.js library by the UI extension and its `ViewModel` class, complexities of the object-remoting system are hidden from the UI extension developer.
 
-### Secure per-service UI
+### Secure UI per service
 
 The security model for UI extensions builds upon the standard [same-origin policy](portalfx-extensions-glossary-architecture.md) that supported by all browsers and is the basis for today's web applications.  A UI extension's homepage URL is typically located on an origin specific to that UI extension and its resource provider.  This HTML page can only issue HTTPS calls to its origin domain and any origins that allow [COR](portalfx-extensions-glossary-architecture.md) calls from the UI extension's origin.
 
