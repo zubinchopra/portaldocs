@@ -38,7 +38,21 @@ It is also included in the following code.
 
 ### Pinning the blade
 
+#### PDL Blade
+
 Blades can be marked as pinnable to the dashboard by setting `Pinnable="true"` in the TemplateBlade's PDL definition file. Blades are pinned as button parts to the dashboard by default. Any other represention should be specified in the PDL file. 
+
+#### No-PDL Blade
+
+No-pdl blades can be made pinnable by making the following changes to your code.
+
+1. Add the `@TemplateBlade.Pinnable.Decorator` decorator to the  Template Blade class
+
+1. Implement an `onPin' method`.
+
+1. Return a `PartReference` instance to a Part you design that accepts the `logo` and `title` as parameters, according to the Part's `TParameters` type.
+
+These concepts are illustrated in the sample located at `<dir>/Client/V2/Blades/Pinning/PinnableBlade.ts` and in the working copy located at [https://df.onecloud.azure-test.net/#blade/SamplesExtension/PinnableBlade/personId/111](https://df.onecloud.azure-test.net/#blade/SamplesExtension/PinnableBlade/personId/111).
 
 ### Storing settings
 
