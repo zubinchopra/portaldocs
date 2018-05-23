@@ -55,9 +55,9 @@ The following sections demonstrate how to turn extension  flags on and off insid
 
 * [Reading flags in TypeScript](#reading-flags-in-typescript)
 
-* [Programming default values for flags in C#](#programming-default-values-for-flags-in-c-sharp)
+* [Programming default values for C Sharp flags](#programming-default-values-for-c-sharp-flags)
 
-* [Reading flags in the context of an AJAX call in C#](#reading-flags-in-the-context-of-an-AJAX-call-in-c-sharp)
+* [Reading flags in the context of C Sharp AJAX calls](#reading-flags-in-the-context-of-c-sharp-ajax-calls)
 
 <a name="extension-flags-feature-flag-api-contract-reading-flags-in-typescript"></a>
 #### Reading flags in TypeScript
@@ -94,8 +94,8 @@ The following sections demonstrate how to turn extension  flags on and off insid
     }
    ```
 
-<a name="extension-flags-feature-flag-api-contract-programming-default-values-for-flags-in-c-sharp"></a>
-#### Programming default values for flags in C Sharp
+<a name="extension-flags-feature-flag-api-contract-programming-default-values-for-c-sharp-flags"></a>
+#### Programming default values for C Sharp flags
 
 Flags can be enabled for all users in one or more deployments by using an extension configuration, as in the following code. 
 
@@ -139,8 +139,8 @@ Flags can be enabled for all users in one or more deployments by using an extens
 
     * Flags that are associated with the domain name in an environment, i.e. the domain name of the incoming extension requests, will take precedence over the flags that are in the default case.
 
-<a name="extension-flags-feature-flag-api-contract-reading-flags-in-the-context-of-an-ajax-call-in-c-sharp"></a>
-#### Reading flags in the context of an AJAX call in C Sharp
+<a name="extension-flags-feature-flag-api-contract-reading-flags-in-the-context-of-c-sharp-ajax-calls"></a>
+#### Reading flags in the context of C Sharp AJAX calls
 
 *  Using the RequestFlags dictionary
 
