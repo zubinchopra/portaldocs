@@ -3,8 +3,8 @@
 ## Using DataViews
 
 The `QueryView` and `EntityView` both serve the purposes of presenting data from the cache to the view model, and providing reference counting. A DataView is created from the `createView` method of a QueryCache or EntityCache:
-
-`\Client\Data\MasterDetailBrowse\ViewModels\MasterViewModels.ts`
+<!-- TODO:  Determine the location of these samples; the code does not appear to exist. -->
+`\Client\V1\Data\MasterDetailBrowse\ViewModels\MasterViewModels.ts`
 
 ```ts
 this._websitesQueryView = dataContext.masterDetailBrowseSample.websitesQuery.createView(container);
