@@ -105,7 +105,7 @@ The extension uses a `fetch()` to get data from the server, based on the inputs 
 
 ### The Knockout reactor method
 
-Any observables read in the function that are sent to `ko.reactor()` will become a dependency for that reactor.  The reactor will recompute whenever any of those observable values change. The same is true for the  `ko.pureComputed()` method and the observable array's `map()` and `mapInto()` functions. This can lead to a situation where a `computed` is recalculating unintentionally. For more information about `map` and `mapInto`, see [portalfx-data-projections.md#shaping-and-filtering-data](portalfx-data-projections.md#shaping-and-filtering-data).
+Any observables read in the function that are sent to `ko.reactor()` will become a dependency for that reactor.  The reactor will recompute whenever any of those observable values change. The same is true for the  `ko.pureComputed()` method and the observable array's `map()` and `mapInto()` functions. This can lead to a situation where a `computed` is recalculating unintentionally. For more information about `map` and `mapInto`, see [top-extensions-data-projections.md#shaping-and-filtering-data](top-extensions-data-projections.md#shaping-and-filtering-data).
 
 It is also good practice to put a breakpoint in the `computed` function whenever a `pureComputed` or a `reactor` to determine how many times each function runs.  There have been instances when `computed` functions that should run once actually ran more than thirty times, which wastes CPU time on unnecessary  recalculations.  If another `computed` takes a dependency on the function that runs too often,  the CPU consumption performance issue grows exponentially.
 

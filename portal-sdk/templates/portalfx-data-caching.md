@@ -78,6 +78,8 @@ public websitesQuery = new MsPortalFx.Data.QueryCache<DataModels.WebsiteModel, W
 });
 ```
 
+ {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Data/MasterDetailBrowse//MasterDetailBrowseData.ts", "section": "data-caching#websitequery"}
+
 ### EntityCache
  
 The `EntityCache` object can be used to cache a single item.  It is useful for loading data into property views and single-record views. 

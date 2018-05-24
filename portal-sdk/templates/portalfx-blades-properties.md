@@ -1,11 +1,7 @@
 
 ### Blade Properties
 
-Blades use blade view models to manage the display information. This includes information like the title, subtitle, icon, and status. To acquire this data, often the extension will load an object by Id. Information passed into the blade as a `BladeParameter` can be passed to the blade view model via a `<Property>` element. For an example, refer to this file in the samples:
-
-```
-\Client\Hubs\Browse\Browse.pdl
-```
+Blades use blade view models to manage the display information. This includes information like the title, subtitle, icon, and status. To acquire this data, often the extension will load an object by Id. Information passed into the blade as a `BladeParameter` can be passed to the blade view model via a `<Property>` element. An  example is located in the code sample locaetd at `<dir>\Client\Hubs\Browse\Browse.pdl`. A working copy of the text is located at , and is also in the following code.
 
 ```xml
 <Blade Name="RobotBlade" ViewModel="RobotBladeViewModel">
@@ -20,9 +16,11 @@ Blades use blade view models to manage the display information. This includes in
 </Blade>
 ```
 
-In this example an `id` property is passed into the blade as a parameter, and then the `name` property is passed into the blade view model. The blade view model may subscribe to changes in this value, and update the blade information as required. For an example, refer to this file in the samples:
+In this example, an `id` property is sent to the blade as a parameter, and then the `name` property is sent view model. The blade view model may subscribe to changes in this value, and update the blade information as required. For an example, refer to this file in the samples:
 
-`\Client\Hubs\Browse\ViewModels\RobotBladeViewModel.ts`
+`dir>Client\Hubs\Browse\ViewModels\RobotBladeViewModel.ts`
+
+ The eample is also in the following code.
 
 ```ts
 module SamplesExtension.Hubs {
@@ -63,10 +61,12 @@ When changes are made to the `name` property on the view model, the `title` is u
 
 ### Blade Property Bindings
 
-In most cases, parts will bind to `{BladeParameter}` values passed into the blade. In some cases, you may want to bind directly to a value on a blade view model. The most common use of this binding is to transform a value from a `{BladeParameter}` into some other form.
-  Consider the following blade view model:
+In most cases, parts will bind to `{BladeParameter}` values that are sent to the blade. In some cases, you may want to bind directly to a value on a blade view model. The most common use of this binding is to transform a value from a `{BladeParameter}` into some other form.
+    The following blade view model, located at 
 
-`\Client\Blades\Properties\ViewModels\BladePropertyViewModels.ts`
+`<dir>\Client\Blades\Properties\ViewModels\BladePropertyViewModels.ts`
+
+An example is also in the following code.
 
 ```ts
 /**
@@ -105,9 +105,9 @@ export class BladePropertiesBladeViewModel extends MsPortalFx.ViewModels.Blade {
 }
 ```
 
-The view model accepts an input of temperature in fahrenheit, and projects a new property of temperature in celcius. A part on this blade can bind to the public `tempInCelcius` property:
+The `viewModel` accepts an input of temperature in fahrenheit, and projects a new property of temperature in celcius. A part on this blade can bind to the public `tempInCelcius` property:
 
-`\Client\Blades\Properties\BladeProperties.pdl`
+`<dir>\Client\Blades\Properties\BladeProperties.pdl`
 
 ```xml
 <CustomPart Name="PropertyButtonPart"
