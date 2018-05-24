@@ -176,56 +176,11 @@ private registerCallbacks(): void {
 	
 ```
 
-```ts
-/*
- * Registers the RPC callbacks supported by this extension.
- */
-private registerCallbacks(): void {
-    MsPortalFx.Services.Rpc.registerCallback("StringUpperCaseCallback",
-    	function (input: string): string {
-        	return input.toUpperCase();
-        }
-    );
-}
-```
-
 <a name="sharing-your-portal-definition-export-with-other-teams-producer-api-consumer-api"></a>
 ### Consumer API
 
 The following code  asynchronously returns a result from the source. It accomplishes this by invoking the `MsPortalFx.Services.Rpc.invokeCallback` API, passing the extension endpoint, callback name, and any required arguments.
 It is located at `<dir>\Client\V1\Extensibility\RPC\ViewModels\RpcCallbacksViewModels.ts` and in the following example.
-
-```ts
-/**
- * Invokes an RPC callback.
- */
-public invokeCallback() {
-    var extensionId = ExtensionDefinition.definitionName,
-        callbackName = "StringUpperCaseCallback",
-        arg = (new Date()).toTimeString();
-
-    // Reset UI
-    this.result(ClietResources.rpcResultPending);
-
-    // Make the RPC call.
-    // Note: For convenience, this source/destination extensions are the same
-    // for this example. In practice, that will not be so, but the syntax/behavior
-    // is otherwise the same.
-    MsPortalFx.Services.Rpc.invokeCallback<string>(extensionId, callbackName, arg)
-    	.then(
-	        (result) => {
-	            this.result(result);
-	        },
-	        (rpcError) => {
-	            this.result(ClientResources.rpcResultErrorFormatString.format(
-	            		rpcError.error.toString(),
-	            		rpcError.isClientError
-	            	)
-	           	);
-	        }
-	    );
-}
-```
 
 ```typescript
 
