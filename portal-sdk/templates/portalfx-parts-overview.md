@@ -21,9 +21,9 @@ The following sections cover these topics.
 
 * [Defining the sizing behavior](#defining-the-sizing-behavior)
 
-* [Per-user part settings](#per-user-part-settings)
+* [Per user part settings](#per-user-part-settings)
 
-* [The no-data message](#the-no-data-message)
+* [The 'no data' message](#the-"no-data"-message)
 
 * [Pinning parts](#pinning-parts)
 
@@ -149,7 +149,7 @@ A working copy is located at [http://aka.ms/portalfx/samples#blade/SamplesExtens
 
       {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/PartSizes/ViewModels/PartSizesViewModels.ts", "section": "parts#ProgramatticResizeDoc"}
 
-### Per-user part settings
+### Per user part settings
 
 Extensions can read and write settings that are saved whenever the user saves a dashboard.  Private dashboards are located in the Ibiza user settings service.  Shared dashboards are stored in ARM as Azure resources inside the **MS.Portal** resource provider.
 
@@ -163,7 +163,7 @@ The following is the TypeScript code that reads and writes settings. It is also 
 
    {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/TileGallery/ViewModels/GeneralGalleryPart.ts", "section": "parts#TileGalleryWithNewConfigurationPattern"}
 
-### The no-data message
+### The "no data" message
 
 Sometimes parts are displayed for which no data is available. For example, an extension may display a prototype 'deployment history' that contains sample data, previous to the time when the user  enables  deployments for the extension. To support this, part `container` objects use the `noDataMessage` property.
 

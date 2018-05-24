@@ -37,19 +37,9 @@ One of the great things about the Azure portal is the ability for multiple servi
 
 ![alt-text](../media/portalfx-parts/part-sharing.png "Setting up continuous deployment with part sharing")
 
-- After configuring continuous deployment, the Visual Studio Online extension informs the Azure Websites extension it is complete with a [RPC callback](portalfx-rpc.md).
+- After configuring continuous deployment, the Visual Studio Online extension informs the Azure Websites extension it is complete with an RPC callback.
 
-To start learning more about parts, check out the topics below:
-
-- [Part sharing](portalfx-extension-sharing-pde.md)
-- [Blade references](portalfx-extensibility-blade-reference.md)
-- [RPC](portalfx-rpc.md)
-
-Next steps: Learn about [part sharing](portalfx-extension-sharing-pde.md).
-
-
-
-
+To start learning more about parts, see [top-extensions-sharing-blades-and-parts](top-extensions-sharing-blades-and-parts). 
 
 
 ## Deploy the extension
