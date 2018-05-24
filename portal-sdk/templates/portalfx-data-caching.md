@@ -66,18 +66,6 @@ When all of these items are complete, the `QueryCache` is configured. It can be 
 
 The sample located at  `<dir>Client\V1\Data\MasterDetailBrowse\MasterDetailBrowseData.ts` creates a `QueryCache` which polls the `sourceUri` endpoint on a timed interval. This code is also included in the following example.
 
-```ts
-export interface WebsiteQuery {
-    runningStatus: boolean;
-}
-
-public websitesQuery = new MsPortalFx.Data.QueryCache<DataModels.WebsiteModel, WebsiteQuery>({
-    entityTypeName: DataModels.WebsiteModelType,
-    sourceUri: MsPortalFx.Base.Resources.getAppRelativeUri("/api/Websites?runningStatus={0}"),
-    poll: true
-});
-```
-
  {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Data/MasterDetailBrowse//MasterDetailBrowseData.ts", "section": "data-caching#website-query"}
 
 ### EntityCache
