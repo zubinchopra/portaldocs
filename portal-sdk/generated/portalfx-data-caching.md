@@ -106,6 +106,29 @@ public websitesQuery = new MsPortalFx.Data.QueryCache<DataModels.WebsiteModel, W
 });
 ```
 
+ ```typescript
+
+export interface WebsiteQuery {
+runningStatus: boolean;
+}
+
+/**
+ * Area containing entity and query caches for the Master-Detail browse and edit samples.
+ */
+export class WebsiteData {
+
+/**
+ * Provides a cache that will enable performing queries against a
+ * list of websites.
+ */
+public websitesQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModels.WebsiteModel, WebsiteQuery>({
+    entityTypeName: SamplesExtension.DataModels.WebsiteModelType,
+    sourceUri: WebsiteData._urlForWebsitesQuery
+});
+
+```
+
+<a name="the-datacache-class-entitycache"></a>
 ### EntityCache
  
 The `EntityCache` object can be used to cache a single item.  It is useful for loading data into property views and single-record views. 
