@@ -78,7 +78,7 @@ public websitesQuery = new MsPortalFx.Data.QueryCache<DataModels.WebsiteModel, W
 });
 ```
 
- {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Data/MasterDetailBrowse//MasterDetailBrowseData.ts", "section": "data-caching#websitequery"}
+ {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Data/MasterDetailBrowse//MasterDetailBrowseData.ts", "section": "data-caching#website-query"}
 
 ### EntityCache
  
