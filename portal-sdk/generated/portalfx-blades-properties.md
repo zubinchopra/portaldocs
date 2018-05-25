@@ -6,21 +6,7 @@ Blades use `ViewModels` to manage information like the title, subtitle, icon, an
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. 
 
- A code sample  is located  at `<dir>\Client\V1\Hubs\Browse\Browse.pdl`, and is also in the following code.
-
-```xml
-<Blade Name="RobotBlade" ViewModel="RobotBladeViewModel">
-  <Blade.Parameters>
-    <Parameter Name="id" Type="Key"/>
-  </Blade.Parameters>
-
-  <Blade.Properties>
-    <Property Name="name" Source="{BladeParameter Name=id}"/>
-  </Blade.Properties>
-  ...
-</Blade>
-```
-
+A code sample  is located  at `<dir>\Client\V1\Hubs\Browse\Browse.pdl`, and is also in the following code.
 
 ```xml
 
@@ -43,8 +29,30 @@ Blades use `ViewModels` to manage information like the title, subtitle, icon, an
   
 ```
 
-
 In this example, an `id` property is sent to the blade as a parameter, and then the `name` property is sent as a `ViewModel`. The blade `ViewModel`  may subscribe to changes in this value, and update the blade information as required. An example of blade properties is located in `dir>Client\Hubs\Browse\ViewModels\RobotBladeViewModel.ts`. It is also in the following code.
+
+```typescript
+
+/**
+* Represents the view model used by the robot blade.
+*/
+export class RobotBladeViewModel extends MsPortalFx.ViewModels.Blade {
+   /**
+    * When the name is passed, bind it to the blade title.  You could also choose
+    * to grab the whole robot and use other pieces of its data (see RobotPartViewModel)
+    *
+    * @param container Object representing the blade in the shell.
+    * @param initialState Bag of properties saved to user settings via viewState.
+    * @param dataContext Long lived data access object passed into all view models in the current area.
+    */
+   constructor(container: MsPortalFx.ViewModels.ContainerContract, initialValue: any, dataContext: DataContext) {
+       super();
+       this.subtitle(ClientResources.hubsLensTitle);
+       this.icon(CommonImages.robot);
+       this.title(ClientResources.loadingText);
+   }
+
+```
 
 ```ts
 module SamplesExtension.Hubs {
