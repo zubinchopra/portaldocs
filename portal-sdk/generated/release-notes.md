@@ -1,4 +1,16 @@
-# Release Notes since 1/24/2018
+# Release Notes since 1/25/2018
+
+## 5.0.302.1129
+0 Breaking Changes, 1 Features added and 9 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2500324'>2500324</a></td><td>Bug Fix</td><td>Turn on new subs api in preview and production</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2483069'>2483069</a></td><td>Bug Fix</td><td>Switch to new ARM API to get subscriptions</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2468399'>2468399</a></td><td>Bug Fix</td><td>[MonitorChart] Catch and don't log Not Found and Unauthorized errors</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2463513'>2463513</a></td><td>Bug Fix</td><td>[MonitorChart] Chart selects incorrect time grain for legacy metrics between 13-41 hours</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2461311'>2461311</a></td><td>Bug Fix</td><td>Wrong logic used in resource menu config failure when comparing resource ID</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2450792'>2450792</a></td><td>Bug Fix</td><td>checks for contactability </td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2421966'>2421966</a></td><td>Bug Fix</td><td>[Move resource blade] Remove permissions check</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2379497'>2379497</a></td><td>Feature</td><td>Add UT to Portal CI</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2339427'>2339427</a></td><td>Bug Fix</td><td>[IcM] Add additional logging to resource menu blade when getMenuConfig() fails to check the resource type and resource [IcM 64200998)</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1526521'>1526521</a></td><td>Bug Fix</td><td>Clean up duplicate SVG files in hubs (use ref links in project file where required)</td></tr></table>
+
+## 5.0.302.1128
+0 Breaking Changes, 3 Features added and 5 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2496324'>2496324</a></td><td>Bug Fix</td><td>Log Portal MSBuild task inputs </td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2463576'>2463576</a></td><td>Feature</td><td>Update BCDT packages</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2439147'>2439147</a></td><td>Bug Fix</td><td>Update MDS agent to 41+ for high CPU bug fix</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2436614'>2436614</a></td><td>Feature</td><td>Enable connection cipher logging</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2389675'>2389675</a></td><td>Feature</td><td>Remove dSMS StagedSecret flag</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2386303'>2386303</a></td><td>Bug Fix</td><td>Stamp number not being set correctly for national cloud canary stamps</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2366563'>2366563</a></td><td>Bug Fix</td><td>Change write location of Manifest Cache in portal</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2362982'>2362982</a></td><td>Bug Fix</td><td>Fix build.cmd to handle both QuickBuild and CoreXT build</td></tr></table>
+
+## 5.0.302.1126
+0 Breaking Changes, 0 Features added and 2 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2487709'>2487709</a></td><td>Bug Fix</td><td>Improve error reporting in Microsoft.Portal.Build.dll</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2485315'>2485315</a></td><td>Bug Fix</td><td>Add support for satellite resx to V2 targets</td></tr></table>
 
 ## 5.0.302.1125
 0 Breaking Changes, 4 Features added and 6 Bugs Fixed
@@ -259,11 +271,3 @@
 ## 5.0.302.977
 0 Breaking Changes, 1 Features added and 0 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1864586'>1864586</a></td><td>Feature</td><td>[OnePortal] Multi domain SAN cert and redirect from Classic to Ibiza</td></tr></table>
-
-## 5.0.302.975
-0 Breaking Changes, 1 Features added and 1 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1883638'>1883638</a></td><td>Feature</td><td>Update configuration for information protection extension</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1724863'>1724863</a></td><td>Bug Fix</td><td>Remove ?bundle=true workaround</td></tr></table>
-
-## 5.0.302.974
-0 Breaking Changes, 1 Features added and 1 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1891421'>1891421</a></td><td>Feature</td><td>Register the WorkloadInsights Extension in the Portal [Prod] </td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1789149'>1789149</a></td><td>Bug Fix</td><td>Move extension age logging to be logged by the Portal</td></tr></table>
