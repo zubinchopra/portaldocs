@@ -5,26 +5,13 @@ Blades use `ViewModels` to manage information like the title, subtitle, icon, an
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. 
 
- A code sample  is located  at `<dir>\Client\V1\Hubs\Browse\Browse.pdl`, and is also in the following code.
-
-```xml
-<Blade Name="RobotBlade" ViewModel="RobotBladeViewModel">
-  <Blade.Parameters>
-    <Parameter Name="id" Type="Key"/>
-  </Blade.Parameters>
-
-  <Blade.Properties>
-    <Property Name="name" Source="{BladeParameter Name=id}"/>
-  </Blade.Properties>
-  ...
-</Blade>
-```
-
+A code sample  is located  at `<dir>\Client\V1\Hubs\Browse\Browse.pdl`, and is also in the following code.
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Hubs/Browse/Browse.pdl", "section": "portalfx-blades-properties#property-element"}
 
-
 In this example, an `id` property is sent to the blade as a parameter, and then the `name` property is sent as a `ViewModel`. The blade `ViewModel`  may subscribe to changes in this value, and update the blade information as required. An example of blade properties is located in `dir>Client\Hubs\Browse\ViewModels\RobotBladeViewModel.ts`. It is also in the following code.
+
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Hubs/Browse/ViewModels/RobotBladeViewModel.ts", "section": "portalfx-blades-properties#properties"}
 
 ```ts
 module SamplesExtension.Hubs {
