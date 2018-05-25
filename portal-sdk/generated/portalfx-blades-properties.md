@@ -54,6 +54,8 @@ export class RobotBladeViewModel extends MsPortalFx.ViewModels.Blade {
 
 ```
 
+<!-- TODO: Determine how, or whether, to update the sample with the following literal. -->
+
 ```ts
 module SamplesExtension.Hubs {
     /**
@@ -96,7 +98,45 @@ When changes are made to the `name` property on the `ViewModel`, the `title` is 
 
 In most cases, parts will bind to `{BladeParameter}` values that are sent to the blade. In some cases, the extension  may bind directly to a value on a blade `ViewModel`. The most common use of this binding is to transform a value from a `{BladeParameter}` into some other form.
     This is demonstrated in  the code located at    
-`<dir>\Client\Blades\Properties\ViewModels\BladePropertyViewModels.ts`, and in the following code.
+`<dir>\Client\V1\Blades\Properties\ViewModels\BladePropertyViewModels.ts`, and in the following code.
+
+```typescript
+
+export class MainBladePropertiesBladeViewModel
+extends MsPortalFx.ViewModels.Blade
+implements Def.MainBladePropertiesBladeViewModel.Contract {
+
+/**
+ * View model constructor.
+ *
+ * @param container Object representing the blade in the shell.
+ * @param initialState Bag of properties saved to user settings via viewState.
+ * @param dataContext Long lived data access object passed into all view models in the current area.
+ */
+constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: BladeArea.DataContext) {
+    super();
+    this.title(ClientResources.bladePropertiesBladeTitle);
+    this.subtitle(ClientResources.bladesLensTitle);
+}
+}
+ 
+```
+```typescript
+
+/**
+ * When the temperature in F is passed in, trigger the computed to calculate it in C
+ *
+ * @param inputs Collection of inputs passed from the shell.
+ * @returns A promise that that needs to be resolved when data loading is complete.
+ */
+public onInputsSet(inputs: Def.BladePropertiesBladeViewModel.InputsContract): MsPortalFx.Base.Promise {
+    this._tempInFahrenheit(inputs.tempInFahrenheit);
+    this.title(ClientResources.bladePropertiesBladeTitle + " - " + inputs.tempInFahrenheit + " deg F");
+    return null;
+}
+}
+ 
+```
 
 ```ts
 /**
@@ -137,6 +177,22 @@ export class BladePropertiesBladeViewModel extends MsPortalFx.ViewModels.Blade {
 
 The `viewModel` accepts an input of temperature in degrees Fahrenheit, and projects a new property of temperature in degrees Celsius. A part on this blade can bind to the public `tempInCelcius` property as in the code located at `<dir>\Client\Blades\Properties\BladeProperties.pdl` and in the following example.
 
+```xml
+
+<CustomPart Name="PropertyButtonPart"
+            ViewModel="{ViewModel Name=PropertyButtonPart, Module=./Properties/ViewModels/BladePropertyViewModels}"
+            Template="{Html Source='Templates\\Temperature.html'}">
+  <CustomPart.Properties>
+    <!--
+      This part accepts an input via a public property on the blade view model.
+      These bindings are called BladeProperty bindings.
+    -->
+    <Property Name="tempInCelcius"
+              Source="{BladeProperty tempInCelcius}" />
+  </CustomPart.Properties>
+</CustomPart>
+
+```
 
 ```xml
 <CustomPart Name="PropertyButtonPart"
