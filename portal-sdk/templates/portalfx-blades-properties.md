@@ -13,6 +13,8 @@ In this example, an `id` property is sent to the blade as a parameter, and then 
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Hubs/Browse/ViewModels/RobotBladeViewModel.ts", "section": "portalfx-blades-properties#properties"}
 
+<!-- TODO: Determine how, or whether, to update the sample with the following literal. -->
+
 ```ts
 module SamplesExtension.Hubs {
     /**
@@ -54,7 +56,10 @@ When changes are made to the `name` property on the `ViewModel`, the `title` is 
 
 In most cases, parts will bind to `{BladeParameter}` values that are sent to the blade. In some cases, the extension  may bind directly to a value on a blade `ViewModel`. The most common use of this binding is to transform a value from a `{BladeParameter}` into some other form.
     This is demonstrated in  the code located at    
-`<dir>\Client\Blades\Properties\ViewModels\BladePropertyViewModels.ts`, and in the following code.
+`<dir>\Client\V1\Blades\Properties\ViewModels\BladePropertyViewModels.ts`, and in the following code.
+
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Blades/Properties/ViewModels/BladePropertyViewModels.ts", "section": "portalfx-blades-properties#bindings1"}
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Blades/Properties/ViewModels/BladePropertyViewModels.ts", "section": "portalfx-blades-properties#bindings2"}
 
 ```ts
 /**
@@ -95,6 +100,7 @@ export class BladePropertiesBladeViewModel extends MsPortalFx.ViewModels.Blade {
 
 The `viewModel` accepts an input of temperature in degrees Fahrenheit, and projects a new property of temperature in degrees Celsius. A part on this blade can bind to the public `tempInCelcius` property as in the code located at `<dir>\Client\Blades\Properties\BladeProperties.pdl` and in the following example.
 
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Blades\Properties\BladeProperties.pdl", "section": "portalfx-blades-properties#public-properties"}
 
 ```xml
 <CustomPart Name="PropertyButtonPart"
