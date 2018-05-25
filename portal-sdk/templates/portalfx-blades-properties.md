@@ -21,7 +21,7 @@ Blades use `ViewModels` to manage information like the title, subtitle, icon, an
 ```
 
 
-{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Hubs\Browse\Browse.pdl", "section": "portalfx-blades-properties#property-element"}
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Hubs/Browse/Browse.pdl", "section": "portalfx-blades-properties#property-element"}
 
 
 In this example, an `id` property is sent to the blade as a parameter, and then the `name` property is sent as a `ViewModel`. The blade `ViewModel`  may subscribe to changes in this value, and update the blade information as required. An example of blade properties is located in `dir>Client\Hubs\Browse\ViewModels\RobotBladeViewModel.ts`. It is also in the following code.
