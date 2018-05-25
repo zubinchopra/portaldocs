@@ -100,7 +100,7 @@ export class BladePropertiesBladeViewModel extends MsPortalFx.ViewModels.Blade {
 
 The `viewModel` accepts an input of temperature in degrees Fahrenheit, and projects a new property of temperature in degrees Celsius. A part on this blade can bind to the public `tempInCelcius` property as in the code located at `<dir>\Client\Blades\Properties\BladeProperties.pdl` and in the following example.
 
-{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Blades\Properties\BladeProperties.pdl", "section": "portalfx-blades-properties#public-properties"}
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Blades/Properties/BladeProperties.pdl", "section": "portalfx-blades-properties#public-properties"}
 
 ```xml
 <CustomPart Name="PropertyButtonPart"
