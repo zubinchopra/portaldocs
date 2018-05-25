@@ -24,6 +24,9 @@ In this example, the parent blade defines a `BladeAction` which passes an `id` p
  
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Bindings/OutputBindings/OutputBindings.pdl", "section": "portalfx-blades-outputs#parent-part"}
 
+ 
+{"gitdown": "include-file", "file":"../Samples/SamplesExtension/Extension/Client/V1/Bindings/OutputBindings/OutputBindings.pdl"}
+
 In the previous snippet, `OutputBindingsChildBlade` is opened with a `currentNumber` parameter.  The child blade sets the value on the output binding.  After that value is set, `onInputsSet` of the part is invoked, this time with a value named `currentNumber`.
 
 
