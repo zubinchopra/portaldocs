@@ -1,3 +1,3 @@
 
-The page you requested has moved to [portalfx-extension-sharing-pde.md](portalfx-extension-sharing-pde.md). 
+The page you requested has moved to [top-extensions-sharing-blades-and-parts.md](top-extensions-sharing-blades-and-parts.md). 
 
