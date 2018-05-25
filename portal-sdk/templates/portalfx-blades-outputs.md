@@ -1,13 +1,13 @@
 
 ### Blade Outputs
 
-In some cases, you may want to pass information from the current blade back to the parent blade. Blades can define a list of output properties that flow back to the calling blade. A common use for this binding is to return data from a child blade back to a part.
+In some cases, an extension sends information from the current blade back to the parent blade. Blades can define a list of output properties that flow back to the calling blade. A common use for this binding is to return data from a child blade back to a part.
 
 ![Typical use of blade outputs][part-settings]
 
-In this example, the parent blade defines a `BladeAction` which passes an `id` property to the child blade. This will allow changes in the View Model on the child blade to flow back to the view model on the parent blade.
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. 
 
-`\SamplesExtension\Extension\Client\Bindings\OutputBindings\OutputBindings.pdl`
+In this example, the parent blade defines a `BladeAction` which passes an `id` property to the child blade. This will allow changes in the `ViewModel` on the child blade to flow back to the `ViewModel` on the parent blade, as in the example located at `<dir>\Client\V1\Bindings\OutputBindings\OutputBindings.pdl` and in the following code.
 
 ```xml
 <CustomPart Name="ParentPart"
@@ -21,8 +21,10 @@ In this example, the parent blade defines a `BladeAction` which passes an `id` p
   </BladeAction>
 </CustomPart>
 ```
+ 
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Bindings/OutputBindings/OutputBindings.pdl", "section": "portalfx-blades-outputs#parent-part"}
 
-In the snippet above, `OutputBindingsChildBlade` will be opened with a `currentNumber` parameter.  The child blade will be responsible for setting the value on the output binding.  After that value is set, `onInputsSet` of the part will be invoked, this time with a value named `currentNumber`.
+In the previous snippet, `OutputBindingsChildBlade` is opened with a `currentNumber` parameter.  The child blade sets the value on the output binding.  After that value is set, `onInputsSet` of the part is invoked, this time with a value named `currentNumber`.
 
 
 
