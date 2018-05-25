@@ -1,7 +1,11 @@
 
 ### Blade Properties
 
-Blades use `ViewModels` to manage information like the title, subtitle, icon, and status. To acquire blade `ViewModel` data from a server, often the extension will load an object by Id. Information that is sent to the blade as a `BladeParameter` can be sent to the blade `ViewModel` by using  a `<Property>` element. A code sample  is located  at `<dir>\Client\Hubs\Browse\Browse.pdl`, and is also in the following code.
+Blades use `ViewModels` to manage information like the title, subtitle, icon, and status. To acquire blade `ViewModel` data from a server, often the extension will load an object by Id. Information that is sent to the blade as a `BladeParameter` can be sent to the blade `ViewModel` by using  a `<Property>` element.
+
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. 
+
+ A code sample  is located  at `<dir>\Client\V1\Hubs\Browse\Browse.pdl`, and is also in the following code.
 
 ```xml
 <Blade Name="RobotBlade" ViewModel="RobotBladeViewModel">
@@ -15,6 +19,9 @@ Blades use `ViewModels` to manage information like the title, subtitle, icon, an
   ...
 </Blade>
 ```
+
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Hubs\Browse\Browse.pdl", "section": "portalfx-blades-properties#property-element"}
+
 
 In this example, an `id` property is sent to the blade as a parameter, and then the `name` property is sent as a `ViewModel`. The blade `ViewModel`  may subscribe to changes in this value, and update the blade information as required. An example of blade properties is located in `dir>Client\Hubs\Browse\ViewModels\RobotBladeViewModel.ts`. It is also in the following code.
 
