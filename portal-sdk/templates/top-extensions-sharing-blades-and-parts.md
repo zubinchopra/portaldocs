@@ -152,7 +152,7 @@ In some cases an extension needs to invoke a method on another extension, or pro
 To provide a method for invocation, you can create a new callback in `EntryPoint`.  The following code creates a RPC endpoint named `StringUpperCaseCallback`, takes a single string argument, and returns a transformed string.
 The code is located in `<dir>\Client\Program.ts`, and is also in the following example.
 
-{"gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Program.ts", "section": "program#register-callback"}
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/Program.ts", "section": "program#register-callback"}
 
 ### Consumer API
 
