@@ -171,9 +171,7 @@ private registerCallbacks(): void {
     MsPortalFx.Services.Rpc.registerCallback("StringUpperCaseCallback", function (input: string): string {
         return input.toUpperCase();
     });
-}
-}
-	
+
 ```
 
 <a name="sharing-your-portal-definition-export-with-other-teams-producer-api-consumer-api"></a>
@@ -185,27 +183,27 @@ It is located at `<dir>\Client\V1\Extensibility\RPC\ViewModels\RpcCallbacksViewM
 ```typescript
 
 
-   /**
-    * This method will invoke a method on SamplesExtension (ideally a different extension than your own).  That method is
-    * defined in Program.ts of SamplesExtension, and will be returned async.
-    */
-   public invokeCallback() {
-       var extensionId = "SamplesExtension",
-           callbackName = "StringUpperCaseCallback",
-           arg = (new Date()).toTimeString();
+/**
+ * This method will invoke a method on SamplesExtension (ideally a different extension than your own).  That method is
+ * defined in Program.ts of SamplesExtension, and will be returned async.
+ */
+public invokeCallback() {
+    var extensionId = "SamplesExtension",
+        callbackName = "StringUpperCaseCallback",
+        arg = (new Date()).toTimeString();
 
-       // Reset UI
-       this.result(ClientResources.rpcResultPending);
+    // Reset UI
+    this.result(ClientResources.rpcResultPending);
 
-       // Make the async remote procedure call
-       MsPortalFx.Services.Rpc.invokeCallback<string>(extensionId, callbackName, arg).then(
-           (result) => {
-               this.result(result);
-           },
-           (rpcError) => {
-               this.result(ClientResources.rpcResultErrorFormatString.format(rpcError.error.toString(), rpcError.isClientError));
-           });
-   }
+    // Make the async remote procedure call
+    MsPortalFx.Services.Rpc.invokeCallback<string>(extensionId, callbackName, arg).then(
+        (result) => {
+            this.result(result);
+        },
+        (rpcError) => {
+            this.result(ClientResources.rpcResultErrorFormatString.format(rpcError.error.toString(), rpcError.isClientError));
+        });
+}
 }
 
 ```
