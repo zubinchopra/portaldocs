@@ -20,6 +20,7 @@ Blades use `ViewModels` to manage information like the title, subtitle, icon, an
 </Blade>
 ```
 
+
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Hubs\Browse\Browse.pdl", "section": "portalfx-blades-properties#property-element"}
 
 
