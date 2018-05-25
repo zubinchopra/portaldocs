@@ -1,2 +1,2 @@
 
-The page you requested has moved to [/portaldocs/README.md](/portaldocs/README.md).
+The page you requested has moved to [/README.md](/README.md).
