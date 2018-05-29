@@ -48,6 +48,7 @@ The following sample demonstrates how to create a FrameBlade. It illustrates a f
 1. The iframe code that includes the html is located at `<dir>/Content/SamplesExtension/framebladepage.html`.  It is also in the following code.
 
     ```html
+
     ﻿<!DOCTYPE html>
 <html>
 
@@ -67,11 +68,11 @@ The following sample demonstrates how to create a FrameBlade. It illustrates a f
 
 </html>
 
+
     ```
 
 1. Create the `ViewModel`, as in the code located at  `<dir>/Client/V2/Blades/FrameBlade/SampleFrameBlade.ts` and in the following example.
 
-    ```ts
     ```typescript
 
 /**
@@ -95,11 +96,11 @@ export class SampleFrameBlade {
 			
 
 ```
-    ```
 
 1. The code that connects the viewmodel to the extension is located at  `<dir>/Content/Scripts/framepage.js` and is in the following example.
 
     ```javascript
+    
     (function() {
     "use strict";
 
@@ -229,6 +230,7 @@ export class SampleFrameBlade {
     postMessageToParent("getAuthToken");
 })();
 
+    
     ```
 
 The working sample can be viewed at [http://df.onecloud.azure-test.net/?feature.samplesextension=true#blade/SamplesExtension/SampleFrameBlade](http://df.onecloud.azure-test.net/?feature.samplesextension=true#blade/SamplesExtension/SampleFrameBlade).
