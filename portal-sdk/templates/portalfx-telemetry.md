@@ -52,7 +52,7 @@ You can use the Portal telemetry APIs to log telemetry. However, before you do s
 
 ```ts
   // Initialize the telemetry functionality and make it available for use.
-  MsPortalFx.Base.Diagnostics.Telemetry.initialize("ExtensionName", false /* traceBrowserInformation */ );
+  MsPortalFx.Base.Diagnostics.Telemetry.initialize("ExtensionName");
 ```
 
 > Note that you don't need to trace browser information to your particular extension as this data is collected globally. However, if you would like the browser information in your own telemetry store set traceBrowserInformation to true.
