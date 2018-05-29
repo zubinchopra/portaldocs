@@ -42,15 +42,6 @@ Blades can be created in any PDL file. They are aggregated at compile time into 
 
 ```
 
-```xml
-<Blade Name="LockedBlade"
-       ViewModel="LockedBladeViewModel">
-    <Lens>
-        ...
-    </Lens>
-</Blade>
-```
-
 Blades use ViewModels to drive dynamic content, including titles, icons, and status.  The following is a list of legacy blade subtopics.
 
 | Type                 | Document                                                       | Description |
