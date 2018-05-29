@@ -14,6 +14,13 @@ The following image contains a legacy blade.
 Blades can be created in any PDL file. They are aggregated at compile time into the extension definition, as in the code located at `<dir>\Client\V1\Blades\Locked\Locked.pdl`. The code is also in the following example.
 
 ```xml
+
+{"gitdown": "include-file", "file": 
+"../Samples/SamplesExtension/Extension/Client/V1/Blades/Locked/Locked.pdl"}
+
+```
+
+```xml
 <Blade Name="LockedBlade"
        ViewModel="LockedBladeViewModel">
     <Lens>
