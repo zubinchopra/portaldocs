@@ -43,12 +43,12 @@ This tutorial will provide you step by step instructions for creating a UnitTest
 
 ```
 
-NOTE: this document uses relative path syntax to indicate where you should add each file e.g ./index.html indicates adding an index.html at the root of your test project folder Extension.UnitTests/index.html
+NOTE: this document uses relative path syntax to indicate where you should add each file e.g ./package.json indicates adding an index.html at the root of your test project folder Extension.UnitTests/package.json
 
 <a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code-to-generate-fxscripts-js"></a>
 ### to generate FxScripts.js
 
-In the ./index.html the following scripts are imported
+In the ./karma.conf.js the following scripts are imported
 
 - `mocha.js`: this test framework is used in the shipped sample. Note that you may choose to use whatever test framework you wish. msportalfx-ut is test framewwork agnostic.
 - `chai.js`: test assertion framework. Note that you may choose to use whatever test framework you wish. msportalfx-ut is test framewwork agnostic.
@@ -460,17 +460,17 @@ module.exports = function (config) {
 <a name="unit-test-framework-preview-configure-require-and-mocha-using-add-test-main-js-run-your-tests"></a>
 ### Run your tests
 
-Using a browser as a host:
-`npm run test-dev` opens index.html in your regular browser.
-
 Using a karmajs to host and run your tests
-`npm run test` opens index.html in your regular browser.
+`npm run test` launches karmajs in your configured target browsers in watch mode.
 
 Using karmajs for a single test run useful for scenarios such as running in CI 
 
-`npm run test-ci` opens index.html in your regular browser.
+`npm run test-ci` launches karmajs in your configured target browsers for a single run.
 
-you will note that these last two are configured to run in Edge and Chrome. You may also pick and choose additional browsers via the launcher plugins [documented here](https://karma-runner.github.io/2.0/config/browsers.html).
+Using a browser as a host (deprecated):
+`npm run test-dev` opens index.html in your regular browser.
+
+you will note that these last two (`test` and `test-ci`) are configured to run in Edge and Chrome. You may also pick and choose additional browsers via the launcher plugins [documented here](https://karma-runner.github.io/2.0/config/browsers.html).
 
 <a name="unit-test-framework-preview-configure-require-and-mocha-using-add-test-main-js-test-output-for-ci"></a>
 ### Test Output for CI
