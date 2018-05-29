@@ -110,9 +110,9 @@ web.config
 <a name="verfiying-that-persistent-caching-is-working"></a>
 ### Verfiying that persistent caching is working
 
-- Deploy a version of your extension. Examine the scripts it loads, they will be of the form `prefix<sha hash>suffix.js`
+- Deploy a version of your extension. Examine the scripts it loads, they will be of the form `<sha hash>.js`
 - Use a blob explorer of your preference and verify that the scripts have been written to blob storage.
 - Then make changes to TS files in your solution, build and deploy a new version of your extension.
-- Look for scripts that have the same prefix and suffix but a different hash.
-- For those scripts try to request the original URL (from step 1) from your extension server (not via the cdn).
+- Look for scripts that have a different hash.
+- For those scripts try to request the original URL (from step 1) from your extension server (not via the CDN).
 - The script should still get served, but this time it is coming from the persistent cache.
