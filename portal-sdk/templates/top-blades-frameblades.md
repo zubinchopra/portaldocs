@@ -42,27 +42,27 @@ The following sample demonstrates how to create a FrameBlade. It illustrates a f
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
-1. The iframe code that includes the html is located at `<dir>/Content/SamplesExtension/framebladepage.html`.  It is also in the following code.
+The iframe code that includes the html is located at `<dir>/Content/SamplesExtension/framebladepage.html`.  It is also in the following code.
 
-    ```html
+```html
 
-    {"gitdown": "include-file", "file": 
-    "../Samples/SamplesExtension/Extension/Content/SamplesExtension/framebladepage.html"}
+{"gitdown": "include-file", "file": 
+"../Samples/SamplesExtension/Extension/Content/SamplesExtension/framebladepage.html"}
 
-    ```
+```
 
-1. Create the `ViewModel`, as in the code located at  `<dir>/Client/V2/Blades/FrameBlade/SampleFrameBlade.ts` and in the following example.
+Create the `ViewModel`, as in the code located at  `<dir>/Client/V2/Blades/FrameBlade/SampleFrameBlade.ts` and in the following example.
 
-    {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/FrameBlade/SampleFrameBlade.ts", "section": "top-blades-frameblades#viewmodel"}
+{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/FrameBlade/SampleFrameBlade.ts", "section": "top-blades-frameblades#viewmodel"}
 
-1. The code that connects the viewmodel to the extension is located at  `<dir>/Content/Scripts/framepage.js` and is in the following example.
+The code that connects the viewmodel to the extension is located at  `<dir>/Content/Scripts/framepage.js` and is in the following example.
 
-    ```javascript
-    
-    {"gitdown": "include-file", "file": 
-    "../Samples/SamplesExtension/Extension/Content/Scripts/framepage.js"}
-    
-    ```
+```javascript
+
+{"gitdown": "include-file", "file": 
+"../Samples/SamplesExtension/Extension/Content/Scripts/framepage.js"}
+
+```
 
 The working sample can be viewed at [http://df.onecloud.azure-test.net/?feature.samplesextension=true#blade/SamplesExtension/SampleFrameBlade](http://df.onecloud.azure-test.net/?feature.samplesextension=true#blade/SamplesExtension/SampleFrameBlade).
 
