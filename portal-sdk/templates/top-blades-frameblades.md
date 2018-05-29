@@ -1,4 +1,4 @@
-### Frame Blades
+## Frame Blades
 
 FrameBlades provide an alternative programming model for developing UI in Ibiza. This alternative gives the extension author full control over the DOM via an IFrame. Fx controls cannot be used within FrameBlades. 
 
@@ -28,11 +28,11 @@ When using AppBlade, developers are responsible for the following.
 
     Building your own controls, or using available alternatives to Ibiza Fx controls
 
-### Sending messages between the IFrame and Ibiza Fx
+## Sending messages between the IFrame and Ibiza Fx
 
 The FrameBlade view model is hosted in the hidden IFrame in which the extension is loaded. This is just like TemplateBlades. However, the contents of the FrameBlade are hosted in a different IFrame that is visible on the screen. The Ibiza extension IFrame and the UI IFrame communicate by sending and receiving messages, as described in [https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage).
 
-### Creating a FrameBlade
+## Creating a FrameBlade
 
 The following sample demonstrates how to create a FrameBlade. It illustrates a few key concepts.
 
@@ -66,33 +66,33 @@ The code that connects the viewmodel to the extension is located at  `<dir>/Cont
 
 The working sample can be viewed at [http://df.onecloud.azure-test.net/?feature.samplesextension=true#blade/SamplesExtension/SampleFrameBlade](http://df.onecloud.azure-test.net/?feature.samplesextension=true#blade/SamplesExtension/SampleFrameBlade).
 
-### Sending messages between the IFrame and Ibiza Fx
+## Sending messages between the IFrame and Ibiza Fx
 
 The AppBlade `ViewModel` is hosted in the hidden IFrame in which the extension is loaded. However, the contents of the AppBlade are hosted in a different IFrame that is visible on the screen. The Ibiza extension IFrame and the UI IFrame communicate by sending and receiving messages. The following sections demonstrate how to exchange messages between the two IFrames and the Portal.
 
-### Ibiza extension IFrame messaging
+## Ibiza extension IFrame messaging
 
-#### Listen to a message
+### Listen to a message
 
 The extension can listen to messages that are sent from the UI IFrame to the Ibiza extension ViewModel by using the **on** method in the **AppBlade** ViewModel, as in the following example.
 
-#### Post a message
+### Post a message
 
 The Ibiza extension ViewModel can post messages to the UI IFrame by using the **postMessage** method in the AppBlade ViewModel, as in the following example.
 
-### UI IFrame messaging
+## UI IFrame messaging
 
-#### Listen to a message
+### Listen to a message
 
 The extension can listen for messages that are sent from the Ibiza extension ViewModel to the UI Frame by adding an event listener to the application window, as shown in the following code.
 
 The extension should also provide a handler for the incoming message. 
 
-#### Post a message
+### Post a message
 
 The  UI IFrame can post messages back to the Portal using the **postMessage** method. There is a required message that the  IFrame sends to the Portal to indicate that it is ready to receive messages.
 
-### Changing UI themes
+## Changing UI themes
 
 When using a FrameBlade, extension developers can implement themes. Typically, the user selects a theme, which in turn is sent to the UI IFrame. The following code snippet demonstrates how to pass the selected theme to the UI IFrame using the **postMessage** method.
 
