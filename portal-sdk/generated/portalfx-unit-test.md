@@ -559,6 +559,39 @@ This error indicates that it cannot find the expanded NuGet package for the Unit
     * Run Corext Init - From the root of your repository run: `init`
     * Run the Npm install - From your Unit Test directory run: `npm run init`
 
+<a name="faq-how-do-i-override-the-default-stubs-the-unit-test-harness-provides-out-of-the-box"></a>
+## How do I override the default stubs the unit test harness provides out of the box.
+
+Use the Harness.init function and supply an options object of type InitializationOptions with your own stub(s) that will override the default stub provided by the unit test framework.
+
+example usage:
+
+```typescript
+
+import * as harness from "msportalfx-ut/Harness";
+
+...
+
+const options : harness.InitializationOptions = { 
+    getUserInfo: sinon.stub().returns(Q({
+            email: "ibizaems@microsoft.com",
+            isOrgId: false,
+            givenName: "givenName",
+            surname: "surName",
+            directoryId: "00000000-0000-0000-0000-000000000000",
+            directoryName: "directoryName",
+            uniqueDirectoryName: "uniqueDirectoryName",
+            domainName: "domainName"
+        })),
+        ...
+};
+
+harness.init(options);
+
+...
+
+```
+
 <a name="faq-simple-html-test-harness-for-running-mocha-tests"></a>
 ## Simple html test harness for running mocha tests
 
