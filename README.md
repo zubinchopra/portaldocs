@@ -160,13 +160,13 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 Since your extension is just web code, you can make **AJAX** calls to various services to load data into your UI. The framework provides a data library you can use to manage this data.
 
-* [Making authenticated calls to Azure Resource Manager (ARM) and other endpoints](/portal-sdk/generated/top-extensions-data-loading.md#authenticating-ajax-calls)
+* [Making authenticated calls to Azure Resource Manager (ARM) and other endpoints](/portal-sdk/generated/portalfx-data-loadingdata.md#making-authenticated-ajax-calls)
 
 <!-- ajax calls and batch -->
 
 <!-- Ajax all up, batch calls to arm, ajax calls with batch flags set (new doc) GURUA will look at seed content -->
 
-* [Legacy data management features](/portal-sdk/generated/top-legacy-data.md)
+* [Legacy data management features](/portal-sdk/generated/portalfx-data.md)
 
 [Ask about data management on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching)
 
