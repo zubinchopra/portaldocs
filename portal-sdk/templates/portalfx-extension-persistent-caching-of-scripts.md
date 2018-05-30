@@ -4,7 +4,6 @@
     description=""
     authors="madjos" />
 
-<a name="making-sure-that-scripts-are-available-across-extension-updates"></a>
 ### Making sure that scripts are available across extension updates
 
 One problem that can impact reliability of extensions is scripts failing to load.
@@ -44,7 +43,6 @@ If we detect that it is getting hit too often, we will come up with a geo-distri
 If you do use one account per region to handle this, you will need to find a way to synchronize them.
 You could do this by using a custom implementation of the `Microsoft.Portal.Framework.IPersistentContentCache` interface.
 
-<a name="example-implementation-as-done-in-hubsextension"></a>
 ### Example implementation as done in HubsExtension
 
 ```cs 
@@ -107,12 +105,11 @@ web.config
 
 ```
 
-<a name="verfiying-that-persistent-caching-is-working"></a>
 ### Verfiying that persistent caching is working
 
 - Deploy a version of your extension. Examine the scripts it loads, they will be of the form `<sha hash>.js`
 - Use a blob explorer of your preference and verify that the scripts have been written to blob storage.
 - Then make changes to TS files in your solution, build and deploy a new version of your extension.
 - Look for scripts that have a different hash.
-- For those scripts try to request the original URL (from step 1) from your extension server (not via the CDN).
+- For those scripts try to request the original URL (from step 1) from your extension server (not via the cdn).
 - The script should still get served, but this time it is coming from the persistent cache.
