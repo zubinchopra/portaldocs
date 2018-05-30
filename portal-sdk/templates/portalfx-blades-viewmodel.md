@@ -1,4 +1,6 @@
 
+# Blade ViewModels
+
 ## Overview 
 
 The Portal uses a `viewModel` abstraction to allow extensions to deal with data and manipulate UI without worrying about the differences in DOM events across browsers or having to remember to include the right accessibility attributes.
@@ -9,7 +11,7 @@ The DOM is in an iFrame controlled by the Portal, or the 'shell' iFrame.  The ex
 
 When a blade is opened by the user, the Portal calls the extension iFrame and requests the `ViewModel` for that blade. The blade `ViewModel` consists of other `ViewModels` for items like textboxes, buttons, and other controls. These `ViewModels` are used to communicate with the user by displaying or collecting information. The blade `ViewModel` coordinates the transfer of the data to, from, and between the `ViewModels` for the controls. The `ViewModels` have a performance impact on the blades. Accessibility attributes are encapsulated in the controls.
 
-**NOTE**: It is good practice to use a section control to layout the blade controls, instead of directly putting them in the template. A section control provides default styling, and is typically an easier way to deal with dynamically adding and removing of controls.
+**NOTE**: It is good practice to use a section control to lay out the blade controls, instead of directly putting them in the template. A section control provides default styling, and is typically an easier way to deal with dynamically adding and removing of controls.
  
 In this example, the blade loads a person object from the server and displays it in readonly textbox controls. The practice of putting the textbox controls in a section control was omitted to simplify the example. To make the scenario more dynamic, the blade does not display a textbox for the person's smartphone if the string is empty. Consequently, the UI resembles one of the following two images.
 
@@ -25,13 +27,13 @@ The properties on the `ViewModel` that creates this blade are in the following e
 
 Private members of the blade `ViewModel` are properties whose name starts with an underscore. The proxied observable layer does not transfer private members to the shell iFrame. For example, the `EntityView` object named `_view` is not directly used in the rendering of the blade, therefore it does not appear in the blade template, nor is it proxied to the shell iFrame.
 
-**NOTE**: Incorrect selection of the data that is to be proxied to the shell can greatly reduce the performance of the blade.
+**NOTE**: Incorrect selection of the data that is to be proxied to the Shell can greatly reduce the performance of the blade.
 
-The template for this blade is in the following example.
+The template for this blade is located at `<dir>\Client\Blades\ViewModelInitExample\Templates\Template.html`  .  It is also in the following example.
 
 {"gitdown": "include-section", "file":"../Samples/InternalSamplesExtension/Extension/Client/Blades/ViewModelInitExample/Templates/Template.html", "section": "bladeViewModel#template"}
 
-The following methods are  associated with the blade `ViewModel`.
+The following methods are associated with the blade `ViewModel`.
 
 * [#The-blade-constructor](#the-blade-constructor)
 
@@ -105,7 +107,7 @@ The extension uses a `fetch()` to get data from the server, based on the inputs 
 
 ### The Knockout reactor method
 
-Any observables read in the function that are sent to `ko.reactor()` will become a dependency for that reactor.  The reactor will recompute whenever any of those observable values change. The same is true for the  `ko.pureComputed()` method and the observable array's `map()` and `mapInto()` functions. This can lead to a situation where a `computed` is recalculating unintentionally. For more information about `map` and `mapInto`, see [top-extensions-data-projections.md#shaping-and-filtering-data](top-extensions-data-projections.md#shaping-and-filtering-data).
+Any observables read in the function that are sent to `ko.reactor()` will become a dependency for that reactor.  The reactor will recompute whenever any of those observable values change. The same is true for the  `ko.pureComputed()` method and the observable array's `map()` and `mapInto()` functions. This can lead to a situation where a `computed` is recalculating unintentionally. For more information about `map` and `mapInto`, see [top-legacy-data.md#shaping-and-filtering-data](top-legacy-data.md#shaping-and-filtering-data).
 
 It is also good practice to put a breakpoint in the `computed` function whenever a `pureComputed` or a `reactor` to determine how many times each function runs.  There have been instances when `computed` functions that should run once actually ran more than thirty times, which wastes CPU time on unnecessary  recalculations.  If another `computed` takes a dependency on the function that runs too often,  the CPU consumption performance issue grows exponentially.
 

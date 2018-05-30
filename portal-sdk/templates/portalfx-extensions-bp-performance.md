@@ -168,7 +168,7 @@ Paging implies that many rows might not need to be loaded at all. For more infor
 
 Significant performance improvements can be achieved by reducing the number of data models that are bound to controls like grids, lists, or charts.
 
-Use the Knockout projections that are located at [https://github.com/stevesanderson/knockout-projections](https://github.com/stevesanderson/knockout-projections) to shape and filter model data.  They work in context with  with the  `QueryView` and `EntityView` objects that are discussed in [top-extensions-data-projections.md#using-knockout-projections](top-extensions-data-projections.md#using-knockout-projections).
+Use the Knockout projections that are located at [https://github.com/stevesanderson/knockout-projections](https://github.com/stevesanderson/knockout-projections) to shape and filter model data.  They work in context with  with the  `QueryView` and `EntityView` objects that are discussed in [top-legacy-data.md#using-knockout-projections](top-legacy-data.md#using-knockout-projections).
 
 The code located at `<dir>\Client\V1\Controls\Grid\ViewModels\SelectableGridViewModel.ts` improves extension performance by connecting the reduced model data to a ViewModel that uses grids.  It is also in the following example.
 

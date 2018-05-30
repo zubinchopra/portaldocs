@@ -203,7 +203,7 @@ When a part is pinned or moved to another blade, a new ViewModel for that part i
 
 Model data is not sent in bindings because the extension is required to store specific types of data in persistent storage. The only objects that should be sent as bindings between the extension and the various parts are the keys and ids that are used to load data from a back end server.   If data that specifies the robot changes, like  the name, those changes should be reflected in the part.  This provides the 'live tile' feel of the Portal, and ensures that the part data is not stale.
 
-For more information about keys and data loading in the Portal, see [top-extensions-data.md](top-extensions-data.md).
+For more information about keys and data loading in the Portal, see [top-legacy-data.md](top-legacy-data.md).
 
 ### Preventing pinning
 

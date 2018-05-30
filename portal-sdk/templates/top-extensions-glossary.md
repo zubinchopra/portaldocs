@@ -29,9 +29,6 @@
 
 {"gitdown": "include-file", "file": "portalfx-extensions-glossary-custom-deployment.md"}
 
-## Data 
-
-{"gitdown": "include-file", "file": "portalfx-extensions-glossary-data.md"}
 
 ## Debugging Extensions 
 
