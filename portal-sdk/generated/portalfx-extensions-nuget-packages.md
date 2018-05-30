@@ -31,7 +31,7 @@ After installation, NuGet packages that are used for development are listed in t
 <a name="available-nuget-packages-shared-packages"></a>
 ### Shared packages
 
-Portal Definition Exports, or PDE's, are extensions that are maintained by teams other than the Ibiza team and your team. These extensions are available for your use.
+Portal Definition Exports, or PDE's, are extensions that are maintained by teams other than the Ibiza team and your team. These extensions are available for your use. This list of packages are contributed to by extension developers who are exposing functionality from their extension by way of shipping their PDE. The absence of an extension package from the list does not imply that the package does not exist, or does not ship. To verify whether an extension ships a NuGet package, reach out to the respective teams at [https://aka.ms/portalfx/uservoice](https://aka.ms/portalfx/uservoice) or [portalfx-extensions-contacts](portalfx-extensions-contacts).
 
 | Package                                     | Purpose                   | Document |
 | ------------------------------------------- | ------------------------- | -------- |
