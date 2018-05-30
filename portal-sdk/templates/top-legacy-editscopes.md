@@ -3,7 +3,7 @@
 
 **NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions be developed without edit scopes, as specified in [portalfx-editscopeless-procedure.md](portalfx-editscopeless-procedure.md). For more information about forms without editScopes, see  [portalfx-editscopeless-overview.md](portalfx-editscopeless-overview.md) and [portalfx-controls-dropdown.md#migration-to-the-new-dropdown](portalfx-controls-dropdown.md#migration-to-the-new-dropdown).
 
-<!-- TODO: Compare document with the pieces of the portalfx-editscopes*.md document -->
+<!-- TODO: Compare document with the pieces of the portalfx-editscopeless-overview.md document -->
 
 Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide many common functions that would otherwise be difficult to orchestrate, like the following:
 
@@ -52,11 +52,14 @@ EditScope 'entity' arrays were designed to meet the following requirements.
 
 * Adding and removing data from an array is revertable for some scenarios. In some cases, data that has been removed from an array is rendered with strike-through styling.
 
-Consequently, EditScope 'entity' arrays behave differently than JavaScript arrays. The most important factors are that 'Creates' are kept out-of-band and that  'Deletes' are non-destructive.
+Consequently, EditScope 'entity' arrays behave differently than JavaScript arrays. The most important factors are that 'Creates' are kept out-of-band and that 'Deletes' are non-destructive.
 
 <!-- TODO: Determine whether 'hierarchy' means tree, like a b-tree, or 'hierarchy' is a series of objects in memory. -->
 
 In an `EditScope` entity array, created/updated/deleted items are tracked individually by `EditScope`. Any edits that were made by the user and collected in an `EditScope` are saved in the storage for the browser session, which is managed by the shell. These managed changes allow the extension to warn customers that they might lose data if they navigate away from the form without saving their changes. 
+
+Also, rows can be added or removed from an editable grid, but the corresponding adds/removes may not be immediately viewable from the `EditScope` array. 
+
  The parameter that specifies the `editScope` object can be attached to an `editScopeId` property, therefore the  `editScopeId`  can be used by the `viewModel`  to load the `editScope` from the cloud, which attaches the modelled data to the view for display. 
 
 The properties that are associated with the entity's 'id' are specified in the following examples. 
@@ -186,7 +189,7 @@ The  following example uses an array that includes 'created' entities and does n
  {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/ParameterCollection/ParameterProviders/ViewModels/ProviderViewModels.ts", "section": "formsEditScopeFaq#getEntityArrayWithEdits"}
 
 ### The EditScope Cache
-------------------------------------------------
+
 The `EditScopeCache` class is less commonly used. It loads and manages instances of `EditScope`.  Typically, the blade uses an `EditScopeView`, as specified in  `editScopeCache.createView(...)`, to load or acquire the EditScope,  connect the cache to the view and then display it on the blade.  If the extension uses an `EditScopeCache` component to manage its `EditScope`, the extension should initialize the `EditScope` data in the `supplyNewData` and `supplyExistingData` callbacks that are sent to the `EditScopeCache`. 
 
  The `EditScopeCache` is  used for the following scenarios.
@@ -208,8 +211,6 @@ There are other scenarios where the default `saveEditScopeChanges` behavior does
 * For "create new record" scenarios, after 'save', the extension should clear the form, so that the user can enter a new record.
 
 For these cases, the extension will resolve the `saveEditScopeChanges` promise with a value from the `AcceptEditScopeChangesAction` enum. 
-
-#### Sample EditScopeCache
 
  <!--TODO:  The following sample code does not exist by this name.  -->
  For an example of loading an edit scope from a data context, view the sample that is located at `<dir>\Client\Data\MasterDetailEdit\MasterDetailEditData.ts`.
@@ -237,19 +238,12 @@ this.editScopeCache = MsPortalFx.Data.EditScopeCache.create<DataModels.WebsiteMo
 ```
  
 ### EditScope ViewModels
-------------------------------------------------
 
-Rows can be added or removed from an editable grid, but the corresponding adds/removes may not be immediately viewable from the `EditScope` array. 
-
-
-
-### The editScopeView 
-
-In most cases, editable forms include commands that  act upon data that is displayed in those forms. Data is made available to the command by binding a value from a part `ViewModel` to a command `ViewModel`, or the `editScopeId` requested by the blade can be bound to the part and the command. The extension can instantiate an `EditScope` by using a `MsPortalFx.Data.EditScopeView` object. The `EditScopeView` object makes edited data available at `editScopeView.editScope().root` after the `editScope()` observable is populated. When the data to view and edit is already located on the client, an `EditScopeView` can also be obtained from other data cache objects. 
+In most cases, editable forms include commands that act upon data that is displayed in those forms. Data is made available to the command by binding a value from a part `ViewModel` to a command `ViewModel`, or the `editScopeId` requested by the blade can be bound to the part and the command. The extension can instantiate an `EditScope` by using a `MsPortalFx.Data.EditScopeView` object. The `EditScopeView` object makes edited data available at `editScopeView.editScope().root` after the `editScope()` observable is populated. When the data to view and edit is already located on the client, an `EditScopeView` can also be obtained from other data cache objects. 
 
 The data in the `editScope` includes original values and saved edits. The method to access inputs on a part is the `onInputsSet` method. In the constructor, a new `MsPortalFx.Data.EditScopeView` object is created from the `dataContext`. The `EditScopeView` provides a stable observable reference to an `EditScope` object. The `editScopeId` will be sent in as a member of the `inputs` object when the part is bound.
 
-An example of loading an edit scope is in the following code.  The sample is also located at `<dir>\Client\V1\MasterDetail\MasterDetailEdit\ViewModels\DetailViewModels.ts`. 
+An example of loading an edit scope is in the following code. The sample is also located at `<dir>\Client\V1\MasterDetail\MasterDetailEdit\ViewModels\DetailViewModels.ts`. 
 
 <!-- TODO: Determine whether this inline code should be replaced when the samples code is replaced and linked in gitHub, or whether the links to the SDK samples are sufficient. -->
 
@@ -278,30 +272,38 @@ public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
 ```
 
 ### Loading the EditScope
-------------------------------------------------
+
 The code that loads the `EditScope` is largely related to data loading, so the data context is the preferred location for the code. 
 
-#### Binding Observables
+Form fields require a binding to one or more observables. Consequently, they have two constructor overloads. Extension developers can configure this binding by supplying a path from the root of the `EditScope/Form` model down to the observable to which the form field should bind. They can do this by selecting one of the two form field constructor variations.
 
-Form fields require a binding to one or more `EditScope` observables. Consequently, they have two constructor overloads. Extension developers can configure this binding by supplying a path from the root of the EditScope/Form model down to the observable to which the form field should bind. They can do this by selecting one of the two form field constructor variations.
+* The `EditScopeAccessor` is the preferred methodology because it is verified at compile time. 
 
-The `EditScopeAccessor` is the preferred, compile-time verified methodology. The form field `ViewModel` constructor accepts an EditScopeAccessor, wraps a compile-time verified lambda, and returns the `EditScope` observable to which the Form field should bind, as in the following code located at     `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`.  It is also in the following code.
+* The string-typed path methodology is discouraged because it is not compile-time verified. 
 
- {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts", "section": "formsEditScopeFaq#editScopeAccessor"} 
-
-The EditScopeAccessor methodology is preferred for the following reasons.
+The `EditScopeAccessor` methodology is preferred for the following reasons.
 
 * The supplied lambda will be compile-time verified. This code is more maintainable, for example, when the property names on the Form model types are changed.
 
-* There are advanced variations of `EditScopeAccessor` that enable less-common scenarios like binding multiple `EditScope` observables to a single form field.  There are others that demonstrate translating form model data for presentation to the user, as in the code located at       `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`. It is also in the following code.
+* There are advanced variations of `EditScopeAccessor` that enable less-common scenarios like binding multiple `EditScope` observables to a single form field.
+
+#### The EditScopeAccessor
+
+In the `EditScopeAccessor`, the form field `ViewModel` constructor accepts an `EditScopeAccessor`, wraps a compile-time verified lambda, and returns the `EditScope` observable to which the Form field should bind, as in the code located at     `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts` and in the following code.
+
+ {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts", "section": "formsEditScopeFaq#editScopeAccessor"} 
+
+  There are other forms that demonstrate translating model data for presentation to the user, as in the code located at       `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`. It is also in the following code.
   
  {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts", "section": "formsEditScopeFaq#editScopeAccessorAdvanced"}
 
-The string-typed path  methodology can be used instead of the `EditScopeAccessor`.  The string-typed path is discouraged because it is not compile-time verified. The form field ViewModel constructor accepts a string-typed path that contains the location of the EditScope observable to which the Form field should bind, as in the code located at    `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`. It is also in the following code.
+#### String typed path methodology
+
+The string-typed path methodology can be used instead of the `EditScopeAccessor`.  The string-typed path is discouraged because it is not compile-time verified. The form field `ViewModel` constructor accepts a string-typed path that contains the location of the `EditScope` observable to which the Form field should bind, as in the code located at    `<dir>/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts`. It is also in the following code.
 
  {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Forms/Scenarios/FormFields/ViewModels/FormFieldsFormIntegratedViewModels.ts", "section": "formsEditScopeFaq#editScopePath"} 
 
-The following code creates a new set of form field objects and binds them to the `editScope`. The sample is also located at  `<dir>\Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\DetailViewModels.ts`.  
+The following code creates a new set of form field objects and binds them to the `editScope`. The sample is located at  `<dir>\Client\V1\MasterDetail\MasterDetailBrowse\ViewModels\DetailViewModels.ts` and in the following code.
 
 ```ts
 private _initializeForm(): void {
