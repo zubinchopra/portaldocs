@@ -95,42 +95,36 @@ In the most common scenario, extension developers can execute **ContentUnbundler
 
     The `ServiceGroupRootReplacements.json` file contains the following parameters, among others:  `TargetContainerName`, `AzureSubscriptionId`, `CertKeyVaultUri`,`TargetStorageConStringKeyVaultUri` and the extension name. This will require you to set up a KeyVault for certificates and other items that are used for connectivity.
 
-    <details>
+    1. Set up KeyVault
 
-    <summary>1. Set up KeyVault</summary>
+        <!--TODO:  Determine who provides the storage account: the extension developer or the Azure Portal -->
 
-     <!--TODO:  Determine who provides the storage account: the extension developer or the Azure Portal -->
+          During deployment, the zip file from the official build will be copied to the storage account that was provided when onboarding to the hosting service.  To do this, Ev2 and the hosting service need two secrets:
 
-      During deployment, the zip file from the official build will be copied to the storage account that was provided when onboarding to the hosting service.  To do this, Ev2 and the hosting service need two secrets:
+          1. The certificate that Ev2 will use to call the hosting service to initate a deployment.
 
-      * The certificate that Ev2 will use to call the hosting service to initate a deployment.
+             **NOTE**: Azure ignores this certificate but it is still required. The extension is validated based on an allowed list of storage accounts and the storage credential you supply by using the  `TargetStorageConStringKeyVaultUri` and `TargetContainerName` settings.
 
-        **NOTE**: Azure ignores this certificate but it is still required. The extension is validated based on an allowed list of storage accounts and the storage credential you supply by using the  `TargetStorageConStringKeyVaultUri` and `TargetContainerName` settings.
-
-      * The connection string to the target storage account where the extension will be deployed. The format of the connection string is the default form `DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1};EndpointSuffix={3}`, which is the format provided from portal.azure.com.
+          1. The connection string to the target storage account where the extension will be deployed. The format of the connection string is the default form `DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1};EndpointSuffix={3}`, which is the format provided from portal.azure.com.
       
-    </details>
-    <details>
-    <summary>2. Onboard to KeyVault</summary>
+    1. Onboard to KeyVault
 
-      The official guidance from Ev2 is located at  [https://aka.ms/portalfx/ev2keyvault](https://aka.ms/portalfx/ev2keyvault).  Follow the instructions to:
+        The official guidance from Ev2 is located at  [https://aka.ms/portalfx/ev2keyvault](https://aka.ms/portalfx/ev2keyvault).  Follow the instructions to:
 
-      1. Create a KeyVault. 
-      1. Grant Ev2 read access to your KeyVault
-      1. Create an Ev2 Certificate and add it to the KeyVault as a secret. In the following `csproj` config example, the name of the certificate in the KeyVault is `PortalHostingServiceDeploymentCertificate`.
-      1. Create a KeyVault secret for the storage account connection string. Any configuration for prod environments is done via [jit](portalfx-extensions-glossary-hosting-service.md) access and on your [SAW](portalfx-extensions-glossary-hosting-service.md).
+        1. Create a KeyVault. 
+        1. Grant Ev2 read access to your KeyVault
+        1. Create an Ev2 Certificate and add it to the KeyVault as a secret. In the following `csproj` config example, the name of the certificate in the KeyVault is `PortalHostingServiceDeploymentCertificate`.
+        1. Create a KeyVault secret for the storage account connection string. Any configuration for prod environments is done via [jit](portalfx-extensions-glossary-hosting-service.md) access and on your [SAW](portalfx-extensions-glossary-hosting-service.md).
 
-    </details>
-    <details>
-    <summary>3. Add the file to your project</summary>
+    1. Add the file to your project
 
-      Add `ServiceGroupRootReplacements.json` to the extension `csproj`, as in the following example.
+          Add `ServiceGroupRootReplacements.json` to the extension `csproj`, as in the following example.
 
-      ```xml
-      <Content Include="ServiceGroupRootReplacements.json">
-          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
-      ```
+          ```xml
+          <Content Include="ServiceGroupRootReplacements.json">
+              <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+          </Content>
+          ```
         
       The following file is an example of a `ServiceGroupRootReplacements.json` file.
 
@@ -149,10 +143,8 @@ In the most common scenario, extension developers can execute **ContentUnbundler
       ```
 
       Other environments that are supported are the Dogfood test environment and the Production environment.
-    </details>
-   
+ 
 1.  Initiate a test deployment
-
 
       You can quickly run a test deployment from a local build, previous to onboarding to WARM, by using the `New-AzureServiceRollout` commandlet.  Be sure that you are not testing in production, i.e, that the target storage account in the key vault that is being used is not the production storage account, and the **-RolloutInfra** switch is set to `Test`.  The following is an example.
 
