@@ -57,7 +57,9 @@ In the following example, and in the sample located at
 </CustomPart>
 ```
 
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Bindings/InputBindingsDifferentBlades/InputBindingsDifferentBlades.pdl", "section": "top-blades-legacy#parameter"}
+<!--
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Bindings/InputBindingsDifferentBlades/InputBindingsDifferentBlades.pdl", "section": "top-blades-legacy#parameter"}
+-->
 
 The elements in the xml are as follows.
  
@@ -114,9 +116,12 @@ Blades explicitly declare the parameters that they are required to receive, simi
 
 In the sample located at `<dir>\Client\Bindings\InputBindingsDifferentBlades\InputBindingsDifferentBlades.pdl`, the parameters that are sent to a blade are bound to parts, commands, or the blade `ViewMmodel`.  The following code binds the blade parameters to various observables on the blade.
 
+<!--
 ```ts
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Bindings/InputBindingsDifferentBlades/InputBindingsDifferentBlades.pdl", "section": "top-blades-legacy#currentnumber"}
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Bindings/InputBindingsDifferentBlades/InputBindingsDifferentBlades.pdl", "section": "top-blades-legacy#currentnumber"}
 ```
+
+-->
 
 ```xml
 <Blade>
