@@ -43,12 +43,6 @@ FAQ's that are associated with configurations for extensions.
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-configuration.md"}
 
-## Loading and managing data
-
-FAQ's that are associated with data and objects that manage data.
-
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-data.md"}
-
 ## Hosting Service
 
 FAQ's that are associated with extension hosting. 

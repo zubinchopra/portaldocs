@@ -11,9 +11,6 @@ This document  contains all Best Practices that have been added to Azure Portal 
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-debugging.md"}
 
-## Loading and managing data
-
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-data.md"}
 
 ## Performance 
 
