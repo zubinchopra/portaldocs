@@ -1,5 +1,8 @@
 
-<a name="overview"></a>
+<a name="blade-viewmodels"></a>
+# Blade ViewModels
+
+<a name="blade-viewmodels-overview"></a>
 ## Overview
 
 The Portal uses a `viewModel` abstraction to allow extensions to deal with data and manipulate UI without worrying about the differences in DOM events across browsers or having to remember to include the right accessibility attributes.
@@ -10,7 +13,7 @@ The DOM is in an iFrame controlled by the Portal, or the 'shell' iFrame.  The ex
 
 When a blade is opened by the user, the Portal calls the extension iFrame and requests the `ViewModel` for that blade. The blade `ViewModel` consists of other `ViewModels` for items like textboxes, buttons, and other controls. These `ViewModels` are used to communicate with the user by displaying or collecting information. The blade `ViewModel` coordinates the transfer of the data to, from, and between the `ViewModels` for the controls. The `ViewModels` have a performance impact on the blades. Accessibility attributes are encapsulated in the controls.
 
-**NOTE**: It is good practice to use a section control to layout the blade controls, instead of directly putting them in the template. A section control provides default styling, and is typically an easier way to deal with dynamically adding and removing of controls.
+**NOTE**: It is good practice to use a section control to lay out the blade controls, instead of directly putting them in the template. A section control provides default styling, and is typically an easier way to deal with dynamically adding and removing of controls.
  
 In this example, the blade loads a person object from the server and displays it in readonly textbox controls. The practice of putting the textbox controls in a section control was omitted to simplify the example. To make the scenario more dynamic, the blade does not display a textbox for the person's smartphone if the string is empty. Consequently, the UI resembles one of the following two images.
 
@@ -48,9 +51,9 @@ private _view: MsPortalFx.Data.EntityView<Person, any>;
 
 Private members of the blade `ViewModel` are properties whose name starts with an underscore. The proxied observable layer does not transfer private members to the shell iFrame. For example, the `EntityView` object named `_view` is not directly used in the rendering of the blade, therefore it does not appear in the blade template, nor is it proxied to the shell iFrame.
 
-**NOTE**: Incorrect selection of the data that is to be proxied to the shell can greatly reduce the performance of the blade.
+**NOTE**: Incorrect selection of the data that is to be proxied to the Shell can greatly reduce the performance of the blade.
 
-The template for this blade is in the following example.
+The template for this blade is located at `<dir>\Client\Blades\ViewModelInitExample\Templates\Template.html`  .  It is also in the following example.
 
 ```xml
 
@@ -60,7 +63,7 @@ The template for this blade is in the following example.
 
 ```
 
-The following methods are  associated with the blade `ViewModel`.
+The following methods are associated with the blade `ViewModel`.
 
 * [#The-blade-constructor](#the-blade-constructor)
 
@@ -70,7 +73,7 @@ The following methods are  associated with the blade `ViewModel`.
 
 * [The-Knockout pureComputed-method](#the-knockout-pureComputed-method) 
 
-<a name="overview-the-blade-constructor"></a>
+<a name="blade-viewmodels-overview-the-blade-constructor"></a>
 ### The blade constructor
 
 When a blade is opened, the Portal creates a blade that displays a loading UX indicator, as specified in [top-legacy-blades-template-pdl.md#displaying-a-loading-indicator-ux](top-legacy-blades-template-pdl.md#displaying-a-loading-indicator-ux).  This indicator is displayed while the `ViewModel` for the blade is requested from the extension. Then, the constructor for the blade `ViewModel` runs. The constructor should include the `ViewModels` for the UI, and as much initialization as possible. 
@@ -97,7 +100,7 @@ this.okButton = Button.create(container, {
 
 ```
 
-<a name="overview-the-blade-constructor-observable-and-non-observable-values"></a>
+<a name="blade-viewmodels-overview-the-blade-constructor-observable-and-non-observable-values"></a>
 #### Observable and non-observable values
 
 Observable values can be updated after their creation. In addition, observables are not limited to primitive types. Any properties that are not observable cannot be observably updated after the proxied observable layer has mirrored the `ViewModel` in the shell iFrame.
@@ -138,7 +141,7 @@ Later, the text is updated by writing to that observable.
 this._buttonText("New button text");
 ```
 
-<a name="overview-the-oninputsset-method"></a>
+<a name="blade-viewmodels-overview-the-oninputsset-method"></a>
 ### The onInputsSet method
 
 When the input values for the blade are ready, the framework will call the `onInputsSet` method. This is often when the extension fetches the data for the blade and updates the view models that were created in the constructor. When the promise that is returned from the `onInputsSet` method is resolved, the blade is considered 'loaded', and the loading UI indicator will be removed from the blade. The following is the `onInputsSet` method for the person object example.
@@ -174,10 +177,10 @@ The extension uses a `fetch()` to get data from the server, based on the inputs 
 
     When the textbox `ViewModel` is written to the `smartPhone` observable, the `pcControl` binding handler in the blade template observes the new `ViewModel` and constructs a textbox control. If the observable is not populated, the `<div>` in the template remains empty, and nothing is displayed on the blade.
 
-<a name="overview-the-knockout-reactor-method"></a>
+<a name="blade-viewmodels-overview-the-knockout-reactor-method"></a>
 ### The Knockout reactor method
 
-Any observables read in the function that are sent to `ko.reactor()` will become a dependency for that reactor.  The reactor will recompute whenever any of those observable values change. The same is true for the  `ko.pureComputed()` method and the observable array's `map()` and `mapInto()` functions. This can lead to a situation where a `computed` is recalculating unintentionally. For more information about `map` and `mapInto`, see [portalfx-data-projections.md#shaping-and-filtering-data](portalfx-data-projections.md#shaping-and-filtering-data).
+Any observables read in the function that are sent to `ko.reactor()` will become a dependency for that reactor.  The reactor will recompute whenever any of those observable values change. The same is true for the  `ko.pureComputed()` method and the observable array's `map()` and `mapInto()` functions. This can lead to a situation where a `computed` is recalculating unintentionally. For more information about `map` and `mapInto`, see [top-legacy-data.md#shaping-and-filtering-data](top-legacy-data.md#shaping-and-filtering-data).
 
 It is also good practice to put a breakpoint in the `computed` function whenever a `pureComputed` or a `reactor` to determine how many times each function runs.  There have been instances when `computed` functions that should run once actually ran more than thirty times, which wastes CPU time on unnecessary  recalculations.  If another `computed` takes a dependency on the function that runs too often,  the CPU consumption performance issue grows exponentially.
 
@@ -216,7 +219,7 @@ let computed = ko.reactor(lifetime, () => {
 });
 ```
 
-<a name="overview-the-knockout-purecomputed-method"></a>
+<a name="blade-viewmodels-overview-the-knockout-purecomputed-method"></a>
 ### The Knockout pureComputed method
 
 <!-- TODO: Determine what is meant by "everyone".  Is this multiple extensions, multiple blades, or multiple ViewModels? -->
@@ -261,10 +264,10 @@ In this example, incrementing `pureComputedCounter` or `reactorCounter` is a sid
 
 For more information about `pureComputeds`, see [http://knockoutjs.com/documentation/computed-pure.html](http://knockoutjs.com/documentation/computed-pure.html).
 
-<a name="overview-viewmodel-performance-examples"></a>
+<a name="blade-viewmodels-overview-viewmodel-performance-examples"></a>
 ### ViewModel performance examples
 
-<a name="overview-viewmodel-performance-examples-case-1-code-with-performance-problems"></a>
+<a name="blade-viewmodels-overview-viewmodel-performance-examples-case-1-code-with-performance-problems"></a>
 #### Case 1: Code with performance problems
 
 Using the following example of mutation of observable arrays can lead to severe performance problems in an extension because it queues 100 observable updates of one item each.
@@ -286,7 +289,7 @@ The following code is much more performant because it queues a single observable
   let numbers = ko.observable(tempArray);
   ```
 
-<a name="overview-viewmodel-performance-examples-case-2-performant-code"></a>
+<a name="blade-viewmodels-overview-viewmodel-performance-examples-case-2-performant-code"></a>
 #### Case 2: Performant code
 
 In a more real example, an extension is pushing data points to a series displayed on a chart that is currently using auto-scaling of its axes. It takes 0.01 seconds to render an extra data point, but 0.5 seconds to recalculate the scale of the x-axis and the y-axis every time the data is updated.
