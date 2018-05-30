@@ -426,7 +426,7 @@ The DataCache classes are a convenient way to load and cache data required by Bl
 
 * **QueryCache** - Loads data of type `Array<T>` according to an extension-specified `TQuery` type. `QueryCache` is useful for loading data for *list-like views* like Grid, List, Tree, Chart, etc..
 * **EntityCache** - Loads data of type `T` according to some extension-specified `TId` type. `EntityCache` is useful for loading data into property views and *single-record views*.
-* (Less commonly used) **EditScopeCache** - Loads and manages instances of EditScope, which is a change-tracked, editable model [for use in Forms](portalfx-forms-working-with-edit-scopes.md).  
+* (Less commonly used) **EditScopeCache** - Loads and manages instances of EditScope, which is a change-tracked, editable model [for use in Forms](top-legacy-editscopes.md).  
 
 From an API perspective these DataCache classes all share the same API and usage patterns:  
 
@@ -823,8 +823,8 @@ var promise = MsPortalFx.Base.Net.ajax({
 ## Using DataViews
 
 The `QueryView` and `EntityView` both serve the purposes of presenting data from the cache to the view model, and providing reference counting. A DataView is created from the `createView` method of a QueryCache or EntityCache:
-
-`\Client\Data\MasterDetailBrowse\ViewModels\MasterViewModels.ts`
+<!-- TODO:  Determine the location of these samples; the code does not appear to exist. -->
+`\Client\V1\Data\MasterDetailBrowse\ViewModels\MasterViewModels.ts`
 
 ```ts
 this._websitesQueryView = dataContext.masterDetailBrowseSample.websitesQuery.createView(container);

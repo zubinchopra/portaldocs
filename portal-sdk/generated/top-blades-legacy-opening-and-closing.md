@@ -2,16 +2,15 @@
 <a name="opening-blades"></a>
 ## Opening blades
 
-This section describes how to open blades using container APIs and declarative APIs. A working copy of blades that open and close is located at [http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/openbladeapi](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/openbladeapi).
-
-**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
-
-<a name="declarative-apis"></a>
-## Declarative APIs
+This section describes how to open blades using declarative APIs. 
 
 It is not recommended that extensions use the declarative APIs to open and close blades.  Instead, they should use the APIs that are specified in [top-blades-opening-and-closing.md](top-blades-opening-and-closing.md). 
 
-<a name="declarative-apis-basic-blade-actions"></a>
+A working copy of blades that open and close is located at [http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/openbladeapi](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/openbladeapi).
+
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
+
+<a name="opening-blades-basic-blade-actions"></a>
 ### Basic blade actions
 
 The `<BladeAction>` tag provides the API required for opening a blade.  The only required information is the name of the blade to launch, as in the sample located at `<dir>\Client\extension.pdl`. In the following example, clicking on the part will launch the `SamplesExtensionBlade`.  
@@ -37,7 +36,7 @@ The same pattern can be used for commands, as in the sample located at `<dir>\Cl
 
 **NOTE**: Typically, an extension sends information from the part or the command to the opened blade, which is not demonstrated in the previous code samples.
 
-<a name="declarative-apis-sending-parameters-with-bladeinput"></a>
+<a name="opening-blades-sending-parameters-with-bladeinput"></a>
 ### Sending parameters with BladeInput
 
 Extensions, blades, and parts can send parameters to the blade that is being opened.  Typically, at least an {id} is sent to the blade by using a  `<BladeInput>` element.
@@ -99,7 +98,7 @@ export class InputBindingsDifferentBladesParentPartViewModel {
 }
 ```
 
-<a name="declarative-apis-blade-parameters"></a>
+<a name="opening-blades-blade-parameters"></a>
 ### Blade Parameters
 
 Blades explicitly declare the parameters that they are required to receive, similar to a function signature. There are many types of parameters, each of which serves a specific purpose. In the section named [Sending parameters with BladeInput](#sending-parameters-with-bladeinput), a `<BladeInput>` specified a `Parameter` property that matches the name of a parameter on the launched blade.  For more information about blade parameters, see  [portalfx-blades-parameters.md](portalfx-blades-parameters.md).
@@ -123,7 +122,7 @@ In the sample located at `<dir>\Client\Bindings\InputBindingsDifferentBlades\Inp
 
  For more information about parameters and properties, see [portalfx-blades-properties.md](portalfx-blades-properties.md).
 
-<a name="declarative-apis-receiving-data-with-bladeoutput"></a>
+<a name="opening-blades-receiving-data-with-bladeoutput"></a>
 ### Receiving data with BladeOutput
 
 An extension may return information from the current blade back to the parent blade. Blades can define a list of output properties that are sent to the calling blade.
@@ -155,7 +154,7 @@ In the preceding code, the `onInputsSet` method of the `OutputBindingsParentPart
  
 For more information about blade outputs, see [portalfx-blades-outputs.md](portalfx-blades-outputs.md).
 
-<a name="declarative-apis-grids-collectionparts-and-listviews"></a>
+<a name="opening-blades-grids-collectionparts-and-listviews"></a>
 ### Grids, CollectionParts, and ListViews
 
 Controls that are bound to a collection of elements, like the grid, can add subtlety to the selection model.  In most cases, the control will send blade inputs that are defined by a property on the model object bound to the control, as in the sample located at  `<dir>\Client\V1\MasterDetail\MasterDetailBrowse\MasterDetailBrowse.pdl` and in the following code.
@@ -189,7 +188,7 @@ var extensions = MsPortalFx.ViewModels.Controls.Lists.Grid.Extensions.Selectable
     super(this._websitesQueryView.items, extensions, <any>extensionsOptions);
 ```
 
-<a name="declarative-apis-supporting-nested-selectables"></a>
+<a name="opening-blades-supporting-nested-selectables"></a>
 ### Supporting nested selectables
 
 A part can be selected by clicking the part, or by clicking on an item within the part.  The classic example of this interaction is the `CollectionPart` in the sample located at `<dir>\Client\V1\Parts\Intrinsic\CollectionPart\CollectionPartIntrinsicInstructions.pdl` and in the following example.
@@ -215,12 +214,12 @@ A part can be selected by clicking the part, or by clicking on an item within th
 
 This part contains two separate `<BladeAction>` elements.  The `CollectionDetailsBlade` launches when the part is clicked, and sends  only a parameter that is available from the `ViewMmodel`.  The `ItemDetailsBlade` is launched when clicking on a row in the `CollectionPart`.  The `SelectableSource` defines the direct path to the selectable object on the `CollectionPart` view model.
 
-<a name="declarative-apis-launching-blades-from-another-extension"></a>
+<a name="opening-blades-launching-blades-from-another-extension"></a>
 ### Launching blades from another extension
 
 Typically, `<BladeAction>` is used to launch blades from inside an extension.  In some cases, an extension may import a part from another extension, as specified in [portalfx-extension-sharing-pde.md](portalfx-extension-sharing-pde.md).  Using this technique, the source of the shared part controls the launching of the blade.  However,  in some cases the current extension needs to launch a blade from another extension by using a part from inside the current extension. This is accomplished by using  `BladeReference`, as specified in [portalfx-extensibility-pde.md](portalfx-extensibility-pde.md).
 
-<a name="declarative-apis-launching-blades-from-another-extension-consuming-the-blade"></a>
+<a name="opening-blades-launching-blades-from-another-extension-consuming-the-blade"></a>
 #### Consuming the blade
 
 <!-- Determine where else the ResourceTypes.pdl file should be located.  At the present time, it only appears to be located in <dir>\Client\_generated\V2.
@@ -242,7 +241,7 @@ To launch the blade referenced by the PDE file, use a `<BladeAction>`, and speci
 </BladeAction>
 ```
 
-<a name="declarative-apis-the-dynamicbladeaction-method"></a>
+<a name="opening-blades-the-dynamicbladeaction-method"></a>
 ### The DynamicBladeAction method
 
 In the preceding examples, the target blade to launch is known at design time.  In other instances, the blade to launch may not be known until runtime.  To specify the blade at runtime, use `<DynamicBladeAction>` as in the sample located at `<dir>\SamplesExtension\Extension\Client\V1\Blades\DynamicBlade\DynamicBlade.pdl`. This method can also be used to launch a blade from another extension, using the `extension` property of `DynamicBladeSelection`. The  `DynamicBladeAction` is in the following example.
@@ -277,7 +276,7 @@ The code in the preceding example can be executed any time the target blade will
 
 **WACOM.NOTE**: Static definitions allow for better compile-time checking of names and inputs. Consequently, dynamic blade selection should be avoided, unless there is a strict requirement for determining the blade at runtime. Also, blade outputs are not supported when using dynamic blade selection.
 
-<a name="declarative-apis-hotspots"></a>
+<a name="opening-blades-hotspots"></a>
 ### Hotspots
 
 <!--TODO:  Determine whether there is a discrepancy between the literal html and the SDK sample.  The html has changed slightly.  It is named `CollectorAsHotSpot.html` instead, and uses the hotSpotViewModel property instead of the hotSpotSelectable property.
@@ -317,7 +316,7 @@ The selectable object is referenced from the PDL. This connects the blade action
 <BladeAction Blade="ParameterProviderFormBlade" SelectableSource="hotSpotSelectable" />
 ```
 
-<a name="declarative-apis-advanced-selection"></a>
+<a name="opening-blades-advanced-selection"></a>
 ### Advanced selection
 
 There are scenarios where the list of selectable items is not known previous to using the extension.  Typically, the extension can point at a single selectble control or selectable set control.  However, the following cases are more problematic.
@@ -367,10 +366,8 @@ this.hotspots.push({
 });
 ```
 
-
 <a name="closing-blades-programmatically"></a>
 ## Closing blades programmatically
-
 
 Code that closes the current blade can be called from either a blade or part container. The extension can optionally return untyped data to the parent blade when the child blade is  closed.
 
