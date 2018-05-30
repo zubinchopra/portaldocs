@@ -166,7 +166,7 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 <!-- Ajax all up, batch calls to arm, ajax calls with batch flags set (new doc) GURUA will look at seed content -->
 
-* [Legacy data management features](/portal-sdk/generated/portalfx-data.md)
+* [Legacy data management features](/portal-sdk/generated/top-legacy-data.md)
 
 [Ask about data management on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching)
 
