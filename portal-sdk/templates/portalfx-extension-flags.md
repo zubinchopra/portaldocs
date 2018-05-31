@@ -121,16 +121,16 @@ The Fx team supports the following feature flags:
 | `feature.disableextensions=true` | Disables all extensions (NOTE: Extensions must be enabled explicitly with this flag, including Hubs) |
 | `feature.feedback=false` | Disables the feedback pane |
 | `feature.fullwidth=true` | Forces all menu blades to be opened maximized |
-| `feature.internalonly=true|false` | Shows/hides the "Preview" banner in the top-left |
+| `feature.internalonly=true\|false` | Shows/hides the "Preview" banner in the top-left |
 | `feature.inmemorysettings=true` | Uses in-memory user settings |
 | `feature.pinnedextensions={a,b}` | Comma-delimited liste of extensions to keep loaded (and never unload) |
 | `feature.pov2=true` | Use POv2 (ProxiedObservables version 2) |
 | `feature.pov2compatibilitymode=false` | Disable compatibility mode for POv2 (when enabled) to run faster. |
 | `feature.relex={x}` | Comma-delimited list of extensions to load in Relex (NOTE: `*` will load all extensions in Relex) |
 | `feature.relexsinglecomm=true` | When run in conjunction with the feature.relex flag, runs the corresponding extensions in relex with a single web socket connection to relex for all extensions |
-| `feature.showbugreportlink=true|false` | Shows/hides the "Report bug" link in the top bar |
+| `feature.showbugreportlink=true\|false` | Shows/hides the "Report bug" link in the top bar |
 | `feature.showrelexdialog=false` | Hides the relex dialog that is shown if performance is slow	|
-| `{extension-name}=true|false` | Enables/disables an extension. See [Enable/disable extensions](portalfx-deployment.md#before-deploying-extension-1-for-extensions-onboarding-ibiza-enable-disable-extensions). |
+| `{extension-name}=true\|false` | Enables/disables an extension. See [Enable/disable extensions](portalfx-deployment.md#before-deploying-extension-1-for-extensions-onboarding-ibiza-enable-disable-extensions). |
 | `{extension-name}=a-z0-9+` | Enables an extension and uses a different stamp; requires canmodifystamps=true. See [Extension Stamps](portalfx-deployment.md#before-deploying-extension-2-extension-stamps). |
 | `hubsextension_showserverevents=true` | Automatically show all error and warning events as notifications |
 | `microsoft_azure_marketplace_curation=???` | Uses a named curation |

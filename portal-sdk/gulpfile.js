@@ -40,6 +40,7 @@ gulp.task('portal', function () {
     //required for short path to SamplesExtension
     gulpCommon.createSymlink("portal-sdk/samples/SamplesExtension", "../src/SDK/AcceptanceTests/Extensions/SamplesExtension");
     gulpCommon.createSymlink("portal-sdk/samples/InternalSamplesExtension", "../src/SDK/AcceptanceTests/Extensions/InternalSamplesExtension");
+    gulpCommon.createSymlink("portal-sdk/samples/VS", "../src/SDK/devkit/VS");
 
     if (!fs.existsSync(generatedDir)) {
         fs.mkdirSync(generatedDir);
