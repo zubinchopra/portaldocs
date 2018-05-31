@@ -28,7 +28,7 @@ The **Knockout** binding for all controls is the `pcControl` binding, as in the 
 ```
 
 Taken together, creating a blade as specified in [top-blades-procedure.md](top-blades-procedure.md) that contains only a textbox would look something like the following.
-
+<!-- TODO: Find a sample for this -->
 ```cs
 import * as TemplateBlade from "Fx/Composition/TemplateBlade";
 import * as TextBox from "Fx/Controls/TextBox";  // import statement for the control
