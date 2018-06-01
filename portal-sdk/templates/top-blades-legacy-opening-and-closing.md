@@ -151,9 +151,11 @@ An extension may return information from the current blade back to the parent bl
 
 In the following example, the parent blade defines a `BladeAction` element that sends a `currentNumber` property to the child blade. This allows changes in the child blade `ViewModel` to flow back to the parent blade `ViewModel`, as in the example located at `<dir>\Client\V1\Bindings\OutputBindings\OutputBindings.pdl` and in the following code.
 
+<!-->
 ```ts
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Bindings/OutputBindings/OutputBindings.pdl", "section": "top-blades-legacy#currentnumber"}
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Bindings/OutputBindings/OutputBindings.pdl", "section": "top-blades-legacy#currentnumber"}
 ```
+-->
 
 ```xml
 <CustomPart Name="ParentPart"
