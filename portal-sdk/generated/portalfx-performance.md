@@ -825,7 +825,7 @@ web.config
 - Use a blob explorer of your preference and verify that the scripts have been written to blob storage.
 - Then make changes to TS files in your solution, build and deploy a new version of your extension.
 - Look for scripts that have a different hash.
-- For those scripts try to request the original URL (from step 1) from your extension server (not via the CDN).
+- For those scripts try to request the original URL (from step 1) from your extension server (not via the cdn).
 - The script should still get served, but this time it is coming from the persistent cache.
 
 <a name="performance-best-practices-run-portalcop-to-identify-and-resolve-common-performance-issues"></a>
