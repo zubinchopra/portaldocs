@@ -297,7 +297,7 @@ The code in the preceding example can be executed any time the target blade will
 <!--TODO:  Determine whether there is a discrepancy between the literal html and the SDK sample.  The html has changed slightly.  It is named `CollectorAsHotSpot.html` instead, and uses the hotSpotViewModel property instead of the hotSpotSelectable property.
 -->
 
-When building custom parts as specified in [portalfx-parts-overview.md#custom-parts](portalfx-parts-overview.md#custom-parts), you may want to launch a blade from a div, button, or an anchor  tag. To launch a blade, start with a `pcHotSpot` binding in your HTML template, as in the sample located at `<dir>\Client\V1\ParameterCollection\CollectorAsHotSpot\Templates\CompositePart.html`.
+When building custom parts as specified in [top-legacy-parts.md#custom-parts](top-legacy-parts.md#custom-parts), you may want to launch a blade from a div, button, or an anchor  tag. To launch a blade, start with a `pcHotSpot` binding in your HTML template, as in the sample located at `<dir>\Client\V1\ParameterCollection\CollectorAsHotSpot\Templates\CompositePart.html`.
 
 ```html
 <div data-bind="pcHotSpot: hotSpotSelectable">

@@ -1,2 +1,2 @@
 
-The page you requested has moved to [portalfx-parts-discontinuing.md](portalfx-parts-discontinuing.md). 
+The page you requested has moved to [top-legacy-parts.md#permanently-discontinue-a-part](top-legacy-parts.md#permanently-discontinue-a-part). 
