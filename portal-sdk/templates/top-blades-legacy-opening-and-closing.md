@@ -73,15 +73,20 @@ The remainder of the xml file specifies that the `selectedItem` property exists 
 
 The `ViewModel` for the part that launches the blade requires the `BindingsArea` and the `ClientResources` TypeReferences, as in the sample located at `<dir>\Client\Bindings\InputBindingsDifferentBlades\ViewModels\InputBindingsDifferentBladesViewModels.ts` and in the following code.
 
+<!--
 ```ts
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Bindings/InputBindingsDifferentBlades/ViewModels/InputBindingsDifferentBladesViewModels.ts", "section": "top-blades-legacy#import"}
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Bindings/InputBindingsDifferentBlades/ViewModels/InputBindingsDifferentBladesViewModels.ts", "section": "top-blades-legacy#import"}
 ```
+-->
 
 The `ViewModel` for the part that launches the blade specifies the `selectedItem` property that is used for the source, as in the sample located at `<dir>\Client\Bindings\InputBindingsDifferentBlades\ViewModels\InputBindingsDifferentBladesViewModels.ts` and in the following code.
 
+<!--
 ```ts
 {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Bindings/InputBindingsDifferentBlades/ViewModels/InputBindingsDifferentBladesViewModels.ts", "section": "top-blades-legacy#parentpart"}
 ```
+-->
+
 
 ```ts
 

@@ -116,7 +116,7 @@ For more information about telemetry, see [portalfx-telemetry-getting-started.md
 
 1.	Open a browser and load the Portal using `https://portal.azure.com/?clientoptimizations=bundle&feature.nativeperf=true`.
 
-    * The `clientOptimizations=bundle` flag allows you to assess which bundles are being downloaded in a user-friendly manner. For more information, see [portalfx-extensions-flags-trace#the- clientoptimizations-flag](portalfx-extensions-flags-trace#the- clientoptimizations-flag).
+    * The `clientOptimizations=bundle` flag allows you to assess which bundles are being downloaded in a user-friendly manner. For more information, see [top-extensions-debugging.md#toggling-optimizations](top-extensions-debugging.md#toggling-optimizations).
 
     * The `feature.nativeperf=true` feature  exposes native performance markers within the profile traces, which allows you to accurately match portal telemetry markers to the profile.
 

@@ -149,7 +149,7 @@ As of 9/14/2016 the best, and fastest, Developer Tools are provided by Google Ch
 <a name="debugging-an-extension-debugging-console-errors-trace-modes"></a>
 ### Trace Modes
 
-The errors that are presented in the console can be of great assistance in fixing extension issues. The trace mode that is included in the Portal will display information other than the standard console errors. Trace mode is enabled by appending a flag to the end of the query string. For example,  `https://portal.azure.com/?trace=diagnostics` will enable verbose debugging information in the console. For more information about trace modes, see [portalfx-extensions-feature-flags-trace-mode.md](portalfx-extensions-feature-flags-trace-mode.md). For other debugging services, see [portalfx-extensions-feature-flags.md](portalfx-extensions-feature-flags.md).
+The errors that are presented in the console can be of great assistance in fixing extension issues. The trace mode that is included in the Portal will display information other than the standard console errors. Trace mode is enabled by appending a flag to the end of the query string. For example,  `https://portal.azure.com/?trace=diagnostics` will enable verbose debugging information in the console. For more information about trace modes, see [top-extensions-flags.md#trace-mode-flags](top-extensions-flags.md#trace-mode-flags). For other debugging services, see [top-extensions-debugging.md](top-extensions-debugging.md).
 
 <a name="debugging-an-extension-debugging-javascript"></a>
 ## Debugging JavaScript

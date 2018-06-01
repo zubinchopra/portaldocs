@@ -5,7 +5,7 @@ Chart controls allow users to visualize and analyze their data. A  chart is incl
 
 ![alt-text](../media/portalfx-ui-concepts/chart.png "Extensions can host multiple areas")
 
-The chart can be used as an intrinsic part, as specified in [portalfx-parts-intrinsic.md](portalfx-parts-intrinsic.md). The intrinsic part is maintained by the Framework and provides a layout that is consistent with the rest of the portal.
+The chart can be used as an intrinsic part, as specified in [top-legacy-parts.md](top-legacy-parts.md). The intrinsic part is maintained by the Framework and provides a layout that is consistent with the rest of the portal.
 
 If the extension uses a custom part template instead, charts can be added with the following html:
 

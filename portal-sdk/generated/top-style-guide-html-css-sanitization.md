@@ -50,7 +50,7 @@ All CSS properties are allowed, with a few exceptions based on the criteria list
 | list-style | Criterion 3 |  Disallowed. Use expanded properties instead of the shorthand (list-style-type, etc) |
 | user-select | Criterion 4 |  Disallowed. Use Framework class msportalfx-unselectable to achieve the same result. |
 
-CSS media queries are not supported, and are filtered out. The most common scenario for media queries is responding to container size. Extensions support this feature by subscribing to the container ViewModel tile size property as specified  in the LAYOUTDOC(LINKTOLAYOUTHERE) [portalfx-no-pdl-programming.md](portalfx-no-pdl-programming.md), [portalfx-parts-overview.md](portalfx-parts-overview.md), or [top-extensions-forms.md](top-extensions-forms.md).
+CSS media queries are not supported, and are filtered out. The most common scenario for media queries is responding to container size. Extensions support this feature by subscribing to the container ViewModel tile size property as specified  in [portalfx-no-pdl-programming.md](portalfx-no-pdl-programming.md), [top-legacy-parts.mdd](top-legacy-parts.md), and [top-extensions-forms.md](top-extensions-forms.md).
 
 <a name="svg-sanitization"></a>
 ## SVG sanitization

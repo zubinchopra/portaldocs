@@ -9,7 +9,7 @@ Exposing new functionality to a limited set of users can be useful. It tests the
 
 The Ibiza team uses the MPAC environment that is located at [ms.portal.azure.com](ms.portal.azure.com) to flight pre-production versions of an extension previous to deploying  the bits to production. Typically, the MPAC environment points to the production version of various extensions.  It is connected to the production version of ARM and the Azure servers.
 
-If you are trying to experiment with a particular feature in production then you might want to read [portalfx-extensions-flags.md](portalfx-extensions-flags.md) instead of this document. This document is more about verifying the stability of your extension before exposing it to all users. There may be cases where the framework makes something difficult to flight because extensions do not have programmatic access to turn things on and off dynamically. In this case it might be ok to fall back to the MPAC flighting method to run your experiment.
+If you are trying to experiment with a particular feature in production then you might want to read [top-extensions-flags.md](top-extensions-flags.md) instead of this document. This document is more about verifying the stability of your extension before exposing it to all users. There may be cases where the framework makes something difficult to flight because extensions do not have programmatic access to turn things on and off dynamically. In this case it might be ok to fall back to the MPAC flighting method to run your experiment.
 
 To let extensions achieve a similar level of pre-production validation, Azure enables extension flighting in the MPAC environment. Many testing scenarios are possible in the Portal, and most of them do not require any special support from the Ibiza framework. There are two main scenarios for flighting.
  
@@ -35,7 +35,7 @@ Flighting different versions of an extension allows developers to study the use 
 
 1. Hide, show, or swap controls in the content area of a blade 
 
-    **NOTE**: It is highly recommended that developers implement the majority of blades in an extension by using  the `TemplateBlade` pattern, as specified in [top-extension-blades](top-extension-blades).  The  `TemplateBlade`  pattern is not restricted from programmatically adding or removing content.  Resource overview blades are an exception to this pattern, as specified in [top-blades-resourcemenu.md](top-blades-resourcemenu.md). 
+    **NOTE**: It is highly recommended that developers implement the majority of blades in an extension by using  the `TemplateBlade` pattern, as specified in [top-extension-blades.md](top-extension-blades.md).  The  `TemplateBlade`  pattern is not restricted from programmatically adding or removing content.  Resource overview blades are an exception to this pattern, as specified in [top-blades-resourcemenu.md](top-blades-resourcemenu.md). 
 
 1. Switch the code to behave differently based on the experiment that was assigned to the user. This is based on the strategies that are specified in [#framework-support](#framework-support).
  

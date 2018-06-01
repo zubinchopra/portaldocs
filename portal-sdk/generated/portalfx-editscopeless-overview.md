@@ -2,11 +2,9 @@
 <a name="forms-without-editscopes"></a>
 ## Forms without EditScopes
 
-<!-- TODO:  Determine a better term than "editscopeless. -->
-
 Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide common functions that would otherwise be difficult to orchestrate, like tracking changes in field values across a form, or simplifying the merge of form changes from the server into the current edit.  In contrast, forms without `editScopes` are compatible with new controls and consequently, EditScopes are becoming obsolete. It is recommended that extensions be developed without editScopes.
 
-<!-- TODO: Determine whether controls like OptionsGroup, that are not located in Fx/Controls, are considered part of the EditScopeless pattern.   -->
+<!-- TODO: Determine whether controls like OptionsGroup, that are not located in Fx/Controls, are considered part of the pattern without EditScopes.   -->
 
 The controls that do not use `EditScopes` are located in the `Fx/Controls` namespace. They support creating forms without initializing their `editscope`. The controls and a list of documents that discusses them in more detail are listed in  [top-extensions-controls.md](top-extensions-controls.md).  For samples and experiences that are associated with these form controls, see [top-extensions-samples.md](top-extensions-samples.md).
 
@@ -159,13 +157,10 @@ const okButtonClick = () => {
 
 For more information about opening and closing blades, see [top-blades-opening-and-closing.md](top-blades-opening-and-closing.md).
 
+<a name="using-azure-ccontrols-in-editscope-forms"></a>
+## Using Azure cControls in EditScope forms
 
-
-
-<a name="using-azure-ccontrols-in-editscope-backed-forms"></a>
-## Using Azure cControls in EditScope backed forms
-
-Several new Azure controls are compatible with EditScope-backed controls. This process specifies how to add the editscopeless **Name**  TextBox control from the `Fx/Controls/TextBox` module to an EditScope-based control. 
+Several new Azure controls are compatible with EditScopes. This process specifies how to add the **Name**  TextBox control from the `Fx/Controls/TextBox` module to an EditScope control. 
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. 
 
@@ -184,7 +179,7 @@ For more information about the create engine, see [portalfx-create-engine-sample
 
 1. Modify textBox type
 
-    Change the control type for the name of the engine so that it is using the editscopeless TextBox.
+    Change the control type for the name of the engine so that it is using the TextBox.
 
     ```ts
     /**

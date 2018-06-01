@@ -54,6 +54,29 @@ The AMD dropdown supports the following functionality.
     ```
 
 
+    Another example of a DropDown ViewModel is in the following code. It implements a loading indicator that uses a dropdown.
+
+    ```ts
+
+    // Initialize control with no data. Set loading indicator to true
+    const dropDownViewModel = DropDown.create<string>(container, {
+        label: ClientResources.spouse,
+        validations: [ new Validations.Required(ClientResources.emptySpouse) ],
+        loading: true  // ...and dynamically switch to 'false' once the dropdown items are loaded.
+    });
+
+    // fetch data asynchronously and remove loading indicator on data load
+    const dropdownDataPromise = Q(model.people.fetch("", container)).then((people) => {
+        const dropDownItems = people.data.mapInto(container, (childLifetime: MsPortalFx.Base.LifetimeManager, person: SamplesExtension.DataModels.Person) => {
+            return {
+                text: person.name(),
+                value: person.name()
+            };
+        }, dropDownViewModel.items);
+        dropDownViewModel.loading(false);
+    });
+    ```
+
 
 <a name="dropdown-accessibility"></a>
 ### Accessibility
@@ -158,7 +181,8 @@ this.dropDownVM = DropDown.create(container, {
 });
 ```
 
- ### Objects as the value
+<a name="dropdown-objects-as-the-value"></a>
+### Objects as the value
  
  You can mix filtering and multiselect to have a filterable multiselect DropDown.  When multiselect is true, the `value` property of the DropDown ViewModel is no longer a semicolon-separated string. Instead, `dropDown.value` is of type `TValue[]`, where `TValue` is the generic type argument supplied to `DropDown.create<TValue>`.
 
@@ -272,9 +296,7 @@ The following code is dependent on the use of the `EditScope` observable or the 
 
    <summary>MultiSelectDropDown was not bound to an EditScope observable</summary>
 
-   If the `MultiSelectDropDown` in the extension does not use an `EditScope`, it can be converted to an AMD DropDown using the new form field APIs that do not use EditScopes. 
-
-   For more information about the form field APIs that are recommended for developing new blades without `EditScopes`, see [top-editscopeless-forms.md](top-editscopeless-forms.md).
+   If the `MultiSelectDropDown` in the extension does not use an `EditScope`, it can be converted to an AMD DropDown using the new form field APIs that do not use EditScopes, as specified in [top-editscopeless-forms.md](top-editscopeless-forms.md).
 
    One scenario for the MultiSelectDropDown->DropDown that is becoming obsolete resembles the following code.
    

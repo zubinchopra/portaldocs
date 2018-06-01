@@ -1,2 +1,2 @@
 
-The page you requested has moved to [portalfx-parts-overview.md](portalfx-parts-overview.md). 
+The page you requested has moved to [top-legacy-parts.md](top-legacy-parts.md). 
