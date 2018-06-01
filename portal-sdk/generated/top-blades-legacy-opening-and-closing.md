@@ -34,6 +34,10 @@ The same pattern can be used for commands, as in the sample located at `<dir>\Cl
 </Command>
 ```
 
+<!--
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Commands/OpenBladeCommand/OpenBladeCommand.ts", "section": "top-blades-legacy#command"}
+-->
+
 **NOTE**: Typically, an extension sends information from the part or the command to the opened blade, which is not demonstrated in the previous code samples.
 
 <a name="opening-blades-sending-parameters-with-bladeinput"></a>
@@ -56,6 +60,10 @@ In the following example, and in the sample located at
 </CustomPart>
 ```
 
+<!--
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Bindings/InputBindingsDifferentBlades/InputBindingsDifferentBlades.pdl", "section": "top-blades-legacy#parameter"}
+-->
+
 The elements in the xml are as follows.
  
 * **Blade**: The name of the blade to open
@@ -66,12 +74,24 @@ The elements in the xml are as follows.
 
 The remainder of the xml file specifies that the `selectedItem` property exists on the `ViewMmodel`.  The extension may use `content.*`, or it may use `container.*`, which allows binding to properties on the container object that is sent to the `ViewMmodel` constructor.
 
+The `ViewModel` for the part that launches the blade requires the `BindingsArea` and the `ClientResources` TypeReferences, as in the sample located at `<dir>\Client\Bindings\InputBindingsDifferentBlades\ViewModels\InputBindingsDifferentBladesViewModels.ts` and in the following code.
+
+<!--
+```ts
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Bindings/InputBindingsDifferentBlades/ViewModels/InputBindingsDifferentBladesViewModels.ts", "section": "top-blades-legacy#import"}
+```
+-->
+
 The `ViewModel` for the part that launches the blade specifies the `selectedItem` property that is used for the source, as in the sample located at `<dir>\Client\Bindings\InputBindingsDifferentBlades\ViewModels\InputBindingsDifferentBladesViewModels.ts` and in the following code.
 
+<!--
 ```ts
-/// <reference path="../../../TypeReferences.d.ts" />
-import BindingsArea = require("../../BindingsArea");
-import ClientResources = require("ClientResources");
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Bindings/InputBindingsDifferentBlades/ViewModels/InputBindingsDifferentBladesViewModels.ts", "section": "top-blades-legacy#parentpart"}
+```
+-->
+
+
+```ts
 
 export class InputBindingsDifferentBladesParentPartViewModel {
 
@@ -103,7 +123,14 @@ export class InputBindingsDifferentBladesParentPartViewModel {
 
 Blades explicitly declare the parameters that they are required to receive, similar to a function signature. There are many types of parameters, each of which serves a specific purpose. In the section named [Sending parameters with BladeInput](#sending-parameters-with-bladeinput), a `<BladeInput>` specified a `Parameter` property that matches the name of a parameter on the launched blade.  For more information about blade parameters, see  [portalfx-blades-parameters.md](portalfx-blades-parameters.md).
 
-In the sample located at `<dir>\Client\Bindings\InputBindingsDifferentBlades\InputBindingsDifferentBlades.pdl`, the parameters that are sent to a blade are ound to parts, commands, or the blade `ViewMmodel`.  The following code binds the blade parameters to various observables on the blade.
+In the sample located at `<dir>\Client\Bindings\InputBindingsDifferentBlades\InputBindingsDifferentBlades.pdl`, the parameters that are sent to a blade are bound to parts, commands, or the blade `ViewMmodel`.  The following code binds the blade parameters to various observables on the blade.
+
+<!--
+```ts
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Bindings/InputBindingsDifferentBlades/InputBindingsDifferentBlades.pdl", "section": "top-blades-legacy#currentnumber"}
+```
+
+-->
 
 ```xml
 <Blade>
@@ -128,6 +155,12 @@ In the sample located at `<dir>\Client\Bindings\InputBindingsDifferentBlades\Inp
 An extension may return information from the current blade back to the parent blade. Blades can define a list of output properties that are sent to the calling blade.
 
 In the following example, the parent blade defines a `BladeAction` element that sends a `currentNumber` property to the child blade. This allows changes in the child blade `ViewModel` to flow back to the parent blade `ViewModel`, as in the example located at `<dir>\Client\V1\Bindings\OutputBindings\OutputBindings.pdl` and in the following code.
+
+<!-->
+```ts
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Bindings/OutputBindings/OutputBindings.pdl", "section": "top-blades-legacy#currentnumber"}
+```
+-->
 
 ```xml
 <CustomPart Name="ParentPart"
@@ -282,7 +315,7 @@ The code in the preceding example can be executed any time the target blade will
 <!--TODO:  Determine whether there is a discrepancy between the literal html and the SDK sample.  The html has changed slightly.  It is named `CollectorAsHotSpot.html` instead, and uses the hotSpotViewModel property instead of the hotSpotSelectable property.
 -->
 
-When building custom parts as specified in [portalfx-parts-overview.md#custom-parts](portalfx-parts-overview.md#custom-parts), you may want to launch a blade from a div, button, or an anchor  tag. To launch a blade, start with a `pcHotSpot` binding in your HTML template, as in the sample located at `<dir>\Client\V1\ParameterCollection\CollectorAsHotSpot\Templates\CompositePart.html`.
+When building custom parts as specified in [top-legacy-parts.md#custom-parts](top-legacy-parts.md#custom-parts), you may want to launch a blade from a div, button, or an anchor  tag. To launch a blade, start with a `pcHotSpot` binding in your HTML template, as in the sample located at `<dir>\Client\V1\ParameterCollection\CollectorAsHotSpot\Templates\CompositePart.html`.
 
 ```html
 <div data-bind="pcHotSpot: hotSpotSelectable">
@@ -371,7 +404,20 @@ this.hotspots.push({
 
 Code that closes the current blade can be called from either a blade or part container. The extension can optionally return untyped data to the parent blade when the child blade is  closed.
 
-The blade opening sample is located at [http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/openbladeapi](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/openbladeapi). The 'Close' button on the child blades that open is implemented using the blade closing APIs.
+The blade opening sample is located at [http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/openbladeapi](http://aka.ms/portalfx/samples#blade/SamplesExtension/SDKMenuBlade/openbladeapi). The 'Close' button on the child blades that open is implemented using the blade closing APIs, as in the following example.
+
+```ts
+
+const okButtonClick = () => {
+    container.closeCurrentBlade({
+                            firstName: firstNameViewModel.value(),
+                            lastName: lastNameViewModel.value(),
+                            spouse: dropDownViewModel.value(),
+                            password: passwordViewModel.value(),
+                        });
+};
+```
+
 
 The following methods are now available on the  template blade container.
 
@@ -410,4 +456,29 @@ container.openBlade(new SomeBladeReference({ … }, (reason: BladeClosedReason, 
         // Code that runs when the blade closes - Data will only be there if the child blade returned it.
         // It  lets you differentiate between things like the user closing the blade via the close button vs. a parent blade programatically closing it
 });
+```
+
+
+<a name="responding-to-blade-closing-customizing-alerts"></a>
+### Customizing Alerts
+
+The SDK provides two ways to configure the behavior of an alert, which is the pop-up that is displayed when the user tries to close a form that contains unsaved edits. 
+
+1. The alert can be suppressed the alert by setting the value to `FxViewModels.AlertLevel.None`, as in the following code.
+
+    ```ts
+    form.configureAlertOnClose(FxViewModels.AlertLevel.None);
+    ```
+
+1. The value of the alert's behavior can be computed and returned to the `Message` function by using an overloaded definition, which is appropriate for more complex scenarios. The behavior of the alert and message are dynamically set, based on the checkbox and textBox, as in the following code.
+
+```ts
+
+this._container.form.configureAlertOnClose(ko.computed(container, () => {
+    return {
+        showAlert: configureCheckBox.value(),
+        message: configureMessageTextBox.value()
+    }
+}));
+
 ```
