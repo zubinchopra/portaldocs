@@ -83,7 +83,7 @@ The `ViewModel` for the part that launches the blade specifies the `selectedItem
 
 <!--
 ```ts
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Bindings/InputBindingsDifferentBlades/ViewModels/InputBindingsDifferentBladesViewModels.ts", "section": "top-blades-legacy#parentpart"}
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Bindings/InputBindingsDifferentBlades/ViewModels/InputBindingsDifferentBladesViewModels.ts", "section": "top-blades-legacy#parentpart"}
 ```
 -->
 
