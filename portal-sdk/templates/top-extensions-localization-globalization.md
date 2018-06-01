@@ -3,6 +3,8 @@
 
 ## Localization
 
+## Understanding Localization
+
 ### Language-detection in the portal
 
 Language detection in the Azure portal works similar to how most systems in place will detect language. When the user makes a request to the Portal, the language/locale of the user is given in the request. This language is then checked against our list of supported languages. If the language is supported by the portal then it is accepted and set as the user language.
@@ -149,9 +151,9 @@ There are many cases where you will refer to a string directly from PDL. The com
 
 #### Formatting strings according to locale
 
-The [Azure Portal Globalization API Formatters](portalfx-localization-globalization.md) enables you to easily format numbers, currencies, and dates for different cultures in JavaScript.
+The [Azure Portal Globalization API Formatters](portalfx-globalization.md) enables you to easily format numbers, currencies, and dates for different cultures in JavaScript.
 
-This is exposed publically through the module "MsPortalFx/Globalization"
+This is exposed publicly through the module "MsPortalFx/Globalization"
 
 ```ts
 
@@ -222,13 +224,12 @@ Packages submitted to the Azure Marketplace must be localized as well.  For more
 
 <a href="https://microsoft.sharepoint.com/teams/WAG/EngSys/Implement/OneBranch/Localization.aspx?a=1">Azure Engineering - Localization in Corext based on Mlp and LBA</a>
 
-## Globalization
-
-### Globalization API
+## Globalization API
 
 The Globalization Formatters enables you to easily format numbers, currencies, and dates for different cultures in JavaScript.
 
 ### Implementation Details
+
 This is exposed publically through the module "MsPortalFx/Globalization"
 
 ```ts
