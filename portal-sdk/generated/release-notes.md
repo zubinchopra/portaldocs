@@ -263,11 +263,3 @@
 ## 5.0.302.979
 0 Breaking Changes, 2 Features added and 1 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1918578'>1918578</a></td><td>Feature</td><td>[Microsoft_Azure_Health] Enable on national clouds</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1897230'>1897230</a></td><td>Bug Fix</td><td>Remove Microsoft_Azure_SqlVM from list of extensions</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1818156'>1818156</a></td><td>Feature</td><td>UT Support for extension teams</td></tr></table>
-
-## 5.0.302.978
-0 Breaking Changes, 2 Features added and 1 Bugs Fixed
-<table><tr><td><a href='http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=9988087'>9988087</a></td><td>Feature</td><td>[Extension] Migrate policies in resource menu to new extension Microsoft_Azure_Policy</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1918578'>1918578</a></td><td>Feature</td><td>[Microsoft_Azure_Health] Enable on national clouds</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1706789'>1706789</a></td><td>Bug Fix</td><td>Update extensions.*.json for national clouds uriformat for classic iaas extensions</td></tr></table>
-
-## 5.0.302.977
-0 Breaking Changes, 1 Features added and 0 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1864586'>1864586</a></td><td>Feature</td><td>[OnePortal] Multi domain SAN cert and redirect from Classic to Ibiza</td></tr></table>
