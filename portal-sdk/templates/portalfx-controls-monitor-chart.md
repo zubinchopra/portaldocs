@@ -3,7 +3,7 @@
 The Monitor Chart control allows the plotting of metrics for an Azure resource. The Monitor Chart V2 control, which is a more recent edition, includes support for dimension based grouping and filters.
 It is part of the Ibiza framework, and it inherently knows how to fetch data for a resource.
 
-The Monitor Chart control is available in SDK version **5.0.302.731** and above. For more information about SDK versions, see [downloads.md](/portal-sdk/generated/downloads.md).
+The Monitor Chart control is available in SDK version **5.0.302.731** and above. For more information about SDK versions, see [/portal-sdk/generated/downloads.md](/portal-sdk/generated/downloads.md).
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 

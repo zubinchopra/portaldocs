@@ -1,9 +1,5 @@
 
-## Localization and Globalization
-
-## Localization
-
-## Understanding Localization
+# Localization
 
 ### Language-detection in the portal
 
@@ -224,7 +220,7 @@ Packages submitted to the Azure Marketplace must be localized as well.  For more
 
 <a href="https://microsoft.sharepoint.com/teams/WAG/EngSys/Implement/OneBranch/Localization.aspx?a=1">Azure Engineering - Localization in Corext based on Mlp and LBA</a>
 
-## Globalization API
+# Globalization API
 
 The Globalization Formatters enables you to easily format numbers, currencies, and dates for different cultures in JavaScript.
 
