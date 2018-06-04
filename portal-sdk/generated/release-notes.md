@@ -1,4 +1,24 @@
-# Release Notes since 2/1/2018
+# Release Notes since 2/4/2018
+
+## 5.0.302.1134
+0 Breaking Changes, 1 Features added and 2 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2521949'>2521949</a></td><td>Bug Fix</td><td>Remove Output files from Extension packages</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2521919'>2521919</a></td><td>Bug Fix</td><td>Swallow all exceptions when loading assembly for MEF</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2322924'>2322924</a></td><td>Feature</td><td>Update Application Insights token config to use Ibiza's ARM token</td></tr></table>
+
+## 5.0.302.1133
+0 Breaking Changes, 1 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2428939'>2428939</a></td><td>Feature</td><td>PDL: Change warning to be error if pinnable blade is missing pinned part</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2372212'>2372212</a></td><td>Bug Fix</td><td>openDialog API not working correctly in locked blades</td></tr></table>
+
+## 5.0.302.1132
+0 Breaking Changes, 2 Features added and 4 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2514518'>2514518</a></td><td>Bug Fix</td><td>Add support for hybrid satellite resx and lcl in V2 targets</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2513683'>2513683</a></td><td>Bug Fix</td><td>Report error when V2 targets project has TypeScriptCompile tags</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2493323'>2493323</a></td><td>Feature</td><td>Remove extension config for Microsoft_DataPlatform_EnterpriseConciergeService</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2484013'>2484013</a></td><td>Bug Fix</td><td>Satellite assemblies not being signed</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2442089'>2442089</a></td><td>Feature</td><td>Remove AFD Flighting</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2385929'>2385929</a></td><td>Bug Fix</td><td>DebugContextPane - never unregisters from extension manager events </td></tr></table>
+
+## 5.0.302.1131
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2511348'>2511348</a></td><td>Bug Fix</td><td>TypeScript Incremental compilation should be opt-in</td></tr></table>
+
+## 5.0.302.1130
+0 Breaking Changes, 1 Features added and 6 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2509042'>2509042</a></td><td>Bug Fix</td><td>Update onecloudstorage account key to use new cert</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2507781'>2507781</a></td><td>Bug Fix</td><td>Workaround GetFinalPathNameByHandle not working in container</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2483960'>2483960</a></td><td>Bug Fix</td><td>Add support for SAS tokens to content unbundler generation of EV2 templates</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2469534'>2469534</a></td><td>Bug Fix</td><td>[NoPdl Create][Hotfix] Telemetry Id's not matching with launch create flow</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2461221'>2461221</a></td><td>Bug Fix</td><td>[NoPdl] Deeplink not being updated with nopdl creates</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2457606'>2457606</a></td><td>Feature</td><td>[ExtensionConfiguration] Update Friendly stamp name format in MoonCake and Move Auth details under resource Access for Microsoft_Azure_RecoveryServices</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2370702'>2370702</a></td><td>Bug Fix</td><td>[Tags in essentials] clicking on tag pill broken in MPAC</td></tr></table>
 
 ## 5.0.302.1129
 0 Breaking Changes, 1 Features added and 9 Bugs Fixed
@@ -251,15 +271,3 @@
 ## 5.0.302.982
 0 Breaking Changes, 1 Features added and 1 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1905330'>1905330</a></td><td>Feature</td><td>Prod portal config change to make Billing extension prod (Global) to use hosting service url </td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1630338'>1630338</a></td><td>Bug Fix</td><td>[Grid1] expander doesn't work when portal language is set to Italian</td></tr></table>
-
-## 5.0.302.981
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1915225'>1915225</a></td><td>Bug Fix</td><td>Multiple OpenIdConnect.nonce cookies cause header to be too long</td></tr></table>
-
-## 5.0.302.980
-0 Breaking Changes, 1 Features added and 0 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1921241'>1921241</a></td><td>Feature</td><td>Enabling Microsoft_Azure_ManagementGroups Extension in Production</td></tr></table>
-
-## 5.0.302.979
-0 Breaking Changes, 2 Features added and 1 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1918578'>1918578</a></td><td>Feature</td><td>[Microsoft_Azure_Health] Enable on national clouds</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1897230'>1897230</a></td><td>Bug Fix</td><td>Remove Microsoft_Azure_SqlVM from list of extensions</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1818156'>1818156</a></td><td>Feature</td><td>UT Support for extension teams</td></tr></table>
