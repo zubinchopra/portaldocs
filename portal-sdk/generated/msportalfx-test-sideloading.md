@@ -1,14 +1,22 @@
 
-<a name="side-loading-a-local-extension-during-the-test-session"></a>
-## Side loading a local extension during the test session
+<a name="sideloading-a-local-extension-during-the-test-session"></a>
+## Sideloading a local extension during the test session
 
-You can use MsPortalFx-Test to write end to end tests that side load your local extension in the Portal. You can do this by specifying additional options in the Portal object. If you have not done so, please take a look at the *Installation* section of [this page](https://auxdocs.azurewebsites.net/en-us/documentation/articles/portalfx-testing-getting-started) to learn how to get started with MsPortalFx-Test. 
+You can use MsPortalFx-Test to write end to end tests that sideload your local extension in the Portal. You can do this by specifying additional options in the Portal object. If you have not done so, please take a look at the *Installation* section of [top-extensions-getting-started.md](top-extensions-getting-started.md) to learn how to get started with MsPortalFx-Test. 
 
 We'll write a test that verifies that the Browse experience for our extension has been correctly implemented. But before doing that we should have an extension to test and something to browse to, so let's work on those first.
 
-To prepare the target extension and resource:
+* [Create an extension and resource](#create-an-extension-and-resource)
 
-1. Create a new Portal extension in Visual Studio following [these steps](https://auxdocs.azurewebsites.net/en-us/documentation/articles/portalfx-creating-extensions) and then click CTRL+F5 to get it up and running. For the purpose of this example we named the extension 'LocalExtension' and we made it run in the default [https://localhost:44300](https://localhost:44300) address. 
+Something to browse to
+Write the test
+Verify the Browse experience
+
+
+<a name="sideloading-a-local-extension-during-the-test-session-create-an-extension-and-resource"></a>
+### Create an extension and resource
+
+1. Create a new Portal extension in Visual Studio following the procedures located in [top-extensions-getting-started.md](top-extensions-getting-started.md)  and then click CTRL+F5 to get it up and running. For the purpose of this example we named the extension 'LocalExtension' and we made it run in the default [https://localhost:44300](https://localhost:44300) address. 
 
 1. That should have taken you to the Portal, so sign in and then go to New --> Marketplace --> Local Development --> LocalExtension --> Create.
 
@@ -16,7 +24,8 @@ To prepare the target extension and resource:
 
 1. Wait for the resource to get created.
 
-To write a test verifies the Browse experience while side loading your local extension:
+
+To write a test that verifies the Browse experience while sideloading your local extension:
 
 1. Create a new TypeScript file called **localextensiontests.ts**.
  

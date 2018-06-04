@@ -58,9 +58,9 @@ For more information on the types of shared extensions, see the following list o
 | The Billing Blade           | [portalfx-pde-billing.md](portalfx-pde-billing.md)             |                                                                             | 
 | The Hubs Extensions         | [portalfx-hubsextension-pde.md](portalfx-hubsextension-pde.md) | Provides the PricingTier, the ResourceTags, and other parts                 | 
 | Azure Insights              | [portalfx-pde-azureinsights.md](portalfx-pde-azureinsights.md) | Activity logs and other tools that provide metadata about extension performance and maintenance. | 
-| Azure Monitoring            | [portalfx-pde-monitoring.md](portalfx-pde-monitoring.md)       | azure-monitoring-usage-doc                                                  |
+| Azure Monitoring            | [portalfx-pde-monitoring.md](portalfx-pde-monitoring.md)       | azure-monitoring-usage-doc                                |
 
-For more information about sharing pde's, see [portalfx-extensions-nuget-packages.md](portalfx-extensions-nuget-packages.md).
+For more information about sharing pde's, see [top-extensions-packages.md](top-extensions-packages.md).
 
 <a name="sharing-your-portal-definition-export-with-other-teams-the-pde-file"></a>
 ## The PDE File

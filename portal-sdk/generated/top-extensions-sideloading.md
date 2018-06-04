@@ -9,7 +9,7 @@ Sideloading allows the testing and debugging of extensions locally against any e
  
 This helps the developer validate that the extension is ready for standard Portal use in private preview or public preview mode.  During standard Portal use, the Portal web application loads the UI extension from a URL that is part of the Portal's configuration, as specified in the environment configuration file(s) for the extension.
 
-Extensions can also be tested in production under specific conditions. It allows the developer to include hotfixes, customize the extension for different environments, and other factors. 
+Extensions can also be tested in production under specific conditions. It allows the developer to include hotfixes, customize the extension for different environments, and other factors.
 
 Sideloading can be used when developing an extension, in addition to private preview and some forms of usability testing. It is also useful when testing multiple versions of an extension, or determining which features should remain in various editions of an extension.  For example, an English-language extension may have other UX editions that include localization for various languages, each of which may ship separately when the extension is deployed or geodistributed.
 
@@ -18,7 +18,9 @@ During standard Portal use, the Portal web application loads the UI extension fr
 <a name="sideloading-an-extension-overview-query-string"></a>
 ### Query string
 
-The difference between sideloading and testing in production is the endpoint from which the extension is loaded. The following query string can be used to load an extension by using the address bar.
+The difference between sideloading and testing in production is the endpoint from which the extension is loaded. The sideloaded extension's code is located on the endpoint that represents the local host, or the developer's computer.  The endpoint used for testing in production represents the computer that is being used for testing.
+
+The following query string can be used to load an extension by using the address bar.
 
 ```<protocol>://<environment>/?feature.canmodifyextensions=true#?testExtensions={"<extensionName>":"<protocol>://<endpoint>:<portNumber>"}```
 
@@ -30,7 +32,7 @@ where
 
 **extensionName**: Matches the name of the extension, without the angle brackets, as specified in the `<Extension>` element  in the  `extension.pdl` file.  For more information about the configuration file, see [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
 
-**endpoint**: The [localhost](glossary), or the computer on which the extension is being developed.
+**endpoint**: The [localhost](glossary),  the computer on which the extension is being developed, or the computer that is being used for testing the extension.
 
 **portNumber**: The port number associated with the endpoint that serves the extension.
 
@@ -38,7 +40,7 @@ For example, the following query string can be used to sideload the extension na
 
 ```https://portal.azure.com/?feature.canmodifyextensions=true#?testExtensions={"Microsoft_Azure_Demo":"https://localhost:44300/"}```
 
-In the following example, the endpoint is a server that the developer specifies. The server can be a development server, or a production server in any region or environment.
+In the following example, the endpoint is a server that the developer specifies. The server can be a development server, a testing server, or a production server in any region or environment.
 
 ```https://portal.azure.com/?feature.canmodifyextensions=true#?testExtensions={"Microsoft_Azure_Demo":"https://DemoServer:59344/}"```
 
@@ -104,7 +106,6 @@ The following example describes a complete URL and query string that instructs t
 ```
 
 For more information on loading, see [top-extensions-csharp-test-framework.md](top-extensions-csharp-test-framework.md).
-
 
 ### Unloading the extension
 

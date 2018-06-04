@@ -1,28 +1,22 @@
 
-<a name="localization-and-globalization"></a>
-## Localization and Globalization
-
 <a name="localization"></a>
-## Localization
+# Localization
 
-<a name="understanding-localization"></a>
-## Understanding Localization
-
-<a name="understanding-localization-language-detection-in-the-portal"></a>
+<a name="localization-language-detection-in-the-portal"></a>
 ### Language-detection in the portal
 
 Language detection in the Azure portal works similar to how most systems in place will detect language. When the user makes a request to the Portal, the language/locale of the user is given in the request. This language is then checked against our list of supported languages. If the language is supported by the portal then it is accepted and set as the user language.
 
 All language detection occurs by the Portal and is given to the extension at the time it is loaded. All extensions will be required to support all 18 mandatory languages.
 
-<a name="understanding-localization-language-fallback"></a>
+<a name="localization-language-fallback"></a>
 ### Language fallback
 
 When the user's language is checked against the list of supported languages and is not supported by the portal, then we implement our language Fallback algorithm. For any given language we will try to find the best matching language that the portal supports. It is a heuristic that is open to modifications in the future if holes in the language fallback selection are found or overrides are needed.
 
 Extensions will be given the language at the time the extension is loaded and the language will be guaranteed to be in the list of supported languages.
 
-<a name="understanding-localization-list-of-accepted-languages"></a>
+<a name="localization-list-of-accepted-languages"></a>
 ### List of accepted languages
 
 The Azure Portal is localized in 18 languages. All extensions will be required to support all 18 mandatory languages from the language code list.
@@ -48,12 +42,12 @@ Polish                  | pl
 Swedish                 | sv
 Turkish                 | tr
 
-<a name="understanding-localization-locale-in-the-portal"></a>
+<a name="localization-locale-in-the-portal"></a>
 ### Locale in the portal
 
 Learn how locale can be used and set in the portal.
 
-<a name="understanding-localization-locale-in-the-portal-concepts"></a>
+<a name="localization-locale-in-the-portal-concepts"></a>
 #### Concepts
 
 **Display Language**
@@ -82,7 +76,7 @@ Learn how locale can be used and set in the portal.
 		- **displayLanguage**
 		- **formatCulture**
 
-<a name="understanding-localization-locale-in-the-portal-mechanics"></a>
+<a name="localization-locale-in-the-portal-mechanics"></a>
 #### Mechanics
 
 **Setting the Display Language and Format Culture**
@@ -92,7 +86,7 @@ Learn how locale can be used and set in the portal.
 - Given the **raw locale** of the request, the framework will map that to an **effective locale**. The **effective locale** is then used to set the thread culture of the server application. It is also then emitted to the client script context through fx.environment.effectiveLocale.
 - The *"x-ms-effective-locale"* header is set only by AJAX requests to indicate the **effective locale** of the request. The *AcceptLanguage* header is ignored for AJAX requests.
 
-<a name="understanding-localization-language-locale-parameters"></a>
+<a name="localization-language-locale-parameters"></a>
 ### Language/locale parameters
 
 The users display language and format culture are saved to User Settings.
@@ -107,23 +101,23 @@ var formatCulture = Globalization.formatCulture;
 
 ```
 
-<a name="understanding-localization-localizing-your-extension"></a>
+<a name="localization-localizing-your-extension"></a>
 ### Localizing your extension
 
 Learn how to expose your extension to multiple languages and cultures
 
-<a name="understanding-localization-localizing-build"></a>
+<a name="localization-localizing-build"></a>
 ### Localizing build
 
 Portal Azure localization uses .NET localization as it's foundation. Please ensure that your build has .NET localization correctly setup.
 
-<a name="understanding-localization-localizing-build-references"></a>
+<a name="localization-localizing-build-references"></a>
 #### References
 <a href="https://msdn.microsoft.com/en-us/library/h6270d0z(v=vs.110).aspx">Globalizing and Localizing .NET Framework Applications</a>
 
 <a href="https://microsoft.sharepoint.com/teams/WAG/EngSys/Implement/OneBranch/Localization.aspx?a=1">Azure Engineering - Localization in Corext based on Mlp and LBA</a>
 
-<a name="understanding-localization-localizing-build-localizing-strings"></a>
+<a name="localization-localizing-build-localizing-strings"></a>
 #### Localizing strings
 
 To get ready for a localized version of the API, the samples demonstrate building an extension which is localizable.
@@ -142,7 +136,7 @@ All strings are placed inside of a standard [.NET RESX file](http://msdn.microso
 `Microsoft.PortalDefinition.targets` includes the components required to generate TypeScript classes which contain typed contents of the resx file. After building the samples extension, you will find the generated TypeScript definitions for your strings in `\Client\ClientResources.d.ts`. You should not edit this file, as it is auto-generated by the build.
 
 
-<a name="understanding-localization-localizing-build-using-localized-strings"></a>
+<a name="localization-localizing-build-using-localized-strings"></a>
 #### Using localized strings
 
 To refer to the string in TypeScript, the module for the resource must first be imported.  This allows for static typing to ensure the requested string exists at compile time:
@@ -164,7 +158,7 @@ There are many cases where you will refer to a string directly from PDL. The com
 ```
 
 
-<a name="understanding-localization-localizing-build-formatting-strings-according-to-locale"></a>
+<a name="localization-localizing-build-formatting-strings-according-to-locale"></a>
 #### Formatting strings according to locale
 
 The [Azure Portal Globalization API Formatters](portalfx-globalization.md) enables you to easily format numbers, currencies, and dates for different cultures in JavaScript.
@@ -179,7 +173,7 @@ var formatCulture = Globalization.formatCulture;
 
 ```
 
-<a name="understanding-localization-number-formatter"></a>
+<a name="localization-number-formatter"></a>
 ### Number formatter
 **Globalization.NumberFormat.create([options])**
 
@@ -195,7 +189,7 @@ console.log(Globalization.NumberFormat.create().format(number));
 
 ```
 
-<a name="understanding-localization-date-formatter"></a>
+<a name="localization-date-formatter"></a>
 ### Date formatter
 **Globalization.DateTimeFormat.create([options])**
 
@@ -211,7 +205,7 @@ console.log(Globalization.DateTimeFormat.create().format(date));
 
 ```
 
-<a name="understanding-localization-date-formatter-testing-localization"></a>
+<a name="localization-date-formatter-testing-localization"></a>
 #### Testing localization
 
 The framework supports simple pseudo-localization of client side strings. This can be used to verify that your strings are coming from .resx files, but it doesn't verify that your localization process is setup correctly.
@@ -229,12 +223,12 @@ http://localhost:12000?l=en-us
 
 It may be helpful at development time to use pseudo-localization to ensure that new features are properly localized.
 
-<a name="understanding-localization-date-formatter-marketplace"></a>
+<a name="localization-date-formatter-marketplace"></a>
 #### Marketplace
 
 Packages submitted to the Azure Marketplace must be localized as well.  For more information, read [localization in the gallery](../../gallery-sdk/generated/index-gallery.md##gallery-item-specificiations-localization).
 
-<a name="understanding-localization-important-references"></a>
+<a name="localization-important-references"></a>
 ### Important references
 
 <a href="https://msdn.microsoft.com/en-us/library/w7x1y988(v=vs.110).aspx">Best Practices for Developing World-Ready Applications</a>
@@ -246,7 +240,7 @@ Packages submitted to the Azure Marketplace must be localized as well.  For more
 <a href="https://microsoft.sharepoint.com/teams/WAG/EngSys/Implement/OneBranch/Localization.aspx?a=1">Azure Engineering - Localization in Corext based on Mlp and LBA</a>
 
 <a name="globalization-api"></a>
-## Globalization API
+# Globalization API
 
 The Globalization Formatters enables you to easily format numbers, currencies, and dates for different cultures in JavaScript.
 

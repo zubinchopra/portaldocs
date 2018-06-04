@@ -5,7 +5,7 @@
 <a name="getting-started-installation"></a>
 ### Installation
 
-1. Your computer should have the most recent editions of operating systems and other software installed, as specified in [top-extensions-install-software.md](top-extensions-install-software.md).
+1. Your computer should have the most recent editions of operating systems and other software installed, as specified in [msportalfx-test-procedure-installation.md](msportalfx-test-procedure-installation.md).
 
 1. Verify that your:
     - node version is v4.5 or v5.1 using `node -v`
