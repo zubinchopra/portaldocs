@@ -37,7 +37,6 @@ Suppose you created a portal extension called "MyExtension" the following steps 
 /// The configuration for co-admin management.
 /// </summary>
 [Export(typeof(ArmConfiguration))]
-[Export(typeof(ConfigurationSettings))]
 public class ArmConfiguration : ConfigurationSettings
 {
     /// <summary>

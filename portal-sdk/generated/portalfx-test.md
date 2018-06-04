@@ -19,7 +19,6 @@
         * [Full example](#c-portal-test-framework-testing-commands-full-example)
     * [Taking Screenshots while Testings](#c-portal-test-framework-taking-screenshots-while-testings)
         * [Full example](#c-portal-test-framework-taking-screenshots-while-testings-full-example)
-    * [Loading a Subset of Extensions](#c-portal-test-framework-loading-a-subset-of-extensions)
     * [Testing Best Practices](#c-portal-test-framework-testing-best-practices)
         * [Always verify that every action completed as expected](#c-portal-test-framework-testing-best-practices-always-verify-that-every-action-completed-as-expected)
         * [Log everything](#c-portal-test-framework-testing-best-practices-log-everything)
@@ -919,20 +918,7 @@ namespace SamplesExtensionTests
 ```
 
 
-<a name="c-portal-test-framework-loading-a-subset-of-extensions"></a>
-## Loading a Subset of Extensions
-There are some instances during test where you may want to only load your extension or a subset of extensions within the portal. You can do this using the feature.DisableExtensions feature flag. 
-
-Usage: 
-
-```
-?feature.DisableExtensions=true&HubsExtension=true&Microsoft_Azure_Support=true&MyOtherExtension=true
-```
-
-- This will make every extension disabled by default.
-- This will enable hubs (which almost everyone needs).
-- This will enable the particular extension you want to test. 
-- You can add multiple like the HubsExtension=true and MyOtherExtension=true if you want to test other extensions.
+The page you requested has moved to [top-extensions-flags.md#shell-feature-flags](top-extensions-flags.md#shell-feature-flags). 
 
 
 

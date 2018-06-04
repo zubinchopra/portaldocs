@@ -18,51 +18,55 @@ Menu blades are defined in a **TypeScript** file as shown in the following code.
 
 The following code demonstrates how to define a menu blade `ViewModel` to open two different items.
 
- ```typescript
+ import { SampleMenuBlade as BladeClientResources } from "ClientResources";
+import * as ClientResources from "ClientResources";
+import * as MenuBlade from "Fx/Composition/MenuBlade";
+import * as BladeReferences from "../../../_generated/BladeReferences";
+import * as BladesArea from "../BladesArea";
 
 @MenuBlade.Decorator()
 export class SampleMenuBlade {
-public title = BladeClientResources.menuBladeTitle;
-public subtitle = ClientResources.samples;
+    public title = BladeClientResources.menuBladeTitle;
+    public subtitle = ClientResources.samples;
 
-public context: MenuBlade.Context<void, BladesArea.DataContext>;
+    public context: MenuBlade.Context<void, BladesArea.DataContext>;
 
-public viewModel: MenuBlade.ViewModel2;
+    public viewModel: MenuBlade.ViewModel2;
 
-public onInitialize() {
-    const { container } = this.context;
+    public onInitialize() {
+        const { container } = this.context;
 
-    this.viewModel = MenuBlade.ViewModel2.create(container, {
-        groups: [
-            {
-                id: "default",
-                displayText: BladeClientResources.menuBladeSamples,
-                items: [
-                    {
-                        id: "controlsMenuBladeContentAreaBlade",
-                        displayText: BladeClientResources.controlsMenuBladeContentAreaBladeTitle,
-                        icon: null,
-                        supplyBladeReference: () => {
-                            return new BladeReferences.ControlsMenuBladeContentAreaBladeReference();
+        this.viewModel = MenuBlade.ViewModel2.create(container, {
+            groups: [
+                {
+                    id: "default",
+                    displayText: BladeClientResources.menuBladeSamples,
+                    items: [
+                        {
+                            id: "controlsMenuBladeContentAreaBlade",
+                            displayText: BladeClientResources.controlsMenuBladeContentAreaBladeTitle,
+                            icon: null,
+                            supplyBladeReference: () => {
+                                return new BladeReferences.ControlsMenuBladeContentAreaBladeReference();
+                            }
                         }
-                    },
-                ]
+                    ]
+                },
+            ],
+            overview: {
+                id: "overview",
+                displayText: BladeClientResources.overviewBladeTitle,
+                icon: null,
+                supplyBladeReference: () => {
+                    return new BladeReferences.MenuBladeOverviewBladeReference();
+                }
             }
-        ],
-        overview: {
-            id: "overview",
-            displayText: BladeClientResources.overviewBladeTitle,
-            icon: null,
-            supplyBladeReference: () => {
-                return new BladeReferences.MenuBladeOverviewBladeReference();
-            }
-        }
-    });
+        });
 
-    return Q();  // This sample loads no data.
+        return Q();  // This sample loads no data.
+    }
 }
- 
-```
+
  
 There are a few things to notice in the preceding code.
 

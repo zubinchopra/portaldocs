@@ -99,18 +99,12 @@ The following actions are logged to ClientTelemetry table:
 
 * Extension events
 
-    * **LoadExtensions**
-        * Measures the time it takes Shell to create the extension's IFrame until Shell receives the extension's manifest.
-        * "actionModifier" = start is triggered when an extension starts loading
-        * "actionModifier" = cancel is triggered when an extension fails loading
-        * "actionModifier" = complete is triggered when an extension finishes loading
-    * **InitializeExtensions**
-        * Measures the time since Shell receives the extension manifest until Shell receives an RPC response stating that the extension's state is Initialized.
-        * "actionModifier" = start is triggered when an extension starts being initialized
-        * "actionModifier" = cancel is triggered when an extension's initialization fails
-        * "actionModifier" = complete is triggered when an extension's initialization finishes
+    * **ExtensionLoad**
+        * Measures the total time it takes to load an extension breaking down all the steps in the data object
+        * "actionModifier" = cancel is triggered when an extension's load fails
+        * "actionModifier" = complete is triggered when an extension's load finishes
 
-    "name" column provides the name of the extension which is being loaded/initialized.
+    "name" column provides the name of the extension which is being loaded.
 
 * Create events
 
