@@ -17,7 +17,7 @@ This process validates that your development environment is set up correctly to 
 
     ![alt-text](../media/portalfx-overview/first-run-debugging-dialog.png "Debugging Not Enabled Dialog")
 
-1. The platform will sideload the application into a browser. For more information about sideloading extensions, see [portalfx-extensions-sideloading.md](portalfx-extensions-sideloading.md).
+1. The platform will sideload the application into a browser. For more information about sideloading extensions, see [top-extensions-sideloading.md](top-extensions-sideloading.md).
 
    If the  browser displays the message 'Server Error in '/' Application' instead, it is likely that the **NuGet** packages are not yet associated with **Visual Studio**. The **Visual Studio** Error List dialog may display the error message that is in the following image.
 
