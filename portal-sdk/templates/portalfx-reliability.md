@@ -7,7 +7,7 @@ As an extension author you have a duty to uphold your experience to the reliabil
 
 | Area          | Reliability Bar     | Telemetry Action/s                  | How is it measured? |
 | ---------     | ------------------- | ------------------------            | ------------------- |
-| Extension     | See Power BI        | InitializeExtensions/LoadExtensions | (( # of LoadExtensions starts - # of InitializeExtensions or LoadExtensions failures ) /  # of load extension starts ) * 100 |
+| Extension     | See Power BI        | ExtensionLoad | (# of ExtensionLoad completes / (# of ExtensionLoad completes + cancels)) * 100 |
 | Blade         | See Power BI        | BladeLoaded vs BladeLoadErrored     | (( # of BladeLoaded started - # of BladeLoadErrored's) / # of BladeLoaded started) * 100 |
 | Part          | See Power BI        | PartLoaded                          | (( # of PartLoaded started - # of PartLoaded canceled) / # of PartLoaded started) * 100 |
 
