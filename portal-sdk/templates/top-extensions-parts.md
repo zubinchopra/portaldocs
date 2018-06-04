@@ -18,13 +18,17 @@ Parts, also known as Tiles, are the units of UI that can participate on Azure da
 
 Creating a part is very similar to creating a blade. And like blades, there are important decisions to be made while planning to implement the part.  The recommended way is to implement a template part.  Template parts are like template blades. You define an html template and bind it to a TypeScript view model, as in the following example.
 
+```
 {"gitdown": "include-file", "file":"../Samples/SamplesExtension/Extension/Client/V2/Parts/TemplatePart/SimpleTemplatePart.ts"}
+```
 
 **NOTE**: The context property on the part view model contains useful APIs on it for things like opening blades, putting the part into an error state, and more.
 
 If you need more control over the DOM and are willing to take on additional burdens regarding accessibility and theming then you can also choose to build a `FramePart` where the contents of the part are implemented by using an iFrame that you can control. The following  example demonstrates  a simple FramePart that shows how to communicate between the visible iFrame and the hidden extension iFrame.
 
+```
 {"gitdown": "include-file", "file":"../Samples/SamplesExtension/Extension/Client/V2/Parts/FramePart/SampleFramePart.ts"}
+```
 
 ### Pinning a part manually
 
