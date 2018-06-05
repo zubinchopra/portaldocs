@@ -1,7 +1,7 @@
 
 ## Revealing part content 
 
-When a part loads, the user is presented with the default **blocking loading** indicator similar to the one in the following image.
+When a part loads, or when data is loaded by an asynchronous **AJAX** call that populates the part, the user is presented with the default **blocking loading** indicator similar to the one in the following image.
 
 ![alt-text](../media/portalfx-parts/portalfx-parts-opaquespinner.png "Part with blocking loading indicator") 
 
