@@ -208,7 +208,7 @@ To register your part with the part gallery, you need to add the __PartGalleryIn
 <PartGalleryInfo
   Title="{Resource generalGalleryPartTitle, Module=ClientResources}"
   Category="{Resource partGalleryCategorySample, Module=ClientResources}"
-  Thumbnail="MsPortalFx.Base.Images.Favorite()"
+  Thumbnail="{Svg Type=Favorite}"
   AutoConfigSelectablePath="configOnDropSelectable"/>
 
 ```
