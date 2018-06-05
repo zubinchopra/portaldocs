@@ -38,12 +38,6 @@
 
 {"gitdown": "include-file", "file": "portalfx-extensions-glossary-configuration.md"}
 
-## Extensions Onboarding
-
-<!--TODO:  Determine which glossary terms are included in other bp documents previous to deleting this one -->
-
- {"gitdown": "include-file", "file": "portalfx-extensions-glossary-external.md"}
-
 ## Feature Flags
 
    {"gitdown": "include-file", "file": "portalfx-extensions-glossary-flags.md"}

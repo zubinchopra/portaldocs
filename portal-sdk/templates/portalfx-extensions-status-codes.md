@@ -28,7 +28,7 @@ SOLUTION: To correctly add or remove 'entity' objects, use the API's that are sp
 
 * `markForDelete`: Marks 'entity'  objects in an `EditScope`  for deletion.
 
-DESCRIPTION: Often, extensions encounter this error because the data is modeled  as 'entities' binding with [editable grid](#editable-grid) in a `ParameterProvider` Blade as specified in [top-legacy-editscopes.md#editScope-entity-arrays](top-legacy-editscopes.md#editScope-entity-arrays).  The error may also be encountered when applying the array edits in a corresponding `ParameterCollector` Blade. 
+DESCRIPTION: Often, extensions encounter this error because the data is modeled  as 'entities' binding with an editable grid in a `ParameterProvider` Blade as specified in [top-legacy-editscopes.md#editScope-entity-arrays](top-legacy-editscopes.md#editScope-entity-arrays).  The error may also be encountered when applying the array edits in a corresponding `ParameterCollector` Blade. 
 
 SOLUTION:  Here are two schemes that can be used to avoid this error.
 
@@ -204,7 +204,7 @@ SOLUTION: Use the following troubleshooting steps.
 
 ***Error: 'Security of a sandboxed iframe is potentially compromised by allowing script and same origin access'.***
  
-The Azure Portal should frame the extension URL, as specified in [portalfx-extensions-getting-started-procedure.md](portalfx-extensions-getting-started-procedure.md) and [portalfx-extensions-key-components.md](portalfx-extensions-key-components.md).  Also see [#console-error-messages](#console-error-messages).
+The Azure Portal should frame the extension URL, as specified in [top-extensions-getting-started.md](top-extensions-getting-started.md) and [portalfx-extensions-key-components.md](portalfx-extensions-key-components.md).  Also see [#console-error-messages](#console-error-messages).
 
 * * *
 

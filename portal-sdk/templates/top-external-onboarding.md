@@ -61,4 +61,4 @@ For more information about internationalization requirements, see [http://aka.ms
 
 For more information about azure.com onboarding, see [http://acomdocs.azurewebsites.net](http://acomdocs.azurewebsites.net).
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-external.md"}
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-onboarding.md"}

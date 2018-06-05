@@ -19,7 +19,7 @@ The following sections discuss the blade definition and the blade capabilities i
 
 * [Adding buttons](#adding-buttons)
 
-* [Displaying a full-screen blade](#displaying-a-full-screen-blade)
+* [Displaying a full screen blade](#displaying-a-full-screen-blade)
 
 * [Displaying a loading indicator UX](#displaying-a-loading-indicator-ux)
 
@@ -214,7 +214,7 @@ The working copy of the sample in the Dogfood environment is located at  [https:
         public infoBox: MsPortalFx.ViewModels.Controls.InfoBox.BaseViewModel;
 
         // toolbar view-model
-        public commandBar: MsPortalFx.ViewModels.ToolbarContract;
+        public commandBar: MsPortalFx.ViewModels.Toolbars.ToolbarContract;
 
         constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: any) {
             super();
@@ -295,7 +295,7 @@ Blades can display buttons that are docked at the base of the blade.  The follow
         }
     ```
 
-### Displaying a full-screen blade
+### Displaying a full screen blade
 
 To open the blade using the full screen,  add `InitialState="Maximized"` to the PDL definition of the blade, as in the following code.
 

@@ -12,7 +12,7 @@ For more information about alternatives to the local host environment, see [port
 
 ## Registering extensions with the registerTestExtension API
 
-The developer may want to programmatically register a deployed extension with JavaScript and then reload the Portal. This step is optional if they use a [query string](portalfx-extensions-production-testing-glossary.md) method to load the extension into the browser from the localhost. Using the  `registerTestExtension` API for programmatic changes allows the developer to register a custom extension from `localhost`, or register a custom extension from a custom environment. To load an extension from the test environment or an unregistered source, extension developers can leverage the following approach.
+The developer may want to programmatically register a deployed extension with JavaScript and then reload the Portal. This step is optional if they use a [query string](portalfx-extensions-glossary-production-testing.md) method to load the extension into the browser from the localhost. Using the  `registerTestExtension` API for programmatic changes allows the developer to register a custom extension from `localhost`, or register a custom extension from a custom environment. To load an extension from the test environment or an unregistered source, extension developers can leverage the following approach.
 
  <!-- TODO: Determine whether the registerTestExtension API can be used with the hosting service or if the hosting service only allows query strings. If the registerTestExtension API allows use of a hosting service, find the example code so that the following sentence can be  re-included into the document:
   or load an extension from a custom environment using a hosting service.
