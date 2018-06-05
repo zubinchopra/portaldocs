@@ -1,8 +1,3 @@
-* [Defining permissions and checking access](#defining-permissions-and-checking-access)
-    * [Role-based access control (RBAC) in Azure](#defining-permissions-and-checking-access-role-based-access-control-rbac-in-azure)
-    * [Core principles](#defining-permissions-and-checking-access-core-principles)
-    * [Convert your API call to an action](#defining-permissions-and-checking-access-convert-your-api-call-to-an-action)
-
 
 <a name="defining-permissions-and-checking-access"></a>
 ## Defining permissions and checking access
@@ -12,7 +7,7 @@
 
 Azure supports 3 built-in roles today, powered by Azure Active Directory (AAD): Owner, Contributor, and Reader. Owners have full control, Contributors can do everything except manage access, and Readers have full, read-only access. These roles can be assigned at a subscription, resource group, or resource level. Access is hierarchical and additive - you can grant more permissions, but cannot revoke permissions granted at a higher level. For instance, a subscription reader can be granted contributor access to a resource group and Owner access for a resource, but a subscription owner cannot be restricted to reader or contributor access on a resource or resource group.
 
-> [WACOM.NOTE] The legacy service admin and co-admin roles are treated as owners in the new, role-based access control (RBAC) model. The account admin role does not yet have an equivalent.
+**NOTE**: The legacy service admin and co-admin roles are treated as owners in the new, role-based access control (RBAC) model. The account admin role does not yet have an equivalent.
 
 In addition to the built-in roles, AAD will soon introduce new roles to manage groups of resources. For instance, a Web Contributor will have the ability to manage all aspects of the Azure Websites service, including websites and web hosting plans. Similar roles will be included for other services. Longer term, we'll also enable customers to define custom roles, which will define specific actions customers are allowed to perform at a specific scope.
 
@@ -20,8 +15,6 @@ Actions are specific operations, like create a website or backup a database. Ins
 
 For more information, read the full [RBAC documentation](http://aka.ms/azurerbac).
 
-
-<a name="principles"></a>
 <a name="defining-permissions-and-checking-access-core-principles"></a>
 ### Core principles
 
@@ -33,20 +26,18 @@ In general, every element should be prepared to "fail open" in case of network f
 #### Readers should be able to read <em>everything</em> except secrets
 Be granular when defining permissions. If any bit of data can be obtained via an HTTP GET call, don't require write access to access that information. When data is only exposed in a form, disable form controls to ensure readers cannot submit changes, but don't block access to _viewing_ the form.
 
-
-<a name="summary"></a>
-<a name="defining-permissions-and-checking-access-core-principles-at-a-glance"></a>
-#### At a glance
+<a name="defining-permissions-and-checking-access-core-principles-summary"></a>
+#### Summary
 
 Before you begin, here's a quick look at the steps you can expect to complete:
 
-1. [Identify the required actions for each UI element](#actions)
+1. [Identify the required actions for each UI element](#determining-the-action)
 
     Before you can annotate required access, you need to know what HTTP requests are required and optional to initialize and use each element. For parts, also consider the requests the related blade requires. Once you have a list of HTTP methods and endpoints, you can translate each into a scope and an action.
 
     The scope is always a subscription, resource group, or resource id. Actions are composed of the resource type (e.g. Microsoft.SQL/servers/databases for a SQL database), an operation (e.g. backup), and one of the following strings based on the HTTP method: read (GET/HEAD), write (PUT/PATCH), action (POST), delete (DELETE) (e.g. Microsoft.SQL/servers/databases/backup/action).
 
-2. [Create an alias for required permissions](#references)
+2. [Create an alias for required permissions](#permission-references)
 
     To simplify development and avoid typos, we recommend defining permissions within your asset type definition in PDL and referencing them in PDL and TypeScript for compiler-checked references to avoid errors.
 
@@ -62,7 +53,7 @@ Before you begin, here's a quick look at the steps you can expect to complete:
 
     If the resource type is dynamic and the required permission is standard across all supported resource types (e.g. read, write), you can use relative permissions by replacing the resource type with "." or "{resourceType}". For instance, if checking read access on a website, you can check for "./read", which will be evaluated as "Microsoft.Web/sites/read". For a website deployment slot, this would be evaluated as "Microsoft.Web/sites/slots/read".
 
-3. [Annotate required permissions in PDL](#pdl)
+3. [Annotate required permissions in PDL](#required-permissions)
 
     Every blade and part that represents an asset should already have an asset type/id associated with it. In these cases, use a simple permission reference for required permissions.
 
@@ -86,8 +77,7 @@ Before you begin, here's a quick look at the steps you can expect to complete:
     </Part>
     ```
 
-4. [Check access manually for remaining scenarios](#ts)
-
+4. [Check access manually for remaining scenarios](#checking-permissions-from-typescript)
     For finer-grained checks and more advanced scenarios, use the `hasPermission()` function in conjunction with `container.unauthorized()` to react to limited access.
 
     ```ts
@@ -98,8 +88,6 @@ Before you begin, here's a quick look at the steps you can expect to complete:
         });
     ```
 
-
-<a name="actions"></a>
 <a name="defining-permissions-and-checking-access-core-principles-determining-the-action"></a>
 #### Determining the action
 
@@ -140,6 +128,7 @@ If the resource type is dynamic and the required permission is standard across a
 
 <a name="defining-permissions-and-checking-access-convert-your-api-call-to-an-action"></a>
 ### Convert your API call to an action
+
 Use the following form to convert an API call (e.g. ``GET /subscriptions/###``) to an action (e.g. ``microsoft.resources/subscriptions/read``).
 
 <select id="_verb" style="width:100px">
@@ -150,14 +139,12 @@ Use the following form to convert an API call (e.g. ``GET /subscriptions/###``) 
 </select> <input id="_api" style="width:500px" />
 <button style="width:100px" onclick="var slash = '/'; var msres = 'microsoft.resources'; var api = document.getElementById('_api').value.replace('https:'+slash+slash, '').replace('management.azure.com', '').replace('dogfood-resources.windows.net', ''); var prov = api.lastIndexOf(slash+'providers'+slash); if (prov >= 0) { api = api.substring(prov+11); } else { api = msres+slash+api; } if (api[0] == slash) { api = api.substring(1); } api = api.split(slash); for (var i=2; i<api.length; i+=2) { api[i] = ''; } api.push(document.getElementById('_verb').value); document.getElementById('_action').value = api.join(slash).replace(/\/+/g, slash)">Get action</button> <input id="_action" style="width:500px" />
 
-
-<a name="pdl"></a>
-<a name="defining-permissions-and-checking-access-convert-your-api-call-to-an-action-required-permissions-for-blades-parts-and-commands"></a>
-#### Required permissions for blades, parts, and commands
+<a name="defining-permissions-and-checking-access-convert-your-api-call-to-an-action-required-permissions"></a>
+#### Required permissions
 
 Start by defining the required permissions for your blades, parts, and commands. A permission consists of an action and a scope. As covered above, actions are defined by the ARM RP API. The scope is the asset the action pertains to.
 
-> [WACOM.NOTE] The portal uses assets instead of resources because not all entities within the portal are ARM resources. In the future, the permissions API may be expanded to support external entities.
+**NOTE**: not all entities within the portal are ARM resources. In the future, the permissions API may be expanded to support external entities.
 
 ```xml
 <Part>
@@ -201,13 +188,10 @@ If the blade/part/command is already associated with an asset type, each permiss
 </Part>
 ```
 
-> [WACOM.NOTE] Do not define permissions on parts used in locked blades. Instead, render an empty part if the user doesn't have access to anything in it. This will ensure the UI doesn't render an odd "no access" message when the user simply should not see the part at all.
+**NOTE**: Do not define permissions on parts used in locked blades. Instead, render an empty part if the user doesn't have access to anything in it. This will ensure the UI doesn't render an odd "no access" message when the user simply should not see the part at all.
 
+**NOTE**:  Adapter parts and part references do not support defining permissions. The extension that controls what data will be used should define and check access. Extensions that use an `ExtenderViewModel` will need to expose a way to allow consumers to either check access or define the actions/scopes that need to be checked.
 
-> [WACOM.NOTE] Adapter parts and part references do not support defining permissions. The extension that controls what data will be used should define and check access. Extensions that use an `ExtenderViewModel` will need to expose a way to allow consumers to either check access or define the actions/scopes that need to be checked.
-
-
-<a name="references"></a>
 <a name="defining-permissions-and-checking-access-convert-your-api-call-to-an-action-permission-references"></a>
 #### Permission references
 
@@ -247,8 +231,6 @@ Aliases are shared with PDE and can be used by dependent extensions:
 </Part>
 ```
 
-
-<a name="bool"></a>
 <a name="defining-permissions-and-checking-access-convert-your-api-call-to-an-action-boolean-logic"></a>
 #### Boolean logic
 
@@ -306,8 +288,6 @@ For more advanced scenarios, you can also nest permission sets.
 </Part>
 ```
 
-
-<a name="pickers"></a>
 <a name="defining-permissions-and-checking-access-convert-your-api-call-to-an-action-checking-permissions-for-pickers"></a>
 #### Checking permissions for pickers
 
@@ -320,10 +300,8 @@ this.filters([
 }, "Arm.Namespace/resourceType/action")]);
 ```
 
-> [WACOM.NOTE] The filter is currently applied after you click the item, not before. When you click, the item is disabled.
+**NOTE**: The filter is currently applied after you click the item, not before. When you click, the item is disabled.
 
-
-<a name="ts"></a>
 <a name="defining-permissions-and-checking-access-convert-your-api-call-to-an-action-checking-permissions-from-typescript"></a>
 #### Checking permissions from TypeScript
 
@@ -349,12 +327,10 @@ MsPortalFx.Extension.hasPermission(​
 
 Note that you can also reference the permission definition from TypeScript in the `ExtensionDefinition.Assets.{asset-type-name}.Permissions` module.
 
-> **NOTE:** Always use `container.unauthorized()` when denying access to a blade, part, or command, except for parts on locked blades, which should be rendered empty.
+**NOTE:** Always use `container.unauthorized()` when denying access to a blade, part, or command, except for parts on locked blades, which should be rendered empty.
 
-
-<a name="rdfe"></a>
-<a name="defining-permissions-and-checking-access-convert-your-api-call-to-an-action-checking-rdfe-classic-access"></a>
-#### Checking RDFE/classic access
+<a name="defining-permissions-and-checking-access-convert-your-api-call-to-an-action-checking-rdfe-or-classic-access"></a>
+#### Checking RDFE or classic access
 
 Before adding any UI that requires access to RDFE, be sure to check RDFE access (e.g. service and co-admin) by checking for "rdfe" permission. TypeScript would look like the following, as an example:
 

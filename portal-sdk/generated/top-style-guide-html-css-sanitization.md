@@ -55,7 +55,7 @@ CSS media queries are not supported, and are filtered out. The most common scena
 <a name="svg-sanitization"></a>
 ## SVG sanitization
 
-SVG sanitization follows the rules applied to HTML sanitization, as they are both DOM structures. Before using SVGs directly in the Portal, convert them first using the build tools that are located at []().
+SVG sanitization follows the rules applied to HTML sanitization, as they are both DOM structures. Before using SVGs directly in the Portal, convert them first using the build tools that are available on the Internet that sanitize SVG. 
 
 Some SVG functionality, like certain filters, and gradients, are known to cause significant browser rendering slowdowns, as specified in Criterion 2.  As such, they are sanitized out. The build tools should detect those early and mitigate them when possible. Extension writers should rely on  [StackOverflow](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza) if the sanitization of SVG elements causes a blocking issue.
 

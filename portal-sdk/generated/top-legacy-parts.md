@@ -5,7 +5,7 @@
 <a name="parts-overview"></a>
 ## Overview
 
-Parts, also known as tiles, are a framework feature that integrates the UI of an extension on dashboards.  Parts were more prevalent on blades, but this older pattern is being obsoleted by TemplateBlades that do not contain parts. For more information about template blades, see [portalfx-blades-overview.md](portalfx-blades-overview.md).
+Parts, also known as tiles, are a framework feature that integrates the UI of an extension on dashboards.  Parts were more prevalent on blades, but this older pattern is being obsoleted by TemplateBlades that do not contain parts. For more information about template blades, see [top-extensions-blades.md](top-extensions-blades.md).
 
 Intrinsic parts are composed of existing controls in the portal, and provide patterns for solving common patterns in the portal.
 

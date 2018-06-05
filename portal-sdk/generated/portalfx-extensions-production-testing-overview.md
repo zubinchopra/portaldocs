@@ -1,12 +1,20 @@
 <a name="introduction"></a>
 ## Introduction
 
-This document describes the various components of testing an extension in production, including status codes and testing procedures.  For information about regular testing and debugging, see [portalfx-test.md](portalfx-test.md) and [top-extensions-debugging.md](top-extensions-debugging.md).
+This document describes the various components of testing an extension in production, including status codes and testing procedures. 
+
+For information about regular testing and debugging, see [portalfx-test.md](portalfx-test.md) and [top-extensions-debugging.md](top-extensions-debugging.md).
+
+For more information about testing extensions in the hosting service, see  [portalfx-extensions-hosting-service-scenarios.md#sideloading](portalfx-extensions-hosting-service-scenarios.md#sideloading).  
+ 
+For information about debugging switches or feature flags that are used in hosting, see  [top-extensions-flags.md](top-extensions-flags.md).
+
+For more information about alternatives to the local host environment, see [portalfx-extensions-custom-deployment.md](portalfx-extensions-custom-deployment.md). 
 
 <a name="registering-extensions-with-the-registertestextension-api"></a>
 ## Registering extensions with the registerTestExtension API
 
-The developer may want to programmatically register a deployed extension with JavaScript and then reload the Portal. This step is optional if they use a [query string](portalfx-extensions-production-testing-glossary.md) method to load the extension into the browser from the localhost. Using the  `registerTestExtension` API for programmatic changes allows the developer to register a custom extension from `localhost`, or register a custom extension from a custom environment. To load an extension from the test environment or an unregistered source, extension developers can leverage the following approach.
+The developer may want to programmatically register a deployed extension with JavaScript and then reload the Portal. This step is optional if they use a [query string](portalfx-extensions-glossary-production-testing.md) method to load the extension into the browser from the localhost. Using the  `registerTestExtension` API for programmatic changes allows the developer to register a custom extension from `localhost`, or register a custom extension from a custom environment. To load an extension from the test environment or an unregistered source, extension developers can leverage the following approach.
 
  <!-- TODO: Determine whether the registerTestExtension API can be used with the hosting service or if the hosting service only allows query strings. If the registerTestExtension API allows use of a hosting service, find the example code so that the following sentence can be  re-included into the document:
   or load an extension from a custom environment using a hosting service.
@@ -20,6 +28,7 @@ The developer may want to programmatically register a deployed extension with Ja
 1. Click **F12** to open the Developer Tools in the browser
   
 1. Run the following command in the browser console to register a custom extension.
+
     ```ts
     // use this command if the changes should persist 
     //  until the user resets the settings or
@@ -53,7 +62,9 @@ The developer may want to programmatically register a deployed extension with Ja
 1. Navigate to [https://portal.azure.com?feature.canmodifyextensions=true&clientOptimizations=false](https://portal.azure.com?feature.canmodifyextensions=true&clientOptimizations=false).
  
 The following example describes a complete uri and [query string](portalfx-extensions-glossary-production-testing.md) that instructs the Portal to load the extension named "Microsoft_Azure_Demo" from endpoint "https://DemoServer:59344". It registers the extension only for the current user session. 
+
 <!--TODO: This example contradicts the previous definition.  Determine which one is correct.  -->
+
    ```ts
    MsPortalImpl.Extension.registerTestExtension({
      name: "Microsoft_Azure_Demo",
@@ -84,11 +95,11 @@ where
 
 * **environment**: Portal environment in which to load the extension. Portal environments are `portal.azure.com`, `rc.portal.azure.com`, `mpac.portal.azure.com`, and `df.onecloud.azure-test.net`, although extension developers can sideload their extensions in any environment. 
 
-* **feature.canmodifyextensions**: Required to support loading untrusted extensions for security purposes.  This feature flag grants permission to the Portal to load extensions from URLs other than the ones that are typically used by customers.  It triggers an additional Portal UI that indicates that the Portal is running with untrusted extensions. This feature flag has a value of `true`.  For more information about feature flags, see [portalfx-extensions-flags.md](portalfx-extensions-flags.md).
+* **feature.canmodifyextensions**: Required to support loading untrusted extensions for security purposes.  This feature flag grants permission to the Portal to load extensions from URLs other than the ones that are typically used by customers.  It triggers an additional Portal UI that indicates that the Portal is running with untrusted extensions. This feature flag has a value of `true`.  For more information about feature flags, see [top-extensions-flags.md](top-extensions-flags.md).
 
 * **testExtensions**: Contains the name of the extension, and the environment in which the extension is located. It specifies the intent to load the extension `<extensionName>` from the `localhost:<portNumber>` into the current session of the Portal.
 
-  * **extensionName**: Matches the name of the extension, without the angle brackets, as specified in the `<Extension>` element  in the  `extension.pdl` file.  
+  * **extensionName**: Matches the name of the extension, without the angle brackets, as specified in the `<Extension>` element  in the  `extension.pdl` file.
 
   * **protocol**: Matches the protocol of the shell into which the extension is loaded, without the angle brackets.  It can have a value of `HTTP` or a value of `HTTPS`. For the production shell, the value is `HTTPS`.  If the value of this portion of the parameter is incorrectly specified, the browser will not allow the extension to communicate. 
 
@@ -120,15 +131,6 @@ For more information on loading, see [portalfx-testing-ui-test-cases.md](portalf
 ## Completing the extension test
 
 When all steps are complete, the developer can submit a pull request to enable the extension, as specified in [top-extensions-publishing.md](top-extensions-publishing.md). When the extension is enabled, users will be able to access it in all environments, as specified in [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
-
-<a name="deploying-test-extensions-using-the-hosting-service"></a>
-## Deploying test extensions using the hosting service
- 
-For more information about common hosting scenarios, see  [portalfx-extensions-hosting-service-scenarios.md#sideloading](portalfx-extensions-hosting-service-scenarios.md#sideloading).  
- 
-For information about debugging switches or feature flags that are used in hosting, see  [portalfx-extensions-flags.md](portalfx-extensions-flags.md).
-
-For more information about alternatives to the local host environment, see [top-extensions-hosting-service.md](top-extensions-hosting-service.md). 
 
 <a name="common-use-cases-for-custom-extensions"></a>
 ## Common use cases for custom extensions
