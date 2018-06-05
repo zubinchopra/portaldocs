@@ -18,15 +18,10 @@ The page you have requested has moved to [top-onboarding.md](top-onboarding.md).
 
 The page you have requested has moved to [portalfx-extensions-production-testing-overview.md](portalfx-extensions-production-testing-overview.md).
 
-<a name="azure-portal-onboarding-marketplace-integration"></a>
-## Marketplace integration
-
-The page you have requested has moved to [portalfx-extensions-onboarding-procedures.md](portalfx-extensions-onboarding-procedures.md).
-
 <a name="azure-portal-onboarding-recommended-patterns"></a>
 ## Recommended patterns
 
-The page you have requested has moved to  [portalfx-extensions-bp-blades](portalfx-extensions-bp-blades).
+The page you have requested has moved to  [portalfx-extensions-bp-blades.md](portalfx-extensions-bp-blades.md).
 
 The page you have requested has moved to [portalfx-stackoverflow.md](portalfx-stackoverflow.md).
 
@@ -36,6 +31,9 @@ The page you have requested has moved to [portalfx-stackoverflow.md](portalfx-st
 The page you have requested has moved to [top-extensions-getting-started.md](top-extensions-getting-started.md).
 
 The page you have requested has moved to [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
+
+<a name="azure-portal-onboarding-related-topics"></a>
+## Related Topics
 
 The page you have requested has moved to [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md).
 
