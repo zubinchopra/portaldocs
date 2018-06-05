@@ -6,7 +6,7 @@
 
 Parts, also known as Tiles, are the units of UI that can participate on Azure dashboards. This includes the procedures used to create parts.
 
-* [Creating a basic part](creating-a-basic-part)
+* [Creating a basic part](#creating-a-basic-part)
 
 * [Pinning a part manually](#pinning-a-part-manually) 
 
