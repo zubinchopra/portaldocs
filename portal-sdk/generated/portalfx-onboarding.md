@@ -6,7 +6,7 @@
 <a name="azure-portal-onboarding-start-onboarding"></a>
 ## Start Onboarding
 
-The page you have requested has moved to [portalfx-extensions-forDevelopers-procedures.md](portalfx-extensions-forDevelopers-procedures.md).
+The page you have requested has moved to [top-onboarding.md](top-onboarding.md).
 
 <a name="azure-portal-onboarding-learn-from-samples"></a>
 ## Learn from Samples
