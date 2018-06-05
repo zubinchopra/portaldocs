@@ -14,13 +14,9 @@ The page you have requested has moved to [top-onboarding.md](top-onboarding.md).
 
 The page you have requested has moved to [portalfx-extensions-production-testing-overview.md](portalfx-extensions-production-testing-overview.md).
 
-## Marketplace integration
-
-The page you have requested has moved to [portalfx-extensions-onboarding-procedures.md](portalfx-extensions-onboarding-procedures.md).
-
 ## Recommended patterns
 
-The page you have requested has moved to  [portalfx-extensions-bp-blades](portalfx-extensions-bp-blades).
+The page you have requested has moved to  [portalfx-extensions-bp-blades.md](portalfx-extensions-bp-blades.md).
 
 The page you have requested has moved to [portalfx-stackoverflow.md](portalfx-stackoverflow.md).
 
@@ -29,6 +25,8 @@ The page you have requested has moved to [portalfx-stackoverflow.md](portalfx-st
 The page you have requested has moved to [top-extensions-getting-started.md](top-extensions-getting-started.md).
 
 The page you have requested has moved to [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
+
+## Related Topics
 
 The page you have requested has moved to [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md).
 
