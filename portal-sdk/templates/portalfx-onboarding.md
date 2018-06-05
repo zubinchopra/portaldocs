@@ -4,7 +4,7 @@
 
 ## Start Onboarding
 
-The page you have requested has moved to [portalfx-extensions-forDevelopers-procedures.md](portalfx-extensions-forDevelopers-procedures.md).
+The page you have requested has moved to [top-onboarding.md](top-onboarding.md).
 
 ## Learn from Samples
 
