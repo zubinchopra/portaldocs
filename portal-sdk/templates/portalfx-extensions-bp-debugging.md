@@ -25,4 +25,4 @@ There are practices that can improve the performance of the extension.  For more
 
 ### Productivity Tip
 
-Install Chrome that is located at [http://google.com/dir](http://google.com/dir) to leverage the debugger tools while developing an extension.
+Install Chrome that is located at [https://www.google.com/intl/en_ca/chrome/](https://www.google.com/intl/en_ca/chrome/) to leverage the debugger tools while developing an extension.
