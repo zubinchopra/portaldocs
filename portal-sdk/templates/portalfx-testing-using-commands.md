@@ -1,3 +1,3 @@
 
-   The page you requested has moved to [portalfx-csharp-test-commands.md](portalfx-csharp-test-commands.md). 
-
+   The page you requested has moved to 
+[top-extensions-csharp-test-framework.md#testing-parts-and-blades](top-extensions-csharp-test-framework.md#testing-parts-and-blades).
