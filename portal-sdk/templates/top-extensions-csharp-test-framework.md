@@ -41,10 +41,6 @@ The C# Test framework is distributed as a NuGet package that is available in the
 
     If you are just getting started, it is recommended to use the `Microsoft.Portal.TestFramework` NuGet package because it contains the necessary dependencies.  For more details about the two packages see [#understanding-the-differences-between-the-frameworks](#understanding-the-differences-between-the-frameworks).
 
-
-
-
-
 ### Understanding the differences between the frameworks 
 
 1. Microsoft.Portal.TestFramework 
@@ -69,9 +65,9 @@ To create a test project that can use the Portal Test Framework, use the followi
 
 1. Add an `app.config` file to your test project and define the basic Test Framework settings under appSettings, as in the following example.
 
-    ```
-        {"gitdown": "include-section", "file": "../samples/SampleCSTestsFiles/app.config", "section": "config#appSettings"}
-    ```
+    
+    {"gitdown": "include-section", "file": "../samples/SampleCSTestsFiles/app.config", "section": "config#appSettings"}
+    
 
 1. Add a new Unit Test class and start writing your test case.
 
