@@ -4,7 +4,7 @@
 For those who want to jump right into using TypeScript decorators to develop Blades and Parts, here are some quick and easy resources to consider:  
 
 * Getting started [https://aka.ms/portalfx/typescriptdecorators](https://aka.ms/portalfx/typescriptdecorators)
-* no-PDL [FAQ](#no-pdl-faq)
+* [FAQ](#faq)
 
 ### Introduction  
 
@@ -197,7 +197,7 @@ When you build your project, the compiler will also produce an auto generated bl
 Each time you add an additional decorator you will need to incorporate it into the context declaration as we did here.  
 
 
-### no-PDL FAQ
+### FAQ
 
 #### How do I know what properties/methods to add to my Blade or Part class?  I'm used to my TypeScript class inheriting an interface.
 

@@ -4,7 +4,7 @@ This document describes the various components of testing an extension in produc
 
 For information about regular testing and debugging, see [portalfx-test.md](portalfx-test.md) and [top-extensions-debugging.md](top-extensions-debugging.md).
 
-For more information about testing extensions in the hosting service, see  [portalfx-extensions-hosting-service-scenarios.md#sideloading](portalfx-extensions-hosting-service-scenarios.md#sideloading).  
+For more information about testing extensions in the hosting service, see  [top-extensions-hosting-service-scenarios.md#sideloading](top-extensions-hosting-service-scenarios.md#sideloading).  
  
 For information about debugging switches or feature flags that are used in hosting, see  [top-extensions-flags.md](top-extensions-flags.md).
 

@@ -55,7 +55,7 @@ Some examples that contain AssetViewModels are in the following list.
            UseResourceMenu="true">
 ```
 
-### Create an AssetViewModel
+### Create an Asset ViewModel
 
 Create the `ViewModel` and then add a `getMenuConfig` method to the `AssetViewModel`. This method contains all the logic that determines which items to add to the menu, based on dynamic dependencies.
 
