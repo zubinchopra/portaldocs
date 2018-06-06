@@ -72,13 +72,31 @@ To create a test project that can use the Portal Test Framework, use the followi
 
 1. Add an `app.config` file to your test project and define the basic Test Framework settings under appSettings, as in the following example.
 
-    <!--
-    gitdown": "include-section", "file": "../samples/SampleCSTestsFiles/app.config", "section": "config#appSettings"}
-    -->
+       ```xml
+
+<appSettings>
+  <!-- Browser type. "Chrome", "IE" -->
+  <add key="TestFramework.WebDriver.Browser" value="Chrome" />
+  <add key="TestFramework.WebDriver.DirectoryPath" value="packages\WebDriver.ChromeDriver.win32.2.19.0.0\content" />
+
+  <!-- Amount of time to wait for the Portal to load before timing out (seconds) -->
+  <add key="TestFramework.Portal.PortalLoadTimeOut" value="60" />
+  
+  <!-- The uri of the target Portal server -->
+  <add key="PortalUri" value="https://portal.azure.com" />
+  
+  <!-- The uri of your deployed extension -->
+  <add key="ExtensionUri" value="https://mscompute2.iaas.ext.azure.com/ComputeContent/ComputeIndex" />
+  
+  <!-- The default webdriver server timeout for requests to be processed and returned (not the same as the waitUntil timeout) -->
+  <add key="TestFramework.WebDriver.DefaultTimeout" value="60"/>
+</appSettings>
+
+```
+    
 
 1. Add a new Unit Test class and start writing your test case.
 
-<a name="c-portal-test-framework-writing-tests-navigating-to-the-portal"></a>
 ### Navigating to the Portal
 
 To navigate to the Portal, the extension supplies the Portal's uri.  We recommend setting the value in the `app.config` file as shown in [Creating the Test Project](#creating-the-test-project).  After the extension has the Portal uri, it can use the **WebDriverFactory.Create** method to create an instance of the `WebDriver` object and then use the **PortalAuthentication** class to login and navigate to the Portal in the browser, as in the following example.
@@ -113,6 +131,7 @@ portalAuth.SignInAndSkipPostValidation(userName: "", /** The account login to us
 
 For more information about handling credentials, see [#managing-authentication-credentials](#managing-authentication-credentials).
 
+<a name="c-portal-test-framework-writing-tests-sideloading-an-extension"></a>
 ### Sideloading An Extension
 
 The Portal provides options for side loading your extension for testing. To side load your extension you need to set the appropriate query strings and execute the `registerTestExtension` function. An example of side loading a deployed extension can be seen below. For more information, see [Testing in Production](#testing-in-production).
@@ -152,7 +171,8 @@ webDriver.Dispose();
 
 ```
 
-### Managing authentication credentials 
+<a name="c-portal-test-framework-writing-tests-managing-authentication-credentials"></a>
+### Managing authentication credentials
 
 While the test framework does not provide any support for managing login credentials, the following are some recommendations.
 
@@ -168,6 +188,7 @@ While the test framework does not provide any support for managing login credent
 
    * Using Azure Key Vault.
 
+<a name="c-portal-test-framework-writing-tests-full-sample-code"></a>
 ### Full Sample Code
 
 The  following code demonstrates navigating to the Portal for testing.
@@ -242,6 +263,7 @@ namespace DocSampleTest
 
 ```
 
+<a name="c-portal-test-framework-testing-parts-and-blades"></a>
 ## Testing Parts and Blades
 
 An extension can find parts on the StartBoard by using the **Portal.StartBoard.FindSinglePartByTitle** method, after you have an instance of the Portal object. The method will give you a an instance of the Part class that you can use to perform actions on the part, like clicking on it.  In the following example, the button whose name is "Samples" is clicked. 
@@ -286,6 +308,7 @@ webDriver.WaitUntil(() => errorPart.FindElement(By.TagName("button")),
 ```
 For more information, see [portalfx-extensions-bp-csharp-test.md](portalfx-extensions-bp-csharp-test.md).
 
+<a name="c-portal-test-framework-testing-parts-and-blades-full-example"></a>
 #### Full example
 
 ```cs
@@ -369,6 +392,7 @@ namespace SamplesExtensionTests
 
 ```
 
+<a name="c-portal-test-framework-entering-data-into-forms"></a>
 ## Entering Data into Forms
 
 Forms are typically used to wrap textboxes, dropdowns and other types of input.  The test framework provides helpers to find a form and then find specific input fields in the form by the field label or fieldName.  The primary way to find form fields is to use the **FindField** method of the **FormSection** class, as in the following example.
@@ -432,6 +456,7 @@ Forms are typically used to wrap textboxes, dropdowns and other types of input. 
     portal.FindSingleBladeByTitle(contactName);
     ```
 
+<a name="c-portal-test-framework-entering-data-into-forms-full-example"></a>
 ### Full Example
 
 The entire example is in the following code.
@@ -551,10 +576,12 @@ namespace SamplesExtensionTests
 ```
 
 
+<a name="c-portal-test-framework-testing-commands"></a>
 ## Testing Commands
 
 The Test Framework provides objects to interact with commands both from the command bar and context menus.
 
+<a name="c-portal-test-framework-testing-commands-to-use-commands-from-the-command-bar"></a>
 ### To use commands from the command bar
 
 Use the **Blade.FindCommandBar** method to get an instance of the Command Bar and then the **CommandBar.FindCommandBarItem** method to find the relevant command, as in the following example.
@@ -576,6 +603,7 @@ commandBar.FindMessageBox("Delete contact").ClickButton("Yes");
 webDriver.WaitUntil(() => !commandBar.HasMessageBox, "There is still a message box in the command bar.");
 ```
 
+<a name="c-portal-test-framework-testing-commands-to-use-commands-from-context-menus"></a>
 ### To use commands from context menus
 
 Use the following steps to use Selenium's **Actions** class to perform a contextual click on the desired web element.
@@ -624,6 +652,7 @@ Use the following steps to use Selenium's **Actions** class to perform a context
     portal.StartBoard.FindSinglePartByTitle("Deleted");
     ```
 
+<a name="c-portal-test-framework-testing-commands-full-example"></a>
 ### Full example
 
 The entire example is in the following code.
@@ -792,6 +821,7 @@ namespace SamplesExtensionTests
 ```
 
 
+<a name="c-portal-test-framework-taking-screenshots-while-testing"></a>
 ## Taking Screenshots while Testing
 
 The Test Framework provides built-in support for taking screenshots from test cases. You can use the **WebDriver.TakeScreenshot** method to take the screenshot and save it as a PNG file to the local disk. You can do this at any point within the test case, but a typical approach is to do use the method in the test `CleanUp` method when the outcome of the test case is not "Passed" or if an assertion fails, as in the following example.
@@ -812,6 +842,7 @@ public void TestCleanup()
 }
 ```
 
+<a name="c-portal-test-framework-taking-screenshots-while-testing-full-example"></a>
 ### Full example
 
 The following example contains all the code for the test.
@@ -889,6 +920,7 @@ namespace SamplesExtensionTests
 }
 ```
 
+<a name="c-portal-test-framework-taking-screenshots-while-testing-loading-a-subset-of-extensions"></a>
 ### Loading a subset of extensions
 
 There are some instances during test where you may want to only load your extension or a subset of extensions within the Portal. You can do this using the `feature.DisableExtensions` feature flag.
@@ -903,6 +935,7 @@ Usage is as follows.
 *  This will enable the specific extension you want to test.
 *  You can add multiple extensions,  like the` HubsExtension=true and MyOtherExtension=true` if you want to test other extensions.
 
+<a name="c-portal-test-framework-taking-screenshots-while-testing-disabling-a-specific-extension"></a>
 ### Disabling a specific extension
 
 If you want to disable a single extension, you can use the `canmodifyextensions` feature flag as in the following code.
