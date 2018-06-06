@@ -76,7 +76,7 @@ To create a test project that can use the Portal Test Framework, use the followi
 
 1. Add an `app.config` file to your test project and define the basic Test Framework settings under appSettings, as in the following example.
 
-    ```xml
+    ```
         ```xml
 
 <appSettings>
