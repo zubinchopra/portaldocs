@@ -2,8 +2,6 @@
 <a name="c-portal-test-framework"></a>
 # C# Portal Test Framework
 
-Please use the following links for info on how to use the C# Portal Test Framework.
-
 <a name="c-portal-test-framework-overview"></a>
 ## Overview
 
@@ -23,13 +21,15 @@ The C# test framework provides the following.
 
 Prerequisites for using the C# test framework as as follows.
 
-* Understanding of the C# programming language
+
 
 * Nuget (https://www.nuget.org/) and [top-extensions-nuget.md](top-extensions-nuget.md)
 
 * .NET Framework 4.5 or higher
 
 * Visual Studio 2015 or higher, as specified in [top-extensions-install-software.md](top-extensions-install-software.md)
+
+* Understanding of the C# programming language
 
 <a name="c-portal-test-framework-writing-tests-getting-started"></a>
 ### Getting Started
@@ -47,6 +47,21 @@ The C# Test framework is distributed as a NuGet package that is available in the
     If you are just getting started, it is recommended to use the `Microsoft.Portal.TestFramework` NuGet package because it contains the necessary dependencies.  For more details about the two packages see [#understanding-the-differences-between-the-frameworks](#understanding-the-differences-between-the-frameworks).
 
 
+
+
+
+<a name="c-portal-test-framework-writing-tests-understanding-the-differences-between-the-frameworks"></a>
+### Understanding the differences between the frameworks
+
+1. Microsoft.Portal.TestFramework 
+
+2. Microsoft.Portal.TestFramework.Csharp 
+
+The Microsoft.Portal.TestFramework.CSharp package contains the core test framework DLLs.  It is updated with the latest code as the Portal is being developed and may contain fixes for test issues that were found after release.  It may also contain code that is not compatible with the deployed version of the Portal.
+
+The Microsoft.Portal.TestFramework contains a reference to the Microsoft.Portal.TestFramework.Csharp package in addition to dependencies that are required for the C# test framework to run upon initial installation. 
+
+**NOTE**: Some external dependencies may require separate downloads, such as ChromeDriver, which match the version of Chrome.
 
 <a name="c-portal-test-framework-writing-tests-creating-the-test-project"></a>
 ### Creating the Test Project
@@ -116,13 +131,15 @@ portalAuth.SignInAndSkipPostValidation(userName: "", /** The account login to us
 
 ```
 
-**NOTE**: Multi-factor authentication (MFA) is not supported.  You must use an account that does not require MFA.  If you are part of the Microsoft Azure organization, see the Azure Security Guidelines located at [https://aka.ms/portalfx/securityguidelines](https://aka.ms/portalfx/securityguidelines) for details on how to request an exception for an MSA/OrgID account.  You can not use a service account to login to the Azure Portal.
+**NOTE**: Multi-factor authentication (MFA) is not supported.  You must use an account that does not require MFA. To get an unprotected account, please see [https://aka.ms/portalfx/testaccounts](https://aka.ms/portalfx/testaccounts).  If you have any issues with the accounts, you should contact the Identity Division at [https://aka.ms/portalfx/identitydivision](https://aka.ms/portalfx/identitydivision).
 
-For more information about handling credentials, see [Managing authentication credentials](#Managing authentication credentials).
+For more information about handling credentials, see [#managing-authentication-credentials](#managing-authentication-credentials).
 
-### Side-loading An Extension 
+### Sideloading An Extension
 
-The Portal provides options for side-loading an extension for testing. To side-load an  extension on a `localhost` you can set a query string. To side-load a deployed extension, you can set the appropriate query strings and execute the `registerTestExtension` function.  For more information, see [top-extensions-sideloading.md](top-extensions-sideloading.md).
+The Portal provides options for side loading your extension for testing. To side load your extension you need to set the appropriate query strings and execute the `registerTestExtension` function. An example of side loading a deployed extension can be seen below. For more information, see [Testing in Production](#testing-in-production).
+<!-- TODO: locate the title that should have been the link. -->
+<!-- like maybe portalfx-extensions-production-testing.md-->
 
 ```csharp
 
@@ -148,7 +165,7 @@ portal = Microsoft.Portal.TestFramework.Portal.FindPortal(webDriver, false);
 
 ```
 
-Remember to dispose the `WebDriver` to cleanup, as in the following example.
+Finally, you should dispose the `WebDriver` to cleanup, as in the following example.
 
 ```csharp
 
@@ -172,8 +189,6 @@ While the test framework does not provide any support for managing login credent
    * Using the Windows Credential Store.
 
    * Using Azure Key Vault.
-
-   * Write your own service for providing credentials.
 
 ### Full Sample Code
 
@@ -249,11 +264,9 @@ namespace DocSampleTest
 
 ```
 
-
-
 ## Testing Parts and Blades
 
-An extension can find parts on the StartBoard by using the **Portal.StartBoard.FindSinglePartByTitle** method, after you have an instance of the Portal object. The method will give you an instance of the Part class that can be  used to perform actions on the part.  In the following example, the button whose name is "Samples" is clicked. 
+An extension can find parts on the StartBoard by using the **Portal.StartBoard.FindSinglePartByTitle** method, after you have an instance of the Portal object. The method will give you a an instance of the Part class that you can use to perform actions on the part, like clicking on it.  In the following example, the button whose name is "Samples" is clicked. 
 
 ```cs
 var portal = this.NavigateToPortal();
@@ -284,7 +297,7 @@ var errorPart = webDriver.WaitUntil(() => blade.FindElements<Part>()
 									"Could not find a part with a Send Error text.");
 ```
 
-**NOTE**: The **WebDriver.WaitUntil** method is a general and recommended mechanism to ask the **WebDriver** to retry an operation until a condition succeeds. In this instance, the test case waits until it finds a part in the blade that contains text that includes the 'Send Error' string. When the part is found, it is returned to the `errorPart` variable; otherwise, if it is not found before the default timeout of 10 seconds, the  method  throws an exception that uses  the text specified in the last parameter.
+**NOTE**: The **WebDriver.WaitUntil** method is a general and recommended mechanism to ask the **WebDriver** to retry an operation until a condition succeeds. In this instance, the test case waits  by polling continually until it finds a part in the blade that contains text that includes the 'Send Error' string. When the part is found, it is returned to the `errorPart` variable; otherwise, if it is not found before the default timeout of 10 seconds, the  method throws an exception that uses the text specified in the last parameter. For more information, see [portalfx-extensions-bp-csharp-test.md#testing -best-practices](portalfx-extensions-bp-csharp-test.md#testing -best-practices). 
 
 Classic Selenium **WebDriver** syntax can also be used to find any element based on a **By** selector. For example, the following code finds a single button element within the found part.
 
@@ -378,10 +391,9 @@ namespace SamplesExtensionTests
 
 ```
 
+## Entering Data into Forms
 
-##  Entering Data into Forms
-
-Forms are commonly used to wrap textboxes, dropdowns and other types of input.  The test framework provides helpers to find a form and then find specific input fields in the form by the field label or fieldName.  The primary way to find form fields is to use the **FindField** method of the **FormSection** class, as in the following example.
+Forms are typically used to wrap textboxes, dropdowns and other types of input.  The test framework provides helpers to find a form and then find specific input fields in the form by the field label or fieldName.  The primary way to find form fields is to use the **FindField** method of the **FormSection** class, as in the following example.
 
 1. The extension locates the form, as in the following code. In this example, the form contains two fields: a TextBox field and a Selector field.
 
@@ -397,7 +409,7 @@ Forms are commonly used to wrap textboxes, dropdowns and other types of input.  
     var form = webDriver.WaitUntil(() => blade.FindElement<FormSection>(), "Could not find the form.");
     ```
 
-1. The following example supports validations. The user can enter text in the contactName `TextBox` field and wait until it is marked as Edited and Valid.
+1.  The form has 2 fields, a TextBox field and a Selector field. The following example supports validations. The user can enter text in the contactName `TextBox` field and wait until it is marked as Edited and Valid.
 
     ```cs
     string fieldName = "contactName";
@@ -430,7 +442,7 @@ Forms are commonly used to wrap textboxes, dropdowns and other types of input.  
     pickerActionBar.ClickOk();
     ```
 
-1. Click the Create button to complete the form and then look for a blade with the title of the created Contact to verify that it got created successfully.
+1. Click the Create button to complete the form and then look for a blade with the title of the created Contact to verify that it was created successfully.
 
     ```cs
     blade = portal.FindSingleBladeByTitle("Basic Information");
@@ -577,7 +589,7 @@ CommandBar commandBar = blade.FindCommandBar();
 var command = commandBar.FindCommandBarItem("DELETE");
 ```
 
-After the  Click() method on the command is called, the extension may display a messageBox to show a message to the user. The extension can interact with the messageBox using the **CommandBar.FindMessageBox** method and the **MessageBox.ClickButton** method, as in the following example.
+After the  `Click()` method on the command is called, the extension may display a messageBox to show a message to the user. The extension can interact with the messageBox using the **CommandBar.FindMessageBox** method and the **MessageBox.ClickButton** method, as in the following example.
 
 ```cs
 command.Click();
@@ -804,7 +816,7 @@ namespace SamplesExtensionTests
 
 ## Taking Screenshots while Testing
 
-The Test Framework provides built-in support for taking screenshots from test cases. You can use the **WebDriver.TakeScreenshot** method to take the screenshot and save it as a PNG file to the local disk. You can do this at any point within the test case, but a typical approach is to do it at least in the test `CleanUp` method when the outcome of the test case is not "Passed" or if an assertion fails, as in the following example.
+The Test Framework provides built-in support for taking screenshots from test cases. You can use the **WebDriver.TakeScreenshot** method to take the screenshot and save it as a PNG file to the local disk. You can do this at any point within the test case, but a typical approach is to do use the method in the test `CleanUp` method when the outcome of the test case is not "Passed" or if an assertion fails, as in the following example.
 
 ```cs
 [TestCleanup]
@@ -910,15 +922,16 @@ Usage is as follows.
 
 *  This will make every extension disabled by default.
 *  This will enable hubs, which are used by most developers 
-*  This will enable the particular extension you want to test.
-*  You can add multiple like the` HubsExtension=true and MyOtherExtension=true` if you want to test other extensions.
+*  This will enable the specific extension you want to test.
+*  You can add multiple extensions,  like the` HubsExtension=true and MyOtherExtension=true` if you want to test other extensions.
 
 ### Disabling a specific extension
 
 If you want to disable a single extension, you can use the `canmodifyextensions` feature flag as in the following code.
+
 `?feature.canmodifyextensions=true&ExtensionNameToDisable=false`
 
-For example, you want to turn off an old extension and turn on a new one. You can do this as follows.
+For example, if you want to turn off an old extension and turn on a new one, you can do this as follows.
 ```
 ?feature.canmodifyextensions=true&MyOldExtension=false&MyNewExtension=true
 ```
@@ -1058,7 +1071,7 @@ As you write UI based test cases using the Portal Test Framework it is recommend
 
     It is best practice to create wrappers and abstractions for common patterns of code. For example, when writing a `WaitUntil`, you may want to wrap it in a function that describes its actual intent.  This makes the intent of the  test code clear by hiding the actual details of  the abstraction's implementation.  It also helps with dealing with breaking changes, because you can modify the abstraction instead of every single test.  
 
-    If an abstraction you wrote might be generic and useful to the test framework, you may contribute it as specified in [Contributing.md](Contributing.md).
+    If an abstraction you wrote might be generic and useful to the test framework, you may contribute it as specified in [/portal-sdk/generated/Contributing.md](/portal-sdk/generated//Contributing.md).
 
 * Clear user settings before starting a test
 
