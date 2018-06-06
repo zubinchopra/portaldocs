@@ -290,7 +290,7 @@ The config file specifies the versions of the extension that the hosting service
 **friendlyName**: Optional. A unique name, without the angle brackets, that is assigned to a specific build version for sideloading. There is no limit to the number of friendly names can be provided by the developer for development and testing.
 
 <!-- TODO: are friendly names separated by commas? -->
-For more information about testing extensions with stages in configuration files, see [portalfx-extensions-hosting-service-scenarios.md#deploying-a-new-version-to-a-stage](portalfx-extensions-hosting-service-scenarios.md#deploying-a-new-version-to-a-stage).
+For more information about testing extensions with stages in configuration files, see [top-extensions-hosting-service-scenarios.md#deploying-a-new-version-to-a-stage](top-extensions-hosting-service-scenarios.md#deploying-a-new-version-to-a-stage).
 
 <a name="provide-environment-specific-configuration-files-register-the-extension"></a>
 ### Register the extension

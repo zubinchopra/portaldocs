@@ -5,7 +5,7 @@
 For those who want to jump right into using TypeScript decorators to develop Blades and Parts, here are some quick and easy resources to consider:  
 
 * Getting started [https://aka.ms/portalfx/typescriptdecorators](https://aka.ms/portalfx/typescriptdecorators)
-* no-PDL [FAQ](#no-pdl-faq)
+* [FAQ](#faq)
 
 <a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-introduction"></a>
 ### Introduction
@@ -51,17 +51,57 @@ This section pulls from a sample that [you can see in the dogfood environment](h
 
 Here is an example of a very simple template blade, represented by a single TpeScript file in your extension project.
 
-  gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#HelloWorld"}
+ ```typescript
+
+/// <reference path="../../../TypeReferences.d.ts" />
+import * as ClientResources from "ClientResources";
+import * as TemplateBlade from "Fx/Composition/TemplateBlade";
+import * as BladesArea from "../BladesArea";
+
+//docs#DecoratorReference
+@TemplateBlade.Decorator({
+htmlTemplate: "" +
+    "<div class='msportalfx-padding'>" +
+    "  <div>This is a Template Blade.</div>" +
+    "</div>",
+})
+//docs#DecoratorReference
+export class SimpleTemplateBlade {
+public title = ClientResources.simpleTemplateBlade;
+public subtitle: string;
+
+//docs#Context
+public context: TemplateBlade.Context<void, BladesArea.DataContext>;
+//docs#Context
+
+public onInitialize() {
+    return Q();  // This sample loads no data.
+}
+}
+
+```
 
 This is the decorator code.  There are several options that can be specified as properties on the object passed into the decorator.  This sample shows the simplest scenario where you only need to provide an HTML template.  In this case, the template is provided inline, something the SDK supports for convinience.  You also have the ability to provide a relative path to an html file that contains the template (e.g. If your blade is in a file called `MyBlade.ts` then you can add a file right next to it called `MyBlade.html` and then pass `./MyBladeName.html` into the htmlTemplate property of the decorator).
 
-  gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#DecoratorReference"}
+ ```typescript
+
+@TemplateBlade.Decorator({
+htmlTemplate: "" +
+    "<div class='msportalfx-padding'>" +
+    "  <div>This is a Template Blade.</div>" +
+    "</div>",
+})
+
+```
 
 Additionally, the No-PDL programming model introduces (and requires) a context property to be present in your blade class. The context property is populated by the framework on your behalf and contains APIs you can call to interact with the shell.  You can learn more about the context property [here](#no-pdl-context-property).
 
-  gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#Context"}
+ ```typescript
 
-<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-building-a-menu-blade-using-decorators"></a>
+public context: TemplateBlade.Context<void, BladesArea.DataContext>;
+
+```
+
 ### Building a menu blade using decorators
 
 Below is an example of a menu blade build using decorators.  It uses the `@MenuBlade` decorator.  This decorator puts two constraints on your type.
@@ -161,14 +201,17 @@ module Main {
 ```
 
 
-<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-the-context-property"></a>
 ### The context property
 
 The context property contains APIs you can call to interact with the shell. It will be populated for you by the framework before your `onInitialize()` function is called.  **It will not be populated in your constructor.  In fact, we advise against having a constructor and instead doing all initialization work in the onInitialize function.** This is a fairly common [Dependency injection technique](https://en.wikipedia.org/wiki/Dependency_injection).
 
 Declaring the type of this property can be a little tricky, and the declaration can change if more No-PDL decorators are added to your file.  This is because certain APIs on the context object get enhanced when new decorators are used.  Let's start with a basic example and build from there.
 
-  gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#Context"}
+ ```typescript
+
+public context: TemplateBlade.Context<void, BladesArea.DataContext>;
+
+```
 
 This is the simplest declaration of the context property.  The framework provided `TemplateBlade.Context` type takes in two generic parameters. The first parameter represents the type of object that represents the parameters to the blade.  This simple blade takes no parameters, hence the value of `void` for the first generic parameter.  The second generic parameter represents the type of your model data, which – today – must be the DataContext object for your Blade/Part. This makes the context property aware of your data context in a strongly typed way.
 
@@ -204,10 +247,10 @@ When you build your project, the compiler will also produce an auto generated bl
 Each time you add an additional decorator you will need to incorporate it into the context declaration as we did here.  
 
 
-<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-no-pdl-faq"></a>
-### no-PDL FAQ
+<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-faq"></a>
+### FAQ
 
-<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-no-pdl-faq-how-do-i-know-what-properties-methods-to-add-to-my-blade-or-part-class-i-m-used-to-my-typescript-class-inheriting-an-interface"></a>
+<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-faq-how-do-i-know-what-properties-methods-to-add-to-my-blade-or-part-class-i-m-used-to-my-typescript-class-inheriting-an-interface"></a>
 #### How do I know what properties/methods to add to my Blade or Part class?  I&#39;m used to my TypeScript class inheriting an interface.
 
 The short answer here is that:
@@ -224,7 +267,7 @@ So, once you've applied a TypeScript decorator to your Blade/Part class, TypeScr
 
 If you iteratively refine your class based on Intellisense errors, once these are gone, you should be able to compile and run your new Blade / Part.  This technique is demonstrated in the intro [video](https://aka.ms/portalfx/typescriptdecorators).
 
-<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-no-pdl-faq-how-do-i-know-what-types-to-return-from-the-oninitialize-method"></a>
+<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-faq-how-do-i-know-what-types-to-return-from-the-oninitialize-method"></a>
 #### How do I know what types to return from the <code>onInitialize</code> method?
 
 Covered above, if you start by simply *not* using a 'return' statement in your `onInitialize` (or any other method required by you choice of TypeScript decorator), Intellisense errors will reflect the expected return type for the method:
@@ -236,7 +279,7 @@ public onInitialize() {
 ...
 ```
 
-<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-no-pdl-faq-no-pdl-error"></a>
+<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-faq-no-pdl-error"></a>
 #### No-pdl-error
 
 ```
@@ -246,7 +289,7 @@ Argument of type 'typeof TestTemplateBlade' is not assignable to parameter of ty
       Type '() => void' is not assignable to type '() => Promise<any>'.
         Type 'void' is not assignable to type 'Promise<any>'.
 ```
-<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-no-pdl-faq-why-can-t-i-return-my-data-loading-promise-directly-from-oninitialize"></a>
+<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-faq-why-can-t-i-return-my-data-loading-promise-directly-from-oninitialize"></a>
 #### Why can&#39;t I return my data-loading Promise directly from &#39;onInitialize&#39;
 
 Extensions will see compile errors when then attempt to return from `onInitialize` the result of a call to `queryView.fetch(...)`, `entityView.fetch(...)`, `Base.Net.ajax2(...)`:  
@@ -267,7 +310,7 @@ Here, our FX data-loading APIs return an old `MsPortalFx.Base.PromiseV` type tha
 ```
 This application of `Q(...)` simply coerces your data-loading Promise into the return type expected for `onInitialize`.  
 
-<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-no-pdl-faq-i-don-t-understand-the-typescript-compilation-error-i-m-getting-around-my-no-pdl-blade-part-and-there-are-lots-of-them-what-should-i-do-here"></a>
+<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-faq-i-don-t-understand-the-typescript-compilation-error-i-m-getting-around-my-no-pdl-blade-part-and-there-are-lots-of-them-what-should-i-do-here"></a>
 #### I don&#39;t understand the TypeScript compilation error I&#39;m getting around my no-PDL Blade/Part.  And there are lots of them.  What should I do here?
 
 Typically, around no-PDL Blades and Parts (and even old PDL-defined Blades/Parts), only the first 1-5 compilation errors are easily understandable and actionable.  
@@ -282,7 +325,7 @@ Some gotchas to be aware of:
 - **Read all lines of multi-line TypeScript errors** - TypeScript errors are frequently multi-line.  If you compile from your IDE, often only the first line of each error is shown and the first line is often not useful (see an example [here](#no-pdl-error)).  Be sure to look at the whole error, focusing on the last lines of the multi-line error message.
 - **Don't suppress compiler warnings** - Ibiza compilation of no-PDL TypeScript decorators often generates build *warnings* that are specific to no-PDL and more actionable than TypeScript errors.  To easily understand warnings/errors and turn these into code fixes, be sure to read *all compiler warnings*, which some IDEs / command-line builds are configured to suppress.
 
-<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-no-pdl-faq-how-do-i-add-an-icon-to-my-blade"></a>
+<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-faq-how-do-i-add-an-icon-to-my-blade"></a>
 #### How do I add an icon to my Blade?
 
 Developers coming from PDL will be used to customizing their Blade's icon like so:  
@@ -315,7 +358,7 @@ export class Carrot {
 ```
 Now, why is this so?  It seems easier to do this in a single-step at the Blade-level.  The answer here is that - according to Ibiza UX design - only Blades associated with a resource/asset should show a Blade icon.  To make this more obvious at the API level, as it stands, the only place to associate an icon for a Blade is on `<AssetType>`.
 
-<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-no-pdl-faq-how-do-i-control-the-loading-indicators-for-my-blade-how-is-it-different-than-pdl-blades"></a>
+<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-faq-how-do-i-control-the-loading-indicators-for-my-blade-how-is-it-different-than-pdl-blades"></a>
 #### How do I control the loading indicators for my Blade?  How is it different than PDL Blades?
 
 [Controlling the loading indicator](portalfx-parts-revealContent.md) in Blades/Parts is the almost exactly the same for PDL and no-PDL Blades/Parts.  That is:  
@@ -330,13 +373,13 @@ For no-PDL, this is demonstrated in the sample [here](https://df.onecloud.azure-
 
 If yours is a scenario where your Blade/Part should show the loading indicators in response to some user interaction (like clicking 'Save' or 'Refresh'), read on...
 
-<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-no-pdl-faq-when-should-i-use-the-operations-api-to-control-the-blade-part-s-loading-indicator"></a>
+<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-faq-when-should-i-use-the-operations-api-to-control-the-blade-part-s-loading-indicator"></a>
 #### When should I use the &#39;operations&#39; API to control the Blade/Part&#39;s loading indicator?
 There are scenarios like 'User clicks "Save" on my Blade/Part' where the extension wants to show loading indicators at the Blade/Part level.  What's distinct about this scenario is that the Blade/Part has already completed its initialization and, now, the user is interacting with the Blade/Part UI.  This is precisely the kind of scenario for the 'operations' API.  
 
-For no-PDL Blades/Parts, the 'operations' API is `this.context.container.operations`, and the API's use is described [here](portalfx-blades-advanced.md#showing-a-shield-loading-status-in-your-blade).  There is a sample to consult [here](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).
+For no-PDL Blades/Parts, the 'operations' API is `this.context.container.operations`, and the API's use is described in [top-legacy-blades-template-pdl.md#displaying-a-loading-indicator-ux](top-legacy-blades-template-pdl.md#displaying-a-loading-indicator-ux).  There is a sample to consult [here](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).
 
-<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-no-pdl-faq-how-can-i-save-some-state-for-my-no-pdl-blade"></a>
+<a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-faq-how-can-i-save-some-state-for-my-no-pdl-blade"></a>
 #### How can I save some state for my no-PDL Blade?
 There is a decorator - @TemplateBlade.Configurable.Decorator for example, available on all Blade variations - that adds a `this.context.configuration` API that can be used to load/save Blade "settings".  See a sample [here](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).
 

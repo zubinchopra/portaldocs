@@ -75,7 +75,7 @@ const dropdownDataPromise = Q(model.people.fetch("", container)).then((people) =
 });
 ```
 
-For more information about loading indicators, see [top-blades-procedure.md#displaying-a-loading-indicator-ux](top-blades-procedure.md#displaying-a-loading-indicator-ux).
+For more information about loading indicators, see [top-legacy-blades-template-pdl.md#displaying-a-loading-indicator-ux](top-legacy-blades-template-pdl.md#displaying-a-loading-indicator-ux).
 
 <a name="forms-without-editscopes-customizing-alerts"></a>
 ### Customizing Alerts
