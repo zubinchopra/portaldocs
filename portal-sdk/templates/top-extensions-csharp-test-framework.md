@@ -65,7 +65,7 @@ To create a test project that can use the Portal Test Framework, use the followi
 
   {"gitdown": "include-section", "file": "../samples/SampleCSTestsFiles/app.config", "section": "config#appSettings"}
 
-5. Add a new Unit Test class and start writing your test case.
+1. Add a new Unit Test class and start writing your test case.
 
 ### Navigating to the Portal
 
