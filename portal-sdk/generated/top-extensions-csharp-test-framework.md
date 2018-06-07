@@ -92,7 +92,7 @@ To create a test project that can use the Portal Test Framework, use the followi
 
 ```
 
-5. Add a new Unit Test class and start writing your test case.
+1. Add a new Unit Test class and start writing your test case.
 
 ### Navigating to the Portal
 
