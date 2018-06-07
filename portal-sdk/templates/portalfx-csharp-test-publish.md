@@ -1,5 +1,5 @@
 
-## Contributing to C# Typescript Test Framework
+## Contributing to CSharp Typescript Test Framework
 
 Contributions that improve the Test Framework are welcome, because they keep the code base healthy.  When you have improvements to contribute back to the Typescript Test Framework, use the following steps to enlist into the list of contributors and submit a pull request. If you are unfamiliar with pull requests in Github, please review the help documentation located at [https://help.github.com/articles/about-pull-requests/](https://help.github.com/articles/about-pull-requests/). The pull request instructions are located at [top-extensions-publishing.md](top-extensions-publishing.md), with the following additions.
 

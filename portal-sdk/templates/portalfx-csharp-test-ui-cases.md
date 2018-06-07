@@ -23,7 +23,7 @@ To navigate to the Portal, the extension supplies the Portal's uri.  We recommen
 
 **NOTE**: Multi-factor authentication (MFA) is not supported.  You must use an account that does not require MFA.  If you are part of the Microsoft Azure organization, see the Azure Security Guidelines located at [https://aka.ms/portalfx/securityguidelines](https://aka.ms/portalfx/securityguidelines) for details on how to request an exception for an MSA/OrgID account.  You can not use a service account to login to the Azure Portal.
 
-For more information about handling credentials, see [Managing authentication credentials](#Managing authentication credentials).
+For more information about handling credentials, see [#managing-authentication-credentials](#managing-authentication-credentials).
 
 ### Side-loading An Extension 
 
