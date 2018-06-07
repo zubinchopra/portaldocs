@@ -20,7 +20,7 @@ This document discusses the following topics.
 * [Entering Data into Forms](#entering-data-into-forms)
 * [Testing Commands](#testing-commands)
 * [Taking Screenshots while Testing](#taking-screenshots-while-testing)
-* [Contributing to C# Typescript Test Framework](#contributing-to-c#-typescript-test-framework)
+* [Contributing to CSharp Typescript Test Framework](#contributing-to-csharp-typescript-test-framework)
 
 * * *
 
