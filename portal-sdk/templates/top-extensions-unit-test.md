@@ -66,13 +66,13 @@ always-auth=true
 
 #### Add ./package.json
 
-1. Add the ./package.json
+* Add the ./package.json
 
-    ```json
+```json
 
-    {"gitdown": "include-file", "file": "../samples/VS/PackageTemplates/Default/Extension.UnitTests/package.json"}
+{"gitdown": "include-file", "file": "../samples/VS/PackageTemplates/Default/Extension.UnitTests/package.json"}
 
-    ```
+```
 
     In the package.json you can see we're using mocha and chai but you can choose your own test and assertion framework.
 
@@ -93,7 +93,7 @@ Note:
 
 msportalfx-ut.config.json defines paths to those files needed by the msportalfx-ut node module to generate everything under `./_generated/*`.  
 
-1. add ./msportalfx-ut.config.json with the following:
+add ./msportalfx-ut.config.json with the following:
 
 ```json
 

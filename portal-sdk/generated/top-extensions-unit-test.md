@@ -7,20 +7,24 @@ Covered in this document:
 - CI: test results output to CI accepted formats JUNIT, TRX, other.
 - Code Coverage: where to find your code coverage output
 
-<a name="unit-test-framework-preview-getting-started-with-visual-studio"></a>
-## Getting Started with Visual Studio
+<a name="unit-test-framework-preview-getting-started-with-the-visual-studio-project-template"></a>
+## Getting Started with the Visual Studio Project Template
 
+1. Install [Node LTS](https://nodejs.org/en/download/)
 1. To support the Unit Test project in Visual Studio you must first install the `Node Tools for Visual Studio` [from here](https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1) then
-1. Launch Visual Studio and click `File > New > Project > Visual C# > Azure Portal`. It will scaffold a Solution with two projects Extension.csproj and Extension.UnitTest.csproj
-1. Build the solution `Ctl + Shift + B`
-1. Open index.html in a browser
+1. Launch Visual Studio and click `File > New > Project > Visual C# > Azure Portal`. It will scaffold a Solution with two projects Extension.csproj and Extension.UnitTest.csproj.  
+    
+    Note: If you do not see the `Azure Portal` project template ensure you have already installed the [Portal SDK](https://aka.ms/portalfx/download) and are using VS2015 (at the time of writing the vsix only targets VS2015).
 
-note you can also run  `npm run test` from the commandline.
+1. Build the solution `Ctl + Shift + B`
+1. run `npm run test` or `npm run test-ci` from the command line
 
 <a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code"></a>
 ## Creating a project from scratch with Visual Studio Code
 
-Available from [SDK 5.0.302.1057](https://aka.ms/portalfx/download)
+Before getting started with this step by step:
+- if building a new extension from scratch its simpler/faster to start with the above project template rather then following the step by step.
+- if adding a UT project to an existing extension you can still just scaffold the content from above then follow this guide for customizing the config to point to your existing extension.
 
 This tutorial will provide you step by step instructions for creating a UnitTest project for your Azure Portal Extension.  The resulting folder structure will look like the following:
 
@@ -34,6 +38,7 @@ This tutorial will provide you step by step instructions for creating a UnitTest
 |   +-- msportalfx-ut.config.json
 |   +-- package.json
 |   +-- tsconfig.json
+    +-- .npmrc
 
 // The build and code generation will add the following
 |   +-- _generated
@@ -43,23 +48,31 @@ This tutorial will provide you step by step instructions for creating a UnitTest
 
 ```
 
-NOTE: this document uses relative path syntax to indicate where you should add each file e.g ./package.json indicates adding an index.html at the root of your test project folder Extension.UnitTests/package.json
+Note:
+* This document uses relative paths to indicate where you should add each file relative to the root of your test folder e.g ./package.json indicates adding an index.html at the root of your test project folder Extension.UnitTests/package.json
+* All code snippets provided are for `Microsoft.Portal.Tools.V2.targets` if you are using it's predecessor `Microsoft.Portal.Tools.targets` see the [FAQ](#FAQ) at the bottom of this document.
 
-<a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code-to-generate-fxscripts-js"></a>
-### to generate FxScripts.js
+<a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code-dev-build-time-configuration"></a>
+### Dev/Build time configuration
 
-In the ./karma.conf.js the following scripts are imported
+<a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code-dev-build-time-configuration-add-npmrc"></a>
+#### Add ./.npmrc
 
-- `mocha.js`: this test framework is used in the shipped sample. Note that you may choose to use whatever test framework you wish. msportalfx-ut is test framewwork agnostic.
-- `chai.js`: test assertion framework. Note that you may choose to use whatever test framework you wish. msportalfx-ut is test framewwork agnostic.
-- `./node_modules/msportalfx-ut/lib/FxScripts.js`: this is an aggregate script that contains all portal scripts required as a pre-req for your test context. This script includes: default setup of window.fx.*, all portal bundles required to successfully load your blades, all requirejs config required to load your blades.
-- `./_generated/Ext/ExtensionStringResourcesRequireConfig.js` requirejs mapping for AMD modules generated from from the extension's resx files.
-- `./test-main.js` entrypoint to setup your test runner and extensions require config.
+msportalfx-ut is available from the internal AzurePortalNpmRegistry.  To configure your project to use this registry add the following:
 
-To generate `./_generated/Ext/ExtensionStringResourcesRequireConfig.js` and to copy typings local to the test context, msportalfx-ut provides a gulpfile that automates the generation of content under `./_generated/Ext/`. It can be executed as part of the `prereq` script below.
+Add a ./.npmrc file 
 
-<a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code-to-generate-fxscripts-js-add-package-json"></a>
+```
+
+registry=https://msazure.pkgs.visualstudio.com/_packaging/AzurePortalNpmRegistry/npm/registry/
+always-auth=true
+
+```
+
+<a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code-dev-build-time-configuration-add-package-json"></a>
 #### Add ./package.json
+
+* Add the ./package.json
 
 ```json
 
@@ -70,7 +83,7 @@ To generate `./_generated/Ext/ExtensionStringResourcesRequireConfig.js` and to c
   "main": "index.js",
   "scripts": {
     "init": "npm install --no-optional",
-    "prereq": "npm run init && gulp --gulpfile=./node_modules/msportalfx-ut/gulpfile.js --cwd ./",
+    "prereq": "npm run init && gulp generateAmdModuleFromResx --gulpfile=./node_modules/msportalfx-ut/gulpfile.js --cwd ./",
     "build": "npm run prereq && tsc -p tsconfig.json",
     "build-trace": "tsc -p tsconfig.json --diagnostics --listFiles --listEmittedFiles --traceResolution",
     "test": "npm run build && karma start",
@@ -114,30 +127,27 @@ To generate `./_generated/Ext/ExtensionStringResourcesRequireConfig.js` and to c
 
 ```
 
-Note: In this case we're using mocha and chai but you can choose your own test and assertion framework.
-Note: msportalfx-ut.*.tgz ships in the Microsoft.Portal.TestFramework.UnitTest NuGet package.  You can add a reference to it in your ./YourExtension/packages.config and a file:// reference to the path where it will be unpacked.  If you are building using CoreXT there are a number of tips at the end of this document under the `Corext Environments` section.
+    In the package.json you can see we're using mocha and chai but you can choose your own test and assertion framework.
 
-Save the above to ./package.json and run the following command:
+1. Update ./package.json to refer directly to msportalfx-ut i.e rather then using the file:// syntax simply specify `"msportalfx-ut" : "5.0.302.VersionOfSdkYouAreUsing"`
 
-```
+1. run the following command.
 
-npm install --no-optional
+    ```
 
-```
+    npm install --no-optional
 
-Before running the `prereq` script you must provide the following config such that the gulp task can correctly locate resources. This is done in msportalfx-ut.config.json.
+    ```
 
-<a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code-to-generate-fxscripts-js-add-msportalfx-ut-config-json"></a>
+Note:
+* If you receive auth errors against the internal NPM feed see the "Connect to feed" instructions [here](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=feed)
+
+<a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code-dev-build-time-configuration-add-msportalfx-ut-config-json"></a>
 #### add ./msportalfx-ut.config.json
 
-msportalfx-ut.config.json defines paths to those files needed by the msportalfx-ut node module to generate everything under `./_generated/*`.  The keys are that need to be supplied on the config file are defined as follows:
+msportalfx-ut.config.json defines paths to those files needed by the msportalfx-ut node module to generate everything under `./_generated/*`.  
 
-- `UTNodeModuleRootPath`: the root path to where the msportalfx-ut node module was installed.
-- `GeneratedAssetRootPath`: the root path to save all assets that will be generated e.g your resx to AMD modules.
-- `ExtensionTypingsFiles`: glob for d.ts files of the extension. these are copied to the `GeneratedAssetRootPath` so  that your d.ts files are not side by side with your extensions .ts files. This ensures that typescript module resolution does not pickup the source .ts file during build of your extension thereby ensuring your UT project does not compile extension *.ts files that are under test.
-- `ResourcesResxRootDirectory`: extension client root directory that contains all *.resx files. These will be used to generate js AMD string resource modules into `GeneratedAssetRootPath` and the associated require config.
-
-1. add ./msportalfx-ut.config.json with the following value:
+add ./msportalfx-ut.config.json with the following:
 
 ```json
 
@@ -149,53 +159,17 @@ msportalfx-ut.config.json defines paths to those files needed by the msportalfx-
 }
 
 ```
+Customize the paths to those of your extension. The definition of each key in the config is as follows:
 
-1. To ensure that your extension project is producing d.ts files update your extension.csproj `<TypeScriptGeneratesDeclarations>true</TypeScriptGeneratesDeclarations>` and build your Extension.csproj
+- `UTNodeModuleRootPath`: the root path to where the msportalfx-ut node module was installed.
+- `GeneratedAssetRootPath`: the root path to save all assets that will be generated e.g your resx to js AMD module so you can use resource strings directly in your test.
+- `ResourcesResxRootDirectory`: extension client root directory that contains all *.resx files. These will be used to generate js AMD string resource modules into `GeneratedAssetRootPath` and the associated require config.
 
-1. If using Microsoft.Portal.Tools.*V2*.targets in your Extension.csproj update ExtensionTypingsFiles as follows:
+Note:
+* if your official build environment uses different paths then your dev environment you can override them either by using command line arguments or environmental variables.  The msportalfx-ut gulpfile will search in the following order command line argument > environmental variable > ./msportalfx-ut.config.json file.  An example of overriding an item for an official build via a command line argument `gulp --UTNodeModuleResolutionPath ./some/other/location`
 
-    `"ExtensionTypingsFiles": "../Extension/Output/typings/**/*.d.ts",`
-
-NOTE: if your official build environment uses different paths then your dev environment you can override them either by using command line arguments or environmental variables.  The msportalfx-ut gulpfile will search in the following order command line argument > environmental variable > ./msportalfx-ut.config.json file.  An example of overriding an item for an official build via a command line argument `gulp --UTNodeModuleResolutionPath ./some/other/location`
-
-<a name="unit-test-framework-preview-add-a-test"></a>
-## Add a test
-
-To compile your test and for dev time intellisense you will need a ./tsconfig.json
-
-```json
-
-{
-    "compileOnSave": true,
-    "compilerOptions": {
-        "baseUrl": ".",
-        "experimentalDecorators": true,
-        "module": "amd",
-        "noImplicitAny": true,
-        "noImplicitThis": true,
-        "noUnusedLocals": true,
-        "outDir": "./Output",
-        "rootDir": ".",
-        "sourceMap": false,
-        "target": "es5",
-        "paths": {
-            "msportalfx-ut/*": [
-                "./node_modules/msportalfx-ut/lib/*"
-            ],
-            "*": [
-                "./_generated/Ext/typings/Client/*",
-                "./node_modules/@types/*/index"
-            ]
-        }
-    },
-    "exclude": [],
-    "include": [
-        "./_generated/Ext/typings/Definitions/*",
-        "test/**/*"
-    ]
-}
-
-```
+<a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code-dev-build-time-configuration-add-a-test"></a>
+#### Add a test
 
 Add a test to ./test/ResourceOverviewBlade.test.ts.  You can modify this example for your own extension
 
@@ -258,23 +232,70 @@ describe("Resource Overview Blade Tests", () => {
   });
 });
 
-````
-
-<a name="unit-test-framework-preview-add-a-test-build-your-test-project"></a>
-### Build your test project
-
-run the following command
-
 ```
 
-npm run build
+<a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code-dev-build-time-configuration-compile-your-test-project"></a>
+#### Compile your test project
 
-```
+1. To compile your test and for dev time intellisense you will need a ./tsconfig.json
 
-<a name="unit-test-framework-preview-configure-require-and-mocha-using-add-test-main-js"></a>
-## Configure Require and Mocha using add test-main.js
+    ```json
 
-requirejs will need to know where all your modules are located for your extension and any frameworks that you are using
+    {
+    "compileOnSave": true,
+    "compilerOptions": {
+        "baseUrl": ".",
+        "experimentalDecorators": true,
+        "module": "amd",
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "outDir": "./Output",
+        "rootDir": ".",
+        "sourceMap": false,
+        "target": "es5",
+        "paths": {
+            "msportalfx-ut/*": [
+                "./node_modules/msportalfx-ut/lib/*"
+            ],
+            "*": [
+                "../Extension/Output/Content/Scripts/*",
+                "./node_modules/@types/*/index"
+            ]
+        }
+    },
+    "exclude": [],
+    "include": [
+        "../Extension/Definitions/*",
+        "../Extension/Output/typings/ClientResources.d.ts",
+        "test/**/*"
+    ]
+}
+
+    ```
+
+    Update the paths in the tsconfig.json to for your specific extension paths.
+
+1. Build your extension
+1. run the following command to build your tests
+
+    ```
+
+    npm run build
+
+    ```
+
+<a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code-runtime-configuration"></a>
+### Runtime configuration
+
+Now that your tests are building, add the following to run your tests.
+
+<a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code-runtime-configuration-configure-require-and-mocha-using-add-test-main-js"></a>
+#### Configure Require and Mocha using add test-main.js
+
+requirejs and mocha need to know where all your modules are located for your extension and any frameworks that you are using. 
+
+add a ./test-main.js file as the main entrypoint for your app
 
 ```javascript
 
@@ -309,9 +330,9 @@ rjs = require.config({
   // Karma serves files under /base, which is the basePath from your config file
   baseUrl: window.__karma__ ? "/base/Extension.UnitTests" : "",
   paths: {
-    "_generated": "../Extension/Client/_generated",
-    "Resource": "../Extension/Client/Resource",
-    "Shared": "../Extension/Client/Shared",
+    "_generated": "../Extension/Output/Content/Scripts/_generated",
+    "Resource": "../Extension/Output/Content/Scripts/Resource",
+    "Shared": "../Extension/Output/Content/Scripts/Shared",
     "sinon": "node_modules/sinon/pkg/sinon",
     "chai": "node_modules/chai/chai",
 },
@@ -324,10 +345,13 @@ rjs = require.config({
 
 
 ```
-<a name="unit-test-framework-preview-configure-require-and-mocha-using-add-test-main-js-configure-your-test-runner"></a>
-### Configure your test runner
 
-In this example we will  using karmajs as a test runner.  It provides a rich plugin ecosystem for compile on save based dev/test cycles, test reporting and code coverage to name a few.
+Update for your specific extension paths.
+
+<a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code-runtime-configuration-configure-your-test-runner"></a>
+#### Configure your test runner
+
+In this example we will using karmajs as a test runner.  It provides a rich plugin ecosystem for watch based compile on save based dev/test cycles, test reporting and code coverage to name a few.
 
 add a file named ./karma.conf.js
 
@@ -378,7 +402,7 @@ module.exports = function (config) {
       // make available compiled tests from tsconfig.json outDir
       { pattern: "Extension.UnitTests/Output/**/*.test.js", included: false },
       // make available all client extension code that unit tests will use.
-      { pattern: "Extension/Client/**/*.js", included: false },
+      { pattern: "Extension/Output/Content/Scripts/**/*.js", included: false },
       // the entrypoint for running unit tests.
       "Extension.UnitTests/test-main.js",
     ],
@@ -397,7 +421,7 @@ module.exports = function (config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      "./Extension/Client/**/*.js": "coverage"
+      "./Extension/Output/Content/Scripts/**/*.js": "coverage"
     },
 
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
@@ -457,11 +481,12 @@ module.exports = function (config) {
 
 ```
 
-<a name="unit-test-framework-preview-configure-require-and-mocha-using-add-test-main-js-run-your-tests"></a>
-### Run your tests
+Update for your specific extension paths.
 
-Using a karmajs to host and run your tests
-`npm run test` launches karmajs in your configured target browsers in watch mode.
+<a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code-runtime-configuration-run-your-tests"></a>
+#### Run your tests
+
+You can run your tests with `npm run test`.  This command is specified in packages.json and will start karmajs in your configured target browser(s) in watch mode.  This is particularly useful when used in conjunction with compile on save allowing for an efficient inner dev loop i.e dev > compile > automatic test execution, in short any change to your extension src and test project src will be automatically compiled (due to tsconfig.json setup) and then tests will automatically (due to karma.conf.js). The net result is real time feedback on what tests you've broken as you modifying extension code.
 
 Using karmajs for a single test run useful for scenarios such as running in CI 
 
@@ -470,20 +495,29 @@ Using karmajs for a single test run useful for scenarios such as running in CI
 Using a browser as a host (deprecated):
 `npm run test-dev` opens index.html in your regular browser.
 
-you will note that these last two (`test` and `test-ci`) are configured to run in Edge and Chrome. You may also pick and choose additional browsers via the launcher plugins [documented here](https://karma-runner.github.io/2.0/config/browsers.html).
+Note that the karma.conf.js is configured to run your tests in both in Edge and Chrome. You may also pick and choose additional browsers via the launcher plugins [documented here](https://karma-runner.github.io/2.0/config/browsers.html).
 
-<a name="unit-test-framework-preview-configure-require-and-mocha-using-add-test-main-js-test-output-for-ci"></a>
-### Test Output for CI
+<a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code-test-results"></a>
+### Test Results
+
+In dev scenarios the test results from running your tests via karmajs are available in the console output. In addition to the console output reporters have been added to `karma.conf.js` to provide formats that are useful to CI scenarios.
+
+<a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code-test-results-test-output-for-ci"></a>
+#### Test Output for CI
 
 By Default the project template/steps above will generate a project configured to produce JUNIT and TRX output. This should be useful for most CI environments. The content will be output under ./TestResults/**/*.xml|trx.  To configure the output paths update karma.conf.js. For more plugins for outputing in a format your CI environment supports see [karmajs official docs](https://karma-runner.github.io/2.0/index.html).
 
-Note: generated via `npm run test` or `npm run test-ci`
-<a name="unit-test-framework-preview-configure-require-and-mocha-using-add-test-main-js-code-coverage"></a>
-### Code Coverage
+Note: 
+* TRX and JUNIT output are generated when running `npm run test` or `npm run test-ci` via karmajs and its karma.conf.js.
+* drop the TRX or JUNIT reporter that is not needed for your CI environment.
+
+<a name="unit-test-framework-preview-creating-a-project-from-scratch-with-visual-studio-code-test-results-code-coverage"></a>
+#### Code Coverage
 
 By Default the project template/steps above will generate a project configured that also produces code coverage using karma-coverage. The content will be output under ./TestResults/Coverage/**/index.html
 
-Note: generated via `npm run test` or `npm run test-ci`
+Note: 
+* coverage results are generated when running  `npm run test` or `npm run test-ci` via karmajs its karma.conf.js.
 
 <a name="faq"></a>
 # FAQ
@@ -620,3 +654,110 @@ Even though it is not that useful for gated CI some teams prefer to have a simpl
 </html>
 
 ```
+
+<a name="faq-i-am-still-using-microsoft-portal-tools-targets-rather-than-microsoft-portal-tools-v2-targets-what-do-i-need-to-change"></a>
+## I am still using Microsoft.Portal.Tools.targets rather than Microsoft.Portal.Tools.V2.targets. What do I need to change
+
+Ideally you should move to v2 targets to benefit from the dev productivity it will bring to your dev/test inner loop. Migration only takes about an hour or so, see https://aka.ms/portalfx/cloudbuild for details.  If you can't migrate to v2 update the following:
+
+1. Update your ../Extension/Extension.csproj 
+add 
+
+    xml
+    ```
+    <PropertyGroup>
+        <TypeScriptGeneratesDeclarations>true</TypeScriptGeneratesDeclarations>
+    </PropertyGroup>
+    ```
+
+1. ./package.json update the `script` named `prereq`  to be the following
+
+    ```
+    "prereq": "npm run init && gulp --gulpfile=./node_modules/msportalfx-ut/gulpfile.js --cwd ./"
+    ``` 
+
+1. ./msportalfx-ut.config.js
+
+    ```
+        "ExtensionTypingsFiles": "../Extension/**/*.d.ts",
+        "ResourcesResxRootDirectory": "../Extension/Client"
+    ```    
+
+1. ./tsconfig.json
+
+    ```
+
+    {
+        "compileOnSave": true,
+        "compilerOptions": {
+
+    ...
+            "paths": {
+                "msportalfx-ut/*": [
+                    "./node_modules/msportalfx-ut/lib/*"
+                ],
+                "*": [
+                    "./_generated/Ext/typings/Client/*",
+                    "./node_modules/@types/*/index"
+                ]
+            }
+    ...
+
+        },
+    ...
+        "include": [
+            "./_generated/Ext/typings/Definitions/*",
+            "test/**/*"
+        ]
+    }
+
+    ```
+
+1. ./karma.conf.js
+
+
+    ```
+    ... 
+
+    files: [
+        ...,
+
+        { pattern: "Extension/Output/Content/Scripts**/*.js", included: false },
+        
+        ...
+    ],
+
+    ...
+
+    preprocessors: {
+        "./Extension/Client/**/*.js": "coverage"
+    }
+
+    ```
+
+1. ./test-main.js
+
+    ```
+    rjs = require.config({
+    ...,
+        "_generated": "../Extension/Client/_generated",
+        "Resource": "../Extension/Client/Resource",
+        "Shared": "../Extension/Client/Shared"
+    ...
+    ```
+
+<a name="i-can-t-use-the-internal-npm-registry-https-msazure-pkgs-visualstudio-com-_packaging-azureportalnpmregistry-npm-registry-because"></a>
+# I can&#39;t use the internal npm registry <a href="https://msazure.pkgs.visualstudio.com/_packaging/AzurePortalNpmRegistry/npm/registry/">https://msazure.pkgs.visualstudio.com/_packaging/AzurePortalNpmRegistry/npm/registry/</a> because ...
+
+<a name="i-can-t-use-the-internal-npm-registry-https-msazure-pkgs-visualstudio-com-_packaging-azureportalnpmregistry-npm-registry-because-i-can-t-authenticate"></a>
+## I can&#39;t authenticate
+
+Try the following:
+1. If you receive auth errors against the internal NPM feed see the "Connect to feed" instructions [here](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=feed)
+1. If your not a member of any of the Groups on https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=settings&view=permissions reach out to nickha.
+
+<a name="i-can-t-use-the-internal-npm-registry-https-msazure-pkgs-visualstudio-com-_packaging-azureportalnpmregistry-npm-registry-because-my-build-nodes-are-completely-disconnected-from-the-internet"></a>
+## My build nodes are completely disconnected from the internet
+
+* you can commit your version of msportalfx-ut.zip into your repo and install it directly using relative file path syntax
+`"msportalfx-ut": "file:../externals/msportalfx-ut-5.0.302.someversion.tgz",`
