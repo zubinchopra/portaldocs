@@ -1,6 +1,10 @@
 ## Introduction
 
-This document describes the various components of testing an extension in production, including status codes and testing procedures. 
+This document describes the various components of testing an extension in production, including status codes and testing procedures.
+
+The different types of deployment for testing are in the following image.
+
+![alt-text](../media/portalfx-extensions-testing/sideloading-and-testing.png "Testing Extensions Versions in Separate Locations")
 
 For information about regular testing and debugging, see [portalfx-test.md](portalfx-test.md) and [top-extensions-debugging.md](top-extensions-debugging.md).
 
@@ -87,7 +91,7 @@ To register a customized extension, or register a different extension edition, u
 
 where
 
-* **protocol**: Matches the protocol of the shell into which the extension is loaded, without the angle brackets.  It can have a value of `HTTP` or a value of `HTTPS`. For the production shell, the value is `HTTPS`.  If the value of this portion of the parameter is incorrectly specified, the browser will not allow the extension to communicate. 
+* **protocol**: Matches the protocol of the shell into which the extension is loaded, without the angle brackets.  It can have a value of `HTTP` or a value of `HTTPS`. For the production shell, the value is `HTTPS`.  If the value of this portion of the parameter is incorrectly specified, the browser will not allow the extension to communicate.
 
 * **environment**: Portal environment in which to load the extension. Portal environments are `portal.azure.com`, `rc.portal.azure.com`, `mpac.portal.azure.com`, and `df.onecloud.azure-test.net`, although extension developers can sideload their extensions in any environment. 
 
@@ -129,7 +133,7 @@ When all steps are complete, the developer can submit a pull request to enable t
 
 ## Common use cases for custom extensions
 
-There are several scenarios in which a developer test various aspects of an extension with different editions of the same extension. Three of them are as follows. 
+There are several scenarios in which a developer test various aspects of an extension by using  different editions. Three of them are as follows. 
 
 1. Running automated tests
 
@@ -139,14 +143,12 @@ There are several scenarios in which a developer test various aspects of an exte
 
       ```TestTraffic-<TeamName>-<Component>  ```
 
-   1. Set the query string parameter to `feature.UserType=test`. 
-  This setting excludes test traffic from our reports.
+   1. Set the query string parameter to `feature.UserType=test`.  This setting excludes test traffic from our reports.
 
 1. Running regression tests
 
-   Regression tests and build verification tests are    .
-   <!-- TODO: Determine how extension editions are used to run partial tests. -->
-
+   Regression tests and build verification tests only verify that the new extension runs, without performing extensive code coverage checks. For example, they may be used to validate that interfaces connect, which is not the same as testing the validity of the data or processes that use the interface.  They may also exercise only specific functionality within the extension.
+  
 1. Obsolete script bundles
 
     If the extension uses deprecated features that have been moved to obsolete script bundles, then the ```obsoleteBundlesBitmask``` flag should be specified, as in the following example.
