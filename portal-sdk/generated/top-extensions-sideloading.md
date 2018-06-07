@@ -11,6 +11,10 @@ This helps the developer validate that the extension is ready for standard Porta
 
 Extensions can also be tested in production under specific conditions. It allows the developer to include hotfixes, customize the extension for different environments, and other factors.
 
+The different types of deployment for testing are in the following image.
+
+![alt-text](../media/portalfx-extensions-testing/sideloading-and-testing.png "Testing Extensions Versions in Separate Locations")
+
 Sideloading can be used when developing an extension, in addition to private preview and some forms of usability testing. It is also useful when testing multiple versions of an extension, or determining which features should remain in various editions of an extension.  For example, an English-language extension may have other UX editions that include localization for various languages, each of which may ship separately when the extension is deployed or geodistributed.
 
 During standard Portal use, the Portal web application loads the UI extension from a URL that is part of the Portal's configuration.  When developing and testing the UI extension, the developer can instruct the Portal to load the extension from a specified URL.  For more information, see [top-extensions-architecture.md](top-extensions-architecture.md).
@@ -18,7 +22,7 @@ During standard Portal use, the Portal web application loads the UI extension fr
 <a name="sideloading-an-extension-overview-query-string"></a>
 ### Query string
 
-The difference between sideloading and testing in production is the endpoint from which the extension is loaded. The sideloaded extension's code is located on the endpoint that represents the local host, or the developer's computer.  The endpoint used for testing in production represents the computer that is being used for testing.
+The difference between sideloading and testing in production is the endpoint from which the extension is loaded. The sideloaded extension's code is located on the endpoint that represents the local host, or the developer's computer.  The endpoint used for testing in production represents the computer that is being used for testing, and it is not likely that the production testing endpoint is the local host.
 
 The following query string can be used to load an extension by using the address bar.
 
@@ -54,8 +58,8 @@ Two mechanisms that can be used to sideload an extension are as follows.
 
 1. Load from development computer
 
-    To load an extension from the development machine or the localhost, extension developers need to register it, as specified in  [portalfx-extensions-production-testing-overview.md#Registering-a-customized-extension](portalfx-extensions-production-testing-overview.md#registering-a-customized-extension).
-    
+    To load an extension from the development machine or the localhost, extension developers need to register it, as specified in[portalfx-extensions-production-testing-overview.md#registering-extensions-with-the-registerTestExtension-API](portalfx-extensions-production-testing-overview.md#registering-extensions-with-the-registerTestExtension-API).
+        
     For more information about alternatives to the local host environment, see [top-extensions-hosting-service.md](top-extensions-hosting-service). 
 
 1. Load from test environment
