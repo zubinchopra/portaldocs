@@ -43,13 +43,11 @@ The C# Test framework is distributed as a NuGet package that is available in the
 
 ### Understanding the differences between the frameworks 
 
-1. Microsoft.Portal.TestFramework 
+There are some differences between the  `Microsoft.Portal.TestFramework` and `Microsoft.Portal.TestFramework.Csharp`.
 
-2. Microsoft.Portal.TestFramework.Csharp 
+The `Microsoft.Portal.TestFramework.CSharp` package contains the core test framework DLLs.  It is updated with the latest code as the Portal is being developed and may contain fixes for test issues that were found after release.  It may also contain code that is not compatible with the deployed version of the Portal.
 
-The Microsoft.Portal.TestFramework.CSharp package contains the core test framework DLLs.  It is updated with the latest code as the Portal is being developed and may contain fixes for test issues that were found after release.  It may also contain code that is not compatible with the deployed version of the Portal.
-
-The Microsoft.Portal.TestFramework contains a reference to the Microsoft.Portal.TestFramework.Csharp package in addition to dependencies that are required for the C# test framework to run upon initial installation. 
+The `Microsoft.Portal.TestFramework` contains a reference to the `Microsoft.Portal.TestFramework.Csharp` package in addition to dependencies that are required for the C# test framework to run upon initial installation. 
 
 **NOTE**: Some external dependencies may require separate downloads, such as ChromeDriver, which match the version of Chrome.
 
@@ -65,8 +63,7 @@ To create a test project that can use the Portal Test Framework, use the followi
 
 1. Add an `app.config` file to your test project and define the basic Test Framework settings under appSettings, as in the following example.
 
-       {"gitdown": "include-section", "file": "../samples/SampleCSTestsFiles/app.config", "section": "config#appSettings"}
-    
+    {"gitdown": "include-section", "file": "../samples/SampleCSTestsFiles/app.config", "section": "config#appSettings"}
 
 1. Add a new Unit Test class and start writing your test case.
 
