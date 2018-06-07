@@ -1,6 +1,6 @@
 
-<a name="contributing-to-c-typescript-test-framework"></a>
-## Contributing to C# Typescript Test Framework
+<a name="contributing-to-csharp-typescript-test-framework"></a>
+## Contributing to CSharp Typescript Test Framework
 
 Contributions that improve the Test Framework are welcome, because they keep the code base healthy.  When you have improvements to contribute back to the Typescript Test Framework, use the following steps to enlist into the list of contributors and submit a pull request. If you are unfamiliar with pull requests in Github, please review the help documentation located at [https://help.github.com/articles/about-pull-requests/](https://help.github.com/articles/about-pull-requests/). The pull request instructions are located at [top-extensions-publishing.md](top-extensions-publishing.md), with the following additions.
 
@@ -14,7 +14,7 @@ Contributions that improve the Test Framework are welcome, because they keep the
 
 **NOTE**: Please note that the opportunity to contribute to the  test framework is only available to first-party extension developers, i.e., Microsoft employees.
 
-<a name="contributing-to-c-typescript-test-framework-enlisting-into-the-repository"></a>
+<a name="contributing-to-csharp-typescript-test-framework-enlisting-into-the-repository"></a>
 ### Enlisting into the repository
 
 The repository is hosted in Azure's GitHub organization.  The instructions for requesting access to the Azure Github organization are located at [https://repos.opensource.microsoft.com/](https://repos.opensource.microsoft.com/).
@@ -27,7 +27,7 @@ The **GitHub** repository is located at  [https://github.com/Azure/msportalfx-te
 
 The test framework code can be viewed at `<repoRoot>/src`.
 
-<a name="contributing-to-c-typescript-test-framework-making-changes-and-building-the-improvement"></a>
+<a name="contributing-to-csharp-typescript-test-framework-making-changes-and-building-the-improvement"></a>
 ### Making changes and building the improvement
 
 The prerequisites are as follows. 
@@ -42,22 +42,22 @@ The prerequisites are as follows.
 
 To make changes and build your improvement, first you need to initialize your repository by running "npm install --no-optional" at `<repoRoot>`.   Once your repo is initialized, you can make your changes and then run "npm run build" at the repository root.  The build output will be available under `\lib`.
 
-<a name="contributing-to-c-typescript-test-framework-testing-the-improvement"></a>
+<a name="contributing-to-csharp-typescript-test-framework-testing-the-improvement"></a>
 ### Testing the improvement
 
 The `MsPortalfx-Test` Typescript Test Framework includes a set of tests for basic verification.  To run the tests, you need to push your improvement to a feature branch, also known as a private branch.  Once your improvement is in a feature branch, you can navigate to PortalFXOnDemand that is located at [https://portalfxod.azure-test.net/view/MsPortalfx-Test/job/OnDemand-MsPortalFxTest/build?delay=0sec](https://portalfxod.azure-test.net/view/MsPortalfx-Test/job/OnDemand-MsPortalFxTest/build?delay=0sec) and fill in your feature branch name in the "MsPortalFxTestBranchName" field to run your tests.  You should get an email when it is complete.  
 
 For more information about feature branches, see [https://gist.github.com/vlandham/3b2b79c40bc7353ae95a](https://gist.github.com/vlandham/3b2b79c40bc7353ae95a).
 
-<a name="contributing-to-c-typescript-test-framework-troubleshooting"></a>
+<a name="contributing-to-csharp-typescript-test-framework-troubleshooting"></a>
 ### Troubleshooting
 
-<a name="contributing-to-c-typescript-test-framework-troubleshooting-repo-sync-and-auth-errors"></a>
+<a name="contributing-to-csharp-typescript-test-framework-troubleshooting-repo-sync-and-auth-errors"></a>
 #### Repo sync and auth errors
 
 If you are seeing authentication errors, try creating and using a personal access token as described in [https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
-<a name="contributing-to-c-typescript-test-framework-troubleshooting-other-issues"></a>
+<a name="contributing-to-csharp-typescript-test-framework-troubleshooting-other-issues"></a>
 #### Other issues
 If issues are encountered while developing the improvement, please search the internal StackOverflow that is located at [http://stackoverflow.microsoft.com](http://stackoverflow.microsoft.com) first.
 
