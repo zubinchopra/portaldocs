@@ -1,5 +1,5 @@
 
-#  C# Portal Test Framework
+# C# Portal Test Framework
 
 ## Overview
 
@@ -11,13 +11,21 @@ The C# test framework provides the following.
 
 * A suite of helpers for logging into, navigating, and manipulating controls, blades, and parts in the Portal
 
+This document discusses the following topics.
+* [Writing Tests](#writing-tests)
+* [Creating the Test Project](#creating-the-test-project)
+* [Testing Parts and Blades](#testing-parts-and-blades)
+* [Entering Data into Forms](#entering-data-into-forms)
+* [Testing Commands](#testing-commands)
+* [Taking Screenshots while Testing](#taking-screenshots-while-testing)
+
+* * *
+
 ## Writing Tests
 
 ### Prerequisites
 
 Prerequisites for using the C# test framework as as follows.
-
-
 
 * Nuget (https://www.nuget.org/) and [top-extensions-nuget.md](top-extensions-nuget.md)
 
@@ -51,7 +59,7 @@ The `Microsoft.Portal.TestFramework` contains a reference to the `Microsoft.Port
 
 **NOTE**: Some external dependencies may require separate downloads, such as ChromeDriver, which match the version of Chrome.
 
-### Creating the Test Project
+## Creating the Test Project
 
 To create a test project that can use the Portal Test Framework, use the following steps.
 
@@ -107,7 +115,7 @@ While the test framework does not provide any support for managing login credent
 
 ### Full Sample Code
 
-The  following code demonstrates navigating to the Portal for testing.
+The following code demonstrates navigating to the Portal for testing.
 
 ```
 
@@ -158,7 +166,7 @@ webDriver.WaitUntil(() => errorPart.FindElement(By.TagName("button")),
 ```
 For more information, see [portalfx-extensions-bp-csharp-test.md](portalfx-extensions-bp-csharp-test.md).
 
-#### Full example
+### Full example
 
 ```cs
 using System;
@@ -421,7 +429,6 @@ namespace SamplesExtensionTests
     }
 }
 ```
-
 
 ## Testing Commands
 
@@ -781,7 +788,8 @@ If you want to disable a single extension, you can use the `canmodifyextensions`
 
 `?feature.canmodifyextensions=true&ExtensionNameToDisable=false`
 
-For example, if you want to turn off an old extension and turn on a new one, you can do this as follows.
+For example, if you want to turn off an old extension and turn on a new one, you can use the following code. 
+
 ```
 ?feature.canmodifyextensions=true&MyOldExtension=false&MyNewExtension=true
 ```
