@@ -17,6 +17,6 @@ At this point we need to keep in mind that our goal is to remove the part from t
               Blade="EXACT BLADE NAME THAT THE PART WAS DEFINED IN"
               Lens="OPTIONAL - EXACT LENS NAME THE PART WAS DEFINED IN"
               Extension="OPTIONAL - ONLY APPLICABLE IF THE PART IS DEFINED IN A DIFFERENT EXTENSION">
-    <NewPart Name="NAME OF THE NEW GLOBAL PART THAT DEFINES THE PART BEHAVIOR" />
+    <NewPart PartType="NAME OF THE NEW GLOBAL PART THAT DEFINES THE PART BEHAVIOR" />
 </RedirectPart>
 ```
