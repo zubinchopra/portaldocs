@@ -154,7 +154,6 @@ add ./msportalfx-ut.config.json with the following:
 {
     "UTNodeModuleRootPath": "./node_modules/msportalfx-ut",
     "GeneratedAssetRootPath": "./_generated",
-    "ExtensionTypingsFiles": "../Extension/**/*.d.ts",
     "ResourcesResxRootDirectory": "../Extension/Client"
 }
 
