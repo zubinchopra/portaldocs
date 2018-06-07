@@ -13,6 +13,16 @@ The C# test framework provides the following.
 
 * A suite of helpers for logging into, navigating, and manipulating controls, blades, and parts in the Portal
 
+This document discusses the following topics.
+* [Writing Tests](#writing-tests)
+* [Creating the Test Project](#creating-the-test-project)
+* [Testing Parts and Blades](#testing-parts-and-blades)
+* [Entering Data into Forms](#entering-data-into-forms)
+* [Testing Commands](#testing-commands)
+* [Taking Screenshots while Testing](#taking-screenshots-while-testing)
+
+* * *
+
 <a name="c-portal-test-framework-writing-tests"></a>
 ## Writing Tests
 
@@ -20,8 +30,6 @@ The C# test framework provides the following.
 ### Prerequisites
 
 Prerequisites for using the C# test framework as as follows.
-
-
 
 * Nuget (https://www.nuget.org/) and [top-extensions-nuget.md](top-extensions-nuget.md)
 
@@ -57,8 +65,8 @@ The `Microsoft.Portal.TestFramework` contains a reference to the `Microsoft.Port
 
 **NOTE**: Some external dependencies may require separate downloads, such as ChromeDriver, which match the version of Chrome.
 
-<a name="c-portal-test-framework-writing-tests-creating-the-test-project"></a>
-### Creating the Test Project
+<a name="c-portal-test-framework-creating-the-test-project"></a>
+## Creating the Test Project
 
 To create a test project that can use the Portal Test Framework, use the following steps.
 
@@ -94,7 +102,7 @@ To create a test project that can use the Portal Test Framework, use the followi
 
 5. Add a new Unit Test class and start writing your test case.
 
-<a name="c-portal-test-framework-writing-tests-navigating-to-the-portal"></a>
+<a name="c-portal-test-framework-creating-the-test-project-navigating-to-the-portal"></a>
 ### Navigating to the Portal
 
 To navigate to the Portal, the extension supplies the Portal's uri.  We recommend setting the value in the `app.config` file as shown in [Creating the Test Project](#creating-the-test-project).  After the extension has the Portal uri, it can use the **WebDriverFactory.Create** method to create an instance of the `WebDriver` object and then use the **PortalAuthentication** class to login and navigate to the Portal in the browser, as in the following example.
@@ -186,7 +194,7 @@ While the test framework does not provide any support for managing login credent
 
 ### Full Sample Code
 
-The  following code demonstrates navigating to the Portal for testing.
+The following code demonstrates navigating to the Portal for testing.
 
 ```
 
@@ -302,7 +310,7 @@ webDriver.WaitUntil(() => errorPart.FindElement(By.TagName("button")),
 ```
 For more information, see [portalfx-extensions-bp-csharp-test.md](portalfx-extensions-bp-csharp-test.md).
 
-#### Full example
+### Full example
 
 ```cs
 using System;
@@ -565,7 +573,6 @@ namespace SamplesExtensionTests
     }
 }
 ```
-
 
 ## Testing Commands
 
@@ -925,7 +932,8 @@ If you want to disable a single extension, you can use the `canmodifyextensions`
 
 `?feature.canmodifyextensions=true&ExtensionNameToDisable=false`
 
-For example, if you want to turn off an old extension and turn on a new one, you can do this as follows.
+For example, if you want to turn off an old extension and turn on a new one, you can use the following code. 
+
 ```
 ?feature.canmodifyextensions=true&MyOldExtension=false&MyNewExtension=true
 ```
