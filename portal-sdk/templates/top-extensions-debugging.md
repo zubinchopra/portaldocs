@@ -24,7 +24,7 @@ When visible, the tool overlays stickys onto Portal parts, and onto the Portal w
 The  information that is associated with the application window is located at the bottom of the window, on the right side.  It provides the following  information and functionality.
 
 * **Version**:  The version of the Portal
-* **Load time**: The amount of time that was required for the Portal to load. <!-- TODO: Validate whether the following sentence is accurate:    This number has a direct impact on the create success rate of the extension.     -->
+* **Load time**: The amount of time that was required for the Portal to load.  This number has a direct impact on the create success rate of the extension.
 * **Client optimizations**: Turns on or off client optimizations such as minification and bundling.
 * **User settings**:  The list of settings is as follows.
   * **Dump**: Logs all user settings to the console.
