@@ -9,7 +9,7 @@ The C# test framework is a UI test framework built on top of the Selenium Webdri
 
 The C# test framework provides the following.
 
-* A base for writing UI based Selenium webdriver tests.
+* A base for writing UI based Selenium Webdriver tests.
 
 * A suite of helpers for logging into, navigating, and manipulating controls, blades, and parts in the Portal
 
@@ -30,7 +30,7 @@ This document discusses the following topics.
 <a name="c-portal-test-framework-writing-tests-prerequisites"></a>
 ### Prerequisites
 
-Prerequisites for using the C# test framework as as follows.
+Prerequisites for using the C# test framework are as follows.
 
 * Nuget (https://www.nuget.org/) and [top-extensions-nuget.md](top-extensions-nuget.md)
 
@@ -106,7 +106,7 @@ To create a test project that can use the Portal Test Framework, use the followi
 <a name="c-portal-test-framework-creating-the-test-project-navigating-to-the-portal"></a>
 ### Navigating to the Portal
 
-To navigate to the Portal, the extension supplies the Portal's uri.  We recommend setting the value in the `app.config` file as shown in [Creating the Test Project](#creating-the-test-project).  After the extension has the Portal uri, it can use the **WebDriverFactory.Create** method to create an instance of the `WebDriver` object and then use the **PortalAuthentication** class to login and navigate to the Portal in the browser, as in the following example.
+To navigate to the Portal, the extension supplies the Portal's URI.  We recommend setting the value in the `app.config` file as shown in [Creating the Test Project](#creating-the-test-project).  After the extension has the Portal uri, it can use the **WebDriverFactory.Create** method to create an instance of the `WebDriver` object and then use the **PortalAuthentication** class to login and navigate to the Portal in the browser, as in the following example.
 
    ```csharp
 
@@ -280,7 +280,7 @@ var samplesPart = portal.StartBoard.FindSinglePartByTitle<ButtonPart>(samplesTit
 samplesPart.Click();
 ```
 
-You can find blades in a simmilar way using the **Portal.FindSingleBladeByTitle** method. You can then find parts within the blade using the **Blade.FindSinglePartByTitle** method, as in the following example.
+You can find blades in a similar way using the **Portal.FindSingleBladeByTitle** method. You can then find parts within the blade using the **Blade.FindSinglePartByTitle** method, as in the following example.
 
 ```cs
 var blade = portal.FindSingleBladeByTitle(samplesTitle);
@@ -943,17 +943,15 @@ For example, if you want to turn off an old extension and turn on a new one, you
 <a name="c-portal-test-framework-contributing-to-csharp-typescript-test-framework"></a>
 ## Contributing to CSharp Typescript Test Framework
 
-Contributions that improve the Test Framework are welcome, because they keep the code base healthy.  When you have improvements to contribute back to the Typescript Test Framework, use the following steps to enlist into the list of contributors and submit a pull request. If you are unfamiliar with pull requests in Github, please review the help documentation located at [https://help.github.com/articles/about-pull-requests/](https://help.github.com/articles/about-pull-requests/). The pull request instructions are located at [top-extensions-publishing.md](top-extensions-publishing.md), with the following additions.
-
-1. The Test Framework uses a different `<repoRoot>`
+Contributions that improve the Test Framework are welcome, because they keep the code base healthy.  When you have improvements to contribute back to the Typescript Test Framework, use the following steps to enlist into the list of contributors and submit a pull request. If you are unfamiliar with pull requests in Github, please review the help documentation located at [https://help.github.com/articles/about-pull-requests/](https://help.github.com/articles/about-pull-requests/). The pull request instructions are located at [top-extensions-publishing.md](top-extensions-publishing.md), with the following additions.
+1. The Test Framework uses a different `<repoRoot>`
 1. The Test Framework is not associated with the production extension branches
-1. You may or may not want to set up a new local git repository specifically for test framework improvements 
+1. You may or may not want to set up a new local git repository specifically for test framework improvements
 1. The configuration files must be modified to match the test framework environment
 
-<!-- TODO: Determine which Azure group is represented by the word  "we" -->
-* **NOTE**: We may test the improvement changes with our internal repository's test suites before accepting the pull request.
+**NOTE**: We may test the improvement changes with our internal repository's test suites before accepting the pull request.
 
-**NOTE**: Please note that the opportunity to contribute to the  test framework is only available to first-party extension developers, i.e., Microsoft employees.
+**NOTE**: Please note that the opportunity to contribute to the test framework is only available to first-party extension developers, i.e., Microsoft employees.
 
 <a name="c-portal-test-framework-contributing-to-csharp-typescript-test-framework-enlisting-into-the-repository"></a>
 ### Enlisting into the repository
@@ -986,9 +984,7 @@ To make changes and build your improvement, first you need to initialize your re
 <a name="c-portal-test-framework-contributing-to-csharp-typescript-test-framework-testing-the-improvement"></a>
 ### Testing the improvement
 
-The `MsPortalfx-Test` Typescript Test Framework includes a set of tests for basic verification.  To run the tests, you need to push your improvement to a feature branch, also known as a private branch.  Once your improvement is in a feature branch, you can navigate to PortalFXOnDemand that is located at [https://portalfxod.azure-test.net/view/MsPortalfx-Test/job/OnDemand-MsPortalFxTest/build?delay=0sec](https://portalfxod.azure-test.net/view/MsPortalfx-Test/job/OnDemand-MsPortalFxTest/build?delay=0sec) and fill in your feature branch name in the "MsPortalFxTestBranchName" field to run your tests.  You should get an email when it is complete.  
-
-For more information about feature branches, see [https://gist.github.com/vlandham/3b2b79c40bc7353ae95a](https://gist.github.com/vlandham/3b2b79c40bc7353ae95a).
+The `MsPortalfx-Test` Typescript Test Framework includes a set of tests for basic verification.  To run the tests, you need to push your improvement to a feature branch, also known as a private branch, as specified in [https://gist.github.com/vlandham/3b2b79c40bc7353ae95a](https://gist.github.com/vlandham/3b2b79c40bc7353ae95a).  Once your improvement is in a feature branch, you can navigate to PortalFXOnDemand that is located at [https://portalfxod.azure-test.net/view/MsPortalfx-Test/job/OnDemand-MsPortalFxTest/build?delay=0sec](https://portalfxod.azure-test.net/view/MsPortalfx-Test/job/OnDemand-MsPortalFxTest/build?delay=0sec) and fill in your feature branch name in the "MsPortalFxTestBranchName" field to run your tests.  You should receive get an email when it is complete.  
 
 <a name="c-portal-test-framework-contributing-to-csharp-typescript-test-framework-troubleshooting"></a>
 ### Troubleshooting
@@ -1000,6 +996,7 @@ If you are seeing authentication errors, try creating and using a personal acces
 
 <a name="c-portal-test-framework-contributing-to-csharp-typescript-test-framework-troubleshooting-other-issues"></a>
 #### Other issues
+
 If issues are encountered while developing the improvement, please search the internal StackOverflow that is located at [http://stackoverflow.microsoft.com](http://stackoverflow.microsoft.com) first.
 
  If you are unable to find an answer, reach out to the Ibiza team at  [Stackoverflow Ibiza Test](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza-test). 
@@ -1127,7 +1124,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | ---                          | --- |
 | idempotent         |  An operation whose result does not change after the initial application. For example, if the client needs to retry a request due to intermittent network issues, the same value will be sent to the server.  This allows the server to ignore the retry if it has already been processed. Even if the request is ignored, the same response will be returned if the client needs the values in the response. |
 | query string |  `uri` used for accessing the Azure Portal |
-| sideloading  | Loading an extension for a specific user session from any source other than the uri` that is registered in the Portal.  The process of transferring data between two local devices, or between the development platform and the local host. Also side load, side-load. |   
+| sideloading  | Loading an extension for a specific user session from any source other than the URI that is registered in the Portal.  The process of transferring data between two local devices, or between the development platform and the local host. Also side load, side-load. |   
 | untrusted extension | An extension that is not accompanied by an SSL certificate. |
 
 
