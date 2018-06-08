@@ -13,7 +13,7 @@ For more information about testing extensions in the hosting service, see  [top-
  
 For information about debugging switches or feature flags that are used in hosting, see  [top-extensions-flags.md](top-extensions-flags.md).
 
-For more information about alternatives to the local host environment, see [portalfx-extensions-custom-deployment.md](portalfx-extensions-custom-deployment.md). 
+For more information about alternatives to the local host environment, see [top-extensions-custom-deployment.md](top-extensions-custom-deployment.md). 
 
 <a name="registering-extensions-with-the-registertestextension-api"></a>
 ## Registering extensions with the registerTestExtension API
