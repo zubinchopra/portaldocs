@@ -9,7 +9,7 @@ Occasionally, difficulties may be encountered while developing an extension. Whe
 
 Other samples and tools are also available to assist in the debugging process.  Any that are not included in the context of the discussion are  included in [top-extensions-samples.md](top-extensions-samples.md).
 
-Here are a few tips that help get extension development back on track. If you still have questions, reach out to Ibiza team in by using the Stackoverflow tags as specified in [StackOverFlow Forums](portalfx-stackoverflow.md).
+Here are a few tips that help get extension development back on track. If you still have questions, reach out to Ibiza team by using the Stackoverflow tags as specified in [StackOverFlow Forums](portalfx-stackoverflow.md).
 
 To test your local extension against the production portal, see [top-extensions-production-testing.md](top-extensions-production-testing.md).  
 
@@ -22,12 +22,12 @@ The Portal contains a debug tool to aid with extension development. The keyboard
 
  ![alt-text](../media/portalfx-debugging/debugMode.png "Portal Debug Tool")
 
-When visible, the tool overlays stickys onto Portal parts, and onto the Portal window itself. The stickys provide quick statistics and fast access to specific types of testing functionality.
+When visible, the tool overlays stickys onto Portal parts, and onto the Portal window itself. The  yellow blocks provide quick statistics and fast access to specific types of testing functionality.
 
-The sticky that is associated with the application window is located at the bottom on the right side of the window.  It provides the following  information and functionality.
+The  information that is associated with the application window is located at the bottom of the window, on the right side.  It provides the following  information and functionality.
 
 * **Version**:  The version of the Portal
-* **Load time**: The amount of time that was required for the extension to load. <!-- TODO: Validate whether the following sentence is accurate:    This number has a direct impact on the create success rate of the extension.     -->
+* **Load time**: The amount of time that was required for the Portal to load. <!-- TODO: Validate whether the following sentence is accurate:    This number has a direct impact on the create success rate of the extension.     -->
 * **Client optimizations**: Turns on or off client optimizations such as minification and bundling.
 * **User settings**:  The list of settings is as follows.
   * **Dump**: Logs all user settings to the console.
@@ -38,43 +38,31 @@ The sticky that is associated with the application window is located at the bott
 * **Enabled features**: A list of features that are currently enabled.
 * **Loaded extensions**: Provides a list of all extensions that are currently loaded and their load times. Clicking an extension name will log information to the console, including the extension definition and manifest.
 
-The stickys that are associated with each part provide the following information.
+The information associated with each part provides the following information.
 <!-- Determine whether information is ever logged to any destination other than the console.  If so, document how to change the destination.  If not, this phrase can be shortened. -->
 * **The name and owning extension**: Displays the name of the blade or part and the name of the extension that is the parent of the blade or part. Clicking on this logs debugging information to the console including the composition instance, view model and definition.
 <!-- How is performance information selected? -->
-* **Revealed**: The revealed time and all other performance information that is logged by that part or
+* **Revealed**: The revealed time and all other performance information that is logged by that part.
 
-* **ViewModel**: contains the following functionality.
-    * **Dump**: dumps the view model to the console for debugging purposes. Display its name, parent extension and load time. Click on the div to log more information such as the part definition, view model name and inputs.
-    * **Track**: dump the view model observables
+* **ViewModel**: Contains the following functionality.
+    * **Dump**: Dumps the view model to the console for debugging purposes. Displays its name, parent extension and load time. Click on the div to log more information such as the part definition, view model name and inputs.
+    * **Track**: Dumps the view model observables.
 * **Deep link**: Optional. Links to the blade.
 
 <a name="debugging-an-extension-the-debug-tool-toggling-optimizations"></a>
 ### Toggling optimizations
 
-The **clientoptimizations** flag behaves somewhat like a trace mode flag, does not turn on and off code within an extension,nor does it control requests for another extension that is used by the extension that is being debugged.  Instead, it turns off bundling and minification of JavaScript to make debugging easier.   A value of `true` turns on bundling and minification,  and a value of `false` turns them both off. A value of `bundle` turns off JavaScript minification but retains bundling so the Portal still loads fairly quickly.  The value `bundle` is the suggested value for Portal extension debugging.  When debugging an extension, the developer should supply `false` for this flag to disable script minification and to turn on additional diagnostics
-
-<!--TODO: Both bundle and false are the recommended values for debugging.  Determine which one  is the better one.  -->
-
-To set the optimizations mode for the portal and all extensions:
-
-    https://portal.azure.com/?clientoptimizations=<value>
-
-To set the optimization mode for a specific extension only:
-
-    https://portal.azure.com/?<YourExtension>_clientoptimizations=<value>
-
-**NOTE**:  This applies to both the Portal and extensions source. If testing extensions that are already deployed to production, use the **clientOptimizations** flag instead of the **IsDevelopmentMode** appSetting. If working in a development environment instead, use the **IsDevelopmentMode** appSetting instead of the **clientOptimizations** flag to turn off bundling and minification for this extension only. This will speed up Portal load during development and testing.  To change the **IsDevelopmentMode** appSetting, locate the appropriate `web.config` file and change the value of the **IsDevelopmentMode** appSetting to `true`. 
-
- <!--TODO:  Verify whether this section contains all trace modes for the Azure Portal. -->
-
-Bundling and minification can be enabled or disabled for debugging.
+<!--TODO: Both bundle and false are the recommended values for debugging.  Determine which one is the better one.  -->
+Bundling and minification can be enabled or disabled for debugging by using the The **clientoptimizations** flag. This flag behaves somewhat like a trace mode flag, in that it does not turn on and off code within an extension, nor does it control requests for other extensions that are used by the extension that is being debugged.  Instead, it turns off bundling and minification of JavaScript to make debugging easier.
 
 The following modes are available.
-* `true`: All optimizations are enabled
-* `false`: All optimizations are turned off
-* `bundle`: Files are bundled together, but they are not minified. This mode assists in debugging non-minified code with friendly names, and enables a reasonably fast Portal on most browsers.
-* `minify`: Files are minified however not bundled
+
+* `true`: Turns on bundling and minification
+* `false`: Bundling and minification are turned off
+* `bundle`: Turns off JavaScript minification but retains bundling. This mode assists in debugging non-minified code with friendly names, and enables a reasonably fast Portal on most browsers.  This is the recommended value for Portal extension debugging.
+* `minify`: Files are minified but not bundled
+
+ When debugging an extension, the developer should supply `false` for this flag to disable script minification and to turn on additional diagnostics.
 
 To set the optimizations mode for the Portal and all extensions, use the following query string.
 
@@ -95,6 +83,8 @@ where
 **value**:  One of the previously-specified four modes, without the angle brackets.
 
 The `IsDevelopmentMode` setting can be used on the server to alter the default optimization settings for the extension. for more information about the  `IsDevelopmentMode` setting and its alternatives, see [top-extensions-hosting-service-procedures.md#update-isdevelopmentmode-flag](top-extensions-hosting-service-procedures.md#update-isdevelopmentmode-flag).
+
+**NOTE**:  This flag applies to both the Portal and extensions source. If you are testing extensions that are already deployed to production, use the **clientOptimizations** flag instead of the **IsDevelopmentMode** appSetting. If you are working in a development environment instead, use the **IsDevelopmentMode** appSetting instead of the **clientOptimizations** flag to turn off bundling and minification for this extension only. This will speed up Portal load during development and testing.  To change the **IsDevelopmentMode** appSetting, locate the appropriate `web.config` file and change the value of the **IsDevelopmentMode** appSetting to `true`.
 
 <a name="debugging-an-extension-the-debug-tool-restore-default-settings"></a>
 ### Restore default settings
@@ -292,7 +282,7 @@ There are practices that can improve the performance of the extension.  For more
 
 ### Productivity Tip
 
-Install Chrome that is located at [http://google.com/dir](http://google.com/dir) to leverage the debugger tools while developing an extension.
+Install Chrome that is located at [https://www.google.com/intl/en_ca/chrome/](https://www.google.com/intl/en_ca/chrome/) to leverage the debugger tools while developing an extension.
 
 
 ## FAQs for Debugging Extensions
