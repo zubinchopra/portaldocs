@@ -7,7 +7,7 @@ The C# test framework is a UI test framework built on top of the Selenium Webdri
 
 The C# test framework provides the following.
 
-* A base for writing UI based Selenium webdriver tests.
+* A base for writing UI based Selenium Webdriver tests.
 
 * A suite of helpers for logging into, navigating, and manipulating controls, blades, and parts in the Portal
 
@@ -26,7 +26,7 @@ This document discusses the following topics.
 
 ### Prerequisites
 
-Prerequisites for using the C# test framework as as follows.
+Prerequisites for using the C# test framework are as follows.
 
 * Nuget (https://www.nuget.org/) and [top-extensions-nuget.md](top-extensions-nuget.md)
 
@@ -78,7 +78,7 @@ To create a test project that can use the Portal Test Framework, use the followi
 
 ### Navigating to the Portal
 
-To navigate to the Portal, the extension supplies the Portal's uri.  We recommend setting the value in the `app.config` file as shown in [Creating the Test Project](#creating-the-test-project).  After the extension has the Portal uri, it can use the **WebDriverFactory.Create** method to create an instance of the `WebDriver` object and then use the **PortalAuthentication** class to login and navigate to the Portal in the browser, as in the following example.
+To navigate to the Portal, the extension supplies the Portal's URI.  We recommend setting the value in the `app.config` file as shown in [Creating the Test Project](#creating-the-test-project).  After the extension has the Portal uri, it can use the **WebDriverFactory.Create** method to create an instance of the `WebDriver` object and then use the **PortalAuthentication** class to login and navigate to the Portal in the browser, as in the following example.
 
    {"gitdown": "include-section", "file": "../samples/SampleCSTestsFiles/NavigateToPortalTest.cs", "section": "config#navigateToPortal"}
 
@@ -136,7 +136,7 @@ var samplesPart = portal.StartBoard.FindSinglePartByTitle<ButtonPart>(samplesTit
 samplesPart.Click();
 ```
 
-You can find blades in a simmilar way using the **Portal.FindSingleBladeByTitle** method. You can then find parts within the blade using the **Blade.FindSinglePartByTitle** method, as in the following example.
+You can find blades in a similar way using the **Portal.FindSingleBladeByTitle** method. You can then find parts within the blade using the **Blade.FindSinglePartByTitle** method, as in the following example.
 
 ```cs
 var blade = portal.FindSingleBladeByTitle(samplesTitle);
