@@ -27,7 +27,7 @@ When visible, the tool overlays stickys onto Portal parts, and onto the Portal w
 The  information that is associated with the application window is located at the bottom of the window, on the right side.  It provides the following  information and functionality.
 
 * **Version**:  The version of the Portal
-* **Load time**: The amount of time that was required for the Portal to load. <!-- TODO: Validate whether the following sentence is accurate:    This number has a direct impact on the create success rate of the extension.     -->
+* **Load time**: The amount of time that was required for the Portal to load.  This number has a direct impact on the create success rate of the extension.
 * **Client optimizations**: Turns on or off client optimizations such as minification and bundling.
 * **User settings**:  The list of settings is as follows.
   * **Dump**: Logs all user settings to the console.
@@ -315,7 +315,7 @@ Understanding which extension configuration to modify is located at [portalfx-ex
 
 1.  Navigate to the Portal where your extension is hosted or side loaded.
 1. Press F12 in the browser and select the console tab.
-1. Set the current frame dropdown to that of your extension.
+1. Set the current frame dropdown to that of your extension.  If the frame dropdown is not obvious, for example, if the extension is running in a web worker, select one of the values in the dropdown and run `MsPortalFx.getEnvironmentValue("<extensionName>")` to determine the context.
 1. In the console type `fx.environment.version` and click enter to see the version of the extension on the client, as in the following image.
 
     ![alt-text](../media/portalfx-debugging/select-extension-iframe.png "Select extension iframe")
@@ -340,12 +340,14 @@ The SharePoint Sparta Onboarding FAQ is located at [http://sharepoint/sites/Azur
 
 **What is Compile on Save ?**
 
-Compile on Save is a **TypeScript** option that   . To use it, make sure that **TypeScript** 2.0.3 was installed on your machine. The version can be verified by executing the following  command:
+Compile on Save is an option in **VS** TypeScript Project Properties that allows the developer to compile  .ts files when they are saved to disk.  **VS 2017** should do a full build of the project when save is invoked for the first time, and incremental builds on saves thereafter. The same result can be accomplished with a `tsconfig.json` file  in  **VS Code** by using  Ctrl-Shift-B to open the Build Task window, and  selecting the `tsc: build task`  from the global Tasks menu.  When  you enter  `tsc *.ts --watch`  in the Build Task window, this will monitor the folder for any changes in the  TypeScript files and compile them behind the scenes.  For more information, see [https://code.visualstudio.com/docs/languages/typescript](https://code.visualstudio.com/docs/languages/typescript). 
+
+To use Compile on Save, make sure that **TypeScript** 2.3.3 was installed on your machine. The version can be verified by executing the following  command:
 
 ```bash
 $>tsc -version
 ```
-Then, verify that when a **TypeScript** file is saved, that the following text is displayed in the bottom left corner of your the **Visual Studio** application.
+Then, verify that when a **TypeScript** file is saved, that the following text is displayed in the bottom left corner of the **Visual Studio** application.
 
 ![alt-text](../media/portalfx-ide-setup/ide-setup.png "CompileOnSaveVisualStudio")
 
@@ -373,9 +375,9 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | iFrame                       | An inline frame that embeds a document within the current HTML document. | 
 | Knockout                     | A standalone JavaScript implementation of the Model-View-ViewModel architecture. | 
 | KO                         |  Knockout   | 
-| minification                 | The process of removing all unnecessary characters from source code without changing its functionality. These characters may be whitespace, newlines, comments, and other non-executable items that increase code readability. Minification reduces the amount of data that is transferred across the Internet, and can be interpreted immediately without being uncompressed. | 
+| minification                 | The process of removing all unnecessary characters from source code and rewriting it without changing its functionality. Removed characters may be whitespace, newlines, comments, and other non-executable items that increase code readability, while rewritten code can be  local variable names, boolean logic, and other items. Minification reduces the amount of data that is transferred across the Internet. | 
 | PO | Proxy Observable |
-| proxy observable (PO)        | A tool that synchronizes the ViewModel in an iframe with a copy of that ViewModel that is used by the Knockout debugger. | 
+| proxy observable (PO)        | A layer over **Knockout** observables that is used to keep in sync an observable's value across iframes. | 
 | Selenium                     | Software-testing framework for web applications that  provides a playback tool for authoring tests.  |
 | startboard                   | |
 | sticky                       | Provides quick statistics and fast access to specific types of testing functionality. |
