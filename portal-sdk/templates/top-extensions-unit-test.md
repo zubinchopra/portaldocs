@@ -1,4 +1,4 @@
-# Unit Test Framework preview
+# Unit Test Framework
 Covered in this document:
 
 - File > New Project scaffolding
