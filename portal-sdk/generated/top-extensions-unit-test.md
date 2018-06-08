@@ -1,5 +1,5 @@
-<a name="unit-test-framework-preview"></a>
-# Unit Test Framework preview
+<a name="unit-test-framework"></a>
+# Unit Test Framework
 Covered in this document:
 
 - File > New Project scaffolding
