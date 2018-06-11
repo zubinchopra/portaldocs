@@ -42,7 +42,7 @@ public onInputsSet(inputs: MyPartInputs): Promise {
     // Your Part will look broken while the `fetch` above completes.
     return Q();
 }
-    ```
+```
 
 **NOTE**: In this discussion, `onInputsSet` is the PDL equivalent of `onInitialize` 
 
