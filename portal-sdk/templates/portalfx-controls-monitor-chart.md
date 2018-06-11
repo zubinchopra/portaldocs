@@ -50,10 +50,8 @@ const monitorChartViewModel = MonitorChart.create(bladeOrPartContainer, moni
 
 > To see a complete list of the options you can pass to the control, look at the `Fx/Controls/MonitorChart` module in Fx.d.ts, or you can [view the interfaces directly in the PortalFx repo][6].
 
-
-<a name="legacyBladeUsage"></a>
-
-### [LEGACY BLADES] Using the control on a locked/unlocked blade
+### Legacy Blade Usage
+### Using the control on a locked/unlocked blade
 If you are not using a template blade, you can reference the `MonitorChartPart` from the `HubsExtension` in your blade's pdl.
 
 > Ensure that you have the HubsExtension.pde added to your extension. You can get the HubsExtension.pde and the MonitorChartPart.d.ts file from Microsoft.Portal.Extensions.Hubs.<<Build#>>.nupkg
