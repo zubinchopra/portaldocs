@@ -68,6 +68,4 @@ The following example includes the `galleryMetadata` property that lets the deve
 
  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-parts.md"}
 
- {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-parts.md"}
-
  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-parts.md"}
