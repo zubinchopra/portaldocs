@@ -263,7 +263,7 @@ From here, users can explore other metrics, pin charts to dashboard, create an a
 
 - ***My extension is still using legacy blades (locked or unlocked). Is this still applicable to me? If yes, do I get the benefits mentioned above?***
 
-    Yes, even if you are not using template blades you can [reference the MonitorChartPart](#legacyBladeUsage) from the Hubs extension.
+    Yes, even if you are not using template blades you can [reference the MonitorChartPart](#legacy-blade-usage) from the Hubs extension.
 
     If you already have an Insights/Monitoring Metrics part on your blade, instead of referencing the metrics part from Insights/Monitoring extension, you can reference the part from Hubs extension. Since the Hubs extension is always loaded when you load the portal, it will already be loaded by the time user loads your extension blade. Hence, you will not load an additional extension and get significant perf benefits.
 
