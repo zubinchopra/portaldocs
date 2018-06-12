@@ -240,11 +240,11 @@ It is common for teams to want to experiment with new capabilities. We offer two
 
 The Azure portal supports multiple languages and locales. You will need to localize your content.
 
-* [Localization overview and supported languages](/portal-sdk/generated/top-extensions-localization-globalization.md#understanding-localization)
+* [Localization overview and supported languages](/portal-sdk/generated/top-extensions-localization-globalization.md)
 
-* [Setting up localization for your extension](/portal-sdk/generated/)
+* [Setting up localization for your extension](/portal-sdk/generated/top-extensions-localization-globalization.md#localizing-your-extension)
 
-* [Setting up localization for your gallery package](/portal-sdk/generated/)
+* [Setting up localization for your gallery package](/portal-sdk/generated/top-extensions-localization-globalization.md#marketplace)
 
 * [Testing localization with side-loading](/portal-sdk/generated/top-extensions-sideloading.md)
 
@@ -273,11 +273,9 @@ Learn how to deploy your extension to the various clouds and environments.
 
 ### Deployment using the Extension Hosting Service
 
-[Deployment using the Extension Hosting Service](/portal-sdk/generated/top-extensions-hosting-service.md)
-
 The Ibiza team provides and operates a common Extension Hosting Service that makes it easy to get your bits into a globally distributed system without having to manage your own infrastructure.
 
-* [Extension Hosting Service overview](/portal-sdk/generated/portalfx-extensions-hosting-service-overview.md)
+* [Extension Hosting Service overview](/portal-sdk/generated/portalfx-extensions-hosting-service.md)
 
 * [Onboarding your extension to the Extension Hosting Service](/portal-sdk/generated/portalfx-extensions-hosting-service-procedures.md)
 
@@ -296,7 +294,7 @@ You should strive to use the Extension Hosting Service. If for some reason this 
 ## Upgrading the Ibiza SDK
 
 Extensions are required to be running a version of the Ibiza SDK that has been published within the past 4 months. 
-* [Upgrade policy and alerts](/portal-sdk/generated/portalfx-deploy.md#3-understand-extension-runtime-compatibility)
+* [Upgrade policy and alerts](/portal-sdk/generated/portalfx-deployment.md#deploying-an-extension)
 
 * [Upgrading Ibiza NuGet packages](/portal-sdk/generated/top-extensions-nuget.md)
 
@@ -309,6 +307,10 @@ Extensions are required to be running a version of the Ibiza SDK that has been p
 These features are supported, but have had no recent investment. No additional investment is planned. There are modern capabilities that should be used instead if you are developing new features.
 
 * [PDL-based programming](/portal-sdk/generated/top-legacy-blades-template-pdl.md)
+
+* [Legacy parts](top-legacy-parts.md)
+
+* [Legacy data management feature](top-legacy-data.md)
 
 * [Controls in the MsPortalFx namespace](/portal-sdk/generated/top-extensions-samples-controls-deprecated.md)
 
