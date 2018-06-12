@@ -65,7 +65,3 @@ The Tile Gallery is presented when users create new dashboards or when they put 
 The following example includes the `galleryMetadata` property that lets the developer specify a localized title and category, in addition to a thumbnail image. 
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V2/Parts/PartGallery/GeneralGalleryPart.ts", "section": "top-extensions-parts#template-decorator"}
-
- {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-parts.md"}
-
- {"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-parts.md"}
