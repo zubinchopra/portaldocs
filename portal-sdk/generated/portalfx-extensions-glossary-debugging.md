@@ -11,9 +11,9 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | iFrame                       | An inline frame that embeds a document within the current HTML document. | 
 | Knockout                     | A standalone JavaScript implementation of the Model-View-ViewModel architecture. | 
 | KO                         |  Knockout   | 
-| minification                 | The process of removing all unnecessary characters from source code without changing its functionality. These characters may be whitespace, newlines, comments, and other non-executable items that increase code readability. Minification reduces the amount of data that is transferred across the Internet, and can be interpreted immediately without being uncompressed. | 
+| minification                 | The process of removing all unnecessary characters from source code and rewriting it to make it smaller without changing its functionality. Removed characters may be whitespace, newlines, comments, and other non-executable items that increase code readability, while rewritten code can be local variable names, boolean logic, etc. Minification reduces the amount of data that is transferred across the Internet. | 
 | PO | Proxy Observable |
-| proxy observable (PO)        | A tool that synchronizes the ViewModel in an iframe with a copy of that ViewModel that is used by the Knockout debugger. | 
+| proxy observable (PO)        | A layer over **Knockout** observables that is used to keep in sync an observable's value across iframes. | 
 | Selenium                     | Software-testing framework for web applications that  provides a playback tool for authoring tests.  |
 | startboard                   | |
 | sticky                       | Provides quick statistics and fast access to specific types of testing functionality. |

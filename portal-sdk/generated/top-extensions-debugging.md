@@ -39,10 +39,10 @@ The  information that is associated with the application window is located at th
 * **Loaded extensions**: Provides a list of all extensions that are currently loaded and their load times. Clicking an extension name will log information to the console, including the extension definition and manifest.
 
 The information associated with each part provides the following information.
-<!-- Determine whether information is ever logged to any destination other than the console.  If so, document how to change the destination.  If not, this phrase can be shortened. -->
+
 * **The name and owning extension**: Displays the name of the blade or part and the name of the extension that is the parent of the blade or part. Clicking on this logs debugging information to the console including the composition instance, view model and definition.
-<!-- How is performance information selected? -->
-* **Revealed**: The revealed time and all other performance information that is logged by that part.
+
+* **Revealed**: The revealed time and all other performance information that is logged by that part, as specified in [portalfx-telemetry-actions.md](portalfx-telemetry-actions.md).
 
 * **ViewModel**: Contains the following functionality.
     * **Dump**: Dumps the view model to the console for debugging purposes. Displays its name, parent extension and load time. Click on the div to log more information such as the part definition, view model name and inputs.
@@ -52,7 +52,7 @@ The information associated with each part provides the following information.
 <a name="debugging-an-extension-the-debug-tool-toggling-optimizations"></a>
 ### Toggling optimizations
 
-<!--TODO: Both bundle and false are the recommended values for debugging.  Determine which one is the better one.  -->
+
 Bundling and minification can be enabled or disabled for debugging by using the The **clientoptimizations** flag. This flag behaves somewhat like a trace mode flag, in that it does not turn on and off code within an extension, nor does it control requests for other extensions that are used by the extension that is being debugged.  Instead, it turns off bundling and minification of JavaScript to make debugging easier.
 
 The following modes are available.
@@ -95,7 +95,6 @@ The default settings can be restored by  using the Settings pane, which is activ
 
  ![alt-text](../media/portalfx-debugging/settings.png "Settings Pane")
 
-<!-- TODO:  Validate that the 'apply' button should be used, instead of the label text -->
 Next, click the `Restore default settings` option, as in the following image.  
 
  ![alt-text](../media/portalfx-debugging/restoreDefaultSettings.png "Restore Settings")
@@ -131,11 +130,6 @@ After opening the console, refresh the Portal to display all messages. Then, do 
 
 ![alt-text](../media/portalfx-debugging/consoleError.png "Error in Console")
 
-<!-- TODO:  Verify whether the following sentence should be included in a document about developer tools and debugging.
-
-As of 9/14/2016 the best, and fastest, Developer Tools are provided by Google Chrome.
-
--->
 <a name="debugging-an-extension-debugging-console-errors-trace-modes"></a>
 ### Trace Modes
 
@@ -171,7 +165,7 @@ This allows the developer to observe and examine live data at runtime. For **Int
 
 ```var viewModel = ko.dataFor($0)```
 
-**NOTE**: The debugger is not actually using your ViewModel. Instead, it makes available a copy of your ViewModel in the shell side of the `iframe`, and keeps it in sync with the ViewModel that is actually in the `iframe` by using a tool that is named the Proxy Observable (PO), as specified in [https://www.npmjs.com/package/proxy-observable](https://www.npmjs.com/package/proxy-observable).  For now, it is probably best to recognize that it is not the same ViewModel, but can be treated mostly as such, because most bugs  are not associated with issues in the proxy observable layer.  
+**NOTE**: The debugger is not actually using your `ViewModel`. Instead, it makes available a copy of your `ViewModel` in the shell side of the `iframe`, and keeps it in sync with the `ViewModel` that is actually in the `iframe` by proxying all changes made to observables. For now, it is probably best to recognize that it is not the same `ViewModel`, but can be treated mostly as such, because most bugs are not associated with issues in the proxy observable layer.
 
 For more information about debugging Knockout, see the following videos.
 
@@ -203,7 +197,7 @@ The JavaScript `debugger` keyword, as described in  [https://developer.mozilla.o
   
     ``` myProperty.subscribe(function (value) { debugger; }) ```
 
-This causes the debugger to break whenever the specified property changes. After the injected breakpoint is encountered, the call stack can be examined to detemine what caused this to trigger. The variable ```value``` is the new value being set to your observable.
+This causes the debugger to break whenever the specified property changes, as long as the browser dev tools are open when that happens. After the injected breakpoint is encountered, the call stack can be examined to determine what caused this to trigger. The variable `value` is the new value being set to your observable.
 
 For more information about the Knockout `subscribe` method and observable changes to  view model properties, see   [https://auxdocs.blob.core.windows.net/videos/kosubscribe.mp4](https://auxdocs.blob.core.windows.net/videos/kosubscribe.mp4).
 
@@ -215,7 +209,10 @@ This section discusses how to figure out where changes are coming from when they
 
 **NOTE**:  Unlike [#debugging-extensions-that-use-knockout](#debugging-extensions-that-use-knockout) and [#debugging-the-data-stack](#debugging-the-data-stack), this is very Portal specific. You may want to review Azure Portal architecture, as specified in   [top-extensions-architecture.md](top-extensions-architecture.md), previous to continuing with `iframe` testing.
 
-1. To debug an extension that sends information across multiple `iframes`, the Portal should be loaded with diagnostics turned on, by setting the  flag `?trace=diagnostics`.  Without this flag, callstacks are not captured across `iframes` for performance reasons.  If this debugging is occurring in a  non-development environment, then client optimizations should be turned off by setting `clientOptimizations=false`. Otherwise, the test session will be debugging minified code.
+**NOTE**:  Unlike [#debugging-extensions-that-use-knockout](#debugging-extensions-that-use-knockout) and [#debugging-the-data-stack](#debugging-the-data-stack), this is very Portal specific. You may want to review Azure Portal architecture, as specified in [top-extensions-architecture.md](top-extensions-architecture.md), previous to continuing with iframe testing.
+
+
+1. To debug an extension that sends information across multiple `iframes`, the Portal should be loaded with diagnostics turned on, by setting the  flag `?trace=diagnostics`.  Without this flag, callstacks are not captured across `iframes` for performance reasons.  If this debugging is occurring in a  non-development environment, then client optimizations should be turned off by setting `clientOptimizations=false`. Otherwise, the test session will be debugging bundled & minified code.
 
 1. Next, the test session should break at a point where an observable is changing, as in the following code.
 
@@ -223,7 +220,7 @@ This section discusses how to figure out where changes are coming from when they
     ko.dataFor($0).observablePropertyICareAbout.subscribe(function (value) { debugger; })
     ```
 
-1. At that point, you can leverage the framework to see the callstack across `iframes`.  The following call returns the combined callstack of the current frame to the bottom of the stack that is associated with the other iframe.
+1. At that point, you can leverage the framework to see the call stack across `iframes`.  The following call returns the combined call stack of the current frame to the bottom of the stack that is associated with the other iframe.
 
 ```json
 MsPortalFx.Base.Rpc.Internal.messageContext.callStack
@@ -231,9 +228,7 @@ MsPortalFx.Base.Rpc.Internal.messageContext.callStack
 
 **NOTE**: Do not put this line of code in your actual source.  It will not run properly without diagnostics turned on, and it will not work in the production environment. 
 
-<!--TODO:  determine whether  "real callstack" means "realtime callstack". -->
-
-**NOTE**: This code  traverses the `iframe` boundary only once.  Also, it is not a real callstack because the call across `iframes` is asynchronous.  To go further back, the test session requires a breakpoint on the other `iframe`, so you can repeat this process until you find the code you are seeking.
+**NOTE**: This code  traverses the `iframe` boundary only once.  Also, it is not a real call stack because the call across `iframes` is asynchronous.  To go further back, the test session requires a breakpoint on the other `iframe`, so you can repeat this process until you find the code you are seeking.
 
 For more information about getting call stacks across `iframes`, see [https://auxdocs.blob.core.windows.net/videos/messageContext.mp4](https://auxdocs.blob.core.windows.net/videos/messageContext.mp4).
 
@@ -266,7 +261,7 @@ Portal development patterns or architectures that are recommended based on custo
 
 ### :bulb: Productivity Tip
 
-**Typescript** 2.0.3 should be installed on your machine. The version can be verified by executing the following command:
+**Typescript** 2.3.3 should be installed on your machine. The version can be verified by executing the following command.
 
 ```bash
 $>tsc -version
@@ -274,11 +269,9 @@ $>tsc -version
 
 Also, **Typescript** files should be set up to Compile on Save.
 
-
 ### Performance
 
 There are practices that can improve the performance of the extension.  For more information, see [portalfx-extensions-bp-performance.md](portalfx-extensions-bp-performance.md).
-
 
 ### Productivity Tip
 
@@ -297,7 +290,7 @@ SSL Certs are relevant only for teams that host their own extensions.  Azure Por
  
  Production certs must follow your organization’s PROD cert process. 
 
- **NOTE** Do not use the SSL Admin site for production certs.
+ **NOTE**: Do not use the SSL Admin site for production certs.
 
 * * *
 
@@ -315,7 +308,7 @@ Understanding which extension configuration to modify is located at [portalfx-ex
 
 1.  Navigate to the Portal where your extension is hosted or side loaded.
 1. Press F12 in the browser and select the console tab.
-1. Set the current frame dropdown to that of your extension.  If the frame dropdown is not obvious, for example, if the extension is running in a web worker, select one of the values in the dropdown and run `MsPortalFx.getEnvironmentValue("<extensionName>")` to determine the context.
+1. Set the current frame dropdown to that of your extension.  If it's not obvious, for example, if the extension is running in a web worker, select one of the values in the dropdown and run MsPortalFx.getEnvironmentValue("`<extensionName>`") to determine the context.
 1. In the console type `fx.environment.version` and click enter to see the version of the extension on the client, as in the following image.
 
     ![alt-text](../media/portalfx-debugging/select-extension-iframe.png "Select extension iframe")
@@ -340,9 +333,7 @@ The SharePoint Sparta Onboarding FAQ is located at [http://sharepoint/sites/Azur
 
 **What is Compile on Save ?**
 
-Compile on Save is an option in **VS** TypeScript Project Properties that allows the developer to compile  .ts files when they are saved to disk.  **VS 2017** should do a full build of the project when save is invoked for the first time, and incremental builds on saves thereafter. The same result can be accomplished with a `tsconfig.json` file  in  **VS Code** by using  Ctrl-Shift-B to open the Build Task window, and  selecting the `tsc: build task`  from the global Tasks menu.  When  you enter  `tsc *.ts --watch`  in the Build Task window, this will monitor the folder for any changes in the  TypeScript files and compile them behind the scenes.  For more information, see [https://code.visualstudio.com/docs/languages/typescript](https://code.visualstudio.com/docs/languages/typescript). 
-
-To use Compile on Save, make sure that **TypeScript** 2.3.3 was installed on your machine. The version can be verified by executing the following  command:
+Compile on Save is an option in VS **TypeScript** Project Properties that allows the developer to compile  `.ts` files when they are saved to disk. To use it, make sure that **TypeScript** 2.3.3 was installed on your machine. The version can be verified by executing the following  command.
 
 ```bash
 $>tsc -version
@@ -375,7 +366,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | iFrame                       | An inline frame that embeds a document within the current HTML document. | 
 | Knockout                     | A standalone JavaScript implementation of the Model-View-ViewModel architecture. | 
 | KO                         |  Knockout   | 
-| minification                 | The process of removing all unnecessary characters from source code and rewriting it without changing its functionality. Removed characters may be whitespace, newlines, comments, and other non-executable items that increase code readability, while rewritten code can be  local variable names, boolean logic, and other items. Minification reduces the amount of data that is transferred across the Internet. | 
+| minification                 | The process of removing all unnecessary characters from source code and rewriting it to make it smaller without changing its functionality. Removed characters may be whitespace, newlines, comments, and other non-executable items that increase code readability, while rewritten code can be local variable names, boolean logic, etc. Minification reduces the amount of data that is transferred across the Internet. | 
 | PO | Proxy Observable |
 | proxy observable (PO)        | A layer over **Knockout** observables that is used to keep in sync an observable's value across iframes. | 
 | Selenium                     | Software-testing framework for web applications that  provides a playback tool for authoring tests.  |
