@@ -10,7 +10,7 @@ SSL Certs are relevant only for teams that host their own extensions.  Azure Por
  
  Production certs must follow your organization’s PROD cert process. 
 
- **NOTE** Do not use the SSL Admin site for production certs.
+ **NOTE**: Do not use the SSL Admin site for production certs.
 
 * * *
 
@@ -28,7 +28,7 @@ Understanding which extension configuration to modify is located at [portalfx-ex
 
 1.  Navigate to the Portal where your extension is hosted or side loaded.
 1. Press F12 in the browser and select the console tab.
-1. Set the current frame dropdown to that of your extension.
+1. Set the current frame dropdown to that of your extension.  If it's not obvious, for example, if the extension is running in a web worker, select one of the values in the dropdown and run MsPortalFx.getEnvironmentValue("`<extensionName>`") to determine the context.
 1. In the console type `fx.environment.version` and click enter to see the version of the extension on the client, as in the following image.
 
     ![alt-text](../media/portalfx-debugging/select-extension-iframe.png "Select extension iframe")
@@ -53,12 +53,12 @@ The SharePoint Sparta Onboarding FAQ is located at [http://sharepoint/sites/Azur
 
 **What is Compile on Save ?**
 
-Compile on Save is a **TypeScript** option that   . To use it, make sure that **TypeScript** 2.0.3 was installed on your machine. The version can be verified by executing the following  command:
+Compile on Save is an option in VS **TypeScript** Project Properties that allows the developer to compile  `.ts` files when they are saved to disk. To use it, make sure that **TypeScript** 2.3.3 was installed on your machine. The version can be verified by executing the following  command.
 
 ```bash
 $>tsc -version
 ```
-Then, verify that when a **TypeScript** file is saved, that the following text is displayed in the bottom left corner of your the **Visual Studio** application.
+Then, verify that when a **TypeScript** file is saved, that the following text is displayed in the bottom left corner of the **Visual Studio** application.
 
 ![alt-text](../media/portalfx-ide-setup/ide-setup.png "CompileOnSaveVisualStudio")
 

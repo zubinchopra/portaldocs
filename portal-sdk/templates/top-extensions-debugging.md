@@ -36,10 +36,10 @@ The  information that is associated with the application window is located at th
 * **Loaded extensions**: Provides a list of all extensions that are currently loaded and their load times. Clicking an extension name will log information to the console, including the extension definition and manifest.
 
 The information associated with each part provides the following information.
-<!-- Determine whether information is ever logged to any destination other than the console.  If so, document how to change the destination.  If not, this phrase can be shortened. -->
+
 * **The name and owning extension**: Displays the name of the blade or part and the name of the extension that is the parent of the blade or part. Clicking on this logs debugging information to the console including the composition instance, view model and definition.
-<!-- How is performance information selected? -->
-* **Revealed**: The revealed time and all other performance information that is logged by that part.
+
+* **Revealed**: The revealed time and all other performance information that is logged by that part, as specified in [portalfx-telemetry-actions.md](portalfx-telemetry-actions.md).
 
 * **ViewModel**: Contains the following functionality.
     * **Dump**: Dumps the view model to the console for debugging purposes. Displays its name, parent extension and load time. Click on the div to log more information such as the part definition, view model name and inputs.
@@ -48,7 +48,7 @@ The information associated with each part provides the following information.
 
 ### Toggling optimizations 
 
-<!--TODO: Both bundle and false are the recommended values for debugging.  Determine which one is the better one.  -->
+
 Bundling and minification can be enabled or disabled for debugging by using the The **clientoptimizations** flag. This flag behaves somewhat like a trace mode flag, in that it does not turn on and off code within an extension, nor does it control requests for other extensions that are used by the extension that is being debugged.  Instead, it turns off bundling and minification of JavaScript to make debugging easier.
 
 The following modes are available.
@@ -90,7 +90,6 @@ The default settings can be restored by  using the Settings pane, which is activ
 
  ![alt-text](../media/portalfx-debugging/settings.png "Settings Pane")
 
-<!-- TODO:  Validate that the 'apply' button should be used, instead of the label text -->
 Next, click the `Restore default settings` option, as in the following image.  
 
  ![alt-text](../media/portalfx-debugging/restoreDefaultSettings.png "Restore Settings")
@@ -124,11 +123,6 @@ After opening the console, refresh the Portal to display all messages. Then, do 
 
 ![alt-text](../media/portalfx-debugging/consoleError.png "Error in Console")
 
-<!-- TODO:  Verify whether the following sentence should be included in a document about developer tools and debugging.
-
-As of 9/14/2016 the best, and fastest, Developer Tools are provided by Google Chrome.
-
--->
 ### Trace Modes
 
 The errors that are presented in the console can be of great assistance in fixing extension issues. The trace mode that is included in the Portal will display information other than the standard console errors. Trace mode is enabled by appending a flag to the end of the query string. For example,  `https://portal.azure.com/?trace=diagnostics` will enable verbose debugging information in the console. For more information about trace modes, see [top-extensions-flags.md#trace-mode-flags](top-extensions-flags.md#trace-mode-flags). For other debugging services, see [top-extensions-debugging.md](top-extensions-debugging.md).
@@ -160,7 +154,7 @@ This allows the developer to observe and examine live data at runtime. For **Int
 
 ```var viewModel = ko.dataFor($0)```
 
-**NOTE**: The debugger is not actually using your ViewModel. Instead, it makes available a copy of your ViewModel in the shell side of the `iframe`, and keeps it in sync with the ViewModel that is actually in the `iframe` by using a tool that is named the Proxy Observable (PO), as specified in [https://www.npmjs.com/package/proxy-observable](https://www.npmjs.com/package/proxy-observable).  For now, it is probably best to recognize that it is not the same ViewModel, but can be treated mostly as such, because most bugs  are not associated with issues in the proxy observable layer.  
+**NOTE**: The debugger is not actually using your `ViewModel`. Instead, it makes available a copy of your `ViewModel` in the shell side of the `iframe`, and keeps it in sync with the `ViewModel` that is actually in the `iframe` by proxying all changes made to observables. For now, it is probably best to recognize that it is not the same `ViewModel`, but can be treated mostly as such, because most bugs are not associated with issues in the proxy observable layer.
 
 For more information about debugging Knockout, see the following videos.
 
@@ -192,7 +186,7 @@ The JavaScript `debugger` keyword, as described in  [https://developer.mozilla.o
   
     ``` myProperty.subscribe(function (value) { debugger; }) ```
 
-This causes the debugger to break whenever the specified property changes. After the injected breakpoint is encountered, the call stack can be examined to detemine what caused this to trigger. The variable ```value``` is the new value being set to your observable.
+This causes the debugger to break whenever the specified property changes, as long as the browser dev tools are open when that happens. After the injected breakpoint is encountered, the call stack can be examined to determine what caused this to trigger. The variable `value` is the new value being set to your observable.
 
 For more information about the Knockout `subscribe` method and observable changes to  view model properties, see   [https://auxdocs.blob.core.windows.net/videos/kosubscribe.mp4](https://auxdocs.blob.core.windows.net/videos/kosubscribe.mp4).
 
@@ -204,7 +198,10 @@ This section discusses how to figure out where changes are coming from when they
 
 **NOTE**:  Unlike [#debugging-extensions-that-use-knockout](#debugging-extensions-that-use-knockout) and [#debugging-the-data-stack](#debugging-the-data-stack), this is very Portal specific. You may want to review Azure Portal architecture, as specified in   [top-extensions-architecture.md](top-extensions-architecture.md), previous to continuing with `iframe` testing.
 
-1. To debug an extension that sends information across multiple `iframes`, the Portal should be loaded with diagnostics turned on, by setting the  flag `?trace=diagnostics`.  Without this flag, callstacks are not captured across `iframes` for performance reasons.  If this debugging is occurring in a  non-development environment, then client optimizations should be turned off by setting `clientOptimizations=false`. Otherwise, the test session will be debugging minified code.
+**NOTE**:  Unlike [#debugging-extensions-that-use-knockout](#debugging-extensions-that-use-knockout) and [#debugging-the-data-stack](#debugging-the-data-stack), this is very Portal specific. You may want to review Azure Portal architecture, as specified in [top-extensions-architecture.md](top-extensions-architecture.md), previous to continuing with iframe testing.
+
+
+1. To debug an extension that sends information across multiple `iframes`, the Portal should be loaded with diagnostics turned on, by setting the  flag `?trace=diagnostics`.  Without this flag, callstacks are not captured across `iframes` for performance reasons.  If this debugging is occurring in a  non-development environment, then client optimizations should be turned off by setting `clientOptimizations=false`. Otherwise, the test session will be debugging bundled & minified code.
 
 1. Next, the test session should break at a point where an observable is changing, as in the following code.
 
@@ -212,7 +209,7 @@ This section discusses how to figure out where changes are coming from when they
     ko.dataFor($0).observablePropertyICareAbout.subscribe(function (value) { debugger; })
     ```
 
-1. At that point, you can leverage the framework to see the callstack across `iframes`.  The following call returns the combined callstack of the current frame to the bottom of the stack that is associated with the other iframe.
+1. At that point, you can leverage the framework to see the call stack across `iframes`.  The following call returns the combined call stack of the current frame to the bottom of the stack that is associated with the other iframe.
 
 ```json
 MsPortalFx.Base.Rpc.Internal.messageContext.callStack
@@ -220,9 +217,7 @@ MsPortalFx.Base.Rpc.Internal.messageContext.callStack
 
 **NOTE**: Do not put this line of code in your actual source.  It will not run properly without diagnostics turned on, and it will not work in the production environment. 
 
-<!--TODO:  determine whether  "real callstack" means "realtime callstack". -->
-
-**NOTE**: This code  traverses the `iframe` boundary only once.  Also, it is not a real callstack because the call across `iframes` is asynchronous.  To go further back, the test session requires a breakpoint on the other `iframe`, so you can repeat this process until you find the code you are seeking.
+**NOTE**: This code  traverses the `iframe` boundary only once.  Also, it is not a real call stack because the call across `iframes` is asynchronous.  To go further back, the test session requires a breakpoint on the other `iframe`, so you can repeat this process until you find the code you are seeking.
 
 For more information about getting call stacks across `iframes`, see [https://auxdocs.blob.core.windows.net/videos/messageContext.mp4](https://auxdocs.blob.core.windows.net/videos/messageContext.mp4).
 
