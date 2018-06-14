@@ -396,7 +396,3 @@ If this is the case, see [portalfx-extensions-status-codes.md#server-error-404](
 **NOTE**: Instances of 'Not Found' do not count against a part's reliability KPI.
 
  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-parts.md"}
-
- {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-parts.md"}
-
- {"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-parts.md"}
