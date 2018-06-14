@@ -48,7 +48,6 @@ The following sample demonstrates how to create a FrameBlade. It illustrates a f
 1. Create an iframe that includes the html, like the one located at `<dir>/Content/SamplesExtension/framebladepage.html` and in the following example.
 
     ```html
-
     ﻿<!DOCTYPE html>
 <html>
 
@@ -68,11 +67,11 @@ The following sample demonstrates how to create a FrameBlade. It illustrates a f
 
 </html>
 
-
     ```
 
 1. Create the `ViewModel` that connects to the `html`, as in the code located at  `<dir>/Client/V2/Blades/FrameBlade/SampleFrameBlade.ts` and in the following example.
 
+    ```
     ```typescript
 
 /**
@@ -96,6 +95,7 @@ export class SampleFrameBlade {
 			
 
 ```
+    ```
 
 1. The frame receives information with which to build the contents of the frame blade in the   `window.addEventListener` method. When the window receives all of the frame information, the `makeViewPresentableToUser()` method injects the final frame fields into the frame and signals the parent of the frame that its content should be revealed. Sending "revealcontent" to the parent window enables the parent to use blocking and non-blocking loading indicators as appropriate. The child frame sends  "initializationcomplete" to remove all loading indicators after all data is loaded and rendered. The child frame sends the 'ready' message when the Iframe completes the loading process. The code that connects the `ViewModel` to the extension is located at  `<dir>/Content/Scripts/framepage.js`, and is also in the following example.
 
