@@ -43,7 +43,8 @@ For all other questions please reach out to [Ibiza Telemetry](mailto:ibiza-telem
 <a name="getting-started-permissions-programmatic-access"></a>
 #### Programmatic access
 
-We're currently not onboarding any more users on to programmatic access. Please check back after May 2018.
+We're currently not onboarding any more users on to programmatic access. We're in the process of making some infrastructure changes to support this ask.
+We'll update the documentation when we can onboard programmatic access.
 
 <a name="getting-started-kusto-documentation-links"></a>
 ### Kusto Documentation &amp; Links
