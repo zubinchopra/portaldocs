@@ -60,9 +60,7 @@ Extensions can use custom HTML templates in dialogs to  allow users to select va
 
 The following example describes a custom dialog `ViewModel` that contains only a slider control. The extension uses an html template, which contains only the control, and specifies the  `dialogViewModel`. The sample is located at  `<dir>\Client\V2\Dialogs\DialogSamplesBlade.ts` and in the following code.
 
-```
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V2/Dialogs/DialogSamplesBlade.ts", "section": "top-extensions-dialogs#slider-dialog"}
-```
 
 ### Targeting the dialog at a specific element or cssSelector
 
