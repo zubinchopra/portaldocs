@@ -88,7 +88,7 @@ For more information about handling credentials, see [#managing-authentication-c
 
 ### Sideloading An Extension
 
-The Portal provides options for side loading your extension for testing. To side load your extension you need to set the appropriate query strings and execute the `registerTestExtension` function. An example of side loading a deployed extension can be seen below. For more information, see [portalfx-extensions-production-testing-overview.md](#portalfx-extensions-production-testing-overview.md).
+The Portal provides options for side loading your extension for testing. To side load your extension you need to set the appropriate query strings and execute the `registerTestExtension` function. An example of side loading a deployed extension can be seen below. For more information, see [portalfx-extensions-production-testing-overview.md](portalfx-extensions-production-testing-overview.md).
 <!-- TODO: locate the title that should have been the link. -->
 <!-- like maybe portalfx-extensions-production-testing.md-->
 
