@@ -45,7 +45,7 @@ The following sample demonstrates how to create a FrameBlade. It illustrates a f
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
-The iframe code that includes the html is located at `<dir>/Content/SamplesExtension/framebladepage.html`.  It is also in the following code.
+1. Create an iframe that includes the html, like the one located at `<dir>/Content/SamplesExtension/framebladepage.html` and in the following example.
 
 ```html
 
@@ -71,7 +71,7 @@ The iframe code that includes the html is located at `<dir>/Content/SamplesExten
 
 ```
 
-Create the `ViewModel`, as in the code located at  `<dir>/Client/V2/Blades/FrameBlade/SampleFrameBlade.ts` and in the following example.
+Create the `ViewModel` that connects to the `html`, as in the code located at  `<dir>/Client/V2/Blades/FrameBlade/SampleFrameBlade.ts` and in the following example.
 
 ```typescript
 
@@ -91,16 +91,15 @@ export class SampleFrameBlade {
         const { container } = this.context;
 
         const viewModel = this.viewModel = new FrameBlade.ViewModel(container, {
-            src: MsPortalFx.Base.Resources.getContentUri("/Content/SamplesExtension/framebladepage.html")
+            src: MsPortalFx.Base.Resources.getContentUri("/Content/SamplesExtension/framebladepage.html"),
         });
 			
 
 ```
 
-The code that connects the viewmodel to the extension is located at  `<dir>/Content/Scripts/framepage.js` and is in the following example.
+It receives information with which to build the contents of the frame blade in the   `window.addEventListener` method. When the window receives all of the frame information, the `makeViewPresentableToUser()` method injects the final frame fields into the frame and signals the parent of the frame that its content should be revealed. Sending "revealcontent" to the parent window enables the parent to use blocking and non-blocking loading indicators as appropriate. The child frame sends  "initializationcomplete" to remove all loading indicators after all data is loaded and rendered. The child frame sends the 'ready' message when the Iframe completes the loading process. The code that connects the `ViewModel` to the extension is located at  `<dir>/Content/Scripts/framepage.js`, and is also in the following example.
 
 ```javascript
-
 (function() {
     "use strict";
 
@@ -230,7 +229,6 @@ The code that connects the viewmodel to the extension is located at  `<dir>/Cont
     postMessageToParent("getAuthToken");
 })();
 
-
 ```
 
 The working sample can be viewed at [http://df.onecloud.azure-test.net/?feature.samplesextension=true#blade/SamplesExtension/SampleFrameBlade](http://df.onecloud.azure-test.net/?feature.samplesextension=true#blade/SamplesExtension/SampleFrameBlade).
@@ -277,7 +275,7 @@ When using a FrameBlade, extension developers can implement themes. Typically, t
 
 // Get theme class and pass it to App Blade
 MsPortalFx.Services.getSettings().then(settings => {
-    let theme = settings["fxs-theme"];
+    const theme = settings["fxs-theme"];
     theme.subscribe(container, theme =>
         this.postMessage(new FxAppBlade.Message("theme", theme.name))
     ).callback(theme());
