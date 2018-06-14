@@ -47,8 +47,8 @@ The following sample demonstrates how to create a FrameBlade. It illustrates a f
 
 1. Create an iframe that includes the html, like the one located at `<dir>/Content/SamplesExtension/framebladepage.html` and in the following example.
 
-    ```html
-    ﻿<!DOCTYPE html>
+```html
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -67,12 +67,12 @@ The following sample demonstrates how to create a FrameBlade. It illustrates a f
 
 </html>
 
-    ```
+```
 
 1. Create the `ViewModel` that connects to the `html`, as in the code located at  `<dir>/Client/V2/Blades/FrameBlade/SampleFrameBlade.ts` and in the following example.
 
-    ```
-    ```typescript
+```
+```typescript
 
 /**
  * View model for a FrameBlade.
@@ -95,12 +95,12 @@ export class SampleFrameBlade {
 			
 
 ```
-    ```
+```
 
 1. The frame receives information with which to build the contents of the frame blade in the   `window.addEventListener` method. When the window receives all of the frame information, the `makeViewPresentableToUser()` method injects the final frame fields into the frame and signals the parent of the frame that its content should be revealed. Sending "revealcontent" to the parent window enables the parent to use blocking and non-blocking loading indicators as appropriate. The child frame sends  "initializationcomplete" to remove all loading indicators after all data is loaded and rendered. The child frame sends the 'ready' message when the Iframe completes the loading process. The code that connects the `ViewModel` to the extension is located at  `<dir>/Content/Scripts/framepage.js`, and is also in the following example.
 
-    ```javascript
-    (function() {
+```javascript
+(function() {
     "use strict";
 
     // ---------------------------------------------------------------------------------------------
@@ -229,36 +229,44 @@ export class SampleFrameBlade {
     postMessageToParent("getAuthToken");
 })();
 
-    ```
+```
 
 The working sample can be viewed at [http://df.onecloud.azure-test.net/?feature.samplesextension=true#blade/SamplesExtension/SampleFrameBlade](http://df.onecloud.azure-test.net/?feature.samplesextension=true#blade/SamplesExtension/SampleFrameBlade).
 
+<a name="sending-messages-between-the-iframe-and-ibiza-fx"></a>
 ## Sending messages between the IFrame and Ibiza Fx
 
 The AppBlade `ViewModel` is hosted in the hidden IFrame in which the extension is loaded. However, the contents of the AppBlade are hosted in a different IFrame that is visible on the screen. The Ibiza extension IFrame and the UI IFrame communicate by sending and receiving messages. The following sections demonstrate how to exchange messages between the two IFrames and the Portal.
 
+<a name="ibiza-extension-iframe-messaging"></a>
 ## Ibiza extension IFrame messaging
 
+<a name="ibiza-extension-iframe-messaging-listen-to-a-message"></a>
 ### Listen to a message
 
 The extension can listen to messages that are sent from the UI IFrame to the Ibiza extension ViewModel by using the **on** method in the **AppBlade** ViewModel, as in the following example.
 
+<a name="ibiza-extension-iframe-messaging-post-a-message"></a>
 ### Post a message
 
 The Ibiza extension ViewModel can post messages to the UI IFrame by using the **postMessage** method in the AppBlade ViewModel, as in the following example.
 
+<a name="ui-iframe-messaging"></a>
 ## UI IFrame messaging
 
+<a name="ui-iframe-messaging-listen-to-a-message"></a>
 ### Listen to a message
 
 The extension can listen for messages that are sent from the Ibiza extension ViewModel to the UI Frame by adding an event listener to the application window, as shown in the following code.
 
 The extension should also provide a handler for the incoming message. 
 
+<a name="ui-iframe-messaging-post-a-message"></a>
 ### Post a message
 
 The  UI IFrame can post messages back to the Portal using the **postMessage** method. There is a required message that the  IFrame sends to the Portal to indicate that it is ready to receive messages.
 
+<a name="changing-ui-themes"></a>
 ## Changing UI themes
 
 When using a FrameBlade, extension developers can implement themes. Typically, the user selects a theme, which in turn is sent to the UI IFrame. The following code snippet demonstrates how to pass the selected theme to the UI IFrame using the **postMessage** method.
