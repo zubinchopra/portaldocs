@@ -207,9 +207,9 @@ Previously, the perspective was that all of the extension debugging was in a sin
 
 This section discusses how to figure out where changes are coming from when they originate from a different iframe. 
 
-**NOTE**:  Unlike [#debugging-extensions-that-use-knockout](#debugging-extensions-that-use-knockout) and [#debugging-the-data-stack](#debugging-the-data-stack), this is very Portal specific. You may want to review Azure Portal architecture, as specified in   [top-extensions-architecture.md](top-extensions-architecture.md), previous to continuing with `iframe` testing.
+**NOTE**:  Unlike [#debugging-knockout](#debugging-knockout) and [#debugging-the-data-stack](#debugging-the-data-stack), this is very Portal specific. You may want to review Azure Portal architecture, as specified in   [top-extensions-architecture.md](top-extensions-architecture.md), previous to continuing with `iframe` testing.
 
-**NOTE**:  Unlike [#debugging-extensions-that-use-knockout](#debugging-extensions-that-use-knockout) and [#debugging-the-data-stack](#debugging-the-data-stack), this is very Portal specific. You may want to review Azure Portal architecture, as specified in [top-extensions-architecture.md](top-extensions-architecture.md), previous to continuing with iframe testing.
+**NOTE**:  Unlike [#debugging-knockout](#debugging-knockout) and [#debugging-the-data-stack](#debugging-the-data-stack), this is very Portal specific. You may want to review Azure Portal architecture, as specified in [top-extensions-architecture.md](top-extensions-architecture.md), previous to continuing with iframe testing.
 
 
 1. To debug an extension that sends information across multiple `iframes`, the Portal should be loaded with diagnostics turned on, by setting the  flag `?trace=diagnostics`.  Without this flag, callstacks are not captured across `iframes` for performance reasons.  If this debugging is occurring in a  non-development environment, then client optimizations should be turned off by setting `clientOptimizations=false`. Otherwise, the test session will be debugging bundled & minified code.
