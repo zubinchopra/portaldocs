@@ -22,7 +22,6 @@ Dialogs are great to use in cases where an extension requests a confirmation fro
 
 Dialogs expose various options that allow developers to customise the dialog experience. To open a dialog, the extension should specify `dialogOptions`. The simplest form of those options is the 'Simple dialog' implementation that is located at `<dir>\Client\V2\Dialogs\DialogSamplesBlade.ts` and in the following code.
 
-```
 ```typescript
 
 /**
@@ -43,7 +42,6 @@ public onSimpleDialogClick() {
     });
 }
 
-```
 ```
 
 The properties for this implementation of the dialog are as follows.
