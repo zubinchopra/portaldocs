@@ -59,7 +59,7 @@ Reach out to <a href="mailto:ibizafxpm@microsoft.com?subject=Full-screen Create&
 <a name="building-create-experiences-overview-standard-arm-fields"></a>
 ### Standard ARM fields
 
-All ARM subscription resources require [subscription](#subscriptions-dropdown), [resource groups](#resource-groups -dropdown), [location](#locations-dropdown) and pricing dropdowns. The Portal offers built-in controls for each of these, as demonstrated in `<dir>\Client\V1\Create\EngineV3\ViewModels\CreateEngineBladeViewModel.ts` .
+All ARM subscription resources require [subscription](#subscriptions-dropdown), [resource groups](#resource-groups-dropdown), [location](#locations-dropdown) and pricing dropdowns. The Portal offers built-in controls for each of these, as demonstrated in `<dir>\Client\V1\Create\EngineV3\ViewModels\CreateEngineBladeViewModel.ts` .
 
 Each of these fields will retrieve values from the server and populate a dropdown with them. To set the value of these dropdowns, the extension looks up the value from the `fetchedValues` array, and then sets the `value` observable, as in the following code.
 
@@ -87,7 +87,7 @@ const subscriptionsDropDownOptions: SubscriptionDropDownOptions = {
         return data.subscription;
     }),
     validations: ko.observableArray([
-        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectSubscription)
+        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectSubscription),
     ]),
     // Providing a list of resource providers (NOT the resource types) makes sure that when
     // the deployment starts, the selected subscription has the necessary permissions to
@@ -97,7 +97,7 @@ const subscriptionsDropDownOptions: SubscriptionDropDownOptions = {
     // Optional -> You can pass the gallery item to the subscriptions drop down, and the
     // the subscriptions will be filtered to the ones that can be used to create this
     // gallery item.
-    filterByGalleryItem: this._galleryItem
+    filterByGalleryItem: this._galleryItem,
 };
 this.subscriptionsDropDown = createSubscriptionDropDown(container, subscriptionsDropDownOptions);
 
@@ -124,7 +124,7 @@ this.resourceGroupDropDown = createResourceGroupDropDown(container, {
     subscriptionIdObservable: this.subscriptionsDropDown.subscriptionId,
     validations: ko.observableArray([
         new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectResourceGroup),
-        new MsPortalFx.Azure.RequiredPermissionsValidator(requiredPermissionsCallback)
+        new MsPortalFx.Azure.RequiredPermissionsValidator(requiredPermissionsCallback),
     ]),
     // Optional -> RBAC permission checks on the resource group. Here, we're making sure the
     // user can create an engine under the selected resource group, but you can add any actions
@@ -134,12 +134,12 @@ this.resourceGroupDropDown = createResourceGroupDropDown(container, {
         // Optional -> You can supply a custom error message. The message will be formatted
         // with the list of actions (so you can have {0} in your message and it will be replaced
         // with the array of actions).
-        message: ClientResources.enginePermissionCheckCustomValidationMessage.format(actions.toString())
+        message: ClientResources.enginePermissionCheckCustomValidationMessage.format(actions.toString()),
     }),
     // Optional -> Will determine which mode is selectable by the user. It defaults to Both.
     allowedMode: ko.observable(ResourceGroupDropDownMode.Both), //Alternatively Mode.UseExisting or Mode.CreateNew
     value: { mode: ResourceGroupDropDownMode.CreateNew, value: { name: "NewResourceGroup_1", location: "" } },
-    createNewPlaceholder: ClientResources.createNew
+    createNewPlaceholder: ClientResources.createNew,
 });
 
 ```
@@ -166,8 +166,8 @@ this.locationsDropDown = createLocationDropDown(container, {
     subscriptionIdObservable: this.subscriptionsDropDown.subscriptionId,
     resourceTypesObservable: ko.observable([resourceType]),
     validations: ko.observableArray([
-        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectLocation)
-    ])
+        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectLocation),
+    ]),
     // hiding: {
     //     hide: (loc) => loc.name === "eastus",
     //     // Provide a reason for hiding locations.
@@ -302,7 +302,7 @@ const subscriptionsDropDownOptions: SubscriptionDropDownOptions = {
         return data.subscription;
     }),
     validations: ko.observableArray([
-        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectSubscription)
+        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectSubscription),
     ]),
     // Providing a list of resource providers (NOT the resource types) makes sure that when
     // the deployment starts, the selected subscription has the necessary permissions to
@@ -312,7 +312,7 @@ const subscriptionsDropDownOptions: SubscriptionDropDownOptions = {
     // Optional -> You can pass the gallery item to the subscriptions drop down, and the
     // the subscriptions will be filtered to the ones that can be used to create this
     // gallery item.
-    filterByGalleryItem: this._galleryItem
+    filterByGalleryItem: this._galleryItem,
 };
 this.subscriptionsDropDown = createSubscriptionDropDown(container, subscriptionsDropDownOptions);
 
@@ -377,7 +377,7 @@ this.resourceGroupDropDown = createResourceGroupDropDown(container, {
     subscriptionIdObservable: this.subscriptionsDropDown.subscriptionId,
     validations: ko.observableArray([
         new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectResourceGroup),
-        new MsPortalFx.Azure.RequiredPermissionsValidator(requiredPermissionsCallback)
+        new MsPortalFx.Azure.RequiredPermissionsValidator(requiredPermissionsCallback),
     ]),
     // Optional -> RBAC permission checks on the resource group. Here, we're making sure the
     // user can create an engine under the selected resource group, but you can add any actions
@@ -387,12 +387,12 @@ this.resourceGroupDropDown = createResourceGroupDropDown(container, {
         // Optional -> You can supply a custom error message. The message will be formatted
         // with the list of actions (so you can have {0} in your message and it will be replaced
         // with the array of actions).
-        message: ClientResources.enginePermissionCheckCustomValidationMessage.format(actions.toString())
+        message: ClientResources.enginePermissionCheckCustomValidationMessage.format(actions.toString()),
     }),
     // Optional -> Will determine which mode is selectable by the user. It defaults to Both.
     allowedMode: ko.observable(ResourceGroupDropDownMode.Both), //Alternatively Mode.UseExisting or Mode.CreateNew
     value: { mode: ResourceGroupDropDownMode.CreateNew, value: { name: "NewResourceGroup_1", location: "" } },
-    createNewPlaceholder: ClientResources.createNew
+    createNewPlaceholder: ClientResources.createNew,
 });
 
 ```
@@ -451,8 +451,8 @@ this.locationsDropDown = createLocationDropDown(container, {
     subscriptionIdObservable: this.subscriptionsDropDown.subscriptionId,
     resourceTypesObservable: ko.observable([resourceType]),
     validations: ko.observableArray([
-        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectLocation)
-    ])
+        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectLocation),
+    ]),
     // hiding: {
     //     hide: (loc) => loc.name === "eastus",
     //     // Provide a reason for hiding locations.
@@ -494,9 +494,9 @@ const initialDataObservable = ko.observable<SpecPicker.InitialData>({
             message: ClientResources.robotPricingTierLauncherDisabledSpecMessage,
             helpBalloonMessage: ClientResources.robotPricingTierLauncherDisabledSpecHelpBalloonMessage,
             helpBalloonLinkText: ClientResources.robotPricingTierLauncherDisabledSpecLinkText,
-            helpBalloonLinkUri: ClientResources.robotPricingTierLauncherDisabledSpecLinkUri
-        }
-    ]
+            helpBalloonLinkUri: ClientResources.robotPricingTierLauncherDisabledSpecLinkUri,
+        },
+    ],
 });
 this.specDropDown = new SpecsDropDown(container, {
     form: this,
@@ -511,8 +511,8 @@ this.specDropDown = new SpecsDropDown(container, {
     pricingBlade: {
         detailBlade: "BillingSpecPickerV3",
         detailBladeInputs: {},
-        hotspot: "EngineSpecDropdown1"
-    }
+        hotspot: "EngineSpecDropdown1",
+    },
 });
 
 ```

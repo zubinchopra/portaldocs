@@ -10,7 +10,7 @@ Status codes or error messages that are encountered while developing an extensio
 
 ***Console error messages in F12 developer tools***
 
-Some console and HTTP error messages are located at [https://msdn.microsoft.com/en-us/library/dn423949(v=vs.85).aspx](https://msdn.microsoft.com/en-us/library/dn423949(v=vs.85).aspx).
+Some console and HTTP error messages are located at [https://msdn.microsoft.com/en-us/library/dn423949](https://msdn.microsoft.com/en-us/library/dn423949).
 
 * * *
 

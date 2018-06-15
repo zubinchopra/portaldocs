@@ -20,7 +20,7 @@ From nuget package manager console
 Install-Package Microsoft.Portal.Extensions.Monitoring -Source https://msazure.pkgs.visualstudio.com/DefaultCollection/_packaging/Official/nuget/v3/index.json -Version 1.0.26.0
 ```
 
-*Note:* you will need to update the version snippet with the latest from [here](https://msazure.visualstudio.com/DefaultCollection/One/_apps/hub/ms.feed.feed-hub?feedName=Official&protocolType=NuGet&packageName=microsoft.portal.extensions.monitoring)
+*Note:* you will need to update the version snippet with the latest from [https://msazure.visualstudio.com/DefaultCollection/One/_apps/hub/ms.feed.feed-hub?feedName=Official&protocolType=NuGet&packageName=microsoft.portal.extensions.monitoring](https://msazure.visualstudio.com/DefaultCollection/One/_apps/hub/ms.feed.feed-hub?feedName=Official&protocolType=NuGet&packageName=microsoft.portal.extensions.monitoring)
 
 <a name="consumption"></a>
 ## Consumption
