@@ -24,7 +24,7 @@ The following table contains links to more information about each topic as appro
 | Telemetry Access  | [portalfx-telemetry-getting-started.md#permissions](portalfx-telemetry-getting-started.md#permissions) |
 | Portal COP (Telemetry) |     [portalfx-performance-portalcop.md](portalfx-performance-portalcop.md) |
 | Best practices |     [portalfx-extensions-bp-performance.md](portalfx-extensions-bp-performance.md) |
-| Stackoverflow  |    [portal-stackoverflow.md](portal-stackoverflow.md) |
+| Stackoverflow  |    [portalfx-stackoverflow.md](portalfx-stackoverflow.md) |
 
 ###	Performance
 

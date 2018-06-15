@@ -21,7 +21,7 @@ Accessibility is about making the Portal usable by people who have limitations t
 
     * A fully accessible default theme (Blue)
 
-      **NOTE**: When using that theme, the contrast ratio for all text must meet the AAA guidelines that are located at [http://www.interactiveaccessibility.com/web-accessibility-guideline](http://www.interactiveaccessibility.com/web-accessibility-guideline).
+      **NOTE**: When using that theme, the contrast ratio for all text must meet the AAA guidelines that are located at [http://www.interactiveaccessibility.com/web-accessibility-guidelines](http://www.interactiveaccessibility.com/web-accessibility-guidelines).
 
     * The Portal supports `HighContrast` mode and should display controls and chrome accordingly.
 

@@ -19,7 +19,7 @@ The Select Member Blade is a tool intended to unify "member selection" scenarios
 
 ## Downloading the PDE
 
-The .pde you need to reference can be found by downloading the Microsoft.Portal.Extensions.AAD.nuget from \\\wanuget\nugetpackages\dev and extracting the contents. (the .pde will be found under /Content/_extensions/AAD)
+The .pde you need to reference can be found by downloading the Microsoft.Portal.Extensions.AAD.nuget from [https://msazure.visualstudio.com/DefaultCollection/One/_packaging?feed=Official](https://msazure.visualstudio.com/DefaultCollection/One/_packaging?feed=Official)  wanuget\nugetpackages\dev and extracting the contents. (the .pde will be found under /Content/_extensions/AAD)
 
 ## Example Collector
 

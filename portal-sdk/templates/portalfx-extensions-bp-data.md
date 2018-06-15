@@ -11,9 +11,7 @@ When performing data access from your view models, it may be tempting to make da
 
 **NOTE**: Developers should use the `DataCache` objects `QueryCache` and `EntityCache` for data access. These classes provide advanced caching and ref-counting. Internally, these make use of Data.Loader and Data.DataSet (which will be made FX-internal in the future).
 
-To learn more, visit [portalfx-data-caching.md#configuring-the-data-cache](portalfx-data-caching.md#configuring-the-data-cache).
-
-
+To learn more, visit [portalfx-data-configuringdatacache.md](portalfx-data-configuringdatacache.md).
 
 ### Avoid unnecessary data reloading
 

@@ -55,7 +55,7 @@ Reach out to <a href="mailto:ibizafxpm@microsoft.com?subject=Full-screen Create&
 
 ### Standard ARM fields
 
-All ARM subscription resources require [subscription](#subscriptions-dropdown), [resource groups](#resource-groups -dropdown), [location](#locations-dropdown) and pricing dropdowns. The Portal offers built-in controls for each of these, as demonstrated in `<dir>\Client\V1\Create\EngineV3\ViewModels\CreateEngineBladeViewModel.ts` .
+All ARM subscription resources require [subscription](#subscriptions-dropdown), [resource groups](#resource-groups-dropdown), [location](#locations-dropdown) and pricing dropdowns. The Portal offers built-in controls for each of these, as demonstrated in `<dir>\Client\V1\Create\EngineV3\ViewModels\CreateEngineBladeViewModel.ts` .
 
 Each of these fields will retrieve values from the server and populate a dropdown with them. To set the value of these dropdowns, the extension looks up the value from the `fetchedValues` array, and then sets the `value` observable, as in the following code.
 
