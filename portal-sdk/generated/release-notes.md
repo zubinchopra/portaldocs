@@ -1,4 +1,16 @@
-# Release Notes since 2/13/2018
+# Release Notes since 2/15/2018
+
+## 5.0.302.1147
+0 Breaking Changes, 3 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2580073'>2580073</a></td><td>Feature</td><td>Enable the Microsoft_Azure_ContainerRegistries extension</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2569661'>2569661</a></td><td>Feature</td><td>[DSR] Update PCF SDK to support authentication in MC</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2555449'>2555449</a></td><td>Bug Fix</td><td>TextBox with placeholder and undefined value is dirtied when focused on IE11</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2519764'>2519764</a></td><td>Feature</td><td>[Paired timeline chart] Accessibility fixes</td></tr></table>
+
+## 5.0.302.1146
+0 Breaking Changes, 0 Features added and 2 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2503677'>2503677</a></td><td>Bug Fix</td><td>[Directory Pane] If default directory saved in settings store is stale, set default directory dropdown to last visited directory.</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2494083'>2494083</a></td><td>Bug Fix</td><td>[Directory Pane] Handle the scenario where the tenants array may have undefined tenant objects.</td></tr></table>
+
+## 5.0.302.1145
+0 Breaking Changes, 0 Features added and 2 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2543655'>2543655</a></td><td>Bug Fix</td><td>Do not wait on response content cache population task</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2391466'>2391466</a></td><td>Bug Fix</td><td>[noPDL] no-PDL should support tsconfig.json with non-default libs</td></tr></table>
 
 ## 5.0.302.1144
 0 Breaking Changes, 1 Features added and 1 Bugs Fixed
