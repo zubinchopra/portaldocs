@@ -1,29 +1,40 @@
 
 # Unit Test Framework preview
-Covered in this document:
 
-- File > New Project scaffolding
-- Creating a project from scratch
-- CI: test results output to CI accepted formats JUNIT, TRX, other.
-- Code Coverage: where to find your code coverage output
+* [ Getting Started with Visual Studio](#getting-started-with-visual-studio)
+
+* [Creating a project from scratch](#creating-a-project-from-scratch)
+
+* CI test results output to CI accepted formats JUNIT, TRX, other.
+
+* Code Coverage: where to find your code coverage output
 
 ## Getting Started with Visual Studio
 
-1. To support the Unit Test project in Visual Studio you must first install the `Node Tools for Visual Studio` [from here](https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1) then
-1. Launch Visual Studio and click `File > New > Project > Visual C# > Azure Portal`. It will scaffold a Solution with two projects Extension.csproj and Extension.UnitTest.csproj
-1. Build the solution `Ctl + Shift + B`
-1. Open index.html in a browser
+1. Install **Node LTS** that is located at [https://nodejs.org/en/download/](https://nodejs.org/en/download/).
 
-note you can also run  `npm run test` from the commandline.
+1. To support the Unit Test project in Visual Studio you must first install the **Node Tools for Visual Studio** that are located at  [https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1](https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1). 
 
-## Creating a project from scratch with Visual Studio Code
+1. Launch Visual Studio and click `File > New > Project > Visual C# > Azure Portal`. It will scaffold a solution with two projects:  `Extension.csproj` and `Extension.UnitTest.csproj`.
 
-Available from [SDK 5.0.302.1057](https://aka.ms/portalfx/download)
+**NOTE**: If you do not see the `Azure Portal` project template, ensure you have already installed the Portal SDK that is located at [https://aka.ms/portalfx/download](https://aka.ms/portalfx/download).  Also make sure you are  using `Visual Studio 2015`.
 
-This tutorial will provide you step by step instructions for creating a UnitTest project for your Azure Portal Extension.  The resulting folder structure will look like the following:
+1. Build the solution by using `Ctrl + Shift + B`.
+
+1. Run `npm run test` or `npm run test-ci` from the command line.
+
+**NOTE**: You can also run `npm run test` from the command line.
+
+## Creating a project from scratch 
+
+Before getting started with this step by step:
+1. If you are building a new extension from scratch, it is  simpler and faster to start with the above project template instead of using the following procedure.
+
+1. If you are adding a Unit Test project to an existing extension, you can scaffold the new project from the previous step, and then follow this guide to customize the configuration to point to your existing extension.
+
+This tutorial will provide you step by step instructions for creating a UnitTest project for your Azure Portal Extension.  The resulting folder structure will look like the following.
 
 ```
-
 +-- Extension
 +-- Extension.UnitTests
 |   +-- test/ResourceOverviewBlade.test.ts
@@ -32,18 +43,117 @@ This tutorial will provide you step by step instructions for creating a UnitTest
 |   +-- msportalfx-ut.config.json
 |   +-- package.json
 |   +-- tsconfig.json
-
+    +-- .npmrc
 // The build and code generation will add the following
 |   +-- _generated
 |     +-- Ext
 |     +-- Fx
 |   +-- Output
-
 ```
 
-NOTE: this document uses relative path syntax to indicate where you should add each file e.g ./index.html indicates adding an index.html at the root of your test project folder Extension.UnitTests/index.html
+**NOTE**: This document uses relative paths to indicate where each file should be located, relative to the root of the test folder.  For example, the `./package.json` file indicates adding an `index.html` file at the root of the test project folder `Extension.UnitTests/package.json`.
 
-### Add ./index.html for running tests
+**NOTE**:  All code snippets provided are for `Microsoft.Portal.Tools.V2.targets`. If you are using  `Microsoft.Portal.Tools.targets`, instead see the [Frequently Asked Questions](portalfx-extensions-faq-unit-test.md) 
+
+[Build-time-configuration](#build-time-configuration)
+[Runtime-configuration](#runtime-configuration)
+
+### Build time configuration
+
+The following steps will configure your project  at dev or build time.
+
+1. Add the `./.npmrc` registry file to store feed URLs and credentials, as described in [https://docs.microsoft.com/en-us/vsts/package/npm/npmrc?view=vsts](https://docs.microsoft.com/en-us/vsts/package/npm/npmrc?view=vsts).
+
+    The `msportalfx-ut` unit test package is available from the internal `AzurePortalNpmRegistry`.  To configure your project to use this registry add the following code to the `./.npmrc` file .
+
+    ```
+    registry=https://msazure.pkgs.visualstudio.com/_packaging/AzurePortalNpmRegistry/npm/registry/
+    always-auth=true
+    ```
+
+1. Add the  `./package.json` file to the project.
+  
+    ```json
+    // --gitdown": "include-file", "file": "../samples/VS/PackageTemplates/Default/Extension.UnitTests/package.json"} 
+    {"gitdown": "include-file", "file":"../Samples/SamplesExtension/Tests/package.json"}
+    ```
+
+    This example file uses **mocha** and **chai**, but you can choose your own test and assertion framework.
+      
+    * Update the `./package.json` file to refer directly to `msportalfx-ut`.  For example,  specify `"msportalfx-ut" : "5.0.302.VersionOfSdkYouAreUsing"` instead of the `file://` syntax.
+     
+    * Run the following command.
+
+      ```
+      npm install --no-optional
+      ```  
+    
+    **NOTE**: If you receive auth errors against the internal NPM feed see the "Connect to feed" instructions that are located at  [https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=feed](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=feed).
+
+1. Add the `./msportalfx-ut.config.json` file.
+
+    The `msportalfx-ut.config.json` file defines paths to those files needed by the `msportalfx-ut` node module to generate everything in the `./_generated/*` folder. Add the `./msportalfx-ut.config.json` file by using the following code.
+
+    ```json
+    {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/msportalfx-ut.config.json"}
+    ```
+
+    Customize the paths in the file to the paths that are used by your project. If there are differences between the paths for your official build environment and the paths for your dev environment, you can override them by using command line arguments or by using environmental variables.  The `msportalfx-ut gulpfile` module searches for paths in the following order.
+
+    1. command line argument
+    
+    1. environmental variable
+
+    1. `./msportalfx-ut.config.json` file.  
+  
+    An example of overriding an item for an official build with a command line argument is as follows.
+
+    `gulp --UTNodeModuleResolutionPath ./some/other/location`
+    
+    The definition of each key in the configuration file is as follows.
+
+    * **UTNodeModuleRootPath**: The root path to where the `msportalfx-ut` node module was installed.
+
+    * **GeneratedAssetRootPath**: The root path that will contain all assets that will be generated.  For example, the `resx to js AMD` module could be located here so that you can use resource strings directly in your test.
+
+    * **ResourcesResxRootDirectory**: The extension client root directory that contains all `*.resx` files. These will be used to generate `javaScript` AMD string resource modules into the `GeneratedAssetRootPath` and the associated required configuration.
+
+1. Add a test to the `./test/ResourceOverviewBlade.test.ts` file.
+
+    You can modify the following example for your own extension.
+    ```typescript
+        
+    {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/test/ResourceOverviewBlade.test.ts"}
+    ```
+
+1. To compile your test, and for dev time Intellisense, the project should have a `./tsconfig.json` file, as in the following example.
+
+    ```json
+    {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/tsconfig.json"}
+    ```
+
+    Update the paths in the `tsconfig.json` file to your specific extension paths.
+
+  1. Build your extension
+
+  1. Run the following command to build your tests
+
+    ```
+    npm run build
+    ```
+
+### Runtime configuration
+
+Now that your tests are building, add the following to run your tests.
+
+
+
+
+
+
+
+/-----------------
+1. Add `./index.html` for running tests.
 
 ```html
 
@@ -75,6 +185,7 @@ In the ./index.html the following scripts are imported
 - `mocha.js`: this test framework is used in the shipped sample. Note that you may choose to use whatever test framework you wish. msportalfx-ut is test framewwork agnostic.
 - `chai.js`: test assertion framework. Note that you may choose to use whatever test framework you wish. msportalfx-ut is test framewwork agnostic.
 - `./node_modules/msportalfx-ut/lib/FxScripts.js`: this is an aggregate script that contains all portal scripts required as a pre-req for your test context. This script includes: default setup of window.fx.*, all portal bundles required to successfully load your blades, all requirejs config required to load your blades.
+
 - `./_generated/Ext/ExtensionStringResourcesRequireConfig.js` requirejs mapping for AMD modules generated from from the extension's resx files.
 - `./test-main.js` entrypoint to setup your test runner and extensions require config.
 
@@ -175,7 +286,7 @@ msportalfx-ut.config.json defines paths to those files needed by the msportalfx-
 
     `"ExtensionTypingsFiles": "../Extension/Output/typings/**/*.d.ts",`
 
-NOTE: if your official build environment uses different paths then your dev environment you can override them either by using command line arguments or environmental variables.  The msportalfx-ut gulpfile will search in the following order command line argument > environmental variable > ./msportalfx-ut.config.json file.  An example of overriding an item for an official build via a command line argument `gulp --UTNodeModuleResolutionPath ./some/other/location`
+**NOTE**: if your official build environment uses different paths then your dev environment you can override them either by using command line arguments or environmental variables.  The msportalfx-ut gulpfile will search in the following order command line argument > environmental variable > ./msportalfx-ut.config.json file.  An example of overriding an item for an official build via a command line argument `gulp --UTNodeModuleResolutionPath ./some/other/location`
 
 ## Add a test
 
@@ -276,7 +387,7 @@ describe("Resource Overview Blade Tests", () => {
   });
 });
 
-````
+```
 
 ### Build your test project
 
@@ -287,10 +398,11 @@ run the following command
 npm run build
 
 ```
+/------------------------
 
 ## Configure Require and Mocha using add test-main.js
 
-requirejs will need to know where all your modules are located for your extension and any frameworks that you are using
+`require.js`  and `mocha` need be made aware of the locations of the modules for your extension, in addition to any frameworks that you are using, as in the following example.
 
 ```typescript
 
@@ -497,16 +609,19 @@ Note: generated via `npm run test` or `npm run test-ci`
 
 # FAQ
 
-## When I do File `File > New > Project > Visual C# > Azure Portal` I get the following error
+### Cannot create new project in Visual Studio
 
-```
+***Cannot find the Node Tools for VS***
 
-Severity    Code    Description Project File    Line    Suppression State
-Error       Could not install package 'PortalFx.NodeJS8 10.0.0.125'. You are trying to install this package into a project that targets '.NETFramework,Version=v4.6.1', but the package does not contain any assembly references or content files that are compatible with that framework. For more information, contact the package author
+DESCRIPTION:
 
-```
+When I try to create a new project in Visual Studio, I get an error: `Could not install package 'PortalFx.NodeJS8 10.0.0.125`.  The command line that was used was `File > New > Project > Visual C# > Azure Portal`.
 
-Solution: Install the `Node Tools for Visual Studio` [from here](https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1)
+You are trying to install this package into a project that targets `.NETFramework,Version=v4.6.1`, but the package does not contain assembly references or content files that are compatible with that framework.
+
+SOLUTION:
+
+Install the `Node Tools for Visual Studio` that is located at [https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1](https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1).
 
 ## Corext Environments
 
@@ -909,3 +1024,6 @@ This error indicates that it cannot find the expanded NuGet package for the Unit
 
     * Run Corext Init - From the root of your repository run: `init`
     * Run the Npm install - From your Unit Test directory run: `npm run init`
+
+
+{"gitdown": "include-file", "file": "portalfx-extensions-faq-unit-test.md"}
