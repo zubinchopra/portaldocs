@@ -416,7 +416,7 @@ If you are using safe deployment then it is likely that you want to rollout a ne
 The versions available in the Hosting Service can be seen by going to the following URL:
 
 Dogfood: https://hosting.onecloud.azure-test.net/api/diagnostics
-MPAC: https://hosting-ms.portal.azure.net/api/diagnostics
+MPAC: https://ms.hosting.portal.azure.net/api/diagnostics
 PROD: https://hosting.portal.azure.net/api/diagnostics
 
 
