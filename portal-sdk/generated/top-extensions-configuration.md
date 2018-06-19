@@ -89,7 +89,7 @@ Its options are as follows.
 
       **NOTE**: For extensions that are not using the hosting service, we recommend that the `uri` follow the standard CNAME pattern, as specified in [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md). 
 
-  When the user loads the extension in the Portal, it is loaded from the `uri` specified in the extension configuration. To update the ```uri```, send a pull request as specified in [top-extensions-publishing.md](top-extensions-publishing.md). Additional extension configurations can be loaded by specifying the configuration name in the  `uri` and specifying the feature flag `feature.canmodifystamps=true`. For more information about feature flags, see [portalfx-extensions-feature-flags.md](portalfx-extensions-feature-flags.md).
+  When the user loads the extension in the Portal, it is loaded from the `uri` specified in the extension configuration. To update the ```uri```, send a pull request as specified in [top-extensions-publishing.md](top-extensions-publishing.md). Additional extension configurations can be loaded by specifying the configuration name in the  `uri` and specifying the feature flag `feature.canmodifystamps=true`. For more information about feature flags, see [top-extensions-flags.md](top-extensions-flags.md).
 
 * **uriFormat**: Required. The `uri` for the extension, followed by a forward slash, followed by a parameter marker that specifies the environment from which to load the extension.
     
@@ -188,9 +188,15 @@ To override the configuration, specify the flag ```feature.canmodifystamps=true 
 
 To add an extension to the Portal, send a pull request, as specified in [top-extensions-publishing.md](top-extensions-publishing.md). 
 
-<!-- TODO - We need an example of a pull request that puts the extension in the enabled state immediately.
--->
-An example of a pull request that puts the extension immediately into the enabled state is located at []().
+To enable an extension, remove the `disabled` parameter from the json file that contains the description of the extension.
+
+![alt-text](../media/portalfx-extensions-configuration/json-file.png "Updated Json File")
+
+ The pull request allows you to compare the current file and the proposed proposed changes to ensure that the enabling of the extension is correct previous to creating the pull request, as in the following example.
+
+![alt-text](../media/portalfx-extensions-configuration/json-comparison.png "Json File Comparison")
+
+An example of a pull request that puts the extension immediately into the enabled state is located at [https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/909233?_a=overview](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/909233?_a=overview).
 
 An example of a pull request that enables the `HDInsight` extension in the Mooncake environment and increases the extension test is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev).
 
