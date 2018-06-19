@@ -56,6 +56,10 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 * [How to update portal Nuget packages](/portal-sdk/generated/top-extensions-nuget.md)
 
+* [Available packages](/portal-sdk/generated/top-extensions-packages.md)
+
+* [Developing extensions](/portal-sdk/generated/top-extensions-getting-started.md)
+
 * [Running the extension locally (a.k.a. sideloading)](/portal-sdk/generated/top-extensions-sideloading.md)
 
 [Ask an SDK setup question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
@@ -120,11 +124,12 @@ When using HTML and framework controls you have some control over styling. These
 
 * [Layout classes](/portal-sdk/generated/portalfx-blades-layout.md)
 
+* [Theming](/portal-sdk/generated/top-style-guide-theming.md)
+
 * [Typography](/portal-sdk/generated/top-style-guide-typography.md)
 
 * [Iconography](/portal-sdk/generated/top-style-guide-iconography.md)
 
-* [Theming](/portal-sdk/generated/top-style-guide-theming.md)
 
 ### Forms
 
@@ -162,6 +167,8 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 * [Making authenticated calls to Azure Resource Manager (ARM) and other endpoints](/portal-sdk/generated/portalfx-data-loadingdata.md#making-authenticated-ajax-calls)
 
+* [Ajax Batch calls to ARM]()
+<!-- [Ajax Batch calls to ARM](/portal-sdk/generated/top-extensions-ajax-batch.md) -->
 <!-- ajax calls and batch -->
 
 <!-- Ajax all up, batch calls to arm, ajax calls with batch flags set (new doc) GURUA will look at seed content -->
@@ -265,9 +272,9 @@ The Azure portal strives to meet high accessibility standards to ensure the prod
 ## Deploying your extension
 
 Learn how to deploy your extension to the various clouds and environments.
-* [Extension registration, environments (e.g. dogfood, prod), clouds (e.g. Mooncake, BlackForest, Fairfax) and Ibiza team SLAs](/portal-sdk/generated/top-extensions-publishing.md)
+* [Extension registration, environments, clouds and Ibiza team SLAs](/portal-sdk/generated/top-extensions-publishing.md)
 
-* [Going from private preview to public preview to GA](/portal-sdk/generated/top-extensions-developmentPhases.md)
+* [Moving an extension from private preview to public preview to GA](/portal-sdk/generated/top-extensions-developmentPhases.md)
 
 [Ask a deployment question on Stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)
 
@@ -295,10 +302,6 @@ You should strive to use the Extension Hosting Service. If for some reason this 
 
 Extensions are required to be running a version of the Ibiza SDK that has been published within the past 4 months. 
 * [Upgrade policy and alerts](/portal-sdk/generated/portalfx-deployment.md#deploying-an-extension)
-
-* [Upgrading Ibiza NuGet packages](/portal-sdk/generated/top-extensions-nuget.md)
-
-* [Updating the C# test framework](/portal-sdk/generated/top-extensions-csharp-test-framework.md)
 
 * [Updating the msportalfx-test framework](/portal-sdk/generated/)
 
