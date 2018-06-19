@@ -125,8 +125,8 @@ You can, if preferred, run queries locally but ensure you are using the Fx provi
 1. Profile what is happening in your extension load. [Profile your scenario](#performance-profiling)
 1. Are you using the Portal's ARM token? If no, verify if you can use the Portal's ARM token and if yes, follow: [Using the Portal's ARM token](http://NEED_LINK.com)
 1. Are you on the hosting service? If no, migrate to the hosting service: [Hosting service documentation](portalfx-extension-hosting-service.md#extension-hosting-service)
+    - If you are, have you enabled prewarming? Follow http://aka.ms/portalfx/docs/prewarming to enable prewarming for your extension load.
 1. Are you using obsolete bundles? If yes, remove your dependency to them and then remove the obsolete bitmask. See below for further details.
-1. Do you see any waterfalling or serialized bundle requests? If yes, ensure you have the proper bundling hinting in place. [Optimize bundling](http://NEED_LINK.com) 
 
 ## My Blade 'FullReady' is above the bar, what should I do
 
@@ -138,6 +138,8 @@ You can, if preferred, run queries locally but ensure you are using the Fx provi
 1. How many parts are on the blade?
     - If there is only a single part, if you're not using a no-pdl blade or `<TemplateBlade>` migrate your current blade to a no-pdl blade.
     - If there are multiple parts, migrate over to use a no-pdl blade
+1. Does your blade open within a resource menu blade?
+    - If it does, ensure the `getMenuConfig` call is returned statically (< 10ms). You can make use of the enabled/disabled observable property on menu items, if you need to asynchronously determine to enable a menu item. 
 1. See our [best practices](#performance-best-practices)
     
 ## My Part 'Ready' is above the bar, what should I do
