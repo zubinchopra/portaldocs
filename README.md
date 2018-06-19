@@ -167,8 +167,7 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 * [Making authenticated calls to Azure Resource Manager (ARM) and other endpoints](/portal-sdk/generated/portalfx-data-loadingdata.md#making-authenticated-ajax-calls)
 
-* [Ajax Batch calls to ARM]()
-<!-- [Ajax Batch calls to ARM](/portal-sdk/generated/top-extensions-ajax-batch.md) -->
+* [Ajax Batch calls to ARM](/portal-sdk/generated/top-extensions-ajax-batch.md)
 <!-- ajax calls and batch -->
 
 <!-- Ajax all up, batch calls to arm, ajax calls with batch flags set (new doc) GURUA will look at seed content -->
