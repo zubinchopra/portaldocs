@@ -75,7 +75,7 @@ The following steps will configure your project  at dev or build time.
   
     ```json
     // --gitdown": "include-file", "file": "../samples/VS/PackageTemplates/Default/Extension.UnitTests/package.json"} 
-    {"gitdown": "include-file", "file":"../Samples/SamplesExtension/Tests/package.json"}
+
     ```
 
     This example file uses **mocha** and **chai**, but you can choose your own test and assertion framework.
@@ -94,9 +94,11 @@ The following steps will configure your project  at dev or build time.
 
     The `msportalfx-ut.config.json` file defines paths to those files needed by the `msportalfx-ut` node module to generate everything in the `./_generated/*` folder. Add the `./msportalfx-ut.config.json` file by using the following code.
 
+<!--
     ```json
-    {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/msportalfx-ut.config.json"}
+    gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/msportalfx-ut.config.json"}
     ```
+-->
 
     Customize the paths in the file to the paths that are used by your project. If there are differences between the paths for your official build environment and the paths for your dev environment, you can override them by using command line arguments or by using environmental variables.  The `msportalfx-ut gulpfile` module searches for paths in the following order.
 
@@ -122,15 +124,18 @@ The following steps will configure your project  at dev or build time.
 
     You can modify the following example for your own extension.
     ```typescript
-        
-    {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/test/ResourceOverviewBlade.test.ts"}
+<!--
+    gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/test/ResourceOverviewBlade.test.ts"}
     ```
+-->
 
 1. To compile your test, and for dev time Intellisense, the project should have a `./tsconfig.json` file, as in the following example.
 
+<!--
     ```json
-    {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/tsconfig.json"}
+    gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/tsconfig.json"}
     ```
+-->
 
     Update the paths in the `tsconfig.json` file to your specific extension paths.
 
@@ -1000,7 +1005,7 @@ This error indicates that it cannot find the expanded NuGet package for the Unit
 
     Found under `\<ExtensionRepoName>\src\<ExtensionName>\packages.config`
 
-    Add the folowing to your `<packages>`:
+    Add the following to your `<packages>`:
 
     ```xml
     <package id="Microsoft.Portal.TestFramework.UnitTest" version="5.0.302.1016" targetFramework="net45" />
