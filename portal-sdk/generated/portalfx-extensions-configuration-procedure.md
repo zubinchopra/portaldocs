@@ -3,9 +3,15 @@
 
 To add an extension to the Portal, send a pull request, as specified in [top-extensions-publishing.md](top-extensions-publishing.md). 
 
-<!-- TODO - We need an example of a pull request that puts the extension in the enabled state immediately.
--->
-An example of a pull request that puts the extension immediately into the enabled state is located at []().
+To enable an extension, remove the `disabled` parameter from the json file that contains the description of the extension.
+
+![alt-text](../media/portalfx-extensions-configuration/json-file.png "Updated Json File")
+
+ The pull request allows you to compare the current file and the proposed proposed changes to ensure that the enabling of the extension is correct previous to creating the pull request, as in the following example.
+
+![alt-text](../media/portalfx-extensions-configuration/json-comparison.png "Json File Comparison")
+
+An example of a pull request that puts the extension immediately into the enabled state is located at [https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/909233?_a=overview](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/909233?_a=overview).
 
 An example of a pull request that enables the `HDInsight` extension in the Mooncake environment and increases the extension test is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/062ccb2ed5c5a8a086877e2d61dd6009242f17fc?refName=refs%2Fheads%2Fdev).
 
