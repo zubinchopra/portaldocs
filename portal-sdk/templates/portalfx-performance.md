@@ -123,7 +123,7 @@ You can, if preferred, run queries locally but ensure you are using the Fx provi
 ## My Extension 'load' is above the bar, what should I do
 
 1. Profile what is happening in your extension load. [Profile your scenario](#performance-profiling)
-1. Are you using the Portal's ARM token? If no, verify if you can use the Portal's ARM token and if yes, follow: [Using the Portal's ARM token](http://NEED_LINK.com)
+1. Are you using the Portal's ARM token? If no, verify if you can use the Portal's ARM token and if yes, follow: [Using the Portal's ARM token](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-api-authentication)
 1. Are you on the hosting service? If no, migrate to the hosting service: [Hosting service documentation](portalfx-extension-hosting-service.md#extension-hosting-service)
     - If you are, have you enabled prewarming? Follow http://aka.ms/portalfx/docs/prewarming to enable prewarming for your extension load.
 1. Are you using obsolete bundles? If yes, remove your dependency to them and then remove the obsolete bitmask. See below for further details.
