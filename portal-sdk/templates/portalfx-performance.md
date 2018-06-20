@@ -30,45 +30,6 @@ If your blade is a FrameBlade or AppBlade there is an additional initialization 
 
 All of which are encapsulated under the one 'BladeFullReady' action.
 
-### BladePerformanceIncludingNetwork()
-
-In the case of the `BladePerformanceIncludingNetwork` function, we sample 1% of traffic to measure the number of network requests that are made throughout their session, that sampling does not affect the overall duration that is reported. Within the function we will correlate the count of any network requests, these are tracked in telemetry under the action `XHRPerformance`, made when the user is loading a given blade. It does not impact the markers that measure performance. That said a larger number of network requests will generally result in slower performance.
-
-The subtle difference with the standard `BladeFullReady` marker is that if the blade is opened within a resource menu blade we will attribute the time it takes to resolve the `getMenuConfig` promise as the resource menu blade is loaded to the 95th percentile of the 'BladeFullReady' duration. This is attributed using a proportional calculation based on the number of times the blade is loaded inside the menu blade.
-
-For example, a blade takes 2000ms to complete its `BladeFullReady` and 2000ms to return its `getMenuConfig`.
-It is only loaded once (1) in the menu blade out of its 10 loads. Its overall reported FullDuration would be 2200ms.
-
-BladePerformanceIncludingNetwork will return a table with the following columns
-
- - FullBladeName, Extension, BladeName
-   - Blade/Extension identifiers
- - BladeCount
-   - The number of blade loads within the given date range
- - InMenuLoads
-   - The number of in menu blade loads within the given date range
- - PctOfMenuLoads
-   - The percentage of in menu blade loads within the given date range
- - Samples
-   - The number of loads which were tracking the number of XHR requests
- - StaticMenu
-   - If the `getMenuConfig` call returns within < 10ms, only applicable to ResourceMenu cases
- - MenuConfigDuration95
-   - The 95th percentile of the `getMenuConfig` call
- - LockedBlade
-   - If the blade is locked, ideally blades are now template blades or no-pdl
-   - All no-pdl and template blades are locked, pdl blades can be made locked by setting the locked property to true
- - XHRCount, XHRCount95th, XHRMax
-   - The 50th percentile (95th or MAX) of XHR requests sent which correlate to that blade load
- - Bytes
-   - Bytes transferred to the client via XHR requests
- - FullDuration50, 80, 95, 99
-   - The time it takes for the `BladeFullReady` + (`PctOfMenuLoads` * the `getMenuConfig` to resolve)
- - RedScore
-   - Number of violations for tracked bars
- - AlertSeverity
-   - If the blade has opted to be alerted against via the [alerting infrastructure][1] and what severity the alert will open at.
-
 ## Part performance
 
 Similar to Blade performance, Part performance is spread across a couple of areas:
@@ -76,7 +37,7 @@ Similar to Blade performance, Part performance is spread across a couple of area
 1. Part's constructor
 1. Part's onInitialize or onInputsSet
 
-If you part is a FramePart there is an additional initialization message from your iframe to your viewmodel which is also tracked, see the samples extension [framepage.js](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?path=%2Fsrc%2FSDK%2FAcceptanceTests%2FExtensions%2FSamplesExtension%2FExtension%2FContent%2FScripts%2Fframepage.js&version=GBproduction&_a=contents) for an example of what messages are required.
+If your part is a FramePart there is an additional initialization message from your iframe to your viewmodel which is also tracked, see the samples extension [framepage.js](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?path=%2Fsrc%2FSDK%2FAcceptanceTests%2FExtensions%2FSamplesExtension%2FExtension%2FContent%2FScripts%2Fframepage.js&version=GBproduction&_a=contents) for an example of what messages are required.
 
 All of which are encapsulated under the one 'PartReady' action.
 
@@ -118,15 +79,91 @@ There are two methods to assess your performance:
 The first method is definitely the easiest way to determine your current assessment as this is maintained on a regular basis by the Fx team.
 You can, if preferred, run queries locally but ensure you are using the Fx provided Kusto functions to calculate your assessment.
 
+### Extension
+
+[database('Partner').ExtensionPerformance(ago(1h), now())](https://aka.ms/kwe?cluster=azportal.kusto.windows.net&database=AzurePortal&q=H4sIAAAAAAAAA0tJLElMSixO1VAPSCwqyUstUtfUc60oSc0rzszPC0gtSssvyk3MS07VSEzP1zDM0NRRyMsv19DU5AIAxF6Q5zkAAAA%3D)
+
+ExtensionPerformance will return a table with the following columns:
+
+- Extension
+    - The name of the extension
+- Loads
+    - How many times the extension was loaded within the given date range
+- 50th, 80th, 95th
+    - The time it takes for your extension to initialize. This is captured under the `ExtensionLoad` action in telemetry
+- HostingServiceloads
+    - The number of loads from the hosting service
+- UsingTheHostingService
+    - If the extension is predominantly using the hosting service in production
+
+### Blade
+
+[database('Partner').BladePerformanceIncludingNetwork(ago(1h), now())](https://aka.ms/kwe?cluster=azportal.kusto.windows.net&database=AzurePortal&q=H4sIAAAAAAAAA0tJLElMSixO1VAPSCwqyUstUtfUc8pJTEkNSC1Kyy%2FKTcxLTvXMS84pTcnMS%2FdLLSnPL8rWSEzP1zDM0NRRyMsv19DU5AIA1W5beEUAAAA%3D)
+
+With the `BladePerformanceIncludingNetwork` function, we sample 1% of traffic to measure the number of network requests that are made throughout their session, that sampling does not affect the overall duration that is reported. Within the function we will correlate the count of any network requests, these are tracked in telemetry under the action `XHRPerformance`, made when the user is loading a given blade. It does not impact the markers that measure performance. That said a larger number of network requests will generally result in slower performance.
+
+The subtle difference with the standard `BladeFullReady` marker is that if the blade is opened within a resource menu blade we will attribute the time it takes to resolve the `getMenuConfig` promise as the resource menu blade is loaded to the 95th percentile of the 'BladeFullReady' duration. This is attributed using a proportional calculation based on the number of times the blade is loaded inside the menu blade.
+
+For example, a blade takes 2000ms to complete its `BladeFullReady` and 2000ms to return its `getMenuConfig`.
+It is only loaded once (1) in the menu blade out of its 10 loads. Its overall reported FullDuration would be 2200ms.
+
+BladePerformanceIncludingNetwork will return a table with the following columns
+
+ - FullBladeName, Extension, BladeName
+   - Blade/Extension identifiers
+ - BladeCount
+   - The number of blade loads within the given date range
+ - InMenuLoads
+   - The number of in menu blade loads within the given date range
+ - PctOfMenuLoads
+   - The percentage of in menu blade loads within the given date range
+ - Samples
+   - The number of loads which were tracking the number of XHR requests
+ - StaticMenu
+   - If the `getMenuConfig` call returns within < 10ms, only applicable to ResourceMenu cases
+ - MenuConfigDuration95
+   - The 95th percentile of the `getMenuConfig` call
+ - LockedBlade
+   - If the blade is locked, ideally blades are now template blades or no-pdl
+   - All no-pdl and template blades are locked, pdl blades can be made locked by setting the locked property to true
+ - XHRCount, XHRCount95th, XHRMax
+   - The 50th percentile (95th or MAX) of XHR requests sent which correlate to that blade load
+ - Bytes
+   - Bytes transferred to the client via XHR requests
+ - FullDuration50, 80, 95, 99
+   - The time it takes for the `BladeFullReady` + (`PctOfMenuLoads` * the `getMenuConfig` to resolve)
+ - RedScore
+   - Number of violations for tracked bars
+ - AlertSeverity
+   - If the blade has opted to be alerted against via the [alerting infrastructure](index-portalfx-extension-monitor.md#performance) and what severity the alert will open at.
+
+### Part
+
+[database('Partner').PartPerformance(ago(1d), now())](https://aka.ms/kwe?cluster=azportal.kusto.windows.net&database=AzurePortal&q=H4sIAAAAAAAAA0tJLElMSixO1VAPSCwqyUstUtfUA7ECUovS8otyE%2FOSUzUS0%2FM1DFM0dRTy8ss1NDW5AEYwvz00AAAA)
+
+PartPerformance will return a table with the following columns:
+
+- Extension
+    - The name of the extension
+- Part
+    - The name of the part
+- Loads
+    - How many times the part was loaded within the given date range
+- 50th, 80th, 95th
+    - The time it takes for your part to resolve its `onInputsSet` or `onInitialize` promise. This is captured under the `PartReady` action in telemetry
+
 # Performance Frequently Asked Questions (FAQ)
 
 ## My Extension 'load' is above the bar, what should I do
 
 1. Profile what is happening in your extension load. [Profile your scenario](#performance-profiling)
-1. Are you using the Portal's ARM token? If no, verify if you can use the Portal's ARM token and if yes, follow: [Using the Portal's ARM token](http://NEED_LINK.com)
 1. Are you on the hosting service? If no, migrate to the hosting service: [Hosting service documentation](portalfx-extension-hosting-service.md#extension-hosting-service)
-    - If you are, have you enabled prewarming? Follow http://aka.ms/portalfx/docs/prewarming to enable prewarming for your extension load.
-1. Are you using obsolete bundles? If yes, remove your dependency to them and then remove the obsolete bitmask. See below for further details.
+    - If you are, have you enabled prewarming? 
+        - Follow http://aka.ms/portalfx/docs/prewarming to enable prewarming for your extension load.
+1. Are you using the Portal's ARM token? If no, verify if you can use the Portal's ARM token and if yes, follow: [Using the Portal's ARM token](http://NEED_LINK.com)
+1. Are you using obsolete bundles? 
+    - If yes, remove your dependency to them and then remove the obsolete bitmask. This is a blocking download before your extension load. See below for further details.
+1. See our [best practices](#performance-best-practices)
 
 ## My Blade 'FullReady' is above the bar, what should I do
 
@@ -137,7 +174,8 @@ You can, if preferred, run queries locally but ensure you are using the Fx provi
     1. Wrap them with custom telemetry and ensure they you aren't spending a large amount of time waiting on the result. If you are to do this, please only log one event per blade load, this will help correlate issues but also reduce unneccesary load on telemetry servers.
 1. How many parts are on the blade?
     - If there is only a single part, if you're not using a no-pdl blade or `<TemplateBlade>` migrate your current blade to a no-pdl blade.
-    - If there are multiple parts, migrate over to use a no-pdl blade
+    - If there are multiple parts, migrate over to use a no-pdl blade.
+    - Ensure to support any old pinned parts when you migrate.
 1. Does your blade open within a resource menu blade?
     - If it does, ensure the `getMenuConfig` call is returned statically (< 10ms). You can make use of the enabled/disabled observable property on menu items, if you need to asynchronously determine to enable a menu item. 
 1. See our [best practices](#performance-best-practices)
@@ -180,6 +218,9 @@ Sure! Book in some time in the Azure performance office hours.
 - Enable performance alerts
     - To ensure your experience never regresses unintentionally, you can opt into configurable alerting on your extension, blade and part load times. See [performance alerting](index-portalfx-extension-monitor.md#performance)
 - Move to [hosting service](portalfx-extension-hosting-service.md#extension-hosting-service)
+    - We've seen every team who have onboarded to the hosting service get some performance benefit from the migration. 
+        - Performance benefits vary from team to team given your current infrastructure
+        - We've commonly seen teams improve their performance by > 0.5s at the 95th  
     - If you are not on the hosting service ensure;
         1. Homepage caching is enabled
         1. Persistent content caching is enabled
@@ -191,9 +232,10 @@ Sure! Book in some time in the Azure performance office hours.
     - Don't proxy ARM through your controllers
 - Don't require full libraries to make use of a small portion
     - Is there another way to get the same result?
-- If your using iframe experiences
+- If you're using iframe experiences
     1. Ensure you have the correct caching enabled
     1. Ensure you have compression enabled
+    1. Your bundling logic is optimised
     1. Are you serving your iframe experience geo-distributed efficiently?
 
 ## Coding best practices
@@ -253,7 +295,7 @@ Sure! Book in some time in the Azure performance office hours.
     - `clientOptimizations=bundle` will allow you to assess which bundles are being downloaded in a user friendly manner
     - `feature.nativeperf=true` will expose native performance markers within your profile traces, allowing you to accurately match portal telemetry markers to the profile
 1. Go to a blank dashboard​
-1. Clear cache (hard reset) and reload the portal​
+1. Clear cache (hard reset), remove all application data and reload the portal​
 1. Use the browsers profiling timeline to throttle both network and CPU, this best reflects the 95th percentile scenario, then start the profiler
 1. Walk through your desired scenario
     - Switch to the desired dashboard
