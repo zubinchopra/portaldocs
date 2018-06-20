@@ -246,13 +246,11 @@ Sure! Book in some time in the Azure performance office hours.
 - Remove automatic polling
     - If you need to poll, only poll on the second request and ensure `isBackgroundTask: true` in the batch call
 - Optimize bundling (Avoiding the waterfall)
-
     ```typescript
     /// <amd-bunding root="true" priority="0" />
 
     import ClientResources = require("ClientResources");
     ```
-
 - Remove all dependencies on obsoleted code
     - Loading any required obsoleted bundles is a blocking request during your extension load times
     - See https://aka.ms/portalfx/obsoletebundles for further details
