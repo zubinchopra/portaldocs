@@ -136,7 +136,7 @@ Some of the main factors in extension performance are associated with network pe
 
 1.	Waterfalling bundling
 
-    If any waterfalls exist within the extension, ensure you have the proper bundling hinting in place, as specified in the optimize bundling document located at []().
+    If any waterfalls exist within the extension, ensure you have the proper bundling hinting in place, as specified in the optimize bundling document located at [top-extensions-hosting-service.md#execute-content-unbundler-to-generate-zip-file](top-extensions-hosting-service.md#execute-content-unbundler-to-generate-zip-file).
 
     The waterfall can be avoided or reduced by using the following code.
 

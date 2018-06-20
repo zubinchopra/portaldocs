@@ -167,7 +167,6 @@ PartPerformance will return a table with the following columns:
 1. Are you on the hosting service? If no, migrate to the hosting service: [Hosting service documentation](portalfx-extension-hosting-service.md#extension-hosting-service)
     - If you are, have you enabled prewarming? 
         - Follow http://aka.ms/portalfx/docs/prewarming to enable prewarming for your extension load.
-1. Are you using the Portal's ARM token? If no, verify if you can use the Portal's ARM token and if yes, follow: [Using the Portal's ARM token](http://NEED_LINK.com)
 1. Are you using obsolete bundles? 
     - If yes, remove your dependency to them and then remove the obsolete bitmask. This is a blocking download before your extension load. See below for further details.
 1. See our [best practices](#performance-best-practices)
@@ -287,7 +286,7 @@ Sure! Book in some time in the Azure performance office hours.
         - Using too many ko.computed dependencies
 - Be wary of observable usage
     - Try not to use them unless necessary
-    - Don't aggreesively update UI-bound observables
+    - Don't aggressively update UI-bound observables
         - Accumulate the changes and then update the observable
         - Manually throttle or use `.extend({ rateLimit: 250 });` when initializing the observable
 - Run portalcop to identify and resolve common performance issues
@@ -296,7 +295,7 @@ Sure! Book in some time in the Azure performance office hours.
 
 ## How to profile your scenario
 
-1. Open a browser and load portal using https://portal.azure.com/?clientoptimizations=bundle&feature.nativeperf=true​
+1. Open a browser and load portal using `https://portal.azure.com/?clientoptimizations=bundle&feature.nativeperf=true​`
     - `clientOptimizations=bundle` will allow you to assess which bundles are being downloaded in a user friendly manner
     - `feature.nativeperf=true` will expose native performance markers within your profile traces, allowing you to accurately match portal telemetry markers to the profile
 1. Go to a blank dashboard​
