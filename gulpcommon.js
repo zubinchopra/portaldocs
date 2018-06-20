@@ -292,7 +292,6 @@ var self = module.exports = {
                 
                 switch (url[0]) {
                     case "#": 
-                        const trimmedUrl = url.replace(regex,"");
                         const fragment = url.substr(1);
                         //this regex allows for a match on the markdown header tag. e.g: a fragment of #some-fragment
                         // will search the doc to see if there is any subheading e.g ### some Fragment. 
