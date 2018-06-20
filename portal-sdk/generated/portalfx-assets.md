@@ -115,6 +115,36 @@ Remember, your part and blade should both have a single `id` input parameter, wh
 
 If your asset type is in preview, set the `IsPreview="true"` property. If the asset type is GA, simply remove the property (the default is `false`).
 
+<a name="assets-defining-your-asset-type-how-to-hide-your-asset-in-different-environments"></a>
+#### How to hide your asset in different environments
+
+You can hide your asset in different environments by setting the hideassettypes feature flag in your config to a comma-separated list of asset type names. 
+
+<a name="assets-defining-your-asset-type-how-to-hide-your-asset-in-different-environments-self-hosted"></a>
+##### Self hosted:
+
+Replace '*' with the desired environment, for documentation regarding enabling feature flags in self hosted extensions [click here.](portalfx-extension-flags.md#feature-flags)
+
+        <Setting name="Microsoft.StbPortal.Website.Configuration.ApplicationConfiguration.DefaultQueryString" value="{
+            '*': {
+                     'microsoft_azure_compute_hideassettypes':"AzureContainerService,ContainerGroup,ManagedClusters,VirtualWan"
+            }
+        }" />
+
+ 
+<a name="assets-defining-your-asset-type-how-to-hide-your-asset-in-different-environments-hosting-service"></a>
+##### Hosting service:
+If you’re using the hosting service, you can do this by updating your domainname.json (e.g. portal.azure.cn.json file)
+ 
+
+    {
+      "features": {
+        "hideassettypes": "AzureContainerService,ContainerGroup,ManagedClusters,VirtualWan"
+      }
+    }
+
+
+
 <a name="blades-parts-commands"></a>
 <a name="assets-blades-parts-and-commands"></a>
 ### Blades, parts, and commands

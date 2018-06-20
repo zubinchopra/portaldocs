@@ -5,8 +5,6 @@
     * [WxP score](#overview-wxp-score)
     * [How to assess your performance](#overview-how-to-assess-your-performance)
 * [Performance Frequently Asked Questions (FAQ)](#performance-frequently-asked-questions-faq)
-    * [My Extension 'ManifestLoad' is above the bar, what should I do](#performance-frequently-asked-questions-faq-my-extension-manifestload-is-above-the-bar-what-should-i-do)
-    * [My Extension 'InitializeExtensions' is above the bar, what should I do](#performance-frequently-asked-questions-faq-my-extension-initializeextensions-is-above-the-bar-what-should-i-do)
     * [My Blade 'Revealed' is above the bar, what should I do](#performance-frequently-asked-questions-faq-my-blade-revealed-is-above-the-bar-what-should-i-do)
     * [My Part 'Revealed' is above the bar, what should I do](#performance-frequently-asked-questions-faq-my-part-revealed-is-above-the-bar-what-should-i-do)
     * [My WxP score is below the bar, what should I do](#performance-frequently-asked-questions-faq-my-wxp-score-is-below-the-bar-what-should-i-do)
@@ -57,10 +55,6 @@ As an extension author you have a duty to uphold your experience to the performa
 | Blade     | FullRevealed               | N/A                 | BladeFullRevealed        | Same as Revealed but all the parts on the blade to reveal |
 | Part      | Revealed                   | See Power BI        | PartRevealed             | Time it takes for the part to be rendered and then the part's OnInputsSet to resolve or earlyReveal to be called |
 | WxP       | N/A                        | See Power BI        | N/A                      | An overall experience score, calculated by weighting blade usage and the blade revealed time |
-
-<!--| Extension | Initial Extension Response | TODO                | InitialExtensionResponse | TODO |
-| Extension | Manifest Load              | TODO                | ManifestLoad             | TODO |
-| Extension | Initialization             | TODO                | InitializeExtensions     | TODO | -->
 
 <a name="overview-extension-performance"></a>
 ## Extension performance
@@ -134,20 +128,6 @@ You can, if preferred, run queries locally but ensure you are using the Fx provi
 
 <a name="performance-frequently-asked-questions-faq"></a>
 # Performance Frequently Asked Questions (FAQ)
-
-<!--### My Extension 'InitialExtensionResponse' is above the bar, what should I do
-
-TODO
-
-<a name="performance-frequently-asked-questions-faq-my-extension-manifestload-is-above-the-bar-what-should-i-do"></a>
-### My Extension &#39;ManifestLoad&#39; is above the bar, what should I do
-
-TODO
-
-<a name="performance-frequently-asked-questions-faq-my-extension-initializeextensions-is-above-the-bar-what-should-i-do"></a>
-### My Extension &#39;InitializeExtensions&#39; is above the bar, what should I do
-
-TODO -->
 
 <a name="performance-frequently-asked-questions-faq-my-blade-revealed-is-above-the-bar-what-should-i-do"></a>
 ## My Blade &#39;Revealed&#39; is above the bar, what should I do
@@ -821,12 +801,13 @@ web.config
 <a name="performance-best-practices-persistent-caching-of-scripts-across-extension-updates-verfiying-that-persistent-caching-is-working"></a>
 ### Verfiying that persistent caching is working
 
-- Deploy a version of your extension. Examine the scripts it loads, they will be of the form `<sha hash>.js`
+- Deploy a version of your extension. Examine the scripts it loads, they will be of the form `<sha hash>suffix.js`
 - Use a blob explorer of your preference and verify that the scripts have been written to blob storage.
 - Then make changes to TS files in your solution, build and deploy a new version of your extension.
 - Look for scripts that have a different hash.
 - For those scripts try to request the original URL (from step 1) from your extension server (not via the cdn).
 - The script should still get served, but this time it is coming from the persistent cache.
+
 
 <a name="performance-best-practices-run-portalcop-to-identify-and-resolve-common-performance-issues"></a>
 ## Run portalcop to identify and resolve common performance issues
