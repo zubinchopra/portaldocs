@@ -139,18 +139,24 @@ BladePerformanceIncludingNetwork will return a table with the following columns
 
 ### Part
 
-[database('Partner').PartPerformance(ago(1d), now())](https://aka.ms/kwe?cluster=azportal.kusto.windows.net&database=AzurePortal&q=H4sIAAAAAAAAA0tJLElMSixO1VAPSCwqyUstUtfUA7ECUovS8otyE%2FOSUzUS0%2FM1DFM0dRTy8ss1NDW5AEYwvz00AAAA)
+[database('Partner').PartPerformance(ago(1h), now())](https://aka.ms/kwe?cluster=azportal.kusto.windows.net&database=AzurePortal&q=H4sIAAAAAAAAA0tJLElMSixO1VAPSCwqyUstUtfUA7ECUovS8otyE%2FOSUzUS0%2FM1DDM0dRTy8ss1NDW5AIGipTc0AAAA)
 
 PartPerformance will return a table with the following columns:
 
-- Extension
-    - The name of the extension
-- Part
-    - The name of the part
-- Loads
+- FullPartName, Extension, PartName
+    - Part/Extension identifiers
+- PartCount
     - How many times the part was loaded within the given date range
-- 50th, 80th, 95th
+- Samples
+    - The number of loads which were tracking the number of XHR requests
+- XHRCount, XHRCount95th, XHRMax
+    - The 50th percentile (95th or MAX) of XHR requests sent which correlate to that part load (*) This is a rough heuristic, based on a 1% sampling.
+- Bytes
+    - Bytes transferred to the client via XHR requests
+- 50th, 80th, 95th, 99th
     - The time it takes for your part to resolve its `onInputsSet` or `onInitialize` promise. This is captured under the `PartReady` action in telemetry
+ - RedScore
+   - Number of violations for tracked bars 
 
 # Performance Frequently Asked Questions (FAQ)
 
