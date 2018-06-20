@@ -327,10 +327,11 @@ For example, https://mybizaextensionprod.blob.core.windows.net/extension
 Please submit your onboarding request [here](https://aka.ms/extension-hosting-service/onboarding)
 
 Here is the SLA for onboarding
+
 | Environment     | SLA     |
 |-----------------|---------|
 | **DOGFOOD**     | 5 days  |
-| **MPAC**        | 7 days |
+| **MPAC**        | 7 days  |
 | **PROD**        | 12 days |
 | **BLACKFOREST** | 15 days |
 | **FAIRFAX**     | 15 days |

@@ -12,10 +12,6 @@ As an extension author you have a duty to uphold your experience to the performa
 | Part      | Revealed                   | See Power BI        | PartRevealed             | Time it takes for the part to be rendered and then the part's OnInputsSet to resolve or earlyReveal to be called |
 | WxP       | N/A                        | See Power BI        | N/A                      | An overall experience score, calculated by weighting blade usage and the blade revealed time |
 
-<!--| Extension | Initial Extension Response | TODO                | InitialExtensionResponse | TODO |
-| Extension | Manifest Load              | TODO                | ManifestLoad             | TODO |
-| Extension | Initialization             | TODO                | InitializeExtensions     | TODO | -->
-
 ## Extension performance
 
 Extension performance effects both Blade and Part performance, as your extension is loaded and unloaded as and when it is required.
@@ -82,18 +78,6 @@ The first method is definitely the easiest way to determine your current assessm
 You can, if preferred, run queries locally but ensure you are using the Fx provided Kusto functions to calculate your assessment.
 
 # Performance Frequently Asked Questions (FAQ)
-
-<!--### My Extension 'InitialExtensionResponse' is above the bar, what should I do
-
-TODO
-
-### My Extension 'ManifestLoad' is above the bar, what should I do
-
-TODO
-
-### My Extension 'InitializeExtensions' is above the bar, what should I do
-
-TODO -->
 
 ## My Blade 'Revealed' is above the bar, what should I do
 

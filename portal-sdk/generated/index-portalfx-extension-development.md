@@ -13,8 +13,6 @@
 
 <a name="development-getting-started"></a>
 ## Getting Started
-* [Understanding the Azure Portal Architecture](portalfx-howitworks.md#understanding-the-azure-portal-architecture)
-* [Understanding the Azure Portal Extension Architecture](portalfx-howitworks.md#understanding-the-azure-portal-extension-architecture)
 
 * [Getting started with the Portal SDK](portalfx-creating-extensions.md#getting-started-with-the-portal-sdk)
 
@@ -57,7 +55,6 @@
 * [Calling ARM](portalfx-authentication.md#calling-arm)
 * [Calling alternate resources](portalfx-authentication.md#calling-alternate-resources)
 
-* [Working with data](portalfx-data.md#working-with-data)
 
 * [Introduction to Parameter Collection](portalfx-parameter-collection-overview.md#introduction-to-parameter-collection)
     * [Roles](portalfx-parameter-collection-overview.md#roles)
@@ -75,7 +72,6 @@
 
 * [Essentials panel](portalfx-essentials.md#essentials-panel)
 
-* [Resource menu](portalfx-resourcemenu.md#resource-menu)
 
 * [Defining permissions and checking access](portalfx-permissions.md#defining-permissions-and-checking-access)
 

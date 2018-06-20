@@ -545,10 +545,11 @@ For example, https://mybizaextensionprod.blob.core.windows.net/extension
 Please submit your onboarding request [here](https://aka.ms/extension-hosting-service/onboarding)
 
 Here is the SLA for onboarding
+
 | Environment     | SLA     |
 |-----------------|---------|
 | **DOGFOOD**     | 5 days  |
-| **MPAC**        | 7 days |
+| **MPAC**        | 7 days  |
 | **PROD**        | 12 days |
 | **BLACKFOREST** | 15 days |
 | **FAIRFAX**     | 15 days |
@@ -787,6 +788,7 @@ No. Registering storage account with hosting service is one-time process. This e
 10. How can I ask questions about hosting service ?
 
 You can ask questions on Stackoverflow with the tag [ibiza-deployment](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment).
+
 <a name="deploy-logging"></a>
 ## Logging
  The portal provides a way for extensions to log to MDS using a feature that can be enabled in the extension.

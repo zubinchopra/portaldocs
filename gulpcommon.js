@@ -294,7 +294,13 @@ var self = module.exports = {
                 
                 switch (url[0]) {
                     case "#": 
-                        if (!result.includes("name=\"" + url.substr(1) + "\"")) {
+                        const fragment = url.substr(1);
+                        //this regex allows for a match on the markdown header tag. e.g: a fragment of #some-fragment
+                        // will search the doc to see if there is any subheading e.g ### some Fragment. 
+                        // github respects navigating to fragment when heading depth is >= 1
+                        const matchHeading = util.format("^[#]+[\\s]?%s", fragment.replace(/-/gm, " "));
+                        const matchFragment = new RegExp(matchHeading, "gmi");
+                        if (!(result.includes("name=\"" + fragment + "\"") || matchFragment.exec(result))) {
                            //console.log(chalk.red("\tHyperlink " + url  + " does not refer to a valid link in the document.  Input file: " + inputFile));
                            brokenLinks.push({ "url":url, "inputFile":inputFile });
                            count++;
