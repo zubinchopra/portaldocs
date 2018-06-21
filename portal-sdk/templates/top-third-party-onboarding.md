@@ -8,31 +8,23 @@ It is important to read this guide carefully, as we rely on you to manage the ex
 
 When you receive the approval, you can submit a third-party request by sending an email to <a href="mailto:ibizafxpm@microsoft.com?subject=New Third Party Extension Onboarding Request: <extensionName>&body=Extension name: <ExtensionName_Extension> <br><br>URLs:  (must adhere to pattern)<br><br>PROD:  <extensionprefix>.hosting.portal.azure.net<br><br>Contact info: <email address of a team containing dev & support contacts for incidents related to extension><br><br>Business Contacts:<management contacts for escalating issues in case of critical business down situations><br><br>Dev leads: <Contacts of Developer teams who can help upgrade the SDK and deploy changes><br><br>PROD on-call email: <email address of a team containing dev & support contacts for incidents related to extension><br><br>">ibizafxpm@microsoft.com</a> instead of using the internal sites that are in this document. The body of the email should contain the following.
 
-```
-Extension name: <ExtensionName_Extension> 
+**Extension name**: <ExtensionName_Extension> 
 
-URLs:  (must adhere to pattern)
+**URLs**: (must adhere to pattern)
 
-PROD:  <extensionprefix>.hosting.portal.azure.net
+**PROD**: `<extensionprefix>.hosting.portal.azure.net`
 
-Contact info: <email address of a team containing dev & support contacts for incidents related to extension>
+**Contact info**: email address of a team containing dev & support contacts for incidents related to extension
 
-Business Contacts:<management contacts for escalating issues in case of critical business down situations>
+**Business Contacts**: management contacts for escalating issues in case of critical business down situations
 
-Dev leads: <Contacts of Developer teams who can help upgrade the SDK and deploy changes>
+**Dev leads**: Contacts of Developer teams who can help upgrade the SDK and deploy changes
 
-PROD on-call email: <email address of a team containing dev & support contacts for incidents related to extension>
-```
+**PROD on-call email**: email address of a team containing dev & support contacts for incidents related to extension
 
 **NOTE**: The name of the extension is the same for both the PROD version and the custom deployment version, as specified in [top-extensions-custom-deployment.md](top-extensions-custom-deployment.md). 
 
-For the hosting service, the request should include the name of the extension as `<prefix>.hosting.portal.azure.net/<prefix>`, as specified in portalfx-cdn.md#configuring-your-extension. The email may also contain the extension config file, as specified in [portalfx-cdn.md#configuring-your-extension](portalfx-cdn.md#configuring-your-extension).
-
-| Policy            | Location  | Fx coverage |
-| ---               | ---       | --- |
-| Accessibility     | [portalfx-accessibility.md](portalfx-accessibility.md) | Generic control supports on keyboard, focus handling, touch, screen reader, high contrast, and theming |
-| Global Readiness  | [portalfx-localization-globalization.md](portalfx-localization-globalization.md) | Localizability, regional format, text support, China GB standard |
-| Privacy           |  [portalfx-authentication.md](portalfx-authentication.md) | User settings data handling, encryption, and authentication |
+For the hosting service, the request should include the name of the extension as `<prefix>.hosting.portal.azure.net/<prefix>`. The email may also contain the extension config file, as specified in [top-extensions-cdn.md#configuring-the-extension](top-extensions-cdn.md#configuring-the-extension).
 
 For more information and any questions about Fx coverage, reach out to 
 <a href="mailto:ibiza-onboarding@microsoft.com?subject=Third Party Applications (External partners)">Third Party Applications</a>.
