@@ -7,8 +7,8 @@ Because Frame blades do not use Ibiza Fx controls, extension developers are full
 
 While this programming model results in maximum flexibility, it  also adds a significant burden of accessibility, theming, and consistency on the developer.   We recommend using Frame blades under the following conditions.
 
-*  An existing web experience needs to be migrated to Ibiza without being re-implemented
-*  An existing web experience needs to be hosted in many environments where Ibiza is just one of the hosts
+* An existing web experience needs to be migrated to Ibiza without being re-implemented
+* An existing web experience needs to be hosted in many environments where Ibiza is just one of the hosts
 * Developers want to implement user interactions and experiences that are not supported by Ibiza Framework components. For example, you need to build a very rich, custom UX that is not likely to be reused across services.
 
 When using AppBlade, developers are responsible for the following.
@@ -29,23 +29,106 @@ When using AppBlade, developers are responsible for the following.
 
     Building your own controls, or using available alternatives to Ibiza Fx controls
 
-<a name="sending-messages-between-the-iframe-and-ibiza-fx"></a>
-## Sending messages between the IFrame and Ibiza Fx
-
-The FrameBlade view model is hosted in the hidden IFrame in which the extension is loaded. This is just like TemplateBlades. However, the contents of the FrameBlade are hosted in a different IFrame that is visible on the screen. The Ibiza extension IFrame and the UI IFrame communicate by sending and receiving messages, as described in [https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage).
-
-<a name="creating-a-frameblade"></a>
-## Creating a FrameBlade
-
-The following sample demonstrates how to create a FrameBlade. It illustrates a few key concepts.
-
-1. Adding the standard Ibiza command bar to the top of your blade
-
-1. Communicating between your IFrame and your blade `ViewModel`
+To create a FrameBlade, you need to create 3 artifacts.
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
-1. Create an iframe that includes the html, like the one located at `<dir>/Content/SamplesExtension/framebladepage.html` and in the following example.
+1. Register the FrameBlade with your extension by creating a TypeScript class with the @FrameBlade decorator. The samples extension file for this is located at 
+  `<dir>/Client/V2/Blades/FrameBlade/SampleFrameBlade.ts` and in the following example.
+
+  import * as ClientResources from "ClientResources";
+import { DialogButtons } from "Fx/Composition/Dialog";
+import * as FrameBlade from "Fx/Composition/FrameBlade";
+import * as BladesArea from "../BladesArea";
+
+export = Main;
+
+module Main {
+    "use strict";
+
+    import Toolbars = MsPortalFx.ViewModels.Toolbars;
+    import Toolbar = Toolbars.Toolbar;
+
+    function mockAsyncOperationToGetDataToSendToFrame() {
+        return Q.delay(2000).then(() => {
+            return {
+                title: ClientResources.sampleFrameBladeTitle,
+            };
+        });
+    }
+
+//top-blades-frameblades#viewmodel
+    /**
+     * View model for a FrameBlade.
+     */
+    @FrameBlade.Decorator()
+    export class SampleFrameBlade {
+        public title = ClientResources.sampleFrameBladeTitle;
+        public subtitle: string;  // This FrameBlade doesn't make use of a subtitle.
+
+        public viewModel: FrameBlade.ViewModel;
+
+        public context: FrameBlade.Context<void, BladesArea.DataContext>;
+
+        public onInitialize() {
+            const { container } = this.context;
+
+            const viewModel = this.viewModel = new FrameBlade.ViewModel(container, {
+                src: MsPortalFx.Base.Resources.getContentUri("/Content/SamplesExtension/framebladepage.html"),
+            });
+			
+//top-blades-frameblades#viewmodel
+
+            // You can add command bars to FrameBlades.
+            const commandBar = new Toolbar(container);
+            commandBar.setItems([this._openLinkButton(), this._openDialogButton()]);
+            container.commandBar = commandBar;
+
+            // This is an example of how to listen for messages from your iframe.
+            viewModel.on("getAuthToken", () => {
+                // This is an example of how to post a message back to your iframe.
+                MsPortalFx.Base.Security.getAuthorizationToken().then((token) => {
+                    const header = token.header;
+                    viewModel.postMessage("getAuthTokenResponse", header);
+                });
+            });
+
+            return mockAsyncOperationToGetDataToSendToFrame().then(info => {
+                viewModel.postMessage("frametitle", info.title);
+            });
+        }
+
+        private _openLinkButton(): Toolbars.OpenLinkButton {
+            const button = new Toolbars.OpenLinkButton("http://microsoft.com");
+
+            button.label(ClientResources.ToolbarButton.openLink);
+            button.icon(MsPortalFx.Base.Images.Hyperlink());
+
+            return button;
+        }
+
+        private _openDialogButton(): Toolbars.CommandButton<void> {
+            const { container } = this.context;
+            return new Toolbars.CommandButton<void>({
+                label: "Open a dialog",
+                command: {
+                    canExecute: ko.observable(true),
+                    execute: () => {
+                        return container.openDialog({
+                            telemetryName: "FrameBladeDialog",
+                            title: ClientResources.sampleFrameBladeDialogTitle,
+                            content: ClientResources.sampleFrameBladeDialogContent,
+                            buttons: DialogButtons.Ok,
+                        });
+                    },
+                },
+            });
+        }
+    }
+}
+
+
+1. Create an html page that will serve as the main contents of your iframe.  The samples extension file for this is located at `<dir>/Content/SamplesExtension/framebladepage.html` and in the following example.
 
 ```html
 ﻿<!DOCTYPE html>
@@ -69,33 +152,7 @@ The following sample demonstrates how to create a FrameBlade. It illustrates a f
 
 ```
 
-2. Create the `ViewModel` that connects to the `html`, as in the code located at  `<dir>/Client/V2/Blades/FrameBlade/SampleFrameBlade.ts` and in the following example.
-
-```typescript
-
-/**
- * View model for a FrameBlade.
- */
-@FrameBlade.Decorator()
-export class SampleFrameBlade {
-    public title = ClientResources.sampleFrameBladeTitle;
-    public subtitle: string;  // This FrameBlade doesn't make use of a subtitle.
-
-    public viewModel: FrameBlade.ViewModel;
-
-    public context: FrameBlade.Context<void, BladesArea.DataContext>;
-
-    public onInitialize() {
-        const { container } = this.context;
-
-        const viewModel = this.viewModel = new FrameBlade.ViewModel(container, {
-            src: MsPortalFx.Base.Resources.getContentUri("/Content/SamplesExtension/framebladepage.html"),
-        });
-			
-
-```
-
-3. The frame receives information with which to build the contents of the frame blade in the   `window.addEventListener` method. When the window receives all of the frame information, the `makeViewPresentableToUser()` method injects the final frame fields into the frame and signals the parent of the frame that its content should be revealed. Sending "revealcontent" to the parent window enables the parent to use blocking and non-blocking loading indicators as appropriate. The child frame sends  "initializationcomplete" to remove all loading indicators after all data is loaded and rendered. The child frame sends the 'ready' message when the Iframe completes the loading process. The code that connects the `ViewModel` to the extension is located at  `<dir>/Content/Scripts/framepage.js`, and is also in the following example.
+1. Create a script that will communicate with your extension by using post messages. This is how your extension can get the auth token, respond to theme changes, and other tasks. The samples extension file for this is located        is located at  `<dir>/Content/Scripts/framepage.js`, and is also in the following example.
 
 ```js
 (function() {
@@ -229,41 +286,6 @@ export class SampleFrameBlade {
 
 ```
 
-The working sample can be viewed at [http://df.onecloud.azure-test.net/?feature.samplesextension=true#blade/SamplesExtension/SampleFrameBlade](http://df.onecloud.azure-test.net/?feature.samplesextension=true#blade/SamplesExtension/SampleFrameBlade).
-
-<a name="sending-messages-between-the-iframe-and-ibiza-fx"></a>
-## Sending messages between the IFrame and Ibiza Fx
-
-The AppBlade `ViewModel` is hosted in the hidden IFrame in which the extension is loaded. However, the contents of the AppBlade are hosted in a different IFrame that is visible on the screen. The Ibiza extension IFrame and the UI IFrame communicate by sending and receiving messages. The following sections demonstrate how to exchange messages between the two IFrames and the Portal.
-
-<a name="ibiza-extension-iframe-messaging"></a>
-## Ibiza extension IFrame messaging
-
-<a name="ibiza-extension-iframe-messaging-listen-to-a-message"></a>
-### Listen to a message
-
-The extension can listen to messages that are sent from the UI IFrame to the Ibiza extension ViewModel by using the **on** method in the **AppBlade** ViewModel, as in the following example.
-
-<a name="ibiza-extension-iframe-messaging-post-a-message"></a>
-### Post a message
-
-The Ibiza extension ViewModel can post messages to the UI IFrame by using the **postMessage** method in the AppBlade ViewModel, as in the following example.
-
-<a name="ui-iframe-messaging"></a>
-## UI IFrame messaging
-
-<a name="ui-iframe-messaging-listen-to-a-message"></a>
-### Listen to a message
-
-The extension can listen for messages that are sent from the Ibiza extension ViewModel to the UI Frame by adding an event listener to the application window, as shown in the following code.
-
-The extension should also provide a handler for the incoming message. 
-
-<a name="ui-iframe-messaging-post-a-message"></a>
-### Post a message
-
-The  UI IFrame can post messages back to the Portal using the **postMessage** method. There is a required message that the  IFrame sends to the Portal to indicate that it is ready to receive messages.
-
 <a name="changing-ui-themes"></a>
 ## Changing UI themes
 
@@ -280,3 +302,5 @@ MsPortalFx.Services.getSettings().then(settings => {
 });
 
 ```
+
+On the iframe side you can respond to the message just like you would respond to the auth token message. You can then adjust your css accordingly.
