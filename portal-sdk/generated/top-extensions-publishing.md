@@ -6,18 +6,17 @@
 
 When an extension development team decides to make the extension publicly available, the Portal's configuration files are updated so that users other than the team can view the extension in the various Portal production and pre-production environments. 
 
-The Portal is deployed in four different environments: `dev`, `Dogfood`, `MPAC`, and `PROD`. The deployments are from four branches in the Portal repository. Pull requests are used to cherry-pick extension configurations from one branch to the next one by updating the configuration files that govern each environment. This document assumes that the extension has been completely developed and tested, and is ready to be moved to the next branch, as specified in [portalfx-extensions-branches.md](portalfx-extensions-branches.md). This document encompasses extension configuration files in the Portal repository; the source code for the extension is out of the scope of this document.
+The Portal is deployed in four different environments: `dev`, `Dogfood`, `MPAC`, and `PROD`. The deployments are from four branches in the Portal repository. Always make code changes to a branch forked out of the Dev branch.  Create  a Pull request to merge the changes into Dev branch. Pull requests are also used to cherry-pick extension configurations from one branch to the next one by updating the configuration files that govern each environment. This document assumes that the extension has been completely developed and tested, and is ready to be moved to the next branch, as specified in [portalfx-extensions-branches.md](portalfx-extensions-branches.md). This document encompasses extension configuration files in the Portal repository; the source code for the extension is out of the scope of this document.
 
 As per the safe deployment mandate, all configuration changes are treated as code changes. Consequently, they use similar deployment processes. Changes that are checked in to the dev branch will be deployed in the following order: **Dogfood** -> **RC** -> **MPAC** -> **PROD** -> National Clouds (**BlackForest**, **FairFax**, and **Mooncake**).  The table in [top-extensions-svc-lvl-agreements.md](top-extensions-svc-lvl-agreements.md) specifies the amount of time allowed to complete the deployment.
 
-**NOTE**: If the pull requests are not sent in the above specified order of environments, or if the commit message for the extension has changed, then the extension will experience a unit test failure and the changes can be reverted without any notice to the developer.
+**NOTE**: If the pull requests are not sent in the above specified order of environments, or if the commit message for the extension has changed, then the extension will experience a unit test failure and the changes can be reverted without any notice to the developer.  It is NOT guaranteed that the changes will get merged to top level branches automatically and may require extension owners to manually cherry-pick to top level branches in the order mentioned above. 
 
 The configuration file for the extension that will be cherry-picked should be similar to the examples in [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md). The relationship between the environments and the configuration files specified in [portalfx-extensions-branches.md](portalfx-extensions-branches.md).
 
  For permission to send pull requests, developers should join the **Azure Portal Partner Contributors - 19668(19668)** group as specified in [portalfx-extensions-onboarding-overview.md#join-dls-and-request-permissions](portalfx-extensions-onboarding-overview.md#join-dls-and-request-permissions).
 
 All the pull requests should be sent first to the dev branch. To add or update or your extension's configuration, use the following process to send a pull request to the reviewers that you can specify in the request.
-
 
 1. Open or locate the associated bug at [http://aka.ms/portalfx/exec/bug](http://aka.ms/portalfx/exec/bug). Then use the bug ID and bug title in the git commit message. 
 
@@ -95,3 +94,71 @@ These instructions can be used to submit pull requests for C# Test Framework imp
 1. The configuration files must be modified to match the test framework environment
 
 For more information about submitting improvements to the C# Test Framework, see [portalfx-csharp-test-publish.md](portalfx-csharp-test-publish.md).
+
+<a name="publishing-your-portal-extension-another-way-to-send-a-pull-request"></a>
+### Another way to send a pull request
+
+For those of you who are already familiar with the environments and their processes may want to use the following steps instead of the steps that are located in [Publicly available extensions](#publicly-available-extensions).
+
+1. Go to https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/branches
+
+1. Click on "New Branch", as in the following image.
+
+   ![alt-text](../media/top-extensions-publishing/new-branch.png "Create a New Branch")
+
+1. 	On the "Create a branch" dialog enter the following information.
+	1. **Name**: Name of the branch
+
+	1. **Based on**: Set this to "dev" branch
+
+    1. **Work items to link**: Create a workitem in the area named `One\Azure Portal\Onboarding` for onboarding the extension and set the appropriate title,  as in the following image.
+
+   ![alt-text](../media/top-extensions-publishing/pull-request-area.png "Pull Request Areas")
+
+   ![alt-text](../media/top-extensions-publishing/create-branch.png "Created Branch")
+
+    The sample is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_workitems/edit/2625600](https://msazure.visualstudio.com/One/Azure%20Portal/_workitems/edit/2625600).
+
+1. Switch to the new branch, as in the following image.
+
+   ![alt-text](../media/top-extensions-publishing/new-branch.png "New Branch")
+
+1. Open the file `src/RDPackages/OneCloud/Extensions.prod.json`.
+
+   ![alt-text](../media/top-extensions-publishing/config-file.png "Extensions.prod.json file")
+
+   ![alt-text](../media/top-extensions-publishing/config-file-location.png "Extensions.prod.json file location")
+
+1. Click on Edit.
+
+   ![alt-text](../media/top-extensions-publishing/edit-button.png "Edit Button")
+
+1. Update the config with the section as indicated in the workitem above.
+
+   ![alt-text](../media/top-extensions-publishing/update-config.png "####")
+
+1. Click Commit to commit the changes.
+
+   ![alt-text](../media/top-extensions-publishing/commit.png "####")
+   
+1. Update the commit message and workitem in the Commit dialog box.
+
+   ![alt-text](../media/top-extensions-publishing/commit-dialog.png "####")
+
+1. Click the Commit button at the bottom of the dialog (If you don’t see the commit button, hit Tab key).
+
+   ![alt-text](../media/top-extensions-publishing/commit-button-enabled.png "####")
+
+1. Click on the "Create a pull request" link.
+
+   ![alt-text](../media/top-extensions-publishing/pull-request-create.png "####")
+
+1. Verify the details before the Pull Request is created.
+
+   ![alt-text](../media/top-extensions-publishing/pull-request-verification.png "####")
+
+1. Click the "Create" button to create the Pull Request.
+
+   ![alt-text](../media/top-extensions-publishing/commit-button-enabled.png "####")
+
+1. Send email to <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Pull Request link&body=Hello, I need you to approve a pull request and expedite the associated request. The pull request link is . . .">ibiza-onboarding-kick@microsoft.com</a> with the Pull Request link to get the approval and expediting the request.
