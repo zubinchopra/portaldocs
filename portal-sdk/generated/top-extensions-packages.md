@@ -19,7 +19,7 @@ After installation, NuGet packages that are used for development can be viewed i
 
 | Package | Purpose |
 | ------- | ------- |
-| [Microsoft.Portal.Framework](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=Official%40Local&package=Microsoft.Portal.Framework&protocolType=NuGet&_a=package) | 	Contains framework assemblies required for extension development. | 
+| [Microsoft.Portal.Framework](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=Official%40Local&package=Microsoft.Portal.Framework&protocolType=NuGet&_a=package) | Contains framework assemblies required for extension development. | 
 | [Microsoft.Portal.Security.AadCore](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=Official%40Local&package=Microsoft.Portal.Security.AadCore&protocolType=NuGet&_a=package)	| Contains AAD module used for auth. | 
 | [Microsoft.Portal.Tools](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=Official%40Local&package=Microsoft.Portal.Tools&protocolType=NuGet&_a=package) | 	Contains PDC, build target files (.target) , Definition files and TypeScript 2.3.3 compiler. | 
 | [Microsoft.Portal.Tools.ContentUnbundler](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=Official%40Local&package=Microsoft.Portal.Tools.ContentUnbundler&protocolType=NuGet&_a=package) | Contains the tool that packages an extension UI into a zip file which can be served by the hosting service. | 
@@ -35,12 +35,12 @@ After installation, NuGet packages that are used for development can be viewed i
 <a name="available-packages-testing"></a>
 ### Testing
 
-| Package | Purpose |
-| ------- | ------- |
+| Package | Purpose | Document |
+| ------- | ------- | -------- |
 | [msportalfx-test](https://www.npmjs.com/package/msportalfx-test) (node module) | Provides APIs for authoring UI-based test cases with Selenium in TypeScript. | 
 | [msportalfx-ut](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=feed) (node module)	| Provides APIs for authoring Unit Tests against extension code in TypeScript. Includes runtime, APIs, test runner support, trx and junit output for CI and code coverage reporting. See [top-extensions-unit-test.md](top-extensions-unit-test.md) for more details. | 
 | [Microsoft.Portal.TestFramework](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=Official%40Local&package=Microsoft.Portal.TestFramework&protocolType=NuGet&_a=package) | Provides APIs for writing UI-based test cases with Selenium authored in CSharp. For more information about using the test framework, see [top-extensions-csharp-test-framework.md](top-extensions-csharp-test-framework.md). | 
-| [Microsoft.Portal.TestFramework.UnitTest](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=Official%40Local&package=Microsoft.Portal.TestFramework.UnitTest&protocolType=NuGet&_a=package) | The msportalfx-ut node module shipped in a NuGet package for those that cannot consume the internal package source that is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=feed](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=feed), or are on CoreXT or similar IDE's that require offline/disconnected builds. For more information about unit testing, see [top-extensions-unit-test.md](top-extensions-unit-test.md). |
+| [Microsoft.Portal.TestFramework.UnitTest](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=Official%40Local&package=Microsoft.Portal.TestFramework.UnitTest&protocolType=NuGet&_a=package) | The [msportalfx-ut](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=feed)  node module shipped in a NuGet package for those that cannot consume the internal package source that is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=feed](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=feed), or are on CoreXT or similar IDE's that require offline/disconnected builds. For more information about unit testing, see [top-extensions-unit-test.md](top-extensions-unit-test.md). |
 
 <a name="available-packages-shared-packages"></a>
 ### Shared packages
