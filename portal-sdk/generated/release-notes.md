@@ -1,4 +1,8 @@
-# Release Notes since 2/20/2018
+# Release Notes since 2/23/2018
+
+## 5.0.302.1185
+0 Breaking Changes, 1 Features added and 3 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2617164'>2617164</a></td><td>Bug Fix</td><td>Log responses to settings calls that return 500</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2601301'>2601301</a></td><td>Bug Fix</td><td>Set IncludeErrorDetailPolicy.Always to capture client error</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2598166'>2598166</a></td><td>Bug Fix</td><td>MonitorChartV2: Appinsights Sum metrics are displaying incorrect data when going to MDM</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2597154'>2597154</a></td><td>Feature</td><td>Enable Insights to Monitoring extension redirect in Public Prod</td></tr></table>
 
 ## 5.0.302.1184
 0 Breaking Changes, 2 Features added and 2 Bugs Fixed
@@ -283,15 +287,3 @@
 ## 5.0.302.1017
 0 Breaking Changes, 2 Features added and 3 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2161381'>2161381</a></td><td>Feature</td><td>[Perf] Optimize jQuery's XSS security fix</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2160204'>2160204</a></td><td>Bug Fix</td><td>Turn on batch command name in all environments</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2147878'>2147878</a></td><td>Feature</td><td>Change m365 to devicemanagement</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2118052'>2118052</a></td><td>Bug Fix</td><td>Add more Intune workloads to M365.ts</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1975825'>1975825</a></td><td>Bug Fix</td><td>[Perf] do not load dashboard when switching blades from sidebar</td></tr></table>
-
-## 5.0.302.1016
-0 Breaking Changes, 1 Features added and 5 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2146411'>2146411</a></td><td>Bug Fix</td><td>Use LocalizationProject property in V2 targets</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2144512'>2144512</a></td><td>Bug Fix</td><td>Enable improved sidebar/flyout in national clouds</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2045720'>2045720</a></td><td>Bug Fix</td><td>Extra horizontal scroll bar in collapsed browse blade because of filter content.</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1891321'>1891321</a></td><td>Bug Fix</td><td>Cleanup content package test</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1891303'>1891303</a></td><td>Bug Fix</td><td>[CloudBuild] Include MSBuild ItemList None to content package</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1878101'>1878101</a></td><td>Feature</td><td>[Browse] Update hidden types checkbox label</td></tr></table>
-
-## 5.0.302.1015
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2143684'>2143684</a></td><td>Bug Fix</td><td>SDK Version comparison should use compareto</td></tr></table>
-
-## 5.0.302.1014
-0 Breaking Changes, 2 Features added and 3 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2079027'>2079027</a></td><td>Feature</td><td>Remove NewRelic from the portal</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2052782'>2052782</a></td><td>Bug Fix</td><td>Commit generated client resource d.ts files</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1927138'>1927138</a></td><td>Feature</td><td>[Microsoft_Intune_Edu] Updating help/support link in prod environment</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1893314'>1893314</a></td><td>Bug Fix</td><td>Split PerformanceExtension to client/server projects</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1893030'>1893030</a></td><td>Bug Fix</td><td>Migrate PerformanceExtension to use V2 targets</td></tr></table>
