@@ -3,7 +3,11 @@
 
 * [Publicly available extensions](#publicly-available-extensions)
 
+* [Extensions for the C Sharp test framework](#extensions-for-the-c-sharp-test-framework)
+
 * [Another way to send a pull request](#another-way-to-send-a-pull-request)
+
+* * * 
 
 <a name="publishing-your-portal-extension-publicly-available-extensions"></a>
 ### Publicly available extensions
@@ -87,8 +91,8 @@ All the pull requests should be sent first to the dev branch. To add or update o
 
 When the changes are successfully deployed in any environment, the developer will receive an email.
 
-<a name="publishing-your-portal-extension-extensions-for-the-c-test-framework"></a>
-### Extensions for the C# test framework
+<a name="publishing-your-portal-extension-extensions-for-the-c-sharp-test-framework"></a>
+### Extensions for the C Sharp test framework
 
 These instructions can be used to submit pull requests for C# Test Framework improvements, with the following additions.
 
