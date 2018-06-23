@@ -126,7 +126,7 @@ For those of you who are already familiar with the environments and their proces
 
 1. Switch to the new branch, as in the following image.
 
-   ![alt-text](../media/top-extensions-publishing/new-branch.png "New Branch")
+   ![alt-text](../media/top-extensions-publishing/switch-branch.png "Switch Branches")
 
 1. Open the file named `src/RDPackages/OneCloud/Extensions.prod.json`.
 
