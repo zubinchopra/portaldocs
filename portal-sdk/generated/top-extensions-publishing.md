@@ -100,13 +100,13 @@ For more information about submitting improvements to the C# Test Framework, see
 
 For those of you who are already familiar with the environments and their processes may want to use the following steps instead of the steps that are located in [Publicly available extensions](#publicly-available-extensions).
 
-1. Go to https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/branches
+1. Go to [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/branches](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/branches).
 
 1. Click on "**New Branch**", as in the following image.
 
    ![alt-text](../media/top-extensions-publishing/new-branch.png "Create a New Branch")
 
-1. 	On the "**Create a branch**" dialog enter the following information.
+1. 	On the "**Create a branch**" dialog, enter the following information.
 
 	1. **Name**: Name of the branch
 
@@ -116,7 +116,7 @@ For those of you who are already familiar with the environments and their proces
 
        ![alt-text](../media/top-extensions-publishing/pull-request-area.png "Pull Request Areas")
 
-       ![alt-text](../media/top-extensions-publishing/create-branch.png "Created Branch")
+       ![alt-text](../media/top-extensions-publishing/create-branch.png "'Create a Branch' dialog")
 
     A sample branch is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_workitems/edit/2625600](https://msazure.visualstudio.com/One/Azure%20Portal/_workitems/edit/2625600).
 
@@ -132,36 +132,36 @@ For those of you who are already familiar with the environments and their proces
 
    ![alt-text](../media/top-extensions-publishing/config-file-location.png "Extensions.prod.json file location")
 
-1. Click on "**Edit**".
+1. Click on the "**Edit**" button.
 
    ![alt-text](../media/top-extensions-publishing/edit-button.png "Edit Button")
 
 1. Update the configuration file with the section that was specified in the "**Create a branch**" workitem.
 
-   ![alt-text](../media/top-extensions-publishing/update-config.png "####")
+   ![alt-text](../media/top-extensions-publishing/update-config.png "Update the config")
 
 1. Click the "**Commit**" button to commit the changes.
 
-   ![alt-text](../media/top-extensions-publishing/commit.png "####")
+   ![alt-text](../media/top-extensions-publishing/commit-button.png "Commit button")
    
 1. Update the commit message and workitem in the "**Commit**" dialog box, as in the following image.
 
-   ![alt-text](../media/top-extensions-publishing/commit-dialog.png "####")
+   ![alt-text](../media/top-extensions-publishing/commit-dialog.png "Commit Dialog Boxes")
 
-1. Click the "**Commit**" button at the bottom of the dialog. If you do not see the button, use the Tab key instead.
+1. Click the "**Commit**" button at the bottom of the dialog. If you do not see the button, use the **Tab** key instead.
 
-   ![alt-text](../media/top-extensions-publishing/commit-button-enabled.png "####")
+   ![alt-text](../media/top-extensions-publishing/commit-button-enabled.png "Enabled Commit button")
 
 1. Click on the **Create a pull request** link.
 
-   ![alt-text](../media/top-extensions-publishing/pull-request-create.png "####")
+   ![alt-text](../media/top-extensions-publishing/pull-request-create.png "Create the pull request")
 
 1. Verify the details before the pull request is created.
 
-   ![alt-text](../media/top-extensions-publishing/pull-request-verification.png "####")
+   ![alt-text](../media/top-extensions-publishing/pull-request-verification.png "Verify pull request")
 
 1. Click the "**Create**" button to create the Pull Request.
 
-   ![alt-text](../media/top-extensions-publishing/commit-button-enabled.png "####")
+   ![alt-text](../media/top-extensions-publishing/commit-button-enabled.png "Create Pull Request with Create")
 
 1. Send email to <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Pull Request link&body=Hello, I need you to approve a pull request and expedite the associated request. The pull request link is . . .">ibiza-onboarding-kick@microsoft.com</a> that contains a link to the Pull Request to get the approval and expedite the request.
