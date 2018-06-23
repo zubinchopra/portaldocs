@@ -1,6 +1,10 @@
 <a name="publishing-your-portal-extension"></a>
 ## Publishing your portal extension
 
+* [Publicly available extensions](#publicly-available-extensions)
+
+* [Another way to send a pull request](#another-way-to-send-a-pull-request)
+
 <a name="publishing-your-portal-extension-publicly-available-extensions"></a>
 ### Publicly available extensions
 
