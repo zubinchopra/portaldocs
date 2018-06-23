@@ -170,6 +170,4 @@ For those of you who are already familiar with the environments and their proces
 
 1. Click the "**Create**" button to create the Pull Request.
 
-   ![alt-text](../media/top-extensions-publishing/commit-button-enabled.png "Create Pull Request with Create")
-
 1. Send email to <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Pull Request link&body=Hello, I need you to approve a pull request and expedite the associated request. The pull request link is . . .">ibiza-onboarding-kick@microsoft.com</a> that contains a link to the Pull Request to get the approval and expedite the request.
