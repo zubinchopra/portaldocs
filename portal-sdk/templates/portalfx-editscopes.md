@@ -1,10 +1,8 @@
 
-# EditScopes and EditScopeless  Forms
+# EditScopes 
 
-{"gitdown": "include-file", "file": "../templates/top-legacy-editscopes.md"}
+The page you requested has moved to [top-legacy-editscopes.md](top-legacy-editscopes.md).
 
-{"gitdown": "include-file", "file": "../templates/top-editscopeless-forms.md"}
+# EditScopeless  Forms
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-editscope.md"}
-
-
+The page you requested has moved to [top-editscopeless-forms.md](top-editscopeless-forms.md.)
