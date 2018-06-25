@@ -29,6 +29,18 @@ The following sections cover these topics.
 
 * [Pinning parts](#pinning-parts)
 
+* [Preventing pinning](#preventing-pinning)
+
+* [Versioning](#versioning)
+
+* [Permanently discontinue a part](#permanently-discontinue-a-part)
+
+* [Removing a part from a blade default layout](#removing-a-part-from-a-blade-default-layout)
+
+* [Handling part errors](#handling-part-errors)
+
+* [Handling assets that no longer exist](#handling-assets-that-no-longer-exist)
+
 * * * 
 
 ### Traditional parts and template blades 
@@ -61,11 +73,11 @@ The following procedure demonstrates how to use a button part.
 
 1. Declare the part in the global `<Definition>` section of the PDL for the extension, as in the following example.
 
-  {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/Intrinsic/ButtonPart/ButtonPartIntrinsicInstructions.pdl", "section": "parts#BasicPartExampleForDocs"}
+     {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/Intrinsic/ButtonPart/ButtonPartIntrinsicInstructions.pdl", "section": "parts#BasicPartExampleForDocs"}
 
 1. The ViewModel that is associated with the pdl will plug data into the part. The ViewModel is located at `<dir>\Client\V1\Parts\Intrinsic\ViewModels\ButtonPartViewModel.ts`  For this step, the data is just the label and icon, but for more data-oriented parts, the data can be gathered from a server, like a resource provider. The ViewModel is in the following code.
 
- {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/Intrinsic/ViewModels/ButtonPartViewModel.ts", "section": "parts#BasicPartExampleViewModel"}
+     {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/Intrinsic/ViewModels/ButtonPartViewModel.ts", "section": "parts#BasicPartExampleViewModel"}
 
 ### Custom parts
 
@@ -89,11 +101,11 @@ The following procedure demonstrates how to use a custom part.
 
 1. The pdl points to the html template.
 
-  {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/Custom/Templates/ExampleCustomPart.html", "section": "Parts#CustomPartTemplateDoc"}
+    {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/Custom/Templates/ExampleCustomPart.html", "section": "Parts#CustomPartTemplateDoc"}
 
 1. The HTML template is bound to the following ViewModel by using **Knockout**, which is also referred to in the pdl.
 
-  {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/Custom/ViewModels/ExampleCustomPartViewModel.ts", "section": "parts#CustomPartViewModelDoc"}
+     {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Parts/Custom/ViewModels/ExampleCustomPartViewModel.ts", "section": "parts#CustomPartViewModelDoc"}
 
 ### Integrating parts into the part gallery
 
@@ -228,7 +240,7 @@ Parts are not individually flagged as not being pinnable.  Rather, a blade that 
 For more information, about sharing parts, see [portalfx-extensibility-pde.md](portalfx-extensibility-pde.md).
 
 
-## Versioning
+### Versioning
 
 When users customize or pin a part, the following states are stored and used the next time the part is loaded from a customized context.
 
@@ -250,7 +262,6 @@ This example is based on the sample located at `<dir>\Client\V1\Hubs\Browse\Brow
 
  The **CanUseOldInputVersion** attribute can be set to `true` to specify that the part can process older versions of inputs. It should be used in conjunction with the  part property named `version`, as in the following example.
 
-<!-- TODO:  Determine whether the following sample is causing GitHub to stop the build. -->
     {"gitdown": "include-file", "file": "../Samples/SamplesExtension/Extension/Client/V1/Hubs/Browse/Browse.pdl"}
 
 ```xml
@@ -336,15 +347,95 @@ Developers occasionally build and ship parts, and later  discontinue their funct
 
 Azure customers have informed the Azure team that parts disappearing automatically from their startboards is an extremely dissatisfactory experience. To address this customer request, Azure has created a process that allows developers to permanently discontinue a part while providing a good user experience that uses customizations.
 
-To discontinue a part, developers delete the majority of the code, but leave enough in place so that the tile still loads.  Then use the `container.noDataMessage()` api to inform the user that the part is no longer supported.
+To discontinue a part, developers delete the majority of the code from the `ViewModel`, but leave the constructor and `onInputsSet`.  in place so that the tile still loads. 
 
-This ensures that customers are informed that this part is no longer supported, and that parts that fail will not be displayed on their dashboards.
+Then use the `container.noDataMessage()` in the constructor to inform the user that the part is no longer supported, and return empty promise from `onInputsSet`.
+
+This ensures that customers are informed that this part is no longer supported, and that parts that fail will not be displayed on their dashboards.  An example is in the following code.
+
+```
+export class DocumentCountUsagePartViewModel extends MsPortalFx.ViewModels.Parts.SingleValueGauge.ViewModel {
+    constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState: any, dataContext: DataContext) {
+        super();
+        container.noDataMessage(ClientResources.tileRemoved);
+    }
+
+    public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
+        return Q();
+    }
+}
+```
+
+In the PDL code, make the part global by moving it from inside `<Blade>/<Lens>` tags to be the child of the `<Definition />` tag in the global `*.pdl` file. Then, rename this part, and create a  `<RedirectPart />` tag that uses the old name.
+The following example is the code before and after it was rewritten to obsolete the old part.
+
+* Before
+    ```
+    <Definition...>
+        <Blade Name="MyBlade" ...>
+            <Lens Name="MyLens" ...>
+                <Part Name="DocumentCountUsagePartViewModel"
+                    PartKind="SingleValueGauge"
+                    ViewModel="DocumentCountUsagePartViewModel"
+                    InitialSize="Wide"
+                    AssetType="SearchService"
+                    AssetIdProperty="resourceId">
+                    <Part.Permissions>
+                        <PermissionReference AssetType="SearchService" Permission="read"/>
+                    </Part.Permissions>
+                    <Part.Properties>
+                        <Property Name="resourceId">
+                            <BladeParameter Name="id"/>
+                        </Property>
+                    </Part.Properties>
+                </Part>
+            </Lens>
+        </Blade>
+    </Definition>
+    ```
+
+* After
+
+    ```
+    <Definition...>
+        <Blade Name="MyBlade" ...>
+            <Lens Name="MyLens" ...>
+
+            </Lens>
+        </Blade>
+
+        <RedirectPart
+            Name="DocumentCountUsagePart"
+            Blade="MyBlade"
+            Lens="MyLens">
+            <NewPart PartType="DocumentCountUsagePartGlobal" />
+        </RedirectPart>
+
+        <Part Name="DocumentCountUsagePartViewModelGlobal"
+                    PartKind="SingleValueGauge"
+                    ViewModel="DocumentCountUsagePartViewModel"
+                    InitialSize="Wide"
+                    AssetType="SearchService"
+                    AssetIdProperty="resourceId">
+                <Part.Permissions>
+                    <PermissionReference AssetType="SearchService" Permission="read"/>
+                </Part.Permissions>
+                <Part.Properties>
+                    <Property Name="resourceId"/>
+                </Part.Properties>
+            </Part>
+
+    </Definition>
+    ```
+
+
+**NOTE**: The `<BladeParameter />` element was removed from the `<Property />`  tag because it is not allowed for global parts.
 
 ### Removing a part from a blade default layout
 
 An unlocked blade's default layout should consist of tiles that provide the most  value to users and still meet extension performance goals out-of-the-box.  That layout may change over time, and your team may decide that a part that was included in a blade's default layout should be removed.
 
-1. If the part was defined inline as a `<Part/>` or `<CustomPart>` element within a `<Blade/>` and `<Lens/>`, then the part should be moved out of the blade and into the global part catalog for the extension. Otherwise, if the  part is already defined in the global part catalog, or is defined in another extension, then the pdl file may contain a  `<PartReference/>` tag for the blade, instead of  a `<Part/>` tag.
+If the part was defined inline as a `<Part/>` or `<CustomPart>` element within a `<Blade/>` and `<Lens/>`, then the part should be moved out of the blade and into the global part catalog for the extension. Otherwise, if the  part is already defined in the global part catalog, or is defined in another extension, then the pdl file may contain a  `<PartReference/>` tag for the blade, instead of  a `<Part/>` tag.
 
 **NOTE**: It is best practice to use **Typescript** or no-pdl parts.
 
@@ -359,7 +450,7 @@ The following procedure to remove a part from a blade  layout.
               Blade="EXACT BLADE NAME THAT THE PART WAS DEFINED IN"
               Lens="OPTIONAL - EXACT LENS NAME THE PART WAS DEFINED IN"
               Extension="OPTIONAL - ONLY APPLICABLE IF THE PART IS DEFINED IN A DIFFERENT EXTENSION">
-    <NewPart Name="NAME OF THE NEW GLOBAL PART THAT DEFINES THE PART BEHAVIOR" />
+    <NewPart PartType="NAME OF THE NEW GLOBAL PART THAT DEFINES THE PART BEHAVIOR" />
 </RedirectPart>
 ```
 
@@ -383,7 +474,7 @@ constructor(container: MsPortalFx.ViewModels.PartContainer, initialState: any, d
 
 When the error is  fixed,  then the extension can call `container.recover()` to return the part to its normal display state. One example is that the extension is polling for data, and the first poll does not retrieve results, but a subsequent poll returns valid results.
 
-## Handling assets that no longer exist
+### Handling assets that no longer exist
 
 Many parts represent assets like ARM resources that can be deleted from the UI, PowerShell, or the calling REST APIs.  A stateless UI system handles this deletion by loading only assets that exist at the time the UI starts up.  Because Ibiza contains the state for all user customizations, this 'Not Found' case is handled in a few specific places. Some examples are as follows.
 
