@@ -55,7 +55,7 @@ The section has two properties that allow for layout control. They are as follow
 
 If you are working with blades that use legacy concepts like `editScope`, you can still use the new form controls by sending the `editScope` observable to the blade options as the `value` property. This results in the `editScope` being updated when the control is updated, and vice versa.
 
-**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions and forms be developed without edit scopes, as specified in [portalfx-editscopeless-procedure.md](portalfx-editscopeless-procedure.md).
+**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions and forms be developed without edit scopes, as specified in  [top-editscopeless-forms.md](top-editscopeless-forms.md).
 
 ### Form Topics
 
@@ -70,8 +70,7 @@ For more information about how forms and parameters interact with an extension, 
 
 For more information about forms with editScopes, see [top-legacy-editscopes.md](top-legacy-editscopes.md).
 
-For more information about forms without editScopes, see [portalfx-editscopeless-overview.md](portalfx-editscopeless-overview.md).
-
+For more information about forms without editScopes, see  [top-editscopeless-forms.md](top-editscopeless-forms.md).
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-forms.md"}
 
