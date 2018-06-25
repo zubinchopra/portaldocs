@@ -181,7 +181,7 @@ FAQ's that are associated with controls, commands, and the playground.
 
 ***My extension is still using legacy blades (locked or unlocked). Is this still applicable to me? If yes, do I get the benefits mentioned above?***
 
-SOLUTION: Even if you are not using template blades, you can reference the MonitorChartPart from the Hubs extension, as specified in [portalfx-controls-monitor-chart.md#legacyBladeUsage](portalfx-controls-monitor-chart.md#legacyBladeUsage).
+SOLUTION: Even if you are not using template blades, you can reference the MonitorChartPart from the Hubs extension, as specified in [portalfx-controls-monitor-chart.md#legacy-blade-usage](portalfx-controls-monitor-chart.md#legacy-blade-usage).
 
 If there is an Insights/Monitoring Metrics part on your blade already, you can reference the part from Hubs extension instead of referencing the metrics part from Insights/Monitoring extension. Because the Hubs extension is always loaded when you load the portal, it will be loaded before the user loads your extension blade. Hence, you will not load an additional extension and get significant performance benefits. However, for the best performance, we strongly recommend that your extension should use the Monitor Chart control directly on a template blade. For more information about migrating to template blades, see [portalfx-no-pdl-programming.md](portalfx-no-pdl-programming.md).
 
@@ -242,6 +242,7 @@ SOLUTION: Localization is done at build times, so none of the string inputs are 
 
 * * *
 
+
 <a name="debugging"></a>
 ## Debugging
 
@@ -261,7 +262,7 @@ SSL Certs are relevant only for teams that host their own extensions.  Azure Por
  
  Production certs must follow your organization’s PROD cert process. 
 
- **NOTE** Do not use the SSL Admin site for production certs.
+ **NOTE**: Do not use the SSL Admin site for production certs.
 
 * * *
 
@@ -281,7 +282,7 @@ Understanding which extension configuration to modify is located at [portalfx-ex
 
 1.  Navigate to the Portal where your extension is hosted or side loaded.
 1. Press F12 in the browser and select the console tab.
-1. Set the current frame dropdown to that of your extension.
+1. Set the current frame dropdown to that of your extension.  If it's not obvious, for example, if the extension is running in a web worker, select one of the values in the dropdown and run MsPortalFx.getEnvironmentValue("`<extensionName>`") to determine the context.
 1. In the console type `fx.environment.version` and click enter to see the version of the extension on the client, as in the following image.
 
     ![alt-text](../media/portalfx-debugging/select-extension-iframe.png "Select extension iframe")
@@ -307,12 +308,12 @@ The SharePoint Sparta Onboarding FAQ is located at [http://sharepoint/sites/Azur
 
 **What is Compile on Save ?**
 
-Compile on Save is a **TypeScript** option that   . To use it, make sure that **TypeScript** 2.0.3 was installed on your machine. The version can be verified by executing the following  command:
+Compile on Save is an option in VS **TypeScript** Project Properties that allows the developer to compile  `.ts` files when they are saved to disk. To use it, make sure that **TypeScript** 2.3.3 was installed on your machine. The version can be verified by executing the following  command.
 
 ```bash
 $>tsc -version
 ```
-Then, verify that when a **TypeScript** file is saved, that the following text is displayed in the bottom left corner of your the **Visual Studio** application.
+Then, verify that when a **TypeScript** file is saved, that the following text is displayed in the bottom left corner of the **Visual Studio** application.
 
 ![alt-text](../media/portalfx-ide-setup/ide-setup.png "CompileOnSaveVisualStudio")
 
@@ -325,6 +326,104 @@ Then, verify that when a **TypeScript** file is saved, that the following text i
 
 You can ask questions on Stackoverflow with the tag [ibiza](https://stackoverflow.microsoft.com/questions/tagged/ibiza).
 
+
+
+<a name="editscopes-and-editscope-less-forms"></a>
+## EditScopes and EditScope-less forms
+
+<a name="frequently-asked-questions"></a>
+## Frequently asked questions
+
+<a name="frequently-asked-questions-discard-change-pop-up-always-displayed"></a>
+### Discard change pop-up always displayed
+
+***Q: My users see the 'discard change?' pop-up, even when they've made no changes on my Form Blade. What's wrong?*** 
+
+The EditScope `root` property returns an object or array that includes uses of Knockout observables (`KnockoutObservable<T>` and `KnockoutObservableArray<T>`). Any observable located within the EditScope is designed to be modified/updated only by the user, via Form fields that are bound to EditScope observables. Importantly, these EditScope observables were not designed to be modified directly from extension TypeScript code. If extension code modifies an observable during the Form/Blade initialization process, the EditScope will record this as a user edit, and this accidental edit will trigger the `discard changes` pop-up when the user tries to close the associated Blade.
+
+SOLUTION:
+Rather than initializing the EditScope by programmatically modifying/updating EditScope observables, use these alternative techniques:
+* If the extension uses a `ParameterProvider` component to manage its EditScope, initialize the EditScope data in the `mapIncomingData[Async]` callback supplied to ParameterProvider.
+* If the extension uses an EditScopeCache component to manage its EditScope, initialize the EditScope data in the `supplyNewData` and `supplyExistingData` callbacks supplied to EditScopeCache.
+* If neither of the above techniques suits the scenario, the `editScope.resetValue()` method can be used to set a new/initial value for an EditScope observable in a way that *is not recorded as a user edit* (although this only works for observables storing primitive-typed values).  
+  
+* * *
+
+<a name="frequently-asked-questions-editscope-location"></a>
+### EditScope Location
+
+***Q: I need to integrate my Form with an EditScope. Where do I get the EditScope?*** 
+
+**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions and forms be developed without edit scopes, as specified in [top-editscopeless-forms.md](top-editscopeless-forms.md).
+
+SOLUTION: Integrate forms with `EditScopes` varies according to the UX design. Developers can choose between using a `ParameterProvider` component or `EditScopeCache` component as follows:
+
+* Use `ParameterProvider` for the following scenario:
+    * **Pop-up/dialog-like form** - The blade uses an ActionBar with an 'Ok'-like button that commits user edits. Typically, when the user commits the edits, the blade is implicitly closed, like a conventional UI pop-up/dialog. The blade uses `parameterProvider.editScope` to access the loaded/initialized EditScope.
+
+* Use `EditScopeCache` for the following scenarios:
+    * **Save/Revert blade** - There are 'Save' and 'Revert changes' commands in the CommandBar of the blade. Typically, these commands keep the blade open so the user can perform successive edit and save cycles without closing and reopening the form. 
+
+    * **Document editing** - In the document-editing scenario, the user can make edits to a single EditScope/Form model across multiple parent-child blades. The parent blade sends its `inputs.editScopeId` input to any child blade that edits the same model as the parent Blade. The child blade uses this `inputs.editScopeId` in its call to `editScopeView.fetchForExistingData(editScopeId)` to fetch the EditScope of the parent Blade. 
+
+* * *
+  
+<a name="frequently-asked-questions-what-is-an-editscopeaccessor"></a>
+### What is an EditScopeAccessor?
+
+***Q: Form fields have two constructor overloads, which should I use? What is an EditScopeAccessor?*** 
+
+SOLUTION: For more information about EditScopeAccessors, see [top-legacy-editscopes.md#the-editscopeaccessor](top-legacy-editscopes.md#the-editscopeaccessor).
+
+* * * 
+
+<a name="frequently-asked-questions-type-metadata"></a>
+### Type metadata
+<!-- TODO:  Move this back to the TypeScript  document -->
+***Q: When do I need to worry about type metadata for my EditScope?***
+
+SOLUTION: For many of the most common Form scenarios, there is no need to describe the EditScope/Form model in terms of type metadata. Typically, supplying type metadata is the way to turn on advanced FX behavior, in the same way that .NET developers apply custom attributes to .NET types to tailor .NET FX behavior for each customized types. 
+
+For more information about type metadata, see [portalfx-data-typemetadata.md](portalfx-data-typemetadata.md).
+
+ For EditScope and Forms, extensions supply type metadata for the following scenarios.
+
+ * Editable grid
+ 
+    Specified in [top-legacy-editscopes.md#editScope-entity-arrays](top-legacy-editscopes.md#editScope-entity-arrays).
+
+ * Opting out of edit tracking 
+
+    Specified in [top-legacy-editscopes.md#the-trackedits-property](top-legacy-editscopes.md#the-trackedits-property).
+
+
+* * *
+
+<a name="frequently-asked-questions-keeping-editscope-from-tracking-changes"></a>
+### Keeping EditScope from tracking changes
+
+***Q: Some of my Form data is not editable. How do I keep EditScope from tracking changes for this data?***
+
+SOLUTION: For more information about configuring an EditScope by using type metadata, see [top-legacy-editscopes.md#the-trackedits-property](top-legacy-editscopes.md#the-trackedits-property).
+  
+* * *
+
+<a name="frequently-asked-questions-key-value-pairs"></a>
+### Key-value pairs
+
+***Q: My Form data is just key/value pairs. How do I model a Dictionary/StringMap in EditScope? Why can't I just use a JavaScript object like a property bag?***
+
+DESCRIPTION:  The  Azure Portal FX instantiates an object/array and returns it to the extension to render the UI. Like all data models and `ViewMmodels`, any subsequent mutation of that object/array should be performed by changing/mutating **Knockout** observables. Portal controls and **Knockout** **HTML** template rendering both subscribe to these observables and re-render them only when these observables change value.
+
+This poses a challenge to the common `JavaScript` programming technique of treating a `JavaScript` object as a property bag of key-value pairs. If an extension only adds or removes keys from a datamodel or a `ViewModel` object, the Portal will not be aware of these changes. `EditScope` will not recognize these changes as user edits and therefore such adds/removes will put `EditScope` edit-tracking in an inconsistent state.
+
+SOLUTION:  An extension can model a Dictionary/StringMap/property bag for an `EditScope` by instantiating an  observable array of key/value-pairs, like `KnockoutObservableArray<{ key: string; value: TValue; }>`. 
+
+The users can edit the contents of the  Dictionary/StringMap/property bag by using an editable grid. The editable grid can only be bound to an `EditScope` 'entity' array. This allows the extension to describe the array of key/value-pairs as an 'entity' array.
+
+For more information about how to develop type metadata to use the array with the editable grid, see [top-legacy-editscopes.md#the-getEntityArrayWithEdits-method](top-legacy-editscopes.md#the-getEntityArrayWithEdits-method).
+
+* * *
 
 
 <a name="extension-configurations"></a>
@@ -377,7 +476,7 @@ This usually happens when the build output generated by content unbundler is dif
 1. Verify build output directory is called **bin**
 1. Verify you can point IIS to **bin** directory and load extension
 
-For more information, see [top-extensions-hosting-service-overview.md#prerequisites-for-onboarding-hosting-service](top-extensions-hosting-service-overview.md#prerequisites-for-onboarding-hosting-service).
+For more information, see [top-extensions-hosting-service-basic.md#prerequisites-for-onboarding-hosting-service](top-extensions-hosting-service-basic.md#prerequisites-for-onboarding-hosting-service).
 
 * * *
 
@@ -554,7 +653,7 @@ SOLUTION:
     * Change the extension to use the hosting service, as specified in [top-extensions-hosting-service.md](top-extensions-hosting-service.md).
        * Wrap any **AJAX** calls with custom telemetry to ensure that they are not waiting on the result of the call.   Also, ensure that **AJAX** is called using the batch api.
     * Reduce the revealed times for parts on the blade.
-    * Check for waterfalling or serialized bundle requests, as described in [portalfx-extensions-bp-performance.md#coding-best-practices](portalfx-extensions-bp-performance.md#coding-best-practices).  If any waterfalls exist within the extension, ensure you have the proper bundling hinting in place, as specified in the optimize bundling document located at []().
+    * Check for waterfalling or serialized bundle requests, as described in [portalfx-extensions-bp-performance.md#coding-best-practices](portalfx-extensions-bp-performance.md#coding-best-practices).  If any waterfalls exist within the extension, ensure you have the proper bundling hinting in place, as specified in [top-extensions-debugging.md#toggling-optimizations](top-extensions-debugging.md#toggling-optimizations).
 
 * * *
 
@@ -868,29 +967,17 @@ Now, why is this so?  It seems easier to do this in a single-step at the Blade-l
 
 * * * 
 
-<a name="frequently-asked-questions-how-do-i-control-the-loading-indicators-for-my-blade-how-is-it-different-than-pdl-blades"></a>
-### How do I control the loading indicators for my Blade?  How is it different than PDL Blades?
+<a name="frequently-asked-questions-how-do-i-control-the-loading-indicators-for-my-blade-how-is-it-different-from-pdl-blades"></a>
+### How do I control the loading indicators for my Blade?  How is it different from PDL Blades?
 
-SOLUTION: 
-[Controlling the loading indicator](portalfx-parts-revealContent.md) in Blades/Parts is the almost exactly the same for PDL and no-PDL Blades/Parts.  That is:  
-- An opaque loading indicator is shown as soon as the Blade/Part is displayed
-- The FX calls `onInitialize` (no-PDL) or `onInputsSet` (PDL) so the extension can render its Blade/Part UI
-- (Optionally) the extension can all `revealContent(...)` to show its UI, at which point a transparent/translucent loading indicator ("marching ants" at the top of Blade/Part) replaces the opaque loading indicator
-- The extension resolves the Promise returned from `onInitialize` / `onInputsSet` and all loading indicators are removed.
+Controlling the loading indicator in Blades/Parts, as specified in [portalfx-parts-revealContent.md](portalfx-parts-revealContent.md), is the almost exactly the same for PDL and no-PDL Blades/Parts. .
 
-The only difference with no-PDL here is that `onInitialize` replaces `onInputsSet` as the entrypoint for Blade/Part initialization.  
-
-For no-PDL, this is demonstrated in the sample [here](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).
-
-If yours is a scenario where your Blade/Part should show the loading indicators in response to some user interaction (like clicking 'Save' or 'Refresh'), read on...
-
-<a name="frequently-asked-questions-how-do-i-control-the-loading-indicators-for-my-blade-how-is-it-different-than-pdl-blades-when-should-i-use-the-operations-api-to-control-the-blade-part-s-loading-indicator"></a>
+<a name="frequently-asked-questions-how-do-i-control-the-loading-indicators-for-my-blade-how-is-it-different-from-pdl-blades-when-should-i-use-the-operations-api-to-control-the-blade-part-s-loading-indicator"></a>
 #### When should I use the &#39;operations&#39; API to control the Blade/Part&#39;s loading indicator?
 
 SOLUTION: 
-There are scenarios like 'User clicks "Save" on my Blade/Part' where the extension wants to show loading indicators at the Blade/Part level.  What's distinct about this scenario is that the Blade/Part has already completed its initialization and, now, the user is interacting with the Blade/Part UI.  This is precisely the kind of scenario for the 'operations' API.  
-
-For no-PDL Blades/Parts, the 'operations' API is `this.context.container.operations`, and the API's use is described [here](portalfx-blades-advanced.md#displaying-a-loading-indicator-UX ).  There is a sample to consult [here](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).
+There are scenarios like 'User clicks "Save" or "Refresh" on my Blade/Part' where the extension wants to show loading indicators at the Blade/Part level.  What's distinct about this scenario is that the Blade/Part has already completed its initialization and, now, the user is interacting with the Blade/Part UI.  This is precisely the kind of scenario for the 'operations' API.  
+For no-PDL Blades/Parts, the 'operations' API is `this.context.container.operations`, and the API's use is described in [portalfx-parts-revealContent.md#displaying-a-loading-indicator-ux](portalfx-parts-revealContent.md#displaying-a-loading-indicator-ux).  There is a sample to consult [here](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).
 
 * * * 
 
@@ -1019,7 +1106,7 @@ Rather than initializing the EditScope by programmatically modifying/updating Ed
 
 ***Q: I need to integrate my Form with an EditScope. Where do I get the EditScope?*** 
 
-**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions and forms be developed without edit scopes, as specified in [portalfx-editscopeless-procedure.md](portalfx-editscopeless-procedure.md).
+**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions and forms be developed without edit scopes, as specified in [top-editscopeless-forms.md](top-editscopeless-forms.md).
 
 SOLUTION: Integrate forms with `EditScopes` varies according to the UX design. Developers can choose between using a `ParameterProvider` component or `EditScopeCache` component as follows:
 
