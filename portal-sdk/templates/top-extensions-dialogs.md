@@ -56,17 +56,23 @@ button: DialogButton;
 
 ### Displaying complex scenarios in dialogs
 
-Extensions can use custom HTML templates in dialogs to  allow users to select values from  objects like sliders, or interact with some other custom UI. To do so, they provide an object of type `HtmlContent` to the `content` property in the `dialogOptions`.  
+In a dialog, if you want to allow the user to pick a value from a slider or interact with some other custom UI, make use of  a custom HTML template. You can achieve that by providing an object of type `HtmlContent` to the `content` property in the dialog options. 
 
-The following example describes a custom dialog `ViewModel` that contains only a slider control. The extension uses an html template, which contains only the control, and specifies the  `dialogViewModel`. The sample is located at  `<dir>\Client\V2\Dialogs\DialogSamplesBlade.ts` and in the following code.
+Here we define our custom dialog `ViewModel`, which only contains a slider control. We then define a simple html template, which is only the control, and specify our   `dialogViewModel`.  
+
+ The sample is located at  `<dir>\Client\V2\Dialogs\DialogSamplesBlade.ts` and in the following code.
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V2/Dialogs/DialogSamplesBlade.ts", "section": "top-extensions-dialogs#slider-dialog"}
 
 ### Targeting the dialog at a specific element or cssSelector
 
-The extension can provide context to which the dialog applies, for example, confirming a delete of a specific  item. It does this by specifying a `string | FxElement` which captures the `cssSelector`, or in the case of an  `FxElement`, it captures the element of the control or `div`. 
+If you want to provide context to which the dialog applies, maybe you're confirming a delete of a certain item. That is possible by specifying a `string | FxElement` which either captures the `cssSelector` or, in the case of `FxElement`, the element of the control or `div`. 
 
-The `fxClick` creates a `FxElement` and sends it as a parameter to the `fxClick` handler, as  is specified in the sample located at  `<dir>\Client\V2\Dialogs\DialogSamplesBlade.ts` and in the following code.
+In the following example, the `fxClick` creates a `FxElement` and sends it as a parameter to the fxClick handler.
+
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V2/Dialogs/DialogSamplesBlade.ts", "section": "top-extensions-dialogs#target-element"}
+
+When the  `fxClick` element is clicked, it is sent as a parameter to the onClick `fxClick` handler, as is specified in the sample located at  `<dir>\Client\V2\Dialogs\DialogSamplesBlade.ts` and in the following code.
 
 ```
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V2/Dialogs/DialogSamplesBlade.ts", "section": "top-extensions-dialogs#mouse"}
