@@ -5,15 +5,15 @@ Edit scopes provide a standard way of managing edits over a collection of input 
 
 Form controls are located in the `Fx/Controls` namespace. They support creating forms without initializing an  `editscope`.  The form controls are specified in [top-extensions-controls.md](top-extensions-controls.md). 
 
- Without an editscope, the controls become stateless. This means that there is no initial value for the control, and the developer can update the state of the control by setting the `dirty` value when the control's data changes.
+Without an editscope, the controls become stateless. This means that there is no initial value for the control, and the developer can update the state of the control by setting the `dirty` value when the control's data changes.
 
- In the following example, the value of a control is initialized by setting it.
+In the following example, the value of a control is initialized by setting it.
 
-    ```ts
-    textboxViewModel.value("Some Initial Value");
-    ```  
+```
+textboxViewModel.value("Some Initial Value");
+```  
 
-1. In the following example, the state of the control is updated.
+In the following example, the state of the control is updated.
 
     ```ts
     textboxViewModel.dirty(true);
@@ -80,9 +80,9 @@ For more information about the create engine, see [portalfx-create-engine-sample
             // The 'Reserved Resource Name Validator' makes sure the engine name is not a trademark or reserved word.
             new Validations.ReservedResourceNameValidator(resourceType)
         ])
-    ```
     });
-
+    ```
+   
 1. Modify the logic to see initial data in EditScope
 
     After the data is received, the sample invokes  `_mapIncomingDataForEditScope` to initialize the data in the editScope.  Because the new controls are not tied to editScope, the value of the control is set explicitly.
@@ -113,12 +113,9 @@ For more information about the create engine, see [portalfx-create-engine-sample
 
 When this procedure is complete, all the changes that are required for an EditScope-compatible form to work with editscope-less controls have been added.
 
-
 <!-- The following section is from editscopeless overview.  It is not known how much of the controls is still needed for editscopeless forms. -->
 
-
-
- ### Controls Namespace
+### Controls Namespace
 
 The new controls can be used in extensions by importing them, as in the following code.
 
@@ -147,7 +144,6 @@ const firstNameViewModel = TextBox.create(container, {
 
 The SDK provides two ways to configure the behavior of an alert, which is the pop-up that is displayed when the user tries to close a form that contains unsaved edits. 
 
-
 1. The alert can suppress the alert by setting the value to `FxViewModels.AlertLevel.None`, as in the following code.
 
     ```ts
@@ -164,8 +160,8 @@ The SDK provides two ways to configure the behavior of an alert, which is the po
             message: configureMessageTextBox.value()
         }
     }));
-
     ```
+
 ### Closing the blade
 
 The following code closes the blade.
@@ -192,7 +188,7 @@ For more information about opening and closing blades, see [top-blades-opening-a
 
 Out-of-the-box CSS classes can be used to dock a button at the bottom of blade and make it look like an Action Bar.
 
-The following sample demonstrates how to replace the action bar by docking a button and errorInfo box at the bottom of the blade by using the `msportalfx-docking-footer` css class. The `msportalfx-padding` class  adds 10 x 10 padding to the docked footer.
+The following sample demonstrates how to replace the action bar by docking a button and an `errorInfo` box at the bottom of the blade by using the `msportalfx-docking-footer` css class. The `msportalfx-padding` class  adds 10 x 10 padding to the docked footer.
 
 ```html
 
@@ -203,7 +199,7 @@ The following sample demonstrates how to replace the action bar by docking a but
 
 ```
 
-Other CSS classes are in the following list.
+Other blade styling css classes, like the ones in the following list, allow the blade to be used as a canvas.
 
 * msportalfx-docking-header
 * msportalfx-docking-body
@@ -215,6 +211,4 @@ Other CSS classes are in the following list.
 <!-- TODO: Determine whether 10 x 10 is px or some other unit of measurement. -->
 The `msportalfx-padding` class adds 10 x 10 padding to the blade.
 
-These blade styling css classes allow the blade to be used as a canvas.
-
-**NOTE**: Unlike previous version of SDK, No-PDL blades do not add padding or docking content behavior by default. This  makes style management easier.
+**NOTE**: Unlike previous version of SDK, No-PDL blades do not add padding or docking content behavior by default. This makes style management easier.
