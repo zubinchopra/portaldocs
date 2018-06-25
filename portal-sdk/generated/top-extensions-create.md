@@ -10,7 +10,7 @@ The Azure portal offers three ways to build a create form:
 
 1. Deploy to Azure
 
-    These are simple forms that are auto-generated from an ARM template and that contain basic controls and validation. It is also  used to build create forms for community templates as specified in  [https://aka.ms/portalfx/quickstarttemplates](https://aka.ms/portalfx/quickstarttemplates),  and integrate with the Marketplace, as specified in . However, it is very limited in terms of what is available for validation and controls.
+    These are simple forms that are auto-generated from an ARM template and that contain basic controls and validation. It is also used to build create forms for community templates as specified in  [https://aka.ms/portalfx/quickstarttemplates](https://aka.ms/portalfx/quickstarttemplates),  and integrate with the Marketplace, as specified in . However, it is very limited in terms of what is available for validation and controls.
 
 1. Solution templates
 
@@ -226,7 +226,9 @@ If the extension combines the `sort` option with the `disable` or `group` functi
 
 ### EditScope-accessible dropdowns
 
-**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions be developed without edit scopes, as specified in [portalfx-editscopeless-procedure.md](portalfx-editscopeless-procedure.md). For more information about forms without editScopes, see  [portalfx-editscopeless-overview.md](portalfx-editscopeless-overview.md) and [portalfx-controls-dropdown.md#migration-to-the-new-dropdown](portalfx-controls-dropdown.md#migration-to-the-new-dropdown).
+**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions be developed without edit scopes, as specified in [top-editscopeless-forms.md](top-editscopeless-forms.md).
+
+For more information about forms without editScopes, see   [top-editscopeless-forms.md](top-editscopeless-forms.md) and [portalfx-controls-dropdown.md#migration-to-the-new-dropdown](portalfx-controls-dropdown.md#migration-to-the-new-dropdown).
 
 For scenarios where a form is built with an `EditScope`, the Portal provides versions of accessible ARM dropdowns that replace the legacy, non-accessible dropdowns. The accessible controls have minimal API changes and are simple to integrate into existing blades or parts. However, the new dropdowns are based on a new accessible control that no longer supports the following options.
 

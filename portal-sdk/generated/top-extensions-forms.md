@@ -61,7 +61,7 @@ The section has two properties that allow for layout control. They are as follow
 
 If you are working with blades that use legacy concepts like `editScope`, you can still use the new form controls by sending the `editScope` observable to the blade options as the `value` property. This results in the `editScope` being updated when the control is updated, and vice versa.
 
-**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions and forms be developed without edit scopes, as specified in [portalfx-editscopeless-procedure.md](portalfx-editscopeless-procedure.md).
+**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions and forms be developed without edit scopes, as specified in  [top-editscopeless-forms.md](top-editscopeless-forms.md).
 
 <a name="portal-forms-form-control-input-options-form-topics"></a>
 ### Form Topics
@@ -77,8 +77,7 @@ For more information about how forms and parameters interact with an extension, 
 
 For more information about forms with editScopes, see [top-legacy-editscopes.md](top-legacy-editscopes.md).
 
-For more information about forms without editScopes, see [portalfx-editscopeless-overview.md](portalfx-editscopeless-overview.md).
-
+For more information about forms without editScopes, see  [top-editscopeless-forms.md](top-editscopeless-forms.md).
 
 <a name="portal-forms-frequently-asked-questions"></a>
 ## Frequently asked questions
@@ -109,7 +108,7 @@ It depends on the scenario that drives the UX. If the form will capture some dat
 | Term                 | Meaning |
 | ---                  | --- |
 | compile-time verified lambda | A lambda expression that is verified at compile time.  |
-| eirty | The contents of a textbox or similar object have been changed from the time that they were originally displayed or instantiated. Related to the most recent value of a variable or observable. |
+| dirty | The contents of a textbox or similar object have been changed from the time that they were originally displayed or instantiated. Related to the most recent value of a variable or observable. |
 | DOM              | Document Object Model   |
 | journey  | A user-defined collection of Azure blades to which the user has navigated in order to accomplish a specific goal or task. A set of experiences, each of which has its own goals, that combine to result in a greater level of competency or knowledge. |
 | lambda expression | An anonymous function that is used to create delegates or expression tree types. |

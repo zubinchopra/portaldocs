@@ -136,7 +136,7 @@ public onTargetWithFxElementClick(evt: FxMouseEvent) {
 
 If you want to provide context to which the dialog applies, maybe you're confirming a delete of a certain item. That is possible by specifying a `string | FxElement` which either captures the `cssSelector` or, in the case of `FxElement`, the element of the control or `div`. 
 
-In the following example, the `fxClick` creates a `FxElement` and sends it as a parameter to the fxClick handler.
+In the following example, the `fxClick` creates an `FxElement` and sends it as a parameter to the `fxClick` handler.
 
 ```typescript
 
@@ -153,7 +153,7 @@ htmlTemplate: "" +
 })
 
 ```
-
+<!-- [BradO] Sorry, but it's not clear how this onTarget method relates to 'onClick' nor is it clear how 'FxMouseEvent' relates to 'FxElement'.  -->
 When the  `fxClick` element is clicked, it is sent as a parameter to the onClick `fxClick` handler, as is specified in the sample located at  `<dir>\Client\V2\Dialogs\DialogSamplesBlade.ts` and in the following code.
 
 ```

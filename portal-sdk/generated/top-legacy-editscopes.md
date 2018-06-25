@@ -2,9 +2,7 @@
 <a name="legacy-editscopes"></a>
 ## Legacy EditScopes
 
-**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions be developed without edit scopes, as specified in [portalfx-editscopeless-procedure.md](portalfx-editscopeless-procedure.md). For more information about forms without editScopes, see  [portalfx-editscopeless-overview.md](portalfx-editscopeless-overview.md) and [portalfx-controls-dropdown.md#migration-to-the-new-dropdown](portalfx-controls-dropdown.md#migration-to-the-new-dropdown).
-
-<!-- TODO: Compare document with the pieces of the portalfx-editscopeless-overview.md document -->
+**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions be developed without edit scopes, as specified in  [top-editscopeless-forms.md](top-editscopeless-forms.md). For more information about forms without editScopes, see [portalfx-controls-dropdown.md#migration-to-the-new-dropdown](portalfx-controls-dropdown.md#migration-to-the-new-dropdown).
 
 Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide many common functions that would otherwise be difficult to orchestrate, like the following:
 
@@ -75,10 +73,10 @@ MsPortalFx.Data.Metadata.setTypeMetadata("GridItem", {
 properties: {
     key: null,
     option: null,
-    value: null
+    value: null,
 },
 entityType: true,
-idProperties: [ "key" ]
+idProperties: [ "key" ],
 });
 
 ```
@@ -200,7 +198,7 @@ this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModels.
 
         // Use EditScope's 'getEntityArrayWithEdits' to return an array with all created/updated/deleted items.
         return editScope.getEntityArrayWithEdits<DataModels.ServerConfig>(outgoing).arrayWithEdits;
-    }
+    },
 });
 
 ```
@@ -217,9 +215,9 @@ const wrapperTypeMetadataName = "ParameterProviderWithEditableStringsBladeViewMo
 MsPortalFx.Data.Metadata.setTypeMetadata(wrapperTypeMetadataName, {
 name: wrapperTypeMetadataName,
 properties: {
-    value: null
+    value: null,
 },
-entityType: true
+entityType: true,
 });
 
 export interface StringWrapperType {
@@ -238,7 +236,7 @@ this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<string[], K
         // Editable grid only accepts an array of editable entities (that is, objects and not strings).
         const wrappedStrings = incoming.map((str) => {
             return {
-                value: ko.observable(str)
+                value: ko.observable(str),
             };
         });
         return ko.observableArray(wrappedStrings);  // Editable grid can only bind to an observable array.
@@ -253,7 +251,7 @@ this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<string[], K
         return entityArrayWithEdits.arrayWithEdits.map((wrapper) => {
             return wrapper.value();
         });
-    }
+    },
 });
 
 ```
@@ -289,7 +287,7 @@ this.itemsCollector = new MsPortalFx.ViewModels.ParameterCollector<DataModels.Se
         // Use EditScope's 'applyArrayWithEdits' to examine the array returned from the Provider Blade
         // and apply any differences to our EditScope entity array in terms of created/updated/deleted entities.
         editScope.applyArrayAsEdits(result, editScope.root.serverConfigs);
-    }
+    },
 });
 
 ```
@@ -308,7 +306,7 @@ this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModels.
 
         // Use EditScope's 'getEntityArrayWithEdits' to return an array with all created/updated/deleted items.
         return editScope.getEntityArrayWithEdits<DataModels.ServerConfig>(outgoing).arrayWithEdits;
-    }
+    },
 });
 
 ```
@@ -439,7 +437,7 @@ this.textBoxReadWriteAccessor = new MsPortalFx.ViewModels.Forms.TextBox.ViewMode
         },
         writeToEditScope: (data: FormIntegratedFormData.FormIntegratedFormData, newValue: string): void => {
             data.state2(newValue);
-        }
+        },
     }),
     textBoxReadWriteAccessorOptions);
 
@@ -527,14 +525,14 @@ const editScopeCache = EditScopeCache.createNew<WebsiteModel, number>({
             type: "GET",
             dataType: "json",
             cache: false,
-            contentType: "application/json"
+            contentType: "application/json",
         }).then((data: any) => {
             // after you get the data from the ajax query you can do whatever transforms
             // you want in it to turn it into the model type you've defined
             return {
                 id: ko.observable(data.id),
                 name: ko.observable(data.name),
-                running: ko.observable(data.running)
+                running: ko.observable(data.running),
             };
         });
     },
@@ -553,18 +551,18 @@ const editScopeCache = EditScopeCache.createNew<WebsiteModel, number>({
             dataType: "json",
             cache: false,
             contentType: "application/json",
-            data: serializableWebsite
+            data: serializableWebsite,
         }).then(() => {
             // Instruct the EditScope to accept the user-authored, client-side changes as the new state of the
             // EditScope after the 'saveChanges' has completed successfully.
             // ('AcceptClientChanges' is the default behavior.  This promise could also be resolved with 'null' or 'undefined'.)
             return {
-                action: Data.AcceptEditScopeChangesAction.AcceptClientChanges
+                action: Data.AcceptEditScopeChangesAction.AcceptClientChanges,
             };
         }).finally(() => {
             this._saving(false);
         });
-    }
+    },
 });
 
 ```
@@ -599,16 +597,16 @@ const websiteName = new TextBox.ViewModel(
     {
         label: ko.observable(ClientResources.masterDetailEditWebsiteNameLabel),
         validations: ko.observableArray([
-            new FxViewModels.RequiredValidation(ClientResources.masterDetailEditWebsiteNameRequired)
+            new FxViewModels.RequiredValidation(ClientResources.masterDetailEditWebsiteNameRequired),
         ]),
-        valueUpdateTrigger: ValueUpdateTrigger.Input // by default textboxes only update the value when the user moves focus. Since we don't do any expensive validation we can get updates on keypress
+        valueUpdateTrigger: ValueUpdateTrigger.Input, // by default textboxes only update the value when the user moves focus. Since we don't do any expensive validation we can get updates on keypress
     });
 
 // Section
 this.section = new Section.ViewModel(this._ltm, {
     children: ko.observableArray<any>([
-        websiteName
-    ])
+        websiteName,
+    ]),
 });
 
 ```
@@ -638,7 +636,7 @@ saveCommand.command = {
     }),
     execute: (context: any): FxBase.Promise => {
         return this._editScopeView.editScope().saveChanges();
-    }
+    },
 };
 
 // set up discard command
@@ -655,7 +653,7 @@ discardCommand.command = {
     execute: (context: any): FxBase.Promise => {
         this._editScopeView.editScope().revertAll();
         return null;
-    }
+    },
 };
 
 this.commandBar = new Toolbars.Toolbar(this._ltm);
