@@ -310,9 +310,9 @@ These features are supported, but have had no recent investment. No additional i
 
 * [PDL-based programming](/portal-sdk/generated/top-legacy-blades-template-pdl.md)
 
-* [Legacy parts](top-legacy-parts.md)
+* [Legacy parts](/portal-sdk/generated/top-legacy-parts.md)
 
-* [Legacy data management feature](top-legacy-data.md)
+* [Legacy data management feature](/portal-sdk/generated/top-legacy-data.md)
 
 * [Controls in the MsPortalFx namespace](/portal-sdk/generated/top-extensions-samples-controls-deprecated.md)
 
