@@ -434,3 +434,7 @@ The following sample PDL file demonstrates requesting an `editScope`.  The sampl
     </Lens>
 </Blade>
 ```
+
+
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-editscope.md"}

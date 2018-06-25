@@ -212,3 +212,5 @@ Other blade styling css classes, like the ones in the following list, allow the 
 The `msportalfx-padding` class adds 10 x 10 padding to the blade.
 
 **NOTE**: Unlike previous version of SDK, No-PDL blades do not add padding or docking content behavior by default. This makes style management easier.
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-editscope.md"}
