@@ -37,6 +37,10 @@ FAQ's that are associated with ordinary extension testing.
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-debugging.md"}
 
+## EditScopes and EditScope-less forms 
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-editscope.md"}
+
 ## Extension Configurations 
 
 FAQ's that are associated with configurations for extensions.
