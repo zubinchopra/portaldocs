@@ -1,4 +1,12 @@
-# Release Notes since 2/24/2018
+# Release Notes since 2/25/2018
+
+## 5.0.302.1187
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2623180'>2623180</a></td><td>Bug Fix</td><td>[Preorder] Fix preorder makeJsUrl</td></tr></table>
+
+## 5.0.302.1186
+0 Breaking Changes, 1 Features added and 0 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2565158'>2565158</a></td><td>Feature</td><td>[Config] Remove Delegate Token for ARM and enable Extension (MWaaS)</td></tr></table>
 
 ## 5.0.302.1185
 0 Breaking Changes, 1 Features added and 3 Bugs Fixed
