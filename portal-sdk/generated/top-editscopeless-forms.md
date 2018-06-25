@@ -4,8 +4,6 @@
 
 Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide common functions that would otherwise be difficult to orchestrate, like tracking changes in field values across a form, or simplifying the merge of form changes from the server into the current edit. In contrast, forms that do not use `editScopes` are compatible with new controls and consequently, EditScopes are becoming obsolete. It is recommended that extensions be developed without `editScopes`.
 
-<!-- TODO: Determine whether controls like OptionsGroup, that are not located in Fx/Controls, are considered part of the EditScopeless pattern.   -->
-
 Form controls are located in the `Fx/Controls` namespace. They support creating forms without initializing an  `editscope`.  The form controls are specified in [top-extensions-controls.md](top-extensions-controls.md). 
 
  Without an editscope, the controls become stateless. This means that there is no initial value for the control, and the developer can update the state of the control by setting the `dirty` value when the control's data changes.
@@ -60,7 +58,7 @@ For more information about the create engine, see [portalfx-create-engine-sample
 
 1. Modify textBox type
 
-    Change the control type for the name of the engine so that it is using the editscopeless TextBox.
+    Change the control type for the name of the engine so that it is using the editscopeless `TextBox`.
 
     ```ts
     /**
@@ -84,8 +82,8 @@ For more information about the create engine, see [portalfx-create-engine-sample
             // The 'Reserved Resource Name Validator' makes sure the engine name is not a trademark or reserved word.
             new Validations.ReservedResourceNameValidator(resourceType)
         ])
-    });
     ```
+    });
 
 1. Modify the logic to see initial data in EditScope
 
@@ -116,6 +114,83 @@ For more information about the create engine, see [portalfx-create-engine-sample
     ```
 
 When this procedure is complete, all the changes that are required for an EditScope-compatible form to work with editscope-less controls have been added.
+
+
+<!-- The following section is from editscopeless overview.  It is not known how much of the controls is still needed for editscopeless forms. -->
+
+
+
+ ### Controls Namespace
+
+The new controls can be used in extensions by importing them, as in the following code.
+
+```ts
+import * as Section from "Fx/Controls/Section";
+import * as TextBox from "Fx/Controls/TextBox";
+``` 
+
+The controls are initialized through a factory method named `create()`. This function returns an interface. The following example invokes the `create()` method to create a TextBox with a specific label, subLabel and a collection of validations.
+
+```ts
+import * as TextBox from "Fx/Controls/TextBox";
+
+const firstNameViewModel = TextBox.create(container, {
+    label: "First Name",
+    subLabel: "Try: John",
+    validations: [
+        new Validations.Required(ClientResources.emptyFirstName),
+        new Validations.RegExMatch("^[a-zA-Z]+", `${ClientResources.startsWithLetterValidationMessage} <a href="https://www.bing.com/search?q=Personal+names+around+the+world" target="_blank">${ClientResources.clickForMoreInfo}</a>`)
+    ]
+});
+```
+
+
+<a name="changing-forms-to-work-without-editscopes-customizing-alerts"></a>
+### Customizing Alerts
+
+The SDK provides two ways to configure the behavior of an alert, which is the pop-up that is displayed when the user tries to close a form that contains unsaved edits. 
+
+
+1. The alert can suppress the alert by setting the value to `FxViewModels.AlertLevel.None`, as in the following code.
+
+    ```ts
+    form.configureAlertOnClose(FxViewModels.AlertLevel.None);
+    ```
+
+1. The value of the alert's behavior can be computed and returned to the `Message` function by using an overloaded definition, which is appropriate for more complex scenarios. The behavior of the alert and message are dynamically set, based on the checkbox and textBox, as in the following code.
+
+    ```ts
+
+    this._container.form.configureAlertOnClose(ko.computed(container, () => {
+        return {
+            showAlert: configureCheckBox.value(),
+            message: configureMessageTextBox.value()
+        }
+    }));
+
+    ```
+<a name="changing-forms-to-work-without-editscopes-closing-the-blade"></a>
+### Closing the blade
+
+The following code closes the blade.
+
+```ts
+
+const okButtonClick = () => {
+    container.closeCurrentBlade({
+                            firstName: firstNameViewModel.value(),
+                            lastName: lastNameViewModel.value(),
+                            spouse: dropDownViewModel.value(),
+                            password: passwordViewModel.value(),
+                        });
+};
+```
+
+For more information about opening and closing blades, see [top-blades-opening-and-closing.md](top-blades-opening-and-closing.md).
+
+
+<!-- The previous section is from editscopeless overview.  It is not known how much of the controls is still needed for editscopeless forms. -->
+
 
 <a name="replacing-the-action-bar-with-a-button"></a>
 ## Replacing the action bar with a button
