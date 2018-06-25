@@ -31,6 +31,18 @@ The following sections cover these topics.
 
 * [Pinning parts](#pinning-parts)
 
+* [Preventing pinning](#preventing-pinning)
+
+* [Versioning](#versioning)
+
+* [Permanently discontinue a part](#permanently-discontinue-a-part)
+
+* [Removing a part from a blade default layout](#removing-a-part-from-a-blade-default-layout)
+
+* [Handling part errors](#handling-part-errors)
+
+* [Handling assets that no longer exist](#handling-assets-that-no-longer-exist)
+
 * * * 
 
 <a name="parts-overview-traditional-parts-and-template-blades"></a>
@@ -65,7 +77,7 @@ The following procedure demonstrates how to use a button part.
 
 1. Declare the part in the global `<Definition>` section of the PDL for the extension, as in the following example.
 
-  ```xml
+     ```xml
 
 <!-- Name - Give your part a unique name -->
 <!-- PartKind - This is where you declare that you're using a built in part type -->
@@ -80,7 +92,7 @@ The following procedure demonstrates how to use a button part.
 
 1. The ViewModel that is associated with the pdl will plug data into the part. The ViewModel is located at `<dir>\Client\V1\Parts\Intrinsic\ViewModels\ButtonPartViewModel.ts`  For this step, the data is just the label and icon, but for more data-oriented parts, the data can be gathered from a server, like a resource provider. The ViewModel is in the following code.
 
- ```typescript
+     ```typescript
 
 /**
 * This sample uses the base class implementation. You can also implement the
@@ -136,7 +148,7 @@ The following procedure demonstrates how to use a custom part.
 
 1. The pdl points to the html template.
 
-  ```xml
+    ```xml
 
 <h3>This is a custom part</h3>
 
@@ -164,7 +176,7 @@ That's too many clicks!
 
 1. The HTML template is bound to the following ViewModel by using **Knockout**, which is also referred to in the pdl.
 
-  ```typescript
+     ```typescript
 
 /**
 * Example view model for a custom part
@@ -632,8 +644,8 @@ Parts are not individually flagged as not being pinnable.  Rather, a blade that 
 For more information, about sharing parts, see [portalfx-extensibility-pde.md](portalfx-extensibility-pde.md).
 
 
-<a name="parts-versioning"></a>
-## Versioning
+<a name="parts-overview-versioning"></a>
+### Versioning
 
 When users customize or pin a part, the following states are stored and used the next time the part is loaded from a customized context.
 
@@ -655,7 +667,6 @@ This example is based on the sample located at `<dir>\Client\V1\Hubs\Browse\Brow
 
  The **CanUseOldInputVersion** attribute can be set to `true` to specify that the part can process older versions of inputs. It should be used in conjunction with the  part property named `version`, as in the following example.
 
-<!-- TODO:  Determine whether the following sample is causing GitHub to stop the build. -->
     <?xml version="1.0" encoding="utf-8" ?>
 <Definition xmlns="http://schemas.microsoft.com/aux/2013/pdl"
             Area="V1/Hubs"
@@ -975,23 +986,103 @@ public onInputsSet(inputs: Def.InputsContract, settings: Def.SettingsContract): 
 ```
 
 
-<a name="parts-versioning-permanently-discontinue-a-part"></a>
+<a name="parts-overview-permanently-discontinue-a-part"></a>
 ### Permanently discontinue a part
 
 Developers occasionally build and ship parts, and later  discontinue their functionality. However, there may be cases where these parts were pinned and  incorporated into the layout of a user's dashboard.
 
 Azure customers have informed the Azure team that parts disappearing automatically from their startboards is an extremely dissatisfactory experience. To address this customer request, Azure has created a process that allows developers to permanently discontinue a part while providing a good user experience that uses customizations.
 
-To discontinue a part, developers delete the majority of the code, but leave enough in place so that the tile still loads.  Then use the `container.noDataMessage()` api to inform the user that the part is no longer supported.
+To discontinue a part, developers delete the majority of the code from the `ViewModel`, but leave the constructor and `onInputsSet`.  in place so that the tile still loads. 
 
-This ensures that customers are informed that this part is no longer supported, and that parts that fail will not be displayed on their dashboards.
+Then use the `container.noDataMessage()` in the constructor to inform the user that the part is no longer supported, and return empty promise from `onInputsSet`.
 
-<a name="parts-versioning-removing-a-part-from-a-blade-default-layout"></a>
+This ensures that customers are informed that this part is no longer supported, and that parts that fail will not be displayed on their dashboards.  An example is in the following code.
+
+```
+export class DocumentCountUsagePartViewModel extends MsPortalFx.ViewModels.Parts.SingleValueGauge.ViewModel {
+    constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState: any, dataContext: DataContext) {
+        super();
+        container.noDataMessage(ClientResources.tileRemoved);
+    }
+
+    public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
+        return Q();
+    }
+}
+```
+
+In the PDL code, make the part global by moving it from inside `<Blade>/<Lens>` tags to be the child of the `<Definition />` tag in the global `*.pdl` file. Then, rename this part, and create a  `<RedirectPart />` tag that uses the old name.
+The following example is the code before and after it was rewritten to obsolete the old part.
+
+* Before
+    ```
+    <Definition...>
+        <Blade Name="MyBlade" ...>
+            <Lens Name="MyLens" ...>
+                <Part Name="DocumentCountUsagePartViewModel"
+                    PartKind="SingleValueGauge"
+                    ViewModel="DocumentCountUsagePartViewModel"
+                    InitialSize="Wide"
+                    AssetType="SearchService"
+                    AssetIdProperty="resourceId">
+                    <Part.Permissions>
+                        <PermissionReference AssetType="SearchService" Permission="read"/>
+                    </Part.Permissions>
+                    <Part.Properties>
+                        <Property Name="resourceId">
+                            <BladeParameter Name="id"/>
+                        </Property>
+                    </Part.Properties>
+                </Part>
+            </Lens>
+        </Blade>
+    </Definition>
+    ```
+
+* After
+
+    ```
+    <Definition...>
+        <Blade Name="MyBlade" ...>
+            <Lens Name="MyLens" ...>
+
+            </Lens>
+        </Blade>
+
+        <RedirectPart
+            Name="DocumentCountUsagePart"
+            Blade="MyBlade"
+            Lens="MyLens">
+            <NewPart PartType="DocumentCountUsagePartGlobal" />
+        </RedirectPart>
+
+        <Part Name="DocumentCountUsagePartViewModelGlobal"
+                    PartKind="SingleValueGauge"
+                    ViewModel="DocumentCountUsagePartViewModel"
+                    InitialSize="Wide"
+                    AssetType="SearchService"
+                    AssetIdProperty="resourceId">
+                <Part.Permissions>
+                    <PermissionReference AssetType="SearchService" Permission="read"/>
+                </Part.Permissions>
+                <Part.Properties>
+                    <Property Name="resourceId"/>
+                </Part.Properties>
+            </Part>
+
+    </Definition>
+    ```
+
+
+**NOTE**: The `<BladeParameter />` element was removed from the `<Property />`  tag because it is not allowed for global parts.
+
+<a name="parts-overview-removing-a-part-from-a-blade-default-layout"></a>
 ### Removing a part from a blade default layout
 
 An unlocked blade's default layout should consist of tiles that provide the most  value to users and still meet extension performance goals out-of-the-box.  That layout may change over time, and your team may decide that a part that was included in a blade's default layout should be removed.
 
-1. If the part was defined inline as a `<Part/>` or `<CustomPart>` element within a `<Blade/>` and `<Lens/>`, then the part should be moved out of the blade and into the global part catalog for the extension. Otherwise, if the  part is already defined in the global part catalog, or is defined in another extension, then the pdl file may contain a  `<PartReference/>` tag for the blade, instead of  a `<Part/>` tag.
+If the part was defined inline as a `<Part/>` or `<CustomPart>` element within a `<Blade/>` and `<Lens/>`, then the part should be moved out of the blade and into the global part catalog for the extension. Otherwise, if the  part is already defined in the global part catalog, or is defined in another extension, then the pdl file may contain a  `<PartReference/>` tag for the blade, instead of  a `<Part/>` tag.
 
 **NOTE**: It is best practice to use **Typescript** or no-pdl parts.
 
@@ -1006,7 +1097,7 @@ The following procedure to remove a part from a blade  layout.
               Blade="EXACT BLADE NAME THAT THE PART WAS DEFINED IN"
               Lens="OPTIONAL - EXACT LENS NAME THE PART WAS DEFINED IN"
               Extension="OPTIONAL - ONLY APPLICABLE IF THE PART IS DEFINED IN A DIFFERENT EXTENSION">
-    <NewPart Name="NAME OF THE NEW GLOBAL PART THAT DEFINES THE PART BEHAVIOR" />
+    <NewPart PartType="NAME OF THE NEW GLOBAL PART THAT DEFINES THE PART BEHAVIOR" />
 </RedirectPart>
 ```
 
@@ -1048,6 +1139,124 @@ The `container.revealContent()` API that is located in the `ViewModel` can add t
 1. Allow the user to interact with the part
 
 The `container.revealContent()` method can be called from either the ViewModel's `constructor` method or the ViewModel's `onInputsSet` function. These calls are located either in a `.then(() => ...)` callback, after the essential data has loaded, or they are located in the `onInputsSet` method, previous to the code that initiates data loading.
+
+Controlling the loading indicator in Blades/Parts is almost exactly the same for PDL and no-PDL Blades/Parts. The steps are as follows. 
+
+* An opaque loading indicator is shown as soon as the Blade/Part is displayed
+
+* The FX calls `onInitialize` (no-PDL) or `onInputsSet` (PDL) so the extension can render its Blade/Part UI
+
+* (Optionally) the extension can all `revealContent(...)` to show its UI, at which point a transparent/translucent loading indicator ("marching ants" at the top of Blade/Part) replaces the opaque loading indicator
+
+* The extension resolves the Promise returned from `onInitialize` / `onInputsSet` and all loading indicators are removed.
+
+The only difference with no-PDL here is that `onInitialize` replaces `onInputsSet` as the entrypoint for Blade/Part initialization.  
+
+For no-PDL, this is demonstrated in the sample located at  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).
+
+<a name="parts-revealing-part-content-displaying-a-loading-indicator-ux"></a>
+### Displaying a loading indicator UX
+
+Sometimes, interaction with a blade should be prevented while it is initializing. The Azure SDK supports displaying the loading indicator when data is loaded by an asynchronous **AJAX** call that populates blade objects like dropdowns. In those cases, a shield that contains a loading indicator UX is displayed in the blade to block the display. The shield can be fully transparent or opaque, as in the following code.
+
+```ts
+
+// Controls Namespace
+import * as DropDown from "Fx/Controls/DropDown";
+
+// Initialize control with no data. Set loading indicator to true
+const dropDownViewModel = DropDown.create<string>(container, {
+    label: ClientResources.spouse,
+    validations: [ new Validations.Required(ClientResources.emptySpouse) ],
+    loading: true  // ...and dynamically switch to 'false' once the dropdown items are loaded.
+});
+
+// fetch data asynchronously and remove loading indicator on data load
+const dropdownDataPromise = Q(model.people.fetch("", container)).then((people) => {
+    const dropDownItems = people.data.mapInto(container, (childLifetime: MsPortalFx.Base.LifetimeManager, person: SamplesExtension.DataModels.Person) => {
+        return {
+            text: person.name(),
+            value: person.name()
+        };
+    }, dropDownViewModel.items);
+    dropDownViewModel.loading(false);
+});
+```
+
+The following code demonstrates how to set an opaque filter in the blade.
+
+```javascript
+constructor(container: FxCompositionBlade.Container, initialState: any, dataContext: BladesArea.DataContext) {
+    super();
+
+    var operation = Q.defer<any>();
+
+    // display the shield while the operation promise is not resolved
+    container.operations.add(operation.promise, { blockUi: true, shieldType: MsPortalFx.ViewModels.ShieldType.Opaque });
+
+    // wait for 3 seconds and resolve the promise (which will remove the shield)
+    window.setTimeout(() => { operation.resolve(); }, 3000);
+}
+```
+
+The following code snippet demonstrates how to apply a filter on a timer.  The filter slowly changes from opaque to transparent. The sample is also located at `<dir>\Client\V1\Blades/Template/ViewModels/TemplateBladeViewModels.ts`.
+
+```typescript
+
+export class TemplateBladeWithShieldViewModel
+extends Blade
+implements Def.TemplateBladeWithShieldViewModel.Contract
+{
+/**
+ * The blade's title.
+ */
+public title: KnockoutObservable<string>;
+
+/**
+ * TextBox form field.
+ */
+public myTextBox: TextBox.ViewModel;
+
+private _timerHandle: number;
+
+constructor(container: FxCompositionBlade.Container, initialState: any, dataContext: BladesArea.DataContext) {
+    super();
+
+    this.title(ClientResources.templateBladeWithShield);
+
+    const translucent = MsPortalFx.ViewModels.ShieldType.Translucent;
+    const opaque = MsPortalFx.ViewModels.ShieldType.Opaque;
+    let isTranslucent = true;
+
+    const op = () => {
+        const operation = Q.defer<any>();
+        const shieldType = isTranslucent ? translucent : opaque;
+        container.operations.add(operation.promise, { blockUi: true, shieldType: shieldType });
+
+        isTranslucent = !isTranslucent;
+        window.setTimeout(() => { operation.resolve(); }, 3000);
+    };
+
+    op();
+
+    window.setInterval(op, 5000);
+
+    // TextBox
+    const textBoxOptions = <TextBox.Options>{
+        label: ko.observable(ClientResources.formsSampleBasicTextBox),
+    };
+    this.myTextBox = new TextBox.ViewModel(container, textBoxOptions);
+}
+
+/**
+ * Clean up any resources.
+ */
+public dispose(): void {
+    window.clearInterval(this._timerHandle);
+}
+}
+
+```
 
 <a name="parts-revealing-part-content-calling-from-the-constructor"></a>
 ### Calling from the constructor
@@ -1133,8 +1342,8 @@ constructor(container: MsPortalFx.ViewModels.PartContainer, initialState: any, d
 
 When the error is  fixed,  then the extension can call `container.recover()` to return the part to its normal display state. One example is that the extension is polling for data, and the first poll does not retrieve results, but a subsequent poll returns valid results.
 
-<a name="parts-handling-assets-that-no-longer-exist"></a>
-## Handling assets that no longer exist
+<a name="parts-revealing-part-content-handling-assets-that-no-longer-exist"></a>
+### Handling assets that no longer exist
 
 Many parts represent assets like ARM resources that can be deleted from the UI, PowerShell, or the calling REST APIs.  A stateless UI system handles this deletion by loading only assets that exist at the time the UI starts up.  Because Ibiza contains the state for all user customizations, this 'Not Found' case is handled in a few specific places. Some examples are as follows.
 
@@ -1151,51 +1360,6 @@ If this is the case, see [portalfx-extensions-status-codes.md#server-error-404](
 ## Best Practices
 
 Portal development patterns or architectures that are recommended based on customer feedback and usability studies may be categorized by the type of part.
-
-<a name="parts-best-practices-loading-indicators"></a>
-#### Loading indicators
-
-Loading indicators should be consistently applied across all blades and parts of the extension. For no-PDL, this is demonstrated in the sample located at  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).  The steps for TypeScript and PDL are as follows.
-
-* Call `container.revealContent()` to limit the time when the part displays  **blocking loading** indicators. For more information, see [portalfx-parts-revealContent.md](portalfx-parts-revealContent.md).
-
-* Return a `Promise` from the `onInitialize` method that reflects all data-loading for the part. Return the `Promise` from the blade if it is locked or is of type  `<TemplateBlade>`.
-
-* The extension can return a data-loading Promise directly from `onInitialize`, but it will receive compile errors when it attempts to return the result of a call to `queryView.fetch(...)`, `entityView.fetch(...)`, `Base.Net.ajax2(...)`, as in the following code.
-
-    ```
-    public onInitialize() {
-        public { container, model, parameters } = this.context;
-        public view = model.websites.createView(container);
-
-        // Returns MsPortalFx.Base.PromiseV and not the required Q.Promise<any>.
-        return view.fetch(parameters.websiteId).then(...);
-    }
-    ```
-
-    The FX data-loading APIs return a `MsPortalFx.Base.PromiseV` type that is not compatible with the `Q.Promise` type expected for `onInitialize`.  To workaround this shortcoming of the FX data-loading APIs, use the following code until these APIs are revised. 
-    ```
-        ...
-        return Q(view.fetch(...)).then(...);
-        ...
-    ```
-
-    This application of `Q(...)`  coerces the data-loading Promise into the return type expected for `onInitialize`.  
-
-* For PDL, do not return a `Promise` from the `onInputSet` method previous to the loading of all part data if it removes loading indicators.   The part will seem to be broken or unresponsive if no **loading** indicator is displayed while the data is loading, as in the following code.
-
-```ts
-public onInputsSet(inputs: MyPartInputs): Promise {
-    this._view.fetch(inputs.resourceId);
-    
-    // DO NOT DO THIS!  Removes all loading indicators.
-    // Your Part will look broken while the `fetch` above completes.
-    return Q();
-}
-```
-
-**NOTE**: In this discussion, `onInputsSet` is the PDL equivalent of `onInitialize` 
-
 <a name="parts-best-practices-handling-part-errors"></a>
 ### Handling part errors
 
