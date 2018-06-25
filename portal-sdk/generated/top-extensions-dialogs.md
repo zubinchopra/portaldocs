@@ -81,11 +81,12 @@ button: DialogButton;
 <a name="dialogs-displaying-complex-scenarios-in-dialogs"></a>
 ### Displaying complex scenarios in dialogs
 
-Extensions can use custom HTML templates in dialogs to  allow users to select values from  objects like sliders, or interact with some other custom UI. To do so, they provide an object of type `HtmlContent` to the `content` property in the `dialogOptions`.  
+In a dialog, if you want to allow the user to pick a value from a slider or interact with some other custom UI, make use of  a custom HTML template. You can achieve that by providing an object of type `HtmlContent` to the `content` property in the dialog options. 
 
-The following example describes a custom dialog `ViewModel` that contains only a slider control. The extension uses an html template, which contains only the control, and specifies the  `dialogViewModel`. The sample is located at  `<dir>\Client\V2\Dialogs\DialogSamplesBlade.ts` and in the following code.
+Here we define our custom dialog `ViewModel`, which only contains a slider control. We then define a simple html template, which is only the control, and specify our   `dialogViewModel`.  
 
-```
+ The sample is located at  `<dir>\Client\V2\Dialogs\DialogSamplesBlade.ts` and in the following code.
+
 ```typescript
 
 public onDialogWithTemplateClick() {
@@ -129,14 +130,31 @@ public onTargetWithFxElementClick(evt: FxMouseEvent) {
 }
 
 ```
-```
 
 <a name="dialogs-targeting-the-dialog-at-a-specific-element-or-cssselector"></a>
 ### Targeting the dialog at a specific element or cssSelector
 
-The extension can provide context to which the dialog applies, for example, confirming a delete of a specific  item. It does this by specifying a `string | FxElement` which captures the `cssSelector`, or in the case of an  `FxElement`, it captures the element of the control or `div`. 
+If you want to provide context to which the dialog applies, maybe you're confirming a delete of a certain item. That is possible by specifying a `string | FxElement` which either captures the `cssSelector` or, in the case of `FxElement`, the element of the control or `div`. 
 
-The `fxClick` creates a `FxElement` and sends it as a parameter to the `fxClick` handler, as  is specified in the sample located at  `<dir>\Client\V2\Dialogs\DialogSamplesBlade.ts` and in the following code.
+In the following example, the `fxClick` creates a `FxElement` and sends it as a parameter to the fxClick handler.
+
+```typescript
+
+@TemplateBlade.Decorator({
+htmlTemplate: "" +
+    "<div class='msportalfx-padding'>" +
+    "  <p><a data-bind='fxclick: onSimpleDialogClick'>Open a simple dialog</a></p>" +
+    "  <p><a data-bind='fxclick: onDialogWithCustomButtonsClick'>Open a dialog with custom buttons</a></p>" +
+    "  <p><div data-bind='text: dinnerSelection'></div></p>" +
+    "  <p><a data-bind='fxclick: onDialogWithTemplateClick'>Open a dialog with a provided custom template</a></p>" +
+    "  <p><a data-bind='fxclick: onTargetWithSelectorClick'>Target a dialog to a element with a selector</a></p>" +
+    "  <p><a class='ext-color-text' data-bind='fxclick: onTargetWithFxElementClick, style: {color: colorSelection}'>Target a dialog to a element with FxElement</a>" +
+    "</div>",
+})
+
+```
+
+When the  `fxClick` element is clicked, it is sent as a parameter to the onClick `fxClick` handler, as is specified in the sample located at  `<dir>\Client\V2\Dialogs\DialogSamplesBlade.ts` and in the following code.
 
 ```
 ```typescript
